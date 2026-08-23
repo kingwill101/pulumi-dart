@@ -7,19 +7,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_get_region_network_endpoint_group_get_region_network_endpoint_group_args_doc}
 class GetRegionNetworkEndpointGroupArgs {
-  /// The Network Endpoint Group name. Provide either this or a `self_link`.
+  /// The Network Endpoint Group name. Provide either this or a `selfLink`.
   final pulumi.Input<String>? name;
   /// The ID of the project to list versions in. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-  /// A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
+  /// A reference to the region where the Serverless REGs Reside. Provide either this or a `selfLink`.
   final pulumi.Input<String>? region;
   /// The Network Endpoint Group self_link.
   final pulumi.Input<String>? selfLink;
 
   /// Creates a new [GetRegionNetworkEndpointGroupArgs].
-  /// [name] The Network Endpoint Group name. Provide either this or a `self_link`.
+  /// [name] The Network Endpoint Group name. Provide either this or a `selfLink`.
   /// [project] The ID of the project to list versions in. If it is not provided, the provider project is used.
-  /// [region] A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
+  /// [region] A reference to the region where the Serverless REGs Reside. Provide either this or a `selfLink`.
   /// [selfLink] The Network Endpoint Group self_link.
   const GetRegionNetworkEndpointGroupArgs({
     this.name,
@@ -46,4 +46,3 @@ class GetRegionNetworkEndpointGroupArgs {
     );
   }
 }
-

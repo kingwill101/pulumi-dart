@@ -94,6 +94,25 @@ import 'preview_feature_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_previewfeature" "gce_preview_feature" {
+///   name              = "alpha-api-access"
+///   activation_status = "ACTIVATION_STATE_UNSPECIFIED"
+///   rollout_operation = {
+///     rollout_input = {
+///       predefined_rollout_plan = "ROLLOUT_PLAN_FAST_ROLLOUT"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +123,8 @@ import 'preview_feature_state.dart';
 /// import com.pulumi.gcp.compute.PreviewFeatureArgs;
 /// import com.pulumi.gcp.compute.inputs.PreviewFeatureRolloutOperationArgs;
 /// import com.pulumi.gcp.compute.inputs.PreviewFeatureRolloutOperationRolloutInputArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -149,22 +168,15 @@ import 'preview_feature_state.dart';
 /// PreviewFeature can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/previewFeatures/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, PreviewFeature can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/previewFeature:PreviewFeature default projects/{{project}}/global/previewFeatures/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/previewFeature:PreviewFeature default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/previewFeature:PreviewFeature default {{name}}
 /// ```
 class PreviewFeature extends pulumi.CustomResource {

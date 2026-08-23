@@ -23,8 +23,10 @@ class WorkstationConfigHostGceInstance {
   /// Whether to disable SSH access to the VM.
   final pulumi.Input<bool>? disableSsh;
   /// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
-  /// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+  /// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
   final pulumi.Input<bool>? enableNestedVirtualization;
+  /// Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+  final pulumi.Input<Map<String, String>>? instanceMetadata;
   /// The name of a Compute Engine machine type.
   final pulumi.Input<String>? machineType;
   /// Number of instances to pool for faster workstation startup.
@@ -53,6 +55,7 @@ class WorkstationConfigHostGceInstance {
   /// [disablePublicIpAddresses] Whether instances have no public IP address.
   /// [disableSsh] Whether to disable SSH access to the VM.
   /// [enableNestedVirtualization] Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
+  /// [instanceMetadata] Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
   /// [machineType] The name of a Compute Engine machine type.
   /// [poolSize] Number of instances to pool for faster workstation startup.
   /// [serviceAccount] Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
@@ -68,6 +71,7 @@ class WorkstationConfigHostGceInstance {
     this.disablePublicIpAddresses,
     this.disableSsh,
     this.enableNestedVirtualization,
+    this.instanceMetadata,
     this.machineType,
     this.poolSize,
     this.serviceAccount,
@@ -86,6 +90,7 @@ class WorkstationConfigHostGceInstance {
       'disablePublicIpAddresses': ?disablePublicIpAddresses,
       'disableSsh': ?disableSsh,
       'enableNestedVirtualization': ?enableNestedVirtualization,
+      'instanceMetadata': ?instanceMetadata,
       'machineType': ?machineType,
       'poolSize': ?poolSize,
       'serviceAccount': ?serviceAccount,
@@ -105,6 +110,7 @@ class WorkstationConfigHostGceInstance {
       disablePublicIpAddresses: (() { final guardedValue = map['disablePublicIpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       disableSsh: (() { final guardedValue = map['disableSsh']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableNestedVirtualization: (() { final guardedValue = map['enableNestedVirtualization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      instanceMetadata: (() { final guardedValue = map['instanceMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       poolSize: (() { final guardedValue = map['poolSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -115,4 +121,3 @@ class WorkstationConfigHostGceInstance {
     );
   }
 }
-

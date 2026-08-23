@@ -14,7 +14,7 @@ class JobState {
   /// All system annotations in v1 now have a corresponding field in v2 Job.
   /// This field follows Kubernetes annotations' namespacing, limits, and rules.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Settings for the Binary Authorization feature.
   /// Structure is documented below.
@@ -34,7 +34,21 @@ class JobState {
   final pulumi.Input<String>? creator;
   /// The deletion time.
   final pulumi.Input<String>? deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the job. Defaults to true.
+  /// When a`terraform destroy` or `pulumi up` would delete the job,
+  /// the command will fail if this field is not set to false in Terraform state.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the job will fail.
+  /// When the field is set to false, deleting the job is allowed.
   final pulumi.Input<bool>? deletionProtection;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -51,7 +65,7 @@ class JobState {
   /// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
   /// All system labels in v1 now have a corresponding field in v2 Job.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Email address of the last authenticated modifier.
   final pulumi.Input<String>? lastModifier;
@@ -77,8 +91,8 @@ class JobState {
   final pulumi.Input<Map<String, String>>? pulumiLabels;
   /// Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
   /// When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
-  /// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
-  /// If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
+  /// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
+  /// If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
   final pulumi.Input<bool>? reconciling;
   /// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
   /// The sum of job name and token length must be fewer than 63 characters.
@@ -86,6 +100,10 @@ class JobState {
   /// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
   /// The sum of job name and token length must be fewer than 63 characters.
   final pulumi.Input<String>? startExecutionToken;
+  /// A map of resource manager tags.
+  /// Resource manager tag keys and values have the same definition as resource manager tags.
+  /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+  final pulumi.Input<Map<String, String>>? tags;
   /// The template used to create executions for this Job.
   /// Structure is documented below.
   final pulumi.Input<JobTemplate>? template;
@@ -106,8 +124,9 @@ class JobState {
   /// [createTime] (Output)
   /// [creator] Email address of the authenticated creator.
   /// [deleteTime] The deletion time.
-  /// [deletionProtection] Optional.
-  /// [effectiveAnnotations] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the job. Defaults to true.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
   /// [executionCount] Number of executions created for this job.
@@ -125,6 +144,7 @@ class JobState {
   /// [reconciling] Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
   /// [runExecutionToken] A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
   /// [startExecutionToken] A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+  /// [tags] A map of resource manager tags.
   /// [template] The template used to create executions for this Job.
   /// [terminalConditions] The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
   /// [uid] Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
@@ -138,6 +158,7 @@ class JobState {
     this.createTime,
     this.creator,
     this.deleteTime,
+    this.deletionPolicy,
     this.deletionProtection,
     this.effectiveAnnotations,
     this.effectiveLabels,
@@ -157,6 +178,7 @@ class JobState {
     this.reconciling,
     this.runExecutionToken,
     this.startExecutionToken,
+    this.tags,
     this.template,
     this.terminalConditions,
     this.uid,
@@ -173,6 +195,7 @@ class JobState {
       'createTime': ?createTime,
       'creator': ?creator,
       'deleteTime': ?deleteTime,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'effectiveAnnotations': ?effectiveAnnotations,
       'effectiveLabels': ?effectiveLabels,
@@ -192,6 +215,7 @@ class JobState {
       'reconciling': ?reconciling,
       'runExecutionToken': ?runExecutionToken,
       'startExecutionToken': ?startExecutionToken,
+      'tags': ?tags,
       'template': ?pulumi.Input.mapOptionalInputValue<JobTemplate, Map<String, dynamic>>(template, (value) => value.toMap()),
       'terminalConditions': ?pulumi.Input.mapOptionalInputValue<List<JobTerminalCondition>, List<Map<String, dynamic>>>(terminalConditions, (value) => pulumi.Input.encodeList<JobTerminalCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'uid': ?uid,
@@ -209,6 +233,7 @@ class JobState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creator: (() { final guardedValue = map['creator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -228,6 +253,7 @@ class JobState {
       reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       runExecutionToken: (() { final guardedValue = map['runExecutionToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startExecutionToken: (() { final guardedValue = map['startExecutionToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       template: (() { final guardedValue = map['template']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobTemplate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       terminalConditions: (() { final guardedValue = map['terminalConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobTerminalCondition>(guardedValue, (value) => JobTerminalCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -235,4 +261,3 @@ class JobState {
     );
   }
 }
-

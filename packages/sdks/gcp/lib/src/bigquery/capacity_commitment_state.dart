@@ -13,6 +13,13 @@ class CapacityCommitmentState {
   final pulumi.Input<String>? commitmentEndTime;
   /// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
   final pulumi.Input<String>? commitmentStartTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
   final pulumi.Input<String>? edition;
   /// If true, fail the request if another project in the organization has a capacity commitment.
@@ -38,6 +45,7 @@ class CapacityCommitmentState {
   /// [capacityCommitmentId] The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is
   /// [commitmentEndTime] The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
   /// [commitmentStartTime] The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [edition] The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
   /// [enforceSingleAdminProjectPerOrg] If true, fail the request if another project in the organization has a capacity commitment.
   /// [location] The geographic location where the transfer config should reside.
@@ -51,6 +59,7 @@ class CapacityCommitmentState {
     this.capacityCommitmentId,
     this.commitmentEndTime,
     this.commitmentStartTime,
+    this.deletionPolicy,
     this.edition,
     this.enforceSingleAdminProjectPerOrg,
     this.location,
@@ -67,6 +76,7 @@ class CapacityCommitmentState {
       'capacityCommitmentId': ?capacityCommitmentId,
       'commitmentEndTime': ?commitmentEndTime,
       'commitmentStartTime': ?commitmentStartTime,
+      'deletionPolicy': ?deletionPolicy,
       'edition': ?edition,
       'enforceSingleAdminProjectPerOrg': ?enforceSingleAdminProjectPerOrg,
       'location': ?location,
@@ -84,6 +94,7 @@ class CapacityCommitmentState {
       capacityCommitmentId: (() { final guardedValue = map['capacityCommitmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       commitmentEndTime: (() { final guardedValue = map['commitmentEndTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       commitmentStartTime: (() { final guardedValue = map['commitmentStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enforceSingleAdminProjectPerOrg: (() { final guardedValue = map['enforceSingleAdminProjectPerOrg']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -96,4 +107,3 @@ class CapacityCommitmentState {
     );
   }
 }
-

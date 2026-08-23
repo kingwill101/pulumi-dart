@@ -15,6 +15,7 @@ import 'ingress_policy_state.dart';
 ///
 /// * `{{ingress_policy_name}}/{{resource}}`
 ///
+///
 /// When using the `pulumi import` command, IngressPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -23,6 +24,13 @@ import 'ingress_policy_state.dart';
 class IngressPolicy extends pulumi.CustomResource {
   /// The name of the Access Policy this resource belongs to.
   late final pulumi.Output<String> accessPolicyId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name of the Service Perimeter to add this resource to.
   late final pulumi.Output<String> ingressPolicyName;
   /// A GCP resource that is inside of the service perimeter.
@@ -43,6 +51,7 @@ class IngressPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     ingressPolicyName = registerOutput<String>('ingressPolicyName');
     resource = registerOutput<String>('resource');
   }
@@ -71,6 +80,7 @@ class IngressPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     ingressPolicyName = registerOutput<String>('ingressPolicyName');
     resource = registerOutput<String>('resource');
   }

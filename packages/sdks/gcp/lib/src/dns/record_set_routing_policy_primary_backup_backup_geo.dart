@@ -8,12 +8,14 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo {
   final pulumi.Input<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets>? healthCheckedTargets;
   /// The location name defined in Google Cloud.
   final pulumi.Input<String> location;
+  /// The string data for the records in this record set
+  /// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
   final pulumi.Input<List<String>>? rrdatas;
 
   /// Creates a new [RecordSetRoutingPolicyPrimaryBackupBackupGeo].
   /// [healthCheckedTargets] For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
   /// [location] The location name defined in Google Cloud.
-  /// [rrdatas] Optional.
+  /// [rrdatas] The string data for the records in this record set
   const RecordSetRoutingPolicyPrimaryBackupBackupGeo({
     this.healthCheckedTargets,
     required this.location,
@@ -36,4 +38,3 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo {
     );
   }
 }
-

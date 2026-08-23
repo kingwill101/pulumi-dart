@@ -9,6 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointArgs {
   /// IPv4 or IPv6 address of the endpoint.
   final pulumi.Input<String>? address;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The Resource ID must be 1-63 characters long, including digits,
   /// lowercase letters or the hyphen character.
   final pulumi.Input<String> endpointId;
@@ -27,6 +34,7 @@ class EndpointArgs {
 
   /// Creates a new [EndpointArgs].
   /// [address] IPv4 or IPv6 address of the endpoint.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [endpointId] The Resource ID must be 1-63 characters long, including digits,
   /// [metadata] Metadata for the endpoint. This data can be consumed
   /// [network] The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
@@ -34,6 +42,7 @@ class EndpointArgs {
   /// [service] The resource name of the service that this endpoint provides.
   const EndpointArgs({
     this.address,
+    this.deletionPolicy,
     required this.endpointId,
     this.metadata,
     this.network,
@@ -44,6 +53,7 @@ class EndpointArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'address': ?address,
+      'deletionPolicy': ?deletionPolicy,
       'endpointId': endpointId,
       'metadata': ?metadata,
       'network': ?network,
@@ -55,6 +65,7 @@ class EndpointArgs {
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
       address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointId: pulumi.Input.fromValue(map['endpointId'] as String),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -63,4 +74,3 @@ class EndpointArgs {
     );
   }
 }
-

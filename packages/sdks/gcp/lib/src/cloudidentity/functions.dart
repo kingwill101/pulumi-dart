@@ -77,6 +77,21 @@ import 'get_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudidentity_getgrouplookup" "group" {
+///   group_key = {
+///     id = "my-group@example.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +101,8 @@ import 'get_policy_result.dart';
 /// import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
 /// import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupArgs;
 /// import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupGroupKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,6 +210,19 @@ Future<GetGroupLookupResult> getGroupLookup(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudidentity_getgroupmemberships" "members" {
+///   group = "groups/123eab45c6defghi"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -203,8 +231,8 @@ Future<GetGroupLookupResult> getGroupLookup(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
 /// import com.pulumi.gcp.cloudidentity.inputs.GetGroupMembershipsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -306,6 +334,19 @@ Future<GetGroupMembershipsResult> getGroupMemberships(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudidentity_getgrouptransitivememberships" "members" {
+///   group = "groups/123eab45c6defghi"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -314,8 +355,8 @@ Future<GetGroupMembershipsResult> getGroupMemberships(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
 /// import com.pulumi.gcp.cloudidentity.inputs.GetGroupTransitiveMembershipsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -413,6 +454,19 @@ Future<GetGroupTransitiveMembershipsResult> getGroupTransitiveMemberships(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudidentity_getgroups" "groups" {
+///   parent = "customers/A01b123xz"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -421,8 +475,8 @@ Future<GetGroupTransitiveMembershipsResult> getGroupTransitiveMemberships(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
 /// import com.pulumi.gcp.cloudidentity.inputs.GetGroupsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -546,6 +600,52 @@ Future<GetGroupsResult> getGroups(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudidentity_getpolicies" "all" {
+/// }
+///
+/// // The name of the first policy in the list of policies
+/// output "firstPolicyName" {
+///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].name
+/// }
+/// // The customer to whom the first policy belongs to. This will always be the
+/// // same across multiple policies as well.
+/// output "firstPolicyCustomer" {
+///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].customer
+/// }
+/// // The CEL query of the first policy
+/// output "policyQueryQuery" {
+///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].policy_queries[0].query
+/// }
+/// // The org unit the first policy applies to
+/// output "policyQueryOrgUnit" {
+///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].policy_queries[0].org_unit
+/// }
+/// // The group the first policy applies to
+/// output "policyQueryGroup" {
+///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].policy_queries[0].group
+/// }
+/// // The sort order of the first policy
+/// output "policyQuerySortOrder" {
+///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].policy_queries[0].sort_order
+/// }
+/// // The setting of the first policy as a JSON string
+/// output "policySetting" {
+///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].setting
+/// }
+/// // The type of policy - ADMIN/SYSTEM
+/// output "policyType" {
+///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].type
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -554,8 +654,8 @@ Future<GetGroupsResult> getGroups(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
 /// import com.pulumi.gcp.cloudidentity.inputs.GetPoliciesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -686,7 +786,7 @@ Future<GetPoliciesResult> getPolicies(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		test, err := cloudidentity.GetPolicy(ctx, &cloudidentity.GetPolicyArgs{
+/// 		test, err := cloudidentity.LookupPolicy(ctx, &cloudidentity.LookupPolicyArgs{
 /// 			Name: "policies/{policy_id}",
 /// 		}, nil)
 /// 		if err != nil {
@@ -702,6 +802,44 @@ Future<GetPoliciesResult> getPolicies(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudidentity_getpolicy" "test" {
+///   name = "policies/{policy_id}"
+/// }
+///
+/// // The customer the policy belongs to
+/// output "policyCustomer" {
+///   value = data.gcp_cloudidentity_getpolicy.test.customer
+/// }
+/// // The CEL query of the policy
+/// output "policyQueryQuery" {
+///   value = data.gcp_cloudidentity_getpolicy.test.policy_queries[0].query
+/// }
+/// // The org unit the policy applies to
+/// output "policyQueryOrgUnit" {
+///   value = data.gcp_cloudidentity_getpolicy.test.policy_queries[0].org_unit
+/// }
+/// // The group the policy applies to
+/// output "policyQueryGroup" {
+///   value = data.gcp_cloudidentity_getpolicy.test.policy_queries[0].group
+/// }
+/// // The sort order of the policy
+/// output "policyQuerySortOrder" {
+///   value = data.gcp_cloudidentity_getpolicy.test.policy_queries[0].sort_order
+/// }
+/// // The setting of the policy as a JSON string
+/// output "policySetting" {
+///   value = data.gcp_cloudidentity_getpolicy.test.setting
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -710,8 +848,8 @@ Future<GetPoliciesResult> getPolicies(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
 /// import com.pulumi.gcp.cloudidentity.inputs.GetPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

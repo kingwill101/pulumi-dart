@@ -96,6 +96,25 @@ import 'security_profile_url_filtering_profile.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_securityprofile" "default" {
+///   name        = "my-security-profile"
+///   parent      = "organizations/123456789"
+///   description = "my description"
+///   type        = "THREAT_PREVENTION"
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +123,8 @@ import 'security_profile_url_filtering_profile.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networksecurity.SecurityProfile;
 /// import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -303,6 +322,39 @@ import 'security_profile_url_filtering_profile.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_securityprofile" "default" {
+///   name        = "my-security-profile"
+///   parent      = "organizations/123456789"
+///   description = "my description"
+///   type        = "THREAT_PREVENTION"
+///   threat_prevention_profile = {
+///     severity_overrides = [{
+///       "action"   = "ALLOW"
+///       "severity" = "INFORMATIONAL"
+///       }, {
+///       "action"   = "DENY"
+///       "severity" = "HIGH"
+///     }]
+///     threat_overrides = [{
+///       "action"   = "ALLOW"
+///       "threatId" = "280647"
+///     }]
+///     antivirus_overrides = [{
+///       "protocol" = "SMTP"
+///       "action"   = "ALLOW"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -312,8 +364,11 @@ import 'security_profile_url_filtering_profile.dart';
 /// import com.pulumi.gcp.networksecurity.SecurityProfile;
 /// import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
 /// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileSeverityOverrideArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileThreatOverrideArgs;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileAntivirusOverrideArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -496,7 +551,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 		defaultMirroringDeploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "default", &networksecurity.MirroringDeploymentGroupArgs{
 /// 			MirroringDeploymentGroupId: pulumi.String("my-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    _default.ID(),
+/// 			Network:                    _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -504,7 +559,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 		defaultMirroringEndpointGroup, err := networksecurity.NewMirroringEndpointGroup(ctx, "default", &networksecurity.MirroringEndpointGroupArgs{
 /// 			MirroringEndpointGroupId: pulumi.String("my-eg"),
 /// 			Location:                 pulumi.String("global"),
-/// 			MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID(),
+/// 			MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -515,7 +570,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 			Description: pulumi.String("my description"),
 /// 			Type:        pulumi.String("CUSTOM_MIRRORING"),
 /// 			CustomMirroringProfile: &networksecurity.SecurityProfileCustomMirroringProfileArgs{
-/// 				MirroringEndpointGroup: defaultMirroringEndpointGroup.ID(),
+/// 				MirroringEndpointGroup: defaultMirroringEndpointGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -523,6 +578,39 @@ import 'security_profile_url_filtering_profile.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networksecurity_mirroringdeploymentgroup" "default" {
+///   mirroring_deployment_group_id = "my-dg"
+///   location                      = "global"
+///   network                       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_networksecurity_mirroringendpointgroup" "default" {
+///   mirroring_endpoint_group_id = "my-eg"
+///   location                    = "global"
+///   mirroring_deployment_group  = gcp_networksecurity_mirroringdeploymentgroup.default.id
+/// }
+/// resource "gcp_networksecurity_securityprofile" "default" {
+///   name        = "my-security-profile"
+///   parent      = "organizations/123456789"
+///   description = "my description"
+///   type        = "CUSTOM_MIRRORING"
+///   custom_mirroring_profile = {
+///     mirroring_endpoint_group = gcp_networksecurity_mirroringendpointgroup.default.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -540,8 +628,8 @@ import 'security_profile_url_filtering_profile.dart';
 /// import com.pulumi.gcp.networksecurity.SecurityProfile;
 /// import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
 /// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomMirroringProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -735,7 +823,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 		defaultInterceptDeploymentGroup, err := networksecurity.NewInterceptDeploymentGroup(ctx, "default", &networksecurity.InterceptDeploymentGroupArgs{
 /// 			InterceptDeploymentGroupId: pulumi.String("my-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    _default.ID(),
+/// 			Network:                    _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -743,7 +831,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 		defaultInterceptEndpointGroup, err := networksecurity.NewInterceptEndpointGroup(ctx, "default", &networksecurity.InterceptEndpointGroupArgs{
 /// 			InterceptEndpointGroupId: pulumi.String("my-eg"),
 /// 			Location:                 pulumi.String("global"),
-/// 			InterceptDeploymentGroup: defaultInterceptDeploymentGroup.ID(),
+/// 			InterceptDeploymentGroup: defaultInterceptDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -754,7 +842,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 			Description: pulumi.String("my description"),
 /// 			Type:        pulumi.String("CUSTOM_INTERCEPT"),
 /// 			CustomInterceptProfile: &networksecurity.SecurityProfileCustomInterceptProfileArgs{
-/// 				InterceptEndpointGroup: defaultInterceptEndpointGroup.ID(),
+/// 				InterceptEndpointGroup: defaultInterceptEndpointGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -762,6 +850,39 @@ import 'security_profile_url_filtering_profile.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networksecurity_interceptdeploymentgroup" "default" {
+///   intercept_deployment_group_id = "my-dg"
+///   location                      = "global"
+///   network                       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_networksecurity_interceptendpointgroup" "default" {
+///   intercept_endpoint_group_id = "my-eg"
+///   location                    = "global"
+///   intercept_deployment_group  = gcp_networksecurity_interceptdeploymentgroup.default.id
+/// }
+/// resource "gcp_networksecurity_securityprofile" "default" {
+///   name        = "my-security-profile"
+///   parent      = "organizations/123456789"
+///   description = "my description"
+///   type        = "CUSTOM_INTERCEPT"
+///   custom_intercept_profile = {
+///     intercept_endpoint_group = gcp_networksecurity_interceptendpointgroup.default.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -779,8 +900,8 @@ import 'security_profile_url_filtering_profile.dart';
 /// import com.pulumi.gcp.networksecurity.SecurityProfile;
 /// import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
 /// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomInterceptProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1016,6 +1137,36 @@ import 'security_profile_url_filtering_profile.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_securityprofile" "default" {
+///   name        = "my-security-profile"
+///   parent      = "organizations/123456789"
+///   description = "my description"
+///   type        = "URL_FILTERING"
+///   url_filtering_profile = {
+///     url_filters = [{
+///       "priority"        = 1
+///       "filteringAction" = "ALLOW"
+///       "urls"            = ["*example.com", "*about.example.com", "*help.example.com"]
+///       }, {
+///       "priority"        = 2
+///       "filteringAction" = "DENY"
+///       "urls"            = ["*restricted.example.com"]
+///     }]
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1025,8 +1176,9 @@ import 'security_profile_url_filtering_profile.dart';
 /// import com.pulumi.gcp.networksecurity.SecurityProfile;
 /// import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
 /// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileUrlFilteringProfileArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileUrlFilteringProfileUrlFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1221,7 +1373,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 		defaultMirroringDeploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "default", &networksecurity.MirroringDeploymentGroupArgs{
 /// 			MirroringDeploymentGroupId: pulumi.String("my-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    _default.ID(),
+/// 			Network:                    _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1231,7 +1383,7 @@ import 'security_profile_url_filtering_profile.dart';
 /// 			Location:                 pulumi.String("global"),
 /// 			Type:                     pulumi.String("BROKER"),
 /// 			MirroringDeploymentGroups: pulumi.StringArray{
-/// 				defaultMirroringDeploymentGroup.ID(),
+/// 				defaultMirroringDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1243,9 +1395,9 @@ import 'security_profile_url_filtering_profile.dart';
 /// 			Description: pulumi.String("my description"),
 /// 			Type:        pulumi.String("CUSTOM_MIRRORING"),
 /// 			CustomMirroringProfile: &networksecurity.SecurityProfileCustomMirroringProfileArgs{
-/// 				MirroringEndpointGroup: defaultMirroringEndpointGroup.ID(),
+/// 				MirroringEndpointGroup: defaultMirroringEndpointGroup.ID().ToIDOutput().ToStringOutput(),
 /// 				MirroringDeploymentGroups: pulumi.StringArray{
-/// 					defaultMirroringDeploymentGroup.ID(),
+/// 					defaultMirroringDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -1254,6 +1406,41 @@ import 'security_profile_url_filtering_profile.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networksecurity_mirroringdeploymentgroup" "default" {
+///   mirroring_deployment_group_id = "my-dg"
+///   location                      = "global"
+///   network                       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_networksecurity_mirroringendpointgroup" "default" {
+///   mirroring_endpoint_group_id = "my-eg"
+///   location                    = "global"
+///   type                        = "BROKER"
+///   mirroring_deployment_groups = [gcp_networksecurity_mirroringdeploymentgroup.default.id]
+/// }
+/// resource "gcp_networksecurity_securityprofile" "default" {
+///   name        = "my-security-profile"
+///   parent      = "organizations/123456789"
+///   description = "my description"
+///   type        = "CUSTOM_MIRRORING"
+///   custom_mirroring_profile = {
+///     mirroring_endpoint_group    = gcp_networksecurity_mirroringendpointgroup.default.id
+///     mirroring_deployment_groups = [gcp_networksecurity_mirroringdeploymentgroup.default.id]
+///   }
 /// }
 /// ```
 /// ```java
@@ -1271,8 +1458,8 @@ import 'security_profile_url_filtering_profile.dart';
 /// import com.pulumi.gcp.networksecurity.SecurityProfile;
 /// import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
 /// import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomMirroringProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1360,6 +1547,7 @@ import 'security_profile_url_filtering_profile.dart';
 ///
 /// * `{{parent}}/locations/{{location}}/securityProfiles/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, SecurityProfile can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -1376,6 +1564,13 @@ class SecurityProfile extends pulumi.CustomResource {
   /// mirror traffic to third-party collectors.
   /// Structure is documented below.
   late final pulumi.Output<SecurityProfileCustomMirroringProfile?> customMirroringProfile;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of the security profile. The Max length is 512 characters.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1387,7 +1582,7 @@ class SecurityProfile extends pulumi.CustomResource {
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the security profile.
   /// The default value is `global`.
@@ -1395,7 +1590,7 @@ class SecurityProfile extends pulumi.CustomResource {
   /// The name of the security profile resource.
   late final pulumi.Output<String> name;
   /// The name of the parent this security profile belongs to.
-  /// Format: organizations/{organization_id}.
+  /// Format: `organizations/{organization_id}` or `projects/{project_id}`.
   late final pulumi.Output<String?> parent;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
@@ -1431,6 +1626,7 @@ class SecurityProfile extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     customInterceptProfile = registerOutput<SecurityProfileCustomInterceptProfile?>('customInterceptProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileCustomInterceptProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customMirroringProfile = registerOutput<SecurityProfileCustomMirroringProfile?>('customMirroringProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileCustomMirroringProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
@@ -1472,6 +1668,7 @@ class SecurityProfile extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     customInterceptProfile = registerOutput<SecurityProfileCustomInterceptProfile?>('customInterceptProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileCustomInterceptProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customMirroringProfile = registerOutput<SecurityProfileCustomMirroringProfile?>('customMirroringProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityProfileCustomMirroringProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');

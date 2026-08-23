@@ -15,6 +15,7 @@ class GetMetastoreServiceResult {
   final String artifactGcsUri;
   final String createTime;
   final String databaseType;
+  final String deletionPolicy;
   final bool deletionProtection;
   final Map<String, String> effectiveLabels;
   final List<GetMetastoreServiceEncryptionConfig> encryptionConfigs;
@@ -48,6 +49,7 @@ class GetMetastoreServiceResult {
   /// [artifactGcsUri] Required.
   /// [createTime] Required.
   /// [databaseType] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [effectiveLabels] Required.
   /// [encryptionConfigs] Required.
@@ -79,6 +81,7 @@ class GetMetastoreServiceResult {
     required this.artifactGcsUri,
     required this.createTime,
     required this.databaseType,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.effectiveLabels,
     required this.encryptionConfigs,
@@ -113,6 +116,7 @@ class GetMetastoreServiceResult {
       'artifactGcsUri': artifactGcsUri,
       'createTime': createTime,
       'databaseType': databaseType,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'effectiveLabels': effectiveLabels,
       'encryptionConfigs': pulumi.Input.encodeList<GetMetastoreServiceEncryptionConfig, Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap()),
@@ -148,6 +152,7 @@ class GetMetastoreServiceResult {
       artifactGcsUri: map['artifactGcsUri'] as String,
       createTime: map['createTime'] as String,
       databaseType: map['databaseType'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       encryptionConfigs: pulumi.Input.decodeList<GetMetastoreServiceEncryptionConfig>(map['encryptionConfigs']!, (value) => GetMetastoreServiceEncryptionConfig.fromMap((value as Map).cast<String, dynamic>())),
@@ -178,4 +183,3 @@ class GetMetastoreServiceResult {
     );
   }
 }
-

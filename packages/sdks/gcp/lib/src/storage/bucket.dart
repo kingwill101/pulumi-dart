@@ -237,6 +237,38 @@ import 'bucket_website.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "static-site" {
+///   name                        = "image-store.com"
+///   location                    = "EU"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+///   website = {
+///     main_page_suffix = "index.html"
+///     not_found_page   = "404.html"
+///   }
+///   cors {
+///     origins          = ["http://image-store.com"]
+///     methods          = ["GET", "HEAD", "PUT", "POST", "DELETE"]
+///     response_headers = ["*"]
+///     max_age_seconds  = 3600
+///   }
+///   cors {
+///     origins          = ["http://image-store.com"]
+///     methods          = ["GET", "HEAD", "PUT", "POST", "DELETE"]
+///     response_headers = ["*"]
+///     max_age_seconds  = 0
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -247,8 +279,8 @@ import 'bucket_website.dart';
 /// import com.pulumi.gcp.storage.BucketArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketWebsiteArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketCorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -475,6 +507,37 @@ import 'bucket_website.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "auto-expire" {
+///   name          = "auto-expiring-bucket"
+///   location      = "US"
+///   force_destroy = true
+///   lifecycle_rules {
+///     condition = {
+///       age = 3
+///     }
+///     action = {
+///       type = "Delete"
+///     }
+///   }
+///   lifecycle_rules {
+///     condition = {
+///       age = 1
+///     }
+///     action = {
+///       type = "AbortIncompleteMultipartUpload"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -486,8 +549,8 @@ import 'bucket_website.dart';
 /// import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleConditionArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -546,7 +609,7 @@ import 'bucket_website.dart';
 ///
 ///
 /// ### Life Cycle Settings For Storage Bucket Objects With `Send_age_if_zero` Disabled
-/// When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `send_age_if_zero` flag to `false` to prevent this and avoid any potentially unintended interactions.
+/// When creating a life cycle condition that does not also include an `age` field, a default `age` of 0 will be set. Set the `sendAgeIfZero` flag to `false` to prevent this and avoid any potentially unintended interactions.
 ///
 ///
 /// ```typescript
@@ -651,6 +714,30 @@ import 'bucket_website.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "no-age-enabled" {
+///   name          = "no-age-enabled-bucket"
+///   location      = "US"
+///   force_destroy = true
+///   lifecycle_rules {
+///     action = {
+///       type = "Delete"
+///     }
+///     condition = {
+///       days_since_noncurrent_time = 3
+///       send_age_if_zero           = false
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -662,8 +749,8 @@ import 'bucket_website.dart';
 /// import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleActionArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -775,6 +862,22 @@ import 'bucket_website.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "no-public-access" {
+///   name                     = "no-public-access-bucket"
+///   location                 = "US"
+///   force_destroy            = true
+///   public_access_prevention = "enforced"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -783,8 +886,8 @@ import 'bucket_website.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.Bucket;
 /// import com.pulumi.gcp.storage.BucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -892,6 +995,24 @@ import 'bucket_website.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "hns-enabled" {
+///   name          = "hns-enabled-bucket"
+///   location      = "US"
+///   force_destroy = true
+///   hierarchical_namespace = {
+///     enabled = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -901,8 +1022,8 @@ import 'bucket_website.dart';
 /// import com.pulumi.gcp.storage.Bucket;
 /// import com.pulumi.gcp.storage.BucketArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketHierarchicalNamespaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1039,6 +1160,27 @@ import 'bucket_website.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "hns-enabled" {
+///   name          = "hns-enabled-bucket"
+///   location      = "US"
+///   force_destroy = true
+///   ip_filter = {
+///     mode = "Enabled"
+///     public_network_source = {
+///       allowed_ip_cidr_ranges = ["0.0.0.0/0", "::/0"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1049,8 +1191,8 @@ import 'bucket_website.dart';
 /// import com.pulumi.gcp.storage.BucketArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketIpFilterArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketIpFilterPublicNetworkSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1196,6 +1338,27 @@ import 'bucket_website.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "hns-enabled" {
+///   name          = "hns-enabled-bucket"
+///   location      = "US"
+///   force_destroy = true
+///   ip_filter = {
+///     mode = "Disabled"
+///     public_network_source = {
+///       allowed_ip_cidr_ranges = ["0.0.0.0/0", "::/0"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1206,8 +1369,8 @@ import 'bucket_website.dart';
 /// import com.pulumi.gcp.storage.BucketArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketIpFilterArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketIpFilterPublicNetworkSourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1252,36 +1415,369 @@ import 'bucket_website.dart';
 ///             - ::/0
 /// ```
 ///
+/// ### Enabling Encryption Enforcement Config
 ///
-/// ## Import
 ///
-/// Storage buckets can be imported using the `name` or  `project/name`. If the project is not
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
 ///
-/// passed to the import command it will be inferred from the provider block or environment variables.
+/// const hns_enabled = new gcp.storage.Bucket("hns-enabled", {
+///     name: "hns-enabled-bucket",
+///     location: "US",
+///     forceDestroy: true,
+///     encryption: {
+///         googleManagedEncryptionEnforcementConfig: {
+///             restrictionMode: "FullyRestricted",
+///         },
+///         customerManagedEncryptionEnforcementConfig: {
+///             restrictionMode: "FullyRestricted",
+///         },
+///         customerSuppliedEncryptionEnforcementConfig: {
+///             restrictionMode: "NotRestricted",
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
 ///
-/// If it cannot be inferred it will be queried from the Compute API (this will fail if the API is
+/// hns_enabled = gcp.storage.Bucket("hns-enabled",
+///     name="hns-enabled-bucket",
+///     location="US",
+///     force_destroy=True,
+///     encryption={
+///         "google_managed_encryption_enforcement_config": {
+///             "restriction_mode": "FullyRestricted",
+///         },
+///         "customer_managed_encryption_enforcement_config": {
+///             "restriction_mode": "FullyRestricted",
+///         },
+///         "customer_supplied_encryption_enforcement_config": {
+///             "restriction_mode": "NotRestricted",
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
 ///
-/// not enabled).
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var hns_enabled = new Gcp.Storage.Bucket("hns-enabled", new()
+///     {
+///         Name = "hns-enabled-bucket",
+///         Location = "US",
+///         ForceDestroy = true,
+///         Encryption = new Gcp.Storage.Inputs.BucketEncryptionArgs
+///         {
+///             GoogleManagedEncryptionEnforcementConfig = new Gcp.Storage.Inputs.BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs
+///             {
+///                 RestrictionMode = "FullyRestricted",
+///             },
+///             CustomerManagedEncryptionEnforcementConfig = new Gcp.Storage.Inputs.BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs
+///             {
+///                 RestrictionMode = "FullyRestricted",
+///             },
+///             CustomerSuppliedEncryptionEnforcementConfig = new Gcp.Storage.Inputs.BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs
+///             {
+///                 RestrictionMode = "NotRestricted",
+///             },
+///         },
+///     });
 ///
-/// * `{{project_id}}/{{bucket}}`
+/// });
+/// ```
+/// ```go
+/// package main
 ///
-/// * `{{bucket}}`
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
 ///
-/// When using the `pulumi import` command, Storage buckets can be imported using one of the formats above. For example:
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := storage.NewBucket(ctx, "hns-enabled", &storage.BucketArgs{
+/// 			Name:         pulumi.String("hns-enabled-bucket"),
+/// 			Location:     pulumi.String("US"),
+/// 			ForceDestroy: pulumi.Bool(true),
+/// 			Encryption: &storage.BucketEncryptionArgs{
+/// 				GoogleManagedEncryptionEnforcementConfig: &storage.BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs{
+/// 					RestrictionMode: pulumi.String("FullyRestricted"),
+/// 				},
+/// 				CustomerManagedEncryptionEnforcementConfig: &storage.BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs{
+/// 					RestrictionMode: pulumi.String("FullyRestricted"),
+/// 				},
+/// 				CustomerSuppliedEncryptionEnforcementConfig: &storage.BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs{
+/// 					RestrictionMode: pulumi.String("NotRestricted"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
 ///
-/// ```sh
-/// $ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
+/// resource "gcp_storage_bucket" "hns-enabled" {
+///   name          = "hns-enabled-bucket"
+///   location      = "US"
+///   force_destroy = true
+///   encryption = {
+///     google_managed_encryption_enforcement_config = {
+///       restriction_mode = "FullyRestricted"
+///     }
+///     customer_managed_encryption_enforcement_config = {
+///       restriction_mode = "FullyRestricted"
+///     }
+///     customer_supplied_encryption_enforcement_config = {
+///       restriction_mode = "NotRestricted"
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.Bucket;
+/// import com.pulumi.gcp.storage.BucketArgs;
+/// import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
+/// import com.pulumi.gcp.storage.inputs.BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs;
+/// import com.pulumi.gcp.storage.inputs.BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs;
+/// import com.pulumi.gcp.storage.inputs.BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var hns_enabled = new Bucket("hns-enabled", BucketArgs.builder()
+///             .name("hns-enabled-bucket")
+///             .location("US")
+///             .forceDestroy(true)
+///             .encryption(BucketEncryptionArgs.builder()
+///                 .googleManagedEncryptionEnforcementConfig(BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs.builder()
+///                     .restrictionMode("FullyRestricted")
+///                     .build())
+///                 .customerManagedEncryptionEnforcementConfig(BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs.builder()
+///                     .restrictionMode("FullyRestricted")
+///                     .build())
+///                 .customerSuppliedEncryptionEnforcementConfig(BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs.builder()
+///                     .restrictionMode("NotRestricted")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   hns-enabled:
+///     type: gcp:storage:Bucket
+///     properties:
+///       name: hns-enabled-bucket
+///       location: US
+///       forceDestroy: true
+///       encryption:
+///         googleManagedEncryptionEnforcementConfig:
+///           restrictionMode: FullyRestricted
+///         customerManagedEncryptionEnforcementConfig:
+///           restrictionMode: FullyRestricted
+///         customerSuppliedEncryptionEnforcementConfig:
+///           restrictionMode: NotRestricted
 /// ```
 ///
-/// ```sh
-/// $ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
+/// ### Enabling RAPID Storage Bucket
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const zonalBucket = new gcp.storage.Bucket("zonal_bucket", {
+///     location: "US-CENTRAL1",
+///     customPlacementConfig: {
+///         dataLocations: ["US-CENTRAL1-B"],
+///     },
+///     name: "zonal-rapid-bucket",
+///     storageClass: "RAPID",
+///     hierarchicalNamespace: {
+///         enabled: true,
+///     },
+/// });
 /// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
 ///
-/// `false` in state. If you've set it to `true` in config, run `pulumi up` to
+/// zonal_bucket = gcp.storage.Bucket("zonal_bucket",
+///     location="US-CENTRAL1",
+///     custom_placement_config={
+///         "data_locations": ["US-CENTRAL1-B"],
+///     },
+///     name="zonal-rapid-bucket",
+///     storage_class="RAPID",
+///     hierarchical_namespace={
+///         "enabled": True,
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
 ///
-/// update the value set in state. If you delete this resource before updating the
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var zonalBucket = new Gcp.Storage.Bucket("zonal_bucket", new()
+///     {
+///         Location = "US-CENTRAL1",
+///         CustomPlacementConfig = new Gcp.Storage.Inputs.BucketCustomPlacementConfigArgs
+///         {
+///             DataLocations = new[]
+///             {
+///                 "US-CENTRAL1-B",
+///             },
+///         },
+///         Name = "zonal-rapid-bucket",
+///         StorageClass = "RAPID",
+///         HierarchicalNamespace = new Gcp.Storage.Inputs.BucketHierarchicalNamespaceArgs
+///         {
+///             Enabled = true,
+///         },
+///     });
 ///
-/// value, objects in the bucket will not be destroyed.
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := storage.NewBucket(ctx, "zonal_bucket", &storage.BucketArgs{
+/// 			Location: pulumi.String("US-CENTRAL1"),
+/// 			CustomPlacementConfig: &storage.BucketCustomPlacementConfigArgs{
+/// 				DataLocations: pulumi.StringArray{
+/// 					pulumi.String("US-CENTRAL1-B"),
+/// 				},
+/// 			},
+/// 			Name:         pulumi.String("zonal-rapid-bucket"),
+/// 			StorageClass: pulumi.String("RAPID"),
+/// 			HierarchicalNamespace: &storage.BucketHierarchicalNamespaceArgs{
+/// 				Enabled: pulumi.Bool(true),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "zonal_bucket" {
+///   location = "US-CENTRAL1"
+///   custom_placement_config = {
+///     data_locations = ["US-CENTRAL1-B"]
+///   }
+///   name          = "zonal-rapid-bucket"
+///   storage_class = "RAPID"
+///   hierarchical_namespace = {
+///     enabled = true
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.Bucket;
+/// import com.pulumi.gcp.storage.BucketArgs;
+/// import com.pulumi.gcp.storage.inputs.BucketCustomPlacementConfigArgs;
+/// import com.pulumi.gcp.storage.inputs.BucketHierarchicalNamespaceArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var zonalBucket = new Bucket("zonalBucket", BucketArgs.builder()
+///             .location("US-CENTRAL1")
+///             .customPlacementConfig(BucketCustomPlacementConfigArgs.builder()
+///                 .dataLocations("US-CENTRAL1-B")
+///                 .build())
+///             .name("zonal-rapid-bucket")
+///             .storageClass("RAPID")
+///             .hierarchicalNamespace(BucketHierarchicalNamespaceArgs.builder()
+///                 .enabled(true)
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   zonalBucket:
+///     type: gcp:storage:Bucket
+///     name: zonal_bucket
+///     properties:
+///       location: US-CENTRAL1
+///       customPlacementConfig:
+///         dataLocations:
+///           - US-CENTRAL1-B
+///       name: zonal-rapid-bucket
+///       storageClass: RAPID
+///       hierarchicalNamespace:
+///         enabled: true
+/// ```
 class Bucket extends pulumi.CustomResource {
   /// The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
   late final pulumi.Output<BucketAutoclass?> autoclass;
@@ -1291,6 +1787,14 @@ class Bucket extends pulumi.CustomResource {
   late final pulumi.Output<BucketCustomPlacementConfig?> customPlacementConfig;
   /// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
   late final pulumi.Output<bool?> defaultEventBasedHold;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
   late final pulumi.Output<bool?> enableObjectRetention;
@@ -1298,7 +1802,7 @@ class Bucket extends pulumi.CustomResource {
   late final pulumi.Output<BucketEncryption?> encryption;
   /// When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
   late final pulumi.Output<bool?> forceDestroy;
-  /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
+  /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
   late final pulumi.Output<BucketHierarchicalNamespace?> hierarchicalNamespace;
   /// The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
   late final pulumi.Output<BucketIpFilter?> ipFilter;
@@ -1331,7 +1835,7 @@ class Bucket extends pulumi.CustomResource {
   late final pulumi.Output<String> rpo;
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-  /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy
+  /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If the block is not provided, Server side value will be kept which means removal of block won't generate any terraform change. Structure is documented below.
   late final pulumi.Output<BucketSoftDeletePolicy> softDeletePolicy;
   /// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
   late final pulumi.Output<String?> storageClass;
@@ -1366,6 +1870,7 @@ class Bucket extends pulumi.CustomResource {
     cors = registerOutput<List<Map<String, dynamic>>?>('cors');
     customPlacementConfig = registerOutput<BucketCustomPlacementConfig?>('customPlacementConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketCustomPlacementConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultEventBasedHold = registerOutput<bool?>('defaultEventBasedHold');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableObjectRetention = registerOutput<bool?>('enableObjectRetention');
     encryption = registerOutput<BucketEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1422,6 +1927,7 @@ class Bucket extends pulumi.CustomResource {
     cors = registerOutput<List<Map<String, dynamic>>?>('cors');
     customPlacementConfig = registerOutput<BucketCustomPlacementConfig?>('customPlacementConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketCustomPlacementConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultEventBasedHold = registerOutput<bool?>('defaultEventBasedHold');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableObjectRetention = registerOutput<bool?>('enableObjectRetention');
     encryption = registerOutput<BucketEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });

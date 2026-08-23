@@ -16,7 +16,7 @@ class AzureClusterArgs {
   /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Configuration related to the cluster RBAC settings.
   final pulumi.Input<AzureClusterAuthorization> authorization;
@@ -28,6 +28,13 @@ class AzureClusterArgs {
   final pulumi.Input<String>? client;
   /// Configuration related to the cluster control plane.
   final pulumi.Input<AzureClusterControlPlane> controlPlane;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
   final pulumi.Input<String>? description;
   /// Fleet configuration.
@@ -52,6 +59,7 @@ class AzureClusterArgs {
   /// [azureServicesAuthentication] Azure authentication configuration for management of Azure resources
   /// [client] Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
   /// [controlPlane] Configuration related to the cluster control plane.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [description] Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
   /// [fleet] Fleet configuration.
   /// [location] The location for the resource
@@ -67,6 +75,7 @@ class AzureClusterArgs {
     this.azureServicesAuthentication,
     this.client,
     required this.controlPlane,
+    this.deletionPolicy,
     this.description,
     required this.fleet,
     required this.location,
@@ -85,6 +94,7 @@ class AzureClusterArgs {
       'azureServicesAuthentication': ?pulumi.Input.mapOptionalInputValue<AzureClusterAzureServicesAuthentication, Map<String, dynamic>>(azureServicesAuthentication, (value) => value.toMap()),
       'client': ?client,
       'controlPlane': pulumi.Input.mapInputValue<AzureClusterControlPlane, Map<String, dynamic>>(controlPlane, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'fleet': pulumi.Input.mapInputValue<AzureClusterFleet, Map<String, dynamic>>(fleet, (value) => value.toMap()),
       'location': location,
@@ -104,6 +114,7 @@ class AzureClusterArgs {
       azureServicesAuthentication: (() { final guardedValue = map['azureServicesAuthentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureClusterAzureServicesAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       client: (() { final guardedValue = map['client']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       controlPlane: pulumi.Input.fromValue(AzureClusterControlPlane.fromMap((map['controlPlane']! as Map).cast<String, dynamic>())),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fleet: pulumi.Input.fromValue(AzureClusterFleet.fromMap((map['fleet']! as Map).cast<String, dynamic>())),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -115,4 +126,3 @@ class AzureClusterArgs {
     );
   }
 }
-

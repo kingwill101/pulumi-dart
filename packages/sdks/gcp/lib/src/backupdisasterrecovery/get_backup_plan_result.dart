@@ -2,6 +2,8 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_backup_plan_backup_rule.dart';
+import 'get_backup_plan_compute_instance_backup_plan_property.dart';
+import 'get_backup_plan_disk_backup_plan_property.dart';
 
 /// Result data returned by getBackupPlan.
 class GetBackupPlanResult {
@@ -9,8 +11,11 @@ class GetBackupPlanResult {
   final List<GetBackupPlanBackupRule> backupRules;
   final String backupVault;
   final String backupVaultServiceAccount;
+  final List<GetBackupPlanComputeInstanceBackupPlanProperty> computeInstanceBackupPlanProperties;
   final String createTime;
+  final String deletionPolicy;
   final String description;
+  final List<GetBackupPlanDiskBackupPlanProperty> diskBackupPlanProperties;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -27,8 +32,11 @@ class GetBackupPlanResult {
   /// [backupRules] Required.
   /// [backupVault] Required.
   /// [backupVaultServiceAccount] Required.
+  /// [computeInstanceBackupPlanProperties] Required.
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
+  /// [diskBackupPlanProperties] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
   /// [logRetentionDays] Required.
@@ -43,8 +51,11 @@ class GetBackupPlanResult {
     required this.backupRules,
     required this.backupVault,
     required this.backupVaultServiceAccount,
+    required this.computeInstanceBackupPlanProperties,
     required this.createTime,
+    required this.deletionPolicy,
     required this.description,
+    required this.diskBackupPlanProperties,
     required this.id,
     required this.location,
     required this.logRetentionDays,
@@ -62,8 +73,11 @@ class GetBackupPlanResult {
       'backupRules': pulumi.Input.encodeList<GetBackupPlanBackupRule, Map<String, dynamic>>(backupRules, (value) => value.toMap()),
       'backupVault': backupVault,
       'backupVaultServiceAccount': backupVaultServiceAccount,
+      'computeInstanceBackupPlanProperties': pulumi.Input.encodeList<GetBackupPlanComputeInstanceBackupPlanProperty, Map<String, dynamic>>(computeInstanceBackupPlanProperties, (value) => value.toMap()),
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'description': description,
+      'diskBackupPlanProperties': pulumi.Input.encodeList<GetBackupPlanDiskBackupPlanProperty, Map<String, dynamic>>(diskBackupPlanProperties, (value) => value.toMap()),
       'id': id,
       'location': location,
       'logRetentionDays': logRetentionDays,
@@ -82,8 +96,11 @@ class GetBackupPlanResult {
       backupRules: pulumi.Input.decodeList<GetBackupPlanBackupRule>(map['backupRules']!, (value) => GetBackupPlanBackupRule.fromMap((value as Map).cast<String, dynamic>())),
       backupVault: map['backupVault'] as String,
       backupVaultServiceAccount: map['backupVaultServiceAccount'] as String,
+      computeInstanceBackupPlanProperties: pulumi.Input.decodeList<GetBackupPlanComputeInstanceBackupPlanProperty>(map['computeInstanceBackupPlanProperties']!, (value) => GetBackupPlanComputeInstanceBackupPlanProperty.fromMap((value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
+      diskBackupPlanProperties: pulumi.Input.decodeList<GetBackupPlanDiskBackupPlanProperty>(map['diskBackupPlanProperties']!, (value) => GetBackupPlanDiskBackupPlanProperty.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
       logRetentionDays: map['logRetentionDays'] as int,
@@ -96,4 +113,3 @@ class GetBackupPlanResult {
     );
   }
 }
-

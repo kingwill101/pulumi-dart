@@ -15,6 +15,19 @@ class WorkflowArgs {
   /// The KMS key used to encrypt workflow and execution data.
   /// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
   final pulumi.Input<String>? cryptoKeyName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+  /// When a`terraform destroy` or `pulumi up` would delete the workflow,
+  /// the command will fail if this field is not set to false in Terraform state.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the workflow will fail.
+  /// When the field is set to false, deleting the workflow is allowed.
   final pulumi.Input<bool>? deletionProtection;
   /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
   final pulumi.Input<String>? description;
@@ -26,7 +39,7 @@ class WorkflowArgs {
   /// A set of key/value label pairs to assign to this Workflow.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Name of the Workflow.
   final pulumi.Input<String>? name;
@@ -42,11 +55,12 @@ class WorkflowArgs {
   /// account represents the identity of the workflow and determines what permissions the workflow has.
   /// Format: projects/{project}/serviceAccounts/{account} or {account}.
   /// Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
-  /// The {account} value can be the email address or the unique_id of the service account.
+  /// The {account} value can be the email address or the uniqueId of the service account.
   /// If not provided, workflow will use the project's default service account.
   /// Modifying this field for an existing workflow results in a new workflow revision.
   final pulumi.Input<String>? serviceAccount;
   /// Workflow code to be executed. The size limit is 128KB.
+  /// &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
   final pulumi.Input<String>? sourceContents;
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition
   /// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
@@ -58,7 +72,8 @@ class WorkflowArgs {
   /// Creates a new [WorkflowArgs].
   /// [callLogLevel] Describes the level of platform logging to apply to calls and call responses during
   /// [cryptoKeyName] The KMS key used to encrypt workflow and execution data.
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the workflow. Defaults to true.
   /// [description] Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
   /// [executionHistoryLevel] Describes the level of execution history to be stored for this workflow. This configuration
   /// [labels] A set of key/value label pairs to assign to this Workflow.
@@ -73,6 +88,7 @@ class WorkflowArgs {
   const WorkflowArgs({
     this.callLogLevel,
     this.cryptoKeyName,
+    this.deletionPolicy,
     this.deletionProtection,
     this.description,
     this.executionHistoryLevel,
@@ -91,6 +107,7 @@ class WorkflowArgs {
     return <String, dynamic>{
       'callLogLevel': ?callLogLevel,
       'cryptoKeyName': ?cryptoKeyName,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'description': ?description,
       'executionHistoryLevel': ?executionHistoryLevel,
@@ -110,6 +127,7 @@ class WorkflowArgs {
     return WorkflowArgs(
       callLogLevel: (() { final guardedValue = map['callLogLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cryptoKeyName: (() { final guardedValue = map['cryptoKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       executionHistoryLevel: (() { final guardedValue = map['executionHistoryLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -125,4 +143,3 @@ class WorkflowArgs {
     );
   }
 }
-

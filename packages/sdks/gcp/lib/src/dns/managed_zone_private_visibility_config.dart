@@ -8,11 +8,17 @@ class ManagedZonePrivateVisibilityConfig {
   /// The list of Google Kubernetes Engine clusters that can see this zone.
   /// Structure is documented below.
   final pulumi.Input<List<ManagedZonePrivateVisibilityConfigGkeCluster>>? gkeClusters;
+  /// The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
+  /// may experience issues with this resource while updating. If you've defined a `networks` block and
+  /// add another `networks` block while keeping the old block, Terraform will see an incorrect diff
+  /// and apply an incorrect update to the resource. If you encounter this issue, remove all `networks`
+  /// blocks in an update and then apply another update adding all of them back simultaneously.
+  /// Structure is documented below.
   final pulumi.Input<List<ManagedZonePrivateVisibilityConfigNetwork>>? networks;
 
   /// Creates a new [ManagedZonePrivateVisibilityConfig].
   /// [gkeClusters] The list of Google Kubernetes Engine clusters that can see this zone.
-  /// [networks] Optional.
+  /// [networks] The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
   const ManagedZonePrivateVisibilityConfig({
     this.gkeClusters,
     this.networks,
@@ -32,4 +38,3 @@ class ManagedZonePrivateVisibilityConfig {
     );
   }
 }
-

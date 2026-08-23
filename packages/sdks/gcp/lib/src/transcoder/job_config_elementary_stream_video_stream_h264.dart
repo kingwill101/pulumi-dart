@@ -108,4 +108,3 @@ class JobConfigElementaryStreamVideoStreamH264 {
     );
   }
 }
-

@@ -10,7 +10,7 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
   final pulumi.Input<List<String>> machineTypes;
   /// Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
   final pulumi.Input<String> minCpuPlatform;
-  /// The name of the instance group. Either `name` or `self_link` must be provided.
+  /// The name of the instance group. Either `name` or `selfLink` must be provided.
   final pulumi.Input<String> name;
   /// Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
   final pulumi.Input<int> rank;
@@ -19,7 +19,7 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
   /// [disks] List of disks to be attached to the instances created from this selection.
   /// [machineTypes] Full machine-type names, e.g. "n1-standard-16"
   /// [minCpuPlatform] Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
-  /// [name] The name of the instance group. Either `name` or `self_link` must be provided.
+  /// [name] The name of the instance group. Either `name` or `selfLink` must be provided.
   /// [rank] Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
   const GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection({
     required this.disks,
@@ -49,4 +49,3 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
     );
   }
 }
-

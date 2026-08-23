@@ -8,7 +8,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"&gt;&lt;/a&gt;The `amazon_s3_bucket_regex` block supports:
+  /// &lt;a name="nestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex"&gt;&lt;/a&gt;The `amazonS3BucketRegex` block supports:
   final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex>? amazonS3BucketRegex;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern].
@@ -29,4 +29,3 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
     );
   }
 }
-

@@ -60,6 +60,19 @@ import 'get_function_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudfunctions_getfunction" "my-function" {
+///   name = "function"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +81,8 @@ import 'get_function_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudfunctions.CloudfunctionsFunctions;
 /// import com.pulumi.gcp.cloudfunctions.inputs.GetFunctionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,6 +187,21 @@ Future<GetFunctionResult> getFunction(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudfunctions_getfunctioniampolicy" "policy" {
+///   project        = function.project
+///   region         = function.region
+///   cloud_function = function.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +210,8 @@ Future<GetFunctionResult> getFunction(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudfunctions.CloudfunctionsFunctions;
 /// import com.pulumi.gcp.cloudfunctions.inputs.GetFunctionIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,9 +224,9 @@ Future<GetFunctionResult> getFunction(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = CloudfunctionsFunctions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-///             .project(function.project())
-///             .region(function.region())
-///             .cloudFunction(function.name())
+///             .project(function.get("project"))
+///             .region(function.get("region"))
+///             .cloudFunction(function.get("name"))
 ///             .build());
 ///
 ///     }

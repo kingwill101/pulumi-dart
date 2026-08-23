@@ -77,6 +77,22 @@ import 'network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vmwareengine_network" "vmw-engine-network" {
+///   name        = "standard-nw"
+///   location    = "global"
+///   type        = "STANDARD"
+///   description = "VMwareEngine standard network sample"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +101,8 @@ import 'network_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vmwareengine.Network;
 /// import com.pulumi.gcp.vmwareengine.NetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -290,6 +306,44 @@ import 'network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vmwareengine_network" "vmw-engine-network" {
+///   project     = gcp_projects_service.acceptance.project
+///   name        = "us-west1-default"
+///   location    = "us-west1"
+///   type        = "LEGACY"
+///   description = "VMwareEngine legacy network sample"
+/// }
+/// resource "gcp_projects_service" "acceptance" {
+///   depends_on = [time_sleep.wait_60_seconds]
+///   project    = gcp_organizations_project.acceptance.project_id
+///   service    = "vmwareengine.googleapis.com"
+/// }
+/// # there can be only 1 Legacy network per region for a given project,
+/// # so creating new project for isolation in CI.
+/// resource "gcp_organizations_project" "acceptance" {
+///   name            = "vmw-proj"
+///   project_id      = "vmw-proj"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "time_sleep" "wait_60_seconds" {
+///   depends_on      = [gcp_organizations_project.acceptance]
+///   create_duration = "60s"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -305,8 +359,8 @@ import 'network_state.dart';
 /// import com.pulumi.gcp.vmwareengine.Network;
 /// import com.pulumi.gcp.vmwareengine.NetworkArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -397,22 +451,15 @@ import 'network_state.dart';
 /// Network can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/vmwareEngineNetworks/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vmwareengine/network:Network default projects/{{project}}/locations/{{location}}/vmwareEngineNetworks/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vmwareengine/network:Network default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vmwareengine/network:Network default {{location}}/{{name}}
 /// ```
 class Network extends pulumi.CustomResource {
@@ -420,6 +467,13 @@ class Network extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-provided description for this VMware Engine network.
   late final pulumi.Output<String?> description;
   /// Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
@@ -463,6 +517,7 @@ class Network extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -499,6 +554,7 @@ class Network extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

@@ -4,8 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Job resources.
 class JobState {
-  /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+  /// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
   final pulumi.Input<List<String>>? additionalExperiments;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
@@ -18,7 +25,7 @@ class JobState {
   final pulumi.Input<String>? kmsKeyName;
   /// User labels to be specified for the job. Keys and values should follow the restrictions
   /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The machine type to use for the job.
   final pulumi.Input<String>? machineType;
@@ -62,7 +69,8 @@ class JobState {
   final pulumi.Input<String>? zone;
 
   /// Creates a new [JobState].
-  /// [additionalExperiments] List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+  /// [additionalExperiments] List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [enableStreamingEngine] Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
   /// [ipConfiguration] The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -89,6 +97,7 @@ class JobState {
   /// [zone] The zone in which the created job should run. If it is not provided, the provider zone is used.
   const JobState({
     this.additionalExperiments,
+    this.deletionPolicy,
     this.effectiveLabels,
     this.enableStreamingEngine,
     this.ipConfiguration,
@@ -118,6 +127,7 @@ class JobState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'additionalExperiments': ?additionalExperiments,
+      'deletionPolicy': ?deletionPolicy,
       'effectiveLabels': ?effectiveLabels,
       'enableStreamingEngine': ?enableStreamingEngine,
       'ipConfiguration': ?ipConfiguration,
@@ -148,6 +158,7 @@ class JobState {
   factory JobState.fromMap(Map<String, dynamic> map) {
     return JobState(
       additionalExperiments: (() { final guardedValue = map['additionalExperiments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       enableStreamingEngine: (() { final guardedValue = map['enableStreamingEngine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ipConfiguration: (() { final guardedValue = map['ipConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -175,4 +186,3 @@ class JobState {
     );
   }
 }
-

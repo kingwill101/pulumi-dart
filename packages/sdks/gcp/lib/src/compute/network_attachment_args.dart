@@ -10,6 +10,13 @@ class NetworkAttachmentArgs {
   /// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
   /// Possible values are: `ACCEPT_AUTOMATIC`, `ACCEPT_MANUAL`, `INVALID`.
   final pulumi.Input<String> connectionPreference;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -28,6 +35,7 @@ class NetworkAttachmentArgs {
 
   /// Creates a new [NetworkAttachmentArgs].
   /// [connectionPreference] The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you create the resource.
   /// [name] Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   /// [producerAcceptLists] Projects that are allowed to connect to this network attachment. The project can be specified using its id or number.
@@ -37,6 +45,7 @@ class NetworkAttachmentArgs {
   /// [subnetworks] An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
   const NetworkAttachmentArgs({
     required this.connectionPreference,
+    this.deletionPolicy,
     this.description,
     this.name,
     this.producerAcceptLists,
@@ -49,6 +58,7 @@ class NetworkAttachmentArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'connectionPreference': connectionPreference,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'name': ?name,
       'producerAcceptLists': ?producerAcceptLists,
@@ -62,6 +72,7 @@ class NetworkAttachmentArgs {
   factory NetworkAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAttachmentArgs(
       connectionPreference: pulumi.Input.fromValue(map['connectionPreference'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       producerAcceptLists: (() { final guardedValue = map['producerAcceptLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -72,4 +83,3 @@ class NetworkAttachmentArgs {
     );
   }
 }
-

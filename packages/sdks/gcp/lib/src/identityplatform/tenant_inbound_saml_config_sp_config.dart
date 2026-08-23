@@ -11,7 +11,7 @@ class TenantInboundSamlConfigSpConfig {
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_sp_config_sp_certificates"&gt;&lt;/a&gt;The `sp_certificates` block contains:
+  /// &lt;a name="nestedSpConfigSpCertificates"&gt;&lt;/a&gt;The `spCertificates` block contains:
   final pulumi.Input<List<TenantInboundSamlConfigSpConfigSpCertificate>>? spCertificates;
   /// Unique identifier for all SAML entities.
   final pulumi.Input<String> spEntityId;
@@ -42,4 +42,3 @@ class TenantInboundSamlConfigSpConfig {
     );
   }
 }
-

@@ -238,6 +238,55 @@ import 'assistant_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_datastore" "basic" {
+///   location                    = "global"
+///   data_store_id               = "example-data-store-id"
+///   display_name                = "tf-test-structured-datastore"
+///   industry_vertical           = "GENERIC"
+///   content_config              = "NO_CONTENT"
+///   solution_types              = ["SOLUTION_TYPE_SEARCH"]
+///   create_advanced_site_search = false
+/// }
+/// resource "gcp_discoveryengine_searchengine" "basic" {
+///   location             = "global"
+///   collection_id        = "default_collection"
+///   engine_id            = "example-engine-id"
+///   display_name         = "Example Display Name"
+///   data_store_ids       = [gcp_discoveryengine_datastore.basic.data_store_id]
+///   search_engine_config = {}
+/// }
+/// resource "gcp_discoveryengine_assistant" "basic" {
+///   location      = "global"
+///   collection_id = "default_collection"
+///   engine_id     = gcp_discoveryengine_searchengine.basic.engine_id
+///   assistant_id  = "default_assistant"
+///   display_name  = "updated-tf-test-Assistant"
+///   description   = "Assistant Description"
+///   generation_config = {
+///     system_instruction = {
+///       additional_system_instruction = "foobar"
+///     }
+///     default_language = "en"
+///   }
+///   customer_policy = {
+///     banned_phrases = [{
+///       "phrase"           = "foo"
+///       "matchType"        = "SIMPLE_STRING_MATCH"
+///       "ignoreDiacritics" = false
+///     }]
+///   }
+///   web_grounding_type = "WEB_GROUNDING_TYPE_GOOGLE_SEARCH"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +303,9 @@ import 'assistant_state.dart';
 /// import com.pulumi.gcp.discoveryengine.inputs.AssistantGenerationConfigArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.AssistantGenerationConfigSystemInstructionArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.AssistantCustomerPolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.discoveryengine.inputs.AssistantCustomerPolicyBannedPhraseArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -365,22 +415,15 @@ import 'assistant_state.dart';
 /// Assistant can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/assistants/{{assistant_id}}`
-///
 /// * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}`
-///
 /// * `{{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}`
+///
 ///
 /// When using the `pulumi import` command, Assistant can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/assistant:Assistant default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}/assistants/{{assistant_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/assistant:Assistant default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/assistant:Assistant default {{location}}/{{collection_id}}/{{engine_id}}/{{assistant_id}}
 /// ```
 class Assistant extends pulumi.CustomResource {
@@ -391,6 +434,13 @@ class Assistant extends pulumi.CustomResource {
   /// Customer policy for the assistant.
   /// Structure is documented below.
   late final pulumi.Output<AssistantCustomerPolicy?> customerPolicy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description for additional information. Expected to be shown on the
   /// configuration UI, not to the users of the assistant.
   late final pulumi.Output<String?> description;
@@ -434,6 +484,7 @@ class Assistant extends pulumi.CustomResource {
     assistantId = registerOutput<String>('assistantId');
     collectionId = registerOutput<String>('collectionId');
     customerPolicy = registerOutput<AssistantCustomerPolicy?>('customerPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssistantCustomerPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
@@ -470,6 +521,7 @@ class Assistant extends pulumi.CustomResource {
     assistantId = registerOutput<String>('assistantId');
     collectionId = registerOutput<String>('collectionId');
     customerPolicy = registerOutput<AssistantCustomerPolicy?>('customerPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssistantCustomerPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');

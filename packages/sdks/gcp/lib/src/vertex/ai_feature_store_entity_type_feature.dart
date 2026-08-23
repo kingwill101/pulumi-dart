@@ -147,7 +147,7 @@ import 'ai_feature_store_entity_type_feature_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
-/// 			Featurestore: featurestore.ID(),
+/// 			Featurestore: featurestore.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -157,7 +157,7 @@ import 'ai_feature_store_entity_type_feature_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
-/// 			Entitytype: entity.ID(),
+/// 			Entitytype: entity.ID().ToIDOutput().ToStringOutput(),
 /// 			ValueType:  pulumi.String("INT64_ARRAY"),
 /// 		})
 /// 		if err != nil {
@@ -165,6 +165,41 @@ import 'ai_feature_store_entity_type_feature_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeaturestore" "featurestore" {
+///   name = "terraform"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   region = "us-central1"
+///   online_serving_config = {
+///     fixed_node_count = 2
+///   }
+/// }
+/// resource "gcp_vertex_aifeaturestoreentitytype" "entity" {
+///   name = "terraform"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   featurestore = gcp_vertex_aifeaturestore.featurestore.id
+/// }
+/// resource "gcp_vertex_aifeaturestoreentitytypefeature" "feature" {
+///   name = "terraform"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   entitytype = gcp_vertex_aifeaturestoreentitytype.entity.id
+///   value_type = "INT64_ARRAY"
 /// }
 /// ```
 /// ```java
@@ -180,8 +215,8 @@ import 'ai_feature_store_entity_type_feature_state.dart';
 /// import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeArgs;
 /// import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeFeature;
 /// import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeFeatureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -420,7 +455,7 @@ import 'ai_feature_store_entity_type_feature_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
-/// 			Featurestore: featurestore.ID(),
+/// 			Featurestore: featurestore.ID().ToIDOutput().ToStringOutput(),
 /// 			MonitoringConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs{
 /// 				SnapshotAnalysis: &vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{
 /// 					Disabled:           pulumi.Bool(false),
@@ -442,7 +477,7 @@ import 'ai_feature_store_entity_type_feature_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
-/// 			Entitytype: entity.ID(),
+/// 			Entitytype: entity.ID().ToIDOutput().ToStringOutput(),
 /// 			ValueType:  pulumi.String("INT64_ARRAY"),
 /// 		})
 /// 		if err != nil {
@@ -450,6 +485,53 @@ import 'ai_feature_store_entity_type_feature_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeaturestore" "featurestore" {
+///   name = "terraform2"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   region = "us-central1"
+///   online_serving_config = {
+///     fixed_node_count = 2
+///   }
+/// }
+/// resource "gcp_vertex_aifeaturestoreentitytype" "entity" {
+///   name = "terraform2"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   featurestore = gcp_vertex_aifeaturestore.featurestore.id
+///   monitoring_config = {
+///     snapshot_analysis = {
+///       disabled            = false
+///       monitoring_interval = "86400s"
+///     }
+///     categorical_threshold_config = {
+///       value = 0.3
+///     }
+///     numerical_threshold_config = {
+///       value = 0.3
+///     }
+///   }
+/// }
+/// resource "gcp_vertex_aifeaturestoreentitytypefeature" "feature" {
+///   name = "terraform2"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   entitytype = gcp_vertex_aifeaturestoreentitytype.entity.id
+///   value_type = "INT64_ARRAY"
 /// }
 /// ```
 /// ```java
@@ -469,8 +551,8 @@ import 'ai_feature_store_entity_type_feature_state.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs;
 /// import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeFeature;
 /// import com.pulumi.gcp.vertex.AiFeatureStoreEntityTypeFeatureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -562,6 +644,7 @@ import 'ai_feature_store_entity_type_feature_state.dart';
 ///
 /// * `{{entitytype}}/features/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, FeaturestoreEntitytypeFeature can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -570,6 +653,13 @@ import 'ai_feature_store_entity_type_feature_state.dart';
 class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
   /// The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the feature.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -581,7 +671,7 @@ class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
   /// A set of key/value label pairs to assign to the feature.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
   late final pulumi.Output<String> name;
@@ -610,6 +700,7 @@ class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     entitytype = registerOutput<String>('entitytype');
@@ -646,6 +737,7 @@ class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     entitytype = registerOutput<String>('entitytype');

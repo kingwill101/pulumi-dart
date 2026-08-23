@@ -184,7 +184,7 @@ import 'backup_state.dart';
 /// 			ClusterId: pulumi.String("alloydb-cluster"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-/// 				Network: defaultNetwork.ID(),
+/// 				Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DeletionProtection: pulumi.Bool(false),
 /// 		})
@@ -196,13 +196,13 @@ import 'backup_state.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      defaultNetwork.ID(),
+/// 			Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: defaultNetwork.ID(),
+/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -235,6 +235,51 @@ import 'backup_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_alloydb_backup" "default" {
+///   depends_on   = [gcp_alloydb_instance.default]
+///   location     = "us-central1"
+///   backup_id    = "alloydb-backup"
+///   cluster_name = gcp_alloydb_cluster.default.name
+/// }
+/// resource "gcp_alloydb_cluster" "default" {
+///   cluster_id = "alloydb-cluster"
+///   location   = "us-central1"
+///   network_config = {
+///     network = gcp_compute_network.default.id
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_alloydb_instance" "default" {
+///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   cluster       = gcp_alloydb_cluster.default.name
+///   instance_id   = "alloydb-instance"
+///   instance_type = "PRIMARY"
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "alloydb-cluster"
+///   address_type  = "INTERNAL"
+///   purpose       = "VPC_PEERING"
+///   prefix_length = 16
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   network                 = gcp_compute_network.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "alloydb-network"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -255,8 +300,8 @@ import 'backup_state.dart';
 /// import com.pulumi.gcp.alloydb.Backup;
 /// import com.pulumi.gcp.alloydb.BackupArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -554,7 +599,7 @@ import 'backup_state.dart';
 /// 			ClusterId: pulumi.String("alloydb-cluster"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-/// 				Network: defaultNetwork.ID(),
+/// 				Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DeletionProtection: pulumi.Bool(false),
 /// 		})
@@ -566,13 +611,13 @@ import 'backup_state.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      defaultNetwork.ID(),
+/// 			Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: defaultNetwork.ID(),
+/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -610,6 +655,56 @@ import 'backup_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_alloydb_backup" "default" {
+///   depends_on   = [gcp_alloydb_instance.default]
+///   location     = "us-central1"
+///   backup_id    = "alloydb-backup"
+///   cluster_name = gcp_alloydb_cluster.default.name
+///   description  = "example description"
+///   type         = "ON_DEMAND"
+///   labels = {
+///     "label" = "key"
+///   }
+/// }
+/// resource "gcp_alloydb_cluster" "default" {
+///   cluster_id = "alloydb-cluster"
+///   location   = "us-central1"
+///   network_config = {
+///     network = gcp_compute_network.default.id
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_alloydb_instance" "default" {
+///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   cluster       = gcp_alloydb_cluster.default.name
+///   instance_id   = "alloydb-instance"
+///   instance_type = "PRIMARY"
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "alloydb-cluster"
+///   address_type  = "INTERNAL"
+///   purpose       = "VPC_PEERING"
+///   prefix_length = 16
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   network                 = gcp_compute_network.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "alloydb-network"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -630,8 +725,8 @@ import 'backup_state.dart';
 /// import com.pulumi.gcp.alloydb.Backup;
 /// import com.pulumi.gcp.alloydb.BackupArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -756,22 +851,15 @@ import 'backup_state.dart';
 /// Backup can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}`
-///
 /// * `{{project}}/{{location}}/{{backup_id}}`
-///
 /// * `{{location}}/{{backup_id}}`
+///
 ///
 /// When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:alloydb/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{backup_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:alloydb/backup:Backup default {{project}}/{{location}}/{{backup_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:alloydb/backup:Backup default {{location}}/{{backup_id}}
 /// ```
 class Backup extends pulumi.CustomResource {
@@ -779,7 +867,7 @@ class Backup extends pulumi.CustomResource {
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// The ID of the alloydb backup.
   late final pulumi.Output<String> backupId;
@@ -793,10 +881,18 @@ class Backup extends pulumi.CustomResource {
   /// Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-provided description of the backup.
   late final pulumi.Output<String?> description;
   /// User-settable and human-readable display name for the Backup.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -818,7 +914,7 @@ class Backup extends pulumi.CustomResource {
   /// User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location where the alloydb backup should reside.
   late final pulumi.Output<String> location;
@@ -866,6 +962,7 @@ class Backup extends pulumi.CustomResource {
     clusterUid = registerOutput<String>('clusterUid');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -917,6 +1014,7 @@ class Backup extends pulumi.CustomResource {
     clusterUid = registerOutput<String>('clusterUid');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');

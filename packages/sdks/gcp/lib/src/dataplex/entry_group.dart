@@ -70,6 +70,21 @@ import 'entry_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_entrygroup" "test_entry_group_basic" {
+///   entry_group_id = "entry-group-basic"
+///   project        = "my-project-name"
+///   location       = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +93,8 @@ import 'entry_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.EntryGroup;
 /// import com.pulumi.gcp.dataplex.EntryGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,6 +209,26 @@ import 'entry_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_entrygroup" "test_entry_group_full" {
+///   entry_group_id = "entry-group-full"
+///   project        = "my-project-name"
+///   location       = "us-central1"
+///   labels = {
+///     "tag" = "test-tf"
+///   }
+///   display_name = "terraform entry group"
+///   description  = "entry group created by Terraform"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -202,8 +237,8 @@ import 'entry_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.EntryGroup;
 /// import com.pulumi.gcp.dataplex.EntryGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -248,27 +283,27 @@ import 'entry_group_state.dart';
 /// EntryGroup can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}`
-///
 /// * `{{project}}/{{location}}/{{entry_group_id}}`
-///
 /// * `{{location}}/{{entry_group_id}}`
+///
 ///
 /// When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataplex/entryGroup:EntryGroup default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{project}}/{{location}}/{{entry_group_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/entryGroup:EntryGroup default {{location}}/{{entry_group_id}}
 /// ```
 class EntryGroup extends pulumi.CustomResource {
   /// The time when the EntryGroup was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the EntryGroup.
   late final pulumi.Output<String?> description;
   /// User friendly display name.
@@ -280,7 +315,7 @@ class EntryGroup extends pulumi.CustomResource {
   /// User-defined labels for the EntryGroup.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location where entry group will be created in.
   late final pulumi.Output<String?> location;
@@ -315,6 +350,7 @@ class EntryGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -353,6 +389,7 @@ class EntryGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

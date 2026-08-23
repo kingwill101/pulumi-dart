@@ -12,12 +12,14 @@ class InstanceIamPolicyArgs {
   /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
   final pulumi.Input<String> instance;
   final pulumi.Input<String> policyData;
+  /// The project in which the instance belongs. If it
+  /// is not provided, Terraform will use the provider default.
   final pulumi.Input<String>? project;
 
   /// Creates a new [InstanceIamPolicyArgs].
   /// [instance] The name or relative resource id of the instance to manage IAM policies for.
   /// [policyData] Required.
-  /// [project] Optional.
+  /// [project] The project in which the instance belongs. If it
   const InstanceIamPolicyArgs({
     required this.instance,
     required this.policyData,
@@ -40,4 +42,3 @@ class InstanceIamPolicyArgs {
     );
   }
 }
-

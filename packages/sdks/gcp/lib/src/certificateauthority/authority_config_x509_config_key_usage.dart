@@ -42,4 +42,3 @@ class AuthorityConfigX509ConfigKeyUsage {
     );
   }
 }
-

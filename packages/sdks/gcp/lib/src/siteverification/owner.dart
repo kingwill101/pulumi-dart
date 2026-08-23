@@ -56,8 +56,8 @@ import 'owner_state.dart';
 ///     verificationMethod: "FILE",
 /// });
 /// const object = new gcp.storage.BucketObject("object", {
-///     name: token.apply(token => token.token),
-///     content: token.apply(token => `google-site-verification: ${token.token}`),
+///     name: token.token,
+///     content: pulumi.interpolate`google-site-verification: ${token.token}`,
 ///     bucket: bucket.name,
 /// });
 /// const publicRule = new gcp.storage.ObjectAccessControl("public_rule", {
@@ -68,10 +68,10 @@ import 'owner_state.dart';
 /// });
 /// const example = new gcp.siteverification.WebResource("example", {
 ///     site: {
-///         type: token.apply(token => token.type),
-///         identifier: token.apply(token => token.identifier),
+///         type: token.type,
+///         identifier: token.identifier,
 ///     },
-///     verificationMethod: token.apply(token => token.verificationMethod),
+///     verificationMethod: token.verificationMethod,
 /// });
 /// const exampleOwner = new gcp.siteverification.Owner("example", {
 ///     webResourceId: example.id,
@@ -189,9 +189,7 @@ import 'owner_state.dart';
 /// 			VerificationMethod: pulumi.String("FILE"),
 /// 		}, nil)
 /// 		object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
-/// 			Name: pulumi.String(token.ApplyT(func(token siteverification.GetTokenResult) (*string, error) {
-/// 				return &token.Token, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name: token.Token(),
 /// 			Content: token.ApplyT(func(token siteverification.GetTokenResult) (string, error) {
 /// 				return fmt.Sprintf("google-site-verification: %v", token.Token), nil
 /// 			}).(pulumi.StringOutput),
@@ -211,22 +209,16 @@ import 'owner_state.dart';
 /// 		}
 /// 		example, err := siteverification.NewWebResource(ctx, "example", &siteverification.WebResourceArgs{
 /// 			Site: &siteverification.WebResourceSiteArgs{
-/// 				Type: token.ApplyT(func(token siteverification.GetTokenResult) (*string, error) {
-/// 					return &token.Type, nil
-/// 				}).(pulumi.StringPtrOutput),
-/// 				Identifier: token.ApplyT(func(token siteverification.GetTokenResult) (*string, error) {
-/// 					return &token.Identifier, nil
-/// 				}).(pulumi.StringPtrOutput),
+/// 				Type:       token.Type(),
+/// 				Identifier: token.Identifier(),
 /// 			},
-/// 			VerificationMethod: pulumi.String(token.ApplyT(func(token siteverification.GetTokenResult) (*string, error) {
-/// 				return &token.VerificationMethod, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			VerificationMethod: token.VerificationMethod(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = siteverification.NewOwner(ctx, "example", &siteverification.OwnerArgs{
-/// 			WebResourceId: example.ID(),
+/// 			WebResourceId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Email:         pulumi.String("user@example.com"),
 /// 		})
 /// 		if err != nil {
@@ -234,6 +226,48 @@ import 'owner_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_siteverification_gettoken" "token" {
+///   type                = "SITE"
+///   identifier          ="https://${gcp_storage_bucket.bucket.name}.storage.googleapis.com/"
+///   verification_method = "FILE"
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name     = "example-storage-bucket"
+///   location = "US"
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name    = data.gcp_siteverification_gettoken.token.token
+///   content ="google-site-verification: ${data.gcp_siteverification_gettoken.token.token}"
+///   bucket  = gcp_storage_bucket.bucket.name
+/// }
+/// resource "gcp_storage_objectaccesscontrol" "public_rule" {
+///   bucket = gcp_storage_bucket.bucket.name
+///   object = gcp_storage_bucketobject.object.name
+///   role   = "READER"
+///   entity = "allUsers"
+/// }
+/// resource "gcp_siteverification_webresource" "example" {
+///   site = {
+///     type       = data.gcp_siteverification_gettoken.token.type
+///     identifier = data.gcp_siteverification_gettoken.token.identifier
+///   }
+///   verification_method = data.gcp_siteverification_gettoken.token.verification_method
+/// }
+/// resource "gcp_siteverification_owner" "example" {
+///   web_resource_id = gcp_siteverification_webresource.example.id
+///   email           = "user@example.com"
 /// }
 /// ```
 /// ```java
@@ -255,8 +289,8 @@ import 'owner_state.dart';
 /// import com.pulumi.gcp.siteverification.inputs.WebResourceSiteArgs;
 /// import com.pulumi.gcp.siteverification.Owner;
 /// import com.pulumi.gcp.siteverification.OwnerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -359,17 +393,27 @@ import 'owner_state.dart';
 ///
 /// * `webResource/{{web_resource_id}}/{{email}}`
 ///
+///
+///
 /// When using the `pulumi import` command, Site owners can be imported using the format above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:siteverification/owner:Owner default webResource/{{web_resource_id}}/{{email}}
 /// ```
 ///
+/// &gt; **Note:** While verified owners can be successfully imported, attempting to later delete the imported resource will fail. The only way to remove
 /// verified owners is to delete the web resource itself.
 class Owner extends pulumi.CustomResource {
-  /// The email of the user to be added as an owner.
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// - - -
+  late final pulumi.Output<String> deletionPolicy;
+  /// The email of the user to be added as an owner.
   late final pulumi.Output<String> email;
   /// The id of of the web resource to which the owner will be added, in the form `webResource/&lt;resource_id&gt;`,
   /// such as `webResource/https://www.example.com/`
@@ -389,6 +433,7 @@ class Owner extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     email = registerOutput<String>('email');
     webResourceId = registerOutput<String>('webResourceId');
   }
@@ -416,6 +461,7 @@ class Owner extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     email = registerOutput<String>('email');
     webResourceId = registerOutput<String>('webResourceId');
   }

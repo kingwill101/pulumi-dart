@@ -77,4 +77,3 @@ class Datapolicyv2DataPolicyIamMemberState {
     );
   }
 }
-

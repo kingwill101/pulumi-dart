@@ -35,7 +35,7 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStore {
   /// CONNECTOR
   ///
   ///
-  /// &lt;a name="nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"&gt;&lt;/a&gt;The `connector_config` block contains:
+  /// &lt;a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"&gt;&lt;/a&gt;The `connectorConfig` block contains:
   final pulumi.Input<String>? type;
 
   /// Creates a new [ToolDataStoreToolEngineSourceDataStoreSourceDataStore].
@@ -76,4 +76,3 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStore {
     );
   }
 }
-

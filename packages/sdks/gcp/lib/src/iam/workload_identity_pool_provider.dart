@@ -101,6 +101,26 @@ import 'workload_identity_pool_provider_x509.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "pool" {
+///   workload_identity_pool_id = "example-pool"
+/// }
+/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
+///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_provider_id = "example-prvdr"
+///   aws = {
+///     account_id = "999999999999"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -112,8 +132,8 @@ import 'workload_identity_pool_provider_x509.dart';
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolProvider;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderAwsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -276,6 +296,35 @@ import 'workload_identity_pool_provider_x509.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "pool" {
+///   workload_identity_pool_id = "example-pool"
+/// }
+/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
+///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_provider_id = "example-prvdr"
+///   display_name                       = "Name of provider"
+///   description                        = "AWS identity pool provider for automated test"
+///   disabled                           = true
+///   attribute_condition                = "attribute.aws_role==\"arn:aws:sts::999999999999:assumed-role/stack-eu-central-1-lambdaRole\""
+///   attribute_mapping = {
+///     "google.subject"        = "assertion.arn"
+///     "attribute.aws_account" = "assertion.account"
+///     "attribute.environment" = "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\""
+///   }
+///   aws = {
+///     account_id = "999999999999"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -287,8 +336,8 @@ import 'workload_identity_pool_provider_x509.dart';
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolProvider;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderAwsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -484,6 +533,36 @@ import 'workload_identity_pool_provider_x509.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "pool" {
+///   workload_identity_pool_id = "example-pool"
+/// }
+/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
+///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_provider_id = "example-prvdr"
+///   display_name                       = "Name of provider"
+///   description                        = "GitHub Actions identity pool provider for automated test"
+///   disabled                           = true
+///   attribute_condition                = "    assertion.repository_owner_id == \\\"123456789\\\" &&\n    attribute.repository == \\\"gh-org/gh-repo\\\" &&\n    assertion.ref == \\\"refs/heads/main\\\" &&\n    assertion.ref_type == \\\"branch\\\"\n"
+///   attribute_mapping = {
+///     "google.subject"       = "assertion.sub"
+///     "attribute.actor"      = "assertion.actor"
+///     "attribute.aud"        = "assertion.aud"
+///     "attribute.repository" = "assertion.repository"
+///   }
+///   oidc = {
+///     issuer_uri = "https://token.actions.githubusercontent.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -495,8 +574,8 @@ import 'workload_identity_pool_provider_x509.dart';
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolProvider;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderOidcArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -663,6 +742,29 @@ import 'workload_identity_pool_provider_x509.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "pool" {
+///   workload_identity_pool_id = "example-pool"
+/// }
+/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
+///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_provider_id = "example-prvdr"
+///   attribute_mapping = {
+///     "google.subject" = "assertion.sub"
+///   }
+///   oidc = {
+///     issuer_uri = "https://sts.windows.net/azure-tenant-id"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -674,8 +776,8 @@ import 'workload_identity_pool_provider_x509.dart';
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolProvider;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderOidcArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -870,6 +972,36 @@ import 'workload_identity_pool_provider_x509.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "pool" {
+///   workload_identity_pool_id = "example-pool"
+/// }
+/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
+///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_provider_id = "example-prvdr"
+///   display_name                       = "Name of provider"
+///   description                        = "OIDC identity pool provider for automated test"
+///   disabled                           = true
+///   attribute_condition                = "\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups"
+///   attribute_mapping = {
+///     "google.subject"                  = "\"azure::\" + assertion.tid + \"::\" + assertion.sub"
+///     "attribute.tid"                   = "assertion.tid"
+///     "attribute.managed_identity_name" = "      {\n        \\\"8bb39bdb-1cc5-4447-b7db-a19e920eb111\\\":\\\"workload1\\\",\n        \\\"55d36609-9bcf-48e0-a366-a3cf19027d2a\\\":\\\"workload2\\\"\n      }[assertion.oid]\n"
+///   }
+///   oidc = {
+///     allowed_audiences = ["https://example.com/gcp-oidc-federation", "example.com/gcp-oidc-federation"]
+///     issuer_uri        = "https://sts.windows.net/azure-tenant-id"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -881,8 +1013,8 @@ import 'workload_identity_pool_provider_x509.dart';
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolProvider;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderOidcArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1076,6 +1208,34 @@ import 'workload_identity_pool_provider_x509.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "pool" {
+///   workload_identity_pool_id = "example-pool"
+/// }
+/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
+///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_provider_id = "example-prvdr"
+///   attribute_mapping = {
+///     "google.subject"        = "assertion.arn"
+///     "attribute.aws_account" = "assertion.account"
+///     "attribute.environment" = "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\""
+///   }
+///   saml = {
+///     idp_metadata_xml = file("test-fixtures/metadata.xml")
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1089,8 +1249,8 @@ import 'workload_identity_pool_provider_x509.dart';
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderSamlArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1280,6 +1440,37 @@ import 'workload_identity_pool_provider_x509.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "pool" {
+///   workload_identity_pool_id = "example-pool"
+/// }
+/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
+///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_provider_id = "example-prvdr"
+///   display_name                       = "Name of provider"
+///   description                        = "SAML 2.0 identity pool provider for automated test"
+///   disabled                           = true
+///   attribute_mapping = {
+///     "google.subject"        = "assertion.arn"
+///     "attribute.aws_account" = "assertion.account"
+///     "attribute.environment" = "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\""
+///   }
+///   saml = {
+///     idp_metadata_xml = file("test-fixtures/metadata.xml")
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1293,8 +1484,8 @@ import 'workload_identity_pool_provider_x509.dart';
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderSamlArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1512,6 +1703,37 @@ import 'workload_identity_pool_provider_x509.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "pool" {
+///   workload_identity_pool_id = "example-pool"
+/// }
+/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
+///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_provider_id = "example-prvdr"
+///   display_name                       = "Name of provider"
+///   description                        = "OIDC identity pool provider for automated test"
+///   disabled                           = true
+///   attribute_condition                = "\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups"
+///   attribute_mapping = {
+///     "google.subject"                  = "\"azure::\" + assertion.tid + \"::\" + assertion.sub"
+///     "attribute.tid"                   = "assertion.tid"
+///     "attribute.managed_identity_name" = "      {\n        \\\"8bb39bdb-1cc5-4447-b7db-a19e920eb111\\\":\\\"workload1\\\",\n        \\\"55d36609-9bcf-48e0-a366-a3cf19027d2a\\\":\\\"workload2\\\"\n      }[assertion.oid]\n"
+///   }
+///   oidc = {
+///     allowed_audiences = ["https://example.com/gcp-oidc-federation", "example.com/gcp-oidc-federation"]
+///     issuer_uri        = "https://sts.windows.net/azure-tenant-id"
+///     jwks_json         = "{\"keys\":[{\"kty\":\"RSA\",\"alg\":\"RS256\",\"kid\":\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\",\"use\":\"sig\",\"e\":\"AQAB\",\"n\":\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\"}]}"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1523,8 +1745,8 @@ import 'workload_identity_pool_provider_x509.dart';
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolProvider;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderOidcArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1735,6 +1957,36 @@ import 'workload_identity_pool_provider_x509.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "pool" {
+///   workload_identity_pool_id = "example-pool"
+/// }
+/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
+///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_provider_id = "example-prvdr"
+///   attribute_mapping = {
+///     "google.subject" = "assertion.subject.dn.cn"
+///   }
+///   x509 = {
+///     trust_store = {
+///       trust_anchors = [{
+///         "pemCertificate" = file("test-fixtures/trust_anchor.pem")
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1747,10 +1999,11 @@ import 'workload_identity_pool_provider_x509.dart';
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderX509Args;
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderX509TrustStoreArgs;
+/// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1984,6 +2237,42 @@ import 'workload_identity_pool_provider_x509.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "pool" {
+///   workload_identity_pool_id = "example-pool"
+/// }
+/// resource "gcp_iam_workloadidentitypoolprovider" "example" {
+///   workload_identity_pool_id          = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_provider_id = "example-prvdr"
+///   display_name                       = "Name of provider"
+///   description                        = "X.509 identity pool provider for automated test"
+///   disabled                           = true
+///   attribute_mapping = {
+///     "google.subject" = "assertion.subject.dn.cn"
+///   }
+///   x509 = {
+///     trust_store = {
+///       trust_anchors = [{
+///         "pemCertificate" = file("test-fixtures/trust_anchor.pem")
+///       }]
+///       intermediate_cas = [{
+///         "pemCertificate" = file("test-fixtures/intermediate_ca.pem")
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1996,10 +2285,12 @@ import 'workload_identity_pool_provider_x509.dart';
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderX509Args;
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderX509TrustStoreArgs;
+/// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs;
+/// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2081,26 +2372,19 @@ import 'workload_identity_pool_provider_x509.dart';
 /// WorkloadIdentityPoolProvider can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}`
-///
 /// * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
-///
 /// * `{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}`
+///
 ///
 /// When using the `pulumi import` command, WorkloadIdentityPoolProvider can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
 /// ```
 class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
-  /// [A Common Expression Language](https://opensource.google/projects/cel) expression, in
+  /// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
   /// plain text, to restrict what otherwise valid authentication credentials issued by the
   /// provider should not be accepted.
   /// The expression must output a boolean representing whether to allow the federation.
@@ -2128,7 +2412,7 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
   /// `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}`
   /// * `attribute.{custom_attribute}`:
   /// `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}`
-  /// Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
+  /// Each value must be a [Common Expression Language](https://github.com/google/cel-spec)
   /// function that maps an identity provider credential to the normalized attribute specified
   /// by the corresponding map key.
   /// You can use the `assertion` keyword in the expression to access a JSON representation of
@@ -2161,6 +2445,13 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
   /// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
   /// Structure is documented below.
   late final pulumi.Output<WorkloadIdentityPoolProviderAws?> aws;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description for the provider. Cannot exceed 256 characters.
   late final pulumi.Output<String?> description;
   /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
@@ -2218,6 +2509,7 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
     attributeCondition = registerOutput<String?>('attributeCondition');
     attributeMapping = registerOutput<Map<String, String>?>('attributeMapping');
     aws = registerOutput<WorkloadIdentityPoolProviderAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
@@ -2257,6 +2549,7 @@ class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
     attributeCondition = registerOutput<String?>('attributeCondition');
     attributeMapping = registerOutput<Map<String, String>?>('attributeMapping');
     aws = registerOutput<WorkloadIdentityPoolProviderAws?>('aws', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolProviderAws.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');

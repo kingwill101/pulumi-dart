@@ -6,7 +6,15 @@ import 'repository_workspace_compilation_overrides.dart';
 
 /// Input properties used for looking up and filtering Repository resources.
 class RepositoryState {
-  /// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+  /// Policy to control how the repository and its child resources are deleted.
+  /// When set to `FORCE`, any child resources of this repository will also be deleted.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  ///
+  /// Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
   final pulumi.Input<String>? deletionPolicy;
   /// Optional. The repository's user-friendly name.
   final pulumi.Input<String>? displayName;
@@ -16,13 +24,13 @@ class RepositoryState {
   /// Structure is documented below.
   final pulumi.Input<RepositoryGitRemoteSettings>? gitRemoteSettings;
   /// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
-  /// It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+  /// It is not possible to add or update the encryption key after the repository is created. Example projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
   final pulumi.Input<String>? kmsKeyName;
   /// Optional. Repository user labels.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The repository's name.
   final pulumi.Input<String>? name;
@@ -43,7 +51,7 @@ class RepositoryState {
   final pulumi.Input<RepositoryWorkspaceCompilationOverrides>? workspaceCompilationOverrides;
 
   /// Creates a new [RepositoryState].
-  /// [deletionPolicy] Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+  /// [deletionPolicy] Policy to control how the repository and its child resources are deleted.
   /// [displayName] Optional. The repository's user-friendly name.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [gitRemoteSettings] Optional. If set, configures this repository to be linked to a Git remote.
@@ -108,4 +116,3 @@ class RepositoryState {
     );
   }
 }
-

@@ -11,6 +11,7 @@ import 'get_instance_template_reservation_affinity.dart';
 import 'get_instance_template_scheduling.dart';
 import 'get_instance_template_service_account.dart';
 import 'get_instance_template_shielded_instance_config.dart';
+import 'get_instance_template_workload_identity_config.dart';
 
 /// Result data returned by getInstanceTemplate.
 class GetInstanceTemplateResult {
@@ -30,7 +31,7 @@ class GetInstanceTemplateResult {
   final List<GetInstanceTemplateDisk> disks;
   final Map<String, String> effectiveLabels;
   /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-  /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+  /// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
   final bool enableDisplay;
   final String? filter;
   /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -53,7 +54,7 @@ class GetInstanceTemplateResult {
   /// The unique fingerprint of the metadata.
   final String metadataFingerprint;
   /// An alternative to using the
-  /// startup-script metadata key, mostly to match the compute_instance resource.
+  /// startup-script metadata key, mostly to match the computeInstance resource.
   /// This replaces the startup-script metadata key on the created instance and
   /// thus the two mechanisms are not allowed to be used simultaneously.
   final String metadataStartupScript;
@@ -67,7 +68,7 @@ class GetInstanceTemplateResult {
   /// Creates a unique name beginning with the specified
   /// prefix. Conflicts with `name`.
   final String namePrefix;
-  /// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.  s
+  /// (Optional, Beta) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.  s
   final List<GetInstanceTemplateNetworkInterface> networkInterfaces;
   /// The network performance configuration setting
   /// for the instance, if set. Structure is documented below.
@@ -100,12 +101,13 @@ class GetInstanceTemplateResult {
   /// Service account to attach to the instance. Structure is documented below.
   final List<GetInstanceTemplateServiceAccount> serviceAccounts;
   /// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-  /// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+  /// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
   final List<GetInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs;
   /// Tags to attach to the instance.
   final List<String> tags;
   /// The unique fingerprint of the tags.
   final String tagsFingerprint;
+  final List<GetInstanceTemplateWorkloadIdentityConfig> workloadIdentityConfigs;
 
   /// Creates a new [GetInstanceTemplateResult].
   /// [advancedMachineFeatures] Required.
@@ -130,7 +132,7 @@ class GetInstanceTemplateResult {
   /// [mostRecent] Optional.
   /// [name] The name of the instance template. If you leave
   /// [namePrefix] Creates a unique name beginning with the specified
-  /// [networkInterfaces] The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.  s
+  /// [networkInterfaces] (Optional, Beta) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.  s
   /// [networkPerformanceConfigs] The network performance configuration setting
   /// [numericId] Required.
   /// [partnerMetadata] Required.
@@ -147,6 +149,7 @@ class GetInstanceTemplateResult {
   /// [shieldedInstanceConfigs] Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
   /// [tags] Tags to attach to the instance.
   /// [tagsFingerprint] The unique fingerprint of the tags.
+  /// [workloadIdentityConfigs] Required.
   const GetInstanceTemplateResult({
     required this.advancedMachineFeatures,
     required this.canIpForward,
@@ -187,6 +190,7 @@ class GetInstanceTemplateResult {
     required this.shieldedInstanceConfigs,
     required this.tags,
     required this.tagsFingerprint,
+    required this.workloadIdentityConfigs,
   });
 
   Map<String, dynamic> toMap() {
@@ -230,6 +234,7 @@ class GetInstanceTemplateResult {
       'shieldedInstanceConfigs': pulumi.Input.encodeList<GetInstanceTemplateShieldedInstanceConfig, Map<String, dynamic>>(shieldedInstanceConfigs, (value) => value.toMap()),
       'tags': tags,
       'tagsFingerprint': tagsFingerprint,
+      'workloadIdentityConfigs': pulumi.Input.encodeList<GetInstanceTemplateWorkloadIdentityConfig, Map<String, dynamic>>(workloadIdentityConfigs, (value) => value.toMap()),
     };
   }
 
@@ -274,7 +279,7 @@ class GetInstanceTemplateResult {
       shieldedInstanceConfigs: pulumi.Input.decodeList<GetInstanceTemplateShieldedInstanceConfig>(map['shieldedInstanceConfigs']!, (value) => GetInstanceTemplateShieldedInstanceConfig.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as List).cast<String>(),
       tagsFingerprint: map['tagsFingerprint'] as String,
+      workloadIdentityConfigs: pulumi.Input.decodeList<GetInstanceTemplateWorkloadIdentityConfig>(map['workloadIdentityConfigs']!, (value) => GetInstanceTemplateWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
-

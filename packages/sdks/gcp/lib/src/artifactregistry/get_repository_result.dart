@@ -13,6 +13,7 @@ class GetRepositoryResult {
   final List<GetRepositoryCleanupPolicy> cleanupPolicies;
   final bool cleanupPolicyDryRun;
   final String createTime;
+  final String deletionPolicy;
   final String description;
   final List<GetRepositoryDockerConfig> dockerConfigs;
   final Map<String, String> effectiveLabels;
@@ -38,6 +39,7 @@ class GetRepositoryResult {
   /// [cleanupPolicies] Required.
   /// [cleanupPolicyDryRun] Required.
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [dockerConfigs] Required.
   /// [effectiveLabels] Required.
@@ -61,6 +63,7 @@ class GetRepositoryResult {
     required this.cleanupPolicies,
     required this.cleanupPolicyDryRun,
     required this.createTime,
+    required this.deletionPolicy,
     required this.description,
     required this.dockerConfigs,
     required this.effectiveLabels,
@@ -87,6 +90,7 @@ class GetRepositoryResult {
       'cleanupPolicies': pulumi.Input.encodeList<GetRepositoryCleanupPolicy, Map<String, dynamic>>(cleanupPolicies, (value) => value.toMap()),
       'cleanupPolicyDryRun': cleanupPolicyDryRun,
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'dockerConfigs': pulumi.Input.encodeList<GetRepositoryDockerConfig, Map<String, dynamic>>(dockerConfigs, (value) => value.toMap()),
       'effectiveLabels': effectiveLabels,
@@ -114,6 +118,7 @@ class GetRepositoryResult {
       cleanupPolicies: pulumi.Input.decodeList<GetRepositoryCleanupPolicy>(map['cleanupPolicies']!, (value) => GetRepositoryCleanupPolicy.fromMap((value as Map).cast<String, dynamic>())),
       cleanupPolicyDryRun: map['cleanupPolicyDryRun'] as bool,
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       dockerConfigs: pulumi.Input.decodeList<GetRepositoryDockerConfig>(map['dockerConfigs']!, (value) => GetRepositoryDockerConfig.fromMap((value as Map).cast<String, dynamic>())),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -136,4 +141,3 @@ class GetRepositoryResult {
     );
   }
 }
-

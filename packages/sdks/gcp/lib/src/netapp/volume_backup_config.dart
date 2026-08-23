@@ -8,13 +8,13 @@ class VolumeBackupConfig {
   /// ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
   /// Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
   final pulumi.Input<String>? backupVault;
-  /// When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
+  /// When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
   final pulumi.Input<bool>? scheduledBackupEnabled;
 
   /// Creates a new [VolumeBackupConfig].
   /// [backupPolicies] Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
   /// [backupVault] ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
-  /// [scheduledBackupEnabled] When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
+  /// [scheduledBackupEnabled] When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
   const VolumeBackupConfig({
     this.backupPolicies,
     this.backupVault,
@@ -37,4 +37,3 @@ class VolumeBackupConfig {
     );
   }
 }
-

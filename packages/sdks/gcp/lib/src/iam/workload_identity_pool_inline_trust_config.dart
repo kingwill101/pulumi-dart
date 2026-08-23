@@ -9,8 +9,8 @@ class WorkloadIdentityPoolInlineTrustConfig {
   /// maximum of `10` trust domain entries in this map.
   /// Note that a trust domain automatically trusts itself and don't need to be specified here.
   /// If however, this `WorkloadIdentityPool`'s trust domain contains any trust anchors in the
-  /// `additional_trust_bundles` map, those trust anchors will be *appended to* the Trust Bundle
-  /// automatically derived from your `InlineCertificateIssuanceConfig`'s `ca_pools`.
+  /// `additionalTrustBundles` map, those trust anchors will be *appended to* the Trust Bundle
+  /// automatically derived from your `InlineCertificateIssuanceConfig`'s `caPools`.
   /// Structure is documented below.
   final pulumi.Input<List<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>>? additionalTrustBundles;
 
@@ -32,4 +32,3 @@ class WorkloadIdentityPoolInlineTrustConfig {
     );
   }
 }
-

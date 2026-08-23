@@ -70,6 +70,21 @@ import 'entry_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_entrytype" "test_entry_type_basic" {
+///   entry_type_id = "entry-type-basic"
+///   project       = "my-project-name"
+///   location      = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +93,8 @@ import 'entry_type_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.EntryType;
 /// import com.pulumi.gcp.dataplex.EntryTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -120,7 +135,7 @@ import 'entry_type_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const testEntryTypeFull = new gcp.dataplex.AspectType("test_entry_type_full", {
-///     aspectTypeId: "tf-test-aspect-type_40785",
+///     aspectTypeId: "tf-test-aspect-type_44339",
 ///     location: "us-central1",
 ///     project: "my-project-name",
 ///     metadataTemplate: `{
@@ -174,7 +189,7 @@ import 'entry_type_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// test_entry_type_full = gcp.dataplex.AspectType("test_entry_type_full",
-///     aspect_type_id="tf-test-aspect-type_40785",
+///     aspect_type_id="tf-test-aspect-type_44339",
 ///     location="us-central1",
 ///     project="my-project-name",
 ///     metadata_template="""{
@@ -231,7 +246,7 @@ import 'entry_type_state.dart';
 /// {
 ///     var testEntryTypeFull = new Gcp.DataPlex.AspectType("test_entry_type_full", new()
 ///     {
-///         AspectTypeId = "tf-test-aspect-type_40785",
+///         AspectTypeId = "tf-test-aspect-type_44339",
 ///         Location = "us-central1",
 ///         Project = "my-project-name",
 ///         MetadataTemplate = @"{
@@ -301,7 +316,7 @@ import 'entry_type_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		testEntryTypeFull, err := dataplex.NewAspectType(ctx, "test_entry_type_full", &dataplex.AspectTypeArgs{
-/// 			AspectTypeId: pulumi.String("tf-test-aspect-type_40785"),
+/// 			AspectTypeId: pulumi.String("tf-test-aspect-type_44339"),
 /// 			Location:     pulumi.String("us-central1"),
 /// 			Project:      pulumi.String("my-project-name"),
 /// 			MetadataTemplate: pulumi.String(`{
@@ -361,6 +376,38 @@ import 'entry_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_aspecttype" "test_entry_type_full" {
+///   aspect_type_id    = "tf-test-aspect-type_44339"
+///   location          = "us-central1"
+///   project           = "my-project-name"
+///   metadata_template = "{\n  \\\"name\\\": \\\"tf-test-template\\\",\n  \\\"type\\\": \\\"record\\\",\n  \\\"recordFields\\\": [\n    {\n      \\\"name\\\": \\\"type\\\",\n      \\\"type\\\": \\\"enum\\\",\n      \\\"annotations\\\": {\n        \\\"displayName\\\": \\\"Type\\\",\n        \\\"description\\\": \\\"Specifies the type of view represented by the entry.\\\"\n      },\n      \\\"index\\\": 1,\n      \\\"constraints\\\": {\n        \\\"required\\\": true\n      },\n      \\\"enumValues\\\": [\n        {\n          \\\"name\\\": \\\"VIEW\\\",\n          \\\"index\\\": 1\n        }\n      ]\n    }\n  ]\n}\n"
+/// }
+/// resource "gcp_dataplex_entrytype" "test_entry_type_full" {
+///   entry_type_id = "entry-type-full"
+///   project       = "my-project-name"
+///   location      = "us-central1"
+///   labels = {
+///     "tag" = "test-tf"
+///   }
+///   display_name = "terraform entry type"
+///   description  = "entry type created by Terraform"
+///   type_aliases = ["TABLE", "DATABASE"]
+///   platform     = "GCS"
+///   system       = "CloudSQL"
+///   required_aspects {
+///     type = gcp_dataplex_aspecttype.test_entry_type_full.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -372,8 +419,8 @@ import 'entry_type_state.dart';
 /// import com.pulumi.gcp.dataplex.EntryType;
 /// import com.pulumi.gcp.dataplex.EntryTypeArgs;
 /// import com.pulumi.gcp.dataplex.inputs.EntryTypeRequiredAspectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -386,7 +433,7 @@ import 'entry_type_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var testEntryTypeFull = new AspectType("testEntryTypeFull", AspectTypeArgs.builder()
-///             .aspectTypeId("tf-test-aspect-type_40785")
+///             .aspectTypeId("tf-test-aspect-type_44339")
 ///             .location("us-central1")
 ///             .project("my-project-name")
 ///             .metadataTemplate("""
@@ -443,7 +490,7 @@ import 'entry_type_state.dart';
 ///     type: gcp:dataplex:AspectType
 ///     name: test_entry_type_full
 ///     properties:
-///       aspectTypeId: tf-test-aspect-type_40785
+///       aspectTypeId: tf-test-aspect-type_44339
 ///       location: us-central1
 ///       project: my-project-name
 ///       metadataTemplate: |
@@ -497,27 +544,27 @@ import 'entry_type_state.dart';
 /// EntryType can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/entryTypes/{{entry_type_id}}`
-///
 /// * `{{project}}/{{location}}/{{entry_type_id}}`
-///
 /// * `{{location}}/{{entry_type_id}}`
+///
 ///
 /// When using the `pulumi import` command, EntryType can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataplex/entryType:EntryType default projects/{{project}}/locations/{{location}}/entryTypes/{{entry_type_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/entryType:EntryType default {{project}}/{{location}}/{{entry_type_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/entryType:EntryType default {{location}}/{{entry_type_id}}
 /// ```
 class EntryType extends pulumi.CustomResource {
   /// The time when the EntryType was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the EntryType.
   late final pulumi.Output<String?> description;
   /// User friendly display name.
@@ -529,7 +576,7 @@ class EntryType extends pulumi.CustomResource {
   /// User-defined labels for the EntryType.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location where entry type will be created in.
   late final pulumi.Output<String?> location;
@@ -570,6 +617,7 @@ class EntryType extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -611,6 +659,7 @@ class EntryType extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

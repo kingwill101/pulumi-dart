@@ -115,13 +115,38 @@ import 'organization_security_policy_association_state.dart';
 /// 		_, err = compute.NewOrganizationSecurityPolicyAssociation(ctx, "policy", &compute.OrganizationSecurityPolicyAssociationArgs{
 /// 			Name:         pulumi.String("tf-test"),
 /// 			AttachmentId: policy.Parent,
-/// 			PolicyId:     policy.ID(),
+/// 			PolicyId:     policy.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_folder" "security_policy_target" {
+///   display_name        = "tf-test-secpol"
+///   parent              = "organizations/123456789"
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_organizationsecuritypolicy" "policy" {
+///   display_name = "tf-test"
+///   parent       = gcp_organizations_folder.security_policy_target.name
+///   type         = "CLOUD_ARMOR"
+/// }
+/// resource "gcp_compute_organizationsecuritypolicyassociation" "policy" {
+///   name          = "tf-test"
+///   attachment_id = gcp_compute_organizationsecuritypolicy.policy.parent
+///   policy_id     = gcp_compute_organizationsecuritypolicy.policy.id
 /// }
 /// ```
 /// ```java
@@ -136,8 +161,8 @@ import 'organization_security_policy_association_state.dart';
 /// import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
 /// import com.pulumi.gcp.compute.OrganizationSecurityPolicyAssociation;
 /// import com.pulumi.gcp.compute.OrganizationSecurityPolicyAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,12 +219,267 @@ import 'organization_security_policy_association_state.dart';
 ///       policyId: ${policy.id}
 /// ```
 ///
+/// ### Organization Security Policy Association Excluded
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const securityPolicyTarget = new gcp.organizations.Folder("security_policy_target", {
+///     displayName: "tf-test-secpol-_75223",
+///     parent: "organizations/123456789",
+///     deletionProtection: false,
+/// });
+/// const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
+///     shortName: "tf-test_41819",
+///     parent: securityPolicyTarget.name,
+///     type: "CLOUD_ARMOR",
+/// });
+/// const policyOrganizationSecurityPolicyAssociation = new gcp.compute.OrganizationSecurityPolicyAssociation("policy", {
+///     name: "tf-test",
+///     attachmentId: "organizations/123456789",
+///     policyId: policy.id,
+///     excludedProjects: [
+///         "projects/2000000002",
+///         "projects/3000000003",
+///     ],
+///     excludedFolders: [
+///         "folders/4000000004",
+///         "folders/5000000005",
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// security_policy_target = gcp.organizations.Folder("security_policy_target",
+///     display_name="tf-test-secpol-_75223",
+///     parent="organizations/123456789",
+///     deletion_protection=False)
+/// policy = gcp.compute.OrganizationSecurityPolicy("policy",
+///     short_name="tf-test_41819",
+///     parent=security_policy_target.name,
+///     type="CLOUD_ARMOR")
+/// policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
+///     name="tf-test",
+///     attachment_id="organizations/123456789",
+///     policy_id=policy.id,
+///     excluded_projects=[
+///         "projects/2000000002",
+///         "projects/3000000003",
+///     ],
+///     excluded_folders=[
+///         "folders/4000000004",
+///         "folders/5000000005",
+///     ])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var securityPolicyTarget = new Gcp.Organizations.Folder("security_policy_target", new()
+///     {
+///         DisplayName = "tf-test-secpol-_75223",
+///         Parent = "organizations/123456789",
+///         DeletionProtection = false,
+///     });
+///
+///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
+///     {
+///         ShortName = "tf-test_41819",
+///         Parent = securityPolicyTarget.Name,
+///         Type = "CLOUD_ARMOR",
+///     });
+///
+///     var policyOrganizationSecurityPolicyAssociation = new Gcp.Compute.OrganizationSecurityPolicyAssociation("policy", new()
+///     {
+///         Name = "tf-test",
+///         AttachmentId = "organizations/123456789",
+///         PolicyId = policy.Id,
+///         ExcludedProjects = new[]
+///         {
+///             "projects/2000000002",
+///             "projects/3000000003",
+///         },
+///         ExcludedFolders = new[]
+///         {
+///             "folders/4000000004",
+///             "folders/5000000005",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		securityPolicyTarget, err := organizations.NewFolder(ctx, "security_policy_target", &organizations.FolderArgs{
+/// 			DisplayName:        pulumi.String("tf-test-secpol-_75223"),
+/// 			Parent:             pulumi.String("organizations/123456789"),
+/// 			DeletionProtection: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
+/// 			ShortName: pulumi.String("tf-test_41819"),
+/// 			Parent:    securityPolicyTarget.Name,
+/// 			Type:      pulumi.String("CLOUD_ARMOR"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewOrganizationSecurityPolicyAssociation(ctx, "policy", &compute.OrganizationSecurityPolicyAssociationArgs{
+/// 			Name:         pulumi.String("tf-test"),
+/// 			AttachmentId: pulumi.String("organizations/123456789"),
+/// 			PolicyId:     policy.ID().ToIDOutput().ToStringOutput(),
+/// 			ExcludedProjects: pulumi.StringArray{
+/// 				pulumi.String("projects/2000000002"),
+/// 				pulumi.String("projects/3000000003"),
+/// 			},
+/// 			ExcludedFolders: pulumi.StringArray{
+/// 				pulumi.String("folders/4000000004"),
+/// 				pulumi.String("folders/5000000005"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_folder" "security_policy_target" {
+///   display_name        = "tf-test-secpol-_75223"
+///   parent              = "organizations/123456789"
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_organizationsecuritypolicy" "policy" {
+///   short_name = "tf-test_41819"
+///   parent     = gcp_organizations_folder.security_policy_target.name
+///   type       = "CLOUD_ARMOR"
+/// }
+/// resource "gcp_compute_organizationsecuritypolicyassociation" "policy" {
+///   name              = "tf-test"
+///   attachment_id     = "organizations/123456789"
+///   policy_id         = gcp_compute_organizationsecuritypolicy.policy.id
+///   excluded_projects = ["projects/2000000002", "projects/3000000003"]
+///   excluded_folders  = ["folders/4000000004", "folders/5000000005"]
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.Folder;
+/// import com.pulumi.gcp.organizations.FolderArgs;
+/// import com.pulumi.gcp.compute.OrganizationSecurityPolicy;
+/// import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
+/// import com.pulumi.gcp.compute.OrganizationSecurityPolicyAssociation;
+/// import com.pulumi.gcp.compute.OrganizationSecurityPolicyAssociationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var securityPolicyTarget = new Folder("securityPolicyTarget", FolderArgs.builder()
+///             .displayName("tf-test-secpol-_75223")
+///             .parent("organizations/123456789")
+///             .deletionProtection(false)
+///             .build());
+///
+///         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
+///             .shortName("tf-test_41819")
+///             .parent(securityPolicyTarget.name())
+///             .type("CLOUD_ARMOR")
+///             .build());
+///
+///         var policyOrganizationSecurityPolicyAssociation = new OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation", OrganizationSecurityPolicyAssociationArgs.builder()
+///             .name("tf-test")
+///             .attachmentId("organizations/123456789")
+///             .policyId(policy.id())
+///             .excludedProjects(
+///                 "projects/2000000002",
+///                 "projects/3000000003")
+///             .excludedFolders(
+///                 "folders/4000000004",
+///                 "folders/5000000005")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   securityPolicyTarget:
+///     type: gcp:organizations:Folder
+///     name: security_policy_target
+///     properties:
+///       displayName: tf-test-secpol-_75223
+///       parent: organizations/123456789
+///       deletionProtection: false
+///   policy:
+///     type: gcp:compute:OrganizationSecurityPolicy
+///     properties:
+///       shortName: tf-test_41819
+///       parent: ${securityPolicyTarget.name}
+///       type: CLOUD_ARMOR
+///   policyOrganizationSecurityPolicyAssociation:
+///     type: gcp:compute:OrganizationSecurityPolicyAssociation
+///     name: policy
+///     properties:
+///       name: tf-test
+///       attachmentId: organizations/123456789
+///       policyId: ${policy.id}
+///       excludedProjects:
+///         - projects/2000000002
+///         - projects/3000000003
+///       excludedFolders:
+///         - folders/4000000004
+///         - folders/5000000005
+/// ```
+///
 ///
 /// ## Import
 ///
 /// OrganizationSecurityPolicyAssociation can be imported using any of these accepted formats:
 ///
 /// * `{{policy_id}}/association/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, OrganizationSecurityPolicyAssociation can be imported using one of the formats above. For example:
 ///
@@ -209,8 +489,19 @@ import 'organization_security_policy_association_state.dart';
 class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource {
   /// The resource that the security policy is attached to.
   late final pulumi.Output<String> attachmentId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The display name of the security policy of the association.
   late final pulumi.Output<String> displayName;
+  /// A list of folders to exclude from the security policy.
+  late final pulumi.Output<List<String>?> excludedFolders;
+  /// A list of projects to exclude from the security policy.
+  late final pulumi.Output<List<String>?> excludedProjects;
   /// The name for an association.
   late final pulumi.Output<String> name;
   /// The security policy ID of the association.
@@ -231,7 +522,10 @@ class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     attachmentId = registerOutput<String>('attachmentId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
+    excludedFolders = registerOutput<List<String>?>('excludedFolders');
+    excludedProjects = registerOutput<List<String>?>('excludedProjects');
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');
   }
@@ -260,7 +554,10 @@ class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     attachmentId = registerOutput<String>('attachmentId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
+    excludedFolders = registerOutput<List<String>?>('excludedFolders');
+    excludedProjects = registerOutput<List<String>?>('excludedProjects');
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');
   }

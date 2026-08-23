@@ -133,13 +133,13 @@ import 'management_server_state.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(20),
-/// 			Network:      _default.ID(),
+/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		defaultConnection, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-/// 			Network: _default.ID(),
+/// 			Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAddress.Name,
@@ -162,6 +162,37 @@ import 'management_server_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name = "vpc-network"
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_address" {
+///   name          = "vpc-network"
+///   address_type  = "INTERNAL"
+///   purpose       = "VPC_PEERING"
+///   prefix_length = 20
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_servicenetworking_connection" "default" {
+///   network                 = gcp_compute_network.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_address.name]
+/// }
+/// resource "gcp_backupdisasterrecovery_managementserver" "ms-console" {
+///   depends_on = [gcp_servicenetworking_connection.default]
+///   location   = "us-central1"
+///   name       = "ms-console"
+///   type       = "BACKUP_RESTORE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +208,8 @@ import 'management_server_state.dart';
 /// import com.pulumi.gcp.backupdisasterrecovery.ManagementServer;
 /// import com.pulumi.gcp.backupdisasterrecovery.ManagementServerArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -259,25 +290,25 @@ import 'management_server_state.dart';
 /// ManagementServer can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/managementServers/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ManagementServer can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:backupdisasterrecovery/managementServer:ManagementServer default projects/{{project}}/locations/{{location}}/managementServers/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:backupdisasterrecovery/managementServer:ManagementServer default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:backupdisasterrecovery/managementServer:ManagementServer default {{location}}/{{name}}
 /// ```
 class ManagementServer extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The location for the management server (management console)
   late final pulumi.Output<String> location;
   /// The management console URI
@@ -312,6 +343,7 @@ class ManagementServer extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     managementUris = registerOutput<List<Map<String, dynamic>>>('managementUris');
     this.name = registerOutput<String>('name');
@@ -344,6 +376,7 @@ class ManagementServer extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     managementUris = registerOutput<List<Map<String, dynamic>>>('managementUris');
     this.name = registerOutput<String>('name');

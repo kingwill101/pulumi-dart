@@ -38,4 +38,3 @@ class EdgeCacheOriginAwsV4Authentication {
     );
   }
 }
-

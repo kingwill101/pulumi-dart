@@ -18,6 +18,13 @@ class OccurenceArgs {
   /// which authority this attestation was intended to sign.
   /// Structure is documented below.
   final pulumi.Input<OccurenceAttestation> attestation;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The analysis note associated with this occurrence, in the form of
   /// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
   /// filter in list requests.
@@ -34,12 +41,14 @@ class OccurenceArgs {
 
   /// Creates a new [OccurenceArgs].
   /// [attestation] Occurrence that represents a single "attestation". The authenticity
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [noteName] The analysis note associated with this occurrence, in the form of
   /// [project] The ID of the project in which the resource belongs.
   /// [remediation] A description of actions that can be taken to remedy the note.
   /// [resourceUri] Required. Immutable. A URI that represents the resource for which
   const OccurenceArgs({
     required this.attestation,
+    this.deletionPolicy,
     required this.noteName,
     this.project,
     this.remediation,
@@ -49,6 +58,7 @@ class OccurenceArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attestation': pulumi.Input.mapInputValue<OccurenceAttestation, Map<String, dynamic>>(attestation, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'noteName': noteName,
       'project': ?project,
       'remediation': ?remediation,
@@ -59,6 +69,7 @@ class OccurenceArgs {
   factory OccurenceArgs.fromMap(Map<String, dynamic> map) {
     return OccurenceArgs(
       attestation: pulumi.Input.fromValue(OccurenceAttestation.fromMap((map['attestation']! as Map).cast<String, dynamic>())),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       noteName: pulumi.Input.fromValue(map['noteName'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       remediation: (() { final guardedValue = map['remediation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -66,4 +77,3 @@ class OccurenceArgs {
     );
   }
 }
-

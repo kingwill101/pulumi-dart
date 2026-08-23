@@ -11,9 +11,11 @@ import 'get_instance_performance_config.dart';
 /// Result data returned by getInstance.
 class GetInstanceResult {
   final String createTime;
+  final String deletionPolicy;
   final bool deletionProtectionEnabled;
   final String deletionProtectionReason;
   final String description;
+  final String desiredReplicaState;
   final List<GetInstanceDirectoryService> directoryServices;
   final Map<String, String> effectiveLabels;
   final List<GetInstanceEffectiveReplication> effectiveReplications;
@@ -37,9 +39,11 @@ class GetInstanceResult {
 
   /// Creates a new [GetInstanceResult].
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtectionEnabled] Required.
   /// [deletionProtectionReason] Required.
   /// [description] Required.
+  /// [desiredReplicaState] Required.
   /// [directoryServices] Required.
   /// [effectiveLabels] Required.
   /// [effectiveReplications] Required.
@@ -61,9 +65,11 @@ class GetInstanceResult {
   /// [zone] Required.
   const GetInstanceResult({
     required this.createTime,
+    required this.deletionPolicy,
     required this.deletionProtectionEnabled,
     required this.deletionProtectionReason,
     required this.description,
+    required this.desiredReplicaState,
     required this.directoryServices,
     required this.effectiveLabels,
     required this.effectiveReplications,
@@ -88,9 +94,11 @@ class GetInstanceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'deletionProtectionEnabled': deletionProtectionEnabled,
       'deletionProtectionReason': deletionProtectionReason,
       'description': description,
+      'desiredReplicaState': desiredReplicaState,
       'directoryServices': pulumi.Input.encodeList<GetInstanceDirectoryService, Map<String, dynamic>>(directoryServices, (value) => value.toMap()),
       'effectiveLabels': effectiveLabels,
       'effectiveReplications': pulumi.Input.encodeList<GetInstanceEffectiveReplication, Map<String, dynamic>>(effectiveReplications, (value) => value.toMap()),
@@ -116,9 +124,11 @@ class GetInstanceResult {
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtectionEnabled: map['deletionProtectionEnabled'] as bool,
       deletionProtectionReason: map['deletionProtectionReason'] as String,
       description: map['description'] as String,
+      desiredReplicaState: map['desiredReplicaState'] as String,
       directoryServices: pulumi.Input.decodeList<GetInstanceDirectoryService>(map['directoryServices']!, (value) => GetInstanceDirectoryService.fromMap((value as Map).cast<String, dynamic>())),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       effectiveReplications: pulumi.Input.decodeList<GetInstanceEffectiveReplication>(map['effectiveReplications']!, (value) => GetInstanceEffectiveReplication.fromMap((value as Map).cast<String, dynamic>())),
@@ -141,4 +151,3 @@ class GetInstanceResult {
     );
   }
 }
-

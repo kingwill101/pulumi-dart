@@ -11,6 +11,13 @@ import 'access_level_condition_vpc_network_source.dart';
 class AccessLevelConditionArgs {
   /// The name of the Access Level to add this condition to.
   final pulumi.Input<String> accessLevel;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Device specific restrictions, all restrictions must hold for
   /// the Condition to be true. If not specified, all devices are
   /// allowed.
@@ -49,21 +56,23 @@ class AccessLevelConditionArgs {
   /// granted for the Condition to be true.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
   final pulumi.Input<List<String>>? requiredAccessLevels;
-  /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+  /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
   /// Structure is documented below.
   final pulumi.Input<List<AccessLevelConditionVpcNetworkSource>>? vpcNetworkSources;
 
   /// Creates a new [AccessLevelConditionArgs].
   /// [accessLevel] The name of the Access Level to add this condition to.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [devicePolicy] Device specific restrictions, all restrictions must hold for
   /// [ipSubnetworks] A list of CIDR block IP subnetwork specification. May be IPv4
   /// [members] An allowed list of members (users, service accounts).
   /// [negate] Whether to negate the Condition. If true, the Condition becomes
   /// [regions] The request must originate from one of the provided
   /// [requiredAccessLevels] A list of other access levels defined in the same Policy,
-  /// [vpcNetworkSources] The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
+  /// [vpcNetworkSources] The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ipSubnetworks`.
   const AccessLevelConditionArgs({
     required this.accessLevel,
+    this.deletionPolicy,
     this.devicePolicy,
     this.ipSubnetworks,
     this.members,
@@ -76,6 +85,7 @@ class AccessLevelConditionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessLevel': accessLevel,
+      'deletionPolicy': ?deletionPolicy,
       'devicePolicy': ?pulumi.Input.mapOptionalInputValue<AccessLevelConditionDevicePolicy, Map<String, dynamic>>(devicePolicy, (value) => value.toMap()),
       'ipSubnetworks': ?ipSubnetworks,
       'members': ?members,
@@ -89,6 +99,7 @@ class AccessLevelConditionArgs {
   factory AccessLevelConditionArgs.fromMap(Map<String, dynamic> map) {
     return AccessLevelConditionArgs(
       accessLevel: pulumi.Input.fromValue(map['accessLevel'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       devicePolicy: (() { final guardedValue = map['devicePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessLevelConditionDevicePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ipSubnetworks: (() { final guardedValue = map['ipSubnetworks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -99,4 +110,3 @@ class AccessLevelConditionArgs {
     );
   }
 }
-

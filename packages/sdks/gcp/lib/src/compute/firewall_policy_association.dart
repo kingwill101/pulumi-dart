@@ -112,7 +112,7 @@ import 'firewall_policy_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewFirewallPolicyAssociation(ctx, "default", &compute.FirewallPolicyAssociationArgs{
-/// 			FirewallPolicy:   policy.ID(),
+/// 			FirewallPolicy:   policy.ID().ToIDOutput().ToStringOutput(),
 /// 			AttachmentTarget: folder.Name,
 /// 			Name:             pulumi.String("my-association"),
 /// 		})
@@ -121,6 +121,31 @@ import 'firewall_policy_association_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_folder" "folder" {
+///   display_name        = "folder-fpa"
+///   parent              = "organizations/123456789"
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_firewallpolicy" "policy" {
+///   parent      = "organizations/123456789"
+///   short_name  = "my-policy"
+///   description = "Example Resource"
+/// }
+/// resource "gcp_compute_firewallpolicyassociation" "default" {
+///   firewall_policy   = gcp_compute_firewallpolicy.policy.id
+///   attachment_target = gcp_organizations_folder.folder.name
+///   name              = "my-association"
 /// }
 /// ```
 /// ```java
@@ -135,8 +160,8 @@ import 'firewall_policy_association_state.dart';
 /// import com.pulumi.gcp.compute.FirewallPolicyArgs;
 /// import com.pulumi.gcp.compute.FirewallPolicyAssociation;
 /// import com.pulumi.gcp.compute.FirewallPolicyAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,25 +221,29 @@ import 'firewall_policy_association_state.dart';
 /// FirewallPolicyAssociation can be imported using any of these accepted formats:
 ///
 /// * `locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
-///
 /// * `{{firewall_policy}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, FirewallPolicyAssociation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation default {{firewall_policy}}/{{name}}
 /// ```
 class FirewallPolicyAssociation extends pulumi.CustomResource {
   /// The target that the firewall policy is attached to.
   late final pulumi.Output<String> attachmentTarget;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The firewall policy of the resource.
   /// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
   /// firewall policy with the flag to override the existing attachmentTarget's policy association.
-  /// **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
+  /// **Note** Due to potential risks with this operation it is *highly* recommended to use the `createBeforeDestroy` life cycle option
   /// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
   late final pulumi.Output<String> firewallPolicy;
   /// The name for an association.
@@ -237,6 +266,7 @@ class FirewallPolicyAssociation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     attachmentTarget = registerOutput<String>('attachmentTarget');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     firewallPolicy = registerOutput<String>('firewallPolicy');
     this.name = registerOutput<String>('name');
     shortName = registerOutput<String>('shortName');
@@ -266,6 +296,7 @@ class FirewallPolicyAssociation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     attachmentTarget = registerOutput<String>('attachmentTarget');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     firewallPolicy = registerOutput<String>('firewallPolicy');
     this.name = registerOutput<String>('name');
     shortName = registerOutput<String>('shortName');

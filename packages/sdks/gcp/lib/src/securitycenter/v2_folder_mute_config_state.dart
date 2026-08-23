@@ -7,6 +7,13 @@ class V2FolderMuteConfigState {
   /// The time at which the mute config was created. This field is set by
   /// the server and will be ignored if provided on config creation.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of the mute config.
   final pulumi.Input<String>? description;
   /// An expression that defines the filter to apply across create/update
@@ -40,6 +47,7 @@ class V2FolderMuteConfigState {
 
   /// Creates a new [V2FolderMuteConfigState].
   /// [createTime] The time at which the mute config was created. This field is set by
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of the mute config.
   /// [filter] An expression that defines the filter to apply across create/update
   /// [folder] The folder whose Cloud Security Command Center the Mute
@@ -51,6 +59,7 @@ class V2FolderMuteConfigState {
   /// [updateTime] Output only. The most recent time at which the mute config was
   const V2FolderMuteConfigState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.filter,
     this.folder,
@@ -65,6 +74,7 @@ class V2FolderMuteConfigState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'filter': ?filter,
       'folder': ?folder,
@@ -80,6 +90,7 @@ class V2FolderMuteConfigState {
   factory V2FolderMuteConfigState.fromMap(Map<String, dynamic> map) {
     return V2FolderMuteConfigState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -92,4 +103,3 @@ class V2FolderMuteConfigState {
     );
   }
 }
-

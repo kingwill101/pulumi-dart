@@ -16,7 +16,12 @@ import 'standard_app_version_vpc_access_connector.dart';
 /// {@macro pulumi_appengine_standard_app_version_standard_app_version_args_doc}
 class StandardAppVersionArgs {
   /// Allows App Engine second generation runtimes to access the legacy bundled services.
+  /// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
   final pulumi.Input<bool>? appEngineApis;
+  /// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+  /// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+  /// Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+  final pulumi.Input<List<String>>? appEngineBundledServices;
   /// Automatic scaling is based on request rate, response latencies, and other application metrics.
   /// Structure is documented below.
   final pulumi.Input<StandardAppVersionAutomaticScaling>? automaticScaling;
@@ -25,6 +30,13 @@ class StandardAppVersionArgs {
   final pulumi.Input<StandardAppVersionBasicScaling>? basicScaling;
   /// If set to `true`, the service will be deleted if it is the last version.
   final pulumi.Input<bool>? deleteServiceOnDestroy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Code and application artifacts that make up this version.
   /// Structure is documented below.
   final pulumi.Input<StandardAppVersionDeployment> deployment;
@@ -76,9 +88,11 @@ class StandardAppVersionArgs {
 
   /// Creates a new [StandardAppVersionArgs].
   /// [appEngineApis] Allows App Engine second generation runtimes to access the legacy bundled services.
+  /// [appEngineBundledServices] A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
   /// [automaticScaling] Automatic scaling is based on request rate, response latencies, and other application metrics.
   /// [basicScaling] Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
   /// [deleteServiceOnDestroy] If set to `true`, the service will be deleted if it is the last version.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deployment] Code and application artifacts that make up this version.
   /// [entrypoint] The entrypoint for the application.
   /// [envVariables] Environment variables available to the application.
@@ -98,9 +112,11 @@ class StandardAppVersionArgs {
   /// [vpcAccessConnector] Enables VPC connectivity for standard apps.
   const StandardAppVersionArgs({
     this.appEngineApis,
+    this.appEngineBundledServices,
     this.automaticScaling,
     this.basicScaling,
     this.deleteServiceOnDestroy,
+    this.deletionPolicy,
     required this.deployment,
     required this.entrypoint,
     this.envVariables,
@@ -123,9 +139,11 @@ class StandardAppVersionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appEngineApis': ?appEngineApis,
+      'appEngineBundledServices': ?appEngineBundledServices,
       'automaticScaling': ?pulumi.Input.mapOptionalInputValue<StandardAppVersionAutomaticScaling, Map<String, dynamic>>(automaticScaling, (value) => value.toMap()),
       'basicScaling': ?pulumi.Input.mapOptionalInputValue<StandardAppVersionBasicScaling, Map<String, dynamic>>(basicScaling, (value) => value.toMap()),
       'deleteServiceOnDestroy': ?deleteServiceOnDestroy,
+      'deletionPolicy': ?deletionPolicy,
       'deployment': pulumi.Input.mapInputValue<StandardAppVersionDeployment, Map<String, dynamic>>(deployment, (value) => value.toMap()),
       'entrypoint': pulumi.Input.mapInputValue<StandardAppVersionEntrypoint, Map<String, dynamic>>(entrypoint, (value) => value.toMap()),
       'envVariables': ?envVariables,
@@ -149,9 +167,11 @@ class StandardAppVersionArgs {
   factory StandardAppVersionArgs.fromMap(Map<String, dynamic> map) {
     return StandardAppVersionArgs(
       appEngineApis: (() { final guardedValue = map['appEngineApis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      appEngineBundledServices: (() { final guardedValue = map['appEngineBundledServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       automaticScaling: (() { final guardedValue = map['automaticScaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardAppVersionAutomaticScaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       basicScaling: (() { final guardedValue = map['basicScaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardAppVersionBasicScaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deleteServiceOnDestroy: (() { final guardedValue = map['deleteServiceOnDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deployment: pulumi.Input.fromValue(StandardAppVersionDeployment.fromMap((map['deployment']! as Map).cast<String, dynamic>())),
       entrypoint: pulumi.Input.fromValue(StandardAppVersionEntrypoint.fromMap((map['entrypoint']! as Map).cast<String, dynamic>())),
       envVariables: (() { final guardedValue = map['envVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -172,4 +192,3 @@ class StandardAppVersionArgs {
     );
   }
 }
-

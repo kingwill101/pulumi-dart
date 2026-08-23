@@ -55,4 +55,3 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
     );
   }
 }
-

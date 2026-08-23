@@ -9,8 +9,15 @@ import 'region_network_firewall_policy_rule_target_secure_tag.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_region_network_firewall_policy_rule_region_network_firewall_policy_rule_args_doc}
 class RegionNetworkFirewallPolicyRuleArgs {
-  /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
+  /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
   final pulumi.Input<String> action;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description for this resource.
   final pulumi.Input<String>? description;
   /// The direction in which this rule applies.
@@ -23,7 +30,7 @@ class RegionNetworkFirewallPolicyRuleArgs {
   /// Denotes whether to enable logging for a particular rule.
   /// If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
   /// Logs may be exported to BigQuery or Pub/Sub.
-  /// Note: you cannot enable logging on "goto_next" rules.
+  /// Note: you cannot enable logging on "gotoNext" rules.
   final pulumi.Input<bool>? enableLogging;
   /// The firewall policy of the resource.
   final pulumi.Input<String> firewallPolicy;
@@ -46,6 +53,14 @@ class RegionNetworkFirewallPolicyRuleArgs {
   /// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
   /// Security Profile Group and Firewall Policy Rule must be in the same scope.
   final pulumi.Input<String>? securityProfileGroup;
+  /// A list of forwarding rules to which this rule applies.
+  /// This field allows you to control which load balancers get this rule.
+  /// For example, the following are valid values:
+  /// - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+  /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+  /// - projects/project/global/forwardingRules/forwardingRule
+  /// - projects/project/regions/region/forwardingRules/forwardingRule
+  final pulumi.Input<List<String>>? targetForwardingRules;
   /// A list of secure tags that controls which instances the firewall rule applies to.
   /// If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
   /// targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -53,12 +68,18 @@ class RegionNetworkFirewallPolicyRuleArgs {
   final pulumi.Input<List<RegionNetworkFirewallPolicyRuleTargetSecureTag>>? targetSecureTags;
   /// A list of service accounts indicating the sets of instances that are applied with this rule.
   final pulumi.Input<List<String>>? targetServiceAccounts;
+  /// Target types of the firewall policy rule.
+  /// Default value is INSTANCES.
+  /// When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+  /// Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+  final pulumi.Input<String>? targetType;
   /// Boolean flag indicating if the traffic should be TLS decrypted.
   /// Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
   final pulumi.Input<bool>? tlsInspect;
 
   /// Creates a new [RegionNetworkFirewallPolicyRuleArgs].
-  /// [action] The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
+  /// [action] The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description for this resource.
   /// [direction] The direction in which this rule applies.
   /// [disabled] Denotes whether the firewall policy rule is disabled.
@@ -70,11 +91,14 @@ class RegionNetworkFirewallPolicyRuleArgs {
   /// [region] The location of this resource.
   /// [ruleName] An optional name for the rule. This field is not a unique identifier and can be updated.
   /// [securityProfileGroup] A fully-qualified URL of a SecurityProfile resource instance.
+  /// [targetForwardingRules] A list of forwarding rules to which this rule applies.
   /// [targetSecureTags] A list of secure tags that controls which instances the firewall rule applies to.
   /// [targetServiceAccounts] A list of service accounts indicating the sets of instances that are applied with this rule.
+  /// [targetType] Target types of the firewall policy rule.
   /// [tlsInspect] Boolean flag indicating if the traffic should be TLS decrypted.
   const RegionNetworkFirewallPolicyRuleArgs({
     required this.action,
+    this.deletionPolicy,
     this.description,
     required this.direction,
     this.disabled,
@@ -86,14 +110,17 @@ class RegionNetworkFirewallPolicyRuleArgs {
     this.region,
     this.ruleName,
     this.securityProfileGroup,
+    this.targetForwardingRules,
     this.targetSecureTags,
     this.targetServiceAccounts,
+    this.targetType,
     this.tlsInspect,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'direction': direction,
       'disabled': ?disabled,
@@ -105,8 +132,10 @@ class RegionNetworkFirewallPolicyRuleArgs {
       'region': ?region,
       'ruleName': ?ruleName,
       'securityProfileGroup': ?securityProfileGroup,
+      'targetForwardingRules': ?targetForwardingRules,
       'targetSecureTags': ?pulumi.Input.mapOptionalInputValue<List<RegionNetworkFirewallPolicyRuleTargetSecureTag>, List<Map<String, dynamic>>>(targetSecureTags, (value) => pulumi.Input.encodeList<RegionNetworkFirewallPolicyRuleTargetSecureTag, Map<String, dynamic>>(value, (value) => value.toMap())),
       'targetServiceAccounts': ?targetServiceAccounts,
+      'targetType': ?targetType,
       'tlsInspect': ?tlsInspect,
     };
   }
@@ -114,6 +143,7 @@ class RegionNetworkFirewallPolicyRuleArgs {
   factory RegionNetworkFirewallPolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return RegionNetworkFirewallPolicyRuleArgs(
       action: pulumi.Input.fromValue(map['action'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -125,10 +155,11 @@ class RegionNetworkFirewallPolicyRuleArgs {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityProfileGroup: (() { final guardedValue = map['securityProfileGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetForwardingRules: (() { final guardedValue = map['targetForwardingRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       targetSecureTags: (() { final guardedValue = map['targetSecureTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionNetworkFirewallPolicyRuleTargetSecureTag>(guardedValue, (value) => RegionNetworkFirewallPolicyRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>()))); })(),
       targetServiceAccounts: (() { final guardedValue = map['targetServiceAccounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      targetType: (() { final guardedValue = map['targetType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tlsInspect: (() { final guardedValue = map['tlsInspect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
-

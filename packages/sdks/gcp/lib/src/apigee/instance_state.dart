@@ -14,6 +14,13 @@ class InstanceState {
   /// which the customers can provide during the instance creation. By default, the customer
   /// project associated with the Apigee organization will be included to the list.
   final pulumi.Input<List<String>>? consumerAcceptLists;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the instance.
   final pulumi.Input<String>? description;
   /// Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only.
@@ -51,6 +58,7 @@ class InstanceState {
   /// Creates a new [InstanceState].
   /// [accessLoggingConfig] Access logging configuration enables the access logging feature at the instance.
   /// [consumerAcceptLists] Optional. Customer accept list represents the list of projects (id/number) on customer
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the instance.
   /// [diskEncryptionKeyName] Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only.
   /// [displayName] Display name of the instance.
@@ -65,6 +73,7 @@ class InstanceState {
   const InstanceState({
     this.accessLoggingConfig,
     this.consumerAcceptLists,
+    this.deletionPolicy,
     this.description,
     this.diskEncryptionKeyName,
     this.displayName,
@@ -82,6 +91,7 @@ class InstanceState {
     return <String, dynamic>{
       'accessLoggingConfig': ?pulumi.Input.mapOptionalInputValue<InstanceAccessLoggingConfig, Map<String, dynamic>>(accessLoggingConfig, (value) => value.toMap()),
       'consumerAcceptLists': ?consumerAcceptLists,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'diskEncryptionKeyName': ?diskEncryptionKeyName,
       'displayName': ?displayName,
@@ -100,6 +110,7 @@ class InstanceState {
     return InstanceState(
       accessLoggingConfig: (() { final guardedValue = map['accessLoggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceAccessLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       consumerAcceptLists: (() { final guardedValue = map['consumerAcceptLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskEncryptionKeyName: (() { final guardedValue = map['diskEncryptionKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -114,4 +125,3 @@ class InstanceState {
     );
   }
 }
-

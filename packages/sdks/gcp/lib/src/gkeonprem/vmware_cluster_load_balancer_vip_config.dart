@@ -7,7 +7,7 @@ class VMwareClusterLoadBalancerVipConfig {
   final pulumi.Input<String>? controlPlaneVip;
   /// The VIP which you previously set aside for ingress traffic into this cluster.
   ///
-  /// &lt;a name="nested_load_balancer_f5_config"&gt;&lt;/a&gt;The `f5_config` block supports:
+  /// &lt;a name="nestedLoadBalancerF5Config"&gt;&lt;/a&gt;The `f5Config` block supports:
   final pulumi.Input<String>? ingressVip;
 
   /// Creates a new [VMwareClusterLoadBalancerVipConfig].
@@ -32,4 +32,3 @@ class VMwareClusterLoadBalancerVipConfig {
     );
   }
 }
-

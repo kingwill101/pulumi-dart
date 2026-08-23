@@ -8,7 +8,7 @@ class GetTriggerRepositoryEventConfigPush {
   /// The syntax of the regular expressions accepted is the syntax accepted by
   /// RE2 and described at https://github.com/google/re2/wiki/Syntax
   final pulumi.Input<String> branch;
-  /// If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+  /// If true, only trigger a build if the revision regex does NOT match the gitRef regex.
   final pulumi.Input<bool> invertRegex;
   /// Regex of tags to match.
   ///
@@ -18,7 +18,7 @@ class GetTriggerRepositoryEventConfigPush {
 
   /// Creates a new [GetTriggerRepositoryEventConfigPush].
   /// [branch] Regex of branches to match.
-  /// [invertRegex] If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+  /// [invertRegex] If true, only trigger a build if the revision regex does NOT match the gitRef regex.
   /// [tag] Regex of tags to match.
   const GetTriggerRepositoryEventConfigPush({
     required this.branch,
@@ -42,4 +42,3 @@ class GetTriggerRepositoryEventConfigPush {
     );
   }
 }
-

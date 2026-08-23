@@ -10,7 +10,7 @@ class WorkstationConfigHostGceInstanceBoostConfig {
   /// Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
   final pulumi.Input<int>? bootDiskSizeGb;
   /// Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
-  /// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+  /// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
   final pulumi.Input<bool>? enableNestedVirtualization;
   /// The id to be used for the boost config.
   final pulumi.Input<String> id;
@@ -57,4 +57,3 @@ class WorkstationConfigHostGceInstanceBoostConfig {
     );
   }
 }
-

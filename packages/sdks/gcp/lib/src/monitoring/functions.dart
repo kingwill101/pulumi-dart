@@ -221,6 +221,47 @@ import 'get_uptime_check_ips_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_monitoring_getappengineservice" "srv" {
+///   module_id = gcp_appengine_standardappversion.myapp.service
+/// }
+///
+/// resource "gcp_appengine_standardappversion" "myapp" {
+///   version_id = "v1"
+///   service    = "myapp"
+///   runtime    = "nodejs20"
+///   entrypoint = {
+///     shell = "node ./app.js"
+///   }
+///   deployment = {
+///     zip = {
+///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///     }
+///   }
+///   env_variables = {
+///     "port" = "8080"
+///   }
+///   delete_service_on_destroy = false
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name     = "appengine-static-content"
+///   location = "US"
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "hello-world.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("./test-fixtures/hello-world.zip")
+/// }
+/// # Monitors the default AppEngine service
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -239,8 +280,8 @@ import 'get_uptime_check_ips_result.dart';
 /// import com.pulumi.gcp.monitoring.MonitoringFunctions;
 /// import com.pulumi.gcp.monitoring.inputs.GetAppEngineServiceArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -318,7 +359,7 @@ import 'get_uptime_check_ips_result.dart';
 ///       name: hello-world.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: ./test-fixtures/hello-world.zip
+///         fn::fileAsset: ./test-fixtures/hello-world.zip
 /// variables:
 ///   # Monitors the default AppEngine service
 ///   srv:
@@ -428,6 +469,24 @@ Future<GetAppEngineServiceResult> getAppEngineService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_monitoring_getclusteristioservice" "default" {
+///   location          = "us-west2-a"
+///   cluster_name      = "west"
+///   service_namespace = "istio-system"
+///   service_name      = "istio-policy"
+/// }
+///
+/// # Monitors the default ClusterIstio service
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -436,8 +495,8 @@ Future<GetAppEngineServiceResult> getAppEngineService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.monitoring.MonitoringFunctions;
 /// import com.pulumi.gcp.monitoring.inputs.GetClusterIstioServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -569,6 +628,23 @@ Future<GetClusterIstioServiceResult> getClusterIstioService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_monitoring_getistiocanonicalservice" "default" {
+///   mesh_uid                    = "proj-573164786102"
+///   canonical_service_namespace = "istio-system"
+///   canonical_service           = "prometheus"
+/// }
+///
+/// # Monitors the default MeshIstio service
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -577,8 +653,8 @@ Future<GetClusterIstioServiceResult> getClusterIstioService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.monitoring.MonitoringFunctions;
 /// import com.pulumi.gcp.monitoring.inputs.GetIstioCanonicalServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -708,6 +784,23 @@ Future<GetIstioCanonicalServiceResult> getIstioCanonicalService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_monitoring_getmeshistioservice" "default" {
+///   mesh_uid          = "proj-573164786102"
+///   service_namespace = "istio-system"
+///   service_name      = "prometheus"
+/// }
+///
+/// # Monitors the default MeshIstio service
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -716,8 +809,8 @@ Future<GetIstioCanonicalServiceResult> getIstioCanonicalService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.monitoring.MonitoringFunctions;
 /// import com.pulumi.gcp.monitoring.inputs.GetMeshIstioServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -924,6 +1017,37 @@ Future<GetMeshIstioServiceResult> getMeshIstioService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_monitoring_getnotificationchannel" "basic" {
+///   display_name = "Test Notification Channel"
+/// }
+///
+/// resource "gcp_monitoring_alertpolicy" "alert_policy" {
+///   display_name          = "My Alert Policy"
+///   notification_channels = [data.gcp_monitoring_getnotificationchannel.basic.name]
+///   combiner              = "OR"
+///   conditions {
+///     display_name = "test condition"
+///     condition_threshold = {
+///       filter     = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""
+///       duration   = "60s"
+///       comparison = "COMPARISON_GT"
+///       aggregations = [{
+///         "alignmentPeriod"  = "60s"
+///         "perSeriesAligner" = "ALIGN_RATE"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -936,8 +1060,9 @@ Future<GetMeshIstioServiceResult> getMeshIstioService(
 /// import com.pulumi.gcp.monitoring.AlertPolicyArgs;
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdAggregationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1069,6 +1194,19 @@ Future<GetNotificationChannelResult> getNotificationChannel(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_secretmanager_getsecretversion" "basic" {
+///   secret = "my-secret"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1077,8 +1215,8 @@ Future<GetNotificationChannelResult> getNotificationChannel(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
 /// import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1175,6 +1313,22 @@ Future<GetSecretVersionResult> getSecretVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_monitoring_getuptimecheckips" "ips" {
+/// }
+///
+/// output "ipList" {
+///   value = data.gcp_monitoring_getuptimecheckips.ips.uptime_check_ips
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1182,8 +1336,8 @@ Future<GetSecretVersionResult> getSecretVersion(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.monitoring.MonitoringFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

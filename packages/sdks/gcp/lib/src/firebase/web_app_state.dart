@@ -13,6 +13,12 @@ class WebAppState {
   final pulumi.Input<String>? appId;
   /// The URLs where the `WebApp` is hosted.
   final pulumi.Input<List<String>>? appUrls;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
   final pulumi.Input<String>? deletionPolicy;
   /// The user-assigned display name of the App.
   final pulumi.Input<String>? displayName;
@@ -27,7 +33,7 @@ class WebAppState {
   /// [apiKeyId] The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
   /// [appId] The globally unique, Firebase-assigned identifier of the App.
   /// [appUrls] The URLs where the `WebApp` is hosted.
-  /// [deletionPolicy] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The user-assigned display name of the App.
   /// [name] The fully qualified resource name of the App, for example:
   /// [project] The ID of the project in which the resource belongs.
@@ -65,4 +71,3 @@ class WebAppState {
     );
   }
 }
-

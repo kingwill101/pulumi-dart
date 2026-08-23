@@ -49,4 +49,3 @@ class V2OrganizationSourceState {
     );
   }
 }
-

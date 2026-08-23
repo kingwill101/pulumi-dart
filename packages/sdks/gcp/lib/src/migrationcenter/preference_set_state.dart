@@ -7,6 +7,13 @@ import 'preference_set_virtual_machine_preferences.dart';
 class PreferenceSetState {
   /// Output only. The timestamp when the preference set was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of the preference set.
   final pulumi.Input<String>? description;
   /// User-friendly display name. Maximum length is 63 characters.
@@ -28,6 +35,7 @@ class PreferenceSetState {
 
   /// Creates a new [PreferenceSetState].
   /// [createTime] Output only. The timestamp when the preference set was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of the preference set.
   /// [displayName] User-friendly display name. Maximum length is 63 characters.
   /// [location] Part of `parent`. See documentation of `projectsId`.
@@ -38,6 +46,7 @@ class PreferenceSetState {
   /// [virtualMachinePreferences] VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
   const PreferenceSetState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.location,
@@ -51,6 +60,7 @@ class PreferenceSetState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'location': ?location,
@@ -65,6 +75,7 @@ class PreferenceSetState {
   factory PreferenceSetState.fromMap(Map<String, dynamic> map) {
     return PreferenceSetState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -76,4 +87,3 @@ class PreferenceSetState {
     );
   }
 }
-

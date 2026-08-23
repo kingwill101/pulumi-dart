@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VMwareClusterDataplaneV2 {
-  /// Enable advanced networking which requires dataplane_v2_enabled to be set true.
+  /// Enable advanced networking which requires dataplaneV2Enabled to be set true.
   final pulumi.Input<bool>? advancedNetworking;
   /// Enables Dataplane V2.
   final pulumi.Input<bool>? dataplaneV2Enabled;
@@ -11,7 +11,7 @@ class VMwareClusterDataplaneV2 {
   final pulumi.Input<bool>? windowsDataplaneV2Enabled;
 
   /// Creates a new [VMwareClusterDataplaneV2].
-  /// [advancedNetworking] Enable advanced networking which requires dataplane_v2_enabled to be set true.
+  /// [advancedNetworking] Enable advanced networking which requires dataplaneV2Enabled to be set true.
   /// [dataplaneV2Enabled] Enables Dataplane V2.
   /// [windowsDataplaneV2Enabled] Enable Dataplane V2 for clusters with Windows nodes.
   const VMwareClusterDataplaneV2({
@@ -36,4 +36,3 @@ class VMwareClusterDataplaneV2 {
     );
   }
 }
-

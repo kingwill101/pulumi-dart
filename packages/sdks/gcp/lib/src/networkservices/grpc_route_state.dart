@@ -7,6 +7,13 @@ import 'grpc_route_rule.dart';
 class GrpcRouteState {
   /// Time the GrpcRoute was created in UTC.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -17,7 +24,7 @@ class GrpcRouteState {
   final pulumi.Input<List<String>>? hostnames;
   /// Set of label tags associated with the GrpcRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
   final pulumi.Input<String>? location;
@@ -41,6 +48,7 @@ class GrpcRouteState {
 
   /// Creates a new [GrpcRouteState].
   /// [createTime] Time the GrpcRoute was created in UTC.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A free-text description of the resource. Max length 1024 characters.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [gateways] List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
@@ -56,6 +64,7 @@ class GrpcRouteState {
   /// [updateTime] Time the GrpcRoute was updated in UTC.
   const GrpcRouteState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.gateways,
@@ -74,6 +83,7 @@ class GrpcRouteState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'gateways': ?gateways,
@@ -93,6 +103,7 @@ class GrpcRouteState {
   factory GrpcRouteState.fromMap(Map<String, dynamic> map) {
     return GrpcRouteState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       gateways: (() { final guardedValue = map['gateways']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -109,4 +120,3 @@ class GrpcRouteState {
     );
   }
 }
-

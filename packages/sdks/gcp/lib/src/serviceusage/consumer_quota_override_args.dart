@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_serviceusage_consumer_quota_override_consumer_quota_override_args_doc}
 class ConsumerQuotaOverrideArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
   final pulumi.Input<Map<String, String>>? dimensions;
   /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
@@ -27,6 +34,7 @@ class ConsumerQuotaOverrideArgs {
   final pulumi.Input<String> service;
 
   /// Creates a new [ConsumerQuotaOverrideArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [dimensions] If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
   /// [force] If the new quota would decrease the existing quota by more than 10%, the request is rejected.
   /// [limit] The limit on the metric, e.g. `/project/region`.
@@ -35,6 +43,7 @@ class ConsumerQuotaOverrideArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [service] The service that the metrics belong to, e.g. `compute.googleapis.com`.
   const ConsumerQuotaOverrideArgs({
+    this.deletionPolicy,
     this.dimensions,
     this.force,
     required this.limit,
@@ -46,6 +55,7 @@ class ConsumerQuotaOverrideArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'dimensions': ?dimensions,
       'force': ?force,
       'limit': limit,
@@ -58,6 +68,7 @@ class ConsumerQuotaOverrideArgs {
 
   factory ConsumerQuotaOverrideArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerQuotaOverrideArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dimensions: (() { final guardedValue = map['dimensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       force: (() { final guardedValue = map['force']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       limit: pulumi.Input.fromValue(map['limit'] as String),
@@ -68,4 +79,3 @@ class ConsumerQuotaOverrideArgs {
     );
   }
 }
-

@@ -23,10 +23,10 @@ import 'service_perimeter_status.dart';
 /// * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 ///
 /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-/// you must specify a `billing_project` and set `user_project_override` to true
+/// you must specify a `billingProject` and set `userProjectOverride` to true
 /// in the provider configuration. Otherwise the ACM API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
-/// `billing_project` you defined.
+/// `billingProject` you defined.
 ///
 /// ## Example Usage
 ///
@@ -239,6 +239,44 @@ import 'service_perimeter_status.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_serviceperimeter" "service-perimeter" {
+///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/servicePerimeters/restrict_storage"
+///   title  = "restrict_storage"
+///   status = {
+///     restricted_services = ["storage.googleapis.com"]
+///   }
+/// }
+/// resource "gcp_accesscontextmanager_accesslevel" "access-level" {
+///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/accessLevels/chromeos_no_lock"
+///   title  = "chromeos_no_lock"
+///   basic = {
+///     conditions = [{
+///       "devicePolicy" = {
+///         "requireScreenLock" = false
+///         "osConstraints" = [{
+///           "osType" = "DESKTOP_CHROME_OS"
+///         }]
+///       }
+///       "regions" = ["CH", "IT", "US"]
+///     }]
+///   }
+/// }
+/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+///   parent = "organizations/123456789"
+///   title  = "my policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -253,8 +291,11 @@ import 'service_perimeter_status.dart';
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevel;
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevelArgs;
 /// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -907,6 +948,102 @@ import 'service_perimeter_status.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_serviceperimeters" "secure-data-exchange" {
+///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
+///   service_perimeters {
+///     name  ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/servicePerimeters/"
+///     title = ""
+///     status = {
+///       restricted_services = ["storage.googleapis.com"]
+///     }
+///   }
+///   service_perimeters {
+///     name  ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/servicePerimeters/"
+///     title = ""
+///     status = {
+///       restricted_services = ["bigtable.googleapis.com"]
+///       vpc_accessible_services = {
+///         enable_restriction = true
+///         allowed_services   = ["bigquery.googleapis.com"]
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_accesscontextmanager_accesslevel" "access-level" {
+///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/accessLevels/secure_data_exchange"
+///   title  = "secure_data_exchange"
+///   basic = {
+///     conditions = [{
+///       "devicePolicy" = {
+///         "requireScreenLock" = false
+///         "osConstraints" = [{
+///           "osType" = "DESKTOP_CHROME_OS"
+///         }]
+///       }
+///       "regions" = ["CH", "IT", "US"]
+///     }]
+///   }
+/// }
+/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+///   parent = "organizations/123456789"
+///   title  = "my policy"
+/// }
+/// resource "gcp_accesscontextmanager_serviceperimeter" "test-access" {
+///   parent         ="accessPolicies/${test-accessGoogleAccessContextManagerAccessPolicy.name}"
+///   name           ="accessPolicies/${test-accessGoogleAccessContextManagerAccessPolicy.name}/servicePerimeters/%s"
+///   title          = "%s"
+///   perimeter_type = "PERIMETER_TYPE_REGULAR"
+///   status = {
+///     restricted_services = ["bigquery.googleapis.com", "storage.googleapis.com"]
+///     access_levels       = [gcp_accesscontextmanager_accesslevel.access-level.name]
+///     vpc_accessible_services = {
+///       enable_restriction = true
+///       allowed_services   = ["bigquery.googleapis.com", "storage.googleapis.com"]
+///     }
+///     ingress_policies = [{
+///       "ingressFrom" = {
+///         "sources" = [{
+///           "accessLevel" = test-accessGoogleAccessContextManagerAccessLevel.name
+///         }]
+///         "identityType" = "ANY_IDENTITY"
+///       }
+///       "ingressTo" = {
+///         "resources" = ["*"]
+///         "operations" = [{
+///           "serviceName" = "bigquery.googleapis.com"
+///           "methodSelectors" = [{
+///             "method" = "BigQueryStorage.ReadRows"
+///             }, {
+///             "method" = "TableService.ListTables"
+///             }, {
+///             "permission" = "bigquery.jobs.get"
+///           }]
+///           }, {
+///           "serviceName" = "storage.googleapis.com"
+///           "methodSelectors" = [{
+///             "method" = "google.storage.objects.create"
+///           }]
+///         }]
+///       }
+///     }]
+///     egress_policies = [{
+///       "egressFrom" = {
+///         "identityType" = "ANY_USER_ACCOUNT"
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -923,12 +1060,23 @@ import 'service_perimeter_status.dart';
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevel;
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevelArgs;
 /// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs;
 /// import com.pulumi.gcp.accesscontextmanager.ServicePerimeter;
 /// import com.pulumi.gcp.accesscontextmanager.ServicePerimeterArgs;
 /// import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusArgs;
 /// import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusVpcAccessibleServicesArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusIngressPolicyArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusIngressPolicyIngressFromArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusIngressPolicyIngressFromSourceArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusIngressPolicyIngressToArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusIngressPolicyIngressToOperationArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusEgressPolicyArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusEgressPolicyEgressFromArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -989,8 +1137,8 @@ import 'service_perimeter_status.dart';
 ///             .build());
 ///
 ///         var test_access = new ServicePerimeter("test-access", ServicePerimeterArgs.builder()
-///             .parent(String.format("accessPolicies/%s", test_accessGoogleAccessContextManagerAccessPolicy.name()))
-///             .name(String.format("accessPolicies/%s/servicePerimeters/%s", test_accessGoogleAccessContextManagerAccessPolicy.name()))
+///             .parent(String.format("accessPolicies/%s", test_accessGoogleAccessContextManagerAccessPolicy.get("name")))
+///             .name(String.format("accessPolicies/%s/servicePerimeters/%s", test_accessGoogleAccessContextManagerAccessPolicy.get("name")))
 ///             .title("%s")
 ///             .perimeterType("PERIMETER_TYPE_REGULAR")
 ///             .status(ServicePerimeterStatusArgs.builder()
@@ -1007,7 +1155,7 @@ import 'service_perimeter_status.dart';
 ///                 .ingressPolicies(ServicePerimeterStatusIngressPolicyArgs.builder()
 ///                     .ingressFrom(ServicePerimeterStatusIngressPolicyIngressFromArgs.builder()
 ///                         .sources(ServicePerimeterStatusIngressPolicyIngressFromSourceArgs.builder()
-///                             .accessLevel(test_accessGoogleAccessContextManagerAccessLevel.name())
+///                             .accessLevel(test_accessGoogleAccessContextManagerAccessLevel.get("name"))
 ///                             .build())
 ///                         .identityType("ANY_IDENTITY")
 ///                         .build())
@@ -1256,6 +1404,32 @@ import 'service_perimeter_status.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_serviceperimeter" "service-perimeter" {
+///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/servicePerimeters/restrict_bigquery_dryrun_storage"
+///   title  = "restrict_bigquery_dryrun_storage"
+///   status = {
+///     restricted_services = ["bigquery.googleapis.com"]
+///   }
+///   spec = {
+///     restricted_services = ["storage.googleapis.com"]
+///   }
+///   use_explicit_dry_run_spec = true
+/// }
+/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+///   parent = "organizations/123456789"
+///   title  = "my policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1268,8 +1442,8 @@ import 'service_perimeter_status.dart';
 /// import com.pulumi.gcp.accesscontextmanager.ServicePerimeterArgs;
 /// import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusArgs;
 /// import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterSpecArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1330,6 +1504,7 @@ import 'service_perimeter_status.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, ServicePerimeter can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -1338,10 +1513,17 @@ import 'service_perimeter_status.dart';
 class ServicePerimeter extends pulumi.CustomResource {
   /// Time the AccessPolicy was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the ServicePerimeter and its use. Does not affect
   /// behavior.
   late final pulumi.Output<String?> description;
-  /// Resource name for the ServicePerimeter. The short_name component must
+  /// Resource name for the ServicePerimeter. The shortName component must
   /// begin with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
   late final pulumi.Output<String> name;
@@ -1406,6 +1588,7 @@ class ServicePerimeter extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
@@ -1441,6 +1624,7 @@ class ServicePerimeter extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');

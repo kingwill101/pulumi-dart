@@ -9,6 +9,13 @@ import 'edge_cache_service_routing.dart';
 /// {@endtemplate}
 /// {@macro pulumi_networkservices_edge_cache_service_edge_cache_service_args_doc}
 class EdgeCacheServiceArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human-readable description of the resource.
   final pulumi.Input<String>? description;
   /// Disables HTTP/2.
@@ -24,7 +31,7 @@ class EdgeCacheServiceArgs {
   final pulumi.Input<List<String>>? edgeSslCertificates;
   /// Set of label tags associated with the EdgeCache resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
   /// Structure is documented below.
@@ -48,6 +55,7 @@ class EdgeCacheServiceArgs {
   final pulumi.Input<String>? sslPolicy;
 
   /// Creates a new [EdgeCacheServiceArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A human-readable description of the resource.
   /// [disableHttp2] Disables HTTP/2.
   /// [disableQuic] HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
@@ -61,6 +69,7 @@ class EdgeCacheServiceArgs {
   /// [routing] Defines how requests are routed, modified, cached and/or which origin content is filled from.
   /// [sslPolicy] URL of the SslPolicy resource that will be associated with the EdgeCacheService.
   const EdgeCacheServiceArgs({
+    this.deletionPolicy,
     this.description,
     this.disableHttp2,
     this.disableQuic,
@@ -77,6 +86,7 @@ class EdgeCacheServiceArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'disableHttp2': ?disableHttp2,
       'disableQuic': ?disableQuic,
@@ -94,6 +104,7 @@ class EdgeCacheServiceArgs {
 
   factory EdgeCacheServiceArgs.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disableHttp2: (() { final guardedValue = map['disableHttp2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       disableQuic: (() { final guardedValue = map['disableQuic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -109,4 +120,3 @@ class EdgeCacheServiceArgs {
     );
   }
 }
-

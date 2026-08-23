@@ -130,6 +130,32 @@ import 'metastore_service_telemetry_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoreservice" "default" {
+///   service_id = "metastore-srv"
+///   location   = "us-central1"
+///   port       = 9080
+///   tier       = "DEVELOPER"
+///   maintenance_window = {
+///     hour_of_day = 2
+///     day_of_week = "SUNDAY"
+///   }
+///   hive_metastore_config = {
+///     version = "2.3.6"
+///   }
+///   labels = {
+///     "env" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +166,8 @@ import 'metastore_service_telemetry_config.dart';
 /// import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -302,6 +328,33 @@ import 'metastore_service_telemetry_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoreservice" "default" {
+///   service_id          = "metastore-srv"
+///   location            = "us-central1"
+///   port                = 9080
+///   tier                = "DEVELOPER"
+///   deletion_protection = true
+///   maintenance_window = {
+///     hour_of_day = 2
+///     day_of_week = "SUNDAY"
+///   }
+///   hive_metastore_config = {
+///     version = "2.3.6"
+///   }
+///   labels = {
+///     "env" = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -312,8 +365,8 @@ import 'metastore_service_telemetry_config.dart';
 /// import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -469,7 +522,7 @@ import 'metastore_service_telemetry_config.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("example-key"),
-/// 			KeyRing: keyRing.ID(),
+/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose: pulumi.String("ENCRYPT_DECRYPT"),
 /// 		})
 /// 		if err != nil {
@@ -479,7 +532,7 @@ import 'metastore_service_telemetry_config.dart';
 /// 			ServiceId: pulumi.String("example-service"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 			EncryptionConfig: &dataproc.MetastoreServiceEncryptionConfigArgs{
-/// 				KmsKey: cryptoKey.ID(),
+/// 				KmsKey: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
 /// 				Version: pulumi.String("3.1.2"),
@@ -490,6 +543,35 @@ import 'metastore_service_telemetry_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoreservice" "default" {
+///   service_id = "example-service"
+///   location   = "us-central1"
+///   encryption_config = {
+///     kms_key = gcp_kms_cryptokey.crypto_key.id
+///   }
+///   hive_metastore_config = {
+///     version = "3.1.2"
+///   }
+/// }
+/// resource "gcp_kms_cryptokey" "crypto_key" {
+///   name     = "example-key"
+///   key_ring = gcp_kms_keyring.key_ring.id
+///   purpose  = "ENCRYPT_DECRYPT"
+/// }
+/// resource "gcp_kms_keyring" "key_ring" {
+///   name     = "example-keyring"
+///   location = "us-central1"
 /// }
 /// ```
 /// ```java
@@ -506,8 +588,8 @@ import 'metastore_service_telemetry_config.dart';
 /// import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceEncryptionConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -696,7 +778,7 @@ import 'metastore_service_telemetry_config.dart';
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:                  pulumi.String("my-subnetwork"),
 /// 			Region:                pulumi.String("us-central1"),
-/// 			Network:               net.ID(),
+/// 			Network:               net.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange:           pulumi.String("10.0.0.0/22"),
 /// 			PrivateIpGoogleAccess: pulumi.Bool(true),
 /// 		})
@@ -713,7 +795,7 @@ import 'metastore_service_telemetry_config.dart';
 /// 			NetworkConfig: &dataproc.MetastoreServiceNetworkConfigArgs{
 /// 				Consumers: dataproc.MetastoreServiceNetworkConfigConsumerArray{
 /// 					&dataproc.MetastoreServiceNetworkConfigConsumerArgs{
-/// 						Subnetwork: subnet.ID(),
+/// 						Subnetwork: subnet.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -723,6 +805,40 @@ import 'metastore_service_telemetry_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "net" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnet" {
+///   name                     = "my-subnetwork"
+///   region                   = "us-central1"
+///   network                  = gcp_compute_network.net.id
+///   ip_cidr_range            = "10.0.0.0/22"
+///   private_ip_google_access = true
+/// }
+/// resource "gcp_dataproc_metastoreservice" "default" {
+///   service_id = "metastore-srv"
+///   location   = "us-central1"
+///   tier       = "DEVELOPER"
+///   hive_metastore_config = {
+///     version = "3.1.2"
+///   }
+///   network_config = {
+///     consumers = [{
+///       "subnetwork" = gcp_compute_subnetwork.subnet.id
+///     }]
+///   }
 /// }
 /// ```
 /// ```java
@@ -739,8 +855,9 @@ import 'metastore_service_telemetry_config.dart';
 /// import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigConsumerArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -936,7 +1053,7 @@ import 'metastore_service_telemetry_config.dart';
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:                  pulumi.String("my-subnetwork"),
 /// 			Region:                pulumi.String("us-central1"),
-/// 			Network:               net.ID(),
+/// 			Network:               net.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange:           pulumi.String("10.0.0.0/22"),
 /// 			PrivateIpGoogleAccess: pulumi.Bool(true),
 /// 		})
@@ -952,7 +1069,7 @@ import 'metastore_service_telemetry_config.dart';
 /// 			NetworkConfig: &dataproc.MetastoreServiceNetworkConfigArgs{
 /// 				Consumers: dataproc.MetastoreServiceNetworkConfigConsumerArray{
 /// 					&dataproc.MetastoreServiceNetworkConfigConsumerArgs{
-/// 						Subnetwork: subnet.ID(),
+/// 						Subnetwork: subnet.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 				CustomRoutesEnabled: pulumi.Bool(true),
@@ -963,6 +1080,40 @@ import 'metastore_service_telemetry_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "net" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnet" {
+///   name                     = "my-subnetwork"
+///   region                   = "us-central1"
+///   network                  = gcp_compute_network.net.id
+///   ip_cidr_range            = "10.0.0.0/22"
+///   private_ip_google_access = true
+/// }
+/// resource "gcp_dataproc_metastoreservice" "default" {
+///   service_id = "metastore-srv"
+///   location   = "us-central1"
+///   hive_metastore_config = {
+///     version = "3.1.2"
+///   }
+///   network_config = {
+///     consumers = [{
+///       "subnetwork" = gcp_compute_subnetwork.subnet.id
+///     }]
+///     custom_routes_enabled = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -979,8 +1130,9 @@ import 'metastore_service_telemetry_config.dart';
 /// import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigConsumerArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1138,6 +1290,27 @@ import 'metastore_service_telemetry_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoreservice" "dpms2" {
+///   service_id    = "ms-dpms2"
+///   location      = "us-central1"
+///   database_type = "SPANNER"
+///   hive_metastore_config = {
+///     version = "3.1.2"
+///   }
+///   scaling_config = {
+///     instance_size = "EXTRA_SMALL"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1148,8 +1321,8 @@ import 'metastore_service_telemetry_config.dart';
 /// import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1222,7 +1395,7 @@ import 'metastore_service_telemetry_config.dart';
 ///         "version": "3.1.2",
 ///     },
 ///     scaling_config={
-///         "scaling_factor": 2,
+///         "scaling_factor": float(2),
 ///     })
 /// ```
 /// ```csharp
@@ -1244,7 +1417,7 @@ import 'metastore_service_telemetry_config.dart';
 ///         },
 ///         ScalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigArgs
 ///         {
-///             ScalingFactor = 2,
+///             ScalingFactor = 2.0,
 ///         },
 ///     });
 ///
@@ -1278,6 +1451,27 @@ import 'metastore_service_telemetry_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoreservice" "dpms2_scaling_factor" {
+///   service_id    = "ms-dpms2sf"
+///   location      = "us-central1"
+///   database_type = "SPANNER"
+///   hive_metastore_config = {
+///     version = "3.1.2"
+///   }
+///   scaling_config = {
+///     scaling_factor = "2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1288,8 +1482,8 @@ import 'metastore_service_telemetry_config.dart';
 /// import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1340,11 +1534,11 @@ import 'metastore_service_telemetry_config.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const bucket = new gcp.storage.Bucket("bucket", {
-///     name: "backup",
+///     name: "backup-1",
 ///     location: "us-central1",
 /// });
 /// const backup = new gcp.dataproc.MetastoreService("backup", {
-///     serviceId: "backup",
+///     serviceId: "backup-1",
 ///     location: "us-central1",
 ///     port: 9080,
 ///     tier: "DEVELOPER",
@@ -1371,10 +1565,10 @@ import 'metastore_service_telemetry_config.dart';
 /// import pulumi_gcp as gcp
 ///
 /// bucket = gcp.storage.Bucket("bucket",
-///     name="backup",
+///     name="backup-1",
 ///     location="us-central1")
 /// backup = gcp.dataproc.MetastoreService("backup",
-///     service_id="backup",
+///     service_id="backup-1",
 ///     location="us-central1",
 ///     port=9080,
 ///     tier="DEVELOPER",
@@ -1405,13 +1599,13 @@ import 'metastore_service_telemetry_config.dart';
 /// {
 ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
 ///     {
-///         Name = "backup",
+///         Name = "backup-1",
 ///         Location = "us-central1",
 ///     });
 ///
 ///     var backup = new Gcp.Dataproc.MetastoreService("backup", new()
 ///     {
-///         ServiceId = "backup",
+///         ServiceId = "backup-1",
 ///         Location = "us-central1",
 ///         Port = 9080,
 ///         Tier = "DEVELOPER",
@@ -1453,14 +1647,14 @@ import 'metastore_service_telemetry_config.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// 			Name:     pulumi.String("backup"),
+/// 			Name:     pulumi.String("backup-1"),
 /// 			Location: pulumi.String("us-central1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = dataproc.NewMetastoreService(ctx, "backup", &dataproc.MetastoreServiceArgs{
-/// 			ServiceId: pulumi.String("backup"),
+/// 			ServiceId: pulumi.String("backup-1"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 			Port:      pulumi.Int(9080),
 /// 			Tier:      pulumi.String("DEVELOPER"),
@@ -1490,6 +1684,42 @@ import 'metastore_service_telemetry_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoreservice" "backup" {
+///   service_id = "backup-1"
+///   location   = "us-central1"
+///   port       = 9080
+///   tier       = "DEVELOPER"
+///   maintenance_window = {
+///     hour_of_day = 2
+///     day_of_week = "SUNDAY"
+///   }
+///   hive_metastore_config = {
+///     version = "2.3.6"
+///   }
+///   scheduled_backup = {
+///     enabled         = true
+///     cron_schedule   = "0 0 * * *"
+///     time_zone       = "UTC"
+///     backup_location ="gs://${gcp_storage_bucket.bucket.name}"
+///   }
+///   labels = {
+///     "env" = "test"
+///   }
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name     = "backup-1"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1503,8 +1733,8 @@ import 'metastore_service_telemetry_config.dart';
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScheduledBackupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1517,12 +1747,12 @@ import 'metastore_service_telemetry_config.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var bucket = new Bucket("bucket", BucketArgs.builder()
-///             .name("backup")
+///             .name("backup-1")
 ///             .location("us-central1")
 ///             .build());
 ///
 ///         var backup = new MetastoreService("backup", MetastoreServiceArgs.builder()
-///             .serviceId("backup")
+///             .serviceId("backup-1")
 ///             .location("us-central1")
 ///             .port(9080)
 ///             .tier("DEVELOPER")
@@ -1550,7 +1780,7 @@ import 'metastore_service_telemetry_config.dart';
 ///   backup:
 ///     type: gcp:dataproc:MetastoreService
 ///     properties:
-///       serviceId: backup
+///       serviceId: backup-1
 ///       location: us-central1
 ///       port: 9080
 ///       tier: DEVELOPER
@@ -1569,7 +1799,7 @@ import 'metastore_service_telemetry_config.dart';
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
-///       name: backup
+///       name: backup-1
 ///       location: us-central1
 /// ```
 ///
@@ -1613,7 +1843,7 @@ import 'metastore_service_telemetry_config.dart';
 ///         "autoscaling_config": {
 ///             "autoscaling_enabled": True,
 ///             "limit_config": {
-///                 "max_scaling_factor": 1,
+///                 "max_scaling_factor": float(1),
 ///             },
 ///         },
 ///     })
@@ -1642,7 +1872,7 @@ import 'metastore_service_telemetry_config.dart';
 ///                 AutoscalingEnabled = true,
 ///                 LimitConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs
 ///                 {
-///                     MaxScalingFactor = 1,
+///                     MaxScalingFactor = 1.0,
 ///                 },
 ///             },
 ///         },
@@ -1683,6 +1913,32 @@ import 'metastore_service_telemetry_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoreservice" "test_resource" {
+///   service_id    = "test-service"
+///   location      = "us-central1"
+///   database_type = "SPANNER"
+///   hive_metastore_config = {
+///     version = "3.1.2"
+///   }
+///   scaling_config = {
+///     autoscaling_config = {
+///       autoscaling_enabled = true
+///       limit_config = {
+///         max_scaling_factor = 1
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1695,8 +1951,8 @@ import 'metastore_service_telemetry_config.dart';
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1788,7 +2044,7 @@ import 'metastore_service_telemetry_config.dart';
 ///             "autoscaling_enabled": True,
 ///             "limit_config": {
 ///                 "min_scaling_factor": 0.1,
-///                 "max_scaling_factor": 1,
+///                 "max_scaling_factor": float(1),
 ///             },
 ///         },
 ///     })
@@ -1818,7 +2074,7 @@ import 'metastore_service_telemetry_config.dart';
 ///                 LimitConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs
 ///                 {
 ///                     MinScalingFactor = 0.1,
-///                     MaxScalingFactor = 1,
+///                     MaxScalingFactor = 1.0,
 ///                 },
 ///             },
 ///         },
@@ -1860,6 +2116,33 @@ import 'metastore_service_telemetry_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoreservice" "test_resource" {
+///   service_id    = "test-service"
+///   location      = "us-central1"
+///   database_type = "SPANNER"
+///   hive_metastore_config = {
+///     version = "3.1.2"
+///   }
+///   scaling_config = {
+///     autoscaling_config = {
+///       autoscaling_enabled = true
+///       limit_config = {
+///         min_scaling_factor = 0.1
+///         max_scaling_factor = 1
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1872,8 +2155,8 @@ import 'metastore_service_telemetry_config.dart';
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2035,6 +2318,32 @@ import 'metastore_service_telemetry_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoreservice" "test_resource" {
+///   service_id    = "test-service"
+///   location      = "us-central1"
+///   database_type = "SPANNER"
+///   hive_metastore_config = {
+///     version = "3.1.2"
+///   }
+///   scaling_config = {
+///     autoscaling_config = {
+///       autoscaling_enabled = true
+///       limit_config = {
+///         min_scaling_factor = 0.1
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2047,8 +2356,8 @@ import 'metastore_service_telemetry_config.dart';
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2195,6 +2504,29 @@ import 'metastore_service_telemetry_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoreservice" "test_resource" {
+///   service_id    = "test-service"
+///   location      = "us-central1"
+///   database_type = "SPANNER"
+///   hive_metastore_config = {
+///     version = "3.1.2"
+///   }
+///   scaling_config = {
+///     autoscaling_config = {
+///       autoscaling_enabled = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2206,8 +2538,8 @@ import 'metastore_service_telemetry_config.dart';
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigAutoscalingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2258,22 +2590,15 @@ import 'metastore_service_telemetry_config.dart';
 /// Service can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/services/{{service_id}}`
-///
 /// * `{{project}}/{{location}}/{{service_id}}`
-///
 /// * `{{location}}/{{service_id}}`
+///
 ///
 /// When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataproc/metastoreService:MetastoreService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{project}}/{{location}}/{{service_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataproc/metastoreService:MetastoreService default {{location}}/{{service_id}}
 /// ```
 class MetastoreService extends pulumi.CustomResource {
@@ -2285,6 +2610,13 @@ class MetastoreService extends pulumi.CustomResource {
   /// Default value is `MYSQL`.
   /// Possible values are: `MYSQL`, `SPANNER`.
   late final pulumi.Output<String?> databaseType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Indicates if the dataproc metastore should be protected against accidental deletions.
   late final pulumi.Output<bool?> deletionProtection;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -2300,7 +2632,7 @@ class MetastoreService extends pulumi.CustomResource {
   late final pulumi.Output<MetastoreServiceHiveMetastoreConfig?> hiveMetastoreConfig;
   /// User-defined labels for the metastore service.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location where the metastore service should reside.
   /// The default value is `global`.
@@ -2379,6 +2711,7 @@ class MetastoreService extends pulumi.CustomResource {
     artifactGcsUri = registerOutput<String>('artifactGcsUri');
     createTime = registerOutput<String>('createTime');
     databaseType = registerOutput<String?>('databaseType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionConfig = registerOutput<MetastoreServiceEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetastoreServiceEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2433,6 +2766,7 @@ class MetastoreService extends pulumi.CustomResource {
     artifactGcsUri = registerOutput<String>('artifactGcsUri');
     createTime = registerOutput<String>('createTime');
     databaseType = registerOutput<String?>('databaseType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionConfig = registerOutput<MetastoreServiceEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetastoreServiceEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

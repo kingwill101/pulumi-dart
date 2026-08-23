@@ -154,6 +154,36 @@ import 'folder_sink_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_foldersink" "my-sink" {
+///   name        = "my-sink"
+///   description = "some explanation on what this is"
+///   folder      = gcp_organizations_folder.my-folder.name
+///   destination ="storage.googleapis.com/${gcp_storage_bucket.log-bucket.name}"
+///   filter      = "resource.type = gce_instance AND severity >= WARNING"
+/// }
+/// resource "gcp_storage_bucket" "log-bucket" {
+///   name     = "folder-logging-bucket"
+///   location = "US"
+/// }
+/// resource "gcp_projects_iambinding" "log-writer" {
+///   project = "your-project-id"
+///   role    = "roles/storage.objectCreator"
+///   members = [gcp_logging_foldersink.my-sink.writer_identity]
+/// }
+/// resource "gcp_organizations_folder" "my-folder" {
+///   display_name = "My folder"
+///   parent       = "organizations/123456"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -168,8 +198,8 @@ import 'folder_sink_state.dart';
 /// import com.pulumi.gcp.logging.FolderSinkArgs;
 /// import com.pulumi.gcp.projects.IAMBinding;
 /// import com.pulumi.gcp.projects.IAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -244,6 +274,7 @@ import 'folder_sink_state.dart';
 ///
 /// * `folders/{{folder_id}}/sinks/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, folder-level logging sinks can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -252,6 +283,13 @@ import 'folder_sink_state.dart';
 class FolderSink extends pulumi.CustomResource {
   /// Options that affect sinks exporting data to BigQuery. Structure documented below.
   late final pulumi.Output<FolderSinkBigqueryOptions> bigqueryOptions;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of this sink. The maximum length of the description is 8000 characters.
   late final pulumi.Output<String?> description;
   /// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
@@ -302,6 +340,7 @@ class FolderSink extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bigqueryOptions = registerOutput<FolderSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destination = registerOutput<String>('destination');
     disabled = registerOutput<bool?>('disabled');
@@ -338,6 +377,7 @@ class FolderSink extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bigqueryOptions = registerOutput<FolderSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destination = registerOutput<String>('destination');
     disabled = registerOutput<bool?>('disabled');

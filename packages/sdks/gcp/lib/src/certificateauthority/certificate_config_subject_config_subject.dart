@@ -10,7 +10,7 @@ class CertificateConfigSubjectConfigSubject {
   /// The locality or city of the subject.
   final pulumi.Input<String>? locality;
   /// The organization of the subject.
-  final pulumi.Input<String> organization;
+  final pulumi.Input<String>? organization;
   /// The organizational unit of the subject.
   final pulumi.Input<String>? organizationalUnit;
   /// The postal code of the subject.
@@ -33,7 +33,7 @@ class CertificateConfigSubjectConfigSubject {
     required this.commonName,
     this.countryCode,
     this.locality,
-    required this.organization,
+    this.organization,
     this.organizationalUnit,
     this.postalCode,
     this.province,
@@ -45,7 +45,7 @@ class CertificateConfigSubjectConfigSubject {
       'commonName': commonName,
       'countryCode': ?countryCode,
       'locality': ?locality,
-      'organization': organization,
+      'organization': ?organization,
       'organizationalUnit': ?organizationalUnit,
       'postalCode': ?postalCode,
       'province': ?province,
@@ -58,7 +58,7 @@ class CertificateConfigSubjectConfigSubject {
       commonName: pulumi.Input.fromValue(map['commonName'] as String),
       countryCode: (() { final guardedValue = map['countryCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       locality: (() { final guardedValue = map['locality']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      organization: pulumi.Input.fromValue(map['organization'] as String),
+      organization: (() { final guardedValue = map['organization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organizationalUnit: (() { final guardedValue = map['organizationalUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       postalCode: (() { final guardedValue = map['postalCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       province: (() { final guardedValue = map['province']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -66,4 +66,3 @@ class CertificateConfigSubjectConfigSubject {
     );
   }
 }
-

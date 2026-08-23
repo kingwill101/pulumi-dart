@@ -20,6 +20,13 @@ class MetastoreServiceState {
   /// Default value is `MYSQL`.
   /// Possible values are: `MYSQL`, `SPANNER`.
   final pulumi.Input<String>? databaseType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Indicates if the dataproc metastore should be protected against accidental deletions.
   final pulumi.Input<bool>? deletionProtection;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -35,7 +42,7 @@ class MetastoreServiceState {
   final pulumi.Input<MetastoreServiceHiveMetastoreConfig>? hiveMetastoreConfig;
   /// User-defined labels for the metastore service.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location where the metastore service should reside.
   /// The default value is `global`.
@@ -101,6 +108,7 @@ class MetastoreServiceState {
   /// [artifactGcsUri] A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
   /// [createTime] Output only. The time when the metastore service was created.
   /// [databaseType] The database type that the Metastore service stores its data.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deletionProtection] Indicates if the dataproc metastore should be protected against accidental deletions.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [encryptionConfig] Information used to configure the Dataproc Metastore service to encrypt
@@ -131,6 +139,7 @@ class MetastoreServiceState {
     this.artifactGcsUri,
     this.createTime,
     this.databaseType,
+    this.deletionPolicy,
     this.deletionProtection,
     this.effectiveLabels,
     this.encryptionConfig,
@@ -164,6 +173,7 @@ class MetastoreServiceState {
       'artifactGcsUri': ?artifactGcsUri,
       'createTime': ?createTime,
       'databaseType': ?databaseType,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'effectiveLabels': ?effectiveLabels,
       'encryptionConfig': ?pulumi.Input.mapOptionalInputValue<MetastoreServiceEncryptionConfig, Map<String, dynamic>>(encryptionConfig, (value) => value.toMap()),
@@ -198,6 +208,7 @@ class MetastoreServiceState {
       artifactGcsUri: (() { final guardedValue = map['artifactGcsUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       databaseType: (() { final guardedValue = map['databaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       encryptionConfig: (() { final guardedValue = map['encryptionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetastoreServiceEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -227,4 +238,3 @@ class MetastoreServiceState {
     );
   }
 }
-

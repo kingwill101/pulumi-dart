@@ -9,13 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterIamPolicyArgs {
   /// The name or relative resource id of the cluster to manage IAM policies for.
   final pulumi.Input<String> cluster;
+  /// The project in which the cluster belongs. If it
+  /// is not provided, Terraform will use the provider default.
   final pulumi.Input<String>? project;
+  /// The region in which the cluster belongs. If it
+  /// is not provided, Terraform will use the provider default.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetClusterIamPolicyArgs].
   /// [cluster] The name or relative resource id of the cluster to manage IAM policies for.
-  /// [project] Optional.
-  /// [region] Optional.
+  /// [project] The project in which the cluster belongs. If it
+  /// [region] The region in which the cluster belongs. If it
   const GetClusterIamPolicyArgs({
     required this.cluster,
     this.project,
@@ -38,4 +42,3 @@ class GetClusterIamPolicyArgs {
     );
   }
 }
-

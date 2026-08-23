@@ -9,6 +9,13 @@ class GetGroupsGroup {
   final pulumi.Input<List<GetGroupsGroupAdditionalGroupKey>> additionalGroupKeys;
   /// The time when the Group was created.
   final pulumi.Input<String> createTime;
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String> deletionPolicy;
   /// An extended description to help users determine the purpose of a Group.
   final pulumi.Input<String> description;
   /// The display name of the Group.
@@ -25,7 +32,7 @@ class GetGroupsGroup {
   /// Contains 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
   /// 'system/groups/external': '' if the Group is an external-identity-mapped group.
   final pulumi.Input<Map<String, String>> labels;
-  /// Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
+  /// Resource name of the Group in the format: groups/{group_id}, where `groupId` is the unique ID assigned to the Group.
   final pulumi.Input<String> name;
   /// The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
   final pulumi.Input<String> parent;
@@ -35,17 +42,19 @@ class GetGroupsGroup {
   /// Creates a new [GetGroupsGroup].
   /// [additionalGroupKeys] Additional group keys associated with the Group
   /// [createTime] The time when the Group was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
   /// [description] An extended description to help users determine the purpose of a Group.
   /// [displayName] The display name of the Group.
   /// [groupKeys] EntityKey of the Group.  Structure is documented below.
   /// [initialGroupConfig] The initial configuration options for creating a Group.
   /// [labels] The labels that apply to the Group.
-  /// [name] Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
+  /// [name] Resource name of the Group in the format: groups/{group_id}, where `groupId` is the unique ID assigned to the Group.
   /// [parent] The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
   /// [updateTime] The time when the Group was last updated.
   const GetGroupsGroup({
     required this.additionalGroupKeys,
     required this.createTime,
+    required this.deletionPolicy,
     required this.description,
     required this.displayName,
     required this.groupKeys,
@@ -60,6 +69,7 @@ class GetGroupsGroup {
     return <String, dynamic>{
       'additionalGroupKeys': pulumi.Input.mapInputValue<List<GetGroupsGroupAdditionalGroupKey>, List<Map<String, dynamic>>>(additionalGroupKeys, (value) => pulumi.Input.encodeList<GetGroupsGroupAdditionalGroupKey, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'displayName': displayName,
       'groupKeys': pulumi.Input.mapInputValue<List<GetGroupsGroupGroupKey>, List<Map<String, dynamic>>>(groupKeys, (value) => pulumi.Input.encodeList<GetGroupsGroupGroupKey, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -75,6 +85,7 @@ class GetGroupsGroup {
     return GetGroupsGroup(
       additionalGroupKeys: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGroupsGroupAdditionalGroupKey>(map['additionalGroupKeys']!, (value) => GetGroupsGroupAdditionalGroupKey.fromMap((value as Map).cast<String, dynamic>()))),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      deletionPolicy: pulumi.Input.fromValue(map['deletionPolicy'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       groupKeys: pulumi.Input.fromValue(pulumi.Input.decodeList<GetGroupsGroupGroupKey>(map['groupKeys']!, (value) => GetGroupsGroupGroupKey.fromMap((value as Map).cast<String, dynamic>()))),
@@ -86,4 +97,3 @@ class GetGroupsGroup {
     );
   }
 }
-

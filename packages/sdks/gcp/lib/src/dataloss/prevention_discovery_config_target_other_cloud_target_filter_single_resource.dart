@@ -8,7 +8,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource {
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"&gt;&lt;/a&gt;The `amazon_s3_bucket` block supports:
+  /// &lt;a name="nestedTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket"&gt;&lt;/a&gt;The `amazonS3Bucket` block supports:
   final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket>? amazonS3Bucket;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource].
@@ -29,4 +29,3 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource {
     );
   }
 }
-

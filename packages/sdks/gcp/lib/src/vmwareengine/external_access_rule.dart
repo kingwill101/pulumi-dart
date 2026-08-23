@@ -156,14 +156,14 @@ import 'external_access_rule_state.dart';
 /// 			Location:            pulumi.String("us-west1"),
 /// 			Name:                pulumi.String("sample-np"),
 /// 			EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
-/// 			VmwareEngineNetwork: external_access_rule_nw.ID(),
+/// 			VmwareEngineNetwork: external_access_rule_nw.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = vmwareengine.NewExternalAccessRule(ctx, "vmw-engine-external-access-rule", &vmwareengine.ExternalAccessRuleArgs{
 /// 			Name:       pulumi.String("sample-external-access-rule"),
-/// 			Parent:     external_access_rule_np.ID(),
+/// 			Parent:     external_access_rule_np.ID().ToIDOutput().ToStringOutput(),
 /// 			Priority:   pulumi.Int(101),
 /// 			Action:     pulumi.String("DENY"),
 /// 			IpProtocol: pulumi.String("TCP"),
@@ -191,6 +191,43 @@ import 'external_access_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vmwareengine_network" "external-access-rule-nw" {
+///   name        = "sample-nw"
+///   location    = "global"
+///   type        = "STANDARD"
+///   description = "PC network description."
+/// }
+/// resource "gcp_vmwareengine_networkpolicy" "external-access-rule-np" {
+///   location              = "us-west1"
+///   name                  = "sample-np"
+///   edge_services_cidr    = "192.168.30.0/26"
+///   vmware_engine_network = gcp_vmwareengine_network.external-access-rule-nw.id
+/// }
+/// resource "gcp_vmwareengine_externalaccessrule" "vmw-engine-external-access-rule" {
+///   name        = "sample-external-access-rule"
+///   parent      = gcp_vmwareengine_networkpolicy.external-access-rule-np.id
+///   priority    = 101
+///   action      = "DENY"
+///   ip_protocol = "TCP"
+///   source_ip_ranges {
+///     ip_address_range = "0.0.0.0/0"
+///   }
+///   source_ports = ["80"]
+///   destination_ip_ranges {
+///     ip_address_range = "0.0.0.0/0"
+///   }
+///   destination_ports = ["433"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -205,8 +242,8 @@ import 'external_access_rule_state.dart';
 /// import com.pulumi.gcp.vmwareengine.ExternalAccessRuleArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.ExternalAccessRuleSourceIpRangeArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.ExternalAccessRuleDestinationIpRangeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -506,7 +543,7 @@ import 'external_access_rule_state.dart';
 /// 			Description: pulumi.String("Sample test PC."),
 /// 			NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 /// 				ManagementCidr:      pulumi.String("192.168.50.0/24"),
-/// 				VmwareEngineNetwork: external_access_rule_nw.ID(),
+/// 				VmwareEngineNetwork: external_access_rule_nw.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 /// 				ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -525,14 +562,14 @@ import 'external_access_rule_state.dart';
 /// 			Location:            pulumi.String("us-west1"),
 /// 			Name:                pulumi.String("sample-np"),
 /// 			EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
-/// 			VmwareEngineNetwork: external_access_rule_nw.ID(),
+/// 			VmwareEngineNetwork: external_access_rule_nw.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		external_access_rule_ea, err := vmwareengine.NewExternalAddress(ctx, "external-access-rule-ea", &vmwareengine.ExternalAddressArgs{
 /// 			Name:       pulumi.String("sample-ea"),
-/// 			Parent:     external_access_rule_pc.ID(),
+/// 			Parent:     external_access_rule_pc.ID().ToIDOutput().ToStringOutput(),
 /// 			InternalIp: pulumi.String("192.168.0.65"),
 /// 		})
 /// 		if err != nil {
@@ -540,7 +577,7 @@ import 'external_access_rule_state.dart';
 /// 		}
 /// 		_, err = vmwareengine.NewExternalAccessRule(ctx, "vmw-engine-external-access-rule", &vmwareengine.ExternalAccessRuleArgs{
 /// 			Name:        pulumi.String("sample-external-access-rule"),
-/// 			Parent:      external_access_rule_np.ID(),
+/// 			Parent:      external_access_rule_np.ID().ToIDOutput().ToStringOutput(),
 /// 			Description: pulumi.String("Sample Description"),
 /// 			Priority:    pulumi.Int(101),
 /// 			Action:      pulumi.String("ALLOW"),
@@ -555,7 +592,7 @@ import 'external_access_rule_state.dart';
 /// 			},
 /// 			DestinationIpRanges: vmwareengine.ExternalAccessRuleDestinationIpRangeArray{
 /// 				&vmwareengine.ExternalAccessRuleDestinationIpRangeArgs{
-/// 					ExternalAddress: external_access_rule_ea.ID(),
+/// 					ExternalAddress: external_access_rule_ea.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			DestinationPorts: pulumi.StringArray{
@@ -567,6 +604,65 @@ import 'external_access_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vmwareengine_network" "external-access-rule-nw" {
+///   name        = "sample-nw"
+///   location    = "global"
+///   type        = "STANDARD"
+///   description = "PC network description."
+/// }
+/// resource "gcp_vmwareengine_privatecloud" "external-access-rule-pc" {
+///   location    = "us-west1-a"
+///   name        = "sample-pc"
+///   description = "Sample test PC."
+///   network_config = {
+///     management_cidr       = "192.168.50.0/24"
+///     vmware_engine_network = gcp_vmwareengine_network.external-access-rule-nw.id
+///   }
+///   management_cluster = {
+///     cluster_id = "sample-mgmt-cluster"
+///     node_type_configs = [{
+///       "nodeTypeId" = "standard-72"
+///       "nodeCount"  = 3
+///     }]
+///   }
+/// }
+/// resource "gcp_vmwareengine_networkpolicy" "external-access-rule-np" {
+///   location              = "us-west1"
+///   name                  = "sample-np"
+///   edge_services_cidr    = "192.168.30.0/26"
+///   vmware_engine_network = gcp_vmwareengine_network.external-access-rule-nw.id
+/// }
+/// resource "gcp_vmwareengine_externaladdress" "external-access-rule-ea" {
+///   name        = "sample-ea"
+///   parent      = gcp_vmwareengine_privatecloud.external-access-rule-pc.id
+///   internal_ip = "192.168.0.65"
+/// }
+/// resource "gcp_vmwareengine_externalaccessrule" "vmw-engine-external-access-rule" {
+///   name        = "sample-external-access-rule"
+///   parent      = gcp_vmwareengine_networkpolicy.external-access-rule-np.id
+///   description = "Sample Description"
+///   priority    = 101
+///   action      = "ALLOW"
+///   ip_protocol = "tcp"
+///   source_ip_ranges {
+///     ip_address_range = "0.0.0.0/0"
+///   }
+///   source_ports = ["80"]
+///   destination_ip_ranges {
+///     external_address = gcp_vmwareengine_externaladdress.external-access-rule-ea.id
+///   }
+///   destination_ports = ["433"]
 /// }
 /// ```
 /// ```java
@@ -581,6 +677,7 @@ import 'external_access_rule_state.dart';
 /// import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
+/// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterNodeTypeConfigArgs;
 /// import com.pulumi.gcp.vmwareengine.NetworkPolicy;
 /// import com.pulumi.gcp.vmwareengine.NetworkPolicyArgs;
 /// import com.pulumi.gcp.vmwareengine.ExternalAddress;
@@ -589,8 +686,8 @@ import 'external_access_rule_state.dart';
 /// import com.pulumi.gcp.vmwareengine.ExternalAccessRuleArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.ExternalAccessRuleSourceIpRangeArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.ExternalAccessRuleDestinationIpRangeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -721,6 +818,7 @@ import 'external_access_rule_state.dart';
 ///
 /// * `{{parent}}/externalAccessRules/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, ExternalAccessRule can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -734,6 +832,13 @@ class ExternalAccessRule extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-provided description for the external access rule.
   late final pulumi.Output<String?> description;
   /// If destination ranges are specified, the external access rule applies only to
@@ -783,6 +888,7 @@ class ExternalAccessRule extends pulumi.CustomResource {
         ) {
     action = registerOutput<String>('action');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destinationIpRanges = registerOutput<List<Map<String, dynamic>>>('destinationIpRanges');
     destinationPorts = registerOutput<List<String>>('destinationPorts');
@@ -822,6 +928,7 @@ class ExternalAccessRule extends pulumi.CustomResource {
         ) {
     action = registerOutput<String>('action');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destinationIpRanges = registerOutput<List<Map<String, dynamic>>>('destinationIpRanges');
     destinationPorts = registerOutput<List<String>>('destinationPorts');

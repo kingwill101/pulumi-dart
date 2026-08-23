@@ -17,6 +17,13 @@ class CurationState {
   /// This value should be 4-500 characters, and valid characters
   /// are /a-z[0-9]-_/.
   final pulumi.Input<String>? curationId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The description of the curation.
   final pulumi.Input<String>? description;
   /// The display name of the curation.
@@ -64,6 +71,7 @@ class CurationState {
   /// Creates a new [CurationState].
   /// [createTime] The time at which the curation was created.
   /// [curationId] The ID to use for the curation resource, which will become the final
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of the curation.
   /// [displayName] The display name of the curation.
   /// [endpoint] The endpoint to be triggered for curation.
@@ -78,6 +86,7 @@ class CurationState {
   const CurationState({
     this.createTime,
     this.curationId,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.endpoint,
@@ -95,6 +104,7 @@ class CurationState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'curationId': ?curationId,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'endpoint': ?pulumi.Input.mapOptionalInputValue<CurationEndpoint, Map<String, dynamic>>(endpoint, (value) => value.toMap()),
@@ -113,6 +123,7 @@ class CurationState {
     return CurationState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       curationId: (() { final guardedValue = map['curationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CurationEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -127,4 +138,3 @@ class CurationState {
     );
   }
 }
-

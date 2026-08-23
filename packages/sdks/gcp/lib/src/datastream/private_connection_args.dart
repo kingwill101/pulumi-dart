@@ -11,11 +11,21 @@ import 'private_connection_vpc_peering_config.dart';
 class PrivateConnectionArgs {
   /// If set to true, will skip validations.
   final pulumi.Input<bool>? createWithoutValidation;
+  /// The deletion policy for the private connection. Setting `FORCE` will also delete any child
+  /// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
+  /// child routes exist. Defaults to `FORCE` for backwards compatibility.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+  final pulumi.Input<String>? deletionPolicy;
   /// Display name.
   final pulumi.Input<String> displayName;
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The name of the location this private connection is located in.
   final pulumi.Input<String> location;
@@ -35,6 +45,7 @@ class PrivateConnectionArgs {
 
   /// Creates a new [PrivateConnectionArgs].
   /// [createWithoutValidation] If set to true, will skip validations.
+  /// [deletionPolicy] The deletion policy for the private connection. Setting `FORCE` will also delete any child
   /// [displayName] Display name.
   /// [labels] Labels.
   /// [location] The name of the location this private connection is located in.
@@ -44,6 +55,7 @@ class PrivateConnectionArgs {
   /// [vpcPeeringConfig] The VPC Peering configuration is used to create VPC peering
   const PrivateConnectionArgs({
     this.createWithoutValidation,
+    this.deletionPolicy,
     required this.displayName,
     this.labels,
     required this.location,
@@ -56,6 +68,7 @@ class PrivateConnectionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createWithoutValidation': ?createWithoutValidation,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': displayName,
       'labels': ?labels,
       'location': location,
@@ -69,6 +82,7 @@ class PrivateConnectionArgs {
   factory PrivateConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionArgs(
       createWithoutValidation: (() { final guardedValue = map['createWithoutValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -79,4 +93,3 @@ class PrivateConnectionArgs {
     );
   }
 }
-

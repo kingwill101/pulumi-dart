@@ -86,6 +86,23 @@ import 'security_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygateway" "example" {
+///   security_gateway_id = "default"
+///   display_name        = "My Security Gateway resource"
+///   hubs {
+///     region = "us-central1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +112,8 @@ import 'security_gateway_state.dart';
 /// import com.pulumi.gcp.beyondcorp.SecurityGateway;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayHubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -128,6 +145,152 @@ import 'security_gateway_state.dart';
 ///       displayName: My Security Gateway resource
 ///       hubs:
 ///         - region: us-central1
+/// ```
+///
+/// ### Beyondcorp Security Gateway Logging
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const example_logging = new gcp.beyondcorp.SecurityGateway("example-logging", {
+///     securityGatewayId: "default-logging",
+///     displayName: "My Security Gateway resource with logging enabled",
+///     hubs: [{
+///         region: "us-central1",
+///     }],
+///     logging: {},
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// example_logging = gcp.beyondcorp.SecurityGateway("example-logging",
+///     security_gateway_id="default-logging",
+///     display_name="My Security Gateway resource with logging enabled",
+///     hubs=[{
+///         "region": "us-central1",
+///     }],
+///     logging={})
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example_logging = new Gcp.Beyondcorp.SecurityGateway("example-logging", new()
+///     {
+///         SecurityGatewayId = "default-logging",
+///         DisplayName = "My Security Gateway resource with logging enabled",
+///         Hubs = new[]
+///         {
+///             new Gcp.Beyondcorp.Inputs.SecurityGatewayHubArgs
+///             {
+///                 Region = "us-central1",
+///             },
+///         },
+///         Logging = null,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := beyondcorp.NewSecurityGateway(ctx, "example-logging", &beyondcorp.SecurityGatewayArgs{
+/// 			SecurityGatewayId: pulumi.String("default-logging"),
+/// 			DisplayName:       pulumi.String("My Security Gateway resource with logging enabled"),
+/// 			Hubs: beyondcorp.SecurityGatewayHubArray{
+/// 				&beyondcorp.SecurityGatewayHubArgs{
+/// 					Region: pulumi.String("us-central1"),
+/// 				},
+/// 			},
+/// 			Logging: &beyondcorp.SecurityGatewayLoggingArgs{},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygateway" "example-logging" {
+///   security_gateway_id = "default-logging"
+///   display_name        = "My Security Gateway resource with logging enabled"
+///   hubs {
+///     region = "us-central1"
+///   }
+///   logging = {}
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.beyondcorp.SecurityGateway;
+/// import com.pulumi.gcp.beyondcorp.SecurityGatewayArgs;
+/// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayHubArgs;
+/// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayLoggingArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example_logging = new SecurityGateway("example-logging", SecurityGatewayArgs.builder()
+///             .securityGatewayId("default-logging")
+///             .displayName("My Security Gateway resource with logging enabled")
+///             .hubs(SecurityGatewayHubArgs.builder()
+///                 .region("us-central1")
+///                 .build())
+///             .logging(SecurityGatewayLoggingArgs.builder()
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example-logging:
+///     type: gcp:beyondcorp:SecurityGateway
+///     properties:
+///       securityGatewayId: default-logging
+///       displayName: My Security Gateway resource with logging enabled
+///       hubs:
+///         - region: us-central1
+///       logging: {}
 /// ```
 ///
 /// ### Beyondcorp Security Gateway Spa
@@ -322,6 +485,48 @@ import 'security_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygateway" "example-spa" {
+///   security_gateway_id = "default-spa"
+///   display_name        = "My SPA Security Gateway resource"
+///   proxy_protocol_config = {
+///     allowed_client_headers = ["header1", "header2"]
+///     contextual_headers = {
+///       user_info = {
+///         output_type = "PROTOBUF"
+///       }
+///       group_info = {
+///         output_type = "JSON"
+///       }
+///       device_info = {
+///         output_type = "NONE"
+///       }
+///       output_type = "NONE"
+///     }
+///     metadata_headers = {
+///       "metadata-header1" = "value1"
+///       "metadata-header2" = "value2"
+///     }
+///     gateway_identity = "RESOURCE_NAME"
+///     client_ip        = true
+///   }
+///   service_discovery = {
+///     api_gateway = {
+///       resource_override = {
+///         path = "/api/v1/routes"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -338,8 +543,8 @@ import 'security_gateway_state.dart';
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayServiceDiscoveryArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayServiceDiscoveryApiGatewayArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -425,22 +630,15 @@ import 'security_gateway_state.dart';
 /// SecurityGateway can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/securityGateways/{{security_gateway_id}}`
-///
 /// * `{{project}}/{{location}}/{{security_gateway_id}}`
-///
 /// * `{{location}}/{{security_gateway_id}}`
+///
 ///
 /// When using the `pulumi import` command, SecurityGateway can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:beyondcorp/securityGateway:SecurityGateway default projects/{{project}}/locations/{{location}}/securityGateways/{{security_gateway_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:beyondcorp/securityGateway:SecurityGateway default {{project}}/{{location}}/{{security_gateway_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:beyondcorp/securityGateway:SecurityGateway default {{location}}/{{security_gateway_id}}
 /// ```
 class SecurityGateway extends pulumi.CustomResource {
@@ -448,6 +646,13 @@ class SecurityGateway extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Service account used for operations that involve resources in consumer projects.
   late final pulumi.Output<String> delegatingServiceAccount;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. An arbitrary user-provided name for the SecurityGateway.
   /// Cannot exceed 64 characters.
   late final pulumi.Output<String?> displayName;
@@ -463,6 +668,8 @@ class SecurityGateway extends pulumi.CustomResource {
   ///
   /// &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
   late final pulumi.Output<String?> location;
+  /// Settings related to Cloud Logging.
+  late final pulumi.Output<Map<String, dynamic>?> logging;
   /// Identifier. Name of the resource.
   late final pulumi.Output<String> name;
   /// The ID of the project in which the resource belongs.
@@ -508,10 +715,12 @@ class SecurityGateway extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     delegatingServiceAccount = registerOutput<String>('delegatingServiceAccount');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     externalIps = registerOutput<List<String>>('externalIps');
     hubs = registerOutput<List<Map<String, dynamic>>?>('hubs');
     location = registerOutput<String?>('location');
+    logging = registerOutput<Map<String, dynamic>?>('logging');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     proxyProtocolConfig = registerOutput<SecurityGatewayProxyProtocolConfig?>('proxyProtocolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityGatewayProxyProtocolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -546,10 +755,12 @@ class SecurityGateway extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     delegatingServiceAccount = registerOutput<String>('delegatingServiceAccount');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     externalIps = registerOutput<List<String>>('externalIps');
     hubs = registerOutput<List<Map<String, dynamic>>?>('hubs');
     location = registerOutput<String?>('location');
+    logging = registerOutput<Map<String, dynamic>?>('logging');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     proxyProtocolConfig = registerOutput<SecurityGatewayProxyProtocolConfig?>('proxyProtocolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityGatewayProxyProtocolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

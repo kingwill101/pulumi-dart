@@ -6,7 +6,7 @@ import 'prevention_deidentify_template_deidentify_config_record_transformations_
 import 'prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_info_type_transformations_transformation_primitive_transformation_crypto_replace_ffx_fpe_config_surrogate_info_type.dart';
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig {
-  /// Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+  /// Common alphabets. Only one of this, `customAlphabet` or `radix` must be specified.
   /// Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
   final pulumi.Input<String>? commonAlphabet;
   /// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
@@ -24,9 +24,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   /// Structure is documented below.
   final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey> cryptoKey;
   /// This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-  /// ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
+  /// ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'&lt;,&gt;.?/``. Only one of this, `commonAlphabet` or `radix` must be specified.
   final pulumi.Input<String>? customAlphabet;
-  /// The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
+  /// The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `customAlphabet` or `commonAlphabet` must be specified.
   final pulumi.Input<int>? radix;
   /// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
   /// For example, if the name of custom infoType is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
@@ -36,11 +36,11 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType>? surrogateInfoType;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig].
-  /// [commonAlphabet] Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+  /// [commonAlphabet] Common alphabets. Only one of this, `customAlphabet` or `radix` must be specified.
   /// [context] The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
   /// [cryptoKey] The key used by the encryption algorithm.
   /// [customAlphabet] This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-  /// [radix] The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
+  /// [radix] The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `customAlphabet` or `commonAlphabet` must be specified.
   /// [surrogateInfoType] The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
   const PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig({
     this.commonAlphabet,
@@ -73,4 +73,3 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     );
   }
 }
-

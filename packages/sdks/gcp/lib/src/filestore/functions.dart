@@ -71,6 +71,29 @@ import 'get_instance_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_filestore_getinstance" "myInstance" {
+///   name = "my-filestore-instance"
+/// }
+///
+/// output "instanceIpAddresses" {
+///   value = data.gcp_filestore_getinstance.myInstance.networks.ipAddresses
+/// }
+/// output "instanceConnectMode" {
+///   value = data.gcp_filestore_getinstance.myInstance.networks.connectMode
+/// }
+/// output "instanceFileShareName" {
+///   value = data.gcp_filestore_getinstance.myInstance.file_shares.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +102,8 @@ import 'get_instance_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.filestore.FilestoreFunctions;
 /// import com.pulumi.gcp.filestore.inputs.GetInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -21,9 +21,9 @@ import 'namespace_gkehub_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_8647"});
+/// const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_25601"});
 /// const namespace = new gcp.gkehub.Namespace("namespace", {
-///     scopeNamespaceId: "tf-test-namespace_50610",
+///     scopeNamespaceId: "tf-test-namespace_17228",
 ///     scopeId: scope.scopeId,
 ///     scope: scope.name,
 ///     namespaceLabels: {
@@ -44,9 +44,9 @@ import 'namespace_gkehub_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_8647")
+/// scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_25601")
 /// namespace = gcp.gkehub.Namespace("namespace",
-///     scope_namespace_id="tf-test-namespace_50610",
+///     scope_namespace_id="tf-test-namespace_17228",
 ///     scope_id=scope.scope_id,
 ///     scope=scope.name,
 ///     namespace_labels={
@@ -71,12 +71,12 @@ import 'namespace_gkehub_state.dart';
 /// {
 ///     var scope = new Gcp.GkeHub.Scope("scope", new()
 ///     {
-///         ScopeId = "tf-test-scope_8647",
+///         ScopeId = "tf-test-scope_25601",
 ///     });
 ///
 ///     var @namespace = new Gcp.GkeHub.Namespace("namespace", new()
 ///     {
-///         ScopeNamespaceId = "tf-test-namespace_50610",
+///         ScopeNamespaceId = "tf-test-namespace_17228",
 ///         ScopeId = scope.ScopeId,
 ///         Scope = scope.Name,
 ///         NamespaceLabels =
@@ -112,13 +112,13 @@ import 'namespace_gkehub_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-/// 			ScopeId: pulumi.String("tf-test-scope_8647"),
+/// 			ScopeId: pulumi.String("tf-test-scope_25601"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = gkehub.NewNamespace(ctx, "namespace", &gkehub.NamespaceArgs{
-/// 			ScopeNamespaceId: pulumi.String("tf-test-namespace_50610"),
+/// 			ScopeNamespaceId: pulumi.String("tf-test-namespace_17228"),
 /// 			ScopeId:          scope.ScopeId,
 /// 			Scope:            scope.Name,
 /// 			NamespaceLabels: pulumi.StringMap{
@@ -141,6 +141,35 @@ import 'namespace_gkehub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkehub_scope" "scope" {
+///   scope_id = "tf-test-scope_25601"
+/// }
+/// resource "gcp_gkehub_namespace" "namespace" {
+///   depends_on         = [gcp_gkehub_scope.scope]
+///   scope_namespace_id = "tf-test-namespace_17228"
+///   scope_id           = gcp_gkehub_scope.scope.scope_id
+///   scope              = gcp_gkehub_scope.scope.name
+///   namespace_labels = {
+///     "keyb" = "valueb"
+///     "keya" = "valuea"
+///     "keyc" = "valuec"
+///   }
+///   labels = {
+///     "keyb" = "valueb"
+///     "keya" = "valuea"
+///     "keyc" = "valuec"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -152,8 +181,8 @@ import 'namespace_gkehub_state.dart';
 /// import com.pulumi.gcp.gkehub.Namespace;
 /// import com.pulumi.gcp.gkehub.NamespaceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -166,11 +195,11 @@ import 'namespace_gkehub_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var scope = new Scope("scope", ScopeArgs.builder()
-///             .scopeId("tf-test-scope_8647")
+///             .scopeId("tf-test-scope_25601")
 ///             .build());
 ///
 ///         var namespace = new Namespace("namespace", NamespaceArgs.builder()
-///             .scopeNamespaceId("tf-test-namespace_50610")
+///             .scopeNamespaceId("tf-test-namespace_17228")
 ///             .scopeId(scope.scopeId())
 ///             .scope(scope.name())
 ///             .namespaceLabels(Map.ofEntries(
@@ -195,11 +224,11 @@ import 'namespace_gkehub_state.dart';
 ///   scope:
 ///     type: gcp:gkehub:Scope
 ///     properties:
-///       scopeId: tf-test-scope_8647
+///       scopeId: tf-test-scope_25601
 ///   namespace:
 ///     type: gcp:gkehub:Namespace
 ///     properties:
-///       scopeNamespaceId: tf-test-namespace_50610
+///       scopeNamespaceId: tf-test-namespace_17228
 ///       scopeId: ${scope.scopeId}
 ///       scope: ${scope.name}
 ///       namespaceLabels:
@@ -221,22 +250,15 @@ import 'namespace_gkehub_state.dart';
 /// Namespace can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/scopes/{{scope_id}}/namespaces/{{scope_namespace_id}}`
-///
 /// * `{{project}}/{{scope_id}}/{{scope_namespace_id}}`
-///
 /// * `{{scope_id}}/{{scope_namespace_id}}`
+///
 ///
 /// When using the `pulumi import` command, Namespace can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkehub/namespace:Namespace default projects/{{project}}/locations/global/scopes/{{scope_id}}/namespaces/{{scope_namespace_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/namespace:Namespace default {{project}}/{{scope_id}}/{{scope_namespace_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/namespace:Namespace default {{scope_id}}/{{scope_namespace_id}}
 /// ```
 class Namespace extends pulumi.CustomResource {
@@ -244,18 +266,25 @@ class Namespace extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Time the Namespace was deleted in UTC.
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Labels for this Namespace.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The resource name for the namespace
   late final pulumi.Output<String> name;
   /// Namespace-level cluster namespace labels. These labels are applied
   /// to the related namespace of the member clusters bound to the parent
-  /// Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+  /// Scope. Scope-level labels (`namespaceLabels` in the Fleet Scope
   /// resource) take precedence over Namespace-level labels if they share
   /// a key. Keys and values must be Kubernetes-conformant.
   late final pulumi.Output<Map<String, String>?> namespaceLabels;
@@ -295,6 +324,7 @@ class Namespace extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
@@ -334,6 +364,7 @@ class Namespace extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');

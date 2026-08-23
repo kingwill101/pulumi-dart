@@ -300,7 +300,7 @@ import 'region_network_firewall_policy_rule_state.dart';
 /// 		}
 /// 		basicValue, err := tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 /// 			Description: pulumi.String("For valuename resources."),
-/// 			Parent:      basicKey.ID(),
+/// 			Parent:      basicKey.ID().ToIDOutput().ToStringOutput(),
 /// 			ShortName:   pulumi.String("tag-value"),
 /// 		})
 /// 		if err != nil {
@@ -321,7 +321,7 @@ import 'region_network_firewall_policy_rule_state.dart';
 /// 			},
 /// 			Match: &compute.RegionNetworkFirewallPolicyRuleMatchArgs{
 /// 				SrcAddressGroups: pulumi.StringArray{
-/// 					basicRegionalNetworksecurityAddressGroup.ID(),
+/// 					basicRegionalNetworksecurityAddressGroup.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				SrcIpRanges: pulumi.StringArray{
 /// 					pulumi.String("10.100.0.1/32"),
@@ -342,7 +342,7 @@ import 'region_network_firewall_policy_rule_state.dart';
 /// 				},
 /// 				SrcSecureTags: compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArray{
 /// 					&compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs{
-/// 						Name: basicValue.ID(),
+/// 						Name: basicValue.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -352,6 +352,73 @@ import 'region_network_firewall_policy_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_addressgroup" "basic_regional_networksecurity_address_group" {
+///   name        = "address-group"
+///   parent      = "projects/my-project-name"
+///   description = "Sample regional networksecurity_address_group"
+///   location    = "us-west1"
+///   items       = ["208.80.154.224/32"]
+///   type        = "IPV4"
+///   capacity    = 100
+/// }
+/// resource "gcp_compute_regionnetworkfirewallpolicy" "basic_regional_network_firewall_policy" {
+///   name        = "fw-policy"
+///   description = "Sample regional network firewall policy"
+///   project     = "my-project-name"
+///   region      = "us-west1"
+/// }
+/// resource "gcp_compute_regionnetworkfirewallpolicyrule" "primary" {
+///   action                  = "allow"
+///   description             = "This is a simple rule description"
+///   direction               = "INGRESS"
+///   disabled                = false
+///   enable_logging          = true
+///   firewall_policy         = gcp_compute_regionnetworkfirewallpolicy.basic_regional_network_firewall_policy.name
+///   priority                = 1000
+///   region                  = "us-west1"
+///   rule_name               = "test-rule"
+///   target_service_accounts = ["my@service-account.com"]
+///   match = {
+///     src_address_groups       = [gcp_networksecurity_addressgroup.basic_regional_networksecurity_address_group.id]
+///     src_ip_ranges            = ["10.100.0.1/32"]
+///     src_fqdns                = ["example.com"]
+///     src_region_codes         = ["US"]
+///     src_threat_intelligences = ["iplist-known-malicious-ips"]
+///     layer4_configs = [{
+///       "ipProtocol" = "all"
+///     }]
+///     src_secure_tags = [{
+///       "name" = gcp_tags_tagvalue.basic_value.id
+///     }]
+///   }
+/// }
+/// resource "gcp_compute_network" "basic_network" {
+///   name = "network"
+/// }
+/// resource "gcp_tags_tagkey" "basic_key" {
+///   description = "For keyname resources."
+///   parent      = "organizations/123456789"
+///   purpose     = "GCE_FIREWALL"
+///   short_name  = "tag-key"
+///   purpose_data = {
+///     "network" ="my-project-name/${gcp_compute_network.basic_network.name}"
+///   }
+/// }
+/// resource "gcp_tags_tagvalue" "basic_value" {
+///   description = "For valuename resources."
+///   parent      = gcp_tags_tagkey.basic_key.id
+///   short_name  = "tag-value"
 /// }
 /// ```
 /// ```java
@@ -373,8 +440,10 @@ import 'region_network_firewall_policy_rule_state.dart';
 /// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRule;
 /// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -679,6 +748,40 @@ import 'region_network_firewall_policy_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionnetworkfirewallpolicy" "basic_regional_network_firewall_policy" {
+///   name        = "fw-policy"
+///   description = "Sample regional network firewall policy"
+///   project     = "my-project-name"
+///   region      = "us-west1"
+/// }
+/// resource "gcp_compute_regionnetworkfirewallpolicyrule" "primary" {
+///   action          = "allow"
+///   description     = "This is a simple rule description"
+///   direction       = "EGRESS"
+///   disabled        = false
+///   enable_logging  = true
+///   firewall_policy = gcp_compute_regionnetworkfirewallpolicy.basic_regional_network_firewall_policy.name
+///   priority        = 1000
+///   region          = "us-west1"
+///   rule_name       = "test-rule"
+///   match = {
+///     dest_ip_ranges     = ["10.100.0.1/32"]
+///     dest_network_scope = "INTERNET"
+///     layer4_configs = [{
+///       "ipProtocol" = "all"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -690,8 +793,9 @@ import 'region_network_firewall_policy_rule_state.dart';
 /// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRule;
 /// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -922,7 +1026,7 @@ import 'region_network_firewall_policy_rule_state.dart';
 /// 				},
 /// 				SrcNetworkScope: pulumi.String("VPC_NETWORKS"),
 /// 				SrcNetworks: pulumi.StringArray{
-/// 					network.ID(),
+/// 					network.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				Layer4Configs: compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArray{
 /// 					&compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs{
@@ -938,6 +1042,44 @@ import 'region_network_firewall_policy_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionnetworkfirewallpolicy" "basic_regional_network_firewall_policy" {
+///   name        = "fw-policy"
+///   description = "Sample regional network firewall policy"
+///   project     = "my-project-name"
+///   region      = "us-west1"
+/// }
+/// resource "gcp_compute_regionnetworkfirewallpolicyrule" "primary" {
+///   action          = "allow"
+///   description     = "This is a simple rule description"
+///   direction       = "INGRESS"
+///   disabled        = false
+///   enable_logging  = true
+///   firewall_policy = gcp_compute_regionnetworkfirewallpolicy.basic_regional_network_firewall_policy.name
+///   priority        = 1000
+///   region          = "us-west1"
+///   rule_name       = "test-rule"
+///   match = {
+///     src_ip_ranges     = ["10.100.0.1/32"]
+///     src_network_scope = "VPC_NETWORKS"
+///     src_networks      = [gcp_compute_network.network.id]
+///     layer4_configs = [{
+///       "ipProtocol" = "all"
+///     }]
+///   }
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name = "network"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -951,8 +1093,9 @@ import 'region_network_firewall_policy_rule_state.dart';
 /// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRule;
 /// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1034,41 +1177,898 @@ import 'region_network_firewall_policy_rule_state.dart';
 ///       name: network
 /// ```
 ///
+/// ### Region Network Firewall Policy Rule Network Context Egress
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", {
+///     name: "fw-policy",
+///     description: "Sample regional network firewall policy",
+///     project: "my-project-name",
+///     region: "us-west1",
+/// });
+/// const primary = new gcp.compute.RegionNetworkFirewallPolicyRule("primary", {
+///     action: "allow",
+///     description: "This is a simple rule description",
+///     direction: "EGRESS",
+///     disabled: false,
+///     enableLogging: true,
+///     firewallPolicy: basicRegionalNetworkFirewallPolicy.name,
+///     priority: 1000,
+///     region: "us-west1",
+///     ruleName: "test-rule",
+///     match: {
+///         destIpRanges: ["10.100.0.1/32"],
+///         destNetworkContext: "INTERNET",
+///         layer4Configs: [{
+///             ipProtocol: "all",
+///         }],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy",
+///     name="fw-policy",
+///     description="Sample regional network firewall policy",
+///     project="my-project-name",
+///     region="us-west1")
+/// primary = gcp.compute.RegionNetworkFirewallPolicyRule("primary",
+///     action="allow",
+///     description="This is a simple rule description",
+///     direction="EGRESS",
+///     disabled=False,
+///     enable_logging=True,
+///     firewall_policy=basic_regional_network_firewall_policy.name,
+///     priority=1000,
+///     region="us-west1",
+///     rule_name="test-rule",
+///     match={
+///         "dest_ip_ranges": ["10.100.0.1/32"],
+///         "dest_network_context": "INTERNET",
+///         "layer4_configs": [{
+///             "ip_protocol": "all",
+///         }],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var basicRegionalNetworkFirewallPolicy = new Gcp.Compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", new()
+///     {
+///         Name = "fw-policy",
+///         Description = "Sample regional network firewall policy",
+///         Project = "my-project-name",
+///         Region = "us-west1",
+///     });
+///
+///     var primary = new Gcp.Compute.RegionNetworkFirewallPolicyRule("primary", new()
+///     {
+///         Action = "allow",
+///         Description = "This is a simple rule description",
+///         Direction = "EGRESS",
+///         Disabled = false,
+///         EnableLogging = true,
+///         FirewallPolicy = basicRegionalNetworkFirewallPolicy.Name,
+///         Priority = 1000,
+///         Region = "us-west1",
+///         RuleName = "test-rule",
+///         Match = new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyRuleMatchArgs
+///         {
+///             DestIpRanges = new[]
+///             {
+///                 "10.100.0.1/32",
+///             },
+///             DestNetworkContext = "INTERNET",
+///             Layer4Configs = new[]
+///             {
+///                 new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs
+///                 {
+///                     IpProtocol = "all",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		basicRegionalNetworkFirewallPolicy, err := compute.NewRegionNetworkFirewallPolicy(ctx, "basic_regional_network_firewall_policy", &compute.RegionNetworkFirewallPolicyArgs{
+/// 			Name:        pulumi.String("fw-policy"),
+/// 			Description: pulumi.String("Sample regional network firewall policy"),
+/// 			Project:     pulumi.String("my-project-name"),
+/// 			Region:      pulumi.String("us-west1"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionNetworkFirewallPolicyRule(ctx, "primary", &compute.RegionNetworkFirewallPolicyRuleArgs{
+/// 			Action:         pulumi.String("allow"),
+/// 			Description:    pulumi.String("This is a simple rule description"),
+/// 			Direction:      pulumi.String("EGRESS"),
+/// 			Disabled:       pulumi.Bool(false),
+/// 			EnableLogging:  pulumi.Bool(true),
+/// 			FirewallPolicy: basicRegionalNetworkFirewallPolicy.Name,
+/// 			Priority:       pulumi.Int(1000),
+/// 			Region:         pulumi.String("us-west1"),
+/// 			RuleName:       pulumi.String("test-rule"),
+/// 			Match: &compute.RegionNetworkFirewallPolicyRuleMatchArgs{
+/// 				DestIpRanges: pulumi.StringArray{
+/// 					pulumi.String("10.100.0.1/32"),
+/// 				},
+/// 				DestNetworkContext: pulumi.String("INTERNET"),
+/// 				Layer4Configs: compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArray{
+/// 					&compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs{
+/// 						IpProtocol: pulumi.String("all"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionnetworkfirewallpolicy" "basic_regional_network_firewall_policy" {
+///   name        = "fw-policy"
+///   description = "Sample regional network firewall policy"
+///   project     = "my-project-name"
+///   region      = "us-west1"
+/// }
+/// resource "gcp_compute_regionnetworkfirewallpolicyrule" "primary" {
+///   action          = "allow"
+///   description     = "This is a simple rule description"
+///   direction       = "EGRESS"
+///   disabled        = false
+///   enable_logging  = true
+///   firewall_policy = gcp_compute_regionnetworkfirewallpolicy.basic_regional_network_firewall_policy.name
+///   priority        = 1000
+///   region          = "us-west1"
+///   rule_name       = "test-rule"
+///   match = {
+///     dest_ip_ranges       = ["10.100.0.1/32"]
+///     dest_network_context = "INTERNET"
+///     layer4_configs = [{
+///       "ipProtocol" = "all"
+///     }]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicy;
+/// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyArgs;
+/// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRule;
+/// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", RegionNetworkFirewallPolicyArgs.builder()
+///             .name("fw-policy")
+///             .description("Sample regional network firewall policy")
+///             .project("my-project-name")
+///             .region("us-west1")
+///             .build());
+///
+///         var primary = new RegionNetworkFirewallPolicyRule("primary", RegionNetworkFirewallPolicyRuleArgs.builder()
+///             .action("allow")
+///             .description("This is a simple rule description")
+///             .direction("EGRESS")
+///             .disabled(false)
+///             .enableLogging(true)
+///             .firewallPolicy(basicRegionalNetworkFirewallPolicy.name())
+///             .priority(1000)
+///             .region("us-west1")
+///             .ruleName("test-rule")
+///             .match(RegionNetworkFirewallPolicyRuleMatchArgs.builder()
+///                 .destIpRanges("10.100.0.1/32")
+///                 .destNetworkContext("INTERNET")
+///                 .layer4Configs(RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+///                     .ipProtocol("all")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   basicRegionalNetworkFirewallPolicy:
+///     type: gcp:compute:RegionNetworkFirewallPolicy
+///     name: basic_regional_network_firewall_policy
+///     properties:
+///       name: fw-policy
+///       description: Sample regional network firewall policy
+///       project: my-project-name
+///       region: us-west1
+///   primary:
+///     type: gcp:compute:RegionNetworkFirewallPolicyRule
+///     properties:
+///       action: allow
+///       description: This is a simple rule description
+///       direction: EGRESS
+///       disabled: false
+///       enableLogging: true
+///       firewallPolicy: ${basicRegionalNetworkFirewallPolicy.name}
+///       priority: 1000
+///       region: us-west1
+///       ruleName: test-rule
+///       match:
+///         destIpRanges:
+///           - 10.100.0.1/32
+///         destNetworkContext: INTERNET
+///         layer4Configs:
+///           - ipProtocol: all
+/// ```
+///
+/// ### Region Network Firewall Policy Rule Network Context Ingress
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", {
+///     name: "fw-policy",
+///     description: "Sample regional network firewall policy",
+///     project: "my-project-name",
+///     region: "us-west1",
+/// });
+/// const primary = new gcp.compute.RegionNetworkFirewallPolicyRule("primary", {
+///     action: "allow",
+///     description: "This is a simple rule description",
+///     direction: "INGRESS",
+///     disabled: false,
+///     enableLogging: true,
+///     firewallPolicy: basicRegionalNetworkFirewallPolicy.name,
+///     priority: 1000,
+///     region: "us-west1",
+///     ruleName: "test-rule",
+///     match: {
+///         srcIpRanges: ["10.100.0.1/32"],
+///         srcNetworkContext: "INTERNET",
+///         layer4Configs: [{
+///             ipProtocol: "all",
+///         }],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy",
+///     name="fw-policy",
+///     description="Sample regional network firewall policy",
+///     project="my-project-name",
+///     region="us-west1")
+/// primary = gcp.compute.RegionNetworkFirewallPolicyRule("primary",
+///     action="allow",
+///     description="This is a simple rule description",
+///     direction="INGRESS",
+///     disabled=False,
+///     enable_logging=True,
+///     firewall_policy=basic_regional_network_firewall_policy.name,
+///     priority=1000,
+///     region="us-west1",
+///     rule_name="test-rule",
+///     match={
+///         "src_ip_ranges": ["10.100.0.1/32"],
+///         "src_network_context": "INTERNET",
+///         "layer4_configs": [{
+///             "ip_protocol": "all",
+///         }],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var basicRegionalNetworkFirewallPolicy = new Gcp.Compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", new()
+///     {
+///         Name = "fw-policy",
+///         Description = "Sample regional network firewall policy",
+///         Project = "my-project-name",
+///         Region = "us-west1",
+///     });
+///
+///     var primary = new Gcp.Compute.RegionNetworkFirewallPolicyRule("primary", new()
+///     {
+///         Action = "allow",
+///         Description = "This is a simple rule description",
+///         Direction = "INGRESS",
+///         Disabled = false,
+///         EnableLogging = true,
+///         FirewallPolicy = basicRegionalNetworkFirewallPolicy.Name,
+///         Priority = 1000,
+///         Region = "us-west1",
+///         RuleName = "test-rule",
+///         Match = new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyRuleMatchArgs
+///         {
+///             SrcIpRanges = new[]
+///             {
+///                 "10.100.0.1/32",
+///             },
+///             SrcNetworkContext = "INTERNET",
+///             Layer4Configs = new[]
+///             {
+///                 new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs
+///                 {
+///                     IpProtocol = "all",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		basicRegionalNetworkFirewallPolicy, err := compute.NewRegionNetworkFirewallPolicy(ctx, "basic_regional_network_firewall_policy", &compute.RegionNetworkFirewallPolicyArgs{
+/// 			Name:        pulumi.String("fw-policy"),
+/// 			Description: pulumi.String("Sample regional network firewall policy"),
+/// 			Project:     pulumi.String("my-project-name"),
+/// 			Region:      pulumi.String("us-west1"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionNetworkFirewallPolicyRule(ctx, "primary", &compute.RegionNetworkFirewallPolicyRuleArgs{
+/// 			Action:         pulumi.String("allow"),
+/// 			Description:    pulumi.String("This is a simple rule description"),
+/// 			Direction:      pulumi.String("INGRESS"),
+/// 			Disabled:       pulumi.Bool(false),
+/// 			EnableLogging:  pulumi.Bool(true),
+/// 			FirewallPolicy: basicRegionalNetworkFirewallPolicy.Name,
+/// 			Priority:       pulumi.Int(1000),
+/// 			Region:         pulumi.String("us-west1"),
+/// 			RuleName:       pulumi.String("test-rule"),
+/// 			Match: &compute.RegionNetworkFirewallPolicyRuleMatchArgs{
+/// 				SrcIpRanges: pulumi.StringArray{
+/// 					pulumi.String("10.100.0.1/32"),
+/// 				},
+/// 				SrcNetworkContext: pulumi.String("INTERNET"),
+/// 				Layer4Configs: compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArray{
+/// 					&compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs{
+/// 						IpProtocol: pulumi.String("all"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionnetworkfirewallpolicy" "basic_regional_network_firewall_policy" {
+///   name        = "fw-policy"
+///   description = "Sample regional network firewall policy"
+///   project     = "my-project-name"
+///   region      = "us-west1"
+/// }
+/// resource "gcp_compute_regionnetworkfirewallpolicyrule" "primary" {
+///   action          = "allow"
+///   description     = "This is a simple rule description"
+///   direction       = "INGRESS"
+///   disabled        = false
+///   enable_logging  = true
+///   firewall_policy = gcp_compute_regionnetworkfirewallpolicy.basic_regional_network_firewall_policy.name
+///   priority        = 1000
+///   region          = "us-west1"
+///   rule_name       = "test-rule"
+///   match = {
+///     src_ip_ranges       = ["10.100.0.1/32"]
+///     src_network_context = "INTERNET"
+///     layer4_configs = [{
+///       "ipProtocol" = "all"
+///     }]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicy;
+/// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyArgs;
+/// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRule;
+/// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", RegionNetworkFirewallPolicyArgs.builder()
+///             .name("fw-policy")
+///             .description("Sample regional network firewall policy")
+///             .project("my-project-name")
+///             .region("us-west1")
+///             .build());
+///
+///         var primary = new RegionNetworkFirewallPolicyRule("primary", RegionNetworkFirewallPolicyRuleArgs.builder()
+///             .action("allow")
+///             .description("This is a simple rule description")
+///             .direction("INGRESS")
+///             .disabled(false)
+///             .enableLogging(true)
+///             .firewallPolicy(basicRegionalNetworkFirewallPolicy.name())
+///             .priority(1000)
+///             .region("us-west1")
+///             .ruleName("test-rule")
+///             .match(RegionNetworkFirewallPolicyRuleMatchArgs.builder()
+///                 .srcIpRanges("10.100.0.1/32")
+///                 .srcNetworkContext("INTERNET")
+///                 .layer4Configs(RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+///                     .ipProtocol("all")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   basicRegionalNetworkFirewallPolicy:
+///     type: gcp:compute:RegionNetworkFirewallPolicy
+///     name: basic_regional_network_firewall_policy
+///     properties:
+///       name: fw-policy
+///       description: Sample regional network firewall policy
+///       project: my-project-name
+///       region: us-west1
+///   primary:
+///     type: gcp:compute:RegionNetworkFirewallPolicyRule
+///     properties:
+///       action: allow
+///       description: This is a simple rule description
+///       direction: INGRESS
+///       disabled: false
+///       enableLogging: true
+///       firewallPolicy: ${basicRegionalNetworkFirewallPolicy.name}
+///       priority: 1000
+///       region: us-west1
+///       ruleName: test-rule
+///       match:
+///         srcIpRanges:
+///           - 10.100.0.1/32
+///         srcNetworkContext: INTERNET
+///         layer4Configs:
+///           - ipProtocol: all
+/// ```
+///
+/// ### Firewall Policy Rule Target Type Internal Managed Lb Instance Regional
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const net = new gcp.compute.Network("net", {
+///     name: "test-net",
+///     autoCreateSubnetworks: false,
+/// });
+/// const fwPolicy = new gcp.compute.RegionNetworkFirewallPolicy("fw_policy", {
+///     name: "simple-fw-policy",
+///     region: "us-central1",
+/// });
+/// const assoc = new gcp.compute.RegionNetworkFirewallPolicyAssociation("assoc", {
+///     name: "fw-policy-assoc",
+///     region: "us-central1",
+///     firewallPolicy: fwPolicy.id,
+///     attachmentTarget: net.selfLink,
+/// });
+/// const internalManagedLbRule = new gcp.compute.RegionNetworkFirewallPolicyRule("internal_managed_lb_rule", {
+///     region: "us-central1",
+///     firewallPolicy: fwPolicy.name,
+///     priority: 1000,
+///     action: "allow",
+///     direction: "INGRESS",
+///     targetType: "INTERNAL_MANAGED_LB",
+///     match: {
+///         srcIpRanges: ["10.0.0.0/8"],
+///         layer4Configs: [{
+///             ipProtocol: "tcp",
+///         }],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// net = gcp.compute.Network("net",
+///     name="test-net",
+///     auto_create_subnetworks=False)
+/// fw_policy = gcp.compute.RegionNetworkFirewallPolicy("fw_policy",
+///     name="simple-fw-policy",
+///     region="us-central1")
+/// assoc = gcp.compute.RegionNetworkFirewallPolicyAssociation("assoc",
+///     name="fw-policy-assoc",
+///     region="us-central1",
+///     firewall_policy=fw_policy.id,
+///     attachment_target=net.self_link)
+/// internal_managed_lb_rule = gcp.compute.RegionNetworkFirewallPolicyRule("internal_managed_lb_rule",
+///     region="us-central1",
+///     firewall_policy=fw_policy.name,
+///     priority=1000,
+///     action="allow",
+///     direction="INGRESS",
+///     target_type="INTERNAL_MANAGED_LB",
+///     match={
+///         "src_ip_ranges": ["10.0.0.0/8"],
+///         "layer4_configs": [{
+///             "ip_protocol": "tcp",
+///         }],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var net = new Gcp.Compute.Network("net", new()
+///     {
+///         Name = "test-net",
+///         AutoCreateSubnetworks = false,
+///     });
+///
+///     var fwPolicy = new Gcp.Compute.RegionNetworkFirewallPolicy("fw_policy", new()
+///     {
+///         Name = "simple-fw-policy",
+///         Region = "us-central1",
+///     });
+///
+///     var assoc = new Gcp.Compute.RegionNetworkFirewallPolicyAssociation("assoc", new()
+///     {
+///         Name = "fw-policy-assoc",
+///         Region = "us-central1",
+///         FirewallPolicy = fwPolicy.Id,
+///         AttachmentTarget = net.SelfLink,
+///     });
+///
+///     var internalManagedLbRule = new Gcp.Compute.RegionNetworkFirewallPolicyRule("internal_managed_lb_rule", new()
+///     {
+///         Region = "us-central1",
+///         FirewallPolicy = fwPolicy.Name,
+///         Priority = 1000,
+///         Action = "allow",
+///         Direction = "INGRESS",
+///         TargetType = "INTERNAL_MANAGED_LB",
+///         Match = new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyRuleMatchArgs
+///         {
+///             SrcIpRanges = new[]
+///             {
+///                 "10.0.0.0/8",
+///             },
+///             Layer4Configs = new[]
+///             {
+///                 new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs
+///                 {
+///                     IpProtocol = "tcp",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		net, err := compute.NewNetwork(ctx, "net", &compute.NetworkArgs{
+/// 			Name:                  pulumi.String("test-net"),
+/// 			AutoCreateSubnetworks: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		fwPolicy, err := compute.NewRegionNetworkFirewallPolicy(ctx, "fw_policy", &compute.RegionNetworkFirewallPolicyArgs{
+/// 			Name:   pulumi.String("simple-fw-policy"),
+/// 			Region: pulumi.String("us-central1"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionNetworkFirewallPolicyAssociation(ctx, "assoc", &compute.RegionNetworkFirewallPolicyAssociationArgs{
+/// 			Name:             pulumi.String("fw-policy-assoc"),
+/// 			Region:           pulumi.String("us-central1"),
+/// 			FirewallPolicy:   fwPolicy.ID().ToIDOutput().ToStringOutput(),
+/// 			AttachmentTarget: net.SelfLink,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionNetworkFirewallPolicyRule(ctx, "internal_managed_lb_rule", &compute.RegionNetworkFirewallPolicyRuleArgs{
+/// 			Region:         pulumi.String("us-central1"),
+/// 			FirewallPolicy: fwPolicy.Name,
+/// 			Priority:       pulumi.Int(1000),
+/// 			Action:         pulumi.String("allow"),
+/// 			Direction:      pulumi.String("INGRESS"),
+/// 			TargetType:     pulumi.String("INTERNAL_MANAGED_LB"),
+/// 			Match: &compute.RegionNetworkFirewallPolicyRuleMatchArgs{
+/// 				SrcIpRanges: pulumi.StringArray{
+/// 					pulumi.String("10.0.0.0/8"),
+/// 				},
+/// 				Layer4Configs: compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArray{
+/// 					&compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs{
+/// 						IpProtocol: pulumi.String("tcp"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "net" {
+///   name                    = "test-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_regionnetworkfirewallpolicy" "fw_policy" {
+///   name   = "simple-fw-policy"
+///   region = "us-central1"
+/// }
+/// resource "gcp_compute_regionnetworkfirewallpolicyassociation" "assoc" {
+///   name              = "fw-policy-assoc"
+///   region            = "us-central1"
+///   firewall_policy   = gcp_compute_regionnetworkfirewallpolicy.fw_policy.id
+///   attachment_target = gcp_compute_network.net.self_link
+/// }
+/// resource "gcp_compute_regionnetworkfirewallpolicyrule" "internal_managed_lb_rule" {
+///   region          = "us-central1"
+///   firewall_policy = gcp_compute_regionnetworkfirewallpolicy.fw_policy.name
+///   priority        = 1000
+///   action          = "allow"
+///   direction       = "INGRESS"
+///   target_type     = "INTERNAL_MANAGED_LB"
+///   match = {
+///     src_ip_ranges = ["10.0.0.0/8"]
+///     layer4_configs = [{
+///       "ipProtocol" = "tcp"
+///     }]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.Network;
+/// import com.pulumi.gcp.compute.NetworkArgs;
+/// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicy;
+/// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyArgs;
+/// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyAssociation;
+/// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyAssociationArgs;
+/// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRule;
+/// import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var net = new Network("net", NetworkArgs.builder()
+///             .name("test-net")
+///             .autoCreateSubnetworks(false)
+///             .build());
+///
+///         var fwPolicy = new RegionNetworkFirewallPolicy("fwPolicy", RegionNetworkFirewallPolicyArgs.builder()
+///             .name("simple-fw-policy")
+///             .region("us-central1")
+///             .build());
+///
+///         var assoc = new RegionNetworkFirewallPolicyAssociation("assoc", RegionNetworkFirewallPolicyAssociationArgs.builder()
+///             .name("fw-policy-assoc")
+///             .region("us-central1")
+///             .firewallPolicy(fwPolicy.id())
+///             .attachmentTarget(net.selfLink())
+///             .build());
+///
+///         var internalManagedLbRule = new RegionNetworkFirewallPolicyRule("internalManagedLbRule", RegionNetworkFirewallPolicyRuleArgs.builder()
+///             .region("us-central1")
+///             .firewallPolicy(fwPolicy.name())
+///             .priority(1000)
+///             .action("allow")
+///             .direction("INGRESS")
+///             .targetType("INTERNAL_MANAGED_LB")
+///             .match(RegionNetworkFirewallPolicyRuleMatchArgs.builder()
+///                 .srcIpRanges("10.0.0.0/8")
+///                 .layer4Configs(RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+///                     .ipProtocol("tcp")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   net:
+///     type: gcp:compute:Network
+///     properties:
+///       name: test-net
+///       autoCreateSubnetworks: false
+///   fwPolicy:
+///     type: gcp:compute:RegionNetworkFirewallPolicy
+///     name: fw_policy
+///     properties:
+///       name: simple-fw-policy
+///       region: us-central1
+///   assoc:
+///     type: gcp:compute:RegionNetworkFirewallPolicyAssociation
+///     properties:
+///       name: fw-policy-assoc
+///       region: us-central1
+///       firewallPolicy: ${fwPolicy.id}
+///       attachmentTarget: ${net.selfLink}
+///   internalManagedLbRule:
+///     type: gcp:compute:RegionNetworkFirewallPolicyRule
+///     name: internal_managed_lb_rule
+///     properties:
+///       region: us-central1
+///       firewallPolicy: ${fwPolicy.name}
+///       priority: 1000
+///       action: allow
+///       direction: INGRESS
+///       targetType: INTERNAL_MANAGED_LB
+///       match:
+///         srcIpRanges:
+///           - 10.0.0.0/8
+///         layer4Configs:
+///           - ipProtocol: tcp
+/// ```
+///
 ///
 /// ## Import
 ///
 /// RegionNetworkFirewallPolicyRule can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/{{priority}}`
-///
 /// * `{{project}}/{{region}}/{{firewall_policy}}/{{priority}}`
-///
 /// * `{{region}}/{{firewall_policy}}/{{priority}}`
-///
 /// * `{{firewall_policy}}/{{priority}}`
+///
 ///
 /// When using the `pulumi import` command, RegionNetworkFirewallPolicyRule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule default projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/{{priority}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule default {{project}}/{{region}}/{{firewall_policy}}/{{priority}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule default {{region}}/{{firewall_policy}}/{{priority}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule default {{firewall_policy}}/{{priority}}
 /// ```
 class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
-  /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
+  /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
   late final pulumi.Output<String> action;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description for this resource.
   late final pulumi.Output<String?> description;
   /// The direction in which this rule applies.
@@ -1081,7 +2081,7 @@ class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
   /// Denotes whether to enable logging for a particular rule.
   /// If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
   /// Logs may be exported to BigQuery or Pub/Sub.
-  /// Note: you cannot enable logging on "goto_next" rules.
+  /// Note: you cannot enable logging on "gotoNext" rules.
   late final pulumi.Output<bool?> enableLogging;
   /// The firewall policy of the resource.
   late final pulumi.Output<String> firewallPolicy;
@@ -1108,6 +2108,14 @@ class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
   /// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
   /// Security Profile Group and Firewall Policy Rule must be in the same scope.
   late final pulumi.Output<String?> securityProfileGroup;
+  /// A list of forwarding rules to which this rule applies.
+  /// This field allows you to control which load balancers get this rule.
+  /// For example, the following are valid values:
+  /// - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+  /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+  /// - projects/project/global/forwardingRules/forwardingRule
+  /// - projects/project/regions/region/forwardingRules/forwardingRule
+  late final pulumi.Output<List<String>?> targetForwardingRules;
   /// A list of secure tags that controls which instances the firewall rule applies to.
   /// If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
   /// targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -1115,6 +2123,11 @@ class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> targetSecureTags;
   /// A list of service accounts indicating the sets of instances that are applied with this rule.
   late final pulumi.Output<List<String>?> targetServiceAccounts;
+  /// Target types of the firewall policy rule.
+  /// Default value is INSTANCES.
+  /// When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+  /// Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+  late final pulumi.Output<String> targetType;
   /// Boolean flag indicating if the traffic should be TLS decrypted.
   /// Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
   late final pulumi.Output<bool?> tlsInspect;
@@ -1135,6 +2148,7 @@ class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
         ) {
     action = registerOutput<String>('action');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool?>('disabled');
@@ -1148,8 +2162,10 @@ class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
     ruleName = registerOutput<String?>('ruleName');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
     securityProfileGroup = registerOutput<String?>('securityProfileGroup');
+    targetForwardingRules = registerOutput<List<String>?>('targetForwardingRules');
     targetSecureTags = registerOutput<List<Map<String, dynamic>>?>('targetSecureTags');
     targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts');
+    targetType = registerOutput<String>('targetType');
     tlsInspect = registerOutput<bool?>('tlsInspect');
   }
 
@@ -1178,6 +2194,7 @@ class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
         ) {
     action = registerOutput<String>('action');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool?>('disabled');
@@ -1191,8 +2208,10 @@ class RegionNetworkFirewallPolicyRule extends pulumi.CustomResource {
     ruleName = registerOutput<String?>('ruleName');
     ruleTupleCount = registerOutput<int>('ruleTupleCount');
     securityProfileGroup = registerOutput<String?>('securityProfileGroup');
+    targetForwardingRules = registerOutput<List<String>?>('targetForwardingRules');
     targetSecureTags = registerOutput<List<Map<String, dynamic>>?>('targetSecureTags');
     targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts');
+    targetType = registerOutput<String>('targetType');
     tlsInspect = registerOutput<bool?>('tlsInspect');
   }
 }

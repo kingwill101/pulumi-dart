@@ -242,7 +242,7 @@ import 'stream_state.dart';
 /// db = gcp.sql.Database("db",
 ///     instance=instance.name,
 ///     name="db")
-/// pwd = random.index.Password("pwd",
+/// pwd = random.Password("pwd",
 ///     length=16,
 ///     special=False)
 /// user = gcp.sql.User("user",
@@ -431,7 +431,7 @@ import 'stream_state.dart';
 ///         Name = "db",
 ///     });
 ///
-///     var pwd = new Random.Index.Password("pwd", new()
+///     var pwd = new Random.Password("pwd", new()
 ///     {
 ///         Length = 16,
 ///         Special = false,
@@ -647,8 +647,6 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -796,7 +794,7 @@ import 'stream_state.dart';
 /// 				"key": pulumi.String("value"),
 /// 			},
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: sourceConnectionProfile.ID(),
+/// 				SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
 /// 				MysqlSourceConfig: &datastream.StreamSourceConfigMysqlSourceConfigArgs{
 /// 					IncludeObjects: &datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs{
 /// 						MysqlDatabases: datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray{
@@ -849,7 +847,7 @@ import 'stream_state.dart';
 /// 				},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destinationConnectionProfile.ID(),
+/// 				DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
 /// 				GcsDestinationConfig: &datastream.StreamDestinationConfigGcsDestinationConfigArgs{
 /// 					Path:                 pulumi.String("mydata"),
 /// 					FileRotationMb:       pulumi.Int(200),
@@ -895,6 +893,187 @@ import 'stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "my-instance"
+///   database_version = "MYSQL_8_0"
+///   region           = "us-central1"
+///   settings = {
+///     tier = "db-f1-micro"
+///     backup_configuration = {
+///       enabled            = true
+///       binary_log_enabled = true
+///     }
+///     ip_configuration = {
+///       authorized_networks = [{
+///         "value" = "34.71.242.81"
+///         }, {
+///         "value" = "34.72.28.29"
+///         }, {
+///         "value" = "34.67.6.157"
+///         }, {
+///         "value" = "34.67.234.134"
+///         }, {
+///         "value" = "34.72.239.218"
+///       }]
+///     }
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_sql_database" "db" {
+///   instance = gcp_sql_databaseinstance.instance.name
+///   name     = "db"
+/// }
+/// resource "random_password" "pwd" {
+///   length  = 16
+///   special = false
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   host     = "%"
+///   password = random_password.pwd.result
+/// }
+/// resource "gcp_datastream_connectionprofile" "source_connection_profile" {
+///   display_name          = "Source connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "source-profile"
+///   mysql_profile = {
+///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     username = gcp_sql_user.user.name
+///     password = gcp_sql_user.user.password
+///   }
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "my-bucket"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketiammember" "viewer" {
+///   bucket = gcp_storage_bucket.bucket.name
+///   role   = "roles/storage.objectViewer"
+///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_storage_bucketiammember" "creator" {
+///   bucket = gcp_storage_bucket.bucket.name
+///   role   = "roles/storage.objectCreator"
+///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_storage_bucketiammember" "reader" {
+///   bucket = gcp_storage_bucket.bucket.name
+///   role   = "roles/storage.legacyBucketReader"
+///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "key_user" {
+///   crypto_key_id = "kms-name"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_datastream_connectionprofile" "destination_connection_profile" {
+///   display_name          = "Connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "destination-profile"
+///   gcs_profile = {
+///     bucket    = gcp_storage_bucket.bucket.name
+///     root_path = "/path"
+///   }
+/// }
+/// resource "gcp_datastream_stream" "default" {
+///   depends_on    = [gcp_kms_cryptokeyiammember.key_user]
+///   stream_id     = "my-stream"
+///   desired_state = "NOT_STARTED"
+///   location      = "us-central1"
+///   display_name  = "my stream"
+///   labels = {
+///     "key" = "value"
+///   }
+///   source_config = {
+///     source_connection_profile = gcp_datastream_connectionprofile.source_connection_profile.id
+///     mysql_source_config = {
+///       include_objects = {
+///         mysql_databases = [{
+///           "database" = "my-database"
+///           "mysqlTables" = [{
+///             "table" = "includedTable"
+///             "mysqlColumns" = [{
+///               "column"          = "includedColumn"
+///               "dataType"        = "VARCHAR"
+///               "collation"       = "utf8mb4"
+///               "primaryKey"      = false
+///               "nullable"        = false
+///               "ordinalPosition" = 0
+///             }]
+///             }, {
+///             "table" = "includedTable_2"
+///           }]
+///         }]
+///       }
+///       exclude_objects = {
+///         mysql_databases = [{
+///           "database" = "my-database"
+///           "mysqlTables" = [{
+///             "table" = "excludedTable"
+///             "mysqlColumns" = [{
+///               "column"          = "excludedColumn"
+///               "dataType"        = "VARCHAR"
+///               "collation"       = "utf8mb4"
+///               "primaryKey"      = false
+///               "nullable"        = false
+///               "ordinalPosition" = 0
+///             }]
+///           }]
+///         }]
+///       }
+///       max_concurrent_cdc_tasks = 5
+///     }
+///   }
+///   destination_config = {
+///     destination_connection_profile = gcp_datastream_connectionprofile.destination_connection_profile.id
+///     gcs_destination_config = {
+///       path                   = "mydata"
+///       file_rotation_mb       = 200
+///       file_rotation_interval = "60s"
+///       json_file_format = {
+///         schema_file_format = "NO_SCHEMA_FILE"
+///         compression        = "GZIP"
+///       }
+///     }
+///   }
+///   backfill_all = {
+///     mysql_excluded_objects = {
+///       mysql_databases = [{
+///         "database" = "my-database"
+///         "mysqlTables" = [{
+///           "table" = "excludedTable"
+///           "mysqlColumns" = [{
+///             "column"          = "excludedColumn"
+///             "dataType"        = "VARCHAR"
+///             "collation"       = "utf8mb4"
+///             "primaryKey"      = false
+///             "nullable"        = false
+///             "ordinalPosition" = 0
+///           }]
+///         }]
+///       }]
+///     }
+///   }
+///   customer_managed_encryption_key = "kms-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -908,6 +1087,7 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
 /// import com.pulumi.gcp.sql.Database;
 /// import com.pulumi.gcp.sql.DatabaseArgs;
 /// import com.pulumi.random.Password;
@@ -929,15 +1109,24 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigGcsDestinationConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllMysqlExcludedObjectsArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -998,7 +1187,7 @@ import 'stream_state.dart';
 ///             .name("user")
 ///             .instance(instance.name())
 ///             .host("%")
-///             .password(pwd.result())
+///             .password(pwd.get("result"))
 ///             .build());
 ///
 ///         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()
@@ -1647,7 +1836,7 @@ import 'stream_state.dart';
 /// 			StreamId:     pulumi.String("my-stream"),
 /// 			DesiredState: pulumi.String("RUNNING"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: source.ID(),
+/// 				SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
 /// 				PostgresqlSourceConfig: &datastream.StreamSourceConfigPostgresqlSourceConfigArgs{
 /// 					MaxConcurrentBackfillTasks: pulumi.Int(12),
 /// 					Publication:                pulumi.String("publication"),
@@ -1689,7 +1878,7 @@ import 'stream_state.dart';
 /// 				},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destination.ID(),
+/// 				DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					DataFreshness: pulumi.String("900s"),
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -1726,6 +1915,94 @@ import 'stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datastream_connectionprofile" "source" {
+///   display_name          = "Postgresql Source"
+///   location              = "us-central1"
+///   connection_profile_id = "source-profile"
+///   postgresql_profile = {
+///     hostname = "hostname"
+///     port     = 5432
+///     username = "user"
+///     password = "pass"
+///     database = "postgres"
+///   }
+/// }
+/// resource "gcp_datastream_connectionprofile" "destination" {
+///   display_name          = "BigQuery Destination"
+///   location              = "us-central1"
+///   connection_profile_id = "destination-profile"
+///   bigquery_profile      = {}
+/// }
+/// resource "gcp_datastream_stream" "default" {
+///   display_name  = "Postgres to BigQuery"
+///   location      = "us-central1"
+///   stream_id     = "my-stream"
+///   desired_state = "RUNNING"
+///   source_config = {
+///     source_connection_profile = gcp_datastream_connectionprofile.source.id
+///     postgresql_source_config = {
+///       max_concurrent_backfill_tasks = 12
+///       publication                   = "publication"
+///       replication_slot              = "replication_slot"
+///       include_objects = {
+///         postgresql_schemas = [{
+///           "schema" = "schema"
+///           "postgresqlTables" = [{
+///             "table" = "table"
+///             "postgresqlColumns" = [{
+///               "column" = "column"
+///             }]
+///           }]
+///         }]
+///       }
+///       exclude_objects = {
+///         postgresql_schemas = [{
+///           "schema" = "schema"
+///           "postgresqlTables" = [{
+///             "table" = "table"
+///             "postgresqlColumns" = [{
+///               "column" = "column"
+///             }]
+///           }]
+///         }]
+///       }
+///     }
+///   }
+///   destination_config = {
+///     destination_connection_profile = gcp_datastream_connectionprofile.destination.id
+///     bigquery_destination_config = {
+///       data_freshness = "900s"
+///       source_hierarchy_datasets = {
+///         dataset_template = {
+///           location = "us-central1"
+///         }
+///       }
+///     }
+///   }
+///   backfill_all = {
+///     postgresql_excluded_objects = {
+///       postgresql_schemas = [{
+///         "schema" = "schema"
+///         "postgresqlTables" = [{
+///           "table" = "table"
+///           "postgresqlColumns" = [{
+///             "column" = "column"
+///           }]
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1741,15 +2018,24 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllPostgresqlExcludedObjectsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2259,7 +2545,7 @@ import 'stream_state.dart';
 /// 			StreamId:     pulumi.String("my-stream"),
 /// 			DesiredState: pulumi.String("RUNNING"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: source.ID(),
+/// 				SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
 /// 				OracleSourceConfig: &datastream.StreamSourceConfigOracleSourceConfigArgs{
 /// 					MaxConcurrentCdcTasks:      pulumi.Int(8),
 /// 					MaxConcurrentBackfillTasks: pulumi.Int(12),
@@ -2301,7 +2587,7 @@ import 'stream_state.dart';
 /// 				},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destination.ID(),
+/// 				DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					DataFreshness: pulumi.String("900s"),
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -2338,6 +2624,94 @@ import 'stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datastream_connectionprofile" "source" {
+///   display_name          = "Oracle Source"
+///   location              = "us-central1"
+///   connection_profile_id = "source-profile"
+///   oracle_profile = {
+///     hostname         = "hostname"
+///     port             = 1521
+///     username         = "user"
+///     password         = "pass"
+///     database_service = "ORCL"
+///   }
+/// }
+/// resource "gcp_datastream_connectionprofile" "destination" {
+///   display_name          = "BigQuery Destination"
+///   location              = "us-central1"
+///   connection_profile_id = "destination-profile"
+///   bigquery_profile      = {}
+/// }
+/// resource "gcp_datastream_stream" "stream5" {
+///   display_name  = "Oracle to BigQuery"
+///   location      = "us-central1"
+///   stream_id     = "my-stream"
+///   desired_state = "RUNNING"
+///   source_config = {
+///     source_connection_profile = gcp_datastream_connectionprofile.source.id
+///     oracle_source_config = {
+///       max_concurrent_cdc_tasks      = 8
+///       max_concurrent_backfill_tasks = 12
+///       include_objects = {
+///         oracle_schemas = [{
+///           "schema" = "schema"
+///           "oracleTables" = [{
+///             "table" = "table"
+///             "oracleColumns" = [{
+///               "column" = "column"
+///             }]
+///           }]
+///         }]
+///       }
+///       exclude_objects = {
+///         oracle_schemas = [{
+///           "schema" = "schema"
+///           "oracleTables" = [{
+///             "table" = "table"
+///             "oracleColumns" = [{
+///               "column" = "column"
+///             }]
+///           }]
+///         }]
+///       }
+///       drop_large_objects = {}
+///     }
+///   }
+///   destination_config = {
+///     destination_connection_profile = gcp_datastream_connectionprofile.destination.id
+///     bigquery_destination_config = {
+///       data_freshness = "900s"
+///       source_hierarchy_datasets = {
+///         dataset_template = {
+///           location = "us-central1"
+///         }
+///       }
+///     }
+///   }
+///   backfill_all = {
+///     oracle_excluded_objects = {
+///       oracle_schemas = [{
+///         "schema" = "schema"
+///         "oracleTables" = [{
+///           "table" = "table"
+///           "oracleColumns" = [{
+///             "column" = "column"
+///           }]
+///         }]
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2353,7 +2727,13 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigIncludeObjectsArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigExcludeObjectsArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigArgs;
@@ -2361,8 +2741,11 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllOracleExcludedObjectsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2535,7 +2918,7 @@ import 'stream_state.dart';
 ///
 /// const instance = new gcp.sql.DatabaseInstance("instance", {
 ///     name: "sql-server",
-///     databaseVersion: "SQLSERVER_2019_STANDARD",
+///     databaseVersion: "SQLSERVER_2022_STANDARD",
 ///     region: "us-central1",
 ///     rootPassword: "root-password",
 ///     deletionProtection: true,
@@ -2629,7 +3012,7 @@ import 'stream_state.dart';
 ///
 /// instance = gcp.sql.DatabaseInstance("instance",
 ///     name="sql-server",
-///     database_version="SQLSERVER_2019_STANDARD",
+///     database_version="SQLSERVER_2022_STANDARD",
 ///     region="us-central1",
 ///     root_password="root-password",
 ///     deletion_protection=True,
@@ -2721,7 +3104,7 @@ import 'stream_state.dart';
 ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
 ///     {
 ///         Name = "sql-server",
-///         DatabaseVersion = "SQLSERVER_2019_STANDARD",
+///         DatabaseVersion = "SQLSERVER_2022_STANDARD",
 ///         Region = "us-central1",
 ///         RootPassword = "root-password",
 ///         DeletionProtection = true,
@@ -2862,7 +3245,7 @@ import 'stream_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
 /// 			Name:               pulumi.String("sql-server"),
-/// 			DatabaseVersion:    pulumi.String("SQLSERVER_2019_STANDARD"),
+/// 			DatabaseVersion:    pulumi.String("SQLSERVER_2022_STANDARD"),
 /// 			Region:             pulumi.String("us-central1"),
 /// 			RootPassword:       pulumi.String("root-password"),
 /// 			DeletionProtection: pulumi.Bool(true),
@@ -2938,7 +3321,7 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			StreamId:    pulumi.String("stream"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: source.ID(),
+/// 				SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
 /// 				SqlServerSourceConfig: &datastream.StreamSourceConfigSqlServerSourceConfigArgs{
 /// 					IncludeObjects: &datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs{
 /// 						Schemas: datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArray{
@@ -2956,7 +3339,7 @@ import 'stream_state.dart';
 /// 				},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destination.ID(),
+/// 				DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					DataFreshness: pulumi.String("900s"),
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -2975,6 +3358,98 @@ import 'stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name                = "sql-server"
+///   database_version    = "SQLSERVER_2022_STANDARD"
+///   region              = "us-central1"
+///   root_password       = "root-password"
+///   deletion_protection = true
+///   settings = {
+///     tier = "db-custom-2-4096"
+///     ip_configuration = {
+///       authorized_networks = [{
+///         "value" = "34.71.242.81"
+///         }, {
+///         "value" = "34.72.28.29"
+///         }, {
+///         "value" = "34.67.6.157"
+///         }, {
+///         "value" = "34.67.234.134"
+///         }, {
+///         "value" = "34.72.239.218"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_sql_database" "db" {
+///   depends_on = [gcp_sql_user.user]
+///   name       = "db"
+///   instance   = gcp_sql_databaseinstance.instance.name
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   password = "password"
+/// }
+/// resource "gcp_datastream_connectionprofile" "source" {
+///   display_name          = "SQL Server Source"
+///   location              = "us-central1"
+///   connection_profile_id = "source-profile"
+///   sql_server_profile = {
+///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     port     = 1433
+///     username = gcp_sql_user.user.name
+///     password = gcp_sql_user.user.password
+///     database = gcp_sql_database.db.name
+///   }
+/// }
+/// resource "gcp_datastream_connectionprofile" "destination" {
+///   display_name          = "BigQuery Destination"
+///   location              = "us-central1"
+///   connection_profile_id = "destination-profile"
+///   bigquery_profile      = {}
+/// }
+/// resource "gcp_datastream_stream" "default" {
+///   display_name = "SQL Server to BigQuery"
+///   location     = "us-central1"
+///   stream_id    = "stream"
+///   source_config = {
+///     source_connection_profile = gcp_datastream_connectionprofile.source.id
+///     sql_server_source_config = {
+///       include_objects = {
+///         schemas = [{
+///           "schema" = "schema"
+///           "tables" = [{
+///             "table" = "table"
+///           }]
+///         }]
+///       }
+///       transaction_logs = {}
+///     }
+///   }
+///   destination_config = {
+///     destination_connection_profile = gcp_datastream_connectionprofile.destination.id
+///     bigquery_destination_config = {
+///       data_freshness = "900s"
+///       source_hierarchy_datasets = {
+///         dataset_template = {
+///           location = "us-central1"
+///         }
+///       }
+///     }
+///   }
+///   backfill_none = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2985,6 +3460,7 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
 /// import com.pulumi.gcp.sql.User;
 /// import com.pulumi.gcp.sql.UserArgs;
 /// import com.pulumi.gcp.sql.Database;
@@ -2998,6 +3474,8 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigArgs;
@@ -3005,8 +3483,8 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3020,7 +3498,7 @@ import 'stream_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
 ///             .name("sql-server")
-///             .databaseVersion("SQLSERVER_2019_STANDARD")
+///             .databaseVersion("SQLSERVER_2022_STANDARD")
 ///             .region("us-central1")
 ///             .rootPassword("root-password")
 ///             .deletionProtection(true)
@@ -3124,7 +3602,7 @@ import 'stream_state.dart';
 ///     type: gcp:sql:DatabaseInstance
 ///     properties:
 ///       name: sql-server
-///       databaseVersion: SQLSERVER_2019_STANDARD
+///       databaseVersion: SQLSERVER_2022_STANDARD
 ///       region: us-central1
 ///       rootPassword: root-password
 ///       deletionProtection: true
@@ -3205,7 +3683,7 @@ import 'stream_state.dart';
 ///
 /// const instance = new gcp.sql.DatabaseInstance("instance", {
 ///     name: "sql-server",
-///     databaseVersion: "SQLSERVER_2019_STANDARD",
+///     databaseVersion: "SQLSERVER_2022_STANDARD",
 ///     region: "us-central1",
 ///     rootPassword: "root-password",
 ///     deletionProtection: true,
@@ -3299,7 +3777,7 @@ import 'stream_state.dart';
 ///
 /// instance = gcp.sql.DatabaseInstance("instance",
 ///     name="sql-server",
-///     database_version="SQLSERVER_2019_STANDARD",
+///     database_version="SQLSERVER_2022_STANDARD",
 ///     region="us-central1",
 ///     root_password="root-password",
 ///     deletion_protection=True,
@@ -3391,7 +3869,7 @@ import 'stream_state.dart';
 ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
 ///     {
 ///         Name = "sql-server",
-///         DatabaseVersion = "SQLSERVER_2019_STANDARD",
+///         DatabaseVersion = "SQLSERVER_2022_STANDARD",
 ///         Region = "us-central1",
 ///         RootPassword = "root-password",
 ///         DeletionProtection = true,
@@ -3532,7 +4010,7 @@ import 'stream_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
 /// 			Name:               pulumi.String("sql-server"),
-/// 			DatabaseVersion:    pulumi.String("SQLSERVER_2019_STANDARD"),
+/// 			DatabaseVersion:    pulumi.String("SQLSERVER_2022_STANDARD"),
 /// 			Region:             pulumi.String("us-central1"),
 /// 			RootPassword:       pulumi.String("root-password"),
 /// 			DeletionProtection: pulumi.Bool(true),
@@ -3608,7 +4086,7 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			StreamId:    pulumi.String("stream"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: source.ID(),
+/// 				SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
 /// 				SqlServerSourceConfig: &datastream.StreamSourceConfigSqlServerSourceConfigArgs{
 /// 					IncludeObjects: &datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs{
 /// 						Schemas: datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArray{
@@ -3626,7 +4104,7 @@ import 'stream_state.dart';
 /// 				},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destination.ID(),
+/// 				DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					DataFreshness: pulumi.String("900s"),
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -3645,6 +4123,98 @@ import 'stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name                = "sql-server"
+///   database_version    = "SQLSERVER_2022_STANDARD"
+///   region              = "us-central1"
+///   root_password       = "root-password"
+///   deletion_protection = true
+///   settings = {
+///     tier = "db-custom-2-4096"
+///     ip_configuration = {
+///       authorized_networks = [{
+///         "value" = "34.71.242.81"
+///         }, {
+///         "value" = "34.72.28.29"
+///         }, {
+///         "value" = "34.67.6.157"
+///         }, {
+///         "value" = "34.67.234.134"
+///         }, {
+///         "value" = "34.72.239.218"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_sql_database" "db" {
+///   depends_on = [gcp_sql_user.user]
+///   name       = "db"
+///   instance   = gcp_sql_databaseinstance.instance.name
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   password = "password"
+/// }
+/// resource "gcp_datastream_connectionprofile" "source" {
+///   display_name          = "SQL Server Source"
+///   location              = "us-central1"
+///   connection_profile_id = "source-profile"
+///   sql_server_profile = {
+///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     port     = 1433
+///     username = gcp_sql_user.user.name
+///     password = gcp_sql_user.user.password
+///     database = gcp_sql_database.db.name
+///   }
+/// }
+/// resource "gcp_datastream_connectionprofile" "destination" {
+///   display_name          = "BigQuery Destination"
+///   location              = "us-central1"
+///   connection_profile_id = "destination-profile"
+///   bigquery_profile      = {}
+/// }
+/// resource "gcp_datastream_stream" "default" {
+///   display_name = "SQL Server to BigQuery"
+///   location     = "us-central1"
+///   stream_id    = "stream"
+///   source_config = {
+///     source_connection_profile = gcp_datastream_connectionprofile.source.id
+///     sql_server_source_config = {
+///       include_objects = {
+///         schemas = [{
+///           "schema" = "schema"
+///           "tables" = [{
+///             "table" = "table"
+///           }]
+///         }]
+///       }
+///       change_tables = {}
+///     }
+///   }
+///   destination_config = {
+///     destination_connection_profile = gcp_datastream_connectionprofile.destination.id
+///     bigquery_destination_config = {
+///       data_freshness = "900s"
+///       source_hierarchy_datasets = {
+///         dataset_template = {
+///           location = "us-central1"
+///         }
+///       }
+///     }
+///   }
+///   backfill_none = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3655,6 +4225,7 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
 /// import com.pulumi.gcp.sql.User;
 /// import com.pulumi.gcp.sql.UserArgs;
 /// import com.pulumi.gcp.sql.Database;
@@ -3668,6 +4239,8 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigChangeTablesArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigArgs;
@@ -3675,8 +4248,8 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3690,7 +4263,7 @@ import 'stream_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
 ///             .name("sql-server")
-///             .databaseVersion("SQLSERVER_2019_STANDARD")
+///             .databaseVersion("SQLSERVER_2022_STANDARD")
 ///             .region("us-central1")
 ///             .rootPassword("root-password")
 ///             .deletionProtection(true)
@@ -3794,7 +4367,7 @@ import 'stream_state.dart';
 ///     type: gcp:sql:DatabaseInstance
 ///     properties:
 ///       name: sql-server
-///       databaseVersion: SQLSERVER_2019_STANDARD
+///       databaseVersion: SQLSERVER_2022_STANDARD
 ///       region: us-central1
 ///       rootPassword: root-password
 ///       deletionProtection: true
@@ -3878,7 +4451,7 @@ import 'stream_state.dart';
 ///     databaseVersion: "MYSQL_8_0",
 ///     region: "us-central1",
 ///     rootPassword: "<%= ctx[:vars]['mysql_root_password'] %>",
-///     deletionProtection: "<%= ctx[:vars]['deletion_protection'] %>",
+///     deletionProtection: "<%= ctx[:vars]['deletion_protection'] %>" === "true",
 ///     settings: {
 ///         tier: "db-custom-2-4096",
 ///         ipConfiguration: {
@@ -3972,7 +4545,7 @@ import 'stream_state.dart';
 ///     database_version="MYSQL_8_0",
 ///     region="us-central1",
 ///     root_password="<%= ctx[:vars]['mysql_root_password'] %>",
-///     deletion_protection="<%= ctx[:vars]['deletion_protection'] %>",
+///     deletion_protection="<%= ctx[:vars]['deletion_protection'] %>" == "true",
 ///     settings={
 ///         "tier": "db-custom-2-4096",
 ///         "ip_configuration": {
@@ -4064,7 +4637,7 @@ import 'stream_state.dart';
 ///         DatabaseVersion = "MYSQL_8_0",
 ///         Region = "us-central1",
 ///         RootPassword = "<%= ctx[:vars]['mysql_root_password'] %>",
-///         DeletionProtection = "<%= ctx[:vars]['deletion_protection'] %>",
+///         DeletionProtection = "<%= ctx[:vars]['deletion_protection'] %>" == "true",
 ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
 ///         {
 ///             Tier = "db-custom-2-4096",
@@ -4278,14 +4851,14 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			StreamId:    pulumi.String("<%= ctx[:vars]['stream_id'] %>"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: source.ID(),
+/// 				SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
 /// 				MysqlSourceConfig: &datastream.StreamSourceConfigMysqlSourceConfigArgs{
 /// 					IncludeObjects: &datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs{
 /// 						Schemas: []map[string]interface{}{
 /// 							map[string]interface{}{
 /// 								"schema": "schema",
-/// 								"tables": []map[string]interface{}{
-/// 									map[string]interface{}{
+/// 								"tables": []map[string]string{
+/// 									{
 /// 										"table": "table",
 /// 									},
 /// 								},
@@ -4296,7 +4869,7 @@ import 'stream_state.dart';
 /// 				},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destination.ID(),
+/// 				DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					DataFreshness: pulumi.String("900s"),
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -4315,6 +4888,98 @@ import 'stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name                = "<%= ctx[:vars]['mysql_name'] %>"
+///   database_version    = "MYSQL_8_0"
+///   region              = "us-central1"
+///   root_password       = "<%= ctx[:vars]['mysql_root_password'] %>"
+///   deletion_protection = "<%= ctx[:vars]['deletion_protection'] %>"
+///   settings = {
+///     tier = "db-custom-2-4096"
+///     ip_configuration = {
+///       authorized_networks = [{
+///         "value" = "34.71.242.81"
+///         }, {
+///         "value" = "34.72.28.29"
+///         }, {
+///         "value" = "34.67.6.157"
+///         }, {
+///         "value" = "34.67.234.134"
+///         }, {
+///         "value" = "34.72.239.218"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_sql_database" "db" {
+///   depends_on = [gcp_sql_user.user]
+///   name       = "<%= ctx[:vars]['database_name'] %>"
+///   instance   = gcp_sql_databaseinstance.instance.name
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "<%= ctx[:vars]['database_user'] %>"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   password = "<%= ctx[:vars]['database_password'] %>"
+/// }
+/// resource "gcp_datastream_connectionprofile" "source" {
+///   display_name          = "MySQL Source"
+///   location              = "us-central1"
+///   connection_profile_id = "<%= ctx[:vars]['source_connection_profile_id'] %>"
+///   mysql_profile = {
+///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     port     = 1433
+///     username = gcp_sql_user.user.name
+///     password = gcp_sql_user.user.password
+///     database = gcp_sql_database.db.name
+///   }
+/// }
+/// resource "gcp_datastream_connectionprofile" "destination" {
+///   display_name          = "BigQuery Destination"
+///   location              = "us-central1"
+///   connection_profile_id = "<%= ctx[:vars]['destination_connection_profile_id'] %>"
+///   bigquery_profile      = {}
+/// }
+/// resource "gcp_datastream_stream" "default" {
+///   display_name = "MySQL to BigQuery"
+///   location     = "us-central1"
+///   stream_id    = "<%= ctx[:vars]['stream_id'] %>"
+///   source_config = {
+///     source_connection_profile = gcp_datastream_connectionprofile.source.id
+///     mysql_source_config = {
+///       include_objects = {
+///         schemas = [{
+///           "schema" = "schema"
+///           "tables" = [{
+///             "table" = "table"
+///           }]
+///         }]
+///       }
+///       gtid = {}
+///     }
+///   }
+///   destination_config = {
+///     destination_connection_profile = gcp_datastream_connectionprofile.destination.id
+///     bigquery_destination_config = {
+///       data_freshness = "900s"
+///       source_hierarchy_datasets = {
+///         dataset_template = {
+///           location = "us-central1"
+///         }
+///       }
+///     }
+///   }
+///   backfill_none = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4325,6 +4990,7 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
 /// import com.pulumi.gcp.sql.User;
 /// import com.pulumi.gcp.sql.UserArgs;
 /// import com.pulumi.gcp.sql.Database;
@@ -4345,8 +5011,8 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4429,9 +5095,9 @@ import 'stream_state.dart';
 ///                 .sourceConnectionProfile(source.id())
 ///                 .mysqlSourceConfig(StreamSourceConfigMysqlSourceConfigArgs.builder()
 ///                     .includeObjects(StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs.builder()
-///                         .schemas(List.of(Map.ofEntries(
+///                         .schemas(Arrays.asList(Map.ofEntries(
 ///                             Map.entry("schema", "schema"),
-///                             Map.entry("tables", List.of(Map.of("table", "table")))
+///                             Map.entry("tables", Arrays.asList(Map.of("table", "table")))
 ///                         )))
 ///                         .build())
 ///                     .gtid(StreamSourceConfigMysqlSourceConfigGtidArgs.builder()
@@ -4676,7 +5342,7 @@ import 'stream_state.dart';
 ///         },
 ///     },
 ///     deletion_protection=False)
-/// pwd = random.index.Password("pwd",
+/// pwd = random.Password("pwd",
 ///     length=16,
 ///     special=False)
 /// user = gcp.sql.User("user",
@@ -4783,7 +5449,7 @@ import 'stream_state.dart';
 ///         DeletionProtection = false,
 ///     });
 ///
-///     var pwd = new Random.Index.Password("pwd", new()
+///     var pwd = new Random.Password("pwd", new()
 ///     {
 ///         Length = 16,
 ///         Special = false,
@@ -4943,15 +5609,15 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			StreamId:    pulumi.String("postgres-bigquery"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: sourceConnectionProfile.ID(),
+/// 				SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
 /// 				MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destinationConnectionProfile2.ID(),
+/// 				DestinationConnectionProfile: destinationConnectionProfile2.ID().ToIDOutput().ToStringOutput(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					DataFreshness: pulumi.String("900s"),
 /// 					SingleTargetDataset: &datastream.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs{
-/// 						DatasetId: postgres.ID(),
+/// 						DatasetId: postgres.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -4971,6 +5637,100 @@ import 'stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "postgres" {
+///   dataset_id    = "postgres"
+///   friendly_name = "postgres"
+///   description   = "Database of postgres"
+///   location      = "us-central1"
+/// }
+/// resource "gcp_datastream_stream" "default" {
+///   display_name = "postgres to bigQuery"
+///   location     = "us-central1"
+///   stream_id    = "postgres-bigquery"
+///   source_config = {
+///     source_connection_profile = gcp_datastream_connectionprofile.source_connection_profile.id
+///     mysql_source_config       = {}
+///   }
+///   destination_config = {
+///     destination_connection_profile = gcp_datastream_connectionprofile.destination_connection_profile2.id
+///     bigquery_destination_config = {
+///       data_freshness = "900s"
+///       single_target_dataset = {
+///         dataset_id = gcp_bigquery_dataset.postgres.id
+///       }
+///     }
+///   }
+///   backfill_all = {}
+/// }
+/// resource "gcp_datastream_connectionprofile" "destination_connection_profile2" {
+///   display_name          = "Connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "dest-profile"
+///   bigquery_profile      = {}
+/// }
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "instance-name"
+///   database_version = "MYSQL_8_0"
+///   region           = "us-central1"
+///   settings = {
+///     tier = "db-f1-micro"
+///     backup_configuration = {
+///       enabled            = true
+///       binary_log_enabled = true
+///     }
+///     ip_configuration = {
+///       authorized_networks = [{
+///         "value" = "34.71.242.81"
+///         }, {
+///         "value" = "34.72.28.29"
+///         }, {
+///         "value" = "34.67.6.157"
+///         }, {
+///         "value" = "34.67.234.134"
+///         }, {
+///         "value" = "34.72.239.218"
+///       }]
+///     }
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_sql_database" "db" {
+///   instance = gcp_sql_databaseinstance.instance.name
+///   name     = "db"
+/// }
+/// resource "random_password" "pwd" {
+///   length  = 16
+///   special = false
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "my-user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   host     = "%"
+///   password = random_password.pwd.result
+/// }
+/// resource "gcp_datastream_connectionprofile" "source_connection_profile" {
+///   display_name          = "Source connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "source-profile"
+///   mysql_profile = {
+///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     username = gcp_sql_user.user.name
+///     password = gcp_sql_user.user.password
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4987,6 +5747,7 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
 /// import com.pulumi.random.Password;
 /// import com.pulumi.random.PasswordArgs;
 /// import com.pulumi.gcp.sql.User;
@@ -5002,8 +5763,8 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
 /// import com.pulumi.gcp.sql.Database;
 /// import com.pulumi.gcp.sql.DatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5071,7 +5832,7 @@ import 'stream_state.dart';
 ///             .name("my-user")
 ///             .instance(instance.name())
 ///             .host("%")
-///             .password(pwd.result())
+///             .password(pwd.get("result"))
 ///             .build());
 ///
 ///         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()
@@ -5339,7 +6100,7 @@ import 'stream_state.dart';
 /// db = gcp.sql.Database("db",
 ///     instance=instance.name,
 ///     name="db")
-/// pwd = random.index.Password("pwd",
+/// pwd = random.Password("pwd",
 ///     length=16,
 ///     special=False)
 /// user = gcp.sql.User("user",
@@ -5448,7 +6209,7 @@ import 'stream_state.dart';
 ///         Name = "db",
 ///     });
 ///
-///     var pwd = new Random.Index.Password("pwd", new()
+///     var pwd = new Random.Password("pwd", new()
 ///     {
 ///         Length = 16,
 ///         Special = false,
@@ -5532,8 +6293,6 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
@@ -5646,11 +6405,11 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			DisplayName: pulumi.String("my stream"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: sourceConnectionProfile.ID(),
+/// 				SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
 /// 				MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destinationConnectionProfile.ID(),
+/// 				DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
 /// 						DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
@@ -5671,6 +6430,107 @@ import 'stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+/// data "gcp_bigquery_getdefaultserviceaccount" "bqSa" {
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "my-instance"
+///   database_version = "MYSQL_8_0"
+///   region           = "us-central1"
+///   settings = {
+///     tier = "db-f1-micro"
+///     backup_configuration = {
+///       enabled            = true
+///       binary_log_enabled = true
+///     }
+///     ip_configuration = {
+///       authorized_networks = [{
+///         "value" = "34.71.242.81"
+///         }, {
+///         "value" = "34.72.28.29"
+///         }, {
+///         "value" = "34.67.6.157"
+///         }, {
+///         "value" = "34.67.234.134"
+///         }, {
+///         "value" = "34.72.239.218"
+///       }]
+///     }
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_sql_database" "db" {
+///   instance = gcp_sql_databaseinstance.instance.name
+///   name     = "db"
+/// }
+/// resource "random_password" "pwd" {
+///   length  = 16
+///   special = false
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   host     = "%"
+///   password = random_password.pwd.result
+/// }
+/// resource "gcp_datastream_connectionprofile" "source_connection_profile" {
+///   display_name          = "Source connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "source-profile"
+///   mysql_profile = {
+///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     username = gcp_sql_user.user.name
+///     password = gcp_sql_user.user.password
+///   }
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "bigquery_key_user" {
+///   crypto_key_id = "bigquery-kms-name"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:${data.gcp_bigquery_getdefaultserviceaccount.bqSa.email}"
+/// }
+/// resource "gcp_datastream_connectionprofile" "destination_connection_profile" {
+///   display_name          = "Connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "destination-profile"
+///   bigquery_profile      = {}
+/// }
+/// resource "gcp_datastream_stream" "default" {
+///   depends_on   = [gcp_kms_cryptokeyiammember.bigquery_key_user]
+///   stream_id    = "my-stream"
+///   location     = "us-central1"
+///   display_name = "my stream"
+///   source_config = {
+///     source_connection_profile = gcp_datastream_connectionprofile.source_connection_profile.id
+///     mysql_source_config       = {}
+///   }
+///   destination_config = {
+///     destination_connection_profile = gcp_datastream_connectionprofile.destination_connection_profile.id
+///     bigquery_destination_config = {
+///       source_hierarchy_datasets = {
+///         dataset_template = {
+///           location     = "us-central1"
+///           kms_key_name = "bigquery-kms-name"
+///         }
+///       }
+///     }
+///   }
+///   backfill_none = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5684,6 +6544,7 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
 /// import com.pulumi.gcp.sql.Database;
 /// import com.pulumi.gcp.sql.DatabaseArgs;
 /// import com.pulumi.random.Password;
@@ -5708,8 +6569,8 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5770,7 +6631,7 @@ import 'stream_state.dart';
 ///             .name("user")
 ///             .instance(instance.name())
 ///             .host("%")
-///             .password(pwd.result())
+///             .password(pwd.get("result"))
 ///             .build());
 ///
 ///         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()
@@ -5937,8 +6798,8 @@ import 'stream_state.dart';
 ///
 /// const project = gcp.organizations.getProject({});
 /// const cross_project_dataset = new gcp.organizations.Project("cross-project-dataset", {
-///     projectId: "tf-test_55438",
-///     name: "tf-test_32706",
+///     projectId: "tf-test_21912",
+///     name: "tf-test_46731",
 ///     orgId: "123456789",
 ///     billingAccount: "000000-0000000-0000000-000000",
 ///     deletionPolicy: "DELETE",
@@ -6052,8 +6913,8 @@ import 'stream_state.dart';
 ///
 /// project = gcp.organizations.get_project()
 /// cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-///     project_id="tf-test_55438",
-///     name="tf-test_32706",
+///     project_id="tf-test_21912",
+///     name="tf-test_46731",
 ///     org_id="123456789",
 ///     billing_account="000000-0000000-0000000-000000",
 ///     deletion_policy="DELETE")
@@ -6103,7 +6964,7 @@ import 'stream_state.dart';
 /// db = gcp.sql.Database("db",
 ///     instance=instance.name,
 ///     name="db")
-/// pwd = random.index.Password("pwd",
+/// pwd = random.Password("pwd",
 ///     length=16,
 ///     special=False)
 /// user = gcp.sql.User("user",
@@ -6160,8 +7021,8 @@ import 'stream_state.dart';
 ///
 ///     var cross_project_dataset = new Gcp.Organizations.Project("cross-project-dataset", new()
 ///     {
-///         ProjectId = "tf-test_55438",
-///         Name = "tf-test_32706",
+///         ProjectId = "tf-test_21912",
+///         Name = "tf-test_46731",
 ///         OrgId = "123456789",
 ///         BillingAccount = "000000-0000000-0000000-000000",
 ///         DeletionPolicy = "DELETE",
@@ -6253,7 +7114,7 @@ import 'stream_state.dart';
 ///         Name = "db",
 ///     });
 ///
-///     var pwd = new Random.Index.Password("pwd", new()
+///     var pwd = new Random.Password("pwd", new()
 ///     {
 ///         Length = 16,
 ///         Special = false,
@@ -6322,8 +7183,6 @@ import 'stream_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
@@ -6340,8 +7199,8 @@ import 'stream_state.dart';
 /// 			return err
 /// 		}
 /// 		cross_project_dataset, err := organizations.NewProject(ctx, "cross-project-dataset", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("tf-test_55438"),
-/// 			Name:           pulumi.String("tf-test_32706"),
+/// 			ProjectId:      pulumi.String("tf-test_21912"),
+/// 			Name:           pulumi.String("tf-test_46731"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 /// 			DeletionPolicy: pulumi.String("DELETE"),
@@ -6462,11 +7321,11 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			DisplayName: pulumi.String("my stream"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: sourceConnectionProfile.ID(),
+/// 				SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
 /// 				MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destinationConnectionProfile.ID(),
+/// 				DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
 /// 						DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
@@ -6483,6 +7342,125 @@ import 'stream_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_organizations_project" "cross-project-dataset" {
+///   project_id      = "tf-test_21912"
+///   name            = "tf-test_46731"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "time_sleep" "wait_60_seconds" {
+///   depends_on      = [gcp_organizations_project.cross-project-dataset]
+///   create_duration = "60s"
+/// }
+/// resource "gcp_projects_service" "bigquery" {
+///   depends_on         = [time_sleep.wait_60_seconds]
+///   project            = gcp_organizations_project.cross-project-dataset.project_id
+///   service            = "bigquery.googleapis.com"
+///   disable_on_destroy = false
+/// }
+/// resource "gcp_projects_iammember" "datastream_bigquery_admin" {
+///   depends_on = [time_sleep.wait_60_seconds]
+///   project    = gcp_organizations_project.cross-project-dataset.project_id
+///   role       = "roles/bigquery.admin"
+///   member     ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-datastream.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "my-instance"
+///   database_version = "MYSQL_8_0"
+///   region           = "us-central1"
+///   settings = {
+///     tier = "db-f1-micro"
+///     backup_configuration = {
+///       enabled            = true
+///       binary_log_enabled = true
+///     }
+///     ip_configuration = {
+///       authorized_networks = [{
+///         "value" = "34.71.242.81"
+///         }, {
+///         "value" = "34.72.28.29"
+///         }, {
+///         "value" = "34.67.6.157"
+///         }, {
+///         "value" = "34.67.234.134"
+///         }, {
+///         "value" = "34.72.239.218"
+///       }]
+///     }
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_sql_database" "db" {
+///   instance = gcp_sql_databaseinstance.instance.name
+///   name     = "db"
+/// }
+/// resource "random_password" "pwd" {
+///   length  = 16
+///   special = false
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   host     = "%"
+///   password = random_password.pwd.result
+/// }
+/// resource "gcp_datastream_connectionprofile" "source_connection_profile" {
+///   display_name          = "Source connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "source-profile"
+///   mysql_profile = {
+///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     username = gcp_sql_user.user.name
+///     password = gcp_sql_user.user.password
+///   }
+/// }
+/// resource "gcp_datastream_connectionprofile" "destination_connection_profile" {
+///   display_name          = "Connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "destination-profile"
+///   bigquery_profile      = {}
+/// }
+/// resource "gcp_datastream_stream" "default" {
+///   stream_id    = "my-stream"
+///   location     = "us-central1"
+///   display_name = "my stream"
+///   source_config = {
+///     source_connection_profile = gcp_datastream_connectionprofile.source_connection_profile.id
+///     mysql_source_config       = {}
+///   }
+///   destination_config = {
+///     destination_connection_profile = gcp_datastream_connectionprofile.destination_connection_profile.id
+///     bigquery_destination_config = {
+///       source_hierarchy_datasets = {
+///         dataset_template = {
+///           location = "us-central1"
+///         }
+///         project_id = gcp_organizations_project.cross-project-dataset.project_id
+///       }
+///     }
+///   }
+///   backfill_none = {}
 /// }
 /// ```
 /// ```java
@@ -6506,6 +7484,7 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
 /// import com.pulumi.gcp.sql.Database;
 /// import com.pulumi.gcp.sql.DatabaseArgs;
 /// import com.pulumi.random.Password;
@@ -6526,8 +7505,8 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6543,8 +7522,8 @@ import 'stream_state.dart';
 ///             .build());
 ///
 ///         var cross_project_dataset = new Project("cross-project-dataset", ProjectArgs.builder()
-///             .projectId("tf-test_55438")
-///             .name("tf-test_32706")
+///             .projectId("tf-test_21912")
+///             .name("tf-test_46731")
 ///             .orgId("123456789")
 ///             .billingAccount("000000-0000000-0000000-000000")
 ///             .deletionPolicy("DELETE")
@@ -6618,7 +7597,7 @@ import 'stream_state.dart';
 ///             .name("user")
 ///             .instance(instance.name())
 ///             .host("%")
-///             .password(pwd.result())
+///             .password(pwd.get("result"))
 ///             .build());
 ///
 ///         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()
@@ -6672,8 +7651,8 @@ import 'stream_state.dart';
 ///   cross-project-dataset:
 ///     type: gcp:organizations:Project
 ///     properties:
-///       projectId: tf-test_55438
-///       name: tf-test_32706
+///       projectId: tf-test_21912
+///       name: tf-test_46731
 ///       orgId: '123456789'
 ///       billingAccount: 000000-0000000-0000000-000000
 ///       deletionPolicy: DELETE
@@ -6917,7 +7896,7 @@ import 'stream_state.dart';
 /// db = gcp.sql.Database("db",
 ///     instance=instance.name,
 ///     name="db")
-/// pwd = random.index.Password("pwd",
+/// pwd = random.Password("pwd",
 ///     length=16,
 ///     special=False)
 /// user = gcp.sql.User("user",
@@ -7020,7 +7999,7 @@ import 'stream_state.dart';
 ///         Name = "db",
 ///     });
 ///
-///     var pwd = new Random.Index.Password("pwd", new()
+///     var pwd = new Random.Password("pwd", new()
 ///     {
 ///         Length = 16,
 ///         Special = false,
@@ -7187,11 +8166,11 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			DisplayName: pulumi.String("my stream"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: sourceConnectionProfile.ID(),
+/// 				SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
 /// 				MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destinationConnectionProfile.ID(),
+/// 				DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
 /// 						DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
@@ -7210,6 +8189,99 @@ import 'stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "my-instance"
+///   database_version = "MYSQL_8_0"
+///   region           = "us-central1"
+///   settings = {
+///     tier = "db-f1-micro"
+///     backup_configuration = {
+///       enabled            = true
+///       binary_log_enabled = true
+///     }
+///     ip_configuration = {
+///       authorized_networks = [{
+///         "value" = "34.71.242.81"
+///         }, {
+///         "value" = "34.72.28.29"
+///         }, {
+///         "value" = "34.67.6.157"
+///         }, {
+///         "value" = "34.67.234.134"
+///         }, {
+///         "value" = "34.72.239.218"
+///       }]
+///     }
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_sql_database" "db" {
+///   instance = gcp_sql_databaseinstance.instance.name
+///   name     = "db"
+/// }
+/// resource "random_password" "pwd" {
+///   length  = 16
+///   special = false
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   host     = "%"
+///   password = random_password.pwd.result
+/// }
+/// resource "gcp_datastream_connectionprofile" "source_connection_profile" {
+///   display_name          = "Source connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "source-profile"
+///   mysql_profile = {
+///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     username = gcp_sql_user.user.name
+///     password = gcp_sql_user.user.password
+///   }
+/// }
+/// resource "gcp_datastream_connectionprofile" "destination_connection_profile" {
+///   display_name          = "Connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "destination-profile"
+///   bigquery_profile      = {}
+/// }
+/// resource "gcp_datastream_stream" "default" {
+///   stream_id    = "my-stream"
+///   location     = "us-central1"
+///   display_name = "my stream"
+///   source_config = {
+///     source_connection_profile = gcp_datastream_connectionprofile.source_connection_profile.id
+///     mysql_source_config       = {}
+///   }
+///   destination_config = {
+///     destination_connection_profile = gcp_datastream_connectionprofile.destination_connection_profile.id
+///     bigquery_destination_config = {
+///       source_hierarchy_datasets = {
+///         dataset_template = {
+///           location = "us-central1"
+///         }
+///       }
+///       append_only = {}
+///     }
+///   }
+///   backfill_none = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7223,6 +8295,7 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
 /// import com.pulumi.gcp.sql.Database;
 /// import com.pulumi.gcp.sql.DatabaseArgs;
 /// import com.pulumi.random.Password;
@@ -7243,8 +8316,8 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7305,7 +8378,7 @@ import 'stream_state.dart';
 ///             .name("user")
 ///             .instance(instance.name())
 ///             .host("%")
-///             .password(pwd.result())
+///             .password(pwd.get("result"))
 ///             .build());
 ///
 ///         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()
@@ -7540,7 +8613,7 @@ import 'stream_state.dart';
 ///             },
 ///             blmtConfig: {
 ///                 bucket: blmtBucket.name,
-///                 connectionName: pulumi.all([blmtConnection.project, blmtConnection.location, blmtConnection.connectionId]).apply(([project, location, connectionId]) => `${project}.${location}.${connectionId}`),
+///                 connectionName: pulumi.interpolate`${blmtConnection.project}.${blmtConnection.location}.${blmtConnection.connectionId}`,
 ///                 fileFormat: "PARQUET",
 ///                 tableFormat: "ICEBERG",
 ///                 rootPath: "/",
@@ -7587,7 +8660,7 @@ import 'stream_state.dart';
 /// db = gcp.sql.Database("db",
 ///     instance=instance.name,
 ///     name="db")
-/// pwd = random.index.Password("pwd",
+/// pwd = random.Password("pwd",
 ///     length=16,
 ///     special=False)
 /// user = gcp.sql.User("user",
@@ -7712,7 +8785,7 @@ import 'stream_state.dart';
 ///         Name = "db",
 ///     });
 ///
-///     var pwd = new Random.Index.Password("pwd", new()
+///     var pwd = new Random.Password("pwd", new()
 ///     {
 ///         Length = 16,
 ///         Special = false,
@@ -7946,11 +9019,11 @@ import 'stream_state.dart';
 /// 			Location:    pulumi.String("us-central1"),
 /// 			DisplayName: pulumi.String("My BLMT stream"),
 /// 			SourceConfig: &datastream.StreamSourceConfigArgs{
-/// 				SourceConnectionProfile: sourceConnectionProfile.ID(),
+/// 				SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
 /// 				MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 /// 			},
 /// 			DestinationConfig: &datastream.StreamDestinationConfigArgs{
-/// 				DestinationConnectionProfile: destinationConnectionProfile.ID(),
+/// 				DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
 /// 				BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 /// 					SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
 /// 						DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
@@ -7981,6 +9054,120 @@ import 'stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "blmt-instance"
+///   database_version = "MYSQL_8_0"
+///   region           = "us-central1"
+///   settings = {
+///     tier = "db-f1-micro"
+///     ip_configuration = {
+///       authorized_networks = [{
+///         "value" = "34.71.242.81"
+///         }, {
+///         "value" = "34.72.28.29"
+///         }, {
+///         "value" = "34.67.6.157"
+///         }, {
+///         "value" = "34.67.234.134"
+///         }, {
+///         "value" = "34.72.239.218"
+///       }]
+///     }
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_sql_database" "db" {
+///   instance = gcp_sql_databaseinstance.instance.name
+///   name     = "db"
+/// }
+/// resource "random_password" "pwd" {
+///   length  = 16
+///   special = false
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   host     = "%"
+///   password = random_password.pwd.result
+/// }
+/// resource "gcp_storage_bucket" "blmt_bucket" {
+///   name          = "blmt-bucket"
+///   location      = "us-central1"
+///   force_destroy = true
+/// }
+/// resource "gcp_bigquery_connection" "blmt_connection" {
+///   project        = data.gcp_organizations_getproject.project.project_id
+///   location       = "us-central1"
+///   connection_id  = "blmt-connection"
+///   friendly_name  = "Datastream BLMT Test Connection"
+///   description    = "Connection for Datastream BLMT test"
+///   cloud_resource = {}
+/// }
+/// resource "gcp_storage_bucketiammember" "blmt_connection_bucket_admin" {
+///   bucket = gcp_storage_bucket.blmt_bucket.name
+///   role   = "roles/storage.admin"
+///   member ="serviceAccount:${gcp_bigquery_connection.blmt_connection.cloud_resource.service_account_id}"
+/// }
+/// resource "gcp_datastream_connectionprofile" "source_connection_profile" {
+///   display_name          = "Source connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "blmt-source-profile"
+///   mysql_profile = {
+///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     username = gcp_sql_user.user.name
+///     password = gcp_sql_user.user.password
+///   }
+/// }
+/// resource "gcp_datastream_connectionprofile" "destination_connection_profile" {
+///   display_name          = "Connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "blmt-destination-profile"
+///   bigquery_profile      = {}
+/// }
+/// resource "gcp_datastream_stream" "default" {
+///   stream_id    = "blmt-stream"
+///   location     = "us-central1"
+///   display_name = "My BLMT stream"
+///   source_config = {
+///     source_connection_profile = gcp_datastream_connectionprofile.source_connection_profile.id
+///     mysql_source_config       = {}
+///   }
+///   destination_config = {
+///     destination_connection_profile = gcp_datastream_connectionprofile.destination_connection_profile.id
+///     bigquery_destination_config = {
+///       source_hierarchy_datasets = {
+///         dataset_template = {
+///           location = "us-central1"
+///         }
+///       }
+///       blmt_config = {
+///         bucket          = gcp_storage_bucket.blmt_bucket.name
+///         connection_name ="${gcp_bigquery_connection.blmt_connection.project}.${gcp_bigquery_connection.blmt_connection.location}.${gcp_bigquery_connection.blmt_connection.connection_id}"
+///         file_format     = "PARQUET"
+///         table_format    = "ICEBERG"
+///         root_path       = "/"
+///       }
+///       append_only = {}
+///     }
+///   }
+///   backfill_none = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7993,6 +9180,7 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
 /// import com.pulumi.gcp.sql.Database;
 /// import com.pulumi.gcp.sql.DatabaseArgs;
 /// import com.pulumi.random.Password;
@@ -8021,8 +9209,8 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8079,7 +9267,7 @@ import 'stream_state.dart';
 ///             .name("user")
 ///             .instance(instance.name())
 ///             .host("%")
-///             .password(pwd.result())
+///             .password(pwd.get("result"))
 ///             .build());
 ///
 ///         var blmtBucket = new Bucket("blmtBucket", BucketArgs.builder()
@@ -8660,6 +9848,87 @@ import 'stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_datastream_stream" "stream" {
+///   stream_id    = "rules-stream"
+///   location     = "us-central1"
+///   display_name = "BigQuery Stream with Rules"
+///   source_config = {
+///     source_connection_profile = "rules-source-profile"
+///     mysql_source_config = {
+///       include_objects = {
+///         mysql_databases = [{
+///           "database" = "my_database"
+///         }]
+///       }
+///       binary_log_position = {}
+///     }
+///   }
+///   destination_config = {
+///     destination_connection_profile = "rules-dest-profile"
+///     bigquery_destination_config = {
+///       single_target_dataset = {
+///         dataset_id = "rules-project:rules-dataset"
+///       }
+///     }
+///   }
+///   backfill_none = {}
+///   rule_sets {
+///     object_filter = {
+///       source_object_identifier = {
+///         mysql_identifier = {
+///           database = "test_database"
+///           table    = "test_table_1"
+///         }
+///       }
+///     }
+///     customization_rules {
+///       bigquery_clustering = {
+///         columns = ["user_id"]
+///       }
+///     }
+///     customization_rules {
+///       bigquery_partitioning = {
+///         ingestion_time_partition = {}
+///       }
+///     }
+///   }
+///   rule_sets {
+///     object_filter = {
+///       source_object_identifier = {
+///         mysql_identifier = {
+///           database = "test_database"
+///           table    = "test_table_2"
+///         }
+///       }
+///     }
+///     customization_rules {
+///       bigquery_clustering = {
+///         columns = ["event_time"]
+///       }
+///     }
+///     customization_rules {
+///       bigquery_partitioning = {
+///         time_unit_partition = {
+///           column                        = "event_time"
+///           partitioning_time_granularity = "PARTITIONING_TIME_GRANULARITY_DAY"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8673,6 +9942,7 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigArgs;
@@ -8682,8 +9952,13 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterSourceObjectIdentifierArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.datastream.inputs.StreamRuleSetCustomizationRuleArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamRuleSetCustomizationRuleBigqueryClusteringArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamRuleSetCustomizationRuleBigqueryPartitioningArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9051,15 +10326,15 @@ import 'stream_state.dart';
 /// 							},
 /// 						},
 /// 					},
-/// 					ExcludeeObjects: []map[string]interface{}{
-/// 						map[string]interface{}{
+/// 					ExcludeeObjects: []map[string][]map[string]interface{}{
+/// 						map[string][]map[string]interface{}{
 /// 							"databases": []map[string]interface{}{
 /// 								map[string]interface{}{
 /// 									"database": "mydb",
-/// 									"collections": []map[string]interface{}{
-/// 										map[string]interface{}{
-/// 											"fields": []map[string]interface{}{
-/// 												map[string]interface{}{
+/// 									"collections": []map[string][]map[string]string{
+/// 										{
+/// 											"fields": []map[string]string{
+/// 												{
 /// 													"field": "excludedField",
 /// 												},
 /// 											},
@@ -9091,6 +10366,58 @@ import 'stream_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datastream_stream" "default" {
+///   display_name = "Mongodb to BigQuery"
+///   location     = "us-central1"
+///   stream_id    = "mongodb-stream"
+///   source_config = {
+///     source_connection_profile = "source-profile"
+///     mongodb_source_config = {
+///       include_objects = {
+///         databases = [{
+///           "database" = "mydb"
+///           "collections" = [{
+///             "collection" = "mycollection1"
+///             }, {
+///             "collection" = "mycollection2"
+///           }]
+///         }]
+///       }
+///       excludee_objects = [{
+///         "databases" = [{
+///           "database" = "mydb"
+///           "collections" = [{
+///             "fields" = [{
+///               "field" = "excludedField"
+///             }]
+///           }]
+///         }]
+///       }]
+///     }
+///   }
+///   destination_config = {
+///     destination_connection_profile = "destination-profile"
+///     bigquery_destination_config = {
+///       data_freshness = "900s"
+///       source_hierarchy_datasets = {
+///         dataset_template = {
+///           location = "us-central1"
+///         }
+///       }
+///     }
+///   }
+///   backfill_none = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9102,13 +10429,15 @@ import 'stream_state.dart';
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMongodbSourceConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs;
+/// import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
 /// import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9139,9 +10468,9 @@ import 'stream_state.dart';
 ///                                     .build())
 ///                             .build())
 ///                         .build())
-///                     .excludeeObjects(List.of(Map.of("databases", List.of(Map.ofEntries(
+///                     .excludeeObjects(Arrays.asList(Map.of("databases", Arrays.asList(Map.ofEntries(
 ///                         Map.entry("database", "mydb"),
-///                         Map.entry("collections", List.of(Map.of("fields", List.of(Map.of("field", "excludedField")))))
+///                         Map.entry("collections", Arrays.asList(Map.of("fields", Arrays.asList(Map.of("field", "excludedField")))))
 ///                     )))))
 ///                     .build())
 ///                 .build())
@@ -9202,22 +10531,15 @@ import 'stream_state.dart';
 /// Stream can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/streams/{{stream_id}}`
-///
 /// * `{{project}}/{{location}}/{{stream_id}}`
-///
 /// * `{{location}}/{{stream_id}}`
+///
 ///
 /// When using the `pulumi import` command, Stream can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:datastream/stream:Stream default projects/{{project}}/locations/{{location}}/streams/{{stream_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:datastream/stream:Stream default {{project}}/{{location}}/{{stream_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:datastream/stream:Stream default {{location}}/{{stream_id}}
 /// ```
 class Stream extends pulumi.CustomResource {
@@ -9231,6 +10553,13 @@ class Stream extends pulumi.CustomResource {
   /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
   /// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
   late final pulumi.Output<String?> customerManagedEncryptionKey;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
   /// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
   /// the stream from a `RUNNING` state.
@@ -9245,7 +10574,7 @@ class Stream extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The name of the location this stream is located in.
   late final pulumi.Output<String> location;
@@ -9286,6 +10615,7 @@ class Stream extends pulumi.CustomResource {
     backfillNone = registerOutput<Map<String, dynamic>?>('backfillNone');
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
     customerManagedEncryptionKey = registerOutput<String?>('customerManagedEncryptionKey');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     desiredState = registerOutput<String?>('desiredState');
     destinationConfig = registerOutput<StreamDestinationConfig>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
@@ -9328,6 +10658,7 @@ class Stream extends pulumi.CustomResource {
     backfillNone = registerOutput<Map<String, dynamic>?>('backfillNone');
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
     customerManagedEncryptionKey = registerOutput<String?>('customerManagedEncryptionKey');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     desiredState = registerOutput<String?>('desiredState');
     destinationConfig = registerOutput<StreamDestinationConfig>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');

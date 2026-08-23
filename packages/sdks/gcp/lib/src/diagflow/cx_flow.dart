@@ -294,7 +294,7 @@ import 'cx_flow_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxFlow(ctx, "basic_flow", &diagflow.CxFlowArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("MyFlow"),
 /// 			Description: pulumi.String("Test Flow"),
 /// 			NluSettings: &diagflow.CxFlowNluSettingsArgs{
@@ -356,6 +356,72 @@ import 'cx_flow_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name               = "dialogflowcx-agent"
+///   location                   = "global"
+///   default_language_code      = "en"
+///   supported_language_codes   = ["fr", "de", "es"]
+///   time_zone                  = "America/New_York"
+///   description                = "Example description."
+///   avatar_uri                 = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"
+///   enable_stackdriver_logging = true
+///   enable_spell_correction    = true
+///   speech_to_text_settings = {
+///     enable_speech_adaptation = true
+///   }
+/// }
+/// resource "gcp_diagflow_cxflow" "basic_flow" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "MyFlow"
+///   description  = "Test Flow"
+///   nlu_settings = {
+///     classification_threshold = 0.3
+///     model_type               = "MODEL_TYPE_STANDARD"
+///   }
+///   event_handlers {
+///     event = "custom-event"
+///     trigger_fulfillment = {
+///       return_partial_responses = false
+///       messages = [{
+///         "text" = {
+///           "texts" = ["I didn't get that. Can you say it again?"]
+///         }
+///       }]
+///     }
+///   }
+///   event_handlers {
+///     event = "sys.no-match-default"
+///     trigger_fulfillment = {
+///       return_partial_responses = false
+///       messages = [{
+///         "text" = {
+///           "texts" = ["Sorry, could you say that again?"]
+///         }
+///       }]
+///     }
+///   }
+///   event_handlers {
+///     event = "sys.no-input-default"
+///     trigger_fulfillment = {
+///       return_partial_responses = false
+///       messages = [{
+///         "text" = {
+///           "texts" = ["One more time?"]
+///         }
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -370,8 +436,10 @@ import 'cx_flow_state.dart';
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowNluSettingsArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2103,7 +2171,7 @@ import 'cx_flow_state.dart';
 /// 			return err
 /// 		}
 /// 		myWebhook, err := diagflow.NewCxWebhook(ctx, "my_webhook", &diagflow.CxWebhookArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("MyWebhook"),
 /// 			GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 /// 				Uri: pulumi.String("https://example.com"),
@@ -2132,24 +2200,24 @@ import 'cx_flow_state.dart';
 /// 			map[string]interface{}{
 /// 				"condition": "$sys.func.RAND() < 0.5",
 /// 				"caseContent": []interface{}{
-/// 					map[string]interface{}{
-/// 						"message": map[string]interface{}{
-/// 							"text": map[string]interface{}{
+/// 					map[string]map[string]map[string][]string{
+/// 						"message": map[string]map[string][]string{
+/// 							"text": map[string][]string{
 /// 								"text": []string{
 /// 									"First case",
 /// 								},
 /// 							},
 /// 						},
 /// 					},
-/// 					map[string]interface{}{
-/// 						"additionalCases": map[string]interface{}{
+/// 					map[string]map[string][]map[string]interface{}{
+/// 						"additionalCases": map[string][]map[string]interface{}{
 /// 							"cases": []map[string]interface{}{
 /// 								map[string]interface{}{
 /// 									"condition": "$sys.func.RAND() < 0.2",
-/// 									"caseContent": []map[string]interface{}{
-/// 										map[string]interface{}{
-/// 											"message": map[string]interface{}{
-/// 												"text": map[string]interface{}{
+/// 									"caseContent": []map[string]map[string]map[string][]string{
+/// 										{
+/// 											"message": {
+/// 												"text": {
 /// 													"text": []string{
 /// 														"Nested case",
 /// 													},
@@ -2163,11 +2231,11 @@ import 'cx_flow_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			map[string]interface{}{
-/// 				"caseContent": []map[string]interface{}{
-/// 					map[string]interface{}{
-/// 						"message": map[string]interface{}{
-/// 							"text": map[string]interface{}{
+/// 			map[string][]map[string]map[string]map[string][]string{
+/// 				"caseContent": []map[string]map[string]map[string][]string{
+/// 					{
+/// 						"message": {
+/// 							"text": {
 /// 								"text": []string{
 /// 									"Final case",
 /// 								},
@@ -2197,24 +2265,24 @@ import 'cx_flow_state.dart';
 /// 			map[string]interface{}{
 /// 				"condition": "$sys.func.RAND() < 0.5",
 /// 				"caseContent": []interface{}{
-/// 					map[string]interface{}{
-/// 						"message": map[string]interface{}{
-/// 							"text": map[string]interface{}{
+/// 					map[string]map[string]map[string][]string{
+/// 						"message": map[string]map[string][]string{
+/// 							"text": map[string][]string{
 /// 								"text": []string{
 /// 									"First case",
 /// 								},
 /// 							},
 /// 						},
 /// 					},
-/// 					map[string]interface{}{
-/// 						"additionalCases": map[string]interface{}{
+/// 					map[string]map[string][]map[string]interface{}{
+/// 						"additionalCases": map[string][]map[string]interface{}{
 /// 							"cases": []map[string]interface{}{
 /// 								map[string]interface{}{
 /// 									"condition": "$sys.func.RAND() < 0.2",
-/// 									"caseContent": []map[string]interface{}{
-/// 										map[string]interface{}{
-/// 											"message": map[string]interface{}{
-/// 												"text": map[string]interface{}{
+/// 									"caseContent": []map[string]map[string]map[string][]string{
+/// 										{
+/// 											"message": {
+/// 												"text": {
 /// 													"text": []string{
 /// 														"Nested case",
 /// 													},
@@ -2228,11 +2296,11 @@ import 'cx_flow_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			map[string]interface{}{
-/// 				"caseContent": []map[string]interface{}{
-/// 					map[string]interface{}{
-/// 						"message": map[string]interface{}{
-/// 							"text": map[string]interface{}{
+/// 			map[string][]map[string]map[string]map[string][]string{
+/// 				"caseContent": []map[string]map[string]map[string][]string{
+/// 					{
+/// 						"message": {
+/// 							"text": {
 /// 								"text": []string{
 /// 									"Final case",
 /// 								},
@@ -2249,10 +2317,10 @@ import 'cx_flow_state.dart';
 /// 		tmpJSON6, err := json.Marshal([]interface{}{
 /// 			map[string]interface{}{
 /// 				"condition": "$sys.func.RAND() < 0.5",
-/// 				"caseContent": []map[string]interface{}{
-/// 					map[string]interface{}{
-/// 						"message": map[string]interface{}{
-/// 							"text": map[string]interface{}{
+/// 				"caseContent": []map[string]map[string]map[string][]string{
+/// 					{
+/// 						"message": {
+/// 							"text": {
 /// 								"text": []string{
 /// 									"First case",
 /// 								},
@@ -2261,11 +2329,11 @@ import 'cx_flow_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			map[string]interface{}{
-/// 				"caseContent": []map[string]interface{}{
-/// 					map[string]interface{}{
-/// 						"message": map[string]interface{}{
-/// 							"text": map[string]interface{}{
+/// 			map[string][]map[string]map[string]map[string][]string{
+/// 				"caseContent": []map[string]map[string]map[string][]string{
+/// 					{
+/// 						"message": {
+/// 							"text": {
 /// 								"text": []string{
 /// 									"Final case",
 /// 								},
@@ -2280,7 +2348,7 @@ import 'cx_flow_state.dart';
 /// 		}
 /// 		json6 := string(tmpJSON6)
 /// 		_, err = diagflow.NewCxFlow(ctx, "basic_flow", &diagflow.CxFlowArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("MyFlow"),
 /// 			Description: pulumi.String("Test Flow"),
 /// 			NluSettings: &diagflow.CxFlowNluSettingsArgs{
@@ -2547,7 +2615,7 @@ import 'cx_flow_state.dart';
 /// 							},
 /// 						},
 /// 					},
-/// 					Webhook:                myWebhook.ID(),
+/// 					Webhook:                myWebhook.ID().ToIDOutput().ToStringOutput(),
 /// 					ReturnPartialResponses: pulumi.Bool(true),
 /// 					Tag:                    pulumi.String("some-tag"),
 /// 					SetParameterActions: diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray{
@@ -2608,6 +2676,379 @@ import 'cx_flow_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name               = "dialogflowcx-agent"
+///   location                   = "global"
+///   default_language_code      = "en"
+///   supported_language_codes   = ["fr", "de", "es"]
+///   time_zone                  = "America/New_York"
+///   description                = "Example description."
+///   avatar_uri                 = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"
+///   enable_stackdriver_logging = true
+///   enable_spell_correction    = true
+///   speech_to_text_settings = {
+///     enable_speech_adaptation = true
+///   }
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "dialogflowcx-bucket"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_diagflow_cxflow" "basic_flow" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "MyFlow"
+///   description  = "Test Flow"
+///   nlu_settings = {
+///     classification_threshold = 0.3
+///     model_type               = "MODEL_TYPE_STANDARD"
+///   }
+///   event_handlers {
+///     event = "custom-event"
+///     trigger_fulfillment = {
+///       return_partial_responses = false
+///       messages = [{
+///         "text" = {
+///           "texts" = ["I didn't get that. Can you say it again?"]
+///         }
+///       }]
+///     }
+///   }
+///   event_handlers {
+///     event = "sys.no-match-default"
+///     trigger_fulfillment = {
+///       return_partial_responses = false
+///       messages = [{
+///         "text" = {
+///           "texts" = ["Sorry, could you say that again?"]
+///         }
+///       }]
+///     }
+///   }
+///   event_handlers {
+///     event = "sys.no-input-default"
+///     trigger_fulfillment = {
+///       return_partial_responses = false
+///       messages = [{
+///         "text" = {
+///           "texts" = ["One more time?"]
+///         }
+///       }]
+///     }
+///   }
+///   event_handlers {
+///     event = "another-event"
+///     trigger_fulfillment = {
+///       return_partial_responses = true
+///       messages = [{
+///         "channel" = "some-channel"
+///         "text" = {
+///           "texts" = ["Some text"]
+///         }
+///         }, {
+///         "payload" = "          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"
+///         }, {
+///         "conversationSuccess" = {
+///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         }
+///         }, {
+///         "outputAudioText" = {
+///           "text" = "some output text"
+///         }
+///         }, {
+///         "outputAudioText" = {
+///           "ssml" = "            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"
+///         }
+///         }, {
+///         "liveAgentHandoff" = {
+///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         }
+///         }, {
+///         "playAudio" = {
+///           "audioUri" = "http://example.com/some-audio-file.mp3"
+///         }
+///         }, {
+///         "telephonyTransferCall" = {
+///           "phoneNumber" = "1-234-567-8901"
+///         }
+///       }]
+///       set_parameter_actions = [{
+///         "parameter" = "some-param"
+///         "value"     = "123.45"
+///         }, {
+///         "parameter" = "another-param"
+///         "value"     = jsonencode("abc")
+///         }, {
+///         "parameter" = "other-param"
+///         "value"     = jsonencode(["foo"])
+///       }]
+///       conditional_cases = [{
+///         "cases" = jsonencode([{
+///           "condition" = "$sys.func.RAND() < 0.5"
+///           "caseContent" = [{
+///             "message" = {
+///               "text" = {
+///                 "text" = ["First case"]
+///               }
+///             }
+///             }, {
+///             "additionalCases" = {
+///               "cases" = [{
+///                 "condition" = "$sys.func.RAND() < 0.2"
+///                 "caseContent" = [{
+///                   "message" = {
+///                     "text" = {
+///                       "text" = ["Nested case"]
+///                     }
+///                   }
+///                 }]
+///               }]
+///             }
+///           }]
+///           }, {
+///           "caseContent" = [{
+///             "message" = {
+///               "text" = {
+///                 "text" = ["Final case"]
+///               }
+///             }
+///           }]
+///         }])
+///       }]
+///       enable_generative_fallback = true
+///     }
+///   }
+///   transition_routes {
+///     condition = "true"
+///     trigger_fulfillment = {
+///       return_partial_responses = true
+///       messages = [{
+///         "channel" = "some-channel"
+///         "text" = {
+///           "texts" = ["Some text"]
+///         }
+///         }, {
+///         "payload" = "          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"
+///         }, {
+///         "conversationSuccess" = {
+///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         }
+///         }, {
+///         "outputAudioText" = {
+///           "text" = "some output text"
+///         }
+///         }, {
+///         "outputAudioText" = {
+///           "ssml" = "            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"
+///         }
+///         }, {
+///         "liveAgentHandoff" = {
+///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         }
+///         }, {
+///         "playAudio" = {
+///           "audioUri" = "http://example.com/some-audio-file.mp3"
+///         }
+///         }, {
+///         "telephonyTransferCall" = {
+///           "phoneNumber" = "1-234-567-8901"
+///         }
+///       }]
+///       set_parameter_actions = [{
+///         "parameter" = "some-param"
+///         "value"     = "123.45"
+///         }, {
+///         "parameter" = "another-param"
+///         "value"     = jsonencode("abc")
+///         }, {
+///         "parameter" = "other-param"
+///         "value"     = jsonencode(["foo"])
+///       }]
+///       conditional_cases = [{
+///         "cases" = jsonencode([{
+///           "condition" = "$sys.func.RAND() < 0.5"
+///           "caseContent" = [{
+///             "message" = {
+///               "text" = {
+///                 "text" = ["First case"]
+///               }
+///             }
+///             }, {
+///             "additionalCases" = {
+///               "cases" = [{
+///                 "condition" = "$sys.func.RAND() < 0.2"
+///                 "caseContent" = [{
+///                   "message" = {
+///                     "text" = {
+///                       "text" = ["Nested case"]
+///                     }
+///                   }
+///                 }]
+///               }]
+///             }
+///           }]
+///           }, {
+///           "caseContent" = [{
+///             "message" = {
+///               "text" = {
+///                 "text" = ["Final case"]
+///               }
+///             }
+///           }]
+///         }])
+///       }]
+///     }
+///     target_flow = gcp_diagflow_cxagent.agent.start_flow
+///   }
+///   advanced_settings = {
+///     audio_export_gcs_destination = {
+///       uri ="${gcp_storage_bucket.bucket.url}/prefix-"
+///     }
+///     speech_settings = {
+///       endpointer_sensitivity        = 30
+///       no_speech_timeout             = "3.500s"
+///       use_timeout_based_endpointing = true
+///       models = {
+///         "name"  = "wrench"
+///         "mass"  = "1.3kg"
+///         "count" = "3"
+///       }
+///     }
+///     dtmf_settings = {
+///       enabled      = true
+///       max_digits   = 1
+///       finish_digit = "#"
+///     }
+///     logging_settings = {
+///       enable_stackdriver_logging     = true
+///       enable_interaction_logging     = true
+///       enable_consent_based_redaction = true
+///     }
+///   }
+///   knowledge_connector_settings = {
+///     enabled = true
+///     trigger_fulfillment = {
+///       messages = [{
+///         "channel" = "some-channel"
+///         "text" = {
+///           "texts" = ["information completed, navigating to page 2"]
+///         }
+///         }, {
+///         "payload" = "          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"
+///         }, {
+///         "conversationSuccess" = {
+///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         }
+///         }, {
+///         "outputAudioText" = {
+///           "text" = "some output text"
+///         }
+///         }, {
+///         "outputAudioText" = {
+///           "ssml" = "            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"
+///         }
+///         }, {
+///         "liveAgentHandoff" = {
+///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         }
+///         }, {
+///         "playAudio" = {
+///           "audioUri" = "http://example.com/some-audio-file.mp3"
+///         }
+///         }, {
+///         "telephonyTransferCall" = {
+///           "phoneNumber" = "1-234-567-8902"
+///         }
+///       }]
+///       webhook                  = gcp_diagflow_cxwebhook.my_webhook.id
+///       return_partial_responses = true
+///       tag                      = "some-tag"
+///       set_parameter_actions = [{
+///         "parameter" = "some-param"
+///         "value"     = "123.45"
+///       }]
+///       conditional_cases = [{
+///         "cases" = jsonencode([{
+///           "condition" = "$sys.func.RAND() < 0.5"
+///           "caseContent" = [{
+///             "message" = {
+///               "text" = {
+///                 "text" = ["First case"]
+///               }
+///             }
+///           }]
+///           }, {
+///           "caseContent" = [{
+///             "message" = {
+///               "text" = {
+///                 "text" = ["Final case"]
+///               }
+///             }
+///           }]
+///         }])
+///       }]
+///       advanced_settings = {
+///         speech_settings = {
+///           endpointer_sensitivity        = 30
+///           no_speech_timeout             = "3.500s"
+///           use_timeout_based_endpointing = true
+///           models = {
+///             "name"  = "wrench"
+///             "mass"  = "1.3kg"
+///             "count" = "3"
+///           }
+///         }
+///         dtmf_settings = {
+///           enabled                      = true
+///           max_digits                   = 1
+///           finish_digit                 = "#"
+///           interdigit_timeout_duration  = "3.500s"
+///           endpointing_timeout_duration = "3.500s"
+///         }
+///         logging_settings = {
+///           enable_stackdriver_logging     = true
+///           enable_interaction_logging     = true
+///           enable_consent_based_redaction = true
+///         }
+///       }
+///       enable_generative_fallback = true
+///     }
+///     data_store_connections = [{
+///       "dataStoreType"          = "UNSTRUCTURED"
+///       "dataStore"              ="projects/${data.gcp_organizations_getproject.project.number}/locations/${gcp_diagflow_cxagent.agent.location}/collections/default_collection/dataStores/${gcp_discoveryengine_datastore.my_datastore.data_store_id}"
+///       "documentProcessingMode" = "DOCUMENTS"
+///     }]
+///     target_flow = gcp_diagflow_cxagent.agent.start_flow
+///   }
+/// }
+/// resource "gcp_discoveryengine_datastore" "my_datastore" {
+///   location          = "global"
+///   data_store_id     = "datastore-flow-full"
+///   display_name      = "datastore-flow-full"
+///   industry_vertical = "GENERIC"
+///   content_config    = "NO_CONTENT"
+///   solution_types    = ["SOLUTION_TYPE_CHAT"]
+/// }
+/// resource "gcp_diagflow_cxwebhook" "my_webhook" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "MyWebhook"
+///   generic_web_service = {
+///     uri = "https://example.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2631,8 +3072,26 @@ import 'cx_flow_state.dart';
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowNluSettingsArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessageArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsAudioExportGcsDestinationArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsSpeechSettingsArgs;
@@ -2640,13 +3099,23 @@ import 'cx_flow_state.dart';
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsLoggingSettingsArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTextArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccessArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioTextArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoffArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCallArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCaseArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettingsArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettingsArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettingsArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxFlowKnowledgeConnectorSettingsDataStoreConnectionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3408,16 +3877,13 @@ import 'cx_flow_state.dart';
 /// Flow can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/flows/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Flow can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/flows/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/{{name}}
 /// ```
 class CxFlow extends pulumi.CustomResource {
@@ -3425,6 +3891,13 @@ class CxFlow extends pulumi.CustomResource {
   /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
   /// Structure is documented below.
   late final pulumi.Output<CxFlowAdvancedSettings?> advancedSettings;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
   late final pulumi.Output<String?> description;
   /// The human-readable name of the flow.
@@ -3438,7 +3911,7 @@ class CxFlow extends pulumi.CustomResource {
   /// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
   /// The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
   ///
-  /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
+  /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
   late final pulumi.Output<bool?> isDefaultStartFlow;
   /// Knowledge connector configuration.
   /// Structure is documented below.
@@ -3489,6 +3962,7 @@ class CxFlow extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     advancedSettings = registerOutput<CxFlowAdvancedSettings?>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxFlowAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     eventHandlers = registerOutput<List<Map<String, dynamic>>>('eventHandlers');
@@ -3526,6 +4000,7 @@ class CxFlow extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     advancedSettings = registerOutput<CxFlowAdvancedSettings?>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxFlowAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     eventHandlers = registerOutput<List<Map<String, dynamic>>>('eventHandlers');

@@ -25,4 +25,5 @@ export 'modelarmor/template_filter_config_sdp_settings_advanced_config.dart';
 export 'modelarmor/template_filter_config_sdp_settings_basic_config.dart';
 export 'modelarmor/template_state.dart';
 export 'modelarmor/template_template_metadata.dart';
+export 'modelarmor/template_template_metadata_filter_version_selector.dart';
 export 'modelarmor/template_template_metadata_multi_language_detection.dart';

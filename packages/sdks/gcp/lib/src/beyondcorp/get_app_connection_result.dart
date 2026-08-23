@@ -8,6 +8,7 @@ import 'get_app_connection_gateway.dart';
 class GetAppConnectionResult {
   final List<GetAppConnectionApplicationEndpoint> applicationEndpoints;
   final List<String> connectors;
+  final String deletionPolicy;
   final String displayName;
   final Map<String, String> effectiveLabels;
   final List<GetAppConnectionGateway> gateways;
@@ -23,6 +24,7 @@ class GetAppConnectionResult {
   /// Creates a new [GetAppConnectionResult].
   /// [applicationEndpoints] Required.
   /// [connectors] Required.
+  /// [deletionPolicy] Required.
   /// [displayName] Required.
   /// [effectiveLabels] Required.
   /// [gateways] Required.
@@ -36,6 +38,7 @@ class GetAppConnectionResult {
   const GetAppConnectionResult({
     required this.applicationEndpoints,
     required this.connectors,
+    required this.deletionPolicy,
     required this.displayName,
     required this.effectiveLabels,
     required this.gateways,
@@ -52,6 +55,7 @@ class GetAppConnectionResult {
     return <String, dynamic>{
       'applicationEndpoints': pulumi.Input.encodeList<GetAppConnectionApplicationEndpoint, Map<String, dynamic>>(applicationEndpoints, (value) => value.toMap()),
       'connectors': connectors,
+      'deletionPolicy': deletionPolicy,
       'displayName': displayName,
       'effectiveLabels': effectiveLabels,
       'gateways': pulumi.Input.encodeList<GetAppConnectionGateway, Map<String, dynamic>>(gateways, (value) => value.toMap()),
@@ -69,6 +73,7 @@ class GetAppConnectionResult {
     return GetAppConnectionResult(
       applicationEndpoints: pulumi.Input.decodeList<GetAppConnectionApplicationEndpoint>(map['applicationEndpoints']!, (value) => GetAppConnectionApplicationEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       connectors: (map['connectors'] as List).cast<String>(),
+      deletionPolicy: map['deletionPolicy'] as String,
       displayName: map['displayName'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       gateways: pulumi.Input.decodeList<GetAppConnectionGateway>(map['gateways']!, (value) => GetAppConnectionGateway.fromMap((value as Map).cast<String, dynamic>())),
@@ -82,4 +87,3 @@ class GetAppConnectionResult {
     );
   }
 }
-

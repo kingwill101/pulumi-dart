@@ -6,6 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkEdgeSecurityServiceState {
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Free-text description of the resource.
   final pulumi.Input<String>? description;
   /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a NetworkEdgeSecurityService.
@@ -29,6 +36,7 @@ class NetworkEdgeSecurityServiceState {
 
   /// Creates a new [NetworkEdgeSecurityServiceState].
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Free-text description of the resource.
   /// [fingerprint] Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a NetworkEdgeSecurityService.
   /// [name] Name of the resource. Provided by the client when the resource is created.
@@ -40,6 +48,7 @@ class NetworkEdgeSecurityServiceState {
   /// [serviceId] The unique identifier for the resource. This identifier is defined by the server.
   const NetworkEdgeSecurityServiceState({
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.fingerprint,
     this.name,
@@ -54,6 +63,7 @@ class NetworkEdgeSecurityServiceState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'fingerprint': ?fingerprint,
       'name': ?name,
@@ -69,6 +79,7 @@ class NetworkEdgeSecurityServiceState {
   factory NetworkEdgeSecurityServiceState.fromMap(Map<String, dynamic> map) {
     return NetworkEdgeSecurityServiceState(
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -81,4 +92,3 @@ class NetworkEdgeSecurityServiceState {
     );
   }
 }
-

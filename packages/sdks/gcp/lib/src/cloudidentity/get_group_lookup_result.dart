@@ -7,13 +7,13 @@ class GetGroupLookupResult {
   final GetGroupLookupGroupKey groupKey;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
+  /// Resource name of the Group in the format: groups/{group_id}, where `groupId` is the unique ID assigned to the Group.
   final String name;
 
   /// Creates a new [GetGroupLookupResult].
   /// [groupKey] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
+  /// [name] Resource name of the Group in the format: groups/{group_id}, where `groupId` is the unique ID assigned to the Group.
   const GetGroupLookupResult({
     required this.groupKey,
     required this.id,
@@ -36,4 +36,3 @@ class GetGroupLookupResult {
     );
   }
 }
-

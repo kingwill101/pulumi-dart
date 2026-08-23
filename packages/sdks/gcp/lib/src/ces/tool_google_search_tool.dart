@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'tool_google_search_tool_prompt_config.dart';
 
 class ToolGoogleSearchTool {
   /// Content will be fetched directly from these URLs for context and grounding.
@@ -23,6 +24,10 @@ class ToolGoogleSearchTool {
   /// Example: "example.com", "another.site".
   /// A maximum of 20 domains can be specified.
   final pulumi.Input<List<String>>? preferredDomains;
+  /// Optional. Prompt instructions passed to planner on how the search results should be
+  /// processed for text and voice.
+  /// Structure is documented below.
+  final pulumi.Input<ToolGoogleSearchToolPromptConfig>? promptConfig;
 
   /// Creates a new [ToolGoogleSearchTool].
   /// [contextUrls] Content will be fetched directly from these URLs for context and grounding.
@@ -30,12 +35,14 @@ class ToolGoogleSearchTool {
   /// [excludeDomains] List of domains to be excluded from the search results.
   /// [name] The name of the tool.
   /// [preferredDomains] Specifies domain names to guide the search.
+  /// [promptConfig] Optional. Prompt instructions passed to planner on how the search results should be
   const ToolGoogleSearchTool({
     this.contextUrls,
     this.description,
     this.excludeDomains,
     required this.name,
     this.preferredDomains,
+    this.promptConfig,
   });
 
   Map<String, dynamic> toMap() {
@@ -45,6 +52,7 @@ class ToolGoogleSearchTool {
       'excludeDomains': ?excludeDomains,
       'name': name,
       'preferredDomains': ?preferredDomains,
+      'promptConfig': ?pulumi.Input.mapOptionalInputValue<ToolGoogleSearchToolPromptConfig, Map<String, dynamic>>(promptConfig, (value) => value.toMap()),
     };
   }
 
@@ -55,7 +63,7 @@ class ToolGoogleSearchTool {
       excludeDomains: (() { final guardedValue = map['excludeDomains']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       preferredDomains: (() { final guardedValue = map['preferredDomains']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      promptConfig: (() { final guardedValue = map['promptConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ToolGoogleSearchToolPromptConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

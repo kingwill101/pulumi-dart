@@ -6,6 +6,7 @@ import 'get_network_vpc_network.dart';
 /// Result data returned by getNetwork.
 class GetNetworkResult {
   final String createTime;
+  final String deletionPolicy;
   final String description;
   final String etag;
   /// The provider-assigned unique ID for this managed resource.
@@ -21,6 +22,7 @@ class GetNetworkResult {
 
   /// Creates a new [GetNetworkResult].
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [etag] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -34,6 +36,7 @@ class GetNetworkResult {
   /// [vpcNetworks] Required.
   const GetNetworkResult({
     required this.createTime,
+    required this.deletionPolicy,
     required this.description,
     required this.etag,
     required this.id,
@@ -50,6 +53,7 @@ class GetNetworkResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'etag': etag,
       'id': id,
@@ -67,6 +71,7 @@ class GetNetworkResult {
   factory GetNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkResult(
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
@@ -81,4 +86,3 @@ class GetNetworkResult {
     );
   }
 }
-

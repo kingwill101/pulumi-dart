@@ -8,6 +8,7 @@ class GetDatabaseResult {
   final String databaseDialect;
   final List<String> ddls;
   final String defaultTimeZone;
+  final String deletionPolicy;
   final bool deletionProtection;
   final bool enableDropProtection;
   final List<GetDatabaseEncryptionConfig> encryptionConfigs;
@@ -23,6 +24,7 @@ class GetDatabaseResult {
   /// [databaseDialect] Required.
   /// [ddls] Required.
   /// [defaultTimeZone] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [enableDropProtection] Required.
   /// [encryptionConfigs] Required.
@@ -36,6 +38,7 @@ class GetDatabaseResult {
     required this.databaseDialect,
     required this.ddls,
     required this.defaultTimeZone,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.enableDropProtection,
     required this.encryptionConfigs,
@@ -52,6 +55,7 @@ class GetDatabaseResult {
       'databaseDialect': databaseDialect,
       'ddls': ddls,
       'defaultTimeZone': defaultTimeZone,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'enableDropProtection': enableDropProtection,
       'encryptionConfigs': pulumi.Input.encodeList<GetDatabaseEncryptionConfig, Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap()),
@@ -69,6 +73,7 @@ class GetDatabaseResult {
       databaseDialect: map['databaseDialect'] as String,
       ddls: (map['ddls'] as List).cast<String>(),
       defaultTimeZone: map['defaultTimeZone'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       enableDropProtection: map['enableDropProtection'] as bool,
       encryptionConfigs: pulumi.Input.decodeList<GetDatabaseEncryptionConfig>(map['encryptionConfigs']!, (value) => GetDatabaseEncryptionConfig.fromMap((value as Map).cast<String, dynamic>())),
@@ -81,4 +86,3 @@ class GetDatabaseResult {
     );
   }
 }
-

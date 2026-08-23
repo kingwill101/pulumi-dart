@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_firewall_policy_firewall_policy_args_doc}
 class FirewallPolicyArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
   /// The parent of the firewall policy.
@@ -17,10 +24,12 @@ class FirewallPolicyArgs {
   final pulumi.Input<String> shortName;
 
   /// Creates a new [FirewallPolicyArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you create the resource.
   /// [parent] The parent of the firewall policy.
   /// [shortName] User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
   const FirewallPolicyArgs({
+    this.deletionPolicy,
     this.description,
     required this.parent,
     required this.shortName,
@@ -28,6 +37,7 @@ class FirewallPolicyArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'parent': parent,
       'shortName': shortName,
@@ -36,10 +46,10 @@ class FirewallPolicyArgs {
 
   factory FirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parent: pulumi.Input.fromValue(map['parent'] as String),
       shortName: pulumi.Input.fromValue(map['shortName'] as String),
     );
   }
 }
-

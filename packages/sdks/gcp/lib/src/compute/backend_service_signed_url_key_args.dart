@@ -9,6 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendServiceSignedUrlKeyArgs {
   /// The backend service this signed URL key belongs.
   final pulumi.Input<String> backendService;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// 128-bit key value used for signing the URL. The key value must be a
   /// valid RFC 4648 Section 5 base64url encoded string.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -21,11 +28,13 @@ class BackendServiceSignedUrlKeyArgs {
 
   /// Creates a new [BackendServiceSignedUrlKeyArgs].
   /// [backendService] The backend service this signed URL key belongs.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [keyValue] 128-bit key value used for signing the URL. The key value must be a
   /// [name] Name of the signed URL key.
   /// [project] The ID of the project in which the resource belongs.
   const BackendServiceSignedUrlKeyArgs({
     required this.backendService,
+    this.deletionPolicy,
     required this.keyValue,
     this.name,
     this.project,
@@ -34,6 +43,7 @@ class BackendServiceSignedUrlKeyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backendService': backendService,
+      'deletionPolicy': ?deletionPolicy,
       'keyValue': keyValue,
       'name': ?name,
       'project': ?project,
@@ -43,10 +53,10 @@ class BackendServiceSignedUrlKeyArgs {
   factory BackendServiceSignedUrlKeyArgs.fromMap(Map<String, dynamic> map) {
     return BackendServiceSignedUrlKeyArgs(
       backendService: pulumi.Input.fromValue(map['backendService'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyValue: pulumi.Input.fromValue(map['keyValue'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

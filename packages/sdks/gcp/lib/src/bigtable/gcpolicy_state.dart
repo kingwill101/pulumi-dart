@@ -8,12 +8,17 @@ import 'gcpolicy_max_version.dart';
 class GCPolicyState {
   /// The name of the column family.
   final pulumi.Input<String>? columnFamily;
-  /// The deletion policy for the GC policy.
-  /// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+  /// The deletion policy for the GC policy. Setting ABANDON allows the resource
+  /// to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+  /// in a replicated instance.
   ///
-  /// Possible values are: `ABANDON`.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "DELETE" or "", deleting the resource is allowed.
+  ///
+  /// Possible values: PREVENT, ABANDON, DELETE.
   final pulumi.Input<String>? deletionPolicy;
-  /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+  /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
   final pulumi.Input<String>? gcRules;
   /// Boolean for whether to allow ignoring warnings when updating the gc policy.
   /// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
@@ -36,8 +41,8 @@ class GCPolicyState {
 
   /// Creates a new [GCPolicyState].
   /// [columnFamily] The name of the column family.
-  /// [deletionPolicy] The deletion policy for the GC policy.
-  /// [gcRules] Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
+  /// [deletionPolicy] The deletion policy for the GC policy. Setting ABANDON allows the resource
+  /// [gcRules] Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
   /// [ignoreWarnings] Boolean for whether to allow ignoring warnings when updating the gc policy.
   /// [instanceName] The name of the Bigtable instance.
   /// [maxAge] GC policy that applies to all cells older than the given age.
@@ -88,4 +93,3 @@ class GCPolicyState {
     );
   }
 }
-

@@ -9,6 +9,9 @@ import 'v2_vm_state.dart';
 
 /// A Cloud TPU VM instance.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about Vm, see:
 ///
 /// * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.nodes)
@@ -87,6 +90,24 @@ import 'v2_vm_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_tpu_getv2runtimeversions" "available" {
+/// }
+///
+/// resource "gcp_tpu_v2vm" "tpu" {
+///   name            = "test-tpu"
+///   zone            = "us-central1-c"
+///   runtime_version = "tpu-vm-tf-2.13.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -97,8 +118,8 @@ import 'v2_vm_state.dart';
 /// import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
 /// import com.pulumi.gcp.tpu.V2Vm;
 /// import com.pulumi.gcp.tpu.V2VmArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -437,7 +458,7 @@ import 'v2_vm_state.dart';
 /// 			Name:        pulumi.String("tpu-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     network.ID(),
+/// 			Network:     network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -481,8 +502,8 @@ import 'v2_vm_state.dart';
 /// 			NetworkConfig: &tpu.V2VmNetworkConfigArgs{
 /// 				CanIpForward:      pulumi.Bool(true),
 /// 				EnableExternalIps: pulumi.Bool(true),
-/// 				Network:           network.ID(),
-/// 				Subnetwork:        subnet.ID(),
+/// 				Network:           network.ID().ToIDOutput().ToStringOutput(),
+/// 				Subnetwork:        subnet.ID().ToIDOutput().ToStringOutput(),
 /// 				QueueCount:        pulumi.Int(32),
 /// 			},
 /// 			SchedulingConfig: &tpu.V2VmSchedulingConfigArgs{
@@ -500,7 +521,7 @@ import 'v2_vm_state.dart';
 /// 			},
 /// 			DataDisks: tpu.V2VmDataDiskArray{
 /// 				&tpu.V2VmDataDiskArgs{
-/// 					SourceDisk: disk.ID(),
+/// 					SourceDisk: disk.ID().ToIDOutput().ToStringOutput(),
 /// 					Mode:       pulumi.String("READ_ONLY"),
 /// 				},
 /// 			},
@@ -521,6 +542,91 @@ import 'v2_vm_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "gcp_tpu_getv2runtimeversions" "available" {
+/// }
+/// data "gcp_tpu_getv2acceleratortypes" "availableGetV2AcceleratorTypes" {
+/// }
+///
+/// resource "gcp_tpu_v2vm" "tpu" {
+///   depends_on      = [time_sleep.wait_60_seconds]
+///   name            = "test-tpu"
+///   zone            = "us-central1-c"
+///   description     = "Text description of the TPU."
+///   runtime_version = "tpu-vm-tf-2.13.0"
+///   accelerator_config = {
+///     type     = "V2"
+///     topology = "2x2"
+///   }
+///   cidr_block = "10.0.0.0/29"
+///   network_config = {
+///     can_ip_forward      = true
+///     enable_external_ips = true
+///     network             = gcp_compute_network.network.id
+///     subnetwork          = gcp_compute_subnetwork.subnet.id
+///     queue_count         = 32
+///   }
+///   scheduling_config = {
+///     preemptible = true
+///     spot        = true
+///   }
+///   shielded_instance_config = {
+///     enable_secure_boot = true
+///   }
+///   service_account = {
+///     email  = gcp_serviceaccount_account.sa.email
+///     scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+///   }
+///   data_disks {
+///     source_disk = gcp_compute_disk.disk.id
+///     mode        = "READ_ONLY"
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   metadata = {
+///     "foo" = "bar"
+///   }
+///   tags = ["foo"]
+/// }
+/// resource "gcp_compute_subnetwork" "subnet" {
+///   name          = "tpu-subnet"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network.id
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "tpu-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_serviceaccount_account" "sa" {
+///   account_id   = "tpu-sa"
+///   display_name = "Test TPU VM"
+/// }
+/// resource "gcp_compute_disk" "disk" {
+///   name  = "tpu-disk"
+///   image = "debian-cloud/debian-11"
+///   size  = 10
+///   type  = "pd-ssd"
+///   zone  = "us-central1-c"
+/// }
+/// # Wait after service account creation to limit eventual consistency errors.
+/// resource "time_sleep" "wait_60_seconds" {
+///   depends_on      = [gcp_serviceaccount_account.sa]
+///   create_duration = "60s"
 /// }
 /// ```
 /// ```java
@@ -551,8 +657,8 @@ import 'v2_vm_state.dart';
 /// import com.pulumi.gcp.tpu.inputs.V2VmServiceAccountArgs;
 /// import com.pulumi.gcp.tpu.inputs.V2VmDataDiskArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -735,37 +841,26 @@ import 'v2_vm_state.dart';
 /// Vm can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}`
-///
 /// * `{{zone}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:tpu/v2Vm:V2Vm default {{project}}/{{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:tpu/v2Vm:V2Vm default {{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:tpu/v2Vm:V2Vm default {{name}}
 /// ```
 class V2Vm extends pulumi.CustomResource {
-  /// The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
-  /// as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
+  /// The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time
+  /// as `acceleratorType`. If neither is specified, `acceleratorType` defaults to 'v2-8'.
   /// Structure is documented below.
   late final pulumi.Output<V2VmAcceleratorConfig> acceleratorConfig;
-  /// TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
-  /// `accelerator_config`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
+  /// TPU accelerator type for the TPU. `acceleratorType` cannot be used at the same time as
+  /// `acceleratorConfig`. If neither is specified, `acceleratorType` defaults to 'v2-8'.
   late final pulumi.Output<String> acceleratorType;
   /// The API version that created this Node.
   late final pulumi.Output<String> apiVersion;
@@ -779,6 +874,13 @@ class V2Vm extends pulumi.CustomResource {
   /// The additional data disks for the Node.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Text description of the TPU.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -789,7 +891,7 @@ class V2Vm extends pulumi.CustomResource {
   late final pulumi.Output<String> healthDescription;
   /// Resource labels to represent user-provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
   late final pulumi.Output<Map<String, String>?> metadata;
@@ -857,6 +959,7 @@ class V2Vm extends pulumi.CustomResource {
     apiVersion = registerOutput<String>('apiVersion');
     cidrBlock = registerOutput<String>('cidrBlock');
     dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     health = registerOutput<String>('health');
@@ -909,6 +1012,7 @@ class V2Vm extends pulumi.CustomResource {
     apiVersion = registerOutput<String>('apiVersion');
     cidrBlock = registerOutput<String>('cidrBlock');
     dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     health = registerOutput<String>('health');

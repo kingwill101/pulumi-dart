@@ -7,6 +7,13 @@ import 'ai_feature_store_entity_type_monitoring_config.dart';
 class AiFeatureStoreEntityTypeState {
   /// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. Description of the EntityType.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -18,7 +25,7 @@ class AiFeatureStoreEntityTypeState {
   /// A set of key/value label pairs to assign to this EntityType.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The default monitoring configuration for all Features under this EntityType.
   /// If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
@@ -26,6 +33,7 @@ class AiFeatureStoreEntityTypeState {
   final pulumi.Input<AiFeatureStoreEntityTypeMonitoringConfig>? monitoringConfig;
   /// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   final pulumi.Input<String>? name;
+  /// (Optional, Beta)
   /// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
   final pulumi.Input<int>? offlineStorageTtlDays;
   /// The combination of labels configured directly on the resource
@@ -38,6 +46,7 @@ class AiFeatureStoreEntityTypeState {
 
   /// Creates a new [AiFeatureStoreEntityTypeState].
   /// [createTime] The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Optional. Description of the EntityType.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] Used to perform consistent read-modify-write updates.
@@ -45,12 +54,13 @@ class AiFeatureStoreEntityTypeState {
   /// [labels] A set of key/value label pairs to assign to this EntityType.
   /// [monitoringConfig] The default monitoring configuration for all Features under this EntityType.
   /// [name] The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-  /// [offlineStorageTtlDays] Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+  /// [offlineStorageTtlDays] (Optional, Beta)
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [region] The region of the EntityType.
   /// [updateTime] The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   const AiFeatureStoreEntityTypeState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.etag,
@@ -67,6 +77,7 @@ class AiFeatureStoreEntityTypeState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'etag': ?etag,
@@ -84,6 +95,7 @@ class AiFeatureStoreEntityTypeState {
   factory AiFeatureStoreEntityTypeState.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -98,4 +110,3 @@ class AiFeatureStoreEntityTypeState {
     );
   }
 }
-

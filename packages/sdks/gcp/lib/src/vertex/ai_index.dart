@@ -286,6 +286,64 @@ import 'ai_index_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_serviceidentity" "vertexai_sa" {
+///   service = "aiplatform.googleapis.com"
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "vertex-ai-index-test"
+///   location                    = "us-central1"
+///   uniform_bucket_level_access = true
+/// }
+/// # The sample data comes from the following link:
+/// # https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
+/// resource "gcp_storage_bucketobject" "data" {
+///   name    = "contents/data.json"
+///   bucket  = gcp_storage_bucket.bucket.name
+///   content = "{\\\"id\\\": \\\"42\\\", \\\"embedding\\\": [0.5, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"cat\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"feline\\\"]}]}\n{\\\"id\\\": \\\"43\\\", \\\"embedding\\\": [0.6, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"dog\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"canine\\\"]}]}\n"
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "vertexai_encrypterdecrypter" {
+///   crypto_key_id = "kms-name"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        = gcp_projects_serviceidentity.vertexai_sa.member
+/// }
+/// resource "gcp_vertex_aiindex" "index" {
+///   depends_on = [gcp_kms_cryptokeyiammember.vertexai_encrypterdecrypter]
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   region       = "us-central1"
+///   display_name = "test-index"
+///   description  = "index for test"
+///   metadata = {
+///     contents_delta_uri ="gs://${gcp_storage_bucket.bucket.name}/contents"
+///     config = {
+///       dimensions                  = 2
+///       approximate_neighbors_count = 150
+///       shard_size                  = "SHARD_SIZE_SMALL"
+///       distance_measure_type       = "DOT_PRODUCT_DISTANCE"
+///       algorithm_config = {
+///         tree_ah_config = {
+///           leaf_node_embedding_count    = 500
+///           leaf_nodes_to_search_percent = 7
+///         }
+///       }
+///     }
+///   }
+///   encryption_spec = {
+///     kms_key_name = "kms-name"
+///   }
+///   index_update_method = "BATCH_UPDATE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -308,8 +366,8 @@ import 'ai_index_state.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiIndexEncryptionSpecArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -633,6 +691,49 @@ import 'ai_index_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "vertex-ai-index-test"
+///   location                    = "us-central1"
+///   uniform_bucket_level_access = true
+/// }
+/// # The sample data comes from the following link:
+/// # https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
+/// resource "gcp_storage_bucketobject" "data" {
+///   name    = "contents/data.json"
+///   bucket  = gcp_storage_bucket.bucket.name
+///   content = "{\\\"id\\\": \\\"42\\\", \\\"embedding\\\": [0.5, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"cat\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"feline\\\"]}]}\n{\\\"id\\\": \\\"43\\\", \\\"embedding\\\": [0.6, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"dog\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"canine\\\"]}]}\n"
+/// }
+/// resource "gcp_vertex_aiindex" "index" {
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   region       = "us-central1"
+///   display_name = "test-index"
+///   description  = "index for test"
+///   metadata = {
+///     contents_delta_uri ="gs://${gcp_storage_bucket.bucket.name}/contents"
+///     config = {
+///       dimensions            = 2
+///       shard_size            = "SHARD_SIZE_LARGE"
+///       distance_measure_type = "COSINE_DISTANCE"
+///       feature_norm_type     = "UNIT_L2_NORM"
+///       algorithm_config = {
+///         brute_force_config = {}
+///       }
+///     }
+///   }
+///   index_update_method = "STREAM_UPDATE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -649,8 +750,8 @@ import 'ai_index_state.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiIndexMetadataConfigArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiIndexMetadataConfigAlgorithmConfigArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -747,33 +848,29 @@ import 'ai_index_state.dart';
 /// Index can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/indexes/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Index can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vertex/aiIndex:AiIndex default projects/{{project}}/locations/{{region}}/indexes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiIndex:AiIndex default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiIndex:AiIndex default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiIndex:AiIndex default {{name}}
 /// ```
 class AiIndex extends pulumi.CustomResource {
   /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> deployedIndexes;
@@ -797,7 +894,7 @@ class AiIndex extends pulumi.CustomResource {
   late final pulumi.Output<String?> indexUpdateMethod;
   /// The labels with user-defined metadata to organize your Indexes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Additional information about the Index.
   /// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
@@ -834,6 +931,7 @@ class AiIndex extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deployedIndexes = registerOutput<List<Map<String, dynamic>>>('deployedIndexes');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -876,6 +974,7 @@ class AiIndex extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deployedIndexes = registerOutput<List<Map<String, dynamic>>>('deployedIndexes');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

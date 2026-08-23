@@ -101,6 +101,26 @@ import 'global_network_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_globalnetworkendpoint" "default-endpoint" {
+///   global_network_endpoint_group = gcp_compute_globalnetworkendpointgroup.neg.name
+///   fqdn                          = "www.example.com"
+///   port                          = 90
+/// }
+/// resource "gcp_compute_globalnetworkendpointgroup" "neg" {
+///   name                  = "my-lb-neg"
+///   default_port          = "90"
+///   network_endpoint_type = "INTERNET_FQDN_PORT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +131,8 @@ import 'global_network_endpoint_state.dart';
 /// import com.pulumi.gcp.compute.GlobalNetworkEndpointGroupArgs;
 /// import com.pulumi.gcp.compute.GlobalNetworkEndpoint;
 /// import com.pulumi.gcp.compute.GlobalNetworkEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -161,27 +181,27 @@ import 'global_network_endpoint_state.dart';
 /// GlobalNetworkEndpoint can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/networkEndpointGroups/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
-///
 /// * `{{project}}/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
-///
 /// * `{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}`
+///
 ///
 /// When using the `pulumi import` command, GlobalNetworkEndpoint can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint default projects/{{project}}/global/networkEndpointGroups/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint default {{project}}/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint default {{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
 /// ```
 class GlobalNetworkEndpoint extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Fully qualified domain name of network endpoint.
-  /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+  /// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
   late final pulumi.Output<String?> fqdn;
   /// The global network endpoint group this endpoint is part of.
   late final pulumi.Output<String> globalNetworkEndpointGroup;
@@ -207,6 +227,7 @@ class GlobalNetworkEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     fqdn = registerOutput<String?>('fqdn');
     globalNetworkEndpointGroup = registerOutput<String>('globalNetworkEndpointGroup');
     ipAddress = registerOutput<String?>('ipAddress');
@@ -237,6 +258,7 @@ class GlobalNetworkEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     fqdn = registerOutput<String?>('fqdn');
     globalNetworkEndpointGroup = registerOutput<String>('globalNetworkEndpointGroup');
     ipAddress = registerOutput<String?>('ipAddress');

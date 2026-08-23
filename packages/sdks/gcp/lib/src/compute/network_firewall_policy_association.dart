@@ -111,14 +111,39 @@ import 'network_firewall_policy_association_state.dart';
 /// 		_, err = compute.NewNetworkFirewallPolicyAssociation(ctx, "default", &compute.NetworkFirewallPolicyAssociationArgs{
 /// 			Name:             pulumi.String("my-association"),
 /// 			Project:          pulumi.String("my-project-name"),
-/// 			AttachmentTarget: network.ID(),
-/// 			FirewallPolicy:   policy.ID(),
+/// 			AttachmentTarget: network.ID().ToIDOutput().ToStringOutput(),
+/// 			FirewallPolicy:   policy.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_networkfirewallpolicy" "policy" {
+///   name        = "my-policy"
+///   project     = "my-project-name"
+///   description = "Sample global network firewall policy"
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_networkfirewallpolicyassociation" "default" {
+///   name              = "my-association"
+///   project           = "my-project-name"
+///   attachment_target = gcp_compute_network.network.id
+///   firewall_policy   = gcp_compute_networkfirewallpolicy.policy.id
 /// }
 /// ```
 /// ```java
@@ -133,8 +158,8 @@ import 'network_firewall_policy_association_state.dart';
 /// import com.pulumi.gcp.compute.NetworkArgs;
 /// import com.pulumi.gcp.compute.NetworkFirewallPolicyAssociation;
 /// import com.pulumi.gcp.compute.NetworkFirewallPolicyAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,27 +220,27 @@ import 'network_firewall_policy_association_state.dart';
 /// NetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
-///
 /// * `{{project}}/{{firewall_policy}}/{{name}}`
-///
 /// * `{{firewall_policy}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{project}}/{{firewall_policy}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
 /// ```
 class NetworkFirewallPolicyAssociation extends pulumi.CustomResource {
   /// The target that the firewall policy is attached to.
   late final pulumi.Output<String> attachmentTarget;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The firewall policy of the resource.
   late final pulumi.Output<String> firewallPolicy;
   /// The name for an association.
@@ -241,6 +266,7 @@ class NetworkFirewallPolicyAssociation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     attachmentTarget = registerOutput<String>('attachmentTarget');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     firewallPolicy = registerOutput<String>('firewallPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -271,6 +297,7 @@ class NetworkFirewallPolicyAssociation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     attachmentTarget = registerOutput<String>('attachmentTarget');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     firewallPolicy = registerOutput<String>('firewallPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

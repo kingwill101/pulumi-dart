@@ -5,6 +5,13 @@ import 'router_route_policy_term.dart';
 
 /// Input properties used for looking up and filtering RouterRoutePolicy resources.
 class RouterRoutePolicyState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
   final pulumi.Input<String>? fingerprint;
@@ -25,6 +32,7 @@ class RouterRoutePolicyState {
   final pulumi.Input<String>? type;
 
   /// Creates a new [RouterRoutePolicyState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [fingerprint] The fingerprint used for optimistic locking of this resource.  Used
   /// [name] Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
   /// [project] The ID of the project in which the resource belongs.
@@ -33,6 +41,7 @@ class RouterRoutePolicyState {
   /// [terms] List of terms (the order in the list is not important, they are evaluated in order of priority).
   /// [type] This is policy's type, which is one of IMPORT or EXPORT
   const RouterRoutePolicyState({
+    this.deletionPolicy,
     this.fingerprint,
     this.name,
     this.project,
@@ -44,6 +53,7 @@ class RouterRoutePolicyState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'fingerprint': ?fingerprint,
       'name': ?name,
       'project': ?project,
@@ -56,6 +66,7 @@ class RouterRoutePolicyState {
 
   factory RouterRoutePolicyState.fromMap(Map<String, dynamic> map) {
     return RouterRoutePolicyState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -66,4 +77,3 @@ class RouterRoutePolicyState {
     );
   }
 }
-

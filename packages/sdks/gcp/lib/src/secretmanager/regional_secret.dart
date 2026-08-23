@@ -111,6 +111,29 @@ import 'regional_secret_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_regionalsecret" "regional-secret-basic" {
+///   secret_id = "tf-reg-secret"
+///   location  = "us-central1"
+///   labels = {
+///     "label" = "my-label"
+///   }
+///   annotations = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///     "key3" = "value3"
+///   }
+///   deletion_protection = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +142,8 @@ import 'regional_secret_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.RegionalSecret;
 /// import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -243,8 +266,6 @@ import 'regional_secret_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -281,6 +302,32 @@ import 'regional_secret_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_kms_cryptokeyiammember" "kms-secret-binding" {
+///   crypto_key_id = "kms-key"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_secretmanager_regionalsecret" "regional-secret-with-cmek" {
+///   depends_on = [gcp_kms_cryptokeyiammember.kms-secret-binding]
+///   secret_id  = "tf-reg-secret"
+///   location   = "us-central1"
+///   customer_managed_encryption = {
+///     kms_key_name = "kms-key"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -295,8 +342,8 @@ import 'regional_secret_state.dart';
 /// import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.RegionalSecretCustomerManagedEncryptionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -458,8 +505,6 @@ import 'regional_secret_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -491,7 +536,7 @@ import 'regional_secret_state.dart';
 /// 			Location: pulumi.String("us-central1"),
 /// 			Topics: secretmanager.RegionalSecretTopicArray{
 /// 				&secretmanager.RegionalSecretTopicArgs{
-/// 					Name: topic.ID(),
+/// 					Name: topic.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Rotation: &secretmanager.RegionalSecretRotationArgs{
@@ -506,6 +551,39 @@ import 'regional_secret_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "tf-topic"
+/// }
+/// resource "gcp_pubsub_topiciammember" "secrets_manager_access" {
+///   topic  = gcp_pubsub_topic.topic.name
+///   role   = "roles/pubsub.publisher"
+///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_secretmanager_regionalsecret" "regional-secret-with-rotation" {
+///   depends_on = [gcp_pubsub_topiciammember.secrets_manager_access]
+///   secret_id  = "tf-reg-secret"
+///   location   = "us-central1"
+///   topics {
+///     name = gcp_pubsub_topic.topic.id
+///   }
+///   rotation = {
+///     rotation_period    = "3600s"
+///     next_rotation_time = "2045-11-30T00:00:00Z"
+///   }
 /// }
 /// ```
 /// ```java
@@ -525,8 +603,8 @@ import 'regional_secret_state.dart';
 /// import com.pulumi.gcp.secretmanager.inputs.RegionalSecretTopicArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.RegionalSecretRotationArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -697,6 +775,29 @@ import 'regional_secret_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_regionalsecret" "regional-secret-with-ttl" {
+///   secret_id = "tf-reg-secret"
+///   location  = "us-central1"
+///   labels = {
+///     "label" = "my-label"
+///   }
+///   annotations = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///     "key3" = "value3"
+///   }
+///   ttl = "36000s"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -705,8 +806,8 @@ import 'regional_secret_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.RegionalSecret;
 /// import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -845,6 +946,29 @@ import 'regional_secret_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_regionalsecret" "regional-secret-with-expire-time" {
+///   secret_id = "tf-reg-secret"
+///   location  = "us-central1"
+///   labels = {
+///     "label" = "my-label"
+///   }
+///   annotations = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///     "key3" = "value3"
+///   }
+///   expire_time = "2055-11-30T00:00:00Z"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -853,8 +977,8 @@ import 'regional_secret_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.RegionalSecret;
 /// import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -993,6 +1117,29 @@ import 'regional_secret_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_regionalsecret" "regional-secret-with-version-destroy-ttl" {
+///   secret_id = "tf-reg-secret"
+///   location  = "us-central1"
+///   labels = {
+///     "label" = "my-label"
+///   }
+///   annotations = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///     "key3" = "value3"
+///   }
+///   version_destroy_ttl = "86400s"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1001,8 +1148,8 @@ import 'regional_secret_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.RegionalSecret;
 /// import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1051,22 +1198,15 @@ import 'regional_secret_state.dart';
 /// RegionalSecret can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}`
-///
 /// * `{{project}}/{{location}}/{{secret_id}}`
-///
 /// * `{{location}}/{{secret_id}}`
+///
 ///
 /// When using the `pulumi import` command, RegionalSecret can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default {{project}}/{{location}}/{{secret_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:secretmanager/regionalSecret:RegionalSecret default {{location}}/{{secret_id}}
 /// ```
 class RegionalSecret extends pulumi.CustomResource {
@@ -1082,21 +1222,32 @@ class RegionalSecret extends pulumi.CustomResource {
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// The time at which the regional secret was created.
   late final pulumi.Output<String> createTime;
   /// The customer-managed encryption configuration of the regional secret.
   /// Structure is documented below.
   late final pulumi.Output<RegionalSecretCustomerManagedEncryption?> customerManagedEncryption;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
+  /// When the field is set to true in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the federation will fail.
   late final pulumi.Output<bool?> deletionProtection;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
   /// output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
   /// nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
-  /// "2014-10-02T15:01:23.045123456Z". Only one of `expire_time` or `ttl` can be provided.
+  /// "2014-10-02T15:01:23.045123456Z". Only one of `expireTime` or `ttl` can be provided.
   late final pulumi.Output<String> expireTime;
   /// The labels assigned to this regional secret.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -1108,7 +1259,7 @@ class RegionalSecret extends pulumi.CustomResource {
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the regional secret. eg us-central1
   late final pulumi.Output<String> location;
@@ -1121,7 +1272,7 @@ class RegionalSecret extends pulumi.CustomResource {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-  /// The rotation time and period for a regional secret. At `next_rotation_time`, Secret Manager
+  /// The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
   /// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
   /// set to configure rotation.
   /// Structure is documented below.
@@ -1137,7 +1288,7 @@ class RegionalSecret extends pulumi.CustomResource {
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> topics;
   /// The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
-  /// terminated by 's'. Example: "3.5s". Only one of `ttl` or `expire_time` can be provided.
+  /// terminated by 's'. Example: "3.5s". Only one of `ttl` or `expireTime` can be provided.
   late final pulumi.Output<String?> ttl;
   /// Mapping from version alias to version name.
   /// A version alias is a string with a maximum length of 63 characters and can contain
@@ -1171,6 +1322,7 @@ class RegionalSecret extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     customerManagedEncryption = registerOutput<RegionalSecretCustomerManagedEncryption?>('customerManagedEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionalSecretCustomerManagedEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1215,6 +1367,7 @@ class RegionalSecret extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     customerManagedEncryption = registerOutput<RegionalSecretCustomerManagedEncryption?>('customerManagedEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionalSecretCustomerManagedEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

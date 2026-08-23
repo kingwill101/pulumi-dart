@@ -19,7 +19,7 @@ class InstanceMaintenancePolicy {
   /// resolution and up to nine fractional digits.
   final pulumi.Input<String>? updateTime;
   /// Required. Maintenance window that is applied to resources covered by this policy.
-  /// Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+  /// Minimum 1. For the current version, the maximum number of weeklyMaintenanceWindows
   /// is expected to be one.
   /// Structure is documented below.
   final pulumi.Input<List<InstanceMaintenancePolicyWeeklyMaintenanceWindow>> weeklyMaintenanceWindows;
@@ -54,4 +54,3 @@ class InstanceMaintenancePolicy {
     );
   }
 }
-

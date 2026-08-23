@@ -15,6 +15,8 @@ class GetDatabaseInstancesInstanceClone {
   final pulumi.Input<String> sourceInstanceDeletionTime;
   /// The name of the instance from which the point in time should be restored.
   final pulumi.Input<String> sourceInstanceName;
+  /// The project ID of the source project
+  final pulumi.Input<String> sourceProject;
 
   /// Creates a new [GetDatabaseInstancesInstanceClone].
   /// [allocatedIpRange] The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -23,6 +25,7 @@ class GetDatabaseInstancesInstanceClone {
   /// [preferredZone] (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
   /// [sourceInstanceDeletionTime] The timestamp of when the source instance was deleted for a clone from a deleted instance.
   /// [sourceInstanceName] The name of the instance from which the point in time should be restored.
+  /// [sourceProject] The project ID of the source project
   const GetDatabaseInstancesInstanceClone({
     required this.allocatedIpRange,
     required this.databaseNames,
@@ -30,6 +33,7 @@ class GetDatabaseInstancesInstanceClone {
     required this.preferredZone,
     required this.sourceInstanceDeletionTime,
     required this.sourceInstanceName,
+    required this.sourceProject,
   });
 
   Map<String, dynamic> toMap() {
@@ -40,6 +44,7 @@ class GetDatabaseInstancesInstanceClone {
       'preferredZone': preferredZone,
       'sourceInstanceDeletionTime': sourceInstanceDeletionTime,
       'sourceInstanceName': sourceInstanceName,
+      'sourceProject': sourceProject,
     };
   }
 
@@ -51,7 +56,7 @@ class GetDatabaseInstancesInstanceClone {
       preferredZone: pulumi.Input.fromValue(map['preferredZone'] as String),
       sourceInstanceDeletionTime: pulumi.Input.fromValue(map['sourceInstanceDeletionTime'] as String),
       sourceInstanceName: pulumi.Input.fromValue(map['sourceInstanceName'] as String),
+      sourceProject: pulumi.Input.fromValue(map['sourceProject'] as String),
     );
   }
 }
-

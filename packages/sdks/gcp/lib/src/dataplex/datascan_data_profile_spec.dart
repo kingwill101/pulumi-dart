@@ -9,11 +9,11 @@ class DatascanDataProfileSpec {
   /// If set, the latest DataScan job result will be published to Dataplex Catalog.
   final pulumi.Input<bool>? catalogPublishingEnabled;
   /// The fields to exclude from data profile.
-  /// If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
+  /// If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
   /// Structure is documented below.
   final pulumi.Input<DatascanDataProfileSpecExcludeFields>? excludeFields;
   /// The fields to include in data profile.
-  /// If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
+  /// If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `excludeFields`.
   /// Structure is documented below.
   final pulumi.Input<DatascanDataProfileSpecIncludeFields>? includeFields;
   /// Actions to take upon job completion.
@@ -23,7 +23,7 @@ class DatascanDataProfileSpec {
   final pulumi.Input<String>? rowFilter;
   /// The percentage of the records to be selected from the dataset for DataScan.
   /// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
-  /// Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
+  /// Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
   final pulumi.Input<double>? samplingPercent;
 
   /// Creates a new [DatascanDataProfileSpec].
@@ -64,4 +64,3 @@ class DatascanDataProfileSpec {
     );
   }
 }
-

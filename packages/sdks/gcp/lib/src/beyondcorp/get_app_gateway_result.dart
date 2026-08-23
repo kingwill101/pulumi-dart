@@ -6,6 +6,7 @@ import 'get_app_gateway_allocated_connection.dart';
 /// Result data returned by getAppGateway.
 class GetAppGatewayResult {
   final List<GetAppGatewayAllocatedConnection> allocatedConnections;
+  final String deletionPolicy;
   final String displayName;
   final Map<String, String> effectiveLabels;
   final String hostType;
@@ -22,6 +23,7 @@ class GetAppGatewayResult {
 
   /// Creates a new [GetAppGatewayResult].
   /// [allocatedConnections] Required.
+  /// [deletionPolicy] Required.
   /// [displayName] Required.
   /// [effectiveLabels] Required.
   /// [hostType] Required.
@@ -36,6 +38,7 @@ class GetAppGatewayResult {
   /// [uri] Required.
   const GetAppGatewayResult({
     required this.allocatedConnections,
+    required this.deletionPolicy,
     required this.displayName,
     required this.effectiveLabels,
     required this.hostType,
@@ -53,6 +56,7 @@ class GetAppGatewayResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocatedConnections': pulumi.Input.encodeList<GetAppGatewayAllocatedConnection, Map<String, dynamic>>(allocatedConnections, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'displayName': displayName,
       'effectiveLabels': effectiveLabels,
       'hostType': hostType,
@@ -71,6 +75,7 @@ class GetAppGatewayResult {
   factory GetAppGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetAppGatewayResult(
       allocatedConnections: pulumi.Input.decodeList<GetAppGatewayAllocatedConnection>(map['allocatedConnections']!, (value) => GetAppGatewayAllocatedConnection.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       displayName: map['displayName'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       hostType: map['hostType'] as String,
@@ -86,4 +91,3 @@ class GetAppGatewayResult {
     );
   }
 }
-

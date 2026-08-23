@@ -6,6 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetGrpcProxyState {
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// Fingerprint of this resource. A hash of the contents stored in
@@ -49,6 +56,7 @@ class TargetGrpcProxyState {
 
   /// Creates a new [TargetGrpcProxyState].
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [fingerprint] Fingerprint of this resource. A hash of the contents stored in
   /// [name] Name of the resource. Provided by the client when the resource
@@ -59,6 +67,7 @@ class TargetGrpcProxyState {
   /// [validateForProxyless] If true, indicates that the BackendServices referenced by
   const TargetGrpcProxyState({
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.fingerprint,
     this.name,
@@ -72,6 +81,7 @@ class TargetGrpcProxyState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'fingerprint': ?fingerprint,
       'name': ?name,
@@ -86,6 +96,7 @@ class TargetGrpcProxyState {
   factory TargetGrpcProxyState.fromMap(Map<String, dynamic> map) {
     return TargetGrpcProxyState(
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -97,4 +108,3 @@ class TargetGrpcProxyState {
     );
   }
 }
-

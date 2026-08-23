@@ -18,7 +18,7 @@ class InstanceState {
   /// instance. If set to "true" AUTH is enabled on the instance.
   /// Default value is "false" meaning AUTH is disabled.
   final pulumi.Input<bool>? authEnabled;
-  /// AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+  /// AUTH String set on the instance. This field will only be populated if authEnabled is true.
   final pulumi.Input<String>? authString;
   /// The full name of the Google Compute Engine network to which the
   /// instance is connected. If left unspecified, the default network
@@ -40,6 +40,19 @@ class InstanceState {
   /// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
   /// instance. If this is provided, CMEK is enabled.
   final pulumi.Input<String>? customerManagedKey;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the instance.
+  /// When a`terraform destroy` or `pulumi up` would delete the instance,
+  /// the command will fail if this field is not set to false in Terraform state.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the instance will fail.
+  /// When the field is set to false, deleting the instance is allowed.
   final pulumi.Input<bool>? deletionProtection;
   /// An arbitrary and optional user-provided name for the instance.
   final pulumi.Input<String>? displayName;
@@ -56,7 +69,7 @@ class InstanceState {
   final pulumi.Input<String>? host;
   /// Resource labels to represent user provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The zone where the instance will be provisioned. If not provided,
   /// the service will choose a zone for the instance. For STANDARD_HA tier,
@@ -154,13 +167,14 @@ class InstanceState {
   /// Creates a new [InstanceState].
   /// [alternativeLocationId] Only applicable to STANDARD_HA tier which protects the instance
   /// [authEnabled] Optional. Indicates whether OSS Redis AUTH is enabled for the
-  /// [authString] AUTH String set on the instance. This field will only be populated if auth_enabled is true.
+  /// [authString] AUTH String set on the instance. This field will only be populated if authEnabled is true.
   /// [authorizedNetwork] The full name of the Google Compute Engine network to which the
   /// [connectMode] The connection mode of the Redis instance.
   /// [createTime] (Output)
   /// [currentLocationId] The current zone where the Redis endpoint is placed.
   /// [customerManagedKey] Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the instance.
   /// [displayName] An arbitrary and optional user-provided name for the instance.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [effectiveReservedIpRange] The CIDR range of internal addresses that are reserved for this
@@ -199,6 +213,7 @@ class InstanceState {
     this.createTime,
     this.currentLocationId,
     this.customerManagedKey,
+    this.deletionPolicy,
     this.deletionProtection,
     this.displayName,
     this.effectiveLabels,
@@ -241,6 +256,7 @@ class InstanceState {
       'createTime': ?createTime,
       'currentLocationId': ?currentLocationId,
       'customerManagedKey': ?customerManagedKey,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
@@ -284,6 +300,7 @@ class InstanceState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       currentLocationId: (() { final guardedValue = map['currentLocationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customerManagedKey: (() { final guardedValue = map['customerManagedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -317,4 +334,3 @@ class InstanceState {
     );
   }
 }
-

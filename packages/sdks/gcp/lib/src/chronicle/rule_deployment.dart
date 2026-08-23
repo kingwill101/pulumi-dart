@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_deployment_args.dart';
+import 'rule_deployment_schedule_customizations.dart';
 import 'rule_deployment_state.dart';
 
 /// The RuleDeployment resource represents the deployment state of a Rule.
@@ -36,11 +37,11 @@ import 'rule_deployment_state.dart';
 ///     }), std.split({
 ///         separator: "/",
 ///         text: googleChronicleRule["my-rule"].name,
-///     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]),
+///     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
 ///     enabled: true,
 ///     alerting: true,
 ///     archived: false,
-///     runFrequency: "DAILY",
+///     runFrequency: "LIVE",
 /// });
 /// ```
 /// ```python
@@ -57,11 +58,11 @@ import 'rule_deployment_state.dart';
 ///     instance="00000000-0000-0000-0000-000000000000",
 ///     rule=len(std.split(separator="/",
 ///         text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
-///         text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+///         text=google_chronicle_rule["my-rule"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
 ///     enabled=True,
 ///     alerting=True,
 ///     archived=False,
-///     run_frequency="DAILY")
+///     run_frequency="LIVE")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -92,16 +93,16 @@ import 'rule_deployment_state.dart';
 ///         {
 ///             Separator = "/",
 ///             Text = googleChronicleRule.My_rule.Name,
-///         }).Apply(invoke => invoke.Result).Length).Apply(values =>
+///         }).Apply(invoke => invoke.Result).Length()).Apply(values =>
 ///         {
 ///             var invoke = values.Item1;
 ///             var length = values.Item2;
-///             return invoke.Result[length - 1];
-///         }),
+///             return invoke.Result[(int)(length - 1)];
+///         }).Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
 ///         Enabled = true,
 ///         Alerting = true,
 ///         Archived = false,
-///         RunFrequency = "DAILY",
+///         RunFrequency = "LIVE",
 ///     });
 ///
 /// });
@@ -146,13 +147,40 @@ import 'rule_deployment_state.dart';
 /// Enabled: pulumi.Bool(true),
 /// Alerting: pulumi.Bool(true),
 /// Archived: pulumi.Bool(false),
-/// RunFrequency: pulumi.String("DAILY"),
+/// RunFrequency: pulumi.String("LIVE"),
 /// })
 /// if err != nil {
 /// return err
 /// }
 /// return nil
 /// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_rule" "my-rule" {
+///   location = "us"
+///   instance = "00000000-0000-0000-0000-000000000000"
+///   text     = "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"
+/// }
+/// resource "gcp_chronicle_ruledeployment" "example" {
+///   location      = "us"
+///   instance      = "00000000-0000-0000-0000-000000000000"
+///   rule          = element(split("/", googleChronicleRule.my-rule.name), length(split("/", googleChronicleRule.my-rule.name)) - 1)
+///   enabled       = true
+///   alerting      = true
+///   archived      = false
+///   run_frequency = "LIVE"
 /// }
 /// ```
 /// ```java
@@ -167,8 +195,8 @@ import 'rule_deployment_state.dart';
 /// import com.pulumi.gcp.chronicle.RuleDeploymentArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.SplitArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -191,17 +219,17 @@ import 'rule_deployment_state.dart';
 ///         var example = new RuleDeployment("example", RuleDeploymentArgs.builder()
 ///             .location("us")
 ///             .instance("00000000-0000-0000-0000-000000000000")
-///             .rule(StdFunctions.split(SplitArgs.builder()
+///             .rule(((String) StdFunctions.split(SplitArgs.builder()
 ///                 .separator("/")
-///                 .text(googleChronicleRule.my-rule().name())
-///                 .build()).result().length().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
+///                 .text(googleChronicleRule.get("my-rule").get("name"))
+///                 .build()).result().size().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
 ///                 .separator("/")
-///                 .text(googleChronicleRule.my-rule().name())
-///                 .build()).result()[_length - 1]))
+///                 .text(googleChronicleRule.get("my-rule").get("name"))
+///                 .build()).result()[_length - 1])))
 ///             .enabled(true)
 ///             .alerting(true)
 ///             .archived(false)
-///             .runFrequency("DAILY")
+///             .runFrequency("LIVE")
 ///             .build());
 ///
 ///     }
@@ -231,7 +259,7 @@ import 'rule_deployment_state.dart';
 ///     }), std.split({
 ///         separator: "/",
 ///         text: googleChronicleRule["my-rule"].name,
-///     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]),
+///     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
 ///     enabled: false,
 ///     runFrequency: "LIVE",
 /// });
@@ -250,7 +278,7 @@ import 'rule_deployment_state.dart';
 ///     instance="00000000-0000-0000-0000-000000000000",
 ///     rule=len(std.split(separator="/",
 ///         text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
-///         text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+///         text=google_chronicle_rule["my-rule"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
 ///     enabled=False,
 ///     run_frequency="LIVE")
 /// ```
@@ -283,12 +311,12 @@ import 'rule_deployment_state.dart';
 ///         {
 ///             Separator = "/",
 ///             Text = googleChronicleRule.My_rule.Name,
-///         }).Apply(invoke => invoke.Result).Length).Apply(values =>
+///         }).Apply(invoke => invoke.Result).Length()).Apply(values =>
 ///         {
 ///             var invoke = values.Item1;
 ///             var length = values.Item2;
-///             return invoke.Result[length - 1];
-///         }),
+///             return invoke.Result[(int)(length - 1)];
+///         }).Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
 ///         Enabled = false,
 ///         RunFrequency = "LIVE",
 ///     });
@@ -342,6 +370,31 @@ import 'rule_deployment_state.dart';
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_rule" "my-rule" {
+///   location = "us"
+///   instance = "00000000-0000-0000-0000-000000000000"
+///   text     = "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"
+/// }
+/// resource "gcp_chronicle_ruledeployment" "example" {
+///   location      = "us"
+///   instance      = "00000000-0000-0000-0000-000000000000"
+///   rule          = element(split("/", googleChronicleRule.my-rule.name), length(split("/", googleChronicleRule.my-rule.name)) - 1)
+///   enabled       = false
+///   run_frequency = "LIVE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -354,8 +407,8 @@ import 'rule_deployment_state.dart';
 /// import com.pulumi.gcp.chronicle.RuleDeploymentArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.SplitArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -378,13 +431,13 @@ import 'rule_deployment_state.dart';
 ///         var example = new RuleDeployment("example", RuleDeploymentArgs.builder()
 ///             .location("us")
 ///             .instance("00000000-0000-0000-0000-000000000000")
-///             .rule(StdFunctions.split(SplitArgs.builder()
+///             .rule(((String) StdFunctions.split(SplitArgs.builder()
 ///                 .separator("/")
-///                 .text(googleChronicleRule.my-rule().name())
-///                 .build()).result().length().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
+///                 .text(googleChronicleRule.get("my-rule").get("name"))
+///                 .build()).result().size().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
 ///                 .separator("/")
-///                 .text(googleChronicleRule.my-rule().name())
-///                 .build()).result()[_length - 1]))
+///                 .text(googleChronicleRule.get("my-rule").get("name"))
+///                 .build()).result()[_length - 1])))
 ///             .enabled(false)
 ///             .runFrequency("LIVE")
 ///             .build());
@@ -416,7 +469,7 @@ import 'rule_deployment_state.dart';
 ///     }), std.split({
 ///         separator: "/",
 ///         text: googleChronicleRule["my-rule"].name,
-///     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]),
+///     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
 ///     enabled: true,
 ///     alerting: true,
 ///     archived: false,
@@ -436,7 +489,7 @@ import 'rule_deployment_state.dart';
 ///     instance="00000000-0000-0000-0000-000000000000",
 ///     rule=len(std.split(separator="/",
 ///         text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
-///         text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+///         text=google_chronicle_rule["my-rule"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
 ///     enabled=True,
 ///     alerting=True,
 ///     archived=False)
@@ -470,12 +523,12 @@ import 'rule_deployment_state.dart';
 ///         {
 ///             Separator = "/",
 ///             Text = googleChronicleRule.My_rule.Name,
-///         }).Apply(invoke => invoke.Result).Length).Apply(values =>
+///         }).Apply(invoke => invoke.Result).Length()).Apply(values =>
 ///         {
 ///             var invoke = values.Item1;
 ///             var length = values.Item2;
-///             return invoke.Result[length - 1];
-///         }),
+///             return invoke.Result[(int)(length - 1)];
+///         }).Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
 ///         Enabled = true,
 ///         Alerting = true,
 ///         Archived = false,
@@ -531,6 +584,32 @@ import 'rule_deployment_state.dart';
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_rule" "my-rule" {
+///   location = "us"
+///   instance = "00000000-0000-0000-0000-000000000000"
+///   text     = "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"
+/// }
+/// resource "gcp_chronicle_ruledeployment" "example" {
+///   location = "us"
+///   instance = "00000000-0000-0000-0000-000000000000"
+///   rule     = element(split("/", googleChronicleRule.my-rule.name), length(split("/", googleChronicleRule.my-rule.name)) - 1)
+///   enabled  = true
+///   alerting = true
+///   archived = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -543,8 +622,8 @@ import 'rule_deployment_state.dart';
 /// import com.pulumi.gcp.chronicle.RuleDeploymentArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.SplitArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -567,13 +646,13 @@ import 'rule_deployment_state.dart';
 ///         var example = new RuleDeployment("example", RuleDeploymentArgs.builder()
 ///             .location("us")
 ///             .instance("00000000-0000-0000-0000-000000000000")
-///             .rule(StdFunctions.split(SplitArgs.builder()
+///             .rule(((String) StdFunctions.split(SplitArgs.builder()
 ///                 .separator("/")
-///                 .text(googleChronicleRule.my-rule().name())
-///                 .build()).result().length().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
+///                 .text(googleChronicleRule.get("my-rule").get("name"))
+///                 .build()).result().size().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
 ///                 .separator("/")
-///                 .text(googleChronicleRule.my-rule().name())
-///                 .build()).result()[_length - 1]))
+///                 .text(googleChronicleRule.get("my-rule").get("name"))
+///                 .build()).result()[_length - 1])))
 ///             .enabled(true)
 ///             .alerting(true)
 ///             .archived(false)
@@ -589,22 +668,15 @@ import 'rule_deployment_state.dart';
 /// RuleDeployment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/deployment`
-///
 /// * `{{project}}/{{location}}/{{instance}}/{{rule}}`
-///
 /// * `{{location}}/{{instance}}/{{rule}}`
+///
 ///
 /// When using the `pulumi import` command, RuleDeployment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:chronicle/ruleDeployment:RuleDeployment default projects/{{project}}/locations/{{location}}/instances/{{instance}}/rules/{{rule}}/deployment
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:chronicle/ruleDeployment:RuleDeployment default {{project}}/{{location}}/{{instance}}/{{rule}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:chronicle/ruleDeployment:RuleDeployment default {{location}}/{{instance}}/{{rule}}
 /// ```
 class RuleDeployment extends pulumi.CustomResource {
@@ -618,7 +690,7 @@ class RuleDeployment extends pulumi.CustomResource {
   /// archiving requires a two-step process: first, disable the rule by
   /// setting 'enabled' to false, then set 'archive' to true.
   /// If set to true, alerting will automatically be set to false.
-  /// If currently set to true, enabled, alerting, and run_frequency cannot be
+  /// If currently set to true, enabled, alerting, and runFrequency cannot be
   /// updated.
   late final pulumi.Output<bool?> archived;
   /// Output only. The names of the associated/chained consumer rules. Rules are considered
@@ -662,7 +734,17 @@ class RuleDeployment extends pulumi.CustomResource {
   /// LIVE
   /// HOURLY
   /// DAILY
+  /// LIVE_CUSTOMIZABLE
+  /// HOURLY_CUSTOMIZABLE
+  /// Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows &lt;=2d), or DAILY (for match windows &gt;2d).
+  /// Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for &lt;=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+  /// For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+  /// suppress the diff and ignore the changes to prevent infinite update loops.
   late final pulumi.Output<String?> runFrequency;
+  /// The schedule customizations of the rule deployment. Only valid for
+  /// customizable run frequencies.
+  /// Structure is documented below.
+  late final pulumi.Output<RuleDeploymentScheduleCustomizations?> scheduleCustomizations;
 
   /// Creates a new [RuleDeployment].
   /// [name] The Pulumi resource name.
@@ -692,6 +774,7 @@ class RuleDeployment extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     rule = registerOutput<String>('rule');
     runFrequency = registerOutput<String?>('runFrequency');
+    scheduleCustomizations = registerOutput<RuleDeploymentScheduleCustomizations?>('scheduleCustomizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleDeploymentScheduleCustomizations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [RuleDeployment] resource's state with the given [name] and [id].
@@ -731,5 +814,6 @@ class RuleDeployment extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     rule = registerOutput<String>('rule');
     runFrequency = registerOutput<String?>('runFrequency');
+    scheduleCustomizations = registerOutput<RuleDeploymentScheduleCustomizations?>('scheduleCustomizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleDeploymentScheduleCustomizations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

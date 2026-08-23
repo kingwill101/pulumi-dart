@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gcp_user_access_binding_args.dart';
+import 'gcp_user_access_binding_principal.dart';
 import 'gcp_user_access_binding_session_settings.dart';
 import 'gcp_user_access_binding_state.dart';
 
@@ -56,7 +57,7 @@ import 'gcp_user_access_binding_state.dart';
 ///     groupKey: std.trimprefixOutput({
 ///         input: group.id,
 ///         prefix: "groups/",
-///     }).apply(invoke => invoke.result),
+///     }).result,
 ///     accessLevels: accessLevelIdForUserAccessBinding.name,
 /// });
 /// ```
@@ -95,7 +96,7 @@ import 'gcp_user_access_binding_state.dart';
 /// gcp_user_access_binding = gcp.accesscontextmanager.GcpUserAccessBinding("gcp_user_access_binding",
 ///     organization_id="123456789",
 ///     group_key=std.trimprefix_output(input=group.id,
-///         prefix="groups/").apply(lambda invoke: invoke.result),
+///         prefix="groups/").result,
 ///     access_levels=access_level_id_for_user_access_binding.name)
 /// ```
 /// ```csharp
@@ -236,12 +237,10 @@ import 'gcp_user_access_binding_state.dart';
 /// 		}
 /// 		_, err = accesscontextmanager.NewGcpUserAccessBinding(ctx, "gcp_user_access_binding", &accesscontextmanager.GcpUserAccessBindingArgs{
 /// 			OrganizationId: pulumi.String("123456789"),
-/// 			GroupKey: pulumi.String(std.TrimprefixOutput(ctx, std.TrimprefixOutputArgs{
-/// 				Input:  group.ID(),
+/// 			GroupKey: std.TrimprefixOutput(ctx, std.TrimprefixOutputArgs{
+/// 				Input:  group.ID().ToIDOutput().ToStringOutput(),
 /// 				Prefix: pulumi.String("groups/"),
-/// 			}, nil).ApplyT(func(invoke std.TrimprefixResult) (*string, error) {
-/// 				return invoke.Result, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}, nil).Result(),
 /// 			AccessLevels: accessLevelIdForUserAccessBinding.Name,
 /// 		})
 /// 		if err != nil {
@@ -249,6 +248,54 @@ import 'gcp_user_access_binding_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudidentity_group" "group" {
+///   display_name = "my-identity-group"
+///   parent       = "customers/A01b123xz"
+///   group_key = {
+///     id = "my-identity-group@example.com"
+///   }
+///   labels = {
+///     "cloudidentity.googleapis.com/groups.discussion_forum" = ""
+///   }
+/// }
+/// resource "gcp_accesscontextmanager_accesslevel" "access_level_id_for_user_access_binding" {
+///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/accessLevels/chromeos_no_lock"
+///   title  = "chromeos_no_lock"
+///   basic = {
+///     conditions = [{
+///       "devicePolicy" = {
+///         "requireScreenLock" = true
+///         "osConstraints" = [{
+///           "osType" = "DESKTOP_CHROME_OS"
+///         }]
+///       }
+///       "regions" = ["US"]
+///     }]
+///   }
+/// }
+/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+///   parent = "organizations/123456789"
+///   title  = "my policy"
+/// }
+/// resource "gcp_accesscontextmanager_gcpuseraccessbinding" "gcp_user_access_binding" {
+///   organization_id = "123456789"
+///   group_key       = trimprefix(gcp_cloudidentity_group.group.id, "groups/")
+///   access_levels   = gcp_accesscontextmanager_accesslevel.access_level_id_for_user_access_binding.name
 /// }
 /// ```
 /// ```java
@@ -265,12 +312,15 @@ import 'gcp_user_access_binding_state.dart';
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevel;
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevelArgs;
 /// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs;
 /// import com.pulumi.gcp.accesscontextmanager.GcpUserAccessBinding;
 /// import com.pulumi.gcp.accesscontextmanager.GcpUserAccessBindingArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.TrimprefixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -378,6 +428,7 @@ import 'gcp_user_access_binding_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, GcpUserAccessBinding can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -386,12 +437,31 @@ import 'gcp_user_access_binding_state.dart';
 class GcpUserAccessBinding extends pulumi.CustomResource {
   /// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
   late final pulumi.Output<String?> accessLevels;
-  /// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
-  late final pulumi.Output<String> groupKey;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Optional. Dry run access level that will be evaluated but will not be enforced. The
+  /// access denial based on dry run policy will be logged. Only one access
+  /// level is supported, not multiple. This list must have exactly one element.
+  /// Example: "accessPolicies/9522/accessLevels/device_trusted"
+  late final pulumi.Output<String?> dryRunAccessLevels;
+  /// Immutable. Google Group id whose members are subject to this binding's restrictions.
+  /// See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+  /// If a group's email address/alias is changed, this resource will continue to point at the changed group.
+  /// This field does not accept group email addresses or aliases.
+  /// Example: "01d520gv4vjcrht"
+  late final pulumi.Output<String?> groupKey;
   /// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
   late final pulumi.Output<String> name;
   /// Required. ID of the parent organization.
   late final pulumi.Output<String> organizationId;
+  /// Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+  /// Structure is documented below.
+  late final pulumi.Output<GcpUserAccessBindingPrincipal?> principal;
   /// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> scopedAccessSettings;
@@ -414,9 +484,12 @@ class GcpUserAccessBinding extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessLevels = registerOutput<String?>('accessLevels');
-    groupKey = registerOutput<String>('groupKey');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    dryRunAccessLevels = registerOutput<String?>('dryRunAccessLevels');
+    groupKey = registerOutput<String?>('groupKey');
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
+    principal = registerOutput<GcpUserAccessBindingPrincipal?>('principal', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpUserAccessBindingPrincipal.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scopedAccessSettings = registerOutput<List<Map<String, dynamic>>?>('scopedAccessSettings');
     sessionSettings = registerOutput<GcpUserAccessBindingSessionSettings?>('sessionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpUserAccessBindingSessionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -445,9 +518,12 @@ class GcpUserAccessBinding extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessLevels = registerOutput<String?>('accessLevels');
-    groupKey = registerOutput<String>('groupKey');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    dryRunAccessLevels = registerOutput<String?>('dryRunAccessLevels');
+    groupKey = registerOutput<String?>('groupKey');
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
+    principal = registerOutput<GcpUserAccessBindingPrincipal?>('principal', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpUserAccessBindingPrincipal.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scopedAccessSettings = registerOutput<List<Map<String, dynamic>>?>('scopedAccessSettings');
     sessionSettings = registerOutput<GcpUserAccessBindingSessionSettings?>('sessionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpUserAccessBindingSessionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

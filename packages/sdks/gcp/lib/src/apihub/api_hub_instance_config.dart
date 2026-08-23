@@ -13,7 +13,7 @@ class ApiHubInstanceConfig {
   /// is false.
   final pulumi.Input<bool>? disableSearch;
   /// Optional. Encryption type for the region. If the encryption type is CMEK, the
-  /// cmek_key_name must be provided. If no encryption type is provided,
+  /// cmekKeyName must be provided. If no encryption type is provided,
   /// GMEK will be used.
   /// Possible values:
   /// ENCRYPTION_TYPE_UNSPECIFIED
@@ -53,4 +53,3 @@ class ApiHubInstanceConfig {
     );
   }
 }
-

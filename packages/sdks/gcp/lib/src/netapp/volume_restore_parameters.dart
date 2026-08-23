@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeRestoreParameters {
   /// Full name of the backup to use for creating this volume.
-  /// `source_snapshot` and `source_backup` cannot be used simultaneously.
+  /// `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
   /// Format: `projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}`.
   final pulumi.Input<String>? sourceBackup;
   /// Full name of the snapshot to use for creating this volume.
-  /// `source_snapshot` and `source_backup` cannot be used simultaneously.
+  /// `sourceSnapshot` and `sourceBackup` cannot be used simultaneously.
   /// Format: `projects/{{project}}/locations/{{location}}/volumes/{{volume}}/snapshots/{{snapshot}}`.
   final pulumi.Input<String>? sourceSnapshot;
 
@@ -34,4 +34,3 @@ class VolumeRestoreParameters {
     );
   }
 }
-

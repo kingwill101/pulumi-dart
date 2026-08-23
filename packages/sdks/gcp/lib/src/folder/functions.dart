@@ -58,6 +58,19 @@ import 'get_organization_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_folder_getiampolicy" "test" {
+///   folder = permissiontest.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +79,8 @@ import 'get_organization_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.folder.FolderFunctions;
 /// import com.pulumi.gcp.folder.inputs.GetIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -80,7 +93,7 @@ import 'get_organization_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var test = FolderFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-///             .folder(permissiontest.name())
+///             .folder(permissiontest.get("name"))
 ///             .build());
 ///
 ///     }
@@ -176,6 +189,24 @@ Future<GetIamPolicyResult> getIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_folder_getorganizationpolicy" "policy" {
+///   folder     = "folders/folderid"
+///   constraint = "constraints/compute.trustedImageProjects"
+/// }
+///
+/// output "version" {
+///   value = data.gcp_folder_getorganizationpolicy.policy.version
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -184,8 +215,8 @@ Future<GetIamPolicyResult> getIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.folder.FolderFunctions;
 /// import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

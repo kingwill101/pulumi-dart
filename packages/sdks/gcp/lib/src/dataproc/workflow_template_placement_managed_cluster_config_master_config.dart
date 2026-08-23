@@ -12,15 +12,15 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
   final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig>? diskConfig;
   /// The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
   final pulumi.Input<String>? image;
-  /// Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+  /// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
   final pulumi.Input<List<String>>? instanceNames;
   /// Output only. Specifies that this instance group contains preemptible instances.
   final pulumi.Input<bool>? isPreemptible;
-  /// The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+  /// The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
   final pulumi.Input<String>? machineType;
   /// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
   final pulumi.Input<List<WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig>>? managedGroupConfigs;
-  /// Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+  /// Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://docs.cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
   final pulumi.Input<String>? minCpuPlatform;
   /// The number of VM instances in the instance group. For master instance groups, must be set to 1.
   final pulumi.Input<int>? numInstances;
@@ -31,11 +31,11 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
   /// [accelerators] The Compute Engine accelerator configuration for these instances.
   /// [diskConfig] Disk option config settings.
   /// [image] The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
-  /// [instanceNames] Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+  /// [instanceNames] Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
   /// [isPreemptible] Output only. Specifies that this instance group contains preemptible instances.
-  /// [machineType] The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+  /// [machineType] The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
   /// [managedGroupConfigs] Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-  /// [minCpuPlatform] Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+  /// [minCpuPlatform] Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://docs.cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
   /// [numInstances] The number of VM instances in the instance group. For master instance groups, must be set to 1.
   /// [preemptibility] Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
   const WorkflowTemplatePlacementManagedClusterConfigMasterConfig({
@@ -81,4 +81,3 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
     );
   }
 }
-

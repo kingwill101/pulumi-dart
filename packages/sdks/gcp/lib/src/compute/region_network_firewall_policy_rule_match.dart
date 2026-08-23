@@ -11,8 +11,12 @@ class RegionNetworkFirewallPolicyRuleMatch {
   final pulumi.Input<List<String>>? destFqdns;
   /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
   final pulumi.Input<List<String>>? destIpRanges;
+  /// Network context of the traffic destination.
+  /// Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+  final pulumi.Input<String>? destNetworkContext;
+  /// (Optional, Beta)
   /// Network scope of the traffic destination.
-  /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+  /// Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
   final pulumi.Input<String>? destNetworkScope;
   /// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
   final pulumi.Input<List<String>>? destRegionCodes;
@@ -27,8 +31,12 @@ class RegionNetworkFirewallPolicyRuleMatch {
   final pulumi.Input<List<String>>? srcFqdns;
   /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
   final pulumi.Input<List<String>>? srcIpRanges;
+  /// Network context of the traffic source.
+  /// Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+  final pulumi.Input<String>? srcNetworkContext;
+  /// (Optional, Beta)
   /// Network scope of the traffic source.
-  /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+  /// Possible values are: `UNSPECIFIED`, `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
   final pulumi.Input<String>? srcNetworkScope;
   /// Networks of the traffic source. It can be either a full or partial url.
   final pulumi.Input<List<String>>? srcNetworks;
@@ -40,21 +48,23 @@ class RegionNetworkFirewallPolicyRuleMatch {
   /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
   ///
   ///
-  /// &lt;a name="nested_match_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
+  /// &lt;a name="nestedMatchLayer4Configs"&gt;&lt;/a&gt;The `layer4Configs` block supports:
   final pulumi.Input<List<String>>? srcThreatIntelligences;
 
   /// Creates a new [RegionNetworkFirewallPolicyRuleMatch].
   /// [destAddressGroups] Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
   /// [destFqdns] Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
   /// [destIpRanges] CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
-  /// [destNetworkScope] Network scope of the traffic destination.
+  /// [destNetworkContext] Network context of the traffic destination.
+  /// [destNetworkScope] (Optional, Beta)
   /// [destRegionCodes] Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
   /// [destThreatIntelligences] Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
   /// [layer4Configs] Pairs of IP protocols and ports that the rule should match.
   /// [srcAddressGroups] Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
   /// [srcFqdns] Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
   /// [srcIpRanges] CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
-  /// [srcNetworkScope] Network scope of the traffic source.
+  /// [srcNetworkContext] Network context of the traffic source.
+  /// [srcNetworkScope] (Optional, Beta)
   /// [srcNetworks] Networks of the traffic source. It can be either a full or partial url.
   /// [srcRegionCodes] Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
   /// [srcSecureTags] List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
@@ -63,6 +73,7 @@ class RegionNetworkFirewallPolicyRuleMatch {
     this.destAddressGroups,
     this.destFqdns,
     this.destIpRanges,
+    this.destNetworkContext,
     this.destNetworkScope,
     this.destRegionCodes,
     this.destThreatIntelligences,
@@ -70,6 +81,7 @@ class RegionNetworkFirewallPolicyRuleMatch {
     this.srcAddressGroups,
     this.srcFqdns,
     this.srcIpRanges,
+    this.srcNetworkContext,
     this.srcNetworkScope,
     this.srcNetworks,
     this.srcRegionCodes,
@@ -82,6 +94,7 @@ class RegionNetworkFirewallPolicyRuleMatch {
       'destAddressGroups': ?destAddressGroups,
       'destFqdns': ?destFqdns,
       'destIpRanges': ?destIpRanges,
+      'destNetworkContext': ?destNetworkContext,
       'destNetworkScope': ?destNetworkScope,
       'destRegionCodes': ?destRegionCodes,
       'destThreatIntelligences': ?destThreatIntelligences,
@@ -89,6 +102,7 @@ class RegionNetworkFirewallPolicyRuleMatch {
       'srcAddressGroups': ?srcAddressGroups,
       'srcFqdns': ?srcFqdns,
       'srcIpRanges': ?srcIpRanges,
+      'srcNetworkContext': ?srcNetworkContext,
       'srcNetworkScope': ?srcNetworkScope,
       'srcNetworks': ?srcNetworks,
       'srcRegionCodes': ?srcRegionCodes,
@@ -102,6 +116,7 @@ class RegionNetworkFirewallPolicyRuleMatch {
       destAddressGroups: (() { final guardedValue = map['destAddressGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       destFqdns: (() { final guardedValue = map['destFqdns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       destIpRanges: (() { final guardedValue = map['destIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      destNetworkContext: (() { final guardedValue = map['destNetworkContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destNetworkScope: (() { final guardedValue = map['destNetworkScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destRegionCodes: (() { final guardedValue = map['destRegionCodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       destThreatIntelligences: (() { final guardedValue = map['destThreatIntelligences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -109,6 +124,7 @@ class RegionNetworkFirewallPolicyRuleMatch {
       srcAddressGroups: (() { final guardedValue = map['srcAddressGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       srcFqdns: (() { final guardedValue = map['srcFqdns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       srcIpRanges: (() { final guardedValue = map['srcIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      srcNetworkContext: (() { final guardedValue = map['srcNetworkContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       srcNetworkScope: (() { final guardedValue = map['srcNetworkScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       srcNetworks: (() { final guardedValue = map['srcNetworks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       srcRegionCodes: (() { final guardedValue = map['srcRegionCodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -117,4 +133,3 @@ class RegionNetworkFirewallPolicyRuleMatch {
     );
   }
 }
-

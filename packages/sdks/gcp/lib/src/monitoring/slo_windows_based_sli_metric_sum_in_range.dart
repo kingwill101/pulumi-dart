@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'slo_windows_based_sli_metric_sum_in_range_range.dart';
 
 class SloWindowsBasedSliMetricSumInRange {
-  /// Range of numerical values. The computed good_service
+  /// Range of numerical values. The computed goodService
   /// will be the count of values x in the Distribution such
   /// that range.min &lt;= x &lt;= range.max. inclusive of min and
   /// max. Open ranges can be defined by setting
@@ -22,7 +22,7 @@ class SloWindowsBasedSliMetricSumInRange {
   final pulumi.Input<String> timeSeries;
 
   /// Creates a new [SloWindowsBasedSliMetricSumInRange].
-  /// [range] Range of numerical values. The computed good_service
+  /// [range] Range of numerical values. The computed goodService
   /// [timeSeries] A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   const SloWindowsBasedSliMetricSumInRange({
     required this.range,
@@ -43,4 +43,3 @@ class SloWindowsBasedSliMetricSumInRange {
     );
   }
 }
-

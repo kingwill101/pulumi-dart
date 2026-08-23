@@ -123,6 +123,30 @@ import 'backup_schedule_weekly_recurrence.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firestore_database" "database" {
+///   project                 = "my-project-name"
+///   name                    = "database-id"
+///   location_id             = "nam5"
+///   type                    = "FIRESTORE_NATIVE"
+///   delete_protection_state = "DELETE_PROTECTION_ENABLED"
+///   deletion_policy         = "DELETE"
+/// }
+/// resource "gcp_firestore_backupschedule" "daily-backup" {
+///   project          = "my-project-name"
+///   database         = gcp_firestore_database.database.name
+///   retention        = "8467200s"
+///   daily_recurrence = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -134,8 +158,8 @@ import 'backup_schedule_weekly_recurrence.dart';
 /// import com.pulumi.gcp.firestore.BackupSchedule;
 /// import com.pulumi.gcp.firestore.BackupScheduleArgs;
 /// import com.pulumi.gcp.firestore.inputs.BackupScheduleDailyRecurrenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -298,6 +322,32 @@ import 'backup_schedule_weekly_recurrence.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firestore_database" "database" {
+///   project                 = "my-project-name"
+///   name                    = "database-id"
+///   location_id             = "nam5"
+///   type                    = "FIRESTORE_NATIVE"
+///   delete_protection_state = "DELETE_PROTECTION_ENABLED"
+///   deletion_policy         = "DELETE"
+/// }
+/// resource "gcp_firestore_backupschedule" "weekly-backup" {
+///   project   = "my-project-name"
+///   database  = gcp_firestore_database.database.name
+///   retention = "8467200s"
+///   weekly_recurrence = {
+///     day = "SUNDAY"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -309,8 +359,8 @@ import 'backup_schedule_weekly_recurrence.dart';
 /// import com.pulumi.gcp.firestore.BackupSchedule;
 /// import com.pulumi.gcp.firestore.BackupScheduleArgs;
 /// import com.pulumi.gcp.firestore.inputs.BackupScheduleWeeklyRecurrenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -370,22 +420,15 @@ import 'backup_schedule_weekly_recurrence.dart';
 /// BackupSchedule can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}`
-///
 /// * `{{project}}/{{database}}/{{name}}`
-///
 /// * `{{database}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, BackupSchedule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default {{project}}/{{database}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default {{database}}/{{name}}
 /// ```
 class BackupSchedule extends pulumi.CustomResource {
@@ -393,6 +436,13 @@ class BackupSchedule extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, dynamic>?> dailyRecurrence;
   /// The Firestore database id. Defaults to `"(default)"`.
   late final pulumi.Output<String?> database;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The unique backup schedule identifier across all locations and databases for the given project. Format:
   /// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
   late final pulumi.Output<String> name;
@@ -423,6 +473,7 @@ class BackupSchedule extends pulumi.CustomResource {
         ) {
     dailyRecurrence = registerOutput<Map<String, dynamic>?>('dailyRecurrence');
     database = registerOutput<String?>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     retention = registerOutput<String>('retention');
@@ -454,6 +505,7 @@ class BackupSchedule extends pulumi.CustomResource {
         ) {
     dailyRecurrence = registerOutput<Map<String, dynamic>?>('dailyRecurrence');
     database = registerOutput<String?>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     retention = registerOutput<String>('retention');

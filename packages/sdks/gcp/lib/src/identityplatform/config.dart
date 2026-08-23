@@ -361,6 +361,74 @@ import 'config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "default" {
+///   project_id      = "my-project"
+///   name            = "my-project"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+///   labels = {
+///     "firebase" = "enabled"
+///   }
+/// }
+/// resource "gcp_projects_service" "identitytoolkit" {
+///   project = gcp_organizations_project.default.project_id
+///   service = "identitytoolkit.googleapis.com"
+/// }
+/// resource "gcp_identityplatform_config" "default" {
+///   project                    = gcp_organizations_project.default.project_id
+///   autodelete_anonymous_users = true
+///   sign_in = {
+///     allow_duplicate_emails = true
+///     anonymous = {
+///       enabled = true
+///     }
+///     email = {
+///       enabled           = true
+///       password_required = false
+///     }
+///     phone_number = {
+///       enabled = true
+///       test_phone_numbers = {
+///         "+11231231234" = "000000"
+///       }
+///     }
+///   }
+///   sms_region_config = {
+///     allowlist_only = {
+///       allowed_regions = ["US", "CA"]
+///     }
+///   }
+///   blocking_functions = {
+///     triggers = [{
+///       "eventType"   = "beforeSignIn"
+///       "functionUri" = "https://us-east1-my-project.cloudfunctions.net/before-sign-in"
+///     }]
+///     forward_inbound_credentials = {
+///       refresh_token = true
+///       access_token  = true
+///       id_token      = true
+///     }
+///   }
+///   quota = {
+///     sign_up_quota_config = {
+///       quota          = 1000
+///       start_time     = "2014-10-02T15:01:23Z"
+///       quota_duration = "7200s"
+///     }
+///   }
+///   authorized_domains = ["localhost", "my-project.firebaseapp.com", "my-project.web.app"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -380,11 +448,12 @@ import 'config_state.dart';
 /// import com.pulumi.gcp.identityplatform.inputs.ConfigSmsRegionConfigArgs;
 /// import com.pulumi.gcp.identityplatform.inputs.ConfigSmsRegionConfigAllowlistOnlyArgs;
 /// import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsArgs;
+/// import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsTriggerArgs;
 /// import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsForwardInboundCredentialsArgs;
 /// import com.pulumi.gcp.identityplatform.inputs.ConfigQuotaArgs;
 /// import com.pulumi.gcp.identityplatform.inputs.ConfigQuotaSignUpQuotaConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -525,22 +594,15 @@ import 'config_state.dart';
 /// Config can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/config`
-///
 /// * `projects/{{project}}`
-///
 /// * `{{project}}`
+///
 ///
 /// When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:identityplatform/config:Config default projects/{{project}}/config
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:identityplatform/config:Config default projects/{{project}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:identityplatform/config:Config default {{project}}
 /// ```
 class Config extends pulumi.CustomResource {
@@ -562,7 +624,7 @@ class Config extends pulumi.CustomResource {
   late final pulumi.Output<ConfigMonitoring> monitoring;
   /// Configuration related to multi-tenant functionality.
   /// Structure is documented below.
-  late final pulumi.Output<ConfigMultiTenant?> multiTenant;
+  late final pulumi.Output<ConfigMultiTenant> multiTenant;
   /// The name of the Config resource
   late final pulumi.Output<String> name;
   /// The ID of the project in which the resource belongs.
@@ -598,7 +660,7 @@ class Config extends pulumi.CustomResource {
     client = registerOutput<ConfigClient>('client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mfa = registerOutput<ConfigMfa>('mfa', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigMfa.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitoring = registerOutput<ConfigMonitoring>('monitoring', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    multiTenant = registerOutput<ConfigMultiTenant?>('multiTenant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigMultiTenant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    multiTenant = registerOutput<ConfigMultiTenant>('multiTenant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigMultiTenant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     quota = registerOutput<ConfigQuota?>('quota', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigQuota.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -635,7 +697,7 @@ class Config extends pulumi.CustomResource {
     client = registerOutput<ConfigClient>('client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mfa = registerOutput<ConfigMfa>('mfa', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigMfa.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     monitoring = registerOutput<ConfigMonitoring>('monitoring', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    multiTenant = registerOutput<ConfigMultiTenant?>('multiTenant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigMultiTenant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    multiTenant = registerOutput<ConfigMultiTenant>('multiTenant', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigMultiTenant.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     quota = registerOutput<ConfigQuota?>('quota', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigQuota.fromMap((guardedValue as Map).cast<String, dynamic>()); });

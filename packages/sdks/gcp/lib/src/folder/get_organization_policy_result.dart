@@ -9,6 +9,7 @@ import 'get_organization_policy_restore_policy.dart';
 class GetOrganizationPolicyResult {
   final List<GetOrganizationPolicyBooleanPolicy> booleanPolicies;
   final String constraint;
+  final String deletionPolicy;
   final String etag;
   final String folder;
   /// The provider-assigned unique ID for this managed resource.
@@ -21,6 +22,7 @@ class GetOrganizationPolicyResult {
   /// Creates a new [GetOrganizationPolicyResult].
   /// [booleanPolicies] Required.
   /// [constraint] Required.
+  /// [deletionPolicy] Required.
   /// [etag] Required.
   /// [folder] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -31,6 +33,7 @@ class GetOrganizationPolicyResult {
   const GetOrganizationPolicyResult({
     required this.booleanPolicies,
     required this.constraint,
+    required this.deletionPolicy,
     required this.etag,
     required this.folder,
     required this.id,
@@ -44,6 +47,7 @@ class GetOrganizationPolicyResult {
     return <String, dynamic>{
       'booleanPolicies': pulumi.Input.encodeList<GetOrganizationPolicyBooleanPolicy, Map<String, dynamic>>(booleanPolicies, (value) => value.toMap()),
       'constraint': constraint,
+      'deletionPolicy': deletionPolicy,
       'etag': etag,
       'folder': folder,
       'id': id,
@@ -58,6 +62,7 @@ class GetOrganizationPolicyResult {
     return GetOrganizationPolicyResult(
       booleanPolicies: pulumi.Input.decodeList<GetOrganizationPolicyBooleanPolicy>(map['booleanPolicies']!, (value) => GetOrganizationPolicyBooleanPolicy.fromMap((value as Map).cast<String, dynamic>())),
       constraint: map['constraint'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       etag: map['etag'] as String,
       folder: map['folder'] as String,
       id: map['id'] as String,
@@ -68,4 +73,3 @@ class GetOrganizationPolicyResult {
     );
   }
 }
-

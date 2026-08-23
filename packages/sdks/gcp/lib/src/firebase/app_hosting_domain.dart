@@ -140,6 +140,36 @@ import 'app_hosting_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_apphostingdomain" "example" {
+///   project   = gcp_firebase_apphostingbackend.example.project
+///   location  = gcp_firebase_apphostingbackend.example.location
+///   backend   = gcp_firebase_apphostingbackend.example.backend_id
+///   domain_id = "example.com"
+/// }
+/// resource "gcp_firebase_apphostingbackend" "example" {
+///   project          = "my-project-name"
+///   location         = "us-central1"
+///   backend_id       = "domain-mini"
+///   app_id           = "1:0000000000:web:674cde32020e16fbce9dbd"
+///   serving_locality = "GLOBAL_ACCESS"
+///   service_account  = gcp_serviceaccount_account.service_account.email
+/// }
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   project                      = "my-project-name"
+///   account_id                   = "sa-id"
+///   display_name                 = "Firebase App Hosting compute service account"
+///   create_ignore_already_exists = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -152,8 +182,8 @@ import 'app_hosting_domain_state.dart';
 /// import com.pulumi.gcp.firebase.AppHostingBackendArgs;
 /// import com.pulumi.gcp.firebase.AppHostingDomain;
 /// import com.pulumi.gcp.firebase.AppHostingDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -377,6 +407,42 @@ import 'app_hosting_domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_apphostingdomain" "example" {
+///   project   = gcp_firebase_apphostingbackend.example.project
+///   location  = gcp_firebase_apphostingbackend.example.location
+///   backend   = gcp_firebase_apphostingbackend.example.backend_id
+///   domain_id = "example.com"
+///   serve = {
+///     redirect = {
+///       uri    = "google.com"
+///       status = "302"
+///     }
+///   }
+/// }
+/// resource "gcp_firebase_apphostingbackend" "example" {
+///   project          = "my-project-name"
+///   location         = "us-central1"
+///   backend_id       = "domain-full"
+///   app_id           = "1:0000000000:web:674cde32020e16fbce9dbd"
+///   serving_locality = "GLOBAL_ACCESS"
+///   service_account  = gcp_serviceaccount_account.service_account.email
+/// }
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   project                      = "my-project-name"
+///   account_id                   = "sa-id"
+///   display_name                 = "Firebase App Hosting compute service account"
+///   create_ignore_already_exists = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -391,8 +457,8 @@ import 'app_hosting_domain_state.dart';
 /// import com.pulumi.gcp.firebase.AppHostingDomainArgs;
 /// import com.pulumi.gcp.firebase.inputs.AppHostingDomainServeArgs;
 /// import com.pulumi.gcp.firebase.inputs.AppHostingDomainServeRedirectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -475,22 +541,15 @@ import 'app_hosting_domain_state.dart';
 /// Domain can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/domains/{{domain_id}}`
-///
 /// * `{{project}}/{{location}}/{{backend}}/{{domain_id}}`
-///
 /// * `{{location}}/{{backend}}/{{domain_id}}`
+///
 ///
 /// When using the `pulumi import` command, Domain can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/appHostingDomain:AppHostingDomain default projects/{{project}}/locations/{{location}}/backends/{{backend}}/domains/{{domain_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appHostingDomain:AppHostingDomain default {{project}}/{{location}}/{{backend}}/{{domain_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appHostingDomain:AppHostingDomain default {{location}}/{{backend}}/{{domain_id}}
 /// ```
 class AppHostingDomain extends pulumi.CustomResource {
@@ -503,6 +562,13 @@ class AppHostingDomain extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> customDomainStatuses;
   /// Time at which the domain was deleted.
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Id of the domain to create.
   /// Must be a valid domain name, such as "foo.com"
   late final pulumi.Output<String> domainId;
@@ -547,6 +613,7 @@ class AppHostingDomain extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     customDomainStatuses = registerOutput<List<Map<String, dynamic>>>('customDomainStatuses');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     domainId = registerOutput<String>('domainId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -585,6 +652,7 @@ class AppHostingDomain extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     customDomainStatuses = registerOutput<List<Map<String, dynamic>>>('customDomainStatuses');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     domainId = registerOutput<String>('domainId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

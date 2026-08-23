@@ -12,10 +12,10 @@ class InstanceGceSetupBootDisk {
   /// recommended value of 150GB.
   final pulumi.Input<String>? diskSizeGb;
   /// Optional. Indicates the type of the disk.
-  /// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+  /// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
   final pulumi.Input<String>? diskType;
   /// 'Optional. The KMS key used to encrypt the disks, only
-  /// applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
+  /// applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
   /// Learn more about using your own encryption keys.'
   final pulumi.Input<String>? kmsKey;
 
@@ -49,4 +49,3 @@ class InstanceGceSetupBootDisk {
     );
   }
 }
-

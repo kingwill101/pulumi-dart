@@ -27,6 +27,7 @@ class GetInstanceResult {
   final String backupCollection;
   final String createTime;
   final List<GetInstanceCrossInstanceReplicationConfig> crossInstanceReplicationConfigs;
+  final String deletionPolicy;
   final bool deletionProtectionEnabled;
   final List<GetInstanceDesiredAutoCreatedEndpoint> desiredAutoCreatedEndpoints;
   final List<GetInstanceDesiredPscAutoConnection> desiredPscAutoConnections;
@@ -58,6 +59,8 @@ class GetInstanceResult {
   final List<GetInstancePscAutoConnection> pscAutoConnections;
   final Map<String, String> pulumiLabels;
   final int replicaCount;
+  final String serverCaMode;
+  final String serverCaPool;
   final int shardCount;
   final String state;
   final List<GetInstanceStateInfo> stateInfos;
@@ -73,6 +76,7 @@ class GetInstanceResult {
   /// [backupCollection] Required.
   /// [createTime] Required.
   /// [crossInstanceReplicationConfigs] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtectionEnabled] Required.
   /// [desiredAutoCreatedEndpoints] Required.
   /// [desiredPscAutoConnections] Required.
@@ -103,6 +107,8 @@ class GetInstanceResult {
   /// [pscAutoConnections] Required.
   /// [pulumiLabels] Required.
   /// [replicaCount] Required.
+  /// [serverCaMode] Required.
+  /// [serverCaPool] Required.
   /// [shardCount] Required.
   /// [state] Required.
   /// [stateInfos] Required.
@@ -117,6 +123,7 @@ class GetInstanceResult {
     required this.backupCollection,
     required this.createTime,
     required this.crossInstanceReplicationConfigs,
+    required this.deletionPolicy,
     required this.deletionProtectionEnabled,
     required this.desiredAutoCreatedEndpoints,
     required this.desiredPscAutoConnections,
@@ -147,6 +154,8 @@ class GetInstanceResult {
     required this.pscAutoConnections,
     required this.pulumiLabels,
     required this.replicaCount,
+    required this.serverCaMode,
+    required this.serverCaPool,
     required this.shardCount,
     required this.state,
     required this.stateInfos,
@@ -164,6 +173,7 @@ class GetInstanceResult {
       'backupCollection': backupCollection,
       'createTime': createTime,
       'crossInstanceReplicationConfigs': pulumi.Input.encodeList<GetInstanceCrossInstanceReplicationConfig, Map<String, dynamic>>(crossInstanceReplicationConfigs, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'deletionProtectionEnabled': deletionProtectionEnabled,
       'desiredAutoCreatedEndpoints': pulumi.Input.encodeList<GetInstanceDesiredAutoCreatedEndpoint, Map<String, dynamic>>(desiredAutoCreatedEndpoints, (value) => value.toMap()),
       'desiredPscAutoConnections': pulumi.Input.encodeList<GetInstanceDesiredPscAutoConnection, Map<String, dynamic>>(desiredPscAutoConnections, (value) => value.toMap()),
@@ -194,6 +204,8 @@ class GetInstanceResult {
       'pscAutoConnections': pulumi.Input.encodeList<GetInstancePscAutoConnection, Map<String, dynamic>>(pscAutoConnections, (value) => value.toMap()),
       'pulumiLabels': pulumiLabels,
       'replicaCount': replicaCount,
+      'serverCaMode': serverCaMode,
+      'serverCaPool': serverCaPool,
       'shardCount': shardCount,
       'state': state,
       'stateInfos': pulumi.Input.encodeList<GetInstanceStateInfo, Map<String, dynamic>>(stateInfos, (value) => value.toMap()),
@@ -212,6 +224,7 @@ class GetInstanceResult {
       backupCollection: map['backupCollection'] as String,
       createTime: map['createTime'] as String,
       crossInstanceReplicationConfigs: pulumi.Input.decodeList<GetInstanceCrossInstanceReplicationConfig>(map['crossInstanceReplicationConfigs']!, (value) => GetInstanceCrossInstanceReplicationConfig.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtectionEnabled: map['deletionProtectionEnabled'] as bool,
       desiredAutoCreatedEndpoints: pulumi.Input.decodeList<GetInstanceDesiredAutoCreatedEndpoint>(map['desiredAutoCreatedEndpoints']!, (value) => GetInstanceDesiredAutoCreatedEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       desiredPscAutoConnections: pulumi.Input.decodeList<GetInstanceDesiredPscAutoConnection>(map['desiredPscAutoConnections']!, (value) => GetInstanceDesiredPscAutoConnection.fromMap((value as Map).cast<String, dynamic>())),
@@ -242,6 +255,8 @@ class GetInstanceResult {
       pscAutoConnections: pulumi.Input.decodeList<GetInstancePscAutoConnection>(map['pscAutoConnections']!, (value) => GetInstancePscAutoConnection.fromMap((value as Map).cast<String, dynamic>())),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       replicaCount: map['replicaCount'] as int,
+      serverCaMode: map['serverCaMode'] as String,
+      serverCaPool: map['serverCaPool'] as String,
       shardCount: map['shardCount'] as int,
       state: map['state'] as String,
       stateInfos: pulumi.Input.decodeList<GetInstanceStateInfo>(map['stateInfos']!, (value) => GetInstanceStateInfo.fromMap((value as Map).cast<String, dynamic>())),
@@ -252,4 +267,3 @@ class GetInstanceResult {
     );
   }
 }
-

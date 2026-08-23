@@ -24,6 +24,7 @@ class GetServiceResult {
   final List<String> customAudiences;
   final bool defaultUriDisabled;
   final String deleteTime;
+  final String deletionPolicy;
   final bool deletionProtection;
   final String description;
   final Map<String, String> effectiveAnnotations;
@@ -49,6 +50,7 @@ class GetServiceResult {
   final Map<String, String> pulumiLabels;
   final bool reconciling;
   final List<GetServiceScaling> scalings;
+  final Map<String, String> tags;
   final List<GetServiceTemplate> templates;
   final List<GetServiceTerminalCondition> terminalConditions;
   final List<GetServiceTrafficStatus> trafficStatuses;
@@ -70,6 +72,7 @@ class GetServiceResult {
   /// [customAudiences] Required.
   /// [defaultUriDisabled] Required.
   /// [deleteTime] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [description] Required.
   /// [effectiveAnnotations] Required.
@@ -94,6 +97,7 @@ class GetServiceResult {
   /// [pulumiLabels] Required.
   /// [reconciling] Required.
   /// [scalings] Required.
+  /// [tags] Required.
   /// [templates] Required.
   /// [terminalConditions] Required.
   /// [trafficStatuses] Required.
@@ -114,6 +118,7 @@ class GetServiceResult {
     required this.customAudiences,
     required this.defaultUriDisabled,
     required this.deleteTime,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.description,
     required this.effectiveAnnotations,
@@ -138,6 +143,7 @@ class GetServiceResult {
     required this.pulumiLabels,
     required this.reconciling,
     required this.scalings,
+    required this.tags,
     required this.templates,
     required this.terminalConditions,
     required this.trafficStatuses,
@@ -161,6 +167,7 @@ class GetServiceResult {
       'customAudiences': customAudiences,
       'defaultUriDisabled': defaultUriDisabled,
       'deleteTime': deleteTime,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'description': description,
       'effectiveAnnotations': effectiveAnnotations,
@@ -185,6 +192,7 @@ class GetServiceResult {
       'pulumiLabels': pulumiLabels,
       'reconciling': reconciling,
       'scalings': pulumi.Input.encodeList<GetServiceScaling, Map<String, dynamic>>(scalings, (value) => value.toMap()),
+      'tags': tags,
       'templates': pulumi.Input.encodeList<GetServiceTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
       'terminalConditions': pulumi.Input.encodeList<GetServiceTerminalCondition, Map<String, dynamic>>(terminalConditions, (value) => value.toMap()),
       'trafficStatuses': pulumi.Input.encodeList<GetServiceTrafficStatus, Map<String, dynamic>>(trafficStatuses, (value) => value.toMap()),
@@ -209,6 +217,7 @@ class GetServiceResult {
       customAudiences: (map['customAudiences'] as List).cast<String>(),
       defaultUriDisabled: map['defaultUriDisabled'] as bool,
       deleteTime: map['deleteTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       description: map['description'] as String,
       effectiveAnnotations: (map['effectiveAnnotations'] as Map).cast<String, String>(),
@@ -233,6 +242,7 @@ class GetServiceResult {
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       reconciling: map['reconciling'] as bool,
       scalings: pulumi.Input.decodeList<GetServiceScaling>(map['scalings']!, (value) => GetServiceScaling.fromMap((value as Map).cast<String, dynamic>())),
+      tags: (map['tags'] as Map).cast<String, String>(),
       templates: pulumi.Input.decodeList<GetServiceTemplate>(map['templates']!, (value) => GetServiceTemplate.fromMap((value as Map).cast<String, dynamic>())),
       terminalConditions: pulumi.Input.decodeList<GetServiceTerminalCondition>(map['terminalConditions']!, (value) => GetServiceTerminalCondition.fromMap((value as Map).cast<String, dynamic>())),
       trafficStatuses: pulumi.Input.decodeList<GetServiceTrafficStatus>(map['trafficStatuses']!, (value) => GetServiceTrafficStatus.fromMap((value as Map).cast<String, dynamic>())),
@@ -244,4 +254,3 @@ class GetServiceResult {
     );
   }
 }
-

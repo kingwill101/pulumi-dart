@@ -6,3 +6,6 @@ export 'recaptcha/enterprise_key_state.dart';
 export 'recaptcha/enterprise_key_testing_options.dart';
 export 'recaptcha/enterprise_key_waf_settings.dart';
 export 'recaptcha/enterprise_key_web_settings.dart';
+export 'recaptcha/enterprise_key_web_settings_challenge_settings.dart';
+export 'recaptcha/enterprise_key_web_settings_challenge_settings_action_setting.dart';
+export 'recaptcha/enterprise_key_web_settings_challenge_settings_default_settings.dart';

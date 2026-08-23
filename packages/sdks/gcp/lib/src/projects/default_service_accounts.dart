@@ -74,6 +74,20 @@ import 'default_service_accounts_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_defaultserviceaccounts" "my_project" {
+///   project = "my-project-id"
+///   action  = "DELETE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +96,8 @@ import 'default_service_accounts_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.projects.DefaultServiceAccounts;
 /// import com.pulumi.gcp.projects.DefaultServiceAccountsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,6 +189,21 @@ import 'default_service_accounts_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_defaultserviceaccounts" "my_project" {
+///   project        = "my-project-id"
+///   action         = "DISABLE"
+///   restore_policy = "REVERT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +212,8 @@ import 'default_service_accounts_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.projects.DefaultServiceAccounts;
 /// import com.pulumi.gcp.projects.DefaultServiceAccountsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

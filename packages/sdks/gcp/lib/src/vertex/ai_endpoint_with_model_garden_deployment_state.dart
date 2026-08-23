@@ -7,6 +7,13 @@ import 'ai_endpoint_with_model_garden_deployment_model_config.dart';
 
 /// Input properties used for looking up and filtering AiEndpointWithModelGardenDeployment resources.
 class AiEndpointWithModelGardenDeploymentState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The deploy config to use for the deployment.
   /// Structure is documented below.
   final pulumi.Input<AiEndpointWithModelGardenDeploymentDeployConfig>? deployConfig;
@@ -40,6 +47,7 @@ class AiEndpointWithModelGardenDeploymentState {
   final pulumi.Input<String>? publisherModelName;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deployConfig] The deploy config to use for the deployment.
   /// [deployedModelDisplayName] Output only. The display name assigned to the model deployed to the endpoint.
   /// [deployedModelId] Output only. The unique numeric ID that Vertex AI assigns to the model at the time it is deployed to the endpoint.
@@ -51,6 +59,7 @@ class AiEndpointWithModelGardenDeploymentState {
   /// [project] The ID of the project in which the resource belongs.
   /// [publisherModelName] The Model Garden model to deploy.
   const AiEndpointWithModelGardenDeploymentState({
+    this.deletionPolicy,
     this.deployConfig,
     this.deployedModelDisplayName,
     this.deployedModelId,
@@ -65,6 +74,7 @@ class AiEndpointWithModelGardenDeploymentState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'deployConfig': ?pulumi.Input.mapOptionalInputValue<AiEndpointWithModelGardenDeploymentDeployConfig, Map<String, dynamic>>(deployConfig, (value) => value.toMap()),
       'deployedModelDisplayName': ?deployedModelDisplayName,
       'deployedModelId': ?deployedModelId,
@@ -80,6 +90,7 @@ class AiEndpointWithModelGardenDeploymentState {
 
   factory AiEndpointWithModelGardenDeploymentState.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deployConfig: (() { final guardedValue = map['deployConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deployedModelDisplayName: (() { final guardedValue = map['deployedModelDisplayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deployedModelId: (() { final guardedValue = map['deployedModelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -93,4 +104,3 @@ class AiEndpointWithModelGardenDeploymentState {
     );
   }
 }
-

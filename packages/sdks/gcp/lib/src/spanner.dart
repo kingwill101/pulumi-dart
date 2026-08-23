@@ -62,5 +62,8 @@ export 'spanner/instance_iampolicy_args.dart';
 export 'spanner/instance_iampolicy_state.dart';
 export 'spanner/instance_partition.dart';
 export 'spanner/instance_partition_args.dart';
+export 'spanner/instance_partition_autoscaling_config.dart';
+export 'spanner/instance_partition_autoscaling_config_autoscaling_limits.dart';
+export 'spanner/instance_partition_autoscaling_config_autoscaling_targets.dart';
 export 'spanner/instance_partition_state.dart';
 export 'spanner/instance_state.dart';

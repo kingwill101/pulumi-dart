@@ -7,7 +7,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig {
   final pulumi.Input<String> clientId;
   /// The client (directory) ID of the application with federated credentials.
   ///
-  /// &lt;a name="nested_schedule_start_end_date"&gt;&lt;/a&gt;The `schedule_start_date` and `schedule_end_date` blocks support:
+  /// &lt;a name="nestedScheduleStartEndDate"&gt;&lt;/a&gt;The `scheduleStartDate` and `scheduleEndDate` blocks support:
   final pulumi.Input<String> tenantId;
 
   /// Creates a new [TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig].
@@ -32,4 +32,3 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig {
     );
   }
 }
-

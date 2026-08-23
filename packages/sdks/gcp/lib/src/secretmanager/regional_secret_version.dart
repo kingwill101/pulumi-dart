@@ -2,6 +2,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'regional_secret_version_args.dart';
 import 'regional_secret_version_state.dart';
 
+/// A regional secret version resource.
+///
+///
+/// To get more information about RegionalSecretVersion, see:
+///
+/// * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions)
+/// * How-to Guides
+/// * [Create and deploy a Regional Secret Version](https://cloud.google.com/secret-manager/regional-secrets/add-secret-version-rs)
+///
+/// &gt; **Warning:** The behavior of the `secretData` field is force new.
+/// While updating this field, Terraform deletes the existing resource and then creates a new one, which may cause potential outages. To mitigate
+/// this, use the `createBeforeDestroy` field within the lifecycle block.
+///
+/// For more details, refer to the Terraform lifecycle documentation.
+///
+///
+///
 /// ## Example Usage
 ///
 /// ### Regional Secret Version Basic
@@ -72,7 +89,7 @@ import 'regional_secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_basic", &secretmanager.RegionalSecretVersionArgs{
-/// 			Secret:     secret_basic.ID(),
+/// 			Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 		})
 /// 		if err != nil {
@@ -80,6 +97,24 @@ import 'regional_secret_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_regionalsecret" "secret-basic" {
+///   secret_id = "secret-version"
+///   location  = "us-central1"
+/// }
+/// resource "gcp_secretmanager_regionalsecretversion" "regional_secret_version_basic" {
+///   secret      = gcp_secretmanager_regionalsecret.secret-basic.id
+///   secret_data = "secret-data"
 /// }
 /// ```
 /// ```java
@@ -92,8 +127,8 @@ import 'regional_secret_version_state.dart';
 /// import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
 /// import com.pulumi.gcp.secretmanager.RegionalSecretVersion;
 /// import com.pulumi.gcp.secretmanager.RegionalSecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -219,7 +254,7 @@ import 'regional_secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_base64", &secretmanager.RegionalSecretVersionArgs{
-/// 			Secret:             secret_basic.ID(),
+/// 			Secret:             secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData:         pulumi.String(invokeFilebase64.Result),
 /// 			IsSecretDataBase64: pulumi.Bool(true),
 /// 		})
@@ -228,6 +263,28 @@ import 'regional_secret_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_regionalsecret" "secret-basic" {
+///   secret_id = "secret-version"
+///   location  = "us-central1"
+/// }
+/// resource "gcp_secretmanager_regionalsecretversion" "regional_secret_version_base64" {
+///   secret                = gcp_secretmanager_regionalsecret.secret-basic.id
+///   secret_data           = filebase64("secret-data.pfx")
+///   is_secret_data_base64 = true
 /// }
 /// ```
 /// ```java
@@ -242,8 +299,8 @@ import 'regional_secret_version_state.dart';
 /// import com.pulumi.gcp.secretmanager.RegionalSecretVersionArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -363,7 +420,7 @@ import 'regional_secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_disabled", &secretmanager.RegionalSecretVersionArgs{
-/// 			Secret:     secret_basic.ID(),
+/// 			Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 			Enabled:    pulumi.Bool(false),
 /// 		})
@@ -372,6 +429,25 @@ import 'regional_secret_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_regionalsecret" "secret-basic" {
+///   secret_id = "secret-version"
+///   location  = "us-central1"
+/// }
+/// resource "gcp_secretmanager_regionalsecretversion" "regional_secret_version_disabled" {
+///   secret      = gcp_secretmanager_regionalsecret.secret-basic.id
+///   secret_data = "secret-data"
+///   enabled     = false
 /// }
 /// ```
 /// ```java
@@ -384,8 +460,8 @@ import 'regional_secret_version_state.dart';
 /// import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
 /// import com.pulumi.gcp.secretmanager.RegionalSecretVersion;
 /// import com.pulumi.gcp.secretmanager.RegionalSecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -498,7 +574,7 @@ import 'regional_secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_deletion_policy", &secretmanager.RegionalSecretVersionArgs{
-/// 			Secret:         secret_basic.ID(),
+/// 			Secret:         secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData:     pulumi.String("secret-data"),
 /// 			DeletionPolicy: pulumi.String("ABANDON"),
 /// 		})
@@ -507,6 +583,25 @@ import 'regional_secret_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_regionalsecret" "secret-basic" {
+///   secret_id = "secret-version"
+///   location  = "us-central1"
+/// }
+/// resource "gcp_secretmanager_regionalsecretversion" "regional_secret_version_deletion_policy" {
+///   secret          = gcp_secretmanager_regionalsecret.secret-basic.id
+///   secret_data     = "secret-data"
+///   deletion_policy = "ABANDON"
 /// }
 /// ```
 /// ```java
@@ -519,8 +614,8 @@ import 'regional_secret_version_state.dart';
 /// import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
 /// import com.pulumi.gcp.secretmanager.RegionalSecretVersion;
 /// import com.pulumi.gcp.secretmanager.RegionalSecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -633,7 +728,7 @@ import 'regional_secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_deletion_policy", &secretmanager.RegionalSecretVersionArgs{
-/// 			Secret:         secret_basic.ID(),
+/// 			Secret:         secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData:     pulumi.String("secret-data"),
 /// 			DeletionPolicy: pulumi.String("DISABLE"),
 /// 		})
@@ -642,6 +737,25 @@ import 'regional_secret_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_regionalsecret" "secret-basic" {
+///   secret_id = "secret-version"
+///   location  = "us-central1"
+/// }
+/// resource "gcp_secretmanager_regionalsecretversion" "regional_secret_version_deletion_policy" {
+///   secret          = gcp_secretmanager_regionalsecret.secret-basic.id
+///   secret_data     = "secret-data"
+///   deletion_policy = "DISABLE"
 /// }
 /// ```
 /// ```java
@@ -654,8 +768,8 @@ import 'regional_secret_version_state.dart';
 /// import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
 /// import com.pulumi.gcp.secretmanager.RegionalSecretVersion;
 /// import com.pulumi.gcp.secretmanager.RegionalSecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -704,6 +818,7 @@ import 'regional_secret_version_state.dart';
 ///
 /// * `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}`
 ///
+///
 /// When using the `pulumi import` command, RegionalSecretVersion can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -715,13 +830,19 @@ class RegionalSecretVersion extends pulumi.CustomResource {
   /// The customer-managed encryption configuration of the regional secret.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> customerManagedEncryptions;
-  /// The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+  /// The deletion policy for the secret version. Setting `ABANDON` allows the resource
   /// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-  /// disabled rather than deleted. Default is `DELETE`. Possible values are:
+  /// disabled rather than deleted.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  ///
+  /// Default is `DELETE`. Possible values are:
   /// * DELETE
   /// * DISABLE
   /// * ABANDON
-  late final pulumi.Output<String?> deletionPolicy;
+  /// * PREVENT
+  late final pulumi.Output<String> deletionPolicy;
   /// The time at which the regional secret version was destroyed. Only present if state is DESTROYED.
   late final pulumi.Output<String> destroyTime;
   /// The current state of the regional secret version.
@@ -757,7 +878,7 @@ class RegionalSecretVersion extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     customerManagedEncryptions = registerOutput<List<Map<String, dynamic>>>('customerManagedEncryptions');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destroyTime = registerOutput<String>('destroyTime');
     enabled = registerOutput<bool?>('enabled');
     isSecretDataBase64 = registerOutput<bool?>('isSecretDataBase64');
@@ -793,7 +914,7 @@ class RegionalSecretVersion extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     customerManagedEncryptions = registerOutput<List<Map<String, dynamic>>>('customerManagedEncryptions');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destroyTime = registerOutput<String>('destroyTime');
     enabled = registerOutput<bool?>('enabled');
     isSecretDataBase64 = registerOutput<bool?>('isSecretDataBase64');

@@ -4,24 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_instance_access_rules_option_access_rule.dart';
 
 class GetInstanceAccessRulesOption {
-  /// An array of access rule exceptions. Each rule defines IP address ranges
-  /// that should have different squash behavior than the default.
+  /// The access rules for the instance.
   final pulumi.Input<List<GetInstanceAccessRulesOptionAccessRule>> accessRules;
-  /// The GID to map the root user to when root squashing is enabled
-  /// (e.g., 65534 for nobody).
+  /// The user squash GID for the default access rule.
+  /// This user squash GID applies to all root users connecting from clients
+  /// that are not matched by any of the access rules. If not set, the default
+  /// is 0 (no GID squash).
   final pulumi.Input<int> defaultSquashGid;
-  /// Set to "ROOT_SQUASH" to enable root squashing by default.
-  /// Other values include "NO_SQUASH". Possible values: ["ROOT_SQUASH", "NO_SQUASH"]
+  /// The squash mode for the default access rule.
+  /// Possible values:
+  /// NO_SQUASH
+  /// ROOT_SQUASH
   final pulumi.Input<String> defaultSquashMode;
-  /// The UID to map the root user to when root squashing is enabled
-  /// (e.g., 65534 for nobody).
+  /// The user squash UID for the default access rule.
+  /// This user squash UID applies to all root users connecting from clients
+  /// that are not matched by any of the access rules. If not set, the default
+  /// is 0 (no UID squash).
   final pulumi.Input<int> defaultSquashUid;
 
   /// Creates a new [GetInstanceAccessRulesOption].
-  /// [accessRules] An array of access rule exceptions. Each rule defines IP address ranges
-  /// [defaultSquashGid] The GID to map the root user to when root squashing is enabled
-  /// [defaultSquashMode] Set to "ROOT_SQUASH" to enable root squashing by default.
-  /// [defaultSquashUid] The UID to map the root user to when root squashing is enabled
+  /// [accessRules] The access rules for the instance.
+  /// [defaultSquashGid] The user squash GID for the default access rule.
+  /// [defaultSquashMode] The squash mode for the default access rule.
+  /// [defaultSquashUid] The user squash UID for the default access rule.
   const GetInstanceAccessRulesOption({
     required this.accessRules,
     required this.defaultSquashGid,
@@ -47,4 +52,3 @@ class GetInstanceAccessRulesOption {
     );
   }
 }
-

@@ -16,7 +16,7 @@ class GetClusterIpAllocationPolicy {
   final pulumi.Input<List<GetClusterIpAllocationPolicyAutoIpamConfig>> autoIpamConfigs;
   /// The IP address range for the cluster pod IPs. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
   final pulumi.Input<String> clusterIpv4CidrBlock;
-  /// The name of the existing secondary range in the cluster's subnetwork to use for pod IP addresses. Alternatively, cluster_ipv4_cidr_block can be used to automatically create a GKE-managed one.
+  /// The name of the existing secondary range in the cluster's subnetwork to use for pod IP addresses. Alternatively, clusterIpv4CidrBlock can be used to automatically create a GKE-managed one.
   final pulumi.Input<String> clusterSecondaryRangeName;
   /// Used to determine the default network tier for external IP addresses on cluster resources, such as node pools and load balancers.
   final pulumi.Input<List<GetClusterIpAllocationPolicyNetworkTierConfig>> networkTierConfigs;
@@ -24,7 +24,7 @@ class GetClusterIpAllocationPolicy {
   final pulumi.Input<List<GetClusterIpAllocationPolicyPodCidrOverprovisionConfig>> podCidrOverprovisionConfigs;
   /// The IP address range of the services IPs in this cluster. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
   final pulumi.Input<String> servicesIpv4CidrBlock;
-  /// The name of the existing secondary range in the cluster's subnetwork to use for service ClusterIPs. Alternatively, services_ipv4_cidr_block can be used to automatically create a GKE-managed one.
+  /// The name of the existing secondary range in the cluster's subnetwork to use for service ClusterIPs. Alternatively, servicesIpv4CidrBlock can be used to automatically create a GKE-managed one.
   final pulumi.Input<String> servicesSecondaryRangeName;
   /// The IP Stack type of the cluster. Choose between IPV4 and IPV4_IPV6. Default type is IPV4 Only if not set
   final pulumi.Input<String> stackType;
@@ -34,11 +34,11 @@ class GetClusterIpAllocationPolicy {
   /// [additionalPodRangesConfigs] AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
   /// [autoIpamConfigs] AutoIpamConfig contains all information related to Auto IPAM.
   /// [clusterIpv4CidrBlock] The IP address range for the cluster pod IPs. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
-  /// [clusterSecondaryRangeName] The name of the existing secondary range in the cluster's subnetwork to use for pod IP addresses. Alternatively, cluster_ipv4_cidr_block can be used to automatically create a GKE-managed one.
+  /// [clusterSecondaryRangeName] The name of the existing secondary range in the cluster's subnetwork to use for pod IP addresses. Alternatively, clusterIpv4CidrBlock can be used to automatically create a GKE-managed one.
   /// [networkTierConfigs] Used to determine the default network tier for external IP addresses on cluster resources, such as node pools and load balancers.
   /// [podCidrOverprovisionConfigs] Configuration for cluster level pod cidr overprovision. Default is disabled=false.
   /// [servicesIpv4CidrBlock] The IP address range of the services IPs in this cluster. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
-  /// [servicesSecondaryRangeName] The name of the existing secondary range in the cluster's subnetwork to use for service ClusterIPs. Alternatively, services_ipv4_cidr_block can be used to automatically create a GKE-managed one.
+  /// [servicesSecondaryRangeName] The name of the existing secondary range in the cluster's subnetwork to use for service ClusterIPs. Alternatively, servicesIpv4CidrBlock can be used to automatically create a GKE-managed one.
   /// [stackType] The IP Stack type of the cluster. Choose between IPV4 and IPV4_IPV6. Default type is IPV4 Only if not set
   const GetClusterIpAllocationPolicy({
     required this.additionalIpRangesConfigs,
@@ -83,4 +83,3 @@ class GetClusterIpAllocationPolicy {
     );
   }
 }
-

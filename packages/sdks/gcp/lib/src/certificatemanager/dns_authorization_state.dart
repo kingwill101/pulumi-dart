@@ -5,6 +5,13 @@ import 'dns_authorization_dns_resource_record.dart';
 
 /// Input properties used for looking up and filtering DnsAuthorization resources.
 class DnsAuthorizationState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human-readable description of the resource.
   final pulumi.Input<String>? description;
   /// The structure describing the DNS Resource Record that needs to be added
@@ -20,7 +27,7 @@ class DnsAuthorizationState {
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Set of label tags associated with the DNS Authorization resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The Certificate Manager location. If not specified, "global" is used.
   final pulumi.Input<String>? location;
@@ -44,6 +51,7 @@ class DnsAuthorizationState {
   final pulumi.Input<String>? type;
 
   /// Creates a new [DnsAuthorizationState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A human-readable description of the resource.
   /// [dnsResourceRecords] The structure describing the DNS Resource Record that needs to be added
   /// [domain] A domain which is being authorized. A DnsAuthorization resource covers a
@@ -55,6 +63,7 @@ class DnsAuthorizationState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [type] type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
   const DnsAuthorizationState({
+    this.deletionPolicy,
     this.description,
     this.dnsResourceRecords,
     this.domain,
@@ -69,6 +78,7 @@ class DnsAuthorizationState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'dnsResourceRecords': ?pulumi.Input.mapOptionalInputValue<List<DnsAuthorizationDnsResourceRecord>, List<Map<String, dynamic>>>(dnsResourceRecords, (value) => pulumi.Input.encodeList<DnsAuthorizationDnsResourceRecord, Map<String, dynamic>>(value, (value) => value.toMap())),
       'domain': ?domain,
@@ -84,6 +94,7 @@ class DnsAuthorizationState {
 
   factory DnsAuthorizationState.fromMap(Map<String, dynamic> map) {
     return DnsAuthorizationState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dnsResourceRecords: (() { final guardedValue = map['dnsResourceRecords']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DnsAuthorizationDnsResourceRecord>(guardedValue, (value) => DnsAuthorizationDnsResourceRecord.fromMap((value as Map).cast<String, dynamic>()))); })(),
       domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -97,4 +108,3 @@ class DnsAuthorizationState {
     );
   }
 }
-

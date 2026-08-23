@@ -12,6 +12,9 @@ import 'restore_workload_state.dart';
 /// The resource represents the restore operation and its result.
 ///
 ///
+///
+///
+///
 /// ## Example Usage
 ///
 /// ### Backup Dr Restore Workload Compute Instance Basic
@@ -27,14 +30,13 @@ import 'restore_workload_state.dart';
 ///     backupVaultId: "backup-vault",
 ///     dataSourceId: "data-source",
 ///     backupId: "backup",
-///     name: "projects/my-project/locations/us-central1/backups/my-backup",
 ///     computeInstanceTargetEnvironment: {
 ///         project: "my-project-name",
 ///         zone: "us-central1-a",
 ///     },
 ///     computeInstanceRestoreProperties: {
 ///         name: "restored-instance",
-///         machineType: "e2-medium",
+///         machineType: "zones/us-central1-a/machineTypes/e2-medium",
 ///     },
 /// });
 /// ```
@@ -47,14 +49,13 @@ import 'restore_workload_state.dart';
 ///     backup_vault_id="backup-vault",
 ///     data_source_id="data-source",
 ///     backup_id="backup",
-///     name="projects/my-project/locations/us-central1/backups/my-backup",
 ///     compute_instance_target_environment={
 ///         "project": "my-project-name",
 ///         "zone": "us-central1-a",
 ///     },
 ///     compute_instance_restore_properties={
 ///         "name": "restored-instance",
-///         "machine_type": "e2-medium",
+///         "machine_type": "zones/us-central1-a/machineTypes/e2-medium",
 ///     })
 /// ```
 /// ```csharp
@@ -71,7 +72,6 @@ import 'restore_workload_state.dart';
 ///         BackupVaultId = "backup-vault",
 ///         DataSourceId = "data-source",
 ///         BackupId = "backup",
-///         Name = "projects/my-project/locations/us-central1/backups/my-backup",
 ///         ComputeInstanceTargetEnvironment = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceTargetEnvironmentArgs
 ///         {
 ///             Project = "my-project-name",
@@ -80,7 +80,7 @@ import 'restore_workload_state.dart';
 ///         ComputeInstanceRestoreProperties = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesArgs
 ///         {
 ///             Name = "restored-instance",
-///             MachineType = "e2-medium",
+///             MachineType = "zones/us-central1-a/machineTypes/e2-medium",
 ///         },
 ///     });
 ///
@@ -101,14 +101,13 @@ import 'restore_workload_state.dart';
 /// 			BackupVaultId: pulumi.String("backup-vault"),
 /// 			DataSourceId:  pulumi.String("data-source"),
 /// 			BackupId:      pulumi.String("backup"),
-/// 			Name:          pulumi.String("projects/my-project/locations/us-central1/backups/my-backup"),
 /// 			ComputeInstanceTargetEnvironment: &backupdisasterrecovery.RestoreWorkloadComputeInstanceTargetEnvironmentArgs{
 /// 				Project: pulumi.String("my-project-name"),
 /// 				Zone:    pulumi.String("us-central1-a"),
 /// 			},
 /// 			ComputeInstanceRestoreProperties: &backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesArgs{
 /// 				Name:        pulumi.String("restored-instance"),
-/// 				MachineType: pulumi.String("e2-medium"),
+/// 				MachineType: pulumi.String("zones/us-central1-a/machineTypes/e2-medium"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -116,6 +115,30 @@ import 'restore_workload_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_backupdisasterrecovery_restoreworkload" "restore_compute_basic" {
+///   location        = "us-central1"
+///   backup_vault_id = "backup-vault"
+///   data_source_id  = "data-source"
+///   backup_id       = "backup"
+///   compute_instance_target_environment = {
+///     project = "my-project-name"
+///     zone    = "us-central1-a"
+///   }
+///   compute_instance_restore_properties = {
+///     name         = "restored-instance"
+///     machine_type = "zones/us-central1-a/machineTypes/e2-medium"
+///   }
 /// }
 /// ```
 /// ```java
@@ -128,8 +151,8 @@ import 'restore_workload_state.dart';
 /// import com.pulumi.gcp.backupdisasterrecovery.RestoreWorkloadArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceTargetEnvironmentArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -146,14 +169,13 @@ import 'restore_workload_state.dart';
 ///             .backupVaultId("backup-vault")
 ///             .dataSourceId("data-source")
 ///             .backupId("backup")
-///             .name("projects/my-project/locations/us-central1/backups/my-backup")
 ///             .computeInstanceTargetEnvironment(RestoreWorkloadComputeInstanceTargetEnvironmentArgs.builder()
 ///                 .project("my-project-name")
 ///                 .zone("us-central1-a")
 ///                 .build())
 ///             .computeInstanceRestoreProperties(RestoreWorkloadComputeInstanceRestorePropertiesArgs.builder()
 ///                 .name("restored-instance")
-///                 .machineType("e2-medium")
+///                 .machineType("zones/us-central1-a/machineTypes/e2-medium")
 ///                 .build())
 ///             .build());
 ///
@@ -170,13 +192,12 @@ import 'restore_workload_state.dart';
 ///       backupVaultId: backup-vault
 ///       dataSourceId: data-source
 ///       backupId: backup
-///       name: projects/my-project/locations/us-central1/backups/my-backup
 ///       computeInstanceTargetEnvironment:
 ///         project: my-project-name
 ///         zone: us-central1-a
 ///       computeInstanceRestoreProperties:
 ///         name: restored-instance
-///         machineType: e2-medium
+///         machineType: zones/us-central1-a/machineTypes/e2-medium
 /// ```
 ///
 /// ### Backup Dr Restore Workload Compute Instance Full
@@ -192,22 +213,30 @@ import 'restore_workload_state.dart';
 ///     backupVaultId: "backup-vault",
 ///     dataSourceId: "data-source",
 ///     backupId: "backup",
-///     name: "projects/my-project/locations/us-central1/backups/my-backup",
 ///     computeInstanceTargetEnvironment: {
 ///         project: "my-project-name",
 ///         zone: "us-central1-a",
 ///     },
 ///     computeInstanceRestoreProperties: {
 ///         name: "restored-instance-full",
-///         machineType: "e2-medium",
+///         machineType: "zones/us-central1-a/machineTypes/e2-medium",
 ///         description: "Restored compute instance with advanced configuration",
 ///         canIpForward: true,
 ///         deletionProtection: false,
-///         labels: {
-///             environment: "production",
-///             restored: "true",
-///             team: "infrastructure",
-///         },
+///         labels: [
+///             {
+///                 key: "environment",
+///                 value: "production",
+///             },
+///             {
+///                 key: "restored",
+///                 value: "true",
+///             },
+///             {
+///                 key: "team",
+///                 value: "infrastructure",
+///             },
+///         ],
 ///         tags: {
 ///             items: [
 ///                 "web",
@@ -216,10 +245,10 @@ import 'restore_workload_state.dart';
 ///             ],
 ///         },
 ///         networkInterfaces: [{
-///             network: "default",
+///             network: "projects/my-project-name/global/networks/default",
 ///             subnetwork: "projects/my-project-name/regions/us-central1/subnetworks/default",
 ///             accessConfigs: [{
-///                 name: "External NAT",
+///                 name: "ONE_TO_ONE_NAT",
 ///                 networkTier: "PREMIUM",
 ///             }],
 ///         }],
@@ -270,22 +299,30 @@ import 'restore_workload_state.dart';
 ///     backup_vault_id="backup-vault",
 ///     data_source_id="data-source",
 ///     backup_id="backup",
-///     name="projects/my-project/locations/us-central1/backups/my-backup",
 ///     compute_instance_target_environment={
 ///         "project": "my-project-name",
 ///         "zone": "us-central1-a",
 ///     },
 ///     compute_instance_restore_properties={
 ///         "name": "restored-instance-full",
-///         "machine_type": "e2-medium",
+///         "machine_type": "zones/us-central1-a/machineTypes/e2-medium",
 ///         "description": "Restored compute instance with advanced configuration",
 ///         "can_ip_forward": True,
 ///         "deletion_protection": False,
-///         "labels": {
-///             "environment": "production",
-///             "restored": "true",
-///             "team": "infrastructure",
-///         },
+///         "labels": [
+///             {
+///                 "key": "environment",
+///                 "value": "production",
+///             },
+///             {
+///                 "key": "restored",
+///                 "value": "true",
+///             },
+///             {
+///                 "key": "team",
+///                 "value": "infrastructure",
+///             },
+///         ],
 ///         "tags": {
 ///             "items": [
 ///                 "web",
@@ -294,10 +331,10 @@ import 'restore_workload_state.dart';
 ///             ],
 ///         },
 ///         "network_interfaces": [{
-///             "network": "default",
+///             "network": "projects/my-project-name/global/networks/default",
 ///             "subnetwork": "projects/my-project-name/regions/us-central1/subnetworks/default",
 ///             "access_configs": [{
-///                 "name": "External NAT",
+///                 "name": "ONE_TO_ONE_NAT",
 ///                 "network_tier": "PREMIUM",
 ///             }],
 ///         }],
@@ -352,7 +389,6 @@ import 'restore_workload_state.dart';
 ///         BackupVaultId = "backup-vault",
 ///         DataSourceId = "data-source",
 ///         BackupId = "backup",
-///         Name = "projects/my-project/locations/us-central1/backups/my-backup",
 ///         ComputeInstanceTargetEnvironment = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceTargetEnvironmentArgs
 ///         {
 ///             Project = "my-project-name",
@@ -361,15 +397,27 @@ import 'restore_workload_state.dart';
 ///         ComputeInstanceRestoreProperties = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesArgs
 ///         {
 ///             Name = "restored-instance-full",
-///             MachineType = "e2-medium",
+///             MachineType = "zones/us-central1-a/machineTypes/e2-medium",
 ///             Description = "Restored compute instance with advanced configuration",
 ///             CanIpForward = true,
 ///             DeletionProtection = false,
-///             Labels =
+///             Labels = new[]
 ///             {
-///                 { "environment", "production" },
-///                 { "restored", "true" },
-///                 { "team", "infrastructure" },
+///                 new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs
+///                 {
+///                     Key = "environment",
+///                     Value = "production",
+///                 },
+///                 new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs
+///                 {
+///                     Key = "restored",
+///                     Value = "true",
+///                 },
+///                 new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs
+///                 {
+///                     Key = "team",
+///                     Value = "infrastructure",
+///                 },
 ///             },
 ///             Tags = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs
 ///             {
@@ -384,13 +432,13 @@ import 'restore_workload_state.dart';
 ///             {
 ///                 new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs
 ///                 {
-///                     Network = "default",
+///                     Network = "projects/my-project-name/global/networks/default",
 ///                     Subnetwork = "projects/my-project-name/regions/us-central1/subnetworks/default",
 ///                     AccessConfigs = new[]
 ///                     {
 ///                         new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs
 ///                         {
-///                             Name = "External NAT",
+///                             Name = "ONE_TO_ONE_NAT",
 ///                             NetworkTier = "PREMIUM",
 ///                         },
 ///                     },
@@ -463,21 +511,29 @@ import 'restore_workload_state.dart';
 /// 			BackupVaultId: pulumi.String("backup-vault"),
 /// 			DataSourceId:  pulumi.String("data-source"),
 /// 			BackupId:      pulumi.String("backup"),
-/// 			Name:          pulumi.String("projects/my-project/locations/us-central1/backups/my-backup"),
 /// 			ComputeInstanceTargetEnvironment: &backupdisasterrecovery.RestoreWorkloadComputeInstanceTargetEnvironmentArgs{
 /// 				Project: pulumi.String("my-project-name"),
 /// 				Zone:    pulumi.String("us-central1-a"),
 /// 			},
 /// 			ComputeInstanceRestoreProperties: &backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesArgs{
 /// 				Name:               pulumi.String("restored-instance-full"),
-/// 				MachineType:        pulumi.String("e2-medium"),
+/// 				MachineType:        pulumi.String("zones/us-central1-a/machineTypes/e2-medium"),
 /// 				Description:        pulumi.String("Restored compute instance with advanced configuration"),
 /// 				CanIpForward:       pulumi.Bool(true),
 /// 				DeletionProtection: pulumi.Bool(false),
 /// 				Labels: backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesLabelArray{
-/// 					Environment: "production",
-/// 					Restored:    "true",
-/// 					Team:        "infrastructure",
+/// 					&backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs{
+/// 						Key:   pulumi.String("environment"),
+/// 						Value: pulumi.String("production"),
+/// 					},
+/// 					&backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs{
+/// 						Key:   pulumi.String("restored"),
+/// 						Value: pulumi.String("true"),
+/// 					},
+/// 					&backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs{
+/// 						Key:   pulumi.String("team"),
+/// 						Value: pulumi.String("infrastructure"),
+/// 					},
 /// 				},
 /// 				Tags: &backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs{
 /// 					Items: pulumi.StringArray{
@@ -488,11 +544,11 @@ import 'restore_workload_state.dart';
 /// 				},
 /// 				NetworkInterfaces: backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArray{
 /// 					&backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs{
-/// 						Network:    pulumi.String("default"),
+/// 						Network:    pulumi.String("projects/my-project-name/global/networks/default"),
 /// 						Subnetwork: pulumi.String("projects/my-project-name/regions/us-central1/subnetworks/default"),
 /// 						AccessConfigs: backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArray{
 /// 							&backupdisasterrecovery.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs{
-/// 								Name:        pulumi.String("External NAT"),
+/// 								Name:        pulumi.String("ONE_TO_ONE_NAT"),
 /// 								NetworkTier: pulumi.String("PREMIUM"),
 /// 							},
 /// 						},
@@ -543,6 +599,82 @@ import 'restore_workload_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_backupdisasterrecovery_restoreworkload" "restore_compute_full" {
+///   location        = "us-central1"
+///   backup_vault_id = "backup-vault"
+///   data_source_id  = "data-source"
+///   backup_id       = "backup"
+///   compute_instance_target_environment = {
+///     project = "my-project-name"
+///     zone    = "us-central1-a"
+///   }
+///   compute_instance_restore_properties = {
+///     name                = "restored-instance-full"
+///     machine_type        = "zones/us-central1-a/machineTypes/e2-medium"
+///     description         = "Restored compute instance with advanced configuration"
+///     can_ip_forward      = true
+///     deletion_protection = false
+///     labels = [{
+///       "key"   = "environment"
+///       "value" = "production"
+///       }, {
+///       "key"   = "restored"
+///       "value" = "true"
+///       }, {
+///       "key"   = "team"
+///       "value" = "infrastructure"
+///     }]
+///     tags = {
+///       items = ["web", "https-server", "restored"]
+///     }
+///     network_interfaces = [{
+///       "network"    = "projects/my-project-name/global/networks/default"
+///       "subnetwork" = "projects/my-project-name/regions/us-central1/subnetworks/default"
+///       "accessConfigs" = [{
+///         "name"        = "ONE_TO_ONE_NAT"
+///         "networkTier" = "PREMIUM"
+///       }]
+///     }]
+///     scheduling = {
+///       automatic_restart   = true
+///       on_host_maintenance = "MIGRATE"
+///       preemptible         = false
+///       provisioning_model  = "STANDARD"
+///     }
+///     service_accounts = [{
+///       "email"  = "default"
+///       "scopes" = ["https://www.googleapis.com/auth/cloud-platform", "https://www.googleapis.com/auth/compute"]
+///     }]
+///     shielded_instance_config = {
+///       enable_secure_boot          = true
+///       enable_vtpm                 = true
+///       enable_integrity_monitoring = true
+///     }
+///     advanced_machine_features = {
+///       enable_nested_virtualization = false
+///       threads_per_core             = 1
+///     }
+///     metadata = {
+///       items = [{
+///         "key"   = "startup-script"
+///         "value" = "#!/bin/bash\necho 'Instance restored' > /tmp/restored.txt"
+///         }, {
+///         "key"   = "enable-oslogin"
+///         "value" = "TRUE"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -553,13 +685,18 @@ import 'restore_workload_state.dart';
 /// import com.pulumi.gcp.backupdisasterrecovery.RestoreWorkloadArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceTargetEnvironmentArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesArgs;
+/// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs;
+/// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs;
+/// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs;
+/// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -576,22 +713,29 @@ import 'restore_workload_state.dart';
 ///             .backupVaultId("backup-vault")
 ///             .dataSourceId("data-source")
 ///             .backupId("backup")
-///             .name("projects/my-project/locations/us-central1/backups/my-backup")
 ///             .computeInstanceTargetEnvironment(RestoreWorkloadComputeInstanceTargetEnvironmentArgs.builder()
 ///                 .project("my-project-name")
 ///                 .zone("us-central1-a")
 ///                 .build())
 ///             .computeInstanceRestoreProperties(RestoreWorkloadComputeInstanceRestorePropertiesArgs.builder()
 ///                 .name("restored-instance-full")
-///                 .machineType("e2-medium")
+///                 .machineType("zones/us-central1-a/machineTypes/e2-medium")
 ///                 .description("Restored compute instance with advanced configuration")
 ///                 .canIpForward(true)
 ///                 .deletionProtection(false)
-///                 .labels(RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs.builder()
-///                     .environment("production")
-///                     .restored("true")
-///                     .team("infrastructure")
-///                     .build())
+///                 .labels(
+///                     RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs.builder()
+///                         .key("environment")
+///                         .value("production")
+///                         .build(),
+///                     RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs.builder()
+///                         .key("restored")
+///                         .value("true")
+///                         .build(),
+///                     RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs.builder()
+///                         .key("team")
+///                         .value("infrastructure")
+///                         .build())
 ///                 .tags(RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs.builder()
 ///                     .items(
 ///                         "web",
@@ -599,10 +743,10 @@ import 'restore_workload_state.dart';
 ///                         "restored")
 ///                     .build())
 ///                 .networkInterfaces(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs.builder()
-///                     .network("default")
+///                     .network("projects/my-project-name/global/networks/default")
 ///                     .subnetwork("projects/my-project-name/regions/us-central1/subnetworks/default")
 ///                     .accessConfigs(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs.builder()
-///                         .name("External NAT")
+///                         .name("ONE_TO_ONE_NAT")
 ///                         .networkTier("PREMIUM")
 ///                         .build())
 ///                     .build())
@@ -656,30 +800,32 @@ import 'restore_workload_state.dart';
 ///       backupVaultId: backup-vault
 ///       dataSourceId: data-source
 ///       backupId: backup
-///       name: projects/my-project/locations/us-central1/backups/my-backup
 ///       computeInstanceTargetEnvironment:
 ///         project: my-project-name
 ///         zone: us-central1-a
 ///       computeInstanceRestoreProperties:
 ///         name: restored-instance-full
-///         machineType: e2-medium
+///         machineType: zones/us-central1-a/machineTypes/e2-medium
 ///         description: Restored compute instance with advanced configuration
 ///         canIpForward: true
 ///         deletionProtection: false
 ///         labels:
-///           environment: production
-///           restored: 'true'
-///           team: infrastructure
+///           - key: environment
+///             value: production
+///           - key: restored
+///             value: 'true'
+///           - key: team
+///             value: infrastructure
 ///         tags:
 ///           items:
 ///             - web
 ///             - https-server
 ///             - restored
 ///         networkInterfaces:
-///           - network: default
+///           - network: projects/my-project-name/global/networks/default
 ///             subnetwork: projects/my-project-name/regions/us-central1/subnetworks/default
 ///             accessConfigs:
-///               - name: External NAT
+///               - name: ONE_TO_ONE_NAT
 ///                 networkTier: PREMIUM
 ///         scheduling:
 ///           automaticRestart: true
@@ -721,7 +867,6 @@ import 'restore_workload_state.dart';
 ///     backupVaultId: "backup-vault",
 ///     dataSourceId: "data-source",
 ///     backupId: "backup",
-///     name: "projects/my-project/locations/us-central1/backups/my-backup",
 ///     diskTargetEnvironment: {
 ///         project: "my-project-name",
 ///         zone: "us-central1-a",
@@ -729,7 +874,7 @@ import 'restore_workload_state.dart';
 ///     diskRestoreProperties: {
 ///         name: "restored-disk",
 ///         sizeGb: 100,
-///         type: "pd-standard",
+///         type: "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard",
 ///         description: "Restored persistent disk from backup",
 ///         labels: {
 ///             environment: "production",
@@ -747,7 +892,6 @@ import 'restore_workload_state.dart';
 ///     backup_vault_id="backup-vault",
 ///     data_source_id="data-source",
 ///     backup_id="backup",
-///     name="projects/my-project/locations/us-central1/backups/my-backup",
 ///     disk_target_environment={
 ///         "project": "my-project-name",
 ///         "zone": "us-central1-a",
@@ -755,7 +899,7 @@ import 'restore_workload_state.dart';
 ///     disk_restore_properties={
 ///         "name": "restored-disk",
 ///         "size_gb": 100,
-///         "type": "pd-standard",
+///         "type": "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard",
 ///         "description": "Restored persistent disk from backup",
 ///         "labels": {
 ///             "environment": "production",
@@ -777,7 +921,6 @@ import 'restore_workload_state.dart';
 ///         BackupVaultId = "backup-vault",
 ///         DataSourceId = "data-source",
 ///         BackupId = "backup",
-///         Name = "projects/my-project/locations/us-central1/backups/my-backup",
 ///         DiskTargetEnvironment = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadDiskTargetEnvironmentArgs
 ///         {
 ///             Project = "my-project-name",
@@ -787,7 +930,7 @@ import 'restore_workload_state.dart';
 ///         {
 ///             Name = "restored-disk",
 ///             SizeGb = 100,
-///             Type = "pd-standard",
+///             Type = "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard",
 ///             Description = "Restored persistent disk from backup",
 ///             Labels =
 ///             {
@@ -814,7 +957,6 @@ import 'restore_workload_state.dart';
 /// 			BackupVaultId: pulumi.String("backup-vault"),
 /// 			DataSourceId:  pulumi.String("data-source"),
 /// 			BackupId:      pulumi.String("backup"),
-/// 			Name:          pulumi.String("projects/my-project/locations/us-central1/backups/my-backup"),
 /// 			DiskTargetEnvironment: &backupdisasterrecovery.RestoreWorkloadDiskTargetEnvironmentArgs{
 /// 				Project: pulumi.String("my-project-name"),
 /// 				Zone:    pulumi.String("us-central1-a"),
@@ -822,7 +964,7 @@ import 'restore_workload_state.dart';
 /// 			DiskRestoreProperties: &backupdisasterrecovery.RestoreWorkloadDiskRestorePropertiesArgs{
 /// 				Name:        pulumi.String("restored-disk"),
 /// 				SizeGb:      pulumi.Int(100),
-/// 				Type:        pulumi.String("pd-standard"),
+/// 				Type:        pulumi.String("projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard"),
 /// 				Description: pulumi.String("Restored persistent disk from backup"),
 /// 				Labels: backupdisasterrecovery.RestoreWorkloadDiskRestorePropertiesLabelArray{
 /// 					Environment: "production",
@@ -837,6 +979,36 @@ import 'restore_workload_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_backupdisasterrecovery_restoreworkload" "restore_disk_basic" {
+///   location        = "us-central1"
+///   backup_vault_id = "backup-vault"
+///   data_source_id  = "data-source"
+///   backup_id       = "backup"
+///   disk_target_environment = {
+///     project = "my-project-name"
+///     zone    = "us-central1-a"
+///   }
+///   disk_restore_properties = {
+///     name        = "restored-disk"
+///     size_gb     = 100
+///     type        = "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard"
+///     description = "Restored persistent disk from backup"
+///     labels = {
+///       "environment" = "production"
+///       "restored"    = "true"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -847,8 +1019,8 @@ import 'restore_workload_state.dart';
 /// import com.pulumi.gcp.backupdisasterrecovery.RestoreWorkloadArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadDiskTargetEnvironmentArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadDiskRestorePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -865,7 +1037,6 @@ import 'restore_workload_state.dart';
 ///             .backupVaultId("backup-vault")
 ///             .dataSourceId("data-source")
 ///             .backupId("backup")
-///             .name("projects/my-project/locations/us-central1/backups/my-backup")
 ///             .diskTargetEnvironment(RestoreWorkloadDiskTargetEnvironmentArgs.builder()
 ///                 .project("my-project-name")
 ///                 .zone("us-central1-a")
@@ -873,9 +1044,9 @@ import 'restore_workload_state.dart';
 ///             .diskRestoreProperties(RestoreWorkloadDiskRestorePropertiesArgs.builder()
 ///                 .name("restored-disk")
 ///                 .sizeGb(100)
-///                 .type("pd-standard")
+///                 .type("projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard")
 ///                 .description("Restored persistent disk from backup")
-///                 .labels(RestoreWorkloadDiskRestorePropertiesLabelArgs.builder()
+///                 .labels(com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadDiskRestorePropertiesLabelArgs.builder()
 ///                     .environment("production")
 ///                     .restored("true")
 ///                     .build())
@@ -895,14 +1066,13 @@ import 'restore_workload_state.dart';
 ///       backupVaultId: backup-vault
 ///       dataSourceId: data-source
 ///       backupId: backup
-///       name: projects/my-project/locations/us-central1/backups/my-backup
 ///       diskTargetEnvironment:
 ///         project: my-project-name
 ///         zone: us-central1-a
 ///       diskRestoreProperties:
 ///         name: restored-disk
 ///         sizeGb: 100
-///         type: pd-standard
+///         type: projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard
 ///         description: Restored persistent disk from backup
 ///         labels:
 ///           environment: production
@@ -922,13 +1092,12 @@ import 'restore_workload_state.dart';
 ///     backupVaultId: "backup-vault",
 ///     dataSourceId: "data-source",
 ///     backupId: "backup",
-///     name: "projects/my-project/locations/us-central1/backups/my-backup",
 ///     regionDiskTargetEnvironment: {
 ///         project: "my-project-name",
 ///         region: "us-central1",
 ///         replicaZones: [
-///             "us-central1-a",
-///             "us-central1-b",
+///             "projects/my-project-name/zones/us-central1-a",
+///             "projects/my-project-name/zones/us-central1-b",
 ///         ],
 ///     },
 ///     diskRestoreProperties: {
@@ -954,13 +1123,12 @@ import 'restore_workload_state.dart';
 ///     backup_vault_id="backup-vault",
 ///     data_source_id="data-source",
 ///     backup_id="backup",
-///     name="projects/my-project/locations/us-central1/backups/my-backup",
 ///     region_disk_target_environment={
 ///         "project": "my-project-name",
 ///         "region": "us-central1",
 ///         "replica_zones": [
-///             "us-central1-a",
-///             "us-central1-b",
+///             "projects/my-project-name/zones/us-central1-a",
+///             "projects/my-project-name/zones/us-central1-b",
 ///         ],
 ///     },
 ///     disk_restore_properties={
@@ -990,15 +1158,14 @@ import 'restore_workload_state.dart';
 ///         BackupVaultId = "backup-vault",
 ///         DataSourceId = "data-source",
 ///         BackupId = "backup",
-///         Name = "projects/my-project/locations/us-central1/backups/my-backup",
 ///         RegionDiskTargetEnvironment = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadRegionDiskTargetEnvironmentArgs
 ///         {
 ///             Project = "my-project-name",
 ///             Region = "us-central1",
 ///             ReplicaZones = new[]
 ///             {
-///                 "us-central1-a",
-///                 "us-central1-b",
+///                 "projects/my-project-name/zones/us-central1-a",
+///                 "projects/my-project-name/zones/us-central1-b",
 ///             },
 ///         },
 ///         DiskRestoreProperties = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadDiskRestorePropertiesArgs
@@ -1034,13 +1201,12 @@ import 'restore_workload_state.dart';
 /// 			BackupVaultId: pulumi.String("backup-vault"),
 /// 			DataSourceId:  pulumi.String("data-source"),
 /// 			BackupId:      pulumi.String("backup"),
-/// 			Name:          pulumi.String("projects/my-project/locations/us-central1/backups/my-backup"),
 /// 			RegionDiskTargetEnvironment: &backupdisasterrecovery.RestoreWorkloadRegionDiskTargetEnvironmentArgs{
 /// 				Project: pulumi.String("my-project-name"),
 /// 				Region:  pulumi.String("us-central1"),
 /// 				ReplicaZones: pulumi.StringArray{
-/// 					pulumi.String("us-central1-a"),
-/// 					pulumi.String("us-central1-b"),
+/// 					pulumi.String("projects/my-project-name/zones/us-central1-a"),
+/// 					pulumi.String("projects/my-project-name/zones/us-central1-b"),
 /// 				},
 /// 			},
 /// 			DiskRestoreProperties: &backupdisasterrecovery.RestoreWorkloadDiskRestorePropertiesArgs{
@@ -1063,6 +1229,39 @@ import 'restore_workload_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_backupdisasterrecovery_restoreworkload" "restore_regional_disk" {
+///   location        = "us-central1"
+///   backup_vault_id = "backup-vault"
+///   data_source_id  = "data-source"
+///   backup_id       = "backup"
+///   region_disk_target_environment = {
+///     project       = "my-project-name"
+///     region        = "us-central1"
+///     replica_zones = ["projects/my-project-name/zones/us-central1-a", "projects/my-project-name/zones/us-central1-b"]
+///   }
+///   disk_restore_properties = {
+///     name        = "restored-regional-disk"
+///     size_gb     = 200
+///     type        = "pd-balanced"
+///     description = "Restored regional persistent disk"
+///     labels = {
+///       "type"        = "regional"
+///       "environment" = "production"
+///     }
+///     provisioned_iops       = 3000
+///     provisioned_throughput = 140
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1073,8 +1272,8 @@ import 'restore_workload_state.dart';
 /// import com.pulumi.gcp.backupdisasterrecovery.RestoreWorkloadArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadRegionDiskTargetEnvironmentArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadDiskRestorePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1091,20 +1290,19 @@ import 'restore_workload_state.dart';
 ///             .backupVaultId("backup-vault")
 ///             .dataSourceId("data-source")
 ///             .backupId("backup")
-///             .name("projects/my-project/locations/us-central1/backups/my-backup")
 ///             .regionDiskTargetEnvironment(RestoreWorkloadRegionDiskTargetEnvironmentArgs.builder()
 ///                 .project("my-project-name")
 ///                 .region("us-central1")
 ///                 .replicaZones(
-///                     "us-central1-a",
-///                     "us-central1-b")
+///                     "projects/my-project-name/zones/us-central1-a",
+///                     "projects/my-project-name/zones/us-central1-b")
 ///                 .build())
 ///             .diskRestoreProperties(RestoreWorkloadDiskRestorePropertiesArgs.builder()
 ///                 .name("restored-regional-disk")
 ///                 .sizeGb(200)
 ///                 .type("pd-balanced")
 ///                 .description("Restored regional persistent disk")
-///                 .labels(RestoreWorkloadDiskRestorePropertiesLabelArgs.builder()
+///                 .labels(com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadDiskRestorePropertiesLabelArgs.builder()
 ///                     .type("regional")
 ///                     .environment("production")
 ///                     .build())
@@ -1126,13 +1324,12 @@ import 'restore_workload_state.dart';
 ///       backupVaultId: backup-vault
 ///       dataSourceId: data-source
 ///       backupId: backup
-///       name: projects/my-project/locations/us-central1/backups/my-backup
 ///       regionDiskTargetEnvironment:
 ///         project: my-project-name
 ///         region: us-central1
 ///         replicaZones:
-///           - us-central1-a
-///           - us-central1-b
+///           - projects/my-project-name/zones/us-central1-a
+///           - projects/my-project-name/zones/us-central1-b
 ///       diskRestoreProperties:
 ///         name: restored-regional-disk
 ///         sizeGb: 200
@@ -1158,7 +1355,6 @@ import 'restore_workload_state.dart';
 ///     backupVaultId: "backup-vault",
 ///     dataSourceId: "data-source",
 ///     backupId: "backup",
-///     name: "projects/my-project/locations/us-central1/backups/my-backup",
 ///     deleteRestoredInstance: false,
 ///     diskTargetEnvironment: {
 ///         project: "my-project-name",
@@ -1166,8 +1362,8 @@ import 'restore_workload_state.dart';
 ///     },
 ///     diskRestoreProperties: {
 ///         name: "persistent-disk",
-///         sizeGb: 50,
-///         type: "pd-standard",
+///         sizeGb: 100,
+///         type: "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard",
 ///     },
 /// });
 /// ```
@@ -1180,7 +1376,6 @@ import 'restore_workload_state.dart';
 ///     backup_vault_id="backup-vault",
 ///     data_source_id="data-source",
 ///     backup_id="backup",
-///     name="projects/my-project/locations/us-central1/backups/my-backup",
 ///     delete_restored_instance=False,
 ///     disk_target_environment={
 ///         "project": "my-project-name",
@@ -1188,8 +1383,8 @@ import 'restore_workload_state.dart';
 ///     },
 ///     disk_restore_properties={
 ///         "name": "persistent-disk",
-///         "size_gb": 50,
-///         "type": "pd-standard",
+///         "size_gb": 100,
+///         "type": "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard",
 ///     })
 /// ```
 /// ```csharp
@@ -1206,7 +1401,6 @@ import 'restore_workload_state.dart';
 ///         BackupVaultId = "backup-vault",
 ///         DataSourceId = "data-source",
 ///         BackupId = "backup",
-///         Name = "projects/my-project/locations/us-central1/backups/my-backup",
 ///         DeleteRestoredInstance = false,
 ///         DiskTargetEnvironment = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadDiskTargetEnvironmentArgs
 ///         {
@@ -1216,8 +1410,8 @@ import 'restore_workload_state.dart';
 ///         DiskRestoreProperties = new Gcp.BackupDisasterRecovery.Inputs.RestoreWorkloadDiskRestorePropertiesArgs
 ///         {
 ///             Name = "persistent-disk",
-///             SizeGb = 50,
-///             Type = "pd-standard",
+///             SizeGb = 100,
+///             Type = "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard",
 ///         },
 ///     });
 ///
@@ -1238,7 +1432,6 @@ import 'restore_workload_state.dart';
 /// 			BackupVaultId:          pulumi.String("backup-vault"),
 /// 			DataSourceId:           pulumi.String("data-source"),
 /// 			BackupId:               pulumi.String("backup"),
-/// 			Name:                   pulumi.String("projects/my-project/locations/us-central1/backups/my-backup"),
 /// 			DeleteRestoredInstance: pulumi.Bool(false),
 /// 			DiskTargetEnvironment: &backupdisasterrecovery.RestoreWorkloadDiskTargetEnvironmentArgs{
 /// 				Project: pulumi.String("my-project-name"),
@@ -1246,8 +1439,8 @@ import 'restore_workload_state.dart';
 /// 			},
 /// 			DiskRestoreProperties: &backupdisasterrecovery.RestoreWorkloadDiskRestorePropertiesArgs{
 /// 				Name:   pulumi.String("persistent-disk"),
-/// 				SizeGb: pulumi.Int(50),
-/// 				Type:   pulumi.String("pd-standard"),
+/// 				SizeGb: pulumi.Int(100),
+/// 				Type:   pulumi.String("projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1255,6 +1448,32 @@ import 'restore_workload_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_backupdisasterrecovery_restoreworkload" "restore_without_delete" {
+///   location                 = "us-central1"
+///   backup_vault_id          = "backup-vault"
+///   data_source_id           = "data-source"
+///   backup_id                = "backup"
+///   delete_restored_instance = false
+///   disk_target_environment = {
+///     project = "my-project-name"
+///     zone    = "us-central1-a"
+///   }
+///   disk_restore_properties = {
+///     name    = "persistent-disk"
+///     size_gb = 100
+///     type    = "projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard"
+///   }
 /// }
 /// ```
 /// ```java
@@ -1267,8 +1486,8 @@ import 'restore_workload_state.dart';
 /// import com.pulumi.gcp.backupdisasterrecovery.RestoreWorkloadArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadDiskTargetEnvironmentArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.RestoreWorkloadDiskRestorePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1285,7 +1504,6 @@ import 'restore_workload_state.dart';
 ///             .backupVaultId("backup-vault")
 ///             .dataSourceId("data-source")
 ///             .backupId("backup")
-///             .name("projects/my-project/locations/us-central1/backups/my-backup")
 ///             .deleteRestoredInstance(false)
 ///             .diskTargetEnvironment(RestoreWorkloadDiskTargetEnvironmentArgs.builder()
 ///                 .project("my-project-name")
@@ -1293,8 +1511,8 @@ import 'restore_workload_state.dart';
 ///                 .build())
 ///             .diskRestoreProperties(RestoreWorkloadDiskRestorePropertiesArgs.builder()
 ///                 .name("persistent-disk")
-///                 .sizeGb(50)
-///                 .type("pd-standard")
+///                 .sizeGb(100)
+///                 .type("projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard")
 ///                 .build())
 ///             .build());
 ///
@@ -1311,15 +1529,14 @@ import 'restore_workload_state.dart';
 ///       backupVaultId: backup-vault
 ///       dataSourceId: data-source
 ///       backupId: backup
-///       name: projects/my-project/locations/us-central1/backups/my-backup
 ///       deleteRestoredInstance: false
 ///       diskTargetEnvironment:
 ///         project: my-project-name
 ///         zone: us-central1-a
 ///       diskRestoreProperties:
 ///         name: persistent-disk
-///         sizeGb: 50
-///         type: pd-standard
+///         sizeGb: 100
+///         type: projects/my-project-name/zones/us-central1-a/diskTypes/pd-standard
 /// ```
 ///
 ///
@@ -1328,16 +1545,13 @@ import 'restore_workload_state.dart';
 /// RestoreWorkload can be imported using any of these accepted formats:
 ///
 /// * `/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RestoreWorkload can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default /{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload default {{name}}
 /// ```
 class RestoreWorkload extends pulumi.CustomResource {
@@ -1350,23 +1564,35 @@ class RestoreWorkload extends pulumi.CustomResource {
   /// Optional. Compute Engine instance properties to be overridden during restore.
   /// Structure is documented below.
   late final pulumi.Output<RestoreWorkloadComputeInstanceRestoreProperties?> computeInstanceRestoreProperties;
-  /// Optional. The destination environment for GCE VM restoration.
+  /// The destination environment for GCE VM restoration.
   /// Structure is documented below.
   late final pulumi.Output<RestoreWorkloadComputeInstanceTargetEnvironment?> computeInstanceTargetEnvironment;
   /// Required. The ID of the data source.
   late final pulumi.Output<String> dataSourceId;
+  /// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+  /// If false, only the restore record is removed from the state, leaving the resource active.
   late final pulumi.Output<bool?> deleteRestoredInstance;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. Disk properties to be overridden during restore.
   /// Structure is documented below.
   late final pulumi.Output<RestoreWorkloadDiskRestoreProperties?> diskRestoreProperties;
-  /// Optional. The destination environment for zonal disk restoration.
+  /// The destination environment for zonal disk restoration.
   /// Structure is documented below.
   late final pulumi.Output<RestoreWorkloadDiskTargetEnvironment?> diskTargetEnvironment;
   /// Required. The location for the backup vault.
   late final pulumi.Output<String> location;
-  /// Required. The resource name of the backup instance.
+  /// (Optional, Deprecated)
+  /// The resource name of the backup instance.
+  ///
+  /// &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
   late final pulumi.Output<String> name;
-  /// Optional. The destination environment for regional disk restoration.
+  /// The destination environment for regional disk restoration.
   /// Structure is documented below.
   late final pulumi.Output<RestoreWorkloadRegionDiskTargetEnvironment?> regionDiskTargetEnvironment;
   /// Optional. An optional request ID to identify requests. Specify a unique request ID
@@ -1398,6 +1624,7 @@ class RestoreWorkload extends pulumi.CustomResource {
     computeInstanceTargetEnvironment = registerOutput<RestoreWorkloadComputeInstanceTargetEnvironment?>('computeInstanceTargetEnvironment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreWorkloadComputeInstanceTargetEnvironment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataSourceId = registerOutput<String>('dataSourceId');
     deleteRestoredInstance = registerOutput<bool?>('deleteRestoredInstance');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     diskRestoreProperties = registerOutput<RestoreWorkloadDiskRestoreProperties?>('diskRestoreProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreWorkloadDiskRestoreProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     diskTargetEnvironment = registerOutput<RestoreWorkloadDiskTargetEnvironment?>('diskTargetEnvironment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreWorkloadDiskTargetEnvironment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
@@ -1437,6 +1664,7 @@ class RestoreWorkload extends pulumi.CustomResource {
     computeInstanceTargetEnvironment = registerOutput<RestoreWorkloadComputeInstanceTargetEnvironment?>('computeInstanceTargetEnvironment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreWorkloadComputeInstanceTargetEnvironment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataSourceId = registerOutput<String>('dataSourceId');
     deleteRestoredInstance = registerOutput<bool?>('deleteRestoredInstance');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     diskRestoreProperties = registerOutput<RestoreWorkloadDiskRestoreProperties?>('diskRestoreProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreWorkloadDiskRestoreProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     diskTargetEnvironment = registerOutput<RestoreWorkloadDiskTargetEnvironment?>('diskTargetEnvironment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreWorkloadDiskTargetEnvironment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');

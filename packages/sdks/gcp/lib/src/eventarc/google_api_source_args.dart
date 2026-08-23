@@ -10,13 +10,20 @@ import 'google_api_source_logging_config.dart';
 class GoogleApiSourceArgs {
   /// Resource annotations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Resource name of a KMS crypto key (managed by the user) used to
   /// encrypt/decrypt their event data.
   /// It must match the pattern
   /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
   final pulumi.Input<String>? cryptoKeyName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Destination is the message bus that the GoogleApiSource is delivering to.
   /// It must be point to the full resource name of a MessageBus. Format:
   /// "projects/{PROJECT_ID}/locations/{region}/messagesBuses/{MESSAGE_BUS_ID)
@@ -28,7 +35,7 @@ class GoogleApiSourceArgs {
   final pulumi.Input<String> googleApiSourceId;
   /// Resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
@@ -43,6 +50,7 @@ class GoogleApiSourceArgs {
   /// Creates a new [GoogleApiSourceArgs].
   /// [annotations] Resource annotations.
   /// [cryptoKeyName] Resource name of a KMS crypto key (managed by the user) used to
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [destination] Destination is the message bus that the GoogleApiSource is delivering to.
   /// [displayName] Resource display name.
   /// [googleApiSourceId] The user-provided ID to be assigned to the GoogleApiSource. It should match
@@ -53,6 +61,7 @@ class GoogleApiSourceArgs {
   const GoogleApiSourceArgs({
     this.annotations,
     this.cryptoKeyName,
+    this.deletionPolicy,
     required this.destination,
     this.displayName,
     required this.googleApiSourceId,
@@ -66,6 +75,7 @@ class GoogleApiSourceArgs {
     return <String, dynamic>{
       'annotations': ?annotations,
       'cryptoKeyName': ?cryptoKeyName,
+      'deletionPolicy': ?deletionPolicy,
       'destination': destination,
       'displayName': ?displayName,
       'googleApiSourceId': googleApiSourceId,
@@ -80,6 +90,7 @@ class GoogleApiSourceArgs {
     return GoogleApiSourceArgs(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       cryptoKeyName: (() { final guardedValue = map['cryptoKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destination: pulumi.Input.fromValue(map['destination'] as String),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       googleApiSourceId: pulumi.Input.fromValue(map['googleApiSourceId'] as String),
@@ -90,4 +101,3 @@ class GoogleApiSourceArgs {
     );
   }
 }
-

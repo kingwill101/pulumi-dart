@@ -36,4 +36,3 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     );
   }
 }
-

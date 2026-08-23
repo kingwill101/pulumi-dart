@@ -87,6 +87,25 @@ import 'gemini_gcp_enablement_setting_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gemini_geminigcpenablementsetting" "example" {
+///   gemini_gcp_enablement_setting_id = "ls1-tf"
+///   location                         = "global"
+///   labels = {
+///     "my_key" = "my_value"
+///   }
+///   enable_customer_data_sharing = true
+///   web_grounding_type           = "WEB_GROUNDING_FOR_ENTERPRISE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +114,8 @@ import 'gemini_gcp_enablement_setting_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gemini.GeminiGcpEnablementSetting;
 /// import com.pulumi.gcp.gemini.GeminiGcpEnablementSettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,31 +157,31 @@ import 'gemini_gcp_enablement_setting_state.dart';
 /// GeminiGcpEnablementSetting can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}`
-///
 /// * `{{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}`
-///
 /// * `{{location}}/{{gemini_gcp_enablement_setting_id}}`
+///
 ///
 /// When using the `pulumi import` command, GeminiGcpEnablementSetting can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default projects/{{project}}/locations/{{location}}/geminiGcpEnablementSettings/{{gemini_gcp_enablement_setting_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default {{project}}/{{location}}/{{gemini_gcp_enablement_setting_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gemini/geminiGcpEnablementSetting:GeminiGcpEnablementSetting default {{location}}/{{gemini_gcp_enablement_setting_id}}
 /// ```
 class GeminiGcpEnablementSetting extends pulumi.CustomResource {
   /// Create time stamp.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// (Optional, Deprecated)
   /// Whether web grounding should be disabled.
   ///
-  /// &gt; **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
+  /// &gt; **Warning:** `disableWebGrounding` is deprecated. Use `webGroundingType` instead.
   late final pulumi.Output<bool?> disableWebGrounding;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -172,7 +191,7 @@ class GeminiGcpEnablementSetting extends pulumi.CustomResource {
   late final pulumi.Output<String> geminiGcpEnablementSettingId;
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -208,6 +227,7 @@ class GeminiGcpEnablementSetting extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disableWebGrounding = registerOutput<bool?>('disableWebGrounding');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableCustomerDataSharing = registerOutput<bool?>('enableCustomerDataSharing');
@@ -245,6 +265,7 @@ class GeminiGcpEnablementSetting extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disableWebGrounding = registerOutput<bool?>('disableWebGrounding');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableCustomerDataSharing = registerOutput<bool?>('enableCustomerDataSharing');

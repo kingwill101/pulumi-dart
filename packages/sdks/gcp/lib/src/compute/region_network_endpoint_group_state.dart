@@ -10,17 +10,24 @@ import 'region_network_endpoint_group_serverless_deployment.dart';
 /// Input properties used for looking up and filtering RegionNetworkEndpointGroup resources.
 class RegionNetworkEndpointGroupState {
   /// This field is only used for SERVERLESS NEGs.
-  /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+  /// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
   /// Structure is documented below.
   final pulumi.Input<RegionNetworkEndpointGroupAppEngine>? appEngine;
   /// This field is only used for SERVERLESS NEGs.
-  /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+  /// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
   /// Structure is documented below.
   final pulumi.Input<RegionNetworkEndpointGroupCloudFunction>? cloudFunction;
   /// This field is only used for SERVERLESS NEGs.
-  /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
+  /// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
   /// Structure is documented below.
   final pulumi.Input<RegionNetworkEndpointGroupCloudRun>? cloudRun;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   final pulumi.Input<String>? description;
@@ -54,6 +61,7 @@ class RegionNetworkEndpointGroupState {
   final pulumi.Input<String>? region;
   /// The URI of the created resource.
   final pulumi.Input<String>? selfLink;
+  /// (Optional, Beta)
   /// This field is only used for SERVERLESS NEGs.
   /// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
   /// Structure is documented below.
@@ -66,6 +74,7 @@ class RegionNetworkEndpointGroupState {
   /// [appEngine] This field is only used for SERVERLESS NEGs.
   /// [cloudFunction] This field is only used for SERVERLESS NEGs.
   /// [cloudRun] This field is only used for SERVERLESS NEGs.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
   /// [name] Name of the resource; provided by the client when the resource is
   /// [network] This field is only used for PSC and INTERNET NEGs.
@@ -75,12 +84,13 @@ class RegionNetworkEndpointGroupState {
   /// [pscTargetService] This field is only used for PSC and INTERNET NEGs.
   /// [region] A reference to the region where the regional NEGs reside.
   /// [selfLink] The URI of the created resource.
-  /// [serverlessDeployment] This field is only used for SERVERLESS NEGs.
+  /// [serverlessDeployment] (Optional, Beta)
   /// [subnetwork] This field is only used for PSC NEGs.
   const RegionNetworkEndpointGroupState({
     this.appEngine,
     this.cloudFunction,
     this.cloudRun,
+    this.deletionPolicy,
     this.description,
     this.name,
     this.network,
@@ -99,6 +109,7 @@ class RegionNetworkEndpointGroupState {
       'appEngine': ?pulumi.Input.mapOptionalInputValue<RegionNetworkEndpointGroupAppEngine, Map<String, dynamic>>(appEngine, (value) => value.toMap()),
       'cloudFunction': ?pulumi.Input.mapOptionalInputValue<RegionNetworkEndpointGroupCloudFunction, Map<String, dynamic>>(cloudFunction, (value) => value.toMap()),
       'cloudRun': ?pulumi.Input.mapOptionalInputValue<RegionNetworkEndpointGroupCloudRun, Map<String, dynamic>>(cloudRun, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'name': ?name,
       'network': ?network,
@@ -118,6 +129,7 @@ class RegionNetworkEndpointGroupState {
       appEngine: (() { final guardedValue = map['appEngine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionNetworkEndpointGroupAppEngine.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cloudFunction: (() { final guardedValue = map['cloudFunction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionNetworkEndpointGroupCloudFunction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cloudRun: (() { final guardedValue = map['cloudRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionNetworkEndpointGroupCloudRun.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -132,4 +144,3 @@ class RegionNetworkEndpointGroupState {
     );
   }
 }
-

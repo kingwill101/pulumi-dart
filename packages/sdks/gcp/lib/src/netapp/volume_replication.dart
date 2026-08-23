@@ -3,6 +3,27 @@ import 'volume_replication_args.dart';
 import 'volume_replication_destination_volume_parameters.dart';
 import 'volume_replication_state.dart';
 
+/// Volume replication creates an asynchronous mirror of a volume in a different location. This capability
+/// lets you use the replicated volume for critical application activity in case of a location-wide outage
+/// or disaster.
+///
+/// A new destination volume is created as part of the replication resource. It's content is updated on a
+/// schedule with content of the source volume. It can be used as a read-only copy while the mirror is
+/// enabled, or as an independent read-write volume while the mirror is stopped. A destination volume will
+/// also contain the snapshots of the source volume. Resuming a mirror will overwrite all changes on the
+/// destination volume with the content of the source volume. While is mirror is enabled, all configuration
+/// changes done to source or destination volumes are automatically done to both. Please note that the
+/// destination volume is not a resource managed by Terraform.
+///
+/// Reversing the replication direction is not supported through the provider.
+///
+///
+/// To get more information about VolumeReplication, see:
+///
+/// * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.volumes.replications)
+/// * How-to Guides
+/// * [Documentation](https://cloud.google.com/netapp/volumes/docs/protect-data/about-volume-replication)
+///
 /// ## Example Usage
 ///
 /// ### Netapp Volume Replication Create
@@ -197,7 +218,7 @@ import 'volume_replication_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "test-network",
+/// 			Name: pulumi.StringRef("test-network"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -244,7 +265,7 @@ import 'volume_replication_state.dart';
 /// 			ReplicationSchedule: pulumi.String("EVERY_10_MINUTES"),
 /// 			Description:         pulumi.String("This is a replication resource"),
 /// 			DestinationVolumeParameters: &netapp.VolumeReplicationDestinationVolumeParametersArgs{
-/// 				StoragePool: destinationPool.ID(),
+/// 				StoragePool: destinationPool.ID().ToIDOutput().ToStringOutput(),
 /// 				VolumeId:    pulumi.String("destination-volume"),
 /// 				ShareName:   pulumi.String("source-volume"),
 /// 				Description: pulumi.String("This is a replicated volume"),
@@ -265,6 +286,66 @@ import 'volume_replication_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "default" {
+///   name = "test-network"
+/// }
+///
+/// resource "gcp_netapp_storagepool" "source_pool" {
+///   name          = "source-pool"
+///   location      = "us-central1"
+///   service_level = "PREMIUM"
+///   capacity_gib  = 2048
+///   network       = data.gcp_compute_getnetwork.default.id
+/// }
+/// resource "gcp_netapp_storagepool" "destination_pool" {
+///   name               = "destination-pool"
+///   location           = "us-west2"
+///   service_level      = "PREMIUM"
+///   capacity_gib       = 2048
+///   network            = data.gcp_compute_getnetwork.default.id
+///   allow_auto_tiering = true
+/// }
+/// resource "gcp_netapp_volume" "source_volume" {
+///   location        = gcp_netapp_storagepool.source_pool.location
+///   name            = "source-volume"
+///   capacity_gib    = 100
+///   share_name      = "source-volume"
+///   storage_pool    = gcp_netapp_storagepool.source_pool.name
+///   protocols       = ["NFSV3"]
+///   deletion_policy = "FORCE"
+/// }
+/// resource "gcp_netapp_volumereplication" "test_replication" {
+///   depends_on           = [gcp_netapp_volume.source_volume]
+///   location             = gcp_netapp_volume.source_volume.location
+///   volume_name          = gcp_netapp_volume.source_volume.name
+///   name                 = "test-replication"
+///   replication_schedule = "EVERY_10_MINUTES"
+///   description          = "This is a replication resource"
+///   destination_volume_parameters = {
+///     storage_pool = gcp_netapp_storagepool.destination_pool.id
+///     volume_id    = "destination-volume"
+///     share_name   = "source-volume"
+///     description  = "This is a replicated volume"
+///     tiering_policy = {
+///       cooling_threshold_days = 20
+///       tier_action            = "ENABLED"
+///     }
+///   }
+///   # Keeping the share_name of source and destination the same
+///   # simplifies implementing client failover concepts
+///   delete_destination_volume = true
+///   wait_for_mirror           = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -282,8 +363,8 @@ import 'volume_replication_state.dart';
 /// import com.pulumi.gcp.netapp.inputs.VolumeReplicationDestinationVolumeParametersArgs;
 /// import com.pulumi.gcp.netapp.inputs.VolumeReplicationDestinationVolumeParametersTieringPolicyArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -420,28 +501,35 @@ import 'volume_replication_state.dart';
 /// VolumeReplication can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/replications/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
-///
 /// * `{{location}}/{{volume_name}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, VolumeReplication can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:netapp/volumeReplication:VolumeReplication default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/replications/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/volumeReplication:VolumeReplication default {{project}}/{{location}}/{{volume_name}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/volumeReplication:VolumeReplication default {{location}}/{{volume_name}}/{{name}}
 /// ```
 class VolumeReplication extends pulumi.CustomResource {
   /// Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
   late final pulumi.Output<String> createTime;
+  /// A destination volume is created as part of replication creation. The destination volume will not became
+  /// under Terraform management unless you import it manually. If you delete the replication, this volume
+  /// will remain.
+  /// Setting this parameter to true will delete the *current* destination volume when destroying the
+  /// replication. If you reversed the replication direction, this will be your former source volume!
+  /// For production use, it is recommended to keep this parameter false to avoid accidental volume
+  /// deletion. Handle with care. Default is false.
   late final pulumi.Output<bool?> deleteDestinationVolume;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An description of this resource.
   late final pulumi.Output<String?> description;
   /// Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
@@ -471,7 +559,7 @@ class VolumeReplication extends pulumi.CustomResource {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Name of region for this resource. The resource needs to be created in the region of the destination volume.
   late final pulumi.Output<String> location;
@@ -511,6 +599,9 @@ class VolumeReplication extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> transferStats;
   /// The name of the existing source volume.
   late final pulumi.Output<String> volumeName;
+  /// Replication resource state is independent of mirror_state. With enough data, it can take many hours
+  /// for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+  /// create/stop/resume operations, set this parameter to true. Default is false.
   late final pulumi.Output<bool?> waitForMirror;
 
   /// Creates a new [VolumeReplication].
@@ -529,6 +620,7 @@ class VolumeReplication extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deleteDestinationVolume = registerOutput<bool?>('deleteDestinationVolume');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destinationVolume = registerOutput<String>('destinationVolume');
     destinationVolumeParameters = registerOutput<VolumeReplicationDestinationVolumeParameters?>('destinationVolumeParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeReplicationDestinationVolumeParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -580,6 +672,7 @@ class VolumeReplication extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deleteDestinationVolume = registerOutput<bool?>('deleteDestinationVolume');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destinationVolume = registerOutput<String>('destinationVolume');
     destinationVolumeParameters = registerOutput<VolumeReplicationDestinationVolumeParameters?>('destinationVolumeParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeReplicationDestinationVolumeParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });

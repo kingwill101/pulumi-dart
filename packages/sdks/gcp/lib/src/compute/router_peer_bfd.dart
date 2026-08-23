@@ -19,7 +19,7 @@ class RouterPeerBfd {
   /// BFD declares that a peer is unavailable. If set, the value must
   /// be a value between 5 and 16.
   ///
-  /// &lt;a name="nested_md5_authentication_key"&gt;&lt;/a&gt;The `md5_authentication_key` block supports:
+  /// &lt;a name="nestedMd5AuthenticationKey"&gt;&lt;/a&gt;The `md5AuthenticationKey` block supports:
   final pulumi.Input<int>? multiplier;
   /// The BFD session initialization mode for this BGP peer.
   /// If set to `ACTIVE`, the Cloud Router will initiate the BFD session
@@ -59,4 +59,3 @@ class RouterPeerBfd {
     );
   }
 }
-

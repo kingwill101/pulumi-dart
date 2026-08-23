@@ -99,7 +99,7 @@ import 'policy_based_route_virtual_machine.dart';
 /// 		}
 /// 		_, err = networkconnectivity.NewPolicyBasedRoute(ctx, "default", &networkconnectivity.PolicyBasedRouteArgs{
 /// 			Name:    pulumi.String("my-pbr"),
-/// 			Network: myNetwork.ID(),
+/// 			Network: myNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Filter: &networkconnectivity.PolicyBasedRouteFilterArgs{
 /// 				ProtocolVersion: pulumi.String("IPV4"),
 /// 			},
@@ -110,6 +110,28 @@ import 'policy_based_route_virtual_machine.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_policybasedroute" "default" {
+///   name    = "my-pbr"
+///   network = gcp_compute_network.my_network.id
+///   filter = {
+///     protocol_version = "IPV4"
+///   }
+///   next_hop_other_routes = "DEFAULT_ROUTING"
+/// }
+/// resource "gcp_compute_network" "my_network" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
 /// }
 /// ```
 /// ```java
@@ -123,8 +145,8 @@ import 'policy_based_route_virtual_machine.dart';
 /// import com.pulumi.gcp.networkconnectivity.PolicyBasedRoute;
 /// import com.pulumi.gcp.networkconnectivity.PolicyBasedRouteArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.PolicyBasedRouteFilterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -318,7 +340,7 @@ import 'policy_based_route_virtual_machine.dart';
 /// 		_, err = networkconnectivity.NewPolicyBasedRoute(ctx, "default", &networkconnectivity.PolicyBasedRouteArgs{
 /// 			Name:        pulumi.String("my-pbr"),
 /// 			Description: pulumi.String("My routing policy"),
-/// 			Network:     myNetwork.ID(),
+/// 			Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Priority:    pulumi.Int(2302),
 /// 			Filter: &networkconnectivity.PolicyBasedRouteFilterArgs{
 /// 				ProtocolVersion: pulumi.String("IPV4"),
@@ -343,6 +365,45 @@ import 'policy_based_route_virtual_machine.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_policybasedroute" "default" {
+///   name        = "my-pbr"
+///   description = "My routing policy"
+///   network     = gcp_compute_network.my_network.id
+///   priority    = 2302
+///   filter = {
+///     protocol_version = "IPV4"
+///     ip_protocol      = "UDP"
+///     src_range        = "10.0.0.0/24"
+///     dest_range       = "0.0.0.0/0"
+///   }
+///   next_hop_ilb_ip = gcp_compute_globaladdress.ilb.address
+///   virtual_machine = {
+///     tags = ["restricted"]
+///   }
+///   labels = {
+///     "env" = "default"
+///   }
+/// }
+/// resource "gcp_compute_network" "my_network" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// # This example substitutes an arbitrary internal IP for an internal network
+/// # load balancer for brevity. Consult https://cloud.google.com/load-balancing/docs/internal
+/// # to set one up.
+/// resource "gcp_compute_globaladdress" "ilb" {
+///   name = "my-ilb"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -357,8 +418,8 @@ import 'policy_based_route_virtual_machine.dart';
 /// import com.pulumi.gcp.networkconnectivity.PolicyBasedRouteArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.PolicyBasedRouteFilterArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.PolicyBasedRouteVirtualMachineArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -444,27 +505,27 @@ import 'policy_based_route_virtual_machine.dart';
 /// PolicyBasedRoute can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/policyBasedRoutes/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, PolicyBasedRoute can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default projects/{{project}}/locations/global/policyBasedRoutes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{name}}
 /// ```
 class PolicyBasedRoute extends pulumi.CustomResource {
   /// Time when the policy-based route was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -480,7 +541,7 @@ class PolicyBasedRoute extends pulumi.CustomResource {
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The name of the policy based route.
   late final pulumi.Output<String> name;
@@ -523,6 +584,7 @@ class PolicyBasedRoute extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     filter = registerOutput<PolicyBasedRouteFilter>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBasedRouteFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -565,6 +627,7 @@ class PolicyBasedRoute extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     filter = registerOutput<PolicyBasedRouteFilter>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyBasedRouteFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });

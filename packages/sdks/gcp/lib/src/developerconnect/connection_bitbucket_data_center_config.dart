@@ -17,7 +17,7 @@ class ConnectionBitbucketDataCenterConfig {
   /// Structure is documented below.
   final pulumi.Input<ConnectionBitbucketDataCenterConfigReadAuthorizerCredential> readAuthorizerCredential;
   /// (Output)
-  /// Output only. Version of the Bitbucket Data Center server running on the `host_uri`.
+  /// Output only. Version of the Bitbucket Data Center server running on the `hostUri`.
   final pulumi.Input<String>? serverVersion;
   /// ServiceDirectoryConfig represents Service Directory configuration for a
   /// connection.
@@ -73,4 +73,3 @@ class ConnectionBitbucketDataCenterConfig {
     );
   }
 }
-

@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_serviceaccount_get_account_get_account_args_doc}
 class GetAccountArgs {
-  /// The Google service account ID. This be one of:
+  /// The Google service account ID. This must be one of:
   ///
   /// * The name of the service account within the project (e.g. `my-service`)
   ///
@@ -22,7 +22,7 @@ class GetAccountArgs {
   final pulumi.Input<String>? project;
 
   /// Creates a new [GetAccountArgs].
-  /// [accountId] The Google service account ID. This be one of:
+  /// [accountId] The Google service account ID. This must be one of:
   /// [project] The ID of the project that the service account is present in.
   const GetAccountArgs({
     required this.accountId,
@@ -43,4 +43,3 @@ class GetAccountArgs {
     );
   }
 }
-

@@ -5,6 +5,9 @@ import 'data_exchange_subscription_state.dart';
 
 /// A Bigquery Analytics Hub Data Exchange subscription
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about DataExchangeSubscription, see:
 ///
 /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.subscriptions)
@@ -353,10 +356,10 @@ import 'data_exchange_subscription_state.dart';
 /// 				Enabled: pulumi.Bool(true),
 /// 			},
 /// 			BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-/// 				Dataset: subscriptionDataset.ID(),
+/// 				Dataset: subscriptionDataset.ID().ToIDOutput().ToStringOutput(),
 /// 				SelectedResources: bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArray{
 /// 					&bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArgs{
-/// 						Table: subscriptionTable.ID(),
+/// 						Table: subscriptionTable.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -394,6 +397,77 @@ import 'data_exchange_subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "subscription" {
+///   location         = "us"
+///   data_exchange_id = "my_test_dataexchange"
+///   display_name     = "my_test_dataexchange"
+///   description      = "Test Data Exchange"
+///   sharing_environment_config = {
+///     dcr_exchange_config = {}
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "subscription" {
+///   dataset_id    = "listing_src_dataset"
+///   friendly_name = "listing_src_dataset"
+///   description   = "Dataset for Listing"
+///   location      = "us"
+/// }
+/// resource "gcp_bigquery_table" "subscription" {
+///   deletion_protection = false
+///   table_id            = "listing_src_table"
+///   dataset_id          = gcp_bigquery_dataset.subscription.dataset_id
+///   schema              = "[\n  {\n    \\\"name\\\": \\\"name\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"post_abbr\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"date\\\",\n    \\\"type\\\": \\\"DATE\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  }\n]\n"
+/// }
+/// resource "gcp_bigqueryanalyticshub_listing" "subscription" {
+///   location         = "us"
+///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.subscription.data_exchange_id
+///   listing_id       = "my_test_listing"
+///   display_name     = "my_test_listing"
+///   description      = "Test Listing"
+///   restricted_export_config = {
+///     enabled = true
+///   }
+///   bigquery_dataset = {
+///     dataset = gcp_bigquery_dataset.subscription.id
+///     selected_resources = [{
+///       "table" = gcp_bigquery_table.subscription.id
+///     }]
+///   }
+/// }
+/// resource "gcp_bigqueryanalyticshub_dataexchangesubscription" "subscription" {
+///   project                = gcp_bigquery_dataset.subscription.project
+///   location               = "us"
+///   data_exchange_project  = gcp_bigqueryanalyticshub_dataexchange.subscription.project
+///   data_exchange_location = gcp_bigqueryanalyticshub_dataexchange.subscription.location
+///   data_exchange_id       = gcp_bigqueryanalyticshub_dataexchange.subscription.data_exchange_id
+///   subscription_id        = "my_subscription_id"
+///   subscriber_contact     = "testuser@example.com"
+///   destination_dataset = {
+///     location = "us"
+///     dataset_reference = {
+///       project_id = gcp_bigquery_dataset.subscription.project
+///       dataset_id = "subscribed_dest_dataset"
+///     }
+///     friendly_name = "Subscribed Destination Dataset"
+///     description   = "Destination dataset for subscription"
+///     labels = {
+///       "environment" = "development"
+///       "owner"       = "team-a"
+///     }
+///   }
+///   #Subscriber's project
+///   refresh_policy = "ON_READ"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -412,12 +486,13 @@ import 'data_exchange_subscription_state.dart';
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingRestrictedExportConfigArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
+/// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetSelectedResourceArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeSubscription;
 /// import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeSubscriptionArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeSubscriptionDestinationDatasetArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeSubscriptionDestinationDatasetDatasetReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -605,22 +680,15 @@ import 'data_exchange_subscription_state.dart';
 /// DataExchangeSubscription can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}`
-///
 /// * `{{project}}/{{location}}/{{subscription_id}}`
-///
 /// * `{{location}}/{{subscription_id}}`
+///
 ///
 /// When using the `pulumi import` command, DataExchangeSubscription can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default projects/{{project}}/locations/{{location}}/subscriptions/{{subscription_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default {{project}}/{{location}}/{{subscription_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription default {{location}}/{{subscription_id}}
 /// ```
 class DataExchangeSubscription extends pulumi.CustomResource {
@@ -634,6 +702,13 @@ class DataExchangeSubscription extends pulumi.CustomResource {
   late final pulumi.Output<String> dataExchangeLocation;
   /// The ID of the Google Cloud project where the Data Exchange is located.
   late final pulumi.Output<String> dataExchangeProject;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// BigQuery destination dataset to create for the subscriber.
   /// Structure is documented below.
   late final pulumi.Output<DataExchangeSubscriptionDestinationDataset?> destinationDataset;
@@ -662,6 +737,10 @@ class DataExchangeSubscription extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// Controls when the subscription is automatically refreshed by the provider.
+  /// * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
+  /// * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
+  /// * `NEVER`: The provider will not automatically refresh the subscription.
   late final pulumi.Output<String?> refreshPolicy;
   /// Listing shared asset type.
   late final pulumi.Output<String> resourceType;
@@ -691,6 +770,7 @@ class DataExchangeSubscription extends pulumi.CustomResource {
     dataExchangeId = registerOutput<String>('dataExchangeId');
     dataExchangeLocation = registerOutput<String>('dataExchangeLocation');
     dataExchangeProject = registerOutput<String>('dataExchangeProject');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destinationDataset = registerOutput<DataExchangeSubscriptionDestinationDataset?>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataExchangeSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifyTime = registerOutput<String>('lastModifyTime');
     linkedDatasetMaps = registerOutput<List<Map<String, dynamic>>>('linkedDatasetMaps');
@@ -736,6 +816,7 @@ class DataExchangeSubscription extends pulumi.CustomResource {
     dataExchangeId = registerOutput<String>('dataExchangeId');
     dataExchangeLocation = registerOutput<String>('dataExchangeLocation');
     dataExchangeProject = registerOutput<String>('dataExchangeProject');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destinationDataset = registerOutput<DataExchangeSubscriptionDestinationDataset?>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataExchangeSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifyTime = registerOutput<String>('lastModifyTime');
     linkedDatasetMaps = registerOutput<List<Map<String, dynamic>>>('linkedDatasetMaps');

@@ -16,7 +16,7 @@ class EdgeCacheOriginTimeout {
   /// The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
   /// If the response headers have already been written to the connection, the response will be truncated and logged.
   ///
-  /// &lt;a name="nested_aws_v4_authentication"&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+  /// &lt;a name="nestedAwsV4Authentication"&gt;&lt;/a&gt;The `awsV4Authentication` block supports:
   final pulumi.Input<String>? readTimeout;
   /// The maximum duration to wait for the last byte of a response to arrive when reading from the HTTP connection/stream.
   /// Defaults to 30 seconds. The timeout must be a value between 1s and 120s.
@@ -55,4 +55,3 @@ class EdgeCacheOriginTimeout {
     );
   }
 }
-

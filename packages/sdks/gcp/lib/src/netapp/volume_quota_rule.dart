@@ -139,7 +139,7 @@ import 'volume_quota_rule_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "test-network",
+/// 			Name: pulumi.StringRef("test-network"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -183,6 +183,43 @@ import 'volume_quota_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "default" {
+///   name = "test-network"
+/// }
+///
+/// resource "gcp_netapp_storagepool" "default" {
+///   name          = "test-pool"
+///   location      = "us-west2"
+///   service_level = "PREMIUM"
+///   capacity_gib  = 2048
+///   network       = data.gcp_compute_getnetwork.default.id
+/// }
+/// resource "gcp_netapp_volume" "default" {
+///   location     = gcp_netapp_storagepool.default.location
+///   name         = "test-volume"
+///   capacity_gib = 100
+///   share_name   = "test-volume"
+///   storage_pool = gcp_netapp_storagepool.default.name
+///   protocols    = ["NFSV3"]
+/// }
+/// resource "gcp_netapp_volumequotarule" "test_quota_rule" {
+///   depends_on     = [gcp_netapp_volume.default]
+///   location       = gcp_netapp_volume.default.location
+///   volume_name    = gcp_netapp_volume.default.name
+///   type           = "DEFAULT_USER_QUOTA"
+///   disk_limit_mib = 50
+///   name           = "test-volume-quota-rule"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -198,8 +235,8 @@ import 'volume_quota_rule_state.dart';
 /// import com.pulumi.gcp.netapp.VolumeQuotaRule;
 /// import com.pulumi.gcp.netapp.VolumeQuotaRuleArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -293,27 +330,27 @@ import 'volume_quota_rule_state.dart';
 /// VolumeQuotaRule can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
-///
 /// * `{{location}}/{{volume_name}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, VolumeQuotaRule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/quotaRules/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{project}}/{{location}}/{{volume_name}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/volumeQuotaRule:VolumeQuotaRule default {{location}}/{{volume_name}}/{{name}}
 /// ```
 class VolumeQuotaRule extends pulumi.CustomResource {
   /// Create time of the quota rule. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description for the quota rule.
   late final pulumi.Output<String?> description;
   /// The maximum allowed capacity in MiB.
@@ -323,7 +360,7 @@ class VolumeQuotaRule extends pulumi.CustomResource {
   /// Labels as key value pairs of the quota rule. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Loction of the quotaRule. QuotaRules are child resources of volumes and live in the same location.
   late final pulumi.Output<String?> location;
@@ -368,6 +405,7 @@ class VolumeQuotaRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskLimitMib = registerOutput<int>('diskLimitMib');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -407,6 +445,7 @@ class VolumeQuotaRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskLimitMib = registerOutput<int>('diskLimitMib');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

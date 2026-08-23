@@ -196,6 +196,46 @@ import 'prevention_job_trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionjobtrigger" "basic" {
+///   parent       = "projects/my-project-name"
+///   description  = "Description"
+///   display_name = "Displayname"
+///   triggers {
+///     schedule = {
+///       recurrence_period_duration = "86400s"
+///     }
+///   }
+///   inspect_job = {
+///     inspect_template_name = "fake"
+///     actions = [{
+///       "saveFindings" = {
+///         "outputConfig" = {
+///           "table" = {
+///             "projectId" = "project"
+///             "datasetId" = "dataset"
+///           }
+///         }
+///       }
+///     }]
+///     storage_config = {
+///       cloud_storage_options = {
+///         file_set = {
+///           url = "gs://mybucket/directory/"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,11 +247,15 @@ import 'prevention_job_trigger_state.dart';
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -480,6 +524,50 @@ import 'prevention_job_trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionjobtrigger" "bigquery_row_limit" {
+///   parent       = "projects/my-project-name"
+///   description  = "Description"
+///   display_name = "Displayname"
+///   triggers {
+///     schedule = {
+///       recurrence_period_duration = "86400s"
+///     }
+///   }
+///   inspect_job = {
+///     inspect_template_name = "fake"
+///     actions = [{
+///       "saveFindings" = {
+///         "outputConfig" = {
+///           "table" = {
+///             "projectId" = "project"
+///             "datasetId" = "dataset"
+///           }
+///         }
+///       }
+///     }]
+///     storage_config = {
+///       big_query_options = {
+///         table_reference = {
+///           project_id = "project"
+///           dataset_id = "dataset"
+///           table_id   = "table_to_scan"
+///         }
+///         rows_limit    = 1000
+///         sample_method = "RANDOM_START"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -491,11 +579,15 @@ import 'prevention_job_trigger_state.dart';
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -773,6 +865,50 @@ import 'prevention_job_trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionjobtrigger" "bigquery_row_limit_percentage" {
+///   parent       = "projects/my-project-name"
+///   description  = "Description"
+///   display_name = "Displayname"
+///   triggers {
+///     schedule = {
+///       recurrence_period_duration = "86400s"
+///     }
+///   }
+///   inspect_job = {
+///     inspect_template_name = "fake"
+///     actions = [{
+///       "saveFindings" = {
+///         "outputConfig" = {
+///           "table" = {
+///             "projectId" = "project"
+///             "datasetId" = "dataset"
+///           }
+///         }
+///       }
+///     }]
+///     storage_config = {
+///       big_query_options = {
+///         table_reference = {
+///           project_id = "project"
+///           dataset_id = "dataset"
+///           table_id   = "table_to_scan"
+///         }
+///         rows_limit_percent = 50
+///         sample_method      = "RANDOM_START"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -784,11 +920,15 @@ import 'prevention_job_trigger_state.dart';
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1019,6 +1159,39 @@ import 'prevention_job_trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionjobtrigger" "job_notification_emails" {
+///   parent       = "projects/my-project-name"
+///   description  = "Description for the job_trigger created by terraform"
+///   display_name = "TerraformDisplayName"
+///   triggers {
+///     schedule = {
+///       recurrence_period_duration = "86400s"
+///     }
+///   }
+///   inspect_job = {
+///     inspect_template_name = "sample-inspect-template"
+///     actions = [{
+///       "jobNotificationEmails" = {}
+///     }]
+///     storage_config = {
+///       cloud_storage_options = {
+///         file_set = {
+///           url = "gs://mybucket/directory/"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1030,11 +1203,13 @@ import 'prevention_job_trigger_state.dart';
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1480,6 +1655,76 @@ import 'prevention_job_trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionjobtrigger" "deidentify" {
+///   parent       = "projects/my-project-name"
+///   description  = "Description for the job_trigger created by terraform"
+///   display_name = "TerraformDisplayName"
+///   triggers {
+///     schedule = {
+///       recurrence_period_duration = "86400s"
+///     }
+///   }
+///   inspect_job = {
+///     inspect_template_name = "sample-inspect-template"
+///     actions = [{
+///       "deidentify" = {
+///         "cloudStorageOutput"    = "gs://samplebucket/dir/"
+///         "fileTypesToTransforms" = ["CSV", "TSV"]
+///         "transformationDetailsStorageConfig" = {
+///           "table" = {
+///             "projectId" = "my-project-name"
+///             "datasetId" = gcp_bigquery_dataset.default.dataset_id
+///             "tableId"   = gcp_bigquery_table.default.table_id
+///           }
+///         }
+///         "transformationConfig" = {
+///           "deidentifyTemplate"           = "sample-deidentify-template"
+///           "imageRedactTemplate"          = "sample-image-redact-template"
+///           "structuredDeidentifyTemplate" = "sample-structured-deidentify-template"
+///         }
+///       }
+///     }]
+///     storage_config = {
+///       cloud_storage_options = {
+///         file_set = {
+///           url = "gs://mybucket/directory/"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "default" {
+///   dataset_id                  = "tf_test"
+///   friendly_name               = "terraform-test"
+///   description                 = "Description for the dataset created by terraform"
+///   location                    = "US"
+///   default_table_expiration_ms = 3600000
+///   labels = {
+///     "env" = "default"
+///   }
+/// }
+/// resource "gcp_bigquery_table" "default" {
+///   dataset_id          = gcp_bigquery_dataset.default.dataset_id
+///   table_id            = "tf_test"
+///   deletion_protection = false
+///   time_partitioning = {
+///     type = "DAY"
+///   }
+///   labels = {
+///     "env" = "default"
+///   }
+///   schema = "    [\n    {\n      \\\"name\\\": \\\"quantity\\\",\n      \\\"type\\\": \\\"NUMERIC\\\",\n      \\\"mode\\\": \\\"NULLABLE\\\",\n      \\\"description\\\": \\\"The quantity\\\"\n    },\n    {\n      \\\"name\\\": \\\"name\\\",\n      \\\"type\\\": \\\"STRING\\\",\n      \\\"mode\\\": \\\"NULLABLE\\\",\n      \\\"description\\\": \\\"Name of the object\\\"\n    }\n    ]\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1496,11 +1741,16 @@ import 'prevention_job_trigger_state.dart';
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionDeidentifyArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1866,6 +2116,49 @@ import 'prevention_job_trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionjobtrigger" "hybrid_trigger" {
+///   parent = "projects/my-project-name"
+///   triggers {
+///     manual = {}
+///   }
+///   inspect_job = {
+///     inspect_template_name = "fake"
+///     actions = [{
+///       "saveFindings" = {
+///         "outputConfig" = {
+///           "table" = {
+///             "projectId" = "project"
+///             "datasetId" = "dataset"
+///           }
+///         }
+///       }
+///     }]
+///     storage_config = {
+///       hybrid_options = {
+///         description                 = "Hybrid job trigger for data from the comments field of a table that contains customer appointment bookings"
+///         required_finding_label_keys = ["appointment-bookings-comments"]
+///         labels = {
+///           "env" = "prod"
+///         }
+///         table_options = {
+///           identifying_fields = [{
+///             "name" = "booking_id"
+///           }]
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1877,11 +2170,16 @@ import 'prevention_job_trigger_state.dart';
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerManualArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2397,6 +2695,95 @@ import 'prevention_job_trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionjobtrigger" "inspect" {
+///   parent       = "projects/my-project-name"
+///   description  = "Description"
+///   display_name = "Displayname"
+///   triggers {
+///     schedule = {
+///       recurrence_period_duration = "86400s"
+///     }
+///   }
+///   inspect_job = {
+///     inspect_template_name = "fake"
+///     actions = [{
+///       "saveFindings" = {
+///         "outputConfig" = {
+///           "table" = {
+///             "projectId" = "project"
+///             "datasetId" = "dataset"
+///           }
+///         }
+///       }
+///     }]
+///     storage_config = {
+///       cloud_storage_options = {
+///         file_set = {
+///           url = "gs://mybucket/directory/"
+///         }
+///       }
+///     }
+///     inspect_config = {
+///       custom_info_types = [{
+///         "infoType" = {
+///           "name" = "MY_CUSTOM_TYPE"
+///         }
+///         "likelihood" = "UNLIKELY"
+///         "regex" = {
+///           "pattern" = "test*"
+///         }
+///       }]
+///       info_types = [{
+///         "name" = "EMAIL_ADDRESS"
+///       }]
+///       min_likelihood = "UNLIKELY"
+///       rule_sets = [{
+///         "infoTypes" = [{
+///           "name" = "EMAIL_ADDRESS"
+///         }]
+///         "rules" = [{
+///           "exclusionRule" = {
+///             "regex" = {
+///               "pattern" = ".+@example.com"
+///             }
+///             "matchingType" = "MATCHING_TYPE_FULL_MATCH"
+///           }
+///         }]
+///         }, {
+///         "infoTypes" = [{
+///           "name" = "MY_CUSTOM_TYPE"
+///         }]
+///         "rules" = [{
+///           "hotwordRule" = {
+///             "hotwordRegex" = {
+///               "pattern" = "example*"
+///             }
+///             "proximity" = {
+///               "windowBefore" = 50
+///             }
+///             "likelihoodAdjustment" = {
+///               "fixedLikelihood" = "VERY_LIKELY"
+///             }
+///           }
+///         }]
+///       }]
+///       limits = {
+///         max_findings_per_item    = 10
+///         max_findings_per_request = 50
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2408,13 +2795,30 @@ import 'prevention_job_trigger_state.dart';
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigRuleSetArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigLimitsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2718,6 +3122,39 @@ import 'prevention_job_trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionjobtrigger" "publish_to_stackdriver" {
+///   parent       = "projects/my-project-name"
+///   description  = "Description for the job_trigger created by terraform"
+///   display_name = "TerraformDisplayName"
+///   triggers {
+///     schedule = {
+///       recurrence_period_duration = "86400s"
+///     }
+///   }
+///   inspect_job = {
+///     inspect_template_name = "sample-inspect-template"
+///     actions = [{
+///       "publishToStackdriver" = {}
+///     }]
+///     storage_config = {
+///       cloud_storage_options = {
+///         file_set = {
+///           url = "gs://mybucket/directory/"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2729,11 +3166,13 @@ import 'prevention_job_trigger_state.dart';
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishToStackdriverArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2981,6 +3420,47 @@ import 'prevention_job_trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionjobtrigger" "with_trigger_id" {
+///   parent       = "projects/my-project-name"
+///   description  = "Starting description"
+///   display_name = "display"
+///   trigger_id   = "id-"
+///   triggers {
+///     schedule = {
+///       recurrence_period_duration = "86400s"
+///     }
+///   }
+///   inspect_job = {
+///     inspect_template_name = "fake"
+///     actions = [{
+///       "saveFindings" = {
+///         "outputConfig" = {
+///           "table" = {
+///             "projectId" = "project"
+///             "datasetId" = "dataset123"
+///           }
+///         }
+///       }
+///     }]
+///     storage_config = {
+///       cloud_storage_options = {
+///         file_set = {
+///           url = "gs://mybucket/directory/"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2992,11 +3472,15 @@ import 'prevention_job_trigger_state.dart';
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3278,6 +3762,50 @@ import 'prevention_job_trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionjobtrigger" "basic" {
+///   parent       = "projects/my-project-name"
+///   description  = "Description"
+///   display_name = "Displayname"
+///   triggers {
+///     schedule = {
+///       recurrence_period_duration = "86400s"
+///     }
+///   }
+///   inspect_job = {
+///     inspect_template_name = "fake"
+///     actions = [{
+///       "saveFindings" = {
+///         "outputConfig" = {
+///           "table" = {
+///             "projectId" = "project"
+///             "datasetId" = "dataset"
+///           }
+///         }
+///       }
+///       }, {
+///       "pubSub" = {
+///         "topic" = "projects/project/topics/topic-name"
+///       }
+///     }]
+///     storage_config = {
+///       cloud_storage_options = {
+///         file_set = {
+///           url = "gs://mybucket/directory/"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3289,11 +3817,16 @@ import 'prevention_job_trigger_state.dart';
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPubSubArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3567,6 +4100,49 @@ import 'prevention_job_trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionjobtrigger" "basic" {
+///   parent       = "projects/my-project-name"
+///   description  = "Description"
+///   display_name = "Displayname"
+///   triggers {
+///     schedule = {
+///       recurrence_period_duration = "86400s"
+///     }
+///   }
+///   inspect_job = {
+///     inspect_template_name = "fake"
+///     actions = [{
+///       "saveFindings" = {
+///         "outputConfig" = {
+///           "table" = {
+///             "projectId" = "project"
+///             "datasetId" = "dataset"
+///           }
+///         }
+///       }
+///     }]
+///     storage_config = {
+///       timespan_config = {
+///         enable_auto_population_of_timespan_config = true
+///       }
+///       cloud_storage_options = {
+///         file_set = {
+///           url = "gs://mybucket/directory/"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3578,12 +4154,16 @@ import 'prevention_job_trigger_state.dart';
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3879,6 +4459,55 @@ import 'prevention_job_trigger_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventionjobtrigger" "timespan_config_big_query" {
+///   parent       = "projects/my-project-name"
+///   description  = "BigQuery DLP Job Trigger with timespan config and row limit"
+///   display_name = "bigquery-dlp-job-trigger-limit-timespan"
+///   triggers {
+///     schedule = {
+///       recurrence_period_duration = "86400s"
+///     }
+///   }
+///   inspect_job = {
+///     inspect_template_name = "projects/test/locations/global/inspectTemplates/6425492983381733900"
+///     storage_config = {
+///       big_query_options = {
+///         table_reference = {
+///           project_id = "project"
+///           dataset_id = "dataset"
+///           table_id   = "table"
+///         }
+///         sample_method = ""
+///       }
+///       timespan_config = {
+///         start_time = "2023-01-01T00:00:23Z"
+///         timestamp_field = {
+///           name = "timestamp"
+///         }
+///       }
+///     }
+///     actions = [{
+///       "saveFindings" = {
+///         "outputConfig" = {
+///           "table" = {
+///             "projectId" = "project"
+///             "datasetId" = "output"
+///           }
+///         }
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3895,8 +4524,12 @@ import 'prevention_job_trigger_state.dart';
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3990,21 +4623,25 @@ import 'prevention_job_trigger_state.dart';
 /// JobTrigger can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/jobTriggers/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, JobTrigger can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/jobTriggers/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/{{name}}
 /// ```
 class PreventionJobTrigger extends pulumi.CustomResource {
   /// The creation timestamp of an inspectTemplate. Set by the server.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of the job trigger.
   late final pulumi.Output<String?> description;
   /// User set display name of the job trigger.
@@ -4048,6 +4685,7 @@ class PreventionJobTrigger extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     inspectJob = registerOutput<PreventionJobTriggerInspectJob?>('inspectJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionJobTriggerInspectJob.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -4084,6 +4722,7 @@ class PreventionJobTrigger extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     inspectJob = registerOutput<PreventionJobTriggerInspectJob?>('inspectJob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionJobTriggerInspectJob.fromMap((guardedValue as Map).cast<String, dynamic>()); });

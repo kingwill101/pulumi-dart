@@ -65,6 +65,13 @@ class AgentArgs {
   /// List of child agents in the agent tree.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
   final pulumi.Input<List<String>>? childAgents;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human-readable description of the agent.
   final pulumi.Input<String>? description;
   /// Display name of the agent.
@@ -110,6 +117,7 @@ class AgentArgs {
   /// [beforeModelCallbacks] The callbacks to execute before the model is called. If there are multiple
   /// [beforeToolCallbacks] The callbacks to execute before the tool is invoked. If there are multiple
   /// [childAgents] List of child agents in the agent tree.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Human-readable description of the agent.
   /// [displayName] Display name of the agent.
   /// [guardrails] List of guardrails for the agent.
@@ -131,6 +139,7 @@ class AgentArgs {
     this.beforeModelCallbacks,
     this.beforeToolCallbacks,
     this.childAgents,
+    this.deletionPolicy,
     this.description,
     required this.displayName,
     this.guardrails,
@@ -155,6 +164,7 @@ class AgentArgs {
       'beforeModelCallbacks': ?pulumi.Input.mapOptionalInputValue<List<AgentBeforeModelCallback>, List<Map<String, dynamic>>>(beforeModelCallbacks, (value) => pulumi.Input.encodeList<AgentBeforeModelCallback, Map<String, dynamic>>(value, (value) => value.toMap())),
       'beforeToolCallbacks': ?pulumi.Input.mapOptionalInputValue<List<AgentBeforeToolCallback>, List<Map<String, dynamic>>>(beforeToolCallbacks, (value) => pulumi.Input.encodeList<AgentBeforeToolCallback, Map<String, dynamic>>(value, (value) => value.toMap())),
       'childAgents': ?childAgents,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': displayName,
       'guardrails': ?guardrails,
@@ -180,6 +190,7 @@ class AgentArgs {
       beforeModelCallbacks: (() { final guardedValue = map['beforeModelCallbacks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentBeforeModelCallback>(guardedValue, (value) => AgentBeforeModelCallback.fromMap((value as Map).cast<String, dynamic>()))); })(),
       beforeToolCallbacks: (() { final guardedValue = map['beforeToolCallbacks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentBeforeToolCallback>(guardedValue, (value) => AgentBeforeToolCallback.fromMap((value as Map).cast<String, dynamic>()))); })(),
       childAgents: (() { final guardedValue = map['childAgents']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       guardrails: (() { final guardedValue = map['guardrails']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -194,4 +205,3 @@ class AgentArgs {
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'get_router_param.dart';
 class GetRouterResult {
   final List<GetRouterBgp> bgps;
   final String creationTimestamp;
+  final String deletionPolicy;
   final String description;
   final bool encryptedInterconnectRouter;
   /// The provider-assigned unique ID for this managed resource.
@@ -25,6 +26,7 @@ class GetRouterResult {
   /// Creates a new [GetRouterResult].
   /// [bgps] Required.
   /// [creationTimestamp] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [encryptedInterconnectRouter] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -39,6 +41,7 @@ class GetRouterResult {
   const GetRouterResult({
     required this.bgps,
     required this.creationTimestamp,
+    required this.deletionPolicy,
     required this.description,
     required this.encryptedInterconnectRouter,
     required this.id,
@@ -56,6 +59,7 @@ class GetRouterResult {
     return <String, dynamic>{
       'bgps': pulumi.Input.encodeList<GetRouterBgp, Map<String, dynamic>>(bgps, (value) => value.toMap()),
       'creationTimestamp': creationTimestamp,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'encryptedInterconnectRouter': encryptedInterconnectRouter,
       'id': id,
@@ -74,6 +78,7 @@ class GetRouterResult {
     return GetRouterResult(
       bgps: pulumi.Input.decodeList<GetRouterBgp>(map['bgps']!, (value) => GetRouterBgp.fromMap((value as Map).cast<String, dynamic>())),
       creationTimestamp: map['creationTimestamp'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       encryptedInterconnectRouter: map['encryptedInterconnectRouter'] as bool,
       id: map['id'] as String,
@@ -88,4 +93,3 @@ class GetRouterResult {
     );
   }
 }
-

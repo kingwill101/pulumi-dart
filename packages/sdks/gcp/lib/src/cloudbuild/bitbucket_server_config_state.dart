@@ -14,6 +14,13 @@ class BitbucketServerConfigState {
   /// Connected Bitbucket Server repositories for this config.
   /// Structure is documented below.
   final pulumi.Input<List<BitbucketServerConfigConnectedRepository>>? connectedRepositories;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
   /// If you need to change it, please create another BitbucketServerConfig.
   final pulumi.Input<String>? hostUri;
@@ -43,6 +50,7 @@ class BitbucketServerConfigState {
   /// [apiKey] Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
   /// [configId] The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
   /// [connectedRepositories] Connected Bitbucket Server repositories for this config.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [hostUri] Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
   /// [location] The location of this bitbucket server config.
   /// [name] The resource name for the config.
@@ -56,6 +64,7 @@ class BitbucketServerConfigState {
     this.apiKey,
     this.configId,
     this.connectedRepositories,
+    this.deletionPolicy,
     this.hostUri,
     this.location,
     this.name,
@@ -72,6 +81,7 @@ class BitbucketServerConfigState {
       'apiKey': ?apiKey,
       'configId': ?configId,
       'connectedRepositories': ?pulumi.Input.mapOptionalInputValue<List<BitbucketServerConfigConnectedRepository>, List<Map<String, dynamic>>>(connectedRepositories, (value) => pulumi.Input.encodeList<BitbucketServerConfigConnectedRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': ?deletionPolicy,
       'hostUri': ?hostUri,
       'location': ?location,
       'name': ?name,
@@ -89,6 +99,7 @@ class BitbucketServerConfigState {
       apiKey: (() { final guardedValue = map['apiKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       configId: (() { final guardedValue = map['configId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       connectedRepositories: (() { final guardedValue = map['connectedRepositories']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BitbucketServerConfigConnectedRepository>(guardedValue, (value) => BitbucketServerConfigConnectedRepository.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostUri: (() { final guardedValue = map['hostUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -101,4 +112,3 @@ class BitbucketServerConfigState {
     );
   }
 }
-

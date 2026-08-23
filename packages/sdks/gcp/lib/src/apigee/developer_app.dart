@@ -203,13 +203,13 @@ import 'developer_app_state.dart';
 /// 		apigeeInstance, err := apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 /// 			Name:     pulumi.String("instance"),
 /// 			Location: pulumi.String("us-central1"),
-/// 			OrgId:    apigeeOrg.ID(),
+/// 			OrgId:    apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apiProduct, err := apigee.NewApiProduct(ctx, "api_product", &apigee.ApiProductArgs{
-/// 			OrgId:        apigeeOrg.ID(),
+/// 			OrgId:        apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:         pulumi.String("sample-api"),
 /// 			DisplayName:  pulumi.String("A sample API Product"),
 /// 			ApprovalType: pulumi.String("auto"),
@@ -228,7 +228,7 @@ import 'developer_app_state.dart';
 /// 			FirstName: pulumi.String("John"),
 /// 			LastName:  pulumi.String("Doe"),
 /// 			UserName:  pulumi.String("john.doe"),
-/// 			OrgId:     apigeeOrg.ID(),
+/// 			OrgId:     apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeInstance,
 /// 		}))
@@ -237,7 +237,7 @@ import 'developer_app_state.dart';
 /// 		}
 /// 		_, err = apigee.NewDeveloperApp(ctx, "apigee_developer_app", &apigee.DeveloperAppArgs{
 /// 			Name:           pulumi.String("sample-app"),
-/// 			OrgId:          apigeeOrg.ID(),
+/// 			OrgId:          apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 			DeveloperId:    developer.ID(),
 /// 			DeveloperEmail: developer.Email,
 /// 			CallbackUrl:    pulumi.String("https://example-call.url"),
@@ -255,6 +255,54 @@ import 'developer_app_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_apigee_developerapp" "apigee_developer_app" {
+///   name            = "sample-app"
+///   org_id          = gcp_apigee_organization.apigee_org.id
+///   developer_id    = gcp_apigee_developer.developer.id
+///   developer_email = gcp_apigee_developer.developer.email
+///   callback_url    = "https://example-call.url"
+///   api_products    = [gcp_apigee_apiproduct.api_product.name]
+///   scopes          = gcp_apigee_apiproduct.api_product.scopes
+/// }
+/// resource "gcp_apigee_apiproduct" "api_product" {
+///   depends_on    = [gcp_apigee_instance.apigee_instance]
+///   org_id        = gcp_apigee_organization.apigee_org.id
+///   name          = "sample-api"
+///   display_name  = "A sample API Product"
+///   approval_type = "auto"
+///   scopes        = ["read:weather", "write:reports"]
+/// }
+/// resource "gcp_apigee_developer" "developer" {
+///   depends_on = [gcp_apigee_instance.apigee_instance]
+///   email      = "john.doe@acme.com"
+///   first_name = "John"
+///   last_name  = "Doe"
+///   user_name  = "john.doe"
+///   org_id     = gcp_apigee_organization.apigee_org.id
+/// }
+/// resource "gcp_apigee_instance" "apigee_instance" {
+///   name     = "instance"
+///   location = "us-central1"
+///   org_id   = gcp_apigee_organization.apigee_org.id
+/// }
+/// resource "gcp_apigee_organization" "apigee_org" {
+///   analytics_region    = "us-central1"
+///   project_id          = projectGoogleProject.projectId
+///   disable_vpc_peering = true
 /// }
 /// ```
 /// ```java
@@ -276,8 +324,8 @@ import 'developer_app_state.dart';
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,7 +339,7 @@ import 'developer_app_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()
 ///             .analyticsRegion("us-central1")
-///             .projectId(projectGoogleProject.projectId())
+///             .projectId(projectGoogleProject.get("projectId"))
 ///             .disableVpcPeering(true)
 ///             .build());
 ///
@@ -686,7 +734,7 @@ import 'developer_app_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+/// 		apigee2, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 /// 			Project: project.ProjectId,
 /// 			Service: pulumi.String("apigee.googleapis.com"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -700,7 +748,7 @@ import 'developer_app_state.dart';
 /// 			ProjectId:         project.ProjectId,
 /// 			DisableVpcPeering: pulumi.Bool(true),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			apigee,
+/// 			apigee2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -708,14 +756,14 @@ import 'developer_app_state.dart';
 /// 		apigeeInstance, err := apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 /// 			Name:     pulumi.String("instance"),
 /// 			Location: pulumi.String("us-central1"),
-/// 			OrgId:    apigeeOrg.ID(),
+/// 			OrgId:    apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apiProduct, err := apigee.NewApiProduct(ctx, "api_product", &apigee.ApiProductArgs{
 /// 			Name:         pulumi.String("sample-api"),
-/// 			OrgId:        apigeeOrg.ID(),
+/// 			OrgId:        apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:  pulumi.String("A sample API Product"),
 /// 			ApprovalType: pulumi.String("auto"),
 /// 			Scopes: pulumi.StringArray{
@@ -734,7 +782,7 @@ import 'developer_app_state.dart';
 /// 			FirstName: pulumi.String("John"),
 /// 			LastName:  pulumi.String("Doe"),
 /// 			UserName:  pulumi.String("john.doe"),
-/// 			OrgId:     apigeeOrg.ID(),
+/// 			OrgId:     apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeInstance,
 /// 		}))
@@ -745,7 +793,7 @@ import 'developer_app_state.dart';
 /// 			Name:           pulumi.String("sample-app"),
 /// 			AppFamily:      pulumi.String("default"),
 /// 			DeveloperEmail: developer.Email,
-/// 			OrgId:          apigeeOrg.ID(),
+/// 			OrgId:          apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 			CallbackUrl:    pulumi.String("https://example-call.url"),
 /// 			KeyExpiresIn:   pulumi.String("-1"),
 /// 			Status:         pulumi.String("approved"),
@@ -765,6 +813,77 @@ import 'developer_app_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apigee_developerapp" "apigee_developer_app" {
+///   name            = "sample-app"
+///   app_family      = "default"
+///   developer_email = gcp_apigee_developer.developer.email
+///   org_id          = gcp_apigee_organization.apigee_org.id
+///   callback_url    = "https://example-call.url"
+///   key_expires_in  = "-1"
+///   status          = "approved"
+///   api_products    = [gcp_apigee_apiproduct.api_product.name]
+///   scopes          = gcp_apigee_apiproduct.api_product.scopes
+///   attributes {
+///     name  = "sample_name"
+///     value = "sample_value"
+///   }
+/// }
+/// resource "gcp_apigee_apiproduct" "api_product" {
+///   depends_on    = [gcp_apigee_instance.apigee_instance]
+///   name          = "sample-api"
+///   org_id        = gcp_apigee_organization.apigee_org.id
+///   display_name  = "A sample API Product"
+///   approval_type = "auto"
+///   scopes        = ["read:weather", "write:reports", "write:files"]
+/// }
+/// resource "gcp_apigee_developer" "developer" {
+///   depends_on = [gcp_apigee_instance.apigee_instance]
+///   email      = "john.doe@acme.com"
+///   first_name = "John"
+///   last_name  = "Doe"
+///   user_name  = "john.doe"
+///   org_id     = gcp_apigee_organization.apigee_org.id
+/// }
+/// resource "gcp_apigee_instance" "apigee_instance" {
+///   name     = "instance"
+///   location = "us-central1"
+///   org_id   = gcp_apigee_organization.apigee_org.id
+/// }
+/// resource "gcp_apigee_organization" "apigee_org" {
+///   depends_on          = [gcp_projects_service.apigee]
+///   analytics_region    = "us-central1"
+///   project_id          = gcp_organizations_project.project.project_id
+///   disable_vpc_peering = true
+/// }
+/// resource "gcp_projects_service" "apigee" {
+///   depends_on = [time_sleep.wait_60_seconds]
+///   project    = gcp_organizations_project.project.project_id
+///   service    = "apigee.googleapis.com"
+/// }
+/// resource "time_sleep" "wait_60_seconds" {
+///   depends_on      = [gcp_organizations_project.project]
+///   create_duration = "60s"
+/// }
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "prj"
+///   name            = "prj"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
 /// }
 /// ```
 /// ```java
@@ -791,8 +910,8 @@ import 'developer_app_state.dart';
 /// import com.pulumi.gcp.apigee.DeveloperAppArgs;
 /// import com.pulumi.gcp.apigee.inputs.DeveloperAppAttributeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -975,16 +1094,13 @@ import 'developer_app_state.dart';
 /// DeveloperApp can be imported using any of these accepted formats:
 ///
 /// * `{{org_id}}/developers/{{developer_email}}/apps/{{name}}`
-///
 /// * `{{org_id}}/{{developer_email}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, DeveloperApp can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/developerApp:DeveloperApp default {{org_id}}/developers/{{developer_email}}/apps/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/developerApp:DeveloperApp default {{org_id}}/{{developer_email}}/{{name}}
 /// ```
 class DeveloperApp extends pulumi.CustomResource {
@@ -1001,12 +1117,35 @@ class DeveloperApp extends pulumi.CustomResource {
   /// Callback URL used by OAuth 2.0 authorization servers to communicate
   /// authorization codes back to developer apps.
   late final pulumi.Output<String> callbackUrl;
+  /// Optionally specify a static consumer key for the developer app's credential.
+  /// If not set, the API auto-generates a key. The consumer key must be unique
+  /// across all developer apps in an organization. Changing this field forces the
+  /// resource to be recreated.
+  /// This is a write-only input used at create time: the provider creates the
+  /// credential with this key via the keys API and removes the auto-generated
+  /// one. The effective key is exposed in the `credentials` output.
+  late final pulumi.Output<String?> consumerKey;
+  /// Optionally specify a static consumer secret for the developer app's
+  /// credential. Required if `consumerKey` is specified. If not set, the API
+  /// auto-generates a secret. Changing this field forces the resource to be
+  /// recreated.
+  /// This is a write-only input used at create time; the effective secret is
+  /// exposed in the `credentials` output.
+  /// **Note**: This property is sensitive and will not be displayed in the plan.
+  late final pulumi.Output<String?> consumerSecret;
   /// Time at which the developer was created in milliseconds since epoch.
   late final pulumi.Output<String> createdAt;
   /// Output only. Set of credentials for the developer app consisting of
   /// the consumer key/secret pairs associated with the API products.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> credentials;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Email address of the developer.
   /// This value is used to uniquely identify the developer in Apigee hybrid.
   /// Note that the email address has to be in lowercase only.
@@ -1050,8 +1189,11 @@ class DeveloperApp extends pulumi.CustomResource {
     appId = registerOutput<String>('appId');
     attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
     callbackUrl = registerOutput<String>('callbackUrl');
+    consumerKey = registerOutput<String?>('consumerKey');
+    consumerSecret = registerOutput<String?>('consumerSecret');
     createdAt = registerOutput<String>('createdAt');
     credentials = registerOutput<List<Map<String, dynamic>>>('credentials');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     developerEmail = registerOutput<String>('developerEmail');
     developerId = registerOutput<String>('developerId');
     keyExpiresIn = registerOutput<String?>('keyExpiresIn');
@@ -1090,8 +1232,11 @@ class DeveloperApp extends pulumi.CustomResource {
     appId = registerOutput<String>('appId');
     attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
     callbackUrl = registerOutput<String>('callbackUrl');
+    consumerKey = registerOutput<String?>('consumerKey');
+    consumerSecret = registerOutput<String?>('consumerSecret');
     createdAt = registerOutput<String>('createdAt');
     credentials = registerOutput<List<Map<String, dynamic>>>('credentials');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     developerEmail = registerOutput<String>('developerEmail');
     developerId = registerOutput<String>('developerId');
     keyExpiresIn = registerOutput<String?>('keyExpiresIn');

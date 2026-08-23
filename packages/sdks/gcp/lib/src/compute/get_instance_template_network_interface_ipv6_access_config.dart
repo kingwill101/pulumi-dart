@@ -7,7 +7,7 @@ class GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
   final pulumi.Input<String> externalIpv6;
   /// The prefix length of the external IPv6 range.
   final pulumi.Input<String> externalIpv6PrefixLength;
-  /// The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+  /// The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
   final pulumi.Input<String> name;
   /// The [networking tier][network-tier] used for configuring
   /// this instance template. This field can take the following values: PREMIUM or
@@ -19,7 +19,7 @@ class GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
   /// Creates a new [GetInstanceTemplateNetworkInterfaceIpv6AccessConfig].
   /// [externalIpv6] The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
   /// [externalIpv6PrefixLength] The prefix length of the external IPv6 range.
-  /// [name] The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+  /// [name] The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
   /// [networkTier] The [networking tier][network-tier] used for configuring
   /// [publicPtrDomainName] The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
   const GetInstanceTemplateNetworkInterfaceIpv6AccessConfig({
@@ -50,4 +50,3 @@ class GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
     );
   }
 }
-

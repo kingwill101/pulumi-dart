@@ -19,25 +19,25 @@ import 'ai_rag_engine_config_state.dart';
 /// RagEngineConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/ragEngineConfig`
-///
 /// * `{{project}}/{{region}}`
-///
 /// * `{{region}}`
+///
 ///
 /// When using the `pulumi import` command, RagEngineConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default projects/{{project}}/locations/{{region}}/ragEngineConfig
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default {{project}}/{{region}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiRagEngineConfig:AiRagEngineConfig default {{region}}
 /// ```
 class AiRagEngineConfig extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The resource name of the Dataset. This value is set by Google.
   late final pulumi.Output<String> name;
   /// The ID of the project in which the resource belongs.
@@ -63,6 +63,7 @@ class AiRagEngineConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     ragManagedDbConfig = registerOutput<AiRagEngineConfigRagManagedDbConfig>('ragManagedDbConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiRagEngineConfigRagManagedDbConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -92,6 +93,7 @@ class AiRagEngineConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     ragManagedDbConfig = registerOutput<AiRagEngineConfigRagManagedDbConfig>('ragManagedDbConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiRagEngineConfigRagManagedDbConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -4,12 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterRbacBindingConfig {
   /// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
-  ///
-  ///
-  /// ## Attributes Reference
-  ///
-  /// In addition to the arguments listed above, the following computed attributes are
-  /// exported:
   final pulumi.Input<bool>? enableInsecureBindingSystemAuthenticated;
   /// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
   final pulumi.Input<bool>? enableInsecureBindingSystemUnauthenticated;
@@ -36,4 +30,3 @@ class ClusterRbacBindingConfig {
     );
   }
 }
-

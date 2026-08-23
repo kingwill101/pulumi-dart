@@ -31,9 +31,16 @@ class AuthorizedOrgsDescArgs {
   /// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
   /// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
   final pulumi.Input<String>? authorizationType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Resource name for the `AuthorizedOrgsDesc`. Format:
   /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
-  /// The `authorized_orgs_desc` component must begin with a letter, followed by
+  /// The `authorizedOrgsDesc` component must begin with a letter, followed by
   /// alphanumeric characters or `_`.
   /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
   final pulumi.Input<String>? name;
@@ -48,6 +55,7 @@ class AuthorizedOrgsDescArgs {
   /// [assetType] The type of entities that need to use the authorization relationship during
   /// [authorizationDirection] The direction of the authorization relationship between this organization
   /// [authorizationType] A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [name] Resource name for the `AuthorizedOrgsDesc`. Format:
   /// [orgs] The list of organization ids in this AuthorizedOrgsDesc.
   /// [parent] Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
@@ -55,6 +63,7 @@ class AuthorizedOrgsDescArgs {
     this.assetType,
     this.authorizationDirection,
     this.authorizationType,
+    this.deletionPolicy,
     this.name,
     this.orgs,
     required this.parent,
@@ -65,6 +74,7 @@ class AuthorizedOrgsDescArgs {
       'assetType': ?assetType,
       'authorizationDirection': ?authorizationDirection,
       'authorizationType': ?authorizationType,
+      'deletionPolicy': ?deletionPolicy,
       'name': ?name,
       'orgs': ?orgs,
       'parent': parent,
@@ -76,10 +86,10 @@ class AuthorizedOrgsDescArgs {
       assetType: (() { final guardedValue = map['assetType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authorizationDirection: (() { final guardedValue = map['authorizationDirection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authorizationType: (() { final guardedValue = map['authorizationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orgs: (() { final guardedValue = map['orgs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       parent: pulumi.Input.fromValue(map['parent'] as String),
     );
   }
 }
-

@@ -7,7 +7,7 @@ class BucketObjectRetention {
   final pulumi.Input<String> mode;
   /// The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
   ///
-  /// &lt;a name="nested_contexts"&gt;&lt;/a&gt; The `contexts` block supports -
+  /// &lt;a name="nestedContexts"&gt;&lt;/a&gt; The `contexts` block supports -
   final pulumi.Input<String> retainUntilTime;
 
   /// Creates a new [BucketObjectRetention].
@@ -32,4 +32,3 @@ class BucketObjectRetention {
     );
   }
 }
-

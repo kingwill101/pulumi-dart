@@ -7,7 +7,7 @@ class GetHealthCheckTcpHealthCheck {
   /// The default value is 443.
   final pulumi.Input<int> port;
   /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
-  /// port_name are defined, port takes precedence.
+  /// portName are defined, port takes precedence.
   final pulumi.Input<String> portName;
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
@@ -75,4 +75,3 @@ class GetHealthCheckTcpHealthCheck {
     );
   }
 }
-

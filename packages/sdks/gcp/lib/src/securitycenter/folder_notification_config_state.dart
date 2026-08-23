@@ -7,6 +7,13 @@ import 'folder_notification_config_streaming_config.dart';
 class FolderNotificationConfigState {
   /// This must be unique within the organization.
   final pulumi.Input<String>? configId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The description of the notification config (max of 1024 characters).
   final pulumi.Input<String>? description;
   /// Numerical ID of the parent folder.
@@ -15,7 +22,7 @@ class FolderNotificationConfigState {
   /// `folders/{{folder}}/notificationConfigs/{{config_id}}`.
   final pulumi.Input<String>? name;
   /// The Pub/Sub topic to send notifications to. Its format is
-  /// "projects/[project_id]/topics/[topic]".
+  /// "projects/[projectId]/topics/[topic]".
   final pulumi.Input<String>? pubsubTopic;
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
@@ -26,6 +33,7 @@ class FolderNotificationConfigState {
 
   /// Creates a new [FolderNotificationConfigState].
   /// [configId] This must be unique within the organization.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The description of the notification config (max of 1024 characters).
   /// [folder] Numerical ID of the parent folder.
   /// [name] The resource name of this notification config, in the format
@@ -34,6 +42,7 @@ class FolderNotificationConfigState {
   /// [streamingConfig] The config for triggering streaming-based notifications.
   const FolderNotificationConfigState({
     this.configId,
+    this.deletionPolicy,
     this.description,
     this.folder,
     this.name,
@@ -45,6 +54,7 @@ class FolderNotificationConfigState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configId': ?configId,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'folder': ?folder,
       'name': ?name,
@@ -57,6 +67,7 @@ class FolderNotificationConfigState {
   factory FolderNotificationConfigState.fromMap(Map<String, dynamic> map) {
     return FolderNotificationConfigState(
       configId: (() { final guardedValue = map['configId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -66,4 +77,3 @@ class FolderNotificationConfigState {
     );
   }
 }
-

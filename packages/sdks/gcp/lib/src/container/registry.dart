@@ -66,6 +66,20 @@ import 'registry_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_registry" "registry" {
+///   project  = "my-project"
+///   location = "EU"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +88,8 @@ import 'registry_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.Registry;
 /// import com.pulumi.gcp.container.RegistryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -176,7 +190,7 @@ import 'registry_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = storage.NewBucketIAMMember(ctx, "viewer", &storage.BucketIAMMemberArgs{
-/// 			Bucket: registry.ID(),
+/// 			Bucket: registry.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:   pulumi.String("roles/storage.objectViewer"),
 /// 			Member: pulumi.String("user:jane@example.com"),
 /// 		})
@@ -185,6 +199,25 @@ import 'registry_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_registry" "registry" {
+///   project  = "my-project"
+///   location = "EU"
+/// }
+/// resource "gcp_storage_bucketiammember" "viewer" {
+///   bucket = gcp_container_registry.registry.id
+///   role   = "roles/storage.objectViewer"
+///   member = "user:jane@example.com"
 /// }
 /// ```
 /// ```java
@@ -197,8 +230,8 @@ import 'registry_state.dart';
 /// import com.pulumi.gcp.container.RegistryArgs;
 /// import com.pulumi.gcp.storage.BucketIAMMember;
 /// import com.pulumi.gcp.storage.BucketIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

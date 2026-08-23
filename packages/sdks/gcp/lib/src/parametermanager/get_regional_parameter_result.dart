@@ -6,6 +6,7 @@ import 'get_regional_parameter_policy_member.dart';
 /// Result data returned by getRegionalParameter.
 class GetRegionalParameterResult {
   final String createTime;
+  final String deletionPolicy;
   final Map<String, String> effectiveLabels;
   final String format;
   /// The provider-assigned unique ID for this managed resource.
@@ -22,6 +23,7 @@ class GetRegionalParameterResult {
 
   /// Creates a new [GetRegionalParameterResult].
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [effectiveLabels] Required.
   /// [format] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -36,6 +38,7 @@ class GetRegionalParameterResult {
   /// [updateTime] Required.
   const GetRegionalParameterResult({
     required this.createTime,
+    required this.deletionPolicy,
     required this.effectiveLabels,
     required this.format,
     required this.id,
@@ -53,6 +56,7 @@ class GetRegionalParameterResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'effectiveLabels': effectiveLabels,
       'format': format,
       'id': id,
@@ -71,6 +75,7 @@ class GetRegionalParameterResult {
   factory GetRegionalParameterResult.fromMap(Map<String, dynamic> map) {
     return GetRegionalParameterResult(
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       format: map['format'] as String,
       id: map['id'] as String,
@@ -86,4 +91,3 @@ class GetRegionalParameterResult {
     );
   }
 }
-

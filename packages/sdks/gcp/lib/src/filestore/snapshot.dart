@@ -144,6 +144,34 @@ import 'snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_filestore_snapshot" "snapshot" {
+///   name     = "test-snapshot"
+///   instance = gcp_filestore_instance.instance.name
+///   location = "us-east1"
+/// }
+/// resource "gcp_filestore_instance" "instance" {
+///   name     = "test-instance-for-snapshot"
+///   location = "us-east1"
+///   tier     = "ENTERPRISE"
+///   file_shares = {
+///     capacity_gb = 1024
+///     name        = "share1"
+///   }
+///   networks {
+///     network = "default"
+///     modes   = ["MODE_IPV4"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -156,8 +184,8 @@ import 'snapshot_state.dart';
 /// import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
 /// import com.pulumi.gcp.filestore.Snapshot;
 /// import com.pulumi.gcp.filestore.SnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -362,6 +390,38 @@ import 'snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_filestore_snapshot" "snapshot" {
+///   name        = "test-snapshot"
+///   instance    = gcp_filestore_instance.instance.name
+///   location    = "us-west1"
+///   description = "Snapshot of test-instance-for-snapshot"
+///   labels = {
+///     "my_label" = "value"
+///   }
+/// }
+/// resource "gcp_filestore_instance" "instance" {
+///   name     = "test-instance-for-snapshot"
+///   location = "us-west1"
+///   tier     = "ENTERPRISE"
+///   file_shares = {
+///     capacity_gb = 1024
+///     name        = "share1"
+///   }
+///   networks {
+///     network = "default"
+///     modes   = ["MODE_IPV4"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -374,8 +434,8 @@ import 'snapshot_state.dart';
 /// import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
 /// import com.pulumi.gcp.filestore.Snapshot;
 /// import com.pulumi.gcp.filestore.SnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -444,27 +504,27 @@ import 'snapshot_state.dart';
 /// Snapshot can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/snapshots/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{instance}}/{{name}}`
-///
 /// * `{{location}}/{{instance}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:filestore/snapshot:Snapshot default projects/{{project}}/locations/{{location}}/instances/{{instance}}/snapshots/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:filestore/snapshot:Snapshot default {{project}}/{{location}}/{{instance}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:filestore/snapshot:Snapshot default {{location}}/{{instance}}/{{name}}
 /// ```
 class Snapshot extends pulumi.CustomResource {
   /// The time when the snapshot was created in RFC3339 text format.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -476,7 +536,7 @@ class Snapshot extends pulumi.CustomResource {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
   late final pulumi.Output<String> location;
@@ -512,6 +572,7 @@ class Snapshot extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     filesystemUsedBytes = registerOutput<String>('filesystemUsedBytes');
@@ -548,6 +609,7 @@ class Snapshot extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     filesystemUsedBytes = registerOutput<String>('filesystemUsedBytes');

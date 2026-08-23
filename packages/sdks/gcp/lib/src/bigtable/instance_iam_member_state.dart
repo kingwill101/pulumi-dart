@@ -22,6 +22,8 @@ class InstanceIamMemberState {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<String>? member;
+  /// The project in which the instance belongs. If it
+  /// is not provided, Terraform will use the provider default.
   final pulumi.Input<String>? project;
   /// The role that should be applied. Only one
   /// `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -33,7 +35,7 @@ class InstanceIamMemberState {
   /// [etag] (Computed) The etag of the instances's IAM policy.
   /// [instance] The name or relative resource id of the instance to manage IAM policies for.
   /// [member] Identities that will be granted the privilege in `role`.
-  /// [project] Optional.
+  /// [project] The project in which the instance belongs. If it
   /// [role] The role that should be applied. Only one
   const InstanceIamMemberState({
     this.condition,
@@ -66,4 +68,3 @@ class InstanceIamMemberState {
     );
   }
 }
-

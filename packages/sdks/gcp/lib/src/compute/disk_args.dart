@@ -31,6 +31,13 @@ class DiskArgs {
   final pulumi.Input<bool>? createSnapshotBeforeDestroy;
   /// This will set a custom name prefix for the snapshot that's created when the disk is deleted.
   final pulumi.Input<String>? createSnapshotBeforeDestroyPrefix;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   final pulumi.Input<String>? description;
@@ -46,14 +53,17 @@ class DiskArgs {
   /// Structure is documented below.
   final pulumi.Input<DiskDiskEncryptionKey>? diskEncryptionKey;
   /// Whether this disk is using confidential compute mode.
-  /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+  /// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
   final pulumi.Input<bool>? enableConfidentialCompute;
+  /// (Optional, Beta)
+  /// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+  final pulumi.Input<bool>? eraseWindowsVssSignature;
   /// A list of features to enable on the guest operating system.
   /// Applicable only for bootable disks.
   /// Structure is documented below.
   final pulumi.Input<List<DiskGuestOsFeature>>? guestOsFeatures;
   /// The image from which to initialize this disk. This can be
-  /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+  /// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
   /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
   /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
   /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -62,6 +72,7 @@ class DiskArgs {
   /// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
   /// These images can be referred by family name here.
   final pulumi.Input<String>? image;
+  /// (Optional, Beta, Deprecated)
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
   ///
   /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -69,10 +80,11 @@ class DiskArgs {
   /// Labels to apply to this disk.  A list of key-&gt;value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Any applicable license URI.
   final pulumi.Input<List<String>>? licenses;
+  /// (Optional, Beta)
   /// Indicates whether or not the disk can be read/write attached to more than one instance.
   final pulumi.Input<bool>? multiWriter;
   /// Name of the resource. Provided by the client when the resource is
@@ -103,6 +115,7 @@ class DiskArgs {
   /// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
   /// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
   final pulumi.Input<int>? provisionedThroughput;
+  /// (Optional, Beta)
   /// Resource policies applied to this disk for automatic snapshot creations.
   /// ~&gt;**NOTE** This value does not support updating the
   /// resource policy, as resource policies can not be updated more than
@@ -179,22 +192,24 @@ class DiskArgs {
   /// [asyncPrimaryDisk] A nested object resource.
   /// [createSnapshotBeforeDestroy] If set to true, a snapshot of the disk will be created before it is destroyed.
   /// [createSnapshotBeforeDestroyPrefix] This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
   /// [diskEncryptionKey] Encrypts the disk using a customer-supplied encryption key.
   /// [enableConfidentialCompute] Whether this disk is using confidential compute mode.
+  /// [eraseWindowsVssSignature] (Optional, Beta)
   /// [guestOsFeatures] A list of features to enable on the guest operating system.
   /// [image] The image from which to initialize this disk. This can be
-  /// [interface] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+  /// [interface] (Optional, Beta, Deprecated)
   /// [labels] Labels to apply to this disk.  A list of key-&gt;value pairs.
   /// [licenses] Any applicable license URI.
-  /// [multiWriter] Indicates whether or not the disk can be read/write attached to more than one instance.
+  /// [multiWriter] (Optional, Beta)
   /// [name] Name of the resource. Provided by the client when the resource is
   /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [physicalBlockSizeBytes] Physical block size of the persistent disk, in bytes. If not present
   /// [project] The ID of the project in which the resource belongs.
   /// [provisionedIops] Indicates how many IOPS must be provisioned for the disk.
   /// [provisionedThroughput] Indicates how much Throughput must be provisioned for the disk.
-  /// [resourcePolicies] Resource policies applied to this disk for automatic snapshot creations.
+  /// [resourcePolicies] (Optional, Beta)
   /// [size] Size of the persistent disk, specified in GB. You can specify this
   /// [snapshot] The source snapshot used to create this disk. You can provide this as
   /// [sourceDisk] The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
@@ -211,9 +226,11 @@ class DiskArgs {
     this.asyncPrimaryDisk,
     this.createSnapshotBeforeDestroy,
     this.createSnapshotBeforeDestroyPrefix,
+    this.deletionPolicy,
     this.description,
     this.diskEncryptionKey,
     this.enableConfidentialCompute,
+    this.eraseWindowsVssSignature,
     this.guestOsFeatures,
     this.image,
     this.interface,
@@ -246,9 +263,11 @@ class DiskArgs {
       'asyncPrimaryDisk': ?pulumi.Input.mapOptionalInputValue<DiskAsyncPrimaryDisk, Map<String, dynamic>>(asyncPrimaryDisk, (value) => value.toMap()),
       'createSnapshotBeforeDestroy': ?createSnapshotBeforeDestroy,
       'createSnapshotBeforeDestroyPrefix': ?createSnapshotBeforeDestroyPrefix,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'diskEncryptionKey': ?pulumi.Input.mapOptionalInputValue<DiskDiskEncryptionKey, Map<String, dynamic>>(diskEncryptionKey, (value) => value.toMap()),
       'enableConfidentialCompute': ?enableConfidentialCompute,
+      'eraseWindowsVssSignature': ?eraseWindowsVssSignature,
       'guestOsFeatures': ?pulumi.Input.mapOptionalInputValue<List<DiskGuestOsFeature>, List<Map<String, dynamic>>>(guestOsFeatures, (value) => pulumi.Input.encodeList<DiskGuestOsFeature, Map<String, dynamic>>(value, (value) => value.toMap())),
       'image': ?image,
       'interface': ?interface,
@@ -282,9 +301,11 @@ class DiskArgs {
       asyncPrimaryDisk: (() { final guardedValue = map['asyncPrimaryDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskAsyncPrimaryDisk.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createSnapshotBeforeDestroy: (() { final guardedValue = map['createSnapshotBeforeDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       createSnapshotBeforeDestroyPrefix: (() { final guardedValue = map['createSnapshotBeforeDestroyPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskEncryptionKey: (() { final guardedValue = map['diskEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskDiskEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enableConfidentialCompute: (() { final guardedValue = map['enableConfidentialCompute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      eraseWindowsVssSignature: (() { final guardedValue = map['eraseWindowsVssSignature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       guestOsFeatures: (() { final guardedValue = map['guestOsFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DiskGuestOsFeature>(guardedValue, (value) => DiskGuestOsFeature.fromMap((value as Map).cast<String, dynamic>()))); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       interface: (() { final guardedValue = map['interface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -311,4 +332,3 @@ class DiskArgs {
     );
   }
 }
-

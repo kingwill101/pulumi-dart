@@ -3,8 +3,12 @@ import 'ai_logic_config_args.dart';
 import 'ai_logic_config_generative_language_config.dart';
 import 'ai_logic_config_state.dart';
 import 'ai_logic_config_telemetry_config.dart';
+import 'ai_logic_config_traffic_filter.dart';
 
 /// Configuration for Firebase AI Logic.
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 ///
 /// To get more information about Config, see:
 ///
@@ -181,7 +185,7 @@ import 'ai_logic_config_telemetry_config.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		firebase, err := projects.NewService(ctx, "firebase", &projects.ServiceArgs{
+/// 		firebase2, err := projects.NewService(ctx, "firebase", &projects.ServiceArgs{
 /// 			Project: project.ProjectId,
 /// 			Service: pulumi.String("firebase.googleapis.com"),
 /// 		})
@@ -201,7 +205,7 @@ import 'ai_logic_config_telemetry_config.dart';
 /// 			CreateDuration: pulumi.String("30s"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			ailogic,
-/// 			firebase,
+/// 			firebase2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -219,6 +223,48 @@ import 'ai_logic_config_telemetry_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "basic"
+///   name            = "Firebase Project"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_firebase_project" "default" {
+///   project = gcp_organizations_project.project.project_id
+/// }
+/// resource "gcp_projects_service" "firebase" {
+///   project = gcp_organizations_project.project.project_id
+///   service = "firebase.googleapis.com"
+/// }
+/// resource "gcp_projects_service" "ailogic" {
+///   project = gcp_organizations_project.project.project_id
+///   service = "firebasevertexai.googleapis.com"
+/// }
+/// # It takes a while for permissions to propagate
+/// # If your Terraform setup has a retry mechanism, this wait is unnecessary
+/// resource "time_sleep" "wait_30s" {
+///   depends_on      = [gcp_projects_service.ailogic, gcp_projects_service.firebase]
+///   create_duration = "30s"
+/// }
+/// resource "gcp_firebase_ailogicconfig" "default" {
+///   depends_on = [time_sleep.wait_30s]
+///   project    = gcp_firebase_project.default.project
+///   location   = "global"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -232,8 +278,8 @@ import 'ai_logic_config_telemetry_config.dart';
 /// import com.pulumi.gcp.firebase.AiLogicConfig;
 /// import com.pulumi.gcp.firebase.AiLogicConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -386,6 +432,9 @@ import 'ai_logic_config_telemetry_config.dart';
 ///         mode: "ALL",
 ///         samplingRate: 1,
 ///     },
+///     trafficFilter: {
+///         templateOnly: true,
+///     },
 /// }, {
 ///     dependsOn: [wait30s],
 /// });
@@ -432,7 +481,10 @@ import 'ai_logic_config_telemetry_config.dart';
 ///     },
 ///     telemetry_config={
 ///         "mode": "ALL",
-///         "sampling_rate": 1,
+///         "sampling_rate": float(1),
+///     },
+///     traffic_filter={
+///         "template_only": True,
 ///     },
 ///     opts = pulumi.ResourceOptions(depends_on=[wait30s]))
 /// ```
@@ -513,7 +565,11 @@ import 'ai_logic_config_telemetry_config.dart';
 ///         TelemetryConfig = new Gcp.Firebase.Inputs.AiLogicConfigTelemetryConfigArgs
 ///         {
 ///             Mode = "ALL",
-///             SamplingRate = 1,
+///             SamplingRate = 1.0,
+///         },
+///         TrafficFilter = new Gcp.Firebase.Inputs.AiLogicConfigTrafficFilterArgs
+///         {
+///             TemplateOnly = true,
 ///         },
 ///     }, new CustomResourceOptions
 ///     {
@@ -554,7 +610,7 @@ import 'ai_logic_config_telemetry_config.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		firebase, err := projects.NewService(ctx, "firebase", &projects.ServiceArgs{
+/// 		firebase2, err := projects.NewService(ctx, "firebase", &projects.ServiceArgs{
 /// 			Project: project.ProjectId,
 /// 			Service: pulumi.String("firebase.googleapis.com"),
 /// 		})
@@ -589,7 +645,7 @@ import 'ai_logic_config_telemetry_config.dart';
 /// 			CreateDuration: pulumi.String("30s"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			ailogic,
-/// 			firebase,
+/// 			firebase2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -604,6 +660,9 @@ import 'ai_logic_config_telemetry_config.dart';
 /// 				Mode:         pulumi.String("ALL"),
 /// 				SamplingRate: pulumi.Float64(1),
 /// 			},
+/// 			TrafficFilter: &firebase.AiLogicConfigTrafficFilterArgs{
+/// 				TemplateOnly: pulumi.Bool(true),
+/// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			wait30s,
 /// 		}))
@@ -612,6 +671,68 @@ import 'ai_logic_config_telemetry_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "full"
+///   name            = "Firebase Project"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_firebase_project" "default" {
+///   project = gcp_organizations_project.project.project_id
+/// }
+/// resource "gcp_projects_service" "firebase" {
+///   project = gcp_organizations_project.project.project_id
+///   service = "firebase.googleapis.com"
+/// }
+/// resource "gcp_projects_service" "ailogic" {
+///   project = gcp_organizations_project.project.project_id
+///   service = "firebasevertexai.googleapis.com"
+/// }
+/// resource "gcp_projects_apikey" "gemini" {
+///   project      = gcp_organizations_project.project.project_id
+///   name         = "gemini-api-key"
+///   display_name = "Gemini Developer API key"
+///   restrictions = {
+///     api_targets = [{
+///       "service" = "generativelanguage.googleapis.com"
+///     }]
+///   }
+/// }
+/// # It takes a while for permissions to propagate
+/// # If your Terraform setup has a retry mechanism, this wait is unnecessary
+/// resource "time_sleep" "wait_30s" {
+///   depends_on      = [gcp_projects_service.ailogic, gcp_projects_service.firebase]
+///   create_duration = "30s"
+/// }
+/// resource "gcp_firebase_ailogicconfig" "default" {
+///   depends_on = [time_sleep.wait_30s]
+///   project    = gcp_firebase_project.default.project
+///   location   = "global"
+///   generative_language_config = {
+///     api_key = gcp_projects_apikey.gemini.key_string
+///   }
+///   telemetry_config = {
+///     mode          = "ALL"
+///     sampling_rate = 1
+///   }
+///   traffic_filter = {
+///     template_only = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -625,15 +746,17 @@ import 'ai_logic_config_telemetry_config.dart';
 /// import com.pulumi.gcp.projects.ApiKey;
 /// import com.pulumi.gcp.projects.ApiKeyArgs;
 /// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
+/// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsApiTargetArgs;
 /// import com.pulumiverse.time.Sleep;
 /// import com.pulumiverse.time.SleepArgs;
 /// import com.pulumi.gcp.firebase.AiLogicConfig;
 /// import com.pulumi.gcp.firebase.AiLogicConfigArgs;
 /// import com.pulumi.gcp.firebase.inputs.AiLogicConfigGenerativeLanguageConfigArgs;
 /// import com.pulumi.gcp.firebase.inputs.AiLogicConfigTelemetryConfigArgs;
+/// import com.pulumi.gcp.firebase.inputs.AiLogicConfigTrafficFilterArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -698,6 +821,9 @@ import 'ai_logic_config_telemetry_config.dart';
 ///                 .mode("ALL")
 ///                 .samplingRate(1.0)
 ///                 .build())
+///             .trafficFilter(AiLogicConfigTrafficFilterArgs.builder()
+///                 .templateOnly(true)
+///                 .build())
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(wait30s)
 ///                 .build());
@@ -760,6 +886,8 @@ import 'ai_logic_config_telemetry_config.dart';
 ///       telemetryConfig:
 ///         mode: ALL
 ///         samplingRate: 1
+///       trafficFilter:
+///         templateOnly: true
 ///     options:
 ///       dependsOn:
 ///         - ${wait30s}
@@ -771,25 +899,25 @@ import 'ai_logic_config_telemetry_config.dart';
 /// Config can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/config`
-///
 /// * `{{project}}/{{location}}`
-///
 /// * `{{location}}`
+///
 ///
 /// When using the `pulumi import` command, Config can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default projects/{{project}}/locations/{{location}}/config
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default {{project}}/{{location}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/aiLogicConfig:AiLogicConfig default {{location}}
 /// ```
 class AiLogicConfig extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Configuration for using the Gemini Developer API via Firebase AI Logic.
   /// When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
   /// API key is stored in this configuration *on the server* so that you do
@@ -809,6 +937,9 @@ class AiLogicConfig extends pulumi.CustomResource {
   /// Firebase AI Logic backend.
   /// Structure is documented below.
   late final pulumi.Output<AiLogicConfigTelemetryConfig?> telemetryConfig;
+  /// Configuration for traffic filtering.
+  /// Structure is documented below.
+  late final pulumi.Output<AiLogicConfigTrafficFilter> trafficFilter;
 
   /// Creates a new [AiLogicConfig].
   /// [name] The Pulumi resource name.
@@ -824,11 +955,13 @@ class AiLogicConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     generativeLanguageConfig = registerOutput<AiLogicConfigGenerativeLanguageConfig?>('generativeLanguageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiLogicConfigGenerativeLanguageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     telemetryConfig = registerOutput<AiLogicConfigTelemetryConfig?>('telemetryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiLogicConfigTelemetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trafficFilter = registerOutput<AiLogicConfigTrafficFilter>('trafficFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiLogicConfigTrafficFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [AiLogicConfig] resource's state with the given [name] and [id].
@@ -854,10 +987,12 @@ class AiLogicConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     generativeLanguageConfig = registerOutput<AiLogicConfigGenerativeLanguageConfig?>('generativeLanguageConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiLogicConfigGenerativeLanguageConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     telemetryConfig = registerOutput<AiLogicConfigTelemetryConfig?>('telemetryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiLogicConfigTelemetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trafficFilter = registerOutput<AiLogicConfigTrafficFilter>('trafficFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiLogicConfigTrafficFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

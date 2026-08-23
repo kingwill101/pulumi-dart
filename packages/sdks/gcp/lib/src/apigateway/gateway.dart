@@ -4,6 +4,9 @@ import 'gateway_state.dart';
 
 /// A consumable API that can be used by multiple Gateways.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about Gateway, see:
 ///
 /// * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
@@ -17,37 +20,33 @@ import 'gateway_state.dart';
 /// Gateway can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}`
-///
 /// * `{{project}}/{{region}}/{{gateway_id}}`
-///
 /// * `{{region}}/{{gateway_id}}`
-///
 /// * `{{gateway_id}}`
+///
 ///
 /// When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigateway/gateway:Gateway default {{project}}/{{region}}/{{gateway_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigateway/gateway:Gateway default {{region}}/{{gateway_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigateway/gateway:Gateway default {{gateway_id}}
 /// ```
 class Gateway extends pulumi.CustomResource {
   /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
   /// When changing api configs please ensure the new config is a new resource and the
-  /// lifecycle rule `create_before_destroy` is set.
+  /// lifecycle rule `createBeforeDestroy` is set.
   late final pulumi.Output<String> apiConfig;
   /// The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
   late final pulumi.Output<String> defaultHostname;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A user-visible name for the API.
   late final pulumi.Output<String> displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -57,7 +56,7 @@ class Gateway extends pulumi.CustomResource {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource name of the Gateway. Format: projects/{project}/locations/{region}/gateways/{gateway}
   late final pulumi.Output<String> name;
@@ -86,6 +85,7 @@ class Gateway extends pulumi.CustomResource {
         ) {
     apiConfig = registerOutput<String>('apiConfig');
     defaultHostname = registerOutput<String>('defaultHostname');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gatewayId = registerOutput<String>('gatewayId');
@@ -121,6 +121,7 @@ class Gateway extends pulumi.CustomResource {
         ) {
     apiConfig = registerOutput<String>('apiConfig');
     defaultHostname = registerOutput<String>('defaultHostname');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gatewayId = registerOutput<String>('gatewayId');

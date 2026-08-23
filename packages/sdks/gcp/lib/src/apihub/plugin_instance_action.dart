@@ -6,7 +6,7 @@ import 'plugin_instance_action_hub_instance_action.dart';
 
 class PluginInstanceAction {
   /// This should map to one of the action id specified
-  /// in actions_config in the plugin.
+  /// in actionsConfig in the plugin.
   final pulumi.Input<String> actionId;
   /// The curation information for this plugin instance.
   /// Structure is documented below.
@@ -22,7 +22,7 @@ class PluginInstanceAction {
   /// be used.
   ///
   ///
-  /// &lt;a name="nested_actions_hub_instance_action"&gt;&lt;/a&gt;The `hub_instance_action` block contains:
+  /// &lt;a name="nestedActionsHubInstanceAction"&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
   final pulumi.Input<String>? scheduleTimeZone;
   /// (Output)
   /// The current state of the plugin action in the plugin instance.
@@ -73,4 +73,3 @@ class PluginInstanceAction {
     );
   }
 }
-

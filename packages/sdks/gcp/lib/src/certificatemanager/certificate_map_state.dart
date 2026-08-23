@@ -9,6 +9,13 @@ class CertificateMapState {
   /// accurate to nanoseconds with up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human-readable description of the resource.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -19,7 +26,7 @@ class CertificateMapState {
   /// Set of labels associated with a Certificate Map resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// A user-defined name of the Certificate Map. Certificate Map names must be unique
   /// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
@@ -37,6 +44,7 @@ class CertificateMapState {
 
   /// Creates a new [CertificateMapState].
   /// [createTime] Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A human-readable description of the resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [gclbTargets] A list of target proxies that use this Certificate Map
@@ -47,6 +55,7 @@ class CertificateMapState {
   /// [updateTime] Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
   const CertificateMapState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.gclbTargets,
@@ -60,6 +69,7 @@ class CertificateMapState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'gclbTargets': ?pulumi.Input.mapOptionalInputValue<List<CertificateMapGclbTarget>, List<Map<String, dynamic>>>(gclbTargets, (value) => pulumi.Input.encodeList<CertificateMapGclbTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -74,6 +84,7 @@ class CertificateMapState {
   factory CertificateMapState.fromMap(Map<String, dynamic> map) {
     return CertificateMapState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       gclbTargets: (() { final guardedValue = map['gclbTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CertificateMapGclbTarget>(guardedValue, (value) => CertificateMapGclbTarget.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -85,4 +96,3 @@ class CertificateMapState {
     );
   }
 }
-

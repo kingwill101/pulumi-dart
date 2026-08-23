@@ -5,6 +5,7 @@ import 'notebook_execution_dataform_repository_source.dart';
 import 'notebook_execution_direct_notebook_source.dart';
 import 'notebook_execution_gcs_notebook_source.dart';
 import 'notebook_execution_state.dart';
+import 'notebook_execution_workbench_runtime.dart';
 
 /// 'An instance of a notebook Execution'
 ///
@@ -369,6 +370,47 @@ import 'notebook_execution_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_colab_runtimetemplate" "my_runtime_template" {
+///   name         = "runtime-template-name"
+///   display_name = "Runtime template"
+///   location     = "us-central1"
+///   machine_spec = {
+///     machine_type = "e2-standard-4"
+///   }
+///   network_spec = {
+///     enable_internet_access = true
+///   }
+/// }
+/// resource "gcp_storage_bucket" "output_bucket" {
+///   name                        = "my_bucket"
+///   location                    = "US"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_colab_notebookexecution" "notebook-execution" {
+///   depends_on   = [gcp_colab_runtimetemplate.my_runtime_template, gcp_storage_bucket.output_bucket]
+///   display_name = "Notebook execution basic"
+///   location     = "us-central1"
+///   direct_notebook_source = {
+///     content = base64encode("    {\n      \\\"cells\\\": [\n        {\n          \\\"cell_type\\\": \\\"code\\\",\n          \\\"execution_count\\\": null,\n          \\\"metadata\\\": {},\n          \\\"outputs\\\": [],\n          \\\"source\\\": [\n            \\\"print(\\\\\\\"Hello, World!\\\\\\\")\\\"\n          ]\n        }\n      ],\n      \\\"metadata\\\": {\n        \\\"kernelspec\\\": {\n          \\\"display_name\\\": \\\"Python 3\\\",\n          \\\"language\\\": \\\"python\\\",\n          \\\"name\\\": \\\"python3\\\"\n        },\n        \\\"language_info\\\": {\n          \\\"codemirror_mode\\\": {\n            \\\"name\\\": \\\"ipython\\\",\n            \\\"version\\\": 3\n          },\n          \\\"file_extension\\\": \\\".py\\\",\n          \\\"mimetype\\\": \\\"text/x-python\\\",\n          \\\"name\\\": \\\"python\\\",\n          \\\"nbconvert_exporter\\\": \\\"python\\\",\n          \\\"pygments_lexer\\\": \\\"ipython3\\\",\n          \\\"version\\\": \\\"3.8.5\\\"\n        }\n      },\n      \\\"nbformat\\\": 4,\n      \\\"nbformat_minor\\\": 4\n    }\n")
+///   }
+///   notebook_runtime_template_resource_name ="projects/${gcp_colab_runtimetemplate.my_runtime_template.project}/locations/${gcp_colab_runtimetemplate.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtimetemplate.my_runtime_template.name}"
+///   gcs_output_uri                          ="gs://${gcp_storage_bucket.output_bucket.name}"
+///   service_account                         = "my@service-account.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -387,8 +429,8 @@ import 'notebook_execution_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -637,6 +679,11 @@ import 'notebook_execution_state.dart';
 ///             network: myNetwork.id,
 ///             subnetwork: mySubnetwork.id,
 ///         },
+///         shieldedInstanceConfig: {
+///             enableIntegrityMonitoring: true,
+///             enableSecureBoot: true,
+///             enableVtpm: true,
+///         },
 ///     },
 ///     gcsOutputUri: pulumi.interpolate`gs://${outputBucket.name}`,
 ///     serviceAccount: "my@service-account.com",
@@ -716,6 +763,11 @@ import 'notebook_execution_state.dart';
 ///             "enable_internet_access": True,
 ///             "network": my_network.id,
 ///             "subnetwork": my_subnetwork.id,
+///         },
+///         "shielded_instance_config": {
+///             "enable_integrity_monitoring": True,
+///             "enable_secure_boot": True,
+///             "enable_vtpm": True,
 ///         },
 ///     },
 ///     gcs_output_uri=output_bucket.name.apply(lambda name: f"gs://{name}"),
@@ -817,6 +869,12 @@ import 'notebook_execution_state.dart';
 ///                 Network = myNetwork.Id,
 ///                 Subnetwork = mySubnetwork.Id,
 ///             },
+///             ShieldedInstanceConfig = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs
+///             {
+///                 EnableIntegrityMonitoring = true,
+///                 EnableSecureBoot = true,
+///                 EnableVtpm = true,
+///             },
 ///         },
 ///         GcsOutputUri = outputBucket.Name.Apply(name => $"gs://{name}"),
 ///         ServiceAccount = "my@service-account.com",
@@ -854,7 +912,7 @@ import 'notebook_execution_state.dart';
 /// 		}
 /// 		mySubnetwork, err := compute.NewSubnetwork(ctx, "my_subnetwork", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("colab-test-default"),
-/// 			Network:     myNetwork.ID(),
+/// 			Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -928,8 +986,13 @@ import 'notebook_execution_state.dart';
 /// 				},
 /// 				NetworkSpec: &colab.NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs{
 /// 					EnableInternetAccess: pulumi.Bool(true),
-/// 					Network:              myNetwork.ID(),
-/// 					Subnetwork:           mySubnetwork.ID(),
+/// 					Network:              myNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 					Subnetwork:           mySubnetwork.ID().ToIDOutput().ToStringOutput(),
+/// 				},
+/// 				ShieldedInstanceConfig: &colab.NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs{
+/// 					EnableIntegrityMonitoring: pulumi.Bool(true),
+/// 					EnableSecureBoot:          pulumi.Bool(true),
+/// 					EnableVtpm:                pulumi.Bool(true),
 /// 				},
 /// 			},
 /// 			GcsOutputUri: outputBucket.Name.ApplyT(func(name string) (string, error) {
@@ -944,6 +1007,66 @@ import 'notebook_execution_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "my_network" {
+///   name                    = "colab-test-default"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "my_subnetwork" {
+///   name          = "colab-test-default"
+///   network       = gcp_compute_network.my_network.id
+///   region        = "us-central1"
+///   ip_cidr_range = "10.0.1.0/24"
+/// }
+/// resource "gcp_storage_bucket" "output_bucket" {
+///   name                        = "my_bucket"
+///   location                    = "US"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_colab_notebookexecution" "notebook-execution" {
+///   depends_on   = [gcp_storage_bucket.output_bucket]
+///   display_name = "Notebook execution basic"
+///   location     = "us-central1"
+///   direct_notebook_source = {
+///     content = base64encode("    {\n      \\\"cells\\\": [\n        {\n          \\\"cell_type\\\": \\\"code\\\",\n          \\\"execution_count\\\": null,\n          \\\"metadata\\\": {},\n          \\\"outputs\\\": [],\n          \\\"source\\\": [\n            \\\"print(\\\\\\\"Hello, World!\\\\\\\")\\\"\n          ]\n        }\n      ],\n      \\\"metadata\\\": {\n        \\\"kernelspec\\\": {\n          \\\"display_name\\\": \\\"Python 3\\\",\n          \\\"language\\\": \\\"python\\\",\n          \\\"name\\\": \\\"python3\\\"\n        },\n        \\\"language_info\\\": {\n          \\\"codemirror_mode\\\": {\n            \\\"name\\\": \\\"ipython\\\",\n            \\\"version\\\": 3\n          },\n          \\\"file_extension\\\": \\\".py\\\",\n          \\\"mimetype\\\": \\\"text/x-python\\\",\n          \\\"name\\\": \\\"python\\\",\n          \\\"nbconvert_exporter\\\": \\\"python\\\",\n          \\\"pygments_lexer\\\": \\\"ipython3\\\",\n          \\\"version\\\": \\\"3.8.5\\\"\n        }\n      },\n      \\\"nbformat\\\": 4,\n      \\\"nbformat_minor\\\": 4\n    }\n")
+///   }
+///   custom_environment_spec = {
+///     machine_spec = {
+///       machine_type      = "n1-standard-2"
+///       accelerator_type  = "NVIDIA_TESLA_T4"
+///       accelerator_count = "1"
+///     }
+///     persistent_disk_spec = {
+///       disk_type    = "pd-standard"
+///       disk_size_gb = 200
+///     }
+///     network_spec = {
+///       enable_internet_access = true
+///       network                = gcp_compute_network.my_network.id
+///       subnetwork             = gcp_compute_subnetwork.my_subnetwork.id
+///     }
+///     shielded_instance_config = {
+///       enable_integrity_monitoring = true
+///       enable_secure_boot          = true
+///       enable_vtpm                 = true
+///     }
+///   }
+///   gcs_output_uri  ="gs://${gcp_storage_bucket.output_bucket.name}"
+///   service_account = "my@service-account.com"
 /// }
 /// ```
 /// ```java
@@ -965,11 +1088,12 @@ import 'notebook_execution_state.dart';
 /// import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs;
 /// import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs;
 /// import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs;
+/// import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1057,6 +1181,11 @@ import 'notebook_execution_state.dart';
 ///                     .enableInternetAccess(true)
 ///                     .network(myNetwork.id())
 ///                     .subnetwork(mySubnetwork.id())
+///                     .build())
+///                 .shieldedInstanceConfig(NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs.builder()
+///                     .enableIntegrityMonitoring(true)
+///                     .enableSecureBoot(true)
+///                     .enableVtpm(true)
 ///                     .build())
 ///                 .build())
 ///             .gcsOutputUri(outputBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
@@ -1150,6 +1279,1134 @@ import 'notebook_execution_state.dart';
 ///           enableInternetAccess: true
 ///           network: ${myNetwork.id}
 ///           subnetwork: ${mySubnetwork.id}
+///         shieldedInstanceConfig:
+///           enableIntegrityMonitoring: true
+///           enableSecureBoot: true
+///           enableVtpm: true
+///       gcsOutputUri: gs://${outputBucket.name}
+///       serviceAccount: my@service-account.com
+///     options:
+///       dependsOn:
+///         - ${outputBucket}
+/// ```
+///
+/// ### Colab Notebook Execution Workbench Runtime Vm
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as std from "@pulumi/std";
+///
+/// const outputBucket = new gcp.storage.Bucket("output_bucket", {
+///     name: "my_bucket",
+///     location: "US",
+///     forceDestroy: true,
+///     uniformBucketLevelAccess: true,
+/// });
+/// const notebook_execution = new gcp.colab.NotebookExecution("notebook-execution", {
+///     displayName: "Notebook execution workbench runtime vm",
+///     location: "us-central1",
+///     directNotebookSource: {
+///         content: std.base64encode({
+///             input: `    {
+///       \\"cells\\": [
+///         {
+///           \\"cell_type\\": \\"code\\",
+///           \\"execution_count\\": null,
+///           \\"metadata\\": {},
+///           \\"outputs\\": [],
+///           \\"source\\": [
+///             \\"print(\\\\\\"Hello, World!\\\\\\")\\"
+///           ]
+///         }
+///       ],
+///       \\"metadata\\": {
+///         \\"kernelspec\\": {
+///           \\"display_name\\": \\"Python 3\\",
+///           \\"language\\": \\"python\\",
+///           \\"name\\": \\"python3\\"
+///         },
+///         \\"language_info\\": {
+///           \\"codemirror_mode\\": {
+///             \\"name\\": \\"ipython\\",
+///             \\"version\\": 3
+///           },
+///           \\"file_extension\\": \\".py\\",
+///           \\"mimetype\\": \\"text/x-python\\",
+///           \\"name\\": \\"python\\",
+///           \\"nbconvert_exporter\\": \\"python\\",
+///           \\"pygments_lexer\\": \\"ipython3\\",
+///           \\"version\\": \\"3.8.5\\"
+///         }
+///       },
+///       \\"nbformat\\": 4,
+///       \\"nbformat_minor\\": 4
+///     }
+/// `,
+///         }).then(invoke => invoke.result),
+///     },
+///     customEnvironmentSpec: {
+///         machineSpec: {
+///             machineType: "n1-standard-2",
+///         },
+///         persistentDiskSpec: {
+///             diskType: "pd-standard",
+///             diskSizeGb: "200",
+///         },
+///     },
+///     workbenchRuntime: {
+///         vmImage: {
+///             project: "cloud-notebooks-managed",
+///             family: "workbench-instances",
+///         },
+///     },
+///     gcsOutputUri: pulumi.interpolate`gs://${outputBucket.name}`,
+///     serviceAccount: "my@service-account.com",
+/// }, {
+///     dependsOn: [outputBucket],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumi_std as std
+///
+/// output_bucket = gcp.storage.Bucket("output_bucket",
+///     name="my_bucket",
+///     location="US",
+///     force_destroy=True,
+///     uniform_bucket_level_access=True)
+/// notebook_execution = gcp.colab.NotebookExecution("notebook-execution",
+///     display_name="Notebook execution workbench runtime vm",
+///     location="us-central1",
+///     direct_notebook_source={
+///         "content": std.base64encode(input="""    {
+///       \"cells\": [
+///         {
+///           \"cell_type\": \"code\",
+///           \"execution_count\": null,
+///           \"metadata\": {},
+///           \"outputs\": [],
+///           \"source\": [
+///             \"print(\\\"Hello, World!\\\")\"
+///           ]
+///         }
+///       ],
+///       \"metadata\": {
+///         \"kernelspec\": {
+///           \"display_name\": \"Python 3\",
+///           \"language\": \"python\",
+///           \"name\": \"python3\"
+///         },
+///         \"language_info\": {
+///           \"codemirror_mode\": {
+///             \"name\": \"ipython\",
+///             \"version\": 3
+///           },
+///           \"file_extension\": \".py\",
+///           \"mimetype\": \"text/x-python\",
+///           \"name\": \"python\",
+///           \"nbconvert_exporter\": \"python\",
+///           \"pygments_lexer\": \"ipython3\",
+///           \"version\": \"3.8.5\"
+///         }
+///       },
+///       \"nbformat\": 4,
+///       \"nbformat_minor\": 4
+///     }
+/// """).result,
+///     },
+///     custom_environment_spec={
+///         "machine_spec": {
+///             "machine_type": "n1-standard-2",
+///         },
+///         "persistent_disk_spec": {
+///             "disk_type": "pd-standard",
+///             "disk_size_gb": "200",
+///         },
+///     },
+///     workbench_runtime={
+///         "vm_image": {
+///             "project": "cloud-notebooks-managed",
+///             "family": "workbench-instances",
+///         },
+///     },
+///     gcs_output_uri=output_bucket.name.apply(lambda name: f"gs://{name}"),
+///     service_account="my@service-account.com",
+///     opts = pulumi.ResourceOptions(depends_on=[output_bucket]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Std = Pulumi.Std;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var outputBucket = new Gcp.Storage.Bucket("output_bucket", new()
+///     {
+///         Name = "my_bucket",
+///         Location = "US",
+///         ForceDestroy = true,
+///         UniformBucketLevelAccess = true,
+///     });
+///
+///     var notebook_execution = new Gcp.Colab.NotebookExecution("notebook-execution", new()
+///     {
+///         DisplayName = "Notebook execution workbench runtime vm",
+///         Location = "us-central1",
+///         DirectNotebookSource = new Gcp.Colab.Inputs.NotebookExecutionDirectNotebookSourceArgs
+///         {
+///             Content = Std.Base64encode.Invoke(new()
+///             {
+///                 Input = @"    {
+///       \""cells\"": [
+///         {
+///           \""cell_type\"": \""code\"",
+///           \""execution_count\"": null,
+///           \""metadata\"": {},
+///           \""outputs\"": [],
+///           \""source\"": [
+///             \""print(\\\""Hello, World!\\\"")\""
+///           ]
+///         }
+///       ],
+///       \""metadata\"": {
+///         \""kernelspec\"": {
+///           \""display_name\"": \""Python 3\"",
+///           \""language\"": \""python\"",
+///           \""name\"": \""python3\""
+///         },
+///         \""language_info\"": {
+///           \""codemirror_mode\"": {
+///             \""name\"": \""ipython\"",
+///             \""version\"": 3
+///           },
+///           \""file_extension\"": \"".py\"",
+///           \""mimetype\"": \""text/x-python\"",
+///           \""name\"": \""python\"",
+///           \""nbconvert_exporter\"": \""python\"",
+///           \""pygments_lexer\"": \""ipython3\"",
+///           \""version\"": \""3.8.5\""
+///         }
+///       },
+///       \""nbformat\"": 4,
+///       \""nbformat_minor\"": 4
+///     }
+/// ",
+///             }).Apply(invoke => invoke.Result),
+///         },
+///         CustomEnvironmentSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecArgs
+///         {
+///             MachineSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs
+///             {
+///                 MachineType = "n1-standard-2",
+///             },
+///             PersistentDiskSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs
+///             {
+///                 DiskType = "pd-standard",
+///                 DiskSizeGb = "200",
+///             },
+///         },
+///         WorkbenchRuntime = new Gcp.Colab.Inputs.NotebookExecutionWorkbenchRuntimeArgs
+///         {
+///             VmImage = new Gcp.Colab.Inputs.NotebookExecutionWorkbenchRuntimeVmImageArgs
+///             {
+///                 Project = "cloud-notebooks-managed",
+///                 Family = "workbench-instances",
+///             },
+///         },
+///         GcsOutputUri = outputBucket.Name.Apply(name => $"gs://{name}"),
+///         ServiceAccount = "my@service-account.com",
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             outputBucket,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		outputBucket, err := storage.NewBucket(ctx, "output_bucket", &storage.BucketArgs{
+/// 			Name:                     pulumi.String("my_bucket"),
+/// 			Location:                 pulumi.String("US"),
+/// 			ForceDestroy:             pulumi.Bool(true),
+/// 			UniformBucketLevelAccess: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+/// 			Input: `    {
+///       \"cells\": [
+///         {
+///           \"cell_type\": \"code\",
+///           \"execution_count\": null,
+///           \"metadata\": {},
+///           \"outputs\": [],
+///           \"source\": [
+///             \"print(\\\"Hello, World!\\\")\"
+///           ]
+///         }
+///       ],
+///       \"metadata\": {
+///         \"kernelspec\": {
+///           \"display_name\": \"Python 3\",
+///           \"language\": \"python\",
+///           \"name\": \"python3\"
+///         },
+///         \"language_info\": {
+///           \"codemirror_mode\": {
+///             \"name\": \"ipython\",
+///             \"version\": 3
+///           },
+///           \"file_extension\": \".py\",
+///           \"mimetype\": \"text/x-python\",
+///           \"name\": \"python\",
+///           \"nbconvert_exporter\": \"python\",
+///           \"pygments_lexer\": \"ipython3\",
+///           \"version\": \"3.8.5\"
+///         }
+///       },
+///       \"nbformat\": 4,
+///       \"nbformat_minor\": 4
+///     }
+/// `,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = colab.NewNotebookExecution(ctx, "notebook-execution", &colab.NotebookExecutionArgs{
+/// 			DisplayName: pulumi.String("Notebook execution workbench runtime vm"),
+/// 			Location:    pulumi.String("us-central1"),
+/// 			DirectNotebookSource: &colab.NotebookExecutionDirectNotebookSourceArgs{
+/// 				Content: pulumi.String(invokeBase64encode.Result),
+/// 			},
+/// 			CustomEnvironmentSpec: &colab.NotebookExecutionCustomEnvironmentSpecArgs{
+/// 				MachineSpec: &colab.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs{
+/// 					MachineType: pulumi.String("n1-standard-2"),
+/// 				},
+/// 				PersistentDiskSpec: &colab.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs{
+/// 					DiskType:   pulumi.String("pd-standard"),
+/// 					DiskSizeGb: pulumi.String("200"),
+/// 				},
+/// 			},
+/// 			WorkbenchRuntime: &colab.NotebookExecutionWorkbenchRuntimeArgs{
+/// 				VmImage: &colab.NotebookExecutionWorkbenchRuntimeVmImageArgs{
+/// 					Project: pulumi.String("cloud-notebooks-managed"),
+/// 					Family:  pulumi.String("workbench-instances"),
+/// 				},
+/// 			},
+/// 			GcsOutputUri: outputBucket.Name.ApplyT(func(name string) (string, error) {
+/// 				return fmt.Sprintf("gs://%v", name), nil
+/// 			}).(pulumi.StringOutput),
+/// 			ServiceAccount: pulumi.String("my@service-account.com"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			outputBucket,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "output_bucket" {
+///   name                        = "my_bucket"
+///   location                    = "US"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_colab_notebookexecution" "notebook-execution" {
+///   depends_on   = [gcp_storage_bucket.output_bucket]
+///   display_name = "Notebook execution workbench runtime vm"
+///   location     = "us-central1"
+///   direct_notebook_source = {
+///     content = base64encode("    {\n      \\\"cells\\\": [\n        {\n          \\\"cell_type\\\": \\\"code\\\",\n          \\\"execution_count\\\": null,\n          \\\"metadata\\\": {},\n          \\\"outputs\\\": [],\n          \\\"source\\\": [\n            \\\"print(\\\\\\\"Hello, World!\\\\\\\")\\\"\n          ]\n        }\n      ],\n      \\\"metadata\\\": {\n        \\\"kernelspec\\\": {\n          \\\"display_name\\\": \\\"Python 3\\\",\n          \\\"language\\\": \\\"python\\\",\n          \\\"name\\\": \\\"python3\\\"\n        },\n        \\\"language_info\\\": {\n          \\\"codemirror_mode\\\": {\n            \\\"name\\\": \\\"ipython\\\",\n            \\\"version\\\": 3\n          },\n          \\\"file_extension\\\": \\\".py\\\",\n          \\\"mimetype\\\": \\\"text/x-python\\\",\n          \\\"name\\\": \\\"python\\\",\n          \\\"nbconvert_exporter\\\": \\\"python\\\",\n          \\\"pygments_lexer\\\": \\\"ipython3\\\",\n          \\\"version\\\": \\\"3.8.5\\\"\n        }\n      },\n      \\\"nbformat\\\": 4,\n      \\\"nbformat_minor\\\": 4\n    }\n")
+///   }
+///   custom_environment_spec = {
+///     machine_spec = {
+///       machine_type = "n1-standard-2"
+///     }
+///     persistent_disk_spec = {
+///       disk_type    = "pd-standard"
+///       disk_size_gb = 200
+///     }
+///   }
+///   workbench_runtime = {
+///     vm_image = {
+///       project = "cloud-notebooks-managed"
+///       family  = "workbench-instances"
+///     }
+///   }
+///   gcs_output_uri  ="gs://${gcp_storage_bucket.output_bucket.name}"
+///   service_account = "my@service-account.com"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.Bucket;
+/// import com.pulumi.gcp.storage.BucketArgs;
+/// import com.pulumi.gcp.colab.NotebookExecution;
+/// import com.pulumi.gcp.colab.NotebookExecutionArgs;
+/// import com.pulumi.gcp.colab.inputs.NotebookExecutionDirectNotebookSourceArgs;
+/// import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecArgs;
+/// import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs;
+/// import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs;
+/// import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeArgs;
+/// import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeVmImageArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.Base64encodeArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var outputBucket = new Bucket("outputBucket", BucketArgs.builder()
+///             .name("my_bucket")
+///             .location("US")
+///             .forceDestroy(true)
+///             .uniformBucketLevelAccess(true)
+///             .build());
+///
+///         var notebook_execution = new NotebookExecution("notebook-execution", NotebookExecutionArgs.builder()
+///             .displayName("Notebook execution workbench runtime vm")
+///             .location("us-central1")
+///             .directNotebookSource(NotebookExecutionDirectNotebookSourceArgs.builder()
+///                 .content(StdFunctions.base64encode(Base64encodeArgs.builder()
+///                     .input("""
+///     {
+///       \"cells\": [
+///         {
+///           \"cell_type\": \"code\",
+///           \"execution_count\": null,
+///           \"metadata\": {},
+///           \"outputs\": [],
+///           \"source\": [
+///             \"print(\\\"Hello, World!\\\")\"
+///           ]
+///         }
+///       ],
+///       \"metadata\": {
+///         \"kernelspec\": {
+///           \"display_name\": \"Python 3\",
+///           \"language\": \"python\",
+///           \"name\": \"python3\"
+///         },
+///         \"language_info\": {
+///           \"codemirror_mode\": {
+///             \"name\": \"ipython\",
+///             \"version\": 3
+///           },
+///           \"file_extension\": \".py\",
+///           \"mimetype\": \"text/x-python\",
+///           \"name\": \"python\",
+///           \"nbconvert_exporter\": \"python\",
+///           \"pygments_lexer\": \"ipython3\",
+///           \"version\": \"3.8.5\"
+///         }
+///       },
+///       \"nbformat\": 4,
+///       \"nbformat_minor\": 4
+///     }
+///                     """)
+///                     .build()).result())
+///                 .build())
+///             .customEnvironmentSpec(NotebookExecutionCustomEnvironmentSpecArgs.builder()
+///                 .machineSpec(NotebookExecutionCustomEnvironmentSpecMachineSpecArgs.builder()
+///                     .machineType("n1-standard-2")
+///                     .build())
+///                 .persistentDiskSpec(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs.builder()
+///                     .diskType("pd-standard")
+///                     .diskSizeGb("200")
+///                     .build())
+///                 .build())
+///             .workbenchRuntime(NotebookExecutionWorkbenchRuntimeArgs.builder()
+///                 .vmImage(NotebookExecutionWorkbenchRuntimeVmImageArgs.builder()
+///                     .project("cloud-notebooks-managed")
+///                     .family("workbench-instances")
+///                     .build())
+///                 .build())
+///             .gcsOutputUri(outputBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
+///             .serviceAccount("my@service-account.com")
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(outputBucket)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   outputBucket:
+///     type: gcp:storage:Bucket
+///     name: output_bucket
+///     properties:
+///       name: my_bucket
+///       location: US
+///       forceDestroy: true
+///       uniformBucketLevelAccess: true
+///   notebook-execution:
+///     type: gcp:colab:NotebookExecution
+///     properties:
+///       displayName: Notebook execution workbench runtime vm
+///       location: us-central1
+///       directNotebookSource:
+///         content:
+///           fn::invoke:
+///             function: std:base64encode
+///             arguments:
+///               input: |2
+///                     {
+///                       \"cells\": [
+///                         {
+///                           \"cell_type\": \"code\",
+///                           \"execution_count\": null,
+///                           \"metadata\": {},
+///                           \"outputs\": [],
+///                           \"source\": [
+///                             \"print(\\\"Hello, World!\\\")\"
+///                           ]
+///                         }
+///                       ],
+///                       \"metadata\": {
+///                         \"kernelspec\": {
+///                           \"display_name\": \"Python 3\",
+///                           \"language\": \"python\",
+///                           \"name\": \"python3\"
+///                         },
+///                         \"language_info\": {
+///                           \"codemirror_mode\": {
+///                             \"name\": \"ipython\",
+///                             \"version\": 3
+///                           },
+///                           \"file_extension\": \".py\",
+///                           \"mimetype\": \"text/x-python\",
+///                           \"name\": \"python\",
+///                           \"nbconvert_exporter\": \"python\",
+///                           \"pygments_lexer\": \"ipython3\",
+///                           \"version\": \"3.8.5\"
+///                         }
+///                       },
+///                       \"nbformat\": 4,
+///                       \"nbformat_minor\": 4
+///                     }
+///             return: result
+///       customEnvironmentSpec:
+///         machineSpec:
+///           machineType: n1-standard-2
+///         persistentDiskSpec:
+///           diskType: pd-standard
+///           diskSizeGb: 200
+///       workbenchRuntime:
+///         vmImage:
+///           project: cloud-notebooks-managed
+///           family: workbench-instances
+///       gcsOutputUri: gs://${outputBucket.name}
+///       serviceAccount: my@service-account.com
+///     options:
+///       dependsOn:
+///         - ${outputBucket}
+/// ```
+///
+/// ### Colab Notebook Execution Workbench Runtime Vm Name
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as std from "@pulumi/std";
+///
+/// const outputBucket = new gcp.storage.Bucket("output_bucket", {
+///     name: "my_bucket",
+///     location: "US",
+///     forceDestroy: true,
+///     uniformBucketLevelAccess: true,
+/// });
+/// const notebook_execution = new gcp.colab.NotebookExecution("notebook-execution", {
+///     displayName: "Notebook execution workbench runtime vm name",
+///     location: "us-central1",
+///     directNotebookSource: {
+///         content: std.base64encode({
+///             input: `    {
+///       \\"cells\\": [
+///         {
+///           \\"cell_type\\": \\"code\\",
+///           \\"execution_count\\": null,
+///           \\"metadata\\": {},
+///           \\"outputs\\": [],
+///           \\"source\\": [
+///             \\"print(\\\\\\"Hello, World!\\\\\\")\\"
+///           ]
+///         }
+///       ],
+///       \\"metadata\\": {
+///         \\"kernelspec\\": {
+///           \\"display_name\\": \\"Python 3\\",
+///           \\"language\\": \\"python\\",
+///           \\"name\\": \\"python3\\"
+///         },
+///         \\"language_info\\": {
+///           \\"codemirror_mode\\": {
+///             \\"name\\": \\"ipython\\",
+///             \\"version\\": 3
+///           },
+///           \\"file_extension\\": \\".py\\",
+///           \\"mimetype\\": \\"text/x-python\\",
+///           \\"name\\": \\"python\\",
+///           \\"nbconvert_exporter\\": \\"python\\",
+///           \\"pygments_lexer\\": \\"ipython3\\",
+///           \\"version\\": \\"3.8.5\\"
+///         }
+///       },
+///       \\"nbformat\\": 4,
+///       \\"nbformat_minor\\": 4
+///     }
+/// `,
+///         }).then(invoke => invoke.result),
+///     },
+///     customEnvironmentSpec: {
+///         machineSpec: {
+///             machineType: "n1-standard-2",
+///         },
+///         persistentDiskSpec: {
+///             diskType: "pd-standard",
+///             diskSizeGb: "200",
+///         },
+///     },
+///     workbenchRuntime: {
+///         vmImage: {
+///             project: "cloud-notebooks-managed",
+///             name: "workbench-instances-v20260713",
+///         },
+///     },
+///     gcsOutputUri: pulumi.interpolate`gs://${outputBucket.name}`,
+///     serviceAccount: "my@service-account.com",
+/// }, {
+///     dependsOn: [outputBucket],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumi_std as std
+///
+/// output_bucket = gcp.storage.Bucket("output_bucket",
+///     name="my_bucket",
+///     location="US",
+///     force_destroy=True,
+///     uniform_bucket_level_access=True)
+/// notebook_execution = gcp.colab.NotebookExecution("notebook-execution",
+///     display_name="Notebook execution workbench runtime vm name",
+///     location="us-central1",
+///     direct_notebook_source={
+///         "content": std.base64encode(input="""    {
+///       \"cells\": [
+///         {
+///           \"cell_type\": \"code\",
+///           \"execution_count\": null,
+///           \"metadata\": {},
+///           \"outputs\": [],
+///           \"source\": [
+///             \"print(\\\"Hello, World!\\\")\"
+///           ]
+///         }
+///       ],
+///       \"metadata\": {
+///         \"kernelspec\": {
+///           \"display_name\": \"Python 3\",
+///           \"language\": \"python\",
+///           \"name\": \"python3\"
+///         },
+///         \"language_info\": {
+///           \"codemirror_mode\": {
+///             \"name\": \"ipython\",
+///             \"version\": 3
+///           },
+///           \"file_extension\": \".py\",
+///           \"mimetype\": \"text/x-python\",
+///           \"name\": \"python\",
+///           \"nbconvert_exporter\": \"python\",
+///           \"pygments_lexer\": \"ipython3\",
+///           \"version\": \"3.8.5\"
+///         }
+///       },
+///       \"nbformat\": 4,
+///       \"nbformat_minor\": 4
+///     }
+/// """).result,
+///     },
+///     custom_environment_spec={
+///         "machine_spec": {
+///             "machine_type": "n1-standard-2",
+///         },
+///         "persistent_disk_spec": {
+///             "disk_type": "pd-standard",
+///             "disk_size_gb": "200",
+///         },
+///     },
+///     workbench_runtime={
+///         "vm_image": {
+///             "project": "cloud-notebooks-managed",
+///             "name": "workbench-instances-v20260713",
+///         },
+///     },
+///     gcs_output_uri=output_bucket.name.apply(lambda name: f"gs://{name}"),
+///     service_account="my@service-account.com",
+///     opts = pulumi.ResourceOptions(depends_on=[output_bucket]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Std = Pulumi.Std;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var outputBucket = new Gcp.Storage.Bucket("output_bucket", new()
+///     {
+///         Name = "my_bucket",
+///         Location = "US",
+///         ForceDestroy = true,
+///         UniformBucketLevelAccess = true,
+///     });
+///
+///     var notebook_execution = new Gcp.Colab.NotebookExecution("notebook-execution", new()
+///     {
+///         DisplayName = "Notebook execution workbench runtime vm name",
+///         Location = "us-central1",
+///         DirectNotebookSource = new Gcp.Colab.Inputs.NotebookExecutionDirectNotebookSourceArgs
+///         {
+///             Content = Std.Base64encode.Invoke(new()
+///             {
+///                 Input = @"    {
+///       \""cells\"": [
+///         {
+///           \""cell_type\"": \""code\"",
+///           \""execution_count\"": null,
+///           \""metadata\"": {},
+///           \""outputs\"": [],
+///           \""source\"": [
+///             \""print(\\\""Hello, World!\\\"")\""
+///           ]
+///         }
+///       ],
+///       \""metadata\"": {
+///         \""kernelspec\"": {
+///           \""display_name\"": \""Python 3\"",
+///           \""language\"": \""python\"",
+///           \""name\"": \""python3\""
+///         },
+///         \""language_info\"": {
+///           \""codemirror_mode\"": {
+///             \""name\"": \""ipython\"",
+///             \""version\"": 3
+///           },
+///           \""file_extension\"": \"".py\"",
+///           \""mimetype\"": \""text/x-python\"",
+///           \""name\"": \""python\"",
+///           \""nbconvert_exporter\"": \""python\"",
+///           \""pygments_lexer\"": \""ipython3\"",
+///           \""version\"": \""3.8.5\""
+///         }
+///       },
+///       \""nbformat\"": 4,
+///       \""nbformat_minor\"": 4
+///     }
+/// ",
+///             }).Apply(invoke => invoke.Result),
+///         },
+///         CustomEnvironmentSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecArgs
+///         {
+///             MachineSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs
+///             {
+///                 MachineType = "n1-standard-2",
+///             },
+///             PersistentDiskSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs
+///             {
+///                 DiskType = "pd-standard",
+///                 DiskSizeGb = "200",
+///             },
+///         },
+///         WorkbenchRuntime = new Gcp.Colab.Inputs.NotebookExecutionWorkbenchRuntimeArgs
+///         {
+///             VmImage = new Gcp.Colab.Inputs.NotebookExecutionWorkbenchRuntimeVmImageArgs
+///             {
+///                 Project = "cloud-notebooks-managed",
+///                 Name = "workbench-instances-v20260713",
+///             },
+///         },
+///         GcsOutputUri = outputBucket.Name.Apply(name => $"gs://{name}"),
+///         ServiceAccount = "my@service-account.com",
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             outputBucket,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		outputBucket, err := storage.NewBucket(ctx, "output_bucket", &storage.BucketArgs{
+/// 			Name:                     pulumi.String("my_bucket"),
+/// 			Location:                 pulumi.String("US"),
+/// 			ForceDestroy:             pulumi.Bool(true),
+/// 			UniformBucketLevelAccess: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+/// 			Input: `    {
+///       \"cells\": [
+///         {
+///           \"cell_type\": \"code\",
+///           \"execution_count\": null,
+///           \"metadata\": {},
+///           \"outputs\": [],
+///           \"source\": [
+///             \"print(\\\"Hello, World!\\\")\"
+///           ]
+///         }
+///       ],
+///       \"metadata\": {
+///         \"kernelspec\": {
+///           \"display_name\": \"Python 3\",
+///           \"language\": \"python\",
+///           \"name\": \"python3\"
+///         },
+///         \"language_info\": {
+///           \"codemirror_mode\": {
+///             \"name\": \"ipython\",
+///             \"version\": 3
+///           },
+///           \"file_extension\": \".py\",
+///           \"mimetype\": \"text/x-python\",
+///           \"name\": \"python\",
+///           \"nbconvert_exporter\": \"python\",
+///           \"pygments_lexer\": \"ipython3\",
+///           \"version\": \"3.8.5\"
+///         }
+///       },
+///       \"nbformat\": 4,
+///       \"nbformat_minor\": 4
+///     }
+/// `,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = colab.NewNotebookExecution(ctx, "notebook-execution", &colab.NotebookExecutionArgs{
+/// 			DisplayName: pulumi.String("Notebook execution workbench runtime vm name"),
+/// 			Location:    pulumi.String("us-central1"),
+/// 			DirectNotebookSource: &colab.NotebookExecutionDirectNotebookSourceArgs{
+/// 				Content: pulumi.String(invokeBase64encode.Result),
+/// 			},
+/// 			CustomEnvironmentSpec: &colab.NotebookExecutionCustomEnvironmentSpecArgs{
+/// 				MachineSpec: &colab.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs{
+/// 					MachineType: pulumi.String("n1-standard-2"),
+/// 				},
+/// 				PersistentDiskSpec: &colab.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs{
+/// 					DiskType:   pulumi.String("pd-standard"),
+/// 					DiskSizeGb: pulumi.String("200"),
+/// 				},
+/// 			},
+/// 			WorkbenchRuntime: &colab.NotebookExecutionWorkbenchRuntimeArgs{
+/// 				VmImage: &colab.NotebookExecutionWorkbenchRuntimeVmImageArgs{
+/// 					Project: pulumi.String("cloud-notebooks-managed"),
+/// 					Name:    pulumi.String("workbench-instances-v20260713"),
+/// 				},
+/// 			},
+/// 			GcsOutputUri: outputBucket.Name.ApplyT(func(name string) (string, error) {
+/// 				return fmt.Sprintf("gs://%v", name), nil
+/// 			}).(pulumi.StringOutput),
+/// 			ServiceAccount: pulumi.String("my@service-account.com"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			outputBucket,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "output_bucket" {
+///   name                        = "my_bucket"
+///   location                    = "US"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_colab_notebookexecution" "notebook-execution" {
+///   depends_on   = [gcp_storage_bucket.output_bucket]
+///   display_name = "Notebook execution workbench runtime vm name"
+///   location     = "us-central1"
+///   direct_notebook_source = {
+///     content = base64encode("    {\n      \\\"cells\\\": [\n        {\n          \\\"cell_type\\\": \\\"code\\\",\n          \\\"execution_count\\\": null,\n          \\\"metadata\\\": {},\n          \\\"outputs\\\": [],\n          \\\"source\\\": [\n            \\\"print(\\\\\\\"Hello, World!\\\\\\\")\\\"\n          ]\n        }\n      ],\n      \\\"metadata\\\": {\n        \\\"kernelspec\\\": {\n          \\\"display_name\\\": \\\"Python 3\\\",\n          \\\"language\\\": \\\"python\\\",\n          \\\"name\\\": \\\"python3\\\"\n        },\n        \\\"language_info\\\": {\n          \\\"codemirror_mode\\\": {\n            \\\"name\\\": \\\"ipython\\\",\n            \\\"version\\\": 3\n          },\n          \\\"file_extension\\\": \\\".py\\\",\n          \\\"mimetype\\\": \\\"text/x-python\\\",\n          \\\"name\\\": \\\"python\\\",\n          \\\"nbconvert_exporter\\\": \\\"python\\\",\n          \\\"pygments_lexer\\\": \\\"ipython3\\\",\n          \\\"version\\\": \\\"3.8.5\\\"\n        }\n      },\n      \\\"nbformat\\\": 4,\n      \\\"nbformat_minor\\\": 4\n    }\n")
+///   }
+///   custom_environment_spec = {
+///     machine_spec = {
+///       machine_type = "n1-standard-2"
+///     }
+///     persistent_disk_spec = {
+///       disk_type    = "pd-standard"
+///       disk_size_gb = 200
+///     }
+///   }
+///   workbench_runtime = {
+///     vm_image = {
+///       project = "cloud-notebooks-managed"
+///       name    = "workbench-instances-v20260713"
+///     }
+///   }
+///   gcs_output_uri  ="gs://${gcp_storage_bucket.output_bucket.name}"
+///   service_account = "my@service-account.com"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.Bucket;
+/// import com.pulumi.gcp.storage.BucketArgs;
+/// import com.pulumi.gcp.colab.NotebookExecution;
+/// import com.pulumi.gcp.colab.NotebookExecutionArgs;
+/// import com.pulumi.gcp.colab.inputs.NotebookExecutionDirectNotebookSourceArgs;
+/// import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecArgs;
+/// import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs;
+/// import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs;
+/// import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeArgs;
+/// import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeVmImageArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.Base64encodeArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var outputBucket = new Bucket("outputBucket", BucketArgs.builder()
+///             .name("my_bucket")
+///             .location("US")
+///             .forceDestroy(true)
+///             .uniformBucketLevelAccess(true)
+///             .build());
+///
+///         var notebook_execution = new NotebookExecution("notebook-execution", NotebookExecutionArgs.builder()
+///             .displayName("Notebook execution workbench runtime vm name")
+///             .location("us-central1")
+///             .directNotebookSource(NotebookExecutionDirectNotebookSourceArgs.builder()
+///                 .content(StdFunctions.base64encode(Base64encodeArgs.builder()
+///                     .input("""
+///     {
+///       \"cells\": [
+///         {
+///           \"cell_type\": \"code\",
+///           \"execution_count\": null,
+///           \"metadata\": {},
+///           \"outputs\": [],
+///           \"source\": [
+///             \"print(\\\"Hello, World!\\\")\"
+///           ]
+///         }
+///       ],
+///       \"metadata\": {
+///         \"kernelspec\": {
+///           \"display_name\": \"Python 3\",
+///           \"language\": \"python\",
+///           \"name\": \"python3\"
+///         },
+///         \"language_info\": {
+///           \"codemirror_mode\": {
+///             \"name\": \"ipython\",
+///             \"version\": 3
+///           },
+///           \"file_extension\": \".py\",
+///           \"mimetype\": \"text/x-python\",
+///           \"name\": \"python\",
+///           \"nbconvert_exporter\": \"python\",
+///           \"pygments_lexer\": \"ipython3\",
+///           \"version\": \"3.8.5\"
+///         }
+///       },
+///       \"nbformat\": 4,
+///       \"nbformat_minor\": 4
+///     }
+///                     """)
+///                     .build()).result())
+///                 .build())
+///             .customEnvironmentSpec(NotebookExecutionCustomEnvironmentSpecArgs.builder()
+///                 .machineSpec(NotebookExecutionCustomEnvironmentSpecMachineSpecArgs.builder()
+///                     .machineType("n1-standard-2")
+///                     .build())
+///                 .persistentDiskSpec(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs.builder()
+///                     .diskType("pd-standard")
+///                     .diskSizeGb("200")
+///                     .build())
+///                 .build())
+///             .workbenchRuntime(NotebookExecutionWorkbenchRuntimeArgs.builder()
+///                 .vmImage(NotebookExecutionWorkbenchRuntimeVmImageArgs.builder()
+///                     .project("cloud-notebooks-managed")
+///                     .name("workbench-instances-v20260713")
+///                     .build())
+///                 .build())
+///             .gcsOutputUri(outputBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
+///             .serviceAccount("my@service-account.com")
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(outputBucket)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   outputBucket:
+///     type: gcp:storage:Bucket
+///     name: output_bucket
+///     properties:
+///       name: my_bucket
+///       location: US
+///       forceDestroy: true
+///       uniformBucketLevelAccess: true
+///   notebook-execution:
+///     type: gcp:colab:NotebookExecution
+///     properties:
+///       displayName: Notebook execution workbench runtime vm name
+///       location: us-central1
+///       directNotebookSource:
+///         content:
+///           fn::invoke:
+///             function: std:base64encode
+///             arguments:
+///               input: |2
+///                     {
+///                       \"cells\": [
+///                         {
+///                           \"cell_type\": \"code\",
+///                           \"execution_count\": null,
+///                           \"metadata\": {},
+///                           \"outputs\": [],
+///                           \"source\": [
+///                             \"print(\\\"Hello, World!\\\")\"
+///                           ]
+///                         }
+///                       ],
+///                       \"metadata\": {
+///                         \"kernelspec\": {
+///                           \"display_name\": \"Python 3\",
+///                           \"language\": \"python\",
+///                           \"name\": \"python3\"
+///                         },
+///                         \"language_info\": {
+///                           \"codemirror_mode\": {
+///                             \"name\": \"ipython\",
+///                             \"version\": 3
+///                           },
+///                           \"file_extension\": \".py\",
+///                           \"mimetype\": \"text/x-python\",
+///                           \"name\": \"python\",
+///                           \"nbconvert_exporter\": \"python\",
+///                           \"pygments_lexer\": \"ipython3\",
+///                           \"version\": \"3.8.5\"
+///                         }
+///                       },
+///                       \"nbformat\": 4,
+///                       \"nbformat_minor\": 4
+///                     }
+///             return: result
+///       customEnvironmentSpec:
+///         machineSpec:
+///           machineType: n1-standard-2
+///         persistentDiskSpec:
+///           diskType: pd-standard
+///           diskSizeGb: 200
+///       workbenchRuntime:
+///         vmImage:
+///           project: cloud-notebooks-managed
+///           name: workbench-instances-v20260713
 ///       gcsOutputUri: gs://${outputBucket.name}
 ///       serviceAccount: my@service-account.com
 ///     options:
@@ -1228,7 +2485,7 @@ import 'notebook_execution_state.dart';
 ///     executionTimeout: "86400s",
 ///     gcsNotebookSource: {
 ///         uri: pulumi.interpolate`gs://${notebook.bucket}/${notebook.name}`,
-///         generation: notebook.generation,
+///         generation: notebook.generation.apply(x =>String(x)),
 ///     },
 ///     serviceAccount: "my@service-account.com",
 ///     gcsOutputUri: pulumi.interpolate`gs://${outputBucket.name}`,
@@ -1309,7 +2566,7 @@ import 'notebook_execution_state.dart';
 ///             name=notebook.name
 /// ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucket']}/{resolved_outputs['name']}")
 /// ,
-///         "generation": notebook.generation,
+///         "generation": notebook.generation.apply(lambda x: str(x)),
 ///     },
 ///     service_account="my@service-account.com",
 ///     gcs_output_uri=output_bucket.name.apply(lambda name: f"gs://{name}"),
@@ -1411,7 +2668,7 @@ import 'notebook_execution_state.dart';
 ///                 var name = values.Item2;
 ///                 return $"gs://{bucket}/{name}";
 ///             }),
-///             Generation = notebook.Generation,
+///             Generation = notebook.Generation.Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
 ///         },
 ///         ServiceAccount = "my@service-account.com",
 ///         GcsOutputUri = outputBucket.Name.Apply(name => $"gs://{name}"),
@@ -1547,6 +2804,52 @@ import 'notebook_execution_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_colab_runtimetemplate" "my_runtime_template" {
+///   name         = "runtime-template-name"
+///   display_name = "Runtime template"
+///   location     = "us-central1"
+///   machine_spec = {
+///     machine_type = "e2-standard-4"
+///   }
+///   network_spec = {
+///     enable_internet_access = true
+///   }
+/// }
+/// resource "gcp_storage_bucket" "output_bucket" {
+///   name                        = "my_bucket"
+///   location                    = "US"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "notebook" {
+///   name    = "hello_world.ipynb"
+///   bucket  = gcp_storage_bucket.output_bucket.name
+///   content = "    {\n      \\\"cells\\\": [\n        {\n          \\\"cell_type\\\": \\\"code\\\",\n          \\\"execution_count\\\": null,\n          \\\"metadata\\\": {},\n          \\\"outputs\\\": [],\n          \\\"source\\\": [\n            \\\"print(\\\\\\\"Hello, World!\\\\\\\")\\\"\n          ]\n        }\n      ],\n      \\\"metadata\\\": {\n        \\\"kernelspec\\\": {\n          \\\"display_name\\\": \\\"Python 3\\\",\n          \\\"language\\\": \\\"python\\\",\n          \\\"name\\\": \\\"python3\\\"\n        },\n        \\\"language_info\\\": {\n          \\\"codemirror_mode\\\": {\n            \\\"name\\\": \\\"ipython\\\",\n            \\\"version\\\": 3\n          },\n          \\\"file_extension\\\": \\\".py\\\",\n          \\\"mimetype\\\": \\\"text/x-python\\\",\n          \\\"name\\\": \\\"python\\\",\n          \\\"nbconvert_exporter\\\": \\\"python\\\",\n          \\\"pygments_lexer\\\": \\\"ipython3\\\",\n          \\\"version\\\": \\\"3.8.5\\\"\n        }\n      },\n      \\\"nbformat\\\": 4,\n      \\\"nbformat_minor\\\": 4\n    }\n"
+/// }
+/// resource "gcp_colab_notebookexecution" "notebook-execution" {
+///   depends_on                = [gcp_storage_bucketobject.notebook, gcp_storage_bucket.output_bucket, gcp_colab_runtimetemplate.my_runtime_template]
+///   notebook_execution_job_id = "colab-notebook-execution"
+///   display_name              = "Notebook execution full"
+///   location                  = "us-central1"
+///   execution_timeout         = "86400s"
+///   gcs_notebook_source = {
+///     uri        ="gs://${gcp_storage_bucketobject.notebook.bucket}/${gcp_storage_bucketobject.notebook.name}"
+///     generation = gcp_storage_bucketobject.notebook.generation
+///   }
+///   service_account                         = "my@service-account.com"
+///   gcs_output_uri                          ="gs://${gcp_storage_bucket.output_bucket.name}"
+///   notebook_runtime_template_resource_name ="projects/${gcp_colab_runtimetemplate.my_runtime_template.project}/locations/${gcp_colab_runtimetemplate.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtimetemplate.my_runtime_template.name}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1565,8 +2868,8 @@ import 'notebook_execution_state.dart';
 /// import com.pulumi.gcp.colab.NotebookExecutionArgs;
 /// import com.pulumi.gcp.colab.inputs.NotebookExecutionGcsNotebookSourceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2053,7 +3356,7 @@ import 'notebook_execution_state.dart';
 /// 			return err
 /// 		}
 /// 		secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     secret.ID(),
+/// 			Secret:     secret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 		})
 /// 		if err != nil {
@@ -2062,7 +3365,7 @@ import 'notebook_execution_state.dart';
 /// 		dataformRepository, err := dataform.NewRepository(ctx, "dataform_repository", &dataform.RepositoryArgs{
 /// 			Name:                                   pulumi.String("dataform-repository"),
 /// 			DisplayName:                            pulumi.String("dataform_repository"),
-/// 			NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID(),
+/// 			NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
 /// 			KmsKeyName:                             pulumi.String("my-crypto-key"),
 /// 			Labels: pulumi.StringMap{
 /// 				"label_foo1": pulumi.String("label-bar1"),
@@ -2070,7 +3373,7 @@ import 'notebook_execution_state.dart';
 /// 			GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
 /// 				Url:                              pulumi.String("https://github.com/OWNER/REPOSITORY.git"),
 /// 				DefaultBranch:                    pulumi.String("main"),
-/// 				AuthenticationTokenSecretVersion: secretVersion.ID(),
+/// 				AuthenticationTokenSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
 /// 				DefaultDatabase: pulumi.String("database"),
@@ -2117,6 +3420,74 @@ import 'notebook_execution_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_colab_runtimetemplate" "my_runtime_template" {
+///   name         = "runtime-template-name"
+///   display_name = "Runtime template"
+///   location     = "us-central1"
+///   machine_spec = {
+///     machine_type = "e2-standard-4"
+///   }
+///   network_spec = {
+///     enable_internet_access = true
+///   }
+/// }
+/// resource "gcp_storage_bucket" "output_bucket" {
+///   name                        = "my_bucket"
+///   location                    = "US"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_secretmanager_secret" "secret" {
+///   secret_id = "secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret_version" {
+///   secret      = gcp_secretmanager_secret.secret.id
+///   secret_data = "secret-data"
+/// }
+/// resource "gcp_dataform_repository" "dataform_repository" {
+///   name                                       = "dataform-repository"
+///   display_name                               = "dataform_repository"
+///   npmrc_environment_variables_secret_version = gcp_secretmanager_secretversion.secret_version.id
+///   kms_key_name                               = "my-crypto-key"
+///   labels = {
+///     "label_foo1" = "label-bar1"
+///   }
+///   git_remote_settings = {
+///     url                                 = "https://github.com/OWNER/REPOSITORY.git"
+///     default_branch                      = "main"
+///     authentication_token_secret_version = gcp_secretmanager_secretversion.secret_version.id
+///   }
+///   workspace_compilation_overrides = {
+///     default_database = "database"
+///     schema_suffix    = "_suffix"
+///     table_prefix     = "prefix_"
+///   }
+/// }
+/// resource "gcp_colab_notebookexecution" "notebook-execution" {
+///   depends_on   = [gcp_colab_runtimetemplate.my_runtime_template, gcp_storage_bucket.output_bucket, gcp_secretmanager_secretversion.secret_version, gcp_dataform_repository.dataform_repository, gcp_secretmanager_secret.secret]
+///   display_name = "Notebook execution Dataform"
+///   location     = "us-central1"
+///   dataform_repository_source = {
+///     commit_sha                        = "randomsha123"
+///     dataform_repository_resource_name ="projects/${gcp_colab_runtimetemplate.my_runtime_template.project}/locations/${gcp_colab_runtimetemplate.my_runtime_template.location}/repositories/${gcp_dataform_repository.dataform_repository.name}"
+///   }
+///   notebook_runtime_template_resource_name ="projects/${gcp_colab_runtimetemplate.my_runtime_template.project}/locations/${gcp_colab_runtimetemplate.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtimetemplate.my_runtime_template.name}"
+///   gcs_output_uri                          ="gs://${gcp_storage_bucket.output_bucket.name}"
+///   service_account                         = "my@service-account.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2143,8 +3514,8 @@ import 'notebook_execution_state.dart';
 /// import com.pulumi.gcp.colab.NotebookExecutionArgs;
 /// import com.pulumi.gcp.colab.inputs.NotebookExecutionDataformRepositorySourceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2315,22 +3686,15 @@ import 'notebook_execution_state.dart';
 /// NotebookExecution can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/notebookExecutionJobs/{{notebook_execution_job_id}}`
-///
 /// * `{{project}}/{{location}}/{{notebook_execution_job_id}}`
-///
 /// * `{{location}}/{{notebook_execution_job_id}}`
+///
 ///
 /// When using the `pulumi import` command, NotebookExecution can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:colab/notebookExecution:NotebookExecution default projects/{{project}}/locations/{{location}}/notebookExecutionJobs/{{notebook_execution_job_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:colab/notebookExecution:NotebookExecution default {{project}}/{{location}}/{{notebook_execution_job_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:colab/notebookExecution:NotebookExecution default {{location}}/{{notebook_execution_job_id}}
 /// ```
 class NotebookExecution extends pulumi.CustomResource {
@@ -2340,6 +3704,13 @@ class NotebookExecution extends pulumi.CustomResource {
   /// The Dataform Repository containing the input notebook.
   /// Structure is documented below.
   late final pulumi.Output<NotebookExecutionDataformRepositorySource?> dataformRepositorySource;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The content of the input notebook in ipynb format.
   /// Structure is documented below.
   late final pulumi.Output<NotebookExecutionDirectNotebookSource?> directNotebookSource;
@@ -2365,6 +3736,9 @@ class NotebookExecution extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// The service account to run the execution as.
   late final pulumi.Output<String?> serviceAccount;
+  /// Configuration for a Workbench Instances-based environment.
+  /// Structure is documented below.
+  late final pulumi.Output<NotebookExecutionWorkbenchRuntime?> workbenchRuntime;
 
   /// Creates a new [NotebookExecution].
   /// [name] The Pulumi resource name.
@@ -2382,6 +3756,7 @@ class NotebookExecution extends pulumi.CustomResource {
         ) {
     customEnvironmentSpec = registerOutput<NotebookExecutionCustomEnvironmentSpec?>('customEnvironmentSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionCustomEnvironmentSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataformRepositorySource = registerOutput<NotebookExecutionDataformRepositorySource?>('dataformRepositorySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionDataformRepositorySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     directNotebookSource = registerOutput<NotebookExecutionDirectNotebookSource?>('directNotebookSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionDirectNotebookSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
     executionTimeout = registerOutput<String?>('executionTimeout');
@@ -2393,6 +3768,7 @@ class NotebookExecution extends pulumi.CustomResource {
     notebookRuntimeTemplateResourceName = registerOutput<String?>('notebookRuntimeTemplateResourceName');
     project = registerOutput<String>('project');
     serviceAccount = registerOutput<String?>('serviceAccount');
+    workbenchRuntime = registerOutput<NotebookExecutionWorkbenchRuntime?>('workbenchRuntime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionWorkbenchRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [NotebookExecution] resource's state with the given [name] and [id].
@@ -2420,6 +3796,7 @@ class NotebookExecution extends pulumi.CustomResource {
         ) {
     customEnvironmentSpec = registerOutput<NotebookExecutionCustomEnvironmentSpec?>('customEnvironmentSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionCustomEnvironmentSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataformRepositorySource = registerOutput<NotebookExecutionDataformRepositorySource?>('dataformRepositorySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionDataformRepositorySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     directNotebookSource = registerOutput<NotebookExecutionDirectNotebookSource?>('directNotebookSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionDirectNotebookSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
     executionTimeout = registerOutput<String?>('executionTimeout');
@@ -2431,5 +3808,6 @@ class NotebookExecution extends pulumi.CustomResource {
     notebookRuntimeTemplateResourceName = registerOutput<String?>('notebookRuntimeTemplateResourceName');
     project = registerOutput<String>('project');
     serviceAccount = registerOutput<String?>('serviceAccount');
+    workbenchRuntime = registerOutput<NotebookExecutionWorkbenchRuntime?>('workbenchRuntime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionWorkbenchRuntime.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

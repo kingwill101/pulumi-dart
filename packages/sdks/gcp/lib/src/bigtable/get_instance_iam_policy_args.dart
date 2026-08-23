@@ -9,11 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceIamPolicyArgs {
   /// The name or relative resource id of the instance to manage IAM policies for.
   final pulumi.Input<String> instance;
+  /// The project in which the instance belongs. If it
+  /// is not provided, Terraform will use the provider default.
   final pulumi.Input<String>? project;
 
   /// Creates a new [GetInstanceIamPolicyArgs].
   /// [instance] The name or relative resource id of the instance to manage IAM policies for.
-  /// [project] Optional.
+  /// [project] The project in which the instance belongs. If it
   const GetInstanceIamPolicyArgs({
     required this.instance,
     this.project,
@@ -33,4 +35,3 @@ class GetInstanceIamPolicyArgs {
     );
   }
 }
-

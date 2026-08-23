@@ -9,6 +9,7 @@ class GetApplicationResult {
   final String applicationId;
   final List<GetApplicationAttribute> attributes;
   final String createTime;
+  final String deletionPolicy;
   final String description;
   final String displayName;
   /// The provider-assigned unique ID for this managed resource.
@@ -25,6 +26,7 @@ class GetApplicationResult {
   /// [applicationId] Required.
   /// [attributes] Required.
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [displayName] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -39,6 +41,7 @@ class GetApplicationResult {
     required this.applicationId,
     required this.attributes,
     required this.createTime,
+    required this.deletionPolicy,
     required this.description,
     required this.displayName,
     required this.id,
@@ -56,6 +59,7 @@ class GetApplicationResult {
       'applicationId': applicationId,
       'attributes': pulumi.Input.encodeList<GetApplicationAttribute, Map<String, dynamic>>(attributes, (value) => value.toMap()),
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'displayName': displayName,
       'id': id,
@@ -74,6 +78,7 @@ class GetApplicationResult {
       applicationId: map['applicationId'] as String,
       attributes: pulumi.Input.decodeList<GetApplicationAttribute>(map['attributes']!, (value) => GetApplicationAttribute.fromMap((value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
@@ -87,4 +92,3 @@ class GetApplicationResult {
     );
   }
 }
-

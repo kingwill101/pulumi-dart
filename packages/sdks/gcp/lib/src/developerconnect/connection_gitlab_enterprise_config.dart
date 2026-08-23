@@ -17,7 +17,7 @@ class ConnectionGitlabEnterpriseConfig {
   /// Structure is documented below.
   final pulumi.Input<ConnectionGitlabEnterpriseConfigReadAuthorizerCredential> readAuthorizerCredential;
   /// (Output)
-  /// Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+  /// Output only. Version of the GitLab Enterprise server running on the `hostUri`.
   final pulumi.Input<String>? serverVersion;
   /// ServiceDirectoryConfig represents Service Directory configuration for a
   /// connection.
@@ -73,4 +73,3 @@ class ConnectionGitlabEnterpriseConfig {
     );
   }
 }
-

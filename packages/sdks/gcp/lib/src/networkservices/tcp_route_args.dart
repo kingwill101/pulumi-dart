@@ -8,6 +8,13 @@ import 'tcp_route_rule.dart';
 /// {@endtemplate}
 /// {@macro pulumi_networkservices_tcp_route_tcp_route_args_doc}
 class TcpRouteArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
   /// Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
@@ -15,7 +22,7 @@ class TcpRouteArgs {
   final pulumi.Input<List<String>>? gateways;
   /// Set of label tags associated with the TcpRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
   /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;
@@ -32,6 +39,7 @@ class TcpRouteArgs {
   final pulumi.Input<List<TcpRouteRule>> rules;
 
   /// Creates a new [TcpRouteArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A free-text description of the resource. Max length 1024 characters.
   /// [gateways] Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
   /// [labels] Set of label tags associated with the TcpRoute resource.
@@ -40,6 +48,7 @@ class TcpRouteArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [rules] Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
   const TcpRouteArgs({
+    this.deletionPolicy,
     this.description,
     this.gateways,
     this.labels,
@@ -51,6 +60,7 @@ class TcpRouteArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'gateways': ?gateways,
       'labels': ?labels,
@@ -63,6 +73,7 @@ class TcpRouteArgs {
 
   factory TcpRouteArgs.fromMap(Map<String, dynamic> map) {
     return TcpRouteArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gateways: (() { final guardedValue = map['gateways']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -73,4 +84,3 @@ class TcpRouteArgs {
     );
   }
 }
-

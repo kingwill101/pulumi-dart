@@ -15,6 +15,13 @@ class OsPolicyAssignmentState {
   /// Output only. Indicates that this revision deletes the OS policy
   /// assignment.
   final pulumi.Input<bool>? deleted;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// OS policy assignment description. Length of the description is limited to 1024 characters.
   final pulumi.Input<String>? description;
   /// The etag for this OS policy assignment. If this is provided on
@@ -33,7 +40,7 @@ class OsPolicyAssignmentState {
   /// The project for the resource
   final pulumi.Input<String>? project;
   /// Output only. Indicates that reconciliation is in progress
-  /// for the revision. This value is `true` when the `rollout_state` is one of:
+  /// for the revision. This value is `true` when the `rolloutState` is one of:
   final pulumi.Input<bool>? reconciling;
   /// Output only. The timestamp that the revision was
   /// created.
@@ -44,7 +51,7 @@ class OsPolicyAssignmentState {
   /// Rollout to deploy the OS policy assignment. A rollout
   /// is triggered in the following situations: 1) OSPolicyAssignment is created.
   /// 2) OSPolicyAssignment is updated and the update contains changes to one of
-  /// the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+  /// the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
   /// is deleted. Structure is documented below.
   final pulumi.Input<OsPolicyAssignmentRollout>? rollout;
   /// Output only. OS policy assignment rollout state
@@ -58,6 +65,7 @@ class OsPolicyAssignmentState {
   /// Creates a new [OsPolicyAssignmentState].
   /// [baseline] Output only. Indicates that this revision has been successfully
   /// [deleted] Output only. Indicates that this revision deletes the OS policy
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [description] OS policy assignment description. Length of the description is limited to 1024 characters.
   /// [etag] The etag for this OS policy assignment. If this is provided on
   /// [instanceFilter] Filter to select VMs. Structure is
@@ -75,6 +83,7 @@ class OsPolicyAssignmentState {
   const OsPolicyAssignmentState({
     this.baseline,
     this.deleted,
+    this.deletionPolicy,
     this.description,
     this.etag,
     this.instanceFilter,
@@ -95,6 +104,7 @@ class OsPolicyAssignmentState {
     return <String, dynamic>{
       'baseline': ?baseline,
       'deleted': ?deleted,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'etag': ?etag,
       'instanceFilter': ?pulumi.Input.mapOptionalInputValue<OsPolicyAssignmentInstanceFilter, Map<String, dynamic>>(instanceFilter, (value) => value.toMap()),
@@ -116,6 +126,7 @@ class OsPolicyAssignmentState {
     return OsPolicyAssignmentState(
       baseline: (() { final guardedValue = map['baseline']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deleted: (() { final guardedValue = map['deleted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceFilter: (() { final guardedValue = map['instanceFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OsPolicyAssignmentInstanceFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -133,4 +144,3 @@ class OsPolicyAssignmentState {
     );
   }
 }
-

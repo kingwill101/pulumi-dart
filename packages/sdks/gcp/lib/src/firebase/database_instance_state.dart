@@ -7,6 +7,13 @@ class DatabaseInstanceState {
   /// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
   /// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
   final pulumi.Input<String>? databaseUrl;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The intended database state. Possible values: ACTIVE, DISABLED.
   final pulumi.Input<String>? desiredState;
   /// The globally unique identifier of the Firebase Realtime Database instance.
@@ -23,7 +30,7 @@ class DatabaseInstanceState {
   /// A reference to the region where the Firebase Realtime database resides.
   /// Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
   final pulumi.Input<String>? region;
-  /// The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+  /// The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
   final pulumi.Input<String>? state;
   /// The database type.
   /// Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
@@ -35,15 +42,17 @@ class DatabaseInstanceState {
 
   /// Creates a new [DatabaseInstanceState].
   /// [databaseUrl] The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [desiredState] The intended database state. Possible values: ACTIVE, DISABLED.
   /// [instanceId] The globally unique identifier of the Firebase Realtime Database instance.
   /// [name] The fully-qualified resource name of the Firebase Realtime Database, in
   /// [project] The ID of the project in which the resource belongs.
   /// [region] A reference to the region where the Firebase Realtime database resides.
-  /// [state] The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+  /// [state] The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
   /// [type] The database type.
   const DatabaseInstanceState({
     this.databaseUrl,
+    this.deletionPolicy,
     this.desiredState,
     this.instanceId,
     this.name,
@@ -56,6 +65,7 @@ class DatabaseInstanceState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'databaseUrl': ?databaseUrl,
+      'deletionPolicy': ?deletionPolicy,
       'desiredState': ?desiredState,
       'instanceId': ?instanceId,
       'name': ?name,
@@ -69,6 +79,7 @@ class DatabaseInstanceState {
   factory DatabaseInstanceState.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceState(
       databaseUrl: (() { final guardedValue = map['databaseUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       desiredState: (() { final guardedValue = map['desiredState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -79,4 +90,3 @@ class DatabaseInstanceState {
     );
   }
 }
-

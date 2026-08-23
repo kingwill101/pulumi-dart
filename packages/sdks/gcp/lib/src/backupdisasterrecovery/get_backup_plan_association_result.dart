@@ -9,9 +9,9 @@ class GetBackupPlanAssociationResult {
   final String backupPlanAssociationId;
   final String createTime;
   final String dataSource;
+  final String deletionPolicy;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  final String lastSuccessfulBackupConsistencyTime;
   final String location;
   final String name;
   final String? project;
@@ -25,8 +25,8 @@ class GetBackupPlanAssociationResult {
   /// [backupPlanAssociationId] Required.
   /// [createTime] Required.
   /// [dataSource] Required.
+  /// [deletionPolicy] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [lastSuccessfulBackupConsistencyTime] Required.
   /// [location] Required.
   /// [name] Required.
   /// [project] Optional.
@@ -39,8 +39,8 @@ class GetBackupPlanAssociationResult {
     required this.backupPlanAssociationId,
     required this.createTime,
     required this.dataSource,
+    required this.deletionPolicy,
     required this.id,
-    required this.lastSuccessfulBackupConsistencyTime,
     required this.location,
     required this.name,
     this.project,
@@ -56,8 +56,8 @@ class GetBackupPlanAssociationResult {
       'backupPlanAssociationId': backupPlanAssociationId,
       'createTime': createTime,
       'dataSource': dataSource,
+      'deletionPolicy': deletionPolicy,
       'id': id,
-      'lastSuccessfulBackupConsistencyTime': lastSuccessfulBackupConsistencyTime,
       'location': location,
       'name': name,
       'project': ?project,
@@ -74,8 +74,8 @@ class GetBackupPlanAssociationResult {
       backupPlanAssociationId: map['backupPlanAssociationId'] as String,
       createTime: map['createTime'] as String,
       dataSource: map['dataSource'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       id: map['id'] as String,
-      lastSuccessfulBackupConsistencyTime: map['lastSuccessfulBackupConsistencyTime'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -86,4 +86,3 @@ class GetBackupPlanAssociationResult {
     );
   }
 }
-

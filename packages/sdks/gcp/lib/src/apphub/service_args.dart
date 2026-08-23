@@ -13,6 +13,13 @@ class ServiceArgs {
   /// Consumer provided attributes.
   /// Structure is documented below.
   final pulumi.Input<ServiceAttributes>? attributes;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-defined description of a Service.
   final pulumi.Input<String>? description;
   /// Immutable. The resource name of the original discovered service.
@@ -30,6 +37,7 @@ class ServiceArgs {
   /// Creates a new [ServiceArgs].
   /// [applicationId] Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   /// [attributes] Consumer provided attributes.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User-defined description of a Service.
   /// [discoveredService] Immutable. The resource name of the original discovered service.
   /// [displayName] User-defined name for the Service.
@@ -39,6 +47,7 @@ class ServiceArgs {
   const ServiceArgs({
     required this.applicationId,
     this.attributes,
+    this.deletionPolicy,
     this.description,
     required this.discoveredService,
     this.displayName,
@@ -51,6 +60,7 @@ class ServiceArgs {
     return <String, dynamic>{
       'applicationId': applicationId,
       'attributes': ?pulumi.Input.mapOptionalInputValue<ServiceAttributes, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'discoveredService': discoveredService,
       'displayName': ?displayName,
@@ -64,6 +74,7 @@ class ServiceArgs {
     return ServiceArgs(
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
       attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceAttributes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       discoveredService: pulumi.Input.fromValue(map['discoveredService'] as String),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -73,4 +84,3 @@ class ServiceArgs {
     );
   }
 }
-

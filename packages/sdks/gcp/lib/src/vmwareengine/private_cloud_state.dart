@@ -19,6 +19,13 @@ class PrivateCloudState {
   final pulumi.Input<String>? deleteTime;
   /// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
   final pulumi.Input<int>? deletionDelayHours;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-provided description for this private cloud.
   final pulumi.Input<String>? description;
   /// Time when the resource will be irreversibly deleted.
@@ -44,7 +51,7 @@ class PrivateCloudState {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-  /// While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
+  /// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
   final pulumi.Input<bool>? sendDeletionDelayHoursIfZero;
   /// State of the appliance.
   /// Possible values are: `ACTIVE`, `CREATING`.
@@ -66,6 +73,7 @@ class PrivateCloudState {
   /// [createTime] Creation time of this resource.
   /// [deleteTime] Time when the resource was scheduled for deletion.
   /// [deletionDelayHours] The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User-provided description for this private cloud.
   /// [expireTime] Time when the resource will be irreversibly deleted.
   /// [hcxes] Details about a HCX Cloud Manager appliance.
@@ -75,7 +83,7 @@ class PrivateCloudState {
   /// [networkConfig] Network configuration in the consumer project with which the peering has to be done.
   /// [nsxes] Details about a NSX Manager appliance.
   /// [project] The ID of the project in which the resource belongs.
-  /// [sendDeletionDelayHoursIfZero] While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
+  /// [sendDeletionDelayHoursIfZero] While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
   /// [state] State of the appliance.
   /// [type] Initial type of the private cloud.
   /// [uid] System-generated unique identifier for the resource.
@@ -85,6 +93,7 @@ class PrivateCloudState {
     this.createTime,
     this.deleteTime,
     this.deletionDelayHours,
+    this.deletionPolicy,
     this.description,
     this.expireTime,
     this.hcxes,
@@ -107,6 +116,7 @@ class PrivateCloudState {
       'createTime': ?createTime,
       'deleteTime': ?deleteTime,
       'deletionDelayHours': ?deletionDelayHours,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'expireTime': ?expireTime,
       'hcxes': ?pulumi.Input.mapOptionalInputValue<List<PrivateCloudHcx>, List<Map<String, dynamic>>>(hcxes, (value) => pulumi.Input.encodeList<PrivateCloudHcx, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -130,6 +140,7 @@ class PrivateCloudState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionDelayHours: (() { final guardedValue = map['deletionDelayHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hcxes: (() { final guardedValue = map['hcxes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateCloudHcx>(guardedValue, (value) => PrivateCloudHcx.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -148,4 +159,3 @@ class PrivateCloudState {
     );
   }
 }
-

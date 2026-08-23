@@ -14,7 +14,7 @@ class TargetState {
   /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Information specifying an Anthos Cluster.
   final pulumi.Input<TargetAnthosCluster>? anthosCluster;
@@ -24,10 +24,18 @@ class TargetState {
   final pulumi.Input<String>? createTime;
   /// Optional. Information specifying a Custom Target.
   final pulumi.Input<TargetCustomTarget>? customTarget;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. The deploy parameters to use for this target.
   final pulumi.Input<Map<String, String>>? deployParameters;
   /// Optional. Description of the `Target`. Max length is 255 characters.
   final pulumi.Input<String>? description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -40,7 +48,7 @@ class TargetState {
   /// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location for the resource
   final pulumi.Input<String>? location;
@@ -73,9 +81,10 @@ class TargetState {
   /// [associatedEntities] Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
   /// [createTime] Output only. Time at which the `Target` was created.
   /// [customTarget] Optional. Information specifying a Custom Target.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [deployParameters] Optional. The deploy parameters to use for this target.
   /// [description] Optional. Description of the `Target`. Max length is 255 characters.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   /// [executionConfigs] Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -97,6 +106,7 @@ class TargetState {
     this.associatedEntities,
     this.createTime,
     this.customTarget,
+    this.deletionPolicy,
     this.deployParameters,
     this.description,
     this.effectiveAnnotations,
@@ -124,6 +134,7 @@ class TargetState {
       'associatedEntities': ?pulumi.Input.mapOptionalInputValue<List<TargetAssociatedEntity>, List<Map<String, dynamic>>>(associatedEntities, (value) => pulumi.Input.encodeList<TargetAssociatedEntity, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': ?createTime,
       'customTarget': ?pulumi.Input.mapOptionalInputValue<TargetCustomTarget, Map<String, dynamic>>(customTarget, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'deployParameters': ?deployParameters,
       'description': ?description,
       'effectiveAnnotations': ?effectiveAnnotations,
@@ -152,6 +163,7 @@ class TargetState {
       associatedEntities: (() { final guardedValue = map['associatedEntities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TargetAssociatedEntity>(guardedValue, (value) => TargetAssociatedEntity.fromMap((value as Map).cast<String, dynamic>()))); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customTarget: (() { final guardedValue = map['customTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TargetCustomTarget.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deployParameters: (() { final guardedValue = map['deployParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -173,4 +185,3 @@ class TargetState {
     );
   }
 }
-

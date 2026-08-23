@@ -80,6 +80,22 @@ import 'data_exchange_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "data_exchange" {
+///   location         = "US"
+///   data_exchange_id = "my_data_exchange"
+///   display_name     = "my_data_exchange"
+///   description      = "example data exchange"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +104,8 @@ import 'data_exchange_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
 /// import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -202,6 +218,25 @@ import 'data_exchange_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "data_exchange" {
+///   location         = "US"
+///   data_exchange_id = "dcr_data_exchange"
+///   display_name     = "dcr_data_exchange"
+///   description      = "example dcr data exchange"
+///   sharing_environment_config = {
+///     dcr_exchange_config = {}
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -212,8 +247,8 @@ import 'data_exchange_state.dart';
 /// import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeSharingEnvironmentConfigArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -323,6 +358,23 @@ import 'data_exchange_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "data_exchange" {
+///   location                            = "US"
+///   data_exchange_id                    = "tf_test_log_email_data_exchange"
+///   display_name                        = "tf_test_log_email_data_exchange"
+///   description                         = "Example for log email test for data exchange"
+///   log_linked_dataset_query_user_email = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -331,8 +383,8 @@ import 'data_exchange_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
 /// import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -438,6 +490,23 @@ import 'data_exchange_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "data_exchange" {
+///   location         = "US"
+///   data_exchange_id = "public_data_exchange"
+///   display_name     = "public_data_exchange"
+///   description      = "Example for public data exchange"
+///   discovery_type   = "DISCOVERY_TYPE_PUBLIC"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -446,8 +515,8 @@ import 'data_exchange_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
 /// import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -489,33 +558,29 @@ import 'data_exchange_state.dart';
 /// DataExchange can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}`
-///
 /// * `{{project}}/{{location}}/{{data_exchange_id}}`
-///
 /// * `{{location}}/{{data_exchange_id}}`
-///
 /// * `{{data_exchange_id}}`
+///
 ///
 /// When using the `pulumi import` command, DataExchange can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{project}}/{{location}}/{{data_exchange_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{location}}/{{data_exchange_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{data_exchange_id}}
 /// ```
 class DataExchange extends pulumi.CustomResource {
   /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   late final pulumi.Output<String> dataExchangeId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the data exchange.
   late final pulumi.Output<String?> description;
   /// Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
@@ -561,6 +626,7 @@ class DataExchange extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataExchangeId = registerOutput<String>('dataExchangeId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoveryType = registerOutput<String>('discoveryType');
     displayName = registerOutput<String>('displayName');
@@ -599,6 +665,7 @@ class DataExchange extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataExchangeId = registerOutput<String>('dataExchangeId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoveryType = registerOutput<String>('discoveryType');
     displayName = registerOutput<String>('displayName');

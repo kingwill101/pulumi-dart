@@ -12,6 +12,13 @@ class RegionSslCertificateArgs {
   /// The chain must include at least one intermediate cert.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String> certificate;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// Name of the resource. Provided by the client when the resource is
@@ -27,14 +34,23 @@ class RegionSslCertificateArgs {
   /// specified prefix. Conflicts with `name`. Max length is 54 characters.
   /// Prefixes with lengths longer than 37 characters will use a shortened
   /// UUID that will be more prone to collisions.
-  /// Resulting name for a `name_prefix` &lt;= 37 characters:
-  /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
-  /// Resulting name for a `name_prefix` 38 - 54 characters:
-  /// `name_prefix` + YYmmdd + 3 digit incremental counter
+  /// Resulting name for a `namePrefix` &lt;= 37 characters:
+  /// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+  /// Resulting name for a `namePrefix` 38 - 54 characters:
+  /// `namePrefix` + YYmmdd + 3 digit incremental counter
   final pulumi.Input<String>? namePrefix;
   /// The write-only private key in PEM format.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String> privateKey;
+  final pulumi.Input<String>? privateKey;
+  /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// (Optional, Write-Only)
+  /// The write-only private key in PEM format.
+  /// **Note**: This property is write-only and will not be read from the API.
+  ///
+  /// &gt; **Note:** One of `privateKey` or `privateKeyWo` can only be set.
+  final pulumi.Input<String>? privateKeyWo;
+  /// Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  final pulumi.Input<String>? privateKeyWoVersion;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -44,18 +60,24 @@ class RegionSslCertificateArgs {
 
   /// Creates a new [RegionSslCertificateArgs].
   /// [certificate] The certificate in PEM format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [name] Name of the resource. Provided by the client when the resource is
   /// [namePrefix] Creates a unique name beginning with the
   /// [privateKey] The write-only private key in PEM format.
+  /// [privateKeyWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// [privateKeyWoVersion] Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The Region in which the created regional ssl certificate should reside.
   const RegionSslCertificateArgs({
     required this.certificate,
+    this.deletionPolicy,
     this.description,
     this.name,
     this.namePrefix,
-    required this.privateKey,
+    this.privateKey,
+    this.privateKeyWo,
+    this.privateKeyWoVersion,
     this.project,
     this.region,
   });
@@ -63,10 +85,13 @@ class RegionSslCertificateArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certificate': certificate,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'name': ?name,
       'namePrefix': ?namePrefix,
-      'privateKey': privateKey,
+      'privateKey': ?privateKey,
+      'privateKeyWo': ?privateKeyWo,
+      'privateKeyWoVersion': ?privateKeyWoVersion,
       'project': ?project,
       'region': ?region,
     };
@@ -75,13 +100,15 @@ class RegionSslCertificateArgs {
   factory RegionSslCertificateArgs.fromMap(Map<String, dynamic> map) {
     return RegionSslCertificateArgs(
       certificate: pulumi.Input.fromValue(map['certificate'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privateKey: pulumi.Input.fromValue(map['privateKey'] as String),
+      privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateKeyWo: (() { final guardedValue = map['privateKeyWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateKeyWoVersion: (() { final guardedValue = map['privateKeyWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

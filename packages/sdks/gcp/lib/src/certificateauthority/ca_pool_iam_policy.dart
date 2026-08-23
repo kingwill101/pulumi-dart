@@ -5,8 +5,8 @@ import 'ca_pool_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Certificate Authority Service CaPool. Each of these resources serves a different use case:
 ///
 /// * `gcp.certificateauthority.CaPoolIamPolicy`: Authoritative. Sets the IAM policy for the capool and replaces any existing policy already attached.
-/// * `gcp.certificateauthority.CaPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the capool are preserved.
-/// * `gcp.certificateauthority.CaPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the capool are preserved.
+/// * `gcp.certificateauthority.CaPoolIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the capool are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.certificateauthority.CaPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the capool are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -14,7 +14,7 @@ import 'ca_pool_iam_policy_state.dart';
 ///
 /// &gt; **Note:** `gcp.certificateauthority.CaPoolIamPolicy` **cannot** be used in conjunction with `gcp.certificateauthority.CaPoolIamBinding` and `gcp.certificateauthority.CaPoolIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.certificateauthority.CaPoolIamBinding` resources **can be** used in conjunction with `gcp.certificateauthority.CaPoolIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.certificateauthority.CaPoolIamBinding` resources **can be** used in conjunction with `gcp.certificateauthority.CaPoolIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -115,6 +115,27 @@ import 'ca_pool_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/privateca.certificateManager"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capooliampolicy" "policy" {
+///   ca_pool     = default.id
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,10 +144,11 @@ import 'ca_pool_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamPolicy;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -146,7 +168,7 @@ import 'ca_pool_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new CaPoolIamPolicy("policy", CaPoolIamPolicyArgs.builder()
-///             .caPool(default_.id())
+///             .caPool(default_.get("id"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -289,6 +311,32 @@ import 'ca_pool_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/privateca.certificateManager"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capooliampolicy" "policy" {
+///   ca_pool     = default.id
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -297,10 +345,12 @@ import 'ca_pool_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamPolicy;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -325,7 +375,7 @@ import 'ca_pool_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new CaPoolIamPolicy("policy", CaPoolIamPolicyArgs.builder()
-///             .caPool(default_.id())
+///             .caPool(default_.get("id"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -420,6 +470,21 @@ import 'ca_pool_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capooliambinding" "binding" {
+///   ca_pool = default.id
+///   role    = "roles/privateca.certificateManager"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -428,8 +493,8 @@ import 'ca_pool_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -442,7 +507,7 @@ import 'ca_pool_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new CaPoolIamBinding("binding", CaPoolIamBindingArgs.builder()
-///             .caPool(default_.id())
+///             .caPool(default_.get("id"))
 ///             .role("roles/privateca.certificateManager")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -549,6 +614,26 @@ import 'ca_pool_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capooliambinding" "binding" {
+///   ca_pool = default.id
+///   role    = "roles/privateca.certificateManager"
+///   members = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -558,8 +643,8 @@ import 'ca_pool_iam_policy_state.dart';
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -572,7 +657,7 @@ import 'ca_pool_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new CaPoolIamBinding("binding", CaPoolIamBindingArgs.builder()
-///             .caPool(default_.id())
+///             .caPool(default_.get("id"))
 ///             .role("roles/privateca.certificateManager")
 ///             .members("user:jane@example.com")
 ///             .condition(CaPoolIamBindingConditionArgs.builder()
@@ -661,6 +746,21 @@ import 'ca_pool_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capooliammember" "member" {
+///   ca_pool = default.id
+///   role    = "roles/privateca.certificateManager"
+///   member  = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -669,8 +769,8 @@ import 'ca_pool_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamMember;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -683,7 +783,7 @@ import 'ca_pool_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new CaPoolIamMember("member", CaPoolIamMemberArgs.builder()
-///             .caPool(default_.id())
+///             .caPool(default_.get("id"))
 ///             .role("roles/privateca.certificateManager")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -784,6 +884,26 @@ import 'ca_pool_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capooliammember" "member" {
+///   ca_pool = default.id
+///   role    = "roles/privateca.certificateManager"
+///   member  = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -793,8 +913,8 @@ import 'ca_pool_iam_policy_state.dart';
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamMember;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamMemberArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -807,7 +927,7 @@ import 'ca_pool_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new CaPoolIamMember("member", CaPoolIamMemberArgs.builder()
-///             .caPool(default_.id())
+///             .caPool(default_.get("id"))
 ///             .role("roles/privateca.certificateManager")
 ///             .member("user:jane@example.com")
 ///             .condition(CaPoolIamMemberConditionArgs.builder()
@@ -844,8 +964,8 @@ import 'ca_pool_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Certificate Authority Service CaPool. Each of these resources serves a different use case:
 ///
 /// * `gcp.certificateauthority.CaPoolIamPolicy`: Authoritative. Sets the IAM policy for the capool and replaces any existing policy already attached.
-/// * `gcp.certificateauthority.CaPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the capool are preserved.
-/// * `gcp.certificateauthority.CaPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the capool are preserved.
+/// * `gcp.certificateauthority.CaPoolIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the capool are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.certificateauthority.CaPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the capool are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -853,7 +973,7 @@ import 'ca_pool_iam_policy_state.dart';
 ///
 /// &gt; **Note:** `gcp.certificateauthority.CaPoolIamPolicy` **cannot** be used in conjunction with `gcp.certificateauthority.CaPoolIamBinding` and `gcp.certificateauthority.CaPoolIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.certificateauthority.CaPoolIamBinding` resources **can be** used in conjunction with `gcp.certificateauthority.CaPoolIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.certificateauthority.CaPoolIamBinding` resources **can be** used in conjunction with `gcp.certificateauthority.CaPoolIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -954,6 +1074,27 @@ import 'ca_pool_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/privateca.certificateManager"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capooliampolicy" "policy" {
+///   ca_pool     = default.id
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -962,10 +1103,11 @@ import 'ca_pool_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamPolicy;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -985,7 +1127,7 @@ import 'ca_pool_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new CaPoolIamPolicy("policy", CaPoolIamPolicyArgs.builder()
-///             .caPool(default_.id())
+///             .caPool(default_.get("id"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1128,6 +1270,32 @@ import 'ca_pool_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/privateca.certificateManager"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capooliampolicy" "policy" {
+///   ca_pool     = default.id
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1136,10 +1304,12 @@ import 'ca_pool_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamPolicy;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1164,7 +1334,7 @@ import 'ca_pool_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new CaPoolIamPolicy("policy", CaPoolIamPolicyArgs.builder()
-///             .caPool(default_.id())
+///             .caPool(default_.get("id"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1259,6 +1429,21 @@ import 'ca_pool_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capooliambinding" "binding" {
+///   ca_pool = default.id
+///   role    = "roles/privateca.certificateManager"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1267,8 +1452,8 @@ import 'ca_pool_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1281,7 +1466,7 @@ import 'ca_pool_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new CaPoolIamBinding("binding", CaPoolIamBindingArgs.builder()
-///             .caPool(default_.id())
+///             .caPool(default_.get("id"))
 ///             .role("roles/privateca.certificateManager")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -1388,6 +1573,26 @@ import 'ca_pool_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capooliambinding" "binding" {
+///   ca_pool = default.id
+///   role    = "roles/privateca.certificateManager"
+///   members = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1397,8 +1602,8 @@ import 'ca_pool_iam_policy_state.dart';
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamBinding;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamBindingArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1411,7 +1616,7 @@ import 'ca_pool_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new CaPoolIamBinding("binding", CaPoolIamBindingArgs.builder()
-///             .caPool(default_.id())
+///             .caPool(default_.get("id"))
 ///             .role("roles/privateca.certificateManager")
 ///             .members("user:jane@example.com")
 ///             .condition(CaPoolIamBindingConditionArgs.builder()
@@ -1500,6 +1705,21 @@ import 'ca_pool_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capooliammember" "member" {
+///   ca_pool = default.id
+///   role    = "roles/privateca.certificateManager"
+///   member  = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1508,8 +1728,8 @@ import 'ca_pool_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamMember;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1522,7 +1742,7 @@ import 'ca_pool_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new CaPoolIamMember("member", CaPoolIamMemberArgs.builder()
-///             .caPool(default_.id())
+///             .caPool(default_.get("id"))
 ///             .role("roles/privateca.certificateManager")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -1623,6 +1843,26 @@ import 'ca_pool_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capooliammember" "member" {
+///   ca_pool = default.id
+///   role    = "roles/privateca.certificateManager"
+///   member  = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1632,8 +1872,8 @@ import 'ca_pool_iam_policy_state.dart';
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamMember;
 /// import com.pulumi.gcp.certificateauthority.CaPoolIamMemberArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CaPoolIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1646,7 +1886,7 @@ import 'ca_pool_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new CaPoolIamMember("member", CaPoolIamMemberArgs.builder()
-///             .caPool(default_.id())
+///             .caPool(default_.get("id"))
 ///             .role("roles/privateca.certificateManager")
 ///             .member("user:jane@example.com")
 ///             .condition(CaPoolIamMemberConditionArgs.builder()
@@ -1679,9 +1919,7 @@ import 'ca_pool_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{location}}/caPools/{{name}}
-///
 /// * {{project}}/{{location}}/{{name}}
-///
 /// * {{location}}/{{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -1689,25 +1927,21 @@ import 'ca_pool_iam_policy_state.dart';
 /// Certificate Authority Service capool IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy editor "projects/{{project}}/locations/{{location}}/caPools/{{ca_pool}} roles/privateca.certificateManager user:jane@example.com"
+/// $ terraform import google_privateca_ca_pool_iam_member.editor "projects/{{project}}/locations/{{location}}/caPools/{{ca_pool}} roles/privateca.certificateManager user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy editor "projects/{{project}}/locations/{{location}}/caPools/{{ca_pool}} roles/privateca.certificateManager"
+/// $ terraform import google_privateca_ca_pool_iam_binding.editor "projects/{{project}}/locations/{{location}}/caPools/{{ca_pool}} roles/privateca.certificateManager"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:certificateauthority/caPoolIamPolicy:CaPoolIamPolicy editor projects/{{project}}/locations/{{location}}/caPools/{{ca_pool}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class CaPoolIamPolicy extends pulumi.CustomResource {
   /// Used to find the parent resource to bind the IAM policy to

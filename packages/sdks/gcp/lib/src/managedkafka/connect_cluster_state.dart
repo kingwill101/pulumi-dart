@@ -13,6 +13,13 @@ class ConnectClusterState {
   final pulumi.Input<String>? connectClusterId;
   /// The time when the cluster was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform.
@@ -22,7 +29,7 @@ class ConnectClusterState {
   final pulumi.Input<String>? kafkaCluster;
   /// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   final pulumi.Input<String>? location;
@@ -43,6 +50,7 @@ class ConnectClusterState {
   /// [capacityConfig] A capacity configuration of a Kafka cluster.
   /// [connectClusterId] The ID to use for the Connect Cluster, which will become the final component of the connect cluster's name. This value is structured like: `my-connect-cluster-id`.
   /// [createTime] The time when the cluster was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [gcpConfig] Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform.
   /// [kafkaCluster] The name of the Kafka cluster this Kafka Connect cluster is attached to. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
@@ -57,6 +65,7 @@ class ConnectClusterState {
     this.capacityConfig,
     this.connectClusterId,
     this.createTime,
+    this.deletionPolicy,
     this.effectiveLabels,
     this.gcpConfig,
     this.kafkaCluster,
@@ -74,6 +83,7 @@ class ConnectClusterState {
       'capacityConfig': ?pulumi.Input.mapOptionalInputValue<ConnectClusterCapacityConfig, Map<String, dynamic>>(capacityConfig, (value) => value.toMap()),
       'connectClusterId': ?connectClusterId,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'effectiveLabels': ?effectiveLabels,
       'gcpConfig': ?pulumi.Input.mapOptionalInputValue<ConnectClusterGcpConfig, Map<String, dynamic>>(gcpConfig, (value) => value.toMap()),
       'kafkaCluster': ?kafkaCluster,
@@ -92,6 +102,7 @@ class ConnectClusterState {
       capacityConfig: (() { final guardedValue = map['capacityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectClusterCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       connectClusterId: (() { final guardedValue = map['connectClusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       gcpConfig: (() { final guardedValue = map['gcpConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectClusterGcpConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kafkaCluster: (() { final guardedValue = map['kafkaCluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -105,4 +116,3 @@ class ConnectClusterState {
     );
   }
 }
-

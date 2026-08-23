@@ -14,6 +14,9 @@ class ProviderArgs {
   final pulumi.Input<String>? accessToken;
   final pulumi.Input<String>? activeDirectoryCustomEndpoint;
   final pulumi.Input<bool>? addPulumiAttributionLabel;
+  final pulumi.Input<String>? agentIdentityCustomEndpoint;
+  final pulumi.Input<String>? agentRegistryCustomEndpoint;
+  final pulumi.Input<String>? agenticApplicationsCustomEndpoint;
   final pulumi.Input<String>? alloydbCustomEndpoint;
   final pulumi.Input<String>? apiGatewayCustomEndpoint;
   final pulumi.Input<String>? apigeeCustomEndpoint;
@@ -28,6 +31,7 @@ class ProviderArgs {
   final pulumi.Input<String>? beyondcorpCustomEndpoint;
   final pulumi.Input<String>? bigQueryCustomEndpoint;
   final pulumi.Input<String>? biglakeCustomEndpoint;
+  final pulumi.Input<String>? biglakeHiveCustomEndpoint;
   final pulumi.Input<String>? biglakeIcebergCustomEndpoint;
   final pulumi.Input<String>? bigqueryAnalyticsHubCustomEndpoint;
   final pulumi.Input<String>? bigqueryConnectionCustomEndpoint;
@@ -36,6 +40,7 @@ class ProviderArgs {
   final pulumi.Input<String>? bigqueryDatapolicyv2CustomEndpoint;
   final pulumi.Input<String>? bigqueryReservationCustomEndpoint;
   final pulumi.Input<String>? bigtableCustomEndpoint;
+  final pulumi.Input<String>? billingBudgetsCustomEndpoint;
   final pulumi.Input<String>? billingCustomEndpoint;
   final pulumi.Input<String>? billingProject;
   final pulumi.Input<String>? binaryAuthorizationCustomEndpoint;
@@ -55,6 +60,7 @@ class ProviderArgs {
   final pulumi.Input<String>? cloudRunV2CustomEndpoint;
   final pulumi.Input<String>? cloudSchedulerCustomEndpoint;
   final pulumi.Input<String>? cloudSecurityComplianceCustomEndpoint;
+  final pulumi.Input<String>? cloudSupportCustomEndpoint;
   final pulumi.Input<String>? cloudTasksCustomEndpoint;
   final pulumi.Input<String>? cloudbuildv2CustomEndpoint;
   final pulumi.Input<String>? clouddeployCustomEndpoint;
@@ -63,6 +69,7 @@ class ProviderArgs {
   final pulumi.Input<String>? colabCustomEndpoint;
   final pulumi.Input<String>? composerCustomEndpoint;
   final pulumi.Input<String>? computeCustomEndpoint;
+  final pulumi.Input<String>? configCustomEndpoint;
   final pulumi.Input<String>? contactCenterInsightsCustomEndpoint;
   final pulumi.Input<String>? containerAnalysisCustomEndpoint;
   final pulumi.Input<String>? containerAttachedCustomEndpoint;
@@ -73,6 +80,7 @@ class ProviderArgs {
   final pulumi.Input<String>? credentials;
   final pulumi.Input<String>? dataCatalogCustomEndpoint;
   final pulumi.Input<String>? dataFusionCustomEndpoint;
+  final pulumi.Input<String>? dataLineageCustomEndpoint;
   final pulumi.Input<String>? dataLossPreventionCustomEndpoint;
   final pulumi.Input<String>? dataPipelineCustomEndpoint;
   final pulumi.Input<String>? databaseMigrationServiceCustomEndpoint;
@@ -84,6 +92,7 @@ class ProviderArgs {
   final pulumi.Input<String>? dataprocMetastoreCustomEndpoint;
   final pulumi.Input<String>? datastreamCustomEndpoint;
   final pulumi.Input<Map<String, String>>? defaultLabels;
+  final pulumi.Input<String>? deletionPolicy;
   final pulumi.Input<String>? deploymentManagerCustomEndpoint;
   final pulumi.Input<String>? developerConnectCustomEndpoint;
   final pulumi.Input<String>? dialogflowCustomEndpoint;
@@ -107,6 +116,7 @@ class ProviderArgs {
   final pulumi.Input<String>? firebaseDatabaseCustomEndpoint;
   final pulumi.Input<String>? firebaseExtensionsCustomEndpoint;
   final pulumi.Input<String>? firebaseHostingCustomEndpoint;
+  final pulumi.Input<String>? firebaseRemoteConfigCustomEndpoint;
   final pulumi.Input<String>? firebaseStorageCustomEndpoint;
   final pulumi.Input<String>? firebaserulesCustomEndpoint;
   final pulumi.Input<String>? firestoreCustomEndpoint;
@@ -117,6 +127,7 @@ class ProviderArgs {
   final pulumi.Input<String>? gkeonpremCustomEndpoint;
   final pulumi.Input<String>? googlePartnerName;
   final pulumi.Input<String>? healthcareCustomEndpoint;
+  final pulumi.Input<String>? hypercomputeclusterCustomEndpoint;
   final pulumi.Input<String>? iam2CustomEndpoint;
   final pulumi.Input<String>? iam3CustomEndpoint;
   final pulumi.Input<String>? iamBetaCustomEndpoint;
@@ -130,6 +141,7 @@ class ProviderArgs {
   final pulumi.Input<String>? integrationConnectorsCustomEndpoint;
   final pulumi.Input<String>? integrationsCustomEndpoint;
   final pulumi.Input<String>? kmsCustomEndpoint;
+  final pulumi.Input<String>? licenseManagerCustomEndpoint;
   final pulumi.Input<String>? loggingCustomEndpoint;
   final pulumi.Input<String>? lookerCustomEndpoint;
   final pulumi.Input<String>? lustreCustomEndpoint;
@@ -157,6 +169,9 @@ class ProviderArgs {
   final pulumi.Input<String>? parallelstoreCustomEndpoint;
   final pulumi.Input<String>? parameterManagerCustomEndpoint;
   final pulumi.Input<String>? parameterManagerRegionalCustomEndpoint;
+  final pulumi.Input<String>? pollInterval;
+  final pulumi.Input<bool>? preferGlobalEndpoints;
+  final pulumi.Input<bool>? preferRegionalEndpoints;
   final pulumi.Input<String>? privatecaCustomEndpoint;
   final pulumi.Input<String>? privilegedAccessManagerCustomEndpoint;
   final pulumi.Input<String>? project;
@@ -203,11 +218,13 @@ class ProviderArgs {
   final pulumi.Input<String>? transcoderCustomEndpoint;
   final pulumi.Input<String>? universeDomain;
   final pulumi.Input<bool>? userProjectOverride;
+  final pulumi.Input<String>? vectorSearchCustomEndpoint;
   final pulumi.Input<String>? vertexAiCustomEndpoint;
   final pulumi.Input<String>? vmwareengineCustomEndpoint;
   final pulumi.Input<String>? vpcAccessCustomEndpoint;
   final pulumi.Input<String>? workbenchCustomEndpoint;
   final pulumi.Input<String>? workflowsCustomEndpoint;
+  final pulumi.Input<String>? workloadIdentityCustomEndpoint;
   final pulumi.Input<String>? workstationsCustomEndpoint;
   final pulumi.Input<String>? zone;
 
@@ -217,6 +234,9 @@ class ProviderArgs {
   /// [accessToken] Optional.
   /// [activeDirectoryCustomEndpoint] Optional.
   /// [addPulumiAttributionLabel] Optional.
+  /// [agentIdentityCustomEndpoint] Optional.
+  /// [agentRegistryCustomEndpoint] Optional.
+  /// [agenticApplicationsCustomEndpoint] Optional.
   /// [alloydbCustomEndpoint] Optional.
   /// [apiGatewayCustomEndpoint] Optional.
   /// [apigeeCustomEndpoint] Optional.
@@ -231,6 +251,7 @@ class ProviderArgs {
   /// [beyondcorpCustomEndpoint] Optional.
   /// [bigQueryCustomEndpoint] Optional.
   /// [biglakeCustomEndpoint] Optional.
+  /// [biglakeHiveCustomEndpoint] Optional.
   /// [biglakeIcebergCustomEndpoint] Optional.
   /// [bigqueryAnalyticsHubCustomEndpoint] Optional.
   /// [bigqueryConnectionCustomEndpoint] Optional.
@@ -239,6 +260,7 @@ class ProviderArgs {
   /// [bigqueryDatapolicyv2CustomEndpoint] Optional.
   /// [bigqueryReservationCustomEndpoint] Optional.
   /// [bigtableCustomEndpoint] Optional.
+  /// [billingBudgetsCustomEndpoint] Optional.
   /// [billingCustomEndpoint] Optional.
   /// [billingProject] Optional.
   /// [binaryAuthorizationCustomEndpoint] Optional.
@@ -258,6 +280,7 @@ class ProviderArgs {
   /// [cloudRunV2CustomEndpoint] Optional.
   /// [cloudSchedulerCustomEndpoint] Optional.
   /// [cloudSecurityComplianceCustomEndpoint] Optional.
+  /// [cloudSupportCustomEndpoint] Optional.
   /// [cloudTasksCustomEndpoint] Optional.
   /// [cloudbuildv2CustomEndpoint] Optional.
   /// [clouddeployCustomEndpoint] Optional.
@@ -266,6 +289,7 @@ class ProviderArgs {
   /// [colabCustomEndpoint] Optional.
   /// [composerCustomEndpoint] Optional.
   /// [computeCustomEndpoint] Optional.
+  /// [configCustomEndpoint] Optional.
   /// [contactCenterInsightsCustomEndpoint] Optional.
   /// [containerAnalysisCustomEndpoint] Optional.
   /// [containerAttachedCustomEndpoint] Optional.
@@ -276,6 +300,7 @@ class ProviderArgs {
   /// [credentials] Optional.
   /// [dataCatalogCustomEndpoint] Optional.
   /// [dataFusionCustomEndpoint] Optional.
+  /// [dataLineageCustomEndpoint] Optional.
   /// [dataLossPreventionCustomEndpoint] Optional.
   /// [dataPipelineCustomEndpoint] Optional.
   /// [databaseMigrationServiceCustomEndpoint] Optional.
@@ -287,6 +312,7 @@ class ProviderArgs {
   /// [dataprocMetastoreCustomEndpoint] Optional.
   /// [datastreamCustomEndpoint] Optional.
   /// [defaultLabels] Optional.
+  /// [deletionPolicy] Optional.
   /// [deploymentManagerCustomEndpoint] Optional.
   /// [developerConnectCustomEndpoint] Optional.
   /// [dialogflowCustomEndpoint] Optional.
@@ -310,6 +336,7 @@ class ProviderArgs {
   /// [firebaseDatabaseCustomEndpoint] Optional.
   /// [firebaseExtensionsCustomEndpoint] Optional.
   /// [firebaseHostingCustomEndpoint] Optional.
+  /// [firebaseRemoteConfigCustomEndpoint] Optional.
   /// [firebaseStorageCustomEndpoint] Optional.
   /// [firebaserulesCustomEndpoint] Optional.
   /// [firestoreCustomEndpoint] Optional.
@@ -320,6 +347,7 @@ class ProviderArgs {
   /// [gkeonpremCustomEndpoint] Optional.
   /// [googlePartnerName] Optional.
   /// [healthcareCustomEndpoint] Optional.
+  /// [hypercomputeclusterCustomEndpoint] Optional.
   /// [iam2CustomEndpoint] Optional.
   /// [iam3CustomEndpoint] Optional.
   /// [iamBetaCustomEndpoint] Optional.
@@ -333,6 +361,7 @@ class ProviderArgs {
   /// [integrationConnectorsCustomEndpoint] Optional.
   /// [integrationsCustomEndpoint] Optional.
   /// [kmsCustomEndpoint] Optional.
+  /// [licenseManagerCustomEndpoint] Optional.
   /// [loggingCustomEndpoint] Optional.
   /// [lookerCustomEndpoint] Optional.
   /// [lustreCustomEndpoint] Optional.
@@ -360,6 +389,9 @@ class ProviderArgs {
   /// [parallelstoreCustomEndpoint] Optional.
   /// [parameterManagerCustomEndpoint] Optional.
   /// [parameterManagerRegionalCustomEndpoint] Optional.
+  /// [pollInterval] Optional.
+  /// [preferGlobalEndpoints] Optional.
+  /// [preferRegionalEndpoints] Optional.
   /// [privatecaCustomEndpoint] Optional.
   /// [privilegedAccessManagerCustomEndpoint] Optional.
   /// [project] Optional.
@@ -406,11 +438,13 @@ class ProviderArgs {
   /// [transcoderCustomEndpoint] Optional.
   /// [universeDomain] Optional.
   /// [userProjectOverride] Optional.
+  /// [vectorSearchCustomEndpoint] Optional.
   /// [vertexAiCustomEndpoint] Optional.
   /// [vmwareengineCustomEndpoint] Optional.
   /// [vpcAccessCustomEndpoint] Optional.
   /// [workbenchCustomEndpoint] Optional.
   /// [workflowsCustomEndpoint] Optional.
+  /// [workloadIdentityCustomEndpoint] Optional.
   /// [workstationsCustomEndpoint] Optional.
   /// [zone] Optional.
   const ProviderArgs({
@@ -419,6 +453,9 @@ class ProviderArgs {
     this.accessToken,
     this.activeDirectoryCustomEndpoint,
     this.addPulumiAttributionLabel,
+    this.agentIdentityCustomEndpoint,
+    this.agentRegistryCustomEndpoint,
+    this.agenticApplicationsCustomEndpoint,
     this.alloydbCustomEndpoint,
     this.apiGatewayCustomEndpoint,
     this.apigeeCustomEndpoint,
@@ -433,6 +470,7 @@ class ProviderArgs {
     this.beyondcorpCustomEndpoint,
     this.bigQueryCustomEndpoint,
     this.biglakeCustomEndpoint,
+    this.biglakeHiveCustomEndpoint,
     this.biglakeIcebergCustomEndpoint,
     this.bigqueryAnalyticsHubCustomEndpoint,
     this.bigqueryConnectionCustomEndpoint,
@@ -441,6 +479,7 @@ class ProviderArgs {
     this.bigqueryDatapolicyv2CustomEndpoint,
     this.bigqueryReservationCustomEndpoint,
     this.bigtableCustomEndpoint,
+    this.billingBudgetsCustomEndpoint,
     this.billingCustomEndpoint,
     this.billingProject,
     this.binaryAuthorizationCustomEndpoint,
@@ -460,6 +499,7 @@ class ProviderArgs {
     this.cloudRunV2CustomEndpoint,
     this.cloudSchedulerCustomEndpoint,
     this.cloudSecurityComplianceCustomEndpoint,
+    this.cloudSupportCustomEndpoint,
     this.cloudTasksCustomEndpoint,
     this.cloudbuildv2CustomEndpoint,
     this.clouddeployCustomEndpoint,
@@ -468,6 +508,7 @@ class ProviderArgs {
     this.colabCustomEndpoint,
     this.composerCustomEndpoint,
     this.computeCustomEndpoint,
+    this.configCustomEndpoint,
     this.contactCenterInsightsCustomEndpoint,
     this.containerAnalysisCustomEndpoint,
     this.containerAttachedCustomEndpoint,
@@ -478,6 +519,7 @@ class ProviderArgs {
     this.credentials,
     this.dataCatalogCustomEndpoint,
     this.dataFusionCustomEndpoint,
+    this.dataLineageCustomEndpoint,
     this.dataLossPreventionCustomEndpoint,
     this.dataPipelineCustomEndpoint,
     this.databaseMigrationServiceCustomEndpoint,
@@ -489,6 +531,7 @@ class ProviderArgs {
     this.dataprocMetastoreCustomEndpoint,
     this.datastreamCustomEndpoint,
     this.defaultLabels,
+    this.deletionPolicy,
     this.deploymentManagerCustomEndpoint,
     this.developerConnectCustomEndpoint,
     this.dialogflowCustomEndpoint,
@@ -512,6 +555,7 @@ class ProviderArgs {
     this.firebaseDatabaseCustomEndpoint,
     this.firebaseExtensionsCustomEndpoint,
     this.firebaseHostingCustomEndpoint,
+    this.firebaseRemoteConfigCustomEndpoint,
     this.firebaseStorageCustomEndpoint,
     this.firebaserulesCustomEndpoint,
     this.firestoreCustomEndpoint,
@@ -522,6 +566,7 @@ class ProviderArgs {
     this.gkeonpremCustomEndpoint,
     this.googlePartnerName,
     this.healthcareCustomEndpoint,
+    this.hypercomputeclusterCustomEndpoint,
     this.iam2CustomEndpoint,
     this.iam3CustomEndpoint,
     this.iamBetaCustomEndpoint,
@@ -535,6 +580,7 @@ class ProviderArgs {
     this.integrationConnectorsCustomEndpoint,
     this.integrationsCustomEndpoint,
     this.kmsCustomEndpoint,
+    this.licenseManagerCustomEndpoint,
     this.loggingCustomEndpoint,
     this.lookerCustomEndpoint,
     this.lustreCustomEndpoint,
@@ -562,6 +608,9 @@ class ProviderArgs {
     this.parallelstoreCustomEndpoint,
     this.parameterManagerCustomEndpoint,
     this.parameterManagerRegionalCustomEndpoint,
+    this.pollInterval,
+    this.preferGlobalEndpoints,
+    this.preferRegionalEndpoints,
     this.privatecaCustomEndpoint,
     this.privilegedAccessManagerCustomEndpoint,
     this.project,
@@ -608,11 +657,13 @@ class ProviderArgs {
     this.transcoderCustomEndpoint,
     this.universeDomain,
     this.userProjectOverride,
+    this.vectorSearchCustomEndpoint,
     this.vertexAiCustomEndpoint,
     this.vmwareengineCustomEndpoint,
     this.vpcAccessCustomEndpoint,
     this.workbenchCustomEndpoint,
     this.workflowsCustomEndpoint,
+    this.workloadIdentityCustomEndpoint,
     this.workstationsCustomEndpoint,
     this.zone,
   });
@@ -624,6 +675,9 @@ class ProviderArgs {
       'accessToken': ?accessToken,
       'activeDirectoryCustomEndpoint': ?activeDirectoryCustomEndpoint,
       'addPulumiAttributionLabel': ?addPulumiAttributionLabel,
+      'agentIdentityCustomEndpoint': ?agentIdentityCustomEndpoint,
+      'agentRegistryCustomEndpoint': ?agentRegistryCustomEndpoint,
+      'agenticApplicationsCustomEndpoint': ?agenticApplicationsCustomEndpoint,
       'alloydbCustomEndpoint': ?alloydbCustomEndpoint,
       'apiGatewayCustomEndpoint': ?apiGatewayCustomEndpoint,
       'apigeeCustomEndpoint': ?apigeeCustomEndpoint,
@@ -638,6 +692,7 @@ class ProviderArgs {
       'beyondcorpCustomEndpoint': ?beyondcorpCustomEndpoint,
       'bigQueryCustomEndpoint': ?bigQueryCustomEndpoint,
       'biglakeCustomEndpoint': ?biglakeCustomEndpoint,
+      'biglakeHiveCustomEndpoint': ?biglakeHiveCustomEndpoint,
       'biglakeIcebergCustomEndpoint': ?biglakeIcebergCustomEndpoint,
       'bigqueryAnalyticsHubCustomEndpoint': ?bigqueryAnalyticsHubCustomEndpoint,
       'bigqueryConnectionCustomEndpoint': ?bigqueryConnectionCustomEndpoint,
@@ -646,6 +701,7 @@ class ProviderArgs {
       'bigqueryDatapolicyv2CustomEndpoint': ?bigqueryDatapolicyv2CustomEndpoint,
       'bigqueryReservationCustomEndpoint': ?bigqueryReservationCustomEndpoint,
       'bigtableCustomEndpoint': ?bigtableCustomEndpoint,
+      'billingBudgetsCustomEndpoint': ?billingBudgetsCustomEndpoint,
       'billingCustomEndpoint': ?billingCustomEndpoint,
       'billingProject': ?billingProject,
       'binaryAuthorizationCustomEndpoint': ?binaryAuthorizationCustomEndpoint,
@@ -665,6 +721,7 @@ class ProviderArgs {
       'cloudRunV2CustomEndpoint': ?cloudRunV2CustomEndpoint,
       'cloudSchedulerCustomEndpoint': ?cloudSchedulerCustomEndpoint,
       'cloudSecurityComplianceCustomEndpoint': ?cloudSecurityComplianceCustomEndpoint,
+      'cloudSupportCustomEndpoint': ?cloudSupportCustomEndpoint,
       'cloudTasksCustomEndpoint': ?cloudTasksCustomEndpoint,
       'cloudbuildv2CustomEndpoint': ?cloudbuildv2CustomEndpoint,
       'clouddeployCustomEndpoint': ?clouddeployCustomEndpoint,
@@ -673,6 +730,7 @@ class ProviderArgs {
       'colabCustomEndpoint': ?colabCustomEndpoint,
       'composerCustomEndpoint': ?composerCustomEndpoint,
       'computeCustomEndpoint': ?computeCustomEndpoint,
+      'configCustomEndpoint': ?configCustomEndpoint,
       'contactCenterInsightsCustomEndpoint': ?contactCenterInsightsCustomEndpoint,
       'containerAnalysisCustomEndpoint': ?containerAnalysisCustomEndpoint,
       'containerAttachedCustomEndpoint': ?containerAttachedCustomEndpoint,
@@ -683,6 +741,7 @@ class ProviderArgs {
       'credentials': ?credentials,
       'dataCatalogCustomEndpoint': ?dataCatalogCustomEndpoint,
       'dataFusionCustomEndpoint': ?dataFusionCustomEndpoint,
+      'dataLineageCustomEndpoint': ?dataLineageCustomEndpoint,
       'dataLossPreventionCustomEndpoint': ?dataLossPreventionCustomEndpoint,
       'dataPipelineCustomEndpoint': ?dataPipelineCustomEndpoint,
       'databaseMigrationServiceCustomEndpoint': ?databaseMigrationServiceCustomEndpoint,
@@ -694,6 +753,7 @@ class ProviderArgs {
       'dataprocMetastoreCustomEndpoint': ?dataprocMetastoreCustomEndpoint,
       'datastreamCustomEndpoint': ?datastreamCustomEndpoint,
       'defaultLabels': ?defaultLabels,
+      'deletionPolicy': ?deletionPolicy,
       'deploymentManagerCustomEndpoint': ?deploymentManagerCustomEndpoint,
       'developerConnectCustomEndpoint': ?developerConnectCustomEndpoint,
       'dialogflowCustomEndpoint': ?dialogflowCustomEndpoint,
@@ -717,6 +777,7 @@ class ProviderArgs {
       'firebaseDatabaseCustomEndpoint': ?firebaseDatabaseCustomEndpoint,
       'firebaseExtensionsCustomEndpoint': ?firebaseExtensionsCustomEndpoint,
       'firebaseHostingCustomEndpoint': ?firebaseHostingCustomEndpoint,
+      'firebaseRemoteConfigCustomEndpoint': ?firebaseRemoteConfigCustomEndpoint,
       'firebaseStorageCustomEndpoint': ?firebaseStorageCustomEndpoint,
       'firebaserulesCustomEndpoint': ?firebaserulesCustomEndpoint,
       'firestoreCustomEndpoint': ?firestoreCustomEndpoint,
@@ -727,6 +788,7 @@ class ProviderArgs {
       'gkeonpremCustomEndpoint': ?gkeonpremCustomEndpoint,
       'googlePartnerName': ?googlePartnerName,
       'healthcareCustomEndpoint': ?healthcareCustomEndpoint,
+      'hypercomputeclusterCustomEndpoint': ?hypercomputeclusterCustomEndpoint,
       'iam2CustomEndpoint': ?iam2CustomEndpoint,
       'iam3CustomEndpoint': ?iam3CustomEndpoint,
       'iamBetaCustomEndpoint': ?iamBetaCustomEndpoint,
@@ -740,6 +802,7 @@ class ProviderArgs {
       'integrationConnectorsCustomEndpoint': ?integrationConnectorsCustomEndpoint,
       'integrationsCustomEndpoint': ?integrationsCustomEndpoint,
       'kmsCustomEndpoint': ?kmsCustomEndpoint,
+      'licenseManagerCustomEndpoint': ?licenseManagerCustomEndpoint,
       'loggingCustomEndpoint': ?loggingCustomEndpoint,
       'lookerCustomEndpoint': ?lookerCustomEndpoint,
       'lustreCustomEndpoint': ?lustreCustomEndpoint,
@@ -767,6 +830,9 @@ class ProviderArgs {
       'parallelstoreCustomEndpoint': ?parallelstoreCustomEndpoint,
       'parameterManagerCustomEndpoint': ?parameterManagerCustomEndpoint,
       'parameterManagerRegionalCustomEndpoint': ?parameterManagerRegionalCustomEndpoint,
+      'pollInterval': ?pollInterval,
+      'preferGlobalEndpoints': ?preferGlobalEndpoints,
+      'preferRegionalEndpoints': ?preferRegionalEndpoints,
       'privatecaCustomEndpoint': ?privatecaCustomEndpoint,
       'privilegedAccessManagerCustomEndpoint': ?privilegedAccessManagerCustomEndpoint,
       'project': ?project,
@@ -813,11 +879,13 @@ class ProviderArgs {
       'transcoderCustomEndpoint': ?transcoderCustomEndpoint,
       'universeDomain': ?universeDomain,
       'userProjectOverride': ?userProjectOverride,
+      'vectorSearchCustomEndpoint': ?vectorSearchCustomEndpoint,
       'vertexAiCustomEndpoint': ?vertexAiCustomEndpoint,
       'vmwareengineCustomEndpoint': ?vmwareengineCustomEndpoint,
       'vpcAccessCustomEndpoint': ?vpcAccessCustomEndpoint,
       'workbenchCustomEndpoint': ?workbenchCustomEndpoint,
       'workflowsCustomEndpoint': ?workflowsCustomEndpoint,
+      'workloadIdentityCustomEndpoint': ?workloadIdentityCustomEndpoint,
       'workstationsCustomEndpoint': ?workstationsCustomEndpoint,
       'zone': ?zone,
     };
@@ -830,6 +898,9 @@ class ProviderArgs {
       accessToken: (() { final guardedValue = map['accessToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       activeDirectoryCustomEndpoint: (() { final guardedValue = map['activeDirectoryCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       addPulumiAttributionLabel: (() { final guardedValue = map['addPulumiAttributionLabel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      agentIdentityCustomEndpoint: (() { final guardedValue = map['agentIdentityCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      agentRegistryCustomEndpoint: (() { final guardedValue = map['agentRegistryCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      agenticApplicationsCustomEndpoint: (() { final guardedValue = map['agenticApplicationsCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       alloydbCustomEndpoint: (() { final guardedValue = map['alloydbCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       apiGatewayCustomEndpoint: (() { final guardedValue = map['apiGatewayCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       apigeeCustomEndpoint: (() { final guardedValue = map['apigeeCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -844,6 +915,7 @@ class ProviderArgs {
       beyondcorpCustomEndpoint: (() { final guardedValue = map['beyondcorpCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bigQueryCustomEndpoint: (() { final guardedValue = map['bigQueryCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       biglakeCustomEndpoint: (() { final guardedValue = map['biglakeCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      biglakeHiveCustomEndpoint: (() { final guardedValue = map['biglakeHiveCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       biglakeIcebergCustomEndpoint: (() { final guardedValue = map['biglakeIcebergCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bigqueryAnalyticsHubCustomEndpoint: (() { final guardedValue = map['bigqueryAnalyticsHubCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bigqueryConnectionCustomEndpoint: (() { final guardedValue = map['bigqueryConnectionCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -852,6 +924,7 @@ class ProviderArgs {
       bigqueryDatapolicyv2CustomEndpoint: (() { final guardedValue = map['bigqueryDatapolicyv2CustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bigqueryReservationCustomEndpoint: (() { final guardedValue = map['bigqueryReservationCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bigtableCustomEndpoint: (() { final guardedValue = map['bigtableCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      billingBudgetsCustomEndpoint: (() { final guardedValue = map['billingBudgetsCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       billingCustomEndpoint: (() { final guardedValue = map['billingCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       billingProject: (() { final guardedValue = map['billingProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       binaryAuthorizationCustomEndpoint: (() { final guardedValue = map['binaryAuthorizationCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -871,6 +944,7 @@ class ProviderArgs {
       cloudRunV2CustomEndpoint: (() { final guardedValue = map['cloudRunV2CustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cloudSchedulerCustomEndpoint: (() { final guardedValue = map['cloudSchedulerCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cloudSecurityComplianceCustomEndpoint: (() { final guardedValue = map['cloudSecurityComplianceCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cloudSupportCustomEndpoint: (() { final guardedValue = map['cloudSupportCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cloudTasksCustomEndpoint: (() { final guardedValue = map['cloudTasksCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cloudbuildv2CustomEndpoint: (() { final guardedValue = map['cloudbuildv2CustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clouddeployCustomEndpoint: (() { final guardedValue = map['clouddeployCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -879,6 +953,7 @@ class ProviderArgs {
       colabCustomEndpoint: (() { final guardedValue = map['colabCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       composerCustomEndpoint: (() { final guardedValue = map['composerCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       computeCustomEndpoint: (() { final guardedValue = map['computeCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      configCustomEndpoint: (() { final guardedValue = map['configCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       contactCenterInsightsCustomEndpoint: (() { final guardedValue = map['contactCenterInsightsCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       containerAnalysisCustomEndpoint: (() { final guardedValue = map['containerAnalysisCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       containerAttachedCustomEndpoint: (() { final guardedValue = map['containerAttachedCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -889,6 +964,7 @@ class ProviderArgs {
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataCatalogCustomEndpoint: (() { final guardedValue = map['dataCatalogCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataFusionCustomEndpoint: (() { final guardedValue = map['dataFusionCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataLineageCustomEndpoint: (() { final guardedValue = map['dataLineageCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataLossPreventionCustomEndpoint: (() { final guardedValue = map['dataLossPreventionCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataPipelineCustomEndpoint: (() { final guardedValue = map['dataPipelineCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       databaseMigrationServiceCustomEndpoint: (() { final guardedValue = map['databaseMigrationServiceCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -900,6 +976,7 @@ class ProviderArgs {
       dataprocMetastoreCustomEndpoint: (() { final guardedValue = map['dataprocMetastoreCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       datastreamCustomEndpoint: (() { final guardedValue = map['datastreamCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultLabels: (() { final guardedValue = map['defaultLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deploymentManagerCustomEndpoint: (() { final guardedValue = map['deploymentManagerCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       developerConnectCustomEndpoint: (() { final guardedValue = map['developerConnectCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dialogflowCustomEndpoint: (() { final guardedValue = map['dialogflowCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -923,6 +1000,7 @@ class ProviderArgs {
       firebaseDatabaseCustomEndpoint: (() { final guardedValue = map['firebaseDatabaseCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firebaseExtensionsCustomEndpoint: (() { final guardedValue = map['firebaseExtensionsCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firebaseHostingCustomEndpoint: (() { final guardedValue = map['firebaseHostingCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      firebaseRemoteConfigCustomEndpoint: (() { final guardedValue = map['firebaseRemoteConfigCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firebaseStorageCustomEndpoint: (() { final guardedValue = map['firebaseStorageCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firebaserulesCustomEndpoint: (() { final guardedValue = map['firebaserulesCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firestoreCustomEndpoint: (() { final guardedValue = map['firestoreCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -933,6 +1011,7 @@ class ProviderArgs {
       gkeonpremCustomEndpoint: (() { final guardedValue = map['gkeonpremCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       googlePartnerName: (() { final guardedValue = map['googlePartnerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       healthcareCustomEndpoint: (() { final guardedValue = map['healthcareCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hypercomputeclusterCustomEndpoint: (() { final guardedValue = map['hypercomputeclusterCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       iam2CustomEndpoint: (() { final guardedValue = map['iam2CustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       iam3CustomEndpoint: (() { final guardedValue = map['iam3CustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       iamBetaCustomEndpoint: (() { final guardedValue = map['iamBetaCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -946,6 +1025,7 @@ class ProviderArgs {
       integrationConnectorsCustomEndpoint: (() { final guardedValue = map['integrationConnectorsCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       integrationsCustomEndpoint: (() { final guardedValue = map['integrationsCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kmsCustomEndpoint: (() { final guardedValue = map['kmsCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      licenseManagerCustomEndpoint: (() { final guardedValue = map['licenseManagerCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loggingCustomEndpoint: (() { final guardedValue = map['loggingCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lookerCustomEndpoint: (() { final guardedValue = map['lookerCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lustreCustomEndpoint: (() { final guardedValue = map['lustreCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -973,6 +1053,9 @@ class ProviderArgs {
       parallelstoreCustomEndpoint: (() { final guardedValue = map['parallelstoreCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameterManagerCustomEndpoint: (() { final guardedValue = map['parameterManagerCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameterManagerRegionalCustomEndpoint: (() { final guardedValue = map['parameterManagerRegionalCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pollInterval: (() { final guardedValue = map['pollInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      preferGlobalEndpoints: (() { final guardedValue = map['preferGlobalEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      preferRegionalEndpoints: (() { final guardedValue = map['preferRegionalEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       privatecaCustomEndpoint: (() { final guardedValue = map['privatecaCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privilegedAccessManagerCustomEndpoint: (() { final guardedValue = map['privilegedAccessManagerCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1019,14 +1102,15 @@ class ProviderArgs {
       transcoderCustomEndpoint: (() { final guardedValue = map['transcoderCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       universeDomain: (() { final guardedValue = map['universeDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userProjectOverride: (() { final guardedValue = map['userProjectOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      vectorSearchCustomEndpoint: (() { final guardedValue = map['vectorSearchCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vertexAiCustomEndpoint: (() { final guardedValue = map['vertexAiCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vmwareengineCustomEndpoint: (() { final guardedValue = map['vmwareengineCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpcAccessCustomEndpoint: (() { final guardedValue = map['vpcAccessCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workbenchCustomEndpoint: (() { final guardedValue = map['workbenchCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workflowsCustomEndpoint: (() { final guardedValue = map['workflowsCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadIdentityCustomEndpoint: (() { final guardedValue = map['workloadIdentityCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workstationsCustomEndpoint: (() { final guardedValue = map['workstationsCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

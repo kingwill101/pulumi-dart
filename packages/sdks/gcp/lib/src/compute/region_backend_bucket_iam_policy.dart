@@ -1,0 +1,2186 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'region_backend_bucket_iam_policy_args.dart';
+import 'region_backend_bucket_iam_policy_state.dart';
+
+/// Three different resources help you manage your IAM policy for Compute Engine RegionBackendBucket. Each of these resources serves a different use case:
+///
+/// * `gcp.compute.RegionBackendBucketIamPolicy`: Authoritative. Sets the IAM policy for the regionbackendbucket and replaces any existing policy already attached.
+/// * `gcp.compute.RegionBackendBucketIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the regionbackendbucket are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.compute.RegionBackendBucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the regionbackendbucket are preserved. Members added outside of Terraform will **not** be detected as drift.
+///
+/// A data source can be used to retrieve policy data in advent you do not need creation
+///
+/// * `gcp.compute.RegionBackendBucketIamPolicy`: Retrieves the IAM policy for the regionbackendbucket
+///
+/// &gt; **Note:** `gcp.compute.RegionBackendBucketIamPolicy` **cannot** be used in conjunction with `gcp.compute.RegionBackendBucketIamBinding` and `gcp.compute.RegionBackendBucketIamMember` or they will fight over what your policy should be.
+///
+/// &gt; **Note:** `gcp.compute.RegionBackendBucketIamBinding` resources **can be** used in conjunction with `gcp.compute.RegionBackendBucketIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
+///
+/// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+/// ## gcp.compute.RegionBackendBucketIamPolicy
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const admin = gcp.organizations.getIAMPolicy({
+///     bindings: [{
+///         role: "roles/compute.admin",
+///         members: ["user:jane@example.com"],
+///     }],
+/// });
+/// const policy = new gcp.compute.RegionBackendBucketIamPolicy("policy", {
+///     project: imageBackend.project,
+///     region: imageBackend.region,
+///     name: imageBackend.name,
+///     policyData: admin.then(admin => admin.policyData),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// admin = gcp.organizations.get_iam_policy(bindings=[{
+///     "role": "roles/compute.admin",
+///     "members": ["user:jane@example.com"],
+/// }])
+/// policy = gcp.compute.RegionBackendBucketIamPolicy("policy",
+///     project=image_backend["project"],
+///     region=image_backend["region"],
+///     name=image_backend["name"],
+///     policy_data=admin.policy_data)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+///     {
+///         Bindings = new[]
+///         {
+///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+///             {
+///                 Role = "roles/compute.admin",
+///                 Members = new[]
+///                 {
+///                     "user:jane@example.com",
+///                 },
+///             },
+///         },
+///     });
+///
+///     var policy = new Gcp.Compute.RegionBackendBucketIamPolicy("policy", new()
+///     {
+///         Project = imageBackend.Project,
+///         Region = imageBackend.Region,
+///         Name = imageBackend.Name,
+///         PolicyData = admin.Apply(getIAMPolicyResult => getIAMPolicyResult.PolicyData),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+/// 			Bindings: []organizations.GetIAMPolicyBinding{
+/// 				{
+/// 					Role: "roles/compute.admin",
+/// 					Members: []string{
+/// 						"user:jane@example.com",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionBackendBucketIamPolicy(ctx, "policy", &compute.RegionBackendBucketIamPolicyArgs{
+/// 			Project:    pulumi.Any(imageBackend.Project),
+/// 			Region:     pulumi.Any(imageBackend.Region),
+/// 			Name:       pulumi.Any(imageBackend.Name),
+/// 			PolicyData: pulumi.String(admin.PolicyData),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/compute.admin"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendbucketiampolicy" "policy" {
+///   project     = imageBackend.project
+///   region      = imageBackend.region
+///   name        = imageBackend.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamPolicy;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+///             .bindings(GetIAMPolicyBindingArgs.builder()
+///                 .role("roles/compute.admin")
+///                 .members("user:jane@example.com")
+///                 .build())
+///             .build());
+///
+///         var policy = new RegionBackendBucketIamPolicy("policy", RegionBackendBucketIamPolicyArgs.builder()
+///             .project(imageBackend.get("project"))
+///             .region(imageBackend.get("region"))
+///             .name(imageBackend.get("name"))
+///             .policyData(admin.policyData())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   policy:
+///     type: gcp:compute:RegionBackendBucketIamPolicy
+///     properties:
+///       project: ${imageBackend.project}
+///       region: ${imageBackend.region}
+///       name: ${imageBackend.name}
+///       policyData: ${admin.policyData}
+/// variables:
+///   admin:
+///     fn::invoke:
+///       function: gcp:organizations:getIAMPolicy
+///       arguments:
+///         bindings:
+///           - role: roles/compute.admin
+///             members:
+///               - user:jane@example.com
+/// ```
+///
+///
+/// With IAM Conditions:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const admin = gcp.organizations.getIAMPolicy({
+///     bindings: [{
+///         role: "roles/compute.admin",
+///         members: ["user:jane@example.com"],
+///         condition: {
+///             title: "expires_after_2019_12_31",
+///             description: "Expiring at midnight of 2019-12-31",
+///             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///         },
+///     }],
+/// });
+/// const policy = new gcp.compute.RegionBackendBucketIamPolicy("policy", {
+///     project: imageBackend.project,
+///     region: imageBackend.region,
+///     name: imageBackend.name,
+///     policyData: admin.then(admin => admin.policyData),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// admin = gcp.organizations.get_iam_policy(bindings=[{
+///     "role": "roles/compute.admin",
+///     "members": ["user:jane@example.com"],
+///     "condition": {
+///         "title": "expires_after_2019_12_31",
+///         "description": "Expiring at midnight of 2019-12-31",
+///         "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     },
+/// }])
+/// policy = gcp.compute.RegionBackendBucketIamPolicy("policy",
+///     project=image_backend["project"],
+///     region=image_backend["region"],
+///     name=image_backend["name"],
+///     policy_data=admin.policy_data)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+///     {
+///         Bindings = new[]
+///         {
+///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+///             {
+///                 Role = "roles/compute.admin",
+///                 Members = new[]
+///                 {
+///                     "user:jane@example.com",
+///                 },
+///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+///                 {
+///                     Title = "expires_after_2019_12_31",
+///                     Description = "Expiring at midnight of 2019-12-31",
+///                     Expression = "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///                 },
+///             },
+///         },
+///     });
+///
+///     var policy = new Gcp.Compute.RegionBackendBucketIamPolicy("policy", new()
+///     {
+///         Project = imageBackend.Project,
+///         Region = imageBackend.Region,
+///         Name = imageBackend.Name,
+///         PolicyData = admin.Apply(getIAMPolicyResult => getIAMPolicyResult.PolicyData),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+/// 			Bindings: []organizations.GetIAMPolicyBinding{
+/// 				{
+/// 					Role: "roles/compute.admin",
+/// 					Members: []string{
+/// 						"user:jane@example.com",
+/// 					},
+/// 					Condition: {
+/// 						Title:       "expires_after_2019_12_31",
+/// 						Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+/// 						Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionBackendBucketIamPolicy(ctx, "policy", &compute.RegionBackendBucketIamPolicyArgs{
+/// 			Project:    pulumi.Any(imageBackend.Project),
+/// 			Region:     pulumi.Any(imageBackend.Region),
+/// 			Name:       pulumi.Any(imageBackend.Name),
+/// 			PolicyData: pulumi.String(admin.PolicyData),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/compute.admin"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendbucketiampolicy" "policy" {
+///   project     = imageBackend.project
+///   region      = imageBackend.region
+///   name        = imageBackend.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamPolicy;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+///             .bindings(GetIAMPolicyBindingArgs.builder()
+///                 .role("roles/compute.admin")
+///                 .members("user:jane@example.com")
+///                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+///                     .title("expires_after_2019_12_31")
+///                     .description("Expiring at midnight of 2019-12-31")
+///                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var policy = new RegionBackendBucketIamPolicy("policy", RegionBackendBucketIamPolicyArgs.builder()
+///             .project(imageBackend.get("project"))
+///             .region(imageBackend.get("region"))
+///             .name(imageBackend.get("name"))
+///             .policyData(admin.policyData())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   policy:
+///     type: gcp:compute:RegionBackendBucketIamPolicy
+///     properties:
+///       project: ${imageBackend.project}
+///       region: ${imageBackend.region}
+///       name: ${imageBackend.name}
+///       policyData: ${admin.policyData}
+/// variables:
+///   admin:
+///     fn::invoke:
+///       function: gcp:organizations:getIAMPolicy
+///       arguments:
+///         bindings:
+///           - role: roles/compute.admin
+///             members:
+///               - user:jane@example.com
+///             condition:
+///               title: expires_after_2019_12_31
+///               description: Expiring at midnight of 2019-12-31
+///               expression: request.time < timestamp("2020-01-01T00:00:00Z")
+/// ```
+///
+/// ## gcp.compute.RegionBackendBucketIamBinding
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const binding = new gcp.compute.RegionBackendBucketIamBinding("binding", {
+///     project: imageBackend.project,
+///     region: imageBackend.region,
+///     name: imageBackend.name,
+///     role: "roles/compute.admin",
+///     members: ["user:jane@example.com"],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// binding = gcp.compute.RegionBackendBucketIamBinding("binding",
+///     project=image_backend["project"],
+///     region=image_backend["region"],
+///     name=image_backend["name"],
+///     role="roles/compute.admin",
+///     members=["user:jane@example.com"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var binding = new Gcp.Compute.RegionBackendBucketIamBinding("binding", new()
+///     {
+///         Project = imageBackend.Project,
+///         Region = imageBackend.Region,
+///         Name = imageBackend.Name,
+///         Role = "roles/compute.admin",
+///         Members = new[]
+///         {
+///             "user:jane@example.com",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewRegionBackendBucketIamBinding(ctx, "binding", &compute.RegionBackendBucketIamBindingArgs{
+/// 			Project: pulumi.Any(imageBackend.Project),
+/// 			Region:  pulumi.Any(imageBackend.Region),
+/// 			Name:    pulumi.Any(imageBackend.Name),
+/// 			Role:    pulumi.String("roles/compute.admin"),
+/// 			Members: pulumi.StringArray{
+/// 				pulumi.String("user:jane@example.com"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendbucketiambinding" "binding" {
+///   project = imageBackend.project
+///   region  = imageBackend.region
+///   name    = imageBackend.name
+///   role    = "roles/compute.admin"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamBinding;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamBindingArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var binding = new RegionBackendBucketIamBinding("binding", RegionBackendBucketIamBindingArgs.builder()
+///             .project(imageBackend.get("project"))
+///             .region(imageBackend.get("region"))
+///             .name(imageBackend.get("name"))
+///             .role("roles/compute.admin")
+///             .members("user:jane@example.com")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   binding:
+///     type: gcp:compute:RegionBackendBucketIamBinding
+///     properties:
+///       project: ${imageBackend.project}
+///       region: ${imageBackend.region}
+///       name: ${imageBackend.name}
+///       role: roles/compute.admin
+///       members:
+///         - user:jane@example.com
+/// ```
+///
+///
+/// With IAM Conditions:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const binding = new gcp.compute.RegionBackendBucketIamBinding("binding", {
+///     project: imageBackend.project,
+///     region: imageBackend.region,
+///     name: imageBackend.name,
+///     role: "roles/compute.admin",
+///     members: ["user:jane@example.com"],
+///     condition: {
+///         title: "expires_after_2019_12_31",
+///         description: "Expiring at midnight of 2019-12-31",
+///         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// binding = gcp.compute.RegionBackendBucketIamBinding("binding",
+///     project=image_backend["project"],
+///     region=image_backend["region"],
+///     name=image_backend["name"],
+///     role="roles/compute.admin",
+///     members=["user:jane@example.com"],
+///     condition={
+///         "title": "expires_after_2019_12_31",
+///         "description": "Expiring at midnight of 2019-12-31",
+///         "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var binding = new Gcp.Compute.RegionBackendBucketIamBinding("binding", new()
+///     {
+///         Project = imageBackend.Project,
+///         Region = imageBackend.Region,
+///         Name = imageBackend.Name,
+///         Role = "roles/compute.admin",
+///         Members = new[]
+///         {
+///             "user:jane@example.com",
+///         },
+///         Condition = new Gcp.Compute.Inputs.RegionBackendBucketIamBindingConditionArgs
+///         {
+///             Title = "expires_after_2019_12_31",
+///             Description = "Expiring at midnight of 2019-12-31",
+///             Expression = "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewRegionBackendBucketIamBinding(ctx, "binding", &compute.RegionBackendBucketIamBindingArgs{
+/// 			Project: pulumi.Any(imageBackend.Project),
+/// 			Region:  pulumi.Any(imageBackend.Region),
+/// 			Name:    pulumi.Any(imageBackend.Name),
+/// 			Role:    pulumi.String("roles/compute.admin"),
+/// 			Members: pulumi.StringArray{
+/// 				pulumi.String("user:jane@example.com"),
+/// 			},
+/// 			Condition: &compute.RegionBackendBucketIamBindingConditionArgs{
+/// 				Title:       pulumi.String("expires_after_2019_12_31"),
+/// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+/// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendbucketiambinding" "binding" {
+///   project = imageBackend.project
+///   region  = imageBackend.region
+///   name    = imageBackend.name
+///   role    = "roles/compute.admin"
+///   members = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamBinding;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamBindingArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendBucketIamBindingConditionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var binding = new RegionBackendBucketIamBinding("binding", RegionBackendBucketIamBindingArgs.builder()
+///             .project(imageBackend.get("project"))
+///             .region(imageBackend.get("region"))
+///             .name(imageBackend.get("name"))
+///             .role("roles/compute.admin")
+///             .members("user:jane@example.com")
+///             .condition(RegionBackendBucketIamBindingConditionArgs.builder()
+///                 .title("expires_after_2019_12_31")
+///                 .description("Expiring at midnight of 2019-12-31")
+///                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   binding:
+///     type: gcp:compute:RegionBackendBucketIamBinding
+///     properties:
+///       project: ${imageBackend.project}
+///       region: ${imageBackend.region}
+///       name: ${imageBackend.name}
+///       role: roles/compute.admin
+///       members:
+///         - user:jane@example.com
+///       condition:
+///         title: expires_after_2019_12_31
+///         description: Expiring at midnight of 2019-12-31
+///         expression: request.time < timestamp("2020-01-01T00:00:00Z")
+/// ```
+///
+/// ## gcp.compute.RegionBackendBucketIamMember
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const member = new gcp.compute.RegionBackendBucketIamMember("member", {
+///     project: imageBackend.project,
+///     region: imageBackend.region,
+///     name: imageBackend.name,
+///     role: "roles/compute.admin",
+///     member: "user:jane@example.com",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// member = gcp.compute.RegionBackendBucketIamMember("member",
+///     project=image_backend["project"],
+///     region=image_backend["region"],
+///     name=image_backend["name"],
+///     role="roles/compute.admin",
+///     member="user:jane@example.com")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var member = new Gcp.Compute.RegionBackendBucketIamMember("member", new()
+///     {
+///         Project = imageBackend.Project,
+///         Region = imageBackend.Region,
+///         Name = imageBackend.Name,
+///         Role = "roles/compute.admin",
+///         Member = "user:jane@example.com",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewRegionBackendBucketIamMember(ctx, "member", &compute.RegionBackendBucketIamMemberArgs{
+/// 			Project: pulumi.Any(imageBackend.Project),
+/// 			Region:  pulumi.Any(imageBackend.Region),
+/// 			Name:    pulumi.Any(imageBackend.Name),
+/// 			Role:    pulumi.String("roles/compute.admin"),
+/// 			Member:  pulumi.String("user:jane@example.com"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendbucketiammember" "member" {
+///   project = imageBackend.project
+///   region  = imageBackend.region
+///   name    = imageBackend.name
+///   role    = "roles/compute.admin"
+///   member  = "user:jane@example.com"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamMember;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamMemberArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var member = new RegionBackendBucketIamMember("member", RegionBackendBucketIamMemberArgs.builder()
+///             .project(imageBackend.get("project"))
+///             .region(imageBackend.get("region"))
+///             .name(imageBackend.get("name"))
+///             .role("roles/compute.admin")
+///             .member("user:jane@example.com")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   member:
+///     type: gcp:compute:RegionBackendBucketIamMember
+///     properties:
+///       project: ${imageBackend.project}
+///       region: ${imageBackend.region}
+///       name: ${imageBackend.name}
+///       role: roles/compute.admin
+///       member: user:jane@example.com
+/// ```
+///
+///
+/// With IAM Conditions:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const member = new gcp.compute.RegionBackendBucketIamMember("member", {
+///     project: imageBackend.project,
+///     region: imageBackend.region,
+///     name: imageBackend.name,
+///     role: "roles/compute.admin",
+///     member: "user:jane@example.com",
+///     condition: {
+///         title: "expires_after_2019_12_31",
+///         description: "Expiring at midnight of 2019-12-31",
+///         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// member = gcp.compute.RegionBackendBucketIamMember("member",
+///     project=image_backend["project"],
+///     region=image_backend["region"],
+///     name=image_backend["name"],
+///     role="roles/compute.admin",
+///     member="user:jane@example.com",
+///     condition={
+///         "title": "expires_after_2019_12_31",
+///         "description": "Expiring at midnight of 2019-12-31",
+///         "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var member = new Gcp.Compute.RegionBackendBucketIamMember("member", new()
+///     {
+///         Project = imageBackend.Project,
+///         Region = imageBackend.Region,
+///         Name = imageBackend.Name,
+///         Role = "roles/compute.admin",
+///         Member = "user:jane@example.com",
+///         Condition = new Gcp.Compute.Inputs.RegionBackendBucketIamMemberConditionArgs
+///         {
+///             Title = "expires_after_2019_12_31",
+///             Description = "Expiring at midnight of 2019-12-31",
+///             Expression = "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewRegionBackendBucketIamMember(ctx, "member", &compute.RegionBackendBucketIamMemberArgs{
+/// 			Project: pulumi.Any(imageBackend.Project),
+/// 			Region:  pulumi.Any(imageBackend.Region),
+/// 			Name:    pulumi.Any(imageBackend.Name),
+/// 			Role:    pulumi.String("roles/compute.admin"),
+/// 			Member:  pulumi.String("user:jane@example.com"),
+/// 			Condition: &compute.RegionBackendBucketIamMemberConditionArgs{
+/// 				Title:       pulumi.String("expires_after_2019_12_31"),
+/// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+/// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendbucketiammember" "member" {
+///   project = imageBackend.project
+///   region  = imageBackend.region
+///   name    = imageBackend.name
+///   role    = "roles/compute.admin"
+///   member  = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamMember;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamMemberArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendBucketIamMemberConditionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var member = new RegionBackendBucketIamMember("member", RegionBackendBucketIamMemberArgs.builder()
+///             .project(imageBackend.get("project"))
+///             .region(imageBackend.get("region"))
+///             .name(imageBackend.get("name"))
+///             .role("roles/compute.admin")
+///             .member("user:jane@example.com")
+///             .condition(RegionBackendBucketIamMemberConditionArgs.builder()
+///                 .title("expires_after_2019_12_31")
+///                 .description("Expiring at midnight of 2019-12-31")
+///                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   member:
+///     type: gcp:compute:RegionBackendBucketIamMember
+///     properties:
+///       project: ${imageBackend.project}
+///       region: ${imageBackend.region}
+///       name: ${imageBackend.name}
+///       role: roles/compute.admin
+///       member: user:jane@example.com
+///       condition:
+///         title: expires_after_2019_12_31
+///         description: Expiring at midnight of 2019-12-31
+///         expression: request.time < timestamp("2020-01-01T00:00:00Z")
+/// ```
+///
+///
+/// ## This resource supports User Project Overrides.
+///
+/// -
+///
+/// # IAM policy for Compute Engine RegionBackendBucket
+///
+/// Three different resources help you manage your IAM policy for Compute Engine RegionBackendBucket. Each of these resources serves a different use case:
+///
+/// * `gcp.compute.RegionBackendBucketIamPolicy`: Authoritative. Sets the IAM policy for the regionbackendbucket and replaces any existing policy already attached.
+/// * `gcp.compute.RegionBackendBucketIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the regionbackendbucket are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.compute.RegionBackendBucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the regionbackendbucket are preserved. Members added outside of Terraform will **not** be detected as drift.
+///
+/// A data source can be used to retrieve policy data in advent you do not need creation
+///
+/// * `gcp.compute.RegionBackendBucketIamPolicy`: Retrieves the IAM policy for the regionbackendbucket
+///
+/// &gt; **Note:** `gcp.compute.RegionBackendBucketIamPolicy` **cannot** be used in conjunction with `gcp.compute.RegionBackendBucketIamBinding` and `gcp.compute.RegionBackendBucketIamMember` or they will fight over what your policy should be.
+///
+/// &gt; **Note:** `gcp.compute.RegionBackendBucketIamBinding` resources **can be** used in conjunction with `gcp.compute.RegionBackendBucketIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
+///
+/// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+/// ## gcp.compute.RegionBackendBucketIamPolicy
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const admin = gcp.organizations.getIAMPolicy({
+///     bindings: [{
+///         role: "roles/compute.admin",
+///         members: ["user:jane@example.com"],
+///     }],
+/// });
+/// const policy = new gcp.compute.RegionBackendBucketIamPolicy("policy", {
+///     project: imageBackend.project,
+///     region: imageBackend.region,
+///     name: imageBackend.name,
+///     policyData: admin.then(admin => admin.policyData),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// admin = gcp.organizations.get_iam_policy(bindings=[{
+///     "role": "roles/compute.admin",
+///     "members": ["user:jane@example.com"],
+/// }])
+/// policy = gcp.compute.RegionBackendBucketIamPolicy("policy",
+///     project=image_backend["project"],
+///     region=image_backend["region"],
+///     name=image_backend["name"],
+///     policy_data=admin.policy_data)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+///     {
+///         Bindings = new[]
+///         {
+///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+///             {
+///                 Role = "roles/compute.admin",
+///                 Members = new[]
+///                 {
+///                     "user:jane@example.com",
+///                 },
+///             },
+///         },
+///     });
+///
+///     var policy = new Gcp.Compute.RegionBackendBucketIamPolicy("policy", new()
+///     {
+///         Project = imageBackend.Project,
+///         Region = imageBackend.Region,
+///         Name = imageBackend.Name,
+///         PolicyData = admin.Apply(getIAMPolicyResult => getIAMPolicyResult.PolicyData),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+/// 			Bindings: []organizations.GetIAMPolicyBinding{
+/// 				{
+/// 					Role: "roles/compute.admin",
+/// 					Members: []string{
+/// 						"user:jane@example.com",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionBackendBucketIamPolicy(ctx, "policy", &compute.RegionBackendBucketIamPolicyArgs{
+/// 			Project:    pulumi.Any(imageBackend.Project),
+/// 			Region:     pulumi.Any(imageBackend.Region),
+/// 			Name:       pulumi.Any(imageBackend.Name),
+/// 			PolicyData: pulumi.String(admin.PolicyData),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/compute.admin"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendbucketiampolicy" "policy" {
+///   project     = imageBackend.project
+///   region      = imageBackend.region
+///   name        = imageBackend.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamPolicy;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+///             .bindings(GetIAMPolicyBindingArgs.builder()
+///                 .role("roles/compute.admin")
+///                 .members("user:jane@example.com")
+///                 .build())
+///             .build());
+///
+///         var policy = new RegionBackendBucketIamPolicy("policy", RegionBackendBucketIamPolicyArgs.builder()
+///             .project(imageBackend.get("project"))
+///             .region(imageBackend.get("region"))
+///             .name(imageBackend.get("name"))
+///             .policyData(admin.policyData())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   policy:
+///     type: gcp:compute:RegionBackendBucketIamPolicy
+///     properties:
+///       project: ${imageBackend.project}
+///       region: ${imageBackend.region}
+///       name: ${imageBackend.name}
+///       policyData: ${admin.policyData}
+/// variables:
+///   admin:
+///     fn::invoke:
+///       function: gcp:organizations:getIAMPolicy
+///       arguments:
+///         bindings:
+///           - role: roles/compute.admin
+///             members:
+///               - user:jane@example.com
+/// ```
+///
+///
+/// With IAM Conditions:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const admin = gcp.organizations.getIAMPolicy({
+///     bindings: [{
+///         role: "roles/compute.admin",
+///         members: ["user:jane@example.com"],
+///         condition: {
+///             title: "expires_after_2019_12_31",
+///             description: "Expiring at midnight of 2019-12-31",
+///             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///         },
+///     }],
+/// });
+/// const policy = new gcp.compute.RegionBackendBucketIamPolicy("policy", {
+///     project: imageBackend.project,
+///     region: imageBackend.region,
+///     name: imageBackend.name,
+///     policyData: admin.then(admin => admin.policyData),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// admin = gcp.organizations.get_iam_policy(bindings=[{
+///     "role": "roles/compute.admin",
+///     "members": ["user:jane@example.com"],
+///     "condition": {
+///         "title": "expires_after_2019_12_31",
+///         "description": "Expiring at midnight of 2019-12-31",
+///         "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     },
+/// }])
+/// policy = gcp.compute.RegionBackendBucketIamPolicy("policy",
+///     project=image_backend["project"],
+///     region=image_backend["region"],
+///     name=image_backend["name"],
+///     policy_data=admin.policy_data)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+///     {
+///         Bindings = new[]
+///         {
+///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+///             {
+///                 Role = "roles/compute.admin",
+///                 Members = new[]
+///                 {
+///                     "user:jane@example.com",
+///                 },
+///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+///                 {
+///                     Title = "expires_after_2019_12_31",
+///                     Description = "Expiring at midnight of 2019-12-31",
+///                     Expression = "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///                 },
+///             },
+///         },
+///     });
+///
+///     var policy = new Gcp.Compute.RegionBackendBucketIamPolicy("policy", new()
+///     {
+///         Project = imageBackend.Project,
+///         Region = imageBackend.Region,
+///         Name = imageBackend.Name,
+///         PolicyData = admin.Apply(getIAMPolicyResult => getIAMPolicyResult.PolicyData),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+/// 			Bindings: []organizations.GetIAMPolicyBinding{
+/// 				{
+/// 					Role: "roles/compute.admin",
+/// 					Members: []string{
+/// 						"user:jane@example.com",
+/// 					},
+/// 					Condition: {
+/// 						Title:       "expires_after_2019_12_31",
+/// 						Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+/// 						Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionBackendBucketIamPolicy(ctx, "policy", &compute.RegionBackendBucketIamPolicyArgs{
+/// 			Project:    pulumi.Any(imageBackend.Project),
+/// 			Region:     pulumi.Any(imageBackend.Region),
+/// 			Name:       pulumi.Any(imageBackend.Name),
+/// 			PolicyData: pulumi.String(admin.PolicyData),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/compute.admin"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendbucketiampolicy" "policy" {
+///   project     = imageBackend.project
+///   region      = imageBackend.region
+///   name        = imageBackend.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamPolicy;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+///             .bindings(GetIAMPolicyBindingArgs.builder()
+///                 .role("roles/compute.admin")
+///                 .members("user:jane@example.com")
+///                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+///                     .title("expires_after_2019_12_31")
+///                     .description("Expiring at midnight of 2019-12-31")
+///                     .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var policy = new RegionBackendBucketIamPolicy("policy", RegionBackendBucketIamPolicyArgs.builder()
+///             .project(imageBackend.get("project"))
+///             .region(imageBackend.get("region"))
+///             .name(imageBackend.get("name"))
+///             .policyData(admin.policyData())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   policy:
+///     type: gcp:compute:RegionBackendBucketIamPolicy
+///     properties:
+///       project: ${imageBackend.project}
+///       region: ${imageBackend.region}
+///       name: ${imageBackend.name}
+///       policyData: ${admin.policyData}
+/// variables:
+///   admin:
+///     fn::invoke:
+///       function: gcp:organizations:getIAMPolicy
+///       arguments:
+///         bindings:
+///           - role: roles/compute.admin
+///             members:
+///               - user:jane@example.com
+///             condition:
+///               title: expires_after_2019_12_31
+///               description: Expiring at midnight of 2019-12-31
+///               expression: request.time < timestamp("2020-01-01T00:00:00Z")
+/// ```
+///
+/// ## gcp.compute.RegionBackendBucketIamBinding
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const binding = new gcp.compute.RegionBackendBucketIamBinding("binding", {
+///     project: imageBackend.project,
+///     region: imageBackend.region,
+///     name: imageBackend.name,
+///     role: "roles/compute.admin",
+///     members: ["user:jane@example.com"],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// binding = gcp.compute.RegionBackendBucketIamBinding("binding",
+///     project=image_backend["project"],
+///     region=image_backend["region"],
+///     name=image_backend["name"],
+///     role="roles/compute.admin",
+///     members=["user:jane@example.com"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var binding = new Gcp.Compute.RegionBackendBucketIamBinding("binding", new()
+///     {
+///         Project = imageBackend.Project,
+///         Region = imageBackend.Region,
+///         Name = imageBackend.Name,
+///         Role = "roles/compute.admin",
+///         Members = new[]
+///         {
+///             "user:jane@example.com",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewRegionBackendBucketIamBinding(ctx, "binding", &compute.RegionBackendBucketIamBindingArgs{
+/// 			Project: pulumi.Any(imageBackend.Project),
+/// 			Region:  pulumi.Any(imageBackend.Region),
+/// 			Name:    pulumi.Any(imageBackend.Name),
+/// 			Role:    pulumi.String("roles/compute.admin"),
+/// 			Members: pulumi.StringArray{
+/// 				pulumi.String("user:jane@example.com"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendbucketiambinding" "binding" {
+///   project = imageBackend.project
+///   region  = imageBackend.region
+///   name    = imageBackend.name
+///   role    = "roles/compute.admin"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamBinding;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamBindingArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var binding = new RegionBackendBucketIamBinding("binding", RegionBackendBucketIamBindingArgs.builder()
+///             .project(imageBackend.get("project"))
+///             .region(imageBackend.get("region"))
+///             .name(imageBackend.get("name"))
+///             .role("roles/compute.admin")
+///             .members("user:jane@example.com")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   binding:
+///     type: gcp:compute:RegionBackendBucketIamBinding
+///     properties:
+///       project: ${imageBackend.project}
+///       region: ${imageBackend.region}
+///       name: ${imageBackend.name}
+///       role: roles/compute.admin
+///       members:
+///         - user:jane@example.com
+/// ```
+///
+///
+/// With IAM Conditions:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const binding = new gcp.compute.RegionBackendBucketIamBinding("binding", {
+///     project: imageBackend.project,
+///     region: imageBackend.region,
+///     name: imageBackend.name,
+///     role: "roles/compute.admin",
+///     members: ["user:jane@example.com"],
+///     condition: {
+///         title: "expires_after_2019_12_31",
+///         description: "Expiring at midnight of 2019-12-31",
+///         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// binding = gcp.compute.RegionBackendBucketIamBinding("binding",
+///     project=image_backend["project"],
+///     region=image_backend["region"],
+///     name=image_backend["name"],
+///     role="roles/compute.admin",
+///     members=["user:jane@example.com"],
+///     condition={
+///         "title": "expires_after_2019_12_31",
+///         "description": "Expiring at midnight of 2019-12-31",
+///         "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var binding = new Gcp.Compute.RegionBackendBucketIamBinding("binding", new()
+///     {
+///         Project = imageBackend.Project,
+///         Region = imageBackend.Region,
+///         Name = imageBackend.Name,
+///         Role = "roles/compute.admin",
+///         Members = new[]
+///         {
+///             "user:jane@example.com",
+///         },
+///         Condition = new Gcp.Compute.Inputs.RegionBackendBucketIamBindingConditionArgs
+///         {
+///             Title = "expires_after_2019_12_31",
+///             Description = "Expiring at midnight of 2019-12-31",
+///             Expression = "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewRegionBackendBucketIamBinding(ctx, "binding", &compute.RegionBackendBucketIamBindingArgs{
+/// 			Project: pulumi.Any(imageBackend.Project),
+/// 			Region:  pulumi.Any(imageBackend.Region),
+/// 			Name:    pulumi.Any(imageBackend.Name),
+/// 			Role:    pulumi.String("roles/compute.admin"),
+/// 			Members: pulumi.StringArray{
+/// 				pulumi.String("user:jane@example.com"),
+/// 			},
+/// 			Condition: &compute.RegionBackendBucketIamBindingConditionArgs{
+/// 				Title:       pulumi.String("expires_after_2019_12_31"),
+/// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+/// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendbucketiambinding" "binding" {
+///   project = imageBackend.project
+///   region  = imageBackend.region
+///   name    = imageBackend.name
+///   role    = "roles/compute.admin"
+///   members = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamBinding;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamBindingArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendBucketIamBindingConditionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var binding = new RegionBackendBucketIamBinding("binding", RegionBackendBucketIamBindingArgs.builder()
+///             .project(imageBackend.get("project"))
+///             .region(imageBackend.get("region"))
+///             .name(imageBackend.get("name"))
+///             .role("roles/compute.admin")
+///             .members("user:jane@example.com")
+///             .condition(RegionBackendBucketIamBindingConditionArgs.builder()
+///                 .title("expires_after_2019_12_31")
+///                 .description("Expiring at midnight of 2019-12-31")
+///                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   binding:
+///     type: gcp:compute:RegionBackendBucketIamBinding
+///     properties:
+///       project: ${imageBackend.project}
+///       region: ${imageBackend.region}
+///       name: ${imageBackend.name}
+///       role: roles/compute.admin
+///       members:
+///         - user:jane@example.com
+///       condition:
+///         title: expires_after_2019_12_31
+///         description: Expiring at midnight of 2019-12-31
+///         expression: request.time < timestamp("2020-01-01T00:00:00Z")
+/// ```
+///
+/// ## gcp.compute.RegionBackendBucketIamMember
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const member = new gcp.compute.RegionBackendBucketIamMember("member", {
+///     project: imageBackend.project,
+///     region: imageBackend.region,
+///     name: imageBackend.name,
+///     role: "roles/compute.admin",
+///     member: "user:jane@example.com",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// member = gcp.compute.RegionBackendBucketIamMember("member",
+///     project=image_backend["project"],
+///     region=image_backend["region"],
+///     name=image_backend["name"],
+///     role="roles/compute.admin",
+///     member="user:jane@example.com")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var member = new Gcp.Compute.RegionBackendBucketIamMember("member", new()
+///     {
+///         Project = imageBackend.Project,
+///         Region = imageBackend.Region,
+///         Name = imageBackend.Name,
+///         Role = "roles/compute.admin",
+///         Member = "user:jane@example.com",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewRegionBackendBucketIamMember(ctx, "member", &compute.RegionBackendBucketIamMemberArgs{
+/// 			Project: pulumi.Any(imageBackend.Project),
+/// 			Region:  pulumi.Any(imageBackend.Region),
+/// 			Name:    pulumi.Any(imageBackend.Name),
+/// 			Role:    pulumi.String("roles/compute.admin"),
+/// 			Member:  pulumi.String("user:jane@example.com"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendbucketiammember" "member" {
+///   project = imageBackend.project
+///   region  = imageBackend.region
+///   name    = imageBackend.name
+///   role    = "roles/compute.admin"
+///   member  = "user:jane@example.com"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamMember;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamMemberArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var member = new RegionBackendBucketIamMember("member", RegionBackendBucketIamMemberArgs.builder()
+///             .project(imageBackend.get("project"))
+///             .region(imageBackend.get("region"))
+///             .name(imageBackend.get("name"))
+///             .role("roles/compute.admin")
+///             .member("user:jane@example.com")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   member:
+///     type: gcp:compute:RegionBackendBucketIamMember
+///     properties:
+///       project: ${imageBackend.project}
+///       region: ${imageBackend.region}
+///       name: ${imageBackend.name}
+///       role: roles/compute.admin
+///       member: user:jane@example.com
+/// ```
+///
+///
+/// With IAM Conditions:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const member = new gcp.compute.RegionBackendBucketIamMember("member", {
+///     project: imageBackend.project,
+///     region: imageBackend.region,
+///     name: imageBackend.name,
+///     role: "roles/compute.admin",
+///     member: "user:jane@example.com",
+///     condition: {
+///         title: "expires_after_2019_12_31",
+///         description: "Expiring at midnight of 2019-12-31",
+///         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// member = gcp.compute.RegionBackendBucketIamMember("member",
+///     project=image_backend["project"],
+///     region=image_backend["region"],
+///     name=image_backend["name"],
+///     role="roles/compute.admin",
+///     member="user:jane@example.com",
+///     condition={
+///         "title": "expires_after_2019_12_31",
+///         "description": "Expiring at midnight of 2019-12-31",
+///         "expression": "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var member = new Gcp.Compute.RegionBackendBucketIamMember("member", new()
+///     {
+///         Project = imageBackend.Project,
+///         Region = imageBackend.Region,
+///         Name = imageBackend.Name,
+///         Role = "roles/compute.admin",
+///         Member = "user:jane@example.com",
+///         Condition = new Gcp.Compute.Inputs.RegionBackendBucketIamMemberConditionArgs
+///         {
+///             Title = "expires_after_2019_12_31",
+///             Description = "Expiring at midnight of 2019-12-31",
+///             Expression = "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewRegionBackendBucketIamMember(ctx, "member", &compute.RegionBackendBucketIamMemberArgs{
+/// 			Project: pulumi.Any(imageBackend.Project),
+/// 			Region:  pulumi.Any(imageBackend.Region),
+/// 			Name:    pulumi.Any(imageBackend.Name),
+/// 			Role:    pulumi.String("roles/compute.admin"),
+/// 			Member:  pulumi.String("user:jane@example.com"),
+/// 			Condition: &compute.RegionBackendBucketIamMemberConditionArgs{
+/// 				Title:       pulumi.String("expires_after_2019_12_31"),
+/// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+/// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regionbackendbucketiammember" "member" {
+///   project = imageBackend.project
+///   region  = imageBackend.region
+///   name    = imageBackend.name
+///   role    = "roles/compute.admin"
+///   member  = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamMember;
+/// import com.pulumi.gcp.compute.RegionBackendBucketIamMemberArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionBackendBucketIamMemberConditionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var member = new RegionBackendBucketIamMember("member", RegionBackendBucketIamMemberArgs.builder()
+///             .project(imageBackend.get("project"))
+///             .region(imageBackend.get("region"))
+///             .name(imageBackend.get("name"))
+///             .role("roles/compute.admin")
+///             .member("user:jane@example.com")
+///             .condition(RegionBackendBucketIamMemberConditionArgs.builder()
+///                 .title("expires_after_2019_12_31")
+///                 .description("Expiring at midnight of 2019-12-31")
+///                 .expression("request.time < timestamp(\"2020-01-01T00:00:00Z\")")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   member:
+///     type: gcp:compute:RegionBackendBucketIamMember
+///     properties:
+///       project: ${imageBackend.project}
+///       region: ${imageBackend.region}
+///       name: ${imageBackend.name}
+///       role: roles/compute.admin
+///       member: user:jane@example.com
+///       condition:
+///         title: expires_after_2019_12_31
+///         description: Expiring at midnight of 2019-12-31
+///         expression: request.time < timestamp("2020-01-01T00:00:00Z")
+/// ```
+///
+///
+/// ## Import
+///
+/// For all import syntaxes, the "resource in question" can take any of the following forms:
+///
+/// * projects/{{project}}/regions/{{region}}/backendBuckets/{{name}}
+/// * {{project}}/{{region}}/{{name}}
+/// * {{region}}/{{name}}
+/// * {{name}}
+///
+/// Any variables not passed in the import command will be taken from the provider configuration.
+///
+/// Compute Engine regionbackendbucket IAM resources can be imported using the resource identifiers, role, and member.
+///
+/// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
+/// ```sh
+/// $ terraform import google_compute_region_backend_bucket_iam_member.editor "projects/{{project}}/regions/{{region}}/backendBuckets/{{region_backend_bucket}} roles/compute.admin user:jane@example.com"
+/// ```
+///
+/// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
+/// ```sh
+/// $ terraform import google_compute_region_backend_bucket_iam_binding.editor "projects/{{project}}/regions/{{region}}/backendBuckets/{{region_backend_bucket}} roles/compute.admin"
+/// ```
+///
+/// IAM policy imports use the identifier of the resource in question, e.g.
+/// ```sh
+/// $ pulumi import gcp:compute/regionBackendBucketIamPolicy:RegionBackendBucketIamPolicy editor projects/{{project}}/regions/{{region}}/backendBuckets/{{region_backend_bucket}}
+/// ```
+///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+class RegionBackendBucketIamPolicy extends pulumi.CustomResource {
+  /// (Computed) The etag of the IAM policy.
+  late final pulumi.Output<String> etag;
+  /// Used to find the parent resource to bind the IAM policy to
+  late final pulumi.Output<String> name;
+  /// The policy data generated by
+  /// a `gcp.organizations.getIAMPolicy` data source.
+  late final pulumi.Output<String> policyData;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+  late final pulumi.Output<String> project;
+  /// The region where the backend bucket resides.
+  /// Used to find the parent resource to bind the IAM policy to. If not specified,
+  /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+  /// region is specified, it is taken from the provider configuration.
+  late final pulumi.Output<String> region;
+
+  /// Creates a new [RegionBackendBucketIamPolicy].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [RegionBackendBucketIamPolicy]. {@macro pulumi_compute_region_backend_bucket_iam_policy_region_backend_bucket_iam_policy_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  RegionBackendBucketIamPolicy(
+    String name, {
+    RegionBackendBucketIamPolicyArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:compute/regionBackendBucketIamPolicy:RegionBackendBucketIamPolicy',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Gets an existing [RegionBackendBucketIamPolicy] resource's state with the given [name] and [id].
+  static RegionBackendBucketIamPolicy get(
+    String name,
+    pulumi.Input<String> id, {
+    RegionBackendBucketIamPolicyState? state,
+  }) {
+    return RegionBackendBucketIamPolicy._get(
+      name,
+      state: state?.toMap(),
+      options: pulumi.CustomResourceOptions(id: id),
+    );
+  }
+
+  RegionBackendBucketIamPolicy._get(
+    String name, {
+    Map<String, dynamic>? state,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:compute/regionBackendBucketIamPolicy:RegionBackendBucketIamPolicy',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+}

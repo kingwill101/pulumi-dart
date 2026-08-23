@@ -224,7 +224,7 @@ import 'cx_intent_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxIntent(ctx, "basic_intent", &diagflow.CxIntentArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("Example"),
 /// 			Priority:    pulumi.Int(1),
 /// 			Description: pulumi.String("Intent example"),
@@ -262,6 +262,56 @@ import 'cx_intent_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name               = "dialogflowcx-agent"
+///   location                   = "global"
+///   default_language_code      = "en"
+///   supported_language_codes   = ["fr", "de", "es"]
+///   time_zone                  = "America/New_York"
+///   description                = "Example description."
+///   avatar_uri                 = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"
+///   enable_stackdriver_logging = true
+///   enable_spell_correction    = true
+///   speech_to_text_settings = {
+///     enable_speech_adaptation = true
+///   }
+/// }
+/// resource "gcp_diagflow_cxintent" "basic_intent" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "Example"
+///   priority     = 1
+///   description  = "Intent example"
+///   training_phrases {
+///     parts {
+///       text = "training"
+///     }
+///     parts {
+///       text = "phrase"
+///     }
+///     parts {
+///       text = "example"
+///     }
+///     repeat_count = 1
+///   }
+///   parameters {
+///     id          = "param1"
+///     entity_type = "projects/-/locations/-/agents/-/entityTypes/sys.date"
+///   }
+///   labels = {
+///     "label1" = "value1"
+///     "label2" = "value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -274,9 +324,10 @@ import 'cx_intent_state.dart';
 /// import com.pulumi.gcp.diagflow.CxIntent;
 /// import com.pulumi.gcp.diagflow.CxIntentArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxIntentTrainingPhraseArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxIntentTrainingPhrasePartArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxIntentParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -384,19 +435,23 @@ import 'cx_intent_state.dart';
 /// Intent can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/intents/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/intents/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/{{name}}
 /// ```
 class CxIntent extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
   late final pulumi.Output<String?> description;
   /// The human-readable name of the intent, unique within the agent.
@@ -406,23 +461,23 @@ class CxIntent extends pulumi.CustomResource {
   /// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
   /// The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
   ///
-  /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+  /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `isDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
   late final pulumi.Output<bool?> isDefaultNegativeIntent;
   /// Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
   /// The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
   ///
-  /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+  /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `isDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
   late final pulumi.Output<bool?> isDefaultWelcomeIntent;
   /// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
   /// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
-  /// To manage the fallback intent, set `is_default_negative_intent = true`
+  /// To manage the fallback intent, set `isDefaultNegativeIntent = true`
   late final pulumi.Output<bool?> isFallback;
   /// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
   /// Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The language of the following fields in intent:
   /// Intent.training_phrases.parts.text
@@ -462,6 +517,7 @@ class CxIntent extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -501,6 +557,7 @@ class CxIntent extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

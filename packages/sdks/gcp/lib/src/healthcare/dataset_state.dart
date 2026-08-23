@@ -5,6 +5,13 @@ import 'dataset_encryption_spec.dart';
 
 /// Input properties used for looking up and filtering Dataset resources.
 class DatasetState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A nested object resource.
   /// Structure is documented below.
   final pulumi.Input<DatasetEncryptionSpec>? encryptionSpec;
@@ -23,6 +30,7 @@ class DatasetState {
   final pulumi.Input<String>? timeZone;
 
   /// Creates a new [DatasetState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [encryptionSpec] A nested object resource.
   /// [location] The location for the Dataset.
   /// [name] The resource name for the Dataset.
@@ -30,6 +38,7 @@ class DatasetState {
   /// [selfLink] The fully qualified name of this dataset
   /// [timeZone] The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
   const DatasetState({
+    this.deletionPolicy,
     this.encryptionSpec,
     this.location,
     this.name,
@@ -40,6 +49,7 @@ class DatasetState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<DatasetEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
@@ -51,6 +61,7 @@ class DatasetState {
 
   factory DatasetState.fromMap(Map<String, dynamic> map) {
     return DatasetState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptionSpec: (() { final guardedValue = map['encryptionSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -60,4 +71,3 @@ class DatasetState {
     );
   }
 }
-

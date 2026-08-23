@@ -57,3 +57,7 @@ export 'bigqueryanalyticshub/listing_subscription_destination_dataset_dataset_re
 export 'bigqueryanalyticshub/listing_subscription_linked_dataset_map.dart';
 export 'bigqueryanalyticshub/listing_subscription_linked_resource.dart';
 export 'bigqueryanalyticshub/listing_subscription_state.dart';
+export 'bigqueryanalyticshub/query_template.dart';
+export 'bigqueryanalyticshub/query_template_args.dart';
+export 'bigqueryanalyticshub/query_template_routine.dart';
+export 'bigqueryanalyticshub/query_template_state.dart';

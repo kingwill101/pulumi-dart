@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountJwtArgs {
   /// Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.
   final pulumi.Input<List<String>>? delegates;
-  /// Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+  /// Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expiresIn seconds.
   final pulumi.Input<int>? expiresIn;
   /// The JSON-encoded JWT claims set to include in the self-signed JWT.
   final pulumi.Input<String> payload;
@@ -18,7 +18,7 @@ class GetAccountJwtArgs {
 
   /// Creates a new [GetAccountJwtArgs].
   /// [delegates] Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.
-  /// [expiresIn] Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
+  /// [expiresIn] Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expiresIn seconds.
   /// [payload] The JSON-encoded JWT claims set to include in the self-signed JWT.
   /// [targetServiceAccount] The email of the service account that will sign the JWT.
   const GetAccountJwtArgs({
@@ -46,4 +46,3 @@ class GetAccountJwtArgs {
     );
   }
 }
-

@@ -6,6 +6,13 @@ import 'metric_descriptor_metadata.dart';
 
 /// Input properties used for looking up and filtering MetricDescriptor resources.
 class MetricDescriptorState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A detailed description of the metric, which can be used in documentation.
   final pulumi.Input<String>? description;
   /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
@@ -29,7 +36,7 @@ class MetricDescriptorState {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-  /// The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
+  /// The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relativeMetricName is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
   final pulumi.Input<String>? type;
   /// The units in which the metric value is reported. It is only applicable if the
   /// valueType is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of
@@ -54,6 +61,7 @@ class MetricDescriptorState {
   final pulumi.Input<String>? valueType;
 
   /// Creates a new [MetricDescriptorState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A detailed description of the metric, which can be used in documentation.
   /// [displayName] A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
   /// [labels] The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
@@ -63,10 +71,11 @@ class MetricDescriptorState {
   /// [monitoredResourceTypes] If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
   /// [name] The resource name of the metric descriptor.
   /// [project] The ID of the project in which the resource belongs.
-  /// [type] The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
+  /// [type] The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relativeMetricName is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
   /// [unit] The units in which the metric value is reported. It is only applicable if the
   /// [valueType] Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
   const MetricDescriptorState({
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.labels,
@@ -83,6 +92,7 @@ class MetricDescriptorState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'labels': ?pulumi.Input.mapOptionalInputValue<List<MetricDescriptorLabel>, List<Map<String, dynamic>>>(labels, (value) => pulumi.Input.encodeList<MetricDescriptorLabel, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -100,6 +110,7 @@ class MetricDescriptorState {
 
   factory MetricDescriptorState.fromMap(Map<String, dynamic> map) {
     return MetricDescriptorState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetricDescriptorLabel>(guardedValue, (value) => MetricDescriptorLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -115,4 +126,3 @@ class MetricDescriptorState {
     );
   }
 }
-

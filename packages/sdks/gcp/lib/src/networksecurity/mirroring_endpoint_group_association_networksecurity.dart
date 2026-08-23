@@ -158,7 +158,7 @@ import 'mirroring_endpoint_group_association_state.dart';
 /// 		deploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "deployment_group", &networksecurity.MirroringDeploymentGroupArgs{
 /// 			MirroringDeploymentGroupId: pulumi.String("example-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    producerNetwork.ID(),
+/// 			Network:                    producerNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -166,7 +166,7 @@ import 'mirroring_endpoint_group_association_state.dart';
 /// 		endpointGroup, err := networksecurity.NewMirroringEndpointGroup(ctx, "endpoint_group", &networksecurity.MirroringEndpointGroupArgs{
 /// 			MirroringEndpointGroupId: pulumi.String("example-eg"),
 /// 			Location:                 pulumi.String("global"),
-/// 			MirroringDeploymentGroup: deploymentGroup.ID(),
+/// 			MirroringDeploymentGroup: deploymentGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -174,8 +174,8 @@ import 'mirroring_endpoint_group_association_state.dart';
 /// 		_, err = networksecurity.NewMirroringEndpointGroupAssociation(ctx, "default", &networksecurity.MirroringEndpointGroupAssociationArgs{
 /// 			MirroringEndpointGroupAssociationId: pulumi.String("example-ega"),
 /// 			Location:                            pulumi.String("global"),
-/// 			Network:                             consumerNetwork.ID(),
-/// 			MirroringEndpointGroup:              endpointGroup.ID(),
+/// 			Network:                             consumerNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			MirroringEndpointGroup:              endpointGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
 /// 			},
@@ -185,6 +185,43 @@ import 'mirroring_endpoint_group_association_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "producer_network" {
+///   name                    = "example-prod-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_network" "consumer_network" {
+///   name                    = "example-cons-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networksecurity_mirroringdeploymentgroup" "deployment_group" {
+///   mirroring_deployment_group_id = "example-dg"
+///   location                      = "global"
+///   network                       = gcp_compute_network.producer_network.id
+/// }
+/// resource "gcp_networksecurity_mirroringendpointgroup" "endpoint_group" {
+///   mirroring_endpoint_group_id = "example-eg"
+///   location                    = "global"
+///   mirroring_deployment_group  = gcp_networksecurity_mirroringdeploymentgroup.deployment_group.id
+/// }
+/// resource "gcp_networksecurity_mirroringendpointgroupassociation" "default" {
+///   mirroring_endpoint_group_association_id = "example-ega"
+///   location                                = "global"
+///   network                                 = gcp_compute_network.consumer_network.id
+///   mirroring_endpoint_group                = gcp_networksecurity_mirroringendpointgroup.endpoint_group.id
+///   labels = {
+///     "foo" = "bar"
+///   }
 /// }
 /// ```
 /// ```java
@@ -201,8 +238,8 @@ import 'mirroring_endpoint_group_association_state.dart';
 /// import com.pulumi.gcp.networksecurity.MirroringEndpointGroupArgs;
 /// import com.pulumi.gcp.networksecurity.MirroringEndpointGroupAssociation;
 /// import com.pulumi.gcp.networksecurity.MirroringEndpointGroupAssociationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -292,33 +329,33 @@ import 'mirroring_endpoint_group_association_state.dart';
 /// MirroringEndpointGroupAssociation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/mirroringEndpointGroupAssociations/{{mirroring_endpoint_group_association_id}}`
-///
 /// * `{{project}}/{{location}}/{{mirroring_endpoint_group_association_id}}`
-///
 /// * `{{location}}/{{mirroring_endpoint_group_association_id}}`
+///
 ///
 /// When using the `pulumi import` command, MirroringEndpointGroupAssociation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default projects/{{project}}/locations/{{location}}/mirroringEndpointGroupAssociations/{{mirroring_endpoint_group_association_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default {{project}}/{{location}}/{{mirroring_endpoint_group_association_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default {{location}}/{{mirroring_endpoint_group_association_id}}
 /// ```
 class MirroringEndpointGroupAssociationNetworksecurity extends pulumi.CustomResource {
   /// The timestamp when the resource was created.
   /// See https://google.aip.dev/148#timestamps.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The cloud location of the association, currently restricted to `global`.
   late final pulumi.Output<String> location;
@@ -385,6 +422,7 @@ class MirroringEndpointGroupAssociationNetworksecurity extends pulumi.CustomReso
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
@@ -425,6 +463,7 @@ class MirroringEndpointGroupAssociationNetworksecurity extends pulumi.CustomReso
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');

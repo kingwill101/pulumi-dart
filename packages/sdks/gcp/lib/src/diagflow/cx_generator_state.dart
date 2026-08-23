@@ -8,6 +8,13 @@ import 'cx_generator_prompt_text.dart';
 
 /// Input properties used for looking up and filtering CxGenerator resources.
 class CxGeneratorState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The human-readable name of the generator, unique within the agent.
   final pulumi.Input<String>? displayName;
   /// The language to create generators for the following fields:
@@ -34,6 +41,7 @@ class CxGeneratorState {
   final pulumi.Input<CxGeneratorPromptText>? promptText;
 
   /// Creates a new [CxGeneratorState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The human-readable name of the generator, unique within the agent.
   /// [languageCode] The language to create generators for the following fields:
   /// [llmModelSettings] The LLM model settings.
@@ -43,6 +51,7 @@ class CxGeneratorState {
   /// [placeholders] List of custom placeholders in the prompt text.
   /// [promptText] Prompt for the LLM model.
   const CxGeneratorState({
+    this.deletionPolicy,
     this.displayName,
     this.languageCode,
     this.llmModelSettings,
@@ -55,6 +64,7 @@ class CxGeneratorState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'languageCode': ?languageCode,
       'llmModelSettings': ?pulumi.Input.mapOptionalInputValue<CxGeneratorLlmModelSettings, Map<String, dynamic>>(llmModelSettings, (value) => value.toMap()),
@@ -68,6 +78,7 @@ class CxGeneratorState {
 
   factory CxGeneratorState.fromMap(Map<String, dynamic> map) {
     return CxGeneratorState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       languageCode: (() { final guardedValue = map['languageCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       llmModelSettings: (() { final guardedValue = map['llmModelSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxGeneratorLlmModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -79,4 +90,3 @@ class CxGeneratorState {
     );
   }
 }
-

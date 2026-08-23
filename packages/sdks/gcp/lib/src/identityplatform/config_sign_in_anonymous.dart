@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConfigSignInAnonymous {
   /// Whether anonymous user auth is enabled for the project or not.
   ///
-  /// &lt;a name="nested_sign_in_hash_config"&gt;&lt;/a&gt;The `hash_config` block contains:
+  /// &lt;a name="nestedSignInHashConfig"&gt;&lt;/a&gt;The `hashConfig` block contains:
   final pulumi.Input<bool> enabled;
 
   /// Creates a new [ConfigSignInAnonymous].
@@ -26,4 +26,3 @@ class ConfigSignInAnonymous {
     );
   }
 }
-

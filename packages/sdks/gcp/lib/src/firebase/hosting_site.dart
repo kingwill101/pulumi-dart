@@ -4,6 +4,9 @@ import 'hosting_site_state.dart';
 
 /// A `Site` represents a Firebase Hosting site.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about Site, see:
 ///
 /// * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites)
@@ -70,6 +73,20 @@ import 'hosting_site_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "site-no-app"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -78,8 +95,8 @@ import 'hosting_site_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.firebase.HostingSite;
 /// import com.pulumi.gcp.firebase.HostingSiteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -190,6 +207,25 @@ import 'hosting_site_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_webapp" "default" {
+///   project      = "my-project-name"
+///   display_name = "Test web app for Firebase Hosting"
+/// }
+/// resource "gcp_firebase_hostingsite" "full" {
+///   project = "my-project-name"
+///   site_id = "site-with-app"
+///   app_id  = gcp_firebase_webapp.default.app_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +236,8 @@ import 'hosting_site_state.dart';
 /// import com.pulumi.gcp.firebase.WebAppArgs;
 /// import com.pulumi.gcp.firebase.HostingSite;
 /// import com.pulumi.gcp.firebase.HostingSiteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -300,6 +336,20 @@ import 'hosting_site_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -308,8 +358,8 @@ import 'hosting_site_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.firebase.HostingSite;
 /// import com.pulumi.gcp.firebase.HostingSiteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -344,28 +394,17 @@ import 'hosting_site_state.dart';
 /// Site can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/sites/{{site_id}}`
-///
 /// * `{{project}}/{{site_id}}`
-///
 /// * `sites/{{site_id}}`
-///
 /// * `{{site_id}}`
+///
 ///
 /// When using the `pulumi import` command, Site can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/hostingSite:HostingSite default projects/{{project}}/sites/{{site_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/hostingSite:HostingSite default {{project}}/{{site_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/hostingSite:HostingSite default sites/{{site_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/hostingSite:HostingSite default {{site_id}}
 /// ```
 class HostingSite extends pulumi.CustomResource {
@@ -374,6 +413,13 @@ class HostingSite extends pulumi.CustomResource {
   late final pulumi.Output<String?> appId;
   /// The default URL for the site in the form of https://{name}.web.app
   late final pulumi.Output<String> defaultUrl;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Output only. The fully-qualified resource name of the Hosting site, in
   /// the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
   /// Firebase project's
@@ -408,6 +454,7 @@ class HostingSite extends pulumi.CustomResource {
         ) {
     appId = registerOutput<String?>('appId');
     defaultUrl = registerOutput<String>('defaultUrl');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     siteId = registerOutput<String?>('siteId');
@@ -439,6 +486,7 @@ class HostingSite extends pulumi.CustomResource {
         ) {
     appId = registerOutput<String?>('appId');
     defaultUrl = registerOutput<String>('defaultUrl');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     siteId = registerOutput<String?>('siteId');

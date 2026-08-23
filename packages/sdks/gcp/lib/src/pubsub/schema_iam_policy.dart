@@ -5,8 +5,8 @@ import 'schema_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud Pub/Sub Schema. Each of these resources serves a different use case:
 ///
 /// * `gcp.pubsub.SchemaIamPolicy`: Authoritative. Sets the IAM policy for the schema and replaces any existing policy already attached.
-/// * `gcp.pubsub.SchemaIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the schema are preserved.
-/// * `gcp.pubsub.SchemaIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the schema are preserved.
+/// * `gcp.pubsub.SchemaIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the schema are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.pubsub.SchemaIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the schema are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +15,6 @@ import 'schema_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.pubsub.SchemaIamPolicy` **cannot** be used in conjunction with `gcp.pubsub.SchemaIamBinding` and `gcp.pubsub.SchemaIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.pubsub.SchemaIamBinding` resources **can be** used in conjunction with `gcp.pubsub.SchemaIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.pubsub.SchemaIamPolicy
@@ -118,6 +117,28 @@ import 'schema_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_pubsub_schemaiampolicy" "policy" {
+///   project     = example.project
+///   schema      = example.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,10 +147,11 @@ import 'schema_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.pubsub.SchemaIamPolicy;
 /// import com.pulumi.gcp.pubsub.SchemaIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -149,8 +171,8 @@ import 'schema_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new SchemaIamPolicy("policy", SchemaIamPolicyArgs.builder()
-///             .project(example.project())
-///             .schema(example.name())
+///             .project(example.get("project"))
+///             .schema(example.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -247,6 +269,22 @@ import 'schema_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_schemaiambinding" "binding" {
+///   project = example.project
+///   schema  = example.name
+///   role    = "roles/viewer"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -255,8 +293,8 @@ import 'schema_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.SchemaIamBinding;
 /// import com.pulumi.gcp.pubsub.SchemaIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,8 +307,8 @@ import 'schema_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SchemaIamBinding("binding", SchemaIamBindingArgs.builder()
-///             .project(example.project())
-///             .schema(example.name())
+///             .project(example.get("project"))
+///             .schema(example.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -356,6 +394,22 @@ import 'schema_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_schemaiammember" "member" {
+///   project = example.project
+///   schema  = example.name
+///   role    = "roles/viewer"
+///   member  = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -364,8 +418,8 @@ import 'schema_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.SchemaIamMember;
 /// import com.pulumi.gcp.pubsub.SchemaIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -378,8 +432,8 @@ import 'schema_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SchemaIamMember("member", SchemaIamMemberArgs.builder()
-///             .project(example.project())
-///             .schema(example.name())
+///             .project(example.get("project"))
+///             .schema(example.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -409,8 +463,8 @@ import 'schema_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud Pub/Sub Schema. Each of these resources serves a different use case:
 ///
 /// * `gcp.pubsub.SchemaIamPolicy`: Authoritative. Sets the IAM policy for the schema and replaces any existing policy already attached.
-/// * `gcp.pubsub.SchemaIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the schema are preserved.
-/// * `gcp.pubsub.SchemaIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the schema are preserved.
+/// * `gcp.pubsub.SchemaIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the schema are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.pubsub.SchemaIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the schema are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -419,7 +473,6 @@ import 'schema_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.pubsub.SchemaIamPolicy` **cannot** be used in conjunction with `gcp.pubsub.SchemaIamBinding` and `gcp.pubsub.SchemaIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.pubsub.SchemaIamBinding` resources **can be** used in conjunction with `gcp.pubsub.SchemaIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.pubsub.SchemaIamPolicy
@@ -522,6 +575,28 @@ import 'schema_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_pubsub_schemaiampolicy" "policy" {
+///   project     = example.project
+///   schema      = example.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -530,10 +605,11 @@ import 'schema_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.pubsub.SchemaIamPolicy;
 /// import com.pulumi.gcp.pubsub.SchemaIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -553,8 +629,8 @@ import 'schema_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new SchemaIamPolicy("policy", SchemaIamPolicyArgs.builder()
-///             .project(example.project())
-///             .schema(example.name())
+///             .project(example.get("project"))
+///             .schema(example.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -651,6 +727,22 @@ import 'schema_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_schemaiambinding" "binding" {
+///   project = example.project
+///   schema  = example.name
+///   role    = "roles/viewer"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -659,8 +751,8 @@ import 'schema_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.SchemaIamBinding;
 /// import com.pulumi.gcp.pubsub.SchemaIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -673,8 +765,8 @@ import 'schema_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SchemaIamBinding("binding", SchemaIamBindingArgs.builder()
-///             .project(example.project())
-///             .schema(example.name())
+///             .project(example.get("project"))
+///             .schema(example.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -760,6 +852,22 @@ import 'schema_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_schemaiammember" "member" {
+///   project = example.project
+///   schema  = example.name
+///   role    = "roles/viewer"
+///   member  = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -768,8 +876,8 @@ import 'schema_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.SchemaIamMember;
 /// import com.pulumi.gcp.pubsub.SchemaIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -782,8 +890,8 @@ import 'schema_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SchemaIamMember("member", SchemaIamMemberArgs.builder()
-///             .project(example.project())
-///             .schema(example.name())
+///             .project(example.get("project"))
+///             .schema(example.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -808,9 +916,7 @@ import 'schema_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/schemas/{{name}}
-///
 /// * {{project}}/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -818,25 +924,21 @@ import 'schema_iam_policy_state.dart';
 /// Cloud Pub/Sub schema IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:pubsub/schemaIamPolicy:SchemaIamPolicy editor "projects/{{project}}/schemas/{{schema}} roles/viewer user:jane@example.com"
+/// $ terraform import google_pubsub_schema_iam_member.editor "projects/{{project}}/schemas/{{schema}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:pubsub/schemaIamPolicy:SchemaIamPolicy editor "projects/{{project}}/schemas/{{schema}} roles/viewer"
+/// $ terraform import google_pubsub_schema_iam_binding.editor "projects/{{project}}/schemas/{{schema}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:pubsub/schemaIamPolicy:SchemaIamPolicy editor projects/{{project}}/schemas/{{schema}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class SchemaIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the IAM policy.

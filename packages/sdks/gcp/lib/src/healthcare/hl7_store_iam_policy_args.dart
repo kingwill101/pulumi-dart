@@ -38,4 +38,3 @@ class Hl7StoreIamPolicyArgs {
     );
   }
 }
-

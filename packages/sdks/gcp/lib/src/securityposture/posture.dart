@@ -32,6 +32,23 @@ import 'posture_state.dart';
 ///     description: "a new posture",
 ///     policySets: [
 ///         {
+///             policySetId: "list_constraint_policy_set",
+///             description: "set of org policies with a list constraint",
+///             policies: [{
+///                 policyId: "resource_locations_policy",
+///                 constraint: {
+///                     orgPolicyConstraint: {
+///                         cannedConstraintId: "gcp.resourceLocations",
+///                         policyRules: [{
+///                             values: {
+///                                 allowedValues: ["in:us-locations"],
+///                             },
+///                         }],
+///                     },
+///                 },
+///             }],
+///         },
+///         {
 ///             policySetId: "org_policy_set",
 ///             description: "set of org policies",
 ///             policies: [
@@ -138,6 +155,23 @@ import 'posture_state.dart';
 ///     state="ACTIVE",
 ///     description="a new posture",
 ///     policy_sets=[
+///         {
+///             "policy_set_id": "list_constraint_policy_set",
+///             "description": "set of org policies with a list constraint",
+///             "policies": [{
+///                 "policy_id": "resource_locations_policy",
+///                 "constraint": {
+///                     "org_policy_constraint": {
+///                         "canned_constraint_id": "gcp.resourceLocations",
+///                         "policy_rules": [{
+///                             "values": {
+///                                 "allowed_values": ["in:us-locations"],
+///                             },
+///                         }],
+///                     },
+///                 },
+///             }],
+///         },
 ///         {
 ///             "policy_set_id": "org_policy_set",
 ///             "description": "set of org policies",
@@ -250,6 +284,38 @@ import 'posture_state.dart';
 ///         Description = "a new posture",
 ///         PolicySets = new[]
 ///         {
+///             new Gcp.SecurityPosture.Inputs.PosturePolicySetArgs
+///             {
+///                 PolicySetId = "list_constraint_policy_set",
+///                 Description = "set of org policies with a list constraint",
+///                 Policies = new[]
+///                 {
+///                     new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyArgs
+///                     {
+///                         PolicyId = "resource_locations_policy",
+///                         Constraint = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintArgs
+///                         {
+///                             OrgPolicyConstraint = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs
+///                             {
+///                                 CannedConstraintId = "gcp.resourceLocations",
+///                                 PolicyRules = new[]
+///                                 {
+///                                     new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs
+///                                     {
+///                                         Values = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs
+///                                         {
+///                                             AllowedValues = new[]
+///                                             {
+///                                                 "in:us-locations",
+///                                             },
+///                                         },
+///                                     },
+///                                 },
+///                             },
+///                         },
+///                     },
+///                 },
+///             },
 ///             new Gcp.SecurityPosture.Inputs.PosturePolicySetArgs
 ///             {
 ///                 PolicySetId = "org_policy_set",
@@ -409,6 +475,29 @@ import 'posture_state.dart';
 /// 			Description: pulumi.String("a new posture"),
 /// 			PolicySets: securityposture.PosturePolicySetArray{
 /// 				&securityposture.PosturePolicySetArgs{
+/// 					PolicySetId: pulumi.String("list_constraint_policy_set"),
+/// 					Description: pulumi.String("set of org policies with a list constraint"),
+/// 					Policies: securityposture.PosturePolicySetPolicyArray{
+/// 						&securityposture.PosturePolicySetPolicyArgs{
+/// 							PolicyId: pulumi.String("resource_locations_policy"),
+/// 							Constraint: &securityposture.PosturePolicySetPolicyConstraintArgs{
+/// 								OrgPolicyConstraint: &securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs{
+/// 									CannedConstraintId: pulumi.String("gcp.resourceLocations"),
+/// 									PolicyRules: securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArray{
+/// 										&securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs{
+/// 											Values: &securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs{
+/// 												AllowedValues: pulumi.StringArray{
+/// 													pulumi.String("in:us-locations"),
+/// 												},
+/// 											},
+/// 										},
+/// 									},
+/// 								},
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 				&securityposture.PosturePolicySetArgs{
 /// 					PolicySetId: pulumi.String("org_policy_set"),
 /// 					Description: pulumi.String("set of org policies"),
 /// 					Policies: securityposture.PosturePolicySetPolicyArray{
@@ -520,6 +609,126 @@ import 'posture_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securityposture_posture" "posture1" {
+///   posture_id  = "posture_example"
+///   parent      = "organizations/123456789"
+///   location    = "global"
+///   state       = "ACTIVE"
+///   description = "a new posture"
+///   policy_sets {
+///     policy_set_id = "list_constraint_policy_set"
+///     description   = "set of org policies with a list constraint"
+///     policies {
+///       policy_id = "resource_locations_policy"
+///       constraint = {
+///         org_policy_constraint = {
+///           canned_constraint_id = "gcp.resourceLocations"
+///           policy_rules = [{
+///             "values" = {
+///               "allowedValues" = ["in:us-locations"]
+///             }
+///           }]
+///         }
+///       }
+///     }
+///   }
+///   policy_sets {
+///     policy_set_id = "org_policy_set"
+///     description   = "set of org policies"
+///     policies {
+///       policy_id = "canned_org_policy"
+///       constraint = {
+///         org_policy_constraint = {
+///           canned_constraint_id = "storage.uniformBucketLevelAccess"
+///           policy_rules = [{
+///             "enforce" = true
+///             "condition" = {
+///               "description" = "condition description"
+///               "expression"  = "resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')"
+///               "title"       = "a CEL condition"
+///             }
+///           }]
+///         }
+///       }
+///     }
+///     policies {
+///       policy_id = "custom_org_policy"
+///       constraint = {
+///         org_policy_constraint_custom = {
+///           custom_constraint = {
+///             name           = "organizations/123456789/customConstraints/custom.disableGkeAutoUpgrade"
+///             display_name   = "Disable GKE auto upgrade"
+///             description    = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."
+///             action_type    = "ALLOW"
+///             condition      = "resource.management.autoUpgrade == false"
+///             method_types   = ["CREATE", "UPDATE"]
+///             resource_types = ["container.googleapis.com/NodePool"]
+///           }
+///           policy_rules = [{
+///             "enforce" = true
+///             "condition" = {
+///               "description" = "condition description"
+///               "expression"  = "resource.matchTagId('tagKeys/key_id','tagValues/value_id')"
+///               "title"       = "a CEL condition"
+///             }
+///           }]
+///         }
+///       }
+///     }
+///   }
+///   policy_sets {
+///     policy_set_id = "sha_policy_set"
+///     description   = "set of sha policies"
+///     policies {
+///       policy_id = "sha_builtin_module"
+///       constraint = {
+///         security_health_analytics_module = {
+///           module_name             = "BIGQUERY_TABLE_CMEK_DISABLED"
+///           module_enablement_state = "ENABLED"
+///         }
+///       }
+///       description = "enable BIGQUERY_TABLE_CMEK_DISABLED"
+///     }
+///     policies {
+///       policy_id = "sha_custom_module"
+///       constraint = {
+///         security_health_analytics_custom_module = {
+///           display_name = "custom_SHA_policy"
+///           config = {
+///             predicate = {
+///               expression = "resource.rotationPeriod > duration('2592000s')"
+///             }
+///             custom_output = {
+///               properties = [{
+///                 "name" = "duration"
+///                 "valueExpression" = {
+///                   "expression" = "resource.rotationPeriod"
+///                 }
+///               }]
+///             }
+///             resource_selector = {
+///               resource_types = ["cloudkms.googleapis.com/CryptoKey"]
+///             }
+///             severity       = "LOW"
+///             description    = "Custom Module"
+///             recommendation = "Testing custom modules"
+///           }
+///           module_enablement_state = "ENABLED"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -529,8 +738,26 @@ import 'posture_state.dart';
 /// import com.pulumi.gcp.securityposture.Posture;
 /// import com.pulumi.gcp.securityposture.PostureArgs;
 /// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs;
+/// import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -549,6 +776,23 @@ import 'posture_state.dart';
 ///             .state("ACTIVE")
 ///             .description("a new posture")
 ///             .policySets(
+///                 PosturePolicySetArgs.builder()
+///                     .policySetId("list_constraint_policy_set")
+///                     .description("set of org policies with a list constraint")
+///                     .policies(PosturePolicySetPolicyArgs.builder()
+///                         .policyId("resource_locations_policy")
+///                         .constraint(PosturePolicySetPolicyConstraintArgs.builder()
+///                             .orgPolicyConstraint(PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs.builder()
+///                                 .cannedConstraintId("gcp.resourceLocations")
+///                                 .policyRules(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs.builder()
+///                                     .values(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs.builder()
+///                                         .allowedValues("in:us-locations")
+///                                         .build())
+///                                     .build())
+///                                 .build())
+///                             .build())
+///                         .build())
+///                     .build(),
 ///                 PosturePolicySetArgs.builder()
 ///                     .policySetId("org_policy_set")
 ///                     .description("set of org policies")
@@ -655,6 +899,17 @@ import 'posture_state.dart';
 ///       state: ACTIVE
 ///       description: a new posture
 ///       policySets:
+///         - policySetId: list_constraint_policy_set
+///           description: set of org policies with a list constraint
+///           policies:
+///             - policyId: resource_locations_policy
+///               constraint:
+///                 orgPolicyConstraint:
+///                   cannedConstraintId: gcp.resourceLocations
+///                   policyRules:
+///                     - values:
+///                         allowedValues:
+///                           - in:us-locations
 ///         - policySetId: org_policy_set
 ///           description: set of org policies
 ///           policies:
@@ -725,6 +980,7 @@ import 'posture_state.dart';
 ///
 /// * `{{parent}}/locations/{{location}}/postures/{{posture_id}}`
 ///
+///
 /// When using the `pulumi import` command, Posture can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -733,6 +989,13 @@ import 'posture_state.dart';
 class Posture extends pulumi.CustomResource {
   /// Time the Posture was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the posture.
   late final pulumi.Output<String?> description;
   /// For Resource freshness validation (https://google.aip.dev/154)
@@ -774,6 +1037,7 @@ class Posture extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
@@ -811,6 +1075,7 @@ class Posture extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

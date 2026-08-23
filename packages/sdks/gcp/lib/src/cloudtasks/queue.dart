@@ -71,6 +71,20 @@ import 'queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudtasks_queue" "default" {
+///   name     = "cloud-tasks-queue-test"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +93,8 @@ import 'queue_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudtasks.Queue;
 /// import com.pulumi.gcp.cloudtasks.QueueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -155,7 +169,7 @@ import 'queue_state.dart';
 ///     },
 ///     rate_limits={
 ///         "max_concurrent_dispatches": 3,
-///         "max_dispatches_per_second": 2,
+///         "max_dispatches_per_second": float(2),
 ///     },
 ///     retry_config={
 ///         "max_attempts": 5,
@@ -189,7 +203,7 @@ import 'queue_state.dart';
 ///         RateLimits = new Gcp.CloudTasks.Inputs.QueueRateLimitsArgs
 ///         {
 ///             MaxConcurrentDispatches = 3,
-///             MaxDispatchesPerSecond = 2,
+///             MaxDispatchesPerSecond = 2.0,
 ///         },
 ///         RetryConfig = new Gcp.CloudTasks.Inputs.QueueRetryConfigArgs
 ///         {
@@ -247,6 +261,39 @@ import 'queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudtasks_queue" "advanced_configuration" {
+///   name     = "instance-name"
+///   location = "us-central1"
+///   app_engine_routing_override = {
+///     service  = "worker"
+///     version  = "1.0"
+///     instance = "test"
+///   }
+///   rate_limits = {
+///     max_concurrent_dispatches = 3
+///     max_dispatches_per_second = 2
+///   }
+///   retry_config = {
+///     max_attempts       = 5
+///     max_retry_duration = "4s"
+///     max_backoff        = "3s"
+///     min_backoff        = "2s"
+///     max_doublings      = 1
+///   }
+///   stackdriver_logging_config = {
+///     sampling_ratio = 0.9
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -259,8 +306,8 @@ import 'queue_state.dart';
 /// import com.pulumi.gcp.cloudtasks.inputs.QueueRateLimitsArgs;
 /// import com.pulumi.gcp.cloudtasks.inputs.QueueRetryConfigArgs;
 /// import com.pulumi.gcp.cloudtasks.inputs.QueueStackdriverLoggingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -545,6 +592,54 @@ import 'queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudtasks_queue" "http_target_oidc" {
+///   name     = "cloud-tasks-queue-http-target-oidc"
+///   location = "us-central1"
+///   http_target = {
+///     http_method = "POST"
+///     uri_override = {
+///       scheme = "HTTPS"
+///       host   = "oidc.example.com"
+///       port   = 8443
+///       path_override = {
+///         path = "/users/1234"
+///       }
+///       query_override = {
+///         query_params = "qparam1=123&qparam2=456"
+///       }
+///       uri_override_enforce_mode = "IF_NOT_EXISTS"
+///     }
+///     header_overrides = [{
+///       "header" = {
+///         "key"   = "AddSomethingElse"
+///         "value" = "MyOtherValue"
+///       }
+///       }, {
+///       "header" = {
+///         "key"   = "AddMe"
+///         "value" = "MyValue"
+///       }
+///     }]
+///     oidc_token = {
+///       service_account_email = gcp_serviceaccount_account.oidc_service_account.email
+///       audience              = "https://oidc.example.com"
+///     }
+///   }
+/// }
+/// resource "gcp_serviceaccount_account" "oidc_service_account" {
+///   account_id   = "example-oidc"
+///   display_name = "Tasks Queue OIDC Service Account"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -559,9 +654,11 @@ import 'queue_state.dart';
 /// import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetUriOverrideArgs;
 /// import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetUriOverridePathOverrideArgs;
 /// import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetUriOverrideQueryOverrideArgs;
+/// import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetHeaderOverrideArgs;
+/// import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetHeaderOverrideHeaderArgs;
 /// import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetOidcTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -876,6 +973,54 @@ import 'queue_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudtasks_queue" "http_target_oauth" {
+///   name     = "cloud-tasks-queue-http-target-oauth"
+///   location = "us-central1"
+///   http_target = {
+///     http_method = "POST"
+///     uri_override = {
+///       scheme = "HTTPS"
+///       host   = "oauth.example.com"
+///       port   = 8443
+///       path_override = {
+///         path = "/users/1234"
+///       }
+///       query_override = {
+///         query_params = "qparam1=123&qparam2=456"
+///       }
+///       uri_override_enforce_mode = "IF_NOT_EXISTS"
+///     }
+///     header_overrides = [{
+///       "header" = {
+///         "key"   = "AddSomethingElse"
+///         "value" = "MyOtherValue"
+///       }
+///       }, {
+///       "header" = {
+///         "key"   = "AddMe"
+///         "value" = "MyValue"
+///       }
+///     }]
+///     oauth_token = {
+///       service_account_email = gcp_serviceaccount_account.oauth_service_account.email
+///       scope                 = "openid https://www.googleapis.com/auth/userinfo.email"
+///     }
+///   }
+/// }
+/// resource "gcp_serviceaccount_account" "oauth_service_account" {
+///   account_id   = "example-oauth"
+///   display_name = "Tasks Queue OAuth Service Account"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -890,9 +1035,11 @@ import 'queue_state.dart';
 /// import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetUriOverrideArgs;
 /// import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetUriOverridePathOverrideArgs;
 /// import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetUriOverrideQueryOverrideArgs;
+/// import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetHeaderOverrideArgs;
+/// import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetHeaderOverrideHeaderArgs;
 /// import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetOauthTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -992,22 +1139,15 @@ import 'queue_state.dart';
 /// Queue can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/queues/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Queue can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:cloudtasks/queue:Queue default projects/{{project}}/locations/{{location}}/queues/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudtasks/queue:Queue default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudtasks/queue:Queue default {{location}}/{{name}}
 /// ```
 class Queue extends pulumi.CustomResource {
@@ -1015,6 +1155,13 @@ class Queue extends pulumi.CustomResource {
   /// to App Engine tasks in this queue
   /// Structure is documented below.
   late final pulumi.Output<QueueAppEngineRoutingOverride?> appEngineRoutingOverride;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The desired state of the queue. Use this to pause and resume the queue.
   ///
   /// * RUNNING: The queue is running. Tasks can be dispatched.
@@ -1063,6 +1210,7 @@ class Queue extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     appEngineRoutingOverride = registerOutput<QueueAppEngineRoutingOverride?>('appEngineRoutingOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueAppEngineRoutingOverride.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     desiredState = registerOutput<String?>('desiredState');
     httpTarget = registerOutput<QueueHttpTarget?>('httpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
@@ -1098,6 +1246,7 @@ class Queue extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     appEngineRoutingOverride = registerOutput<QueueAppEngineRoutingOverride?>('appEngineRoutingOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueAppEngineRoutingOverride.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     desiredState = registerOutput<String?>('desiredState');
     httpTarget = registerOutput<QueueHttpTarget?>('httpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueueHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');

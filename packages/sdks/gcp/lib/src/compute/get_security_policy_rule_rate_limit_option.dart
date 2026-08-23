@@ -7,9 +7,9 @@ import 'get_security_policy_rule_rate_limit_option_exceed_redirect_option.dart';
 import 'get_security_policy_rule_rate_limit_option_rate_limit_threshold.dart';
 
 class GetSecurityPolicyRuleRateLimitOption {
-  /// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+  /// Can only be specified if the action for the rule is "rateBasedBan". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
   final pulumi.Input<int> banDurationSec;
-  /// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+  /// Can only be specified if the action for the rule is "rateBasedBan". If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
   final pulumi.Input<List<GetSecurityPolicyRuleRateLimitOptionBanThreshold>> banThresholds;
   /// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
   final pulumi.Input<String> conformAction;
@@ -27,8 +27,8 @@ class GetSecurityPolicyRuleRateLimitOption {
   final pulumi.Input<List<GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold>> rateLimitThresholds;
 
   /// Creates a new [GetSecurityPolicyRuleRateLimitOption].
-  /// [banDurationSec] Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-  /// [banThresholds] Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+  /// [banDurationSec] Can only be specified if the action for the rule is "rateBasedBan". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+  /// [banThresholds] Can only be specified if the action for the rule is "rateBasedBan". If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
   /// [conformAction] Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
   /// [enforceOnKey] Determines the key to enforce the rateLimitThreshold on
   /// [enforceOnKeyConfigs] Enforce On Key Config of this security policy
@@ -76,4 +76,3 @@ class GetSecurityPolicyRuleRateLimitOption {
     );
   }
 }
-

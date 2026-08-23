@@ -13,6 +13,13 @@ class DataAccessLabelState {
   /// maximum number of characters should be 63. Regex pattern is as per AIP:
   /// https://google.aip.dev/122#resource-id-segments
   final pulumi.Input<String>? dataAccessLabelId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. A description of the data access label for a human reader.
   final pulumi.Input<String>? description;
   /// Output only. The short name displayed for the label as it appears on event data. This is same as data access label id.
@@ -39,6 +46,7 @@ class DataAccessLabelState {
   /// [author] Output only. The user who created the data access label.
   /// [createTime] Output only. The time at which the data access label was created.
   /// [dataAccessLabelId] Required. The ID to use for the data access label, which will become the label's
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Optional. A description of the data access label for a human reader.
   /// [displayName] Output only. The short name displayed for the label as it appears on event data. This is same as data access label id.
   /// [instance] The unique identifier for the Chronicle instance, which is the same as the customer ID.
@@ -52,6 +60,7 @@ class DataAccessLabelState {
     this.author,
     this.createTime,
     this.dataAccessLabelId,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.instance,
@@ -68,6 +77,7 @@ class DataAccessLabelState {
       'author': ?author,
       'createTime': ?createTime,
       'dataAccessLabelId': ?dataAccessLabelId,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'instance': ?instance,
@@ -85,6 +95,7 @@ class DataAccessLabelState {
       author: (() { final guardedValue = map['author']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataAccessLabelId: (() { final guardedValue = map['dataAccessLabelId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -97,4 +108,3 @@ class DataAccessLabelState {
     );
   }
 }
-

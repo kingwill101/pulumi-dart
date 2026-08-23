@@ -3,6 +3,7 @@
 
 /// Result data returned by getVariable.
 class GetVariableResult {
+  final String deletionPolicy;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -13,6 +14,7 @@ class GetVariableResult {
   final String value;
 
   /// Creates a new [GetVariableResult].
+  /// [deletionPolicy] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [parent] Required.
@@ -21,6 +23,7 @@ class GetVariableResult {
   /// [updateTime] Required.
   /// [value] Required.
   const GetVariableResult({
+    required this.deletionPolicy,
     required this.id,
     required this.name,
     required this.parent,
@@ -32,6 +35,7 @@ class GetVariableResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': deletionPolicy,
       'id': id,
       'name': name,
       'parent': parent,
@@ -44,6 +48,7 @@ class GetVariableResult {
 
   factory GetVariableResult.fromMap(Map<String, dynamic> map) {
     return GetVariableResult(
+      deletionPolicy: map['deletionPolicy'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       parent: map['parent'] as String,
@@ -54,4 +59,3 @@ class GetVariableResult {
     );
   }
 }
-

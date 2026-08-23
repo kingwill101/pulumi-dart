@@ -185,6 +185,46 @@ import 'workload_workload_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_assuredworkloads_workload" "primary" {
+///   compliance_regime = "FEDRAMP_MODERATE"
+///   display_name      = "{{display}}"
+///   location          = "us-west1"
+///   organization      = "123456789"
+///   billing_account   = "billingAccounts/000000-0000000-0000000-000000"
+///   kms_settings = {
+///     next_rotation_time = "9999-10-02T15:01:23Z"
+///     rotation_period    = "10368000s"
+///   }
+///   provisioned_resources_parent = "folders/519620126891"
+///   resource_settings {
+///     display_name  = "{{name}}"
+///     resource_type = "CONSUMER_FOLDER"
+///   }
+///   resource_settings {
+///     resource_type = "ENCRYPTION_KEYS_PROJECT"
+///   }
+///   resource_settings {
+///     resource_id   = "ring"
+///     resource_type = "KEYRING"
+///   }
+///   violation_notifications_enabled = true
+///   workload_options = {
+///     kaj_enrollment_type = "KEY_ACCESS_TRANSPARENCY_OFF"
+///   }
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -196,8 +236,8 @@ import 'workload_workload_options.dart';
 /// import com.pulumi.gcp.assuredworkloads.inputs.WorkloadKmsSettingsArgs;
 /// import com.pulumi.gcp.assuredworkloads.inputs.WorkloadResourceSettingArgs;
 /// import com.pulumi.gcp.assuredworkloads.inputs.WorkloadWorkloadOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -424,6 +464,41 @@ import 'workload_workload_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_assuredworkloads_workload" "primary" {
+///   compliance_regime         = "EU_REGIONS_AND_SUPPORT"
+///   display_name              = "display"
+///   location                  = "europe-west9"
+///   organization              = "123456789"
+///   billing_account           = "billingAccounts/000000-0000000-0000000-000000"
+///   enable_sovereign_controls = true
+///   kms_settings = {
+///     next_rotation_time = "9999-10-02T15:01:23Z"
+///     rotation_period    = "10368000s"
+///   }
+///   resource_settings {
+///     resource_type = "CONSUMER_FOLDER"
+///   }
+///   resource_settings {
+///     resource_type = "ENCRYPTION_KEYS_PROJECT"
+///   }
+///   resource_settings {
+///     resource_id   = "ring"
+///     resource_type = "KEYRING"
+///   }
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -434,8 +509,8 @@ import 'workload_workload_options.dart';
 /// import com.pulumi.gcp.assuredworkloads.WorkloadArgs;
 /// import com.pulumi.gcp.assuredworkloads.inputs.WorkloadKmsSettingsArgs;
 /// import com.pulumi.gcp.assuredworkloads.inputs.WorkloadResourceSettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -665,6 +740,44 @@ import 'workload_workload_options.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_assuredworkloads_workload" "primary" {
+///   compliance_regime = "ASSURED_WORKLOADS_FOR_PARTNERS"
+///   display_name      = "display"
+///   location          = "europe-west8"
+///   organization      = "123456789"
+///   billing_account   = "billingAccounts/000000-0000000-0000000-000000"
+///   partner           = "SOVEREIGN_CONTROLS_BY_PSN"
+///   partner_permissions = {
+///     assured_workloads_monitoring = true
+///     data_logs_viewer             = true
+///     service_access_approver      = true
+///   }
+///   partner_services_billing_account = "billingAccounts/01BF3F-2C6DE5-30C607"
+///   resource_settings {
+///     resource_type = "CONSUMER_FOLDER"
+///   }
+///   resource_settings {
+///     resource_type = "ENCRYPTION_KEYS_PROJECT"
+///   }
+///   resource_settings {
+///     resource_id   = "ring"
+///     resource_type = "KEYRING"
+///   }
+///   violation_notifications_enabled = true
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -675,8 +788,8 @@ import 'workload_workload_options.dart';
 /// import com.pulumi.gcp.assuredworkloads.WorkloadArgs;
 /// import com.pulumi.gcp.assuredworkloads.inputs.WorkloadPartnerPermissionsArgs;
 /// import com.pulumi.gcp.assuredworkloads.inputs.WorkloadResourceSettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -749,18 +862,14 @@ import 'workload_workload_options.dart';
 /// ## Import
 ///
 /// Workload can be imported using any of these accepted formats:
-///
 /// * `organizations/{{organization}}/locations/{{location}}/workloads/{{name}}`
-///
 /// * `{{organization}}/{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Workload can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:assuredworkloads/workload:Workload default organizations/{{organization}}/locations/{{location}}/workloads/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:assuredworkloads/workload:Workload default {{organization}}/{{location}}/{{name}}
 /// ```
 class Workload extends pulumi.CustomResource {
@@ -774,6 +883,13 @@ class Workload extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> compliantButDisallowedServices;
   /// Output only. Immutable. The Workload creation timestamp.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
   late final pulumi.Output<String> displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -789,7 +905,7 @@ class Workload extends pulumi.CustomResource {
   /// Optional. Labels applied to the workload.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location for the resource
   late final pulumi.Output<String> location;
@@ -801,7 +917,7 @@ class Workload extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> organization;
-  /// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM
+  /// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM, SPAIN_DATA_BOUNDARY_BY_TELEFONICA
   late final pulumi.Output<String?> partner;
   /// Optional. Permissions granted to the AW Partner SA account for the customer workload
   late final pulumi.Output<WorkloadPartnerPermissions?> partnerPermissions;
@@ -841,6 +957,7 @@ class Workload extends pulumi.CustomResource {
     complianceStatuses = registerOutput<List<Map<String, dynamic>>>('complianceStatuses');
     compliantButDisallowedServices = registerOutput<List<String>>('compliantButDisallowedServices');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     ekmProvisioningResponses = registerOutput<List<Map<String, dynamic>>>('ekmProvisioningResponses');
@@ -891,6 +1008,7 @@ class Workload extends pulumi.CustomResource {
     complianceStatuses = registerOutput<List<Map<String, dynamic>>>('complianceStatuses');
     compliantButDisallowedServices = registerOutput<List<String>>('compliantButDisallowedServices');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     ekmProvisioningResponses = registerOutput<List<Map<String, dynamic>>>('ekmProvisioningResponses');

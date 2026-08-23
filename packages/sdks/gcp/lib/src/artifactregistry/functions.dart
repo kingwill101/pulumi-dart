@@ -3,6 +3,8 @@ import 'get_docker_image_args.dart';
 import 'get_docker_image_result.dart';
 import 'get_docker_images_args.dart';
 import 'get_docker_images_result.dart';
+import 'get_file_args.dart';
+import 'get_file_result.dart';
 import 'get_locations_args.dart';
 import 'get_locations_result.dart';
 import 'get_maven_artifact_args.dart';
@@ -60,7 +62,7 @@ import 'get_versions_result.dart';
 /// });
 /// const _default = new gcp.cloudrunv2.Service("default", {template: {
 ///     containers: [{
-///         image: myImage.apply(myImage => myImage.selfLink),
+///         image: myImage.selfLink,
 ///     }],
 /// }});
 /// ```
@@ -147,9 +149,7 @@ import 'get_versions_result.dart';
 /// 			Template: &cloudrunv2.ServiceTemplateArgs{
 /// 				Containers: cloudrunv2.ServiceTemplateContainerArray{
 /// 					&cloudrunv2.ServiceTemplateContainerArgs{
-/// 						Image: myImage.ApplyT(func(myImage artifactregistry.GetDockerImageResult) (*string, error) {
-/// 							return &myImage.SelfLink, nil
-/// 						}).(pulumi.StringPtrOutput),
+/// 						Image: myImage.SelfLink(),
 /// 					},
 /// 				},
 /// 			},
@@ -159,6 +159,34 @@ import 'get_versions_result.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getdockerimage" "myImage" {
+///   location      = gcp_artifactregistry_repository.my_repo.location
+///   repository_id = gcp_artifactregistry_repository.my_repo.repository_id
+///   image_name    = "my-image:my-tag"
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "my_repo" {
+///   location      = "us-west1"
+///   repository_id = "my-repository"
+///   format        = "DOCKER"
+/// }
+/// resource "gcp_cloudrunv2_service" "default" {
+///   template = {
+///     containers = [{
+///       "image" = data.gcp_artifactregistry_getdockerimage.myImage.self_link
+///     }]
+///   }
 /// }
 /// ```
 /// ```java
@@ -174,8 +202,9 @@ import 'get_versions_result.dart';
 /// import com.pulumi.gcp.cloudrunv2.Service;
 /// import com.pulumi.gcp.cloudrunv2.ServiceArgs;
 /// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -309,6 +338,20 @@ Future<GetDockerImageResult> getDockerImage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getdockerimages" "myImages" {
+///   location      = "us-central1"
+///   repository_id = "example-repo"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -317,8 +360,8 @@ Future<GetDockerImageResult> getDockerImage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
 /// import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -360,6 +403,35 @@ Future<GetDockerImagesResult> getDockerImages(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDockerImagesResult.fromMap(result);
+}
+
+/// Downloads a single file from a Google Artifact Registry repository to a local
+/// path and exposes its metadata and content hashes. Applies to file-based
+/// Artifact Registry formats (Generic, Maven, npm, Python, Apt, Yum, Go). For
+/// Docker/OCI images, use
+/// `gcp.artifactregistry.getDockerImage`.
+///
+/// &gt; **Note:** This data source downloads the file on every Terraform read
+/// (i.e. every `plan` and `apply`). For large files this can add significant
+/// time to each run. Use `overwrite = false` to skip the download when the
+/// local file already matches the remote — see the `overwrite` argument below.
+///
+/// To get more information about Artifact Registry files, see:
+///
+/// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.files)
+/// [args] Arguments passed to this invoke. {@macro pulumi_artifactregistry_get_file_get_file_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetFileResult> getFile(
+  GetFileArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:artifactregistry/getFile:getFile',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetFileResult.fromMap(result);
 }
 
 /// Get Artifact Registry locations available for a project.
@@ -415,6 +487,18 @@ Future<GetDockerImagesResult> getDockerImages(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getlocations" "available" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -423,8 +507,8 @@ Future<GetDockerImagesResult> getDockerImages(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
 /// import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -545,6 +629,29 @@ Future<GetDockerImagesResult> getDockerImages(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getlocations" "available" {
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "repo_one" {
+///   location      = data.gcp_artifactregistry_getlocations.available.locations[0]
+///   repository_id = "repo-one"
+///   format        = "apt"
+/// }
+/// resource "gcp_artifactregistry_repository" "repo_two" {
+///   location      = data.gcp_artifactregistry_getlocations.available.locations[1]
+///   repository_id = "repo-two"
+///   format        = "apt"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -555,8 +662,8 @@ Future<GetDockerImagesResult> getDockerImages(
 /// import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
 /// import com.pulumi.gcp.artifactregistry.Repository;
 /// import com.pulumi.gcp.artifactregistry.RepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -628,6 +735,33 @@ Future<GetLocationsResult> getLocations(
 /// ## Example Usage
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getmavenartifact" "latest" {
+///   location      = gcp_artifactregistry_repository.maven_repo.location
+///   repository_id = gcp_artifactregistry_repository.maven_repo.repository_id
+///   group_id      = "com.example"
+///   artifact_id   = "my-artifact"
+/// }
+/// data "gcp_artifactregistry_getmavenartifact" "withVersion" {
+///   location      = gcp_artifactregistry_repository.maven_repo.location
+///   repository_id = gcp_artifactregistry_repository.maven_repo.repository_id
+///   artifact_name = "my-artifact:1.0.0"
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "maven_repo" {
+///   location      = "us-central1"
+///   repository_id = "my-maven-repo"
+///   format        = "MAVEN"
+/// }
+/// ```
 /// ```yaml
 /// resources:
 ///   mavenRepo:
@@ -729,6 +863,20 @@ Future<GetMavenArtifactResult> getMavenArtifact(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getmavenartifacts" "myArtifacts" {
+///   location      = "us-central1"
+///   repository_id = "example-repo"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -737,8 +885,8 @@ Future<GetMavenArtifactResult> getMavenArtifact(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
 /// import com.pulumi.gcp.artifactregistry.inputs.GetMavenArtifactsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -885,6 +1033,32 @@ Future<GetMavenArtifactsResult> getMavenArtifacts(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getnpmpackage" "latest" {
+///   location      = gcp_artifactregistry_repository.npm_repo.location
+///   repository_id = gcp_artifactregistry_repository.npm_repo.repository_id
+///   package_name  = "example-pkg"
+/// }
+/// data "gcp_artifactregistry_getnpmpackage" "withVersion" {
+///   location      = gcp_artifactregistry_repository.npm_repo.location
+///   repository_id = gcp_artifactregistry_repository.npm_repo.repository_id
+///   package_name  = "example-pkg:1.0.0"
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "npm_repo" {
+///   location      = "us-central1"
+///   repository_id = "my-npm-repo"
+///   format        = "NPM"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -895,8 +1069,8 @@ Future<GetMavenArtifactsResult> getMavenArtifacts(
 /// import com.pulumi.gcp.artifactregistry.RepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
 /// import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1029,6 +1203,20 @@ Future<GetNpmPackageResult> getNpmPackage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getnpmpackages" "myPackages" {
+///   location      = "us-central1"
+///   repository_id = "example-repo"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1037,8 +1225,8 @@ Future<GetNpmPackageResult> getNpmPackage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
 /// import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackagesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1100,7 +1288,7 @@ Future<GetNpmPackagesResult> getNpmPackages(
 /// import pulumi
 /// import pulumi_google as google
 ///
-/// my_package = google.index.ArtifactRegistryPackage("my_package",
+/// my_package = google.ArtifactRegistryPackage("my_package",
 ///     location=us-west1,
 ///     repository_id=my-repository)
 /// ```
@@ -1112,7 +1300,7 @@ Future<GetNpmPackagesResult> getNpmPackages(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var myPackage = new Google.Index.ArtifactRegistryPackage("my_package", new()
+///     var myPackage = new Google.ArtifactRegistryPackage("my_package", new()
 ///     {
 ///         Location = "us-west1",
 ///         RepositoryId = "my-repository",
@@ -1141,6 +1329,12 @@ Future<GetNpmPackagesResult> getNpmPackages(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// resource "google_artifactregistrypackage" "my_package" {
+///   location      = "us-west1"
+///   repository_id = "my-repository"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1149,8 +1343,8 @@ Future<GetNpmPackagesResult> getNpmPackages(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.google.ArtifactRegistryPackage;
 /// import com.pulumi.google.ArtifactRegistryPackageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1254,6 +1448,20 @@ Future<GetPackageResult> getPackage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getpackages" "myImages" {
+///   location      = "us-central1"
+///   repository_id = "example-repo"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1262,8 +1470,8 @@ Future<GetPackageResult> getPackage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
 /// import com.pulumi.gcp.artifactregistry.inputs.GetPackagesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1410,6 +1618,32 @@ Future<GetPackagesResult> getPackages(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getpythonpackage" "latest" {
+///   location      = gcp_artifactregistry_repository.python_repo.location
+///   repository_id = gcp_artifactregistry_repository.python_repo.repository_id
+///   package_name  = "example_pkg"
+/// }
+/// data "gcp_artifactregistry_getpythonpackage" "withVersion" {
+///   location      = gcp_artifactregistry_repository.python_repo.location
+///   repository_id = gcp_artifactregistry_repository.python_repo.repository_id
+///   package_name  = "example_pkg:1.0.0"
+/// }
+///
+/// resource "gcp_artifactregistry_repository" "python_repo" {
+///   location      = "us-central1"
+///   repository_id = "my-python-repo"
+///   format        = "PYTHON"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1420,8 +1654,8 @@ Future<GetPackagesResult> getPackages(
 /// import com.pulumi.gcp.artifactregistry.RepositoryArgs;
 /// import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
 /// import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1554,6 +1788,20 @@ Future<GetPythonPackageResult> getPythonPackage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getpythonpackages" "myPackages" {
+///   location      = "us-central1"
+///   repository_id = "example-repo"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1562,8 +1810,8 @@ Future<GetPythonPackageResult> getPythonPackage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
 /// import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1665,6 +1913,20 @@ Future<GetPythonPackagesResult> getPythonPackages(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getrepositories" "example" {
+///   location = "us-central1"
+///   project  = "my-project"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1673,8 +1935,8 @@ Future<GetPythonPackagesResult> getPythonPackages(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
 /// import com.pulumi.gcp.artifactregistry.inputs.GetRepositoriesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1778,6 +2040,20 @@ Future<GetRepositoriesResult> getRepositories(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getrepository" "my-repo" {
+///   location      = "us-central1"
+///   repository_id = "my-repository"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1786,8 +2062,8 @@ Future<GetRepositoriesResult> getRepositories(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
 /// import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1894,6 +2170,21 @@ Future<GetRepositoryResult> getRepository(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getrepositoryiampolicy" "policy" {
+///   project    = my-repo.project
+///   location   = my-repo.location
+///   repository = my-repo.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1902,8 +2193,8 @@ Future<GetRepositoryResult> getRepository(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
 /// import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1916,9 +2207,9 @@ Future<GetRepositoryResult> getRepository(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ArtifactregistryFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-///             .project(my_repo.project())
-///             .location(my_repo.location())
-///             .repository(my_repo.name())
+///             .project(my_repo.get("project"))
+///             .location(my_repo.get("location"))
+///             .repository(my_repo.get("name"))
 ///             .build());
 ///
 ///     }
@@ -1954,6 +2245,22 @@ Future<GetRepositoryIamPolicyResult> getRepositoryIamPolicy(
 /// ## Example Usage
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_gettags" "myTags" {
+///   location      = "us-central1"
+///   repository_id = "example-repo"
+///   package_name  = "example-package"
+///   tag_name      = "latest"
+/// }
+/// ```
 /// ```yaml
 /// variables:
 ///   myTags:
@@ -2044,6 +2351,21 @@ Future<GetTagResult> getTag(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_gettags" "myTags" {
+///   location      = "us-central1"
+///   repository_id = "example-repo"
+///   package_name  = "example-package"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2052,8 +2374,8 @@ Future<GetTagResult> getTag(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
 /// import com.pulumi.gcp.artifactregistry.inputs.GetTagsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2104,6 +2426,22 @@ Future<GetTagsResult> getTags(
 /// ## Example Usage
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getversions" "myVersions" {
+///   location      = "us-central1"
+///   repository_id = "example-repo"
+///   package_name  = "example-package"
+///   version_name  = "latest"
+/// }
+/// ```
 /// ```yaml
 /// variables:
 ///   myVersions:
@@ -2194,6 +2532,21 @@ Future<GetVersionResult> getVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_artifactregistry_getversions" "myVersions" {
+///   location      = "us-central1"
+///   repository_id = "example-repo"
+///   package_name  = "example-package"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2202,8 +2555,8 @@ Future<GetVersionResult> getVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
 /// import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -6,8 +6,8 @@ import 'disk_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
 ///
 /// * `gcp.compute.DiskIamPolicy`: Authoritative. Sets the IAM policy for the disk and replaces any existing policy already attached.
-/// * `gcp.compute.DiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the disk are preserved.
-/// * `gcp.compute.DiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the disk are preserved.
+/// * `gcp.compute.DiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the disk are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.compute.DiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the disk are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -16,7 +16,6 @@ import 'disk_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.compute.DiskIamPolicy` **cannot** be used in conjunction with `gcp.compute.DiskIamBinding` and `gcp.compute.DiskIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.compute.DiskIamBinding` resources **can be** used in conjunction with `gcp.compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.compute.DiskIamPolicy
@@ -123,6 +122,29 @@ import 'disk_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_compute_diskiampolicy" "policy" {
+///   project     = default.project
+///   zone        = default.zone
+///   name        = default.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,10 +153,11 @@ import 'disk_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.compute.DiskIamPolicy;
 /// import com.pulumi.gcp.compute.DiskIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -154,9 +177,9 @@ import 'disk_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new DiskIamPolicy("policy", DiskIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .zone(default_.zone())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .zone(default_.get("zone"))
+///             .name(default_.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -258,6 +281,23 @@ import 'disk_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_diskiambinding" "binding" {
+///   project = default.project
+///   zone    = default.zone
+///   name    = default.name
+///   role    = "roles/viewer"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -266,8 +306,8 @@ import 'disk_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.DiskIamBinding;
 /// import com.pulumi.gcp.compute.DiskIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,9 +320,9 @@ import 'disk_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new DiskIamBinding("binding", DiskIamBindingArgs.builder()
-///             .project(default_.project())
-///             .zone(default_.zone())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .zone(default_.get("zone"))
+///             .name(default_.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -373,6 +413,23 @@ import 'disk_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_diskiammember" "member" {
+///   project = default.project
+///   zone    = default.zone
+///   name    = default.name
+///   role    = "roles/viewer"
+///   member  = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -381,8 +438,8 @@ import 'disk_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.DiskIamMember;
 /// import com.pulumi.gcp.compute.DiskIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -395,9 +452,9 @@ import 'disk_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new DiskIamMember("member", DiskIamMemberArgs.builder()
-///             .project(default_.project())
-///             .zone(default_.zone())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .zone(default_.get("zone"))
+///             .name(default_.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -428,8 +485,8 @@ import 'disk_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
 ///
 /// * `gcp.compute.DiskIamPolicy`: Authoritative. Sets the IAM policy for the disk and replaces any existing policy already attached.
-/// * `gcp.compute.DiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the disk are preserved.
-/// * `gcp.compute.DiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the disk are preserved.
+/// * `gcp.compute.DiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the disk are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.compute.DiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the disk are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -438,7 +495,6 @@ import 'disk_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.compute.DiskIamPolicy` **cannot** be used in conjunction with `gcp.compute.DiskIamBinding` and `gcp.compute.DiskIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.compute.DiskIamBinding` resources **can be** used in conjunction with `gcp.compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.compute.DiskIamPolicy
@@ -545,6 +601,29 @@ import 'disk_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_compute_diskiampolicy" "policy" {
+///   project     = default.project
+///   zone        = default.zone
+///   name        = default.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -553,10 +632,11 @@ import 'disk_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.compute.DiskIamPolicy;
 /// import com.pulumi.gcp.compute.DiskIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -576,9 +656,9 @@ import 'disk_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new DiskIamPolicy("policy", DiskIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .zone(default_.zone())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .zone(default_.get("zone"))
+///             .name(default_.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -680,6 +760,23 @@ import 'disk_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_diskiambinding" "binding" {
+///   project = default.project
+///   zone    = default.zone
+///   name    = default.name
+///   role    = "roles/viewer"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -688,8 +785,8 @@ import 'disk_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.DiskIamBinding;
 /// import com.pulumi.gcp.compute.DiskIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -702,9 +799,9 @@ import 'disk_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new DiskIamBinding("binding", DiskIamBindingArgs.builder()
-///             .project(default_.project())
-///             .zone(default_.zone())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .zone(default_.get("zone"))
+///             .name(default_.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -795,6 +892,23 @@ import 'disk_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_diskiammember" "member" {
+///   project = default.project
+///   zone    = default.zone
+///   name    = default.name
+///   role    = "roles/viewer"
+///   member  = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -803,8 +917,8 @@ import 'disk_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.DiskIamMember;
 /// import com.pulumi.gcp.compute.DiskIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -817,9 +931,9 @@ import 'disk_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new DiskIamMember("member", DiskIamMemberArgs.builder()
-///             .project(default_.project())
-///             .zone(default_.zone())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .zone(default_.get("zone"))
+///             .name(default_.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -845,11 +959,8 @@ import 'disk_iam_binding_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/zones/{{zone}}/disks/{{name}}
-///
 /// * {{project}}/{{zone}}/{{name}}
-///
 /// * {{zone}}/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -857,25 +968,21 @@ import 'disk_iam_binding_state.dart';
 /// Compute Engine disk IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:compute/diskIamBinding:DiskIamBinding editor "projects/{{project}}/zones/{{zone}}/disks/{{disk}} roles/viewer user:jane@example.com"
+/// $ terraform import google_compute_disk_iam_member.editor "projects/{{project}}/zones/{{zone}}/disks/{{disk}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:compute/diskIamBinding:DiskIamBinding editor "projects/{{project}}/zones/{{zone}}/disks/{{disk}} roles/viewer"
+/// $ terraform import google_compute_disk_iam_binding.editor "projects/{{project}}/zones/{{zone}}/disks/{{disk}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:compute/diskIamBinding:DiskIamBinding editor projects/{{project}}/zones/{{zone}}/disks/{{disk}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class DiskIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<DiskIamBindingCondition?> condition;

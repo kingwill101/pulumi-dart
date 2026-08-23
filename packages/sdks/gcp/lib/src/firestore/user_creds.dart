@@ -118,6 +118,30 @@ import 'user_creds_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firestore_database" "database" {
+///   project                 = "my-project-name"
+///   name                    = "database-id-mongodb-compatible"
+///   location_id             = "nam5"
+///   type                    = "FIRESTORE_NATIVE"
+///   database_edition        = "ENTERPRISE"
+///   delete_protection_state = "DELETE_PROTECTION_DISABLED"
+///   deletion_policy         = "DELETE"
+/// }
+/// resource "gcp_firestore_usercreds" "my-user-creds" {
+///   project  = "my-project-name"
+///   database = gcp_firestore_database.database.name
+///   name     = "my-username"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +152,8 @@ import 'user_creds_state.dart';
 /// import com.pulumi.gcp.firestore.DatabaseArgs;
 /// import com.pulumi.gcp.firestore.UserCreds;
 /// import com.pulumi.gcp.firestore.UserCredsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -326,7 +350,7 @@ import 'user_creds_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretVersion(ctx, "my-fs-user-creds-secret-version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     my_fs_user_creds_secret.ID(),
+/// 			Secret:     my_fs_user_creds_secret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: my_user_creds.SecurePassword,
 /// 		})
 /// 		if err != nil {
@@ -334,6 +358,41 @@ import 'user_creds_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firestore_database" "database" {
+///   project                 = "my-project-name"
+///   name                    = "database-id-mongodb-compatible"
+///   location_id             = "nam5"
+///   type                    = "FIRESTORE_NATIVE"
+///   database_edition        = "ENTERPRISE"
+///   delete_protection_state = "DELETE_PROTECTION_DISABLED"
+///   deletion_policy         = "DELETE"
+/// }
+/// resource "gcp_firestore_usercreds" "my-user-creds" {
+///   project  = "my-project-name"
+///   database = gcp_firestore_database.database.name
+///   name     = "my-username"
+/// }
+/// resource "gcp_secretmanager_secret" "my-fs-user-creds-secret" {
+///   project   = "my-project-name"
+///   secret_id = "my-fs-user-creds-secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "my-fs-user-creds-secret-version" {
+///   secret      = gcp_secretmanager_secret.my-fs-user-creds-secret.id
+///   secret_data = gcp_firestore_usercreds.my-user-creds.secure_password
 /// }
 /// ```
 /// ```java
@@ -352,8 +411,8 @@ import 'user_creds_state.dart';
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
 /// import com.pulumi.gcp.secretmanager.SecretVersion;
 /// import com.pulumi.gcp.secretmanager.SecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -436,22 +495,15 @@ import 'user_creds_state.dart';
 /// UserCreds can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/databases/{{database}}/userCreds/{{name}}`
-///
 /// * `{{project}}/{{database}}/{{name}}`
-///
 /// * `{{database}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, UserCreds can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firestore/userCreds:UserCreds default projects/{{project}}/databases/{{database}}/userCreds/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firestore/userCreds:UserCreds default {{project}}/{{database}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firestore/userCreds:UserCreds default {{database}}/{{name}}
 /// ```
 class UserCreds extends pulumi.CustomResource {
@@ -459,6 +511,13 @@ class UserCreds extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// The Firestore database ID.
   late final pulumi.Output<String> database;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The ID to use for the user creds, which will become the final component
   /// of the user cred's resource name.
   /// This value should be 4-63 characters. Valid characters are /[a-z][0-9]-/
@@ -495,6 +554,7 @@ class UserCreds extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     resourceIdentities = registerOutput<List<Map<String, dynamic>>>('resourceIdentities');
@@ -528,6 +588,7 @@ class UserCreds extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     resourceIdentities = registerOutput<List<Map<String, dynamic>>>('resourceIdentities');

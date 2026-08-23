@@ -11,9 +11,15 @@ import 'secret_version_state.dart';
 /// * How-to Guides
 /// * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
 ///
+/// &gt; **Warning:** The behavior of the `secretData` field is force new.
+/// While updating this field, Terraform deletes the existing resource and then creates a new one, which may cause potential outages. To mitigate
+/// this, use the `createBeforeDestroy` field within the lifecycle block.
+///
+/// For more details, refer to the Terraform lifecycle documentation.
 ///
 ///
-/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `secret_data_wo`.
+///
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `secretDataWo`.
 /// Read more about Write-only Arguments.
 ///
 /// ## Example Usage
@@ -108,7 +114,7 @@ import 'secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-/// 			Secret:     secret_basic.ID(),
+/// 			Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 		})
 /// 		if err != nil {
@@ -116,6 +122,29 @@ import 'secret_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "secret-basic" {
+///   secret_id = "secret-version"
+///   labels = {
+///     "label" = "my-label"
+///   }
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret-version-basic" {
+///   secret      = gcp_secretmanager_secret.secret-basic.id
+///   secret_data = "secret-data"
 /// }
 /// ```
 /// ```java
@@ -130,8 +159,8 @@ import 'secret_version_state.dart';
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
 /// import com.pulumi.gcp.secretmanager.SecretVersion;
 /// import com.pulumi.gcp.secretmanager.SecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,7 +299,7 @@ import 'secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic-write-only", &secretmanager.SecretVersionArgs{
-/// 			Secret:              secret_basic_write_only.ID(),
+/// 			Secret:              secret_basic_write_only.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretDataWoVersion: pulumi.Int(1),
 /// 			SecretDataWo:        pulumi.String("secret-data-write-only"),
 /// 		})
@@ -279,6 +308,30 @@ import 'secret_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "secret-basic-write-only" {
+///   secret_id = "secret-version-write-only"
+///   labels = {
+///     "label" = "my-label"
+///   }
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret-version-basic-write-only" {
+///   secret                 = gcp_secretmanager_secret.secret-basic-write-only.id
+///   secret_data_wo_version = 1
+///   secret_data_wo         = "secret-data-write-only"
 /// }
 /// ```
 /// ```java
@@ -293,8 +346,8 @@ import 'secret_version_state.dart';
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
 /// import com.pulumi.gcp.secretmanager.SecretVersion;
 /// import com.pulumi.gcp.secretmanager.SecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -445,7 +498,7 @@ import 'secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretVersion(ctx, "secret-version-deletion-policy", &secretmanager.SecretVersionArgs{
-/// 			Secret:         secret_basic.ID(),
+/// 			Secret:         secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData:     pulumi.String("secret-data"),
 /// 			DeletionPolicy: pulumi.String("ABANDON"),
 /// 		})
@@ -454,6 +507,31 @@ import 'secret_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "secret-basic" {
+///   secret_id = "secret-version"
+///   replication = {
+///     user_managed = {
+///       replicas = [{
+///         "location" = "us-central1"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret-version-deletion-policy" {
+///   secret          = gcp_secretmanager_secret.secret-basic.id
+///   secret_data     = "secret-data"
+///   deletion_policy = "ABANDON"
 /// }
 /// ```
 /// ```java
@@ -466,10 +544,11 @@ import 'secret_version_state.dart';
 /// import com.pulumi.gcp.secretmanager.SecretArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+/// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedReplicaArgs;
 /// import com.pulumi.gcp.secretmanager.SecretVersion;
 /// import com.pulumi.gcp.secretmanager.SecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -622,7 +701,7 @@ import 'secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretVersion(ctx, "secret-version-deletion-policy", &secretmanager.SecretVersionArgs{
-/// 			Secret:         secret_basic.ID(),
+/// 			Secret:         secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData:     pulumi.String("secret-data"),
 /// 			DeletionPolicy: pulumi.String("DISABLE"),
 /// 		})
@@ -631,6 +710,31 @@ import 'secret_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "secret-basic" {
+///   secret_id = "secret-version"
+///   replication = {
+///     user_managed = {
+///       replicas = [{
+///         "location" = "us-central1"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret-version-deletion-policy" {
+///   secret          = gcp_secretmanager_secret.secret-basic.id
+///   secret_data     = "secret-data"
+///   deletion_policy = "DISABLE"
 /// }
 /// ```
 /// ```java
@@ -643,10 +747,11 @@ import 'secret_version_state.dart';
 /// import com.pulumi.gcp.secretmanager.SecretArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+/// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedReplicaArgs;
 /// import com.pulumi.gcp.secretmanager.SecretVersion;
 /// import com.pulumi.gcp.secretmanager.SecretVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -814,7 +919,7 @@ import 'secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretVersion(ctx, "secret-version-base64", &secretmanager.SecretVersionArgs{
-/// 			Secret:             secret_basic.ID(),
+/// 			Secret:             secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			IsSecretDataBase64: pulumi.Bool(true),
 /// 			SecretData:         pulumi.String(invokeFilebase64.Result),
 /// 		})
@@ -823,6 +928,34 @@ import 'secret_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "secret-basic" {
+///   secret_id = "secret-version"
+///   replication = {
+///     user_managed = {
+///       replicas = [{
+///         "location" = "us-central1"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret-version-base64" {
+///   secret                = gcp_secretmanager_secret.secret-basic.id
+///   is_secret_data_base64 = true
+///   secret_data           = filebase64("secret-data.pfx")
 /// }
 /// ```
 /// ```java
@@ -835,12 +968,13 @@ import 'secret_version_state.dart';
 /// import com.pulumi.gcp.secretmanager.SecretArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+/// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedReplicaArgs;
 /// import com.pulumi.gcp.secretmanager.SecretVersion;
 /// import com.pulumi.gcp.secretmanager.SecretVersionArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1018,7 +1152,7 @@ import 'secret_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretVersion(ctx, "secret-version-base64-write-only", &secretmanager.SecretVersionArgs{
-/// 			Secret:              secret_basic.ID(),
+/// 			Secret:              secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			IsSecretDataBase64:  pulumi.Bool(true),
 /// 			SecretDataWoVersion: pulumi.Int(1),
 /// 			SecretDataWo:        pulumi.String(invokeFilebase64.Result),
@@ -1028,6 +1162,35 @@ import 'secret_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "secret-basic" {
+///   secret_id = "secret-version-base64-write-only"
+///   replication = {
+///     user_managed = {
+///       replicas = [{
+///         "location" = "us-central1"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret-version-base64-write-only" {
+///   secret                 = gcp_secretmanager_secret.secret-basic.id
+///   is_secret_data_base64  = true
+///   secret_data_wo_version = 1
+///   secret_data_wo         = filebase64("secret-data-base64-write-only.pfx")
 /// }
 /// ```
 /// ```java
@@ -1040,12 +1203,13 @@ import 'secret_version_state.dart';
 /// import com.pulumi.gcp.secretmanager.SecretArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+/// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedReplicaArgs;
 /// import com.pulumi.gcp.secretmanager.SecretVersion;
 /// import com.pulumi.gcp.secretmanager.SecretVersionArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1111,6 +1275,7 @@ import 'secret_version_state.dart';
 ///
 /// * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 ///
+///
 /// When using the `pulumi import` command, SecretVersion can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -1121,11 +1286,17 @@ class SecretVersion extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// The deletion policy for the secret version. Setting `ABANDON` allows the resource
   /// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-  /// disabled rather than deleted. Default is `DELETE`. Possible values are:
+  /// disabled rather than deleted.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  ///
+  /// Default is `DELETE`. Possible values are:
   /// * DELETE
   /// * DISABLE
   /// * ABANDON
-  late final pulumi.Output<String?> deletionPolicy;
+  /// * PREVENT
+  late final pulumi.Output<String> deletionPolicy;
   /// The time at which the Secret was destroyed. Only present if state is DESTROYED.
   late final pulumi.Output<String> destroyTime;
   /// The current state of the SecretVersion.
@@ -1148,7 +1319,7 @@ class SecretVersion extends pulumi.CustomResource {
   /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   /// **Note**: This property is write-only and will not be read from the API.
   ///
-  /// &gt; **Note:** One of `secret_data` or `secret_data_wo` can only be set.
+  /// &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
   late final pulumi.Output<String?> secretDataWo;
   /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   late final pulumi.Output<int?> secretDataWoVersion;
@@ -1170,7 +1341,7 @@ class SecretVersion extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destroyTime = registerOutput<String>('destroyTime');
     enabled = registerOutput<bool?>('enabled');
     isSecretDataBase64 = registerOutput<bool?>('isSecretDataBase64');
@@ -1207,7 +1378,7 @@ class SecretVersion extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destroyTime = registerOutput<String>('destroyTime');
     enabled = registerOutput<bool?>('enabled');
     isSecretDataBase64 = registerOutput<bool?>('isSecretDataBase64');

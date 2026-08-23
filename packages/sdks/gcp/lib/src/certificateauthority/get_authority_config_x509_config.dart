@@ -60,4 +60,3 @@ class GetAuthorityConfigX509Config {
     );
   }
 }
-

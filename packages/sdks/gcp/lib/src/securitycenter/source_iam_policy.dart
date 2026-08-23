@@ -78,6 +78,21 @@ import 'source_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securitycenter_source" "custom_source" {
+///   display_name = "My Source"
+///   organization = "123456789"
+///   description  = "My custom Cloud Security Command Center Finding Source"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +101,8 @@ import 'source_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.securitycenter.Source;
 /// import com.pulumi.gcp.securitycenter.SourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -125,16 +140,13 @@ import 'source_iam_policy_state.dart';
 /// Source can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{organization}}/sources/{{name}}`
-///
 /// * `{{organization}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Source can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:securitycenter/sourceIamPolicy:SourceIamPolicy default organizations/{{organization}}/sources/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securitycenter/sourceIamPolicy:SourceIamPolicy default {{organization}}/{{name}}
 /// ```
 class SourceIamPolicy extends pulumi.CustomResource {

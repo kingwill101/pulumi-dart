@@ -10,6 +10,13 @@ import 'example_message.dart';
 class ExampleArgs {
   /// Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> app;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human-readable description of the example.
   final pulumi.Input<String>? description;
   /// Display name of the example.
@@ -18,6 +25,8 @@ class ExampleArgs {
   /// example represents a conversation that is handled by the root agent.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
   final pulumi.Input<String>? entryAgent;
+  /// The ID to use for the example, which will become the final component of
+  /// the example's resource name. In Terraform, this field is required.
   final pulumi.Input<String> exampleId;
   /// Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
@@ -30,15 +39,17 @@ class ExampleArgs {
 
   /// Creates a new [ExampleArgs].
   /// [app] Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Human-readable description of the example.
   /// [displayName] Display name of the example.
   /// [entryAgent] The agent that initially handles the conversation. If not specified, the
-  /// [exampleId] Required.
+  /// [exampleId] The ID to use for the example, which will become the final component of
   /// [location] Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [messages] The collection of messages that make up the conversation.
   /// [project] The ID of the project in which the resource belongs.
   const ExampleArgs({
     required this.app,
+    this.deletionPolicy,
     this.description,
     required this.displayName,
     this.entryAgent,
@@ -51,6 +62,7 @@ class ExampleArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'app': app,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': displayName,
       'entryAgent': ?entryAgent,
@@ -64,6 +76,7 @@ class ExampleArgs {
   factory ExampleArgs.fromMap(Map<String, dynamic> map) {
     return ExampleArgs(
       app: pulumi.Input.fromValue(map['app'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       entryAgent: (() { final guardedValue = map['entryAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -74,4 +87,3 @@ class ExampleArgs {
     );
   }
 }
-

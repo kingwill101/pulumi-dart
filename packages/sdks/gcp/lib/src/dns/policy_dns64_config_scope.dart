@@ -24,4 +24,3 @@ class PolicyDns64ConfigScope {
     );
   }
 }
-

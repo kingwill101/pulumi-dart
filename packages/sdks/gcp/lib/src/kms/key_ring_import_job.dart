@@ -7,7 +7,6 @@ import 'key_ring_import_job_state.dart';
 /// Once expired, Cloud KMS will no longer be able to import or unwrap any key material that
 /// was wrapped with the `KeyRingImportJob`'s public key.
 ///
-///
 /// &gt; **Note:** KeyRingImportJobs cannot be deleted from Google Cloud Platform.
 /// Destroying a provider-managed KeyRingImportJob will remove it from state but
 /// *will not delete the resource from the project.*
@@ -27,6 +26,7 @@ import 'key_ring_import_job_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, KeyRingImportJob can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -38,6 +38,13 @@ class KeyRingImportJob extends pulumi.CustomResource {
   /// Only present if the chosen ImportMethod is one with a protection level of HSM.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> attestations;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The time at which this resource is scheduled for expiration and can no longer be used.
   /// This is in RFC3339 text format.
   late final pulumi.Output<String> expireTime;
@@ -76,6 +83,7 @@ class KeyRingImportJob extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     attestations = registerOutput<List<Map<String, dynamic>>>('attestations');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     expireTime = registerOutput<String>('expireTime');
     importJobId = registerOutput<String>('importJobId');
     importMethod = registerOutput<String>('importMethod');
@@ -110,6 +118,7 @@ class KeyRingImportJob extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     attestations = registerOutput<List<Map<String, dynamic>>>('attestations');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     expireTime = registerOutput<String>('expireTime');
     importJobId = registerOutput<String>('importJobId');
     importMethod = registerOutput<String>('importMethod');

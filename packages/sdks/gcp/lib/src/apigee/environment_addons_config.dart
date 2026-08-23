@@ -19,6 +19,7 @@ import 'environment_addons_config_state.dart';
 ///
 /// * `{{env_id}}`
 ///
+///
 /// When using the `pulumi import` command, EnvironmentAddonsConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh

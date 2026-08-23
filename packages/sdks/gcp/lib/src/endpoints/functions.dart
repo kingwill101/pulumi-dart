@@ -75,6 +75,19 @@ Future<GetServiceConsumersIamPolicyResult> getServiceConsumersIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_endpoints_getserviceiampolicy" "policy" {
+///   service_name = endpointsService.serviceName
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +96,8 @@ Future<GetServiceConsumersIamPolicyResult> getServiceConsumersIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.endpoints.EndpointsFunctions;
 /// import com.pulumi.gcp.endpoints.inputs.GetServiceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -97,7 +110,7 @@ Future<GetServiceConsumersIamPolicyResult> getServiceConsumersIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = EndpointsFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-///             .serviceName(endpointsService.serviceName())
+///             .serviceName(endpointsService.get("serviceName"))
 ///             .build());
 ///
 ///     }

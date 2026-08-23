@@ -3,6 +3,7 @@ import 'future_reservation_aggregate_reservation.dart';
 import 'future_reservation_args.dart';
 import 'future_reservation_auto_created_reservations_duration.dart';
 import 'future_reservation_commitment_info.dart';
+import 'future_reservation_params.dart';
 import 'future_reservation_share_settings.dart';
 import 'future_reservation_specific_sku_properties.dart';
 import 'future_reservation_state.dart';
@@ -17,6 +18,9 @@ import 'future_reservation_time_window.dart';
 /// `g1-small` machine types, preemptible VMs, sole tenant nodes, or other
 /// services not listed above
 /// like Cloud SQL and Dataflow.
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 ///
 /// To get more information about FutureReservation, see:
 ///
@@ -37,6 +41,7 @@ import 'future_reservation_time_window.dart';
 /// const gceFutureReservation = new gcp.compute.FutureReservation("gce_future_reservation", {
 ///     name: "gce-future-reservation",
 ///     project: "my-project-name",
+///     zone: "us-central1-a",
 ///     autoDeleteAutoCreatedReservations: true,
 ///     planningStatus: "DRAFT",
 ///     namePrefix: "fr-basic",
@@ -59,6 +64,7 @@ import 'future_reservation_time_window.dart';
 /// gce_future_reservation = gcp.compute.FutureReservation("gce_future_reservation",
 ///     name="gce-future-reservation",
 ///     project="my-project-name",
+///     zone="us-central1-a",
 ///     auto_delete_auto_created_reservations=True,
 ///     planning_status="DRAFT",
 ///     name_prefix="fr-basic",
@@ -85,6 +91,7 @@ import 'future_reservation_time_window.dart';
 ///     {
 ///         Name = "gce-future-reservation",
 ///         Project = "my-project-name",
+///         Zone = "us-central1-a",
 ///         AutoDeleteAutoCreatedReservations = true,
 ///         PlanningStatus = "DRAFT",
 ///         NamePrefix = "fr-basic",
@@ -118,6 +125,7 @@ import 'future_reservation_time_window.dart';
 /// 		_, err := compute.NewFutureReservation(ctx, "gce_future_reservation", &compute.FutureReservationArgs{
 /// 			Name:                              pulumi.String("gce-future-reservation"),
 /// 			Project:                           pulumi.String("my-project-name"),
+/// 			Zone:                              pulumi.String("us-central1-a"),
 /// 			AutoDeleteAutoCreatedReservations: pulumi.Bool(true),
 /// 			PlanningStatus:                    pulumi.String("DRAFT"),
 /// 			NamePrefix:                        pulumi.String("fr-basic"),
@@ -139,6 +147,34 @@ import 'future_reservation_time_window.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_futurereservation" "gce_future_reservation" {
+///   name                                  = "gce-future-reservation"
+///   project                               = "my-project-name"
+///   zone                                  = "us-central1-a"
+///   auto_delete_auto_created_reservations = true
+///   planning_status                       = "DRAFT"
+///   name_prefix                           = "fr-basic"
+///   time_window = {
+///     start_time = "2025-11-01T00:00:00Z"
+///     end_time   = "2025-11-02T00:00:00Z"
+///   }
+///   specific_sku_properties = {
+///     total_count = "1"
+///     instance_properties = {
+///       machine_type = "e2-standard-2"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +186,8 @@ import 'future_reservation_time_window.dart';
 /// import com.pulumi.gcp.compute.inputs.FutureReservationTimeWindowArgs;
 /// import com.pulumi.gcp.compute.inputs.FutureReservationSpecificSkuPropertiesArgs;
 /// import com.pulumi.gcp.compute.inputs.FutureReservationSpecificSkuPropertiesInstancePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -166,6 +202,7 @@ import 'future_reservation_time_window.dart';
 ///         var gceFutureReservation = new FutureReservation("gceFutureReservation", FutureReservationArgs.builder()
 ///             .name("gce-future-reservation")
 ///             .project("my-project-name")
+///             .zone("us-central1-a")
 ///             .autoDeleteAutoCreatedReservations(true)
 ///             .planningStatus("DRAFT")
 ///             .namePrefix("fr-basic")
@@ -192,6 +229,7 @@ import 'future_reservation_time_window.dart';
 ///     properties:
 ///       name: gce-future-reservation
 ///       project: my-project-name
+///       zone: us-central1-a
 ///       autoDeleteAutoCreatedReservations: true
 ///       planningStatus: DRAFT
 ///       namePrefix: fr-basic
@@ -215,6 +253,7 @@ import 'future_reservation_time_window.dart';
 /// const gceFutureReservation = new gcp.compute.FutureReservation("gce_future_reservation", {
 ///     name: "gce-future-reservation-aggregate-reservation",
 ///     project: "my-project-name",
+///     zone: "us-central1-a",
 ///     autoDeleteAutoCreatedReservations: true,
 ///     planningStatus: "DRAFT",
 ///     namePrefix: "fr-basic",
@@ -249,6 +288,7 @@ import 'future_reservation_time_window.dart';
 /// gce_future_reservation = gcp.compute.FutureReservation("gce_future_reservation",
 ///     name="gce-future-reservation-aggregate-reservation",
 ///     project="my-project-name",
+///     zone="us-central1-a",
 ///     auto_delete_auto_created_reservations=True,
 ///     planning_status="DRAFT",
 ///     name_prefix="fr-basic",
@@ -287,6 +327,7 @@ import 'future_reservation_time_window.dart';
 ///     {
 ///         Name = "gce-future-reservation-aggregate-reservation",
 ///         Project = "my-project-name",
+///         Zone = "us-central1-a",
 ///         AutoDeleteAutoCreatedReservations = true,
 ///         PlanningStatus = "DRAFT",
 ///         NamePrefix = "fr-basic",
@@ -336,6 +377,7 @@ import 'future_reservation_time_window.dart';
 /// 		_, err := compute.NewFutureReservation(ctx, "gce_future_reservation", &compute.FutureReservationArgs{
 /// 			Name:                              pulumi.String("gce-future-reservation-aggregate-reservation"),
 /// 			Project:                           pulumi.String("my-project-name"),
+/// 			Zone:                              pulumi.String("us-central1-a"),
 /// 			AutoDeleteAutoCreatedReservations: pulumi.Bool(true),
 /// 			PlanningStatus:                    pulumi.String("DRAFT"),
 /// 			NamePrefix:                        pulumi.String("fr-basic"),
@@ -369,6 +411,43 @@ import 'future_reservation_time_window.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_futurereservation" "gce_future_reservation" {
+///   name                                  = "gce-future-reservation-aggregate-reservation"
+///   project                               = "my-project-name"
+///   zone                                  = "us-central1-a"
+///   auto_delete_auto_created_reservations = true
+///   planning_status                       = "DRAFT"
+///   name_prefix                           = "fr-basic"
+///   time_window = {
+///     start_time = "2025-11-01T00:00:00Z"
+///     end_time   = "2025-11-02T00:00:00Z"
+///   }
+///   aggregate_reservation = {
+///     vm_family     = "VM_FAMILY_CLOUD_TPU_DEVICE_CT3"
+///     workload_type = "UNSPECIFIED"
+///     reserved_resources = [{
+///       "accelerator" = {
+///         "acceleratorCount" = 32
+///         "acceleratorType"  = "projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3"
+///       }
+///       }, {
+///       "accelerator" = {
+///         "acceleratorCount" = 2
+///         "acceleratorType"  = "projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3"
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -379,8 +458,10 @@ import 'future_reservation_time_window.dart';
 /// import com.pulumi.gcp.compute.FutureReservationArgs;
 /// import com.pulumi.gcp.compute.inputs.FutureReservationTimeWindowArgs;
 /// import com.pulumi.gcp.compute.inputs.FutureReservationAggregateReservationArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.FutureReservationAggregateReservationReservedResourceArgs;
+/// import com.pulumi.gcp.compute.inputs.FutureReservationAggregateReservationReservedResourceAcceleratorArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -395,6 +476,7 @@ import 'future_reservation_time_window.dart';
 ///         var gceFutureReservation = new FutureReservation("gceFutureReservation", FutureReservationArgs.builder()
 ///             .name("gce-future-reservation-aggregate-reservation")
 ///             .project("my-project-name")
+///             .zone("us-central1-a")
 ///             .autoDeleteAutoCreatedReservations(true)
 ///             .planningStatus("DRAFT")
 ///             .namePrefix("fr-basic")
@@ -432,6 +514,7 @@ import 'future_reservation_time_window.dart';
 ///     properties:
 ///       name: gce-future-reservation-aggregate-reservation
 ///       project: my-project-name
+///       zone: us-central1-a
 ///       autoDeleteAutoCreatedReservations: true
 ///       planningStatus: DRAFT
 ///       namePrefix: fr-basic
@@ -456,28 +539,17 @@ import 'future_reservation_time_window.dart';
 /// FutureReservation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/futureReservations/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}`
-///
 /// * `{{zone}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, FutureReservation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/futureReservation:FutureReservation default projects/{{project}}/zones/{{zone}}/futureReservations/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/futureReservation:FutureReservation default {{project}}/{{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/futureReservation:FutureReservation default {{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/futureReservation:FutureReservation default {{name}}
 /// ```
 class FutureReservation extends pulumi.CustomResource {
@@ -496,6 +568,13 @@ class FutureReservation extends pulumi.CustomResource {
   late final pulumi.Output<FutureReservationCommitmentInfo?> commitmentInfo;
   /// The creation timestamp for this future reservation in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Type of the deployment requested as part of future reservation.
   /// Possible values are: `DENSE`, `FLEXIBLE`.
   late final pulumi.Output<String?> deploymentType;
@@ -506,11 +585,14 @@ class FutureReservation extends pulumi.CustomResource {
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
   /// the regular expression `a-z?` which means the
   /// first character must be a lowercase letter, and all following
-  /// characters must be a dash, lowercase letter, or digit, except the las
+  /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
   /// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
   late final pulumi.Output<String?> namePrefix;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  late final pulumi.Output<FutureReservationParams?> params;
   /// Planning state before being submitted for evaluation
   /// Possible values are: `DRAFT`, `SUBMITTED`.
   late final pulumi.Output<String> planningStatus;
@@ -543,7 +625,7 @@ class FutureReservation extends pulumi.CustomResource {
   /// Time window for this Future Reservation.
   /// Structure is documented below.
   late final pulumi.Output<FutureReservationTimeWindow> timeWindow;
-  /// URL of the Zone where this future reservation resides.
+  /// The zone where the future reservation is located.
   late final pulumi.Output<String> zone;
 
   /// Creates a new [FutureReservation].
@@ -566,10 +648,12 @@ class FutureReservation extends pulumi.CustomResource {
     autoDeleteAutoCreatedReservations = registerOutput<bool?>('autoDeleteAutoCreatedReservations');
     commitmentInfo = registerOutput<FutureReservationCommitmentInfo?>('commitmentInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationCommitmentInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deploymentType = registerOutput<String?>('deploymentType');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String?>('namePrefix');
+    params = registerOutput<FutureReservationParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     planningStatus = registerOutput<String>('planningStatus');
     project = registerOutput<String>('project');
     reservationMode = registerOutput<String?>('reservationMode');
@@ -614,10 +698,12 @@ class FutureReservation extends pulumi.CustomResource {
     autoDeleteAutoCreatedReservations = registerOutput<bool?>('autoDeleteAutoCreatedReservations');
     commitmentInfo = registerOutput<FutureReservationCommitmentInfo?>('commitmentInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationCommitmentInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deploymentType = registerOutput<String?>('deploymentType');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String?>('namePrefix');
+    params = registerOutput<FutureReservationParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     planningStatus = registerOutput<String>('planningStatus');
     project = registerOutput<String>('project');
     reservationMode = registerOutput<String?>('reservationMode');

@@ -5,6 +5,13 @@ import 'workload_identity_pool_namespace_owner_service.dart';
 
 /// Input properties used for looking up and filtering WorkloadIdentityPoolNamespace resources.
 class WorkloadIdentityPoolNamespaceState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of the namespace. Cannot exceed 256 characters.
   final pulumi.Input<String>? description;
   /// Whether the namespace is disabled. If disabled, credentials may no longer be issued for
@@ -37,11 +44,11 @@ class WorkloadIdentityPoolNamespaceState {
   /// * contain only lowercase alphanumeric characters or `-`
   /// * start with an alphanumeric character
   /// * end with an alphanumeric character
-  ///
   /// The prefix `gcp-` will be reserved for future uses.
   final pulumi.Input<String>? workloadIdentityPoolNamespaceId;
 
   /// Creates a new [WorkloadIdentityPoolNamespaceState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of the namespace. Cannot exceed 256 characters.
   /// [disabled] Whether the namespace is disabled. If disabled, credentials may no longer be issued for
   /// [name] The resource name of the namespace as
@@ -51,6 +58,7 @@ class WorkloadIdentityPoolNamespaceState {
   /// [workloadIdentityPoolId] The ID to use for the pool, which becomes the final component of the resource name. This
   /// [workloadIdentityPoolNamespaceId] The ID to use for the namespace. This value must:
   const WorkloadIdentityPoolNamespaceState({
+    this.deletionPolicy,
     this.description,
     this.disabled,
     this.name,
@@ -63,6 +71,7 @@ class WorkloadIdentityPoolNamespaceState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'disabled': ?disabled,
       'name': ?name,
@@ -76,6 +85,7 @@ class WorkloadIdentityPoolNamespaceState {
 
   factory WorkloadIdentityPoolNamespaceState.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolNamespaceState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -87,4 +97,3 @@ class WorkloadIdentityPoolNamespaceState {
     );
   }
 }
-

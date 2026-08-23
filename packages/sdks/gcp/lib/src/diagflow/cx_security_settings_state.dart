@@ -7,7 +7,7 @@ import 'cx_security_settings_insights_export_settings.dart';
 /// Input properties used for looking up and filtering CxSecuritySettings resources.
 class CxSecuritySettingsState {
   /// Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
-  /// If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
+  /// If retentionStrategy is set to REMOVE_AFTER_CONVERSATION or gcsBucket is empty, audio export is disabled.
   /// If audio export is enabled, audio is recorded and saved to gcs_bucket, subject to retention policy of gcs_bucket.
   /// This setting won't effect audio input for implicit sessions via [Sessions.DetectIntent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#google.cloud.dialogflow.cx.v3.Sessions.DetectIntent).
   /// Structure is documented below.
@@ -16,6 +16,13 @@ class CxSecuritySettingsState {
   /// Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/deidentifyTemplates/&lt;Template ID&gt; OR organizations/&lt;Organization ID&gt;/locations/&lt;Location ID&gt;/deidentifyTemplates/&lt;Template ID&gt;
   final pulumi.Input<String>? deidentifyTemplate;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The human-readable name of the security settings, unique within the location.
   final pulumi.Input<String>? displayName;
   /// Controls conversation exporting settings to Insights after conversation is completed.
@@ -46,17 +53,18 @@ class CxSecuritySettingsState {
   /// * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
   /// Possible values are: `REDACT_WITH_SERVICE`.
   final pulumi.Input<String>? redactionStrategy;
-  /// Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
+  /// Defines how long we retain persisted data that contains sensitive info. Only one of `retentionWindowDays` and `retentionStrategy` may be set.
   /// * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
   /// Possible values are: `REMOVE_AFTER_CONVERSATION`.
   final pulumi.Input<String>? retentionStrategy;
   /// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
-  /// Only one of `retention_window_days` and `retention_strategy` may be set.
+  /// Only one of `retentionWindowDays` and `retentionStrategy` may be set.
   final pulumi.Input<int>? retentionWindowDays;
 
   /// Creates a new [CxSecuritySettingsState].
   /// [audioExportSettings] Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
   /// [deidentifyTemplate] [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with [redacted] text.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The human-readable name of the security settings, unique within the location.
   /// [insightsExportSettings] Controls conversation exporting settings to Insights after conversation is completed.
   /// [inspectTemplate] [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config.
@@ -66,11 +74,12 @@ class CxSecuritySettingsState {
   /// [purgeDataTypes] List of types of data to remove when retention settings triggers purge.
   /// [redactionScope] Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
   /// [redactionStrategy] Defines how we redact data. If not set, defaults to not redacting.
-  /// [retentionStrategy] Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
+  /// [retentionStrategy] Defines how long we retain persisted data that contains sensitive info. Only one of `retentionWindowDays` and `retentionStrategy` may be set.
   /// [retentionWindowDays] Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
   const CxSecuritySettingsState({
     this.audioExportSettings,
     this.deidentifyTemplate,
+    this.deletionPolicy,
     this.displayName,
     this.insightsExportSettings,
     this.inspectTemplate,
@@ -88,6 +97,7 @@ class CxSecuritySettingsState {
     return <String, dynamic>{
       'audioExportSettings': ?pulumi.Input.mapOptionalInputValue<CxSecuritySettingsAudioExportSettings, Map<String, dynamic>>(audioExportSettings, (value) => value.toMap()),
       'deidentifyTemplate': ?deidentifyTemplate,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'insightsExportSettings': ?pulumi.Input.mapOptionalInputValue<CxSecuritySettingsInsightsExportSettings, Map<String, dynamic>>(insightsExportSettings, (value) => value.toMap()),
       'inspectTemplate': ?inspectTemplate,
@@ -106,6 +116,7 @@ class CxSecuritySettingsState {
     return CxSecuritySettingsState(
       audioExportSettings: (() { final guardedValue = map['audioExportSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxSecuritySettingsAudioExportSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deidentifyTemplate: (() { final guardedValue = map['deidentifyTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       insightsExportSettings: (() { final guardedValue = map['insightsExportSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxSecuritySettingsInsightsExportSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       inspectTemplate: (() { final guardedValue = map['inspectTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -120,4 +131,3 @@ class CxSecuritySettingsState {
     );
   }
 }
-

@@ -9,6 +9,8 @@ class BackupPlanAssociationState {
   /// Note:
   /// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
   /// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+  /// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+  /// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
   final pulumi.Input<String>? backupPlan;
   /// The id of backupplan association
   final pulumi.Input<String>? backupPlanAssociationId;
@@ -16,8 +18,13 @@ class BackupPlanAssociationState {
   final pulumi.Input<String>? createTime;
   /// Resource name of data source which will be used as storage location for backups taken
   final pulumi.Input<String>? dataSource;
-  /// The point in time when the last successful backup was captured from the source
-  final pulumi.Input<String>? lastSuccessfulBackupConsistencyTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The location for the backupplan association
   final pulumi.Input<String>? location;
   /// The name of backup plan association resource created
@@ -28,7 +35,7 @@ class BackupPlanAssociationState {
   /// The resource for which BPA needs to be created
   final pulumi.Input<String>? resource;
   /// The resource type of workload on which backupplan is applied.
-  /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+  /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
   final pulumi.Input<String>? resourceType;
   /// Message for rules config info
   /// Structure is documented below.
@@ -41,7 +48,7 @@ class BackupPlanAssociationState {
   /// [backupPlanAssociationId] The id of backupplan association
   /// [createTime] The time when the instance was created
   /// [dataSource] Resource name of data source which will be used as storage location for backups taken
-  /// [lastSuccessfulBackupConsistencyTime] The point in time when the last successful backup was captured from the source
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [location] The location for the backupplan association
   /// [name] The name of backup plan association resource created
   /// [project] The ID of the project in which the resource belongs.
@@ -54,7 +61,7 @@ class BackupPlanAssociationState {
     this.backupPlanAssociationId,
     this.createTime,
     this.dataSource,
-    this.lastSuccessfulBackupConsistencyTime,
+    this.deletionPolicy,
     this.location,
     this.name,
     this.project,
@@ -70,7 +77,7 @@ class BackupPlanAssociationState {
       'backupPlanAssociationId': ?backupPlanAssociationId,
       'createTime': ?createTime,
       'dataSource': ?dataSource,
-      'lastSuccessfulBackupConsistencyTime': ?lastSuccessfulBackupConsistencyTime,
+      'deletionPolicy': ?deletionPolicy,
       'location': ?location,
       'name': ?name,
       'project': ?project,
@@ -87,7 +94,7 @@ class BackupPlanAssociationState {
       backupPlanAssociationId: (() { final guardedValue = map['backupPlanAssociationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataSource: (() { final guardedValue = map['dataSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      lastSuccessfulBackupConsistencyTime: (() { final guardedValue = map['lastSuccessfulBackupConsistencyTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -98,4 +105,3 @@ class BackupPlanAssociationState {
     );
   }
 }
-

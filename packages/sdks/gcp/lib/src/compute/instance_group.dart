@@ -74,6 +74,22 @@ import 'instance_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_instancegroup" "test" {
+///   name        = "test"
+///   description = "Test instance group"
+///   zone        = "us-central1-a"
+///   network     = default.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +98,8 @@ import 'instance_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.InstanceGroup;
 /// import com.pulumi.gcp.compute.InstanceGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -99,7 +115,7 @@ import 'instance_group_state.dart';
 ///             .name("test")
 ///             .description("Test instance group")
 ///             .zone("us-central1-a")
-///             .network(default_.id())
+///             .network(default_.get("id"))
 ///             .build());
 ///
 ///     }
@@ -238,6 +254,30 @@ import 'instance_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_instancegroup" "webservers" {
+///   name        = "webservers"
+///   description = "Test instance group"
+///   instances   = [test.id, test2.id]
+///   named_ports {
+///     name = "http"
+///     port = "8080"
+///   }
+///   named_ports {
+///     name = "https"
+///     port = "8443"
+///   }
+///   zone = "us-central1-a"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -247,8 +287,8 @@ import 'instance_group_state.dart';
 /// import com.pulumi.gcp.compute.InstanceGroup;
 /// import com.pulumi.gcp.compute.InstanceGroupArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceGroupNamedPortArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -264,8 +304,8 @@ import 'instance_group_state.dart';
 ///             .name("webservers")
 ///             .description("Test instance group")
 ///             .instances(
-///                 test.id(),
-///                 test2.id())
+///                 test.get("id"),
+///                 test2.get("id"))
 ///             .namedPorts(
 ///                 InstanceGroupNamedPortArgs.builder()
 ///                     .name("http")
@@ -305,29 +345,29 @@ import 'instance_group_state.dart';
 /// Instance groups can be imported using the `zone` and `name` with an optional `project`, e.g.
 ///
 /// * `projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}`
-///
 /// * `{{project_id}}/{{zone}}/{{instance_group_id}}`
-///
 /// * `{{zone}}/{{instance_group_id}}`
+///
 ///
 /// When using the `pulumi import` command, instance groups can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/instanceGroup:InstanceGroup default {{zone}}/{{instance_group_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/instanceGroup:InstanceGroup default {{project_id}}/{{zone}}/{{instance_group_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/instanceGroup:InstanceGroup default projects/{{project_id}}/zones/{{zone}}/instanceGroups/{{instance_group_id}}
 /// ```
 class InstanceGroup extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional textual description of the instance
   /// group.
   late final pulumi.Output<String?> description;
-  /// The list of instances in the group, in `self_link` format.
+  /// The list of instances in the group, in `selfLink` format.
   /// When adding instances they must all be in the same network and zone as the instance group.
   late final pulumi.Output<List<String>> instances;
   /// The name of the instance group. Must be 1-63
@@ -369,6 +409,7 @@ class InstanceGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     instances = registerOutput<List<String>>('instances');
     this.name = registerOutput<String>('name');
@@ -403,6 +444,7 @@ class InstanceGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     instances = registerOutput<List<String>>('instances');
     this.name = registerOutput<String>('name');

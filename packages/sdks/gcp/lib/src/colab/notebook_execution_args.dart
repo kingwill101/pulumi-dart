@@ -5,6 +5,7 @@ import 'notebook_execution_custom_environment_spec.dart';
 import 'notebook_execution_dataform_repository_source.dart';
 import 'notebook_execution_direct_notebook_source.dart';
 import 'notebook_execution_gcs_notebook_source.dart';
+import 'notebook_execution_workbench_runtime.dart';
 
 /// {@template pulumi_colab_notebook_execution_notebook_execution_args_doc}
 /// The set of arguments for NotebookExecution.
@@ -17,6 +18,13 @@ class NotebookExecutionArgs {
   /// The Dataform Repository containing the input notebook.
   /// Structure is documented below.
   final pulumi.Input<NotebookExecutionDataformRepositorySource>? dataformRepositorySource;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The content of the input notebook in ipynb format.
   /// Structure is documented below.
   final pulumi.Input<NotebookExecutionDirectNotebookSource>? directNotebookSource;
@@ -42,10 +50,14 @@ class NotebookExecutionArgs {
   final pulumi.Input<String>? project;
   /// The service account to run the execution as.
   final pulumi.Input<String>? serviceAccount;
+  /// Configuration for a Workbench Instances-based environment.
+  /// Structure is documented below.
+  final pulumi.Input<NotebookExecutionWorkbenchRuntime>? workbenchRuntime;
 
   /// Creates a new [NotebookExecutionArgs].
   /// [customEnvironmentSpec] Compute configuration to use for an execution job
   /// [dataformRepositorySource] The Dataform Repository containing the input notebook.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [directNotebookSource] The content of the input notebook in ipynb format.
   /// [displayName] Required. The display name of the Notebook Execution.
   /// [executionTimeout] Max running time of the execution job in seconds (default 86400s / 24 hrs).
@@ -57,9 +69,11 @@ class NotebookExecutionArgs {
   /// [notebookRuntimeTemplateResourceName] The NotebookRuntimeTemplate to source compute configuration from.
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceAccount] The service account to run the execution as.
+  /// [workbenchRuntime] Configuration for a Workbench Instances-based environment.
   const NotebookExecutionArgs({
     this.customEnvironmentSpec,
     this.dataformRepositorySource,
+    this.deletionPolicy,
     this.directNotebookSource,
     required this.displayName,
     this.executionTimeout,
@@ -71,12 +85,14 @@ class NotebookExecutionArgs {
     this.notebookRuntimeTemplateResourceName,
     this.project,
     this.serviceAccount,
+    this.workbenchRuntime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customEnvironmentSpec': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionCustomEnvironmentSpec, Map<String, dynamic>>(customEnvironmentSpec, (value) => value.toMap()),
       'dataformRepositorySource': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionDataformRepositorySource, Map<String, dynamic>>(dataformRepositorySource, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'directNotebookSource': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionDirectNotebookSource, Map<String, dynamic>>(directNotebookSource, (value) => value.toMap()),
       'displayName': displayName,
       'executionTimeout': ?executionTimeout,
@@ -88,6 +104,7 @@ class NotebookExecutionArgs {
       'notebookRuntimeTemplateResourceName': ?notebookRuntimeTemplateResourceName,
       'project': ?project,
       'serviceAccount': ?serviceAccount,
+      'workbenchRuntime': ?pulumi.Input.mapOptionalInputValue<NotebookExecutionWorkbenchRuntime, Map<String, dynamic>>(workbenchRuntime, (value) => value.toMap()),
     };
   }
 
@@ -95,6 +112,7 @@ class NotebookExecutionArgs {
     return NotebookExecutionArgs(
       customEnvironmentSpec: (() { final guardedValue = map['customEnvironmentSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NotebookExecutionCustomEnvironmentSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataformRepositorySource: (() { final guardedValue = map['dataformRepositorySource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NotebookExecutionDataformRepositorySource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       directNotebookSource: (() { final guardedValue = map['directNotebookSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NotebookExecutionDirectNotebookSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       executionTimeout: (() { final guardedValue = map['executionTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -106,7 +124,7 @@ class NotebookExecutionArgs {
       notebookRuntimeTemplateResourceName: (() { final guardedValue = map['notebookRuntimeTemplateResourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workbenchRuntime: (() { final guardedValue = map['workbenchRuntime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NotebookExecutionWorkbenchRuntime.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment {
-  /// Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+  /// Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
   /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
   final pulumi.Input<String>? fixedLikelihood;
   /// Increase or decrease the likelihood by the specified number of levels. For example,
@@ -11,11 +11,11 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoo
   /// then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
   /// Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
   /// adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
-  /// will result in a final likelihood of LIKELY. Either this or fixed_likelihood can be set.
+  /// will result in a final likelihood of LIKELY. Either this or fixedLikelihood can be set.
   final pulumi.Input<int>? relativeLikelihood;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment].
-  /// [fixedLikelihood] Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+  /// [fixedLikelihood] Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
   /// [relativeLikelihood] Increase or decrease the likelihood by the specified number of levels. For example,
   const PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment({
     this.fixedLikelihood,
@@ -36,4 +36,3 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoo
     );
   }
 }
-

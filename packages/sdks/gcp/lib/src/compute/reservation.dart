@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reservation_args.dart';
 import 'reservation_delete_after_duration.dart';
+import 'reservation_params.dart';
 import 'reservation_reservation_sharing_policy.dart';
 import 'reservation_share_settings.dart';
 import 'reservation_specific_reservation.dart';
@@ -112,6 +113,27 @@ import 'reservation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_reservation" "gce_reservation" {
+///   name = "gce-reservation"
+///   zone = "us-central1-a"
+///   specific_reservation = {
+///     count = 1
+///     instance_properties = {
+///       min_cpu_platform = "Intel Cascade Lake"
+///       machine_type     = "n2-standard-2"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +144,8 @@ import 'reservation_state.dart';
 /// import com.pulumi.gcp.compute.ReservationArgs;
 /// import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
 /// import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -261,6 +283,29 @@ import 'reservation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_reservation" "gce_reservation" {
+///   name = "gce-reservation"
+///   zone = "us-central1-a"
+///   specific_reservation = {
+///     count = 1
+///     instance_properties = {
+///       min_cpu_platform     = "Intel Cascade Lake"
+///       machine_type         = "n2-standard-2"
+///       maintenance_interval = "PERIODIC"
+///     }
+///   }
+///   enable_emergent_maintenance = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -271,8 +316,8 @@ import 'reservation_state.dart';
 /// import com.pulumi.gcp.compute.ReservationArgs;
 /// import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
 /// import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -570,6 +615,56 @@ import 'reservation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_instancetemplate" "foobar" {
+///   name           = "instance-template"
+///   machine_type   = "n2-standard-2"
+///   can_ip_forward = false
+///   tags           = ["foo", "bar"]
+///   disks {
+///     source_image = data.gcp_compute_getimage.myImage.self_link
+///     auto_delete  = true
+///     boot         = true
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
+///   scheduling = {
+///     preemptible       = false
+///     automatic_restart = true
+///   }
+///   metadata = {
+///     "foo" = "bar"
+///   }
+///   service_account = {
+///     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
+///   }
+///   labels = {
+///     "my_label" = "foobar"
+///   }
+/// }
+/// resource "gcp_compute_reservation" "gce_reservation_source_instance_template" {
+///   name = "gce-reservation-source-instance-template"
+///   zone = "us-central1-a"
+///   specific_reservation = {
+///     count                    = 1
+///     source_instance_template = gcp_compute_instancetemplate.foobar.self_link
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -587,8 +682,8 @@ import 'reservation_state.dart';
 /// import com.pulumi.gcp.compute.Reservation;
 /// import com.pulumi.gcp.compute.ReservationArgs;
 /// import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -958,6 +1053,59 @@ import 'reservation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_instancetemplate" "foobar" {
+///   name           = "instance-template"
+///   machine_type   = "g2-standard-4"
+///   can_ip_forward = false
+///   tags           = ["foo", "bar"]
+///   disks {
+///     source_image = data.gcp_compute_getimage.myImage.self_link
+///     auto_delete  = true
+///     boot         = true
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
+///   scheduling = {
+///     preemptible       = false
+///     automatic_restart = true
+///   }
+///   metadata = {
+///     "foo" = "bar"
+///   }
+///   service_account = {
+///     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
+///   }
+///   labels = {
+///     "my_label" = "foobar"
+///   }
+/// }
+/// resource "gcp_compute_reservation" "gce_reservation_sharing_policy" {
+///   name = "gce-reservation-sharing-policy"
+///   zone = "us-central1-b"
+///   specific_reservation = {
+///     count                    = 2
+///     source_instance_template = gcp_compute_instancetemplate.foobar.self_link
+///   }
+///   reservation_sharing_policy = {
+///     service_share_type = "ALLOW_ALL"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -976,8 +1124,8 @@ import 'reservation_state.dart';
 /// import com.pulumi.gcp.compute.ReservationArgs;
 /// import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
 /// import com.pulumi.gcp.compute.inputs.ReservationReservationSharingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1093,28 +1241,17 @@ import 'reservation_state.dart';
 /// Reservation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/reservations/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}`
-///
 /// * `{{zone}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Reservation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/reservation:Reservation default projects/{{project}}/zones/{{zone}}/reservations/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/reservation:Reservation default {{project}}/{{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/reservation:Reservation default {{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/reservation:Reservation default {{name}}
 /// ```
 class Reservation extends pulumi.CustomResource {
@@ -1131,8 +1268,16 @@ class Reservation extends pulumi.CustomResource {
   /// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
   /// Cannot be used with delete_after_duration.
   late final pulumi.Output<String> deleteAtTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+  /// (Optional, Beta)
   /// Indicates if this group of VMs have emergent maintenance enabled.
   late final pulumi.Output<bool?> enableEmergentMaintenance;
   /// Type of the resource. Always compute#reservations for reservations.
@@ -1147,6 +1292,9 @@ class Reservation extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  late final pulumi.Output<ReservationParams?> params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -1197,11 +1345,13 @@ class Reservation extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deleteAfterDuration = registerOutput<ReservationDeleteAfterDuration?>('deleteAfterDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationDeleteAfterDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteAtTime = registerOutput<String>('deleteAtTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     enableEmergentMaintenance = registerOutput<bool?>('enableEmergentMaintenance');
     kind = registerOutput<String>('kind');
     linkedCommitments = registerOutput<List<String>>('linkedCommitments');
     this.name = registerOutput<String>('name');
+    params = registerOutput<ReservationParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     reservationBlockCount = registerOutput<int>('reservationBlockCount');
     reservationSharingPolicy = registerOutput<ReservationReservationSharingPolicy>('reservationSharingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationReservationSharingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1243,11 +1393,13 @@ class Reservation extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deleteAfterDuration = registerOutput<ReservationDeleteAfterDuration?>('deleteAfterDuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationDeleteAfterDuration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteAtTime = registerOutput<String>('deleteAtTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     enableEmergentMaintenance = registerOutput<bool?>('enableEmergentMaintenance');
     kind = registerOutput<String>('kind');
     linkedCommitments = registerOutput<List<String>>('linkedCommitments');
     this.name = registerOutput<String>('name');
+    params = registerOutput<ReservationParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     reservationBlockCount = registerOutput<int>('reservationBlockCount');
     reservationSharingPolicy = registerOutput<ReservationReservationSharingPolicy>('reservationSharingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationReservationSharingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

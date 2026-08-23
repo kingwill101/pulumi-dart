@@ -5,6 +5,7 @@ import 'trace_scope_state.dart';
 /// A trace scope is a collection of resources whose traces are queried together
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Observability Trace Scope Basic
@@ -17,8 +18,8 @@ import 'trace_scope_state.dart';
 ///
 /// const project = gcp.organizations.getProject({});
 /// const project_2 = new gcp.organizations.Project("project-2", {
-///     projectId: "tf-test_12125",
-///     name: "tf-test_82749",
+///     projectId: "tf-test_78545",
+///     name: "tf-test_48234",
 ///     orgId: "123456789",
 ///     deletionPolicy: "DELETE",
 /// });
@@ -40,8 +41,8 @@ import 'trace_scope_state.dart';
 ///
 /// project = gcp.organizations.get_project()
 /// project_2 = gcp.organizations.Project("project-2",
-///     project_id="tf-test_12125",
-///     name="tf-test_82749",
+///     project_id="tf-test_78545",
+///     name="tf-test_48234",
 ///     org_id="123456789",
 ///     deletion_policy="DELETE")
 /// observability_trace_scope = gcp.observability.TraceScope("observability_trace_scope",
@@ -66,8 +67,8 @@ import 'trace_scope_state.dart';
 ///
 ///     var project_2 = new Gcp.Organizations.Project("project-2", new()
 ///     {
-///         ProjectId = "tf-test_12125",
-///         Name = "tf-test_82749",
+///         ProjectId = "tf-test_78545",
+///         Name = "tf-test_48234",
 ///         OrgId = "123456789",
 ///         DeletionPolicy = "DELETE",
 ///     });
@@ -110,8 +111,8 @@ import 'trace_scope_state.dart';
 /// 			return err
 /// 		}
 /// 		project_2, err := organizations.NewProject(ctx, "project-2", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("tf-test_12125"),
-/// 			Name:           pulumi.String("tf-test_82749"),
+/// 			ProjectId:      pulumi.String("tf-test_78545"),
+/// 			Name:           pulumi.String("tf-test_48234"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			DeletionPolicy: pulumi.String("DELETE"),
 /// 		})
@@ -138,6 +139,32 @@ import 'trace_scope_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_observability_tracescope" "observability_trace_scope" {
+///   depends_on     = [gcp_organizations_project.project-2]
+///   trace_scope_id = "test-scope"
+///   location       = "global"
+///   resource_names = ["projects/${data.gcp_organizations_getproject.project.project_id}", "projects/${gcp_organizations_project.project-2.project_id}"]
+///   description    = "A trace scope configured with Terraform"
+/// }
+/// resource "gcp_organizations_project" "project-2" {
+///   project_id      = "tf-test_78545"
+///   name            = "tf-test_48234"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +178,8 @@ import 'trace_scope_state.dart';
 /// import com.pulumi.gcp.observability.TraceScope;
 /// import com.pulumi.gcp.observability.TraceScopeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -168,8 +195,8 @@ import 'trace_scope_state.dart';
 ///             .build());
 ///
 ///         var project_2 = new Project("project-2", ProjectArgs.builder()
-///             .projectId("tf-test_12125")
-///             .name("tf-test_82749")
+///             .projectId("tf-test_78545")
+///             .name("tf-test_48234")
 ///             .orgId("123456789")
 ///             .deletionPolicy("DELETE")
 ///             .build());
@@ -206,8 +233,8 @@ import 'trace_scope_state.dart';
 ///   project-2:
 ///     type: gcp:organizations:Project
 ///     properties:
-///       projectId: tf-test_12125
-///       name: tf-test_82749
+///       projectId: tf-test_78545
+///       name: tf-test_48234
 ///       orgId: '123456789'
 ///       deletionPolicy: DELETE
 /// variables:
@@ -223,27 +250,27 @@ import 'trace_scope_state.dart';
 /// TraceScope can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/traceScopes/{{trace_scope_id}}`
-///
 /// * `{{project}}/{{location}}/{{trace_scope_id}}`
-///
 /// * `{{location}}/{{trace_scope_id}}`
+///
 ///
 /// When using the `pulumi import` command, TraceScope can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:observability/traceScope:TraceScope default projects/{{project}}/locations/{{location}}/traceScopes/{{trace_scope_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:observability/traceScope:TraceScope default {{project}}/{{location}}/{{trace_scope_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:observability/traceScope:TraceScope default {{location}}/{{trace_scope_id}}
 /// ```
 class TraceScope extends pulumi.CustomResource {
   /// The creation timestamp of the trace scope.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Describes this trace scope.
   /// The maximum length of the description is 8000 characters.
   late final pulumi.Output<String?> description;
@@ -280,6 +307,7 @@ class TraceScope extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -313,6 +341,7 @@ class TraceScope extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

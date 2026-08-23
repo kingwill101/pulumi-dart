@@ -143,8 +143,6 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -196,6 +194,49 @@ import 'function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        ="${local.project}-gcf-source"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("function-source.zip")
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   name        = "function-v2"
+///   location    = "us-central1"
+///   description = "a new function"
+///   build_config = {
+///     runtime     = "nodejs20"
+///     entry_point = "helloHttp"
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///   }
+///   service_config = {
+///     max_instance_count = 1
+///     available_memory   = "256M"
+///     timeout_seconds    = 60
+///   }
+/// }
+/// locals {
+///   project = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -213,8 +254,8 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -278,7 +319,7 @@ import 'function_state.dart';
 ///       name: function-source.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: function-source.zip
+///         fn::fileAsset: function-source.zip
 ///   function:
 ///     type: gcp:cloudfunctionsv2:Function
 ///     properties:
@@ -509,8 +550,6 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
@@ -585,7 +624,7 @@ import 'function_state.dart';
 /// 			EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
 /// 				TriggerRegion: pulumi.String("us-central1"),
 /// 				EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
-/// 				PubsubTopic:   topic.ID(),
+/// 				PubsubTopic:   topic.ID().ToIDOutput().ToStringOutput(),
 /// 				RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
 /// 			},
 /// 		})
@@ -594,6 +633,76 @@ import 'function_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "account" {
+///   account_id   = "gcf-sa"
+///   display_name = "Test Service Account"
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "functions2-topic"
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        ="${local.project}-gcf-source"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("function-source.zip")
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   name        = "gcf-function"
+///   location    = "us-central1"
+///   description = "a new function"
+///   build_config = {
+///     runtime     = "nodejs20"
+///     entry_point = "helloPubSub"
+///     environment_variables = {
+///       "BUILD_CONFIG_TEST" = "build_test"
+///     }
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///   }
+///   # Set the entry point
+///   service_config = {
+///     max_instance_count               = 3
+///     min_instance_count               = 1
+///     available_memory                 = "4Gi"
+///     timeout_seconds                  = 60
+///     max_instance_request_concurrency = 80
+///     available_cpu                    = "4"
+///     environment_variables = {
+///       "SERVICE_CONFIG_TEST"      = "config_test"
+///       "SERVICE_CONFIG_DIFF_TEST" = gcp_serviceaccount_account.account.email
+///     }
+///     ingress_settings               = "ALLOW_INTERNAL_ONLY"
+///     all_traffic_on_latest_revision = true
+///     service_account_email          = gcp_serviceaccount_account.account.email
+///   }
+///   event_trigger = {
+///     trigger_region = "us-central1"
+///     event_type     = "google.cloud.pubsub.topic.v1.messagePublished"
+///     pubsub_topic   = gcp_pubsub_topic.topic.id
+///     retry_policy   = "RETRY_POLICY_RETRY"
+///   }
+/// }
+/// locals {
+///   project = "my-project-name"
 /// }
 /// ```
 /// ```java
@@ -618,8 +727,8 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -718,7 +827,7 @@ import 'function_state.dart';
 ///       name: function-source.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: function-source.zip
+///         fn::fileAsset: function-source.zip
 ///   function:
 ///     type: gcp:cloudfunctionsv2:Function
 ///     properties:
@@ -1084,9 +1193,7 @@ import 'function_state.dart';
 /// 			Project:     function.Project,
 /// 			Region:      function.Location,
 /// 			HttpTarget: &cloudscheduler.JobHttpTargetArgs{
-/// 				Uri: function.ServiceConfig.ApplyT(func(serviceConfig cloudfunctionsv2.FunctionServiceConfig) (*string, error) {
-/// 					return &serviceConfig.Uri, nil
-/// 				}).(pulumi.StringPtrOutput),
+/// 				Uri:        function.ServiceConfig.Uri(),
 /// 				HttpMethod: pulumi.String("POST"),
 /// 				OidcToken: &cloudscheduler.JobHttpTargetOidcTokenArgs{
 /// 					Audience: function.ServiceConfig.ApplyT(func(serviceConfig cloudfunctionsv2.FunctionServiceConfig) (string, error) {
@@ -1101,6 +1208,83 @@ import 'function_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "account" {
+///   account_id   = "gcf-sa"
+///   display_name = "Test Service Account"
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        ="${local.project}-gcf-source"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("function-source.zip")
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   name        = "gcf-function"
+///   location    = "us-central1"
+///   description = "a new function"
+///   build_config = {
+///     runtime     = "nodejs20"
+///     entry_point = "helloHttp"
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///   }
+///   service_config = {
+///     min_instance_count    = 1
+///     available_memory      = "256M"
+///     timeout_seconds       = 60
+///     service_account_email = gcp_serviceaccount_account.account.email
+///   }
+/// }
+/// resource "gcp_cloudfunctionsv2_functioniammember" "invoker" {
+///   project        = gcp_cloudfunctionsv2_function.function.project
+///   location       = gcp_cloudfunctionsv2_function.function.location
+///   cloud_function = gcp_cloudfunctionsv2_function.function.name
+///   role           = "roles/cloudfunctions.invoker"
+///   member         ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// }
+/// resource "gcp_cloudrun_iammember" "cloud_run_invoker" {
+///   project  = gcp_cloudfunctionsv2_function.function.project
+///   location = gcp_cloudfunctionsv2_function.function.location
+///   service  = gcp_cloudfunctionsv2_function.function.name
+///   role     = "roles/run.invoker"
+///   member   ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// }
+/// resource "gcp_cloudscheduler_job" "invoke_cloud_function" {
+///   name        = "invoke-gcf-function"
+///   description = "Schedule the HTTPS trigger for cloud function"
+///   schedule    = "0 0 * * *"
+///   project     = gcp_cloudfunctionsv2_function.function.project
+///   region      = gcp_cloudfunctionsv2_function.function.location
+///   http_target = {
+///     uri         = gcp_cloudfunctionsv2_function.function.service_config.uri
+///     http_method = "POST"
+///     oidc_token = {
+///       audience              ="${gcp_cloudfunctionsv2_function.function.service_config.uri}/"
+///       service_account_email = gcp_serviceaccount_account.account.email
+///     }
+///   }
+/// }
+/// locals {
+///   project = "my-project-name"
 /// }
 /// ```
 /// ```java
@@ -1130,8 +1314,8 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetArgs;
 /// import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetOidcTokenArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1238,7 +1422,7 @@ import 'function_state.dart';
 ///       name: function-source.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: function-source.zip
+///         fn::fileAsset: function-source.zip
 ///   function:
 ///     type: gcp:cloudfunctionsv2:Function
 ///     properties:
@@ -1775,6 +1959,105 @@ import 'function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getprojectserviceaccount" "gcsAccount" {
+/// }
+///
+/// resource "gcp_storage_bucket" "source-bucket" {
+///   name                        = "gcf-source-bucket"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.source-bucket.name
+///   source = fileAsset("function-source.zip")
+/// }
+/// resource "gcp_storage_bucket" "trigger-bucket" {
+///   name                        = "gcf-trigger-bucket"
+///   location                    = "us-central1"
+///   uniform_bucket_level_access = true
+/// }
+/// # To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
+/// # (See https://cloud.google.com/eventarc/docs/run/quickstart-storage#before-you-begin)
+/// resource "gcp_projects_iammember" "gcs-pubsub-publishing" {
+///   project = "my-project-name"
+///   role    = "roles/pubsub.publisher"
+///   member  ="serviceAccount:${data.gcp_storage_getprojectserviceaccount.gcsAccount.email_address}"
+/// }
+/// resource "gcp_serviceaccount_account" "account" {
+///   account_id   = "gcf-sa"
+///   display_name = "Test Service Account - used for both the cloud function and eventarc trigger in the test"
+/// }
+/// # Permissions on the service account used by the function and Eventarc trigger
+/// resource "gcp_projects_iammember" "invoking" {
+///   depends_on = [gcp_projects_iammember.gcs-pubsub-publishing]
+///   project    = "my-project-name"
+///   role       = "roles/run.invoker"
+///   member     ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// }
+/// resource "gcp_projects_iammember" "event-receiving" {
+///   depends_on = [gcp_projects_iammember.invoking]
+///   project    = "my-project-name"
+///   role       = "roles/eventarc.eventReceiver"
+///   member     ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// }
+/// resource "gcp_projects_iammember" "artifactregistry-reader" {
+///   depends_on = [gcp_projects_iammember.event-receiving]
+///   project    = "my-project-name"
+///   role       = "roles/artifactregistry.reader"
+///   member     ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   depends_on  = [gcp_projects_iammember.event-receiving, gcp_projects_iammember.artifactregistry-reader]
+///   name        = "gcf-function"
+///   location    = "us-central1"
+///   description = "a new function"
+///   build_config = {
+///     runtime     = "nodejs20"
+///     entry_point = "entryPoint"
+///     environment_variables = {
+///       "BUILD_CONFIG_TEST" = "build_test"
+///     }
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.source-bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///   }
+///   # Set the entry point in the code
+///   service_config = {
+///     max_instance_count = 3
+///     min_instance_count = 1
+///     available_memory   = "256M"
+///     timeout_seconds    = 60
+///     environment_variables = {
+///       "SERVICE_CONFIG_TEST" = "config_test"
+///     }
+///     ingress_settings               = "ALLOW_INTERNAL_ONLY"
+///     all_traffic_on_latest_revision = true
+///     service_account_email          = gcp_serviceaccount_account.account.email
+///   }
+///   event_trigger = {
+///     event_type            = "google.cloud.storage.object.v1.finalized"
+///     retry_policy          = "RETRY_POLICY_RETRY"
+///     service_account_email = gcp_serviceaccount_account.account.email
+///     event_filters = [{
+///       "attribute" = "bucket"
+///       "value"     = gcp_storage_bucket.trigger-bucket.name
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1798,10 +2081,11 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerArgs;
+/// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerEventFilterArgs;
 /// import com.pulumi.asset.FileAsset;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1929,7 +2213,7 @@ import 'function_state.dart';
 ///       name: function-source.zip
 ///       bucket: ${["source-bucket"].name}
 ///       source:
-///         fn::FileAsset: function-source.zip
+///         fn::fileAsset: function-source.zip
 ///   trigger-bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
@@ -2527,6 +2811,109 @@ import 'function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// # This example follows the examples shown in this Google Cloud Community blog post
+/// # https://medium.com/google-cloud/applying-a-path-pattern-when-filtering-in-eventarc-f06b937b4c34
+/// # and the docs:
+/// # https://cloud.google.com/eventarc/docs/path-patterns
+/// resource "gcp_storage_bucket" "source-bucket" {
+///   name                        = "gcf-source-bucket"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.source-bucket.name
+///   source = fileAsset("function-source.zip")
+/// }
+/// resource "gcp_serviceaccount_account" "account" {
+///   account_id   = "gcf-sa"
+///   display_name = "Test Service Account - used for both the cloud function and eventarc trigger in the test"
+/// }
+/// # Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
+/// # Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
+/// # google_cloudfunctions2_function below (Audit Log events have path pattern support)
+/// resource "gcp_storage_bucket" "audit-log-bucket" {
+///   name                        = "gcf-auditlog-bucket"
+///   location                    = "us-central1"
+///   uniform_bucket_level_access = true
+/// }
+/// # Permissions on the service account used by the function and Eventarc trigger
+/// resource "gcp_projects_iammember" "invoking" {
+///   project = "my-project-name"
+///   role    = "roles/run.invoker"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// }
+/// resource "gcp_projects_iammember" "event-receiving" {
+///   depends_on = [gcp_projects_iammember.invoking]
+///   project    = "my-project-name"
+///   role       = "roles/eventarc.eventReceiver"
+///   member     ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// }
+/// resource "gcp_projects_iammember" "artifactregistry-reader" {
+///   depends_on = [gcp_projects_iammember.event-receiving]
+///   project    = "my-project-name"
+///   role       = "roles/artifactregistry.reader"
+///   member     ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   depends_on  = [gcp_projects_iammember.event-receiving, gcp_projects_iammember.artifactregistry-reader]
+///   name        = "gcf-function"
+///   location    = "us-central1"
+///   description = "a new function"
+///   build_config = {
+///     runtime     = "nodejs20"
+///     entry_point = "entryPoint"
+///     environment_variables = {
+///       "BUILD_CONFIG_TEST" = "build_test"
+///     }
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.source-bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///   }
+///   # Set the entry point in the code
+///   service_config = {
+///     max_instance_count = 3
+///     min_instance_count = 1
+///     available_memory   = "256M"
+///     timeout_seconds    = 60
+///     environment_variables = {
+///       "SERVICE_CONFIG_TEST" = "config_test"
+///     }
+///     ingress_settings               = "ALLOW_INTERNAL_ONLY"
+///     all_traffic_on_latest_revision = true
+///     service_account_email          = gcp_serviceaccount_account.account.email
+///   }
+///   event_trigger = {
+///     trigger_region        = "us-central1"
+///     event_type            = "google.cloud.audit.log.v1.written"
+///     retry_policy          = "RETRY_POLICY_RETRY"
+///     service_account_email = gcp_serviceaccount_account.account.email
+///     event_filters = [{
+///       "attribute" = "serviceName"
+///       "value"     = "storage.googleapis.com"
+///       }, {
+///       "attribute" = "methodName"
+///       "value"     = "storage.objects.create"
+///       }, {
+///       "attribute" = "resourceName"
+///       "value"     ="/projects/_/buckets/${gcp_storage_bucket.audit-log-bucket.name}/objects/*.txt"
+///       "operator"  = "match-path-pattern"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2548,10 +2935,11 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerArgs;
+/// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerEventFilterArgs;
 /// import com.pulumi.asset.FileAsset;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2688,7 +3076,7 @@ import 'function_state.dart';
 ///       name: function-source.zip
 ///       bucket: ${["source-bucket"].name}
 ///       source:
-///         fn::FileAsset: function-source.zip
+///         fn::fileAsset: function-source.zip
 ///   account:
 ///     type: gcp:serviceaccount:Account
 ///     properties:
@@ -3096,7 +3484,7 @@ import 'function_state.dart';
 /// 						Object: object.Name,
 /// 					},
 /// 				},
-/// 				ServiceAccount: account.ID(),
+/// 				ServiceAccount: account.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
 /// 				MaxInstanceCount: pulumi.Int(1),
@@ -3111,6 +3499,78 @@ import 'function_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "account" {
+///   account_id   = "gcf-sa"
+///   display_name = "Test Service Account"
+/// }
+/// resource "gcp_projects_iammember" "log_writer" {
+///   project = gcp_serviceaccount_account.account.project
+///   role    = "roles/logging.logWriter"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// }
+/// resource "gcp_projects_iammember" "artifact_registry_writer" {
+///   project = gcp_serviceaccount_account.account.project
+///   role    = "roles/artifactregistry.writer"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// }
+/// resource "gcp_projects_iammember" "storage_object_admin" {
+///   project = gcp_serviceaccount_account.account.project
+///   role    = "roles/storage.objectAdmin"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.account.email}"
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        ="${local.project}-gcf-source"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("function-source.zip")
+/// }
+/// # builder permissions need to stablize before it can pull the source zip
+/// resource "time_sleep" "wait_60s" {
+///   depends_on      = [gcp_projects_iammember.log_writer, gcp_projects_iammember.artifact_registry_writer, gcp_projects_iammember.storage_object_admin]
+///   create_duration = "60s"
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   depends_on  = [time_sleep.wait_60s]
+///   name        = "function-v2"
+///   location    = "us-central1"
+///   description = "a new function"
+///   build_config = {
+///     runtime     = "nodejs20"
+///     entry_point = "helloHttp"
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///     service_account = gcp_serviceaccount_account.account.id
+///   }
+///   service_config = {
+///     max_instance_count = 1
+///     available_memory   = "256M"
+///     timeout_seconds    = 60
+///   }
+/// }
+/// locals {
+///   project = "my-project-name"
 /// }
 /// ```
 /// ```java
@@ -3137,8 +3597,8 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
 /// import com.pulumi.asset.FileAsset;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3264,7 +3724,7 @@ import 'function_state.dart';
 ///       name: function-source.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: function-source.zip
+///         fn::fileAsset: function-source.zip
 ///   # builder permissions need to stablize before it can pull the source zip
 ///   wait60s:
 ///     type: time:Sleep
@@ -3514,8 +3974,6 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
@@ -3601,6 +4059,71 @@ import 'function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        ="${local.project}-gcf-source"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("function-source.zip")
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   depends_on  = [gcp_secretmanager_secretversion.secret]
+///   name        = "function-secret"
+///   location    = "us-central1"
+///   description = "a new function"
+///   build_config = {
+///     runtime     = "nodejs20"
+///     entry_point = "helloHttp"
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///   }
+///   service_config = {
+///     max_instance_count = 1
+///     available_memory   = "256M"
+///     timeout_seconds    = 60
+///     secret_environment_variables = [{
+///       "key"       = "TEST"
+///       "projectId" = local.project
+///       "secret"    = gcp_secretmanager_secret.secret.secret_id
+///       "version"   = "latest"
+///     }]
+///   }
+/// }
+/// resource "gcp_secretmanager_secret" "secret" {
+///   secret_id = "secret"
+///   replication = {
+///     user_managed = {
+///       replicas = [{
+///         "location" = "us-central1"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret" {
+///   secret      = gcp_secretmanager_secret.secret.name
+///   secret_data = "secret"
+///   enabled     = true
+/// }
+/// locals {
+///   project = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3615,6 +4138,7 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.secretmanager.SecretArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+/// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedReplicaArgs;
 /// import com.pulumi.gcp.secretmanager.SecretVersion;
 /// import com.pulumi.gcp.secretmanager.SecretVersionArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.Function;
@@ -3623,10 +4147,11 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
+/// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigSecretEnvironmentVariableArgs;
 /// import com.pulumi.asset.FileAsset;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3715,7 +4240,7 @@ import 'function_state.dart';
 ///       name: function-source.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: function-source.zip
+///         fn::fileAsset: function-source.zip
 ///   function:
 ///     type: gcp:cloudfunctionsv2:Function
 ///     properties:
@@ -3970,8 +4495,6 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
@@ -4056,6 +4579,70 @@ import 'function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        ="${local.project}-gcf-source"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("function-source.zip")
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   depends_on  = [gcp_secretmanager_secretversion.secret]
+///   name        = "function-secret"
+///   location    = "us-central1"
+///   description = "a new function"
+///   build_config = {
+///     runtime     = "nodejs20"
+///     entry_point = "helloHttp"
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///   }
+///   service_config = {
+///     max_instance_count = 1
+///     available_memory   = "256M"
+///     timeout_seconds    = 60
+///     secret_volumes = [{
+///       "mountPath" = "/etc/secrets"
+///       "projectId" = local.project
+///       "secret"    = gcp_secretmanager_secret.secret.secret_id
+///     }]
+///   }
+/// }
+/// resource "gcp_secretmanager_secret" "secret" {
+///   secret_id = "secret"
+///   replication = {
+///     user_managed = {
+///       replicas = [{
+///         "location" = "us-central1"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret" {
+///   secret      = gcp_secretmanager_secret.secret.name
+///   secret_data = "secret"
+///   enabled     = true
+/// }
+/// locals {
+///   project = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4070,6 +4657,7 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.secretmanager.SecretArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+/// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedReplicaArgs;
 /// import com.pulumi.gcp.secretmanager.SecretVersion;
 /// import com.pulumi.gcp.secretmanager.SecretVersionArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.Function;
@@ -4078,10 +4666,11 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
+/// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigSecretVolumeArgs;
 /// import com.pulumi.asset.FileAsset;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4169,7 +4758,7 @@ import 'function_state.dart';
 ///       name: function-source.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: function-source.zip
+///         fn::fileAsset: function-source.zip
 ///   function:
 ///     type: gcp:cloudfunctionsv2:Function
 ///     properties:
@@ -4374,8 +4963,6 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
@@ -4426,7 +5013,7 @@ import 'function_state.dart';
 /// 						Object: object.Name,
 /// 					},
 /// 				},
-/// 				WorkerPool: pool.ID(),
+/// 				WorkerPool: pool.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
 /// 				MaxInstanceCount: pulumi.Int(1),
@@ -4439,6 +5026,59 @@ import 'function_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        ="${local.project}-gcf-source"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("function-source.zip")
+/// }
+/// resource "gcp_cloudbuild_workerpool" "pool" {
+///   name     = "workerpool"
+///   location = "us-central1"
+///   worker_config = {
+///     disk_size_gb   = 100
+///     machine_type   = "e2-standard-8"
+///     no_external_ip = false
+///   }
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   name        = "function-workerpool"
+///   location    = "us-central1"
+///   description = "a new function"
+///   build_config = {
+///     runtime     = "nodejs20"
+///     entry_point = "helloHttp"
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///     worker_pool = gcp_cloudbuild_workerpool.pool.id
+///   }
+///   service_config = {
+///     max_instance_count = 1
+///     available_memory   = "256M"
+///     timeout_seconds    = 60
+///   }
+/// }
+/// locals {
+///   project = "my-project-name"
 /// }
 /// ```
 /// ```java
@@ -4461,8 +5101,8 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4537,7 +5177,7 @@ import 'function_state.dart';
 ///       name: function-source.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: function-source.zip
+///         fn::fileAsset: function-source.zip
 ///   pool:
 ///     type: gcp:cloudbuild:WorkerPool
 ///     properties:
@@ -4840,8 +5480,6 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
@@ -4935,7 +5573,7 @@ import 'function_state.dart';
 /// 			BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
 /// 				Runtime:          pulumi.String("nodejs20"),
 /// 				EntryPoint:       pulumi.String("helloHttp"),
-/// 				DockerRepository: encoded_ar_repo.ID(),
+/// 				DockerRepository: encoded_ar_repo.ID().ToIDOutput().ToStringOutput(),
 /// 				Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
 /// 					StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
 /// 						Bucket: bucket.Name,
@@ -4956,6 +5594,84 @@ import 'function_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "projectGetProject" {
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        ="${local.project}-gcf-source"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("function-source.zip")
+/// }
+/// resource "gcp_projects_serviceidentity" "ea_sa" {
+///   project = data.gcp_organizations_getproject.projectGetProject.project_id
+///   service = "eventarc.googleapis.com"
+/// }
+/// resource "gcp_artifactregistry_repository" "unencoded-ar-repo" {
+///   repository_id = "ar-repo"
+///   location      = "us-central1"
+///   format        = "DOCKER"
+/// }
+/// resource "gcp_artifactregistry_repositoryiambinding" "binding" {
+///   location   = gcp_artifactregistry_repository.encoded-ar-repo.location
+///   repository = gcp_artifactregistry_repository.encoded-ar-repo.name
+///   role       = "roles/artifactregistry.admin"
+///   members    = ["serviceAccount:service-${data.gcp_organizations_getproject.projectGetProject.number}@gcf-admin-robot.iam.gserviceaccount.com"]
+/// }
+/// resource "gcp_kms_cryptokeyiambinding" "gcf_cmek_keyuser" {
+///   depends_on    = [gcp_projects_serviceidentity.ea_sa]
+///   crypto_key_id = "cmek-key"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   members       = ["serviceAccount:service-${data.gcp_organizations_getproject.projectGetProject.number}@gcf-admin-robot.iam.gserviceaccount.com", "serviceAccount:service-${data.gcp_organizations_getproject.projectGetProject.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com", "serviceAccount:service-${data.gcp_organizations_getproject.projectGetProject.number}@gs-project-accounts.iam.gserviceaccount.com", "serviceAccount:service-${data.gcp_organizations_getproject.projectGetProject.number}@serverless-robot-prod.iam.gserviceaccount.com", gcp_projects_serviceidentity.ea_sa.member]
+/// }
+/// resource "gcp_artifactregistry_repository" "encoded-ar-repo" {
+///   depends_on    = [gcp_kms_cryptokeyiambinding.gcf_cmek_keyuser]
+///   location      = "us-central1"
+///   repository_id = "cmek-repo"
+///   format        = "DOCKER"
+///   kms_key_name  = "cmek-key"
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   depends_on   = [gcp_kms_cryptokeyiambinding.gcf_cmek_keyuser]
+///   name         = "function-cmek"
+///   location     = "us-central1"
+///   description  = "CMEK function"
+///   kms_key_name = "cmek-key"
+///   build_config = {
+///     runtime           = "nodejs20"
+///     entry_point       = "helloHttp"
+///     docker_repository = gcp_artifactregistry_repository.encoded-ar-repo.id
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///   }
+///   # Set the entry point
+///   service_config = {
+///     max_instance_count = 1
+///     available_memory   = "256M"
+///     timeout_seconds    = 60
+///   }
+/// }
+/// locals {
+///   project = "my-project-name"
 /// }
 /// ```
 /// ```java
@@ -4986,8 +5702,8 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
 /// import com.pulumi.asset.FileAsset;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5098,7 +5814,7 @@ import 'function_state.dart';
 ///       name: function-source.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: function-source.zip
+///         fn::fileAsset: function-source.zip
 ///   eaSa:
 ///     type: gcp:projects:ServiceIdentity
 ///     name: ea_sa
@@ -5383,8 +6099,6 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
@@ -5459,7 +6173,7 @@ import 'function_state.dart';
 /// 			EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
 /// 				TriggerRegion: pulumi.String("us-central1"),
 /// 				EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
-/// 				PubsubTopic:   topic.ID(),
+/// 				PubsubTopic:   topic.ID().ToIDOutput().ToStringOutput(),
 /// 				RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
 /// 			},
 /// 		})
@@ -5468,6 +6182,76 @@ import 'function_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "account" {
+///   account_id   = "gcf-sa"
+///   display_name = "Test Service Account"
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "functions2-topic"
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        ="${local.project}-gcf-source"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("function-source.zip")
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   name        = "gcf-function"
+///   location    = "europe-west6"
+///   description = "a new function"
+///   build_config = {
+///     runtime     = "nodejs20"
+///     entry_point = "helloPubSub"
+///     environment_variables = {
+///       "BUILD_CONFIG_TEST" = "build_test"
+///     }
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///     automatic_update_policy = {}
+///   }
+///   # Set the entry point
+///   service_config = {
+///     max_instance_count               = 3
+///     min_instance_count               = 1
+///     available_memory                 = "4Gi"
+///     timeout_seconds                  = 60
+///     max_instance_request_concurrency = 80
+///     available_cpu                    = "4"
+///     environment_variables = {
+///       "SERVICE_CONFIG_TEST" = "config_test"
+///     }
+///     ingress_settings               = "ALLOW_INTERNAL_ONLY"
+///     all_traffic_on_latest_revision = true
+///     service_account_email          = gcp_serviceaccount_account.account.email
+///   }
+///   event_trigger = {
+///     trigger_region = "us-central1"
+///     event_type     = "google.cloud.pubsub.topic.v1.messagePublished"
+///     pubsub_topic   = gcp_pubsub_topic.topic.id
+///     retry_policy   = "RETRY_POLICY_RETRY"
+///   }
+/// }
+/// locals {
+///   project = "my-project-name"
 /// }
 /// ```
 /// ```java
@@ -5493,8 +6277,8 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5592,7 +6376,7 @@ import 'function_state.dart';
 ///       name: function-source.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: function-source.zip
+///         fn::fileAsset: function-source.zip
 ///   function:
 ///     type: gcp:cloudfunctionsv2:Function
 ///     properties:
@@ -5839,8 +6623,6 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
@@ -5915,7 +6697,7 @@ import 'function_state.dart';
 /// 			EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
 /// 				TriggerRegion: pulumi.String("us-central1"),
 /// 				EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
-/// 				PubsubTopic:   topic.ID(),
+/// 				PubsubTopic:   topic.ID().ToIDOutput().ToStringOutput(),
 /// 				RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
 /// 			},
 /// 		})
@@ -5924,6 +6706,76 @@ import 'function_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "account" {
+///   account_id   = "gcf-sa"
+///   display_name = "Test Service Account"
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "functions2-topic"
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        ="${local.project}-gcf-source"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("function-source.zip")
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   name        = "gcf-function"
+///   location    = "europe-west6"
+///   description = "a new function"
+///   build_config = {
+///     runtime     = "nodejs20"
+///     entry_point = "helloPubSub"
+///     environment_variables = {
+///       "BUILD_CONFIG_TEST" = "build_test"
+///     }
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///     on_deploy_update_policy = {}
+///   }
+///   # Set the entry point
+///   service_config = {
+///     max_instance_count               = 3
+///     min_instance_count               = 1
+///     available_memory                 = "4Gi"
+///     timeout_seconds                  = 60
+///     max_instance_request_concurrency = 80
+///     available_cpu                    = "4"
+///     environment_variables = {
+///       "SERVICE_CONFIG_TEST" = "config_test"
+///     }
+///     ingress_settings               = "ALLOW_INTERNAL_ONLY"
+///     all_traffic_on_latest_revision = true
+///     service_account_email          = gcp_serviceaccount_account.account.email
+///   }
+///   event_trigger = {
+///     trigger_region = "us-central1"
+///     event_type     = "google.cloud.pubsub.topic.v1.messagePublished"
+///     pubsub_topic   = gcp_pubsub_topic.topic.id
+///     retry_policy   = "RETRY_POLICY_RETRY"
+///   }
+/// }
+/// locals {
+///   project = "my-project-name"
 /// }
 /// ```
 /// ```java
@@ -5949,8 +6801,8 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionEventTriggerArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6048,7 +6900,7 @@ import 'function_state.dart';
 ///       name: function-source.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: function-source.zip
+///         fn::fileAsset: function-source.zip
 ///   function:
 ///     type: gcp:cloudfunctionsv2:Function
 ///     properties:
@@ -6247,8 +7099,6 @@ import 'function_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -6311,6 +7161,55 @@ import 'function_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        ="${local.project}-gcf-source"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("function-source.zip")
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   name        = "function-v2"
+///   location    = "us-central1"
+///   description = "a new function"
+///   build_config = {
+///     runtime     = "nodejs20"
+///     entry_point = "helloHttp"
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///   }
+///   service_config = {
+///     max_instance_count = 1
+///     available_memory   = "256M"
+///     timeout_seconds    = 60
+///     direct_vpc_network_interfaces = [{
+///       "network"    = "default"
+///       "subnetwork" = "default"
+///       "tags"       = ["tag1", "tag2"]
+///     }]
+///     direct_vpc_egress = "VPC_EGRESS_ALL_TRAFFIC"
+///   }
+/// }
+/// locals {
+///   project = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6327,9 +7226,10 @@ import 'function_state.dart';
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
 /// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
+/// import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigDirectVpcNetworkInterfaceArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6401,7 +7301,7 @@ import 'function_state.dart';
 ///       name: function-source.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: function-source.zip
+///         fn::fileAsset: function-source.zip
 ///   function:
 ///     type: gcp:cloudfunctionsv2:Function
 ///     properties:
@@ -6436,22 +7336,15 @@ import 'function_state.dart';
 /// function can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/functions/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, function can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:cloudfunctionsv2/function:Function default projects/{{project}}/locations/{{location}}/functions/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudfunctionsv2/function:Function default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudfunctionsv2/function:Function default {{location}}/{{name}}
 /// ```
 class FunctionType extends pulumi.CustomResource {
@@ -6459,6 +7352,13 @@ class FunctionType extends pulumi.CustomResource {
   /// from the given source.
   /// Structure is documented below.
   late final pulumi.Output<FunctionBuildConfig?> buildConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-provided description of a function.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -6475,7 +7375,7 @@ class FunctionType extends pulumi.CustomResource {
   /// A set of key/value label pairs associated with this Cloud Function.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of this cloud function.
   late final pulumi.Output<String> location;
@@ -6513,6 +7413,7 @@ class FunctionType extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     buildConfig = registerOutput<FunctionBuildConfig?>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     environment = registerOutput<String>('environment');
@@ -6553,6 +7454,7 @@ class FunctionType extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     buildConfig = registerOutput<FunctionBuildConfig?>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     environment = registerOutput<String>('environment');

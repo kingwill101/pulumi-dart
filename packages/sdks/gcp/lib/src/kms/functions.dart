@@ -91,6 +91,19 @@ import 'get_kmssecret_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getautokeyconfig" "myAutokeyConfig" {
+///   folder = "folders/123"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +112,8 @@ import 'get_kmssecret_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.KmsFunctions;
 /// import com.pulumi.gcp.kms.inputs.GetAutokeyConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -196,6 +209,19 @@ Future<GetAutokeyConfigResult> getAutokeyConfig(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getcryptokeyiampolicy" "foo" {
+///   crypto_key_id = cryptoKey.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -204,8 +230,8 @@ Future<GetAutokeyConfigResult> getAutokeyConfig(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.KmsFunctions;
 /// import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -218,7 +244,7 @@ Future<GetAutokeyConfigResult> getAutokeyConfig(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var foo = KmsFunctions.getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs.builder()
-///             .cryptoKeyId(cryptoKey.id())
+///             .cryptoKeyId(cryptoKey.get("id"))
 ///             .build());
 ///
 ///     }
@@ -342,6 +368,27 @@ Future<GetCryptoKeyIamPolicyResult> getCryptoKeyIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getkmskeyring" "myKeyRing" {
+///   name     = "my-key-ring"
+///   location = "us-central1"
+/// }
+/// data "gcp_kms_getkmscryptokey" "myCryptoKey" {
+///   name     = "my-crypto-key"
+///   key_ring = data.gcp_kms_getkmskeyring.myKeyRing.id
+/// }
+/// data "gcp_kms_getcryptokeylatestversion" "myCryptoKeyLatestVersion" {
+///   crypto_key = myKey.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -352,8 +399,8 @@ Future<GetCryptoKeyIamPolicyResult> getCryptoKeyIamPolicy(
 /// import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
 /// import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
 /// import com.pulumi.gcp.kms.inputs.GetCryptoKeyLatestVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -376,7 +423,7 @@ Future<GetCryptoKeyIamPolicyResult> getCryptoKeyIamPolicy(
 ///             .build());
 ///
 ///         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
-///             .cryptoKey(myKey.id())
+///             .cryptoKey(myKey.get("id"))
 ///             .build());
 ///
 ///     }
@@ -513,6 +560,27 @@ Future<GetCryptoKeyLatestVersionResult> getCryptoKeyLatestVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getkmskeyring" "myKeyRing" {
+///   name     = "my-key-ring"
+///   location = "us-central1"
+/// }
+/// data "gcp_kms_getkmscryptokey" "myCryptoKey" {
+///   name     = "my-crypto-key"
+///   key_ring = data.gcp_kms_getkmskeyring.myKeyRing.id
+/// }
+/// data "gcp_kms_getcryptokeyversions" "myCryptoKeyVersions" {
+///   crypto_key = myKey.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -523,8 +591,8 @@ Future<GetCryptoKeyLatestVersionResult> getCryptoKeyLatestVersion(
 /// import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
 /// import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
 /// import com.pulumi.gcp.kms.inputs.GetCryptoKeyVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -547,7 +615,7 @@ Future<GetCryptoKeyLatestVersionResult> getCryptoKeyLatestVersion(
 ///             .build());
 ///
 ///         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
-///             .cryptoKey(myKey.id())
+///             .cryptoKey(myKey.get("id"))
 ///             .build());
 ///
 ///     }
@@ -673,6 +741,21 @@ Future<GetCryptoKeysResult> getCryptoKeys(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getekmconnectioniampolicy" "policy" {
+///   project  = example-ekmconnection.project
+///   location = example-ekmconnection.location
+///   name     = example-ekmconnection.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -681,8 +764,8 @@ Future<GetCryptoKeysResult> getCryptoKeys(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.KmsFunctions;
 /// import com.pulumi.gcp.kms.inputs.GetEkmConnectionIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -695,9 +778,9 @@ Future<GetCryptoKeysResult> getCryptoKeys(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = KmsFunctions.getEkmConnectionIamPolicy(GetEkmConnectionIamPolicyArgs.builder()
-///             .project(example_ekmconnection.project())
-///             .location(example_ekmconnection.location())
-///             .name(example_ekmconnection.name())
+///             .project(example_ekmconnection.get("project"))
+///             .location(example_ekmconnection.get("location"))
+///             .name(example_ekmconnection.get("name"))
 ///             .build());
 ///
 ///     }
@@ -811,6 +894,24 @@ Future<GetEkmConnectionIamPolicyResult> getEkmConnectionIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getkmskeyring" "myKeyRing" {
+///   name     = "my-key-ring"
+///   location = "us-central1"
+/// }
+/// data "gcp_kms_getkmscryptokey" "myCryptoKey" {
+///   name     = "my-crypto-key"
+///   key_ring = data.gcp_kms_getkmskeyring.myKeyRing.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -820,8 +921,8 @@ Future<GetEkmConnectionIamPolicyResult> getEkmConnectionIamPolicy(
 /// import com.pulumi.gcp.kms.KmsFunctions;
 /// import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
 /// import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -973,6 +1074,27 @@ Future<GetKMSCryptoKeyResult> getKMSCryptoKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getkmskeyring" "myKeyRing" {
+///   name     = "my-key-ring"
+///   location = "us-central1"
+/// }
+/// data "gcp_kms_getkmscryptokey" "myCryptoKey" {
+///   name     = "my-crypto-key"
+///   key_ring = data.gcp_kms_getkmskeyring.myKeyRing.id
+/// }
+/// data "gcp_kms_getkmscryptokeyversion" "myCryptoKeyVersion" {
+///   crypto_key = myKey.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -983,8 +1105,8 @@ Future<GetKMSCryptoKeyResult> getKMSCryptoKey(
 /// import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
 /// import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
 /// import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1007,7 +1129,7 @@ Future<GetKMSCryptoKeyResult> getKMSCryptoKey(
 ///             .build());
 ///
 ///         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
-///             .cryptoKey(myKey.id())
+///             .cryptoKey(myKey.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1112,6 +1234,20 @@ Future<GetKMSCryptoKeyVersionResult> getKMSCryptoKeyVersion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getkmskeyring" "myKeyRing" {
+///   name     = "my-key-ring"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1120,8 +1256,8 @@ Future<GetKMSCryptoKeyVersionResult> getKMSCryptoKeyVersion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.KmsFunctions;
 /// import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1250,13 +1386,32 @@ Future<GetKMSKeyRingResult> getKMSKeyRing(
 /// 		}
 /// 		_, err = kms.NewCryptoKey(ctx, "my_crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("my-crypto-key"),
-/// 			KeyRing: myKeyRing.ID(),
+/// 			KeyRing: myKeyRing.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyring" "my_key_ring" {
+///   project  = "my-project"
+///   name     = "my-key-ring"
+///   location = "us-central1"
+/// }
+/// resource "gcp_kms_cryptokey" "my_crypto_key" {
+///   name     = "my-crypto-key"
+///   key_ring = gcp_kms_keyring.my_key_ring.id
 /// }
 /// ```
 /// ```java
@@ -1269,8 +1424,8 @@ Future<GetKMSKeyRingResult> getKMSKeyRing(
 /// import com.pulumi.gcp.kms.KeyRingArgs;
 /// import com.pulumi.gcp.kms.CryptoKey;
 /// import com.pulumi.gcp.kms.CryptoKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1363,7 +1518,7 @@ Future<GetKMSKeyRingResult> getKMSKeyRing(
 ///
 /// sql_user_password = gcp.kms.get_kms_secret(crypto_key=my_crypto_key["id"],
 ///     ciphertext="CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
-/// db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+/// db_name_suffix = random.Id("db_name_suffix", byte_length=4)
 /// main = gcp.sql.DatabaseInstance("main",
 ///     name=f"main-instance-{db_name_suffix['hex']}",
 ///     database_version="MYSQL_5_7",
@@ -1391,7 +1546,7 @@ Future<GetKMSKeyRingResult> getKMSKeyRing(
 ///         Ciphertext = "CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=",
 ///     });
 ///
-///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
 ///     {
 ///         ByteLength = 4,
 ///     });
@@ -1420,8 +1575,6 @@ Future<GetKMSKeyRingResult> getKMSKeyRing(
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
@@ -1466,6 +1619,40 @@ Future<GetKMSKeyRingResult> getKMSKeyRing(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getkmssecret" "sqlUserPassword" {
+///   crypto_key = myCryptoKey.id
+///   ciphertext = "CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU="
+/// }
+///
+/// resource "random_id" "db_name_suffix" {
+///   byte_length = 4
+/// }
+/// resource "gcp_sql_databaseinstance" "main" {
+///   name             ="main-instance-${random_id.db_name_suffix.hex}"
+///   database_version = "MYSQL_5_7"
+///   settings = {
+///     tier = "db-f1-micro"
+///   }
+/// }
+/// resource "gcp_sql_user" "users" {
+///   name     = "me"
+///   instance = gcp_sql_databaseinstance.main.name
+///   host     = "me.com"
+///   password = data.gcp_kms_getkmssecret.sqlUserPassword.plaintext
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1481,8 +1668,8 @@ Future<GetKMSKeyRingResult> getKMSKeyRing(
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.User;
 /// import com.pulumi.gcp.sql.UserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1495,7 +1682,7 @@ Future<GetKMSKeyRingResult> getKMSKeyRing(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var sqlUserPassword = KmsFunctions.getKMSSecret(GetKMSSecretArgs.builder()
-///             .cryptoKey(myCryptoKey.id())
+///             .cryptoKey(myCryptoKey.get("id"))
 ///             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
 ///             .build());
 ///
@@ -1504,7 +1691,7 @@ Future<GetKMSKeyRingResult> getKMSKeyRing(
 ///             .build());
 ///
 ///         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-///             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+///             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
 ///             .databaseVersion("MYSQL_5_7")
 ///             .settings(DatabaseInstanceSettingsArgs.builder()
 ///                 .tier("db-f1-micro")
@@ -1675,7 +1862,7 @@ Future<GetKMSSecretResult> getKMSSecret(
 /// 		}
 /// 		myCryptoKeyCryptoKey, err := kms.NewCryptoKey(ctx, "my_crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("my-crypto-key"),
-/// 			KeyRing: myKeyRing.ID(),
+/// 			KeyRing: myKeyRing.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose: pulumi.String("ASYMMETRIC_DECRYPT"),
 /// 			VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 /// 				Algorithm: pulumi.String("RSA_DECRYPT_OAEP_4096_SHA256"),
@@ -1685,10 +1872,37 @@ Future<GetKMSSecretResult> getKMSSecret(
 /// 			return err
 /// 		}
 /// 		_ = kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-/// 			CryptoKey: myCryptoKeyCryptoKey.ID(),
+/// 			CryptoKey: myCryptoKeyCryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getkmscryptokeyversion" "myCryptoKey" {
+///   crypto_key = gcp_kms_cryptokey.my_crypto_key.id
+/// }
+///
+/// resource "gcp_kms_keyring" "my_key_ring" {
+///   project  = "my-project"
+///   name     = "my-key-ring"
+///   location = "us-central1"
+/// }
+/// resource "gcp_kms_cryptokey" "my_crypto_key" {
+///   name     = "my-crypto-key"
+///   key_ring = gcp_kms_keyring.my_key_ring.id
+///   purpose  = "ASYMMETRIC_DECRYPT"
+///   version_template = {
+///     algorithm = "RSA_DECRYPT_OAEP_4096_SHA256"
+///   }
 /// }
 /// ```
 /// ```java
@@ -1704,8 +1918,8 @@ Future<GetKMSSecretResult> getKMSSecret(
 /// import com.pulumi.gcp.kms.inputs.CryptoKeyVersionTemplateArgs;
 /// import com.pulumi.gcp.kms.KmsFunctions;
 /// import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1867,7 +2081,7 @@ Future<GetKMSSecretResult> getKMSSecret(
 ///     mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
 ///     A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
 /// """)
-/// db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+/// db_name_suffix = random.Id("db_name_suffix", byte_length=4)
 /// main = gcp.sql.DatabaseInstance("main",
 ///     name=f"main-instance-{db_name_suffix['hex']}",
 ///     database_version="MYSQL_5_7",
@@ -1907,7 +2121,7 @@ Future<GetKMSSecretResult> getKMSSecret(
 /// ",
 ///     });
 ///
-///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
 ///     {
 ///         ByteLength = 4,
 ///     });
@@ -1936,8 +2150,6 @@ Future<GetKMSSecretResult> getKMSSecret(
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
@@ -1994,6 +2206,41 @@ Future<GetKMSSecretResult> getKMSSecret(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getkmssecretasymmetric" "sqlUserPassword" {
+///   crypto_key_version = myCryptoKey.id
+///   crc32              = "12c59e54"
+///   ciphertext         = "    M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq\n    ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75\n    4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx\n    eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs\n    wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr\n    LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc\n    yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1\n    J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL\n    IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z\n    mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9\n    A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=\n"
+/// }
+///
+/// resource "random_id" "db_name_suffix" {
+///   byte_length = 4
+/// }
+/// resource "gcp_sql_databaseinstance" "main" {
+///   name             ="main-instance-${random_id.db_name_suffix.hex}"
+///   database_version = "MYSQL_5_7"
+///   settings = {
+///     tier = "db-f1-micro"
+///   }
+/// }
+/// resource "gcp_sql_user" "users" {
+///   name     = "me"
+///   instance = gcp_sql_databaseinstance.main.name
+///   host     = "me.com"
+///   password = sqlUserPasswordGoogleKmsSecret.plaintext
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2009,8 +2256,8 @@ Future<GetKMSSecretResult> getKMSSecret(
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.User;
 /// import com.pulumi.gcp.sql.UserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2023,7 +2270,7 @@ Future<GetKMSSecretResult> getKMSSecret(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var sqlUserPassword = KmsFunctions.getKMSSecretAsymmetric(GetKMSSecretAsymmetricArgs.builder()
-///             .cryptoKeyVersion(myCryptoKey.id())
+///             .cryptoKeyVersion(myCryptoKey.get("id"))
 ///             .crc32("12c59e54")
 ///             .ciphertext("""
 ///     M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
@@ -2045,7 +2292,7 @@ Future<GetKMSSecretResult> getKMSSecret(
 ///             .build());
 ///
 ///         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-///             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+///             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
 ///             .databaseVersion("MYSQL_5_7")
 ///             .settings(DatabaseInstanceSettingsArgs.builder()
 ///                 .tier("db-f1-micro")
@@ -2056,7 +2303,7 @@ Future<GetKMSSecretResult> getKMSSecret(
 ///             .name("me")
 ///             .instance(main.name())
 ///             .host("me.com")
-///             .password(sqlUserPasswordGoogleKmsSecret.plaintext())
+///             .password(sqlUserPasswordGoogleKmsSecret.get("plaintext"))
 ///             .build());
 ///
 ///     }
@@ -2121,7 +2368,7 @@ Future<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetric(
   return GetKMSSecretAsymmetricResult.fromMap(result);
 }
 
-/// !&gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
+/// &gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
 ///
 /// This data source allows you to encrypt data with Google Cloud KMS and use the
 /// ciphertext within your resource definitions.
@@ -2208,13 +2455,32 @@ Future<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetric(
 /// 		}
 /// 		_, err = kms.NewCryptoKey(ctx, "my_crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("my-crypto-key"),
-/// 			KeyRing: myKeyRing.ID(),
+/// 			KeyRing: myKeyRing.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyring" "my_key_ring" {
+///   project  = "my-project"
+///   name     = "my-key-ring"
+///   location = "us-central1"
+/// }
+/// resource "gcp_kms_cryptokey" "my_crypto_key" {
+///   name     = "my-crypto-key"
+///   key_ring = gcp_kms_keyring.my_key_ring.id
 /// }
 /// ```
 /// ```java
@@ -2227,8 +2493,8 @@ Future<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetric(
 /// import com.pulumi.gcp.kms.KeyRingArgs;
 /// import com.pulumi.gcp.kms.CryptoKey;
 /// import com.pulumi.gcp.kms.CryptoKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2415,6 +2681,39 @@ Future<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetric(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getkmssecretciphertext" "myPassword" {
+///   crypto_key = myCryptoKey.id
+///   plaintext  = "my-secret-password"
+/// }
+///
+/// resource "gcp_compute_instance" "instance" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     network = "default"
+///   }
+///   name         = "test"
+///   machine_type = "e2-medium"
+///   zone         = "us-central1-a"
+///   boot_disk = {
+///     initialize_params = {
+///       image = "debian-cloud/debian-11"
+///     }
+///   }
+///   metadata = {
+///     "password" = data.gcp_kms_getkmssecretciphertext.myPassword.ciphertext
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2426,10 +2725,11 @@ Future<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetric(
 /// import com.pulumi.gcp.compute.Instance;
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2442,7 +2742,7 @@ Future<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetric(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var myPassword = KmsFunctions.getKMSSecretCiphertext(GetKMSSecretCiphertextArgs.builder()
-///             .cryptoKey(myCryptoKey.id())
+///             .cryptoKey(myCryptoKey.get("id"))
 ///             .plaintext("my-secret-password")
 ///             .build());
 ///
@@ -2586,6 +2886,20 @@ Future<GetKMSSecretCiphertextResult> getKMSSecretCiphertext(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getkeyhandle" "myKeyHandle" {
+///   name     = "eed58b7b-20ad-4da8-ad85-ba78a0d5ab87"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2594,8 +2908,8 @@ Future<GetKMSSecretCiphertextResult> getKMSSecretCiphertext(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.KmsFunctions;
 /// import com.pulumi.gcp.kms.inputs.GetKeyHandleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2707,6 +3021,21 @@ Future<GetKeyHandleResult> getKeyHandle(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getkeyhandles" "myKeyHandles" {
+///   project                = "resource-project-id"
+///   location               = "us-central1"
+///   resource_type_selector = "storage.googleapis.com/Bucket"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2715,8 +3044,8 @@ Future<GetKeyHandleResult> getKeyHandle(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.KmsFunctions;
 /// import com.pulumi.gcp.kms.inputs.GetKeyHandlesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2816,6 +3145,19 @@ Future<GetKeyHandlesResult> getKeyHandles(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getkeyringiampolicy" "testKeyRingIamPolicy" {
+///   key_ring_id = "{project_id}/{location_name}/{key_ring_name}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2824,8 +3166,8 @@ Future<GetKeyHandlesResult> getKeyHandles(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.KmsFunctions;
 /// import com.pulumi.gcp.kms.inputs.GetKeyRingIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

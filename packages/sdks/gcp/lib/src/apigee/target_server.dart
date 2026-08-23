@@ -292,27 +292,27 @@ import 'target_server_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+/// 		apigee2, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 /// 			Project: project.ProjectId,
 /// 			Service: pulumi.String("apigee.googleapis.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+/// 		servicenetworking2, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
 /// 			Project: project.ProjectId,
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			apigee,
+/// 			apigee2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+/// 		compute2, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
 /// 			Project: project.ProjectId,
 /// 			Service: pulumi.String("compute.googleapis.com"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			servicenetworking,
+/// 			servicenetworking2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -321,7 +321,7 @@ import 'target_server_state.dart';
 /// 			Name:    pulumi.String("apigee-network"),
 /// 			Project: project.ProjectId,
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			compute,
+/// 			compute2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -331,20 +331,20 @@ import 'target_server_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      apigeeNetwork.ID(),
+/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Project:      project.ProjectId,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID(),
+/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			servicenetworking,
+/// 			servicenetworking2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -352,16 +352,16 @@ import 'target_server_state.dart';
 /// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 /// 			AnalyticsRegion:   pulumi.String("us-central1"),
 /// 			ProjectId:         project.ProjectId,
-/// 			AuthorizedNetwork: apigeeNetwork.ID(),
+/// 			AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
-/// 			apigee,
+/// 			apigee2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeEnvironment, err := apigee.NewEnvironment(ctx, "apigee_environment", &apigee.EnvironmentArgs{
-/// 			OrgId:       apigeeOrg.ID(),
+/// 			OrgId:       apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:        pulumi.String("my-environment-name"),
 /// 			Description: pulumi.String("Apigee Environment"),
 /// 			DisplayName: pulumi.String("environment-1"),
@@ -375,13 +375,83 @@ import 'target_server_state.dart';
 /// 			Protocol:    pulumi.String("HTTP"),
 /// 			Host:        pulumi.String("abc.foo.com"),
 /// 			Port:        pulumi.Int(8080),
-/// 			EnvId:       apigeeEnvironment.ID(),
+/// 			EnvId:       apigeeEnvironment.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "my-project"
+///   name            = "my-project"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_projects_service" "apigee" {
+///   project = gcp_organizations_project.project.project_id
+///   service = "apigee.googleapis.com"
+/// }
+/// resource "gcp_projects_service" "servicenetworking" {
+///   depends_on = [gcp_projects_service.apigee]
+///   project    = gcp_organizations_project.project.project_id
+///   service    = "servicenetworking.googleapis.com"
+/// }
+/// resource "gcp_projects_service" "compute" {
+///   depends_on = [gcp_projects_service.servicenetworking]
+///   project    = gcp_organizations_project.project.project_id
+///   service    = "compute.googleapis.com"
+/// }
+/// resource "gcp_compute_network" "apigee_network" {
+///   depends_on = [gcp_projects_service.compute]
+///   name       = "apigee-network"
+///   project    = gcp_organizations_project.project.project_id
+/// }
+/// resource "gcp_compute_globaladdress" "apigee_range" {
+///   name          = "apigee-range"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.apigee_network.id
+///   project       = gcp_organizations_project.project.project_id
+/// }
+/// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   depends_on              = [gcp_projects_service.servicenetworking]
+///   network                 = gcp_compute_network.apigee_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+/// }
+/// resource "gcp_apigee_organization" "apigee_org" {
+///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection, gcp_projects_service.apigee]
+///   analytics_region   = "us-central1"
+///   project_id         = gcp_organizations_project.project.project_id
+///   authorized_network = gcp_compute_network.apigee_network.id
+/// }
+/// resource "gcp_apigee_environment" "apigee_environment" {
+///   org_id       = gcp_apigee_organization.apigee_org.id
+///   name         = "my-environment-name"
+///   description  = "Apigee Environment"
+///   display_name = "environment-1"
+/// }
+/// resource "gcp_apigee_targetserver" "apigee_target_server" {
+///   name        = "my-target-server"
+///   description = "Apigee Target Server"
+///   protocol    = "HTTP"
+///   host        = "abc.foo.com"
+///   port        = 8080
+///   env_id      = gcp_apigee_environment.apigee_environment.id
 /// }
 /// ```
 /// ```java
@@ -407,8 +477,8 @@ import 'target_server_state.dart';
 /// import com.pulumi.gcp.apigee.TargetServer;
 /// import com.pulumi.gcp.apigee.TargetServerArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -598,19 +668,23 @@ import 'target_server_state.dart';
 /// TargetServer can be imported using any of these accepted formats:
 ///
 /// * `{{env_id}}/targetservers/{{name}}`
-///
 /// * `{{env_id}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, TargetServer can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/targetServer:TargetServer default {{env_id}}/targetservers/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/targetServer:TargetServer default {{env_id}}/{{name}}
 /// ```
 class TargetServer extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human-readable description of this TargetServer.
   late final pulumi.Output<String?> description;
   /// The Apigee environment group associated with the Apigee environment,
@@ -645,6 +719,7 @@ class TargetServer extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     envId = registerOutput<String>('envId');
     host = registerOutput<String>('host');
@@ -678,6 +753,7 @@ class TargetServer extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     envId = registerOutput<String>('envId');
     host = registerOutput<String>('host');

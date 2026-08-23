@@ -9,6 +9,7 @@ import 'get_ai_index_metadata.dart';
 /// Result data returned by getAiIndex.
 class GetAiIndexResult {
   final String createTime;
+  final String deletionPolicy;
   final List<GetAiIndexDeployedIndex> deployedIndexes;
   final String description;
   final String displayName;
@@ -30,6 +31,7 @@ class GetAiIndexResult {
 
   /// Creates a new [GetAiIndexResult].
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [deployedIndexes] Required.
   /// [description] Required.
   /// [displayName] Required.
@@ -49,6 +51,7 @@ class GetAiIndexResult {
   /// [updateTime] Required.
   const GetAiIndexResult({
     required this.createTime,
+    required this.deletionPolicy,
     required this.deployedIndexes,
     required this.description,
     required this.displayName,
@@ -71,6 +74,7 @@ class GetAiIndexResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'deployedIndexes': pulumi.Input.encodeList<GetAiIndexDeployedIndex, Map<String, dynamic>>(deployedIndexes, (value) => value.toMap()),
       'description': description,
       'displayName': displayName,
@@ -94,6 +98,7 @@ class GetAiIndexResult {
   factory GetAiIndexResult.fromMap(Map<String, dynamic> map) {
     return GetAiIndexResult(
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deployedIndexes: pulumi.Input.decodeList<GetAiIndexDeployedIndex>(map['deployedIndexes']!, (value) => GetAiIndexDeployedIndex.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       displayName: map['displayName'] as String,
@@ -114,4 +119,3 @@ class GetAiIndexResult {
     );
   }
 }
-

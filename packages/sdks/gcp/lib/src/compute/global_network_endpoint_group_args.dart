@@ -10,6 +10,13 @@ class GlobalNetworkEndpointGroupArgs {
   /// The default port used if the port number is not specified in the
   /// network endpoint.
   final pulumi.Input<int>? defaultPort;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   final pulumi.Input<String>? description;
@@ -30,12 +37,14 @@ class GlobalNetworkEndpointGroupArgs {
 
   /// Creates a new [GlobalNetworkEndpointGroupArgs].
   /// [defaultPort] The default port used if the port number is not specified in the
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
   /// [name] Name of the resource; provided by the client when the resource is
   /// [networkEndpointType] Type of network endpoints in this network endpoint group.
   /// [project] The ID of the project in which the resource belongs.
   const GlobalNetworkEndpointGroupArgs({
     this.defaultPort,
+    this.deletionPolicy,
     this.description,
     this.name,
     required this.networkEndpointType,
@@ -45,6 +54,7 @@ class GlobalNetworkEndpointGroupArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'defaultPort': ?defaultPort,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'name': ?name,
       'networkEndpointType': networkEndpointType,
@@ -55,6 +65,7 @@ class GlobalNetworkEndpointGroupArgs {
   factory GlobalNetworkEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return GlobalNetworkEndpointGroupArgs(
       defaultPort: (() { final guardedValue = map['defaultPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkEndpointType: pulumi.Input.fromValue(map['networkEndpointType'] as String),
@@ -62,4 +73,3 @@ class GlobalNetworkEndpointGroupArgs {
     );
   }
 }
-

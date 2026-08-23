@@ -6,10 +6,17 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 
 /// Input properties used for looking up and filtering FirewallPolicyRule resources.
 class FirewallPolicyRuleState {
-  /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
+  /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
   final pulumi.Input<String>? action;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description for this resource.
   final pulumi.Input<String>? description;
   /// The direction in which this rule applies.
@@ -22,7 +29,7 @@ class FirewallPolicyRuleState {
   /// Denotes whether to enable logging for a particular rule.
   /// If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
   /// Logs may be exported to BigQuery or Pub/Sub.
-  /// Note: you cannot enable logging on "goto_next" rules.
+  /// Note: you cannot enable logging on "gotoNext" rules.
   final pulumi.Input<bool>? enableLogging;
   /// The firewall policy of the resource.
   final pulumi.Input<String>? firewallPolicy;
@@ -57,8 +64,9 @@ class FirewallPolicyRuleState {
   final pulumi.Input<bool>? tlsInspect;
 
   /// Creates a new [FirewallPolicyRuleState].
-  /// [action] The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
+  /// [action] The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description for this resource.
   /// [direction] The direction in which this rule applies.
   /// [disabled] Denotes whether the firewall policy rule is disabled.
@@ -76,6 +84,7 @@ class FirewallPolicyRuleState {
   const FirewallPolicyRuleState({
     this.action,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.direction,
     this.disabled,
@@ -96,6 +105,7 @@ class FirewallPolicyRuleState {
     return <String, dynamic>{
       'action': ?action,
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'direction': ?direction,
       'disabled': ?disabled,
@@ -117,6 +127,7 @@ class FirewallPolicyRuleState {
     return FirewallPolicyRuleState(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -134,4 +145,3 @@ class FirewallPolicyRuleState {
     );
   }
 }
-

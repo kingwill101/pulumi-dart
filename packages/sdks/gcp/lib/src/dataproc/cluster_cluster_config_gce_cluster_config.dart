@@ -18,7 +18,7 @@ class ClusterClusterConfigGceClusterConfig {
   /// A map of the Compute Engine metadata entries to add to all instances
   /// (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
   final pulumi.Input<Map<String, String>>? metadata;
-  /// The name or self_link of the Google Compute Engine
+  /// The name or selfLink of the Google Compute Engine
   /// network to the cluster will be part of. Conflicts with `subnetwork`.
   /// If neither is specified, this defaults to the "default" network.
   final pulumi.Input<String>? network;
@@ -34,7 +34,7 @@ class ClusterClusterConfigGceClusterConfig {
   /// If not specified, the "default" service account is used.
   final pulumi.Input<String>? serviceAccount;
   /// The set of Google API scopes
-  /// to be made available on all of the node VMs under the `service_account`
+  /// to be made available on all of the node VMs under the `serviceAccount`
   /// specified. Both OAuth2 URLs and gcloud
   /// short names are supported. To allow full access to all Cloud APIs, use the
   /// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
@@ -43,7 +43,7 @@ class ClusterClusterConfigGceClusterConfig {
   ///
   /// - - -
   final pulumi.Input<ClusterClusterConfigGceClusterConfigShieldedInstanceConfig>? shieldedInstanceConfig;
-  /// The name or self_link of the Google Compute Engine
+  /// The name or selfLink of the Google Compute Engine
   /// subnetwork the cluster will be part of. Conflicts with `network`.
   final pulumi.Input<String>? subnetwork;
   /// The list of instance tags applied to instances in the cluster.
@@ -62,14 +62,14 @@ class ClusterClusterConfigGceClusterConfig {
   /// [confidentialInstanceConfig] Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
   /// [internalIpOnly] By default, clusters are not restricted to internal IP addresses,
   /// [metadata] A map of the Compute Engine metadata entries to add to all instances
-  /// [network] The name or self_link of the Google Compute Engine
+  /// [network] The name or selfLink of the Google Compute Engine
   /// [nodeGroupAffinity] Node Group Affinity for sole-tenant clusters.
   /// [reservationAffinity] Reservation Affinity for consuming zonal reservation.
   /// [resourceManagerTags] A map of resource manager tags to add to all instances.
   /// [serviceAccount] The service account to be used by the Node VMs.
   /// [serviceAccountScopes] The set of Google API scopes
   /// [shieldedInstanceConfig] Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
-  /// [subnetwork] The name or self_link of the Google Compute Engine
+  /// [subnetwork] The name or selfLink of the Google Compute Engine
   /// [tags] The list of instance tags applied to instances in the cluster.
   /// [zone] The GCP zone where your data is stored and used (i.e. where
   const ClusterClusterConfigGceClusterConfig({
@@ -124,4 +124,3 @@ class ClusterClusterConfigGceClusterConfig {
     );
   }
 }
-

@@ -99,6 +99,25 @@ import 'patch_deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_osconfig_patchdeployment" "patch" {
+///   patch_deployment_id = "patch-deploy"
+///   instance_filter = {
+///     all = true
+///   }
+///   one_time_schedule = {
+///     execute_time = "2999-10-10T10:10:10.045123456Z"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +128,8 @@ import 'patch_deployment_state.dart';
 /// import com.pulumi.gcp.osconfig.PatchDeploymentArgs;
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentInstanceFilterArgs;
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentOneTimeScheduleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -261,6 +280,33 @@ import 'patch_deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_osconfig_patchdeployment" "patch" {
+///   patch_deployment_id = "patch-deploy"
+///   instance_filter = {
+///     all = true
+///   }
+///   recurring_schedule = {
+///     time_zone = {
+///       id = "America/New_York"
+///     }
+///     time_of_day = {
+///       hours   = 0
+///       minutes = 30
+///       seconds = 30
+///       nanos   = 20
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -273,8 +319,8 @@ import 'patch_deployment_state.dart';
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleArgs;
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeZoneArgs;
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -439,6 +485,33 @@ import 'patch_deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_osconfig_patchdeployment" "patch" {
+///   patch_deployment_id = "patch-deploy"
+///   instance_filter = {
+///     all = true
+///   }
+///   recurring_schedule = {
+///     time_zone = {
+///       id = "America/New_York"
+///     }
+///     time_of_day = {
+///       hours   = 0
+///       minutes = 0
+///       seconds = 0
+///       nanos   = 0
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -451,8 +524,8 @@ import 'patch_deployment_state.dart';
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleArgs;
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeZoneArgs;
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -754,7 +827,7 @@ import 'patch_deployment_state.dart';
 /// 			PatchDeploymentId: pulumi.String("patch-deploy"),
 /// 			InstanceFilter: &osconfig.PatchDeploymentInstanceFilterArgs{
 /// 				Instances: pulumi.StringArray{
-/// 					foobar.ID(),
+/// 					foobar.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			PatchConfig: &osconfig.PatchDeploymentPatchConfigArgs{
@@ -788,6 +861,66 @@ import 'patch_deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_instance" "foobar" {
+///   name           = "patch-deploy-inst"
+///   machine_type   = "e2-medium"
+///   zone           = "us-central1-a"
+///   can_ip_forward = false
+///   tags           = ["foo", "bar"]
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.myImage.self_link
+///     }
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
+///   metadata = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_osconfig_patchdeployment" "patch" {
+///   patch_deployment_id = "patch-deploy"
+///   instance_filter = {
+///     instances = [gcp_compute_instance.foobar.id]
+///   }
+///   patch_config = {
+///     yum = {
+///       security = true
+///       minimal  = true
+///       excludes = ["bash"]
+///     }
+///   }
+///   recurring_schedule = {
+///     time_zone = {
+///       id = "America/New_York"
+///     }
+///     time_of_day = {
+///       hours   = 0
+///       minutes = 30
+///       seconds = 30
+///       nanos   = 20
+///     }
+///     monthly = {
+///       month_day = 1
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -810,8 +943,8 @@ import 'patch_deployment_state.dart';
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeZoneArgs;
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs;
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleMonthlyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -954,6 +1087,7 @@ import 'patch_deployment_state.dart';
 ///     },
 ///     patchConfig: {
 ///         migInstancesAllowed: true,
+///         skipUnpatchableVms: true,
 ///         rebootConfig: "ALWAYS",
 ///         apt: {
 ///             type: "DIST",
@@ -1061,6 +1195,7 @@ import 'patch_deployment_state.dart';
 ///     },
 ///     patch_config={
 ///         "mig_instances_allowed": True,
+///         "skip_unpatchable_vms": True,
 ///         "reboot_config": "ALWAYS",
 ///         "apt": {
 ///             "type": "DIST",
@@ -1183,6 +1318,7 @@ import 'patch_deployment_state.dart';
 ///         PatchConfig = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigArgs
 ///         {
 ///             MigInstancesAllowed = true,
+///             SkipUnpatchableVms = true,
 ///             RebootConfig = "ALWAYS",
 ///             Apt = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigAptArgs
 ///             {
@@ -1337,6 +1473,7 @@ import 'patch_deployment_state.dart';
 /// 			},
 /// 			PatchConfig: &osconfig.PatchDeploymentPatchConfigArgs{
 /// 				MigInstancesAllowed: pulumi.Bool(true),
+/// 				SkipUnpatchableVms:  pulumi.Bool(true),
 /// 				RebootConfig:        pulumi.String("ALWAYS"),
 /// 				Apt: &osconfig.PatchDeploymentPatchConfigAptArgs{
 /// 					Type: pulumi.String("DIST"),
@@ -1437,6 +1574,106 @@ import 'patch_deployment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_osconfig_patchdeployment" "patch" {
+///   patch_deployment_id = "patch-deploy"
+///   instance_filter = {
+///     group_labels = [{
+///       "labels" = {
+///         "env" = "dev"
+///         "app" = "web"
+///       }
+///     }]
+///     instance_name_prefixes = ["test-"]
+///     zones                  = ["us-central1-a", "us-central-1c"]
+///   }
+///   patch_config = {
+///     mig_instances_allowed = true
+///     skip_unpatchable_vms  = true
+///     reboot_config         = "ALWAYS"
+///     apt = {
+///       type     = "DIST"
+///       excludes = ["python"]
+///     }
+///     yum = {
+///       security = true
+///       minimal  = true
+///       excludes = ["bash"]
+///     }
+///     goo = {
+///       enabled = true
+///     }
+///     zypper = {
+///       categories = ["security"]
+///     }
+///     windows_update = {
+///       classifications = ["CRITICAL", "SECURITY", "UPDATE"]
+///       excludes        = ["5012170"]
+///     }
+///     pre_step = {
+///       linux_exec_step_config = {
+///         allowed_success_codes = [0, 3]
+///         local_path            = "/tmp/pre_patch_script.sh"
+///       }
+///       windows_exec_step_config = {
+///         interpreter           = "SHELL"
+///         allowed_success_codes = [0, 2]
+///         local_path            = "C:\\Users\\user\\pre-patch-script.cmd"
+///       }
+///     }
+///     post_step = {
+///       linux_exec_step_config = {
+///         gcs_object = {
+///           bucket            = "my-patch-scripts"
+///           generation_number = "1523477886880"
+///           object            = "linux/post_patch_script"
+///         }
+///       }
+///       windows_exec_step_config = {
+///         interpreter = "POWERSHELL"
+///         gcs_object = {
+///           bucket            = "my-patch-scripts"
+///           generation_number = "135920493447"
+///           object            = "windows/post_patch_script.ps1"
+///         }
+///       }
+///     }
+///   }
+///   duration = "10s"
+///   recurring_schedule = {
+///     time_zone = {
+///       id = "America/New_York"
+///     }
+///     time_of_day = {
+///       hours   = 0
+///       minutes = 30
+///       seconds = 30
+///       nanos   = 20
+///     }
+///     monthly = {
+///       week_day_of_month = {
+///         week_ordinal = -1
+///         day_of_week  = "TUESDAY"
+///         day_offset   = 3
+///       }
+///     }
+///   }
+///   rollout = {
+///     mode = "ZONE_BY_ZONE"
+///     disruption_budget = {
+///       fixed = 1
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1446,6 +1683,7 @@ import 'patch_deployment_state.dart';
 /// import com.pulumi.gcp.osconfig.PatchDeployment;
 /// import com.pulumi.gcp.osconfig.PatchDeploymentArgs;
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentInstanceFilterArgs;
+/// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentInstanceFilterGroupLabelArgs;
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigArgs;
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigAptArgs;
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigYumArgs;
@@ -1467,8 +1705,8 @@ import 'patch_deployment_state.dart';
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs;
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRolloutArgs;
 /// import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRolloutDisruptionBudgetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1496,6 +1734,7 @@ import 'patch_deployment_state.dart';
 ///                 .build())
 ///             .patchConfig(PatchDeploymentPatchConfigArgs.builder()
 ///                 .migInstancesAllowed(true)
+///                 .skipUnpatchableVms(true)
 ///                 .rebootConfig("ALWAYS")
 ///                 .apt(PatchDeploymentPatchConfigAptArgs.builder()
 ///                     .type("DIST")
@@ -1600,6 +1839,7 @@ import 'patch_deployment_state.dart';
 ///           - us-central-1c
 ///       patchConfig:
 ///         migInstancesAllowed: true
+///         skipUnpatchableVms: true
 ///         rebootConfig: ALWAYS
 ///         apt:
 ///           type: DIST
@@ -1672,28 +1912,28 @@ import 'patch_deployment_state.dart';
 /// PatchDeployment can be imported using any of these accepted formats:
 ///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{project}} {{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default "{{project}} {{name}}"
-/// ```
-///
-/// ```sh
+/// $ terraform import google_os_config_patch_deployment.default "{{project}} {{name}}"
 /// $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{name}}
 /// ```
 class PatchDeployment extends pulumi.CustomResource {
   /// Time the patch deployment was created. Timestamp is in RFC3339 text format.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the patch deployment. Length of the description is limited to 1024 characters.
   late final pulumi.Output<String?> description;
   /// Duration of the patch. After the duration ends, the patch times out.
@@ -1749,6 +1989,7 @@ class PatchDeployment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     duration = registerOutput<String?>('duration');
     instanceFilter = registerOutput<PatchDeploymentInstanceFilter>('instanceFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentInstanceFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1787,6 +2028,7 @@ class PatchDeployment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     duration = registerOutput<String?>('duration');
     instanceFilter = registerOutput<PatchDeploymentInstanceFilter>('instanceFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchDeploymentInstanceFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -14,6 +14,13 @@ class CxPageState {
   /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
   /// Structure is documented below.
   final pulumi.Input<CxPageAdvancedSettings>? advancedSettings;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The human-readable name of the page, unique within the agent.
   final pulumi.Input<String>? displayName;
   /// The fulfillment to call when the session is entering the page.
@@ -65,6 +72,7 @@ class CxPageState {
 
   /// Creates a new [CxPageState].
   /// [advancedSettings] Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The human-readable name of the page, unique within the agent.
   /// [entryFulfillment] The fulfillment to call when the session is entering the page.
   /// [eventHandlers] Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -77,6 +85,7 @@ class CxPageState {
   /// [transitionRoutes] A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow.
   const CxPageState({
     this.advancedSettings,
+    this.deletionPolicy,
     this.displayName,
     this.entryFulfillment,
     this.eventHandlers,
@@ -92,6 +101,7 @@ class CxPageState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'advancedSettings': ?pulumi.Input.mapOptionalInputValue<CxPageAdvancedSettings, Map<String, dynamic>>(advancedSettings, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'entryFulfillment': ?pulumi.Input.mapOptionalInputValue<CxPageEntryFulfillment, Map<String, dynamic>>(entryFulfillment, (value) => value.toMap()),
       'eventHandlers': ?pulumi.Input.mapOptionalInputValue<List<CxPageEventHandler>, List<Map<String, dynamic>>>(eventHandlers, (value) => pulumi.Input.encodeList<CxPageEventHandler, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -108,6 +118,7 @@ class CxPageState {
   factory CxPageState.fromMap(Map<String, dynamic> map) {
     return CxPageState(
       advancedSettings: (() { final guardedValue = map['advancedSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxPageAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entryFulfillment: (() { final guardedValue = map['entryFulfillment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxPageEntryFulfillment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       eventHandlers: (() { final guardedValue = map['eventHandlers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CxPageEventHandler>(guardedValue, (value) => CxPageEventHandler.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -121,4 +132,3 @@ class CxPageState {
     );
   }
 }
-

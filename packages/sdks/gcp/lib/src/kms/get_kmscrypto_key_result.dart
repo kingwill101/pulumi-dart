@@ -8,6 +8,7 @@ import 'get_kmscrypto_key_version_template.dart';
 /// Result data returned by getKMSCryptoKey.
 class GetKMSCryptoKeyResult {
   final String cryptoKeyBackend;
+  final String deletionPolicy;
   final String destroyScheduledDuration;
   final Map<String, String> effectiveLabels;
   /// The provider-assigned unique ID for this managed resource.
@@ -30,6 +31,7 @@ class GetKMSCryptoKeyResult {
 
   /// Creates a new [GetKMSCryptoKeyResult].
   /// [cryptoKeyBackend] Required.
+  /// [deletionPolicy] Required.
   /// [destroyScheduledDuration] Required.
   /// [effectiveLabels] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -46,6 +48,7 @@ class GetKMSCryptoKeyResult {
   /// [versionTemplates] Required.
   const GetKMSCryptoKeyResult({
     required this.cryptoKeyBackend,
+    required this.deletionPolicy,
     required this.destroyScheduledDuration,
     required this.effectiveLabels,
     required this.id,
@@ -65,6 +68,7 @@ class GetKMSCryptoKeyResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cryptoKeyBackend': cryptoKeyBackend,
+      'deletionPolicy': deletionPolicy,
       'destroyScheduledDuration': destroyScheduledDuration,
       'effectiveLabels': effectiveLabels,
       'id': id,
@@ -85,6 +89,7 @@ class GetKMSCryptoKeyResult {
   factory GetKMSCryptoKeyResult.fromMap(Map<String, dynamic> map) {
     return GetKMSCryptoKeyResult(
       cryptoKeyBackend: map['cryptoKeyBackend'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       destroyScheduledDuration: map['destroyScheduledDuration'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       id: map['id'] as String,
@@ -102,4 +107,3 @@ class GetKMSCryptoKeyResult {
     );
   }
 }
-

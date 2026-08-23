@@ -8,6 +8,8 @@ import 'get_workforce_pool_iam_policy_result.dart';
 import 'get_workload_identity_pool_args.dart';
 import 'get_workload_identity_pool_iam_policy_args.dart';
 import 'get_workload_identity_pool_iam_policy_result.dart';
+import 'get_workload_identity_pool_openid_config_args.dart';
+import 'get_workload_identity_pool_openid_config_result.dart';
 import 'get_workload_identity_pool_provider_args.dart';
 import 'get_workload_identity_pool_provider_result.dart';
 import 'get_workload_identity_pool_result.dart';
@@ -71,6 +73,23 @@ import 'get_workload_identity_pool_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_iam_getrule" "roleinfo" {
+///   name = "roles/compute.viewer"
+/// }
+///
+/// output "theRolePermissions" {
+///   value = data.gcp_iam_getrule.roleinfo.included_permissions
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +98,8 @@ import 'get_workload_identity_pool_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iam.IamFunctions;
 /// import com.pulumi.gcp.iam.inputs.GetRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -198,6 +217,20 @@ Future<GetRuleResult> getRule(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_iam_gettestablepermissions" "perms" {
+///   full_resource_name = "//cloudresourcemanager.googleapis.com/projects/my-project"
+///   stages             = ["GA", "BETA"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -206,8 +239,8 @@ Future<GetRuleResult> getRule(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iam.IamFunctions;
 /// import com.pulumi.gcp.iam.inputs.GetTestablePermissionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -314,6 +347,20 @@ Future<GetTestablePermissionsResult> getTestablePermissions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_iam_getworkforcepooliampolicy" "policy" {
+///   location          = example.location
+///   workforce_pool_id = example.workforcePoolId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -322,8 +369,8 @@ Future<GetTestablePermissionsResult> getTestablePermissions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iam.IamFunctions;
 /// import com.pulumi.gcp.iam.inputs.GetWorkforcePoolIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,8 +383,8 @@ Future<GetTestablePermissionsResult> getTestablePermissions(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = IamFunctions.getWorkforcePoolIamPolicy(GetWorkforcePoolIamPolicyArgs.builder()
-///             .location(example.location())
-///             .workforcePoolId(example.workforcePoolId())
+///             .location(example.get("location"))
+///             .workforcePoolId(example.get("workforcePoolId"))
 ///             .build());
 ///
 ///     }
@@ -368,7 +415,12 @@ Future<GetWorkforcePoolIamPolicyResult> getWorkforcePoolIamPolicy(
 }
 
 /// Get a IAM workload identity pool from Google Cloud by its id.
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
+///
 /// ## Example Usage
 ///
 ///
@@ -421,6 +473,19 @@ Future<GetWorkforcePoolIamPolicyResult> getWorkforcePoolIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_iam_getworkloadidentitypool" "foo" {
+///   workload_identity_pool_id = "foo-pool"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -429,8 +494,8 @@ Future<GetWorkforcePoolIamPolicyResult> getWorkforcePoolIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iam.IamFunctions;
 /// import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -472,6 +537,9 @@ Future<GetWorkloadIdentityPoolResult> getWorkloadIdentityPool(
   return GetWorkloadIdentityPoolResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for workloadidentitypool
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -528,6 +596,20 @@ Future<GetWorkloadIdentityPoolResult> getWorkloadIdentityPool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_iam_getworkloadidentitypooliampolicy" "policy" {
+///   project                   = example.project
+///   workload_identity_pool_id = example.workloadIdentityPoolId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -536,8 +618,8 @@ Future<GetWorkloadIdentityPoolResult> getWorkloadIdentityPool(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iam.IamFunctions;
 /// import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -550,8 +632,8 @@ Future<GetWorkloadIdentityPoolResult> getWorkloadIdentityPool(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = IamFunctions.getWorkloadIdentityPoolIamPolicy(GetWorkloadIdentityPoolIamPolicyArgs.builder()
-///             .project(example.project())
-///             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+///             .project(example.get("project"))
+///             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
 ///             .build());
 ///
 ///     }
@@ -581,7 +663,128 @@ Future<GetWorkloadIdentityPoolIamPolicyResult> getWorkloadIdentityPoolIamPolicy(
   return GetWorkloadIdentityPoolIamPolicyResult.fromMap(result);
 }
 
+/// Get the OpenID provider configuration (`/.well-known/openid-configuration`) for an Agent Workload Identity Pool from Google Cloud.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const example = gcp.iam.getWorkloadIdentityPoolOpenidConfig({
+///     resourceName: "https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// example = gcp.iam.get_workload_identity_pool_openid_config(resource_name="https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Gcp.Iam.GetWorkloadIdentityPoolOpenidConfig.Invoke(new()
+///     {
+///         ResourceName = "https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := iam.GetWorkloadIdentityPoolOpenidConfig(ctx, &iam.GetWorkloadIdentityPoolOpenidConfigArgs{
+/// 			ResourceName: "https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_iam_getworkloadidentitypoolopenidconfig" "example" {
+///   resource_name = "https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.iam.IamFunctions;
+/// import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolOpenidConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = IamFunctions.getWorkloadIdentityPoolOpenidConfig(GetWorkloadIdentityPoolOpenidConfigArgs.builder()
+///             .resourceName("https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: gcp:iam:getWorkloadIdentityPoolOpenidConfig
+///       arguments:
+///         resourceName: https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_iam_get_workload_identity_pool_openid_config_get_workload_identity_pool_openid_config_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetWorkloadIdentityPoolOpenidConfigResult> getWorkloadIdentityPoolOpenidConfig(
+  GetWorkloadIdentityPoolOpenidConfigArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:iam/getWorkloadIdentityPoolOpenidConfig:getWorkloadIdentityPoolOpenidConfig',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetWorkloadIdentityPoolOpenidConfigResult.fromMap(result);
+}
+
 /// Get a IAM workload identity provider from Google Cloud by its id.
+///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 ///
 /// ## Example Usage
 ///
@@ -639,6 +842,20 @@ Future<GetWorkloadIdentityPoolIamPolicyResult> getWorkloadIdentityPoolIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_iam_getworkloadidentitypoolprovider" "foo" {
+///   workload_identity_pool_id          = "foo-pool"
+///   workload_identity_pool_provider_id = "bar-provider"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -647,8 +864,8 @@ Future<GetWorkloadIdentityPoolIamPolicyResult> getWorkloadIdentityPoolIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iam.IamFunctions;
 /// import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

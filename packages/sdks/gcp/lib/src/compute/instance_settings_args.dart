@@ -8,6 +8,13 @@ import 'instance_settings_metadata.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_instance_settings_instance_settings_args_doc}
 class InstanceSettingsArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The metadata key/value pairs assigned to all the instances in the corresponding scope.
   /// Structure is documented below.
   final pulumi.Input<InstanceSettingsMetadata>? metadata;
@@ -18,10 +25,12 @@ class InstanceSettingsArgs {
   final pulumi.Input<String> zone;
 
   /// Creates a new [InstanceSettingsArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [metadata] The metadata key/value pairs assigned to all the instances in the corresponding scope.
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the machine resides.
   const InstanceSettingsArgs({
+    this.deletionPolicy,
     this.metadata,
     this.project,
     required this.zone,
@@ -29,6 +38,7 @@ class InstanceSettingsArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'metadata': ?pulumi.Input.mapOptionalInputValue<InstanceSettingsMetadata, Map<String, dynamic>>(metadata, (value) => value.toMap()),
       'project': ?project,
       'zone': zone,
@@ -37,10 +47,10 @@ class InstanceSettingsArgs {
 
   factory InstanceSettingsArgs.fromMap(Map<String, dynamic> map) {
     return InstanceSettingsArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceSettingsMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }
 }
-

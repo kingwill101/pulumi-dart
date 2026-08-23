@@ -6,6 +6,26 @@ import 'dataset_access_routine.dart';
 import 'dataset_access_state.dart';
 import 'dataset_access_view.dart';
 
+/// Gives dataset access for a single entity. This resource is intended to be used in cases where
+/// it is not possible to compile a full list of access blocks to include in a
+/// `gcp.bigquery.Dataset` resource, to enable them to be added separately.
+///
+/// &gt; **Note:** If this resource is used alongside a `gcp.bigquery.Dataset` resource, the
+/// dataset resource must either have no defined `access` blocks or a `lifecycle` block with
+/// `ignoreChanges = [access]` so they don't fight over which accesses should be on the dataset.
+/// Additionally, both resource cannot be modified in the same apply.
+///
+///
+/// To get more information about DatasetAccess, see:
+///
+/// * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
+/// * How-to Guides
+/// * [Controlling access to datasets](https://cloud.google.com/bigquery/docs/dataset-access-controls)
+///
+/// &gt; **Warning:** You must specify the role field using the legacy format `OWNER` instead of `roles/bigquery.dataOwner`.
+/// The API does accept both formats but it will always return the legacy format which results in Terraform
+/// showing permanent diff on each plan and apply operation.
+///
 /// ## Example Usage
 ///
 /// ### Bigquery Dataset Access Basic User
@@ -97,6 +117,27 @@ import 'dataset_access_view.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_datasetaccess" "access" {
+///   dataset_id    = gcp_bigquery_dataset.dataset.dataset_id
+///   role          = "OWNER"
+///   user_by_email = gcp_serviceaccount_account.bqowner.email
+/// }
+/// resource "gcp_bigquery_dataset" "dataset" {
+///   dataset_id = "example_dataset"
+/// }
+/// resource "gcp_serviceaccount_account" "bqowner" {
+///   account_id = "bqowner"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -109,8 +150,8 @@ import 'dataset_access_view.dart';
 /// import com.pulumi.gcp.serviceaccount.AccountArgs;
 /// import com.pulumi.gcp.bigquery.DatasetAccess;
 /// import com.pulumi.gcp.bigquery.DatasetAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -299,6 +340,39 @@ import 'dataset_access_view.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_datasetaccess" "access" {
+///   dataset_id = gcp_bigquery_dataset.private.dataset_id
+///   view = {
+///     project_id = gcp_bigquery_table.public.project
+///     dataset_id = gcp_bigquery_dataset.public.dataset_id
+///     table_id   = gcp_bigquery_table.public.table_id
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "private" {
+///   dataset_id = "example_dataset"
+/// }
+/// resource "gcp_bigquery_dataset" "public" {
+///   dataset_id = "example_dataset2"
+/// }
+/// resource "gcp_bigquery_table" "public" {
+///   deletion_protection = false
+///   dataset_id          = gcp_bigquery_dataset.public.dataset_id
+///   table_id            = "example_table"
+///   view = {
+///     query          = "SELECT state FROM [lookerdata:cdc.project_tycho_reports]"
+///     use_legacy_sql = false
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -313,8 +387,8 @@ import 'dataset_access_view.dart';
 /// import com.pulumi.gcp.bigquery.DatasetAccess;
 /// import com.pulumi.gcp.bigquery.DatasetAccessArgs;
 /// import com.pulumi.gcp.bigquery.inputs.DatasetAccessViewArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -501,6 +575,32 @@ import 'dataset_access_view.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_datasetaccess" "access" {
+///   dataset_id = gcp_bigquery_dataset.private.dataset_id
+///   authorized_dataset = {
+///     dataset = {
+///       project_id = gcp_bigquery_dataset.public.project
+///       dataset_id = gcp_bigquery_dataset.public.dataset_id
+///     }
+///     target_types = ["VIEWS"]
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "private" {
+///   dataset_id = "private"
+/// }
+/// resource "gcp_bigquery_dataset" "public" {
+///   dataset_id = "public"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -513,8 +613,8 @@ import 'dataset_access_view.dart';
 /// import com.pulumi.gcp.bigquery.DatasetAccessArgs;
 /// import com.pulumi.gcp.bigquery.inputs.DatasetAccessAuthorizedDatasetArgs;
 /// import com.pulumi.gcp.bigquery.inputs.DatasetAccessAuthorizedDatasetDatasetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -746,18 +846,18 @@ import 'dataset_access_view.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"typeKind": "INT64",
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON1, err := json.Marshal(map[string][]map[string]interface{}{
 /// 			"columns": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"name": "value",
-/// 					"type": map[string]interface{}{
+/// 					"type": map[string]string{
 /// 						"typeKind": "INT64",
 /// 					},
 /// 				},
@@ -807,6 +907,54 @@ import 'dataset_access_view.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "public" {
+///   dataset_id  = "public_dataset"
+///   description = "This dataset is public"
+/// }
+/// resource "gcp_bigquery_routine" "public" {
+///   dataset_id      = gcp_bigquery_dataset.public.dataset_id
+///   routine_id      = "public_routine"
+///   routine_type    = "TABLE_VALUED_FUNCTION"
+///   language        = "SQL"
+///   definition_body = "SELECT 1 + value AS value\n"
+///   arguments {
+///     name          = "value"
+///     argument_kind = "FIXED_TYPE"
+///     data_type = jsonencode({
+///       "typeKind" = "INT64"
+///     })
+///   }
+///   return_table_type = jsonencode({
+///     "columns" = [{
+///       "name" = "value"
+///       "type" = {
+///         "typeKind" = "INT64"
+///       }
+///     }]
+///   })
+/// }
+/// resource "gcp_bigquery_dataset" "private" {
+///   dataset_id  = "private_dataset"
+///   description = "This dataset is private"
+/// }
+/// resource "gcp_bigquery_datasetaccess" "authorized_routine" {
+///   dataset_id = gcp_bigquery_dataset.private.dataset_id
+///   routine = {
+///     project_id = gcp_bigquery_routine.public.project
+///     dataset_id = gcp_bigquery_routine.public.dataset_id
+///     routine_id = gcp_bigquery_routine.public.routine_id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -822,8 +970,8 @@ import 'dataset_access_view.dart';
 /// import com.pulumi.gcp.bigquery.DatasetAccessArgs;
 /// import com.pulumi.gcp.bigquery.inputs.DatasetAccessRoutineArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -934,7 +1082,7 @@ import 'dataset_access_view.dart';
 ///
 /// This resource does not support import.
 class DatasetAccessBigquery extends pulumi.CustomResource {
-  /// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
+  /// If true, represents that that the iamMember in the config was translated to a different member type by the API, and is stored in state as a different member type
   late final pulumi.Output<bool> apiUpdatedMember;
   /// Grants all resources of particular types in a particular dataset read access to the current dataset.
   /// Structure is documented below.
@@ -947,6 +1095,13 @@ class DatasetAccessBigquery extends pulumi.CustomResource {
   /// must contain only letters (a-z, A-Z), numbers (0-9), or
   /// underscores (_). The maximum length is 1,024 characters.
   late final pulumi.Output<String> datasetId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A domain to grant access to. Any users signed in with the
   /// domain specified will be granted the specified access
   late final pulumi.Output<String?> domain;
@@ -1007,6 +1162,7 @@ class DatasetAccessBigquery extends pulumi.CustomResource {
     authorizedDataset = registerOutput<DatasetAccessAuthorizedDataset?>('authorizedDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetAccessAuthorizedDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     condition = registerOutput<DatasetAccessCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetAccessCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     datasetId = registerOutput<String>('datasetId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     domain = registerOutput<String?>('domain');
     groupByEmail = registerOutput<String?>('groupByEmail');
     iamMember = registerOutput<String?>('iamMember');
@@ -1045,6 +1201,7 @@ class DatasetAccessBigquery extends pulumi.CustomResource {
     authorizedDataset = registerOutput<DatasetAccessAuthorizedDataset?>('authorizedDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetAccessAuthorizedDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     condition = registerOutput<DatasetAccessCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetAccessCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     datasetId = registerOutput<String>('datasetId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     domain = registerOutput<String?>('domain');
     groupByEmail = registerOutput<String?>('groupByEmail');
     iamMember = registerOutput<String?>('iamMember');

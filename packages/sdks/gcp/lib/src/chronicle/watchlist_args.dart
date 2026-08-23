@@ -9,6 +9,13 @@ import 'watchlist_watchlist_user_preferences.dart';
 /// {@endtemplate}
 /// {@macro pulumi_chronicle_watchlist_watchlist_args_doc}
 class WatchlistArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. Description of the watchlist.
   final pulumi.Input<String>? description;
   /// Required. Display name of the watchlist.
@@ -39,6 +46,7 @@ class WatchlistArgs {
   final pulumi.Input<WatchlistWatchlistUserPreferences>? watchlistUserPreferences;
 
   /// Creates a new [WatchlistArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Optional. Description of the watchlist.
   /// [displayName] Required. Display name of the watchlist.
   /// [entityPopulationMechanism] Mechanism to populate entities in the watchlist.
@@ -49,6 +57,7 @@ class WatchlistArgs {
   /// [watchlistId] Optional. The ID to use for the watchlist,
   /// [watchlistUserPreferences] A collection of user preferences for watchlist UI configuration.
   const WatchlistArgs({
+    this.deletionPolicy,
     this.description,
     required this.displayName,
     required this.entityPopulationMechanism,
@@ -62,6 +71,7 @@ class WatchlistArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': displayName,
       'entityPopulationMechanism': pulumi.Input.mapInputValue<WatchlistEntityPopulationMechanism, Map<String, dynamic>>(entityPopulationMechanism, (value) => value.toMap()),
@@ -76,6 +86,7 @@ class WatchlistArgs {
 
   factory WatchlistArgs.fromMap(Map<String, dynamic> map) {
     return WatchlistArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       entityPopulationMechanism: pulumi.Input.fromValue(WatchlistEntityPopulationMechanism.fromMap((map['entityPopulationMechanism']! as Map).cast<String, dynamic>())),
@@ -88,4 +99,3 @@ class WatchlistArgs {
     );
   }
 }
-

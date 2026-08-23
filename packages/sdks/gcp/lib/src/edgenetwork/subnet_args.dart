@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_edgenetwork_subnet_subnet_args_doc}
 class SubnetArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
   /// The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
@@ -16,7 +23,7 @@ class SubnetArgs {
   /// Labels associated with this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
   final pulumi.Input<String> location;
@@ -34,6 +41,7 @@ class SubnetArgs {
   final pulumi.Input<String> zone;
 
   /// Creates a new [SubnetArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A free-text description of the resource. Max length 1024 characters.
   /// [ipv4Cidrs] The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
   /// [ipv6Cidrs] The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
@@ -45,6 +53,7 @@ class SubnetArgs {
   /// [vlanId] VLAN ID for this subnetwork. If not specified, one is assigned automatically.
   /// [zone] The name of the target Distributed Cloud Edge zone.
   const SubnetArgs({
+    this.deletionPolicy,
     this.description,
     this.ipv4Cidrs,
     this.ipv6Cidrs,
@@ -59,6 +68,7 @@ class SubnetArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'ipv4Cidrs': ?ipv4Cidrs,
       'ipv6Cidrs': ?ipv6Cidrs,
@@ -74,6 +84,7 @@ class SubnetArgs {
 
   factory SubnetArgs.fromMap(Map<String, dynamic> map) {
     return SubnetArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv4Cidrs: (() { final guardedValue = map['ipv4Cidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipv6Cidrs: (() { final guardedValue = map['ipv6Cidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -87,4 +98,3 @@ class SubnetArgs {
     );
   }
 }
-

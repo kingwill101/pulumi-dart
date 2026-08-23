@@ -12,6 +12,7 @@ class GetRegionNetworkEndpointGroupResult {
   final List<GetRegionNetworkEndpointGroupAppEngine> appEngines;
   final List<GetRegionNetworkEndpointGroupCloudFunction> cloudFunctions;
   final List<GetRegionNetworkEndpointGroupCloudRun> cloudRuns;
+  final String deletionPolicy;
   /// The RNEG description.
   final String description;
   /// The provider-assigned unique ID for this managed resource.
@@ -35,6 +36,7 @@ class GetRegionNetworkEndpointGroupResult {
   /// [appEngines] Required.
   /// [cloudFunctions] Required.
   /// [cloudRuns] Required.
+  /// [deletionPolicy] Required.
   /// [description] The RNEG description.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Optional.
@@ -51,6 +53,7 @@ class GetRegionNetworkEndpointGroupResult {
     required this.appEngines,
     required this.cloudFunctions,
     required this.cloudRuns,
+    required this.deletionPolicy,
     required this.description,
     required this.id,
     this.name,
@@ -70,6 +73,7 @@ class GetRegionNetworkEndpointGroupResult {
       'appEngines': pulumi.Input.encodeList<GetRegionNetworkEndpointGroupAppEngine, Map<String, dynamic>>(appEngines, (value) => value.toMap()),
       'cloudFunctions': pulumi.Input.encodeList<GetRegionNetworkEndpointGroupCloudFunction, Map<String, dynamic>>(cloudFunctions, (value) => value.toMap()),
       'cloudRuns': pulumi.Input.encodeList<GetRegionNetworkEndpointGroupCloudRun, Map<String, dynamic>>(cloudRuns, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'id': id,
       'name': ?name,
@@ -90,6 +94,7 @@ class GetRegionNetworkEndpointGroupResult {
       appEngines: pulumi.Input.decodeList<GetRegionNetworkEndpointGroupAppEngine>(map['appEngines']!, (value) => GetRegionNetworkEndpointGroupAppEngine.fromMap((value as Map).cast<String, dynamic>())),
       cloudFunctions: pulumi.Input.decodeList<GetRegionNetworkEndpointGroupCloudFunction>(map['cloudFunctions']!, (value) => GetRegionNetworkEndpointGroupCloudFunction.fromMap((value as Map).cast<String, dynamic>())),
       cloudRuns: pulumi.Input.decodeList<GetRegionNetworkEndpointGroupCloudRun>(map['cloudRuns']!, (value) => GetRegionNetworkEndpointGroupCloudRun.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -105,4 +110,3 @@ class GetRegionNetworkEndpointGroupResult {
     );
   }
 }
-

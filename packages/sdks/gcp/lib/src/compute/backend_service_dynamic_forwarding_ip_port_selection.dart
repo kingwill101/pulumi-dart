@@ -3,11 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendServiceDynamicForwardingIpPortSelection {
+  /// (Optional, Beta)
   /// A boolean flag enabling IP:PORT based dynamic forwarding.
   final pulumi.Input<bool>? enabled;
 
   /// Creates a new [BackendServiceDynamicForwardingIpPortSelection].
-  /// [enabled] A boolean flag enabling IP:PORT based dynamic forwarding.
+  /// [enabled] (Optional, Beta)
   const BackendServiceDynamicForwardingIpPortSelection({
     this.enabled,
   });
@@ -24,4 +25,3 @@ class BackendServiceDynamicForwardingIpPortSelection {
     );
   }
 }
-

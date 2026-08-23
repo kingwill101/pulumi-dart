@@ -6,8 +6,8 @@ import 'ekm_connection_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud Key Management Service EkmConnection. Each of these resources serves a different use case:
 ///
 /// * `gcp.kms.EkmConnectionIamPolicy`: Authoritative. Sets the IAM policy for the ekmconnection and replaces any existing policy already attached.
-/// * `gcp.kms.EkmConnectionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the ekmconnection are preserved.
-/// * `gcp.kms.EkmConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the ekmconnection are preserved.
+/// * `gcp.kms.EkmConnectionIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the ekmconnection are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.kms.EkmConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the ekmconnection are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +15,7 @@ import 'ekm_connection_iam_binding_state.dart';
 ///
 /// &gt; **Note:** `gcp.kms.EkmConnectionIamPolicy` **cannot** be used in conjunction with `gcp.kms.EkmConnectionIamBinding` and `gcp.kms.EkmConnectionIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.kms.EkmConnectionIamBinding` resources **can be** used in conjunction with `gcp.kms.EkmConnectionIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.kms.EkmConnectionIamBinding` resources **can be** used in conjunction with `gcp.kms.EkmConnectionIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -124,6 +124,29 @@ import 'ekm_connection_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_kms_ekmconnectioniampolicy" "policy" {
+///   project     = example-ekmconnection.project
+///   location    = example-ekmconnection.location
+///   name        = example-ekmconnection.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -132,10 +155,11 @@ import 'ekm_connection_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.kms.EkmConnectionIamPolicy;
 /// import com.pulumi.gcp.kms.EkmConnectionIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -155,9 +179,9 @@ import 'ekm_connection_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new EkmConnectionIamPolicy("policy", EkmConnectionIamPolicyArgs.builder()
-///             .project(example_ekmconnection.project())
-///             .location(example_ekmconnection.location())
-///             .name(example_ekmconnection.name())
+///             .project(example_ekmconnection.get("project"))
+///             .location(example_ekmconnection.get("location"))
+///             .name(example_ekmconnection.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -310,6 +334,34 @@ import 'ekm_connection_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_ekmconnectioniampolicy" "policy" {
+///   project     = example-ekmconnection.project
+///   location    = example-ekmconnection.location
+///   name        = example-ekmconnection.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -318,10 +370,12 @@ import 'ekm_connection_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.kms.EkmConnectionIamPolicy;
 /// import com.pulumi.gcp.kms.EkmConnectionIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -346,9 +400,9 @@ import 'ekm_connection_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new EkmConnectionIamPolicy("policy", EkmConnectionIamPolicyArgs.builder()
-///             .project(example_ekmconnection.project())
-///             .location(example_ekmconnection.location())
-///             .name(example_ekmconnection.name())
+///             .project(example_ekmconnection.get("project"))
+///             .location(example_ekmconnection.get("location"))
+///             .name(example_ekmconnection.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -453,6 +507,23 @@ import 'ekm_connection_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_ekmconnectioniambinding" "binding" {
+///   project  = example-ekmconnection.project
+///   location = example-ekmconnection.location
+///   name     = example-ekmconnection.name
+///   role     = "roles/viewer"
+///   members  = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -461,8 +532,8 @@ import 'ekm_connection_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.EkmConnectionIamBinding;
 /// import com.pulumi.gcp.kms.EkmConnectionIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -475,9 +546,9 @@ import 'ekm_connection_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new EkmConnectionIamBinding("binding", EkmConnectionIamBindingArgs.builder()
-///             .project(example_ekmconnection.project())
-///             .location(example_ekmconnection.location())
-///             .name(example_ekmconnection.name())
+///             .project(example_ekmconnection.get("project"))
+///             .location(example_ekmconnection.get("location"))
+///             .name(example_ekmconnection.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -594,6 +665,28 @@ import 'ekm_connection_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_ekmconnectioniambinding" "binding" {
+///   project  = example-ekmconnection.project
+///   location = example-ekmconnection.location
+///   name     = example-ekmconnection.name
+///   role     = "roles/viewer"
+///   members  = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -603,8 +696,8 @@ import 'ekm_connection_iam_binding_state.dart';
 /// import com.pulumi.gcp.kms.EkmConnectionIamBinding;
 /// import com.pulumi.gcp.kms.EkmConnectionIamBindingArgs;
 /// import com.pulumi.gcp.kms.inputs.EkmConnectionIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -617,9 +710,9 @@ import 'ekm_connection_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new EkmConnectionIamBinding("binding", EkmConnectionIamBindingArgs.builder()
-///             .project(example_ekmconnection.project())
-///             .location(example_ekmconnection.location())
-///             .name(example_ekmconnection.name())
+///             .project(example_ekmconnection.get("project"))
+///             .location(example_ekmconnection.get("location"))
+///             .name(example_ekmconnection.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .condition(EkmConnectionIamBindingConditionArgs.builder()
@@ -718,6 +811,23 @@ import 'ekm_connection_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_ekmconnectioniammember" "member" {
+///   project  = example-ekmconnection.project
+///   location = example-ekmconnection.location
+///   name     = example-ekmconnection.name
+///   role     = "roles/viewer"
+///   member   = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -726,8 +836,8 @@ import 'ekm_connection_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.EkmConnectionIamMember;
 /// import com.pulumi.gcp.kms.EkmConnectionIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -740,9 +850,9 @@ import 'ekm_connection_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new EkmConnectionIamMember("member", EkmConnectionIamMemberArgs.builder()
-///             .project(example_ekmconnection.project())
-///             .location(example_ekmconnection.location())
-///             .name(example_ekmconnection.name())
+///             .project(example_ekmconnection.get("project"))
+///             .location(example_ekmconnection.get("location"))
+///             .name(example_ekmconnection.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -853,6 +963,28 @@ import 'ekm_connection_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_ekmconnectioniammember" "member" {
+///   project  = example-ekmconnection.project
+///   location = example-ekmconnection.location
+///   name     = example-ekmconnection.name
+///   role     = "roles/viewer"
+///   member   = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -862,8 +994,8 @@ import 'ekm_connection_iam_binding_state.dart';
 /// import com.pulumi.gcp.kms.EkmConnectionIamMember;
 /// import com.pulumi.gcp.kms.EkmConnectionIamMemberArgs;
 /// import com.pulumi.gcp.kms.inputs.EkmConnectionIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -876,9 +1008,9 @@ import 'ekm_connection_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new EkmConnectionIamMember("member", EkmConnectionIamMemberArgs.builder()
-///             .project(example_ekmconnection.project())
-///             .location(example_ekmconnection.location())
-///             .name(example_ekmconnection.name())
+///             .project(example_ekmconnection.get("project"))
+///             .location(example_ekmconnection.get("location"))
+///             .name(example_ekmconnection.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .condition(EkmConnectionIamMemberConditionArgs.builder()
@@ -917,8 +1049,8 @@ import 'ekm_connection_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud Key Management Service EkmConnection. Each of these resources serves a different use case:
 ///
 /// * `gcp.kms.EkmConnectionIamPolicy`: Authoritative. Sets the IAM policy for the ekmconnection and replaces any existing policy already attached.
-/// * `gcp.kms.EkmConnectionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the ekmconnection are preserved.
-/// * `gcp.kms.EkmConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the ekmconnection are preserved.
+/// * `gcp.kms.EkmConnectionIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the ekmconnection are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.kms.EkmConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the ekmconnection are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -926,7 +1058,7 @@ import 'ekm_connection_iam_binding_state.dart';
 ///
 /// &gt; **Note:** `gcp.kms.EkmConnectionIamPolicy` **cannot** be used in conjunction with `gcp.kms.EkmConnectionIamBinding` and `gcp.kms.EkmConnectionIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.kms.EkmConnectionIamBinding` resources **can be** used in conjunction with `gcp.kms.EkmConnectionIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.kms.EkmConnectionIamBinding` resources **can be** used in conjunction with `gcp.kms.EkmConnectionIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -1035,6 +1167,29 @@ import 'ekm_connection_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_kms_ekmconnectioniampolicy" "policy" {
+///   project     = example-ekmconnection.project
+///   location    = example-ekmconnection.location
+///   name        = example-ekmconnection.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1043,10 +1198,11 @@ import 'ekm_connection_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.kms.EkmConnectionIamPolicy;
 /// import com.pulumi.gcp.kms.EkmConnectionIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1066,9 +1222,9 @@ import 'ekm_connection_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new EkmConnectionIamPolicy("policy", EkmConnectionIamPolicyArgs.builder()
-///             .project(example_ekmconnection.project())
-///             .location(example_ekmconnection.location())
-///             .name(example_ekmconnection.name())
+///             .project(example_ekmconnection.get("project"))
+///             .location(example_ekmconnection.get("location"))
+///             .name(example_ekmconnection.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1221,6 +1377,34 @@ import 'ekm_connection_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_ekmconnectioniampolicy" "policy" {
+///   project     = example-ekmconnection.project
+///   location    = example-ekmconnection.location
+///   name        = example-ekmconnection.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1229,10 +1413,12 @@ import 'ekm_connection_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.kms.EkmConnectionIamPolicy;
 /// import com.pulumi.gcp.kms.EkmConnectionIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1257,9 +1443,9 @@ import 'ekm_connection_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new EkmConnectionIamPolicy("policy", EkmConnectionIamPolicyArgs.builder()
-///             .project(example_ekmconnection.project())
-///             .location(example_ekmconnection.location())
-///             .name(example_ekmconnection.name())
+///             .project(example_ekmconnection.get("project"))
+///             .location(example_ekmconnection.get("location"))
+///             .name(example_ekmconnection.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1364,6 +1550,23 @@ import 'ekm_connection_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_ekmconnectioniambinding" "binding" {
+///   project  = example-ekmconnection.project
+///   location = example-ekmconnection.location
+///   name     = example-ekmconnection.name
+///   role     = "roles/viewer"
+///   members  = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1372,8 +1575,8 @@ import 'ekm_connection_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.EkmConnectionIamBinding;
 /// import com.pulumi.gcp.kms.EkmConnectionIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1386,9 +1589,9 @@ import 'ekm_connection_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new EkmConnectionIamBinding("binding", EkmConnectionIamBindingArgs.builder()
-///             .project(example_ekmconnection.project())
-///             .location(example_ekmconnection.location())
-///             .name(example_ekmconnection.name())
+///             .project(example_ekmconnection.get("project"))
+///             .location(example_ekmconnection.get("location"))
+///             .name(example_ekmconnection.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -1505,6 +1708,28 @@ import 'ekm_connection_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_ekmconnectioniambinding" "binding" {
+///   project  = example-ekmconnection.project
+///   location = example-ekmconnection.location
+///   name     = example-ekmconnection.name
+///   role     = "roles/viewer"
+///   members  = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1514,8 +1739,8 @@ import 'ekm_connection_iam_binding_state.dart';
 /// import com.pulumi.gcp.kms.EkmConnectionIamBinding;
 /// import com.pulumi.gcp.kms.EkmConnectionIamBindingArgs;
 /// import com.pulumi.gcp.kms.inputs.EkmConnectionIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1528,9 +1753,9 @@ import 'ekm_connection_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new EkmConnectionIamBinding("binding", EkmConnectionIamBindingArgs.builder()
-///             .project(example_ekmconnection.project())
-///             .location(example_ekmconnection.location())
-///             .name(example_ekmconnection.name())
+///             .project(example_ekmconnection.get("project"))
+///             .location(example_ekmconnection.get("location"))
+///             .name(example_ekmconnection.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .condition(EkmConnectionIamBindingConditionArgs.builder()
@@ -1629,6 +1854,23 @@ import 'ekm_connection_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_ekmconnectioniammember" "member" {
+///   project  = example-ekmconnection.project
+///   location = example-ekmconnection.location
+///   name     = example-ekmconnection.name
+///   role     = "roles/viewer"
+///   member   = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1637,8 +1879,8 @@ import 'ekm_connection_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.EkmConnectionIamMember;
 /// import com.pulumi.gcp.kms.EkmConnectionIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1651,9 +1893,9 @@ import 'ekm_connection_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new EkmConnectionIamMember("member", EkmConnectionIamMemberArgs.builder()
-///             .project(example_ekmconnection.project())
-///             .location(example_ekmconnection.location())
-///             .name(example_ekmconnection.name())
+///             .project(example_ekmconnection.get("project"))
+///             .location(example_ekmconnection.get("location"))
+///             .name(example_ekmconnection.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -1764,6 +2006,28 @@ import 'ekm_connection_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_ekmconnectioniammember" "member" {
+///   project  = example-ekmconnection.project
+///   location = example-ekmconnection.location
+///   name     = example-ekmconnection.name
+///   role     = "roles/viewer"
+///   member   = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1773,8 +2037,8 @@ import 'ekm_connection_iam_binding_state.dart';
 /// import com.pulumi.gcp.kms.EkmConnectionIamMember;
 /// import com.pulumi.gcp.kms.EkmConnectionIamMemberArgs;
 /// import com.pulumi.gcp.kms.inputs.EkmConnectionIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1787,9 +2051,9 @@ import 'ekm_connection_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new EkmConnectionIamMember("member", EkmConnectionIamMemberArgs.builder()
-///             .project(example_ekmconnection.project())
-///             .location(example_ekmconnection.location())
-///             .name(example_ekmconnection.name())
+///             .project(example_ekmconnection.get("project"))
+///             .location(example_ekmconnection.get("location"))
+///             .name(example_ekmconnection.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .condition(EkmConnectionIamMemberConditionArgs.builder()
@@ -1824,9 +2088,7 @@ import 'ekm_connection_iam_binding_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{location}}/ekmConnections/{{name}}
-///
 /// * {{project}}/{{location}}/{{name}}
-///
 /// * {{location}}/{{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -1834,25 +2096,21 @@ import 'ekm_connection_iam_binding_state.dart';
 /// Cloud Key Management Service ekmconnection IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:kms/ekmConnectionIamBinding:EkmConnectionIamBinding editor "projects/{{project}}/locations/{{location}}/ekmConnections/{{ekm_connection}} roles/viewer user:jane@example.com"
+/// $ terraform import google_kms_ekm_connection_iam_member.editor "projects/{{project}}/locations/{{location}}/ekmConnections/{{ekm_connection}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:kms/ekmConnectionIamBinding:EkmConnectionIamBinding editor "projects/{{project}}/locations/{{location}}/ekmConnections/{{ekm_connection}} roles/viewer"
+/// $ terraform import google_kms_ekm_connection_iam_binding.editor "projects/{{project}}/locations/{{location}}/ekmConnections/{{ekm_connection}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:kms/ekmConnectionIamBinding:EkmConnectionIamBinding editor projects/{{project}}/locations/{{location}}/ekmConnections/{{ekm_connection}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class EkmConnectionIamBinding extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -1885,7 +2143,7 @@ class EkmConnectionIamBinding extends pulumi.CustomResource {
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   late final pulumi.Output<String> project;
   /// The role that should be applied. Only one
-  /// `gcp.kms.EkmConnectionIamBinding` can be used per role. Note that custom roles must be of the format
+  /// `gcp.kms.EkmConnectionIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   late final pulumi.Output<String> role;
 

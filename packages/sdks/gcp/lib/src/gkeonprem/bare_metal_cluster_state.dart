@@ -33,7 +33,7 @@ class BareMetalClusterState {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// A human readable description of this Bare Metal User Cluster.
   final pulumi.Input<String>? bareMetalVersion;
@@ -50,8 +50,16 @@ class BareMetalClusterState {
   final pulumi.Input<String>? createTime;
   /// The time the cluster was deleted, in RFC3339 text format.
   final pulumi.Input<String>? deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human readable description of this Bare Metal User Cluster.
   final pulumi.Input<String>? description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// The IP address name of Bare Metal User Cluster's API server.
   final pulumi.Input<String>? endpoint;
@@ -143,8 +151,9 @@ class BareMetalClusterState {
   /// [controlPlane] Specifies the control plane configuration.
   /// [createTime] The time the cluster was created, in RFC3339 text format.
   /// [deleteTime] The time the cluster was deleted, in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A human readable description of this Bare Metal User Cluster.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [endpoint] The IP address name of Bare Metal User Cluster's API server.
   /// [etag] This checksum is computed by the server based on the value of other
   /// [fleets] Fleet related configuration.
@@ -177,6 +186,7 @@ class BareMetalClusterState {
     this.controlPlane,
     this.createTime,
     this.deleteTime,
+    this.deletionPolicy,
     this.description,
     this.effectiveAnnotations,
     this.endpoint,
@@ -214,6 +224,7 @@ class BareMetalClusterState {
       'controlPlane': ?pulumi.Input.mapOptionalInputValue<BareMetalClusterControlPlane, Map<String, dynamic>>(controlPlane, (value) => value.toMap()),
       'createTime': ?createTime,
       'deleteTime': ?deleteTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveAnnotations': ?effectiveAnnotations,
       'endpoint': ?endpoint,
@@ -252,6 +263,7 @@ class BareMetalClusterState {
       controlPlane: (() { final guardedValue = map['controlPlane']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -280,4 +292,3 @@ class BareMetalClusterState {
     );
   }
 }
-

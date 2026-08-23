@@ -9,7 +9,7 @@ class FoldersPolicyBindingState {
   /// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Represents a textual expression in the Common Expression Language
   /// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
@@ -38,8 +38,16 @@ class FoldersPolicyBindingState {
   final pulumi.Input<FoldersPolicyBindingCondition>? condition;
   /// Output only. The time when the policy binding was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
   final pulumi.Input<String>? displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
   final pulumi.Input<String>? etag;
@@ -71,8 +79,9 @@ class FoldersPolicyBindingState {
   /// [annotations] Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
   /// [condition] Represents a textual expression in the Common Expression Language
   /// [createTime] Output only. The time when the policy binding was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Optional. The description of the policy binding. Must be less than or equal to 63 characters.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [etag] Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
   /// [folder] The parent folder for the PolicyBinding.
   /// [location] The location of the PolicyBinding.
@@ -88,6 +97,7 @@ class FoldersPolicyBindingState {
     this.annotations,
     this.condition,
     this.createTime,
+    this.deletionPolicy,
     this.displayName,
     this.effectiveAnnotations,
     this.etag,
@@ -108,6 +118,7 @@ class FoldersPolicyBindingState {
       'annotations': ?annotations,
       'condition': ?pulumi.Input.mapOptionalInputValue<FoldersPolicyBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'effectiveAnnotations': ?effectiveAnnotations,
       'etag': ?etag,
@@ -129,6 +140,7 @@ class FoldersPolicyBindingState {
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FoldersPolicyBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -145,4 +157,3 @@ class FoldersPolicyBindingState {
     );
   }
 }
-

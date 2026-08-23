@@ -37,4 +37,3 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
     );
   }
 }
-

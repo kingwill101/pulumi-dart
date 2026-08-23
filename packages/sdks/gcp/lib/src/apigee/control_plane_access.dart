@@ -173,7 +173,7 @@ import 'control_plane_access_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+/// 		apigee2, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 /// 			Project: project.ProjectId,
 /// 			Service: pulumi.String("apigee.googleapis.com"),
 /// 		})
@@ -185,7 +185,7 @@ import 'control_plane_access_state.dart';
 /// 			ProjectId:       project.ProjectId,
 /// 			RuntimeType:     pulumi.String("HYBRID"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			apigee,
+/// 			apigee2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -227,6 +227,47 @@ import 'control_plane_access_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "my-project"
+///   name            = "my-project"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_projects_service" "apigee" {
+///   project = gcp_organizations_project.project.project_id
+///   service = "apigee.googleapis.com"
+/// }
+/// resource "gcp_apigee_organization" "apigee_org" {
+///   depends_on       = [gcp_projects_service.apigee]
+///   analytics_region = "us-central1"
+///   project_id       = gcp_organizations_project.project.project_id
+///   runtime_type     = "HYBRID"
+/// }
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   account_id   = "my-account"
+///   display_name = "Service Account"
+/// }
+/// resource "gcp_projects_iammember" "synchronizer-iam" {
+///   project = gcp_organizations_project.project.project_id
+///   role    = "roles/apigee.synchronizerManager"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.service_account.email}"
+/// }
+/// resource "gcp_apigee_controlplaneaccess" "apigee_control_plane_access" {
+///   name                           = gcp_apigee_organization.apigee_org.name
+///   synchronizer_identities        = ["serviceAccount:${gcp_serviceaccount_account.service_account.email}"]
+///   analytics_publisher_identities = ["serviceAccount:${gcp_serviceaccount_account.service_account.email}"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -246,8 +287,8 @@ import 'control_plane_access_state.dart';
 /// import com.pulumi.gcp.apigee.ControlPlaneAccess;
 /// import com.pulumi.gcp.apigee.ControlPlaneAccessArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -354,16 +395,13 @@ import 'control_plane_access_state.dart';
 /// ControlPlaneAccess can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{name}}/controlPlaneAccess`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ControlPlaneAccess can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/controlPlaneAccess:ControlPlaneAccess default organizations/{{name}}/controlPlaneAccess
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/controlPlaneAccess:ControlPlaneAccess default {{name}}
 /// ```
 class ControlPlaneAccess extends pulumi.CustomResource {

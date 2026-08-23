@@ -146,7 +146,7 @@ import 'enrollment_state.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			EnrollmentId: pulumi.String("some-enrollment"),
 /// 			MessageBus:   pulumi.Any(primaryGoogleEventarcMessageBus.Id),
-/// 			Destination:  pipeline.ID(),
+/// 			Destination:  pipeline.ID().ToIDOutput().ToStringOutput(),
 /// 			CelMatch:     pulumi.String("message.type == 'google.cloud.dataflow.job.v1beta3.statusChanged'"),
 /// 		})
 /// 		if err != nil {
@@ -161,6 +161,39 @@ import 'enrollment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_eventarc_enrollment" "primary" {
+///   location      = "us-central1"
+///   enrollment_id = "some-enrollment"
+///   message_bus   = primaryGoogleEventarcMessageBus.id
+///   destination   = gcp_eventarc_pipeline.pipeline.id
+///   cel_match     = "message.type == 'google.cloud.dataflow.job.v1beta3.statusChanged'"
+/// }
+/// resource "gcp_eventarc_pipeline" "pipeline" {
+///   location    = "us-central1"
+///   pipeline_id = "some-pipeline"
+///   destinations {
+///     http_endpoint = {
+///       uri = "https://10.77.0.0:80/route"
+///     }
+///     network_config = {
+///       network_attachment = "projects/my-project-name/regions/us-central1/networkAttachments/some-network-attachment"
+///     }
+///   }
+/// }
+/// resource "gcp_eventarc_messagebus" "message_bus" {
+///   location       = "us-central1"
+///   message_bus_id = "some-message-bus"
 /// }
 /// ```
 /// ```java
@@ -178,8 +211,8 @@ import 'enrollment_state.dart';
 /// import com.pulumi.gcp.eventarc.EnrollmentArgs;
 /// import com.pulumi.gcp.eventarc.MessageBus;
 /// import com.pulumi.gcp.eventarc.MessageBusArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -207,7 +240,7 @@ import 'enrollment_state.dart';
 ///         var primary = new Enrollment("primary", EnrollmentArgs.builder()
 ///             .location("us-central1")
 ///             .enrollmentId("some-enrollment")
-///             .messageBus(primaryGoogleEventarcMessageBus.id())
+///             .messageBus(primaryGoogleEventarcMessageBus.get("id"))
 ///             .destination(pipeline.id())
 ///             .celMatch("message.type == 'google.cloud.dataflow.job.v1beta3.statusChanged'")
 ///             .build());
@@ -254,39 +287,40 @@ import 'enrollment_state.dart';
 /// Enrollment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/enrollments/{{enrollment_id}}`
-///
 /// * `{{project}}/{{location}}/{{enrollment_id}}`
-///
 /// * `{{location}}/{{enrollment_id}}`
+///
 ///
 /// When using the `pulumi import` command, Enrollment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:eventarc/enrollment:Enrollment default projects/{{project}}/locations/{{location}}/enrollments/{{enrollment_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:eventarc/enrollment:Enrollment default {{project}}/{{location}}/{{enrollment_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:eventarc/enrollment:Enrollment default {{location}}/{{enrollment_id}}
 /// ```
 class Enrollment extends pulumi.CustomResource {
   /// Resource annotations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// A CEL expression identifying which messages this enrollment applies to.
   late final pulumi.Output<String> celMatch;
   /// The creation time.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Destination is the Pipeline that the Enrollment is delivering to. It must
   /// point to the full resource name of a Pipeline. Format:
   /// "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
   late final pulumi.Output<String> destination;
   /// Resource display name.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -299,7 +333,7 @@ class Enrollment extends pulumi.CustomResource {
   late final pulumi.Output<String> etag;
   /// Resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -339,6 +373,7 @@ class Enrollment extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     celMatch = registerOutput<String>('celMatch');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destination = registerOutput<String>('destination');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
@@ -381,6 +416,7 @@ class Enrollment extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     celMatch = registerOutput<String>('celMatch');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destination = registerOutput<String>('destination');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');

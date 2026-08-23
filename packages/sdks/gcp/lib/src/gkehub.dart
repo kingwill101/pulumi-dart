@@ -66,6 +66,7 @@ export 'gkehub/feature_spec_fleetobservability_logging_config_default_config.dar
 export 'gkehub/feature_spec_fleetobservability_logging_config_fleet_scope_logs_config.dart';
 export 'gkehub/feature_spec_multiclusteringress.dart';
 export 'gkehub/feature_spec_rbacrolebindingactuation.dart';
+export 'gkehub/feature_spec_workloadidentity.dart';
 export 'gkehub/feature_state.dart';
 export 'gkehub/feature_state_state.dart';
 export 'gkehub/fleet.dart';
@@ -111,6 +112,7 @@ export 'gkehub/get_feature_spec_fleetobservability_logging_config_default_config
 export 'gkehub/get_feature_spec_fleetobservability_logging_config_fleet_scope_logs_config.dart';
 export 'gkehub/get_feature_spec_multiclusteringress.dart';
 export 'gkehub/get_feature_spec_rbacrolebindingactuation.dart';
+export 'gkehub/get_feature_spec_workloadidentity.dart';
 export 'gkehub/get_feature_state.dart';
 export 'gkehub/get_feature_state_state.dart';
 export 'gkehub/get_membership_args.dart';
@@ -157,6 +159,10 @@ export 'gkehub/namespace_gkehub_state.dart';
 export 'gkehub/namespace_state.dart';
 export 'gkehub/rollout_sequence.dart';
 export 'gkehub/rollout_sequence_args.dart';
+export 'gkehub/rollout_sequence_auto_upgrade_config.dart';
+export 'gkehub/rollout_sequence_auto_upgrade_config_rollout_creation_scope.dart';
+export 'gkehub/rollout_sequence_ignored_clusters_selector.dart';
+export 'gkehub/rollout_sequence_operational_state.dart';
 export 'gkehub/rollout_sequence_stage.dart';
 export 'gkehub/rollout_sequence_stage_cluster_selector.dart';
 export 'gkehub/rollout_sequence_state.dart';

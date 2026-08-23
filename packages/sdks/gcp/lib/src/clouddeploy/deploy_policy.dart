@@ -186,6 +186,43 @@ import 'deploy_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_clouddeploy_deploypolicy" "b-deploy-policy" {
+///   name     = "cd-policy"
+///   location = "us-central1"
+///   selectors {
+///     delivery_pipeline = {
+///       id = "cd-pipeline"
+///     }
+///   }
+///   rules {
+///     rollout_restriction = {
+///       id = "rule"
+///       time_windows = {
+///         time_zone = "America/Los_Angeles"
+///         weekly_windows = [{
+///           "startTime" = {
+///             "hours"   = 0
+///             "minutes" = 0
+///           }
+///           "endTime" = {
+///             "hours"   = "24"
+///             "minutes" = "00"
+///           }
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -199,8 +236,11 @@ import 'deploy_policy_state.dart';
 /// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -746,6 +786,107 @@ import 'deploy_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_clouddeploy_deploypolicy" "f-deploy-policy" {
+///   name     = "cd-policy"
+///   location = "us-central1"
+///   annotations = {
+///     "my_first_annotation"  = "example-annotation-1"
+///     "my_second_annotation" = "example-annotation-2"
+///   }
+///   labels = {
+///     "my_first_label"  = "example-label-1"
+///     "my_second_label" = "example-label-2"
+///   }
+///   description = "policy resource"
+///   selectors {
+///     delivery_pipeline = {
+///       id = "cd-pipeline"
+///       labels = {
+///         "foo" = "bar"
+///       }
+///     }
+///   }
+///   selectors {
+///     target = {
+///       id = "dev"
+///       labels = {
+///         "foo" = "bar"
+///       }
+///     }
+///   }
+///   suspended = true
+///   rules {
+///     rollout_restriction = {
+///       id = "rule"
+///       time_windows = {
+///         time_zone = "America/Los_Angeles"
+///         weekly_windows = [{
+///           "startTime" = {
+///             "hours"   = 0
+///             "minutes" = 0
+///           }
+///           "endTime" = {
+///             "hours"   = "13"
+///             "minutes" = "00"
+///           }
+///         }]
+///       }
+///     }
+///   }
+///   rules {
+///     rollout_restriction = {
+///       id       = "rule2"
+///       invokers = ["USER"]
+///       actions  = ["CREATE"]
+///       time_windows = {
+///         time_zone = "America/Los_Angeles"
+///         weekly_windows = [{
+///           "startTime" = {
+///             "hours"   = "13"
+///             "minutes" = "00"
+///           }
+///           "endTime" = {
+///             "hours"   = "14"
+///             "minutes" = "00"
+///             "seconds" = "00"
+///             "nanos"   = "00"
+///           }
+///           "daysOfWeeks" = ["MONDAY"]
+///         }]
+///         one_time_windows = [{
+///           "startTime" = {
+///             "hours"   = "00"
+///             "minutes" = "00"
+///           }
+///           "endTime" = {
+///             "hours"   = "16"
+///             "minutes" = "00"
+///           }
+///           "startDate" = {
+///             "year"  = "2019"
+///             "month" = "01"
+///             "day"   = "01"
+///           }
+///           "endDate" = {
+///             "year"  = "2019"
+///             "month" = "12"
+///             "day"   = "31"
+///           }
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -760,8 +901,16 @@ import 'deploy_policy_state.dart';
 /// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionArgs;
 /// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartTimeArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndTimeArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowStartDateArgs;
+/// import com.pulumi.gcp.clouddeploy.inputs.DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDateArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -944,33 +1093,34 @@ import 'deploy_policy_state.dart';
 /// DeployPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/deployPolicies/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, DeployPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:clouddeploy/deployPolicy:DeployPolicy default projects/{{project}}/locations/{{location}}/deployPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:clouddeploy/deployPolicy:DeployPolicy default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:clouddeploy/deployPolicy:DeployPolicy default {{location}}/{{name}}
 /// ```
 class DeployPolicy extends pulumi.CustomResource {
   /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. Annotations must meet the following constraints: * Annotations are key/value pairs. * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (`/`). * The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character (`[a-z0-9A-Z]`) with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between. * The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots(`.`), not longer than 253 characters in total, followed by a slash (`/`). See https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set for more details.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Output only. Time at which the DeployPolicy was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the `DeployPolicy`. Max length is 255 characters.
   late final pulumi.Output<String?> description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -978,7 +1128,7 @@ class DeployPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> etag;
   /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 63 characters.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location for the resource
   late final pulumi.Output<String> location;
@@ -1019,6 +1169,7 @@ class DeployPolicy extends pulumi.CustomResource {
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1060,6 +1211,7 @@ class DeployPolicy extends pulumi.CustomResource {
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

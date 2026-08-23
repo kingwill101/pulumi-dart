@@ -36,4 +36,3 @@ class CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig {
     );
   }
 }
-

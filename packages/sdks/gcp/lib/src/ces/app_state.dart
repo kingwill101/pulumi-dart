@@ -34,6 +34,13 @@ class AppState {
   /// channel, such as web UI or telephony.
   /// Structure is documented below.
   final pulumi.Input<AppDefaultChannelProfile>? defaultChannelProfile;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Number of deployments in the app.
   final pulumi.Input<int>? deploymentCount;
   /// Human-readable description of the app.
@@ -83,6 +90,9 @@ class AppState {
   /// TimeZone settings of the app.
   /// Structure is documented below.
   final pulumi.Input<AppTimeZoneSettings>? timeZoneSettings;
+  /// The tool execution mode for the app.
+  /// See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+  final pulumi.Input<String>? toolExecutionMode;
   /// Timestamp when the app was last updated.
   final pulumi.Input<String>? updateTime;
   /// The declarations of the variables.
@@ -96,6 +106,7 @@ class AppState {
   /// [createTime] Timestamp when the app was created.
   /// [dataStoreSettings] Data store related settings for the app.
   /// [defaultChannelProfile] A ChannelProfile configures the agent's behavior for a specific communication
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deploymentCount] Number of deployments in the app.
   /// [description] Human-readable description of the app.
   /// [displayName] Display name of the app.
@@ -113,6 +124,7 @@ class AppState {
   /// [project] The ID of the project in which the resource belongs.
   /// [rootAgent] The root agent is the entry point of the app.
   /// [timeZoneSettings] TimeZone settings of the app.
+  /// [toolExecutionMode] The tool execution mode for the app.
   /// [updateTime] Timestamp when the app was last updated.
   /// [variableDeclarations] The declarations of the variables.
   const AppState({
@@ -122,6 +134,7 @@ class AppState {
     this.createTime,
     this.dataStoreSettings,
     this.defaultChannelProfile,
+    this.deletionPolicy,
     this.deploymentCount,
     this.description,
     this.displayName,
@@ -139,6 +152,7 @@ class AppState {
     this.project,
     this.rootAgent,
     this.timeZoneSettings,
+    this.toolExecutionMode,
     this.updateTime,
     this.variableDeclarations,
   });
@@ -151,6 +165,7 @@ class AppState {
       'createTime': ?createTime,
       'dataStoreSettings': ?pulumi.Input.mapOptionalInputValue<AppDataStoreSettings, Map<String, dynamic>>(dataStoreSettings, (value) => value.toMap()),
       'defaultChannelProfile': ?pulumi.Input.mapOptionalInputValue<AppDefaultChannelProfile, Map<String, dynamic>>(defaultChannelProfile, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'deploymentCount': ?deploymentCount,
       'description': ?description,
       'displayName': ?displayName,
@@ -168,6 +183,7 @@ class AppState {
       'project': ?project,
       'rootAgent': ?rootAgent,
       'timeZoneSettings': ?pulumi.Input.mapOptionalInputValue<AppTimeZoneSettings, Map<String, dynamic>>(timeZoneSettings, (value) => value.toMap()),
+      'toolExecutionMode': ?toolExecutionMode,
       'updateTime': ?updateTime,
       'variableDeclarations': ?pulumi.Input.mapOptionalInputValue<List<AppVariableDeclaration>, List<Map<String, dynamic>>>(variableDeclarations, (value) => pulumi.Input.encodeList<AppVariableDeclaration, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
@@ -181,6 +197,7 @@ class AppState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataStoreSettings: (() { final guardedValue = map['dataStoreSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppDataStoreSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       defaultChannelProfile: (() { final guardedValue = map['defaultChannelProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppDefaultChannelProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deploymentCount: (() { final guardedValue = map['deploymentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -198,9 +215,9 @@ class AppState {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rootAgent: (() { final guardedValue = map['rootAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeZoneSettings: (() { final guardedValue = map['timeZoneSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppTimeZoneSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      toolExecutionMode: (() { final guardedValue = map['toolExecutionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       variableDeclarations: (() { final guardedValue = map['variableDeclarations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVariableDeclaration>(guardedValue, (value) => AppVariableDeclaration.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

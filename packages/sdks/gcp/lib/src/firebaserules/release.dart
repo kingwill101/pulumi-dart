@@ -118,6 +118,30 @@ import 'release_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebaserules_release" "primary" {
+///   name         = "cloud.firestore"
+///   project      = "my-project-name"
+///   ruleset_name ="projects/my-project-name/rulesets/${gcp_firebaserules_ruleset.firestore.name}"
+/// }
+/// resource "gcp_firebaserules_ruleset" "firestore" {
+///   project = "my-project-name"
+///   source = {
+///     files = [{
+///       "content" = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"
+///       "name"    = "firestore.rules"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,10 +151,11 @@ import 'release_state.dart';
 /// import com.pulumi.gcp.firebaserules.Ruleset;
 /// import com.pulumi.gcp.firebaserules.RulesetArgs;
 /// import com.pulumi.gcp.firebaserules.inputs.RulesetSourceArgs;
+/// import com.pulumi.gcp.firebaserules.inputs.RulesetSourceFileArgs;
 /// import com.pulumi.gcp.firebaserules.Release;
 /// import com.pulumi.gcp.firebaserules.ReleaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -291,6 +316,30 @@ import 'release_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebaserules_release" "primary" {
+///   name         = "cloud.firestore/database"
+///   project      = "my-project-name"
+///   ruleset_name ="projects/my-project-name/rulesets/${gcp_firebaserules_ruleset.firestore.name}"
+/// }
+/// resource "gcp_firebaserules_ruleset" "firestore" {
+///   project = "my-project-name"
+///   source = {
+///     files = [{
+///       "content" = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"
+///       "name"    = "firestore.rules"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -300,10 +349,11 @@ import 'release_state.dart';
 /// import com.pulumi.gcp.firebaserules.Ruleset;
 /// import com.pulumi.gcp.firebaserules.RulesetArgs;
 /// import com.pulumi.gcp.firebaserules.inputs.RulesetSourceArgs;
+/// import com.pulumi.gcp.firebaserules.inputs.RulesetSourceFileArgs;
 /// import com.pulumi.gcp.firebaserules.Release;
 /// import com.pulumi.gcp.firebaserules.ReleaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -357,6 +407,7 @@ import 'release_state.dart';
 /// Release can be imported using any of these accepted formats:
 /// * `projects/{{project}}/releases/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -365,6 +416,13 @@ import 'release_state.dart';
 class Release extends pulumi.CustomResource {
   /// Output only. Time the release was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
   late final pulumi.Output<bool> disabled;
   /// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
@@ -395,6 +453,7 @@ class Release extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool>('disabled');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -426,6 +485,7 @@ class Release extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool>('disabled');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

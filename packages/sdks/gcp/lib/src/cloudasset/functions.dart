@@ -8,6 +8,9 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
 /// for more details.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// ## Example Usage
 ///
 /// ### Searching For All Projects In An Org
@@ -71,6 +74,20 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudasset_getresourcessearchall" "projects" {
+///   scope       = "organizations/0123456789"
+///   asset_types = ["cloudresourcemanager.googleapis.com/Project"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +96,8 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudasset.CloudassetFunctions;
 /// import com.pulumi.gcp.cloudasset.inputs.GetResourcesSearchAllArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,6 +194,21 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudasset_getresourcessearchall" "cloudBuildProjects" {
+///   scope       = "organizations/0123456789"
+///   asset_types = ["serviceusage.googleapis.com/Service"]
+///   query       = "displayName:cloudbuild.googleapis.com AND state:ENABLED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -185,8 +217,8 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudasset.CloudassetFunctions;
 /// import com.pulumi.gcp.cloudasset.inputs.GetResourcesSearchAllArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -281,6 +313,20 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudasset_getresourcessearchall" "projectServiceAccounts" {
+///   scope       = "projects/my-project-id"
+///   asset_types = ["iam.googleapis.com/ServiceAccount"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -289,8 +335,8 @@ import 'get_search_all_resources_cloudasset_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudasset.CloudassetFunctions;
 /// import com.pulumi.gcp.cloudasset.inputs.GetResourcesSearchAllArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -402,6 +448,20 @@ Future<GetResourcesSearchAllCloudassetResult> getResourcesSearchAll(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudasset_getsearchallresources" "projects" {
+///   scope       = "organizations/0123456789"
+///   asset_types = ["cloudresourcemanager.googleapis.com/Project"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -410,8 +470,8 @@ Future<GetResourcesSearchAllCloudassetResult> getResourcesSearchAll(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudasset.CloudassetFunctions;
 /// import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -508,6 +568,21 @@ Future<GetResourcesSearchAllCloudassetResult> getResourcesSearchAll(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudasset_getsearchallresources" "cloudBuildProjects" {
+///   scope       = "organizations/0123456789"
+///   asset_types = ["serviceusage.googleapis.com/Service"]
+///   query       = "displayName:cloudbuild.googleapis.com AND state:ENABLED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -516,8 +591,8 @@ Future<GetResourcesSearchAllCloudassetResult> getResourcesSearchAll(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudasset.CloudassetFunctions;
 /// import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -612,6 +687,20 @@ Future<GetResourcesSearchAllCloudassetResult> getResourcesSearchAll(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudasset_getsearchallresources" "projectServiceAccounts" {
+///   scope       = "projects/my-project-id"
+///   asset_types = ["iam.googleapis.com/ServiceAccount"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -620,8 +709,8 @@ Future<GetResourcesSearchAllCloudassetResult> getResourcesSearchAll(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudasset.CloudassetFunctions;
 /// import com.pulumi.gcp.cloudasset.inputs.GetSearchAllResourcesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

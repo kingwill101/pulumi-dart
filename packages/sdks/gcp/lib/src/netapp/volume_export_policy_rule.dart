@@ -8,10 +8,10 @@ class VolumeExportPolicyRule {
   final pulumi.Input<String>? accessType;
   /// Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
   final pulumi.Input<String>? allowedClients;
-  /// An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ALL_SQUASH`.
+  /// An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ALL_SQUASH`.
   final pulumi.Input<int>? anonUid;
   /// If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
-  /// Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
+  /// Use either squashMode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
   final pulumi.Input<String>? hasRootAccess;
   /// If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode.
   final pulumi.Input<bool>? kerberos5ReadOnly;
@@ -30,14 +30,14 @@ class VolumeExportPolicyRule {
   /// Enable to apply the export rule to NFSV4.1 clients.
   final pulumi.Input<bool>? nfsv4;
   /// SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-  /// Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
+  /// Use either squashMode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
   /// Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
   final pulumi.Input<String>? squashMode;
 
   /// Creates a new [VolumeExportPolicyRule].
   /// [accessType] Defines the access type for clients matching the `allowedClients` specification.
   /// [allowedClients] Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
-  /// [anonUid] An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ALL_SQUASH`.
+  /// [anonUid] An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ALL_SQUASH`.
   /// [hasRootAccess] If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
   /// [kerberos5ReadOnly] If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode.
   /// [kerberos5ReadWrite] If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode. The 'kerberos5ReadOnly' value is ignored if this is enabled.
@@ -100,4 +100,3 @@ class VolumeExportPolicyRule {
     );
   }
 }
-

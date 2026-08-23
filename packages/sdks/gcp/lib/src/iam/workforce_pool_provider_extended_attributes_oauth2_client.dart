@@ -58,4 +58,3 @@ class WorkforcePoolProviderExtendedAttributesOauth2Client {
     );
   }
 }
-

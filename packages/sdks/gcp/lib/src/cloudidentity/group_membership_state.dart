@@ -11,8 +11,16 @@ class GroupMembershipState {
   final pulumi.Input<bool>? createIgnoreAlreadyExists;
   /// The time when the Membership was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The name of the Group to create this membership in.
   final pulumi.Input<String>? group;
+  /// (Optional, Beta)
   /// EntityKey of the member.
   /// Structure is documented below.
   final pulumi.Input<GroupMembershipMemberKey>? memberKey;
@@ -33,8 +41,9 @@ class GroupMembershipState {
   /// Creates a new [GroupMembershipState].
   /// [createIgnoreAlreadyExists] If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
   /// [createTime] The time when the Membership was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [group] The name of the Group to create this membership in.
-  /// [memberKey] EntityKey of the member.
+  /// [memberKey] (Optional, Beta)
   /// [name] The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
   /// [preferredMemberKey] EntityKey of the member.
   /// [roles] The MembershipRoles that apply to the Membership.
@@ -43,6 +52,7 @@ class GroupMembershipState {
   const GroupMembershipState({
     this.createIgnoreAlreadyExists,
     this.createTime,
+    this.deletionPolicy,
     this.group,
     this.memberKey,
     this.name,
@@ -56,6 +66,7 @@ class GroupMembershipState {
     return <String, dynamic>{
       'createIgnoreAlreadyExists': ?createIgnoreAlreadyExists,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'group': ?group,
       'memberKey': ?pulumi.Input.mapOptionalInputValue<GroupMembershipMemberKey, Map<String, dynamic>>(memberKey, (value) => value.toMap()),
       'name': ?name,
@@ -70,6 +81,7 @@ class GroupMembershipState {
     return GroupMembershipState(
       createIgnoreAlreadyExists: (() { final guardedValue = map['createIgnoreAlreadyExists']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       memberKey: (() { final guardedValue = map['memberKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GroupMembershipMemberKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -80,4 +92,3 @@ class GroupMembershipState {
     );
   }
 }
-

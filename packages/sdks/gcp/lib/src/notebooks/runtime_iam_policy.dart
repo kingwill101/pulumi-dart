@@ -2,11 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'runtime_iam_policy_args.dart';
 import 'runtime_iam_policy_state.dart';
 
+/// &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+///
 /// Three different resources help you manage your IAM policy for Cloud AI Notebooks Runtime. Each of these resources serves a different use case:
 ///
 /// * `gcp.notebooks.RuntimeIamPolicy`: Authoritative. Sets the IAM policy for the runtime and replaces any existing policy already attached.
-/// * `gcp.notebooks.RuntimeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the runtime are preserved.
-/// * `gcp.notebooks.RuntimeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the runtime are preserved.
+/// * `gcp.notebooks.RuntimeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the runtime are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.notebooks.RuntimeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the runtime are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +17,6 @@ import 'runtime_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.notebooks.RuntimeIamPolicy` **cannot** be used in conjunction with `gcp.notebooks.RuntimeIamBinding` and `gcp.notebooks.RuntimeIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.notebooks.RuntimeIamBinding` resources **can be** used in conjunction with `gcp.notebooks.RuntimeIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.notebooks.RuntimeIamPolicy
@@ -122,6 +123,29 @@ import 'runtime_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_notebooks_runtimeiampolicy" "policy" {
+///   project      = runtime.project
+///   location     = runtime.location
+///   runtime_name = runtime.name
+///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,10 +154,11 @@ import 'runtime_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.notebooks.RuntimeIamPolicy;
 /// import com.pulumi.gcp.notebooks.RuntimeIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,9 +178,9 @@ import 'runtime_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new RuntimeIamPolicy("policy", RuntimeIamPolicyArgs.builder()
-///             .project(runtime.project())
-///             .location(runtime.location())
-///             .runtimeName(runtime.name())
+///             .project(runtime.get("project"))
+///             .location(runtime.get("location"))
+///             .runtimeName(runtime.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -257,6 +282,23 @@ import 'runtime_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_runtimeiambinding" "binding" {
+///   project      = runtime.project
+///   location     = runtime.location
+///   runtime_name = runtime.name
+///   role         = "roles/viewer"
+///   members      = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -265,8 +307,8 @@ import 'runtime_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.notebooks.RuntimeIamBinding;
 /// import com.pulumi.gcp.notebooks.RuntimeIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -279,9 +321,9 @@ import 'runtime_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new RuntimeIamBinding("binding", RuntimeIamBindingArgs.builder()
-///             .project(runtime.project())
-///             .location(runtime.location())
-///             .runtimeName(runtime.name())
+///             .project(runtime.get("project"))
+///             .location(runtime.get("location"))
+///             .runtimeName(runtime.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -372,6 +414,23 @@ import 'runtime_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_runtimeiammember" "member" {
+///   project      = runtime.project
+///   location     = runtime.location
+///   runtime_name = runtime.name
+///   role         = "roles/viewer"
+///   member       = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -380,8 +439,8 @@ import 'runtime_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.notebooks.RuntimeIamMember;
 /// import com.pulumi.gcp.notebooks.RuntimeIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -394,9 +453,9 @@ import 'runtime_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new RuntimeIamMember("member", RuntimeIamMemberArgs.builder()
-///             .project(runtime.project())
-///             .location(runtime.location())
-///             .runtimeName(runtime.name())
+///             .project(runtime.get("project"))
+///             .location(runtime.get("location"))
+///             .runtimeName(runtime.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -423,12 +482,13 @@ import 'runtime_iam_policy_state.dart';
 /// -
 ///
 /// # IAM policy for Cloud AI Notebooks Runtime
+/// &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
 ///
 /// Three different resources help you manage your IAM policy for Cloud AI Notebooks Runtime. Each of these resources serves a different use case:
 ///
 /// * `gcp.notebooks.RuntimeIamPolicy`: Authoritative. Sets the IAM policy for the runtime and replaces any existing policy already attached.
-/// * `gcp.notebooks.RuntimeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the runtime are preserved.
-/// * `gcp.notebooks.RuntimeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the runtime are preserved.
+/// * `gcp.notebooks.RuntimeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the runtime are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.notebooks.RuntimeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the runtime are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -437,7 +497,6 @@ import 'runtime_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.notebooks.RuntimeIamPolicy` **cannot** be used in conjunction with `gcp.notebooks.RuntimeIamBinding` and `gcp.notebooks.RuntimeIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.notebooks.RuntimeIamBinding` resources **can be** used in conjunction with `gcp.notebooks.RuntimeIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.notebooks.RuntimeIamPolicy
@@ -544,6 +603,29 @@ import 'runtime_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_notebooks_runtimeiampolicy" "policy" {
+///   project      = runtime.project
+///   location     = runtime.location
+///   runtime_name = runtime.name
+///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -552,10 +634,11 @@ import 'runtime_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.notebooks.RuntimeIamPolicy;
 /// import com.pulumi.gcp.notebooks.RuntimeIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -575,9 +658,9 @@ import 'runtime_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new RuntimeIamPolicy("policy", RuntimeIamPolicyArgs.builder()
-///             .project(runtime.project())
-///             .location(runtime.location())
-///             .runtimeName(runtime.name())
+///             .project(runtime.get("project"))
+///             .location(runtime.get("location"))
+///             .runtimeName(runtime.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -679,6 +762,23 @@ import 'runtime_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_runtimeiambinding" "binding" {
+///   project      = runtime.project
+///   location     = runtime.location
+///   runtime_name = runtime.name
+///   role         = "roles/viewer"
+///   members      = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -687,8 +787,8 @@ import 'runtime_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.notebooks.RuntimeIamBinding;
 /// import com.pulumi.gcp.notebooks.RuntimeIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -701,9 +801,9 @@ import 'runtime_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new RuntimeIamBinding("binding", RuntimeIamBindingArgs.builder()
-///             .project(runtime.project())
-///             .location(runtime.location())
-///             .runtimeName(runtime.name())
+///             .project(runtime.get("project"))
+///             .location(runtime.get("location"))
+///             .runtimeName(runtime.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -794,6 +894,23 @@ import 'runtime_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_notebooks_runtimeiammember" "member" {
+///   project      = runtime.project
+///   location     = runtime.location
+///   runtime_name = runtime.name
+///   role         = "roles/viewer"
+///   member       = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -802,8 +919,8 @@ import 'runtime_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.notebooks.RuntimeIamMember;
 /// import com.pulumi.gcp.notebooks.RuntimeIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -816,9 +933,9 @@ import 'runtime_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new RuntimeIamMember("member", RuntimeIamMemberArgs.builder()
-///             .project(runtime.project())
-///             .location(runtime.location())
-///             .runtimeName(runtime.name())
+///             .project(runtime.get("project"))
+///             .location(runtime.get("location"))
+///             .runtimeName(runtime.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -844,11 +961,8 @@ import 'runtime_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}}
-///
 /// * {{project}}/{{location}}/{{runtime_name}}
-///
 /// * {{location}}/{{runtime_name}}
-///
 /// * {{runtime_name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -856,25 +970,21 @@ import 'runtime_iam_policy_state.dart';
 /// Cloud AI Notebooks runtime IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy editor "projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}} roles/viewer user:jane@example.com"
+/// $ terraform import google_notebooks_runtime_iam_member.editor "projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy editor "projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}} roles/viewer"
+/// $ terraform import google_notebooks_runtime_iam_binding.editor "projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy editor projects/{{project}}/locations/{{location}}/runtimes/{{runtime_name}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class RuntimeIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the IAM policy.

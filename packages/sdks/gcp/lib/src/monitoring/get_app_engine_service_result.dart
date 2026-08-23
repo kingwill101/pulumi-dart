@@ -5,6 +5,7 @@ import 'get_app_engine_service_telemetry.dart';
 
 /// Result data returned by getAppEngineService.
 class GetAppEngineServiceResult {
+  final String deletionPolicy;
   /// Name used for UI elements listing this (Monitoring) Service.
   final String displayName;
   /// The provider-assigned unique ID for this managed resource.
@@ -20,6 +21,7 @@ class GetAppEngineServiceResult {
   final Map<String, String> userLabels;
 
   /// Creates a new [GetAppEngineServiceResult].
+  /// [deletionPolicy] Required.
   /// [displayName] Name used for UI elements listing this (Monitoring) Service.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [moduleId] Required.
@@ -29,6 +31,7 @@ class GetAppEngineServiceResult {
   /// [telemetries] Configuration for how to query telemetry on the Service. Structure is documented below.
   /// [userLabels] Required.
   const GetAppEngineServiceResult({
+    required this.deletionPolicy,
     required this.displayName,
     required this.id,
     required this.moduleId,
@@ -41,6 +44,7 @@ class GetAppEngineServiceResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': deletionPolicy,
       'displayName': displayName,
       'id': id,
       'moduleId': moduleId,
@@ -54,6 +58,7 @@ class GetAppEngineServiceResult {
 
   factory GetAppEngineServiceResult.fromMap(Map<String, dynamic> map) {
     return GetAppEngineServiceResult(
+      deletionPolicy: map['deletionPolicy'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       moduleId: map['moduleId'] as String,
@@ -65,4 +70,3 @@ class GetAppEngineServiceResult {
     );
   }
 }
-

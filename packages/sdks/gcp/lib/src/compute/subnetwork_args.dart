@@ -15,6 +15,13 @@ class SubnetworkArgs {
   /// Setting this field to true will allow these packets to match dynamic routes injected
   /// via BGP even if their destinations match existing subnet ranges.
   final pulumi.Input<bool>? allowSubnetCidrRoutesOverlap;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource. This field can be set only at resource
   /// creation time.
@@ -27,7 +34,7 @@ class SubnetworkArgs {
   /// Provide this property when you create the subnetwork. For example,
   /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
   /// non-overlapping within a network. Only IPv4 is supported.
-  /// Field is optional when `reserved_internal_range` is defined, otherwise required.
+  /// Field is optional when `reservedInternalRange` is defined, otherwise required.
   final pulumi.Input<String>? ipCidrRange;
   /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
   /// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
@@ -40,7 +47,7 @@ class SubnetworkArgs {
   /// * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
   final pulumi.Input<String>? ipCollection;
   /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
-  /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
+  /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
   /// cannot enable direct path.
   /// Possible values are: `EXTERNAL`, `INTERNAL`.
   final pulumi.Input<String>? ipv6AccessType;
@@ -72,7 +79,7 @@ class SubnetworkArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-  /// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+  /// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
   /// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
   /// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
   /// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -87,7 +94,7 @@ class SubnetworkArgs {
   /// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
   final pulumi.Input<String>? reservedInternalRange;
   /// 'Configures subnet mask resolution for this subnetwork.'
-  /// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+  /// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
   final pulumi.Input<String>? resolveSubnetMask;
   /// The role of subnetwork.
   /// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -103,9 +110,9 @@ class SubnetworkArgs {
   /// Structure is documented below.
   final pulumi.Input<List<SubnetworkSecondaryIpRange>>? secondaryIpRanges;
   /// Controls the removal behavior of secondary_ip_range.
-  /// When false, removing secondary_ip_range from config will not produce a diff as
+  /// When false, removing secondaryIpRange from config will not produce a diff as
   /// the provider will default to the API's value.
-  /// When true, the provider will treat removing secondary_ip_range as sending an
+  /// When true, the provider will treat removing secondaryIpRange as sending an
   /// empty list of secondary IP ranges to the API.
   /// Defaults to false.
   final pulumi.Input<bool>? sendSecondaryIpRangeIfEmpty;
@@ -116,6 +123,7 @@ class SubnetworkArgs {
 
   /// Creates a new [SubnetworkArgs].
   /// [allowSubnetCidrRoutesOverlap] Typically packets destined to IPs within the subnetwork range that do not match
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
   /// [externalIpv6Prefix] The range of external IPv6 addresses that are owned by this subnetwork.
   /// [internalIpv6Prefix] The internal IPv6 address range that is assigned to this subnetwork.
@@ -129,7 +137,7 @@ class SubnetworkArgs {
   /// [privateIpGoogleAccess] When enabled, VMs in this subnetwork without external IP addresses can
   /// [privateIpv6GoogleAccess] The private IPv6 google access type for the VMs in this subnet.
   /// [project] The ID of the project in which the resource belongs.
-  /// [purpose] The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+  /// [purpose] The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
   /// [region] The GCP region for this subnetwork.
   /// [reservedInternalRange] The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
   /// [resolveSubnetMask] 'Configures subnet mask resolution for this subnetwork.'
@@ -139,6 +147,7 @@ class SubnetworkArgs {
   /// [stackType] The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
   const SubnetworkArgs({
     this.allowSubnetCidrRoutesOverlap,
+    this.deletionPolicy,
     this.description,
     this.externalIpv6Prefix,
     this.internalIpv6Prefix,
@@ -165,6 +174,7 @@ class SubnetworkArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowSubnetCidrRoutesOverlap': ?allowSubnetCidrRoutesOverlap,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'externalIpv6Prefix': ?externalIpv6Prefix,
       'internalIpv6Prefix': ?internalIpv6Prefix,
@@ -192,6 +202,7 @@ class SubnetworkArgs {
   factory SubnetworkArgs.fromMap(Map<String, dynamic> map) {
     return SubnetworkArgs(
       allowSubnetCidrRoutesOverlap: (() { final guardedValue = map['allowSubnetCidrRoutesOverlap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalIpv6Prefix: (() { final guardedValue = map['externalIpv6Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       internalIpv6Prefix: (() { final guardedValue = map['internalIpv6Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -216,4 +227,3 @@ class SubnetworkArgs {
     );
   }
 }
-

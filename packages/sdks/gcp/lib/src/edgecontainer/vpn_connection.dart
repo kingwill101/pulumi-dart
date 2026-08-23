@@ -258,6 +258,57 @@ import 'vpn_connection_vpc_project.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_edgecontainer_cluster" "cluster" {
+///   name     = "default"
+///   location = "us-central1"
+///   authorization = {
+///     admin_users = {
+///       username = "admin@hashicorptest.com"
+///     }
+///   }
+///   networking = {
+///     cluster_ipv4_cidr_blocks  = ["10.0.0.0/16"]
+///     services_ipv4_cidr_blocks = ["10.1.0.0/16"]
+///   }
+///   fleet = {
+///     project ="projects/${data.gcp_organizations_getproject.project.number}"
+///   }
+/// }
+/// resource "gcp_edgecontainer_nodepool" "node_pool" {
+///   name          = "nodepool-1"
+///   cluster       = gcp_edgecontainer_cluster.cluster.name
+///   location      = "us-central1"
+///   node_location = "us-central1-edge-example-edgesite"
+///   node_count    = 3
+/// }
+/// resource "gcp_edgecontainer_vpnconnection" "default" {
+///   depends_on               = [gcp_edgecontainer_nodepool.node_pool]
+///   name                     = "vpn-connection-1"
+///   location                 = "us-central1"
+///   cluster                  ="projects/${data.gcp_organizations_getproject.project.number}/locations/us-east1/clusters/${gcp_edgecontainer_cluster.cluster.name}"
+///   vpc                      = gcp_compute_network.vpc.name
+///   enable_high_availability = true
+///   labels = {
+///     "my_key"    = "my_val"
+///     "other_key" = "other_val"
+///   }
+/// }
+/// resource "gcp_compute_network" "vpc" {
+///   name = "example-vpc"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -279,8 +330,8 @@ import 'vpn_connection_vpc_project.dart';
 /// import com.pulumi.gcp.edgecontainer.VpnConnection;
 /// import com.pulumi.gcp.edgecontainer.VpnConnectionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -398,22 +449,15 @@ import 'vpn_connection_vpc_project.dart';
 /// VpnConnection can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, VpnConnection can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{location}}/{{name}}
 /// ```
 class VpnConnection extends pulumi.CustomResource {
@@ -421,6 +465,13 @@ class VpnConnection extends pulumi.CustomResource {
   late final pulumi.Output<String> cluster;
   /// The time when the VPN connection was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> details;
@@ -430,7 +481,7 @@ class VpnConnection extends pulumi.CustomResource {
   late final pulumi.Output<bool> enableHighAvailability;
   /// Labels associated with this resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Google Cloud Platform location.
   late final pulumi.Output<String> location;
@@ -471,6 +522,7 @@ class VpnConnection extends pulumi.CustomResource {
         ) {
     cluster = registerOutput<String>('cluster');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     details = registerOutput<List<Map<String, dynamic>>>('details');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableHighAvailability = registerOutput<bool>('enableHighAvailability');
@@ -511,6 +563,7 @@ class VpnConnection extends pulumi.CustomResource {
         ) {
     cluster = registerOutput<String>('cluster');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     details = registerOutput<List<Map<String, dynamic>>>('details');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableHighAvailability = registerOutput<bool>('enableHighAvailability');

@@ -33,7 +33,7 @@ import 'service_network_settings_state.dart';
 ///     versionId: "v1",
 ///     service: "internalapp",
 ///     deleteServiceOnDestroy: true,
-///     runtime: "nodejs20",
+///     runtime: "nodejs22",
 ///     entrypoint: {
 ///         shell: "node ./app.js",
 ///     },
@@ -68,7 +68,7 @@ import 'service_network_settings_state.dart';
 ///     version_id="v1",
 ///     service="internalapp",
 ///     delete_service_on_destroy=True,
-///     runtime="nodejs20",
+///     runtime="nodejs22",
 ///     entrypoint={
 ///         "shell": "node ./app.js",
 ///     },
@@ -116,7 +116,7 @@ import 'service_network_settings_state.dart';
 ///         VersionId = "v1",
 ///         Service = "internalapp",
 ///         DeleteServiceOnDestroy = true,
-///         Runtime = "nodejs20",
+///         Runtime = "nodejs22",
 ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
 ///         {
 ///             Shell = "node ./app.js",
@@ -182,7 +182,7 @@ import 'service_network_settings_state.dart';
 /// 			VersionId:              pulumi.String("v1"),
 /// 			Service:                pulumi.String("internalapp"),
 /// 			DeleteServiceOnDestroy: pulumi.Bool(true),
-/// 			Runtime:                pulumi.String("nodejs20"),
+/// 			Runtime:                pulumi.String("nodejs22"),
 /// 			Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
 /// 				Shell: pulumi.String("node ./app.js"),
 /// 			},
@@ -215,6 +215,48 @@ import 'service_network_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name     = "appengine-static-content"
+///   location = "US"
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "hello-world.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("./test-fixtures/hello-world.zip")
+/// }
+/// resource "gcp_appengine_standardappversion" "internalapp" {
+///   version_id                = "v1"
+///   service                   = "internalapp"
+///   delete_service_on_destroy = true
+///   runtime                   = "nodejs22"
+///   entrypoint = {
+///     shell = "node ./app.js"
+///   }
+///   deployment = {
+///     zip = {
+///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///     }
+///   }
+///   env_variables = {
+///     "port" = "8080"
+///   }
+/// }
+/// resource "gcp_appengine_servicenetworksettings" "internalapp" {
+///   service = gcp_appengine_standardappversion.internalapp.service
+///   network_settings = {
+///     ingress_traffic_allowed = "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -234,8 +276,8 @@ import 'service_network_settings_state.dart';
 /// import com.pulumi.gcp.appengine.ServiceNetworkSettingsArgs;
 /// import com.pulumi.gcp.appengine.inputs.ServiceNetworkSettingsNetworkSettingsArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -262,7 +304,7 @@ import 'service_network_settings_state.dart';
 ///             .versionId("v1")
 ///             .service("internalapp")
 ///             .deleteServiceOnDestroy(true)
-///             .runtime("nodejs20")
+///             .runtime("nodejs22")
 ///             .entrypoint(StandardAppVersionEntrypointArgs.builder()
 ///                 .shell("node ./app.js")
 ///                 .build())
@@ -301,14 +343,14 @@ import 'service_network_settings_state.dart';
 ///       name: hello-world.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: ./test-fixtures/hello-world.zip
+///         fn::fileAsset: ./test-fixtures/hello-world.zip
 ///   internalapp:
 ///     type: gcp:appengine:StandardAppVersion
 ///     properties:
 ///       versionId: v1
 ///       service: internalapp
 ///       deleteServiceOnDestroy: true
-///       runtime: nodejs20
+///       runtime: nodejs22
 ///       entrypoint:
 ///         shell: node ./app.js
 ///       deployment:
@@ -331,22 +373,15 @@ import 'service_network_settings_state.dart';
 /// ServiceNetworkSettings can be imported using any of these accepted formats:
 ///
 /// * `apps/{{project}}/services/{{service}}`
-///
 /// * `{{project}}/{{service}}`
-///
 /// * `{{service}}`
+///
 ///
 /// When using the `pulumi import` command, ServiceNetworkSettings can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default apps/{{project}}/services/{{service}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default {{project}}/{{service}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings default {{service}}
 /// ```
 class ServiceNetworkSettings extends pulumi.CustomResource {

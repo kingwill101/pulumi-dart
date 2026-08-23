@@ -240,13 +240,13 @@ import 'security_profile_v2_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      apigeeNetwork.ID(),
+/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID(),
+/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
@@ -258,7 +258,7 @@ import 'security_profile_v2_state.dart';
 /// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 /// 			AnalyticsRegion:   pulumi.String("us-central1"),
 /// 			ProjectId:         pulumi.String(current.Project),
-/// 			AuthorizedNetwork: apigeeNetwork.ID(),
+/// 			AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
 /// 		}))
@@ -278,7 +278,7 @@ import 'security_profile_v2_state.dart';
 /// 		}
 /// 		_, err = apigee.NewSecurityProfileV2(ctx, "security_profile_v2", &apigee.SecurityProfileV2Args{
 /// 			ProfileId:   pulumi.String("my-profile"),
-/// 			OrgId:       apigeeOrg.ID(),
+/// 			OrgId:       apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 			Description: pulumi.String("terraform test description"),
 /// 			ProfileAssessmentConfigs: apigee.SecurityProfileV2ProfileAssessmentConfigArray{
 /// 				&apigee.SecurityProfileV2ProfileAssessmentConfigArgs{
@@ -304,6 +304,66 @@ import 'security_profile_v2_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getclientconfig" "current" {
+/// }
+///
+/// resource "gcp_compute_network" "apigee_network" {
+///   name = "apigee-network"
+/// }
+/// resource "gcp_compute_globaladdress" "apigee_range" {
+///   name          = "apigee-range"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.apigee_network.id
+/// }
+/// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   network                 = gcp_compute_network.apigee_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+/// }
+/// resource "gcp_apigee_organization" "apigee_org" {
+///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   analytics_region   = "us-central1"
+///   project_id         = data.gcp_organizations_getclientconfig.current.project
+///   authorized_network = gcp_compute_network.apigee_network.id
+/// }
+/// resource "gcp_apigee_addonsconfig" "apigee_org_security_addons_config" {
+///   org = gcp_apigee_organization.apigee_org.name
+///   addons_config = {
+///     api_security_config = {
+///       enabled = true
+///     }
+///   }
+/// }
+/// resource "gcp_apigee_securityprofilev2" "security_profile_v2" {
+///   depends_on  = [gcp_apigee_addonsconfig.apigee_org_security_addons_config]
+///   profile_id  = "my-profile"
+///   org_id      = gcp_apigee_organization.apigee_org.id
+///   description = "terraform test description"
+///   profile_assessment_configs {
+///     assessment = "auth-policies-check"
+///     weight     = "MAJOR"
+///   }
+///   profile_assessment_configs {
+///     assessment = "mediation-policies-check"
+///     weight     = "MODERATE"
+///   }
+///   profile_assessment_configs {
+///     assessment = "threat-policies-check"
+///     weight     = "MINOR"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -327,8 +387,8 @@ import 'security_profile_v2_state.dart';
 /// import com.pulumi.gcp.apigee.SecurityProfileV2Args;
 /// import com.pulumi.gcp.apigee.inputs.SecurityProfileV2ProfileAssessmentConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -473,21 +533,25 @@ import 'security_profile_v2_state.dart';
 /// SecurityProfileV2 can be imported using any of these accepted formats:
 ///
 /// * `{{org_id}}/securityProfilesV2/{{profile_id}}`
-///
 /// * `{{org_id}}/{{profile_id}}`
+///
 ///
 /// When using the `pulumi import` command, SecurityProfileV2 can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/securityProfileV2:SecurityProfileV2 default {{org_id}}/securityProfilesV2/{{profile_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/securityProfileV2:SecurityProfileV2 default {{org_id}}/{{profile_id}}
 /// ```
 class SecurityProfileV2 extends pulumi.CustomResource {
   /// The timestamp at which this profile was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the security profile.
   late final pulumi.Output<String?> description;
   /// Name of the security profile v2 resource,
@@ -519,6 +583,7 @@ class SecurityProfileV2 extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
@@ -551,6 +616,7 @@ class SecurityProfileV2 extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');

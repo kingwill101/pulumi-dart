@@ -96,6 +96,26 @@ import 'source_representation_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_sourcerepresentationinstance" "instance" {
+///   name             = "my-instance"
+///   region           = "us-central1"
+///   database_version = "MYSQL_8_0"
+///   host             = "10.20.30.40"
+///   port             = 3306
+///   username         = "some-user"
+///   password         = "password-for-the-user"
+///   dump_file_path   = "gs://replica-bucket/source-database.sql.gz"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -104,8 +124,8 @@ import 'source_representation_instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sql.SourceRepresentationInstance;
 /// import com.pulumi.gcp.sql.SourceRepresentationInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -228,6 +248,26 @@ import 'source_representation_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_sourcerepresentationinstance" "instance" {
+///   name             = "my-instance"
+///   region           = "us-central1"
+///   database_version = "POSTGRES_9_6"
+///   host             = "10.20.30.40"
+///   port             = 3306
+///   username         = "some-user"
+///   password         = "password-for-the-user"
+///   dump_file_path   = "gs://replica-bucket/source-database.sql.gz"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -236,8 +276,8 @@ import 'source_representation_instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sql.SourceRepresentationInstance;
 /// import com.pulumi.gcp.sql.SourceRepresentationInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -284,22 +324,15 @@ import 'source_representation_instance_state.dart';
 /// SourceRepresentationInstance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/instances/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, SourceRepresentationInstance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{name}}
 /// ```
 class SourceRepresentationInstance extends pulumi.CustomResource {
@@ -309,8 +342,15 @@ class SourceRepresentationInstance extends pulumi.CustomResource {
   late final pulumi.Output<String?> clientCertificate;
   /// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
   late final pulumi.Output<String?> clientKey;
-  /// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17. Database Version Policies includes an up-to-date reference of supported versions.
+  /// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17, POSTGRES_18, SQLSERVER_2022_STANDARD, SQLSERVER_2022_ENTERPRISE, SQLSERVER_2022_EXPRESS, SQLSERVER_2022_WEB, SQLSERVER_2025_STANDARD, SQLSERVER_2025_ENTERPRISE, SQLSERVER_2025_EXPRESS, SQLSERVER_2025_WEB. Database Version Policies includes an up-to-date reference of supported versions.
   late final pulumi.Output<String> databaseVersion;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A file in the bucket that contains the data from the external server.
   late final pulumi.Output<String?> dumpFilePath;
   /// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
@@ -350,6 +390,7 @@ class SourceRepresentationInstance extends pulumi.CustomResource {
     clientCertificate = registerOutput<String?>('clientCertificate');
     clientKey = registerOutput<String?>('clientKey');
     databaseVersion = registerOutput<String>('databaseVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dumpFilePath = registerOutput<String?>('dumpFilePath');
     host = registerOutput<String>('host');
     this.name = registerOutput<String>('name');
@@ -387,6 +428,7 @@ class SourceRepresentationInstance extends pulumi.CustomResource {
     clientCertificate = registerOutput<String?>('clientCertificate');
     clientKey = registerOutput<String?>('clientKey');
     databaseVersion = registerOutput<String>('databaseVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dumpFilePath = registerOutput<String?>('dumpFilePath');
     host = registerOutput<String>('host');
     this.name = registerOutput<String>('name');

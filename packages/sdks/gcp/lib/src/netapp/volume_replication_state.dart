@@ -10,7 +10,21 @@ import 'volume_replication_transfer_stat.dart';
 class VolumeReplicationState {
   /// Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
   final pulumi.Input<String>? createTime;
+  /// A destination volume is created as part of replication creation. The destination volume will not became
+  /// under Terraform management unless you import it manually. If you delete the replication, this volume
+  /// will remain.
+  /// Setting this parameter to true will delete the *current* destination volume when destroying the
+  /// replication. If you reversed the replication direction, this will be your former source volume!
+  /// For production use, it is recommended to keep this parameter false to avoid accidental volume
+  /// deletion. Handle with care. Default is false.
   final pulumi.Input<bool>? deleteDestinationVolume;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An description of this resource.
   final pulumi.Input<String>? description;
   /// Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
@@ -40,7 +54,7 @@ class VolumeReplicationState {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Name of region for this resource. The resource needs to be created in the region of the destination volume.
   final pulumi.Input<String>? location;
@@ -80,11 +94,15 @@ class VolumeReplicationState {
   final pulumi.Input<List<VolumeReplicationTransferStat>>? transferStats;
   /// The name of the existing source volume.
   final pulumi.Input<String>? volumeName;
+  /// Replication resource state is independent of mirror_state. With enough data, it can take many hours
+  /// for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
+  /// create/stop/resume operations, set this parameter to true. Default is false.
   final pulumi.Input<bool>? waitForMirror;
 
   /// Creates a new [VolumeReplicationState].
   /// [createTime] Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-  /// [deleteDestinationVolume] Optional.
+  /// [deleteDestinationVolume] A destination volume is created as part of replication creation. The destination volume will not became
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An description of this resource.
   /// [destinationVolume] Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
   /// [destinationVolumeParameters] Destination volume parameters.
@@ -108,10 +126,11 @@ class VolumeReplicationState {
   /// [stateDetails] State details of the replication resource.
   /// [transferStats] Replication transfer statistics. All statistics are updated every 5 minutes.
   /// [volumeName] The name of the existing source volume.
-  /// [waitForMirror] Optional.
+  /// [waitForMirror] Replication resource state is independent of mirror_state. With enough data, it can take many hours
   const VolumeReplicationState({
     this.createTime,
     this.deleteDestinationVolume,
+    this.deletionPolicy,
     this.description,
     this.destinationVolume,
     this.destinationVolumeParameters,
@@ -142,6 +161,7 @@ class VolumeReplicationState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'deleteDestinationVolume': ?deleteDestinationVolume,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'destinationVolume': ?destinationVolume,
       'destinationVolumeParameters': ?pulumi.Input.mapOptionalInputValue<VolumeReplicationDestinationVolumeParameters, Map<String, dynamic>>(destinationVolumeParameters, (value) => value.toMap()),
@@ -173,6 +193,7 @@ class VolumeReplicationState {
     return VolumeReplicationState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteDestinationVolume: (() { final guardedValue = map['deleteDestinationVolume']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationVolume: (() { final guardedValue = map['destinationVolume']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationVolumeParameters: (() { final guardedValue = map['destinationVolumeParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeReplicationDestinationVolumeParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -200,4 +221,3 @@ class VolumeReplicationState {
     );
   }
 }
-

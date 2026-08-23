@@ -87,6 +87,25 @@ import 'group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_migrationcenter_group" "default" {
+///   location     = "us-central1"
+///   group_id     = "group-test"
+///   description  = "Terraform integration test description"
+///   display_name = "Terraform integration test display"
+///   labels = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -95,8 +114,8 @@ import 'group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.migrationcenter.Group;
 /// import com.pulumi.gcp.migrationcenter.GroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -138,27 +157,27 @@ import 'group_state.dart';
 /// Group can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/groups/{{group_id}}`
-///
 /// * `{{project}}/{{location}}/{{group_id}}`
-///
 /// * `{{location}}/{{group_id}}`
+///
 ///
 /// When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:migrationcenter/group:Group default projects/{{project}}/locations/{{location}}/groups/{{group_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:migrationcenter/group:Group default {{project}}/{{location}}/{{group_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:migrationcenter/group:Group default {{location}}/{{group_id}}
 /// ```
 class Group extends pulumi.CustomResource {
   /// Output only. The timestamp when the group was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. The description of the group.
   late final pulumi.Output<String?> description;
   /// Optional. User-friendly display name.
@@ -169,7 +188,7 @@ class Group extends pulumi.CustomResource {
   late final pulumi.Output<String> groupId;
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the group.
   late final pulumi.Output<String> location;
@@ -199,6 +218,7 @@ class Group extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -235,6 +255,7 @@ class Group extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

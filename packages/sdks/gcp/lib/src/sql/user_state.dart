@@ -6,16 +6,32 @@ import 'user_sql_server_user_detail.dart';
 
 /// Input properties used for looking up and filtering User resources.
 class UserState {
-  /// The deletion policy for the user.
-  /// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+  /// A list of database roles to be assigned to the user.
+  /// This option is only available for MySQL 8+ and PostgreSQL instances. You
+  /// can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+  /// own custom roles. Custom roles must be created in the database before
+  /// you can assign them. You can create roles using the CREATE ROLE
+  /// statement for both MySQL and PostgreSQL.
+  /// **Note**: This property is write-only and will not be read from the API.
+  /// **Caution**: Existing database roles will be overwriten with new values from this field.
+  final pulumi.Input<List<String>>? databaseRoles;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API. This is useful
   /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
   ///
-  /// Possible values are: `ABANDON`.
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// - - -
   final pulumi.Input<String>? deletionPolicy;
   /// The host the user can connect from. This is only supported
   /// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
   /// Can be an IP address. Changing this forces a new resource to be created.
   final pulumi.Input<String>? host;
+  /// IAM email address for MySQL IAM database users.
+  final pulumi.Input<String>? iamEmail;
   /// The name of the Cloud SQL instance. Changing this
   /// forces a new resource to be created.
   final pulumi.Input<String>? instance;
@@ -29,12 +45,14 @@ class UserState {
   final pulumi.Input<String>? password;
   final pulumi.Input<UserPasswordPolicy>? passwordPolicy;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
-  /// either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
-  final pulumi.Input<String>? passwordWo;
-  /// The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+  /// The password for the user. Can be updated. For Postgres
+  /// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+  /// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+  /// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
   ///
-  /// - - -
+  /// * &gt; **Note:** One of `value` or `valueWo` can only be set.
+  final pulumi.Input<String>? passwordWo;
+  /// An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
   final pulumi.Input<int>? passwordWoVersion;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
@@ -49,20 +67,24 @@ class UserState {
   final pulumi.Input<String>? type;
 
   /// Creates a new [UserState].
-  /// [deletionPolicy] The deletion policy for the user.
+  /// [databaseRoles] A list of database roles to be assigned to the user.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [host] The host the user can connect from. This is only supported
+  /// [iamEmail] IAM email address for MySQL IAM database users.
   /// [instance] The name of the Cloud SQL instance. Changing this
   /// [name] The name of the user. Changing this forces a new resource
   /// [password] The password for the user. Can be updated. For Postgres
   /// [passwordPolicy] Optional.
   /// [passwordWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [passwordWoVersion] The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+  /// [passwordWoVersion] An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
   /// [project] The ID of the project in which the resource belongs. If it
   /// [sqlServerUserDetails] Optional.
   /// [type] The user type. It determines the method to authenticate the
   const UserState({
+    this.databaseRoles,
     this.deletionPolicy,
     this.host,
+    this.iamEmail,
     this.instance,
     this.name,
     this.password,
@@ -76,8 +98,10 @@ class UserState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'databaseRoles': ?databaseRoles,
       'deletionPolicy': ?deletionPolicy,
       'host': ?host,
+      'iamEmail': ?iamEmail,
       'instance': ?instance,
       'name': ?name,
       'password': ?password,
@@ -92,8 +116,10 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
+      databaseRoles: (() { final guardedValue = map['databaseRoles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      iamEmail: (() { final guardedValue = map['iamEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -106,4 +132,3 @@ class UserState {
     );
   }
 }
-

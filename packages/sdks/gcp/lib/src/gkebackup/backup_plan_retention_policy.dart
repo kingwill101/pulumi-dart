@@ -20,7 +20,7 @@ class BackupPlanRetentionPolicy {
   /// will automatically pick up the new value.
   /// NOTE: backupRetainDays must be &gt;= backupDeleteLockDays.
   /// If cronSchedule is defined, then this must be &lt;= 360 * the creation interval.
-  /// If rpo_config is defined, then this must be
+  /// If rpoConfig is defined, then this must be
   /// &lt;= 360 * targetRpoMinutes/(1440minutes/day)
   final pulumi.Input<int>? backupRetainDays;
   /// This flag denotes whether the retention policy of this BackupPlan is locked.
@@ -54,4 +54,3 @@ class BackupPlanRetentionPolicy {
     );
   }
 }
-

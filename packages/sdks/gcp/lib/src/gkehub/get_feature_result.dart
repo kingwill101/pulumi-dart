@@ -10,6 +10,7 @@ import 'get_feature_state.dart';
 class GetFeatureResult {
   final String createTime;
   final String deleteTime;
+  final String deletionPolicy;
   final Map<String, String> effectiveLabels;
   final List<GetFeatureFleetDefaultMemberConfig> fleetDefaultMemberConfigs;
   /// The provider-assigned unique ID for this managed resource.
@@ -27,6 +28,7 @@ class GetFeatureResult {
   /// Creates a new [GetFeatureResult].
   /// [createTime] Required.
   /// [deleteTime] Required.
+  /// [deletionPolicy] Required.
   /// [effectiveLabels] Required.
   /// [fleetDefaultMemberConfigs] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -42,6 +44,7 @@ class GetFeatureResult {
   const GetFeatureResult({
     required this.createTime,
     required this.deleteTime,
+    required this.deletionPolicy,
     required this.effectiveLabels,
     required this.fleetDefaultMemberConfigs,
     required this.id,
@@ -60,6 +63,7 @@ class GetFeatureResult {
     return <String, dynamic>{
       'createTime': createTime,
       'deleteTime': deleteTime,
+      'deletionPolicy': deletionPolicy,
       'effectiveLabels': effectiveLabels,
       'fleetDefaultMemberConfigs': pulumi.Input.encodeList<GetFeatureFleetDefaultMemberConfig, Map<String, dynamic>>(fleetDefaultMemberConfigs, (value) => value.toMap()),
       'id': id,
@@ -79,6 +83,7 @@ class GetFeatureResult {
     return GetFeatureResult(
       createTime: map['createTime'] as String,
       deleteTime: map['deleteTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       fleetDefaultMemberConfigs: pulumi.Input.decodeList<GetFeatureFleetDefaultMemberConfig>(map['fleetDefaultMemberConfigs']!, (value) => GetFeatureFleetDefaultMemberConfig.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
@@ -94,4 +99,3 @@ class GetFeatureResult {
     );
   }
 }
-

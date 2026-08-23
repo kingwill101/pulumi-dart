@@ -10,7 +10,7 @@ class GetHealthCheckGrpcTlsHealthCheck {
   /// The grpcServiceName can only be ASCII.
   final pulumi.Input<String> grpcServiceName;
   /// The port number for the health check request.
-  /// Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+  /// Must be specified if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
   final pulumi.Input<int> port;
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
@@ -53,4 +53,3 @@ class GetHealthCheckGrpcTlsHealthCheck {
     );
   }
 }
-

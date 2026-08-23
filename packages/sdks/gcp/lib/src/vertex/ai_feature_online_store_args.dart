@@ -17,10 +17,18 @@ class AiFeatureOnlineStoreArgs {
   /// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
   /// Structure is documented below.
   final pulumi.Input<AiFeatureOnlineStoreDedicatedServingEndpoint>? dedicatedServingEndpoint;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// (Optional, Beta, Deprecated)
   /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
   /// Structure is documented below.
   ///
-  /// &gt; **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+  /// &gt; **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
   final pulumi.Input<AiFeatureOnlineStoreEmbeddingManagement>? embeddingManagement;
   /// If set, both of the online and offline data storage will be secured by this key.
   /// Structure is documented below.
@@ -29,7 +37,7 @@ class AiFeatureOnlineStoreArgs {
   final pulumi.Input<bool>? forceDestroy;
   /// The labels with user-defined metadata to organize your feature online stores.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   final pulumi.Input<String>? name;
@@ -44,7 +52,8 @@ class AiFeatureOnlineStoreArgs {
   /// Creates a new [AiFeatureOnlineStoreArgs].
   /// [bigtable] Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
   /// [dedicatedServingEndpoint] The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
-  /// [embeddingManagement] The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [embeddingManagement] (Optional, Beta, Deprecated)
   /// [encryptionSpec] If set, both of the online and offline data storage will be secured by this key.
   /// [forceDestroy] If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
   /// [labels] The labels with user-defined metadata to organize your feature online stores.
@@ -55,6 +64,7 @@ class AiFeatureOnlineStoreArgs {
   const AiFeatureOnlineStoreArgs({
     this.bigtable,
     this.dedicatedServingEndpoint,
+    this.deletionPolicy,
     this.embeddingManagement,
     this.encryptionSpec,
     this.forceDestroy,
@@ -69,6 +79,7 @@ class AiFeatureOnlineStoreArgs {
     return <String, dynamic>{
       'bigtable': ?pulumi.Input.mapOptionalInputValue<AiFeatureOnlineStoreBigtable, Map<String, dynamic>>(bigtable, (value) => value.toMap()),
       'dedicatedServingEndpoint': ?pulumi.Input.mapOptionalInputValue<AiFeatureOnlineStoreDedicatedServingEndpoint, Map<String, dynamic>>(dedicatedServingEndpoint, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'embeddingManagement': ?pulumi.Input.mapOptionalInputValue<AiFeatureOnlineStoreEmbeddingManagement, Map<String, dynamic>>(embeddingManagement, (value) => value.toMap()),
       'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<AiFeatureOnlineStoreEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
       'forceDestroy': ?forceDestroy,
@@ -84,6 +95,7 @@ class AiFeatureOnlineStoreArgs {
     return AiFeatureOnlineStoreArgs(
       bigtable: (() { final guardedValue = map['bigtable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiFeatureOnlineStoreBigtable.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dedicatedServingEndpoint: (() { final guardedValue = map['dedicatedServingEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       embeddingManagement: (() { final guardedValue = map['embeddingManagement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiFeatureOnlineStoreEmbeddingManagement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       encryptionSpec: (() { final guardedValue = map['encryptionSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiFeatureOnlineStoreEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -95,4 +107,3 @@ class AiFeatureOnlineStoreArgs {
     );
   }
 }
-

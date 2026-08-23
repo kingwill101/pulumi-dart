@@ -159,7 +159,7 @@ import 'router_route_policy_state.dart';
 /// 		}
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnetwork"),
-/// 			Network:     net.ID(),
+/// 			Network:     net.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 		})
@@ -169,7 +169,7 @@ import 'router_route_policy_state.dart';
 /// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 /// 			Name:    pulumi.String("my-router"),
 /// 			Region:  subnet.Region,
-/// 			Network: net.ID(),
+/// 			Network: net.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -200,6 +200,46 @@ import 'router_route_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "net" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnet" {
+///   name          = "my-subnetwork"
+///   network       = gcp_compute_network.net.id
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+/// }
+/// resource "gcp_compute_router" "router" {
+///   name    = "my-router"
+///   region  = gcp_compute_subnetwork.subnet.region
+///   network = gcp_compute_network.net.id
+/// }
+/// resource "gcp_compute_routerroutepolicy" "rp-export" {
+///   router = gcp_compute_router.router.name
+///   region = gcp_compute_router.router.region
+///   name   = "my-rp1"
+///   type   = "ROUTE_POLICY_TYPE_EXPORT"
+///   terms {
+///     priority = 1
+///     match = {
+///       expression = "destination == '10.0.0.0/12'"
+///     }
+///     actions {
+///       expression = "accept()"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -216,8 +256,9 @@ import 'router_route_policy_state.dart';
 /// import com.pulumi.gcp.compute.RouterRoutePolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterRoutePolicyTermArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterRoutePolicyTermMatchArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.RouterRoutePolicyTermActionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -447,7 +488,7 @@ import 'router_route_policy_state.dart';
 /// 		}
 /// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("my-subnetwork"),
-/// 			Network:     net.ID(),
+/// 			Network:     net.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 		})
@@ -457,7 +498,7 @@ import 'router_route_policy_state.dart';
 /// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 /// 			Name:    pulumi.String("my-router"),
 /// 			Region:  subnet.Region,
-/// 			Network: net.ID(),
+/// 			Network: net.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -488,6 +529,46 @@ import 'router_route_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "net" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnet" {
+///   name          = "my-subnetwork"
+///   network       = gcp_compute_network.net.id
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+/// }
+/// resource "gcp_compute_router" "router" {
+///   name    = "my-router"
+///   region  = gcp_compute_subnetwork.subnet.region
+///   network = gcp_compute_network.net.id
+/// }
+/// resource "gcp_compute_routerroutepolicy" "rp-import" {
+///   name   = "my-rp2"
+///   router = gcp_compute_router.router.name
+///   region = gcp_compute_router.router.region
+///   type   = "ROUTE_POLICY_TYPE_IMPORT"
+///   terms {
+///     priority = 2
+///     match = {
+///       expression = "destination == '10.0.0.0/12'"
+///     }
+///     actions {
+///       expression = "accept()"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -504,8 +585,9 @@ import 'router_route_policy_state.dart';
 /// import com.pulumi.gcp.compute.RouterRoutePolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterRoutePolicyTermArgs;
 /// import com.pulumi.gcp.compute.inputs.RouterRoutePolicyTermMatchArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.RouterRoutePolicyTermActionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -595,31 +677,27 @@ import 'router_route_policy_state.dart';
 /// RouterRoutePolicy can be imported using any of these accepted formats:
 ///
 /// * `{{project}}/{{region}}/{{router}}/routePolicies/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{router}}/{{name}}`
-///
 /// * `{{region}}/{{router}}/{{name}}`
-///
 /// * `{{router}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RouterRoutePolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{project}}/{{region}}/{{router}}/routePolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{project}}/{{region}}/{{router}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{region}}/{{router}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/routerRoutePolicy:RouterRoutePolicy default {{router}}/{{name}}
 /// ```
 class RouterRoutePolicy extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
   late final pulumi.Output<String> fingerprint;
@@ -653,6 +731,7 @@ class RouterRoutePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -685,6 +764,7 @@ class RouterRoutePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

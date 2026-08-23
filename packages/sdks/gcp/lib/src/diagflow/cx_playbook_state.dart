@@ -9,6 +9,13 @@ class CxPlaybookState {
   /// The timestamp of initial playbook creation.
   /// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The human-readable name of the playbook, unique within an agent.
   final pulumi.Input<String>? displayName;
   /// High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
@@ -42,6 +49,7 @@ class CxPlaybookState {
 
   /// Creates a new [CxPlaybookState].
   /// [createTime] The timestamp of initial playbook creation.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The human-readable name of the playbook, unique within an agent.
   /// [goal] High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
   /// [instruction] Instruction to accomplish target goal.
@@ -56,6 +64,7 @@ class CxPlaybookState {
   /// [updateTime] Last time the playbook version was updated.
   const CxPlaybookState({
     this.createTime,
+    this.deletionPolicy,
     this.displayName,
     this.goal,
     this.instruction,
@@ -73,6 +82,7 @@ class CxPlaybookState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'goal': ?goal,
       'instruction': ?pulumi.Input.mapOptionalInputValue<CxPlaybookInstruction, Map<String, dynamic>>(instruction, (value) => value.toMap()),
@@ -91,6 +101,7 @@ class CxPlaybookState {
   factory CxPlaybookState.fromMap(Map<String, dynamic> map) {
     return CxPlaybookState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       goal: (() { final guardedValue = map['goal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instruction: (() { final guardedValue = map['instruction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxPlaybookInstruction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -106,4 +117,3 @@ class CxPlaybookState {
     );
   }
 }
-

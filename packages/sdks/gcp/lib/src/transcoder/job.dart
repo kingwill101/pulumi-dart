@@ -582,6 +582,115 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "default" {
+///   name                        = "transcoder-job"
+///   location                    = "US"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+///   public_access_prevention    = "enforced"
+/// }
+/// resource "gcp_storage_bucketobject" "example_mp4" {
+///   name   = "example.mp4"
+///   source = fileAsset("./test-fixtures/example.mp4")
+///   bucket = gcp_storage_bucket.default.name
+/// }
+/// resource "gcp_transcoder_job" "default" {
+///   template_id = gcp_transcoder_jobtemplate.default.name
+///   location    = "us-central1"
+///   labels = {
+///     "label" = "key"
+///   }
+/// }
+/// resource "gcp_transcoder_jobtemplate" "default" {
+///   job_template_id = "example-job-template"
+///   location        = "us-central1"
+///   config = {
+///     inputs = [{
+///       "key" = "input0"
+///       "uri" ="gs://${gcp_storage_bucket.default.name}/${gcp_storage_bucketobject.example_mp4.name}"
+///     }]
+///     output = {
+///       uri ="gs://${gcp_storage_bucket.default.name}/outputs/"
+///     }
+///     edit_lists = [{
+///       "key"             = "atom0"
+///       "inputs"          = ["input0"]
+///       "startTimeOffset" = "0s"
+///     }]
+///     elementary_streams = [{
+///       "key" = "video-stream0"
+///       "videoStream" = {
+///         "h264" = {
+///           "widthPixels"     = 640
+///           "heightPixels"    = 360
+///           "bitrateBps"      = 550000
+///           "frameRate"       = 60
+///           "pixelFormat"     = "yuv420p"
+///           "rateControlMode" = "vbr"
+///           "crfLevel"        = 21
+///           "gopDuration"     = "3s"
+///           "vbvSizeBits"     = 550000
+///           "vbvFullnessBits" = 495000
+///           "entropyCoder"    = "cabac"
+///           "profile"         = "high"
+///           "preset"          = "veryfast"
+///         }
+///       }
+///       }, {
+///       "key" = "video-stream1"
+///       "videoStream" = {
+///         "h264" = {
+///           "widthPixels"     = 1280
+///           "heightPixels"    = 720
+///           "bitrateBps"      = 550000
+///           "frameRate"       = 60
+///           "pixelFormat"     = "yuv420p"
+///           "rateControlMode" = "vbr"
+///           "crfLevel"        = 21
+///           "gopDuration"     = "3s"
+///           "vbvSizeBits"     = 2500000
+///           "vbvFullnessBits" = 2250000
+///           "entropyCoder"    = "cabac"
+///           "profile"         = "high"
+///           "preset"          = "veryfast"
+///         }
+///       }
+///       }, {
+///       "key" = "audio-stream0"
+///       "audioStream" = {
+///         "codec"           = "aac"
+///         "bitrateBps"      = 64000
+///         "channelCount"    = 2
+///         "channelLayouts"  = ["fl", "fr"]
+///         "sampleRateHertz" = 48000
+///       }
+///     }]
+///     mux_streams = [{
+///       "key"               = "sd"
+///       "fileName"          = "sd.mp4"
+///       "container"         = "mp4"
+///       "elementaryStreams" = ["video-stream0", "audio-stream0"]
+///       }, {
+///       "key"               = "hd"
+///       "fileName"          = "hd.mp4"
+///       "container"         = "mp4"
+///       "elementaryStreams" = ["video-stream1", "audio-stream0"]
+///     }]
+///   }
+///   labels = {
+///     "label" = "key"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -595,12 +704,19 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.transcoder.JobTemplate;
 /// import com.pulumi.gcp.transcoder.JobTemplateArgs;
 /// import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigInputArgs;
 /// import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigOutputArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigEditListArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamVideoStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamVideoStreamH264Args;
+/// import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigElementaryStreamAudioStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobTemplateConfigMuxStreamArgs;
 /// import com.pulumi.gcp.transcoder.Job;
 /// import com.pulumi.gcp.transcoder.JobArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -745,7 +861,7 @@ import 'job_state.dart';
 ///     properties:
 ///       name: example.mp4
 ///       source:
-///         fn::FileAsset: ./test-fixtures/example.mp4
+///         fn::fileAsset: ./test-fixtures/example.mp4
 ///       bucket: ${default.name}
 ///   defaultJob:
 ///     type: gcp:transcoder:Job
@@ -1388,7 +1504,7 @@ import 'job_state.dart';
 /// 					},
 /// 				},
 /// 				PubsubDestination: &transcoder.JobConfigPubsubDestinationArgs{
-/// 					Topic: transcoderNotifications.ID(),
+/// 					Topic: transcoderNotifications.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				Output: &transcoder.JobConfigOutputTypeArgs{
 /// 					Uri: _default.Name.ApplyT(func(name string) (string, error) {
@@ -1407,6 +1523,116 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "default" {
+///   name                        = "transcoder-job"
+///   location                    = "US"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+///   public_access_prevention    = "enforced"
+/// }
+/// resource "gcp_storage_bucketobject" "example_mp4" {
+///   name   = "example.mp4"
+///   source = fileAsset("./test-fixtures/example.mp4")
+///   bucket = gcp_storage_bucket.default.name
+/// }
+/// resource "gcp_pubsub_topic" "transcoder_notifications" {
+///   name = "transcoder-notifications"
+/// }
+/// resource "gcp_transcoder_job" "default" {
+///   location = "us-central1"
+///   config = {
+///     inputs = [{
+///       "key" = "input0"
+///       "uri" ="gs://${gcp_storage_bucket.default.name}/${gcp_storage_bucketobject.example_mp4.name}"
+///     }]
+///     edit_lists = [{
+///       "key"             = "atom0"
+///       "inputs"          = ["input0"]
+///       "startTimeOffset" = "0s"
+///     }]
+///     ad_breaks = [{
+///       "startTimeOffset" = "3.500s"
+///     }]
+///     elementary_streams = [{
+///       "key" = "video-stream0"
+///       "videoStream" = {
+///         "h264" = {
+///           "widthPixels"     = 640
+///           "heightPixels"    = 360
+///           "bitrateBps"      = 550000
+///           "frameRate"       = 60
+///           "pixelFormat"     = "yuv420p"
+///           "rateControlMode" = "vbr"
+///           "crfLevel"        = 21
+///           "gopDuration"     = "3s"
+///           "vbvSizeBits"     = 550000
+///           "vbvFullnessBits" = 495000
+///           "entropyCoder"    = "cabac"
+///           "profile"         = "high"
+///           "preset"          = "veryfast"
+///         }
+///       }
+///       }, {
+///       "key" = "video-stream1"
+///       "videoStream" = {
+///         "h264" = {
+///           "widthPixels"     = 1280
+///           "heightPixels"    = 720
+///           "bitrateBps"      = 550000
+///           "frameRate"       = 60
+///           "pixelFormat"     = "yuv420p"
+///           "rateControlMode" = "vbr"
+///           "crfLevel"        = 21
+///           "gopDuration"     = "3s"
+///           "vbvSizeBits"     = 2500000
+///           "vbvFullnessBits" = 2250000
+///           "entropyCoder"    = "cabac"
+///           "profile"         = "high"
+///           "preset"          = "veryfast"
+///         }
+///       }
+///       }, {
+///       "key" = "audio-stream0"
+///       "audioStream" = {
+///         "codec"           = "aac"
+///         "bitrateBps"      = 64000
+///         "channelCount"    = 2
+///         "channelLayouts"  = ["fl", "fr"]
+///         "sampleRateHertz" = 48000
+///       }
+///     }]
+///     mux_streams = [{
+///       "key"               = "sd"
+///       "fileName"          = "sd.mp4"
+///       "container"         = "mp4"
+///       "elementaryStreams" = ["video-stream0", "audio-stream0"]
+///       }, {
+///       "key"               = "hd"
+///       "fileName"          = "hd.mp4"
+///       "container"         = "mp4"
+///       "elementaryStreams" = ["video-stream1", "audio-stream0"]
+///     }]
+///     pubsub_destination = {
+///       topic = gcp_pubsub_topic.transcoder_notifications.id
+///     }
+///     output = {
+///       uri ="gs://${gcp_storage_bucket.default.name}/outputs/"
+///     }
+///   }
+///   labels = {
+///     "label" = "key"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1422,11 +1648,19 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.transcoder.Job;
 /// import com.pulumi.gcp.transcoder.JobArgs;
 /// import com.pulumi.gcp.transcoder.inputs.JobConfigArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigInputArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigEditListArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigAdBreakArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamH264Args;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamAudioStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigMuxStreamArgs;
 /// import com.pulumi.gcp.transcoder.inputs.JobConfigPubsubDestinationArgs;
 /// import com.pulumi.gcp.transcoder.inputs.JobConfigOutputArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1574,7 +1808,7 @@ import 'job_state.dart';
 ///     properties:
 ///       name: example.mp4
 ///       source:
-///         fn::FileAsset: ./test-fixtures/example.mp4
+///         fn::fileAsset: ./test-fixtures/example.mp4
 ///       bucket: ${default.name}
 ///   transcoderNotifications:
 ///     type: gcp:pubsub:Topic
@@ -2355,7 +2589,7 @@ import 'job_state.dart';
 /// 			return err
 /// 		}
 /// 		// this is required to allow the transcoder service identity to access the secret
-/// 		transcoder, err := projects.NewServiceIdentity(ctx, "transcoder", &projects.ServiceIdentityArgs{
+/// 		transcoder2, err := projects.NewServiceIdentity(ctx, "transcoder", &projects.ServiceIdentityArgs{
 /// 			Project: pulumi.String(project.ProjectId),
 /// 			Service: pulumi.String("transcoder.googleapis.com"),
 /// 		})
@@ -2366,7 +2600,7 @@ import 'job_state.dart';
 /// 			SecretId: encryptionKey.SecretId,
 /// 			Project:  encryptionKey.Project,
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
-/// 			Member: transcoder.Email.ApplyT(func(email string) (string, error) {
+/// 			Member: transcoder2.Email.ApplyT(func(email string) (string, error) {
 /// 				return fmt.Sprintf("serviceAccount:%v", email), nil
 /// 			}).(pulumi.StringOutput),
 /// 		})
@@ -2544,6 +2778,172 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_storage_bucket" "default" {
+///   name                        = "transcoder-job"
+///   location                    = "US"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+///   public_access_prevention    = "enforced"
+/// }
+/// resource "gcp_storage_bucketobject" "example_mp4" {
+///   name   = "example.mp4"
+///   source = fileAsset("./test-fixtures/example.mp4")
+///   bucket = gcp_storage_bucket.default.name
+/// }
+/// resource "gcp_secretmanager_secret" "encryption_key" {
+///   secret_id = "transcoder-encryption-key"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "encryption_key" {
+///   secret      = gcp_secretmanager_secret.encryption_key.name
+///   secret_data = "4A67F2C1B8E93A4F6D3E7890A1BC23DF"
+/// }
+/// # this is required to allow the transcoder service identity to access the secret
+/// resource "gcp_projects_serviceidentity" "transcoder" {
+///   project = data.gcp_organizations_getproject.project.project_id
+///   service = "transcoder.googleapis.com"
+/// }
+/// resource "gcp_secretmanager_secretiammember" "transcoder_encryption_key_accessor" {
+///   secret_id = gcp_secretmanager_secret.encryption_key.secret_id
+///   project   = gcp_secretmanager_secret.encryption_key.project
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    ="serviceAccount:${gcp_projects_serviceidentity.transcoder.email}"
+/// }
+/// resource "gcp_transcoder_job" "default" {
+///   location = "us-central1"
+///   config = {
+///     inputs = [{
+///       "key" = "input0"
+///       "uri" ="gs://${gcp_storage_bucket.default.name}/${gcp_storage_bucketobject.example_mp4.name}"
+///     }]
+///     elementary_streams = [{
+///       "key" = "es_video"
+///       "videoStream" = {
+///         "h264" = {
+///           "profile"      = "main"
+///           "heightPixels" = 600
+///           "widthPixels"  = 800
+///           "bitrateBps"   = 1000000
+///           "frameRate"    = 60
+///         }
+///       }
+///       }, {
+///       "key" = "es_audio"
+///       "audioStream" = {
+///         "codec"        = "aac"
+///         "channelCount" = 2
+///         "bitrateBps"   = 160000
+///       }
+///     }]
+///     encryptions = [{
+///       "id" = "aes-128"
+///       "secretManagerKeySource" = {
+///         "secretVersion" = gcp_secretmanager_secretversion.encryption_key.name
+///       }
+///       "drmSystems" = {
+///         "clearkey" = {}
+///       }
+///       "aes128" = {}
+///       }, {
+///       "id" = "cenc"
+///       "secretManagerKeySource" = {
+///         "secretVersion" = gcp_secretmanager_secretversion.encryption_key.name
+///       }
+///       "drmSystems" = {
+///         "widevine" = {}
+///       }
+///       "mpegCenc" = {
+///         "scheme" = "cenc"
+///       }
+///       }, {
+///       "id" = "cbcs"
+///       "secretManagerKeySource" = {
+///         "secretVersion" = gcp_secretmanager_secretversion.encryption_key.name
+///       }
+///       "drmSystems" = {
+///         "widevine" = {}
+///       }
+///       "mpegCenc" = {
+///         "scheme" = "cbcs"
+///       }
+///     }]
+///     mux_streams = [{
+///       "key"               = "ts_aes128"
+///       "container"         = "ts"
+///       "elementaryStreams" = ["es_video", "es_audio"]
+///       "segmentSettings" = {
+///         "segmentDuration" = "6s"
+///       }
+///       "encryptionId" = "aes-128"
+///       }, {
+///       "key"               = "fmp4_cenc_video"
+///       "container"         = "fmp4"
+///       "elementaryStreams" = ["es_video"]
+///       "segmentSettings" = {
+///         "segmentDuration" = "6s"
+///       }
+///       "encryptionId" = "cenc"
+///       }, {
+///       "key"               = "fmp4_cenc_audio"
+///       "container"         = "fmp4"
+///       "elementaryStreams" = ["es_audio"]
+///       "segmentSettings" = {
+///         "segmentDuration" = "6s"
+///       }
+///       "encryptionId" = "cenc"
+///       }, {
+///       "key"               = "fmp4_cbcs_video"
+///       "container"         = "fmp4"
+///       "elementaryStreams" = ["es_video"]
+///       "segmentSettings" = {
+///         "segmentDuration" = "6s"
+///       }
+///       "encryptionId" = "cbcs"
+///       }, {
+///       "key"               = "fmp4_cbcs_audio"
+///       "container"         = "fmp4"
+///       "elementaryStreams" = ["es_audio"]
+///       "segmentSettings" = {
+///         "segmentDuration" = "6s"
+///       }
+///       "encryptionId" = "cbcs"
+///     }]
+///     manifests = [{
+///       "fileName"   = "manifest_aes128.m3u8"
+///       "type"       = "HLS"
+///       "muxStreams" = ["ts_aes128"]
+///       }, {
+///       "fileName"   = "manifest_cenc.mpd"
+///       "type"       = "DASH"
+///       "muxStreams" = ["fmp4_cenc_video", "fmp4_cenc_audio"]
+///       }, {
+///       "fileName"   = "manifest_cbcs.mpd"
+///       "type"       = "DASH"
+///       "muxStreams" = ["fmp4_cbcs_video", "fmp4_cbcs_audio"]
+///     }]
+///     output = {
+///       uri ="gs://${gcp_storage_bucket.default.name}/outputs/"
+///     }
+///   }
+///   labels = {
+///     "label" = "key"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2569,10 +2969,25 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.transcoder.Job;
 /// import com.pulumi.gcp.transcoder.JobArgs;
 /// import com.pulumi.gcp.transcoder.inputs.JobConfigArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigInputArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamH264Args;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamAudioStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigEncryptionArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigEncryptionSecretManagerKeySourceArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigEncryptionDrmSystemsArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigEncryptionDrmSystemsClearkeyArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigEncryptionAes128Args;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigEncryptionDrmSystemsWidevineArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigEncryptionMpegCencArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigMuxStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigMuxStreamSegmentSettingsArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigManifestArgs;
 /// import com.pulumi.gcp.transcoder.inputs.JobConfigOutputArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2792,7 +3207,7 @@ import 'job_state.dart';
 ///     properties:
 ///       name: example.mp4
 ///       source:
-///         fn::FileAsset: ./test-fixtures/example.mp4
+///         fn::fileAsset: ./test-fixtures/example.mp4
 ///       bucket: ${default.name}
 ///   encryptionKey:
 ///     type: gcp:secretmanager:Secret
@@ -3112,7 +3527,7 @@ import 'job_state.dart';
 ///                     "start_time_offset": "1.500s",
 ///                     "end_time_offset": "3.500s",
 ///                     "xy": {
-///                         "x": 1,
+///                         "x": float(1),
 ///                         "y": 0.5,
 ///                     },
 ///                 },
@@ -3291,7 +3706,7 @@ import 'job_state.dart';
 ///                                 EndTimeOffset = "3.500s",
 ///                                 Xy = new Gcp.Transcoder.Inputs.JobConfigOverlayAnimationAnimationFadeXyArgs
 ///                                 {
-///                                     X = 1,
+///                                     X = 1.0,
 ///                                     Y = 0.5,
 ///                                 },
 ///                             },
@@ -3593,6 +4008,131 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "default" {
+///   name                        = "transcoder-job"
+///   location                    = "US"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+///   public_access_prevention    = "enforced"
+/// }
+/// resource "gcp_storage_bucketobject" "example_mp4" {
+///   name   = "example.mp4"
+///   source = fileAsset("./test-fixtures/example.mp4")
+///   bucket = gcp_storage_bucket.default.name
+/// }
+/// resource "gcp_storage_bucketobject" "overlay_png" {
+///   name   = "overlay.png"
+///   source = fileAsset("./test-fixtures/overlay.png")
+///   bucket = gcp_storage_bucket.default.name
+/// }
+/// resource "gcp_transcoder_job" "default" {
+///   location = "us-central1"
+///   config = {
+///     inputs = [{
+///       "key" = "input0"
+///       "uri" ="gs://${gcp_storage_bucket.default.name}/${gcp_storage_bucketobject.example_mp4.name}"
+///     }]
+///     edit_lists = [{
+///       "key"             = "atom0"
+///       "inputs"          = ["input0"]
+///       "startTimeOffset" = "0s"
+///     }]
+///     ad_breaks = [{
+///       "startTimeOffset" = "3.500s"
+///     }]
+///     overlays = [{
+///       "animations" = [{
+///         "animationFade" = {
+///           "fadeType"        = "FADE_IN"
+///           "startTimeOffset" = "1.500s"
+///           "endTimeOffset"   = "3.500s"
+///           "xy" = {
+///             "x" = 1
+///             "y" = 0.5
+///           }
+///         }
+///       }]
+///       "image" = {
+///         "uri" ="gs://${gcp_storage_bucket.default.name}/${gcp_storage_bucketobject.overlay_png.name}"
+///       }
+///     }]
+///     elementary_streams = [{
+///       "key" = "video-stream0"
+///       "videoStream" = {
+///         "h264" = {
+///           "widthPixels"     = 640
+///           "heightPixels"    = 360
+///           "bitrateBps"      = 550000
+///           "frameRate"       = 60
+///           "pixelFormat"     = "yuv420p"
+///           "rateControlMode" = "vbr"
+///           "crfLevel"        = 21
+///           "gopDuration"     = "3s"
+///           "vbvSizeBits"     = 550000
+///           "vbvFullnessBits" = 495000
+///           "entropyCoder"    = "cabac"
+///           "profile"         = "high"
+///           "preset"          = "veryfast"
+///         }
+///       }
+///       }, {
+///       "key" = "video-stream1"
+///       "videoStream" = {
+///         "h264" = {
+///           "widthPixels"     = 1280
+///           "heightPixels"    = 720
+///           "bitrateBps"      = 550000
+///           "frameRate"       = 60
+///           "pixelFormat"     = "yuv420p"
+///           "rateControlMode" = "vbr"
+///           "crfLevel"        = 21
+///           "gopDuration"     = "3s"
+///           "vbvSizeBits"     = 2500000
+///           "vbvFullnessBits" = 2250000
+///           "entropyCoder"    = "cabac"
+///           "profile"         = "high"
+///           "preset"          = "veryfast"
+///         }
+///       }
+///       }, {
+///       "key" = "audio-stream0"
+///       "audioStream" = {
+///         "codec"           = "aac"
+///         "bitrateBps"      = 64000
+///         "channelCount"    = 2
+///         "channelLayouts"  = ["fl", "fr"]
+///         "sampleRateHertz" = 48000
+///       }
+///     }]
+///     mux_streams = [{
+///       "key"               = "sd"
+///       "fileName"          = "sd.mp4"
+///       "container"         = "mp4"
+///       "elementaryStreams" = ["video-stream0", "audio-stream0"]
+///       }, {
+///       "key"               = "hd"
+///       "fileName"          = "hd.mp4"
+///       "container"         = "mp4"
+///       "elementaryStreams" = ["video-stream1", "audio-stream0"]
+///     }]
+///     output = {
+///       uri ="gs://${gcp_storage_bucket.default.name}/outputs/"
+///     }
+///   }
+///   labels = {
+///     "label" = "key"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3606,10 +4146,23 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.transcoder.Job;
 /// import com.pulumi.gcp.transcoder.JobArgs;
 /// import com.pulumi.gcp.transcoder.inputs.JobConfigArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigInputArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigEditListArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigAdBreakArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigOverlayArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigOverlayAnimationArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigOverlayAnimationAnimationFadeArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigOverlayAnimationAnimationFadeXyArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigOverlayImageArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamH264Args;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamAudioStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigMuxStreamArgs;
 /// import com.pulumi.gcp.transcoder.inputs.JobConfigOutputArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3776,7 +4329,7 @@ import 'job_state.dart';
 ///     properties:
 ///       name: example.mp4
 ///       source:
-///         fn::FileAsset: ./test-fixtures/example.mp4
+///         fn::fileAsset: ./test-fixtures/example.mp4
 ///       bucket: ${default.name}
 ///   overlayPng:
 ///     type: gcp:storage:BucketObject
@@ -3784,7 +4337,7 @@ import 'job_state.dart';
 ///     properties:
 ///       name: overlay.png
 ///       source:
-///         fn::FileAsset: ./test-fixtures/overlay.png
+///         fn::fileAsset: ./test-fixtures/overlay.png
 ///       bucket: ${default.name}
 ///   defaultJob:
 ///     type: gcp:transcoder:Job
@@ -4670,6 +5223,144 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "default" {
+///   name                        = "transcoder-job"
+///   location                    = "US"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+///   public_access_prevention    = "enforced"
+/// }
+/// resource "gcp_storage_bucketobject" "example_mp4" {
+///   name   = "example.mp4"
+///   source = fileAsset("./test-fixtures/example.mp4")
+///   bucket = gcp_storage_bucket.default.name
+/// }
+/// resource "gcp_transcoder_job" "default" {
+///   location = "us-central1"
+///   config = {
+///     inputs = [{
+///       "key" = "input0"
+///       "uri" ="gs://${gcp_storage_bucket.default.name}/${gcp_storage_bucketobject.example_mp4.name}"
+///     }]
+///     edit_lists = [{
+///       "key"             = "atom0"
+///       "startTimeOffset" = "0s"
+///       "inputs"          = ["input0"]
+///     }]
+///     ad_breaks = [{
+///       "startTimeOffset" = "3.500s"
+///     }]
+///     elementary_streams = [{
+///       "key" = "video-stream0"
+///       "videoStream" = {
+///         "h264" = {
+///           "widthPixels"     = 640
+///           "heightPixels"    = 360
+///           "bitrateBps"      = 550000
+///           "frameRate"       = 60
+///           "pixelFormat"     = "yuv420p"
+///           "rateControlMode" = "vbr"
+///           "crfLevel"        = 21
+///           "gopDuration"     = "3s"
+///           "vbvSizeBits"     = 550000
+///           "vbvFullnessBits" = 495000
+///           "entropyCoder"    = "cabac"
+///           "profile"         = "high"
+///           "preset"          = "veryfast"
+///         }
+///       }
+///       }, {
+///       "key" = "video-stream1"
+///       "videoStream" = {
+///         "h264" = {
+///           "widthPixels"     = 1280
+///           "heightPixels"    = 720
+///           "bitrateBps"      = 550000
+///           "frameRate"       = 60
+///           "pixelFormat"     = "yuv420p"
+///           "rateControlMode" = "vbr"
+///           "crfLevel"        = 21
+///           "gopDuration"     = "3s"
+///           "vbvSizeBits"     = 2500000
+///           "vbvFullnessBits" = 2250000
+///           "entropyCoder"    = "cabac"
+///           "profile"         = "high"
+///           "preset"          = "veryfast"
+///         }
+///       }
+///       }, {
+///       "key" = "audio-stream0"
+///       "audioStream" = {
+///         "codec"           = "aac"
+///         "bitrateBps"      = 64000
+///         "channelCount"    = 2
+///         "channelLayouts"  = ["fl", "fr"]
+///         "sampleRateHertz" = 48000
+///       }
+///     }]
+///     mux_streams = [{
+///       "key"               = "sd"
+///       "fileName"          = "sd.mp4"
+///       "container"         = "mp4"
+///       "elementaryStreams" = ["video-stream0", "audio-stream0"]
+///       }, {
+///       "key"               = "hd"
+///       "fileName"          = "hd.mp4"
+///       "container"         = "mp4"
+///       "elementaryStreams" = ["video-stream1", "audio-stream0"]
+///       }, {
+///       "key"               = "media-sd"
+///       "fileName"          = "media-sd.ts"
+///       "container"         = "ts"
+///       "elementaryStreams" = ["video-stream0", "audio-stream0"]
+///       }, {
+///       "key"               = "media-hd"
+///       "fileName"          = "media-hd.ts"
+///       "container"         = "ts"
+///       "elementaryStreams" = ["video-stream1", "audio-stream0"]
+///       }, {
+///       "key"               = "video-only-sd"
+///       "fileName"          = "video-only-sd.m4s"
+///       "container"         = "fmp4"
+///       "elementaryStreams" = ["video-stream0"]
+///       }, {
+///       "key"               = "video-only-hd"
+///       "fileName"          = "video-only-hd.m4s"
+///       "container"         = "fmp4"
+///       "elementaryStreams" = ["video-stream1"]
+///       }, {
+///       "key"               = "audio-only"
+///       "fileName"          = "audio-only.m4s"
+///       "container"         = "fmp4"
+///       "elementaryStreams" = ["audio-stream0"]
+///     }]
+///     manifests = [{
+///       "fileName"   = "manifest.m3u8"
+///       "type"       = "HLS"
+///       "muxStreams" = ["media-sd", "media-hd"]
+///       }, {
+///       "fileName"   = "manifest.mpd"
+///       "type"       = "DASH"
+///       "muxStreams" = ["video-only-sd", "video-only-hd", "audio-only"]
+///     }]
+///     output = {
+///       uri ="gs://${gcp_storage_bucket.default.name}/outputs/"
+///     }
+///   }
+///   labels = {
+///     "label" = "key"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4683,10 +5374,19 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.transcoder.Job;
 /// import com.pulumi.gcp.transcoder.JobArgs;
 /// import com.pulumi.gcp.transcoder.inputs.JobConfigArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigInputArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigEditListArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigAdBreakArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamVideoStreamH264Args;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigElementaryStreamAudioStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigMuxStreamArgs;
+/// import com.pulumi.gcp.transcoder.inputs.JobConfigManifestArgs;
 /// import com.pulumi.gcp.transcoder.inputs.JobConfigOutputArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4877,7 +5577,7 @@ import 'job_state.dart';
 ///     properties:
 ///       name: example.mp4
 ///       source:
-///         fn::FileAsset: ./test-fixtures/example.mp4
+///         fn::fileAsset: ./test-fixtures/example.mp4
 ///       bucket: ${default.name}
 ///   defaultJob:
 ///     type: gcp:transcoder:Job
@@ -5001,22 +5701,15 @@ import 'job_state.dart';
 /// Job can be imported using any of these accepted formats:
 ///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{project}} {{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:transcoder/job:Job default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:transcoder/job:Job default "{{project}} {{name}}"
-/// ```
-///
-/// ```sh
+/// $ terraform import google_transcoder_job.default "{{project}} {{name}}"
 /// $ pulumi import gcp:transcoder/job:Job default {{name}}
 /// ```
 class Job extends pulumi.CustomResource {
@@ -5025,6 +5718,13 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<JobConfig> config;
   /// The time the job was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The time the transcoding finished.
@@ -5032,7 +5732,7 @@ class Job extends pulumi.CustomResource {
   /// The labels associated with this job. You can use these to organize and group your jobs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the transcoding job resource.
   late final pulumi.Output<String> location;
@@ -5068,6 +5768,7 @@ class Job extends pulumi.CustomResource {
         ) {
     config = registerOutput<JobConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endTime = registerOutput<String>('endTime');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -5105,6 +5806,7 @@ class Job extends pulumi.CustomResource {
         ) {
     config = registerOutput<JobConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endTime = registerOutput<String>('endTime');
     labels = registerOutput<Map<String, String>?>('labels');

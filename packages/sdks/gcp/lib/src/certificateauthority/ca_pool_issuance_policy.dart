@@ -15,10 +15,10 @@ class CaPoolIssuancePolicy {
   /// Structure is documented below.
   final pulumi.Input<List<CaPoolIssuancePolicyAllowedKeyType>>? allowedKeyTypes;
   /// The duration to backdate all certificates issued from this CaPool. If not set, the
-  /// certificates will be issued with a not_before_time of the issuance time (i.e. the current
-  /// time). If set, the certificates will be issued with a not_before_time of the issuance
-  /// time minus the backdate_duration. The not_after_time will be adjusted to preserve the
-  /// requested lifetime. The backdate_duration must be less than or equal to 48 hours.
+  /// certificates will be issued with a notBeforeTime of the issuance time (i.e. the current
+  /// time). If set, the certificates will be issued with a notBeforeTime of the issuance
+  /// time minus the backdate_duration. The notAfterTime will be adjusted to preserve the
+  /// requested lifetime. The backdateDuration must be less than or equal to 48 hours.
   final pulumi.Input<String>? backdateDuration;
   /// A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
   /// includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
@@ -72,4 +72,3 @@ class CaPoolIssuancePolicy {
     );
   }
 }
-

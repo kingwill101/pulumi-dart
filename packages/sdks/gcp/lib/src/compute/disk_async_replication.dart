@@ -122,7 +122,7 @@ import 'disk_async_replication_state.dart';
 /// 			Type: pulumi.String("pd-ssd"),
 /// 			Zone: pulumi.String("europe-west3-a"),
 /// 			AsyncPrimaryDisk: &compute.DiskAsyncPrimaryDiskArgs{
-/// 				Disk: primary_disk.ID(),
+/// 				Disk: primary_disk.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
 /// 		})
@@ -130,9 +130,9 @@ import 'disk_async_replication_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewDiskAsyncReplication(ctx, "replication", &compute.DiskAsyncReplicationArgs{
-/// 			PrimaryDisk: primary_disk.ID(),
+/// 			PrimaryDisk: primary_disk.ID().ToIDOutput().ToStringOutput(),
 /// 			SecondaryDisk: &compute.DiskAsyncReplicationSecondaryDiskArgs{
-/// 				Disk: secondary_disk.ID(),
+/// 				Disk: secondary_disk.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -140,6 +140,37 @@ import 'disk_async_replication_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_disk" "primary-disk" {
+///   name                      = "primary-disk"
+///   type                      = "pd-ssd"
+///   zone                      = "europe-west4-a"
+///   physical_block_size_bytes = 4096
+/// }
+/// resource "gcp_compute_disk" "secondary-disk" {
+///   name = "secondary-disk"
+///   type = "pd-ssd"
+///   zone = "europe-west3-a"
+///   async_primary_disk = {
+///     disk = gcp_compute_disk.primary-disk.id
+///   }
+///   physical_block_size_bytes = 4096
+/// }
+/// resource "gcp_compute_diskasyncreplication" "replication" {
+///   primary_disk = gcp_compute_disk.primary-disk.id
+///   secondary_disk = {
+///     disk = gcp_compute_disk.secondary-disk.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -154,8 +185,8 @@ import 'disk_async_replication_state.dart';
 /// import com.pulumi.gcp.compute.DiskAsyncReplication;
 /// import com.pulumi.gcp.compute.DiskAsyncReplicationArgs;
 /// import com.pulumi.gcp.compute.inputs.DiskAsyncReplicationSecondaryDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -220,11 +251,18 @@ import 'disk_async_replication_state.dart';
 ///         disk: ${["secondary-disk"].id}
 /// ```
 class DiskAsyncReplication extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// The `secondaryDisk` block includes:
+  late final pulumi.Output<String> deletionPolicy;
   /// The primary disk (source of replication).
   late final pulumi.Output<String> primaryDisk;
   /// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-  ///
-  /// The `secondary_disk` block includes:
   late final pulumi.Output<DiskAsyncReplicationSecondaryDisk> secondaryDisk;
 
   /// Creates a new [DiskAsyncReplication].
@@ -241,6 +279,7 @@ class DiskAsyncReplication extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     primaryDisk = registerOutput<String>('primaryDisk');
     secondaryDisk = registerOutput<DiskAsyncReplicationSecondaryDisk>('secondaryDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskAsyncReplicationSecondaryDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -268,6 +307,7 @@ class DiskAsyncReplication extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     primaryDisk = registerOutput<String>('primaryDisk');
     secondaryDisk = registerOutput<DiskAsyncReplicationSecondaryDisk>('secondaryDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskAsyncReplicationSecondaryDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

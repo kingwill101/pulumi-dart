@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_storage_pool_param.dart';
 import 'get_storage_pool_resource_status.dart';
 import 'get_storage_pool_status.dart';
 
@@ -8,6 +9,7 @@ import 'get_storage_pool_status.dart';
 class GetStoragePoolResult {
   final String capacityProvisioningType;
   final String creationTimestamp;
+  final String deletionPolicy;
   final bool deletionProtection;
   final String description;
   final Map<String, String> effectiveLabels;
@@ -16,6 +18,7 @@ class GetStoragePoolResult {
   final String labelFingerprint;
   final Map<String, String> labels;
   final String name;
+  final List<GetStoragePoolParam> params;
   final String performanceProvisioningType;
   final String poolProvisionedCapacityGb;
   final String poolProvisionedIops;
@@ -30,6 +33,7 @@ class GetStoragePoolResult {
   /// Creates a new [GetStoragePoolResult].
   /// [capacityProvisioningType] Required.
   /// [creationTimestamp] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [description] Required.
   /// [effectiveLabels] Required.
@@ -38,6 +42,7 @@ class GetStoragePoolResult {
   /// [labelFingerprint] Required.
   /// [labels] Required.
   /// [name] Required.
+  /// [params] Required.
   /// [performanceProvisioningType] Required.
   /// [poolProvisionedCapacityGb] Required.
   /// [poolProvisionedIops] Required.
@@ -51,6 +56,7 @@ class GetStoragePoolResult {
   const GetStoragePoolResult({
     required this.capacityProvisioningType,
     required this.creationTimestamp,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.description,
     required this.effectiveLabels,
@@ -59,6 +65,7 @@ class GetStoragePoolResult {
     required this.labelFingerprint,
     required this.labels,
     required this.name,
+    required this.params,
     required this.performanceProvisioningType,
     required this.poolProvisionedCapacityGb,
     required this.poolProvisionedIops,
@@ -75,6 +82,7 @@ class GetStoragePoolResult {
     return <String, dynamic>{
       'capacityProvisioningType': capacityProvisioningType,
       'creationTimestamp': creationTimestamp,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'description': description,
       'effectiveLabels': effectiveLabels,
@@ -83,6 +91,7 @@ class GetStoragePoolResult {
       'labelFingerprint': labelFingerprint,
       'labels': labels,
       'name': name,
+      'params': pulumi.Input.encodeList<GetStoragePoolParam, Map<String, dynamic>>(params, (value) => value.toMap()),
       'performanceProvisioningType': performanceProvisioningType,
       'poolProvisionedCapacityGb': poolProvisionedCapacityGb,
       'poolProvisionedIops': poolProvisionedIops,
@@ -100,6 +109,7 @@ class GetStoragePoolResult {
     return GetStoragePoolResult(
       capacityProvisioningType: map['capacityProvisioningType'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -108,6 +118,7 @@ class GetStoragePoolResult {
       labelFingerprint: map['labelFingerprint'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
+      params: pulumi.Input.decodeList<GetStoragePoolParam>(map['params']!, (value) => GetStoragePoolParam.fromMap((value as Map).cast<String, dynamic>())),
       performanceProvisioningType: map['performanceProvisioningType'] as String,
       poolProvisionedCapacityGb: map['poolProvisionedCapacityGb'] as String,
       poolProvisionedIops: map['poolProvisionedIops'] as String,
@@ -121,4 +132,3 @@ class GetStoragePoolResult {
     );
   }
 }
-

@@ -2,6 +2,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_args.dart';
 import 'client_state.dart';
 
+/// &gt; **Warning:** This resource is deprecated on Jan 22, 2025. After Jan 19, 2026 the `gcp.iap.Client` Terraform resource will no longer function as intended due to the deprecation of the IAP OAuth Admin APIs. New projects will not be able to use these APIs. March 19, 2026 The IAP OAuth Admin APIs will be permanently shut down. Access to this feature will no longer be available.
+///
+/// Contains the data that describes an Identity Aware Proxy owned client.
+///
+/// &gt; **Note:** Only internal org clients can be created via declarative tools. External clients must be
+/// manually created via the GCP console. This restriction is due to the existing APIs and not lack of support
+/// in this tool.
+///
+///
+/// To get more information about Client, see:
+///
+/// * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands.identityAwareProxyClients)
+/// * How-to Guides
+/// * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
+///
+///
+///
 /// ## Example Usage
 ///
 /// ### Iap Client
@@ -136,6 +153,35 @@ import 'client_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "my-project"
+///   name            = "my-project"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_projects_service" "project_service" {
+///   project = gcp_organizations_project.project.project_id
+///   service = "iap.googleapis.com"
+/// }
+/// resource "gcp_iap_brand" "project_brand" {
+///   support_email     = "support@example.com"
+///   application_title = "Cloud IAP protected Application"
+///   project           = gcp_projects_service.project_service.project
+/// }
+/// resource "gcp_iap_client" "project_client" {
+///   display_name = "Test Client"
+///   brand        = gcp_iap_brand.project_brand.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +196,8 @@ import 'client_state.dart';
 /// import com.pulumi.gcp.iap.BrandArgs;
 /// import com.pulumi.gcp.iap.Client;
 /// import com.pulumi.gcp.iap.ClientArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -225,16 +271,13 @@ import 'client_state.dart';
 /// Client can be imported using any of these accepted formats:
 ///
 /// * `{{brand}}/identityAwareProxyClients/{{client_id}}`
-///
 /// * `{{brand}}/{{client_id}}`
+///
 ///
 /// When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iap/client:Client default {{brand}}/identityAwareProxyClients/{{client_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iap/client:Client default {{brand}}/{{client_id}}
 /// ```
 class Client extends pulumi.CustomResource {
@@ -244,6 +287,13 @@ class Client extends pulumi.CustomResource {
   late final pulumi.Output<String> brand;
   /// Output only. Unique identifier of the OAuth client.
   late final pulumi.Output<String> clientId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Human-friendly name given to the OAuth client.
   late final pulumi.Output<String> displayName;
   /// Output only. Client secret of the OAuth client.
@@ -266,6 +316,7 @@ class Client extends pulumi.CustomResource {
         ) {
     brand = registerOutput<String>('brand');
     clientId = registerOutput<String>('clientId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     secret = registerOutput<String>('secret');
   }
@@ -295,6 +346,7 @@ class Client extends pulumi.CustomResource {
         ) {
     brand = registerOutput<String>('brand');
     clientId = registerOutput<String>('clientId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     secret = registerOutput<String>('secret');
   }

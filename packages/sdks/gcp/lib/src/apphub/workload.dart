@@ -14,22 +14,15 @@ import 'workload_state.dart';
 /// Workload can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/applications/{{application_id}}/workloads/{{workload_id}}`
-///
 /// * `{{project}}/{{location}}/{{application_id}}/{{workload_id}}`
-///
 /// * `{{location}}/{{application_id}}/{{workload_id}}`
+///
 ///
 /// When using the `pulumi import` command, Workload can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apphub/workload:Workload default projects/{{project}}/locations/{{location}}/applications/{{application_id}}/workloads/{{workload_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apphub/workload:Workload default {{project}}/{{location}}/{{application_id}}/{{workload_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apphub/workload:Workload default {{location}}/{{application_id}}/{{workload_id}}
 /// ```
 class Workload extends pulumi.CustomResource {
@@ -40,6 +33,13 @@ class Workload extends pulumi.CustomResource {
   late final pulumi.Output<WorkloadAttributes?> attributes;
   /// Output only. Create time.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-defined description of a Workload.
   late final pulumi.Output<String?> description;
   /// Immutable. The resource name of the original discovered workload.
@@ -85,6 +85,7 @@ class Workload extends pulumi.CustomResource {
     applicationId = registerOutput<String>('applicationId');
     attributes = registerOutput<WorkloadAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoveredWorkload = registerOutput<String>('discoveredWorkload');
     displayName = registerOutput<String?>('displayName');
@@ -125,6 +126,7 @@ class Workload extends pulumi.CustomResource {
     applicationId = registerOutput<String>('applicationId');
     attributes = registerOutput<WorkloadAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoveredWorkload = registerOutput<String>('discoveredWorkload');
     displayName = registerOutput<String?>('displayName');

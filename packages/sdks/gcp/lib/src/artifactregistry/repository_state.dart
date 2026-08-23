@@ -21,6 +21,13 @@ class RepositoryState {
   final pulumi.Input<bool>? cleanupPolicyDryRun;
   /// The time when the repository was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The user-provided description of the repository.
   final pulumi.Input<String>? description;
   /// Docker repository config contains repository level configuration for the repositories of docker type.
@@ -45,7 +52,7 @@ class RepositoryState {
   /// and dashes.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The name of the repository's location. In addition to specific regions,
   /// special values for multi-region locations are `asia`, `europe`, and `us`.
@@ -93,6 +100,7 @@ class RepositoryState {
   /// [cleanupPolicies] Cleanup policies for this repository. Cleanup policies indicate when
   /// [cleanupPolicyDryRun] If true, the cleanup pipeline is prevented from deleting versions in this
   /// [createTime] The time when the repository was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] The user-provided description of the repository.
   /// [dockerConfig] Docker repository config contains repository level configuration for the repositories of docker type.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -115,6 +123,7 @@ class RepositoryState {
     this.cleanupPolicies,
     this.cleanupPolicyDryRun,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.dockerConfig,
     this.effectiveLabels,
@@ -140,6 +149,7 @@ class RepositoryState {
       'cleanupPolicies': ?pulumi.Input.mapOptionalInputValue<List<RepositoryCleanupPolicy>, List<Map<String, dynamic>>>(cleanupPolicies, (value) => pulumi.Input.encodeList<RepositoryCleanupPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
       'cleanupPolicyDryRun': ?cleanupPolicyDryRun,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'dockerConfig': ?pulumi.Input.mapOptionalInputValue<RepositoryDockerConfig, Map<String, dynamic>>(dockerConfig, (value) => value.toMap()),
       'effectiveLabels': ?effectiveLabels,
@@ -166,6 +176,7 @@ class RepositoryState {
       cleanupPolicies: (() { final guardedValue = map['cleanupPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RepositoryCleanupPolicy>(guardedValue, (value) => RepositoryCleanupPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       cleanupPolicyDryRun: (() { final guardedValue = map['cleanupPolicyDryRun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dockerConfig: (() { final guardedValue = map['dockerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryDockerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -187,4 +198,3 @@ class RepositoryState {
     );
   }
 }
-

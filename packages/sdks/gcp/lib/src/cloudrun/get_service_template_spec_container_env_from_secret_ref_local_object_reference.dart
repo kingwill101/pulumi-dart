@@ -3,11 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
-  /// The name of the Cloud Run Service.
+  /// Name must be unique within a Google Cloud project and region.
+  /// Is required when creating resources. Name is primarily intended
+  /// for creation idempotence and configuration definition. Cannot be updated.
+  /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   final pulumi.Input<String> name;
 
   /// Creates a new [GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference].
-  /// [name] The name of the Cloud Run Service.
+  /// [name] Name must be unique within a Google Cloud project and region.
   const GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference({
     required this.name,
   });
@@ -24,4 +27,3 @@ class GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
     );
   }
 }
-

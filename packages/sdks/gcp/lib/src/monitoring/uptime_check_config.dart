@@ -18,6 +18,9 @@ import 'uptime_check_config_tcp_check.dart';
 ///
 ///
 ///
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `http_check.auth_info.password_wo`.
+/// Read more about Write-only Arguments.
+///
 /// ## Example Usage
 ///
 /// ### Uptime Check Config Http
@@ -214,6 +217,51 @@ import 'uptime_check_config_tcp_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_uptimecheckconfig" "http" {
+///   display_name       = "http-uptime-check"
+///   timeout            = "60s"
+///   log_check_failures = true
+///   user_labels = {
+///     "example-key" = "example-value"
+///   }
+///   http_check = {
+///     path                = "some-path"
+///     port                = "8010"
+///     request_method      = "POST"
+///     content_type        = "USER_PROVIDED"
+///     custom_content_type = "application/json"
+///     body                = "Zm9vJTI1M0RiYXI="
+///     ping_config = {
+///       pings_count = 1
+///     }
+///   }
+///   monitored_resource = {
+///     type = "uptime_url"
+///     labels = {
+///       "project_id" = "my-project-name"
+///       "host"       = "192.168.1.1"
+///     }
+///   }
+///   content_matchers {
+///     content = "\"example\""
+///     matcher = "MATCHES_JSON_PATH"
+///     json_path_matcher = {
+///       json_path    = "$.path"
+///       json_matcher = "EXACT_MATCH"
+///     }
+///   }
+///   checker_type = "STATIC_IP_CHECKERS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -227,8 +275,8 @@ import 'uptime_check_config_tcp_check.dart';
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -521,6 +569,55 @@ import 'uptime_check_config_tcp_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_uptimecheckconfig" "http" {
+///   display_name = "http-uptime-check"
+///   timeout      = "60s"
+///   user_labels = {
+///     "example-key" = "example-value"
+///   }
+///   http_check = {
+///     path                = "some-path"
+///     port                = "8010"
+///     request_method      = "POST"
+///     content_type        = "USER_PROVIDED"
+///     custom_content_type = "application/json"
+///     body                = "Zm9vJTI1M0RiYXI="
+///     ping_config = {
+///       pings_count = 1
+///     }
+///     auth_info = {
+///       username            = "name"
+///       password_wo         = "password1"
+///       password_wo_version = "1"
+///     }
+///   }
+///   monitored_resource = {
+///     type = "uptime_url"
+///     labels = {
+///       "project_id" = "my-project-name"
+///       "host"       = "192.168.1.1"
+///     }
+///   }
+///   content_matchers {
+///     content = "\"example\""
+///     matcher = "MATCHES_JSON_PATH"
+///     json_path_matcher = {
+///       json_path    = "$.path"
+///       json_matcher = "EXACT_MATCH"
+///     }
+///   }
+///   checker_type = "STATIC_IP_CHECKERS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -535,8 +632,8 @@ import 'uptime_check_config_tcp_check.dart';
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -833,6 +930,50 @@ import 'uptime_check_config_tcp_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_uptimecheckconfig" "status_code" {
+///   display_name = "http-uptime-check"
+///   timeout      = "60s"
+///   http_check = {
+///     path           = "some-path"
+///     port           = "8010"
+///     request_method = "POST"
+///     content_type   = "URL_ENCODED"
+///     body           = "Zm9vJTI1M0RiYXI="
+///     accepted_response_status_codes = [{
+///       "statusClass" = "STATUS_CLASS_2XX"
+///       }, {
+///       "statusValue" = 301
+///       }, {
+///       "statusValue" = 302
+///     }]
+///   }
+///   monitored_resource = {
+///     type = "uptime_url"
+///     labels = {
+///       "project_id" = "my-project-name"
+///       "host"       = "192.168.1.1"
+///     }
+///   }
+///   content_matchers {
+///     content = "\"example\""
+///     matcher = "MATCHES_JSON_PATH"
+///     json_path_matcher = {
+///       json_path    = "$.path"
+///       json_matcher = "EXACT_MATCH"
+///     }
+///   }
+///   checker_type = "STATIC_IP_CHECKERS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -842,11 +983,12 @@ import 'uptime_check_config_tcp_check.dart';
 /// import com.pulumi.gcp.monitoring.UptimeCheckConfig;
 /// import com.pulumi.gcp.monitoring.UptimeCheckConfigArgs;
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckArgs;
+/// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs;
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1083,6 +1225,41 @@ import 'uptime_check_config_tcp_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_uptimecheckconfig" "https" {
+///   display_name = "https-uptime-check"
+///   timeout      = "60s"
+///   http_check = {
+///     path         = "/some-path"
+///     port         = "443"
+///     use_ssl      = true
+///     validate_ssl = true
+///   }
+///   monitored_resource = {
+///     type = "uptime_url"
+///     labels = {
+///       "project_id" = "my-project-name"
+///       "host"       = "192.168.1.1"
+///     }
+///   }
+///   content_matchers {
+///     content = "example"
+///     matcher = "MATCHES_JSON_PATH"
+///     json_path_matcher = {
+///       json_path    = "$.path"
+///       json_matcher = "REGEX_MATCH"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1095,8 +1272,8 @@ import 'uptime_check_config_tcp_check.dart';
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1283,6 +1460,34 @@ import 'uptime_check_config_tcp_check.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_uptimecheckconfig" "tcp_group" {
+///   display_name = "tcp-uptime-check"
+///   timeout      = "60s"
+///   tcp_check = {
+///     port = 888
+///     ping_config = {
+///       pings_count = 2
+///     }
+///   }
+///   resource_group = {
+///     resource_type = "INSTANCE"
+///     group_id      = gcp_monitoring_group.check.name
+///   }
+/// }
+/// resource "gcp_monitoring_group" "check" {
+///   display_name = "uptime-check-group"
+///   filter       = "resource.metadata.name=has_substring(\"foo\")"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1296,8 +1501,8 @@ import 'uptime_check_config_tcp_check.dart';
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigTcpCheckArgs;
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigTcpCheckPingConfigArgs;
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigResourceGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1557,7 +1762,7 @@ import 'uptime_check_config_tcp_check.dart';
 /// 			Timeout:     pulumi.String("60s"),
 /// 			SyntheticMonitor: &monitoring.UptimeCheckConfigSyntheticMonitorArgs{
 /// 				CloudFunctionV2: &monitoring.UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args{
-/// 					Name: function.ID(),
+/// 					Name: function.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -1566,6 +1771,54 @@ import 'uptime_check_config_tcp_check.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "my-project-name-gcf-source"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name   = "function-source.zip"
+///   bucket = gcp_storage_bucket.bucket.name
+///   source = fileAsset("synthetic-fn-source.zip")
+/// }
+/// resource "gcp_cloudfunctionsv2_function" "function" {
+///   name     = "synthetic_function"
+///   location = "us-central1"
+///   build_config = {
+///     runtime     = "nodejs20"
+///     entry_point = "SyntheticFunction"
+///     source = {
+///       storage_source = {
+///         bucket = gcp_storage_bucket.bucket.name
+///         object = gcp_storage_bucketobject.object.name
+///       }
+///     }
+///   }
+///   service_config = {
+///     max_instance_count = 1
+///     available_memory   = "256M"
+///     timeout_seconds    = 60
+///   }
+/// }
+/// resource "gcp_monitoring_uptimecheckconfig" "synthetic_monitor" {
+///   display_name = "synthetic_monitor"
+///   timeout      = "60s"
+///   synthetic_monitor = {
+///     cloud_function_v2 = {
+///       name = gcp_cloudfunctionsv2_function.function.id
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -1589,8 +1842,8 @@ import 'uptime_check_config_tcp_check.dart';
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigSyntheticMonitorArgs;
 /// import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1661,7 +1914,7 @@ import 'uptime_check_config_tcp_check.dart';
 ///       name: function-source.zip
 ///       bucket: ${bucket.name}
 ///       source:
-///         fn::FileAsset: synthetic-fn-source.zip
+///         fn::fileAsset: synthetic-fn-source.zip
 ///   function:
 ///     type: gcp:cloudfunctionsv2:Function
 ///     properties:
@@ -1695,31 +1948,31 @@ import 'uptime_check_config_tcp_check.dart';
 /// UptimeCheckConfig can be imported using any of these accepted formats:
 ///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{project}} {{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, UptimeCheckConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default "{{project}} {{name}}"
-/// ```
-///
-/// ```sh
+/// $ terraform import google_monitoring_uptime_check_config.default "{{project}} {{name}}"
 /// $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
 /// ```
 class UptimeCheckConfig extends pulumi.CustomResource {
-  /// The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
+  /// The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
   /// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
   late final pulumi.Output<String> checkerType;
   /// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> contentMatchers;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
   late final pulumi.Output<String> displayName;
   /// Contains information needed to make an HTTP or HTTPS check.
@@ -1727,8 +1980,7 @@ class UptimeCheckConfig extends pulumi.CustomResource {
   late final pulumi.Output<UptimeCheckConfigHttpCheck?> httpCheck;
   /// Specifies whether to log the results of failed probes to Cloud Logging.
   late final pulumi.Output<bool?> logCheckFailures;
-  /// The [monitored resource]
-  /// (https://cloud.google.com/monitoring/api/resources) associated with the
+  /// The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
   /// configuration. The following monitored resource types are supported for
   /// uptime checks:
   late final pulumi.Output<UptimeCheckConfigMonitoredResource?> monitoredResource;
@@ -1773,6 +2025,7 @@ class UptimeCheckConfig extends pulumi.CustomResource {
         ) {
     checkerType = registerOutput<String>('checkerType');
     contentMatchers = registerOutput<List<Map<String, dynamic>>?>('contentMatchers');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     httpCheck = registerOutput<UptimeCheckConfigHttpCheck?>('httpCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigHttpCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logCheckFailures = registerOutput<bool?>('logCheckFailures');
@@ -1814,6 +2067,7 @@ class UptimeCheckConfig extends pulumi.CustomResource {
         ) {
     checkerType = registerOutput<String>('checkerType');
     contentMatchers = registerOutput<List<Map<String, dynamic>>?>('contentMatchers');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     httpCheck = registerOutput<UptimeCheckConfigHttpCheck?>('httpCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigHttpCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logCheckFailures = registerOutput<bool?>('logCheckFailures');

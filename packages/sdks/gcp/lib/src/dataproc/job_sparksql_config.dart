@@ -13,10 +13,10 @@ class JobSparksqlConfig {
   /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
   final pulumi.Input<Map<String, String>>? properties;
   /// The HCFS URI of the script that contains SQL queries.
-  /// Conflicts with `query_list`
+  /// Conflicts with `queryList`
   final pulumi.Input<String>? queryFileUri;
   /// The list of SQL queries or statements to execute as part of the job.
-  /// Conflicts with `query_file_uri`
+  /// Conflicts with `queryFileUri`
   final pulumi.Input<List<String>>? queryLists;
   /// Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name="value";`).
   final pulumi.Input<Map<String, String>>? scriptVariables;
@@ -59,4 +59,3 @@ class JobSparksqlConfig {
     );
   }
 }
-

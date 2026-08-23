@@ -99,6 +99,13 @@ class CloudVmClusterProperties {
   /// MAINTENANCE_IN_PROGRESS
   final pulumi.Input<String>? state;
   /// (Output)
+  /// The storage management type of the VM Cluster.
+  /// Possible values:
+  /// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+  /// ASM
+  /// EXASCALE
+  final pulumi.Input<String>? storageManagementType;
+  /// (Output)
   /// The storage allocation for the disk group, in gigabytes (GB).
   final pulumi.Input<int>? storageSizeGb;
   /// (Output)
@@ -139,6 +146,7 @@ class CloudVmClusterProperties {
   /// [sparseDiskgroupEnabled] Use exadata sparse snapshots.
   /// [sshPublicKeys] SSH public keys to be stored with cluster.
   /// [state] (Output)
+  /// [storageManagementType] (Output)
   /// [storageSizeGb] (Output)
   /// [systemVersion] (Output)
   /// [timeZone] Represents a time zone from the
@@ -172,6 +180,7 @@ class CloudVmClusterProperties {
     this.sparseDiskgroupEnabled,
     this.sshPublicKeys,
     this.state,
+    this.storageManagementType,
     this.storageSizeGb,
     this.systemVersion,
     this.timeZone,
@@ -208,6 +217,7 @@ class CloudVmClusterProperties {
       'sparseDiskgroupEnabled': ?sparseDiskgroupEnabled,
       'sshPublicKeys': ?sshPublicKeys,
       'state': ?state,
+      'storageManagementType': ?storageManagementType,
       'storageSizeGb': ?storageSizeGb,
       'systemVersion': ?systemVersion,
       'timeZone': ?pulumi.Input.mapOptionalInputValue<CloudVmClusterPropertiesTimeZone, Map<String, dynamic>>(timeZone, (value) => value.toMap()),
@@ -245,10 +255,10 @@ class CloudVmClusterProperties {
       sparseDiskgroupEnabled: (() { final guardedValue = map['sparseDiskgroupEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sshPublicKeys: (() { final guardedValue = map['sshPublicKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageManagementType: (() { final guardedValue = map['storageManagementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageSizeGb: (() { final guardedValue = map['storageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       systemVersion: (() { final guardedValue = map['systemVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CloudVmClusterPropertiesTimeZone.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

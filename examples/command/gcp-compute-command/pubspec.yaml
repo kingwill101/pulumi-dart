@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   pulumi: 3.0.0
-  pulumi_gcp: 9.11.0
+  pulumi_gcp: 9.35.0
   pulumi_command: 1.2.1
 
 dev_dependencies:

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_profile_mysql_ssl.dart';
 
 class ConnectionProfileMysql {
-  /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+  /// If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
   final pulumi.Input<String>? cloudSqlId;
   /// The IP or hostname of the source MySQL database.
   final pulumi.Input<String>? host;
@@ -24,7 +24,7 @@ class ConnectionProfileMysql {
   final pulumi.Input<String>? username;
 
   /// Creates a new [ConnectionProfileMysql].
-  /// [cloudSqlId] If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+  /// [cloudSqlId] If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
   /// [host] The IP or hostname of the source MySQL database.
   /// [password] Input only. The password for the user that Database Migration Service will be using to connect to the database.
   /// [passwordSet] (Output)
@@ -65,4 +65,3 @@ class ConnectionProfileMysql {
     );
   }
 }
-

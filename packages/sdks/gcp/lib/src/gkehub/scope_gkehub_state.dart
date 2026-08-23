@@ -9,19 +9,26 @@ class ScopeGkehubState {
   final pulumi.Input<String>? createTime;
   /// Time the Scope was deleted in UTC.
   final pulumi.Input<String>? deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Labels for this Scope.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The unique identifier of the scope
   final pulumi.Input<String>? name;
   /// Scope-level cluster namespace labels. For the member clusters bound
   /// to the Scope, these labels are applied to each namespace under the
   /// Scope. Scope-level labels take precedence over Namespace-level
-  /// labels (`namespace_labels` in the Fleet Namespace resource) if they
+  /// labels (`namespaceLabels` in the Fleet Namespace resource) if they
   /// share a key. Keys and values must be Kubernetes-conformant.
   final pulumi.Input<Map<String, String>>? namespaceLabels;
   /// The ID of the project in which the resource belongs.
@@ -43,6 +50,7 @@ class ScopeGkehubState {
   /// Creates a new [ScopeGkehubState].
   /// [createTime] Time the Scope was created in UTC.
   /// [deleteTime] Time the Scope was deleted in UTC.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [labels] Labels for this Scope.
   /// [name] The unique identifier of the scope
@@ -56,6 +64,7 @@ class ScopeGkehubState {
   const ScopeGkehubState({
     this.createTime,
     this.deleteTime,
+    this.deletionPolicy,
     this.effectiveLabels,
     this.labels,
     this.name,
@@ -72,6 +81,7 @@ class ScopeGkehubState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'deleteTime': ?deleteTime,
+      'deletionPolicy': ?deletionPolicy,
       'effectiveLabels': ?effectiveLabels,
       'labels': ?labels,
       'name': ?name,
@@ -89,6 +99,7 @@ class ScopeGkehubState {
     return ScopeGkehubState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -102,4 +113,3 @@ class ScopeGkehubState {
     );
   }
 }
-

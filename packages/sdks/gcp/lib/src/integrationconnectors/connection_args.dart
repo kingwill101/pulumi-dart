@@ -23,6 +23,13 @@ class ConnectionArgs {
   final pulumi.Input<List<ConnectionConfigVariable>>? configVariables;
   /// connectorVersion of the Connector.
   final pulumi.Input<String> connectorVersion;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An arbitrary description for the Connection.
   final pulumi.Input<String>? description;
   /// Define the Connectors target endpoint.
@@ -37,7 +44,7 @@ class ConnectionArgs {
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Location in which Connection needs to be created.
   final pulumi.Input<String> location;
@@ -67,6 +74,7 @@ class ConnectionArgs {
   /// [authConfig] authConfig for the connection.
   /// [configVariables] Config Variables for the connection.
   /// [connectorVersion] connectorVersion of the Connector.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An arbitrary description for the Connection.
   /// [destinationConfigs] Define the Connectors target endpoint.
   /// [eventingConfig] Eventing Configuration of a connection
@@ -85,6 +93,7 @@ class ConnectionArgs {
     this.authConfig,
     this.configVariables,
     required this.connectorVersion,
+    this.deletionPolicy,
     this.description,
     this.destinationConfigs,
     this.eventingConfig,
@@ -106,6 +115,7 @@ class ConnectionArgs {
       'authConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionAuthConfig, Map<String, dynamic>>(authConfig, (value) => value.toMap()),
       'configVariables': ?pulumi.Input.mapOptionalInputValue<List<ConnectionConfigVariable>, List<Map<String, dynamic>>>(configVariables, (value) => pulumi.Input.encodeList<ConnectionConfigVariable, Map<String, dynamic>>(value, (value) => value.toMap())),
       'connectorVersion': connectorVersion,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'destinationConfigs': ?pulumi.Input.mapOptionalInputValue<List<ConnectionDestinationConfig>, List<Map<String, dynamic>>>(destinationConfigs, (value) => pulumi.Input.encodeList<ConnectionDestinationConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'eventingConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionEventingConfig, Map<String, dynamic>>(eventingConfig, (value) => value.toMap()),
@@ -128,6 +138,7 @@ class ConnectionArgs {
       authConfig: (() { final guardedValue = map['authConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       configVariables: (() { final guardedValue = map['configVariables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionConfigVariable>(guardedValue, (value) => ConnectionConfigVariable.fromMap((value as Map).cast<String, dynamic>()))); })(),
       connectorVersion: pulumi.Input.fromValue(map['connectorVersion'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationConfigs: (() { final guardedValue = map['destinationConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionDestinationConfig>(guardedValue, (value) => ConnectionDestinationConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       eventingConfig: (() { final guardedValue = map['eventingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionEventingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -145,4 +156,3 @@ class ConnectionArgs {
     );
   }
 }
-

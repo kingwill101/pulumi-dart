@@ -88,4 +88,3 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState {
     );
   }
 }
-

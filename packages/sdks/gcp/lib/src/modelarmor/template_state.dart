@@ -8,6 +8,13 @@ import 'template_template_metadata.dart';
 class TemplateState {
   /// Create time stamp
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Filters configuration.
@@ -15,7 +22,7 @@ class TemplateState {
   final pulumi.Input<TemplateFilterConfig>? filterConfig;
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
@@ -29,7 +36,7 @@ class TemplateState {
   final pulumi.Input<Map<String, String>>? pulumiLabels;
   /// Id of the requesting object
   /// If auto-generating Id server-side, remove this field and
-  /// template_id from the method_signature of Create RPC
+  /// templateId from the methodSignature of Create RPC
   final pulumi.Input<String>? templateId;
   /// Message describing TemplateMetadata
   /// Structure is documented below.
@@ -39,6 +46,7 @@ class TemplateState {
 
   /// Creates a new [TemplateState].
   /// [createTime] Create time stamp
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [filterConfig] Filters configuration.
   /// [labels] Labels as key value pairs
@@ -51,6 +59,7 @@ class TemplateState {
   /// [updateTime] Update time stamp
   const TemplateState({
     this.createTime,
+    this.deletionPolicy,
     this.effectiveLabels,
     this.filterConfig,
     this.labels,
@@ -66,6 +75,7 @@ class TemplateState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'effectiveLabels': ?effectiveLabels,
       'filterConfig': ?pulumi.Input.mapOptionalInputValue<TemplateFilterConfig, Map<String, dynamic>>(filterConfig, (value) => value.toMap()),
       'labels': ?labels,
@@ -82,6 +92,7 @@ class TemplateState {
   factory TemplateState.fromMap(Map<String, dynamic> map) {
     return TemplateState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       filterConfig: (() { final guardedValue = map['filterConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TemplateFilterConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -95,4 +106,3 @@ class TemplateState {
     );
   }
 }
-

@@ -59,6 +59,19 @@ import 'get_service_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_servicedirectory_getnamespaceiampolicy" "policy" {
+///   name = example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +80,8 @@ import 'get_service_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.servicedirectory.ServicedirectoryFunctions;
 /// import com.pulumi.gcp.servicedirectory.inputs.GetNamespaceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -81,7 +94,7 @@ import 'get_service_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ServicedirectoryFunctions.getNamespaceIamPolicy(GetNamespaceIamPolicyArgs.builder()
-///             .name(example.name())
+///             .name(example.get("name"))
 ///             .build());
 ///
 ///     }
@@ -165,6 +178,19 @@ Future<GetNamespaceIamPolicyResult> getNamespaceIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_servicedirectory_getserviceiampolicy" "policy" {
+///   name = example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -173,8 +199,8 @@ Future<GetNamespaceIamPolicyResult> getNamespaceIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.servicedirectory.ServicedirectoryFunctions;
 /// import com.pulumi.gcp.servicedirectory.inputs.GetServiceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -187,7 +213,7 @@ Future<GetNamespaceIamPolicyResult> getNamespaceIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ServicedirectoryFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-///             .name(example.name())
+///             .name(example.get("name"))
 ///             .build());
 ///
 ///     }

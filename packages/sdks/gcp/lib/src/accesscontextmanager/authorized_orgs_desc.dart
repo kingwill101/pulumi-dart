@@ -16,10 +16,10 @@ import 'authorized_orgs_desc_state.dart';
 /// * [gcloud docs](https://cloud.google.com/beyondcorp-enterprise/docs/cross-org-authorization)
 ///
 /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-/// you must specify a `billing_project` and set `user_project_override` to true
+/// you must specify a `billingProject` and set `userProjectOverride` to true
 /// in the provider configuration. Otherwise the ACM API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
-/// `billing_project` you defined.
+/// `billingProject` you defined.
 ///
 /// ## Example Usage
 ///
@@ -136,6 +136,28 @@ import 'authorized_orgs_desc_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_authorizedorgsdesc" "authorized-orgs-desc" {
+///   parent                  ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.test-access.name}"
+///   name                    ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.test-access.name}/authorizedOrgsDescs/fakeDescName"
+///   authorization_type      = "AUTHORIZATION_TYPE_TRUST"
+///   asset_type              = "ASSET_TYPE_CREDENTIAL_STRENGTH"
+///   authorization_direction = "AUTHORIZATION_DIRECTION_TO"
+///   orgs                    = ["organizations/12345", "organizations/98765"]
+/// }
+/// resource "gcp_accesscontextmanager_accesspolicy" "test-access" {
+///   parent = "organizations/123456789"
+///   title  = "my policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -146,8 +168,8 @@ import 'authorized_orgs_desc_state.dart';
 /// import com.pulumi.gcp.accesscontextmanager.AccessPolicyArgs;
 /// import com.pulumi.gcp.accesscontextmanager.AuthorizedOrgsDesc;
 /// import com.pulumi.gcp.accesscontextmanager.AuthorizedOrgsDescArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -205,6 +227,7 @@ import 'authorized_orgs_desc_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, AuthorizedOrgsDesc can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -237,9 +260,16 @@ class AuthorizedOrgsDesc extends pulumi.CustomResource {
   late final pulumi.Output<String?> authorizationType;
   /// Time the AuthorizedOrgsDesc was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Resource name for the `AuthorizedOrgsDesc`. Format:
   /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
-  /// The `authorized_orgs_desc` component must begin with a letter, followed by
+  /// The `authorizedOrgsDesc` component must begin with a letter, followed by
   /// alphanumeric characters or `_`.
   /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
   late final pulumi.Output<String> name;
@@ -270,6 +300,7 @@ class AuthorizedOrgsDesc extends pulumi.CustomResource {
     authorizationDirection = registerOutput<String?>('authorizationDirection');
     authorizationType = registerOutput<String?>('authorizationType');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     orgs = registerOutput<List<String>?>('orgs');
     parent = registerOutput<String>('parent');
@@ -303,6 +334,7 @@ class AuthorizedOrgsDesc extends pulumi.CustomResource {
     authorizationDirection = registerOutput<String?>('authorizationDirection');
     authorizationType = registerOutput<String?>('authorizationType');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     orgs = registerOutput<List<String>?>('orgs');
     parent = registerOutput<String>('parent');

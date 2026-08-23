@@ -4,7 +4,7 @@ import 'sub_account_state.dart';
 
 /// Allows creation and management of a Google Cloud Billing Subaccount.
 ///
-/// !&gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
+/// &gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
 ///
 ///
 /// ```typescript
@@ -61,6 +61,20 @@ import 'sub_account_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_billing_subaccount" "subaccount" {
+///   display_name           = "My Billing Account"
+///   master_billing_account = "012345-567890-ABCDEF"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'sub_account_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.billing.SubAccount;
 /// import com.pulumi.gcp.billing.SubAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -106,6 +120,7 @@ import 'sub_account_state.dart';
 ///
 /// * `billingAccounts/{billing_account_id}`
 ///
+///
 /// When using the `pulumi import` command, Billing Subaccounts can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -114,10 +129,16 @@ import 'sub_account_state.dart';
 class SubAccount extends pulumi.CustomResource {
   /// The billing account id.
   late final pulumi.Output<String> billingAccountId;
-  /// If set to "RENAME_ON_DESTROY" the billing account display_name
+  /// If set to "RENAME_ON_DESTROY" the billing account displayName
   /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-  /// Default is "".
-  late final pulumi.Output<String?> deletionPolicy;
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", the command will behave as if set to "".
+  ///
+  /// Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
+  late final pulumi.Output<String> deletionPolicy;
   /// The display name of the billing account.
   late final pulumi.Output<String> displayName;
   /// The name of the master billing account that the subaccount
@@ -143,7 +164,7 @@ class SubAccount extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     billingAccountId = registerOutput<String>('billingAccountId');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     masterBillingAccount = registerOutput<String>('masterBillingAccount');
     this.name = registerOutput<String>('name');
@@ -174,7 +195,7 @@ class SubAccount extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     billingAccountId = registerOutput<String>('billingAccountId');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     masterBillingAccount = registerOutput<String>('masterBillingAccount');
     this.name = registerOutput<String>('name');

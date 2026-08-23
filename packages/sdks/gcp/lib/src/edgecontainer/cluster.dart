@@ -145,8 +145,6 @@ import 'cluster_system_addons_config.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/edgecontainer"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -196,6 +194,44 @@ import 'cluster_system_addons_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_edgecontainer_cluster" "default" {
+///   name     = "local-control-plane-cluster"
+///   location = "us-central1"
+///   authorization = {
+///     admin_users = {
+///       username = "admin@hashicorptest.com"
+///     }
+///   }
+///   networking = {
+///     cluster_ipv4_cidr_blocks  = ["10.0.0.0/16"]
+///     services_ipv4_cidr_blocks = ["10.1.0.0/16"]
+///   }
+///   fleet = {
+///     project ="projects/${data.gcp_organizations_getproject.project.number}"
+///   }
+///   external_load_balancer_ipv4_address_pools = ["10.100.0.0-10.100.0.10"]
+///   control_plane = {
+///     local = {
+///       node_location            = "us-central1-edge-example-edgesite"
+///       node_count               = 1
+///       machine_filter           = "machine-name"
+///       shared_deployment_policy = "ALLOWED"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -212,8 +248,8 @@ import 'cluster_system_addons_config.dart';
 /// import com.pulumi.gcp.edgecontainer.inputs.ClusterFleetArgs;
 /// import com.pulumi.gcp.edgecontainer.inputs.ClusterControlPlaneArgs;
 /// import com.pulumi.gcp.edgecontainer.inputs.ClusterControlPlaneLocalArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -295,22 +331,15 @@ import 'cluster_system_addons_config.dart';
 /// Cluster can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/clusters/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:edgecontainer/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:edgecontainer/cluster:Cluster default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:edgecontainer/cluster:Cluster default {{location}}/{{name}}
 /// ```
 class Cluster extends pulumi.CustomResource {
@@ -336,6 +365,13 @@ class Cluster extends pulumi.CustomResource {
   /// specified explicitly for a node pool in this cluster. If unspecified, the
   /// Kubernetes default value will be used.
   late final pulumi.Output<int> defaultMaxPodsPerNode;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The IP address of the Kubernetes API server.
@@ -350,7 +386,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterFleet> fleet;
   /// User-defined labels for the edgecloud cluster.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the resource.
   late final pulumi.Output<String> location;
@@ -415,6 +451,7 @@ class Cluster extends pulumi.CustomResource {
     controlPlaneVersion = registerOutput<String>('controlPlaneVersion');
     createTime = registerOutput<String>('createTime');
     defaultMaxPodsPerNode = registerOutput<int>('defaultMaxPodsPerNode');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpoint = registerOutput<String>('endpoint');
     externalLoadBalancerIpv4AddressPools = registerOutput<List<String>>('externalLoadBalancerIpv4AddressPools');
@@ -466,6 +503,7 @@ class Cluster extends pulumi.CustomResource {
     controlPlaneVersion = registerOutput<String>('controlPlaneVersion');
     createTime = registerOutput<String>('createTime');
     defaultMaxPodsPerNode = registerOutput<int>('defaultMaxPodsPerNode');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpoint = registerOutput<String>('endpoint');
     externalLoadBalancerIpv4AddressPools = registerOutput<List<String>>('externalLoadBalancerIpv4AddressPools');

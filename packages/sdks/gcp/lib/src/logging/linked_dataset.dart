@@ -93,7 +93,7 @@ import 'linked_dataset_state.dart';
 /// 		}
 /// 		_, err = logging.NewLinkedDataset(ctx, "logging_linked_dataset", &logging.LinkedDatasetArgs{
 /// 			LinkId:      pulumi.String("mylink"),
-/// 			Bucket:      loggingLinkedDataset.ID(),
+/// 			Bucket:      loggingLinkedDataset.ID().ToIDOutput().ToStringOutput(),
 /// 			Description: pulumi.String("Linked dataset test"),
 /// 		})
 /// 		if err != nil {
@@ -101,6 +101,27 @@ import 'linked_dataset_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_projectbucketconfig" "logging_linked_dataset" {
+///   location         = "global"
+///   project          = "my-project-name"
+///   enable_analytics = true
+///   bucket_id        = "my-bucket"
+/// }
+/// resource "gcp_logging_linkeddataset" "logging_linked_dataset" {
+///   link_id     = "mylink"
+///   bucket      = gcp_logging_projectbucketconfig.logging_linked_dataset.id
+///   description = "Linked dataset test"
 /// }
 /// ```
 /// ```java
@@ -113,8 +134,8 @@ import 'linked_dataset_state.dart';
 /// import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
 /// import com.pulumi.gcp.logging.LinkedDataset;
 /// import com.pulumi.gcp.logging.LinkedDatasetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,6 +291,30 @@ import 'linked_dataset_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_projectbucketconfig" "logging_linked_dataset" {
+///   location         = "global"
+///   project          = "my-project-name"
+///   enable_analytics = true
+///   bucket_id        = "my-bucket"
+/// }
+/// resource "gcp_logging_linkeddataset" "logging_linked_dataset" {
+///   depends_on  = [gcp_logging_projectbucketconfig.logging_linked_dataset]
+///   link_id     = "mylink"
+///   bucket      = "my-bucket"
+///   parent      = "projects/my-project-name"
+///   location    = "global"
+///   description = "Linked dataset test"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -281,8 +326,8 @@ import 'linked_dataset_state.dart';
 /// import com.pulumi.gcp.logging.LinkedDataset;
 /// import com.pulumi.gcp.logging.LinkedDatasetArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,6 +390,7 @@ import 'linked_dataset_state.dart';
 ///
 /// * `{{parent}}/locations/{{location}}/buckets/{{bucket}}/links/{{link_id}}`
 ///
+///
 /// When using the `pulumi import` command, LinkedDataset can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -362,6 +408,13 @@ class LinkedDataset extends pulumi.CustomResource {
   /// with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
   /// and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Describes this link. The maximum length of the description is 8000 characters.
   late final pulumi.Output<String?> description;
   /// Output only. The linked dataset lifecycle state.
@@ -393,6 +446,7 @@ class LinkedDataset extends pulumi.CustomResource {
     bigqueryDatasets = registerOutput<List<Map<String, dynamic>>>('bigqueryDatasets');
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     lifecycleState = registerOutput<String>('lifecycleState');
     linkId = registerOutput<String>('linkId');
@@ -427,6 +481,7 @@ class LinkedDataset extends pulumi.CustomResource {
     bigqueryDatasets = registerOutput<List<Map<String, dynamic>>>('bigqueryDatasets');
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     lifecycleState = registerOutput<String>('lifecycleState');
     linkId = registerOutput<String>('linkId');

@@ -15,10 +15,10 @@ class JobSparkConfig {
   /// The runtime logging config of the job
   final pulumi.Input<JobSparkConfigLoggingConfig>? loggingConfig;
   /// The class containing the main method of the driver. Must be in a
-  /// provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
+  /// provided jar or jar that is already on the classpath. Conflicts with `mainJarFileUri`
   final pulumi.Input<String>? mainClass;
   /// The HCFS URI of jar file containing
-  /// the driver jar. Conflicts with `main_class`
+  /// the driver jar. Conflicts with `mainClass`
   final pulumi.Input<String>? mainJarFileUri;
   /// A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
   ///
@@ -71,4 +71,3 @@ class JobSparkConfig {
     );
   }
 }
-

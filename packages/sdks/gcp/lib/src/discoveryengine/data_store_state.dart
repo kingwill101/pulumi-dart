@@ -6,6 +6,13 @@ import 'data_store_document_processing_config.dart';
 
 /// Input properties used for looking up and filtering DataStore resources.
 class DataStoreState {
+  /// Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+  /// the source data must have ACL. ACL will be ingested when data is ingested by
+  /// DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+  /// Document can't be accessed by calling DocumentService.GetDocument or
+  /// DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+  /// industry vertical with non-`PUBLIC_WEBSITE` content config.
+  final pulumi.Input<bool>? aclEnabled;
   /// Configuration data for advance site search.
   /// Structure is documented below.
   final pulumi.Input<DataStoreAdvancedSiteSearchConfig>? advancedSiteSearchConfig;
@@ -22,6 +29,13 @@ class DataStoreState {
   final pulumi.Input<String>? dataStoreId;
   /// The id of the default Schema associated with this data store.
   final pulumi.Input<String>? defaultSchemaId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The display name of the data store. This field must be a UTF-8 encoded
   /// string with a length limit of 128 characters.
   final pulumi.Input<String>? displayName;
@@ -36,7 +50,7 @@ class DataStoreState {
   /// The KMS key to be used to protect this DataStore at creation time. Must be
   /// set for requests that need to comply with CMEK Org Policy protections.
   /// If this field is set and processed successfully, the DataStore will be
-  /// protected by the KMS key, as indicated in the cmek_config field.
+  /// protected by the KMS key, as indicated in the cmekConfig field.
   final pulumi.Input<String>? kmsKeyName;
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
@@ -62,12 +76,14 @@ class DataStoreState {
   final pulumi.Input<List<String>>? solutionTypes;
 
   /// Creates a new [DataStoreState].
+  /// [aclEnabled] Immutable. Whether data in the DataStore has ACL information. If set to `true`,
   /// [advancedSiteSearchConfig] Configuration data for advance site search.
   /// [contentConfig] The content config of the data store.
   /// [createAdvancedSiteSearch] If true, an advanced data store for site search will be created. If the
   /// [createTime] Timestamp when the DataStore was created.
   /// [dataStoreId] The unique id of the data store.
   /// [defaultSchemaId] The id of the default Schema associated with this data store.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The display name of the data store. This field must be a UTF-8 encoded
   /// [documentProcessingConfig] Configuration for Document understanding and enrichment.
   /// [industryVertical] The industry vertical that the data store registers.
@@ -78,12 +94,14 @@ class DataStoreState {
   /// [skipDefaultSchemaCreation] A boolean flag indicating whether to skip the default schema creation for
   /// [solutionTypes] The solutions that the data store enrolls.
   const DataStoreState({
+    this.aclEnabled,
     this.advancedSiteSearchConfig,
     this.contentConfig,
     this.createAdvancedSiteSearch,
     this.createTime,
     this.dataStoreId,
     this.defaultSchemaId,
+    this.deletionPolicy,
     this.displayName,
     this.documentProcessingConfig,
     this.industryVertical,
@@ -97,12 +115,14 @@ class DataStoreState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'aclEnabled': ?aclEnabled,
       'advancedSiteSearchConfig': ?pulumi.Input.mapOptionalInputValue<DataStoreAdvancedSiteSearchConfig, Map<String, dynamic>>(advancedSiteSearchConfig, (value) => value.toMap()),
       'contentConfig': ?contentConfig,
       'createAdvancedSiteSearch': ?createAdvancedSiteSearch,
       'createTime': ?createTime,
       'dataStoreId': ?dataStoreId,
       'defaultSchemaId': ?defaultSchemaId,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'documentProcessingConfig': ?pulumi.Input.mapOptionalInputValue<DataStoreDocumentProcessingConfig, Map<String, dynamic>>(documentProcessingConfig, (value) => value.toMap()),
       'industryVertical': ?industryVertical,
@@ -117,12 +137,14 @@ class DataStoreState {
 
   factory DataStoreState.fromMap(Map<String, dynamic> map) {
     return DataStoreState(
+      aclEnabled: (() { final guardedValue = map['aclEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       advancedSiteSearchConfig: (() { final guardedValue = map['advancedSiteSearchConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataStoreAdvancedSiteSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       contentConfig: (() { final guardedValue = map['contentConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createAdvancedSiteSearch: (() { final guardedValue = map['createAdvancedSiteSearch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataStoreId: (() { final guardedValue = map['dataStoreId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultSchemaId: (() { final guardedValue = map['defaultSchemaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       documentProcessingConfig: (() { final guardedValue = map['documentProcessingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataStoreDocumentProcessingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       industryVertical: (() { final guardedValue = map['industryVertical']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -135,4 +157,3 @@ class DataStoreState {
     );
   }
 }
-

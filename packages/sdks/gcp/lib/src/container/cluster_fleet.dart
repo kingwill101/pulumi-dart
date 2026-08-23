@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterFleet {
-  /// Full resource name of the registered fleet membership of the cluster.
+  /// The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
   final pulumi.Input<String>? membership;
-  /// Short name of the fleet membership, for example "member-1".
+  /// The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
   final pulumi.Input<String>? membershipId;
-  /// Location of the fleet membership, for example "us-central1".
+  /// The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
   final pulumi.Input<String>? membershipLocation;
-  /// Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membership_type will be a regular membership that supports all features.
+  /// Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membershipType will be a regular membership that supports all features.
   final pulumi.Input<String>? membershipType;
   /// Whether the cluster has been registered via the fleet API.
   final pulumi.Input<bool>? preRegistered;
@@ -17,10 +17,10 @@ class ClusterFleet {
   final pulumi.Input<String>? project;
 
   /// Creates a new [ClusterFleet].
-  /// [membership] Full resource name of the registered fleet membership of the cluster.
-  /// [membershipId] Short name of the fleet membership, for example "member-1".
-  /// [membershipLocation] Location of the fleet membership, for example "us-central1".
-  /// [membershipType] Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membership_type will be a regular membership that supports all features.
+  /// [membership] The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
+  /// [membershipId] The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
+  /// [membershipLocation] The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
+  /// [membershipType] Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membershipType will be a regular membership that supports all features.
   /// [preRegistered] Whether the cluster has been registered via the fleet API.
   /// [project] The name of the Fleet host project where this cluster will be registered.
   const ClusterFleet({
@@ -54,4 +54,3 @@ class ClusterFleet {
     );
   }
 }
-

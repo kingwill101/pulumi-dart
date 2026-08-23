@@ -4,9 +4,10 @@ import 'workstation_state.dart';
 
 /// A single instance of a developer workstation with its own persistent storage.
 ///
+///
 /// To get more information about Workstation, see:
 ///
-/// * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs.workstations)
+/// * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs.workstations)
 /// * How-to Guides
 /// * [Workstations](https://cloud.google.com/workstations/docs/)
 ///
@@ -224,8 +225,8 @@ import 'workstation_state.dart';
 /// 		}
 /// 		defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 /// 			WorkstationClusterId: pulumi.String("workstation-cluster"),
-/// 			Network:              _default.ID(),
-/// 			Subnetwork:           defaultSubnetwork.ID(),
+/// 			Network:              _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:             pulumi.String("us-central1"),
 /// 			Labels: pulumi.StringMap{
 /// 				"label": pulumi.String("key"),
@@ -274,6 +275,65 @@ import 'workstation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name                    = "workstation-cluster"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "workstation-cluster"
+///   ip_cidr_range = "10.0.0.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.name
+/// }
+/// resource "gcp_workstations_workstationcluster" "default" {
+///   workstation_cluster_id = "workstation-cluster"
+///   network                = gcp_compute_network.default.id
+///   subnetwork             = gcp_compute_subnetwork.default.id
+///   location               = "us-central1"
+///   labels = {
+///     "label" = "key"
+///   }
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// resource "gcp_workstations_workstationconfig" "default" {
+///   workstation_config_id  = "workstation-config"
+///   workstation_cluster_id = gcp_workstations_workstationcluster.default.workstation_cluster_id
+///   location               = "us-central1"
+///   host = {
+///     gce_instance = {
+///       machine_type                = "e2-standard-4"
+///       boot_disk_size_gb           = 35
+///       disable_public_ip_addresses = true
+///     }
+///   }
+/// }
+/// resource "gcp_workstations_workstation" "default" {
+///   workstation_id         = "work-station"
+///   workstation_config_id  = gcp_workstations_workstationconfig.default.workstation_config_id
+///   workstation_cluster_id = gcp_workstations_workstationcluster.default.workstation_cluster_id
+///   location               = "us-central1"
+///   labels = {
+///     "label" = "key"
+///   }
+///   env = {
+///     "name" = "foo"
+///   }
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -292,8 +352,8 @@ import 'workstation_state.dart';
 /// import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceArgs;
 /// import com.pulumi.gcp.workstations.Workstation;
 /// import com.pulumi.gcp.workstations.WorkstationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -413,33 +473,34 @@ import 'workstation_state.dart';
 /// Workstation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}`
-///
 /// * `{{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}`
-///
 /// * `{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}`
+///
 ///
 /// When using the `pulumi import` command, Workstation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:workstations/workstation:Workstation default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:workstations/workstation:Workstation default {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:workstations/workstation:Workstation default {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}
 /// ```
 class Workstation extends pulumi.CustomResource {
   /// Client-specified annotations. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Time when this resource was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Human-readable name for this resource.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -451,7 +512,7 @@ class Workstation extends pulumi.CustomResource {
   late final pulumi.Output<String> host;
   /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location where the workstation parent resources reside.
   late final pulumi.Output<String> location;
@@ -493,6 +554,7 @@ class Workstation extends pulumi.CustomResource {
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -536,6 +598,7 @@ class Workstation extends pulumi.CustomResource {
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

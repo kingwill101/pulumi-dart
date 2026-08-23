@@ -24,7 +24,7 @@ class ApiHubInstanceState {
   /// Refer to cloud documentation on labels for more details.
   /// https://cloud.google.com/compute/docs/labeling-resources
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
@@ -119,4 +119,3 @@ class ApiHubInstanceState {
     );
   }
 }
-

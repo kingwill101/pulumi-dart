@@ -6,8 +6,8 @@ import 'ai_feature_group_iam_member_state.dart';
 /// Three different resources help you manage your IAM policy for Vertex AI FeatureGroup. Each of these resources serves a different use case:
 ///
 /// * `gcp.vertex.AiFeatureGroupIamPolicy`: Authoritative. Sets the IAM policy for the featuregroup and replaces any existing policy already attached.
-/// * `gcp.vertex.AiFeatureGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featuregroup are preserved.
-/// * `gcp.vertex.AiFeatureGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featuregroup are preserved.
+/// * `gcp.vertex.AiFeatureGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featuregroup are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.vertex.AiFeatureGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featuregroup are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -17,6 +17,8 @@ import 'ai_feature_group_iam_member_state.dart';
 ///
 /// &gt; **Note:** `gcp.vertex.AiFeatureGroupIamBinding` resources **can be** used in conjunction with `gcp.vertex.AiFeatureGroupIamMember` resources **only if** they do not grant privilege to the same role.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 ///
 /// ## gcp.vertex.AiFeatureGroupIamPolicy
 ///
@@ -118,6 +120,28 @@ import 'ai_feature_group_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeaturegroupiampolicy" "policy" {
+///   region        = featureGroup.region
+///   feature_group = featureGroup.name
+///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,10 +150,11 @@ import 'ai_feature_group_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.vertex.AiFeatureGroupIamPolicy;
 /// import com.pulumi.gcp.vertex.AiFeatureGroupIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -149,8 +174,8 @@ import 'ai_feature_group_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new AiFeatureGroupIamPolicy("policy", AiFeatureGroupIamPolicyArgs.builder()
-///             .region(featureGroup.region())
-///             .featureGroup(featureGroup.name())
+///             .region(featureGroup.get("region"))
+///             .featureGroup(featureGroup.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -247,6 +272,22 @@ import 'ai_feature_group_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeaturegroupiambinding" "binding" {
+///   region        = featureGroup.region
+///   feature_group = featureGroup.name
+///   role          = "roles/viewer"
+///   members       = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -255,8 +296,8 @@ import 'ai_feature_group_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.AiFeatureGroupIamBinding;
 /// import com.pulumi.gcp.vertex.AiFeatureGroupIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,8 +310,8 @@ import 'ai_feature_group_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new AiFeatureGroupIamBinding("binding", AiFeatureGroupIamBindingArgs.builder()
-///             .region(featureGroup.region())
-///             .featureGroup(featureGroup.name())
+///             .region(featureGroup.get("region"))
+///             .featureGroup(featureGroup.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -356,6 +397,22 @@ import 'ai_feature_group_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeaturegroupiammember" "member" {
+///   region        = featureGroup.region
+///   feature_group = featureGroup.name
+///   role          = "roles/viewer"
+///   member        = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -364,8 +421,8 @@ import 'ai_feature_group_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.AiFeatureGroupIamMember;
 /// import com.pulumi.gcp.vertex.AiFeatureGroupIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -378,8 +435,8 @@ import 'ai_feature_group_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new AiFeatureGroupIamMember("member", AiFeatureGroupIamMemberArgs.builder()
-///             .region(featureGroup.region())
-///             .featureGroup(featureGroup.name())
+///             .region(featureGroup.get("region"))
+///             .featureGroup(featureGroup.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -409,8 +466,8 @@ import 'ai_feature_group_iam_member_state.dart';
 /// Three different resources help you manage your IAM policy for Vertex AI FeatureGroup. Each of these resources serves a different use case:
 ///
 /// * `gcp.vertex.AiFeatureGroupIamPolicy`: Authoritative. Sets the IAM policy for the featuregroup and replaces any existing policy already attached.
-/// * `gcp.vertex.AiFeatureGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featuregroup are preserved.
-/// * `gcp.vertex.AiFeatureGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featuregroup are preserved.
+/// * `gcp.vertex.AiFeatureGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featuregroup are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.vertex.AiFeatureGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featuregroup are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -420,6 +477,8 @@ import 'ai_feature_group_iam_member_state.dart';
 ///
 /// &gt; **Note:** `gcp.vertex.AiFeatureGroupIamBinding` resources **can be** used in conjunction with `gcp.vertex.AiFeatureGroupIamMember` resources **only if** they do not grant privilege to the same role.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 ///
 /// ## gcp.vertex.AiFeatureGroupIamPolicy
 ///
@@ -521,6 +580,28 @@ import 'ai_feature_group_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeaturegroupiampolicy" "policy" {
+///   region        = featureGroup.region
+///   feature_group = featureGroup.name
+///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -529,10 +610,11 @@ import 'ai_feature_group_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.vertex.AiFeatureGroupIamPolicy;
 /// import com.pulumi.gcp.vertex.AiFeatureGroupIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -552,8 +634,8 @@ import 'ai_feature_group_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new AiFeatureGroupIamPolicy("policy", AiFeatureGroupIamPolicyArgs.builder()
-///             .region(featureGroup.region())
-///             .featureGroup(featureGroup.name())
+///             .region(featureGroup.get("region"))
+///             .featureGroup(featureGroup.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -650,6 +732,22 @@ import 'ai_feature_group_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeaturegroupiambinding" "binding" {
+///   region        = featureGroup.region
+///   feature_group = featureGroup.name
+///   role          = "roles/viewer"
+///   members       = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -658,8 +756,8 @@ import 'ai_feature_group_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.AiFeatureGroupIamBinding;
 /// import com.pulumi.gcp.vertex.AiFeatureGroupIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -672,8 +770,8 @@ import 'ai_feature_group_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new AiFeatureGroupIamBinding("binding", AiFeatureGroupIamBindingArgs.builder()
-///             .region(featureGroup.region())
-///             .featureGroup(featureGroup.name())
+///             .region(featureGroup.get("region"))
+///             .featureGroup(featureGroup.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -759,6 +857,22 @@ import 'ai_feature_group_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeaturegroupiammember" "member" {
+///   region        = featureGroup.region
+///   feature_group = featureGroup.name
+///   role          = "roles/viewer"
+///   member        = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -767,8 +881,8 @@ import 'ai_feature_group_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.AiFeatureGroupIamMember;
 /// import com.pulumi.gcp.vertex.AiFeatureGroupIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -781,8 +895,8 @@ import 'ai_feature_group_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new AiFeatureGroupIamMember("member", AiFeatureGroupIamMemberArgs.builder()
-///             .region(featureGroup.region())
-///             .featureGroup(featureGroup.name())
+///             .region(featureGroup.get("region"))
+///             .featureGroup(featureGroup.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -807,11 +921,8 @@ import 'ai_feature_group_iam_member_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{region}}/featureGroups/{{name}}
-///
 /// * {{project}}/{{region}}/{{name}}
-///
 /// * {{region}}/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -819,25 +930,21 @@ import 'ai_feature_group_iam_member_state.dart';
 /// Vertex AI featuregroup IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:vertex/aiFeatureGroupIamMember:AiFeatureGroupIamMember editor "projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}} roles/viewer user:jane@example.com"
+/// $ terraform import google_vertex_ai_feature_group_iam_member.editor "projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:vertex/aiFeatureGroupIamMember:AiFeatureGroupIamMember editor "projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}} roles/viewer"
+/// $ terraform import google_vertex_ai_feature_group_iam_binding.editor "projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureGroupIamMember:AiFeatureGroupIamMember editor projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class AiFeatureGroupIamMember extends pulumi.CustomResource {
   late final pulumi.Output<AiFeatureGroupIamMemberCondition?> condition;

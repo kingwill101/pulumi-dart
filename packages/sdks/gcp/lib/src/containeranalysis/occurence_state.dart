@@ -17,6 +17,13 @@ class OccurenceState {
   final pulumi.Input<OccurenceAttestation>? attestation;
   /// The time when the repository was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The note kind which explicitly denotes which of the occurrence
   /// details are specified. This field can be used as a filter in list
   /// requests.
@@ -42,6 +49,7 @@ class OccurenceState {
   /// Creates a new [OccurenceState].
   /// [attestation] Occurrence that represents a single "attestation". The authenticity
   /// [createTime] The time when the repository was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [kind] The note kind which explicitly denotes which of the occurrence
   /// [name] The name of the occurrence.
   /// [noteName] The analysis note associated with this occurrence, in the form of
@@ -52,6 +60,7 @@ class OccurenceState {
   const OccurenceState({
     this.attestation,
     this.createTime,
+    this.deletionPolicy,
     this.kind,
     this.name,
     this.noteName,
@@ -65,6 +74,7 @@ class OccurenceState {
     return <String, dynamic>{
       'attestation': ?pulumi.Input.mapOptionalInputValue<OccurenceAttestation, Map<String, dynamic>>(attestation, (value) => value.toMap()),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'kind': ?kind,
       'name': ?name,
       'noteName': ?noteName,
@@ -79,6 +89,7 @@ class OccurenceState {
     return OccurenceState(
       attestation: (() { final guardedValue = map['attestation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OccurenceAttestation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       noteName: (() { final guardedValue = map['noteName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -89,4 +100,3 @@ class OccurenceState {
     );
   }
 }
-

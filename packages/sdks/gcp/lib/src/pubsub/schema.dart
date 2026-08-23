@@ -132,6 +132,21 @@ import 'schema_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_schema" "example" {
+///   name       = "example-schema"
+///   type       = "AVRO"
+///   definition = "{\n  \"type\" : \"record\",\n  \"name\" : \"Avro\",\n  \"fields\" : [\n    {\n      \"name\" : \"StringField\",\n      \"type\" : \"string\"\n    },\n    {\n      \"name\" : \"IntField\",\n      \"type\" : \"int\"\n    }\n  ]\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -140,8 +155,8 @@ import 'schema_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.Schema;
 /// import com.pulumi.gcp.pubsub.SchemaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -331,6 +346,29 @@ import 'schema_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_schema" "example" {
+///   name       = "example"
+///   type       = "PROTOCOL_BUFFER"
+///   definition = "syntax = \"proto3\";\nmessage Results {\nstring message_request = 1;\nstring message_response = 2;\nstring timestamp_request = 3;\nstring timestamp_response = 4;\n}"
+/// }
+/// resource "gcp_pubsub_topic" "example" {
+///   depends_on = [gcp_pubsub_schema.example]
+///   name       = "example-topic"
+///   schema_settings = {
+///     schema   = "projects/my-project-name/schemas/example"
+///     encoding = "JSON"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -343,8 +381,8 @@ import 'schema_state.dart';
 /// import com.pulumi.gcp.pubsub.TopicArgs;
 /// import com.pulumi.gcp.pubsub.inputs.TopicSchemaSettingsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -416,22 +454,15 @@ import 'schema_state.dart';
 /// Schema can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/schemas/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:pubsub/schema:Schema default projects/{{project}}/schemas/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/schema:Schema default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:pubsub/schema:Schema default {{name}}
 /// ```
 class Schema extends pulumi.CustomResource {
@@ -443,11 +474,20 @@ class Schema extends pulumi.CustomResource {
   /// error indicating that the limit has been reached require manually
   /// [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
   late final pulumi.Output<String?> definition;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The ID to use for the schema, which will become the final component of the schema's resource name.
   late final pulumi.Output<String> name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// Output only. The revision ID of the schema.
+  late final pulumi.Output<String> revisionId;
   /// The type of the schema definition
   /// Default value is `TYPE_UNSPECIFIED`.
   /// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
@@ -468,8 +508,10 @@ class Schema extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     definition = registerOutput<String?>('definition');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    revisionId = registerOutput<String>('revisionId');
     type = registerOutput<String?>('type');
   }
 
@@ -497,8 +539,10 @@ class Schema extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     definition = registerOutput<String?>('definition');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    revisionId = registerOutput<String>('revisionId');
     type = registerOutput<String?>('type');
   }
 }

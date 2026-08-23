@@ -31,4 +31,3 @@ class ConnectionAuthConfigOauth2ClientCredentials {
     );
   }
 }
-

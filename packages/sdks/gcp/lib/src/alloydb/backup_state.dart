@@ -11,7 +11,7 @@ class BackupState {
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// The ID of the alloydb backup.
   final pulumi.Input<String>? backupId;
@@ -25,10 +25,18 @@ class BackupState {
   /// Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-provided description of the backup.
   final pulumi.Input<String>? description;
   /// User-settable and human-readable display name for the Backup.
   final pulumi.Input<String>? displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -50,7 +58,7 @@ class BackupState {
   /// User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location where the alloydb backup should reside.
   final pulumi.Input<String>? location;
@@ -85,9 +93,10 @@ class BackupState {
   /// [clusterUid] Output only. The system-generated UID of the cluster which was used to create this resource.
   /// [createTime] Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// [deleteTime] Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User-provided description of the backup.
   /// [displayName] User-settable and human-readable display name for the Backup.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [encryptionConfig] EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
   /// [encryptionInfos] EncryptionInfo describes the encryption information of a cluster or a backup.
@@ -112,6 +121,7 @@ class BackupState {
     this.clusterUid,
     this.createTime,
     this.deleteTime,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.effectiveAnnotations,
@@ -142,6 +152,7 @@ class BackupState {
       'clusterUid': ?clusterUid,
       'createTime': ?createTime,
       'deleteTime': ?deleteTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'effectiveAnnotations': ?effectiveAnnotations,
@@ -173,6 +184,7 @@ class BackupState {
       clusterUid: (() { final guardedValue = map['clusterUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -196,4 +208,3 @@ class BackupState {
     );
   }
 }
-

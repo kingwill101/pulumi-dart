@@ -4,6 +4,9 @@ import 'database_instance_state.dart';
 
 /// A Firebase Realtime Database instance.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about Instance, see:
 ///
 /// * [API documentation](https://firebase.google.com/docs/reference/rest/database/database-management/rest)
@@ -74,6 +77,21 @@ import 'database_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_databaseinstance" "basic" {
+///   project     = "my-project-name"
+///   region      = "us-central1"
+///   instance_id = "active-db"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +100,8 @@ import 'database_instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.firebase.DatabaseInstance;
 /// import com.pulumi.gcp.firebase.DatabaseInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,6 +202,23 @@ import 'database_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_databaseinstance" "full" {
+///   project       = "my-project-name"
+///   region        = "europe-west1"
+///   instance_id   = "disabled-db"
+///   type          = "USER_DATABASE"
+///   desired_state = "DISABLED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -192,8 +227,8 @@ import 'database_instance_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.firebase.DatabaseInstance;
 /// import com.pulumi.gcp.firebase.DatabaseInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -395,7 +430,7 @@ import 'database_instance_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		firebase, err := projects.NewService(ctx, "firebase", &projects.ServiceArgs{
+/// 		firebase2, err := projects.NewService(ctx, "firebase", &projects.ServiceArgs{
 /// 			Project: _default.ProjectId,
 /// 			Service: pulumi.String("firebase.googleapis.com"),
 /// 		})
@@ -405,7 +440,7 @@ import 'database_instance_state.dart';
 /// 		defaultProject, err := firebase.NewProject(ctx, "default", &firebase.ProjectArgs{
 /// 			Project: _default.ProjectId,
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			firebase,
+/// 			firebase2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -440,6 +475,51 @@ import 'database_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "default" {
+///   project_id      = "rtdb-project"
+///   name            = "rtdb-project"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+///   labels = {
+///     "firebase" = "enabled"
+///   }
+/// }
+/// resource "gcp_projects_service" "firebase" {
+///   project = gcp_organizations_project.default.project_id
+///   service = "firebase.googleapis.com"
+/// }
+/// resource "gcp_firebase_project" "default" {
+///   depends_on = [gcp_projects_service.firebase]
+///   project    = gcp_organizations_project.default.project_id
+/// }
+/// resource "gcp_projects_service" "firebase_database" {
+///   project = gcp_firebase_project.default.project
+///   service = "firebasedatabase.googleapis.com"
+/// }
+/// resource "time_sleep" "wait_60_seconds" {
+///   depends_on      = [gcp_projects_service.firebase_database]
+///   create_duration = "60s"
+/// }
+/// resource "gcp_firebase_databaseinstance" "default" {
+///   depends_on  = [time_sleep.wait_60_seconds]
+///   project     = gcp_firebase_project.default.project
+///   region      = "us-central1"
+///   instance_id = "rtdb-project-default-rtdb"
+///   type        = "DEFAULT_DATABASE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -453,8 +533,8 @@ import 'database_instance_state.dart';
 /// import com.pulumi.gcp.firebase.DatabaseInstance;
 /// import com.pulumi.gcp.firebase.DatabaseInstanceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -565,34 +645,30 @@ import 'database_instance_state.dart';
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/instances/{{instance_id}}`
-///
 /// * `{{project}}/{{region}}/{{instance_id}}`
-///
 /// * `{{region}}/{{instance_id}}`
-///
 /// * `{{instance_id}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default projects/{{project}}/locations/{{region}}/instances/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{project}}/{{region}}/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{region}}/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{instance_id}}
 /// ```
 class DatabaseInstance extends pulumi.CustomResource {
   /// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
   /// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
   late final pulumi.Output<String> databaseUrl;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The intended database state. Possible values: ACTIVE, DISABLED.
   late final pulumi.Output<String?> desiredState;
   /// The globally unique identifier of the Firebase Realtime Database instance.
@@ -609,7 +685,7 @@ class DatabaseInstance extends pulumi.CustomResource {
   /// A reference to the region where the Firebase Realtime database resides.
   /// Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
   late final pulumi.Output<String> region;
-  /// The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+  /// The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
   late final pulumi.Output<String> state;
   /// The database type.
   /// Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
@@ -634,6 +710,7 @@ class DatabaseInstance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     databaseUrl = registerOutput<String>('databaseUrl');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     desiredState = registerOutput<String?>('desiredState');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
@@ -667,6 +744,7 @@ class DatabaseInstance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     databaseUrl = registerOutput<String>('databaseUrl');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     desiredState = registerOutput<String?>('desiredState');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');

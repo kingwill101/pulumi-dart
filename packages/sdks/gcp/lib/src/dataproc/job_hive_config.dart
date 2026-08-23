@@ -10,10 +10,10 @@ class JobHiveConfig {
   /// A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/hive/conf/hive-site.xml`, and classes in user code..
   final pulumi.Input<Map<String, String>>? properties;
   /// HCFS URI of file containing Hive script to execute as the job.
-  /// Conflicts with `query_list`
+  /// Conflicts with `queryList`
   final pulumi.Input<String>? queryFileUri;
   /// The list of Hive queries or statements to execute as part of the job.
-  /// Conflicts with `query_file_uri`
+  /// Conflicts with `queryFileUri`
   final pulumi.Input<List<String>>? queryLists;
   /// Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
   final pulumi.Input<Map<String, String>>? scriptVariables;
@@ -56,4 +56,3 @@ class JobHiveConfig {
     );
   }
 }
-

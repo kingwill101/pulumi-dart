@@ -17,14 +17,14 @@ class BackendBucketCdnPolicy {
   /// Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
   final pulumi.Input<String>? cacheMode;
   /// Specifies the maximum allowed TTL for cached content served by this origin. When the
-  /// `cache_mode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
+  /// `cacheMode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
   final pulumi.Input<int>? clientTtl;
   /// Specifies the default TTL for cached content served by this origin for responses
-  /// that do not have an existing valid TTL (max-age or s-max-age). When the `cache_mode`
+  /// that do not have an existing valid TTL (max-age or s-max-age). When the `cacheMode`
   /// is set to "USE_ORIGIN_HEADERS", you must omit this field.
   final pulumi.Input<int>? defaultTtl;
   /// Specifies the maximum allowed TTL for cached content served by this origin. When the
-  /// `cache_mode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
+  /// `cacheMode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
   final pulumi.Input<int>? maxTtl;
   /// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
   final pulumi.Input<bool>? negativeCaching;
@@ -104,4 +104,3 @@ class BackendBucketCdnPolicy {
     );
   }
 }
-

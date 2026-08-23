@@ -12,7 +12,7 @@ class UnitOperationState {
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// A set of conditions which indicate the various conditions this resource can
   /// have.
@@ -20,10 +20,18 @@ class UnitOperationState {
   final pulumi.Input<List<UnitOperationCondition>>? conditions;
   /// The timestamp when the resource was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Deprovision is the unit operation that deprovision the underlying
   /// resources represented by a Unit. Can only execute if the Unit is currently
   /// provisioned.
   final pulumi.Input<Map<String, dynamic>>? deprovision;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -45,7 +53,7 @@ class UnitOperationState {
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
@@ -101,8 +109,9 @@ class UnitOperationState {
   /// [annotations] Annotations is an unstructured key-value map stored with a resource that
   /// [conditions] A set of conditions which indicate the various conditions this resource can
   /// [createTime] The timestamp when the resource was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deprovision] Deprovision is the unit operation that deprovision the underlying
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [engineState] The engine state for on-going
   /// [errorCategory] Possible values:
@@ -124,6 +133,7 @@ class UnitOperationState {
     this.annotations,
     this.conditions,
     this.createTime,
+    this.deletionPolicy,
     this.deprovision,
     this.effectiveAnnotations,
     this.effectiveLabels,
@@ -150,6 +160,7 @@ class UnitOperationState {
       'annotations': ?annotations,
       'conditions': ?pulumi.Input.mapOptionalInputValue<List<UnitOperationCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<UnitOperationCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'deprovision': ?deprovision,
       'effectiveAnnotations': ?effectiveAnnotations,
       'effectiveLabels': ?effectiveLabels,
@@ -177,6 +188,7 @@ class UnitOperationState {
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UnitOperationCondition>(guardedValue, (value) => UnitOperationCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deprovision: (() { final guardedValue = map['deprovision']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -199,4 +211,3 @@ class UnitOperationState {
     );
   }
 }
-

@@ -6,8 +6,8 @@ import 'v2_organization_source_iam_member_state.dart';
 /// Three different resources help you manage your IAM policy for Security Command Center (SCC) v2 API OrganizationSource. Each of these resources serves a different use case:
 ///
 /// * `gcp.securitycenter.V2OrganizationSourceIamPolicy`: Authoritative. Sets the IAM policy for the organizationsource and replaces any existing policy already attached.
-/// * `gcp.securitycenter.V2OrganizationSourceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organizationsource are preserved.
-/// * `gcp.securitycenter.V2OrganizationSourceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organizationsource are preserved.
+/// * `gcp.securitycenter.V2OrganizationSourceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organizationsource are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.securitycenter.V2OrganizationSourceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organizationsource are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -16,7 +16,6 @@ import 'v2_organization_source_iam_member_state.dart';
 /// &gt; **Note:** `gcp.securitycenter.V2OrganizationSourceIamPolicy` **cannot** be used in conjunction with `gcp.securitycenter.V2OrganizationSourceIamBinding` and `gcp.securitycenter.V2OrganizationSourceIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.securitycenter.V2OrganizationSourceIamBinding` resources **can be** used in conjunction with `gcp.securitycenter.V2OrganizationSourceIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.securitycenter.V2OrganizationSourceIamPolicy
@@ -115,6 +114,27 @@ import 'v2_organization_source_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_securitycenter_v2organizationsourceiampolicy" "policy" {
+///   source      = customSource.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,10 +143,11 @@ import 'v2_organization_source_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.securitycenter.V2OrganizationSourceIamPolicy;
 /// import com.pulumi.gcp.securitycenter.V2OrganizationSourceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -146,7 +167,7 @@ import 'v2_organization_source_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new V2OrganizationSourceIamPolicy("policy", V2OrganizationSourceIamPolicyArgs.builder()
-///             .source(customSource.name())
+///             .source(customSource.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -238,6 +259,21 @@ import 'v2_organization_source_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securitycenter_v2organizationsourceiambinding" "binding" {
+///   source  = customSource.name
+///   role    = "roles/viewer"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -246,8 +282,8 @@ import 'v2_organization_source_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.securitycenter.V2OrganizationSourceIamBinding;
 /// import com.pulumi.gcp.securitycenter.V2OrganizationSourceIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,7 +296,7 @@ import 'v2_organization_source_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new V2OrganizationSourceIamBinding("binding", V2OrganizationSourceIamBindingArgs.builder()
-///             .source(customSource.name())
+///             .source(customSource.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -341,6 +377,21 @@ import 'v2_organization_source_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securitycenter_v2organizationsourceiammember" "member" {
+///   source = customSource.name
+///   role   = "roles/viewer"
+///   member = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -349,8 +400,8 @@ import 'v2_organization_source_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.securitycenter.V2OrganizationSourceIamMember;
 /// import com.pulumi.gcp.securitycenter.V2OrganizationSourceIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -363,7 +414,7 @@ import 'v2_organization_source_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new V2OrganizationSourceIamMember("member", V2OrganizationSourceIamMemberArgs.builder()
-///             .source(customSource.name())
+///             .source(customSource.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -393,8 +444,8 @@ import 'v2_organization_source_iam_member_state.dart';
 /// Three different resources help you manage your IAM policy for Security Command Center (SCC) v2 API OrganizationSource. Each of these resources serves a different use case:
 ///
 /// * `gcp.securitycenter.V2OrganizationSourceIamPolicy`: Authoritative. Sets the IAM policy for the organizationsource and replaces any existing policy already attached.
-/// * `gcp.securitycenter.V2OrganizationSourceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organizationsource are preserved.
-/// * `gcp.securitycenter.V2OrganizationSourceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organizationsource are preserved.
+/// * `gcp.securitycenter.V2OrganizationSourceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organizationsource are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.securitycenter.V2OrganizationSourceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organizationsource are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -403,7 +454,6 @@ import 'v2_organization_source_iam_member_state.dart';
 /// &gt; **Note:** `gcp.securitycenter.V2OrganizationSourceIamPolicy` **cannot** be used in conjunction with `gcp.securitycenter.V2OrganizationSourceIamBinding` and `gcp.securitycenter.V2OrganizationSourceIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.securitycenter.V2OrganizationSourceIamBinding` resources **can be** used in conjunction with `gcp.securitycenter.V2OrganizationSourceIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.securitycenter.V2OrganizationSourceIamPolicy
@@ -502,6 +552,27 @@ import 'v2_organization_source_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_securitycenter_v2organizationsourceiampolicy" "policy" {
+///   source      = customSource.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -510,10 +581,11 @@ import 'v2_organization_source_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.securitycenter.V2OrganizationSourceIamPolicy;
 /// import com.pulumi.gcp.securitycenter.V2OrganizationSourceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -533,7 +605,7 @@ import 'v2_organization_source_iam_member_state.dart';
 ///             .build());
 ///
 ///         var policy = new V2OrganizationSourceIamPolicy("policy", V2OrganizationSourceIamPolicyArgs.builder()
-///             .source(customSource.name())
+///             .source(customSource.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -625,6 +697,21 @@ import 'v2_organization_source_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securitycenter_v2organizationsourceiambinding" "binding" {
+///   source  = customSource.name
+///   role    = "roles/viewer"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -633,8 +720,8 @@ import 'v2_organization_source_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.securitycenter.V2OrganizationSourceIamBinding;
 /// import com.pulumi.gcp.securitycenter.V2OrganizationSourceIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -647,7 +734,7 @@ import 'v2_organization_source_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new V2OrganizationSourceIamBinding("binding", V2OrganizationSourceIamBindingArgs.builder()
-///             .source(customSource.name())
+///             .source(customSource.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -728,6 +815,21 @@ import 'v2_organization_source_iam_member_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securitycenter_v2organizationsourceiammember" "member" {
+///   source = customSource.name
+///   role   = "roles/viewer"
+///   member = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -736,8 +838,8 @@ import 'v2_organization_source_iam_member_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.securitycenter.V2OrganizationSourceIamMember;
 /// import com.pulumi.gcp.securitycenter.V2OrganizationSourceIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -750,7 +852,7 @@ import 'v2_organization_source_iam_member_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new V2OrganizationSourceIamMember("member", V2OrganizationSourceIamMemberArgs.builder()
-///             .source(customSource.name())
+///             .source(customSource.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -774,9 +876,7 @@ import 'v2_organization_source_iam_member_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * organizations/{{organization}}/sources/{{source}}
-///
 /// * {{organization}}/{{source}}
-///
 /// * {{source}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -784,25 +884,21 @@ import 'v2_organization_source_iam_member_state.dart';
 /// Security Command Center (SCC) v2 API organizationsource IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember editor "organizations/{{organization}}/sources/{{source}} roles/viewer user:jane@example.com"
+/// $ terraform import google_scc_v2_organization_source_iam_member.editor "organizations/{{organization}}/sources/{{source}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember editor "organizations/{{organization}}/sources/{{source}} roles/viewer"
+/// $ terraform import google_scc_v2_organization_source_iam_binding.editor "organizations/{{organization}}/sources/{{source}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:securitycenter/v2OrganizationSourceIamMember:V2OrganizationSourceIamMember editor organizations/{{organization}}/sources/{{source}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class V2OrganizationSourceIamMember extends pulumi.CustomResource {
   late final pulumi.Output<V2OrganizationSourceIamMemberCondition?> condition;

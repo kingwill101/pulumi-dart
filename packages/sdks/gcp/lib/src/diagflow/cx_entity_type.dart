@@ -199,7 +199,7 @@ import 'cx_entity_type_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxEntityType(ctx, "basic_entity_type", &diagflow.CxEntityTypeArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("MyEntity"),
 /// 			Kind:        pulumi.String("KIND_MAP"),
 /// 			Entities: diagflow.CxEntityTypeEntityArray{
@@ -227,6 +227,44 @@ import 'cx_entity_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name               = "dialogflowcx-agent"
+///   location                   = "global"
+///   default_language_code      = "en"
+///   supported_language_codes   = ["fr", "de", "es"]
+///   time_zone                  = "America/New_York"
+///   description                = "Example description."
+///   avatar_uri                 = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"
+///   enable_stackdriver_logging = true
+///   enable_spell_correction    = true
+///   speech_to_text_settings = {
+///     enable_speech_adaptation = true
+///   }
+/// }
+/// resource "gcp_diagflow_cxentitytype" "basic_entity_type" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "MyEntity"
+///   kind         = "KIND_MAP"
+///   entities {
+///     value    = "value1"
+///     synonyms = ["synonym1", "synonym2"]
+///   }
+///   entities {
+///     value    = "value2"
+///     synonyms = ["synonym3", "synonym4"]
+///   }
+///   enable_fuzzy_extraction = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -239,8 +277,8 @@ import 'cx_entity_type_state.dart';
 /// import com.pulumi.gcp.diagflow.CxEntityType;
 /// import com.pulumi.gcp.diagflow.CxEntityTypeArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxEntityTypeEntityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -337,16 +375,13 @@ import 'cx_entity_type_state.dart';
 /// EntityType can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/entityTypes/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxEntityType:CxEntityType default {{parent}}/entityTypes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/cxEntityType:CxEntityType default {{parent}}/{{name}}
 /// ```
 class CxEntityType extends pulumi.CustomResource {
@@ -355,6 +390,13 @@ class CxEntityType extends pulumi.CustomResource {
   /// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
   /// Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
   late final pulumi.Output<String?> autoExpansionMode;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The human-readable name of the entity type, unique within the agent.
   late final pulumi.Output<String> displayName;
   /// Enables fuzzy entity extraction during classification.
@@ -402,6 +444,7 @@ class CxEntityType extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     autoExpansionMode = registerOutput<String?>('autoExpansionMode');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enableFuzzyExtraction = registerOutput<bool?>('enableFuzzyExtraction');
     entities = registerOutput<List<Map<String, dynamic>>>('entities');
@@ -437,6 +480,7 @@ class CxEntityType extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     autoExpansionMode = registerOutput<String?>('autoExpansionMode');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enableFuzzyExtraction = registerOutput<bool?>('enableFuzzyExtraction');
     entities = registerOutput<List<Map<String, dynamic>>>('entities');

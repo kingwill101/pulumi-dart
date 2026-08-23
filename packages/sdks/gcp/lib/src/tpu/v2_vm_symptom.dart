@@ -46,4 +46,3 @@ class V2VmSymptom {
     );
   }
 }
-

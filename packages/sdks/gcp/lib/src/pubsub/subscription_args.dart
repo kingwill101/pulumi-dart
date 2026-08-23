@@ -41,7 +41,7 @@ class SubscriptionArgs {
   /// Structure is documented below.
   final pulumi.Input<SubscriptionCloudStorageConfig>? cloudStorageConfig;
   /// A policy that specifies the conditions for dead lettering messages in
-  /// this subscription. If dead_letter_policy is not set, dead lettering
+  /// this subscription. If deadLetterPolicy is not set, dead lettering
   /// is disabled.
   /// The Cloud Pub/Sub service account associated with this subscription's
   /// parent project (i.e.,
@@ -49,11 +49,18 @@ class SubscriptionArgs {
   /// permission to Acknowledge() messages on this subscription.
   /// Structure is documented below.
   final pulumi.Input<SubscriptionDeadLetterPolicy>? deadLetterPolicy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// If `true`, Pub/Sub provides the following guarantees for the delivery
   /// of a message with a given value of messageId on this Subscriptions':
   /// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
   /// - An acknowledged message will not be resent to a subscriber.
-  /// Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+  /// Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
   /// is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
   final pulumi.Input<bool>? enableExactlyOnceDelivery;
   /// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
@@ -77,11 +84,11 @@ class SubscriptionArgs {
   /// A set of key/value label pairs to assign to this Subscription.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// How long to retain unacknowledged messages in the subscription's
   /// backlog, from the moment a message is published. If
-  /// retain_acked_messages is true, then this also configures the retention
+  /// retainAckedMessages is true, then this also configures the retention
   /// of acknowledged messages, and thus configures how far back in time a
   /// subscriptions.seek can be done. Defaults to 7 days. Cannot be more
   /// than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
@@ -131,6 +138,7 @@ class SubscriptionArgs {
   /// [bigqueryConfig] If delivery to BigQuery is used with this subscription, this field is used to configure it.
   /// [cloudStorageConfig] If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
   /// [deadLetterPolicy] A policy that specifies the conditions for dead lettering messages in
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [enableExactlyOnceDelivery] If `true`, Pub/Sub provides the following guarantees for the delivery
   /// [enableMessageOrdering] If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
   /// [expirationPolicy] A policy that specifies the conditions for this subscription's expiration.
@@ -150,6 +158,7 @@ class SubscriptionArgs {
     this.bigqueryConfig,
     this.cloudStorageConfig,
     this.deadLetterPolicy,
+    this.deletionPolicy,
     this.enableExactlyOnceDelivery,
     this.enableMessageOrdering,
     this.expirationPolicy,
@@ -172,6 +181,7 @@ class SubscriptionArgs {
       'bigqueryConfig': ?pulumi.Input.mapOptionalInputValue<SubscriptionBigqueryConfig, Map<String, dynamic>>(bigqueryConfig, (value) => value.toMap()),
       'cloudStorageConfig': ?pulumi.Input.mapOptionalInputValue<SubscriptionCloudStorageConfig, Map<String, dynamic>>(cloudStorageConfig, (value) => value.toMap()),
       'deadLetterPolicy': ?pulumi.Input.mapOptionalInputValue<SubscriptionDeadLetterPolicy, Map<String, dynamic>>(deadLetterPolicy, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'enableExactlyOnceDelivery': ?enableExactlyOnceDelivery,
       'enableMessageOrdering': ?enableMessageOrdering,
       'expirationPolicy': ?pulumi.Input.mapOptionalInputValue<SubscriptionExpirationPolicy, Map<String, dynamic>>(expirationPolicy, (value) => value.toMap()),
@@ -195,6 +205,7 @@ class SubscriptionArgs {
       bigqueryConfig: (() { final guardedValue = map['bigqueryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriptionBigqueryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cloudStorageConfig: (() { final guardedValue = map['cloudStorageConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriptionCloudStorageConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deadLetterPolicy: (() { final guardedValue = map['deadLetterPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriptionDeadLetterPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableExactlyOnceDelivery: (() { final guardedValue = map['enableExactlyOnceDelivery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableMessageOrdering: (() { final guardedValue = map['enableMessageOrdering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       expirationPolicy: (() { final guardedValue = map['expirationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubscriptionExpirationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -212,4 +223,3 @@ class SubscriptionArgs {
     );
   }
 }
-

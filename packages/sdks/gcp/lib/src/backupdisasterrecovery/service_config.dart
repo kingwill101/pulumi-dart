@@ -69,6 +69,20 @@ import 'service_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_backupdisasterrecovery_serviceconfig" "bpa1" {
+///   location      = "us-central1"
+///   resource_type = "compute.googleapis.com/Instance"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +91,8 @@ import 'service_config_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.backupdisasterrecovery.ServiceConfig;
 /// import com.pulumi.gcp.backupdisasterrecovery.ServiceConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

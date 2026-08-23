@@ -12,10 +12,17 @@ class LbRouteExtensionExtensionChainExtension {
   /// a generic 500 error is returned to the client. The error response can be tailored by
   /// configuring a custom error response in the load balancer.
   final pulumi.Input<bool>? failOpen;
+  /// List of the Envoy attributes to forward to the extension server. The attributes
+  /// provided here are included as part of the `ProcessingRequest.attributes` field
+  /// (of type `map`), where the keys are the attribute names. Refer to the
+  /// [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
+  /// for the names of attributes that can be forwarded. If omitted, no attributes
+  /// are sent. Each element is a string indicating the attribute name.
+  final pulumi.Input<List<String>>? forwardAttributes;
   /// List of the HTTP headers to forward to the extension (from the client or backend).
   /// If omitted, all headers are sent. Each element is a string indicating the header name.
   final pulumi.Input<List<String>>? forwardHeaders;
-  /// The metadata provided here is included as part of the `metadata_context` (of type `google.protobuf.Struct`)
+  /// The metadata provided here is included as part of the `metadataContext` (of type `google.protobuf.Struct`)
   /// in the `ProcessingRequest` message sent to the extension server.
   /// The metadata is available under the namespace `com.google.lb_route_extension.&lt;resource_name&gt;.&lt;chain_name&gt;.&lt;extension_name&gt;`.
   /// The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
@@ -26,17 +33,17 @@ class LbRouteExtensionExtensionChainExtension {
   /// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
   /// and the last a letter or a number.
   final pulumi.Input<String> name;
-  /// When set to `TRUE`, enables `observability_mode` on the `ext_proc` filter.
-  /// This makes `ext_proc` calls asynchronous. Envoy doesn't check for the response from `ext_proc` calls.
+  /// When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+  /// This makes `extProc` calls asynchronous. Envoy doesn't check for the response from `extProc` calls.
   /// For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
   /// This field is helpful when you want to try out the extension in async log-only mode.
   /// Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
   /// Only `STREAMED` (default) body processing mode is supported.
   final pulumi.Input<bool>? observabilityMode;
   /// Configures the send mode for request body processing.
-  /// The field can only be set if `supported_events` includes `REQUEST_BODY`.
-  /// If `supported_events` includes `REQUEST_BODY`, but `request_body_send_mode` is unset, the default value `STREAMED` is used.
-  /// When this field is set to `FULL_DUPLEX_STREAMED`, `supported_events` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+  /// The field can only be set if `supportedEvents` includes `REQUEST_BODY`.
+  /// If `supportedEvents` includes `REQUEST_BODY`, but `requestBodySendMode` is unset, the default value `STREAMED` is used.
+  /// When this field is set to `FULL_DUPLEX_STREAMED`, `supportedEvents` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
   /// This field can be set only when the `service` field of the extension points to a `BackendService`.
   /// Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
   /// Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
@@ -56,10 +63,11 @@ class LbRouteExtensionExtensionChainExtension {
   /// Creates a new [LbRouteExtensionExtensionChainExtension].
   /// [authority] The :authority header in the gRPC request sent from Envoy to the extension service.
   /// [failOpen] Determines how the proxy behaves if the call to the extension fails or times out.
+  /// [forwardAttributes] List of the Envoy attributes to forward to the extension server. The attributes
   /// [forwardHeaders] List of the HTTP headers to forward to the extension (from the client or backend).
-  /// [metadata] The metadata provided here is included as part of the `metadata_context` (of type `google.protobuf.Struct`)
+  /// [metadata] The metadata provided here is included as part of the `metadataContext` (of type `google.protobuf.Struct`)
   /// [name] The name for this extension. The name is logged as part of the HTTP request logs.
-  /// [observabilityMode] When set to `TRUE`, enables `observability_mode` on the `ext_proc` filter.
+  /// [observabilityMode] When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
   /// [requestBodySendMode] Configures the send mode for request body processing.
   /// [service] The reference to the service that runs the extension.
   /// [supportedEvents] A set of events during request or response processing for which this extension is called.
@@ -67,6 +75,7 @@ class LbRouteExtensionExtensionChainExtension {
   const LbRouteExtensionExtensionChainExtension({
     this.authority,
     this.failOpen,
+    this.forwardAttributes,
     this.forwardHeaders,
     this.metadata,
     required this.name,
@@ -81,6 +90,7 @@ class LbRouteExtensionExtensionChainExtension {
     return <String, dynamic>{
       'authority': ?authority,
       'failOpen': ?failOpen,
+      'forwardAttributes': ?forwardAttributes,
       'forwardHeaders': ?forwardHeaders,
       'metadata': ?metadata,
       'name': name,
@@ -96,6 +106,7 @@ class LbRouteExtensionExtensionChainExtension {
     return LbRouteExtensionExtensionChainExtension(
       authority: (() { final guardedValue = map['authority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       failOpen: (() { final guardedValue = map['failOpen']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      forwardAttributes: (() { final guardedValue = map['forwardAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       forwardHeaders: (() { final guardedValue = map['forwardHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -107,4 +118,3 @@ class LbRouteExtensionExtensionChainExtension {
     );
   }
 }
-

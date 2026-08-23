@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
   /// The commit SHA to read repository with. If unset, the file will be read at HEAD.
   final pulumi.Input<String>? commitSha;
-  /// The resource name of the Dataform Repository.
+  /// The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
   final pulumi.Input<String> dataformRepositoryResourceName;
 
   /// Creates a new [ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource].
   /// [commitSha] The commit SHA to read repository with. If unset, the file will be read at HEAD.
-  /// [dataformRepositoryResourceName] The resource name of the Dataform Repository.
+  /// [dataformRepositoryResourceName] The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
   const ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource({
     this.commitSha,
     required this.dataformRepositoryResourceName,
@@ -30,4 +30,3 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepos
     );
   }
 }
-

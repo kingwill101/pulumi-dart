@@ -7,6 +7,13 @@ import 'multicloud_data_transfer_config_service.dart';
 class MulticloudDataTransferConfigState {
   /// Time when the MulticloudDataTransferConfig resource was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of this resource.
   final pulumi.Input<String>? description;
   /// The number of Destination resources in use with the
@@ -24,7 +31,7 @@ class MulticloudDataTransferConfigState {
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location of the multicloud data transfer config.
   final pulumi.Input<String>? location;
@@ -50,6 +57,7 @@ class MulticloudDataTransferConfigState {
 
   /// Creates a new [MulticloudDataTransferConfigState].
   /// [createTime] Time when the MulticloudDataTransferConfig resource was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of this resource.
   /// [destinationsActiveCount] The number of Destination resources in use with the
   /// [destinationsCount] The number of Destination resources configured for the
@@ -65,6 +73,7 @@ class MulticloudDataTransferConfigState {
   /// [updateTime] Time when the MulticloudDataTransferConfig resource was updated.
   const MulticloudDataTransferConfigState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.destinationsActiveCount,
     this.destinationsCount,
@@ -83,6 +92,7 @@ class MulticloudDataTransferConfigState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'destinationsActiveCount': ?destinationsActiveCount,
       'destinationsCount': ?destinationsCount,
@@ -102,6 +112,7 @@ class MulticloudDataTransferConfigState {
   factory MulticloudDataTransferConfigState.fromMap(Map<String, dynamic> map) {
     return MulticloudDataTransferConfigState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationsActiveCount: (() { final guardedValue = map['destinationsActiveCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       destinationsCount: (() { final guardedValue = map['destinationsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
@@ -118,4 +129,3 @@ class MulticloudDataTransferConfigState {
     );
   }
 }
-

@@ -9,9 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelArgs {
   /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
   final pulumi.Input<String>? cryptoKeyName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-defined labels for the channel.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location for the resource
   final pulumi.Input<String> location;
@@ -25,6 +32,7 @@ class ChannelArgs {
 
   /// Creates a new [ChannelArgs].
   /// [cryptoKeyName] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [labels] User-defined labels for the channel.
   /// [location] The location for the resource
   /// [name] The resource name of the channel. Must be unique within the location on the project.
@@ -32,6 +40,7 @@ class ChannelArgs {
   /// [thirdPartyProvider] The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
   const ChannelArgs({
     this.cryptoKeyName,
+    this.deletionPolicy,
     this.labels,
     required this.location,
     this.name,
@@ -42,6 +51,7 @@ class ChannelArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cryptoKeyName': ?cryptoKeyName,
+      'deletionPolicy': ?deletionPolicy,
       'labels': ?labels,
       'location': location,
       'name': ?name,
@@ -53,6 +63,7 @@ class ChannelArgs {
   factory ChannelArgs.fromMap(Map<String, dynamic> map) {
     return ChannelArgs(
       cryptoKeyName: (() { final guardedValue = map['cryptoKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -61,4 +72,3 @@ class ChannelArgs {
     );
   }
 }
-

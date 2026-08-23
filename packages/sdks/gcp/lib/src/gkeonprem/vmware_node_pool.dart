@@ -285,6 +285,62 @@ import 'vmware_node_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkeonprem_vmwarecluster" "default-basic" {
+///   name                     = "my-cluster"
+///   location                 = "us-west1"
+///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
+///   description              = "test cluster"
+///   on_prem_version          = "1.13.1-gke.35"
+///   network_config = {
+///     service_address_cidr_blocks = ["10.96.0.0/12"]
+///     pod_address_cidr_blocks     = ["192.168.0.0/16"]
+///     dhcp_ip_config = {
+///       enabled = true
+///     }
+///   }
+///   control_plane_node = {
+///     cpus     = 4
+///     memory   = 8192
+///     replicas = 1
+///   }
+///   load_balancer = {
+///     vip_config = {
+///       control_plane_vip = "10.251.133.5"
+///       ingress_vip       = "10.251.135.19"
+///     }
+///     metal_lb_config = {
+///       address_pools = [{
+///         "pool"         = "ingress-ip"
+///         "manualAssign" = "true"
+///         "addresses"    = ["10.251.135.19"]
+///         }, {
+///         "pool"         = "lb-test-ip"
+///         "manualAssign" = "true"
+///         "addresses"    = ["10.251.135.19"]
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_gkeonprem_vmwarenodepool" "nodepool-basic" {
+///   name           = "my-nodepool"
+///   location       = "us-west1"
+///   vmware_cluster = gcp_gkeonprem_vmwarecluster.default-basic.name
+///   config = {
+///     replicas             = 3
+///     image_type           = "ubuntu_containerd"
+///     enable_load_balancer = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -299,11 +355,12 @@ import 'vmware_node_pool_state.dart';
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerVipConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerMetalLbConfigArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs;
 /// import com.pulumi.gcp.gkeonprem.VMwareNodePool;
 /// import com.pulumi.gcp.gkeonprem.VMwareNodePoolArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -852,6 +909,92 @@ import 'vmware_node_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkeonprem_vmwarecluster" "default-full" {
+///   name                     = "my-cluster"
+///   location                 = "us-west1"
+///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
+///   description              = "test cluster"
+///   on_prem_version          = "1.33.0-gke.35"
+///   network_config = {
+///     service_address_cidr_blocks = ["10.96.0.0/12"]
+///     pod_address_cidr_blocks     = ["192.168.0.0/16"]
+///     dhcp_ip_config = {
+///       enabled = true
+///     }
+///   }
+///   control_plane_node = {
+///     cpus     = 4
+///     memory   = 8192
+///     replicas = 1
+///   }
+///   load_balancer = {
+///     vip_config = {
+///       control_plane_vip = "10.251.133.5"
+///       ingress_vip       = "10.251.135.19"
+///     }
+///     metal_lb_config = {
+///       address_pools = [{
+///         "pool"         = "ingress-ip"
+///         "manualAssign" = "true"
+///         "addresses"    = ["10.251.135.19"]
+///         }, {
+///         "pool"         = "lb-test-ip"
+///         "manualAssign" = "true"
+///         "addresses"    = ["10.251.135.19"]
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_gkeonprem_vmwarenodepool" "nodepool-full" {
+///   name            = "my-nodepool"
+///   location        = "us-west1"
+///   vmware_cluster  = gcp_gkeonprem_vmwarecluster.default-full.name
+///   on_prem_version = "1.33.0-gke.35"
+///   annotations     = {}
+///   config = {
+///     cpus              = 4
+///     memory_mb         = 8196
+///     replicas          = 3
+///     image_type        = "ubuntu_containerd"
+///     image             = "image"
+///     boot_disk_size_gb = 10
+///     taints = [{
+///       "key"   = "key"
+///       "value" = "value"
+///       }, {
+///       "key"    = "key"
+///       "value"  = "value"
+///       "effect" = "NO_SCHEDULE"
+///     }]
+///     labels = {}
+///     vsphere_config = {
+///       datastore = "test-datastore"
+///       tags = [{
+///         "category" = "test-category-1"
+///         "tag"      = "tag-1"
+///         }, {
+///         "category" = "test-category-2"
+///         "tag"      = "tag-2"
+///       }]
+///       host_groups = ["host1", "host2"]
+///     }
+///     enable_load_balancer = true
+///   }
+///   node_pool_autoscaling = {
+///     min_replicas = 1
+///     max_replicas = 5
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -866,13 +1009,16 @@ import 'vmware_node_pool_state.dart';
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerVipConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerMetalLbConfigArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs;
 /// import com.pulumi.gcp.gkeonprem.VMwareNodePool;
 /// import com.pulumi.gcp.gkeonprem.VMwareNodePoolArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigTaintArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigVsphereConfigArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigVsphereConfigTagArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolNodePoolAutoscalingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1054,22 +1200,15 @@ import 'vmware_node_pool_state.dart';
 /// VmwareNodePool can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{vmware_cluster}}/{{name}}`
-///
 /// * `{{location}}/{{vmware_cluster}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, VmwareNodePool can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default {{project}}/{{location}}/{{vmware_cluster}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool default {{location}}/{{vmware_cluster}}/{{name}}
 /// ```
 class VMwareNodePool extends pulumi.CustomResource {
@@ -1083,7 +1222,7 @@ class VMwareNodePool extends pulumi.CustomResource {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// The node configuration of the node pool.
   /// Structure is documented below.
@@ -1092,8 +1231,16 @@ class VMwareNodePool extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// The time the cluster was deleted, in RFC3339 text format.
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The display name for the node pool.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
@@ -1146,6 +1293,7 @@ class VMwareNodePool extends pulumi.CustomResource {
     config = registerOutput<VMwareNodePoolConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VMwareNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');
@@ -1189,6 +1337,7 @@ class VMwareNodePool extends pulumi.CustomResource {
     config = registerOutput<VMwareNodePoolConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VMwareNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');

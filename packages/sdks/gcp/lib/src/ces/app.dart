@@ -11,9 +11,12 @@ import 'app_model_settings.dart';
 import 'app_state.dart';
 import 'app_time_zone_settings.dart';
 
-/// Description
+/// Customer Engagement Suite App
 ///
 ///
+/// To get more information about App, see:
+///
+/// * [API documentation](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rest/v1/projects.locations.apps)
 ///
 /// ## Example Usage
 ///
@@ -105,7 +108,7 @@ import 'app_time_zone_settings.dart';
 ///         },
 ///     },
 ///     modelSettings: {
-///         model: "gemini-1.5-flash",
+///         model: "gemini-3.0-flash-001",
 ///         temperature: 0.5,
 ///     },
 ///     evaluationMetricsThresholds: {
@@ -191,7 +194,6 @@ import 'app_time_zone_settings.dart';
 ///             input: "test-fixtures/cert.pem",
 ///         }).then(invoke => invoke.result),
 ///         privateKey: fakeSecretVersion.name,
-///         passphrase: "fakepassphrase",
 ///     },
 /// });
 /// ```
@@ -235,7 +237,7 @@ import 'app_time_zone_settings.dart';
 ///             {
 ///                 "language_code": "en-US",
 ///                 "voice": "en-US-Standard-A",
-///                 "speaking_rate": 1,
+///                 "speaking_rate": float(1),
 ///             },
 ///             {
 ///                 "language_code": "es-ES",
@@ -249,7 +251,7 @@ import 'app_time_zone_settings.dart';
 ///         "inactivity_timeout": "300s",
 ///         "ambient_sound_config": {
 ///             "prebuilt_ambient_sound": "room_2",
-///             "volume_gain_db": -6,
+///             "volume_gain_db": float(-6),
 ///         },
 ///     },
 ///     logging_settings={
@@ -275,17 +277,17 @@ import 'app_time_zone_settings.dart';
 ///         },
 ///     },
 ///     model_settings={
-///         "model": "gemini-1.5-flash",
+///         "model": "gemini-3.0-flash-001",
 ///         "temperature": 0.5,
 ///     },
 ///     evaluation_metrics_thresholds={
 ///         "golden_evaluation_metrics_thresholds": {
 ///             "turn_level_metrics_thresholds": {
 ///                 "semantic_similarity_success_threshold": 3,
-///                 "overall_tool_invocation_correctness_threshold": 1,
+///                 "overall_tool_invocation_correctness_threshold": float(1),
 ///             },
 ///             "expectation_level_metrics_thresholds": {
-///                 "tool_invocation_parameter_correctness_threshold": 1,
+///                 "tool_invocation_parameter_correctness_threshold": float(1),
 ///             },
 ///         },
 ///     },
@@ -359,7 +361,6 @@ import 'app_time_zone_settings.dart';
 ///     client_certificate_settings={
 ///         "tls_certificate": std.file(input="test-fixtures/cert.pem").result,
 ///         "private_key": fake_secret_version.name,
-///         "passphrase": "fakepassphrase",
 ///     })
 /// ```
 /// ```csharp
@@ -426,7 +427,7 @@ import 'app_time_zone_settings.dart';
 ///                 {
 ///                     LanguageCode = "en-US",
 ///                     Voice = "en-US-Standard-A",
-///                     SpeakingRate = 1,
+///                     SpeakingRate = 1.0,
 ///                 },
 ///                 new Gcp.Ces.Inputs.AppAudioProcessingConfigSynthesizeSpeechConfigArgs
 ///                 {
@@ -443,7 +444,7 @@ import 'app_time_zone_settings.dart';
 ///             AmbientSoundConfig = new Gcp.Ces.Inputs.AppAudioProcessingConfigAmbientSoundConfigArgs
 ///             {
 ///                 PrebuiltAmbientSound = "room_2",
-///                 VolumeGainDb = -6,
+///                 VolumeGainDb = -6.0,
 ///             },
 ///         },
 ///         LoggingSettings = new Gcp.Ces.Inputs.AppLoggingSettingsArgs
@@ -476,7 +477,7 @@ import 'app_time_zone_settings.dart';
 ///         },
 ///         ModelSettings = new Gcp.Ces.Inputs.AppModelSettingsArgs
 ///         {
-///             Model = "gemini-1.5-flash",
+///             Model = "gemini-3.0-flash-001",
 ///             Temperature = 0.5,
 ///         },
 ///         EvaluationMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsArgs
@@ -486,11 +487,11 @@ import 'app_time_zone_settings.dart';
 ///                 TurnLevelMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs
 ///                 {
 ///                     SemanticSimilaritySuccessThreshold = 3,
-///                     OverallToolInvocationCorrectnessThreshold = 1,
+///                     OverallToolInvocationCorrectnessThreshold = 1.0,
 ///                 },
 ///                 ExpectationLevelMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs
 ///                 {
-///                     ToolInvocationParameterCorrectnessThreshold = 1,
+///                     ToolInvocationParameterCorrectnessThreshold = 1.0,
 ///                 },
 ///             },
 ///         },
@@ -596,7 +597,6 @@ import 'app_time_zone_settings.dart';
 ///                 Input = "test-fixtures/cert.pem",
 ///             }).Apply(invoke => invoke.Result),
 ///             PrivateKey = fakeSecretVersion.Name,
-///             Passphrase = "fakepassphrase",
 ///         },
 ///     });
 ///
@@ -607,7 +607,6 @@ import 'app_time_zone_settings.dart';
 ///
 /// import (
 /// 	"encoding/json"
-/// 	"fmt"
 ///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -638,7 +637,7 @@ import 'app_time_zone_settings.dart';
 /// 			return err
 /// 		}
 /// 		fakeSecretVersion, err := secretmanager.NewSecretVersion(ctx, "fake_secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     fakePrivateKeySecret.ID(),
+/// 			Secret:     fakePrivateKeySecret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String(invokeFile.Result),
 /// 		})
 /// 		if err != nil {
@@ -653,8 +652,8 @@ import 'app_time_zone_settings.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"SimpleString": map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]map[string]string{
+/// 			"SimpleString": map[string]string{
 /// 				"type":        "STRING",
 /// 				"description": "A simple string definition",
 /// 			},
@@ -663,8 +662,8 @@ import 'app_time_zone_settings.dart';
 /// 			return err
 /// 		}
 /// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal([]map[string]interface{}{
-/// 			map[string]interface{}{
+/// 		tmpJSON1, err := json.Marshal([]map[string]string{
+/// 			{
 /// 				"type":        "STRING",
 /// 				"description": "any_of option 1: string",
 /// 			},
@@ -678,8 +677,8 @@ import 'app_time_zone_settings.dart';
 /// 			return err
 /// 		}
 /// 		json2 := string(tmpJSON2)
-/// 		tmpJSON3, err := json.Marshal([]map[string]interface{}{
-/// 			map[string]interface{}{
+/// 		tmpJSON3, err := json.Marshal([]map[string]string{
+/// 			{
 /// 				"type":        "ARRAY",
 /// 				"description": "prefix item 1",
 /// 			},
@@ -688,15 +687,15 @@ import 'app_time_zone_settings.dart';
 /// 			return err
 /// 		}
 /// 		json3 := string(tmpJSON3)
-/// 		tmpJSON4, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON4, err := json.Marshal(map[string]string{
 /// 			"type": "BOOLEAN",
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		json4 := string(tmpJSON4)
-/// 		tmpJSON5, err := json.Marshal(map[string]interface{}{
-/// 			"name": map[string]interface{}{
+/// 		tmpJSON5, err := json.Marshal(map[string]map[string]string{
+/// 			"name": map[string]string{
 /// 				"type":        "STRING",
 /// 				"description": "A name",
 /// 			},
@@ -705,7 +704,7 @@ import 'app_time_zone_settings.dart';
 /// 			return err
 /// 		}
 /// 		json5 := string(tmpJSON5)
-/// 		tmpJSON6, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON6, err := json.Marshal(map[string]string{
 /// 			"type":        "ARRAY",
 /// 			"description": "An array",
 /// 		})
@@ -779,7 +778,7 @@ import 'app_time_zone_settings.dart';
 /// 				},
 /// 			},
 /// 			ModelSettings: &ces.AppModelSettingsArgs{
-/// 				Model:       pulumi.String("gemini-1.5-flash"),
+/// 				Model:       pulumi.String("gemini-3.0-flash-001"),
 /// 				Temperature: pulumi.Float64(0.5),
 /// 			},
 /// 			EvaluationMetricsThresholds: &ces.AppEvaluationMetricsThresholdsArgs{
@@ -846,7 +845,6 @@ import 'app_time_zone_settings.dart';
 /// 			ClientCertificateSettings: &ces.AppClientCertificateSettingsArgs{
 /// 				TlsCertificate: pulumi.String(invokeFile1.Result),
 /// 				PrivateKey:     fakeSecretVersion.Name,
-/// 				Passphrase:     pulumi.String("fakepassphrase"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -854,6 +852,175 @@ import 'app_time_zone_settings.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_secretmanager_secret" "fake_private_key_secret" {
+///   secret_id = "fake-pk-secret-app-tf1"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "fake_secret_version" {
+///   secret      = gcp_secretmanager_secret.fake_private_key_secret.id
+///   secret_data = file("test-fixtures/test.key")
+/// }
+/// resource "gcp_secretmanager_secretiammember" "private_key_accessor" {
+///   project   = gcp_secretmanager_secret.fake_private_key_secret.project
+///   secret_id = gcp_secretmanager_secret.fake_private_key_secret.secret_id
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-ces.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_ces_app" "ces_app_basic" {
+///   app_id       = "app-id"
+///   location     = "us"
+///   description  = "Basic CES App example"
+///   display_name = "my-app"
+///   pinned       = true
+///   language_settings = {
+///     default_language_code       = "en-US"
+///     supported_language_codes    = ["es-ES", "fr-FR"]
+///     enable_multilingual_support = true
+///     fallback_action             = "escalate"
+///   }
+///   audio_processing_config = {
+///     synthesize_speech_configs = [{
+///       "languageCode" = "en-US"
+///       "voice"        = "en-US-Standard-A"
+///       "speakingRate" = 1
+///       }, {
+///       "languageCode" = "es-ES"
+///       "voice"        = "es-ES-Standard-A"
+///       "speakingRate" = 0.95
+///     }]
+///     barge_in_config = {
+///       barge_in_awareness = true
+///     }
+///     inactivity_timeout = "300s"
+///     ambient_sound_config = {
+///       prebuilt_ambient_sound = "room_2"
+///       volume_gain_db         = -6
+///     }
+///   }
+///   logging_settings = {
+///     redaction_config = {
+///       enable_redaction    = true
+///       inspect_template    = "projects/fake-project/locations/us/inspectTemplates/example-inspect"
+///       deidentify_template = "projects/fake-project/locations/us/deidentifyTemplates/example-deidentify"
+///     }
+///     audio_recording_config = {
+///       gcs_bucket      = "gs://fake-app-audio-recordings"
+///       gcs_path_prefix = "projects/fake-project/location/us/app/test-app/123/$session/123"
+///     }
+///     bigquery_export_settings = {
+///       dataset = "projects/fake-project/datasets/fake_app_logs"
+///       enabled = false
+///       project = "projects/fake-project"
+///     }
+///     cloud_logging_settings = {
+///       enable_cloud_logging = true
+///     }
+///     conversation_logging_settings = {
+///       disable_conversation_logging = true
+///     }
+///   }
+///   model_settings = {
+///     model       = "gemini-3.0-flash-001"
+///     temperature = 0.5
+///   }
+///   evaluation_metrics_thresholds = {
+///     golden_evaluation_metrics_thresholds = {
+///       turn_level_metrics_thresholds = {
+///         semantic_similarity_success_threshold         = 3
+///         overall_tool_invocation_correctness_threshold = 1
+///       }
+///       expectation_level_metrics_thresholds = {
+///         tool_invocation_parameter_correctness_threshold = 1
+///       }
+///     }
+///   }
+///   variable_declarations {
+///     name        = "test"
+///     description = "test"
+///     schema = {
+///       description  = "schema description"
+///       type         = "ARRAY"
+///       title        = "title"
+///       nullable     = true
+///       requireds    = ["some_property"]
+///       enums        = ["VALUE_A", "VALUE_B"]
+///       ref          = "#/defs/MyDefinition"
+///       unique_items = true
+///       defs = jsonencode({
+///         "SimpleString" = {
+///           "type"        = "STRING"
+///           "description" = "A simple string definition"
+///         }
+///       })
+///       any_of = jsonencode([{
+///         "type"        = "STRING"
+///         "description" = "any_of option 1: string"
+///       }])
+///       default = jsonencode(false)
+///       prefix_items = jsonencode([{
+///         "type"        = "ARRAY"
+///         "description" = "prefix item 1"
+///       }])
+///       additional_properties = jsonencode({
+///         "type" = "BOOLEAN"
+///       })
+///       properties = jsonencode({
+///         "name" = {
+///           "type"        = "STRING"
+///           "description" = "A name"
+///         }
+///       })
+///       items = jsonencode({
+///         "type"        = "ARRAY"
+///         "description" = "An array"
+///       })
+///     }
+///   }
+///   global_instruction = "You are a virtual assistant for an e-commerce platform. Be friendly and helpful."
+///   guardrails         = []
+///   default_channel_profile = {
+///     channel_type             = "WEB_UI"
+///     disable_barge_in_control = false
+///     disable_dtmf             = true
+///     persona_property = {
+///       persona = "CONCISE"
+///     }
+///     profile_id = "profile-id"
+///     web_widget_config = {
+///       modality         = "CHAT_ONLY"
+///       theme            = "LIGHT"
+///       web_widget_title = "Help Assistant"
+///     }
+///   }
+///   metadata = {
+///     "deployment_env" = "test"
+///   }
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+///   client_certificate_settings = {
+///     tls_certificate = file("test-fixtures/cert.pem")
+///     private_key     = gcp_secretmanager_secretversion.fake_secret_version.name
+///   }
 /// }
 /// ```
 /// ```java
@@ -878,6 +1045,7 @@ import 'app_time_zone_settings.dart';
 /// import com.pulumi.gcp.ces.AppArgs;
 /// import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
 /// import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigArgs;
+/// import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigSynthesizeSpeechConfigArgs;
 /// import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigBargeInConfigArgs;
 /// import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigAmbientSoundConfigArgs;
 /// import com.pulumi.gcp.ces.inputs.AppLoggingSettingsArgs;
@@ -899,8 +1067,8 @@ import 'app_time_zone_settings.dart';
 /// import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
 /// import com.pulumi.gcp.ces.inputs.AppClientCertificateSettingsArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -995,7 +1163,7 @@ import 'app_time_zone_settings.dart';
 ///                     .build())
 ///                 .build())
 ///             .modelSettings(AppModelSettingsArgs.builder()
-///                 .model("gemini-1.5-flash")
+///                 .model("gemini-3.0-flash-001")
 ///                 .temperature(0.5)
 ///                 .build())
 ///             .evaluationMetricsThresholds(AppEvaluationMetricsThresholdsArgs.builder()
@@ -1085,7 +1253,6 @@ import 'app_time_zone_settings.dart';
 ///                     .input("test-fixtures/cert.pem")
 ///                     .build()).result())
 ///                 .privateKey(fakeSecretVersion.name())
-///                 .passphrase("fakepassphrase")
 ///                 .build())
 ///             .build());
 ///
@@ -1167,7 +1334,7 @@ import 'app_time_zone_settings.dart';
 ///         conversationLoggingSettings:
 ///           disableConversationLogging: true
 ///       modelSettings:
-///         model: gemini-1.5-flash
+///         model: gemini-3.0-flash-001
 ///         temperature: 0.5
 ///       evaluationMetricsThresholds:
 ///         goldenEvaluationMetricsThresholds:
@@ -1243,7 +1410,6 @@ import 'app_time_zone_settings.dart';
 ///               input: test-fixtures/cert.pem
 ///             return: result
 ///         privateKey: ${fakeSecretVersion.name}
-///         passphrase: fakepassphrase
 /// variables:
 ///   project:
 ///     fn::invoke:
@@ -1318,7 +1484,7 @@ import 'app_time_zone_settings.dart';
 ///         },
 ///     },
 ///     modelSettings: {
-///         model: "gemini-1.5-flash",
+///         model: "gemini-3.0-flash-001",
 ///         temperature: 0.5,
 ///     },
 ///     evaluationMetricsThresholds: {
@@ -1424,7 +1590,7 @@ import 'app_time_zone_settings.dart';
 ///             {
 ///                 "language_code": "en-US",
 ///                 "voice": "en-US-Standard-A",
-///                 "speaking_rate": 1,
+///                 "speaking_rate": float(1),
 ///             },
 ///             {
 ///                 "language_code": "es-ES",
@@ -1438,7 +1604,7 @@ import 'app_time_zone_settings.dart';
 ///         "inactivity_timeout": "300s",
 ///         "ambient_sound_config": {
 ///             "gcs_uri": "gs://fake-bucket/sounds/ambient.wav",
-///             "volume_gain_db": -6,
+///             "volume_gain_db": float(-6),
 ///         },
 ///     },
 ///     logging_settings={
@@ -1464,17 +1630,17 @@ import 'app_time_zone_settings.dart';
 ///         },
 ///     },
 ///     model_settings={
-///         "model": "gemini-1.5-flash",
+///         "model": "gemini-3.0-flash-001",
 ///         "temperature": 0.5,
 ///     },
 ///     evaluation_metrics_thresholds={
 ///         "golden_evaluation_metrics_thresholds": {
 ///             "turn_level_metrics_thresholds": {
 ///                 "semantic_similarity_success_threshold": 3,
-///                 "overall_tool_invocation_correctness_threshold": 1,
+///                 "overall_tool_invocation_correctness_threshold": float(1),
 ///             },
 ///             "expectation_level_metrics_thresholds": {
-///                 "tool_invocation_parameter_correctness_threshold": 1,
+///                 "tool_invocation_parameter_correctness_threshold": float(1),
 ///             },
 ///         },
 ///     },
@@ -1579,7 +1745,7 @@ import 'app_time_zone_settings.dart';
 ///                 {
 ///                     LanguageCode = "en-US",
 ///                     Voice = "en-US-Standard-A",
-///                     SpeakingRate = 1,
+///                     SpeakingRate = 1.0,
 ///                 },
 ///                 new Gcp.Ces.Inputs.AppAudioProcessingConfigSynthesizeSpeechConfigArgs
 ///                 {
@@ -1596,7 +1762,7 @@ import 'app_time_zone_settings.dart';
 ///             AmbientSoundConfig = new Gcp.Ces.Inputs.AppAudioProcessingConfigAmbientSoundConfigArgs
 ///             {
 ///                 GcsUri = "gs://fake-bucket/sounds/ambient.wav",
-///                 VolumeGainDb = -6,
+///                 VolumeGainDb = -6.0,
 ///             },
 ///         },
 ///         LoggingSettings = new Gcp.Ces.Inputs.AppLoggingSettingsArgs
@@ -1629,7 +1795,7 @@ import 'app_time_zone_settings.dart';
 ///         },
 ///         ModelSettings = new Gcp.Ces.Inputs.AppModelSettingsArgs
 ///         {
-///             Model = "gemini-1.5-flash",
+///             Model = "gemini-3.0-flash-001",
 ///             Temperature = 0.5,
 ///         },
 ///         EvaluationMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsArgs
@@ -1639,11 +1805,11 @@ import 'app_time_zone_settings.dart';
 ///                 TurnLevelMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs
 ///                 {
 ///                     SemanticSimilaritySuccessThreshold = 3,
-///                     OverallToolInvocationCorrectnessThreshold = 1,
+///                     OverallToolInvocationCorrectnessThreshold = 1.0,
 ///                 },
 ///                 ExpectationLevelMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs
 ///                 {
-///                     ToolInvocationParameterCorrectnessThreshold = 1,
+///                     ToolInvocationParameterCorrectnessThreshold = 1.0,
 ///                 },
 ///             },
 ///         },
@@ -1757,8 +1923,8 @@ import 'app_time_zone_settings.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"SimpleString": map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]map[string]string{
+/// 			"SimpleString": map[string]string{
 /// 				"type":        "STRING",
 /// 				"description": "A simple string definition",
 /// 			},
@@ -1767,8 +1933,8 @@ import 'app_time_zone_settings.dart';
 /// 			return err
 /// 		}
 /// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal([]map[string]interface{}{
-/// 			map[string]interface{}{
+/// 		tmpJSON1, err := json.Marshal([]map[string]string{
+/// 			{
 /// 				"type":        "STRING",
 /// 				"description": "any_of option 1: string",
 /// 			},
@@ -1782,8 +1948,8 @@ import 'app_time_zone_settings.dart';
 /// 			return err
 /// 		}
 /// 		json2 := string(tmpJSON2)
-/// 		tmpJSON3, err := json.Marshal([]map[string]interface{}{
-/// 			map[string]interface{}{
+/// 		tmpJSON3, err := json.Marshal([]map[string]string{
+/// 			{
 /// 				"type":        "ARRAY",
 /// 				"description": "prefix item 1",
 /// 			},
@@ -1792,15 +1958,15 @@ import 'app_time_zone_settings.dart';
 /// 			return err
 /// 		}
 /// 		json3 := string(tmpJSON3)
-/// 		tmpJSON4, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON4, err := json.Marshal(map[string]string{
 /// 			"type": "BOOLEAN",
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		json4 := string(tmpJSON4)
-/// 		tmpJSON5, err := json.Marshal(map[string]interface{}{
-/// 			"name": map[string]interface{}{
+/// 		tmpJSON5, err := json.Marshal(map[string]map[string]string{
+/// 			"name": map[string]string{
 /// 				"type":        "STRING",
 /// 				"description": "A name",
 /// 			},
@@ -1809,7 +1975,7 @@ import 'app_time_zone_settings.dart';
 /// 			return err
 /// 		}
 /// 		json5 := string(tmpJSON5)
-/// 		tmpJSON6, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON6, err := json.Marshal(map[string]string{
 /// 			"type":        "ARRAY",
 /// 			"description": "An array",
 /// 		})
@@ -1876,7 +2042,7 @@ import 'app_time_zone_settings.dart';
 /// 				},
 /// 			},
 /// 			ModelSettings: &ces.AppModelSettingsArgs{
-/// 				Model:       pulumi.String("gemini-1.5-flash"),
+/// 				Model:       pulumi.String("gemini-3.0-flash-001"),
 /// 				Temperature: pulumi.Float64(0.5),
 /// 			},
 /// 			EvaluationMetricsThresholds: &ces.AppEvaluationMetricsThresholdsArgs{
@@ -1947,6 +2113,147 @@ import 'app_time_zone_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ces_app" "ces_app_ambient_sound_gcs_uri" {
+///   app_id       = "app-id"
+///   location     = "us"
+///   description  = "Basic CES App example"
+///   display_name = "my-app-ambient-sound-gcs-uri"
+///   language_settings = {
+///     default_language_code       = "en-US"
+///     supported_language_codes    = ["es-ES", "fr-FR"]
+///     enable_multilingual_support = true
+///     fallback_action             = "escalate"
+///   }
+///   audio_processing_config = {
+///     synthesize_speech_configs = [{
+///       "languageCode" = "en-US"
+///       "voice"        = "en-US-Standard-A"
+///       "speakingRate" = 1
+///       }, {
+///       "languageCode" = "es-ES"
+///       "voice"        = "es-ES-Standard-A"
+///       "speakingRate" = 0.95
+///     }]
+///     barge_in_config = {
+///       barge_in_awareness = true
+///     }
+///     inactivity_timeout = "300s"
+///     ambient_sound_config = {
+///       gcs_uri        = "gs://fake-bucket/sounds/ambient.wav"
+///       volume_gain_db = -6
+///     }
+///   }
+///   logging_settings = {
+///     redaction_config = {
+///       enable_redaction    = true
+///       inspect_template    = "projects/fake-project/locations/us/inspectTemplates/example-inspect"
+///       deidentify_template = "projects/fake-project/locations/us/deidentifyTemplates/example-deidentify"
+///     }
+///     audio_recording_config = {
+///       gcs_bucket      = "gs://fake-app-audio-recordings"
+///       gcs_path_prefix = "projects/fake-project/location/us/app/fake-app/123/$session/123"
+///     }
+///     bigquery_export_settings = {
+///       dataset = "projects/fake-project/datasets/fake_app_logs"
+///       enabled = false
+///       project = "projects/fake-project"
+///     }
+///     cloud_logging_settings = {
+///       enable_cloud_logging = true
+///     }
+///     conversation_logging_settings = {
+///       disable_conversation_logging = true
+///     }
+///   }
+///   model_settings = {
+///     model       = "gemini-3.0-flash-001"
+///     temperature = 0.5
+///   }
+///   evaluation_metrics_thresholds = {
+///     golden_evaluation_metrics_thresholds = {
+///       turn_level_metrics_thresholds = {
+///         semantic_similarity_success_threshold         = 3
+///         overall_tool_invocation_correctness_threshold = 1
+///       }
+///       expectation_level_metrics_thresholds = {
+///         tool_invocation_parameter_correctness_threshold = 1
+///       }
+///     }
+///   }
+///   variable_declarations {
+///     name        = "test"
+///     description = "test"
+///     schema = {
+///       description  = "schema description"
+///       type         = "ARRAY"
+///       nullable     = true
+///       requireds    = ["some_property"]
+///       enums        = ["VALUE_A", "VALUE_B"]
+///       ref          = "#/defs/MyDefinition"
+///       unique_items = true
+///       defs = jsonencode({
+///         "SimpleString" = {
+///           "type"        = "STRING"
+///           "description" = "A simple string definition"
+///         }
+///       })
+///       any_of = jsonencode([{
+///         "type"        = "STRING"
+///         "description" = "any_of option 1: string"
+///       }])
+///       default = jsonencode(false)
+///       prefix_items = jsonencode([{
+///         "type"        = "ARRAY"
+///         "description" = "prefix item 1"
+///       }])
+///       additional_properties = jsonencode({
+///         "type" = "BOOLEAN"
+///       })
+///       properties = jsonencode({
+///         "name" = {
+///           "type"        = "STRING"
+///           "description" = "A name"
+///         }
+///       })
+///       items = jsonencode({
+///         "type"        = "ARRAY"
+///         "description" = "An array"
+///       })
+///     }
+///   }
+///   global_instruction = "You are a virtual assistant for an e-commerce platform. Be friendly and helpful."
+///   guardrails         = []
+///   default_channel_profile = {
+///     channel_type             = "WEB_UI"
+///     disable_barge_in_control = false
+///     disable_dtmf             = true
+///     persona_property = {
+///       persona = "CONCISE"
+///     }
+///     profile_id = "profile-id"
+///     web_widget_config = {
+///       modality         = "CHAT_ONLY"
+///       theme            = "LIGHT"
+///       web_widget_title = "Help Assistant"
+///     }
+///   }
+///   metadata = {
+///     "deployment_env" = "test"
+///   }
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1957,6 +2264,7 @@ import 'app_time_zone_settings.dart';
 /// import com.pulumi.gcp.ces.AppArgs;
 /// import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
 /// import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigArgs;
+/// import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigSynthesizeSpeechConfigArgs;
 /// import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigBargeInConfigArgs;
 /// import com.pulumi.gcp.ces.inputs.AppAudioProcessingConfigAmbientSoundConfigArgs;
 /// import com.pulumi.gcp.ces.inputs.AppLoggingSettingsArgs;
@@ -1977,8 +2285,8 @@ import 'app_time_zone_settings.dart';
 /// import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileWebWidgetConfigArgs;
 /// import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2047,7 +2355,7 @@ import 'app_time_zone_settings.dart';
 ///                     .build())
 ///                 .build())
 ///             .modelSettings(AppModelSettingsArgs.builder()
-///                 .model("gemini-1.5-flash")
+///                 .model("gemini-3.0-flash-001")
 ///                 .temperature(0.5)
 ///                 .build())
 ///             .evaluationMetricsThresholds(AppEvaluationMetricsThresholdsArgs.builder()
@@ -2184,7 +2492,7 @@ import 'app_time_zone_settings.dart';
 ///         conversationLoggingSettings:
 ///           disableConversationLogging: true
 ///       modelSettings:
-///         model: gemini-1.5-flash
+///         model: gemini-3.0-flash-001
 ///         temperature: 0.5
 ///       evaluationMetricsThresholds:
 ///         goldenEvaluationMetricsThresholds:
@@ -2259,22 +2567,15 @@ import 'app_time_zone_settings.dart';
 /// App can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/apps/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, App can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:ces/app:App default projects/{{project}}/locations/{{location}}/apps/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:ces/app:App default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:ces/app:App default {{location}}/{{name}}
 /// ```
 class App extends pulumi.CustomResource {
@@ -2298,6 +2599,13 @@ class App extends pulumi.CustomResource {
   /// channel, such as web UI or telephony.
   /// Structure is documented below.
   late final pulumi.Output<AppDefaultChannelProfile?> defaultChannelProfile;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Number of deployments in the app.
   late final pulumi.Output<int> deploymentCount;
   /// Human-readable description of the app.
@@ -2326,7 +2634,7 @@ class App extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// Settings to describe the logging behaviors for the app.
   /// Structure is documented below.
-  late final pulumi.Output<AppLoggingSettings?> loggingSettings;
+  late final pulumi.Output<AppLoggingSettings> loggingSettings;
   /// Metadata about the app. This field can be used to store additional
   /// information relevant to the app's details or intended usages.
   late final pulumi.Output<Map<String, String>?> metadata;
@@ -2347,6 +2655,9 @@ class App extends pulumi.CustomResource {
   /// TimeZone settings of the app.
   /// Structure is documented below.
   late final pulumi.Output<AppTimeZoneSettings?> timeZoneSettings;
+  /// The tool execution mode for the app.
+  /// See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+  late final pulumi.Output<String?> toolExecutionMode;
   /// Timestamp when the app was last updated.
   late final pulumi.Output<String> updateTime;
   /// The declarations of the variables.
@@ -2373,6 +2684,7 @@ class App extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     dataStoreSettings = registerOutput<AppDataStoreSettings?>('dataStoreSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppDataStoreSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultChannelProfile = registerOutput<AppDefaultChannelProfile?>('defaultChannelProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppDefaultChannelProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deploymentCount = registerOutput<int>('deploymentCount');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -2382,7 +2694,7 @@ class App extends pulumi.CustomResource {
     guardrails = registerOutput<List<String>?>('guardrails');
     languageSettings = registerOutput<AppLanguageSettings?>('languageSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLanguageSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    loggingSettings = registerOutput<AppLoggingSettings?>('loggingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loggingSettings = registerOutput<AppLoggingSettings>('loggingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadata = registerOutput<Map<String, String>?>('metadata');
     modelSettings = registerOutput<AppModelSettings?>('modelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -2390,6 +2702,7 @@ class App extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     rootAgent = registerOutput<String?>('rootAgent');
     timeZoneSettings = registerOutput<AppTimeZoneSettings?>('timeZoneSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppTimeZoneSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    toolExecutionMode = registerOutput<String?>('toolExecutionMode');
     updateTime = registerOutput<String>('updateTime');
     variableDeclarations = registerOutput<List<Map<String, dynamic>>?>('variableDeclarations');
   }
@@ -2423,6 +2736,7 @@ class App extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     dataStoreSettings = registerOutput<AppDataStoreSettings?>('dataStoreSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppDataStoreSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultChannelProfile = registerOutput<AppDefaultChannelProfile?>('defaultChannelProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppDefaultChannelProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deploymentCount = registerOutput<int>('deploymentCount');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -2432,7 +2746,7 @@ class App extends pulumi.CustomResource {
     guardrails = registerOutput<List<String>?>('guardrails');
     languageSettings = registerOutput<AppLanguageSettings?>('languageSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLanguageSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    loggingSettings = registerOutput<AppLoggingSettings?>('loggingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loggingSettings = registerOutput<AppLoggingSettings>('loggingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metadata = registerOutput<Map<String, String>?>('metadata');
     modelSettings = registerOutput<AppModelSettings?>('modelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -2440,6 +2754,7 @@ class App extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     rootAgent = registerOutput<String?>('rootAgent');
     timeZoneSettings = registerOutput<AppTimeZoneSettings?>('timeZoneSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppTimeZoneSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    toolExecutionMode = registerOutput<String?>('toolExecutionMode');
     updateTime = registerOutput<String>('updateTime');
     variableDeclarations = registerOutput<List<Map<String, dynamic>>?>('variableDeclarations');
   }

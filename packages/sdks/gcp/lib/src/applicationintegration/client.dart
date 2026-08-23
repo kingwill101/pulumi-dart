@@ -66,6 +66,19 @@ import 'client_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_applicationintegration_client" "example" {
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +87,8 @@ import 'client_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.applicationintegration.Client;
 /// import com.pulumi.gcp.applicationintegration.ClientArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -289,6 +302,44 @@ import 'client_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "default" {
+/// }
+/// data "gcp_kms_getkmskeyring" "keyring" {
+///   name     = "my-keyring"
+///   location = "us-east1"
+/// }
+/// data "gcp_kms_getkmscryptokey" "cryptokey" {
+///   name     = "my-crypto-key"
+///   key_ring = data.gcp_kms_getkmskeyring.keyring.id
+/// }
+/// data "gcp_kms_getkmscryptokeyversion" "testKey" {
+///   crypto_key = data.gcp_kms_getkmscryptokey.cryptokey.id
+/// }
+///
+/// resource "gcp_applicationintegration_client" "example" {
+///   location                   = "us-east1"
+///   create_sample_integrations = true
+///   cloud_kms_config = {
+///     kms_location   = "us-east1"
+///     kms_ring       = basename(data.gcp_kms_getkmskeyring.keyring.id)
+///     key            = basename(data.gcp_kms_getkmscryptokey.cryptokey.id)
+///     key_version    = basename(data.gcp_kms_getkmscryptokeyversion.testKey.id)
+///     kms_project_id = data.gcp_organizations_getproject.default.project_id
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -306,8 +357,8 @@ import 'client_state.dart';
 /// import com.pulumi.gcp.applicationintegration.inputs.ClientCloudKmsConfigArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.BasenameArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -415,22 +466,15 @@ import 'client_state.dart';
 /// Client can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/clients`
-///
 /// * `{{project}}/{{location}}`
-///
 /// * `{{location}}`
+///
 ///
 /// When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:applicationintegration/client:Client default projects/{{project}}/locations/{{location}}/clients
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:applicationintegration/client:Client default {{project}}/{{location}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:applicationintegration/client:Client default {{location}}
 /// ```
 class Client extends pulumi.CustomResource {
@@ -439,6 +483,13 @@ class Client extends pulumi.CustomResource {
   late final pulumi.Output<ClientCloudKmsConfig?> cloudKmsConfig;
   /// Indicates if sample integrations should be created along with provisioning.
   late final pulumi.Output<bool?> createSampleIntegrations;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Location in which client needs to be provisioned.
   late final pulumi.Output<String> location;
   /// The ID of the project in which the resource belongs.
@@ -447,7 +498,7 @@ class Client extends pulumi.CustomResource {
   /// (Optional, Deprecated)
   /// User input run-as service account, if empty, will bring up a new default service account.
   ///
-  /// &gt; **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
+  /// &gt; **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
   late final pulumi.Output<String?> runAsServiceAccount;
 
   /// Creates a new [Client].
@@ -466,6 +517,7 @@ class Client extends pulumi.CustomResource {
         ) {
     cloudKmsConfig = registerOutput<ClientCloudKmsConfig?>('cloudKmsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientCloudKmsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createSampleIntegrations = registerOutput<bool?>('createSampleIntegrations');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
     runAsServiceAccount = registerOutput<String?>('runAsServiceAccount');
@@ -496,6 +548,7 @@ class Client extends pulumi.CustomResource {
         ) {
     cloudKmsConfig = registerOutput<ClientCloudKmsConfig?>('cloudKmsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientCloudKmsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createSampleIntegrations = registerOutput<bool?>('createSampleIntegrations');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
     runAsServiceAccount = registerOutput<String?>('runAsServiceAccount');

@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_service_circuit_breakers_connect_timeout.dart';
 
 class BackendServiceCircuitBreakers {
+  /// (Optional, Beta)
   /// The timeout for new network connections to hosts.
   /// Structure is documented below.
   final pulumi.Input<BackendServiceCircuitBreakersConnectTimeout>? connectTimeout;
@@ -26,7 +27,7 @@ class BackendServiceCircuitBreakers {
   final pulumi.Input<int>? maxRetries;
 
   /// Creates a new [BackendServiceCircuitBreakers].
-  /// [connectTimeout] The timeout for new network connections to hosts.
+  /// [connectTimeout] (Optional, Beta)
   /// [maxConnections] The maximum number of connections to the backend cluster.
   /// [maxPendingRequests] The maximum number of pending requests to the backend cluster.
   /// [maxRequests] The maximum number of parallel requests to the backend cluster.
@@ -63,4 +64,3 @@ class BackendServiceCircuitBreakers {
     );
   }
 }
-

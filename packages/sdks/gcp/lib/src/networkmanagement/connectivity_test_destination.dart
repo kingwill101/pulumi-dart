@@ -9,17 +9,22 @@ class ConnectivityTestDestination {
   /// PSC endpoints, and Protocol Forwarding.
   final pulumi.Input<String>? forwardingRule;
   /// A DNS endpoint of Google Kubernetes Engine cluster control plane.
-  /// Requires gke_master_cluster to be set, can't be used simultaneoulsly with
-  /// ip_address or network. Applicable only to destination endpoint.
+  /// Requires gkeMasterCluster to be set, can't be used simultaneoulsly with
+  /// ipAddress or network. Applicable only to destination endpoint.
   final pulumi.Input<String>? fqdn;
   /// A cluster URI for Google Kubernetes Engine cluster control plane.
   final pulumi.Input<String>? gkeMasterCluster;
+  /// A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+  final pulumi.Input<String>? gkePod;
   /// A Compute Engine instance URI.
   final pulumi.Input<String>? instance;
   /// The IP address of the endpoint, which can be an external or internal IP.
   final pulumi.Input<String>? ipAddress;
   /// A VPC network URI.
   final pulumi.Input<String>? network;
+  /// For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+  /// Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
+  final pulumi.Input<String>? networkType;
   /// The IP protocol port of the endpoint. Only applicable when protocol is
   /// TCP or UDP.
   final pulumi.Input<int>? port;
@@ -43,9 +48,11 @@ class ConnectivityTestDestination {
   /// [forwardingRule] Forwarding rule URI. Forwarding rules are frontends for load balancers,
   /// [fqdn] A DNS endpoint of Google Kubernetes Engine cluster control plane.
   /// [gkeMasterCluster] A cluster URI for Google Kubernetes Engine cluster control plane.
+  /// [gkePod] A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
   /// [instance] A Compute Engine instance URI.
   /// [ipAddress] The IP address of the endpoint, which can be an external or internal IP.
   /// [network] A VPC network URI.
+  /// [networkType] For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
   /// [port] The IP protocol port of the endpoint. Only applicable when protocol is
   /// [projectId] Project ID where the endpoint is located.
   /// [redisCluster] A Redis Cluster URI.
@@ -55,9 +62,11 @@ class ConnectivityTestDestination {
     this.forwardingRule,
     this.fqdn,
     this.gkeMasterCluster,
+    this.gkePod,
     this.instance,
     this.ipAddress,
     this.network,
+    this.networkType,
     this.port,
     this.projectId,
     this.redisCluster,
@@ -70,9 +79,11 @@ class ConnectivityTestDestination {
       'forwardingRule': ?forwardingRule,
       'fqdn': ?fqdn,
       'gkeMasterCluster': ?gkeMasterCluster,
+      'gkePod': ?gkePod,
       'instance': ?instance,
       'ipAddress': ?ipAddress,
       'network': ?network,
+      'networkType': ?networkType,
       'port': ?port,
       'projectId': ?projectId,
       'redisCluster': ?redisCluster,
@@ -86,9 +97,11 @@ class ConnectivityTestDestination {
       forwardingRule: (() { final guardedValue = map['forwardingRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gkeMasterCluster: (() { final guardedValue = map['gkeMasterCluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      gkePod: (() { final guardedValue = map['gkePod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       redisCluster: (() { final guardedValue = map['redisCluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -96,4 +109,3 @@ class ConnectivityTestDestination {
     );
   }
 }
-

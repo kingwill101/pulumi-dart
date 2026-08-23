@@ -2,6 +2,36 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_pool_args.dart';
 import 'storage_pool_state.dart';
 
+/// Storage pools act as containers for volumes. All volumes in a storage pool share the following information:
+/// * Location
+/// * Service level
+/// * Virtual Private Cloud (VPC) network
+/// * Active Directory policy
+/// * LDAP use for NFS volumes, if applicable
+/// * Customer-managed encryption key (CMEK) policy
+///
+/// The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
+/// component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
+/// independent of consumption at the volume level.
+///
+/// Storage pools of service level Flex are available as zonal (single zone) or regional (two zones in same region) pools.
+/// Zonal and regional pools are high-available within the zone. On top of that, regional pools have `replicaZone` as
+/// hot standby zone. All volume access is served from the `zone`. If `zone` fails, `replicaZone`
+/// automatically becomes the active zone. This will cause state drift in your configuration.
+/// If a zone switch (manual or automatic) is triggered outside of Terraform, you need to adjust the `zone`
+/// and `replicaZone` values to reflect the current state, or Terraform will initiate a zone switch when running
+/// the next apply. You can trigger a manual
+/// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones)
+/// via Terraform by swapping the value of the `zone` and `replicaZone` parameters in your HCL code.
+///
+///
+/// To get more information about StoragePool, see:
+///
+/// * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.storagePools)
+/// * How-to Guides
+/// * [Quickstart documentation](https://cloud.google.com/netapp/volumes/docs/get-started/quickstarts/create-storage-pool)
+/// * [Regional Flex zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones)
+///
 /// ## Example Usage
 ///
 /// ### Storage Pool Create Doc
@@ -170,7 +200,7 @@ import 'storage_pool_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      peeringNetwork.ID(),
+/// 			Network:      peeringNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -178,7 +208,7 @@ import 'storage_pool_state.dart';
 /// 		// Create a Private Service Access connection
 /// 		// When using shared-VPCs, this resource needs to be created in host project
 /// 		_default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-/// 			Network: peeringNetwork.ID(),
+/// 			Network: peeringNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("netapp.servicenetworking.goog"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -205,13 +235,60 @@ import 'storage_pool_state.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			ServiceLevel: pulumi.String("PREMIUM"),
 /// 			CapacityGib:  pulumi.String("2048"),
-/// 			Network:      peeringNetwork.ID(),
+/// 			Network:      peeringNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// # Create a network or use datasource to reference existing network
+/// resource "gcp_compute_network" "peering_network" {
+///   name = "test-network"
+/// }
+/// # Reserve a CIDR for NetApp Volumes to use
+/// # When using shared-VPCs, this resource needs to be created in host project
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "test-address"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.peering_network.id
+/// }
+/// # Create a Private Service Access connection
+/// # When using shared-VPCs, this resource needs to be created in host project
+/// resource "gcp_servicenetworking_connection" "default" {
+///   network                 = gcp_compute_network.peering_network.id
+///   service                 = "netapp.servicenetworking.goog"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// # Modify the PSA Connection to allow import/export of custom routes
+/// # When using shared-VPCs, this resource needs to be created in host project
+/// resource "gcp_compute_networkpeeringroutesconfig" "route_updates" {
+///   peering              = gcp_servicenetworking_connection.default.peering
+///   network              = gcp_compute_network.peering_network.name
+///   import_custom_routes = true
+///   export_custom_routes = true
+/// }
+/// # Create a storage pool
+/// # Create this resource in the project which is expected to own the volumes
+/// resource "gcp_netapp_storagepool" "test_pool" {
+///   name          = "test-pool"
+///   location      = "us-central1"
+///   service_level = "PREMIUM"
+///   capacity_gib  = "2048"
+///   network       = gcp_compute_network.peering_network.id
 /// }
 /// ```
 /// ```java
@@ -230,8 +307,8 @@ import 'storage_pool_state.dart';
 /// import com.pulumi.gcp.compute.NetworkPeeringRoutesConfigArgs;
 /// import com.pulumi.gcp.netapp.StoragePool;
 /// import com.pulumi.gcp.netapp.StoragePoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,22 +422,15 @@ import 'storage_pool_state.dart';
 /// StoragePool can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/storagePools/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, StoragePool can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:netapp/storagePool:StoragePool default projects/{{project}}/locations/{{location}}/storagePools/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/storagePool:StoragePool default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/storagePool:StoragePool default {{location}}/{{name}}
 /// ```
 class StoragePool extends pulumi.CustomResource {
@@ -378,6 +448,13 @@ class StoragePool extends pulumi.CustomResource {
   late final pulumi.Output<String> coldTierSizeUsedGib;
   /// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
   late final pulumi.Output<bool> customPerformanceEnabled;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -398,13 +475,19 @@ class StoragePool extends pulumi.CustomResource {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
   /// using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
   late final pulumi.Output<bool?> ldapEnabled;
   /// Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
   late final pulumi.Output<String> location;
+  /// Mode of the storage pool.
+  /// The operational mode of the storage pool. ONTAP mode enables operations
+  /// via ONTAP Mode APIs, while DEFAULT mode enables operations via NetApp Volumes APIs.
+  /// If not specified during creation, the mode defaults to DEFAULT.
+  /// Possible values are: `MODE_UNSPECIFIED`, `DEFAULT`, `ONTAP`.
+  late final pulumi.Output<String> mode;
   /// The resource name of the storage pool. Needs to be unique per location/region.
   late final pulumi.Output<String> name;
   /// VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
@@ -419,9 +502,19 @@ class StoragePool extends pulumi.CustomResource {
   /// Possible values are: AUTO, MANUAL.
   /// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
   late final pulumi.Output<String> qosType;
-  /// Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+  /// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
   /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
   late final pulumi.Output<String?> replicaZone;
+  /// (Optional, Beta, Deprecated)
+  /// The effective scale tier of the storage pool. If `scaleTier` is not
+  /// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+  /// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
+  ///
+  /// &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
+  late final pulumi.Output<String> scaleTier;
+  /// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+  /// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
+  late final pulumi.Output<String> scaleType;
   /// Service level of the storage pool.
   /// Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
   late final pulumi.Output<String> serviceLevel;
@@ -438,7 +531,7 @@ class StoragePool extends pulumi.CustomResource {
   late final pulumi.Output<String> volumeCapacityGib;
   /// Number of volume in the storage pool.
   late final pulumi.Output<int> volumeCount;
-  /// Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
+  /// Specifies the active zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
   /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
   /// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
   late final pulumi.Output<String> zone;
@@ -463,6 +556,7 @@ class StoragePool extends pulumi.CustomResource {
     capacityGib = registerOutput<String>('capacityGib');
     coldTierSizeUsedGib = registerOutput<String>('coldTierSizeUsedGib');
     customPerformanceEnabled = registerOutput<bool>('customPerformanceEnabled');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableHotTierAutoResize = registerOutput<bool?>('enableHotTierAutoResize');
@@ -473,12 +567,15 @@ class StoragePool extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     ldapEnabled = registerOutput<bool?>('ldapEnabled');
     location = registerOutput<String>('location');
+    mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     qosType = registerOutput<String>('qosType');
     replicaZone = registerOutput<String?>('replicaZone');
+    scaleTier = registerOutput<String>('scaleTier');
+    scaleType = registerOutput<String>('scaleType');
     serviceLevel = registerOutput<String>('serviceLevel');
     totalIops = registerOutput<String>('totalIops');
     totalThroughputMibps = registerOutput<String>('totalThroughputMibps');
@@ -517,6 +614,7 @@ class StoragePool extends pulumi.CustomResource {
     capacityGib = registerOutput<String>('capacityGib');
     coldTierSizeUsedGib = registerOutput<String>('coldTierSizeUsedGib');
     customPerformanceEnabled = registerOutput<bool>('customPerformanceEnabled');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableHotTierAutoResize = registerOutput<bool?>('enableHotTierAutoResize');
@@ -527,12 +625,15 @@ class StoragePool extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     ldapEnabled = registerOutput<bool?>('ldapEnabled');
     location = registerOutput<String>('location');
+    mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     qosType = registerOutput<String>('qosType');
     replicaZone = registerOutput<String?>('replicaZone');
+    scaleTier = registerOutput<String>('scaleTier');
+    scaleType = registerOutput<String>('scaleType');
     serviceLevel = registerOutput<String>('serviceLevel');
     totalIops = registerOutput<String>('totalIops');
     totalThroughputMibps = registerOutput<String>('totalThroughputMibps');

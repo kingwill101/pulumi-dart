@@ -27,4 +27,3 @@ class KeystoresAliasesPkcs12CertsInfo {
     );
   }
 }
-

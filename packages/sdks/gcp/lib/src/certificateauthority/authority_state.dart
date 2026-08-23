@@ -21,6 +21,17 @@ class AuthorityState {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the CertificateAuthority.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the CertificateAuthority will fail.
+  /// When the field is set to false, deleting the CertificateAuthority is allowed.
   final pulumi.Input<bool>? deletionProtection;
   /// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
   /// Possible values: ENABLED, DISABLED, STAGED.
@@ -46,7 +57,7 @@ class AuthorityState {
   /// "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
   /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -104,7 +115,8 @@ class AuthorityState {
   /// [certificateAuthorityId] The user provided Resource ID for this Certificate Authority.
   /// [config] The config used to create a self-signed X.509 certificate or CSR.
   /// [createTime] The time at which this CertificateAuthority was created.
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the CertificateAuthority.
   /// [desiredState] Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [gcsBucket] The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
@@ -130,6 +142,7 @@ class AuthorityState {
     this.certificateAuthorityId,
     this.config,
     this.createTime,
+    this.deletionPolicy,
     this.deletionProtection,
     this.desiredState,
     this.effectiveLabels,
@@ -159,6 +172,7 @@ class AuthorityState {
       'certificateAuthorityId': ?certificateAuthorityId,
       'config': ?pulumi.Input.mapOptionalInputValue<AuthorityConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'desiredState': ?desiredState,
       'effectiveLabels': ?effectiveLabels,
@@ -189,6 +203,7 @@ class AuthorityState {
       certificateAuthorityId: (() { final guardedValue = map['certificateAuthorityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AuthorityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       desiredState: (() { final guardedValue = map['desiredState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -213,4 +228,3 @@ class AuthorityState {
     );
   }
 }
-

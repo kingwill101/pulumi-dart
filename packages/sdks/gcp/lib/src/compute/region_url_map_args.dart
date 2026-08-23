@@ -32,6 +32,13 @@ class RegionUrlMapArgs {
   /// defaultRouteAction must not be set.
   /// Structure is documented below.
   final pulumi.Input<RegionUrlMapDefaultUrlRedirect>? defaultUrlRedirect;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   final pulumi.Input<String>? description;
@@ -70,6 +77,7 @@ class RegionUrlMapArgs {
   /// [defaultRouteAction] defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
   /// [defaultService] The full or partial URL of the defaultService resource to which traffic is directed if
   /// [defaultUrlRedirect] When none of the specified hostRules match, the request is redirected to a URL specified
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
   /// [headerAction] Specifies changes to request and response headers that need to take effect for the selected backendService.
   /// [hostRules] The list of HostRules to use against the URL.
@@ -82,6 +90,7 @@ class RegionUrlMapArgs {
     this.defaultRouteAction,
     this.defaultService,
     this.defaultUrlRedirect,
+    this.deletionPolicy,
     this.description,
     this.headerAction,
     this.hostRules,
@@ -97,6 +106,7 @@ class RegionUrlMapArgs {
       'defaultRouteAction': ?pulumi.Input.mapOptionalInputValue<RegionUrlMapDefaultRouteAction, Map<String, dynamic>>(defaultRouteAction, (value) => value.toMap()),
       'defaultService': ?defaultService,
       'defaultUrlRedirect': ?pulumi.Input.mapOptionalInputValue<RegionUrlMapDefaultUrlRedirect, Map<String, dynamic>>(defaultUrlRedirect, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'headerAction': ?pulumi.Input.mapOptionalInputValue<RegionUrlMapHeaderAction, Map<String, dynamic>>(headerAction, (value) => value.toMap()),
       'hostRules': ?pulumi.Input.mapOptionalInputValue<List<RegionUrlMapHostRule>, List<Map<String, dynamic>>>(hostRules, (value) => pulumi.Input.encodeList<RegionUrlMapHostRule, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -113,6 +123,7 @@ class RegionUrlMapArgs {
       defaultRouteAction: (() { final guardedValue = map['defaultRouteAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionUrlMapDefaultRouteAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       defaultService: (() { final guardedValue = map['defaultService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultUrlRedirect: (() { final guardedValue = map['defaultUrlRedirect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionUrlMapDefaultUrlRedirect.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       headerAction: (() { final guardedValue = map['headerAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionUrlMapHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       hostRules: (() { final guardedValue = map['hostRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionUrlMapHostRule>(guardedValue, (value) => RegionUrlMapHostRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -124,4 +135,3 @@ class RegionUrlMapArgs {
     );
   }
 }
-

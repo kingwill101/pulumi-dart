@@ -19,6 +19,13 @@ class BatchState {
   final pulumi.Input<String>? createTime;
   /// The email address of the user who created the batch.
   final pulumi.Input<String>? creator;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Environment configuration for the batch execution.
@@ -27,7 +34,7 @@ class BatchState {
   /// The labels to associate with this batch.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location in which the batch will be created in.
   final pulumi.Input<String>? location;
@@ -77,6 +84,7 @@ class BatchState {
   /// [batchId] The ID to use for the batch, which will become the final component of the batch's resource name.
   /// [createTime] The time when the batch was created.
   /// [creator] The email address of the user who created the batch.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [environmentConfig] Environment configuration for the batch execution.
   /// [labels] The labels to associate with this batch.
@@ -100,6 +108,7 @@ class BatchState {
     this.batchId,
     this.createTime,
     this.creator,
+    this.deletionPolicy,
     this.effectiveLabels,
     this.environmentConfig,
     this.labels,
@@ -126,6 +135,7 @@ class BatchState {
       'batchId': ?batchId,
       'createTime': ?createTime,
       'creator': ?creator,
+      'deletionPolicy': ?deletionPolicy,
       'effectiveLabels': ?effectiveLabels,
       'environmentConfig': ?pulumi.Input.mapOptionalInputValue<BatchEnvironmentConfig, Map<String, dynamic>>(environmentConfig, (value) => value.toMap()),
       'labels': ?labels,
@@ -153,6 +163,7 @@ class BatchState {
       batchId: (() { final guardedValue = map['batchId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creator: (() { final guardedValue = map['creator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       environmentConfig: (() { final guardedValue = map['environmentConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BatchEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -175,4 +186,3 @@ class BatchState {
     );
   }
 }
-

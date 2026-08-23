@@ -336,7 +336,7 @@ import 'per_instance_config_state.dart';
 /// 				Disks: compute.PerInstanceConfigPreservedStateDiskArray{
 /// 					&compute.PerInstanceConfigPreservedStateDiskArgs{
 /// 						DeviceName: pulumi.String("my-stateful-disk"),
-/// 						Source:     _default.ID(),
+/// 						Source:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 						Mode:       pulumi.String("READ_ONLY"),
 /// 					},
 /// 				},
@@ -347,6 +347,72 @@ import 'per_instance_config_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_instancetemplate" "igm-basic" {
+///   name           = "my-template"
+///   machine_type   = "e2-medium"
+///   can_ip_forward = false
+///   tags           = ["foo", "bar"]
+///   disks {
+///     source_image = data.gcp_compute_getimage.myImage.self_link
+///     auto_delete  = true
+///     boot         = true
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
+///   service_account = {
+///     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
+///   }
+/// }
+/// resource "gcp_compute_instancegroupmanager" "igm-no-tp" {
+///   description = "Test instance group manager"
+///   name        = "my-igm"
+///   versions {
+///     name              = "prod"
+///     instance_template = gcp_compute_instancetemplate.igm-basic.self_link
+///   }
+///   base_instance_name = "igm-no-tp"
+///   zone               = "us-central1-c"
+///   target_size        = 2
+/// }
+/// resource "gcp_compute_disk" "default" {
+///   name                      = "my-disk-name"
+///   type                      = "pd-ssd"
+///   zone                      = igm.zone
+///   image                     = "debian-11-bullseye-v20220719"
+///   physical_block_size_bytes = 4096
+/// }
+/// resource "gcp_compute_perinstanceconfig" "with_disk" {
+///   zone                   = igm.zone
+///   instance_group_manager = igm.name
+///   name                   = "instance-1"
+///   preserved_state = {
+///     metadata = {
+///       "foo"               = "bar"
+///       "instance_template" = gcp_compute_instancetemplate.igm-basic.self_link
+///     }
+///     disks = [{
+///       "deviceName" = "my-stateful-disk"
+///       "source"     = gcp_compute_disk.default.id
+///       "mode"       = "READ_ONLY"
+///     }]
+///   }
 /// }
 /// ```
 /// ```java
@@ -370,8 +436,9 @@ import 'per_instance_config_state.dart';
 /// import com.pulumi.gcp.compute.PerInstanceConfig;
 /// import com.pulumi.gcp.compute.PerInstanceConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.PerInstanceConfigPreservedStateArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.PerInstanceConfigPreservedStateDiskArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -426,14 +493,14 @@ import 'per_instance_config_state.dart';
 ///         var default_ = new Disk("default", DiskArgs.builder()
 ///             .name("my-disk-name")
 ///             .type("pd-ssd")
-///             .zone(igm.zone())
+///             .zone(igm.get("zone"))
 ///             .image("debian-11-bullseye-v20220719")
 ///             .physicalBlockSizeBytes(4096)
 ///             .build());
 ///
 ///         var withDisk = new PerInstanceConfig("withDisk", PerInstanceConfigArgs.builder()
-///             .zone(igm.zone())
-///             .instanceGroupManager(igm.name())
+///             .zone(igm.get("zone"))
+///             .instanceGroupManager(igm.get("name"))
 ///             .name("instance-1")
 ///             .preservedState(PerInstanceConfigPreservedStateArgs.builder()
 ///                 .metadata(Map.ofEntries(
@@ -522,31 +589,27 @@ import 'per_instance_config_state.dart';
 /// PerInstanceConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{instance_group_manager}}/{{name}}`
-///
 /// * `{{zone}}/{{instance_group_manager}}/{{name}}`
-///
 /// * `{{instance_group_manager}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, PerInstanceConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{project}}/{{zone}}/{{instance_group_manager}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{zone}}/{{instance_group_manager}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{instance_group_manager}}/{{name}}
 /// ```
 class PerInstanceConfig extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The instance group manager this instance config is part of.
   late final pulumi.Output<String> instanceGroupManager;
   /// The minimal action to perform on the instance during an update.
@@ -595,6 +658,7 @@ class PerInstanceConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     instanceGroupManager = registerOutput<String>('instanceGroupManager');
     minimalAction = registerOutput<String?>('minimalAction');
     mostDisruptiveAllowedAction = registerOutput<String?>('mostDisruptiveAllowedAction');
@@ -629,6 +693,7 @@ class PerInstanceConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     instanceGroupManager = registerOutput<String>('instanceGroupManager');
     minimalAction = registerOutput<String?>('minimalAction');
     mostDisruptiveAllowedAction = registerOutput<String?>('mostDisruptiveAllowedAction');

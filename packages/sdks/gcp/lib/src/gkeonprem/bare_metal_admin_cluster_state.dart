@@ -27,7 +27,7 @@ class BareMetalAdminClusterState {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// A human readable description of this Bare Metal Admin Cluster.
   final pulumi.Input<String>? bareMetalVersion;
@@ -43,6 +43,7 @@ class BareMetalAdminClusterState {
   final pulumi.Input<String>? deleteTime;
   /// A human readable description of this Bare Metal Admin Cluster.
   final pulumi.Input<String>? description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// The IP address name of Bare Metal Admin Cluster's API server.
   final pulumi.Input<String>? endpoint;
@@ -127,7 +128,7 @@ class BareMetalAdminClusterState {
   /// [createTime] The time the cluster was created, in RFC3339 text format.
   /// [deleteTime] The time the cluster was deleted, in RFC3339 text format.
   /// [description] A human readable description of this Bare Metal Admin Cluster.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [endpoint] The IP address name of Bare Metal Admin Cluster's API server.
   /// [etag] This checksum is computed by the server based on the value of other
   /// [fleets] Fleet related configuration.
@@ -249,4 +250,3 @@ class BareMetalAdminClusterState {
     );
   }
 }
-

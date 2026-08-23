@@ -7,11 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_storage_get_control_organization_intelligence_config_get_control_organization_intelligence_config_args_doc}
 class GetControlOrganizationIntelligenceConfigArgs {
-  /// The id of GCP organization.
+  /// Identifier of the GCP Organization. For GCP org, this field should be organization number.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetControlOrganizationIntelligenceConfigArgs].
-  /// [name] The id of GCP organization.
+  /// [name] Identifier of the GCP Organization. For GCP org, this field should be organization number.
   const GetControlOrganizationIntelligenceConfigArgs({
     required this.name,
   });
@@ -28,4 +28,3 @@ class GetControlOrganizationIntelligenceConfigArgs {
     );
   }
 }
-

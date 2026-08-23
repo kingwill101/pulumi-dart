@@ -36,4 +36,3 @@ class GetWorkloadIdentityPoolProviderX509TrustStore {
     );
   }
 }
-

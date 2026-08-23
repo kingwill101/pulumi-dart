@@ -32,7 +32,7 @@ class VMwareClusterArgs {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// AAGConfig specifies whether to spread VMware User Cluster nodes across at
   /// least three physical hosts in the datacenter.
@@ -50,6 +50,13 @@ class VMwareClusterArgs {
   /// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
   /// Structure is documented below.
   final pulumi.Input<VMwareClusterDataplaneV2>? dataplaneV2;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human readable description of this VMware User Cluster.
   final pulumi.Input<String>? description;
   /// Disable bundled ingress.
@@ -73,6 +80,9 @@ class VMwareClusterArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+  /// A list of validations to skip during preflight checks.
+  /// Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+  final pulumi.Input<List<String>>? skipValidations;
   /// Storage configuration.
   /// Structure is documented below.
   final pulumi.Input<VMwareClusterStorage>? storage;
@@ -94,6 +104,7 @@ class VMwareClusterArgs {
   /// [autoRepairConfig] Configuration for auto repairing.
   /// [controlPlaneNode] VMware User Cluster control plane nodes must have either 1 or 3 replicas.
   /// [dataplaneV2] VmwareDataplaneV2Config specifies configuration for Dataplane V2.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A human readable description of this VMware User Cluster.
   /// [disableBundledIngress] Disable bundled ingress.
   /// [enableAdvancedCluster] Enable advanced cluster. Default to false.
@@ -104,6 +115,7 @@ class VMwareClusterArgs {
   /// [networkConfig] The VMware User Cluster network configuration.
   /// [onPremVersion] The Anthos clusters on the VMware version for your user cluster.
   /// [project] The ID of the project in which the resource belongs.
+  /// [skipValidations] A list of validations to skip during preflight checks.
   /// [storage] Storage configuration.
   /// [upgradePolicy] Specifies upgrade policy for the cluster.
   /// [vcenter] VmwareVCenterConfig specifies vCenter config for the user cluster.
@@ -116,6 +128,7 @@ class VMwareClusterArgs {
     this.autoRepairConfig,
     required this.controlPlaneNode,
     this.dataplaneV2,
+    this.deletionPolicy,
     this.description,
     this.disableBundledIngress,
     this.enableAdvancedCluster,
@@ -126,6 +139,7 @@ class VMwareClusterArgs {
     this.networkConfig,
     required this.onPremVersion,
     this.project,
+    this.skipValidations,
     this.storage,
     this.upgradePolicy,
     this.vcenter,
@@ -141,6 +155,7 @@ class VMwareClusterArgs {
       'autoRepairConfig': ?pulumi.Input.mapOptionalInputValue<VMwareClusterAutoRepairConfig, Map<String, dynamic>>(autoRepairConfig, (value) => value.toMap()),
       'controlPlaneNode': pulumi.Input.mapInputValue<VMwareClusterControlPlaneNode, Map<String, dynamic>>(controlPlaneNode, (value) => value.toMap()),
       'dataplaneV2': ?pulumi.Input.mapOptionalInputValue<VMwareClusterDataplaneV2, Map<String, dynamic>>(dataplaneV2, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'disableBundledIngress': ?disableBundledIngress,
       'enableAdvancedCluster': ?enableAdvancedCluster,
@@ -151,6 +166,7 @@ class VMwareClusterArgs {
       'networkConfig': ?pulumi.Input.mapOptionalInputValue<VMwareClusterNetworkConfig, Map<String, dynamic>>(networkConfig, (value) => value.toMap()),
       'onPremVersion': onPremVersion,
       'project': ?project,
+      'skipValidations': ?skipValidations,
       'storage': ?pulumi.Input.mapOptionalInputValue<VMwareClusterStorage, Map<String, dynamic>>(storage, (value) => value.toMap()),
       'upgradePolicy': ?pulumi.Input.mapOptionalInputValue<VMwareClusterUpgradePolicy, Map<String, dynamic>>(upgradePolicy, (value) => value.toMap()),
       'vcenter': ?pulumi.Input.mapOptionalInputValue<VMwareClusterVcenter, Map<String, dynamic>>(vcenter, (value) => value.toMap()),
@@ -167,6 +183,7 @@ class VMwareClusterArgs {
       autoRepairConfig: (() { final guardedValue = map['autoRepairConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMwareClusterAutoRepairConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       controlPlaneNode: pulumi.Input.fromValue(VMwareClusterControlPlaneNode.fromMap((map['controlPlaneNode']! as Map).cast<String, dynamic>())),
       dataplaneV2: (() { final guardedValue = map['dataplaneV2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMwareClusterDataplaneV2.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disableBundledIngress: (() { final guardedValue = map['disableBundledIngress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableAdvancedCluster: (() { final guardedValue = map['enableAdvancedCluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -177,6 +194,7 @@ class VMwareClusterArgs {
       networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMwareClusterNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       onPremVersion: pulumi.Input.fromValue(map['onPremVersion'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      skipValidations: (() { final guardedValue = map['skipValidations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMwareClusterStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       upgradePolicy: (() { final guardedValue = map['upgradePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMwareClusterUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       vcenter: (() { final guardedValue = map['vcenter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMwareClusterVcenter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -184,4 +202,3 @@ class VMwareClusterArgs {
     );
   }
 }
-

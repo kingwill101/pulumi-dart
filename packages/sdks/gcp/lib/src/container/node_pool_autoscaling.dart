@@ -13,14 +13,14 @@ class NodePoolAutoscaling {
   /// Must be &gt;= min_node_count. Cannot be used with total limits.
   final pulumi.Input<int>? maxNodeCount;
   /// Minimum number of nodes per zone in the NodePool.
-  /// Must be &gt;=0 and &lt;= `max_node_count`. Cannot be used with total limits.
+  /// Must be &gt;=0 and &lt;= `maxNodeCount`. Cannot be used with total limits.
   final pulumi.Input<int>? minNodeCount;
   /// Total maximum number of nodes in the NodePool.
   /// Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
   /// Total size limits are supported only in 1.24.1+ clusters.
   final pulumi.Input<int>? totalMaxNodeCount;
   /// Total minimum number of nodes in the NodePool.
-  /// Must be &gt;=0 and &lt;= `total_max_node_count`. Cannot be used with per zone limits.
+  /// Must be &gt;=0 and &lt;= `totalMaxNodeCount`. Cannot be used with per zone limits.
   /// Total size limits are supported only in 1.24.1+ clusters.
   final pulumi.Input<int>? totalMinNodeCount;
 
@@ -58,4 +58,3 @@ class NodePoolAutoscaling {
     );
   }
 }
-

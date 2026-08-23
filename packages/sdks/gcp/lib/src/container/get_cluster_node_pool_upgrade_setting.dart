@@ -6,17 +6,17 @@ import 'get_cluster_node_pool_upgrade_setting_blue_green_setting.dart';
 class GetClusterNodePoolUpgradeSetting {
   /// Settings for BlueGreen node pool upgrade.
   final pulumi.Input<List<GetClusterNodePoolUpgradeSettingBlueGreenSetting>> blueGreenSettings;
-  /// The number of additional nodes that can be added to the node pool during an upgrade. Increasing max_surge raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
+  /// The number of additional nodes that can be added to the node pool during an upgrade. Increasing maxSurge raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
   final pulumi.Input<int> maxSurge;
-  /// The number of nodes that can be simultaneously unavailable during an upgrade. Increasing max_unavailable raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
+  /// The number of nodes that can be simultaneously unavailable during an upgrade. Increasing maxUnavailable raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
   final pulumi.Input<int> maxUnavailable;
   /// Update strategy for the given nodepool.
   final pulumi.Input<String> strategy;
 
   /// Creates a new [GetClusterNodePoolUpgradeSetting].
   /// [blueGreenSettings] Settings for BlueGreen node pool upgrade.
-  /// [maxSurge] The number of additional nodes that can be added to the node pool during an upgrade. Increasing max_surge raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
-  /// [maxUnavailable] The number of nodes that can be simultaneously unavailable during an upgrade. Increasing max_unavailable raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
+  /// [maxSurge] The number of additional nodes that can be added to the node pool during an upgrade. Increasing maxSurge raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
+  /// [maxUnavailable] The number of nodes that can be simultaneously unavailable during an upgrade. Increasing maxUnavailable raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
   /// [strategy] Update strategy for the given nodepool.
   const GetClusterNodePoolUpgradeSetting({
     required this.blueGreenSettings,
@@ -43,4 +43,3 @@ class GetClusterNodePoolUpgradeSetting {
     );
   }
 }
-

@@ -71,6 +71,20 @@ import 'ai_cache_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aicacheconfig" "cache_config" {
+///   project       = "my-project-name"
+///   disable_cache = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +93,8 @@ import 'ai_cache_config_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.AiCacheConfig;
 /// import com.pulumi.gcp.vertex.AiCacheConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -116,16 +130,13 @@ import 'ai_cache_config_state.dart';
 /// CacheConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/cacheConfig`
-///
 /// * `{{project}}`
+///
 ///
 /// When using the `pulumi import` command, CacheConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vertex/aiCacheConfig:AiCacheConfig default projects/{{project}}/cacheConfig
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiCacheConfig:AiCacheConfig default {{project}}
 /// ```
 class AiCacheConfig extends pulumi.CustomResource {

@@ -11,7 +11,7 @@ class ServicePerimetersServicePerimeter {
   /// Description of the ServicePerimeter and its use. Does not affect
   /// behavior.
   final pulumi.Input<String>? description;
-  /// Resource name for the ServicePerimeter. The short_name component must
+  /// Resource name for the ServicePerimeter. The shortName component must
   /// begin with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
   final pulumi.Input<String> name;
@@ -62,7 +62,7 @@ class ServicePerimetersServicePerimeter {
   /// Creates a new [ServicePerimetersServicePerimeter].
   /// [createTime] (Output)
   /// [description] Description of the ServicePerimeter and its use. Does not affect
-  /// [name] Resource name for the ServicePerimeter. The short_name component must
+  /// [name] Resource name for the ServicePerimeter. The shortName component must
   /// [perimeterType] Specifies the type of the Perimeter. There are two types: regular and
   /// [spec] Proposed (or dry run) ServicePerimeter configuration.
   /// [status] ServicePerimeter configuration. Specifies sets of resources,
@@ -109,4 +109,3 @@ class ServicePerimetersServicePerimeter {
     );
   }
 }
-

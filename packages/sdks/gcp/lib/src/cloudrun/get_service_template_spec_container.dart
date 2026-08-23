@@ -30,7 +30,10 @@ class GetServiceTemplateSpecContainer {
   final pulumi.Input<String> image;
   /// Periodic probe of container liveness. Container will be restarted if the probe fails.
   final pulumi.Input<List<GetServiceTemplateSpecContainerLivenessProbe>> livenessProbes;
-  /// The name of the Cloud Run Service.
+  /// Name must be unique within a Google Cloud project and region.
+  /// Is required when creating resources. Name is primarily intended
+  /// for creation idempotence and configuration definition. Cannot be updated.
+  /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   final pulumi.Input<String> name;
   /// List of open ports in the container.
   final pulumi.Input<List<GetServiceTemplateSpecContainerPort>> ports;
@@ -38,6 +41,8 @@ class GetServiceTemplateSpecContainer {
   final pulumi.Input<List<GetServiceTemplateSpecContainerReadinessProbe>> readinessProbes;
   /// Compute Resources required by this container. Used to set values such as max memory
   final pulumi.Input<List<GetServiceTemplateSpecContainerResource>> resources;
+  /// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+  final pulumi.Input<bool> sandboxLauncher;
   /// Startup probe of application within the container.
   /// All other probes are disabled if a startup probe is provided, until it
   /// succeeds. Container will not be added to service endpoints if the probe fails.
@@ -57,10 +62,11 @@ class GetServiceTemplateSpecContainer {
   /// [envs] List of environment variables to set in the container.
   /// [image] Docker image name. This is most often a reference to a container located
   /// [livenessProbes] Periodic probe of container liveness. Container will be restarted if the probe fails.
-  /// [name] The name of the Cloud Run Service.
+  /// [name] Name must be unique within a Google Cloud project and region.
   /// [ports] List of open ports in the container.
   /// [readinessProbes] Periodic probe of container readiness.
   /// [resources] Compute Resources required by this container. Used to set values such as max memory
+  /// [sandboxLauncher] Indicates that this container can act as a sandbox supervisor and launch sandboxes.
   /// [startupProbes] Startup probe of application within the container.
   /// [volumeMounts] Volume to mount into the container's filesystem.
   /// [workingDir] Container's working directory.
@@ -75,6 +81,7 @@ class GetServiceTemplateSpecContainer {
     required this.ports,
     required this.readinessProbes,
     required this.resources,
+    required this.sandboxLauncher,
     required this.startupProbes,
     required this.volumeMounts,
     required this.workingDir,
@@ -92,6 +99,7 @@ class GetServiceTemplateSpecContainer {
       'ports': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerPort>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerPort, Map<String, dynamic>>(value, (value) => value.toMap())),
       'readinessProbes': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerReadinessProbe>, List<Map<String, dynamic>>>(readinessProbes, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerReadinessProbe, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resources': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerResource>, List<Map<String, dynamic>>>(resources, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerResource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sandboxLauncher': sandboxLauncher,
       'startupProbes': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerStartupProbe>, List<Map<String, dynamic>>>(startupProbes, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerStartupProbe, Map<String, dynamic>>(value, (value) => value.toMap())),
       'volumeMounts': pulumi.Input.mapInputValue<List<GetServiceTemplateSpecContainerVolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<GetServiceTemplateSpecContainerVolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workingDir': workingDir,
@@ -110,10 +118,10 @@ class GetServiceTemplateSpecContainer {
       ports: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSpecContainerPort>(map['ports']!, (value) => GetServiceTemplateSpecContainerPort.fromMap((value as Map).cast<String, dynamic>()))),
       readinessProbes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSpecContainerReadinessProbe>(map['readinessProbes']!, (value) => GetServiceTemplateSpecContainerReadinessProbe.fromMap((value as Map).cast<String, dynamic>()))),
       resources: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSpecContainerResource>(map['resources']!, (value) => GetServiceTemplateSpecContainerResource.fromMap((value as Map).cast<String, dynamic>()))),
+      sandboxLauncher: pulumi.Input.fromValue(map['sandboxLauncher'] as bool),
       startupProbes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSpecContainerStartupProbe>(map['startupProbes']!, (value) => GetServiceTemplateSpecContainerStartupProbe.fromMap((value as Map).cast<String, dynamic>()))),
       volumeMounts: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSpecContainerVolumeMount>(map['volumeMounts']!, (value) => GetServiceTemplateSpecContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))),
       workingDir: pulumi.Input.fromValue(map['workingDir'] as String),
     );
   }
 }
-

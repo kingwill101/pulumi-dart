@@ -82,6 +82,22 @@ import 'interconnect_attachment_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_interconnectattachmentgroup" "example-interconnect-attachment-group" {
+///   name = "example-interconnect-attachment-group"
+///   intent = {
+///     availability_sla = "NO_SLA"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +107,8 @@ import 'interconnect_attachment_group_state.dart';
 /// import com.pulumi.gcp.compute.InterconnectAttachmentGroup;
 /// import com.pulumi.gcp.compute.InterconnectAttachmentGroupArgs;
 /// import com.pulumi.gcp.compute.inputs.InterconnectAttachmentGroupIntentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -130,22 +146,15 @@ import 'interconnect_attachment_group_state.dart';
 /// InterconnectAttachmentGroup can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/interconnectAttachmentGroups/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, InterconnectAttachmentGroup can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup default projects/{{project}}/global/interconnectAttachmentGroups/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup default {{name}}
 /// ```
 class InterconnectAttachmentGroup extends pulumi.CustomResource {
@@ -163,6 +172,13 @@ class InterconnectAttachmentGroup extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> configureds;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
   /// The user's intent for this group. This is the only required field besides
@@ -204,6 +220,7 @@ class InterconnectAttachmentGroup extends pulumi.CustomResource {
     attachments = registerOutput<List<Map<String, dynamic>>?>('attachments');
     configureds = registerOutput<List<Map<String, dynamic>>>('configureds');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     intent = registerOutput<InterconnectAttachmentGroupIntent>('intent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectAttachmentGroupIntent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     interconnectGroup = registerOutput<String?>('interconnectGroup');
@@ -238,6 +255,7 @@ class InterconnectAttachmentGroup extends pulumi.CustomResource {
     attachments = registerOutput<List<Map<String, dynamic>>?>('attachments');
     configureds = registerOutput<List<Map<String, dynamic>>>('configureds');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     intent = registerOutput<InterconnectAttachmentGroupIntent>('intent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectAttachmentGroupIntent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     interconnectGroup = registerOutput<String?>('interconnectGroup');

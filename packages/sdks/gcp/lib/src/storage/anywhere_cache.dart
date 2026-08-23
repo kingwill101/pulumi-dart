@@ -132,6 +132,33 @@ import 'anywhere_cache_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name     = "bucket-name"
+///   location = "US"
+/// }
+/// resource "time_sleep" "destroy_wait_5000_seconds" {
+///   depends_on       = [gcp_storage_bucket.bucket]
+///   destroy_duration = "5000s"
+/// }
+/// resource "gcp_storage_anywherecache" "cache" {
+///   depends_on = [time_sleep.destroy_wait_5000_seconds]
+///   bucket     = gcp_storage_bucket.bucket.name
+///   zone       = "us-central1-f"
+///   ttl        = "3601s"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -145,8 +172,8 @@ import 'anywhere_cache_state.dart';
 /// import com.pulumi.gcp.storage.AnywhereCache;
 /// import com.pulumi.gcp.storage.AnywhereCacheArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -212,22 +239,23 @@ import 'anywhere_cache_state.dart';
 /// AnywhereCache can be imported using any of these accepted formats:
 ///
 /// * `b/{{bucket}}/anywhereCaches/{{anywhere_cache_id}}`
-///
 /// * `{{bucket}}/{{anywhere_cache_id}}`
+///
 ///
 /// When using the `pulumi import` command, AnywhereCache can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:storage/anywhereCache:AnywhereCache default b/{{bucket}}/anywhereCaches/{{anywhere_cache_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:storage/anywhereCache:AnywhereCache default {{bucket}}/{{anywhere_cache_id}}
 /// ```
 class AnywhereCache extends pulumi.CustomResource {
+  /// (Optional, Deprecated)
   /// The cache admission policy dictates whether a block should be inserted upon a cache miss.
+  /// Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
   /// Default value is `admit-on-first-miss`.
   /// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+  ///
+  /// &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
   late final pulumi.Output<String?> admissionPolicy;
   /// The ID of the Anywhere cache instance.
   late final pulumi.Output<String> anywhereCacheId;
@@ -235,6 +263,15 @@ class AnywhereCache extends pulumi.CustomResource {
   late final pulumi.Output<String> bucket;
   /// The creation time of the cache instance in RFC 3339 format.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether or not the cache ingests data as the data is written to the bucket.
+  late final pulumi.Output<bool?> ingestOnWrite;
   /// True if the cache instance has an active Update long-running operation.
   late final pulumi.Output<bool> pendingUpdate;
   /// The current state of the cache instance.
@@ -264,6 +301,8 @@ class AnywhereCache extends pulumi.CustomResource {
     anywhereCacheId = registerOutput<String>('anywhereCacheId');
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    ingestOnWrite = registerOutput<bool?>('ingestOnWrite');
     pendingUpdate = registerOutput<bool>('pendingUpdate');
     state = registerOutput<String>('state');
     ttl = registerOutput<String?>('ttl');
@@ -298,6 +337,8 @@ class AnywhereCache extends pulumi.CustomResource {
     anywhereCacheId = registerOutput<String>('anywhereCacheId');
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    ingestOnWrite = registerOutput<bool?>('ingestOnWrite');
     pendingUpdate = registerOutput<bool>('pendingUpdate');
     this.state = registerOutput<String>('state');
     ttl = registerOutput<String?>('ttl');

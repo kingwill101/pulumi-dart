@@ -14,10 +14,10 @@ class TriggerGithub {
   /// Owner of the repository. For example: The owner for
   /// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
   final pulumi.Input<String>? owner;
-  /// filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
+  /// filter to match changes in pull requests. Specify only one of `pullRequest` or `push`.
   /// Structure is documented below.
   final pulumi.Input<TriggerGithubPullRequest>? pullRequest;
-  /// filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
+  /// filter to match changes in refs, like branches or tags. Specify only one of `pullRequest` or `push`.
   /// Structure is documented below.
   final pulumi.Input<TriggerGithubPush>? push;
 
@@ -25,8 +25,8 @@ class TriggerGithub {
   /// [enterpriseConfigResourceName] The resource name of the github enterprise config that should be applied to this installation.
   /// [name] Name of the repository. For example: The name for
   /// [owner] Owner of the repository. For example: The owner for
-  /// [pullRequest] filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
-  /// [push] filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
+  /// [pullRequest] filter to match changes in pull requests. Specify only one of `pullRequest` or `push`.
+  /// [push] filter to match changes in refs, like branches or tags. Specify only one of `pullRequest` or `push`.
   const TriggerGithub({
     this.enterpriseConfigResourceName,
     this.name,
@@ -55,4 +55,3 @@ class TriggerGithub {
     );
   }
 }
-

@@ -5,8 +5,8 @@ import 'service_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud Endpoints Service. Each of these resources serves a different use case:
 ///
 /// * `gcp.endpoints.ServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
-/// * `gcp.endpoints.ServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
-/// * `gcp.endpoints.ServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
+/// * `gcp.endpoints.ServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.endpoints.ServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +15,6 @@ import 'service_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.endpoints.ServiceIamPolicy` **cannot** be used in conjunction with `gcp.endpoints.ServiceIamBinding` and `gcp.endpoints.ServiceIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.endpoints.ServiceIamBinding` resources **can be** used in conjunction with `gcp.endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.endpoints.ServiceIamPolicy
@@ -114,6 +113,27 @@ import 'service_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_endpoints_serviceiampolicy" "policy" {
+///   service_name = endpointsService.serviceName
+///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,10 +142,11 @@ import 'service_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.endpoints.ServiceIamPolicy;
 /// import com.pulumi.gcp.endpoints.ServiceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -145,7 +166,7 @@ import 'service_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new ServiceIamPolicy("policy", ServiceIamPolicyArgs.builder()
-///             .serviceName(endpointsService.serviceName())
+///             .serviceName(endpointsService.get("serviceName"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -237,6 +258,21 @@ import 'service_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_endpoints_serviceiambinding" "binding" {
+///   service_name = endpointsService.serviceName
+///   role         = "roles/viewer"
+///   members      = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +281,8 @@ import 'service_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.endpoints.ServiceIamBinding;
 /// import com.pulumi.gcp.endpoints.ServiceIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -259,7 +295,7 @@ import 'service_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ServiceIamBinding("binding", ServiceIamBindingArgs.builder()
-///             .serviceName(endpointsService.serviceName())
+///             .serviceName(endpointsService.get("serviceName"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -340,6 +376,21 @@ import 'service_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_endpoints_serviceiammember" "member" {
+///   service_name = endpointsService.serviceName
+///   role         = "roles/viewer"
+///   member       = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -348,8 +399,8 @@ import 'service_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.endpoints.ServiceIamMember;
 /// import com.pulumi.gcp.endpoints.ServiceIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -362,7 +413,7 @@ import 'service_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ServiceIamMember("member", ServiceIamMemberArgs.builder()
-///             .serviceName(endpointsService.serviceName())
+///             .serviceName(endpointsService.get("serviceName"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -392,8 +443,8 @@ import 'service_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud Endpoints Service. Each of these resources serves a different use case:
 ///
 /// * `gcp.endpoints.ServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
-/// * `gcp.endpoints.ServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
-/// * `gcp.endpoints.ServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
+/// * `gcp.endpoints.ServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.endpoints.ServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -402,7 +453,6 @@ import 'service_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.endpoints.ServiceIamPolicy` **cannot** be used in conjunction with `gcp.endpoints.ServiceIamBinding` and `gcp.endpoints.ServiceIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.endpoints.ServiceIamBinding` resources **can be** used in conjunction with `gcp.endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.endpoints.ServiceIamPolicy
@@ -501,6 +551,27 @@ import 'service_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_endpoints_serviceiampolicy" "policy" {
+///   service_name = endpointsService.serviceName
+///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -509,10 +580,11 @@ import 'service_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.endpoints.ServiceIamPolicy;
 /// import com.pulumi.gcp.endpoints.ServiceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -532,7 +604,7 @@ import 'service_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new ServiceIamPolicy("policy", ServiceIamPolicyArgs.builder()
-///             .serviceName(endpointsService.serviceName())
+///             .serviceName(endpointsService.get("serviceName"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -624,6 +696,21 @@ import 'service_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_endpoints_serviceiambinding" "binding" {
+///   service_name = endpointsService.serviceName
+///   role         = "roles/viewer"
+///   members      = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -632,8 +719,8 @@ import 'service_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.endpoints.ServiceIamBinding;
 /// import com.pulumi.gcp.endpoints.ServiceIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -646,7 +733,7 @@ import 'service_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ServiceIamBinding("binding", ServiceIamBindingArgs.builder()
-///             .serviceName(endpointsService.serviceName())
+///             .serviceName(endpointsService.get("serviceName"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -727,6 +814,21 @@ import 'service_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_endpoints_serviceiammember" "member" {
+///   service_name = endpointsService.serviceName
+///   role         = "roles/viewer"
+///   member       = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -735,8 +837,8 @@ import 'service_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.endpoints.ServiceIamMember;
 /// import com.pulumi.gcp.endpoints.ServiceIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -749,7 +851,7 @@ import 'service_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ServiceIamMember("member", ServiceIamMemberArgs.builder()
-///             .serviceName(endpointsService.serviceName())
+///             .serviceName(endpointsService.get("serviceName"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -773,7 +875,6 @@ import 'service_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * services/{{service_name}}
-///
 /// * {{service_name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -781,25 +882,21 @@ import 'service_iam_policy_state.dart';
 /// Cloud Endpoints service IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:endpoints/serviceIamPolicy:ServiceIamPolicy editor "services/{{service_name}} roles/viewer user:jane@example.com"
+/// $ terraform import google_endpoints_service_iam_member.editor "services/{{service_name}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:endpoints/serviceIamPolicy:ServiceIamPolicy editor "services/{{service_name}} roles/viewer"
+/// $ terraform import google_endpoints_service_iam_binding.editor "services/{{service_name}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:endpoints/serviceIamPolicy:ServiceIamPolicy editor services/{{service_name}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class ServiceIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the IAM policy.

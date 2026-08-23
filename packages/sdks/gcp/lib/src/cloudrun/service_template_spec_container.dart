@@ -25,7 +25,7 @@ class ServiceTemplateSpecContainer {
   /// precedence.
   /// Structure is documented below.
   ///
-  /// &gt; **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+  /// &gt; **Warning:** `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
   final pulumi.Input<List<ServiceTemplateSpecContainerEnvFrom>>? envFroms;
   /// List of environment variables to set in the container.
   /// Structure is documented below.
@@ -48,6 +48,8 @@ class ServiceTemplateSpecContainer {
   /// Compute Resources required by this container. Used to set values such as max memory
   /// Structure is documented below.
   final pulumi.Input<ServiceTemplateSpecContainerResources>? resources;
+  /// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+  final pulumi.Input<bool>? sandboxLauncher;
   /// Startup probe of application within the container.
   /// All other probes are disabled if a startup probe is provided, until it
   /// succeeds. Container will not be added to service endpoints if the probe fails.
@@ -62,7 +64,7 @@ class ServiceTemplateSpecContainer {
   /// If not specified, the container runtime's default will be used, which
   /// might be configured in the container image.
   ///
-  /// &gt; **Warning:** `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+  /// &gt; **Warning:** `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
   final pulumi.Input<String>? workingDir;
 
   /// Creates a new [ServiceTemplateSpecContainer].
@@ -76,6 +78,7 @@ class ServiceTemplateSpecContainer {
   /// [ports] List of open ports in the container.
   /// [readinessProbe] Periodic probe of container readiness.
   /// [resources] Compute Resources required by this container. Used to set values such as max memory
+  /// [sandboxLauncher] Indicates that this container can act as a sandbox supervisor and launch sandboxes.
   /// [startupProbe] Startup probe of application within the container.
   /// [volumeMounts] Volume to mount into the container's filesystem.
   /// [workingDir] (Optional, Deprecated)
@@ -90,6 +93,7 @@ class ServiceTemplateSpecContainer {
     this.ports,
     this.readinessProbe,
     this.resources,
+    this.sandboxLauncher,
     this.startupProbe,
     this.volumeMounts,
     this.workingDir,
@@ -107,6 +111,7 @@ class ServiceTemplateSpecContainer {
       'ports': ?pulumi.Input.mapOptionalInputValue<List<ServiceTemplateSpecContainerPort>, List<Map<String, dynamic>>>(ports, (value) => pulumi.Input.encodeList<ServiceTemplateSpecContainerPort, Map<String, dynamic>>(value, (value) => value.toMap())),
       'readinessProbe': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateSpecContainerReadinessProbe, Map<String, dynamic>>(readinessProbe, (value) => value.toMap()),
       'resources': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateSpecContainerResources, Map<String, dynamic>>(resources, (value) => value.toMap()),
+      'sandboxLauncher': ?sandboxLauncher,
       'startupProbe': ?pulumi.Input.mapOptionalInputValue<ServiceTemplateSpecContainerStartupProbe, Map<String, dynamic>>(startupProbe, (value) => value.toMap()),
       'volumeMounts': ?pulumi.Input.mapOptionalInputValue<List<ServiceTemplateSpecContainerVolumeMount>, List<Map<String, dynamic>>>(volumeMounts, (value) => pulumi.Input.encodeList<ServiceTemplateSpecContainerVolumeMount, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workingDir': ?workingDir,
@@ -125,10 +130,10 @@ class ServiceTemplateSpecContainer {
       ports: (() { final guardedValue = map['ports']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTemplateSpecContainerPort>(guardedValue, (value) => ServiceTemplateSpecContainerPort.fromMap((value as Map).cast<String, dynamic>()))); })(),
       readinessProbe: (() { final guardedValue = map['readinessProbe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateSpecContainerReadinessProbe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateSpecContainerResources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      sandboxLauncher: (() { final guardedValue = map['sandboxLauncher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       startupProbe: (() { final guardedValue = map['startupProbe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateSpecContainerStartupProbe.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       volumeMounts: (() { final guardedValue = map['volumeMounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTemplateSpecContainerVolumeMount>(guardedValue, (value) => ServiceTemplateSpecContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))); })(),
       workingDir: (() { final guardedValue = map['workingDir']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

@@ -9,9 +9,17 @@ class GetCryptoKeysKey {
   /// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
   /// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
   final pulumi.Input<String> cryptoKeyBackend;
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String> deletionPolicy;
   /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
   /// If not specified at creation time, the default duration is 30 days.
   final pulumi.Input<String> destroyScheduledDuration;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>> effectiveLabels;
   final pulumi.Input<String> id;
   /// Whether this key may contain imported versions only.
@@ -61,8 +69,9 @@ class GetCryptoKeysKey {
 
   /// Creates a new [GetCryptoKeysKey].
   /// [cryptoKeyBackend] The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
   /// [destroyScheduledDuration] The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-  /// [effectiveLabels] Required.
+  /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   /// [id] Required.
   /// [importOnly] Whether this key may contain imported versions only.
   /// [keyAccessJustificationsPolicies] The policy used for Key Access Justifications Policy Enforcement. If this
@@ -77,6 +86,7 @@ class GetCryptoKeysKey {
   /// [versionTemplates] A template describing settings for new crypto key versions.
   const GetCryptoKeysKey({
     required this.cryptoKeyBackend,
+    required this.deletionPolicy,
     required this.destroyScheduledDuration,
     required this.effectiveLabels,
     required this.id,
@@ -96,6 +106,7 @@ class GetCryptoKeysKey {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cryptoKeyBackend': cryptoKeyBackend,
+      'deletionPolicy': deletionPolicy,
       'destroyScheduledDuration': destroyScheduledDuration,
       'effectiveLabels': effectiveLabels,
       'id': id,
@@ -116,6 +127,7 @@ class GetCryptoKeysKey {
   factory GetCryptoKeysKey.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeysKey(
       cryptoKeyBackend: pulumi.Input.fromValue(map['cryptoKeyBackend'] as String),
+      deletionPolicy: pulumi.Input.fromValue(map['deletionPolicy'] as String),
       destroyScheduledDuration: pulumi.Input.fromValue(map['destroyScheduledDuration'] as String),
       effectiveLabels: pulumi.Input.fromValue((map['effectiveLabels'] as Map).cast<String, String>()),
       id: pulumi.Input.fromValue(map['id'] as String),
@@ -133,4 +145,3 @@ class GetCryptoKeysKey {
     );
   }
 }
-

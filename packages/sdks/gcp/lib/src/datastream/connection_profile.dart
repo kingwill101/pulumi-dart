@@ -104,6 +104,25 @@ import 'connection_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datastream_connectionprofile" "default" {
+///   display_name          = "Connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "my-profile"
+///   gcs_profile = {
+///     bucket    = "my-bucket"
+///     root_path = "/path"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -113,8 +132,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.datastream.ConnectionProfile;
 /// import com.pulumi.gcp.datastream.ConnectionProfileArgs;
 /// import com.pulumi.gcp.datastream.inputs.ConnectionProfileGcsProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,7 +279,7 @@ import 'connection_profile_state.dart';
 ///     location: "us-central1",
 ///     connectionProfileId: "my-profile",
 ///     postgresqlProfile: {
-///         hostname: natVm.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+///         hostname: natVm.networkInterfaces[0].networkIp,
 ///         username: user.name,
 ///         password: user.password,
 ///         database: db.name,
@@ -309,7 +328,7 @@ import 'connection_profile_state.dart';
 /// db = gcp.sql.Database("db",
 ///     instance=instance.name,
 ///     name="db")
-/// pwd = random.index.Password("pwd",
+/// pwd = random.Password("pwd",
 ///     length=16,
 ///     special=False)
 /// user = gcp.sql.User("user",
@@ -444,7 +463,7 @@ import 'connection_profile_state.dart';
 ///         Name = "db",
 ///     });
 ///
-///     var pwd = new Random.Index.Password("pwd", new()
+///     var pwd = new Random.Password("pwd", new()
 ///     {
 ///         Length = 16,
 ///         Special = false,
@@ -575,7 +594,7 @@ import 'connection_profile_state.dart';
 /// 			Name:        pulumi.String("my-subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.1.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -585,7 +604,7 @@ import 'connection_profile_state.dart';
 /// 			Location:            pulumi.String("us-central1"),
 /// 			PrivateConnectionId: pulumi.String("my-connection"),
 /// 			VpcPeeringConfig: &datastream.PrivateConnectionVpcPeeringConfigArgs{
-/// 				Vpc:    _default.ID(),
+/// 				Vpc:    _default.ID().ToIDOutput().ToStringOutput(),
 /// 				Subnet: pulumi.String("10.0.0.0/29"),
 /// 			},
 /// 		})
@@ -651,9 +670,7 @@ import 'connection_profile_state.dart';
 /// 			},
 /// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
 /// 				&compute.InstanceNetworkInterfaceArgs{
-/// 					Network: privateConnection.VpcPeeringConfig.ApplyT(func(vpcPeeringConfig datastream.PrivateConnectionVpcPeeringConfig) (*string, error) {
-/// 						return &vpcPeeringConfig.Vpc, nil
-/// 					}).(pulumi.StringPtrOutput),
+/// 					Network:    privateConnection.VpcPeeringConfig.Vpc(),
 /// 					Subnetwork: defaultSubnetwork.SelfLink,
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{
@@ -687,10 +704,8 @@ import 'connection_profile_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewFirewall(ctx, "rules", &compute.FirewallArgs{
-/// 			Name: pulumi.String("ingress-rule"),
-/// 			Network: pulumi.String(privateConnection.VpcPeeringConfig.ApplyT(func(vpcPeeringConfig datastream.PrivateConnectionVpcPeeringConfig) (*string, error) {
-/// 				return &vpcPeeringConfig.Vpc, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:        pulumi.String("ingress-rule"),
+/// 			Network:     privateConnection.VpcPeeringConfig.Vpc(),
 /// 			Description: pulumi.String("Allow traffic into NAT VM"),
 /// 			Direction:   pulumi.String("INGRESS"),
 /// 			Allows: compute.FirewallAllowArray{
@@ -702,9 +717,7 @@ import 'connection_profile_state.dart';
 /// 				},
 /// 			},
 /// 			SourceRanges: pulumi.StringArray{
-/// 				pulumi.String(privateConnection.VpcPeeringConfig.ApplyT(func(vpcPeeringConfig datastream.PrivateConnectionVpcPeeringConfig) (*string, error) {
-/// 					return &vpcPeeringConfig.Subnet, nil
-/// 				}).(pulumi.StringPtrOutput)),
+/// 				privateConnection.VpcPeeringConfig.Subnet(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -716,7 +729,7 @@ import 'connection_profile_state.dart';
 /// 			ConnectionProfileId: pulumi.String("my-profile"),
 /// 			PostgresqlProfile: &datastream.ConnectionProfilePostgresqlProfileArgs{
 /// 				Hostname: natVm.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
-/// 					return &networkInterfaces[0].NetworkIp, nil
+/// 					return networkInterfaces[0].NetworkIp, nil
 /// 				}).(pulumi.StringPtrOutput),
 /// 				Username: user.Name,
 /// 				Password: user.Password,
@@ -724,7 +737,7 @@ import 'connection_profile_state.dart';
 /// 				Port:     pulumi.Int(5432),
 /// 			},
 /// 			PrivateConnectivity: &datastream.ConnectionProfilePrivateConnectivityArgs{
-/// 				PrivateConnection: privateConnection.ID(),
+/// 				PrivateConnection: privateConnection.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -732,6 +745,130 @@ import 'connection_profile_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "my-subnetwork"
+///   ip_cidr_range = "10.1.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_datastream_privateconnection" "private_connection" {
+///   display_name          = "Private connection"
+///   location              = "us-central1"
+///   private_connection_id = "my-connection"
+///   vpc_peering_config = {
+///     vpc    = gcp_compute_network.default.id
+///     subnet = "10.0.0.0/29"
+///   }
+/// }
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "my-instance"
+///   database_version = "POSTGRES_14"
+///   region           = "us-central1"
+///   settings = {
+///     tier = "db-f1-micro"
+///     ip_configuration = {
+///       authorized_networks = [{
+///         "value" = gcp_compute_address.nat_vm_ip.address
+///       }]
+///     }
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_sql_database" "db" {
+///   instance = gcp_sql_databaseinstance.instance.name
+///   name     = "db"
+/// }
+/// resource "random_password" "pwd" {
+///   length  = 16
+///   special = false
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   password = random_password.pwd.result
+/// }
+/// resource "gcp_compute_address" "nat_vm_ip" {
+///   name = "nat-vm-ip"
+/// }
+/// resource "gcp_compute_instance" "nat_vm" {
+///   name           = "nat-vm"
+///   machine_type   = "e2-medium"
+///   zone           = "us-central1-a"
+///   desired_status = "RUNNING"
+///   boot_disk = {
+///     initialize_params = {
+///       image = "debian-cloud/debian-12"
+///     }
+///   }
+///   network_interfaces {
+///     network    = gcp_datastream_privateconnection.private_connection.vpc_peering_config.vpc
+///     subnetwork = gcp_compute_subnetwork.default.self_link
+///     access_configs {
+///       nat_ip = gcp_compute_address.nat_vm_ip.address
+///     }
+///   }
+///   metadata_startup_script ="#! /bin/bash
+/// # See https://cloud.google.com/datastream/docs/private-connectivity#set-up-reverse-proxy
+/// export DB_ADDR=${gcp_sql_databaseinstance.instance.public_ip_address}
+/// export DB_PORT=5432
+/// echo 1 > /proc/sys/net/ipv4/ip_forward
+/// md_url_prefix=\"http://169.254.169.254/computeMetadata/v1/instance\"
+/// vm_nic_ip=\"$(curl -H \"Metadata-Flavor: Google\" ${md_url_prefix}/network-interfaces/0/ip)\"
+/// iptables -t nat -F
+/// iptables -t nat -A PREROUTING \\
+///      -p tcp --dport $DB_PORT \\
+///      -j DNAT \\
+///      --to-destination $DB_ADDR
+/// iptables -t nat -A POSTROUTING \\
+///      -p tcp --dport $DB_PORT \\
+///      -j SNAT \\
+///      --to-source $vm_nic_ip
+/// iptables-save
+/// "
+/// }
+/// resource "gcp_compute_firewall" "rules" {
+///   name        = "ingress-rule"
+///   network     = gcp_datastream_privateconnection.private_connection.vpc_peering_config.vpc
+///   description = "Allow traffic into NAT VM"
+///   direction   = "INGRESS"
+///   allows {
+///     protocol = "tcp"
+///     ports    = ["5432"]
+///   }
+///   source_ranges = [gcp_datastream_privateconnection.private_connection.vpc_peering_config.subnet]
+/// }
+/// resource "gcp_datastream_connectionprofile" "default" {
+///   display_name          = "Connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "my-profile"
+///   postgresql_profile = {
+///     hostname = gcp_compute_instance.nat_vm.network_interfaces[0].network_ip
+///     username = gcp_sql_user.user.name
+///     password = gcp_sql_user.user.password
+///     database = gcp_sql_database.db.name
+///     port     = 5432
+///   }
+///   private_connectivity = {
+///     private_connection = gcp_datastream_privateconnection.private_connection.id
+///   }
 /// }
 /// ```
 /// ```java
@@ -753,6 +890,7 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
 /// import com.pulumi.gcp.sql.Database;
 /// import com.pulumi.gcp.sql.DatabaseArgs;
 /// import com.pulumi.random.Password;
@@ -764,6 +902,7 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.Firewall;
 /// import com.pulumi.gcp.compute.FirewallArgs;
 /// import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
@@ -771,8 +910,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.datastream.ConnectionProfileArgs;
 /// import com.pulumi.gcp.datastream.inputs.ConnectionProfilePostgresqlProfileArgs;
 /// import com.pulumi.gcp.datastream.inputs.ConnectionProfilePrivateConnectivityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -838,7 +977,7 @@ import 'connection_profile_state.dart';
 ///         var user = new User("user", UserArgs.builder()
 ///             .name("user")
 ///             .instance(instance.name())
-///             .password(pwd.result())
+///             .password(pwd.get("result"))
 ///             .build());
 ///
 ///         var natVm = new Instance("natVm", InstanceArgs.builder()
@@ -896,7 +1035,7 @@ import 'connection_profile_state.dart';
 ///             .location("us-central1")
 ///             .connectionProfileId("my-profile")
 ///             .postgresqlProfile(ConnectionProfilePostgresqlProfileArgs.builder()
-///                 .hostname(natVm.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
+///                 .hostname(natVm.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
 ///                 .username(user.name())
 ///                 .password(user.password())
 ///                 .database(db.name())
@@ -1048,12 +1187,6 @@ import 'connection_profile_state.dart';
 ///         bucket: "my-bucket",
 ///         rootPath: "/path",
 ///     },
-///     forwardSshConnectivity: {
-///         hostname: "google.com",
-///         username: "my-user",
-///         port: 8022,
-///         password: "swordfish",
-///     },
 ///     labels: {
 ///         key: "value",
 ///     },
@@ -1070,12 +1203,6 @@ import 'connection_profile_state.dart';
 ///     gcs_profile={
 ///         "bucket": "my-bucket",
 ///         "root_path": "/path",
-///     },
-///     forward_ssh_connectivity={
-///         "hostname": "google.com",
-///         "username": "my-user",
-///         "port": 8022,
-///         "password": "swordfish",
 ///     },
 ///     labels={
 ///         "key": "value",
@@ -1098,13 +1225,6 @@ import 'connection_profile_state.dart';
 ///         {
 ///             Bucket = "my-bucket",
 ///             RootPath = "/path",
-///         },
-///         ForwardSshConnectivity = new Gcp.Datastream.Inputs.ConnectionProfileForwardSshConnectivityArgs
-///         {
-///             Hostname = "google.com",
-///             Username = "my-user",
-///             Port = 8022,
-///             Password = "swordfish",
 ///         },
 ///         Labels =
 ///         {
@@ -1132,12 +1252,6 @@ import 'connection_profile_state.dart';
 /// 				Bucket:   pulumi.String("my-bucket"),
 /// 				RootPath: pulumi.String("/path"),
 /// 			},
-/// 			ForwardSshConnectivity: &datastream.ConnectionProfileForwardSshConnectivityArgs{
-/// 				Hostname: pulumi.String("google.com"),
-/// 				Username: pulumi.String("my-user"),
-/// 				Port:     pulumi.Int(8022),
-/// 				Password: pulumi.String("swordfish"),
-/// 			},
 /// 			Labels: pulumi.StringMap{
 /// 				"key": pulumi.String("value"),
 /// 			},
@@ -1149,6 +1263,28 @@ import 'connection_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datastream_connectionprofile" "default" {
+///   display_name          = "Connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "my-profile"
+///   gcs_profile = {
+///     bucket    = "my-bucket"
+///     root_path = "/path"
+///   }
+///   labels = {
+///     "key" = "value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1158,9 +1294,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.datastream.ConnectionProfile;
 /// import com.pulumi.gcp.datastream.ConnectionProfileArgs;
 /// import com.pulumi.gcp.datastream.inputs.ConnectionProfileGcsProfileArgs;
-/// import com.pulumi.gcp.datastream.inputs.ConnectionProfileForwardSshConnectivityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1180,12 +1315,6 @@ import 'connection_profile_state.dart';
 ///                 .bucket("my-bucket")
 ///                 .rootPath("/path")
 ///                 .build())
-///             .forwardSshConnectivity(ConnectionProfileForwardSshConnectivityArgs.builder()
-///                 .hostname("google.com")
-///                 .username("my-user")
-///                 .port(8022)
-///                 .password("swordfish")
-///                 .build())
 ///             .labels(Map.of("key", "value"))
 ///             .build());
 ///
@@ -1203,11 +1332,6 @@ import 'connection_profile_state.dart';
 ///       gcsProfile:
 ///         bucket: my-bucket
 ///         rootPath: /path
-///       forwardSshConnectivity:
-///         hostname: google.com
-///         username: my-user
-///         port: 8022
-///         password: swordfish
 ///       labels:
 ///         key: value
 /// ```
@@ -1309,7 +1433,7 @@ import 'connection_profile_state.dart';
 /// db = gcp.sql.Database("db",
 ///     instance=instance.name,
 ///     name="db")
-/// pwd = random.index.Password("pwd",
+/// pwd = random.Password("pwd",
 ///     length=16,
 ///     special=False)
 /// user = gcp.sql.User("user",
@@ -1380,7 +1504,7 @@ import 'connection_profile_state.dart';
 ///         Name = "db",
 ///     });
 ///
-///     var pwd = new Random.Index.Password("pwd", new()
+///     var pwd = new Random.Password("pwd", new()
 ///     {
 ///         Length = 16,
 ///         Special = false,
@@ -1492,6 +1616,65 @@ import 'connection_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "my-instance"
+///   database_version = "POSTGRES_14"
+///   region           = "us-central1"
+///   settings = {
+///     tier = "db-f1-micro"
+///     ip_configuration = {
+///       authorized_networks = [{
+///         "value" = "34.71.242.81"
+///         }, {
+///         "value" = "34.72.28.29"
+///         }, {
+///         "value" = "34.67.6.157"
+///         }, {
+///         "value" = "34.67.234.134"
+///         }, {
+///         "value" = "34.72.239.218"
+///       }]
+///     }
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_sql_database" "db" {
+///   instance = gcp_sql_databaseinstance.instance.name
+///   name     = "db"
+/// }
+/// resource "random_password" "pwd" {
+///   length  = 16
+///   special = false
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   password = random_password.pwd.result
+/// }
+/// resource "gcp_datastream_connectionprofile" "default" {
+///   display_name          = "Connection profile"
+///   location              = "us-central1"
+///   connection_profile_id = "my-profile"
+///   postgresql_profile = {
+///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     username = gcp_sql_user.user.name
+///     password = gcp_sql_user.user.password
+///     database = gcp_sql_database.db.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1502,6 +1685,7 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
 /// import com.pulumi.gcp.sql.Database;
 /// import com.pulumi.gcp.sql.DatabaseArgs;
 /// import com.pulumi.random.Password;
@@ -1511,8 +1695,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.datastream.ConnectionProfile;
 /// import com.pulumi.gcp.datastream.ConnectionProfileArgs;
 /// import com.pulumi.gcp.datastream.inputs.ConnectionProfilePostgresqlProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1565,7 +1749,7 @@ import 'connection_profile_state.dart';
 ///         var user = new User("user", UserArgs.builder()
 ///             .name("user")
 ///             .instance(instance.name())
-///             .password(pwd.result())
+///             .password(pwd.get("result"))
 ///             .build());
 ///
 ///         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()
@@ -1640,7 +1824,7 @@ import 'connection_profile_state.dart';
 ///
 /// const instance = new gcp.sql.DatabaseInstance("instance", {
 ///     name: "sql-server",
-///     databaseVersion: "SQLSERVER_2019_STANDARD",
+///     databaseVersion: "SQLSERVER_2022_STANDARD",
 ///     region: "us-central1",
 ///     rootPassword: "root-password",
 ///     deletionProtection: true,
@@ -1695,7 +1879,7 @@ import 'connection_profile_state.dart';
 ///
 /// instance = gcp.sql.DatabaseInstance("instance",
 ///     name="sql-server",
-///     database_version="SQLSERVER_2019_STANDARD",
+///     database_version="SQLSERVER_2022_STANDARD",
 ///     region="us-central1",
 ///     root_password="root-password",
 ///     deletion_protection=True,
@@ -1751,7 +1935,7 @@ import 'connection_profile_state.dart';
 ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
 ///     {
 ///         Name = "sql-server",
-///         DatabaseVersion = "SQLSERVER_2019_STANDARD",
+///         DatabaseVersion = "SQLSERVER_2022_STANDARD",
 ///         Region = "us-central1",
 ///         RootPassword = "root-password",
 ///         DeletionProtection = true,
@@ -1830,7 +2014,7 @@ import 'connection_profile_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
 /// 			Name:               pulumi.String("sql-server"),
-/// 			DatabaseVersion:    pulumi.String("SQLSERVER_2019_STANDARD"),
+/// 			DatabaseVersion:    pulumi.String("SQLSERVER_2022_STANDARD"),
 /// 			Region:             pulumi.String("us-central1"),
 /// 			RootPassword:       pulumi.String("root-password"),
 /// 			DeletionProtection: pulumi.Bool(true),
@@ -1894,6 +2078,60 @@ import 'connection_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name                = "sql-server"
+///   database_version    = "SQLSERVER_2022_STANDARD"
+///   region              = "us-central1"
+///   root_password       = "root-password"
+///   deletion_protection = true
+///   settings = {
+///     tier = "db-custom-2-4096"
+///     ip_configuration = {
+///       authorized_networks = [{
+///         "value" = "34.71.242.81"
+///         }, {
+///         "value" = "34.72.28.29"
+///         }, {
+///         "value" = "34.67.6.157"
+///         }, {
+///         "value" = "34.67.234.134"
+///         }, {
+///         "value" = "34.72.239.218"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_sql_database" "db" {
+///   name     = "db"
+///   instance = gcp_sql_databaseinstance.instance.name
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   password = "password"
+/// }
+/// resource "gcp_datastream_connectionprofile" "default" {
+///   display_name          = "SQL Server Source"
+///   location              = "us-central1"
+///   connection_profile_id = "source-profile"
+///   sql_server_profile = {
+///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     port     = 1433
+///     username = gcp_sql_user.user.name
+///     password = gcp_sql_user.user.password
+///     database = gcp_sql_database.db.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1904,6 +2142,7 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
 /// import com.pulumi.gcp.sql.Database;
 /// import com.pulumi.gcp.sql.DatabaseArgs;
 /// import com.pulumi.gcp.sql.User;
@@ -1911,8 +2150,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.datastream.ConnectionProfile;
 /// import com.pulumi.gcp.datastream.ConnectionProfileArgs;
 /// import com.pulumi.gcp.datastream.inputs.ConnectionProfileSqlServerProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1926,7 +2165,7 @@ import 'connection_profile_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
 ///             .name("sql-server")
-///             .databaseVersion("SQLSERVER_2019_STANDARD")
+///             .databaseVersion("SQLSERVER_2022_STANDARD")
 ///             .region("us-central1")
 ///             .rootPassword("root-password")
 ///             .deletionProtection(true)
@@ -1986,7 +2225,7 @@ import 'connection_profile_state.dart';
 ///     type: gcp:sql:DatabaseInstance
 ///     properties:
 ///       name: sql-server
-///       databaseVersion: SQLSERVER_2019_STANDARD
+///       databaseVersion: SQLSERVER_2022_STANDARD
 ///       region: us-central1
 ///       rootPassword: root-password
 ///       deletionProtection: true
@@ -2108,7 +2347,7 @@ import 'connection_profile_state.dart';
 ///     settings={
 ///         "tier": "db-f1-micro",
 ///         "ip_configuration": {
-///             "authorized_networks": [{"key": k, "value": v} for k, v in datastream_ips.static_ips].apply(lambda entries: [{
+///             "authorized_networks": [{"key": k, "value": v} for k, v in sorted(datastream_ips.static_ips.items())].apply(lambda entries: [{
 ///                 "name": std.format(input="datastream-%d",
 ///                     args=[entry["key"]]).result,
 ///                 "value": entry["value"],
@@ -2121,7 +2360,7 @@ import 'connection_profile_state.dart';
 /// db = gcp.sql.Database("db",
 ///     instance=instance.name,
 ///     name="db")
-/// pwd = random.index.Password("pwd",
+/// pwd = random.Password("pwd",
 ///     length=16,
 ///     special=False)
 /// user = gcp.sql.User("user",
@@ -2196,7 +2435,7 @@ import 'connection_profile_state.dart';
 ///         Name = "db",
 ///     });
 ///
-///     var pwd = new Random.Index.Password("pwd", new()
+///     var pwd = new Random.Password("pwd", new()
 ///     {
 ///         Length = 16,
 ///         Special = false,
@@ -2240,6 +2479,84 @@ import 'connection_profile_state.dart';
 ///     });
 ///
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "std_format" "invoke_0" {
+///   for_each = toset(entries(data.gcp_datastream_getstaticips.datastreamIps.static_ips))
+///   input    = "datastream-%d"
+///   args     = [each.value.key]
+/// }
+/// data "gcp_datastream_getstaticips" "datastreamIps" {
+///   location = "us-central1"
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "my-instance"
+///   database_version = "POSTGRES_15"
+///   region           = "us-central1"
+///   settings = {
+///     tier = "db-f1-micro"
+///     ip_configuration = {
+///       authorized_networks = [for entry in entries(data.gcp_datastream_getstaticips.datastreamIps.static_ips) : {
+///         "name"  = data.std_format.invoke_0[entry].result
+///         "value" = entry.value
+///       } ]
+///       ipv4_enabled = true
+///       ssl_mode     = "TRUSTED_CLIENT_CERTIFICATE_REQUIRED"
+///     }
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_sql_database" "db" {
+///   instance = gcp_sql_databaseinstance.instance.name
+///   name     = "db"
+/// }
+/// resource "random_password" "pwd" {
+///   length  = 16
+///   special = false
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   password = random_password.pwd.result
+/// }
+/// resource "gcp_sql_sslcert" "client_cert" {
+///   common_name = "client-name"
+///   instance    = gcp_sql_databaseinstance.instance.name
+/// }
+/// resource "gcp_datastream_connectionprofile" "default" {
+///   display_name          = "Connection Profile"
+///   location              = "us-central1"
+///   connection_profile_id = "profile-id"
+///   postgresql_profile = {
+///     hostname = gcp_sql_databaseinstance.instance.public_ip_address
+///     port     = 5432
+///     username = "user"
+///     password = random_password.pwd.result
+///     database = gcp_sql_database.db.name
+///     ssl_config = {
+///       server_and_client_verification = {
+///         client_certificate = gcp_sql_sslcert.client_cert.cert
+///         client_key         = gcp_sql_sslcert.client_cert.private_key
+///         ca_certificate     = gcp_sql_sslcert.client_cert.server_ca_cert
+///       }
+///     }
+///   }
+/// }
 /// ```
 ///
 /// ### Datastream Connection Profile Salesforce
@@ -2342,6 +2659,30 @@ import 'connection_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datastream_connectionprofile" "default" {
+///   display_name              = "Salesforce Source"
+///   location                  = "us-central1"
+///   connection_profile_id     = "source-profile"
+///   create_without_validation = true
+///   salesforce_profile = {
+///     domain = "fake-domain.my.salesforce.com"
+///     user_credentials = {
+///       username                             = "fake-username"
+///       secret_manager_stored_password       = "fake-password"
+///       secret_manager_stored_security_token = "fake-token"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2352,8 +2693,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.datastream.ConnectionProfileArgs;
 /// import com.pulumi.gcp.datastream.inputs.ConnectionProfileSalesforceProfileArgs;
 /// import com.pulumi.gcp.datastream.inputs.ConnectionProfileSalesforceProfileUserCredentialsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2483,6 +2824,26 @@ import 'connection_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datastream_connectionprofile" "default" {
+///   display_name              = "Spanner Source"
+///   location                  = "us-central1"
+///   connection_profile_id     = "source-profile"
+///   create_without_validation = true
+///   spanner_profile = {
+///     database = "projects/example-project/instances/example-instance/databases/example-database"
+///     host     = "https://spanner.example-region.rep.googleapis.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2492,8 +2853,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.datastream.ConnectionProfile;
 /// import com.pulumi.gcp.datastream.ConnectionProfileArgs;
 /// import com.pulumi.gcp.datastream.inputs.ConnectionProfileSpannerProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2628,6 +2989,29 @@ import 'connection_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datastream_connectionprofile" "default" {
+///   display_name              = "Postgres Source With Secret Manager"
+///   location                  = "us-central1"
+///   connection_profile_id     = "source-profile"
+///   create_without_validation = true
+///   postgresql_profile = {
+///     hostname                       = "fake-hostname"
+///     port                           = 3306
+///     username                       = "fake-username"
+///     secret_manager_stored_password = "projects/fake-project/secrets/fake-secret/versions/1"
+///     database                       = "fake-database"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2637,8 +3021,8 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.datastream.ConnectionProfile;
 /// import com.pulumi.gcp.datastream.ConnectionProfileArgs;
 /// import com.pulumi.gcp.datastream.inputs.ConnectionProfilePostgresqlProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2704,8 +3088,11 @@ import 'connection_profile_state.dart';
 ///         replicaSet: "myReplicaSet",
 ///         username: "mongoUser",
 ///         password: "mongoPassword",
-///         database: "myDatabase",
-///         standardConnectionFormat: {}[0],
+///         standardConnectionFormat: {},
+///         additionalOptions: {
+///             readPreference: "secondary",
+///             readPreferenceTags: "nodeType:ANALYTICS",
+///         },
 ///     },
 /// });
 /// ```
@@ -2725,8 +3112,11 @@ import 'connection_profile_state.dart';
 ///         "replica_set": "myReplicaSet",
 ///         "username": "mongoUser",
 ///         "password": "mongoPassword",
-///         "database": "myDatabase",
-///         "standard_connection_format": {}[0],
+///         "standard_connection_format": {},
+///         "additional_options": {
+///             "readPreference": "secondary",
+///             "readPreferenceTags": "nodeType:ANALYTICS",
+///         },
 ///     })
 /// ```
 /// ```csharp
@@ -2755,8 +3145,12 @@ import 'connection_profile_state.dart';
 ///             ReplicaSet = "myReplicaSet",
 ///             Username = "mongoUser",
 ///             Password = "mongoPassword",
-///             Database = "myDatabase",
-///             StandardConnectionFormat = null[0],
+///             StandardConnectionFormat = null,
+///             AdditionalOptions =
+///             {
+///                 { "readPreference", "secondary" },
+///                 { "readPreferenceTags", "nodeType:ANALYTICS" },
+///             },
 ///         },
 ///     });
 ///
@@ -2786,8 +3180,11 @@ import 'connection_profile_state.dart';
 /// 				ReplicaSet:               pulumi.String("myReplicaSet"),
 /// 				Username:                 pulumi.String("mongoUser"),
 /// 				Password:                 pulumi.String("mongoPassword"),
-/// 				Database:                 "myDatabase",
-/// 				StandardConnectionFormat: map[string]interface{}{}[0],
+/// 				StandardConnectionFormat: &datastream.ConnectionProfileMongodbProfileStandardConnectionFormatArgs{},
+/// 				AdditionalOptions: pulumi.StringMap{
+/// 					"readPreference":     pulumi.String("secondary"),
+/// 					"readPreferenceTags": pulumi.String("nodeType:ANALYTICS"),
+/// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -2795,6 +3192,35 @@ import 'connection_profile_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datastream_connectionprofile" "default" {
+///   display_name          = "Mongodb Source"
+///   location              = "us-central1"
+///   connection_profile_id = "source-profile"
+///   mongodb_profile = {
+///     host_addresses = [{
+///       "hostname" = "mongodb-primary.example.com"
+///       "port"     = 27017
+///     }]
+///     replica_set                = "myReplicaSet"
+///     username                   = "mongoUser"
+///     password                   = "mongoPassword"
+///     standard_connection_format = {}
+///     additional_options = {
+///       "readPreference"     = "secondary"
+///       "readPreferenceTags" = "nodeType:ANALYTICS"
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -2806,8 +3232,10 @@ import 'connection_profile_state.dart';
 /// import com.pulumi.gcp.datastream.ConnectionProfile;
 /// import com.pulumi.gcp.datastream.ConnectionProfileArgs;
 /// import com.pulumi.gcp.datastream.inputs.ConnectionProfileMongodbProfileArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.datastream.inputs.ConnectionProfileMongodbProfileHostAddressArgs;
+/// import com.pulumi.gcp.datastream.inputs.ConnectionProfileMongodbProfileStandardConnectionFormatArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2831,14 +3259,37 @@ import 'connection_profile_state.dart';
 ///                 .replicaSet("myReplicaSet")
 ///                 .username("mongoUser")
 ///                 .password("mongoPassword")
-///                 .database("myDatabase")
 ///                 .standardConnectionFormat(ConnectionProfileMongodbProfileStandardConnectionFormatArgs.builder()
-///                     .build()[0])
+///                     .build())
+///                 .additionalOptions(Map.ofEntries(
+///                     Map.entry("readPreference", "secondary"),
+///                     Map.entry("readPreferenceTags", "nodeType:ANALYTICS")
+///                 ))
 ///                 .build())
 ///             .build());
 ///
 ///     }
 /// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:datastream:ConnectionProfile
+///     properties:
+///       displayName: Mongodb Source
+///       location: us-central1
+///       connectionProfileId: source-profile
+///       mongodbProfile:
+///         hostAddresses:
+///           - hostname: mongodb-primary.example.com
+///             port: 27017
+///         replicaSet: myReplicaSet
+///         username: mongoUser
+///         password: mongoPassword
+///         standardConnectionFormat: {}
+///         additionalOptions:
+///           readPreference: secondary
+///           readPreferenceTags: nodeType:ANALYTICS
 /// ```
 ///
 ///
@@ -2847,22 +3298,15 @@ import 'connection_profile_state.dart';
 /// ConnectionProfile can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}`
-///
 /// * `{{project}}/{{location}}/{{connection_profile_id}}`
-///
 /// * `{{location}}/{{connection_profile_id}}`
+///
 ///
 /// When using the `pulumi import` command, ConnectionProfile can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default projects/{{project}}/locations/{{location}}/connectionProfiles/{{connection_profile_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default {{project}}/{{location}}/{{connection_profile_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:datastream/connectionProfile:ConnectionProfile default {{location}}/{{connection_profile_id}}
 /// ```
 class ConnectionProfile extends pulumi.CustomResource {
@@ -2872,6 +3316,13 @@ class ConnectionProfile extends pulumi.CustomResource {
   late final pulumi.Output<String> connectionProfileId;
   /// Create the connection profile without validating it.
   late final pulumi.Output<bool?> createWithoutValidation;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Display name.
   late final pulumi.Output<String> displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -2884,7 +3335,7 @@ class ConnectionProfile extends pulumi.CustomResource {
   late final pulumi.Output<ConnectionProfileGcsProfile?> gcsProfile;
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The name of the location this connection profile is located in.
   late final pulumi.Output<String> location;
@@ -2911,9 +3362,11 @@ class ConnectionProfile extends pulumi.CustomResource {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+  /// (Optional, Beta)
   /// Salesforce profile.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionProfileSalesforceProfile?> salesforceProfile;
+  /// (Optional, Beta)
   /// Spanner profile.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionProfileSpannerProfile?> spannerProfile;
@@ -2938,6 +3391,7 @@ class ConnectionProfile extends pulumi.CustomResource {
     bigqueryProfile = registerOutput<Map<String, dynamic>?>('bigqueryProfile');
     connectionProfileId = registerOutput<String>('connectionProfileId');
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     forwardSshConnectivity = registerOutput<ConnectionProfileForwardSshConnectivity?>('forwardSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileForwardSshConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2983,6 +3437,7 @@ class ConnectionProfile extends pulumi.CustomResource {
     bigqueryProfile = registerOutput<Map<String, dynamic>?>('bigqueryProfile');
     connectionProfileId = registerOutput<String>('connectionProfileId');
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     forwardSshConnectivity = registerOutput<ConnectionProfileForwardSshConnectivity?>('forwardSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionProfileForwardSshConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -379,6 +379,86 @@ import 'aws_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getawsversions" "versions" {
+///   project  = "my-project-name"
+///   location = "us-west1"
+/// }
+///
+/// resource "gcp_container_awscluster" "primary" {
+///   authorization = {
+///     admin_users = [{
+///       "username" = "my@service-account.com"
+///     }]
+///     admin_groups = [{
+///       "group" = "group@domain.com"
+///     }]
+///   }
+///   aws_region = "my-aws-region"
+///   control_plane = {
+///     aws_services_authentication = {
+///       role_arn          = "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform"
+///       role_session_name = "my--1p-dev-session"
+///     }
+///     config_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     database_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     iam_instance_profile = "my--1p-dev-controlplane"
+///     subnet_ids           = ["subnet-00000000000000000"]
+///     version              = data.gcp_container_getawsversions.versions.valid_versions[0]
+///     instance_type        = "t3.medium"
+///     main_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "GP3"
+///     }
+///     proxy_config = {
+///       secret_arn     = "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF"
+///       secret_version = "12345678-ABCD-EFGH-IJKL-987654321098"
+///     }
+///     root_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "GP3"
+///     }
+///     security_group_ids = ["sg-00000000000000000"]
+///     ssh_config = {
+///       ec2_key_pair = "my--1p-dev-ssh"
+///     }
+///     tags = {
+///       "owner" = "my@service-account.com"
+///     }
+///   }
+///   fleet = {
+///     project = "my-project-number"
+///   }
+///   location = "us-west1"
+///   name     = "name"
+///   networking = {
+///     pod_address_cidr_blocks     = ["10.2.0.0/16"]
+///     service_address_cidr_blocks = ["10.1.0.0/16"]
+///     vpc_id                      = "vpc-00000000000000000"
+///   }
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+///   description = "A sample aws cluster"
+///   project     = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -390,6 +470,8 @@ import 'aws_cluster_state.dart';
 /// import com.pulumi.gcp.container.AwsCluster;
 /// import com.pulumi.gcp.container.AwsClusterArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
+/// import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationAdminUserArgs;
+/// import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationAdminGroupArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneConfigEncryptionArgs;
@@ -400,8 +482,8 @@ import 'aws_cluster_state.dart';
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneSshConfigArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterFleetArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterNetworkingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -896,6 +978,83 @@ import 'aws_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getawsversions" "versions" {
+///   project  = "my-project-name"
+///   location = "us-west1"
+/// }
+///
+/// resource "gcp_container_awscluster" "primary" {
+///   authorization = {
+///     admin_users = [{
+///       "username" = "my@service-account.com"
+///     }]
+///   }
+///   aws_region = "my-aws-region"
+///   control_plane = {
+///     aws_services_authentication = {
+///       role_arn          = "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform"
+///       role_session_name = "my--1p-dev-session"
+///     }
+///     config_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     database_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     iam_instance_profile = "my--1p-dev-controlplane"
+///     subnet_ids           = ["subnet-00000000000000000"]
+///     version              = data.gcp_container_getawsversions.versions.valid_versions[0]
+///     instance_type        = "t3.medium"
+///     main_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "gp3"
+///     }
+///     proxy_config = {
+///       secret_arn     = "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF"
+///       secret_version = "12345678-ABCD-EFGH-IJKL-987654321098"
+///     }
+///     root_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "gp3"
+///     }
+///     security_group_ids = ["sg-00000000000000000"]
+///     ssh_config = {
+///       ec2_key_pair = "my--1p-dev-ssh"
+///     }
+///     tags = {
+///       "owner" = "my@service-account.com"
+///     }
+///   }
+///   fleet = {
+///     project = "my-project-number"
+///   }
+///   location = "us-west1"
+///   name     = "name"
+///   networking = {
+///     pod_address_cidr_blocks     = ["10.2.0.0/16"]
+///     service_address_cidr_blocks = ["10.1.0.0/16"]
+///     vpc_id                      = "vpc-00000000000000000"
+///   }
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+///   description = "A sample aws cluster"
+///   project     = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -907,6 +1066,7 @@ import 'aws_cluster_state.dart';
 /// import com.pulumi.gcp.container.AwsCluster;
 /// import com.pulumi.gcp.container.AwsClusterArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
+/// import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationAdminUserArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneConfigEncryptionArgs;
@@ -917,8 +1077,8 @@ import 'aws_cluster_state.dart';
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneSshConfigArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterFleetArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterNetworkingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1456,6 +1616,91 @@ import 'aws_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_container_getawsversions" "versions" {
+///   project  = "my-project-name"
+///   location = "us-west1"
+/// }
+///
+/// resource "gcp_container_awscluster" "primary" {
+///   authorization = {
+///     admin_users = [{
+///       "username" = "my@service-account.com"
+///     }]
+///   }
+///   aws_region = "my-aws-region"
+///   control_plane = {
+///     aws_services_authentication = {
+///       role_arn          = "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform"
+///       role_session_name = "my--1p-dev-session"
+///     }
+///     config_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     database_encryption = {
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///     }
+///     iam_instance_profile = "my--1p-dev-controlplane"
+///     subnet_ids           = ["subnet-00000000000000000"]
+///     version              = data.gcp_container_getawsversions.versions.valid_versions[0]
+///     instance_type        = "t3.medium"
+///     main_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "gp3"
+///     }
+///     proxy_config = {
+///       secret_arn     = "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF"
+///       secret_version = "12345678-ABCD-EFGH-IJKL-987654321098"
+///     }
+///     root_volume = {
+///       iops        = 3000
+///       kms_key_arn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111"
+///       size_gib    = 10
+///       volume_type = "gp3"
+///     }
+///     security_group_ids = ["sg-00000000000000000"]
+///     ssh_config = {
+///       ec2_key_pair = "my--1p-dev-ssh"
+///     }
+///     tags = {
+///       "owner" = "my@service-account.com"
+///     }
+///     instance_placement = {
+///       tenancy = "dedicated"
+///     }
+///   }
+///   fleet = {
+///     project = "my-project-number"
+///   }
+///   location = "us-west1"
+///   name     = "name"
+///   networking = {
+///     pod_address_cidr_blocks     = ["10.2.0.0/16"]
+///     service_address_cidr_blocks = ["10.1.0.0/16"]
+///     vpc_id                      = "vpc-00000000000000000"
+///   }
+///   annotations = {
+///     "label-one" = "value-one"
+///   }
+///   description = "A sample aws cluster"
+///   project     = "my-project-name"
+///   logging_config = {
+///     component_config = {
+///       enable_components = ["system_components", "workloads"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1467,6 +1712,7 @@ import 'aws_cluster_state.dart';
 /// import com.pulumi.gcp.container.AwsCluster;
 /// import com.pulumi.gcp.container.AwsClusterArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
+/// import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationAdminUserArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneConfigEncryptionArgs;
@@ -1480,8 +1726,8 @@ import 'aws_cluster_state.dart';
 /// import com.pulumi.gcp.container.inputs.AwsClusterNetworkingArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterLoggingConfigArgs;
 /// import com.pulumi.gcp.container.inputs.AwsClusterLoggingConfigComponentConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1645,31 +1891,23 @@ import 'aws_cluster_state.dart';
 /// ## Import
 ///
 /// Cluster can be imported using any of these accepted formats:
-///
 /// * `projects/{{project}}/locations/{{location}}/awsClusters/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:container/awsCluster:AwsCluster default projects/{{project}}/locations/{{location}}/awsClusters/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:container/awsCluster:AwsCluster default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:container/awsCluster:AwsCluster default {{location}}/{{name}}
 /// ```
 class AwsCluster extends pulumi.CustomResource {
   /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Configuration related to the cluster RBAC settings.
   late final pulumi.Output<AwsClusterAuthorization> authorization;
@@ -1681,8 +1919,16 @@ class AwsCluster extends pulumi.CustomResource {
   late final pulumi.Output<AwsClusterControlPlane> controlPlane;
   /// Output only. The time at which this cluster was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
   late final pulumi.Output<String?> description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// Output only. The endpoint of the cluster's API server.
   late final pulumi.Output<String> endpoint;
@@ -1731,6 +1977,7 @@ class AwsCluster extends pulumi.CustomResource {
     binaryAuthorization = registerOutput<AwsClusterBinaryAuthorization>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     controlPlane = registerOutput<AwsClusterControlPlane>('controlPlane', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     endpoint = registerOutput<String>('endpoint');
@@ -1777,6 +2024,7 @@ class AwsCluster extends pulumi.CustomResource {
     binaryAuthorization = registerOutput<AwsClusterBinaryAuthorization>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     controlPlane = registerOutput<AwsClusterControlPlane>('controlPlane', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     endpoint = registerOutput<String>('endpoint');

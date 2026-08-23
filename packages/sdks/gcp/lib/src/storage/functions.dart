@@ -5,6 +5,8 @@ import 'get_bucket_iam_policy_result.dart';
 import 'get_bucket_object_args.dart';
 import 'get_bucket_object_content_args.dart';
 import 'get_bucket_object_content_result.dart';
+import 'get_bucket_object_contents_args.dart';
+import 'get_bucket_object_contents_result.dart';
 import 'get_bucket_object_result.dart';
 import 'get_bucket_objects_args.dart';
 import 'get_bucket_objects_result.dart';
@@ -13,10 +15,24 @@ import 'get_buckets_args.dart';
 import 'get_buckets_result.dart';
 import 'get_control_folder_intelligence_config_args.dart';
 import 'get_control_folder_intelligence_config_result.dart';
+import 'get_control_folder_intelligence_findings_summary_args.dart';
+import 'get_control_folder_intelligence_findings_summary_result.dart';
 import 'get_control_organization_intelligence_config_args.dart';
 import 'get_control_organization_intelligence_config_result.dart';
+import 'get_control_organization_intelligence_findings_summary_args.dart';
+import 'get_control_organization_intelligence_findings_summary_result.dart';
 import 'get_control_project_intelligence_config_args.dart';
 import 'get_control_project_intelligence_config_result.dart';
+import 'get_control_project_intelligence_finding_args.dart';
+import 'get_control_project_intelligence_finding_result.dart';
+import 'get_control_project_intelligence_finding_revision_args.dart';
+import 'get_control_project_intelligence_finding_revision_result.dart';
+import 'get_control_project_intelligence_finding_revisions_args.dart';
+import 'get_control_project_intelligence_finding_revisions_result.dart';
+import 'get_control_project_intelligence_findings_args.dart';
+import 'get_control_project_intelligence_findings_result.dart';
+import 'get_control_project_intelligence_findings_summary_args.dart';
+import 'get_control_project_intelligence_findings_summary_result.dart';
 import 'get_insights_dataset_config_args.dart';
 import 'get_insights_dataset_config_result.dart';
 import 'get_managed_folder_iam_policy_args.dart';
@@ -88,6 +104,19 @@ import 'get_transfer_project_servie_account_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getbucket" "my-bucket" {
+///   name = "my-bucket"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +125,8 @@ import 'get_transfer_project_servie_account_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.StorageFunctions;
 /// import com.pulumi.gcp.storage.inputs.GetBucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -194,6 +223,19 @@ Future<GetBucketResult> getBucket(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getbucketiampolicy" "policy" {
+///   bucket = default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -202,8 +244,8 @@ Future<GetBucketResult> getBucket(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.StorageFunctions;
 /// import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -216,7 +258,7 @@ Future<GetBucketResult> getBucket(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
-///             .bucket(default_.name())
+///             .bucket(default_.get("name"))
 ///             .build());
 ///
 ///     }
@@ -309,6 +351,20 @@ Future<GetBucketIamPolicyResult> getBucketIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getbucketobject" "picture" {
+///   name   = "folder/butterfly01.jpg"
+///   bucket = "image-store"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -317,8 +373,8 @@ Future<GetBucketIamPolicyResult> getBucketIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.StorageFunctions;
 /// import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -434,6 +490,24 @@ Future<GetBucketObjectResult> getBucketObject(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getbucketobjectcontent" "key" {
+///   name   = "encryptedkey"
+///   bucket = "keystore"
+/// }
+///
+/// output "encrypted" {
+///   value = data.gcp_storage_getbucketobjectcontent.key.content
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -442,8 +516,8 @@ Future<GetBucketObjectResult> getBucketObject(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.StorageFunctions;
 /// import com.pulumi.gcp.storage.inputs.GetBucketObjectContentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -488,6 +562,148 @@ Future<GetBucketObjectContentResult> getBucketObjectContent(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBucketObjectContentResult.fromMap(result);
+}
+
+/// Gets existing object contents inside an existing bucket in Google Cloud Storage service (GCS).
+/// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+/// and
+/// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+///
+/// &gt; **Warning:** The object content will be saved in the state, and visible to everyone who has access to the state file.
+///
+/// &gt; **Warning:** This data source loads all object contents into memory. Limit the results with `matchGlob` or `prefix`.
+///
+/// ## Example Usage
+///
+/// Extract object base64 contents from objects:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const example = gcp.storage.getBucketObjectContents({
+///     bucket: "example-bucket",
+///     matchGlob: "example-{foo,bar}.json",
+///     prefix: "example",
+/// });
+/// export const base64EncodedJsonContents = example.then(example => example.bucketObjects.map(__item => __item.contentBase64));
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// example = gcp.storage.get_bucket_object_contents(bucket="example-bucket",
+///     match_glob="example-{foo,bar}.json",
+///     prefix="example")
+/// pulumi.export("base64EncodedJsonContents", [__item.content_base64 for __item in example.bucket_objects])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = Gcp.Storage.GetBucketObjectContents.Invoke(new()
+///     {
+///         Bucket = "example-bucket",
+///         MatchGlob = "example-{foo,bar}.json",
+///         Prefix = "example",
+///     });
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["base64EncodedJsonContents"] = example.Apply(getBucketObjectContentsResult => getBucketObjectContentsResult.BucketObjects).Select(__item => __item.ContentBase64).ToList(),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+/// func main() {
+/// pulumi.Run(func(ctx *pulumi.Context) error {
+/// example, err := storage.GetBucketObjectContents(ctx, &storage.GetBucketObjectContentsArgs{
+/// Bucket: "example-bucket",
+/// MatchGlob: pulumi.StringRef("example-{foo,bar}.json"),
+/// Prefix: pulumi.StringRef("example"),
+/// }, nil);
+/// if err != nil {
+/// return err
+/// }
+/// ctx.Export("base64EncodedJsonContents", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:7,11-49)))
+/// return nil
+/// })
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getbucketobjectcontents" "example" {
+///   bucket     = "example-bucket"
+///   match_glob = "example-{foo,bar}.json"
+///   prefix     = "example"
+/// }
+///
+/// output "base64EncodedJsonContents" {
+///   value = data.gcp_storage_getbucketobjectcontents.example.bucket_objects[*].content_base64
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.StorageFunctions;
+/// import com.pulumi.gcp.storage.inputs.GetBucketObjectContentsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = StorageFunctions.getBucketObjectContents(GetBucketObjectContentsArgs.builder()
+///             .bucket("example-bucket")
+///             .matchGlob("example-{foo,bar}.json")
+///             .prefix("example")
+///             .build());
+///
+///         ctx.export("base64EncodedJsonContents", example.bucketObjects().stream().map(element -> element.contentBase64()).collect(toList()));
+///     }
+/// }
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_bucket_object_contents_get_bucket_object_contents_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetBucketObjectContentsResult> getBucketObjectContents(
+  GetBucketObjectContentsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:storage/getBucketObjectContents:getBucketObjectContents',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetBucketObjectContentsResult.fromMap(result);
 }
 
 /// Gets existing objects inside an existing bucket in Google Cloud Storage service (GCS).
@@ -548,6 +764,19 @@ Future<GetBucketObjectContentResult> getBucketObjectContent(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getbucketobjects" "files" {
+///   bucket = "file-store"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -556,8 +785,8 @@ Future<GetBucketObjectContentResult> getBucketObjectContent(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.StorageFunctions;
 /// import com.pulumi.gcp.storage.inputs.GetBucketObjectsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -657,6 +886,19 @@ Future<GetBucketObjectsResult> getBucketObjects(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getbuckets" "example" {
+///   project = "example-project"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -665,8 +907,8 @@ Future<GetBucketObjectsResult> getBucketObjects(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.StorageFunctions;
 /// import com.pulumi.gcp.storage.inputs.GetBucketsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -708,10 +950,8 @@ Future<GetBucketsResult> getBuckets(
   return GetBucketsResult.fromMap(result);
 }
 
-/// Use this data source to get information about a Folder Storage Intelligence config resource.
-/// See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-/// and
-/// [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+/// Get information about a Cloud Storage Control FolderIntelligenceConfig.
+///
 ///
 ///
 /// ## Example Usage
@@ -721,15 +961,15 @@ Future<GetBucketsResult> getBuckets(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const sample_config = gcp.storage.getControlFolderIntelligenceConfig({
-///     name: "123456789",
+/// const _default = gcp.storage.getControlFolderIntelligenceConfig({
+///     name: example.name,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// sample_config = gcp.storage.get_control_folder_intelligence_config(name="123456789")
+/// default = gcp.storage.get_control_folder_intelligence_config(name=example["name"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -739,9 +979,9 @@ Future<GetBucketsResult> getBuckets(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var sample_config = Gcp.Storage.GetControlFolderIntelligenceConfig.Invoke(new()
+///     var @default = Gcp.Storage.GetControlFolderIntelligenceConfig.Invoke(new()
 ///     {
-///         Name = "123456789",
+///         Name = example.Name,
 ///     });
 ///
 /// });
@@ -757,13 +997,26 @@ Future<GetBucketsResult> getBuckets(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := storage.LookupControlFolderIntelligenceConfig(ctx, &storage.LookupControlFolderIntelligenceConfigArgs{
-/// 			Name: "123456789",
+/// 			Name: example.Name,
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getcontrolfolderintelligenceconfig" "default" {
+///   name = example.name
 /// }
 /// ```
 /// ```java
@@ -774,8 +1027,8 @@ Future<GetBucketsResult> getBuckets(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.StorageFunctions;
 /// import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -787,8 +1040,8 @@ Future<GetBucketsResult> getBuckets(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var sample-config = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
-///             .name("123456789")
+///         final var default = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
+///             .name(example.get("name"))
 ///             .build());
 ///
 ///     }
@@ -796,11 +1049,11 @@ Future<GetBucketsResult> getBuckets(
 /// ```
 /// ```yaml
 /// variables:
-///   sample-config:
+///   default:
 ///     fn::invoke:
 ///       function: gcp:storage:getControlFolderIntelligenceConfig
 ///       arguments:
-///         name: '123456789'
+///         name: ${example.name}
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_folder_intelligence_config_get_control_folder_intelligence_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -817,11 +1070,7 @@ Future<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceCon
   return GetControlFolderIntelligenceConfigResult.fromMap(result);
 }
 
-/// Use this data source to get information about a Organization Storage Intelligence config resource.
-/// See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-/// and
-/// [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
-///
+/// Summarizes Cloud Storage intelligence findings in a specified folder and location.
 ///
 /// ## Example Usage
 ///
@@ -830,15 +1079,15 @@ Future<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceCon
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const sample_config = gcp.storage.getControlOrganizationIntelligenceConfig({
-///     name: "123456789",
+/// const summary = gcp.storage.getControlFolderIntelligenceFindingsSummary({
+///     folder: "1234567890",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// sample_config = gcp.storage.get_control_organization_intelligence_config(name="123456789")
+/// summary = gcp.storage.get_control_folder_intelligence_findings_summary(folder="1234567890")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -848,9 +1097,129 @@ Future<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceCon
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var sample_config = Gcp.Storage.GetControlOrganizationIntelligenceConfig.Invoke(new()
+///     var summary = Gcp.Storage.GetControlFolderIntelligenceFindingsSummary.Invoke(new()
 ///     {
-///         Name = "123456789",
+///         Folder = "1234567890",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := storage.GetControlFolderIntelligenceFindingsSummary(ctx, &storage.GetControlFolderIntelligenceFindingsSummaryArgs{
+/// 			Folder: "1234567890",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getcontrolfolderintelligencefindingssummary" "summary" {
+///   folder = "1234567890"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.StorageFunctions;
+/// import com.pulumi.gcp.storage.inputs.GetControlFolderIntelligenceFindingsSummaryArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var summary = StorageFunctions.getControlFolderIntelligenceFindingsSummary(GetControlFolderIntelligenceFindingsSummaryArgs.builder()
+///             .folder("1234567890")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   summary:
+///     fn::invoke:
+///       function: gcp:storage:getControlFolderIntelligenceFindingsSummary
+///       arguments:
+///         folder: '1234567890'
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_folder_intelligence_findings_summary_get_control_folder_intelligence_findings_summary_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetControlFolderIntelligenceFindingsSummaryResult> getControlFolderIntelligenceFindingsSummary(
+  GetControlFolderIntelligenceFindingsSummaryArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:storage/getControlFolderIntelligenceFindingsSummary:getControlFolderIntelligenceFindingsSummary',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetControlFolderIntelligenceFindingsSummaryResult.fromMap(result);
+}
+
+/// Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
+///
+///
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = gcp.storage.getControlOrganizationIntelligenceConfig({
+///     name: example.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.storage.get_control_organization_intelligence_config(name=example["name"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = Gcp.Storage.GetControlOrganizationIntelligenceConfig.Invoke(new()
+///     {
+///         Name = example.Name,
 ///     });
 ///
 /// });
@@ -866,13 +1235,26 @@ Future<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceCon
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := storage.LookupControlOrganizationIntelligenceConfig(ctx, &storage.LookupControlOrganizationIntelligenceConfigArgs{
-/// 			Name: "123456789",
+/// 			Name: example.Name,
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getcontrolorganizationintelligenceconfig" "default" {
+///   name = example.name
 /// }
 /// ```
 /// ```java
@@ -883,8 +1265,8 @@ Future<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceCon
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.StorageFunctions;
 /// import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -896,8 +1278,8 @@ Future<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceCon
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var sample-config = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
-///             .name("123456789")
+///         final var default = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
+///             .name(example.get("name"))
 ///             .build());
 ///
 ///     }
@@ -905,11 +1287,11 @@ Future<GetControlFolderIntelligenceConfigResult> getControlFolderIntelligenceCon
 /// ```
 /// ```yaml
 /// variables:
-///   sample-config:
+///   default:
 ///     fn::invoke:
 ///       function: gcp:storage:getControlOrganizationIntelligenceConfig
 ///       arguments:
-///         name: '123456789'
+///         name: ${example.name}
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_organization_intelligence_config_get_control_organization_intelligence_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -926,11 +1308,7 @@ Future<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationInt
   return GetControlOrganizationIntelligenceConfigResult.fromMap(result);
 }
 
-/// Use this data source to get information about a Project Storage Intelligence config resource.
-/// See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-/// and
-/// [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
-///
+/// Summarizes Cloud Storage intelligence findings in a specified organization and location.
 ///
 /// ## Example Usage
 ///
@@ -939,15 +1317,15 @@ Future<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationInt
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const sample_config = gcp.storage.getControlProjectIntelligenceConfig({
-///     name: "my-project",
+/// const summary = gcp.storage.getControlOrganizationIntelligenceFindingsSummary({
+///     organization: "123456789012",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// sample_config = gcp.storage.get_control_project_intelligence_config(name="my-project")
+/// summary = gcp.storage.get_control_organization_intelligence_findings_summary(organization="123456789012")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -957,9 +1335,129 @@ Future<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationInt
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var sample_config = Gcp.Storage.GetControlProjectIntelligenceConfig.Invoke(new()
+///     var summary = Gcp.Storage.GetControlOrganizationIntelligenceFindingsSummary.Invoke(new()
 ///     {
-///         Name = "my-project",
+///         Organization = "123456789012",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := storage.GetControlOrganizationIntelligenceFindingsSummary(ctx, &storage.GetControlOrganizationIntelligenceFindingsSummaryArgs{
+/// 			Organization: "123456789012",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getcontrolorganizationintelligencefindingssummary" "summary" {
+///   organization = "123456789012"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.StorageFunctions;
+/// import com.pulumi.gcp.storage.inputs.GetControlOrganizationIntelligenceFindingsSummaryArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var summary = StorageFunctions.getControlOrganizationIntelligenceFindingsSummary(GetControlOrganizationIntelligenceFindingsSummaryArgs.builder()
+///             .organization("123456789012")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   summary:
+///     fn::invoke:
+///       function: gcp:storage:getControlOrganizationIntelligenceFindingsSummary
+///       arguments:
+///         organization: '123456789012'
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_organization_intelligence_findings_summary_get_control_organization_intelligence_findings_summary_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetControlOrganizationIntelligenceFindingsSummaryResult> getControlOrganizationIntelligenceFindingsSummary(
+  GetControlOrganizationIntelligenceFindingsSummaryArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:storage/getControlOrganizationIntelligenceFindingsSummary:getControlOrganizationIntelligenceFindingsSummary',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetControlOrganizationIntelligenceFindingsSummaryResult.fromMap(result);
+}
+
+/// Get information about a Cloud Storage Control ProjectIntelligenceConfig.
+///
+///
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = gcp.storage.getControlProjectIntelligenceConfig({
+///     name: example.name,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.storage.get_control_project_intelligence_config(name=example["name"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = Gcp.Storage.GetControlProjectIntelligenceConfig.Invoke(new()
+///     {
+///         Name = example.Name,
 ///     });
 ///
 /// });
@@ -975,13 +1473,26 @@ Future<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationInt
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := storage.LookupControlProjectIntelligenceConfig(ctx, &storage.LookupControlProjectIntelligenceConfigArgs{
-/// 			Name: "my-project",
+/// 			Name: example.Name,
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getcontrolprojectintelligenceconfig" "default" {
+///   name = example.name
 /// }
 /// ```
 /// ```java
@@ -992,8 +1503,8 @@ Future<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationInt
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.StorageFunctions;
 /// import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1005,8 +1516,8 @@ Future<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationInt
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var sample-config = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
-///             .name("my-project")
+///         final var default = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
+///             .name(example.get("name"))
 ///             .build());
 ///
 ///     }
@@ -1014,11 +1525,11 @@ Future<GetControlOrganizationIntelligenceConfigResult> getControlOrganizationInt
 /// ```
 /// ```yaml
 /// variables:
-///   sample-config:
+///   default:
 ///     fn::invoke:
 ///       function: gcp:storage:getControlProjectIntelligenceConfig
 ///       arguments:
-///         name: my-project
+///         name: ${example.name}
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_project_intelligence_config_get_control_project_intelligence_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1033,6 +1544,610 @@ Future<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceC
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetControlProjectIntelligenceConfigResult.fromMap(result);
+}
+
+/// Retrieves information about a specific Cloud Storage intelligence finding in a project and location.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const finding = gcp.storage.getControlProjectIntelligenceFinding({
+///     project: "my-project-id",
+///     findingId: "cross_region_egress_spike_insight_1",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// finding = gcp.storage.get_control_project_intelligence_finding(project="my-project-id",
+///     finding_id="cross_region_egress_spike_insight_1")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var finding = Gcp.Storage.GetControlProjectIntelligenceFinding.Invoke(new()
+///     {
+///         Project = "my-project-id",
+///         FindingId = "cross_region_egress_spike_insight_1",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := storage.GetControlProjectIntelligenceFinding(ctx, &storage.GetControlProjectIntelligenceFindingArgs{
+/// 			Project:   pulumi.StringRef("my-project-id"),
+/// 			FindingId: "cross_region_egress_spike_insight_1",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getcontrolprojectintelligencefinding" "finding" {
+///   project    = "my-project-id"
+///   finding_id = "cross_region_egress_spike_insight_1"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.StorageFunctions;
+/// import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var finding = StorageFunctions.getControlProjectIntelligenceFinding(GetControlProjectIntelligenceFindingArgs.builder()
+///             .project("my-project-id")
+///             .findingId("cross_region_egress_spike_insight_1")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   finding:
+///     fn::invoke:
+///       function: gcp:storage:getControlProjectIntelligenceFinding
+///       arguments:
+///         project: my-project-id
+///         findingId: cross_region_egress_spike_insight_1
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_project_intelligence_finding_get_control_project_intelligence_finding_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetControlProjectIntelligenceFindingResult> getControlProjectIntelligenceFinding(
+  GetControlProjectIntelligenceFindingArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:storage/getControlProjectIntelligenceFinding:getControlProjectIntelligenceFinding',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetControlProjectIntelligenceFindingResult.fromMap(result);
+}
+
+/// Retrieves information about a specific Cloud Storage intelligence finding revision in a project and location.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const revision = gcp.storage.getControlProjectIntelligenceFindingRevision({
+///     findingId: "coldline_archival_storage_operations_spike_insight_1",
+///     revisionId: "revision_1",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// revision = gcp.storage.get_control_project_intelligence_finding_revision(finding_id="coldline_archival_storage_operations_spike_insight_1",
+///     revision_id="revision_1")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var revision = Gcp.Storage.GetControlProjectIntelligenceFindingRevision.Invoke(new()
+///     {
+///         FindingId = "coldline_archival_storage_operations_spike_insight_1",
+///         RevisionId = "revision_1",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := storage.GetControlProjectIntelligenceFindingRevision(ctx, &storage.GetControlProjectIntelligenceFindingRevisionArgs{
+/// 			FindingId:  "coldline_archival_storage_operations_spike_insight_1",
+/// 			RevisionId: "revision_1",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getcontrolprojectintelligencefindingrevision" "revision" {
+///   finding_id  = "coldline_archival_storage_operations_spike_insight_1"
+///   revision_id = "revision_1"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.StorageFunctions;
+/// import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var revision = StorageFunctions.getControlProjectIntelligenceFindingRevision(GetControlProjectIntelligenceFindingRevisionArgs.builder()
+///             .findingId("coldline_archival_storage_operations_spike_insight_1")
+///             .revisionId("revision_1")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   revision:
+///     fn::invoke:
+///       function: gcp:storage:getControlProjectIntelligenceFindingRevision
+///       arguments:
+///         findingId: coldline_archival_storage_operations_spike_insight_1
+///         revisionId: revision_1
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_project_intelligence_finding_revision_get_control_project_intelligence_finding_revision_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetControlProjectIntelligenceFindingRevisionResult> getControlProjectIntelligenceFindingRevision(
+  GetControlProjectIntelligenceFindingRevisionArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:storage/getControlProjectIntelligenceFindingRevision:getControlProjectIntelligenceFindingRevision',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetControlProjectIntelligenceFindingRevisionResult.fromMap(result);
+}
+
+/// Retrieves a list of Cloud Storage intelligence finding revisions in a specified project and location.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const revisions = gcp.storage.getControlProjectIntelligenceFindingRevisions({
+///     findingId: "coldline_archival_storage_operations_spike_insight_1",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// revisions = gcp.storage.get_control_project_intelligence_finding_revisions(finding_id="coldline_archival_storage_operations_spike_insight_1")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var revisions = Gcp.Storage.GetControlProjectIntelligenceFindingRevisions.Invoke(new()
+///     {
+///         FindingId = "coldline_archival_storage_operations_spike_insight_1",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := storage.GetControlProjectIntelligenceFindingRevisions(ctx, &storage.GetControlProjectIntelligenceFindingRevisionsArgs{
+/// 			FindingId: "coldline_archival_storage_operations_spike_insight_1",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getcontrolprojectintelligencefindingrevisions" "revisions" {
+///   finding_id = "coldline_archival_storage_operations_spike_insight_1"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.StorageFunctions;
+/// import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingRevisionsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var revisions = StorageFunctions.getControlProjectIntelligenceFindingRevisions(GetControlProjectIntelligenceFindingRevisionsArgs.builder()
+///             .findingId("coldline_archival_storage_operations_spike_insight_1")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   revisions:
+///     fn::invoke:
+///       function: gcp:storage:getControlProjectIntelligenceFindingRevisions
+///       arguments:
+///         findingId: coldline_archival_storage_operations_spike_insight_1
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_project_intelligence_finding_revisions_get_control_project_intelligence_finding_revisions_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetControlProjectIntelligenceFindingRevisionsResult> getControlProjectIntelligenceFindingRevisions(
+  GetControlProjectIntelligenceFindingRevisionsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:storage/getControlProjectIntelligenceFindingRevisions:getControlProjectIntelligenceFindingRevisions',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetControlProjectIntelligenceFindingRevisionsResult.fromMap(result);
+}
+
+/// Retrieves a list of Cloud Storage intelligence findings in a specified project and location.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const all = gcp.storage.getControlProjectIntelligenceFindings({
+///     project: "my-project-id",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// all = gcp.storage.get_control_project_intelligence_findings(project="my-project-id")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var all = Gcp.Storage.GetControlProjectIntelligenceFindings.Invoke(new()
+///     {
+///         Project = "my-project-id",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := storage.GetControlProjectIntelligenceFindings(ctx, &storage.GetControlProjectIntelligenceFindingsArgs{
+/// 			Project: pulumi.StringRef("my-project-id"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getcontrolprojectintelligencefindings" "all" {
+///   project = "my-project-id"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.StorageFunctions;
+/// import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var all = StorageFunctions.getControlProjectIntelligenceFindings(GetControlProjectIntelligenceFindingsArgs.builder()
+///             .project("my-project-id")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   all:
+///     fn::invoke:
+///       function: gcp:storage:getControlProjectIntelligenceFindings
+///       arguments:
+///         project: my-project-id
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_project_intelligence_findings_get_control_project_intelligence_findings_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetControlProjectIntelligenceFindingsResult> getControlProjectIntelligenceFindings(
+  GetControlProjectIntelligenceFindingsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:storage/getControlProjectIntelligenceFindings:getControlProjectIntelligenceFindings',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetControlProjectIntelligenceFindingsResult.fromMap(result);
+}
+
+/// Summarizes Cloud Storage intelligence findings in a specified project and location.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const summary = gcp.storage.getControlProjectIntelligenceFindingsSummary({
+///     project: "my-project-id",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// summary = gcp.storage.get_control_project_intelligence_findings_summary(project="my-project-id")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var summary = Gcp.Storage.GetControlProjectIntelligenceFindingsSummary.Invoke(new()
+///     {
+///         Project = "my-project-id",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := storage.GetControlProjectIntelligenceFindingsSummary(ctx, &storage.GetControlProjectIntelligenceFindingsSummaryArgs{
+/// 			Project: pulumi.StringRef("my-project-id"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getcontrolprojectintelligencefindingssummary" "summary" {
+///   project = "my-project-id"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.storage.StorageFunctions;
+/// import com.pulumi.gcp.storage.inputs.GetControlProjectIntelligenceFindingsSummaryArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var summary = StorageFunctions.getControlProjectIntelligenceFindingsSummary(GetControlProjectIntelligenceFindingsSummaryArgs.builder()
+///             .project("my-project-id")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   summary:
+///     fn::invoke:
+///       function: gcp:storage:getControlProjectIntelligenceFindingsSummary
+///       arguments:
+///         project: my-project-id
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_storage_get_control_project_intelligence_findings_summary_get_control_project_intelligence_findings_summary_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetControlProjectIntelligenceFindingsSummaryResult> getControlProjectIntelligenceFindingsSummary(
+  GetControlProjectIntelligenceFindingsSummaryArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:storage/getControlProjectIntelligenceFindingsSummary:getControlProjectIntelligenceFindingsSummary',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetControlProjectIntelligenceFindingsSummaryResult.fromMap(result);
 }
 
 /// Use this data source to get information about a Storage Insights Dataset Config resource.
@@ -1101,6 +2216,21 @@ Future<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceC
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getinsightsdatasetconfig" "sample-config" {
+///   project           = "sample_project"
+///   location          = "sample_location"
+///   dataset_config_id = "sample_dataset_config_id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1109,8 +2239,8 @@ Future<GetControlProjectIntelligenceConfigResult> getControlProjectIntelligenceC
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.StorageFunctions;
 /// import com.pulumi.gcp.storage.inputs.GetInsightsDatasetConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1245,6 +2375,24 @@ Future<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getobjectsignedurl" "artifact" {
+///   bucket = "install_binaries"
+///   path   = "path/to/install_file.bin"
+/// }
+///
+/// resource "gcp_compute_instance" "vm" {
+///   name = "vm"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1255,8 +2403,8 @@ Future<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicy(
 /// import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
 /// import com.pulumi.gcp.compute.Instance;
 /// import com.pulumi.gcp.compute.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1372,16 +2520,20 @@ Future<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicy(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		invokeFile, err := std.File(ctx, &std.FileArgs{
+/// 			Input: "path/to/credentials.json",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
 /// 		_, err := storage.GetObjectSignedUrl(ctx, &storage.GetObjectSignedUrlArgs{
 /// 			Bucket:      "fried_chicken",
 /// 			Path:        "path/to/file",
 /// 			ContentMd5:  pulumi.StringRef("pRviqwS4c4OTJRTe03FD1w=="),
 /// 			ContentType: pulumi.StringRef("text/plain"),
 /// 			Duration:    pulumi.StringRef("2d"),
-/// 			Credentials: pulumi.StringRef(std.File(ctx, &std.FileArgs{
-/// 				Input: "path/to/credentials.json",
-/// 			}, nil).Result),
-/// 			ExtensionHeaders: map[string]interface{}{
+/// 			Credentials: pulumi.StringRef(invokeFile.Result),
+/// 			ExtensionHeaders: map[string]string{
 /// 				"x-goog-if-generation-match": "1",
 /// 			},
 /// 		}, nil)
@@ -1390,6 +2542,30 @@ Future<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicy(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getobjectsignedurl" "getUrl" {
+///   bucket       = "fried_chicken"
+///   path         = "path/to/file"
+///   content_md5  = "pRviqwS4c4OTJRTe03FD1w=="
+///   content_type = "text/plain"
+///   duration     = "2d"
+///   credentials  = file("path/to/credentials.json")
+///   extension_headers = {
+///     "x-goog-if-generation-match" = 1
+///   }
 /// }
 /// ```
 /// ```java
@@ -1402,8 +2578,8 @@ Future<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicy(
 /// import com.pulumi.std.inputs.FileArgs;
 /// import com.pulumi.gcp.storage.StorageFunctions;
 /// import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1486,13 +2662,13 @@ Future<GetObjectSignedUrlResult> getObjectSignedUrl(
 /// Use of this data source calls the relevant API endpoint to obtain the service account's identity and thus ensures it exists prior to any API operations
 /// which demand its existence, such as specifying it in Cloud IAM policy.
 /// Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
-/// provider update errors in cases where the service account does not yet exist.
+/// Pulumi update errors in cases where the service account does not yet exist.
 ///
-/// &gt;  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+/// &gt;  When you write Pulumi code which uses features depending on this service account *and* your Pulumi code adds the service account in IAM policy on other resources,
 /// you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
 /// Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
 /// bucket configuration, otherwise the API calls will fail.
-/// You may need to use `depends_on` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
+/// You may need to use `dependsOn` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
 /// See the examples here and in the `gcp.storage.Notification` resource.
 ///
 /// For more information see
@@ -1550,8 +2726,6 @@ Future<GetObjectSignedUrlResult> getObjectSignedUrl(
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -1577,6 +2751,24 @@ Future<GetObjectSignedUrlResult> getObjectSignedUrl(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getprojectserviceaccount" "gcsAccount" {
+/// }
+///
+/// resource "gcp_pubsub_topiciambinding" "binding" {
+///   topic   = topic.name
+///   role    = "roles/pubsub.publisher"
+///   members = ["serviceAccount:${data.gcp_storage_getprojectserviceaccount.gcsAccount.email_address}"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1587,8 +2779,8 @@ Future<GetObjectSignedUrlResult> getObjectSignedUrl(
 /// import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
 /// import com.pulumi.gcp.pubsub.TopicIAMBinding;
 /// import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1604,7 +2796,7 @@ Future<GetObjectSignedUrlResult> getObjectSignedUrl(
 ///             .build());
 ///
 ///         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
-///             .topic(topic.name())
+///             .topic(topic.get("name"))
 ///             .role("roles/pubsub.publisher")
 ///             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
 ///             .build());
@@ -1712,8 +2904,6 @@ Future<GetObjectSignedUrlResult> getObjectSignedUrl(
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -1751,6 +2941,32 @@ Future<GetObjectSignedUrlResult> getObjectSignedUrl(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_getprojectserviceaccount" "gcsAccount" {
+/// }
+///
+/// resource "gcp_kms_cryptokeyiambinding" "binding" {
+///   crypto_key_id = "your-crypto-key-id"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   members       = ["serviceAccount:${data.gcp_storage_getprojectserviceaccount.gcsAccount.email_address}"]
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   depends_on = [gcp_kms_cryptokeyiambinding.binding]
+///   name       = "kms-protected-bucket"
+///   location   = "US"
+///   encryption = {
+///     default_kms_key_name = "your-crypto-key-id"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1765,8 +2981,8 @@ Future<GetObjectSignedUrlResult> getObjectSignedUrl(
 /// import com.pulumi.gcp.storage.BucketArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1894,6 +3110,22 @@ Future<GetProjectServiceAccountResult> getProjectServiceAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_gettransferprojectserviceaccount" "default" {
+/// }
+///
+/// output "defaultAccount" {
+///   value = data.gcp_storage_gettransferprojectserviceaccount.default.email
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1902,8 +3134,8 @@ Future<GetProjectServiceAccountResult> getProjectServiceAccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.StorageFunctions;
 /// import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2000,6 +3232,22 @@ Future<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_gettransferprojectserviceaccount" "default" {
+/// }
+///
+/// output "defaultAccount" {
+///   value = data.gcp_storage_gettransferprojectserviceaccount.default.email
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2008,8 +3256,8 @@ Future<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.StorageFunctions;
 /// import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

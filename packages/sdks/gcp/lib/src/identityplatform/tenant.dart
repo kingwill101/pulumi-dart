@@ -74,6 +74,20 @@ import 'tenant_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_identityplatform_tenant" "tenant" {
+///   display_name          = "tenant"
+///   allow_password_signup = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +96,8 @@ import 'tenant_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.identityplatform.Tenant;
 /// import com.pulumi.gcp.identityplatform.TenantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -118,22 +132,15 @@ import 'tenant_state.dart';
 /// Tenant can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/tenants/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:identityplatform/tenant:Tenant default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
 /// ```
 class Tenant extends pulumi.CustomResource {
@@ -142,6 +149,13 @@ class Tenant extends pulumi.CustomResource {
   /// Options related to how clients making requests on behalf of a tenant should be configured.
   /// Structure is documented below.
   late final pulumi.Output<TenantClient?> client;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Whether authentication is disabled for the tenant. If true, the users under
   /// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
   /// are not able to manage its users.
@@ -172,6 +186,7 @@ class Tenant extends pulumi.CustomResource {
         ) {
     allowPasswordSignup = registerOutput<bool?>('allowPasswordSignup');
     client = registerOutput<TenantClient?>('client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disableAuth = registerOutput<bool?>('disableAuth');
     displayName = registerOutput<String>('displayName');
     enableEmailLinkSignin = registerOutput<bool?>('enableEmailLinkSignin');
@@ -204,6 +219,7 @@ class Tenant extends pulumi.CustomResource {
         ) {
     allowPasswordSignup = registerOutput<bool?>('allowPasswordSignup');
     client = registerOutput<TenantClient?>('client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disableAuth = registerOutput<bool?>('disableAuth');
     displayName = registerOutput<String>('displayName');
     enableEmailLinkSignin = registerOutput<bool?>('enableEmailLinkSignin');

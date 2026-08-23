@@ -15,6 +15,7 @@ class GetSubscriptionResult {
   final List<GetSubscriptionBigqueryConfig> bigqueryConfigs;
   final List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs;
   final List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies;
+  final String deletionPolicy;
   final Map<String, String> effectiveLabels;
   final bool enableExactlyOnceDelivery;
   final bool enableMessageOrdering;
@@ -39,6 +40,7 @@ class GetSubscriptionResult {
   /// [bigqueryConfigs] Required.
   /// [cloudStorageConfigs] Required.
   /// [deadLetterPolicies] Required.
+  /// [deletionPolicy] Required.
   /// [effectiveLabels] Required.
   /// [enableExactlyOnceDelivery] Required.
   /// [enableMessageOrdering] Required.
@@ -61,6 +63,7 @@ class GetSubscriptionResult {
     required this.bigqueryConfigs,
     required this.cloudStorageConfigs,
     required this.deadLetterPolicies,
+    required this.deletionPolicy,
     required this.effectiveLabels,
     required this.enableExactlyOnceDelivery,
     required this.enableMessageOrdering,
@@ -86,6 +89,7 @@ class GetSubscriptionResult {
       'bigqueryConfigs': pulumi.Input.encodeList<GetSubscriptionBigqueryConfig, Map<String, dynamic>>(bigqueryConfigs, (value) => value.toMap()),
       'cloudStorageConfigs': pulumi.Input.encodeList<GetSubscriptionCloudStorageConfig, Map<String, dynamic>>(cloudStorageConfigs, (value) => value.toMap()),
       'deadLetterPolicies': pulumi.Input.encodeList<GetSubscriptionDeadLetterPolicy, Map<String, dynamic>>(deadLetterPolicies, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'effectiveLabels': effectiveLabels,
       'enableExactlyOnceDelivery': enableExactlyOnceDelivery,
       'enableMessageOrdering': enableMessageOrdering,
@@ -112,6 +116,7 @@ class GetSubscriptionResult {
       bigqueryConfigs: pulumi.Input.decodeList<GetSubscriptionBigqueryConfig>(map['bigqueryConfigs']!, (value) => GetSubscriptionBigqueryConfig.fromMap((value as Map).cast<String, dynamic>())),
       cloudStorageConfigs: pulumi.Input.decodeList<GetSubscriptionCloudStorageConfig>(map['cloudStorageConfigs']!, (value) => GetSubscriptionCloudStorageConfig.fromMap((value as Map).cast<String, dynamic>())),
       deadLetterPolicies: pulumi.Input.decodeList<GetSubscriptionDeadLetterPolicy>(map['deadLetterPolicies']!, (value) => GetSubscriptionDeadLetterPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       enableExactlyOnceDelivery: map['enableExactlyOnceDelivery'] as bool,
       enableMessageOrdering: map['enableMessageOrdering'] as bool,
@@ -132,4 +137,3 @@ class GetSubscriptionResult {
     );
   }
 }
-

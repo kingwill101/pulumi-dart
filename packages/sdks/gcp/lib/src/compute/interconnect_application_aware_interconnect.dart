@@ -5,24 +5,28 @@ import 'interconnect_application_aware_interconnect_bandwidth_percentage_policy.
 import 'interconnect_application_aware_interconnect_shape_average_percentage.dart';
 
 class InterconnectApplicationAwareInterconnect {
+  /// (Optional, Beta)
   /// Bandwidth Percentage policy allows you to have granular control over how your Interconnect
   /// bandwidth is utilized among your workloads mapping to different traffic classes.
   /// Structure is documented below.
   final pulumi.Input<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy>? bandwidthPercentagePolicy;
+  /// (Optional, Beta)
   /// A description for the AAI profile on this interconnect.
   final pulumi.Input<String>? profileDescription;
+  /// (Optional, Beta)
   /// Optional field to specify a list of shape average percentages to be
   /// applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
   /// Structure is documented below.
   final pulumi.Input<List<InterconnectApplicationAwareInterconnectShapeAveragePercentage>>? shapeAveragePercentages;
+  /// (Optional, Beta)
   /// Specify configuration for StrictPriorityPolicy.
   final pulumi.Input<Map<String, dynamic>>? strictPriorityPolicy;
 
   /// Creates a new [InterconnectApplicationAwareInterconnect].
-  /// [bandwidthPercentagePolicy] Bandwidth Percentage policy allows you to have granular control over how your Interconnect
-  /// [profileDescription] A description for the AAI profile on this interconnect.
-  /// [shapeAveragePercentages] Optional field to specify a list of shape average percentages to be
-  /// [strictPriorityPolicy] Specify configuration for StrictPriorityPolicy.
+  /// [bandwidthPercentagePolicy] (Optional, Beta)
+  /// [profileDescription] (Optional, Beta)
+  /// [shapeAveragePercentages] (Optional, Beta)
+  /// [strictPriorityPolicy] (Optional, Beta)
   const InterconnectApplicationAwareInterconnect({
     this.bandwidthPercentagePolicy,
     this.profileDescription,
@@ -48,4 +52,3 @@ class InterconnectApplicationAwareInterconnect {
     );
   }
 }
-

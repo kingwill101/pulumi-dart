@@ -147,7 +147,7 @@ import 'vpc_flow_logs_config_state.dart';
 /// 			Name:                   pulumi.String("basic-interconnect-test-id"),
 /// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 /// 			Type:                   pulumi.String("PARTNER"),
-/// 			Router:                 router.ID(),
+/// 			Router:                 router.ID().ToIDOutput().ToStringOutput(),
 /// 			Mtu:                    pulumi.String("1500"),
 /// 		})
 /// 		if err != nil {
@@ -167,6 +167,41 @@ import 'vpc_flow_logs_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_networkmanagement_vpcflowlogsconfig" "interconnect-test" {
+///   vpc_flow_logs_config_id = "basic-interconnect-test-id"
+///   location                = "global"
+///   interconnect_attachment ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-east4/interconnectAttachments/${gcp_compute_interconnectattachment.attachment.name}"
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name = "basic-interconnect-test-network"
+/// }
+/// resource "gcp_compute_router" "router" {
+///   name    = "basic-interconnect-test-router"
+///   network = gcp_compute_network.network.name
+///   bgp = {
+///     asn = 16550
+///   }
+/// }
+/// resource "gcp_compute_interconnectattachment" "attachment" {
+///   name                     = "basic-interconnect-test-id"
+///   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
+///   type                     = "PARTNER"
+///   router                   = gcp_compute_router.router.id
+///   mtu                      = 1500
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -184,8 +219,8 @@ import 'vpc_flow_logs_config_state.dart';
 /// import com.pulumi.gcp.compute.InterconnectAttachmentArgs;
 /// import com.pulumi.gcp.networkmanagement.VpcFlowLogsConfig;
 /// import com.pulumi.gcp.networkmanagement.VpcFlowLogsConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -488,7 +523,7 @@ import 'vpc_flow_logs_config_state.dart';
 /// 		}
 /// 		targetGateway, err := compute.NewVPNGateway(ctx, "target_gateway", &compute.VPNGatewayArgs{
 /// 			Name:    pulumi.String("basic-test-gateway"),
-/// 			Network: network.ID(),
+/// 			Network: network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -503,7 +538,7 @@ import 'vpc_flow_logs_config_state.dart';
 /// 			Name:       pulumi.String("basic-test-fresp"),
 /// 			IpProtocol: pulumi.String("ESP"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID(),
+/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -513,7 +548,7 @@ import 'vpc_flow_logs_config_state.dart';
 /// 			IpProtocol: pulumi.String("UDP"),
 /// 			PortRange:  pulumi.String("500"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID(),
+/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -523,7 +558,7 @@ import 'vpc_flow_logs_config_state.dart';
 /// 			IpProtocol: pulumi.String("UDP"),
 /// 			PortRange:  pulumi.String("4500"),
 /// 			IpAddress:  vpnStaticIp.Address,
-/// 			Target:     targetGateway.ID(),
+/// 			Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -532,7 +567,7 @@ import 'vpc_flow_logs_config_state.dart';
 /// 			Name:             pulumi.String("basic-test-tunnel"),
 /// 			PeerIp:           pulumi.String("15.0.0.120"),
 /// 			SharedSecret:     pulumi.String("a secret message"),
-/// 			TargetVpnGateway: targetGateway.ID(),
+/// 			TargetVpnGateway: targetGateway.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			frEsp,
 /// 			frUdp500,
@@ -556,13 +591,75 @@ import 'vpc_flow_logs_config_state.dart';
 /// 			Network:          network.Name,
 /// 			DestRange:        pulumi.String("15.0.0.0/24"),
 /// 			Priority:         pulumi.Int(1000),
-/// 			NextHopVpnTunnel: tunnel.ID(),
+/// 			NextHopVpnTunnel: tunnel.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_networkmanagement_vpcflowlogsconfig" "vpn-test" {
+///   vpc_flow_logs_config_id = "basic-test-id"
+///   location                = "global"
+///   vpn_tunnel              ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/vpnTunnels/${gcp_compute_vpntunnel.tunnel.name}"
+/// }
+/// resource "gcp_compute_vpntunnel" "tunnel" {
+///   depends_on         = [gcp_compute_forwardingrule.fr_esp, gcp_compute_forwardingrule.fr_udp500, gcp_compute_forwardingrule.fr_udp4500]
+///   name               = "basic-test-tunnel"
+///   peer_ip            = "15.0.0.120"
+///   shared_secret      = "a secret message"
+///   target_vpn_gateway = gcp_compute_vpngateway.target_gateway.id
+/// }
+/// resource "gcp_compute_vpngateway" "target_gateway" {
+///   name    = "basic-test-gateway"
+///   network = gcp_compute_network.network.id
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name = "basic-test-network"
+/// }
+/// resource "gcp_compute_address" "vpn_static_ip" {
+///   name = "basic-test-address"
+/// }
+/// resource "gcp_compute_forwardingrule" "fr_esp" {
+///   name        = "basic-test-fresp"
+///   ip_protocol = "ESP"
+///   ip_address  = gcp_compute_address.vpn_static_ip.address
+///   target      = gcp_compute_vpngateway.target_gateway.id
+/// }
+/// resource "gcp_compute_forwardingrule" "fr_udp500" {
+///   name        = "basic-test-fr500"
+///   ip_protocol = "UDP"
+///   port_range  = "500"
+///   ip_address  = gcp_compute_address.vpn_static_ip.address
+///   target      = gcp_compute_vpngateway.target_gateway.id
+/// }
+/// resource "gcp_compute_forwardingrule" "fr_udp4500" {
+///   name        = "basic-test-fr4500"
+///   ip_protocol = "UDP"
+///   port_range  = "4500"
+///   ip_address  = gcp_compute_address.vpn_static_ip.address
+///   target      = gcp_compute_vpngateway.target_gateway.id
+/// }
+/// resource "gcp_compute_route" "route" {
+///   name                = "basic-test-route"
+///   network             = gcp_compute_network.network.name
+///   dest_range          = "15.0.0.0/24"
+///   priority            = 1000
+///   next_hop_vpn_tunnel = gcp_compute_vpntunnel.tunnel.id
 /// }
 /// ```
 /// ```java
@@ -588,8 +685,8 @@ import 'vpc_flow_logs_config_state.dart';
 /// import com.pulumi.gcp.compute.Route;
 /// import com.pulumi.gcp.compute.RouteArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -839,6 +936,27 @@ import 'vpc_flow_logs_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_networkmanagement_vpcflowlogsconfig" "network-test" {
+///   vpc_flow_logs_config_id = "basic-network-test-id"
+///   location                = "global"
+///   network                 ="projects/${data.gcp_organizations_getproject.project.number}/global/networks/${gcp_compute_network.network.name}"
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name = "basic-network-test-network"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -851,8 +969,8 @@ import 'vpc_flow_logs_config_state.dart';
 /// import com.pulumi.gcp.compute.NetworkArgs;
 /// import com.pulumi.gcp.networkmanagement.VpcFlowLogsConfig;
 /// import com.pulumi.gcp.networkmanagement.VpcFlowLogsConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1009,7 +1127,7 @@ import 'vpc_flow_logs_config_state.dart';
 /// 			Name:        pulumi.String("basic-subnet-test-subnetwork"),
 /// 			IpCidrRange: pulumi.String("10.2.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     network.ID(),
+/// 			Network:     network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1028,6 +1146,34 @@ import 'vpc_flow_logs_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_networkmanagement_vpcflowlogsconfig" "subnet-test" {
+///   vpc_flow_logs_config_id = "basic-subnet-test-id"
+///   location                = "global"
+///   subnet                  ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/subnetworks/${gcp_compute_subnetwork.subnetwork.name}"
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "basic-subnet-test-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnetwork" {
+///   name          = "basic-subnet-test-subnetwork"
+///   ip_cidr_range = "10.2.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1042,8 +1188,8 @@ import 'vpc_flow_logs_config_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkArgs;
 /// import com.pulumi.gcp.networkmanagement.VpcFlowLogsConfig;
 /// import com.pulumi.gcp.networkmanagement.VpcFlowLogsConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1112,22 +1258,15 @@ import 'vpc_flow_logs_config_state.dart';
 /// VpcFlowLogsConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/vpcFlowLogsConfigs/{{vpc_flow_logs_config_id}}`
-///
 /// * `{{project}}/{{location}}/{{vpc_flow_logs_config_id}}`
-///
 /// * `{{location}}/{{vpc_flow_logs_config_id}}`
+///
 ///
 /// When using the `pulumi import` command, VpcFlowLogsConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig default projects/{{project}}/locations/{{location}}/vpcFlowLogsConfigs/{{vpc_flow_logs_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig default {{project}}/{{location}}/{{vpc_flow_logs_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig default {{location}}/{{vpc_flow_logs_config_id}}
 /// ```
 class VpcFlowLogsConfig extends pulumi.CustomResource {
@@ -1136,6 +1275,13 @@ class VpcFlowLogsConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> aggregationInterval;
   /// Output only. The time the config was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
   /// of 512 characters.
   late final pulumi.Output<String?> description;
@@ -1153,7 +1299,7 @@ class VpcFlowLogsConfig extends pulumi.CustomResource {
   /// Optional. Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource
   /// within its parent collection as described in https://google.aip.dev/122. See documentation
@@ -1212,6 +1358,7 @@ class VpcFlowLogsConfig extends pulumi.CustomResource {
         ) {
     aggregationInterval = registerOutput<String>('aggregationInterval');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     filterExpr = registerOutput<String?>('filterExpr');
@@ -1258,6 +1405,7 @@ class VpcFlowLogsConfig extends pulumi.CustomResource {
         ) {
     aggregationInterval = registerOutput<String>('aggregationInterval');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     filterExpr = registerOutput<String?>('filterExpr');

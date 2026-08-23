@@ -13,12 +13,23 @@ import 'packet_mirroring_network.dart';
 class PacketMirroringArgs {
   /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
   /// that will be used as collector for mirrored traffic. The
-  /// specified forwarding rule must have is_mirroring_collector
+  /// specified forwarding rule must have isMirroringCollector
   /// set to true.
   /// Structure is documented below.
   final pulumi.Input<PacketMirroringCollectorIlb> collectorIlb;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human-readable description of the rule.
   final pulumi.Input<String>? description;
+  /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
+  /// policy will not be enforced on the network. The default is TRUE.
+  /// Possible values are: `TRUE`, `FALSE`.
+  final pulumi.Input<String>? enable;
   /// A filter for mirrored traffic.  If unset, all traffic is mirrored.
   /// Structure is documented below.
   final pulumi.Input<PacketMirroringFilter>? filter;
@@ -45,7 +56,9 @@ class PacketMirroringArgs {
 
   /// Creates a new [PacketMirroringArgs].
   /// [collectorIlb] The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A human-readable description of the rule.
+  /// [enable] Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
   /// [filter] A filter for mirrored traffic.  If unset, all traffic is mirrored.
   /// [mirroredResources] A means of specifying which resources to mirror.
   /// [name] The name of the packet mirroring rule
@@ -55,7 +68,9 @@ class PacketMirroringArgs {
   /// [region] The Region in which the created address should reside.
   const PacketMirroringArgs({
     required this.collectorIlb,
+    this.deletionPolicy,
     this.description,
+    this.enable,
     this.filter,
     required this.mirroredResources,
     this.name,
@@ -68,7 +83,9 @@ class PacketMirroringArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'collectorIlb': pulumi.Input.mapInputValue<PacketMirroringCollectorIlb, Map<String, dynamic>>(collectorIlb, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
+      'enable': ?enable,
       'filter': ?pulumi.Input.mapOptionalInputValue<PacketMirroringFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
       'mirroredResources': pulumi.Input.mapInputValue<PacketMirroringMirroredResources, Map<String, dynamic>>(mirroredResources, (value) => value.toMap()),
       'name': ?name,
@@ -82,7 +99,9 @@ class PacketMirroringArgs {
   factory PacketMirroringArgs.fromMap(Map<String, dynamic> map) {
     return PacketMirroringArgs(
       collectorIlb: pulumi.Input.fromValue(PacketMirroringCollectorIlb.fromMap((map['collectorIlb']! as Map).cast<String, dynamic>())),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PacketMirroringFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mirroredResources: pulumi.Input.fromValue(PacketMirroringMirroredResources.fromMap((map['mirroredResources']! as Map).cast<String, dynamic>())),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -93,4 +112,3 @@ class PacketMirroringArgs {
     );
   }
 }
-

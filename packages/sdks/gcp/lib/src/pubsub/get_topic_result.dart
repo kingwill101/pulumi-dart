@@ -8,6 +8,7 @@ import 'get_topic_schema_setting.dart';
 
 /// Result data returned by getTopic.
 class GetTopicResult {
+  final String deletionPolicy;
   final Map<String, String> effectiveLabels;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -24,6 +25,7 @@ class GetTopicResult {
   final Map<String, String> tags;
 
   /// Creates a new [GetTopicResult].
+  /// [deletionPolicy] Required.
   /// [effectiveLabels] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ingestionDataSourceSettings] Required.
@@ -38,6 +40,7 @@ class GetTopicResult {
   /// [schemaSettings] Required.
   /// [tags] Required.
   const GetTopicResult({
+    required this.deletionPolicy,
     required this.effectiveLabels,
     required this.id,
     required this.ingestionDataSourceSettings,
@@ -55,6 +58,7 @@ class GetTopicResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': deletionPolicy,
       'effectiveLabels': effectiveLabels,
       'id': id,
       'ingestionDataSourceSettings': pulumi.Input.encodeList<GetTopicIngestionDataSourceSetting, Map<String, dynamic>>(ingestionDataSourceSettings, (value) => value.toMap()),
@@ -73,6 +77,7 @@ class GetTopicResult {
 
   factory GetTopicResult.fromMap(Map<String, dynamic> map) {
     return GetTopicResult(
+      deletionPolicy: map['deletionPolicy'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       id: map['id'] as String,
       ingestionDataSourceSettings: pulumi.Input.decodeList<GetTopicIngestionDataSourceSetting>(map['ingestionDataSourceSettings']!, (value) => GetTopicIngestionDataSourceSetting.fromMap((value as Map).cast<String, dynamic>())),
@@ -89,4 +94,3 @@ class GetTopicResult {
     );
   }
 }
-

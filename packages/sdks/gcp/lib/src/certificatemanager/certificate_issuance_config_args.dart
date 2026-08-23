@@ -11,6 +11,13 @@ class CertificateIssuanceConfigArgs {
   /// The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
   /// Structure is documented below.
   final pulumi.Input<CertificateIssuanceConfigCertificateAuthorityConfig> certificateAuthorityConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// One or more paragraphs of text description of a CertificateIssuanceConfig.
   final pulumi.Input<String>? description;
   /// Key algorithm to use when generating the private key.
@@ -20,7 +27,7 @@ class CertificateIssuanceConfigArgs {
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
   /// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -41,6 +48,7 @@ class CertificateIssuanceConfigArgs {
 
   /// Creates a new [CertificateIssuanceConfigArgs].
   /// [certificateAuthorityConfig] The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] One or more paragraphs of text description of a CertificateIssuanceConfig.
   /// [keyAlgorithm] Key algorithm to use when generating the private key.
   /// [labels] 'Set of label tags associated with the CertificateIssuanceConfig resource.
@@ -51,6 +59,7 @@ class CertificateIssuanceConfigArgs {
   /// [rotationWindowPercentage] It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
   const CertificateIssuanceConfigArgs({
     required this.certificateAuthorityConfig,
+    this.deletionPolicy,
     this.description,
     required this.keyAlgorithm,
     this.labels,
@@ -64,6 +73,7 @@ class CertificateIssuanceConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'certificateAuthorityConfig': pulumi.Input.mapInputValue<CertificateIssuanceConfigCertificateAuthorityConfig, Map<String, dynamic>>(certificateAuthorityConfig, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'keyAlgorithm': keyAlgorithm,
       'labels': ?labels,
@@ -78,6 +88,7 @@ class CertificateIssuanceConfigArgs {
   factory CertificateIssuanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return CertificateIssuanceConfigArgs(
       certificateAuthorityConfig: pulumi.Input.fromValue(CertificateIssuanceConfigCertificateAuthorityConfig.fromMap((map['certificateAuthorityConfig']! as Map).cast<String, dynamic>())),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyAlgorithm: pulumi.Input.fromValue(map['keyAlgorithm'] as String),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -89,4 +100,3 @@ class CertificateIssuanceConfigArgs {
     );
   }
 }
-

@@ -1,8 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_reasoning_engine_args.dart';
+import 'ai_reasoning_engine_context_spec.dart';
 import 'ai_reasoning_engine_encryption_spec.dart';
 import 'ai_reasoning_engine_spec.dart';
 import 'ai_reasoning_engine_state.dart';
+import 'ai_reasoning_engine_traffic_config.dart';
 
 /// ReasoningEngine provides a customizable runtime for models to determine which actions to take and in which order.
 ///
@@ -38,8 +40,7 @@ import 'ai_reasoning_engine_state.dart';
 ///             pythonSpec: {
 ///                 entrypointModule: "simple_agent",
 ///                 entrypointObject: "fixed_name_generator",
-///                 requirementsFile: "./test-fixtures/requirements.txt",
-///                 version: "3.11",
+///                 version: "3.14",
 ///             },
 ///         },
 ///     },
@@ -62,8 +63,7 @@ import 'ai_reasoning_engine_state.dart';
 ///             "python_spec": {
 ///                 "entrypoint_module": "simple_agent",
 ///                 "entrypoint_object": "fixed_name_generator",
-///                 "requirements_file": "./test-fixtures/requirements.txt",
-///                 "version": "3.11",
+///                 "version": "3.14",
 ///             },
 ///         },
 ///     })
@@ -97,8 +97,7 @@ import 'ai_reasoning_engine_state.dart';
 ///                 {
 ///                     EntrypointModule = "simple_agent",
 ///                     EntrypointObject = "fixed_name_generator",
-///                     RequirementsFile = "./test-fixtures/requirements.txt",
-///                     Version = "3.11",
+///                     Version = "3.14",
 ///                 },
 ///             },
 ///         },
@@ -135,8 +134,7 @@ import 'ai_reasoning_engine_state.dart';
 /// 					PythonSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{
 /// 						EntrypointModule: pulumi.String("simple_agent"),
 /// 						EntrypointObject: pulumi.String("fixed_name_generator"),
-/// 						RequirementsFile: pulumi.String("./test-fixtures/requirements.txt"),
-/// 						Version:          pulumi.String("3.11"),
+/// 						Version:          pulumi.String("3.14"),
 /// 					},
 /// 				},
 /// 			},
@@ -146,6 +144,36 @@ import 'ai_reasoning_engine_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+///   display_name = "reasoning-engine"
+///   description  = "A basic reasoning engine"
+///   region       = "us-central1"
+///   spec = {
+///     source_code_spec = {
+///       inline_source = {
+///         source_archive = filebase64("./test-fixtures/source.tar.gz")
+///       }
+///       python_spec = {
+///         entrypoint_module = "simple_agent"
+///         entrypoint_object = "fixed_name_generator"
+///         version           = "3.14"
+///       }
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -162,8 +190,8 @@ import 'ai_reasoning_engine_state.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -189,8 +217,7 @@ import 'ai_reasoning_engine_state.dart';
 ///                     .pythonSpec(AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs.builder()
 ///                         .entrypointModule("simple_agent")
 ///                         .entrypointObject("fixed_name_generator")
-///                         .requirementsFile("./test-fixtures/requirements.txt")
-///                         .version("3.11")
+///                         .version("3.14")
 ///                         .build())
 ///                     .build())
 ///                 .build())
@@ -220,8 +247,988 @@ import 'ai_reasoning_engine_state.dart';
 ///           pythonSpec:
 ///             entrypointModule: simple_agent
 ///             entrypointObject: fixed_name_generator
-///             requirementsFile: ./test-fixtures/requirements.txt
-///             version: '3.11'
+///             version: '3.14'
+/// ```
+///
+/// ### Vertex Ai Reasoning Engine Developer Connect Source
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const project = gcp.organizations.getProject({});
+/// const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
+///     displayName: "reasoning-engine",
+///     description: "A basic reasoning engine",
+///     region: "us-central1",
+///     spec: {
+///         sourceCodeSpec: {
+///             developerConnectSource: {
+///                 config: {
+///                     gitRepositoryLink: project.then(project => `projects/${project.projectId}/locations/us-central1/connections/tpg-test-bot-github/gitRepositoryLinks/tpg-test-vertex-reasoning`),
+///                     dir: "source",
+///                     revision: "main",
+///                 },
+///             },
+///             pythonSpec: {
+///                 version: "3.14",
+///                 entrypointModule: "simple_agent",
+///                 entrypointObject: "fixed_name_generator",
+///             },
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// project = gcp.organizations.get_project()
+/// reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+///     display_name="reasoning-engine",
+///     description="A basic reasoning engine",
+///     region="us-central1",
+///     spec={
+///         "source_code_spec": {
+///             "developer_connect_source": {
+///                 "config": {
+///                     "git_repository_link": f"projects/{project.project_id}/locations/us-central1/connections/tpg-test-bot-github/gitRepositoryLinks/tpg-test-vertex-reasoning",
+///                     "dir": "source",
+///                     "revision": "main",
+///                 },
+///             },
+///             "python_spec": {
+///                 "version": "3.14",
+///                 "entrypoint_module": "simple_agent",
+///                 "entrypoint_object": "fixed_name_generator",
+///             },
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var project = Gcp.Organizations.GetProject.Invoke();
+///
+///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
+///     {
+///         DisplayName = "reasoning-engine",
+///         Description = "A basic reasoning engine",
+///         Region = "us-central1",
+///         Spec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecArgs
+///         {
+///             SourceCodeSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecArgs
+///             {
+///                 DeveloperConnectSource = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs
+///                 {
+///                     Config = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs
+///                     {
+///                         GitRepositoryLink = $"projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/locations/us-central1/connections/tpg-test-bot-github/gitRepositoryLinks/tpg-test-vertex-reasoning",
+///                         Dir = "source",
+///                         Revision = "main",
+///                     },
+///                 },
+///                 PythonSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs
+///                 {
+///                     Version = "3.14",
+///                     EntrypointModule = "simple_agent",
+///                     EntrypointObject = "fixed_name_generator",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+/// 			DisplayName: pulumi.String("reasoning-engine"),
+/// 			Description: pulumi.String("A basic reasoning engine"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Spec: &vertex.AiReasoningEngineSpecArgs{
+/// 				SourceCodeSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecArgs{
+/// 					DeveloperConnectSource: &vertex.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs{
+/// 						Config: &vertex.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs{
+/// 							GitRepositoryLink: pulumi.Sprintf("projects/%v/locations/us-central1/connections/tpg-test-bot-github/gitRepositoryLinks/tpg-test-vertex-reasoning", project.ProjectId),
+/// 							Dir:               pulumi.String("source"),
+/// 							Revision:          pulumi.String("main"),
+/// 						},
+/// 					},
+/// 					PythonSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{
+/// 						Version:          pulumi.String("3.14"),
+/// 						EntrypointModule: pulumi.String("simple_agent"),
+/// 						EntrypointObject: pulumi.String("fixed_name_generator"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+///   display_name = "reasoning-engine"
+///   description  = "A basic reasoning engine"
+///   region       = "us-central1"
+///   spec = {
+///     source_code_spec = {
+///       developer_connect_source = {
+///         config = {
+///           git_repository_link ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/connections/tpg-test-bot-github/gitRepositoryLinks/tpg-test-vertex-reasoning"
+///           dir                 = "source"
+///           revision            = "main"
+///         }
+///       }
+///       python_spec = {
+///         version           = "3.14"
+///         entrypoint_module = "simple_agent"
+///         entrypoint_object = "fixed_name_generator"
+///       }
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import com.pulumi.gcp.vertex.AiReasoningEngine;
+/// import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+///             .build());
+///
+///         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
+///             .displayName("reasoning-engine")
+///             .description("A basic reasoning engine")
+///             .region("us-central1")
+///             .spec(AiReasoningEngineSpecArgs.builder()
+///                 .sourceCodeSpec(AiReasoningEngineSpecSourceCodeSpecArgs.builder()
+///                     .developerConnectSource(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs.builder()
+///                         .config(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs.builder()
+///                             .gitRepositoryLink(String.format("projects/%s/locations/us-central1/connections/tpg-test-bot-github/gitRepositoryLinks/tpg-test-vertex-reasoning", project.projectId()))
+///                             .dir("source")
+///                             .revision("main")
+///                             .build())
+///                         .build())
+///                     .pythonSpec(AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs.builder()
+///                         .version("3.14")
+///                         .entrypointModule("simple_agent")
+///                         .entrypointObject("fixed_name_generator")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   reasoningEngine:
+///     type: gcp:vertex:AiReasoningEngine
+///     name: reasoning_engine
+///     properties:
+///       displayName: reasoning-engine
+///       description: A basic reasoning engine
+///       region: us-central1
+///       spec:
+///         sourceCodeSpec:
+///           developerConnectSource:
+///             config:
+///               gitRepositoryLink: projects/${project.projectId}/locations/us-central1/connections/tpg-test-bot-github/gitRepositoryLinks/tpg-test-vertex-reasoning
+///               dir: source
+///               revision: main
+///           pythonSpec:
+///             version: '3.14'
+///             entrypointModule: simple_agent
+///             entrypointObject: fixed_name_generator
+/// variables:
+///   project:
+///     fn::invoke:
+///       function: gcp:organizations:getProject
+///       arguments: {}
+/// ```
+///
+/// ### Vertex Ai Reasoning Engine Image Spec
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as std from "@pulumi/std";
+///
+/// const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
+///     displayName: "reasoning-engine",
+///     description: "Deployed with BYOC Dockerfile through Terraform",
+///     region: "us-central1",
+///     spec: {
+///         sourceCodeSpec: {
+///             inlineSource: {
+///                 sourceArchive: std.filebase64({
+///                     input: "./test-fixtures/agent_src.tar.gz",
+///                 }).then(invoke => invoke.result),
+///             },
+///             imageSpec: {
+///                 buildArgs: {},
+///             },
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumi_std as std
+///
+/// reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+///     display_name="reasoning-engine",
+///     description="Deployed with BYOC Dockerfile through Terraform",
+///     region="us-central1",
+///     spec={
+///         "source_code_spec": {
+///             "inline_source": {
+///                 "source_archive": std.filebase64(input="./test-fixtures/agent_src.tar.gz").result,
+///             },
+///             "image_spec": {
+///                 "build_args": {},
+///             },
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Std = Pulumi.Std;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
+///     {
+///         DisplayName = "reasoning-engine",
+///         Description = "Deployed with BYOC Dockerfile through Terraform",
+///         Region = "us-central1",
+///         Spec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecArgs
+///         {
+///             SourceCodeSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecArgs
+///             {
+///                 InlineSource = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs
+///                 {
+///                     SourceArchive = Std.Filebase64.Invoke(new()
+///                     {
+///                         Input = "./test-fixtures/agent_src.tar.gz",
+///                     }).Apply(invoke => invoke.Result),
+///                 },
+///                 ImageSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecImageSpecArgs
+///                 {
+///                     BuildArgs = null,
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+/// 			Input: "./test-fixtures/agent_src.tar.gz",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+/// 			DisplayName: pulumi.String("reasoning-engine"),
+/// 			Description: pulumi.String("Deployed with BYOC Dockerfile through Terraform"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Spec: &vertex.AiReasoningEngineSpecArgs{
+/// 				SourceCodeSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecArgs{
+/// 					InlineSource: &vertex.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{
+/// 						SourceArchive: pulumi.String(invokeFilebase64.Result),
+/// 					},
+/// 					ImageSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecImageSpecArgs{
+/// 						BuildArgs: pulumi.StringMap{},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+///   display_name = "reasoning-engine"
+///   description  = "Deployed with BYOC Dockerfile through Terraform"
+///   region       = "us-central1"
+///   spec = {
+///     source_code_spec = {
+///       inline_source = {
+///         source_archive = filebase64("./test-fixtures/agent_src.tar.gz")
+///       }
+///       image_spec = {
+///         build_args = {}
+///       }
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.vertex.AiReasoningEngine;
+/// import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecImageSpecArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.Filebase64Args;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
+///             .displayName("reasoning-engine")
+///             .description("Deployed with BYOC Dockerfile through Terraform")
+///             .region("us-central1")
+///             .spec(AiReasoningEngineSpecArgs.builder()
+///                 .sourceCodeSpec(AiReasoningEngineSpecSourceCodeSpecArgs.builder()
+///                     .inlineSource(AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs.builder()
+///                         .sourceArchive(StdFunctions.filebase64(Filebase64Args.builder()
+///                             .input("./test-fixtures/agent_src.tar.gz")
+///                             .build()).result())
+///                         .build())
+///                     .imageSpec(AiReasoningEngineSpecSourceCodeSpecImageSpecArgs.builder()
+///                         .buildArgs(Map.ofEntries(
+///                         ))
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   reasoningEngine:
+///     type: gcp:vertex:AiReasoningEngine
+///     name: reasoning_engine
+///     properties:
+///       displayName: reasoning-engine
+///       description: Deployed with BYOC Dockerfile through Terraform
+///       region: us-central1
+///       spec:
+///         sourceCodeSpec:
+///           inlineSource:
+///             sourceArchive:
+///               fn::invoke:
+///                 function: std:filebase64
+///                 arguments:
+///                   input: ./test-fixtures/agent_src.tar.gz
+///                 return: result
+///           imageSpec:
+///             buildArgs: {}
+/// ```
+///
+/// ### Vertex Ai Reasoning Engine Byoc
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as std from "@pulumi/std";
+///
+/// const project = gcp.organizations.getProject({});
+/// const vertexArReader = new gcp.projects.IAMMember("vertex_ar_reader", {
+///     project: project.then(project => project.projectId),
+///     role: "roles/artifactregistry.reader",
+///     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-aiplatform-re.iam.gserviceaccount.com`),
+/// });
+/// // Provision and retrieve the tenant service agent through another agent
+/// const tenantMdsAiReasoningEngine = new gcp.vertex.AiReasoningEngine("tenant_mds", {
+///     displayName: "reasoning-engine-mds",
+///     region: "us-central1",
+///     spec: {
+///         sourceCodeSpec: {
+///             inlineSource: {
+///                 sourceArchive: std.filebase64({
+///                     input: "./test-fixtures/mds_agent_src.tar.gz",
+///                 }).then(invoke => invoke.result),
+///             },
+///             pythonSpec: {
+///                 entrypointModule: "metadata_agent",
+///                 entrypointObject: "root_agent",
+///             },
+///         },
+///     },
+/// });
+/// const tenantMds = gcp.vertex.getAiReasoningEngineQueryOutput({
+///     region: "us-central1",
+///     reasoningEngineId: tenantMdsAiReasoningEngine.name,
+/// });
+/// const tenantArReader = new gcp.projects.IAMMember("tenant_ar_reader", {
+///     project: project.then(project => project.projectId),
+///     role: "roles/artifactregistry.reader",
+///     member: std.jsondecodeOutput({
+///         input: tenantMds.output,
+///     }).apply(invoke => `serviceAccount:${invoke.result?.output}`),
+/// });
+/// const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
+///     displayName: "reasoning-engine",
+///     description: "Deployed with BYOC through Terraform",
+///     region: "us-central1",
+///     spec: {
+///         containerSpec: {
+///             imageUri: project.then(project => `us-central1-docker.pkg.dev/${project.projectId}/vertex-byoc/byoc-agent:latest`),
+///             port: 8080,
+///         },
+///     },
+/// }, {
+///     dependsOn: [
+///         vertexArReader,
+///         tenantArReader,
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumi_std as std
+///
+/// project = gcp.organizations.get_project()
+/// vertex_ar_reader = gcp.projects.IAMMember("vertex_ar_reader",
+///     project=project.project_id,
+///     role="roles/artifactregistry.reader",
+///     member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform-re.iam.gserviceaccount.com")
+/// # Provision and retrieve the tenant service agent through another agent
+/// tenant_mds_ai_reasoning_engine = gcp.vertex.AiReasoningEngine("tenant_mds",
+///     display_name="reasoning-engine-mds",
+///     region="us-central1",
+///     spec={
+///         "source_code_spec": {
+///             "inline_source": {
+///                 "source_archive": std.filebase64(input="./test-fixtures/mds_agent_src.tar.gz").result,
+///             },
+///             "python_spec": {
+///                 "entrypoint_module": "metadata_agent",
+///                 "entrypoint_object": "root_agent",
+///             },
+///         },
+///     })
+/// tenant_mds = gcp.vertex.get_ai_reasoning_engine_query_output(region="us-central1",
+///     reasoning_engine_id=tenant_mds_ai_reasoning_engine.name)
+/// tenant_ar_reader = gcp.projects.IAMMember("tenant_ar_reader",
+///     project=project.project_id,
+///     role="roles/artifactregistry.reader",
+///     member=std.jsondecode_output(input=tenant_mds.output).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
+/// reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+///     display_name="reasoning-engine",
+///     description="Deployed with BYOC through Terraform",
+///     region="us-central1",
+///     spec={
+///         "container_spec": {
+///             "image_uri": f"us-central1-docker.pkg.dev/{project.project_id}/vertex-byoc/byoc-agent:latest",
+///             "port": 8080,
+///         },
+///     },
+///     opts = pulumi.ResourceOptions(depends_on=[
+///             vertex_ar_reader,
+///             tenant_ar_reader,
+///         ]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Std = Pulumi.Std;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var project = Gcp.Organizations.GetProject.Invoke();
+///
+///     var vertexArReader = new Gcp.Projects.IAMMember("vertex_ar_reader", new()
+///     {
+///         Project = project.Apply(getProjectResult => getProjectResult.ProjectId),
+///         Role = "roles/artifactregistry.reader",
+///         Member = $"serviceAccount:service-{project.Apply(getProjectResult => getProjectResult.Number)}@gcp-sa-aiplatform-re.iam.gserviceaccount.com",
+///     });
+///
+///     // Provision and retrieve the tenant service agent through another agent
+///     var tenantMdsAiReasoningEngine = new Gcp.Vertex.AiReasoningEngine("tenant_mds", new()
+///     {
+///         DisplayName = "reasoning-engine-mds",
+///         Region = "us-central1",
+///         Spec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecArgs
+///         {
+///             SourceCodeSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecArgs
+///             {
+///                 InlineSource = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs
+///                 {
+///                     SourceArchive = Std.Filebase64.Invoke(new()
+///                     {
+///                         Input = "./test-fixtures/mds_agent_src.tar.gz",
+///                     }).Apply(invoke => invoke.Result),
+///                 },
+///                 PythonSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs
+///                 {
+///                     EntrypointModule = "metadata_agent",
+///                     EntrypointObject = "root_agent",
+///                 },
+///             },
+///         },
+///     });
+///
+///     var tenantMds = Gcp.Vertex.GetAiReasoningEngineQuery.Invoke(new()
+///     {
+///         Region = "us-central1",
+///         ReasoningEngineId = tenantMdsAiReasoningEngine.Name,
+///     });
+///
+///     var tenantArReader = new Gcp.Projects.IAMMember("tenant_ar_reader", new()
+///     {
+///         Project = project.Apply(getProjectResult => getProjectResult.ProjectId),
+///         Role = "roles/artifactregistry.reader",
+///         Member = Std.Jsondecode.Invoke(new()
+///         {
+///             Input = tenantMds.Apply(getAiReasoningEngineQueryResult => getAiReasoningEngineQueryResult.Output),
+///         }).Apply(invoke => $"serviceAccount:{invoke.Result?.Output}"),
+///     });
+///
+///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
+///     {
+///         DisplayName = "reasoning-engine",
+///         Description = "Deployed with BYOC through Terraform",
+///         Region = "us-central1",
+///         Spec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecArgs
+///         {
+///             ContainerSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecContainerSpecArgs
+///             {
+///                 ImageUri = $"us-central1-docker.pkg.dev/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/vertex-byoc/byoc-agent:latest",
+///                 Port = 8080,
+///             },
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             vertexArReader,
+///             tenantArReader,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		vertexArReader, err := projects.NewIAMMember(ctx, "vertex_ar_reader", &projects.IAMMemberArgs{
+/// 			Project: pulumi.String(project.ProjectId),
+/// 			Role:    pulumi.String("roles/artifactregistry.reader"),
+/// 			Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-aiplatform-re.iam.gserviceaccount.com", project.Number),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+/// 			Input: "./test-fixtures/mds_agent_src.tar.gz",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// Provision and retrieve the tenant service agent through another agent
+/// 		tenantMdsAiReasoningEngine, err := vertex.NewAiReasoningEngine(ctx, "tenant_mds", &vertex.AiReasoningEngineArgs{
+/// 			DisplayName: pulumi.String("reasoning-engine-mds"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Spec: &vertex.AiReasoningEngineSpecArgs{
+/// 				SourceCodeSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecArgs{
+/// 					InlineSource: &vertex.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{
+/// 						SourceArchive: pulumi.String(invokeFilebase64.Result),
+/// 					},
+/// 					PythonSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{
+/// 						EntrypointModule: pulumi.String("metadata_agent"),
+/// 						EntrypointObject: pulumi.String("root_agent"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		tenantMds := vertex.GetAiReasoningEngineQueryOutput(ctx, vertex.GetAiReasoningEngineQueryOutputArgs{
+/// 			Region:            pulumi.String("us-central1"),
+/// 			ReasoningEngineId: tenantMdsAiReasoningEngine.Name,
+/// 		}, nil)
+/// 		tenantArReader, err := projects.NewIAMMember(ctx, "tenant_ar_reader", &projects.IAMMemberArgs{
+/// 			Project: pulumi.String(project.ProjectId),
+/// 			Role:    pulumi.String("roles/artifactregistry.reader"),
+/// 			Member: std.JsondecodeOutput(ctx, std.JsondecodeOutputArgs{
+/// 				Input: tenantMds.Output(),
+/// 			}, nil).ApplyT(func(invoke std.JsondecodeResult) (string, error) {
+/// 				return fmt.Sprintf("serviceAccount:%v", invoke.Result.Output), nil
+/// 			}).(pulumi.StringOutput),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+/// 			DisplayName: pulumi.String("reasoning-engine"),
+/// 			Description: pulumi.String("Deployed with BYOC through Terraform"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Spec: &vertex.AiReasoningEngineSpecArgs{
+/// 				ContainerSpec: &vertex.AiReasoningEngineSpecContainerSpecArgs{
+/// 					ImageUri: pulumi.Sprintf("us-central1-docker.pkg.dev/%v/vertex-byoc/byoc-agent:latest", project.ProjectId),
+/// 					Port:     pulumi.Int(8080),
+/// 				},
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			vertexArReader,
+/// 			tenantArReader,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_vertex_getaireasoningenginequery" "tenantMds" {
+///   region              = "us-central1"
+///   reasoning_engine_id = gcp_vertex_aireasoningengine.tenant_mds.name
+/// }
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+///   depends_on   = [gcp_projects_iammember.vertex_ar_reader, gcp_projects_iammember.tenant_ar_reader]
+///   display_name = "reasoning-engine"
+///   description  = "Deployed with BYOC through Terraform"
+///   region       = "us-central1"
+///   spec = {
+///     container_spec = {
+///       image_uri ="us-central1-docker.pkg.dev/${data.gcp_organizations_getproject.project.project_id}/vertex-byoc/byoc-agent:latest"
+///       port      = 8080
+///     }
+///   }
+/// }
+/// # Provision and retrieve the tenant service agent through another agent
+/// resource "gcp_vertex_aireasoningengine" "tenant_mds" {
+///   display_name = "reasoning-engine-mds"
+///   region       = "us-central1"
+///   spec = {
+///     source_code_spec = {
+///       inline_source = {
+///         source_archive = filebase64("./test-fixtures/mds_agent_src.tar.gz")
+///       }
+///       python_spec = {
+///         entrypoint_module = "metadata_agent"
+///         entrypoint_object = "root_agent"
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_projects_iammember" "vertex_ar_reader" {
+///   project = data.gcp_organizations_getproject.project.project_id
+///   role    = "roles/artifactregistry.reader"
+///   member  ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-aiplatform-re.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_projects_iammember" "tenant_ar_reader" {
+///   project = data.gcp_organizations_getproject.project.project_id
+///   role    = "roles/artifactregistry.reader"
+///   member  ="serviceAccount:${jsondecode(data.gcp_vertex_getaireasoningenginequery.tenantMds.output).output}"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import com.pulumi.gcp.projects.IAMMember;
+/// import com.pulumi.gcp.projects.IAMMemberArgs;
+/// import com.pulumi.gcp.vertex.AiReasoningEngine;
+/// import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.Filebase64Args;
+/// import com.pulumi.gcp.vertex.VertexFunctions;
+/// import com.pulumi.gcp.vertex.inputs.GetAiReasoningEngineQueryArgs;
+/// import com.pulumi.std.inputs.JsondecodeArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecContainerSpecArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+///             .build());
+///
+///         var vertexArReader = new IAMMember("vertexArReader", IAMMemberArgs.builder()
+///             .project(project.projectId())
+///             .role("roles/artifactregistry.reader")
+///             .member(String.format("serviceAccount:service-%s@gcp-sa-aiplatform-re.iam.gserviceaccount.com", project.number()))
+///             .build());
+///
+///         // Provision and retrieve the tenant service agent through another agent
+///         var tenantMdsAiReasoningEngine = new AiReasoningEngine("tenantMdsAiReasoningEngine", AiReasoningEngineArgs.builder()
+///             .displayName("reasoning-engine-mds")
+///             .region("us-central1")
+///             .spec(AiReasoningEngineSpecArgs.builder()
+///                 .sourceCodeSpec(AiReasoningEngineSpecSourceCodeSpecArgs.builder()
+///                     .inlineSource(AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs.builder()
+///                         .sourceArchive(StdFunctions.filebase64(Filebase64Args.builder()
+///                             .input("./test-fixtures/mds_agent_src.tar.gz")
+///                             .build()).result())
+///                         .build())
+///                     .pythonSpec(AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs.builder()
+///                         .entrypointModule("metadata_agent")
+///                         .entrypointObject("root_agent")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         final var tenantMds = VertexFunctions.getAiReasoningEngineQuery(GetAiReasoningEngineQueryArgs.builder()
+///             .region("us-central1")
+///             .reasoningEngineId(tenantMdsAiReasoningEngine.name())
+///             .build());
+///
+///         var tenantArReader = new IAMMember("tenantArReader", IAMMemberArgs.builder()
+///             .project(project.projectId())
+///             .role("roles/artifactregistry.reader")
+///             .member(StdFunctions.jsondecode(JsondecodeArgs.builder()
+///                 .input(tenantMds.applyValue(_tenantMds -> _tenantMds.output()))
+///                 .build()).applyValue(_invoke -> String.format("serviceAccount:%s", _invoke.result().get("output"))))
+///             .build());
+///
+///         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
+///             .displayName("reasoning-engine")
+///             .description("Deployed with BYOC through Terraform")
+///             .region("us-central1")
+///             .spec(AiReasoningEngineSpecArgs.builder()
+///                 .containerSpec(AiReasoningEngineSpecContainerSpecArgs.builder()
+///                     .imageUri(String.format("us-central1-docker.pkg.dev/%s/vertex-byoc/byoc-agent:latest", project.projectId()))
+///                     .port(8080)
+///                     .build())
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(
+///                     vertexArReader,
+///                     tenantArReader)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   reasoningEngine:
+///     type: gcp:vertex:AiReasoningEngine
+///     name: reasoning_engine
+///     properties:
+///       displayName: reasoning-engine
+///       description: Deployed with BYOC through Terraform
+///       region: us-central1
+///       spec:
+///         containerSpec:
+///           imageUri: us-central1-docker.pkg.dev/${project.projectId}/vertex-byoc/byoc-agent:latest
+///           port: 8080
+///     options:
+///       dependsOn:
+///         - ${vertexArReader}
+///         - ${tenantArReader}
+///   # Provision and retrieve the tenant service agent through another agent
+///   tenantMdsAiReasoningEngine:
+///     type: gcp:vertex:AiReasoningEngine
+///     name: tenant_mds
+///     properties:
+///       displayName: reasoning-engine-mds
+///       region: us-central1
+///       spec:
+///         sourceCodeSpec:
+///           inlineSource:
+///             sourceArchive:
+///               fn::invoke:
+///                 function: std:filebase64
+///                 arguments:
+///                   input: ./test-fixtures/mds_agent_src.tar.gz
+///                 return: result
+///           pythonSpec:
+///             entrypointModule: metadata_agent
+///             entrypointObject: root_agent
+///   vertexArReader:
+///     type: gcp:projects:IAMMember
+///     name: vertex_ar_reader
+///     properties:
+///       project: ${project.projectId}
+///       role: roles/artifactregistry.reader
+///       member: serviceAccount:service-${project.number}@gcp-sa-aiplatform-re.iam.gserviceaccount.com
+///   tenantArReader:
+///     type: gcp:projects:IAMMember
+///     name: tenant_ar_reader
+///     properties:
+///       project: ${project.projectId}
+///       role: roles/artifactregistry.reader
+///       member:
+///         fn::join:
+///           - ""
+///           - - 'serviceAccount:'
+///             - fn::invoke:
+///                 function: std:jsondecode
+///                 arguments:
+///                   input: ${tenantMds.output}
+///                 return: result.output
+/// variables:
+///   tenantMds:
+///     fn::invoke:
+///       function: gcp:vertex:getAiReasoningEngineQuery
+///       arguments:
+///         region: us-central1
+///         reasoningEngineId: ${tenantMdsAiReasoningEngine.name}
+///   project:
+///     fn::invoke:
+///       function: gcp:organizations:getProject
+///       arguments: {}
 /// ```
 ///
 /// ### Vertex Ai Reasoning Engine Psc Interface
@@ -551,7 +1558,7 @@ import 'ai_reasoning_engine_state.dart';
 /// 		}
 /// 		bucketObjRequirementsTxt, err := storage.NewBucketObject(ctx, "bucket_obj_requirements_txt", &storage.BucketObjectArgs{
 /// 			Name:   pulumi.String("requirements.txt"),
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Source: pulumi.NewFileAsset("./test-fixtures/requirements_adk.txt"),
 /// 		})
 /// 		if err != nil {
@@ -559,7 +1566,7 @@ import 'ai_reasoning_engine_state.dart';
 /// 		}
 /// 		bucketObjPickle, err := storage.NewBucketObject(ctx, "bucket_obj_pickle", &storage.BucketObjectArgs{
 /// 			Name:   pulumi.String("code.pkl"),
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Source: pulumi.NewFileAsset("./test-fixtures/pickle_adk.pkl"),
 /// 		})
 /// 		if err != nil {
@@ -567,7 +1574,7 @@ import 'ai_reasoning_engine_state.dart';
 /// 		}
 /// 		bucketObjDependenciesTarGz, err := storage.NewBucketObject(ctx, "bucket_obj_dependencies_tar_gz", &storage.BucketObjectArgs{
 /// 			Name:   pulumi.String("dependencies.tar.gz"),
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Source: pulumi.NewFileAsset("./test-fixtures/dependencies_adk.tar.gz"),
 /// 		})
 /// 		if err != nil {
@@ -584,7 +1591,7 @@ import 'ai_reasoning_engine_state.dart';
 /// 			Name:        pulumi.String("subnetwork"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
-/// 			Network:     network.ID(),
+/// 			Network:     network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -594,7 +1601,7 @@ import 'ai_reasoning_engine_state.dart';
 /// 			Region:               pulumi.String("us-central1"),
 /// 			ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
 /// 			Subnetworks: pulumi.StringArray{
-/// 				subnetwork.ID(),
+/// 				subnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -643,7 +1650,7 @@ import 'ai_reasoning_engine_state.dart';
 /// 				},
 /// 				DeploymentSpec: &vertex.AiReasoningEngineSpecDeploymentSpecArgs{
 /// 					PscInterfaceConfig: &vertex.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs{
-/// 						NetworkAttachment: networkAttachment.ID(),
+/// 						NetworkAttachment: networkAttachment.ID().ToIDOutput().ToStringOutput(),
 /// 						DnsPeeringConfigs: vertex.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArray{
 /// 							&vertex.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs{
 /// 								Domain:        pulumi.String("example.com."),
@@ -662,6 +1669,93 @@ import 'ai_reasoning_engine_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// # When PSC-I is configured, Agent deletion will fail,
+/// # although the agent will be deleted.
+/// # Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
+/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+///   depends_on   = [time_sleep.wait_35_minutes]
+///   display_name = "reasoning-engine"
+///   description  = "A basic reasoning engine"
+///   region       = "us-central1"
+///   spec = {
+///     agent_framework = "google-adk"
+///     package_spec = {
+///       python_version           = "3.11"
+///       dependency_files_gcs_uri ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucketobject.bucket_obj_dependencies_tar_gz.name}"
+///       pickle_object_gcs_uri    ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucketobject.bucket_obj_pickle.name}"
+///       requirements_gcs_uri     ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucketobject.bucket_obj_requirements_txt.name}"
+///     }
+///     deployment_spec = {
+///       psc_interface_config = {
+///         network_attachment = gcp_compute_networkattachment.network_attachment.id
+///         dns_peering_configs = [{
+///           "domain"        = "example.com."
+///           "targetProject" = data.gcp_organizations_getproject.project.project_id
+///           "targetNetwork" = gcp_compute_network.network.name
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_storage_bucketobject" "bucket_obj_requirements_txt" {
+///   name   = "requirements.txt"
+///   bucket = gcp_storage_bucket.bucket.id
+///   source = fileAsset("./test-fixtures/requirements_adk.txt")
+/// }
+/// resource "gcp_storage_bucketobject" "bucket_obj_pickle" {
+///   name   = "code.pkl"
+///   bucket = gcp_storage_bucket.bucket.id
+///   source = fileAsset("./test-fixtures/pickle_adk.pkl")
+/// }
+/// resource "gcp_storage_bucketobject" "bucket_obj_dependencies_tar_gz" {
+///   name   = "dependencies.tar.gz"
+///   bucket = gcp_storage_bucket.bucket.id
+///   source = fileAsset("./test-fixtures/dependencies_adk.tar.gz")
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "reasoning-engine"
+///   location                    = "us-central1"
+///   uniform_bucket_level_access = true
+///   force_destroy               = true
+/// }
+/// # Destroy network attachment 35 minutes after reasoning engine is deleted.
+/// # It guarantees that the network attachment has no more active PSC interfaces.
+/// resource "time_sleep" "wait_35_minutes" {
+///   depends_on       = [gcp_compute_networkattachment.network_attachment]
+///   destroy_duration = "35m"
+/// }
+/// resource "gcp_compute_networkattachment" "network_attachment" {
+///   name                  = "network-attachment"
+///   region                = "us-central1"
+///   connection_preference = "ACCEPT_MANUAL"
+///   subnetworks           = [gcp_compute_subnetwork.subnetwork.id]
+/// }
+/// resource "gcp_compute_subnetwork" "subnetwork" {
+///   name          = "subnetwork"
+///   region        = "us-central1"
+///   ip_cidr_range = "10.0.0.0/16"
+///   network       = gcp_compute_network.network.id
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "network"
+///   auto_create_subnetworks = false
 /// }
 /// ```
 /// ```java
@@ -690,10 +1784,11 @@ import 'ai_reasoning_engine_state.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecPackageSpecArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs;
 /// import com.pulumi.asset.FileAsset;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -841,7 +1936,7 @@ import 'ai_reasoning_engine_state.dart';
 ///       name: requirements.txt
 ///       bucket: ${bucket.id}
 ///       source:
-///         fn::FileAsset: ./test-fixtures/requirements_adk.txt
+///         fn::fileAsset: ./test-fixtures/requirements_adk.txt
 ///   bucketObjPickle:
 ///     type: gcp:storage:BucketObject
 ///     name: bucket_obj_pickle
@@ -849,7 +1944,7 @@ import 'ai_reasoning_engine_state.dart';
 ///       name: code.pkl
 ///       bucket: ${bucket.id}
 ///       source:
-///         fn::FileAsset: ./test-fixtures/pickle_adk.pkl
+///         fn::fileAsset: ./test-fixtures/pickle_adk.pkl
 ///   bucketObjDependenciesTarGz:
 ///     type: gcp:storage:BucketObject
 ///     name: bucket_obj_dependencies_tar_gz
@@ -857,7 +1952,7 @@ import 'ai_reasoning_engine_state.dart';
 ///       name: dependencies.tar.gz
 ///       bucket: ${bucket.id}
 ///       source:
-///         fn::FileAsset: ./test-fixtures/dependencies_adk.tar.gz
+///         fn::fileAsset: ./test-fixtures/dependencies_adk.tar.gz
 ///   bucket:
 ///     type: gcp:storage:Bucket
 ///     properties:
@@ -1431,7 +2526,7 @@ import 'ai_reasoning_engine_state.dart';
 /// 			return err
 /// 		}
 /// 		secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     secret.ID(),
+/// 			Secret:     secret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("test"),
 /// 		})
 /// 		if err != nil {
@@ -1444,7 +2539,7 @@ import 'ai_reasoning_engine_state.dart';
 /// 			return err
 /// 		}
 /// 		secretAccess, err := secretmanager.NewSecretIamMember(ctx, "secret_access", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: secret.ID(),
+/// 			SecretId: secret.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 /// 			Member:   serviceAccount.Member,
 /// 		})
@@ -1503,7 +2598,7 @@ import 'ai_reasoning_engine_state.dart';
 /// 		}
 /// 		bucketObjRequirementsTxt, err := storage.NewBucketObject(ctx, "bucket_obj_requirements_txt", &storage.BucketObjectArgs{
 /// 			Name:   pulumi.String("requirements.txt"),
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Source: pulumi.NewFileAsset("./test-fixtures/requirements_adk.txt"),
 /// 		})
 /// 		if err != nil {
@@ -1511,7 +2606,7 @@ import 'ai_reasoning_engine_state.dart';
 /// 		}
 /// 		bucketObjPickle, err := storage.NewBucketObject(ctx, "bucket_obj_pickle", &storage.BucketObjectArgs{
 /// 			Name:   pulumi.String("code.pkl"),
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Source: pulumi.NewFileAsset("./test-fixtures/pickle_adk.pkl"),
 /// 		})
 /// 		if err != nil {
@@ -1519,7 +2614,7 @@ import 'ai_reasoning_engine_state.dart';
 /// 		}
 /// 		bucketObjDependenciesTarGz, err := storage.NewBucketObject(ctx, "bucket_obj_dependencies_tar_gz", &storage.BucketObjectArgs{
 /// 			Name:   pulumi.String("dependencies.tar.gz"),
-/// 			Bucket: bucket.ID(),
+/// 			Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 /// 			Source: pulumi.NewFileAsset("./test-fixtures/dependencies_adk.tar.gz"),
 /// 		})
 /// 		if err != nil {
@@ -1605,6 +2700,142 @@ import 'ai_reasoning_engine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+///   depends_on   = [time_sleep.wait_5_minutes]
+///   display_name = "reasoning-engine"
+///   description  = "A basic reasoning engine"
+///   region       = "us-central1"
+///   encryption_spec = {
+///     kms_key_name = "example-key"
+///   }
+///   spec = {
+///     agent_framework = "google-adk"
+///     class_methods   = jsonencode(local.classMethods)
+///     service_account = gcp_serviceaccount_account.service_account.email
+///     deployment_spec = {
+///       min_instances         = 1
+///       max_instances         = 3
+///       container_concurrency = 5
+///       resource_limits = {
+///         "cpu"    = "4"
+///         "memory" = "4Gi"
+///       }
+///       envs = [{
+///         "name"  = "var_1"
+///         "value" = "value_2"
+///         }, {
+///         "name"  = "var_2"
+///         "value" = "value_2"
+///       }]
+///       secret_envs = [{
+///         "name" = "secret_var_1"
+///         "secretRef" = {
+///           "secret"  = gcp_secretmanager_secret.secret.secret_id
+///           "version" = "latest"
+///         }
+///         }, {
+///         "name" = "secret_var_2"
+///         "secretRef" = {
+///           "secret"  = gcp_secretmanager_secret.secret.secret_id
+///           "version" = "latest"
+///         }
+///       }]
+///     }
+///     package_spec = {
+///       dependency_files_gcs_uri ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucketobject.bucket_obj_dependencies_tar_gz.name}"
+///       pickle_object_gcs_uri    ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucketobject.bucket_obj_pickle.name}"
+///       python_version           = "3.11"
+///       requirements_gcs_uri     ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucketobject.bucket_obj_requirements_txt.name}"
+///     }
+///   }
+/// }
+/// # Ensure we wait enough time for IAM permissions to be propagated
+/// resource "time_sleep" "wait_5_minutes" {
+///   depends_on      = [gcp_projects_iammember.sa_iam_ai_platform_user, gcp_projects_iammember.sa_iam_object_viewer, gcp_projects_iammember.sa_iam_viewer, gcp_secretmanager_secretiammember.secret_access, gcp_secretmanager_secretversion.secret_version]
+///   create_duration = "5m"
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret_version" {
+///   secret      = gcp_secretmanager_secret.secret.id
+///   secret_data = "test"
+/// }
+/// resource "gcp_secretmanager_secret" "secret" {
+///   secret_id = "secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretiammember" "secret_access" {
+///   secret_id = gcp_secretmanager_secret.secret.id
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    = gcp_serviceaccount_account.service_account.member
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "reasoning-engine"
+///   location                    = "us-central1"
+///   uniform_bucket_level_access = true
+///   force_destroy               = true
+/// }
+/// resource "gcp_storage_bucketobject" "bucket_obj_requirements_txt" {
+///   name   = "requirements.txt"
+///   bucket = gcp_storage_bucket.bucket.id
+///   source = fileAsset("./test-fixtures/requirements_adk.txt")
+/// }
+/// resource "gcp_storage_bucketobject" "bucket_obj_pickle" {
+///   name   = "code.pkl"
+///   bucket = gcp_storage_bucket.bucket.id
+///   source = fileAsset("./test-fixtures/pickle_adk.pkl")
+/// }
+/// resource "gcp_storage_bucketobject" "bucket_obj_dependencies_tar_gz" {
+///   name   = "dependencies.tar.gz"
+///   bucket = gcp_storage_bucket.bucket.id
+///   source = fileAsset("./test-fixtures/dependencies_adk.tar.gz")
+/// }
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   account_id = "sa"
+/// }
+/// resource "gcp_projects_iammember" "sa_iam_object_viewer" {
+///   role    = "roles/storage.objectViewer"
+///   project = data.gcp_organizations_getproject.project.id
+///   member  = gcp_serviceaccount_account.service_account.member
+/// }
+/// resource "gcp_projects_iammember" "sa_iam_ai_platform_user" {
+///   role    = "roles/aiplatform.user"
+///   project = data.gcp_organizations_getproject.project.id
+///   member  = gcp_serviceaccount_account.service_account.member
+/// }
+/// resource "gcp_projects_iammember" "sa_iam_viewer" {
+///   role    = "roles/viewer"
+///   project = data.gcp_organizations_getproject.project.id
+///   member  = gcp_serviceaccount_account.service_account.member
+/// }
+/// locals {
+///   classMethods = [{
+///     "apiMode"     = "async"
+///     "description" = null
+///     "name"        = "async_query"
+///     "parameters" = {
+///       "type"       = "object"
+///       "required"   = []
+///       "properties" = {}
+///     }
+///   }]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1636,12 +2867,15 @@ import 'ai_reasoning_engine_state.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineEncryptionSpecArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecEnvArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecPackageSpecArgs;
 /// import com.pulumi.asset.FileAsset;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1653,13 +2887,13 @@ import 'ai_reasoning_engine_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var classMethods = List.of(Map.ofEntries(
+///         final var classMethods = Arrays.asList(Map.ofEntries(
 ///             Map.entry("apiMode", "async"),
 ///             Map.entry("description", null),
 ///             Map.entry("name", "async_query"),
 ///             Map.entry("parameters", Map.ofEntries(
 ///                 Map.entry("type", "object"),
-///                 Map.entry("required", List.of()),
+///                 Map.entry("required", Arrays.asList()),
 ///                 Map.entry("properties", Map.ofEntries(
 ///                 ))
 ///             ))
@@ -1908,7 +3142,7 @@ import 'ai_reasoning_engine_state.dart';
 ///       name: requirements.txt
 ///       bucket: ${bucket.id}
 ///       source:
-///         fn::FileAsset: ./test-fixtures/requirements_adk.txt
+///         fn::fileAsset: ./test-fixtures/requirements_adk.txt
 ///   bucketObjPickle:
 ///     type: gcp:storage:BucketObject
 ///     name: bucket_obj_pickle
@@ -1916,7 +3150,7 @@ import 'ai_reasoning_engine_state.dart';
 ///       name: code.pkl
 ///       bucket: ${bucket.id}
 ///       source:
-///         fn::FileAsset: ./test-fixtures/pickle_adk.pkl
+///         fn::fileAsset: ./test-fixtures/pickle_adk.pkl
 ///   bucketObjDependenciesTarGz:
 ///     type: gcp:storage:BucketObject
 ///     name: bucket_obj_dependencies_tar_gz
@@ -1924,7 +3158,7 @@ import 'ai_reasoning_engine_state.dart';
 ///       name: dependencies.tar.gz
 ///       bucket: ${bucket.id}
 ///       source:
-///         fn::FileAsset: ./test-fixtures/dependencies_adk.tar.gz
+///         fn::fileAsset: ./test-fixtures/dependencies_adk.tar.gz
 ///   serviceAccount:
 ///     type: gcp:serviceaccount:Account
 ///     name: service_account
@@ -1966,63 +3200,1518 @@ import 'ai_reasoning_engine_state.dart';
 ///       arguments: {}
 /// ```
 ///
+/// ### Vertex Ai Reasoning Engine Context Spec
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const project = gcp.organizations.getProject({});
+/// const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
+///     displayName: "re-ctx-spec",
+///     description: "Reasoning engine with context spec",
+///     region: "us-central1",
+///     trafficConfig: {
+///         trafficSplitAlwaysLatest: {},
+///     },
+///     contextSpec: {
+///         memoryBankConfig: {
+///             generationConfig: {
+///                 model: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash`),
+///                 generationTriggerConfig: {
+///                     generationRule: {
+///                         idleDuration: "300s",
+///                         overlapEventCount: 1,
+///                     },
+///                 },
+///             },
+///             similaritySearchConfig: {
+///                 embeddingModel: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/text-embedding-005`),
+///             },
+///             disableMemoryRevisions: false,
+///             customizationConfigs: [
+///                 {
+///                     scopeKeys: ["user_id"],
+///                     enableThirdPersonMemories: true,
+///                     consolidationConfig: {
+///                         revisionsPerCandidateCount: 1,
+///                     },
+///                     memoryTopics: [{
+///                         managedMemoryTopic: {
+///                             managedTopicEnum: "USER_PREFERENCES",
+///                         },
+///                     }],
+///                 },
+///                 {
+///                     scopeKeys: [
+///                         "user_id",
+///                         "session_id",
+///                     ],
+///                     enableThirdPersonMemories: true,
+///                     memoryTopics: [{
+///                         customMemoryTopic: {
+///                             label: "session_scratchpad",
+///                             description: "Active consideration details, recent queries, and temporary workflow state.",
+///                         },
+///                     }],
+///                 },
+///             ],
+///             structuredMemoryConfigs: [
+///                 {
+///                     scopeKeys: ["user_id"],
+///                     schemaConfigs: [{
+///                         id: "user-profile",
+///                         memorySchema: JSON.stringify({
+///                             type: "OBJECT",
+///                             properties: {
+///                                 name: {
+///                                     type: "STRING",
+///                                     description: "Name of the user.",
+///                                 },
+///                                 technical_stack: {
+///                                     type: "STRING",
+///                                     description: "Comma-separated list tools or languages used by the user.",
+///                                 },
+///                                 primary_goal: {
+///                                     type: "STRING",
+///                                     description: "The main objective the user is pursuing.",
+///                                 },
+///                                 expertise_level: {
+///                                     type: "STRING",
+///                                     description: "Current skill level (e.g., Junior, Senior).",
+///                                 },
+///                                 job_status: {
+///                                     type: "STRING",
+///                                     description: "The job status of the individual",
+///                                     "enum": [
+///                                         "unemployed",
+///                                         "part_time",
+///                                         "full_time",
+///                                         "student",
+///                                     ],
+///                                 },
+///                             },
+///                         }),
+///                     }],
+///                 },
+///                 {
+///                     scopeKeys: [
+///                         "user_id",
+///                         "session_id",
+///                     ],
+///                     schemaConfigs: [{
+///                         id: "conversation-summary",
+///                         memorySchema: JSON.stringify({
+///                             type: "OBJECT",
+///                             properties: {
+///                                 main_topic: {
+///                                     type: "STRING",
+///                                     description: "The primary topic of this specific chat session.",
+///                                 },
+///                                 status: {
+///                                     type: "STRING",
+///                                     description: "Current resolution state of the discussion.",
+///                                     "enum": [
+///                                         "open",
+///                                         "in_progress",
+///                                         "resolved",
+///                                     ],
+///                                 },
+///                             },
+///                         }),
+///                     }],
+///                 },
+///             ],
+///             ttlConfig: {
+///                 defaultTtl: "86400s",
+///             },
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import json
+/// import pulumi_gcp as gcp
+///
+/// project = gcp.organizations.get_project()
+/// reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+///     display_name="re-ctx-spec",
+///     description="Reasoning engine with context spec",
+///     region="us-central1",
+///     traffic_config={
+///         "traffic_split_always_latest": {},
+///     },
+///     context_spec={
+///         "memory_bank_config": {
+///             "generation_config": {
+///                 "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///                 "generation_trigger_config": {
+///                     "generation_rule": {
+///                         "idle_duration": "300s",
+///                         "overlap_event_count": 1,
+///                     },
+///                 },
+///             },
+///             "similarity_search_config": {
+///                 "embedding_model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005",
+///             },
+///             "disable_memory_revisions": False,
+///             "customization_configs": [
+///                 {
+///                     "scope_keys": ["user_id"],
+///                     "enable_third_person_memories": True,
+///                     "consolidation_config": {
+///                         "revisions_per_candidate_count": 1,
+///                     },
+///                     "memory_topics": [{
+///                         "managed_memory_topic": {
+///                             "managed_topic_enum": "USER_PREFERENCES",
+///                         },
+///                     }],
+///                 },
+///                 {
+///                     "scope_keys": [
+///                         "user_id",
+///                         "session_id",
+///                     ],
+///                     "enable_third_person_memories": True,
+///                     "memory_topics": [{
+///                         "custom_memory_topic": {
+///                             "label": "session_scratchpad",
+///                             "description": "Active consideration details, recent queries, and temporary workflow state.",
+///                         },
+///                     }],
+///                 },
+///             ],
+///             "structured_memory_configs": [
+///                 {
+///                     "scope_keys": ["user_id"],
+///                     "schema_configs": [{
+///                         "id": "user-profile",
+///                         "memory_schema": json.dumps({
+///                             "type": "OBJECT",
+///                             "properties": {
+///                                 "name": {
+///                                     "type": "STRING",
+///                                     "description": "Name of the user.",
+///                                 },
+///                                 "technical_stack": {
+///                                     "type": "STRING",
+///                                     "description": "Comma-separated list tools or languages used by the user.",
+///                                 },
+///                                 "primary_goal": {
+///                                     "type": "STRING",
+///                                     "description": "The main objective the user is pursuing.",
+///                                 },
+///                                 "expertise_level": {
+///                                     "type": "STRING",
+///                                     "description": "Current skill level (e.g., Junior, Senior).",
+///                                 },
+///                                 "job_status": {
+///                                     "type": "STRING",
+///                                     "description": "The job status of the individual",
+///                                     "enum": [
+///                                         "unemployed",
+///                                         "part_time",
+///                                         "full_time",
+///                                         "student",
+///                                     ],
+///                                 },
+///                             },
+///                         }),
+///                     }],
+///                 },
+///                 {
+///                     "scope_keys": [
+///                         "user_id",
+///                         "session_id",
+///                     ],
+///                     "schema_configs": [{
+///                         "id": "conversation-summary",
+///                         "memory_schema": json.dumps({
+///                             "type": "OBJECT",
+///                             "properties": {
+///                                 "main_topic": {
+///                                     "type": "STRING",
+///                                     "description": "The primary topic of this specific chat session.",
+///                                 },
+///                                 "status": {
+///                                     "type": "STRING",
+///                                     "description": "Current resolution state of the discussion.",
+///                                     "enum": [
+///                                         "open",
+///                                         "in_progress",
+///                                         "resolved",
+///                                     ],
+///                                 },
+///                             },
+///                         }),
+///                     }],
+///                 },
+///             ],
+///             "ttl_config": {
+///                 "default_ttl": "86400s",
+///             },
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using System.Text.Json;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var project = Gcp.Organizations.GetProject.Invoke();
+///
+///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
+///     {
+///         DisplayName = "re-ctx-spec",
+///         Description = "Reasoning engine with context spec",
+///         Region = "us-central1",
+///         TrafficConfig = new Gcp.Vertex.Inputs.AiReasoningEngineTrafficConfigArgs
+///         {
+///             TrafficSplitAlwaysLatest = null,
+///         },
+///         ContextSpec = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecArgs
+///         {
+///             MemoryBankConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigArgs
+///             {
+///                 GenerationConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs
+///                 {
+///                     Model = $"projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///                     GenerationTriggerConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs
+///                     {
+///                         GenerationRule = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs
+///                         {
+///                             IdleDuration = "300s",
+///                             OverlapEventCount = 1,
+///                         },
+///                     },
+///                 },
+///                 SimilaritySearchConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs
+///                 {
+///                     EmbeddingModel = $"projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/text-embedding-005",
+///                 },
+///                 DisableMemoryRevisions = false,
+///                 CustomizationConfigs = new[]
+///                 {
+///                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs
+///                     {
+///                         ScopeKeys = new[]
+///                         {
+///                             "user_id",
+///                         },
+///                         EnableThirdPersonMemories = true,
+///                         ConsolidationConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs
+///                         {
+///                             RevisionsPerCandidateCount = 1,
+///                         },
+///                         MemoryTopics = new[]
+///                         {
+///                             new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs
+///                             {
+///                                 ManagedMemoryTopic = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs
+///                                 {
+///                                     ManagedTopicEnum = "USER_PREFERENCES",
+///                                 },
+///                             },
+///                         },
+///                     },
+///                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs
+///                     {
+///                         ScopeKeys = new[]
+///                         {
+///                             "user_id",
+///                             "session_id",
+///                         },
+///                         EnableThirdPersonMemories = true,
+///                         MemoryTopics = new[]
+///                         {
+///                             new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs
+///                             {
+///                                 CustomMemoryTopic = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs
+///                                 {
+///                                     Label = "session_scratchpad",
+///                                     Description = "Active consideration details, recent queries, and temporary workflow state.",
+///                                 },
+///                             },
+///                         },
+///                     },
+///                 },
+///                 StructuredMemoryConfigs = new[]
+///                 {
+///                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs
+///                     {
+///                         ScopeKeys = new[]
+///                         {
+///                             "user_id",
+///                         },
+///                         SchemaConfigs = new[]
+///                         {
+///                             new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs
+///                             {
+///                                 Id = "user-profile",
+///                                 MemorySchema = JsonSerializer.Serialize(new Dictionary<string, object?>
+///                                 {
+///                                     ["type"] = "OBJECT",
+///                                     ["properties"] = new Dictionary<string, object?>
+///                                     {
+///                                         ["name"] = new Dictionary<string, object?>
+///                                         {
+///                                             ["type"] = "STRING",
+///                                             ["description"] = "Name of the user.",
+///                                         },
+///                                         ["technical_stack"] = new Dictionary<string, object?>
+///                                         {
+///                                             ["type"] = "STRING",
+///                                             ["description"] = "Comma-separated list tools or languages used by the user.",
+///                                         },
+///                                         ["primary_goal"] = new Dictionary<string, object?>
+///                                         {
+///                                             ["type"] = "STRING",
+///                                             ["description"] = "The main objective the user is pursuing.",
+///                                         },
+///                                         ["expertise_level"] = new Dictionary<string, object?>
+///                                         {
+///                                             ["type"] = "STRING",
+///                                             ["description"] = "Current skill level (e.g., Junior, Senior).",
+///                                         },
+///                                         ["job_status"] = new Dictionary<string, object?>
+///                                         {
+///                                             ["type"] = "STRING",
+///                                             ["description"] = "The job status of the individual",
+///                                             ["enum"] = new[]
+///                                             {
+///                                                 "unemployed",
+///                                                 "part_time",
+///                                                 "full_time",
+///                                                 "student",
+///                                             },
+///                                         },
+///                                     },
+///                                 }),
+///                             },
+///                         },
+///                     },
+///                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs
+///                     {
+///                         ScopeKeys = new[]
+///                         {
+///                             "user_id",
+///                             "session_id",
+///                         },
+///                         SchemaConfigs = new[]
+///                         {
+///                             new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs
+///                             {
+///                                 Id = "conversation-summary",
+///                                 MemorySchema = JsonSerializer.Serialize(new Dictionary<string, object?>
+///                                 {
+///                                     ["type"] = "OBJECT",
+///                                     ["properties"] = new Dictionary<string, object?>
+///                                     {
+///                                         ["main_topic"] = new Dictionary<string, object?>
+///                                         {
+///                                             ["type"] = "STRING",
+///                                             ["description"] = "The primary topic of this specific chat session.",
+///                                         },
+///                                         ["status"] = new Dictionary<string, object?>
+///                                         {
+///                                             ["type"] = "STRING",
+///                                             ["description"] = "Current resolution state of the discussion.",
+///                                             ["enum"] = new[]
+///                                             {
+///                                                 "open",
+///                                                 "in_progress",
+///                                                 "resolved",
+///                                             },
+///                                         },
+///                                     },
+///                                 }),
+///                             },
+///                         },
+///                     },
+///                 },
+///                 TtlConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs
+///                 {
+///                     DefaultTtl = "86400s",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"encoding/json"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 			"type": "OBJECT",
+/// 			"properties": map[string]interface{}{
+/// 				"name": map[string]string{
+/// 					"type":        "STRING",
+/// 					"description": "Name of the user.",
+/// 				},
+/// 				"technical_stack": map[string]string{
+/// 					"type":        "STRING",
+/// 					"description": "Comma-separated list tools or languages used by the user.",
+/// 				},
+/// 				"primary_goal": map[string]string{
+/// 					"type":        "STRING",
+/// 					"description": "The main objective the user is pursuing.",
+/// 				},
+/// 				"expertise_level": map[string]string{
+/// 					"type":        "STRING",
+/// 					"description": "Current skill level (e.g., Junior, Senior).",
+/// 				},
+/// 				"job_status": map[string]interface{}{
+/// 					"type":        "STRING",
+/// 					"description": "The job status of the individual",
+/// 					"enum": []string{
+/// 						"unemployed",
+/// 						"part_time",
+/// 						"full_time",
+/// 						"student",
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 			"type": "OBJECT",
+/// 			"properties": map[string]interface{}{
+/// 				"main_topic": map[string]string{
+/// 					"type":        "STRING",
+/// 					"description": "The primary topic of this specific chat session.",
+/// 				},
+/// 				"status": map[string]interface{}{
+/// 					"type":        "STRING",
+/// 					"description": "Current resolution state of the discussion.",
+/// 					"enum": []string{
+/// 						"open",
+/// 						"in_progress",
+/// 						"resolved",
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json1 := string(tmpJSON1)
+/// 		_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+/// 			DisplayName: pulumi.String("re-ctx-spec"),
+/// 			Description: pulumi.String("Reasoning engine with context spec"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			TrafficConfig: &vertex.AiReasoningEngineTrafficConfigArgs{
+/// 				TrafficSplitAlwaysLatest: &vertex.AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs{},
+/// 			},
+/// 			ContextSpec: &vertex.AiReasoningEngineContextSpecArgs{
+/// 				MemoryBankConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigArgs{
+/// 					GenerationConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{
+/// 						Model: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.ProjectId),
+/// 						GenerationTriggerConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs{
+/// 							GenerationRule: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs{
+/// 								IdleDuration:      pulumi.String("300s"),
+/// 								OverlapEventCount: pulumi.Int(1),
+/// 							},
+/// 						},
+/// 					},
+/// 					SimilaritySearchConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{
+/// 						EmbeddingModel: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/text-embedding-005", project.ProjectId),
+/// 					},
+/// 					DisableMemoryRevisions: pulumi.Bool(false),
+/// 					CustomizationConfigs: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArray{
+/// 						&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs{
+/// 							ScopeKeys: pulumi.StringArray{
+/// 								pulumi.String("user_id"),
+/// 							},
+/// 							EnableThirdPersonMemories: pulumi.Bool(true),
+/// 							ConsolidationConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs{
+/// 								RevisionsPerCandidateCount: pulumi.Int(1),
+/// 							},
+/// 							MemoryTopics: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArray{
+/// 								&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs{
+/// 									ManagedMemoryTopic: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs{
+/// 										ManagedTopicEnum: pulumi.String("USER_PREFERENCES"),
+/// 									},
+/// 								},
+/// 							},
+/// 						},
+/// 						&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs{
+/// 							ScopeKeys: pulumi.StringArray{
+/// 								pulumi.String("user_id"),
+/// 								pulumi.String("session_id"),
+/// 							},
+/// 							EnableThirdPersonMemories: pulumi.Bool(true),
+/// 							MemoryTopics: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArray{
+/// 								&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs{
+/// 									CustomMemoryTopic: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs{
+/// 										Label:       pulumi.String("session_scratchpad"),
+/// 										Description: pulumi.String("Active consideration details, recent queries, and temporary workflow state."),
+/// 									},
+/// 								},
+/// 							},
+/// 						},
+/// 					},
+/// 					StructuredMemoryConfigs: vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArray{
+/// 						&vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs{
+/// 							ScopeKeys: pulumi.StringArray{
+/// 								pulumi.String("user_id"),
+/// 							},
+/// 							SchemaConfigs: vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArray{
+/// 								&vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs{
+/// 									Id:           pulumi.String("user-profile"),
+/// 									MemorySchema: pulumi.String(json0),
+/// 								},
+/// 							},
+/// 						},
+/// 						&vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs{
+/// 							ScopeKeys: pulumi.StringArray{
+/// 								pulumi.String("user_id"),
+/// 								pulumi.String("session_id"),
+/// 							},
+/// 							SchemaConfigs: vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArray{
+/// 								&vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs{
+/// 									Id:           pulumi.String("conversation-summary"),
+/// 									MemorySchema: pulumi.String(json1),
+/// 								},
+/// 							},
+/// 						},
+/// 					},
+/// 					TtlConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs{
+/// 						DefaultTtl: pulumi.String("86400s"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+///   display_name = "re-ctx-spec"
+///   description  = "Reasoning engine with context spec"
+///   region       = "us-central1"
+///   traffic_config = {
+///     traffic_split_always_latest = {}
+///   }
+///   context_spec = {
+///     memory_bank_config = {
+///       generation_config = {
+///         model ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash"
+///         generation_trigger_config = {
+///           generation_rule = {
+///             idle_duration       = "300s"
+///             overlap_event_count = 1
+///           }
+///         }
+///       }
+///       similarity_search_config = {
+///         embedding_model ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005"
+///       }
+///       disable_memory_revisions = false
+///       customization_configs = [{
+///         "scopeKeys"                 = ["user_id"]
+///         "enableThirdPersonMemories" = true
+///         "consolidationConfig" = {
+///           "revisionsPerCandidateCount" = 1
+///         }
+///         "memoryTopics" = [{
+///           "managedMemoryTopic" = {
+///             "managedTopicEnum" = "USER_PREFERENCES"
+///           }
+///         }]
+///         }, {
+///         "scopeKeys"                 = ["user_id", "session_id"]
+///         "enableThirdPersonMemories" = true
+///         "memoryTopics" = [{
+///           "customMemoryTopic" = {
+///             "label"       = "session_scratchpad"
+///             "description" = "Active consideration details, recent queries, and temporary workflow state."
+///           }
+///         }]
+///       }]
+///       structured_memory_configs = [{
+///         "scopeKeys" = ["user_id"]
+///         "schemaConfigs" = [{
+///           "id" = "user-profile"
+///           "memorySchema" = jsonencode({
+///             "type" = "OBJECT"
+///             "properties" = {
+///               "name" = {
+///                 "type"        = "STRING"
+///                 "description" = "Name of the user."
+///               }
+///               "technical_stack" = {
+///                 "type"        = "STRING"
+///                 "description" = "Comma-separated list tools or languages used by the user."
+///               }
+///               "primary_goal" = {
+///                 "type"        = "STRING"
+///                 "description" = "The main objective the user is pursuing."
+///               }
+///               "expertise_level" = {
+///                 "type"        = "STRING"
+///                 "description" = "Current skill level (e.g., Junior, Senior)."
+///               }
+///               "job_status" = {
+///                 "type"        = "STRING"
+///                 "description" = "The job status of the individual"
+///                 "enum"        = ["unemployed", "part_time", "full_time", "student"]
+///               }
+///             }
+///           })
+///         }]
+///         }, {
+///         "scopeKeys" = ["user_id", "session_id"]
+///         "schemaConfigs" = [{
+///           "id" = "conversation-summary"
+///           "memorySchema" = jsonencode({
+///             "type" = "OBJECT"
+///             "properties" = {
+///               "main_topic" = {
+///                 "type"        = "STRING"
+///                 "description" = "The primary topic of this specific chat session."
+///               }
+///               "status" = {
+///                 "type"        = "STRING"
+///                 "description" = "Current resolution state of the discussion."
+///                 "enum"        = ["open", "in_progress", "resolved"]
+///               }
+///             }
+///           })
+///         }]
+///       }]
+///       ttl_config = {
+///         default_ttl = "86400s"
+///       }
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import com.pulumi.gcp.vertex.AiReasoningEngine;
+/// import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineTrafficConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+///             .build());
+///
+///         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
+///             .displayName("re-ctx-spec")
+///             .description("Reasoning engine with context spec")
+///             .region("us-central1")
+///             .trafficConfig(AiReasoningEngineTrafficConfigArgs.builder()
+///                 .trafficSplitAlwaysLatest(AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs.builder()
+///                     .build())
+///                 .build())
+///             .contextSpec(AiReasoningEngineContextSpecArgs.builder()
+///                 .memoryBankConfig(AiReasoningEngineContextSpecMemoryBankConfigArgs.builder()
+///                     .generationConfig(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs.builder()
+///                         .model(String.format("projects/%s/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.projectId()))
+///                         .generationTriggerConfig(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs.builder()
+///                             .generationRule(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs.builder()
+///                                 .idleDuration("300s")
+///                                 .overlapEventCount(1)
+///                                 .build())
+///                             .build())
+///                         .build())
+///                     .similaritySearchConfig(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs.builder()
+///                         .embeddingModel(String.format("projects/%s/locations/us-central1/publishers/google/models/text-embedding-005", project.projectId()))
+///                         .build())
+///                     .disableMemoryRevisions(false)
+///                     .customizationConfigs(
+///                         AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs.builder()
+///                             .scopeKeys("user_id")
+///                             .enableThirdPersonMemories(true)
+///                             .consolidationConfig(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs.builder()
+///                                 .revisionsPerCandidateCount(1)
+///                                 .build())
+///                             .memoryTopics(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs.builder()
+///                                 .managedMemoryTopic(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs.builder()
+///                                     .managedTopicEnum("USER_PREFERENCES")
+///                                     .build())
+///                                 .build())
+///                             .build(),
+///                         AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs.builder()
+///                             .scopeKeys(
+///                                 "user_id",
+///                                 "session_id")
+///                             .enableThirdPersonMemories(true)
+///                             .memoryTopics(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs.builder()
+///                                 .customMemoryTopic(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs.builder()
+///                                     .label("session_scratchpad")
+///                                     .description("Active consideration details, recent queries, and temporary workflow state.")
+///                                     .build())
+///                                 .build())
+///                             .build())
+///                     .structuredMemoryConfigs(
+///                         AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs.builder()
+///                             .scopeKeys("user_id")
+///                             .schemaConfigs(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs.builder()
+///                                 .id("user-profile")
+///                                 .memorySchema(serializeJson(
+///                                     jsonObject(
+///                                         jsonProperty("type", "OBJECT"),
+///                                         jsonProperty("properties", jsonObject(
+///                                             jsonProperty("name", jsonObject(
+///                                                 jsonProperty("type", "STRING"),
+///                                                 jsonProperty("description", "Name of the user.")
+///                                             )),
+///                                             jsonProperty("technical_stack", jsonObject(
+///                                                 jsonProperty("type", "STRING"),
+///                                                 jsonProperty("description", "Comma-separated list tools or languages used by the user.")
+///                                             )),
+///                                             jsonProperty("primary_goal", jsonObject(
+///                                                 jsonProperty("type", "STRING"),
+///                                                 jsonProperty("description", "The main objective the user is pursuing.")
+///                                             )),
+///                                             jsonProperty("expertise_level", jsonObject(
+///                                                 jsonProperty("type", "STRING"),
+///                                                 jsonProperty("description", "Current skill level (e.g., Junior, Senior).")
+///                                             )),
+///                                             jsonProperty("job_status", jsonObject(
+///                                                 jsonProperty("type", "STRING"),
+///                                                 jsonProperty("description", "The job status of the individual"),
+///                                                 jsonProperty("enum", jsonArray(
+///                                                     "unemployed",
+///                                                     "part_time",
+///                                                     "full_time",
+///                                                     "student"
+///                                                 ))
+///                                             ))
+///                                         ))
+///                                     )))
+///                                 .build())
+///                             .build(),
+///                         AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs.builder()
+///                             .scopeKeys(
+///                                 "user_id",
+///                                 "session_id")
+///                             .schemaConfigs(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs.builder()
+///                                 .id("conversation-summary")
+///                                 .memorySchema(serializeJson(
+///                                     jsonObject(
+///                                         jsonProperty("type", "OBJECT"),
+///                                         jsonProperty("properties", jsonObject(
+///                                             jsonProperty("main_topic", jsonObject(
+///                                                 jsonProperty("type", "STRING"),
+///                                                 jsonProperty("description", "The primary topic of this specific chat session.")
+///                                             )),
+///                                             jsonProperty("status", jsonObject(
+///                                                 jsonProperty("type", "STRING"),
+///                                                 jsonProperty("description", "Current resolution state of the discussion."),
+///                                                 jsonProperty("enum", jsonArray(
+///                                                     "open",
+///                                                     "in_progress",
+///                                                     "resolved"
+///                                                 ))
+///                                             ))
+///                                         ))
+///                                     )))
+///                                 .build())
+///                             .build())
+///                     .ttlConfig(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs.builder()
+///                         .defaultTtl("86400s")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   reasoningEngine:
+///     type: gcp:vertex:AiReasoningEngine
+///     name: reasoning_engine
+///     properties:
+///       displayName: re-ctx-spec
+///       description: Reasoning engine with context spec
+///       region: us-central1
+///       trafficConfig:
+///         trafficSplitAlwaysLatest: {}
+///       contextSpec:
+///         memoryBankConfig:
+///           generationConfig:
+///             model: projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash
+///             generationTriggerConfig:
+///               generationRule:
+///                 idleDuration: 300s
+///                 overlapEventCount: 1
+///           similaritySearchConfig:
+///             embeddingModel: projects/${project.projectId}/locations/us-central1/publishers/google/models/text-embedding-005
+///           disableMemoryRevisions: false
+///           customizationConfigs:
+///             - scopeKeys:
+///                 - user_id
+///               enableThirdPersonMemories: true
+///               consolidationConfig:
+///                 revisionsPerCandidateCount: 1
+///               memoryTopics:
+///                 - managedMemoryTopic:
+///                     managedTopicEnum: USER_PREFERENCES
+///             - scopeKeys:
+///                 - user_id
+///                 - session_id
+///               enableThirdPersonMemories: true
+///               memoryTopics:
+///                 - customMemoryTopic:
+///                     label: session_scratchpad
+///                     description: Active consideration details, recent queries, and temporary workflow state.
+///           structuredMemoryConfigs:
+///             - scopeKeys:
+///                 - user_id
+///               schemaConfigs:
+///                 - id: user-profile
+///                   memorySchema:
+///                     fn::toJSON:
+///                       type: OBJECT
+///                       properties:
+///                         name:
+///                           type: STRING
+///                           description: Name of the user.
+///                         technical_stack:
+///                           type: STRING
+///                           description: Comma-separated list tools or languages used by the user.
+///                         primary_goal:
+///                           type: STRING
+///                           description: The main objective the user is pursuing.
+///                         expertise_level:
+///                           type: STRING
+///                           description: Current skill level (e.g., Junior, Senior).
+///                         job_status:
+///                           type: STRING
+///                           description: The job status of the individual
+///                           enum:
+///                             - unemployed
+///                             - part_time
+///                             - full_time
+///                             - student
+///             - scopeKeys:
+///                 - user_id
+///                 - session_id
+///               schemaConfigs:
+///                 - id: conversation-summary
+///                   memorySchema:
+///                     fn::toJSON:
+///                       type: OBJECT
+///                       properties:
+///                         main_topic:
+///                           type: STRING
+///                           description: The primary topic of this specific chat session.
+///                         status:
+///                           type: STRING
+///                           description: Current resolution state of the discussion.
+///                           enum:
+///                             - open
+///                             - in_progress
+///                             - resolved
+///           ttlConfig:
+///             defaultTtl: 86400s
+/// variables:
+///   project:
+///     fn::invoke:
+///       function: gcp:organizations:getProject
+///       arguments: {}
+/// ```
+///
+/// ### Vertex Ai Reasoning Engine Granular Ttl
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const project = gcp.organizations.getProject({});
+/// const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
+///     displayName: "re-gran-ttl",
+///     description: "Reasoning engine with granular ttl",
+///     region: "us-central1",
+///     contextSpec: {
+///         memoryBankConfig: {
+///             generationConfig: {
+///                 model: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash`),
+///             },
+///             similaritySearchConfig: {
+///                 embeddingModel: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/text-embedding-005`),
+///             },
+///             disableMemoryRevisions: false,
+///             ttlConfig: {
+///                 memoryRevisionDefaultTtl: "86400s",
+///                 granularTtlConfig: {
+///                     createTtl: "86400s",
+///                     generateCreatedTtl: "86400s",
+///                     generateUpdatedTtl: "86400s",
+///                 },
+///             },
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// project = gcp.organizations.get_project()
+/// reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+///     display_name="re-gran-ttl",
+///     description="Reasoning engine with granular ttl",
+///     region="us-central1",
+///     context_spec={
+///         "memory_bank_config": {
+///             "generation_config": {
+///                 "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///             },
+///             "similarity_search_config": {
+///                 "embedding_model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005",
+///             },
+///             "disable_memory_revisions": False,
+///             "ttl_config": {
+///                 "memory_revision_default_ttl": "86400s",
+///                 "granular_ttl_config": {
+///                     "create_ttl": "86400s",
+///                     "generate_created_ttl": "86400s",
+///                     "generate_updated_ttl": "86400s",
+///                 },
+///             },
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var project = Gcp.Organizations.GetProject.Invoke();
+///
+///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
+///     {
+///         DisplayName = "re-gran-ttl",
+///         Description = "Reasoning engine with granular ttl",
+///         Region = "us-central1",
+///         ContextSpec = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecArgs
+///         {
+///             MemoryBankConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigArgs
+///             {
+///                 GenerationConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs
+///                 {
+///                     Model = $"projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///                 },
+///                 SimilaritySearchConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs
+///                 {
+///                     EmbeddingModel = $"projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/text-embedding-005",
+///                 },
+///                 DisableMemoryRevisions = false,
+///                 TtlConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs
+///                 {
+///                     MemoryRevisionDefaultTtl = "86400s",
+///                     GranularTtlConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs
+///                     {
+///                         CreateTtl = "86400s",
+///                         GenerateCreatedTtl = "86400s",
+///                         GenerateUpdatedTtl = "86400s",
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+/// 			DisplayName: pulumi.String("re-gran-ttl"),
+/// 			Description: pulumi.String("Reasoning engine with granular ttl"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			ContextSpec: &vertex.AiReasoningEngineContextSpecArgs{
+/// 				MemoryBankConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigArgs{
+/// 					GenerationConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{
+/// 						Model: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.ProjectId),
+/// 					},
+/// 					SimilaritySearchConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{
+/// 						EmbeddingModel: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/text-embedding-005", project.ProjectId),
+/// 					},
+/// 					DisableMemoryRevisions: pulumi.Bool(false),
+/// 					TtlConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs{
+/// 						MemoryRevisionDefaultTtl: pulumi.String("86400s"),
+/// 						GranularTtlConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs{
+/// 							CreateTtl:          pulumi.String("86400s"),
+/// 							GenerateCreatedTtl: pulumi.String("86400s"),
+/// 							GenerateUpdatedTtl: pulumi.String("86400s"),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+///   display_name = "re-gran-ttl"
+///   description  = "Reasoning engine with granular ttl"
+///   region       = "us-central1"
+///   context_spec = {
+///     memory_bank_config = {
+///       generation_config = {
+///         model ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash"
+///       }
+///       similarity_search_config = {
+///         embedding_model ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005"
+///       }
+///       disable_memory_revisions = false
+///       ttl_config = {
+///         memory_revision_default_ttl = "86400s"
+///         granular_ttl_config = {
+///           create_ttl           = "86400s"
+///           generate_created_ttl = "86400s"
+///           generate_updated_ttl = "86400s"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import com.pulumi.gcp.vertex.AiReasoningEngine;
+/// import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+///             .build());
+///
+///         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
+///             .displayName("re-gran-ttl")
+///             .description("Reasoning engine with granular ttl")
+///             .region("us-central1")
+///             .contextSpec(AiReasoningEngineContextSpecArgs.builder()
+///                 .memoryBankConfig(AiReasoningEngineContextSpecMemoryBankConfigArgs.builder()
+///                     .generationConfig(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs.builder()
+///                         .model(String.format("projects/%s/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.projectId()))
+///                         .build())
+///                     .similaritySearchConfig(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs.builder()
+///                         .embeddingModel(String.format("projects/%s/locations/us-central1/publishers/google/models/text-embedding-005", project.projectId()))
+///                         .build())
+///                     .disableMemoryRevisions(false)
+///                     .ttlConfig(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs.builder()
+///                         .memoryRevisionDefaultTtl("86400s")
+///                         .granularTtlConfig(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs.builder()
+///                             .createTtl("86400s")
+///                             .generateCreatedTtl("86400s")
+///                             .generateUpdatedTtl("86400s")
+///                             .build())
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   reasoningEngine:
+///     type: gcp:vertex:AiReasoningEngine
+///     name: reasoning_engine
+///     properties:
+///       displayName: re-gran-ttl
+///       description: Reasoning engine with granular ttl
+///       region: us-central1
+///       contextSpec:
+///         memoryBankConfig:
+///           generationConfig:
+///             model: projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash
+///           similaritySearchConfig:
+///             embeddingModel: projects/${project.projectId}/locations/us-central1/publishers/google/models/text-embedding-005
+///           disableMemoryRevisions: false
+///           ttlConfig:
+///             memoryRevisionDefaultTtl: 86400s
+///             granularTtlConfig:
+///               createTtl: 86400s
+///               generateCreatedTtl: 86400s
+///               generateUpdatedTtl: 86400s
+/// variables:
+///   project:
+///     fn::invoke:
+///       function: gcp:organizations:getProject
+///       arguments: {}
+/// ```
+///
+/// ### Vertex Ai Reasoning Engine Traffic Config
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
+///     displayName: "re-traffic-cfg",
+///     description: "Reasoning engine with traffic config",
+///     region: "us-central1",
+///     spec: {
+///         agentFramework: "langchain",
+///     },
+///     trafficConfig: {
+///         trafficSplitAlwaysLatest: {},
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+///     display_name="re-traffic-cfg",
+///     description="Reasoning engine with traffic config",
+///     region="us-central1",
+///     spec={
+///         "agent_framework": "langchain",
+///     },
+///     traffic_config={
+///         "traffic_split_always_latest": {},
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
+///     {
+///         DisplayName = "re-traffic-cfg",
+///         Description = "Reasoning engine with traffic config",
+///         Region = "us-central1",
+///         Spec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecArgs
+///         {
+///             AgentFramework = "langchain",
+///         },
+///         TrafficConfig = new Gcp.Vertex.Inputs.AiReasoningEngineTrafficConfigArgs
+///         {
+///             TrafficSplitAlwaysLatest = null,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+/// 			DisplayName: pulumi.String("re-traffic-cfg"),
+/// 			Description: pulumi.String("Reasoning engine with traffic config"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Spec: &vertex.AiReasoningEngineSpecArgs{
+/// 				AgentFramework: pulumi.String("langchain"),
+/// 			},
+/// 			TrafficConfig: &vertex.AiReasoningEngineTrafficConfigArgs{
+/// 				TrafficSplitAlwaysLatest: &vertex.AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs{},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+///   display_name = "re-traffic-cfg"
+///   description  = "Reasoning engine with traffic config"
+///   region       = "us-central1"
+///   spec = {
+///     agent_framework = "langchain"
+///   }
+///   traffic_config = {
+///     traffic_split_always_latest = {}
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.vertex.AiReasoningEngine;
+/// import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineTrafficConfigArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
+///             .displayName("re-traffic-cfg")
+///             .description("Reasoning engine with traffic config")
+///             .region("us-central1")
+///             .spec(AiReasoningEngineSpecArgs.builder()
+///                 .agentFramework("langchain")
+///                 .build())
+///             .trafficConfig(AiReasoningEngineTrafficConfigArgs.builder()
+///                 .trafficSplitAlwaysLatest(AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs.builder()
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   reasoningEngine:
+///     type: gcp:vertex:AiReasoningEngine
+///     name: reasoning_engine
+///     properties:
+///       displayName: re-traffic-cfg
+///       description: Reasoning engine with traffic config
+///       region: us-central1
+///       spec:
+///         agentFramework: langchain
+///       trafficConfig:
+///         trafficSplitAlwaysLatest: {}
+/// ```
+///
 ///
 /// ## Import
 ///
 /// ReasoningEngine can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/reasoningEngines/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ReasoningEngine can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default projects/{{project}}/locations/{{region}}/reasoningEngines/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{name}}
 /// ```
 class AiReasoningEngine extends pulumi.CustomResource {
+  /// (Optional, Beta)
+  /// Optional. Configuration for how Agent Engine sub-resources should manage context.
+  /// Structure is documented below.
+  late final pulumi.Output<AiReasoningEngineContextSpec> contextSpec;
   /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
+  /// Optional. The deletion policy for the reasoning engine.
+  /// Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is permitted.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the ReasoningEngine.
   late final pulumi.Output<String?> description;
   /// The display name of the ReasoningEngine.
   late final pulumi.Output<String> displayName;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Optional. Customer-managed encryption key spec for a ReasoningEngine.
   /// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
   /// will be secured by this key.
   /// Structure is documented below.
   late final pulumi.Output<AiReasoningEngineEncryptionSpec?> encryptionSpec;
+  /// The labels associated with this ReasoningEngine. You can use these to
+  /// organize and group your ReasoningEngines.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+  late final pulumi.Output<Map<String, String>?> labels;
   /// The generated name of the ReasoningEngine, in the format
   /// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
   late final pulumi.Output<String> name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// The combination of labels configured directly on the resource
+  /// and default labels configured on the provider.
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// The region of the reasoning engine. eg us-central1
   late final pulumi.Output<String?> region;
   /// Optional. Configurations of the ReasoningEngine.
   /// Structure is documented below.
-  late final pulumi.Output<AiReasoningEngineSpec?> spec;
+  late final pulumi.Output<AiReasoningEngineSpec> spec;
+  /// (Optional, Beta)
+  /// Optional. Traffic distribution configuration for the Reasoning Engine.
+  /// &gt; **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
+  /// Structure is documented below.
+  late final pulumi.Output<AiReasoningEngineTrafficConfig> trafficConfig;
   /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
   /// format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> updateTime;
+  /// (Beta)
+  /// Output only. The URL of the reasoning engine.
+  late final pulumi.Output<String> url;
 
   /// Creates a new [AiReasoningEngine].
   /// [name] The Pulumi resource name.
@@ -2038,15 +4727,22 @@ class AiReasoningEngine extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    contextSpec = registerOutput<AiReasoningEngineContextSpec>('contextSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineContextSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionSpec = registerOutput<AiReasoningEngineEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     region = registerOutput<String?>('region');
-    spec = registerOutput<AiReasoningEngineSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<AiReasoningEngineSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trafficConfig = registerOutput<AiReasoningEngineTrafficConfig>('trafficConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineTrafficConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
+    url = registerOutput<String>('url');
   }
 
   /// Gets an existing [AiReasoningEngine] resource's state with the given [name] and [id].
@@ -2072,14 +4768,21 @@ class AiReasoningEngine extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    contextSpec = registerOutput<AiReasoningEngineContextSpec>('contextSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineContextSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     encryptionSpec = registerOutput<AiReasoningEngineEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     region = registerOutput<String?>('region');
-    spec = registerOutput<AiReasoningEngineSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spec = registerOutput<AiReasoningEngineSpec>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    trafficConfig = registerOutput<AiReasoningEngineTrafficConfig>('trafficConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineTrafficConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
+    url = registerOutput<String>('url');
   }
 }

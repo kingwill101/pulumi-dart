@@ -76,6 +76,21 @@ import 'floorsetting_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_modelarmor_floorsetting" "floorsetting-basic" {
+///   parent        = "projects/my-project-name"
+///   location      = "global"
+///   filter_config = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +100,8 @@ import 'floorsetting_state.dart';
 /// import com.pulumi.gcp.modelarmor.Floorsetting;
 /// import com.pulumi.gcp.modelarmor.FloorsettingArgs;
 /// import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -272,6 +287,41 @@ import 'floorsetting_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_modelarmor_floorsetting" "floorsetting-filter-config" {
+///   location = "global"
+///   parent   = "project/my-project-name"
+///   filter_config = {
+///     rai_settings = {
+///       rai_filters = [{
+///         "filterType"      = "DANGEROUS"
+///         "confidenceLevel" = "MEDIUM_AND_ABOVE"
+///       }]
+///     }
+///     sdp_settings = {
+///       basic_config = {
+///         filter_enforcement = "ENABLED"
+///       }
+///     }
+///     pi_and_jailbreak_filter_settings = {
+///       filter_enforcement = "ENABLED"
+///       confidence_level   = "HIGH"
+///     }
+///     malicious_uri_filter_settings = {
+///       filter_enforcement = "ENABLED"
+///     }
+///   }
+///   enable_floor_setting_enforcement = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -282,12 +332,13 @@ import 'floorsetting_state.dart';
 /// import com.pulumi.gcp.modelarmor.FloorsettingArgs;
 /// import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigArgs;
 /// import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigRaiSettingsArgs;
+/// import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigRaiSettingsRaiFilterArgs;
 /// import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigSdpSettingsArgs;
 /// import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigSdpSettingsBasicConfigArgs;
 /// import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs;
 /// import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigMaliciousUriFilterSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -456,6 +507,31 @@ import 'floorsetting_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_modelarmor_floorsetting" "floorsetting-integrated-metadata" {
+///   location                         = "global"
+///   parent                           = "projects/my-project-name"
+///   filter_config                    = {}
+///   enable_floor_setting_enforcement = false
+///   ai_platform_floor_setting = {
+///     inspect_only         = true
+///     enable_cloud_logging = true
+///   }
+///   floor_setting_metadata = {
+///     multi_language_detection = {
+///       enable_multi_language_detection = false
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -468,8 +544,8 @@ import 'floorsetting_state.dart';
 /// import com.pulumi.gcp.modelarmor.inputs.FloorsettingAiPlatformFloorSettingArgs;
 /// import com.pulumi.gcp.modelarmor.inputs.FloorsettingFloorSettingMetadataArgs;
 /// import com.pulumi.gcp.modelarmor.inputs.FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -524,16 +600,13 @@ import 'floorsetting_state.dart';
 /// Floorsetting can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/locations/{{location}}/floorSetting`
-///
 /// * `{{parent}}/{{location}}`
+///
 ///
 /// When using the `pulumi import` command, Floorsetting can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:modelarmor/floorsetting:Floorsetting default {{parent}}/locations/{{location}}/floorSetting
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:modelarmor/floorsetting:Floorsetting default {{parent}}/{{location}}
 /// ```
 class Floorsetting extends pulumi.CustomResource {

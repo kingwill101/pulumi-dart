@@ -17,6 +17,13 @@ import 'job_sparksql_config.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dataproc_job_job_args_doc}
 class JobArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// By default, you can only delete inactive jobs within
   /// Dataproc. Setting this to true, and calling destroy, will ensure that the
   /// job is first cancelled before issuing the delete.
@@ -51,8 +58,11 @@ class JobArgs {
   final pulumi.Input<JobSparkConfig>? sparkConfig;
   /// The config of SparkSql job
   final pulumi.Input<JobSparksqlConfig>? sparksqlConfig;
+  /// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+  final pulumi.Input<bool>? waitForCompletion;
 
   /// Creates a new [JobArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [forceDelete] By default, you can only delete inactive jobs within
   /// [hadoopConfig] The config of Hadoop job
   /// [hiveConfig] The config of hive job
@@ -67,7 +77,9 @@ class JobArgs {
   /// [scheduling] Optional. Job scheduling configuration.
   /// [sparkConfig] The config of the Spark job.
   /// [sparksqlConfig] The config of SparkSql job
+  /// [waitForCompletion] If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
   const JobArgs({
+    this.deletionPolicy,
     this.forceDelete,
     this.hadoopConfig,
     this.hiveConfig,
@@ -82,10 +94,12 @@ class JobArgs {
     this.scheduling,
     this.sparkConfig,
     this.sparksqlConfig,
+    this.waitForCompletion,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'forceDelete': ?forceDelete,
       'hadoopConfig': ?pulumi.Input.mapOptionalInputValue<JobHadoopConfig, Map<String, dynamic>>(hadoopConfig, (value) => value.toMap()),
       'hiveConfig': ?pulumi.Input.mapOptionalInputValue<JobHiveConfig, Map<String, dynamic>>(hiveConfig, (value) => value.toMap()),
@@ -100,11 +114,13 @@ class JobArgs {
       'scheduling': ?pulumi.Input.mapOptionalInputValue<JobScheduling, Map<String, dynamic>>(scheduling, (value) => value.toMap()),
       'sparkConfig': ?pulumi.Input.mapOptionalInputValue<JobSparkConfig, Map<String, dynamic>>(sparkConfig, (value) => value.toMap()),
       'sparksqlConfig': ?pulumi.Input.mapOptionalInputValue<JobSparksqlConfig, Map<String, dynamic>>(sparksqlConfig, (value) => value.toMap()),
+      'waitForCompletion': ?waitForCompletion,
     };
   }
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       forceDelete: (() { final guardedValue = map['forceDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       hadoopConfig: (() { final guardedValue = map['hadoopConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobHadoopConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       hiveConfig: (() { final guardedValue = map['hiveConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobHiveConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -119,7 +135,7 @@ class JobArgs {
       scheduling: (() { final guardedValue = map['scheduling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobScheduling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sparkConfig: (() { final guardedValue = map['sparkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobSparkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sparksqlConfig: (() { final guardedValue = map['sparksqlConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobSparksqlConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      waitForCompletion: (() { final guardedValue = map['waitForCompletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
 }
-

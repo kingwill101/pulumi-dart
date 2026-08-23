@@ -7,14 +7,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_get_region_sslpolicy_get_region_sslpolicy_args_doc}
 class GetRegionSSLPolicyArgs {
+  /// The name of the SSL Policy.
+  ///
+  /// - - -
   final pulumi.Input<String> name;
+  /// The ID of the project in which the resource belongs. If it
+  /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+  /// The region in which the resource belongs. If it
+  /// is not provided, the provider region is used.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetRegionSSLPolicyArgs].
-  /// [name] Required.
-  /// [project] Optional.
-  /// [region] Optional.
+  /// [name] The name of the SSL Policy.
+  /// [project] The ID of the project in which the resource belongs. If it
+  /// [region] The region in which the resource belongs. If it
   const GetRegionSSLPolicyArgs({
     required this.name,
     this.project,
@@ -37,4 +44,3 @@ class GetRegionSSLPolicyArgs {
     );
   }
 }
-

@@ -149,6 +149,36 @@ import 'data_connect_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// # Enable Firebase Data Connect API
+/// resource "gcp_projects_service" "fdc" {
+///   project = "my-project-name"
+///   service = "firebasedataconnect.googleapis.com"
+/// }
+/// # Create a Firebase Data Connect service
+/// resource "gcp_firebase_dataconnectservice" "default" {
+///   depends_on      = [gcp_projects_service.fdc]
+///   project         = "my-project-name"
+///   location        = "us-central1"
+///   service_id      = "example-service"
+///   deletion_policy = "DEFAULT"
+///   labels = {
+///     "label" = "my-label"
+///   }
+///   annotations = {
+///     "key1" = "value1"
+///     "key2" = "value2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -160,8 +190,8 @@ import 'data_connect_service_state.dart';
 /// import com.pulumi.gcp.firebase.DataConnectService;
 /// import com.pulumi.gcp.firebase.DataConnectServiceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -329,6 +359,29 @@ import 'data_connect_service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// # Enable Firebase Data Connect API
+/// resource "gcp_projects_service" "fdc" {
+///   project = "my-project-name"
+///   service = "firebasedataconnect.googleapis.com"
+/// }
+/// # Create a Firebase Data Connect service
+/// resource "gcp_firebase_dataconnectservice" "default" {
+///   depends_on      = [gcp_projects_service.fdc]
+///   project         = "my-project-name"
+///   location        = "us-central1"
+///   service_id      = "example-service"
+///   deletion_policy = "FORCE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -340,8 +393,8 @@ import 'data_connect_service_state.dart';
 /// import com.pulumi.gcp.firebase.DataConnectService;
 /// import com.pulumi.gcp.firebase.DataConnectServiceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -399,28 +452,21 @@ import 'data_connect_service_state.dart';
 /// Service can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/services/{{service_id}}`
-///
 /// * `{{project}}/{{location}}/{{service_id}}`
-///
 /// * `{{location}}/{{service_id}}`
+///
 ///
 /// When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/dataConnectService:DataConnectService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{project}}/{{location}}/{{service_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/dataConnectService:DataConnectService default {{location}}/{{service_id}}
 /// ```
 class DataConnectService extends pulumi.CustomResource {
   /// Optional. Stores small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Output only. [Output only] Create time stamp.
   late final pulumi.Output<String> createTime;
@@ -428,10 +474,18 @@ class DataConnectService extends pulumi.CustomResource {
   /// Service to be deleted even if a Schema or Connector is present. By default,
   /// the Service deletion will only succeed when no Schema or Connectors are
   /// present.
-  /// Possible values: DEFAULT, FORCE
-  late final pulumi.Output<String?> deletionPolicy;
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+  ///
+  /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. Mutable human-readable name. 63 character limit.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -442,7 +496,7 @@ class DataConnectService extends pulumi.CustomResource {
   late final pulumi.Output<String> etag;
   /// Optional. Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The region in which the service resides, e.g. "us-central1" or "asia-east1".
   late final pulumi.Output<String> location;
@@ -488,7 +542,7 @@ class DataConnectService extends pulumi.CustomResource {
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -529,7 +583,7 @@ class DataConnectService extends pulumi.CustomResource {
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

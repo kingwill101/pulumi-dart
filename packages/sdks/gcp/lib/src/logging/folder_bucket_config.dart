@@ -117,6 +117,30 @@ import 'folder_bucket_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_folder" "default" {
+///   display_name = "some-folder-name"
+///   parent       = "organizations/123456789"
+/// }
+/// resource "gcp_logging_folderbucketconfig" "basic" {
+///   folder         = gcp_organizations_folder.default.name
+///   location       = "global"
+///   retention_days = 30
+///   bucket_id      = "_Default"
+///   index_configs {
+///     field_path = "jsonPayload.request.status"
+///     type       = "INDEX_TYPE_STRING"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +152,8 @@ import 'folder_bucket_config_state.dart';
 /// import com.pulumi.gcp.logging.FolderBucketConfig;
 /// import com.pulumi.gcp.logging.FolderBucketConfigArgs;
 /// import com.pulumi.gcp.logging.inputs.FolderBucketConfigIndexConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -186,6 +210,7 @@ import 'folder_bucket_config_state.dart';
 ///
 /// * `folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}`
 ///
+///
 /// When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -196,6 +221,13 @@ class FolderBucketConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> bucketId;
   /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
   late final pulumi.Output<FolderBucketConfigCmekSettings?> cmekSettings;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Describes this bucket.
   late final pulumi.Output<String> description;
   /// The parent resource that contains the logging bucket.
@@ -227,6 +259,7 @@ class FolderBucketConfig extends pulumi.CustomResource {
         ) {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<FolderBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     folder = registerOutput<String>('folder');
     indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');
@@ -261,6 +294,7 @@ class FolderBucketConfig extends pulumi.CustomResource {
         ) {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<FolderBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FolderBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     folder = registerOutput<String>('folder');
     indexConfigs = registerOutput<List<Map<String, dynamic>>>('indexConfigs');

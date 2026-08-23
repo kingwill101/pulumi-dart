@@ -202,7 +202,7 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("restore-all-ns"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
@@ -216,8 +216,8 @@ import 'restore_plan_state.dart';
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "all_ns", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("restore-all-ns"),
 /// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID(),
-/// 			Cluster:    primary.ID(),
+/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				AllNamespaces:                 pulumi.Bool(true),
 /// 				NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
@@ -233,6 +233,57 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "restore-all-ns-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "basic" {
+///   name     = "restore-all-ns"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     all_namespaces      = true
+///   }
+/// }
+/// resource "gcp_gkebackup_restoreplan" "all_ns" {
+///   name        = "restore-all-ns"
+///   location    = "us-central1"
+///   backup_plan = gcp_gkebackup_backupplan.basic.id
+///   cluster     = gcp_container_cluster.primary.id
+///   restore_config = {
+///     all_namespaces                   = true
+///     namespaced_resource_restore_mode = "FAIL_ON_CONFLICT"
+///     volume_data_restore_policy       = "RESTORE_VOLUME_DATA_FROM_BACKUP"
+///     cluster_resource_restore_scope = {
+///       all_group_kinds = true
+///     }
+///     cluster_resource_conflict_policy = "USE_EXISTING_VERSION"
+///   }
 /// }
 /// ```
 /// ```java
@@ -253,8 +304,8 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.RestorePlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -584,7 +635,7 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("rollback-ns"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
@@ -598,8 +649,8 @@ import 'restore_plan_state.dart';
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "rollback_ns", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("rollback-ns-rp"),
 /// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID(),
-/// 			Cluster:    primary.ID(),
+/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				SelectedNamespaces: &gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs{
 /// 					Namespaces: pulumi.StringArray{
@@ -630,6 +681,65 @@ import 'restore_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "rollback-ns-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "basic" {
+///   name     = "rollback-ns"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     all_namespaces      = true
+///   }
+/// }
+/// resource "gcp_gkebackup_restoreplan" "rollback_ns" {
+///   name        = "rollback-ns-rp"
+///   location    = "us-central1"
+///   backup_plan = gcp_gkebackup_backupplan.basic.id
+///   cluster     = gcp_container_cluster.primary.id
+///   restore_config = {
+///     selected_namespaces = {
+///       namespaces = ["my-ns"]
+///     }
+///     namespaced_resource_restore_mode = "DELETE_AND_RESTORE"
+///     volume_data_restore_policy       = "RESTORE_VOLUME_DATA_FROM_BACKUP"
+///     cluster_resource_restore_scope = {
+///       selected_group_kinds = [{
+///         "resourceGroup" = "apiextension.k8s.io"
+///         "resourceKind"  = "CustomResourceDefinition"
+///         }, {
+///         "resourceGroup" = "storage.k8s.io"
+///         "resourceKind"  = "StorageClass"
+///       }]
+///     }
+///     cluster_resource_conflict_policy = "USE_EXISTING_VERSION"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -649,8 +759,9 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigSelectedNamespacesArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -973,7 +1084,7 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("rollback-app"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
@@ -987,8 +1098,8 @@ import 'restore_plan_state.dart';
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "rollback_app", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("rollback-app-rp"),
 /// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID(),
-/// 			Cluster:    primary.ID(),
+/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				SelectedApplications: &gkebackup.RestorePlanRestoreConfigSelectedApplicationsArgs{
 /// 					NamespacedNames: gkebackup.RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray{
@@ -1012,6 +1123,61 @@ import 'restore_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "rollback-app-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "basic" {
+///   name     = "rollback-app"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     all_namespaces      = true
+///   }
+/// }
+/// resource "gcp_gkebackup_restoreplan" "rollback_app" {
+///   name        = "rollback-app-rp"
+///   location    = "us-central1"
+///   backup_plan = gcp_gkebackup_backupplan.basic.id
+///   cluster     = gcp_container_cluster.primary.id
+///   restore_config = {
+///     selected_applications = {
+///       namespaced_names = [{
+///         "name"      = "my-app"
+///         "namespace" = "my-ns"
+///       }]
+///     }
+///     namespaced_resource_restore_mode = "DELETE_AND_RESTORE"
+///     volume_data_restore_policy       = "REUSE_VOLUME_HANDLE_FROM_BACKUP"
+///     cluster_resource_restore_scope = {
+///       no_group_kinds = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1030,9 +1196,10 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.RestorePlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigSelectedApplicationsArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1325,7 +1492,7 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("all-groupkinds"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
@@ -1339,8 +1506,8 @@ import 'restore_plan_state.dart';
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "all_cluster_resources", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("all-groupkinds-rp"),
 /// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID(),
-/// 			Cluster:    primary.ID(),
+/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				NoNamespaces:                  pulumi.Bool(true),
 /// 				NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
@@ -1355,6 +1522,56 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "all-groupkinds-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "basic" {
+///   name     = "all-groupkinds"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     all_namespaces      = true
+///   }
+/// }
+/// resource "gcp_gkebackup_restoreplan" "all_cluster_resources" {
+///   name        = "all-groupkinds-rp"
+///   location    = "us-central1"
+///   backup_plan = gcp_gkebackup_backupplan.basic.id
+///   cluster     = gcp_container_cluster.primary.id
+///   restore_config = {
+///     no_namespaces                    = true
+///     namespaced_resource_restore_mode = "FAIL_ON_CONFLICT"
+///     cluster_resource_restore_scope = {
+///       all_group_kinds = true
+///     }
+///     cluster_resource_conflict_policy = "USE_EXISTING_VERSION"
+///   }
 /// }
 /// ```
 /// ```java
@@ -1375,8 +1592,8 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.RestorePlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1772,7 +1989,7 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("rename-ns"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
@@ -1786,8 +2003,8 @@ import 'restore_plan_state.dart';
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "rename_ns", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("rename-ns-rp"),
 /// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID(),
-/// 			Cluster:    primary.ID(),
+/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				SelectedNamespaces: &gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs{
 /// 					Namespaces: pulumi.StringArray{
@@ -1843,6 +2060,82 @@ import 'restore_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "rename-ns-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "basic" {
+///   name     = "rename-ns"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     all_namespaces      = true
+///   }
+/// }
+/// resource "gcp_gkebackup_restoreplan" "rename_ns" {
+///   name        = "rename-ns-rp"
+///   location    = "us-central1"
+///   backup_plan = gcp_gkebackup_backupplan.basic.id
+///   cluster     = gcp_container_cluster.primary.id
+///   restore_config = {
+///     selected_namespaces = {
+///       namespaces = ["ns1"]
+///     }
+///     namespaced_resource_restore_mode = "FAIL_ON_CONFLICT"
+///     volume_data_restore_policy       = "REUSE_VOLUME_HANDLE_FROM_BACKUP"
+///     cluster_resource_restore_scope = {
+///       no_group_kinds = true
+///     }
+///     transformation_rules = [{
+///       "description" = "rename namespace from ns1 to ns2"
+///       "resourceFilter" = {
+///         "groupKinds" = [{
+///           "resourceKind" = "Namespace"
+///         }]
+///         "jsonPath" = ".metadata[?(@.name == 'ns1')]"
+///       }
+///       "fieldActions" = [{
+///         "op"    = "REPLACE"
+///         "path"  = "/metadata/name"
+///         "value" = "ns2"
+///       }]
+///       }, {
+///       "description" = "move all resources from ns1 to ns2"
+///       "resourceFilter" = {
+///         "namespaces" = ["ns1"]
+///       }
+///       "fieldActions" = [{
+///         "op"    = "REPLACE"
+///         "path"  = "/metadata/namespace"
+///         "value" = "ns2"
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1862,8 +2155,12 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigSelectedNamespacesArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleFieldActionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2293,7 +2590,7 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("transform-rule"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
@@ -2311,8 +2608,8 @@ import 'restore_plan_state.dart';
 /// 				"app": pulumi.String("nginx"),
 /// 			},
 /// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID(),
-/// 			Cluster:    primary.ID(),
+/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				ExcludedNamespaces: &gkebackup.RestorePlanRestoreConfigExcludedNamespacesArgs{
 /// 					Namespaces: pulumi.StringArray{
@@ -2360,6 +2657,81 @@ import 'restore_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "transform-rule-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "basic" {
+///   name     = "transform-rule"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     all_namespaces      = true
+///   }
+/// }
+/// resource "gcp_gkebackup_restoreplan" "transform_rule" {
+///   name        = "transform-rule-rp"
+///   description = "copy nginx env variables"
+///   labels = {
+///     "app" = "nginx"
+///   }
+///   location    = "us-central1"
+///   backup_plan = gcp_gkebackup_backupplan.basic.id
+///   cluster     = gcp_container_cluster.primary.id
+///   restore_config = {
+///     excluded_namespaces = {
+///       namespaces = ["my-ns"]
+///     }
+///     namespaced_resource_restore_mode = "DELETE_AND_RESTORE"
+///     volume_data_restore_policy       = "RESTORE_VOLUME_DATA_FROM_BACKUP"
+///     cluster_resource_restore_scope = {
+///       excluded_group_kinds = [{
+///         "resourceGroup" = "apiextension.k8s.io"
+///         "resourceKind"  = "CustomResourceDefinition"
+///       }]
+///     }
+///     cluster_resource_conflict_policy = "USE_EXISTING_VERSION"
+///     transformation_rules = [{
+///       "description" = "Copy environment variables from the nginx container to the install init container."
+///       "resourceFilter" = {
+///         "groupKinds" = [{
+///           "resourceKind"  = "Pod"
+///           "resourceGroup" = ""
+///         }]
+///         "jsonPath" = ".metadata[?(@.name == 'nginx')]"
+///       }
+///       "fieldActions" = [{
+///         "op"       = "COPY"
+///         "path"     = "/spec/initContainers/0/env"
+///         "fromPath" = "/spec/containers/0/env"
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2379,8 +2751,13 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigExcludedNamespacesArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleFieldActionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2710,7 +3087,7 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("gitops-mode"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
@@ -2724,8 +3101,8 @@ import 'restore_plan_state.dart';
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "gitops_mode", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("gitops-mode"),
 /// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID(),
-/// 			Cluster:    primary.ID(),
+/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				AllNamespaces:                 pulumi.Bool(true),
 /// 				NamespacedResourceRestoreMode: pulumi.String("MERGE_SKIP_ON_CONFLICT"),
@@ -2741,6 +3118,57 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "gitops-mode-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "basic" {
+///   name     = "gitops-mode"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     all_namespaces      = true
+///   }
+/// }
+/// resource "gcp_gkebackup_restoreplan" "gitops_mode" {
+///   name        = "gitops-mode"
+///   location    = "us-central1"
+///   backup_plan = gcp_gkebackup_backupplan.basic.id
+///   cluster     = gcp_container_cluster.primary.id
+///   restore_config = {
+///     all_namespaces                   = true
+///     namespaced_resource_restore_mode = "MERGE_SKIP_ON_CONFLICT"
+///     volume_data_restore_policy       = "RESTORE_VOLUME_DATA_FROM_BACKUP"
+///     cluster_resource_restore_scope = {
+///       all_group_kinds = true
+///     }
+///     cluster_resource_conflict_policy = "USE_EXISTING_VERSION"
+///   }
 /// }
 /// ```
 /// ```java
@@ -2761,8 +3189,8 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.RestorePlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3132,7 +3560,7 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("restore-order"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
@@ -3146,8 +3574,8 @@ import 'restore_plan_state.dart';
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "restore_order", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("restore-order"),
 /// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID(),
-/// 			Cluster:    primary.ID(),
+/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				AllNamespaces:                 pulumi.Bool(true),
 /// 				NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
@@ -3189,6 +3617,78 @@ import 'restore_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "restore-order-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "basic" {
+///   name     = "restore-order"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     all_namespaces      = true
+///   }
+/// }
+/// resource "gcp_gkebackup_restoreplan" "restore_order" {
+///   name        = "restore-order"
+///   location    = "us-central1"
+///   backup_plan = gcp_gkebackup_backupplan.basic.id
+///   cluster     = gcp_container_cluster.primary.id
+///   restore_config = {
+///     all_namespaces                   = true
+///     namespaced_resource_restore_mode = "FAIL_ON_CONFLICT"
+///     volume_data_restore_policy       = "RESTORE_VOLUME_DATA_FROM_BACKUP"
+///     cluster_resource_restore_scope = {
+///       all_group_kinds = true
+///     }
+///     cluster_resource_conflict_policy = "USE_EXISTING_VERSION"
+///     restore_order = {
+///       group_kind_dependencies = [{
+///         "satisfying" = {
+///           "resourceGroup" = "stable.example.com"
+///           "resourceKind"  = "kindA"
+///         }
+///         "requiring" = {
+///           "resourceGroup" = "stable.example.com"
+///           "resourceKind"  = "kindB"
+///         }
+///         }, {
+///         "satisfying" = {
+///           "resourceGroup" = "stable.example.com"
+///           "resourceKind"  = "kindB"
+///         }
+///         "requiring" = {
+///           "resourceGroup" = "stable.example.com"
+///           "resourceKind"  = "kindC"
+///         }
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3208,8 +3708,11 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigRestoreOrderArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3552,7 +4055,7 @@ import 'restore_plan_state.dart';
 /// 		}
 /// 		basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("volume-res"),
-/// 			Cluster:  primary.ID(),
+/// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
 /// 			Location: pulumi.String("us-central1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
@@ -3566,8 +4069,8 @@ import 'restore_plan_state.dart';
 /// 		_, err = gkebackup.NewRestorePlan(ctx, "volume_res", &gkebackup.RestorePlanArgs{
 /// 			Name:       pulumi.String("volume-res"),
 /// 			Location:   pulumi.String("us-central1"),
-/// 			BackupPlan: basic.ID(),
-/// 			Cluster:    primary.ID(),
+/// 			BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
+/// 			Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
 /// 			RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 /// 				AllNamespaces:                 pulumi.Bool(true),
 /// 				NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
@@ -3591,6 +4094,61 @@ import 'restore_plan_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name               = "volume-res-cluster"
+///   location           = "us-central1"
+///   initial_node_count = 1
+///   workload_identity_config = {
+///     workload_pool = "my-project-name.svc.id.goog"
+///   }
+///   addons_config = {
+///     gke_backup_agent_config = {
+///       enabled = true
+///     }
+///   }
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkebackup_backupplan" "basic" {
+///   name     = "volume-res"
+///   cluster  = gcp_container_cluster.primary.id
+///   location = "us-central1"
+///   backup_config = {
+///     include_volume_data = true
+///     include_secrets     = true
+///     all_namespaces      = true
+///   }
+/// }
+/// resource "gcp_gkebackup_restoreplan" "volume_res" {
+///   name        = "volume-res"
+///   location    = "us-central1"
+///   backup_plan = gcp_gkebackup_backupplan.basic.id
+///   cluster     = gcp_container_cluster.primary.id
+///   restore_config = {
+///     all_namespaces                   = true
+///     namespaced_resource_restore_mode = "FAIL_ON_CONFLICT"
+///     volume_data_restore_policy       = "NO_VOLUME_DATA_RESTORATION"
+///     cluster_resource_restore_scope = {
+///       all_group_kinds = true
+///     }
+///     cluster_resource_conflict_policy = "USE_EXISTING_VERSION"
+///     volume_data_restore_policy_bindings = [{
+///       "policy"     = "RESTORE_VOLUME_DATA_FROM_BACKUP"
+///       "volumeType" = "GCE_PERSISTENT_DISK"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3609,8 +4167,9 @@ import 'restore_plan_state.dart';
 /// import com.pulumi.gcp.gkebackup.RestorePlanArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
 /// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3725,30 +4284,30 @@ import 'restore_plan_state.dart';
 /// RestorePlan can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkebackup/restorePlan:RestorePlan default {{location}}/{{name}}
 /// ```
 class RestorePlan extends pulumi.CustomResource {
   /// A reference to the BackupPlan from which Backups may be used
   /// as the source for Restores created via this RestorePlan.
   late final pulumi.Output<String> backupPlan;
-  /// The source cluster from which Restores will be created via this RestorePlan.
+  /// The name of the target cluster to which you want to Restore via this RestorePlan.
   late final pulumi.Output<String> cluster;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User specified descriptive string for this RestorePlan.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -3758,7 +4317,7 @@ class RestorePlan extends pulumi.CustomResource {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The region of the Restore Plan.
   late final pulumi.Output<String> location;
@@ -3796,6 +4355,7 @@ class RestorePlan extends pulumi.CustomResource {
         ) {
     backupPlan = registerOutput<String>('backupPlan');
     cluster = registerOutput<String>('cluster');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -3834,6 +4394,7 @@ class RestorePlan extends pulumi.CustomResource {
         ) {
     backupPlan = registerOutput<String>('backupPlan');
     cluster = registerOutput<String>('cluster');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

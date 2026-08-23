@@ -136,6 +136,31 @@ import 'policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_orgpolicy_policy" "primary" {
+///   name   ="projects/${gcp_organizations_project.basic.project_id}/policies/iam.disableServiceAccountKeyUpload"
+///   parent ="projects/${gcp_organizations_project.basic.project_id}"
+///   spec = {
+///     rules = [{
+///       "enforce" = "FALSE"
+///     }]
+///   }
+/// }
+/// resource "gcp_organizations_project" "basic" {
+///   project_id      = "id"
+///   name            = "id"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +172,9 @@ import 'policy_state.dart';
 /// import com.pulumi.gcp.orgpolicy.Policy;
 /// import com.pulumi.gcp.orgpolicy.PolicyArgs;
 /// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -317,6 +343,31 @@ import 'policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_orgpolicy_policy" "primary" {
+///   name   ="${gcp_organizations_folder.basic.name}/policies/gcp.resourceLocations"
+///   parent = gcp_organizations_folder.basic.name
+///   spec = {
+///     inherit_from_parent = true
+///     rules = [{
+///       "denyAll" = "TRUE"
+///     }]
+///   }
+/// }
+/// resource "gcp_organizations_folder" "basic" {
+///   parent              = "organizations/123456789"
+///   display_name        = "folder"
+///   deletion_protection = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -328,8 +379,9 @@ import 'policy_state.dart';
 /// import com.pulumi.gcp.orgpolicy.Policy;
 /// import com.pulumi.gcp.orgpolicy.PolicyArgs;
 /// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -451,6 +503,23 @@ import 'policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_orgpolicy_policy" "primary" {
+///   name   = "organizations/123456789/policies/gcp.detailedAuditLoggingMode"
+///   parent = "organizations/123456789"
+///   spec = {
+///     reset = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -460,8 +529,8 @@ import 'policy_state.dart';
 /// import com.pulumi.gcp.orgpolicy.Policy;
 /// import com.pulumi.gcp.orgpolicy.PolicyArgs;
 /// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -680,6 +749,42 @@ import 'policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_orgpolicy_policy" "primary" {
+///   name   ="projects/${gcp_organizations_project.basic.project_id}/policies/gcp.resourceLocations"
+///   parent ="projects/${gcp_organizations_project.basic.project_id}"
+///   spec = {
+///     rules = [{
+///       "condition" = {
+///         "description" = "A sample condition for the policy"
+///         "expression"  = "resource.matchTagId('tagKeys/123', 'tagValues/345')"
+///         "location"    = "sample-location.log"
+///         "title"       = "sample-condition"
+///       }
+///       "values" = {
+///         "allowedValues" = ["projects/allowed-project"]
+///         "deniedValues"  = ["projects/denied-project"]
+///       }
+///       }, {
+///       "allowAll" = "TRUE"
+///     }]
+///   }
+/// }
+/// resource "gcp_organizations_project" "basic" {
+///   project_id      = "id"
+///   name            = "id"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -691,8 +796,11 @@ import 'policy_state.dart';
 /// import com.pulumi.gcp.orgpolicy.Policy;
 /// import com.pulumi.gcp.orgpolicy.PolicyArgs;
 /// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
+/// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleConditionArgs;
+/// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleValuesArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -775,7 +883,7 @@ import 'policy_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const constraint = new gcp.orgpolicy.CustomConstraint("constraint", {
-///     name: "custom.disableGkeAutoUpgrade_15022",
+///     name: "custom.disableGkeAutoUpgrade_74065",
 ///     parent: "organizations/123456789",
 ///     displayName: "Disable GKE auto upgrade",
 ///     description: "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -806,7 +914,7 @@ import 'policy_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// constraint = gcp.orgpolicy.CustomConstraint("constraint",
-///     name="custom.disableGkeAutoUpgrade_15022",
+///     name="custom.disableGkeAutoUpgrade_74065",
 ///     parent="organizations/123456789",
 ///     display_name="Disable GKE auto upgrade",
 ///     description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -840,7 +948,7 @@ import 'policy_state.dart';
 /// {
 ///     var constraint = new Gcp.OrgPolicy.CustomConstraint("constraint", new()
 ///     {
-///         Name = "custom.disableGkeAutoUpgrade_15022",
+///         Name = "custom.disableGkeAutoUpgrade_74065",
 ///         Parent = "organizations/123456789",
 ///         DisplayName = "Disable GKE auto upgrade",
 ///         Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -899,7 +1007,7 @@ import 'policy_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		constraint, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
-/// 			Name:        pulumi.String("custom.disableGkeAutoUpgrade_15022"),
+/// 			Name:        pulumi.String("custom.disableGkeAutoUpgrade_74065"),
 /// 			Parent:      pulumi.String("organizations/123456789"),
 /// 			DisplayName: pulumi.String("Disable GKE auto upgrade"),
 /// 			Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),
@@ -944,6 +1052,42 @@ import 'policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_orgpolicy_customconstraint" "constraint" {
+///   name           = "custom.disableGkeAutoUpgrade_74065"
+///   parent         = "organizations/123456789"
+///   display_name   = "Disable GKE auto upgrade"
+///   description    = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."
+///   action_type    = "ALLOW"
+///   condition      = "resource.management.autoUpgrade == false"
+///   method_types   = ["CREATE"]
+///   resource_types = ["container.googleapis.com/NodePool"]
+/// }
+/// resource "gcp_orgpolicy_policy" "primary" {
+///   name   ="organizations/123456789/policies/${gcp_orgpolicy_customconstraint.constraint.name}"
+///   parent = "organizations/123456789"
+///   spec = {
+///     rules = [{
+///       "enforce" = "FALSE"
+///     }]
+///   }
+///   dry_run_spec = {
+///     inherit_from_parent = false
+///     reset               = false
+///     rules = [{
+///       "enforce" = "FALSE"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -955,9 +1099,11 @@ import 'policy_state.dart';
 /// import com.pulumi.gcp.orgpolicy.Policy;
 /// import com.pulumi.gcp.orgpolicy.PolicyArgs;
 /// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+/// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
 /// import com.pulumi.gcp.orgpolicy.inputs.PolicyDryRunSpecArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.orgpolicy.inputs.PolicyDryRunSpecRuleArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -970,7 +1116,7 @@ import 'policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var constraint = new CustomConstraint("constraint", CustomConstraintArgs.builder()
-///             .name("custom.disableGkeAutoUpgrade_15022")
+///             .name("custom.disableGkeAutoUpgrade_74065")
 ///             .parent("organizations/123456789")
 ///             .displayName("Disable GKE auto upgrade")
 ///             .description("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.")
@@ -1005,7 +1151,7 @@ import 'policy_state.dart';
 ///   constraint:
 ///     type: gcp:orgpolicy:CustomConstraint
 ///     properties:
-///       name: custom.disableGkeAutoUpgrade_15022
+///       name: custom.disableGkeAutoUpgrade_74065
 ///       parent: organizations/123456789
 ///       displayName: Disable GKE auto upgrade
 ///       description: Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.
@@ -1188,6 +1334,35 @@ import 'policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_orgpolicy_policy" "primary" {
+///   name   ="projects/${gcp_organizations_project.basic.name}/policies/compute.managed.restrictDiskCreation"
+///   parent ="projects/${gcp_organizations_project.basic.name}"
+///   spec = {
+///     rules = [{
+///       "enforce" = "TRUE"
+///       "parameters" = jsonencode({
+///         "isSizeLimitCheck" = true
+///         "allowedDiskTypes" = ["pd-ssd", "pd-standard"]
+///       })
+///     }]
+///   }
+/// }
+/// resource "gcp_organizations_project" "basic" {
+///   project_id      = "id"
+///   name            = "id"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1199,9 +1374,10 @@ import 'policy_state.dart';
 /// import com.pulumi.gcp.orgpolicy.Policy;
 /// import com.pulumi.gcp.orgpolicy.PolicyArgs;
 /// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+/// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1273,18 +1449,26 @@ import 'policy_state.dart';
 ///
 /// * `{{parent}}/policies/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/policies/{{name}}
 /// ```
 class Policy extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
   /// Structure is documented below.
   late final pulumi.Output<PolicyDryRunSpec?> dryRunSpec;
   /// Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
-  /// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+  /// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
   late final pulumi.Output<String> name;
   /// The parent of the resource.
   late final pulumi.Output<String> parent;
@@ -1306,6 +1490,7 @@ class Policy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dryRunSpec = registerOutput<PolicyDryRunSpec?>('dryRunSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDryRunSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
@@ -1336,6 +1521,7 @@ class Policy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dryRunSpec = registerOutput<PolicyDryRunSpec?>('dryRunSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDryRunSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');

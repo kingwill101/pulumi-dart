@@ -152,7 +152,7 @@ import 'multicast_group_range_networkservices_state.dart';
 /// 		multicastDomain, err := networkservices.NewMulticastDomain(ctx, "multicast_domain", &networkservices.MulticastDomainArgs{
 /// 			MulticastDomainId: pulumi.String("test-mgr-domain"),
 /// 			Location:          pulumi.String("global"),
-/// 			AdminNetwork:      network.ID(),
+/// 			AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 /// 				ConnectionType: pulumi.String("SAME_VPC"),
 /// 			},
@@ -175,8 +175,8 @@ import 'multicast_group_range_networkservices_state.dart';
 /// 		_, err = networkservices.NewMulticastGroupRange(ctx, "mgr_test", &networkservices.MulticastGroupRangeArgs{
 /// 			MulticastGroupRangeId: pulumi.String("test-mgr-group-range"),
 /// 			Location:              pulumi.String("global"),
-/// 			ReservedInternalRange: internalRange.ID(),
-/// 			MulticastDomain:       multicastDomain.ID(),
+/// 			ReservedInternalRange: internalRange.ID().ToIDOutput().ToStringOutput(),
+/// 			MulticastDomain:       multicastDomain.ID().ToIDOutput().ToStringOutput(),
 /// 			DistributionScope:     pulumi.String("INTRA_ZONE"),
 /// 		})
 /// 		if err != nil {
@@ -184,6 +184,43 @@ import 'multicast_group_range_networkservices_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "test-mgr-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_networkservices_multicastdomain" "multicast_domain" {
+///   depends_on          = [gcp_compute_network.network]
+///   multicast_domain_id = "test-mgr-domain"
+///   location            = "global"
+///   admin_network       = gcp_compute_network.network.id
+///   connection_config = {
+///     connection_type = "SAME_VPC"
+///   }
+/// }
+/// resource "gcp_networkconnectivity_internalrange" "internal_range" {
+///   name          = "test-mgr-internal-range"
+///   network       = gcp_compute_network.network.self_link
+///   usage         = "FOR_VPC"
+///   peering       = "FOR_SELF"
+///   ip_cidr_range = "224.2.0.2/32"
+/// }
+/// resource "gcp_networkservices_multicastgrouprange" "mgr_test" {
+///   multicast_group_range_id = "test-mgr-group-range"
+///   location                 = "global"
+///   reserved_internal_range  = gcp_networkconnectivity_internalrange.internal_range.id
+///   multicast_domain         = gcp_networkservices_multicastdomain.multicast_domain.id
+///   distribution_scope       = "INTRA_ZONE"
 /// }
 /// ```
 /// ```java
@@ -202,8 +239,8 @@ import 'multicast_group_range_networkservices_state.dart';
 /// import com.pulumi.gcp.networkservices.MulticastGroupRange;
 /// import com.pulumi.gcp.networkservices.MulticastGroupRangeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -295,22 +332,15 @@ import 'multicast_group_range_networkservices_state.dart';
 /// MulticastGroupRange can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/multicastGroupRanges/{{multicast_group_range_id}}`
-///
 /// * `{{project}}/{{location}}/{{multicast_group_range_id}}`
-///
 /// * `{{location}}/{{multicast_group_range_id}}`
+///
 ///
 /// When using the `pulumi import` command, MulticastGroupRange can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default projects/{{project}}/locations/{{location}}/multicastGroupRanges/{{multicast_group_range_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{project}}/{{location}}/{{multicast_group_range_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/multicastGroupRange:MulticastGroupRange default {{location}}/{{multicast_group_range_id}}
 /// ```
 class MulticastGroupRange extends pulumi.CustomResource {
@@ -318,13 +348,20 @@ class MulticastGroupRange extends pulumi.CustomResource {
   /// IP addresses within the range defined by this MulticastGroupRange. The
   /// project can be specified using its project ID or project number. If left
   /// empty, then all consumer projects are allowed (unless
-  /// require_explicit_accept is set to true) once they have VPC networks
+  /// requireExplicitAccept is set to true) once they have VPC networks
   /// associated to the multicast domain. The current max length of the accept
   /// list is 100.
   late final pulumi.Output<List<String>?> consumerAcceptLists;
   /// [Output only] The timestamp when the multicast group range was
   /// created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional text description of the multicast group range.
   late final pulumi.Output<String?> description;
   /// Multicast group range's distribution scope. Intra-zone or intra-region
@@ -340,7 +377,7 @@ class MulticastGroupRange extends pulumi.CustomResource {
   late final pulumi.Output<String> ipCidrRange;
   /// Labels as key-value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -367,7 +404,7 @@ class MulticastGroupRange extends pulumi.CustomResource {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
-  /// Whether an empty consumer_accept_list will deny all consumer projects.
+  /// Whether an empty consumerAcceptList will deny all consumer projects.
   late final pulumi.Output<bool?> requireExplicitAccept;
   /// The resource name of the internal range reserved for this
   /// multicast group range.
@@ -412,6 +449,7 @@ class MulticastGroupRange extends pulumi.CustomResource {
         ) {
     consumerAcceptLists = registerOutput<List<String>?>('consumerAcceptLists');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     distributionScope = registerOutput<String?>('distributionScope');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -456,6 +494,7 @@ class MulticastGroupRange extends pulumi.CustomResource {
         ) {
     consumerAcceptLists = registerOutput<List<String>?>('consumerAcceptLists');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     distributionScope = registerOutput<String?>('distributionScope');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

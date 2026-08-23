@@ -211,7 +211,7 @@ import 'region_disk_resource_policy_attachment_state.dart';
 /// 				pulumi.String("us-central1-a"),
 /// 				pulumi.String("us-central1-f"),
 /// 			},
-/// 			Snapshot: snapdisk.ID(),
+/// 			Snapshot: snapdisk.ID().ToIDOutput().ToStringOutput(),
 /// 			Size:     pulumi.Int(50),
 /// 			Type:     pulumi.String("pd-ssd"),
 /// 			Region:   pulumi.String("us-central1"),
@@ -253,6 +253,58 @@ import 'region_disk_resource_policy_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_regiondiskresourcepolicyattachment" "attachment" {
+///   name   = gcp_compute_resourcepolicy.policy.name
+///   disk   = gcp_compute_regiondisk.ssd.name
+///   region = "us-central1"
+/// }
+/// resource "gcp_compute_disk" "disk" {
+///   name  = "my-base-disk"
+///   image = "debian-cloud/debian-11"
+///   size  = 50
+///   type  = "pd-ssd"
+///   zone  = "us-central1-a"
+/// }
+/// resource "gcp_compute_snapshot" "snapdisk" {
+///   name        = "my-snapshot"
+///   source_disk = gcp_compute_disk.disk.name
+///   zone        = "us-central1-a"
+/// }
+/// resource "gcp_compute_regiondisk" "ssd" {
+///   name          = "my-disk"
+///   replica_zones = ["us-central1-a", "us-central1-f"]
+///   snapshot      = gcp_compute_snapshot.snapdisk.id
+///   size          = 50
+///   type          = "pd-ssd"
+///   region        = "us-central1"
+/// }
+/// resource "gcp_compute_resourcepolicy" "policy" {
+///   name   = "my-resource-policy"
+///   region = "us-central1"
+///   snapshot_schedule_policy = {
+///     schedule = {
+///       daily_schedule = {
+///         days_in_cycle = 1
+///         start_time    = "04:00"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -274,8 +326,8 @@ import 'region_disk_resource_policy_attachment_state.dart';
 /// import com.pulumi.gcp.compute.RegionDiskResourcePolicyAttachmentArgs;
 /// import com.pulumi.gcp.compute.ComputeFunctions;
 /// import com.pulumi.gcp.compute.inputs.GetImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -397,31 +449,27 @@ import 'region_disk_resource_policy_attachment_state.dart';
 /// RegionDiskResourcePolicyAttachment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{disk}}/{{name}}`
-///
 /// * `{{region}}/{{disk}}/{{name}}`
-///
 /// * `{{disk}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionDiskResourcePolicyAttachment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{project}}/{{region}}/{{disk}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{region}}/{{disk}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{disk}}/{{name}}
 /// ```
 class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name of the regional disk in which the resource policies are attached to.
   late final pulumi.Output<String> disk;
   /// The resource policy to be attached to the disk for scheduling snapshot
@@ -447,6 +495,7 @@ class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disk = registerOutput<String>('disk');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -476,6 +525,7 @@ class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disk = registerOutput<String>('disk');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

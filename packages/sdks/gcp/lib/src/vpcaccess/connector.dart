@@ -84,6 +84,23 @@ import 'connector_subnet.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vpcaccess_connector" "connector" {
+///   name          = "vpc-con"
+///   ip_cidr_range = "10.8.0.0/28"
+///   network       = "default"
+///   min_instances = 2
+///   max_instances = 3
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +109,8 @@ import 'connector_subnet.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vpcaccess.Connector;
 /// import com.pulumi.gcp.vpcaccess.ConnectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -236,6 +253,31 @@ import 'connector_subnet.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vpcaccess_connector" "connector" {
+///   name = "vpc-con"
+///   subnet = {
+///     name = gcp_compute_subnetwork.custom_test.name
+///   }
+///   machine_type  = "e2-standard-4"
+///   min_instances = 2
+///   max_instances = 3
+/// }
+/// resource "gcp_compute_subnetwork" "custom_test" {
+///   name          = "vpc-con"
+///   ip_cidr_range = "10.2.0.0/28"
+///   region        = "us-central1"
+///   network       = "default"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -247,8 +289,8 @@ import 'connector_subnet.dart';
 /// import com.pulumi.gcp.vpcaccess.Connector;
 /// import com.pulumi.gcp.vpcaccess.ConnectorArgs;
 /// import com.pulumi.gcp.vpcaccess.inputs.ConnectorSubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -307,54 +349,50 @@ import 'connector_subnet.dart';
 /// Connector can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/connectors/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Connector can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vpcaccess/connector:Connector default projects/{{project}}/locations/{{region}}/connectors/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vpcaccess/connector:Connector default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vpcaccess/connector:Connector default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vpcaccess/connector:Connector default {{name}}
 /// ```
 class Connector extends pulumi.CustomResource {
   /// List of projects using the connector.
   late final pulumi.Output<List<String>> connectedProjects;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
   late final pulumi.Output<String?> ipCidrRange;
   /// Machine type of VM Instance underlying connector. Default is e2-micro
   late final pulumi.Output<String?> machineType;
   /// Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
-  /// higher than the value specified by min_instances. Required alongside `min_instances` if not using `min_throughput`/`max_throughput`.
+  /// higher than the value specified by min_instances. Required alongside `minInstances` if not using `minThroughput`/`maxThroughput`.
   late final pulumi.Output<int> maxInstances;
-  /// Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
+  /// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300. Refers to the expected throughput
   /// when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
-  /// min_throughput. Only one of `max_throughput` and `max_instances` can be specified. The use of max_throughput is discouraged in favor of max_instances.
+  /// min_throughput. Only one of `maxThroughput` and `maxInstances` can be specified. The use of maxThroughput is discouraged in favor of max_instances.
   late final pulumi.Output<int> maxThroughput;
   /// Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
-  /// lower than the value specified by max_instances. Required alongside `max_instances` if not using `min_throughput`/`max_throughput`.
+  /// lower than the value specified by max_instances. Required alongside `maxInstances` if not using `minThroughput`/`maxThroughput`.
   late final pulumi.Output<int> minInstances;
   /// Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
   /// Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput.
-  /// Only one of `min_throughput` and `min_instances` can be specified. The use of min_throughput is discouraged in favor of min_instances.
+  /// Only one of `minThroughput` and `minInstances` can be specified. The use of minThroughput is discouraged in favor of min_instances.
   late final pulumi.Output<int> minThroughput;
   /// The name of the resource (Max 25 characters).
   late final pulumi.Output<String> name;
-  /// Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
+  /// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
   late final pulumi.Output<String> network;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
@@ -384,6 +422,7 @@ class Connector extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     connectedProjects = registerOutput<List<String>>('connectedProjects');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     ipCidrRange = registerOutput<String?>('ipCidrRange');
     machineType = registerOutput<String?>('machineType');
     maxInstances = registerOutput<int>('maxInstances');
@@ -423,6 +462,7 @@ class Connector extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     connectedProjects = registerOutput<List<String>>('connectedProjects');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     ipCidrRange = registerOutput<String?>('ipCidrRange');
     machineType = registerOutput<String?>('machineType');
     maxInstances = registerOutput<int>('maxInstances');

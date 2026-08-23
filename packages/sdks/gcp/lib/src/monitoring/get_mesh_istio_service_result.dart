@@ -5,6 +5,7 @@ import 'get_mesh_istio_service_telemetry.dart';
 
 /// Result data returned by getMeshIstioService.
 class GetMeshIstioServiceResult {
+  final String deletionPolicy;
   /// Name used for UI elements listing this (Monitoring) Service.
   final String displayName;
   /// The provider-assigned unique ID for this managed resource.
@@ -22,6 +23,7 @@ class GetMeshIstioServiceResult {
   final Map<String, String> userLabels;
 
   /// Creates a new [GetMeshIstioServiceResult].
+  /// [deletionPolicy] Required.
   /// [displayName] Name used for UI elements listing this (Monitoring) Service.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [meshUid] Required.
@@ -33,6 +35,7 @@ class GetMeshIstioServiceResult {
   /// [telemetries] Configuration for how to query telemetry on the Service. Structure is documented below.
   /// [userLabels] Required.
   const GetMeshIstioServiceResult({
+    required this.deletionPolicy,
     required this.displayName,
     required this.id,
     required this.meshUid,
@@ -47,6 +50,7 @@ class GetMeshIstioServiceResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': deletionPolicy,
       'displayName': displayName,
       'id': id,
       'meshUid': meshUid,
@@ -62,6 +66,7 @@ class GetMeshIstioServiceResult {
 
   factory GetMeshIstioServiceResult.fromMap(Map<String, dynamic> map) {
     return GetMeshIstioServiceResult(
+      deletionPolicy: map['deletionPolicy'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       meshUid: map['meshUid'] as String,
@@ -75,4 +80,3 @@ class GetMeshIstioServiceResult {
     );
   }
 }
-

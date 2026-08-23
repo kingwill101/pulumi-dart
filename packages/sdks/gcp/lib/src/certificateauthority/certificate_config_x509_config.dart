@@ -71,4 +71,3 @@ class CertificateConfigX509Config {
     );
   }
 }
-

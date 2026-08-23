@@ -32,7 +32,7 @@ import 'folder_settings_state.dart';
 /// const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
 ///     cryptoKeyId: "kms-key",
 ///     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-///     member: settings.apply(settings => `serviceAccount:${settings.kmsServiceAccountId}`),
+///     member: pulumi.interpolate`serviceAccount:${settings.kmsServiceAccountId}`,
 /// });
 /// const example = new gcp.logging.FolderSettings("example", {
 ///     disableDefaultSink: true,
@@ -156,6 +156,37 @@ import 'folder_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_logging_getfoldersettings" "settings" {
+///   folder = gcp_organizations_folder.my_folder.folder_id
+/// }
+///
+/// resource "gcp_logging_foldersettings" "example" {
+///   depends_on           = [gcp_kms_cryptokeyiammember.iam]
+///   disable_default_sink = true
+///   folder               = gcp_organizations_folder.my_folder.folder_id
+///   kms_key_name         = "kms-key"
+///   storage_location     = "us-central1"
+/// }
+/// resource "gcp_organizations_folder" "my_folder" {
+///   display_name        = "folder-name"
+///   parent              = "organizations/123456789"
+///   deletion_protection = false
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "iam" {
+///   crypto_key_id = "kms-key"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:${data.gcp_logging_getfoldersettings.settings.kms_service_account_id}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -171,8 +202,8 @@ import 'folder_settings_state.dart';
 /// import com.pulumi.gcp.logging.FolderSettings;
 /// import com.pulumi.gcp.logging.FolderSettingsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -251,16 +282,13 @@ import 'folder_settings_state.dart';
 /// FolderSettings can be imported using any of these accepted formats:
 ///
 /// * `folders/{{folder}}/settings`
-///
 /// * `{{folder}}`
+///
 ///
 /// When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:logging/folderSettings:FolderSettings default folders/{{folder}}/settings
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:logging/folderSettings:FolderSettings default {{folder}}
 /// ```
 class FolderSettings extends pulumi.CustomResource {

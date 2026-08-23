@@ -9,7 +9,7 @@ import 'workstation_cluster_private_cluster_config.dart';
 class WorkstationClusterState {
   /// Client-specified annotations. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Status conditions describing the current resource state.
   /// Structure is documented below.
@@ -22,11 +22,19 @@ class WorkstationClusterState {
   /// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
   /// Details can be found in the conditions field.
   final pulumi.Input<bool>? degraded;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human-readable name for this resource.
   final pulumi.Input<String>? displayName;
   /// Configuration options for a custom domain.
   /// Structure is documented below.
   final pulumi.Input<WorkstationClusterDomainConfig>? domainConfig;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -35,7 +43,7 @@ class WorkstationClusterState {
   final pulumi.Input<String>? etag;
   /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location where the workstation cluster should reside.
   final pulumi.Input<String>? location;
@@ -63,8 +71,14 @@ class WorkstationClusterState {
   final pulumi.Input<Map<String, String>>? tags;
   /// The system-generated UID of the resource.
   final pulumi.Input<String>? uid;
+  /// Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+  /// Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+  final pulumi.Input<String>? workstationAuthorizationUrl;
   /// ID to use for the workstation cluster.
   final pulumi.Input<String>? workstationClusterId;
+  /// Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+  /// Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
+  final pulumi.Input<String>? workstationLaunchUrl;
 
   /// Creates a new [WorkstationClusterState].
   /// [annotations] Client-specified annotations. This is distinct from labels.
@@ -72,9 +86,10 @@ class WorkstationClusterState {
   /// [controlPlaneIp] The private IP address of the control plane for this workstation cluster.
   /// [createTime] Time when this resource was created.
   /// [degraded] Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Human-readable name for this resource.
   /// [domainConfig] Configuration options for a custom domain.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] Checksum computed by the server.
   /// [labels] Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
@@ -87,13 +102,16 @@ class WorkstationClusterState {
   /// [subnetwork] Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
   /// [tags] Resource manager tags bound to this resource.
   /// [uid] The system-generated UID of the resource.
+  /// [workstationAuthorizationUrl] Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
   /// [workstationClusterId] ID to use for the workstation cluster.
+  /// [workstationLaunchUrl] Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
   const WorkstationClusterState({
     this.annotations,
     this.conditions,
     this.controlPlaneIp,
     this.createTime,
     this.degraded,
+    this.deletionPolicy,
     this.displayName,
     this.domainConfig,
     this.effectiveAnnotations,
@@ -109,7 +127,9 @@ class WorkstationClusterState {
     this.subnetwork,
     this.tags,
     this.uid,
+    this.workstationAuthorizationUrl,
     this.workstationClusterId,
+    this.workstationLaunchUrl,
   });
 
   Map<String, dynamic> toMap() {
@@ -119,6 +139,7 @@ class WorkstationClusterState {
       'controlPlaneIp': ?controlPlaneIp,
       'createTime': ?createTime,
       'degraded': ?degraded,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'domainConfig': ?pulumi.Input.mapOptionalInputValue<WorkstationClusterDomainConfig, Map<String, dynamic>>(domainConfig, (value) => value.toMap()),
       'effectiveAnnotations': ?effectiveAnnotations,
@@ -134,7 +155,9 @@ class WorkstationClusterState {
       'subnetwork': ?subnetwork,
       'tags': ?tags,
       'uid': ?uid,
+      'workstationAuthorizationUrl': ?workstationAuthorizationUrl,
       'workstationClusterId': ?workstationClusterId,
+      'workstationLaunchUrl': ?workstationLaunchUrl,
     };
   }
 
@@ -145,6 +168,7 @@ class WorkstationClusterState {
       controlPlaneIp: (() { final guardedValue = map['controlPlaneIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       degraded: (() { final guardedValue = map['degraded']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domainConfig: (() { final guardedValue = map['domainConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkstationClusterDomainConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -160,8 +184,9 @@ class WorkstationClusterState {
       subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workstationAuthorizationUrl: (() { final guardedValue = map['workstationAuthorizationUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workstationClusterId: (() { final guardedValue = map['workstationClusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workstationLaunchUrl: (() { final guardedValue = map['workstationLaunchUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

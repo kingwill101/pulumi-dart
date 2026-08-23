@@ -14,7 +14,7 @@ class BackupVaultState {
   /// Optional. User annotations. See https://google.aip.dev/128#annotations
   /// Stores small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Output only. The number of backups in this backup vault.
   final pulumi.Input<String>? backupCount;
@@ -29,8 +29,16 @@ class BackupVaultState {
   final pulumi.Input<String>? createTime;
   /// Output only. Set to true when there are no backups nested under this resource.
   final pulumi.Input<bool>? deletable;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. The description of the BackupVault instance (2048 characters or less).
   final pulumi.Input<String>? description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -46,13 +54,15 @@ class BackupVaultState {
   /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
   /// * deletion of a backup vault instance that is being referenced by an active backup plan.
   ///
-  /// &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+  /// &gt; **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
   final pulumi.Input<bool>? forceDelete;
   /// If set, allow update to extend the minimum enforced retention for backup vault. This overrides
   /// the restriction against conflicting retention periods. This conflict may occur when the
   /// expiration schedule defined by the associated backup plan is shorter than the minimum
   /// retention set by the backup vault.
   final pulumi.Input<bool>? forceUpdate;
+  /// If set to true, we will force update access restriction even if some non compliant data sources are present.
+  final pulumi.Input<bool>? forceUpdateAccessRestriction;
   /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
   /// * deletion of a backup vault instance that is being referenced by an active backup plan.
   final pulumi.Input<bool>? ignoreBackupPlanReferences;
@@ -61,7 +71,7 @@ class BackupVaultState {
   final pulumi.Input<bool>? ignoreInactiveDatasources;
   /// Optional. Resource labels to represent user provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The GCP location for the backup vault.
   final pulumi.Input<String>? location;
@@ -82,6 +92,7 @@ class BackupVaultState {
   /// ACTIVE
   /// DELETING
   /// ERROR
+  /// UPDATING
   final pulumi.Input<String>? state;
   /// Output only. Total size of the storage used by all backup resources.
   final pulumi.Input<String>? totalStoredBytes;
@@ -100,14 +111,16 @@ class BackupVaultState {
   /// [backupVaultId] Required. ID of the requesting object.
   /// [createTime] Output only. The time when the instance was created.
   /// [deletable] Output only. Set to true when there are no backups nested under this resource.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Optional. The description of the BackupVault instance (2048 characters or less).
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [effectiveTime] Optional. Time after which the BackupVault resource is locked.
   /// [encryptionConfig] Encryption configuration for the backup vault.
   /// [etag] Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
   /// [forceDelete] (Optional, Deprecated)
   /// [forceUpdate] If set, allow update to extend the minimum enforced retention for backup vault. This overrides
+  /// [forceUpdateAccessRestriction] If set to true, we will force update access restriction even if some non compliant data sources are present.
   /// [ignoreBackupPlanReferences] If set, the following restrictions against deletion of the backup vault instance can be overridden:
   /// [ignoreInactiveDatasources] If set, the following restrictions against deletion of the backup vault instance can be overridden:
   /// [labels] Optional. Resource labels to represent user provided metadata.
@@ -130,6 +143,7 @@ class BackupVaultState {
     this.backupVaultId,
     this.createTime,
     this.deletable,
+    this.deletionPolicy,
     this.description,
     this.effectiveAnnotations,
     this.effectiveLabels,
@@ -138,6 +152,7 @@ class BackupVaultState {
     this.etag,
     this.forceDelete,
     this.forceUpdate,
+    this.forceUpdateAccessRestriction,
     this.ignoreBackupPlanReferences,
     this.ignoreInactiveDatasources,
     this.labels,
@@ -163,6 +178,7 @@ class BackupVaultState {
       'backupVaultId': ?backupVaultId,
       'createTime': ?createTime,
       'deletable': ?deletable,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveAnnotations': ?effectiveAnnotations,
       'effectiveLabels': ?effectiveLabels,
@@ -171,6 +187,7 @@ class BackupVaultState {
       'etag': ?etag,
       'forceDelete': ?forceDelete,
       'forceUpdate': ?forceUpdate,
+      'forceUpdateAccessRestriction': ?forceUpdateAccessRestriction,
       'ignoreBackupPlanReferences': ?ignoreBackupPlanReferences,
       'ignoreInactiveDatasources': ?ignoreInactiveDatasources,
       'labels': ?labels,
@@ -197,6 +214,7 @@ class BackupVaultState {
       backupVaultId: (() { final guardedValue = map['backupVaultId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletable: (() { final guardedValue = map['deletable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -205,6 +223,7 @@ class BackupVaultState {
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       forceDelete: (() { final guardedValue = map['forceDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       forceUpdate: (() { final guardedValue = map['forceUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      forceUpdateAccessRestriction: (() { final guardedValue = map['forceUpdateAccessRestriction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ignoreBackupPlanReferences: (() { final guardedValue = map['ignoreBackupPlanReferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ignoreInactiveDatasources: (() { final guardedValue = map['ignoreInactiveDatasources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -220,4 +239,3 @@ class BackupVaultState {
     );
   }
 }
-

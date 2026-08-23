@@ -51,6 +51,18 @@ import 'get_v2_runtime_versions_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_tpu_getv2acceleratortypes" "available" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -59,8 +71,8 @@ import 'get_v2_runtime_versions_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.tpu.TpuFunctions;
 /// import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,6 +181,27 @@ import 'get_v2_runtime_versions_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_tpu_getv2acceleratortypes" "available" {
+/// }
+/// data "gcp_tpu_getv2runtimeversions" "availableGetV2RuntimeVersions" {
+/// }
+///
+/// resource "gcp_tpu_v2vm" "tpu" {
+///   name             = "test-tpu"
+///   zone             = "us-central1-b"
+///   runtime_version  = data.gcp_tpu_getv2runtimeversions.availableGetV2RuntimeVersions.versions[0]
+///   accelerator_type = data.gcp_tpu_getv2acceleratortypes.available.types[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -180,8 +213,8 @@ import 'get_v2_runtime_versions_result.dart';
 /// import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
 /// import com.pulumi.gcp.tpu.V2Vm;
 /// import com.pulumi.gcp.tpu.V2VmArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -290,6 +323,18 @@ Future<GetV2AcceleratorTypesResult> getV2AcceleratorTypes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_tpu_getv2runtimeversions" "available" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -298,8 +343,8 @@ Future<GetV2AcceleratorTypesResult> getV2AcceleratorTypes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.tpu.TpuFunctions;
 /// import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -396,6 +441,24 @@ Future<GetV2AcceleratorTypesResult> getV2AcceleratorTypes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_tpu_getv2runtimeversions" "available" {
+/// }
+///
+/// resource "gcp_tpu_v2vm" "tpu" {
+///   name            = "test-tpu"
+///   zone            = "us-central1-b"
+///   runtime_version = data.gcp_tpu_getv2runtimeversions.available.versions[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -406,8 +469,8 @@ Future<GetV2AcceleratorTypesResult> getV2AcceleratorTypes(
 /// import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
 /// import com.pulumi.gcp.tpu.V2Vm;
 /// import com.pulumi.gcp.tpu.V2VmArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

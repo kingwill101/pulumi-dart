@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_iam_oauth_client_credential_oauth_client_credential_args_doc}
 class OauthClientCredentialArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Whether the OauthClientCredential is disabled. You cannot use a
   /// disabled OauthClientCredential.
   final pulumi.Input<bool>? disabled;
@@ -27,6 +34,7 @@ class OauthClientCredentialArgs {
   final pulumi.Input<String>? project;
 
   /// Creates a new [OauthClientCredentialArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disabled] Whether the OauthClientCredential is disabled. You cannot use a
   /// [displayName] A user-specified display name of the OauthClientCredential.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -34,6 +42,7 @@ class OauthClientCredentialArgs {
   /// [oauthclient] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
   const OauthClientCredentialArgs({
+    this.deletionPolicy,
     this.disabled,
     this.displayName,
     required this.location,
@@ -44,6 +53,7 @@ class OauthClientCredentialArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'disabled': ?disabled,
       'displayName': ?displayName,
       'location': location,
@@ -55,6 +65,7 @@ class OauthClientCredentialArgs {
 
   factory OauthClientCredentialArgs.fromMap(Map<String, dynamic> map) {
     return OauthClientCredentialArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -64,4 +75,3 @@ class OauthClientCredentialArgs {
     );
   }
 }
-

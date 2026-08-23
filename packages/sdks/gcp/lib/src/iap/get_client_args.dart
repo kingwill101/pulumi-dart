@@ -7,14 +7,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_iap_get_client_get_client_args_doc}
 class GetClientArgs {
-  /// The name of the brand.
+  /// Identifier of the brand to which this client
+  /// is attached to. The format is
+  /// `projects/{project_number}/brands/{brand_id}`.
   final pulumi.Input<String> brand;
-  /// The client_id of the brand.
+  /// Output only. Unique identifier of the OAuth client.
   final pulumi.Input<String> clientId;
 
   /// Creates a new [GetClientArgs].
-  /// [brand] The name of the brand.
-  /// [clientId] The client_id of the brand.
+  /// [brand] Identifier of the brand to which this client
+  /// [clientId] Output only. Unique identifier of the OAuth client.
   const GetClientArgs({
     required this.brand,
     required this.clientId,
@@ -34,4 +36,3 @@ class GetClientArgs {
     );
   }
 }
-

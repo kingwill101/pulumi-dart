@@ -10,6 +10,13 @@ class VpnConnectionState {
   final pulumi.Input<String>? cluster;
   /// The time when the VPN connection was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A nested object resource.
   /// Structure is documented below.
   final pulumi.Input<List<VpnConnectionDetail>>? details;
@@ -19,7 +26,7 @@ class VpnConnectionState {
   final pulumi.Input<bool>? enableHighAvailability;
   /// Labels associated with this resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Google Cloud Platform location.
   final pulumi.Input<String>? location;
@@ -47,6 +54,7 @@ class VpnConnectionState {
   /// Creates a new [VpnConnectionState].
   /// [cluster] The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
   /// [createTime] The time when the VPN connection was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [details] A nested object resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [enableHighAvailability] Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
@@ -63,6 +71,7 @@ class VpnConnectionState {
   const VpnConnectionState({
     this.cluster,
     this.createTime,
+    this.deletionPolicy,
     this.details,
     this.effectiveLabels,
     this.enableHighAvailability,
@@ -82,6 +91,7 @@ class VpnConnectionState {
     return <String, dynamic>{
       'cluster': ?cluster,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'details': ?pulumi.Input.mapOptionalInputValue<List<VpnConnectionDetail>, List<Map<String, dynamic>>>(details, (value) => pulumi.Input.encodeList<VpnConnectionDetail, Map<String, dynamic>>(value, (value) => value.toMap())),
       'effectiveLabels': ?effectiveLabels,
       'enableHighAvailability': ?enableHighAvailability,
@@ -102,6 +112,7 @@ class VpnConnectionState {
     return VpnConnectionState(
       cluster: (() { final guardedValue = map['cluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VpnConnectionDetail>(guardedValue, (value) => VpnConnectionDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       enableHighAvailability: (() { final guardedValue = map['enableHighAvailability']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -118,4 +129,3 @@ class VpnConnectionState {
     );
   }
 }
-

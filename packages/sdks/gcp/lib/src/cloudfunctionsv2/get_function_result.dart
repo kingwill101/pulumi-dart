@@ -8,6 +8,7 @@ import 'get_function_service_config.dart';
 /// Result data returned by getFunction.
 class GetFunctionResult {
   final List<GetFunctionBuildConfig> buildConfigs;
+  final String deletionPolicy;
   final String description;
   final Map<String, String> effectiveLabels;
   final String environment;
@@ -27,6 +28,7 @@ class GetFunctionResult {
 
   /// Creates a new [GetFunctionResult].
   /// [buildConfigs] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [effectiveLabels] Required.
   /// [environment] Required.
@@ -44,6 +46,7 @@ class GetFunctionResult {
   /// [url] Required.
   const GetFunctionResult({
     required this.buildConfigs,
+    required this.deletionPolicy,
     required this.description,
     required this.effectiveLabels,
     required this.environment,
@@ -64,6 +67,7 @@ class GetFunctionResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'buildConfigs': pulumi.Input.encodeList<GetFunctionBuildConfig, Map<String, dynamic>>(buildConfigs, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'effectiveLabels': effectiveLabels,
       'environment': environment,
@@ -85,6 +89,7 @@ class GetFunctionResult {
   factory GetFunctionResult.fromMap(Map<String, dynamic> map) {
     return GetFunctionResult(
       buildConfigs: pulumi.Input.decodeList<GetFunctionBuildConfig>(map['buildConfigs']!, (value) => GetFunctionBuildConfig.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       environment: map['environment'] as String,
@@ -103,4 +108,3 @@ class GetFunctionResult {
     );
   }
 }
-

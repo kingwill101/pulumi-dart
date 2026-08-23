@@ -139,6 +139,31 @@ import 'security_gateway_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygateway" "default" {
+///   security_gateway_id = "default-sg"
+///   display_name        = "My Security Gateway resource"
+///   hubs {
+///     region = "us-central1"
+///   }
+/// }
+/// resource "gcp_beyondcorp_securitygatewayapplication" "example" {
+///   security_gateway_id = gcp_beyondcorp_securitygateway.default.security_gateway_id
+///   application_id      = "google-sga"
+///   endpoint_matchers {
+///     hostname = "google.com"
+///     ports    = [80, 443]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +176,8 @@ import 'security_gateway_application_state.dart';
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayApplication;
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayApplicationArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationEndpointMatcherArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -337,8 +362,6 @@ import 'security_gateway_application_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -394,6 +417,42 @@ import 'security_gateway_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_beyondcorp_securitygateway" "default" {
+///   security_gateway_id = "default-sg"
+///   display_name        = "My Security Gateway resource"
+///   hubs {
+///     region = "us-central1"
+///   }
+/// }
+/// resource "gcp_beyondcorp_securitygatewayapplication" "example" {
+///   security_gateway_id = gcp_beyondcorp_securitygateway.default.security_gateway_id
+///   application_id      = "my-vm-service2"
+///   endpoint_matchers {
+///     hostname = "my-vm-service.com"
+///     ports    = [80, 443]
+///   }
+///   upstreams {
+///     egress_policy = {
+///       regions = ["us-central1"]
+///     }
+///     network = {
+///       name ="projects/${data.gcp_organizations_getproject.project.project_id}/global/networks/default"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -411,8 +470,8 @@ import 'security_gateway_application_state.dart';
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamEgressPolicyArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -634,6 +693,36 @@ import 'security_gateway_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygateway" "default" {
+///   security_gateway_id = "default-sg-spa-api"
+///   display_name        = "My SPA Security Gateway resource"
+/// }
+/// resource "gcp_beyondcorp_securitygatewayapplication" "example-spa" {
+///   security_gateway_id = gcp_beyondcorp_securitygateway.default.security_gateway_id
+///   application_id      = "app-discovery"
+///   upstreams {
+///     external = {
+///       endpoints = [{
+///         "hostname" = "my.discovery.service.com"
+///         "port"     = 443
+///       }]
+///     }
+///     proxy_protocol = {
+///       allowed_client_headers = ["header"]
+///     }
+///   }
+///   schema = "API_GATEWAY"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -646,9 +735,10 @@ import 'security_gateway_application_state.dart';
 /// import com.pulumi.gcp.beyondcorp.SecurityGatewayApplicationArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamExternalArgs;
+/// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamExternalEndpointArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -965,6 +1055,58 @@ import 'security_gateway_application_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_securitygateway" "default" {
+///   security_gateway_id = "default-sg-spa-proxy"
+///   display_name        = "My SPA Security Gateway resource"
+/// }
+/// resource "gcp_beyondcorp_securitygatewayapplication" "example-spa" {
+///   security_gateway_id = gcp_beyondcorp_securitygateway.default.security_gateway_id
+///   application_id      = "app-proxy"
+///   endpoint_matchers {
+///     hostname = "a.site.com"
+///     ports    = [443]
+///   }
+///   upstreams {
+///     external = {
+///       endpoints = [{
+///         "hostname" = "my.proxy.service.com"
+///         "port"     = 443
+///       }]
+///     }
+///     proxy_protocol = {
+///       allowed_client_headers = ["header1", "header2"]
+///       contextual_headers = {
+///         user_info = {
+///           output_type = "PROTOBUF"
+///         }
+///         group_info = {
+///           output_type = "JSON"
+///         }
+///         device_info = {
+///           output_type = "NONE"
+///         }
+///         output_type = "JSON"
+///       }
+///       metadata_headers = {
+///         "metadata-header1" = "value1"
+///         "metadata-header2" = "value2"
+///       }
+///       gateway_identity = "RESOURCE_NAME"
+///       client_ip        = true
+///     }
+///   }
+///   schema = "PROXY_GATEWAY"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -978,13 +1120,14 @@ import 'security_gateway_application_state.dart';
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationEndpointMatcherArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamExternalArgs;
+/// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamExternalEndpointArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs;
 /// import com.pulumi.gcp.beyondcorp.inputs.SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1092,22 +1235,15 @@ import 'security_gateway_application_state.dart';
 /// SecurityGatewayApplication can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/securityGateways/{{security_gateway_id}}/applications/{{application_id}}`
-///
 /// * `{{project}}/{{security_gateway_id}}/{{application_id}}`
-///
 /// * `{{security_gateway_id}}/{{application_id}}`
+///
 ///
 /// When using the `pulumi import` command, SecurityGatewayApplication can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default projects/{{project}}/locations/global/securityGateways/{{security_gateway_id}}/applications/{{application_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default {{project}}/{{security_gateway_id}}/{{application_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication default {{security_gateway_id}}/{{application_id}}
 /// ```
 class SecurityGatewayApplication extends pulumi.CustomResource {
@@ -1118,6 +1254,13 @@ class SecurityGatewayApplication extends pulumi.CustomResource {
   late final pulumi.Output<String> applicationId;
   /// Output only. Timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. An arbitrary user-provided name for the Application resource.
   /// Cannot exceed 64 characters.
   late final pulumi.Output<String?> displayName;
@@ -1166,6 +1309,7 @@ class SecurityGatewayApplication extends pulumi.CustomResource {
         ) {
     applicationId = registerOutput<String>('applicationId');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     endpointMatchers = registerOutput<List<Map<String, dynamic>>?>('endpointMatchers');
     this.name = registerOutput<String>('name');
@@ -1201,6 +1345,7 @@ class SecurityGatewayApplication extends pulumi.CustomResource {
         ) {
     applicationId = registerOutput<String>('applicationId');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     endpointMatchers = registerOutput<List<Map<String, dynamic>>?>('endpointMatchers');
     this.name = registerOutput<String>('name');

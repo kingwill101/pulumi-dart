@@ -9,6 +9,13 @@ class ExampleState {
   final pulumi.Input<String>? app;
   /// Timestamp when the example was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human-readable description of the example.
   final pulumi.Input<String>? description;
   /// Display name of the example.
@@ -21,6 +28,8 @@ class ExampleState {
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
   final pulumi.Input<String>? etag;
+  /// The ID to use for the example, which will become the final component of
+  /// the example's resource name. In Terraform, this field is required.
   final pulumi.Input<String>? exampleId;
   /// The example may become invalid if referencing resources are deleted.
   /// Invalid examples will not be used as few-shot examples.
@@ -43,11 +52,12 @@ class ExampleState {
   /// Creates a new [ExampleState].
   /// [app] Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [createTime] Timestamp when the example was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Human-readable description of the example.
   /// [displayName] Display name of the example.
   /// [entryAgent] The agent that initially handles the conversation. If not specified, the
   /// [etag] Etag used to ensure the object hasn't changed during a read-modify-write
-  /// [exampleId] Optional.
+  /// [exampleId] The ID to use for the example, which will become the final component of
   /// [invalid] The example may become invalid if referencing resources are deleted.
   /// [location] Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [messages] The collection of messages that make up the conversation.
@@ -57,6 +67,7 @@ class ExampleState {
   const ExampleState({
     this.app,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.entryAgent,
@@ -74,6 +85,7 @@ class ExampleState {
     return <String, dynamic>{
       'app': ?app,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'entryAgent': ?entryAgent,
@@ -92,6 +104,7 @@ class ExampleState {
     return ExampleState(
       app: (() { final guardedValue = map['app']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entryAgent: (() { final guardedValue = map['entryAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -106,4 +119,3 @@ class ExampleState {
     );
   }
 }
-

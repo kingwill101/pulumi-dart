@@ -71,6 +71,20 @@ import 'usage_export_bucket_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_usageexportbucket" "usage_export" {
+///   project     = "development-project"
+///   bucket_name = "usage-tracking-bucket"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +93,8 @@ import 'usage_export_bucket_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.projects.UsageExportBucket;
 /// import com.pulumi.gcp.projects.UsageExportBucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -117,6 +131,7 @@ import 'usage_export_bucket_state.dart';
 ///
 /// * `{{project_id}}`
 ///
+///
 /// When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -127,6 +142,13 @@ class UsageExportBucket extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> bucketName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A prefix for the reports, for instance, the project name.
   late final pulumi.Output<String?> prefix;
   /// The project to set the export bucket on. If it is not provided, the provider project is used.
@@ -147,6 +169,7 @@ class UsageExportBucket extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucketName = registerOutput<String>('bucketName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     prefix = registerOutput<String?>('prefix');
     project = registerOutput<String>('project');
   }
@@ -175,6 +198,7 @@ class UsageExportBucket extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucketName = registerOutput<String>('bucketName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     prefix = registerOutput<String?>('prefix');
     project = registerOutput<String>('project');
   }

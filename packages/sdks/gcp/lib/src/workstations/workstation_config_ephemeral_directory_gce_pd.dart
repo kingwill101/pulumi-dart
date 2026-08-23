@@ -13,8 +13,8 @@ class WorkstationConfigEphemeralDirectoryGcePd {
   final pulumi.Input<String>? sourceImage;
   /// Name of the snapshot to use as the source for the disk.
   /// Must be empty if `sourceImage` is set.
-  /// Must be empty if `read_only` is false.
-  /// Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
+  /// Must be empty if `readOnly` is false.
+  /// Updating `sourceSnapshot` will update content in the ephemeral directory after the workstation is restarted.
   final pulumi.Input<String>? sourceSnapshot;
 
   /// Creates a new [WorkstationConfigEphemeralDirectoryGcePd].
@@ -47,4 +47,3 @@ class WorkstationConfigEphemeralDirectoryGcePd {
     );
   }
 }
-

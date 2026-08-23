@@ -3,12 +3,15 @@ import 'datastore_args.dart';
 import 'datastore_nfs_datastore.dart';
 import 'datastore_state.dart';
 
-/// A datastore resource that can be mounted on a privatecloud cluster
+/// A datastore resource that can be mounted on a VMware Engine cluster.
 ///
+/// &gt; **Note:** To mount a datastore on a VMware Engine cluster, configure the
+/// `datastoreMountConfig` block within the `gcp.vmwareengine.Cluster` resource.
+/// A datastore cannot be mounted directly using the `gcp.vmwareengine.Datastore` resource.
 ///
-///
-/// ## Example Usage
-///
+/// If you are mounting a datastore that was already created outside of Terraform (or in a
+/// separate Terraform configuration), reference it directly by its full resource URI in the
+/// `datastore_mount_config.datastore` field inside the cluster resource:
 /// ### Vmware Engine Datastore Thirdparty
 ///
 ///
@@ -21,7 +24,18 @@ import 'datastore_state.dart';
 /// const _default = gcp.compute.getNetwork({
 ///     name: "default",
 /// });
-/// // create a thirdparty datastore
+/// // Create a thirdparty datastore.
+/// // Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+/// // block within the `google_vmwareengine_cluster` resource. For example:
+/// //
+/// //  datastore_mount_config {
+/// //    datastore        = google_vmwareengine_datastore.example_thirdparty.id
+/// //    datastore_network {
+/// //      subnet           = google_vmwareengine_subnet.example_subnet.id
+/// //      connection_count = 4
+/// //      mtu              = 1500
+/// //    }
+/// //  }
 /// const exampleThirdparty = new gcp.vmwareengine.Datastore("example_thirdparty", {
 ///     name: "thirdparty-datastore",
 ///     location: "us-west1-a",
@@ -41,7 +55,18 @@ import 'datastore_state.dart';
 ///
 /// # use existing network with connectivity to the thirdparty datastore
 /// default = gcp.compute.get_network(name="default")
-/// # create a thirdparty datastore
+/// # Create a thirdparty datastore.
+/// # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+/// # block within the `google_vmwareengine_cluster` resource. For example:
+/// #
+/// #  datastore_mount_config {
+/// #    datastore        = google_vmwareengine_datastore.example_thirdparty.id
+/// #    datastore_network {
+/// #      subnet           = google_vmwareengine_subnet.example_subnet.id
+/// #      connection_count = 4
+/// #      mtu              = 1500
+/// #    }
+/// #  }
 /// example_thirdparty = gcp.vmwareengine.Datastore("example_thirdparty",
 ///     name="thirdparty-datastore",
 ///     location="us-west1-a",
@@ -68,7 +93,18 @@ import 'datastore_state.dart';
 ///         Name = "default",
 ///     });
 ///
-///     // create a thirdparty datastore
+///     // Create a thirdparty datastore.
+///     // Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+///     // block within the `google_vmwareengine_cluster` resource. For example:
+///     //
+///     //  datastore_mount_config {
+///     //    datastore        = google_vmwareengine_datastore.example_thirdparty.id
+///     //    datastore_network {
+///     //      subnet           = google_vmwareengine_subnet.example_subnet.id
+///     //      connection_count = 4
+///     //      mtu              = 1500
+///     //    }
+///     //  }
 ///     var exampleThirdparty = new Gcp.VMwareEngine.Datastore("example_thirdparty", new()
 ///     {
 ///         Name = "thirdparty-datastore",
@@ -103,12 +139,23 @@ import 'datastore_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		// use existing network with connectivity to the thirdparty datastore
 /// 		_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "default",
+/// 			Name: pulumi.StringRef("default"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		// create a thirdparty datastore
+/// 		// Create a thirdparty datastore.
+/// 		// Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+/// 		// block within the `google_vmwareengine_cluster` resource. For example:
+/// 		//
+/// 		//	datastore_mount_config {
+/// 		//	  datastore        = google_vmwareengine_datastore.example_thirdparty.id
+/// 		//	  datastore_network {
+/// 		//	    subnet           = google_vmwareengine_subnet.example_subnet.id
+/// 		//	    connection_count = 4
+/// 		//	    mtu              = 1500
+/// 		//	  }
+/// 		//	}
 /// 		_, err = vmwareengine.NewDatastore(ctx, "example_thirdparty", &vmwareengine.DatastoreArgs{
 /// 			Name:        pulumi.String("thirdparty-datastore"),
 /// 			Location:    pulumi.String("us-west1-a"),
@@ -130,6 +177,45 @@ import 'datastore_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "default" {
+///   name = "default"
+/// }
+///
+/// # Create a thirdparty datastore.
+/// # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+/// # block within the `google_vmwareengine_cluster` resource. For example:
+/// #
+/// #  datastore_mount_config {
+/// #    datastore        = google_vmwareengine_datastore.example_thirdparty.id
+/// #    datastore_network {
+/// #      subnet           = google_vmwareengine_subnet.example_subnet.id
+/// #      connection_count = 4
+/// #      mtu              = 1500
+/// #    }
+/// #  }
+/// resource "gcp_vmwareengine_datastore" "example_thirdparty" {
+///   name        = "thirdparty-datastore"
+///   location    = "us-west1-a"
+///   description = "example thirdparty datastore."
+///   nfs_datastore = {
+///     third_party_file_service = {
+///       file_share = "/share1"
+///       network    = data.gcp_compute_getnetwork.default.id
+///       servers    = ["10.0.0.4"]
+///     }
+///   }
+/// }
+/// # use existing network with connectivity to the thirdparty datastore
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -142,8 +228,8 @@ import 'datastore_state.dart';
 /// import com.pulumi.gcp.vmwareengine.DatastoreArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.DatastoreNfsDatastoreArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.DatastoreNfsDatastoreThirdPartyFileServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -160,7 +246,18 @@ import 'datastore_state.dart';
 ///             .name("default")
 ///             .build());
 ///
-///         // create a thirdparty datastore
+///         // Create a thirdparty datastore.
+///         // Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+///         // block within the `google_vmwareengine_cluster` resource. For example:
+///         //
+///         //  datastore_mount_config {
+///         //    datastore        = google_vmwareengine_datastore.example_thirdparty.id
+///         //    datastore_network {
+///         //      subnet           = google_vmwareengine_subnet.example_subnet.id
+///         //      connection_count = 4
+///         //      mtu              = 1500
+///         //    }
+///         //  }
 ///         var exampleThirdparty = new Datastore("exampleThirdparty", DatastoreArgs.builder()
 ///             .name("thirdparty-datastore")
 ///             .location("us-west1-a")
@@ -179,7 +276,18 @@ import 'datastore_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   # create a thirdparty datastore
+///   # Create a thirdparty datastore.
+///   # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+///   # block within the `google_vmwareengine_cluster` resource. For example:
+///   #
+///   #  datastore_mount_config {
+///   #    datastore        = google_vmwareengine_datastore.example_thirdparty.id
+///   #    datastore_network {
+///   #      subnet           = google_vmwareengine_subnet.example_subnet.id
+///   #      connection_count = 4
+///   #      mtu              = 1500
+///   #    }
+///   #  }
 ///   exampleThirdparty:
 ///     type: gcp:vmwareengine:Datastore
 ///     name: example_thirdparty
@@ -215,7 +323,18 @@ import 'datastore_state.dart';
 ///     name: "fs-instance",
 ///     location: "",
 /// });
-/// // Create a VmwareEngine Datastore, referencing the filestore instance
+/// // Create a VmwareEngine Datastore, referencing the filestore instance.
+/// // Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+/// // block within the `google_vmwareengine_cluster` resource. For example:
+/// //
+/// //  datastore_mount_config {
+/// //    datastore        = google_vmwareengine_datastore.example_filestore.id
+/// //    datastore_network {
+/// //      subnet           = google_vmwareengine_subnet.example_subnet.id
+/// //      connection_count = 4
+/// //      mtu              = 1500
+/// //    }
+/// //  }
 /// const exampleFilestore = new gcp.vmwareengine.Datastore("example_filestore", {
 ///     name: "filestore-datastore",
 ///     location: "",
@@ -234,7 +353,18 @@ import 'datastore_state.dart';
 /// # Use existing filestore instance
 /// test_instance = gcp.filestore.get_instance(name="fs-instance",
 ///     location="")
-/// # Create a VmwareEngine Datastore, referencing the filestore instance
+/// # Create a VmwareEngine Datastore, referencing the filestore instance.
+/// # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+/// # block within the `google_vmwareengine_cluster` resource. For example:
+/// #
+/// #  datastore_mount_config {
+/// #    datastore        = google_vmwareengine_datastore.example_filestore.id
+/// #    datastore_network {
+/// #      subnet           = google_vmwareengine_subnet.example_subnet.id
+/// #      connection_count = 4
+/// #      mtu              = 1500
+/// #    }
+/// #  }
 /// example_filestore = gcp.vmwareengine.Datastore("example_filestore",
 ///     name="filestore-datastore",
 ///     location="",
@@ -260,7 +390,18 @@ import 'datastore_state.dart';
 ///         Location = "",
 ///     });
 ///
-///     // Create a VmwareEngine Datastore, referencing the filestore instance
+///     // Create a VmwareEngine Datastore, referencing the filestore instance.
+///     // Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+///     // block within the `google_vmwareengine_cluster` resource. For example:
+///     //
+///     //  datastore_mount_config {
+///     //    datastore        = google_vmwareengine_datastore.example_filestore.id
+///     //    datastore_network {
+///     //      subnet           = google_vmwareengine_subnet.example_subnet.id
+///     //      connection_count = 4
+///     //      mtu              = 1500
+///     //    }
+///     //  }
 ///     var exampleFilestore = new Gcp.VMwareEngine.Datastore("example_filestore", new()
 ///     {
 ///         Name = "filestore-datastore",
@@ -296,7 +437,18 @@ import 'datastore_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		// Create a VmwareEngine Datastore, referencing the filestore instance
+/// 		// Create a VmwareEngine Datastore, referencing the filestore instance.
+/// 		// Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+/// 		// block within the `google_vmwareengine_cluster` resource. For example:
+/// 		//
+/// 		//	datastore_mount_config {
+/// 		//	  datastore        = google_vmwareengine_datastore.example_filestore.id
+/// 		//	  datastore_network {
+/// 		//	    subnet           = google_vmwareengine_subnet.example_subnet.id
+/// 		//	    connection_count = 4
+/// 		//	    mtu              = 1500
+/// 		//	  }
+/// 		//	}
 /// 		_, err = vmwareengine.NewDatastore(ctx, "example_filestore", &vmwareengine.DatastoreArgs{
 /// 			Name:        pulumi.String("filestore-datastore"),
 /// 			Location:    pulumi.String(""),
@@ -314,6 +466,44 @@ import 'datastore_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_filestore_getinstance" "testInstance" {
+///   name     = "fs-instance"
+///   location = ""
+/// }
+///
+/// # Create a VmwareEngine Datastore, referencing the filestore instance.
+/// # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+/// # block within the `google_vmwareengine_cluster` resource. For example:
+/// #
+/// #  datastore_mount_config {
+/// #    datastore        = google_vmwareengine_datastore.example_filestore.id
+/// #    datastore_network {
+/// #      subnet           = google_vmwareengine_subnet.example_subnet.id
+/// #      connection_count = 4
+/// #      mtu              = 1500
+/// #    }
+/// #  }
+/// resource "gcp_vmwareengine_datastore" "example_filestore" {
+///   name        = "filestore-datastore"
+///   location    = ""
+///   description = "example google_file_service.filestore datastore."
+///   nfs_datastore = {
+///     google_file_service = {
+///       filestore_instance = testInstanceGoogleFilestoreInstance.id
+///     }
+///   }
+/// }
+/// # Use existing filestore instance
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -326,8 +516,8 @@ import 'datastore_state.dart';
 /// import com.pulumi.gcp.vmwareengine.DatastoreArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.DatastoreNfsDatastoreArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.DatastoreNfsDatastoreGoogleFileServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,14 +535,25 @@ import 'datastore_state.dart';
 ///             .location("")
 ///             .build());
 ///
-///         // Create a VmwareEngine Datastore, referencing the filestore instance
+///         // Create a VmwareEngine Datastore, referencing the filestore instance.
+///         // Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+///         // block within the `google_vmwareengine_cluster` resource. For example:
+///         //
+///         //  datastore_mount_config {
+///         //    datastore        = google_vmwareengine_datastore.example_filestore.id
+///         //    datastore_network {
+///         //      subnet           = google_vmwareengine_subnet.example_subnet.id
+///         //      connection_count = 4
+///         //      mtu              = 1500
+///         //    }
+///         //  }
 ///         var exampleFilestore = new Datastore("exampleFilestore", DatastoreArgs.builder()
 ///             .name("filestore-datastore")
 ///             .location("")
 ///             .description("example google_file_service.filestore datastore.")
 ///             .nfsDatastore(DatastoreNfsDatastoreArgs.builder()
 ///                 .googleFileService(DatastoreNfsDatastoreGoogleFileServiceArgs.builder()
-///                     .filestoreInstance(testInstanceGoogleFilestoreInstance.id())
+///                     .filestoreInstance(testInstanceGoogleFilestoreInstance.get("id"))
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -362,7 +563,18 @@ import 'datastore_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   # Create a VmwareEngine Datastore, referencing the filestore instance
+///   # Create a VmwareEngine Datastore, referencing the filestore instance.
+///   # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+///   # block within the `google_vmwareengine_cluster` resource. For example:
+///   #
+///   #  datastore_mount_config {
+///   #    datastore        = google_vmwareengine_datastore.example_filestore.id
+///   #    datastore_network {
+///   #      subnet           = google_vmwareengine_subnet.example_subnet.id
+///   #      connection_count = 4
+///   #      mtu              = 1500
+///   #    }
+///   #  }
 ///   exampleFilestore:
 ///     type: gcp:vmwareengine:Datastore
 ///     name: example_filestore
@@ -396,7 +608,18 @@ import 'datastore_state.dart';
 ///     name: "netapp-volume",
 ///     location: "us-west1",
 /// });
-/// // Create a VmwareEngine Datastore, referencing the netapp volume
+/// // Create a VmwareEngine Datastore, referencing the netapp volume.
+/// // Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+/// // block within the `google_vmwareengine_cluster` resource. For example:
+/// //
+/// //  datastore_mount_config {
+/// //    datastore        = google_vmwareengine_datastore.example_netapp.id
+/// //    datastore_network {
+/// //      subnet           = google_vmwareengine_subnet.example_subnet.id
+/// //      connection_count = 4
+/// //      mtu              = 1500
+/// //    }
+/// //  }
 /// const exampleNetapp = new gcp.vmwareengine.Datastore("example_netapp", {
 ///     name: "netapp-datastore",
 ///     location: "us-west1",
@@ -416,7 +639,18 @@ import 'datastore_state.dart';
 /// test_volume = gcp.netapp.Volume("test_volume",
 ///     name="netapp-volume",
 ///     location="us-west1")
-/// # Create a VmwareEngine Datastore, referencing the netapp volume
+/// # Create a VmwareEngine Datastore, referencing the netapp volume.
+/// # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+/// # block within the `google_vmwareengine_cluster` resource. For example:
+/// #
+/// #  datastore_mount_config {
+/// #    datastore        = google_vmwareengine_datastore.example_netapp.id
+/// #    datastore_network {
+/// #      subnet           = google_vmwareengine_subnet.example_subnet.id
+/// #      connection_count = 4
+/// #      mtu              = 1500
+/// #    }
+/// #  }
 /// example_netapp = gcp.vmwareengine.Datastore("example_netapp",
 ///     name="netapp-datastore",
 ///     location="us-west1",
@@ -442,7 +676,18 @@ import 'datastore_state.dart';
 ///         Location = "us-west1",
 ///     });
 ///
-///     // Create a VmwareEngine Datastore, referencing the netapp volume
+///     // Create a VmwareEngine Datastore, referencing the netapp volume.
+///     // Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+///     // block within the `google_vmwareengine_cluster` resource. For example:
+///     //
+///     //  datastore_mount_config {
+///     //    datastore        = google_vmwareengine_datastore.example_netapp.id
+///     //    datastore_network {
+///     //      subnet           = google_vmwareengine_subnet.example_subnet.id
+///     //      connection_count = 4
+///     //      mtu              = 1500
+///     //    }
+///     //  }
 ///     var exampleNetapp = new Gcp.VMwareEngine.Datastore("example_netapp", new()
 ///     {
 ///         Name = "netapp-datastore",
@@ -478,14 +723,25 @@ import 'datastore_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		// Create a VmwareEngine Datastore, referencing the netapp volume
+/// 		// Create a VmwareEngine Datastore, referencing the netapp volume.
+/// 		// Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+/// 		// block within the `google_vmwareengine_cluster` resource. For example:
+/// 		//
+/// 		//	datastore_mount_config {
+/// 		//	  datastore        = google_vmwareengine_datastore.example_netapp.id
+/// 		//	  datastore_network {
+/// 		//	    subnet           = google_vmwareengine_subnet.example_subnet.id
+/// 		//	    connection_count = 4
+/// 		//	    mtu              = 1500
+/// 		//	  }
+/// 		//	}
 /// 		_, err = vmwareengine.NewDatastore(ctx, "example_netapp", &vmwareengine.DatastoreArgs{
 /// 			Name:        pulumi.String("netapp-datastore"),
 /// 			Location:    pulumi.String("us-west1"),
 /// 			Description: pulumi.String("example google_file_service.netapp datastore."),
 /// 			NfsDatastore: &vmwareengine.DatastoreNfsDatastoreArgs{
 /// 				GoogleFileService: &vmwareengine.DatastoreNfsDatastoreGoogleFileServiceArgs{
-/// 					NetappVolume: testVolume.ID(),
+/// 					NetappVolume: testVolume.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -494,6 +750,43 @@ import 'datastore_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// # Use existing netapp volume
+/// resource "gcp_netapp_volume" "test_volume" {
+///   name     = "netapp-volume"
+///   location = "us-west1"
+/// }
+/// # Create a VmwareEngine Datastore, referencing the netapp volume.
+/// # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+/// # block within the `google_vmwareengine_cluster` resource. For example:
+/// #
+/// #  datastore_mount_config {
+/// #    datastore        = google_vmwareengine_datastore.example_netapp.id
+/// #    datastore_network {
+/// #      subnet           = google_vmwareengine_subnet.example_subnet.id
+/// #      connection_count = 4
+/// #      mtu              = 1500
+/// #    }
+/// #  }
+/// resource "gcp_vmwareengine_datastore" "example_netapp" {
+///   name        = "netapp-datastore"
+///   location    = "us-west1"
+///   description = "example google_file_service.netapp datastore."
+///   nfs_datastore = {
+///     google_file_service = {
+///       netapp_volume = gcp_netapp_volume.test_volume.id
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -508,8 +801,8 @@ import 'datastore_state.dart';
 /// import com.pulumi.gcp.vmwareengine.DatastoreArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.DatastoreNfsDatastoreArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.DatastoreNfsDatastoreGoogleFileServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -527,7 +820,18 @@ import 'datastore_state.dart';
 ///             .location("us-west1")
 ///             .build());
 ///
-///         // Create a VmwareEngine Datastore, referencing the netapp volume
+///         // Create a VmwareEngine Datastore, referencing the netapp volume.
+///         // Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+///         // block within the `google_vmwareengine_cluster` resource. For example:
+///         //
+///         //  datastore_mount_config {
+///         //    datastore        = google_vmwareengine_datastore.example_netapp.id
+///         //    datastore_network {
+///         //      subnet           = google_vmwareengine_subnet.example_subnet.id
+///         //      connection_count = 4
+///         //      mtu              = 1500
+///         //    }
+///         //  }
 ///         var exampleNetapp = new Datastore("exampleNetapp", DatastoreArgs.builder()
 ///             .name("netapp-datastore")
 ///             .location("us-west1")
@@ -551,7 +855,18 @@ import 'datastore_state.dart';
 ///     properties:
 ///       name: netapp-volume
 ///       location: us-west1
-///   # Create a VmwareEngine Datastore, referencing the netapp volume
+///   # Create a VmwareEngine Datastore, referencing the netapp volume.
+///   # Note: To mount this datastore on a vSphere cluster, configure the `datastore_mount_config`
+///   # block within the `google_vmwareengine_cluster` resource. For example:
+///   #
+///   #  datastore_mount_config {
+///   #    datastore        = google_vmwareengine_datastore.example_netapp.id
+///   #    datastore_network {
+///   #      subnet           = google_vmwareengine_subnet.example_subnet.id
+///   #      connection_count = 4
+///   #      mtu              = 1500
+///   #    }
+///   #  }
 ///   exampleNetapp:
 ///     type: gcp:vmwareengine:Datastore
 ///     name: example_netapp
@@ -570,22 +885,15 @@ import 'datastore_state.dart';
 /// Datastore can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/datastores/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Datastore can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vmwareengine/datastore:Datastore default projects/{{project}}/locations/{{location}}/datastores/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vmwareengine/datastore:Datastore default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vmwareengine/datastore:Datastore default {{location}}/{{name}}
 /// ```
 class Datastore extends pulumi.CustomResource {
@@ -593,6 +901,13 @@ class Datastore extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> clusters;
   /// Creation time of this resource.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-provided description for this datastore
   late final pulumi.Output<String?> description;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -644,6 +959,7 @@ class Datastore extends pulumi.CustomResource {
         ) {
     clusters = registerOutput<List<String>>('clusters');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -679,6 +995,7 @@ class Datastore extends pulumi.CustomResource {
         ) {
     clusters = registerOutput<List<String>>('clusters');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

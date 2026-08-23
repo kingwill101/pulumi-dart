@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMachineTypesMachineTypeBundledLocalSsd {
-  /// The default disk interface if the interface is not specified.
+  /// (Beta) The default disk interface if the interface is not specified.
   final pulumi.Input<String> defaultInterface;
-  /// The number of partitions.
+  /// (Beta) The number of partitions.
   final pulumi.Input<int> partitionCount;
 
   /// Creates a new [GetMachineTypesMachineTypeBundledLocalSsd].
-  /// [defaultInterface] The default disk interface if the interface is not specified.
-  /// [partitionCount] The number of partitions.
+  /// [defaultInterface] (Beta) The default disk interface if the interface is not specified.
+  /// [partitionCount] (Beta) The number of partitions.
   const GetMachineTypesMachineTypeBundledLocalSsd({
     required this.defaultInterface,
     required this.partitionCount,
@@ -30,4 +30,3 @@ class GetMachineTypesMachineTypeBundledLocalSsd {
     );
   }
 }
-

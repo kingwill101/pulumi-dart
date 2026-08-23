@@ -10,14 +10,14 @@ class SpokeGateway {
   /// A list of IP ranges that are reserved for this gateway's internal infrastructure.
   /// Structure is documented below.
   final pulumi.Input<List<SpokeGatewayIpRangeReservation>> ipRangeReservations;
-  /// (Output, Beta)
+  /// (Output)
   /// Set of Cloud Routers that are attached to this NCC-GW
   final pulumi.Input<List<String>>? routers;
 
   /// Creates a new [SpokeGateway].
   /// [capacity] the capacity of the gateway spoke, in Gbps.
   /// [ipRangeReservations] A list of IP ranges that are reserved for this gateway's internal infrastructure.
-  /// [routers] (Output, Beta)
+  /// [routers] (Output)
   const SpokeGateway({
     required this.capacity,
     required this.ipRangeReservations,
@@ -40,4 +40,3 @@ class SpokeGateway {
     );
   }
 }
-

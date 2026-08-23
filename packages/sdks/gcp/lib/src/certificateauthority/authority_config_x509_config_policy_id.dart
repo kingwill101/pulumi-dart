@@ -24,4 +24,3 @@ class AuthorityConfigX509ConfigPolicyId {
     );
   }
 }
-

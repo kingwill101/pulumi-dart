@@ -105,6 +105,29 @@ import 'curation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apihub_curation" "apihub_curation_basic" {
+///   location     = "us-central1"
+///   curation_id  = "test"
+///   project      = "apihub-terraform"
+///   display_name = "Test Curation"
+///   description  = "This is a sample curation resource managed by Terraform."
+///   endpoint = {
+///     application_integration_endpoint_details = {
+///       trigger_id = "api_trigger/curation_API_1"
+///       uri        = "https://integrations.googleapis.com/v1/projects/1082615593856/locations/us-central1/integrations/curation:execute"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +138,8 @@ import 'curation_state.dart';
 /// import com.pulumi.gcp.apihub.CurationArgs;
 /// import com.pulumi.gcp.apihub.inputs.CurationEndpointArgs;
 /// import com.pulumi.gcp.apihub.inputs.CurationEndpointApplicationIntegrationEndpointDetailsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -168,22 +191,15 @@ import 'curation_state.dart';
 /// Curation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/curations/{{curation_id}}`
-///
 /// * `{{project}}/{{location}}/{{curation_id}}`
-///
 /// * `{{location}}/{{curation_id}}`
+///
 ///
 /// When using the `pulumi import` command, Curation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apihub/curation:Curation default projects/{{project}}/locations/{{location}}/curations/{{curation_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apihub/curation:Curation default {{project}}/{{location}}/{{curation_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apihub/curation:Curation default {{location}}/{{curation_id}}
 /// ```
 class Curation extends pulumi.CustomResource {
@@ -198,6 +214,13 @@ class Curation extends pulumi.CustomResource {
   /// This value should be 4-500 characters, and valid characters
   /// are /a-z[0-9]-_/.
   late final pulumi.Output<String> curationId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the curation.
   late final pulumi.Output<String?> description;
   /// The display name of the curation.
@@ -258,6 +281,7 @@ class Curation extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     curationId = registerOutput<String>('curationId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     endpoint = registerOutput<CurationEndpoint>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CurationEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -296,6 +320,7 @@ class Curation extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     curationId = registerOutput<String>('curationId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     endpoint = registerOutput<CurationEndpoint>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CurationEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });

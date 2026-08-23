@@ -6,12 +6,10 @@ import 'interconnect_attachment_l2_forwarding_geneve_header.dart';
 
 class InterconnectAttachmentL2Forwarding {
   /// A map of VLAN tags to appliances and optional inner mapping rules.
-  /// Structure is documented below.
   final pulumi.Input<List<InterconnectAttachmentL2ForwardingApplianceMapping>>? applianceMappings;
   /// The default appliance IP address.
   final pulumi.Input<String>? defaultApplianceIpAddress;
   /// GeneveHeader related configurations.
-  /// Structure is documented below.
   final pulumi.Input<InterconnectAttachmentL2ForwardingGeneveHeader>? geneveHeader;
   /// URL of the network to which this attachment belongs.
   final pulumi.Input<String>? network;
@@ -52,4 +50,3 @@ class InterconnectAttachmentL2Forwarding {
     );
   }
 }
-

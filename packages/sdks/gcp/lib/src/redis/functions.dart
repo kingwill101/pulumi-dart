@@ -62,6 +62,20 @@ import 'get_instance_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_redis_getcluster" "default" {
+///   name   = "my-redis-cluster"
+///   region = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +84,8 @@ import 'get_instance_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.redis.RedisFunctions;
 /// import com.pulumi.gcp.redis.inputs.GetClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -184,6 +198,29 @@ Future<GetClusterResult> getCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_redis_getinstance" "myInstance" {
+///   name = "my-redis-instance"
+/// }
+///
+/// output "instanceMemorySizeGb" {
+///   value = data.gcp_redis_getinstance.myInstance.memory_size_gb
+/// }
+/// output "instanceConnectMode" {
+///   value = data.gcp_redis_getinstance.myInstance.connect_mode
+/// }
+/// output "instanceAuthorizedNetwork" {
+///   value = data.gcp_redis_getinstance.myInstance.authorized_network
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -192,8 +229,8 @@ Future<GetClusterResult> getCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.redis.RedisFunctions;
 /// import com.pulumi.gcp.redis.inputs.GetInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -47,14 +47,14 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// }, {
 ///     dependsOn: [servicenetworking],
 /// });
-/// const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+/// const wait300Seconds = new time.Sleep("wait_300_seconds", {createDuration: "300s"}, {
 ///     dependsOn: [compute],
 /// });
 /// const apigeeNetwork = new gcp.compute.Network("apigee_network", {
 ///     name: "apigee-network",
 ///     project: project.projectId,
 /// }, {
-///     dependsOn: [wait120Seconds],
+///     dependsOn: [wait300Seconds],
 /// });
 /// const apigeeRange = new gcp.compute.GlobalAddress("apigee_range", {
 ///     name: "apigee-range",
@@ -130,12 +130,12 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 ///     project=project.project_id,
 ///     service="compute.googleapis.com",
 ///     opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
-/// wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+/// wait300_seconds = time.Sleep("wait_300_seconds", create_duration="300s",
 /// opts = pulumi.ResourceOptions(depends_on=[compute]))
 /// apigee_network = gcp.compute.Network("apigee_network",
 ///     name="apigee-network",
 ///     project=project.project_id,
-///     opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
+///     opts = pulumi.ResourceOptions(depends_on=[wait300_seconds]))
 /// apigee_range = gcp.compute.GlobalAddress("apigee_range",
 ///     name="apigee-range",
 ///     purpose="VPC_PEERING",
@@ -228,9 +228,9 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 ///         },
 ///     });
 ///
-///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
+///     var wait300Seconds = new Time.Sleep("wait_300_seconds", new()
 ///     {
-///         CreateDuration = "120s",
+///         CreateDuration = "300s",
 ///     }, new CustomResourceOptions
 ///     {
 ///         DependsOn =
@@ -247,7 +247,7 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 ///     {
 ///         DependsOn =
 ///         {
-///             wait120Seconds,
+///             wait300Seconds,
 ///         },
 ///     });
 ///
@@ -351,35 +351,35 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+/// 		apigee2, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 /// 			Project: project.ProjectId,
 /// 			Service: pulumi.String("apigee.googleapis.com"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+/// 		servicenetworking2, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
 /// 			Project: project.ProjectId,
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			apigee,
+/// 			apigee2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+/// 		compute2, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
 /// 			Project: project.ProjectId,
 /// 			Service: pulumi.String("compute.googleapis.com"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			servicenetworking,
+/// 			servicenetworking2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
-/// 			CreateDuration: pulumi.String("120s"),
+/// 		wait300Seconds, err := time.NewSleep(ctx, "wait_300_seconds", &time.SleepArgs{
+/// 			CreateDuration: pulumi.String("300s"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			compute,
+/// 			compute2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -388,7 +388,7 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// 			Name:    pulumi.String("apigee-network"),
 /// 			Project: project.ProjectId,
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			wait120Seconds,
+/// 			wait300Seconds,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -398,20 +398,20 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      apigeeNetwork.ID(),
+/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Project:      project.ProjectId,
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID(),
+/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			servicenetworking,
+/// 			servicenetworking2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -419,16 +419,16 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 /// 			AnalyticsRegion:   pulumi.String("us-central1"),
 /// 			ProjectId:         project.ProjectId,
-/// 			AuthorizedNetwork: apigeeNetwork.ID(),
+/// 			AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
-/// 			apigee,
+/// 			apigee2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeEnvironmentKeystoreSsAlias, err := apigee.NewEnvironment(ctx, "apigee_environment_keystore_ss_alias", &apigee.EnvironmentArgs{
-/// 			OrgId:       apigeeOrg.ID(),
+/// 			OrgId:       apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:        pulumi.String("env-name"),
 /// 			Description: pulumi.String("Apigee Environment"),
 /// 			DisplayName: pulumi.String("environment-1"),
@@ -438,7 +438,7 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// 		}
 /// 		apigeeEnvironmentKeystoreAlias, err := apigee.NewEnvKeystore(ctx, "apigee_environment_keystore_alias", &apigee.EnvKeystoreArgs{
 /// 			Name:  pulumi.String("env-keystore"),
-/// 			EnvId: apigeeEnvironmentKeystoreSsAlias.ID(),
+/// 			EnvId: apigeeEnvironmentKeystoreSsAlias.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -464,6 +464,95 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "my-project"
+///   name            = "my-project"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_projects_service" "apigee" {
+///   project = gcp_organizations_project.project.project_id
+///   service = "apigee.googleapis.com"
+/// }
+/// resource "gcp_projects_service" "servicenetworking" {
+///   depends_on = [gcp_projects_service.apigee]
+///   project    = gcp_organizations_project.project.project_id
+///   service    = "servicenetworking.googleapis.com"
+/// }
+/// resource "gcp_projects_service" "compute" {
+///   depends_on = [gcp_projects_service.servicenetworking]
+///   project    = gcp_organizations_project.project.project_id
+///   service    = "compute.googleapis.com"
+/// }
+/// resource "time_sleep" "wait_300_seconds" {
+///   depends_on      = [gcp_projects_service.compute]
+///   create_duration = "300s"
+/// }
+/// resource "gcp_compute_network" "apigee_network" {
+///   depends_on = [time_sleep.wait_300_seconds]
+///   name       = "apigee-network"
+///   project    = gcp_organizations_project.project.project_id
+/// }
+/// resource "gcp_compute_globaladdress" "apigee_range" {
+///   name          = "apigee-range"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.apigee_network.id
+///   project       = gcp_organizations_project.project.project_id
+/// }
+/// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   depends_on              = [gcp_projects_service.servicenetworking]
+///   network                 = gcp_compute_network.apigee_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+/// }
+/// resource "gcp_apigee_organization" "apigee_org" {
+///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection, gcp_projects_service.apigee]
+///   analytics_region   = "us-central1"
+///   project_id         = gcp_organizations_project.project.project_id
+///   authorized_network = gcp_compute_network.apigee_network.id
+/// }
+/// resource "gcp_apigee_environment" "apigee_environment_keystore_ss_alias" {
+///   org_id       = gcp_apigee_organization.apigee_org.id
+///   name         = "env-name"
+///   description  = "Apigee Environment"
+///   display_name = "environment-1"
+/// }
+/// resource "gcp_apigee_envkeystore" "apigee_environment_keystore_alias" {
+///   name   = "env-keystore"
+///   env_id = gcp_apigee_environment.apigee_environment_keystore_ss_alias.id
+/// }
+/// resource "gcp_apigee_keystoresaliasesselfsignedcert" "apigee_environment_keystore_ss_alias" {
+///   environment           = gcp_apigee_environment.apigee_environment_keystore_ss_alias.name
+///   org_id                = gcp_apigee_organization.apigee_org.name
+///   keystore              = gcp_apigee_envkeystore.apigee_environment_keystore_alias.name
+///   alias                 = "alias"
+///   key_size              = 1024
+///   sig_alg               = "SHA512withRSA"
+///   cert_validity_in_days = 4
+///   subject = {
+///     common_name  = "selfsigned_example"
+///     country_code = "US"
+///     locality     = "TX"
+///     org          = "CCE"
+///     org_unit     = "PSO"
+///   }
 /// }
 /// ```
 /// ```java
@@ -494,8 +583,8 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// import com.pulumi.gcp.apigee.KeystoresAliasesSelfSignedCertArgs;
 /// import com.pulumi.gcp.apigee.inputs.KeystoresAliasesSelfSignedCertSubjectArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -534,8 +623,8 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 ///                 .dependsOn(servicenetworking)
 ///                 .build());
 ///
-///         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
-///             .createDuration("120s")
+///         var wait300Seconds = new Sleep("wait300Seconds", SleepArgs.builder()
+///             .createDuration("300s")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(compute)
 ///                 .build());
@@ -544,7 +633,7 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 ///             .name("apigee-network")
 ///             .project(project.projectId())
 ///             .build(), CustomResourceOptions.builder()
-///                 .dependsOn(wait120Seconds)
+///                 .dependsOn(wait300Seconds)
 ///                 .build());
 ///
 ///         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()
@@ -637,11 +726,11 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 ///     options:
 ///       dependsOn:
 ///         - ${servicenetworking}
-///   wait120Seconds:
+///   wait300Seconds:
 ///     type: time:Sleep
-///     name: wait_120_seconds
+///     name: wait_300_seconds
 ///     properties:
-///       createDuration: 120s
+///       createDuration: 300s
 ///     options:
 ///       dependsOn:
 ///         - ${compute}
@@ -653,7 +742,7 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 ///       project: ${project.projectId}
 ///     options:
 ///       dependsOn:
-///         - ${wait120Seconds}
+///         - ${wait300Seconds}
 ///   apigeeRange:
 ///     type: gcp:compute:GlobalAddress
 ///     name: apigee_range
@@ -725,16 +814,13 @@ import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
 /// KeystoresAliasesSelfSignedCert can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}`
-///
 /// * `{{org_id}}/{{environment}}/{{keystore}}/{{alias}}`
+///
 ///
 /// When using the `pulumi import` command, KeystoresAliasesSelfSignedCert can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
 /// ```
 class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
@@ -747,6 +833,13 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
   /// Chain of certificates under this alias.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> certsInfos;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The Apigee environment name
   late final pulumi.Output<String> environment;
   /// Key size. Default and maximum value is 2048 bits.
@@ -783,6 +876,7 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
     alias = registerOutput<String>('alias');
     certValidityInDays = registerOutput<int?>('certValidityInDays');
     certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     keySize = registerOutput<String?>('keySize');
     keystore = registerOutput<String>('keystore');
@@ -819,6 +913,7 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
     alias = registerOutput<String>('alias');
     certValidityInDays = registerOutput<int?>('certValidityInDays');
     certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     keySize = registerOutput<String?>('keySize');
     keystore = registerOutput<String>('keystore');

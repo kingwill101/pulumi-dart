@@ -10,6 +10,13 @@ class CxToolVersionState {
   /// Offsets other than "Z" are also accepted.
   /// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The display name of the tool version.
   final pulumi.Input<String>? displayName;
   /// The unique identifier of the tool version.
@@ -29,6 +36,7 @@ class CxToolVersionState {
 
   /// Creates a new [CxToolVersionState].
   /// [createTime] Last time the tool version was created or modified.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The display name of the tool version.
   /// [name] The unique identifier of the tool version.
   /// [parent] The tool to create a Version for.
@@ -36,6 +44,7 @@ class CxToolVersionState {
   /// [updateTime] Last time the tool version was created or modified.
   const CxToolVersionState({
     this.createTime,
+    this.deletionPolicy,
     this.displayName,
     this.name,
     this.parent,
@@ -46,6 +55,7 @@ class CxToolVersionState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'name': ?name,
       'parent': ?parent,
@@ -57,6 +67,7 @@ class CxToolVersionState {
   factory CxToolVersionState.fromMap(Map<String, dynamic> map) {
     return CxToolVersionState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -65,4 +76,3 @@ class CxToolVersionState {
     );
   }
 }
-

@@ -325,7 +325,7 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// 			return err
 /// 		}
 /// 		vertexNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "network-name",
+/// 			Name: pulumi.StringRef("network-name"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -356,8 +356,8 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// 			DeployedIndexId:     pulumi.String("deployed_index_id"),
 /// 			DisplayName:         pulumi.String("vertex-deployed-index"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			Index:               index.ID(),
-/// 			IndexEndpoint:       vertexIndexEndpointDeployed.ID(),
+/// 			Index:               index.ID().ToIDOutput().ToStringOutput(),
+/// 			IndexEndpoint:       vertexIndexEndpointDeployed.ID().ToIDOutput().ToStringOutput(),
 /// 			EnableAccessLogging: pulumi.Bool(false),
 /// 			ReservedIpRanges: pulumi.StringArray{
 /// 				pulumi.String("vertex-ai-range"),
@@ -390,6 +390,85 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "vertexNetwork" {
+///   name = "network-name"
+/// }
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aiindexendpointdeployedindex" "basic_deployed_index" {
+///   deployed_index_id     = "deployed_index_id"
+///   display_name          = "vertex-deployed-index"
+///   region                = "us-central1"
+///   index                 = gcp_vertex_aiindex.index.id
+///   index_endpoint        = gcp_vertex_aiindexendpoint.vertex_index_endpoint_deployed.id
+///   enable_access_logging = false
+///   reserved_ip_ranges    = ["vertex-ai-range"]
+///   deployed_index_auth_config = {
+///     auth_provider = {
+///       audiences       = ["123456-my-app"]
+///       allowed_issuers = [gcp_serviceaccount_account.sa.email]
+///     }
+///   }
+/// }
+/// resource "gcp_vertex_aiindex" "index" {
+///   region              = "us-central1"
+///   display_name        = "test-index"
+///   description         = "index for test"
+///   index_update_method = "BATCH_UPDATE"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   metadata = {
+///     contents_delta_uri ="gs://${gcp_storage_bucket.bucket.name}/contents"
+///     config = {
+///       dimensions                  = 2
+///       approximate_neighbors_count = 150
+///       shard_size                  = "SHARD_SIZE_SMALL"
+///       distance_measure_type       = "DOT_PRODUCT_DISTANCE"
+///       algorithm_config = {
+///         tree_ah_config = {
+///           leaf_node_embedding_count    = 500
+///           leaf_nodes_to_search_percent = 7
+///         }
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_vertex_aiindexendpoint" "vertex_index_endpoint_deployed" {
+///   display_name = "sample-endpoint"
+///   description  = "A sample vertex endpoint"
+///   region       = "us-central1"
+///   network      ="projects/${data.gcp_organizations_getproject.project.number}/global/networks/${data.gcp_compute_getnetwork.vertexNetwork.name}"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// resource "gcp_serviceaccount_account" "sa" {
+///   account_id = "vertex-sa"
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "bucket-name"
+///   location                    = "us-central1"
+///   uniform_bucket_level_access = true
+/// }
+/// # The sample data comes from the following link:
+/// # https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
+/// resource "gcp_storage_bucketobject" "data" {
+///   name    = "contents/data.json"
+///   bucket  = gcp_storage_bucket.bucket.name
+///   content = "{\\\"id\\\": \\\"42\\\", \\\"embedding\\\": [0.5, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"cat\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"feline\\\"]}]}\n{\\\"id\\\": \\\"43\\\", \\\"embedding\\\": [0.6, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"dog\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"canine\\\"]}]}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -418,8 +497,8 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs;
 /// import com.pulumi.gcp.storage.BucketObject;
 /// import com.pulumi.gcp.storage.BucketObjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -918,7 +997,7 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// 			return err
 /// 		}
 /// 		vertexNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "network-name",
+/// 			Name: pulumi.StringRef("network-name"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -943,8 +1022,8 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// 			DeployedIndexId: pulumi.String("deployed_index_id"),
 /// 			DisplayName:     pulumi.String("vertex-deployed-index"),
 /// 			Region:          pulumi.String("us-central1"),
-/// 			Index:           index.ID(),
-/// 			IndexEndpoint:   vertexIndexEndpointDeployed.ID(),
+/// 			Index:           index.ID().ToIDOutput().ToStringOutput(),
+/// 			IndexEndpoint:   vertexIndexEndpointDeployed.ID().ToIDOutput().ToStringOutput(),
 /// 			ReservedIpRanges: pulumi.StringArray{
 /// 				pulumi.String("vertex-ai-range"),
 /// 			},
@@ -980,6 +1059,88 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "vertexNetwork" {
+///   name = "network-name"
+/// }
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aiindexendpointdeployedindex" "basic_deployed_index" {
+///   deployed_index_id     = "deployed_index_id"
+///   display_name          = "vertex-deployed-index"
+///   region                = "us-central1"
+///   index                 = gcp_vertex_aiindex.index.id
+///   index_endpoint        = gcp_vertex_aiindexendpoint.vertex_index_endpoint_deployed.id
+///   reserved_ip_ranges    = ["vertex-ai-range"]
+///   enable_access_logging = false
+///   deployed_index_auth_config = {
+///     auth_provider = {
+///       audiences       = ["123456-my-app"]
+///       allowed_issuers = [gcp_serviceaccount_account.sa.email]
+///     }
+///   }
+///   automatic_resources = {
+///     max_replica_count = 4
+///   }
+/// }
+/// resource "gcp_serviceaccount_account" "sa" {
+///   account_id = "vertex-sa"
+/// }
+/// resource "gcp_vertex_aiindex" "index" {
+///   region              = "us-central1"
+///   display_name        = "test-index"
+///   description         = "index for test"
+///   index_update_method = "BATCH_UPDATE"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   metadata = {
+///     contents_delta_uri ="gs://${gcp_storage_bucket.bucket.name}/contents"
+///     config = {
+///       dimensions                  = 2
+///       approximate_neighbors_count = 150
+///       shard_size                  = "SHARD_SIZE_SMALL"
+///       distance_measure_type       = "DOT_PRODUCT_DISTANCE"
+///       algorithm_config = {
+///         tree_ah_config = {
+///           leaf_node_embedding_count    = 500
+///           leaf_nodes_to_search_percent = 7
+///         }
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_vertex_aiindexendpoint" "vertex_index_endpoint_deployed" {
+///   display_name = "sample-endpoint"
+///   description  = "A sample vertex endpoint"
+///   region       = "us-central1"
+///   network      ="projects/${data.gcp_organizations_getproject.project.number}/global/networks/${data.gcp_compute_getnetwork.vertexNetwork.name}"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "bucket-name"
+///   location                    = "us-central1"
+///   uniform_bucket_level_access = true
+/// }
+/// # The sample data comes from the following link:
+/// # https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
+/// resource "gcp_storage_bucketobject" "data" {
+///   name    = "contents/data.json"
+///   bucket  = gcp_storage_bucket.bucket.name
+///   content = "{\\\"id\\\": \\\"42\\\", \\\"embedding\\\": [0.5, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"cat\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"feline\\\"]}]}\n{\\\"id\\\": \\\"43\\\", \\\"embedding\\\": [0.6, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"dog\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"canine\\\"]}]}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1009,8 +1170,8 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiIndexEndpointDeployedIndexAutomaticResourcesArgs;
 /// import com.pulumi.gcp.storage.BucketObject;
 /// import com.pulumi.gcp.storage.BucketObjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1193,28 +1354,17 @@ import 'ai_index_endpoint_deployed_index_state.dart';
 /// IndexEndpointDeployedIndex can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/indexEndpoints/{{index_endpoint}}/deployedIndex/{{deployed_index_id}}`
-///
 /// * `{{project}}/{{region}}/{{index_endpoint}}/{{deployed_index_id}}`
-///
 /// * `{{region}}/{{index_endpoint}}/{{deployed_index_id}}`
-///
 /// * `{{index_endpoint}}/{{deployed_index_id}}`
+///
 ///
 /// When using the `pulumi import` command, IndexEndpointDeployedIndex can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default projects/{{project}}/locations/{{region}}/indexEndpoints/{{index_endpoint}}/deployedIndex/{{deployed_index_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default {{project}}/{{region}}/{{index_endpoint}}/{{deployed_index_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default {{region}}/{{index_endpoint}}/{{deployed_index_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex default {{index_endpoint}}/{{deployed_index_id}}
 /// ```
 class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
@@ -1230,13 +1380,20 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
   /// n1-standard-16 and n1-standard-32 are still available, but we recommend e2-standard-16 and e2-highmem-16 for cost efficiency.
   /// Structure is documented below.
   late final pulumi.Output<AiIndexEndpointDeployedIndexDedicatedResources?> dedicatedResources;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// If set, the authentication is enabled for the private endpoint.
   /// Structure is documented below.
   late final pulumi.Output<AiIndexEndpointDeployedIndexDeployedIndexAuthConfig?> deployedIndexAuthConfig;
   /// The user specified ID of the DeployedIndex. The ID can be up to 128 characters long and must start with a letter and only contain letters, numbers, and underscores. The ID must be unique within the project it is created in.
   late final pulumi.Output<String> deployedIndexId;
   /// The deployment group can be no longer than 64 characters (eg: 'test', 'prod'). If not set, we will use the 'default' deployment group.
-  /// Creating deployment_groups with reserved_ip_ranges is a recommended practice when the peered network has multiple peering ranges. This creates your deployments from predictable IP spaces for easier traffic administration. Also, one deployment_group (except 'default') can only be used with the same reserved_ip_ranges which means if the deployment_group has been used with reserved_ip_ranges: [a, b, c], using it with [a, b] or [d, e] is disallowed. [See the official documentation here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#DeployedIndex.FIELDS.deployment_group).
+  /// Creating deploymentGroups with reservedIpRanges is a recommended practice when the peered network has multiple peering ranges. This creates your deployments from predictable IP spaces for easier traffic administration. Also, one deploymentGroup (except 'default') can only be used with the same reservedIpRanges which means if the deploymentGroup has been used with reserved_ip_ranges: [a, b, c], using it with [a, b] or [d, e] is disallowed. [See the official documentation here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#DeployedIndex.FIELDS.deployment_group).
   /// Note: we only support up to 5 deployment groups (not including 'default').
   late final pulumi.Output<String?> deploymentGroup;
   /// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -1257,7 +1414,7 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> privateEndpoints;
   /// The region of the index endpoint deployment. eg us-central1
-  late final pulumi.Output<String?> region;
+  late final pulumi.Output<String> region;
   /// A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
   /// If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
   /// The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range'].
@@ -1281,6 +1438,7 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
     automaticResources = registerOutput<AiIndexEndpointDeployedIndexAutomaticResources>('automaticResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointDeployedIndexAutomaticResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dedicatedResources = registerOutput<AiIndexEndpointDeployedIndexDedicatedResources?>('dedicatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointDeployedIndexDedicatedResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deployedIndexAuthConfig = registerOutput<AiIndexEndpointDeployedIndexDeployedIndexAuthConfig?>('deployedIndexAuthConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deployedIndexId = registerOutput<String>('deployedIndexId');
     deploymentGroup = registerOutput<String?>('deploymentGroup');
@@ -1291,7 +1449,7 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
     indexSyncTime = registerOutput<String>('indexSyncTime');
     this.name = registerOutput<String>('name');
     privateEndpoints = registerOutput<List<Map<String, dynamic>>>('privateEndpoints');
-    region = registerOutput<String?>('region');
+    region = registerOutput<String>('region');
     reservedIpRanges = registerOutput<List<String>?>('reservedIpRanges');
   }
 
@@ -1321,6 +1479,7 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
     automaticResources = registerOutput<AiIndexEndpointDeployedIndexAutomaticResources>('automaticResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointDeployedIndexAutomaticResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dedicatedResources = registerOutput<AiIndexEndpointDeployedIndexDedicatedResources?>('dedicatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointDeployedIndexDedicatedResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deployedIndexAuthConfig = registerOutput<AiIndexEndpointDeployedIndexDeployedIndexAuthConfig?>('deployedIndexAuthConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deployedIndexId = registerOutput<String>('deployedIndexId');
     deploymentGroup = registerOutput<String?>('deploymentGroup');
@@ -1331,7 +1490,7 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
     indexSyncTime = registerOutput<String>('indexSyncTime');
     this.name = registerOutput<String>('name');
     privateEndpoints = registerOutput<List<Map<String, dynamic>>>('privateEndpoints');
-    region = registerOutput<String?>('region');
+    region = registerOutput<String>('region');
     reservedIpRanges = registerOutput<List<String>?>('reservedIpRanges');
   }
 }

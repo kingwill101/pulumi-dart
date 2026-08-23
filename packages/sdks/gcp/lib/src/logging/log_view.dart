@@ -96,7 +96,7 @@ import 'log_view_state.dart';
 /// 		}
 /// 		_, err = logging.NewLogView(ctx, "logging_log_view", &logging.LogViewArgs{
 /// 			Name:        pulumi.String("my-view"),
-/// 			Bucket:      loggingLogView.ID(),
+/// 			Bucket:      loggingLogView.ID().ToIDOutput().ToStringOutput(),
 /// 			Description: pulumi.String("A logging view configured with Terraform"),
 /// 			Filter:      pulumi.String("SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")"),
 /// 		})
@@ -105,6 +105,28 @@ import 'log_view_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_logging_projectbucketconfig" "logging_log_view" {
+///   project        = "my-project-name"
+///   location       = "global"
+///   retention_days = 30
+///   bucket_id      = "_Default"
+/// }
+/// resource "gcp_logging_logview" "logging_log_view" {
+///   name        = "my-view"
+///   bucket      = gcp_logging_projectbucketconfig.logging_log_view.id
+///   description = "A logging view configured with Terraform"
+///   filter      = "SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")"
 /// }
 /// ```
 /// ```java
@@ -117,8 +139,8 @@ import 'log_view_state.dart';
 /// import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
 /// import com.pulumi.gcp.logging.LogView;
 /// import com.pulumi.gcp.logging.LogViewArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -174,6 +196,7 @@ import 'log_view_state.dart';
 ///
 /// * `{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, LogView can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -184,9 +207,16 @@ class LogView extends pulumi.CustomResource {
   late final pulumi.Output<String> bucket;
   /// Output only. The creation timestamp of the view.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Describes this view.
   late final pulumi.Output<String?> description;
-  /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+  /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gceInstance" AND LOG_ID("stdout")
   late final pulumi.Output<String?> filter;
   /// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
   late final pulumi.Output<String> location;
@@ -213,6 +243,7 @@ class LogView extends pulumi.CustomResource {
         ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     filter = registerOutput<String?>('filter');
     location = registerOutput<String>('location');
@@ -246,6 +277,7 @@ class LogView extends pulumi.CustomResource {
         ) {
     bucket = registerOutput<String>('bucket');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     filter = registerOutput<String?>('filter');
     location = registerOutput<String>('location');

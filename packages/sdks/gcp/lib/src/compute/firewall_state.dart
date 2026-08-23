@@ -15,6 +15,13 @@ class FirewallState {
   final pulumi.Input<List<FirewallAllow>>? allows;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The list of DENY rules specified by this firewall. Each rule specifies
   /// a protocol and port-range tuple that describes a denied connection.
   /// Structure is documented below.
@@ -27,8 +34,8 @@ class FirewallState {
   /// must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
   final pulumi.Input<List<String>>? destinationRanges;
   /// Direction of traffic to which this firewall applies; default is
-  /// INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
-  /// `source_tags` or `source_service_accounts` is required.
+  /// INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
+  /// `sourceTags` or `sourceServiceAccounts` is required.
   /// Possible values are: `INGRESS`, `EGRESS`.
   final pulumi.Input<String>? direction;
   /// Denotes whether the firewall rule is disabled, i.e not applied to the
@@ -37,7 +44,7 @@ class FirewallState {
   /// is unspecified, the firewall rule will be enabled.
   final pulumi.Input<bool>? disabled;
   /// This field denotes whether to enable logging for a particular firewall rule.
-  /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
+  /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
   final pulumi.Input<bool>? enableLogging;
   /// This field denotes the logging options for a particular firewall rule.
   /// If defined, logging is enabled, and logs will be exported to Cloud Logging.
@@ -51,7 +58,7 @@ class FirewallState {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   final pulumi.Input<String>? name;
-  /// The name or self_link of the network to attach this firewall to.
+  /// The name or selfLink of the network to attach this firewall to.
   final pulumi.Input<String>? network;
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
@@ -76,7 +83,7 @@ class FirewallState {
   /// source IP that belongs to a tag listed in the sourceTags property. The
   /// connection does not need to match both properties for the firewall to
   /// apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
-  /// `source_ranges`, `source_tags` or `source_service_accounts` is required.
+  /// `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
   final pulumi.Input<List<String>>? sourceRanges;
   /// If source service accounts are specified, the firewall will apply only
   /// to traffic originating from an instance with a service account in this
@@ -89,7 +96,7 @@ class FirewallState {
   /// sourceServiceAccount. The connection does not need to match both
   /// properties for the firewall to apply. sourceServiceAccounts cannot be
   /// used at the same time as sourceTags or targetTags. For INGRESS traffic,
-  /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
+  /// one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
   final pulumi.Input<List<String>>? sourceServiceAccounts;
   /// If source tags are specified, the firewall will apply only to traffic
   /// with source IP that belongs to a tag listed in source tags. Source
@@ -100,7 +107,7 @@ class FirewallState {
   /// source IP address within sourceRanges OR the source IP that belongs to
   /// a tag listed in the sourceTags property. The connection does not need
   /// to match both properties for the firewall to apply. For INGRESS traffic,
-  /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
+  /// one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
   final pulumi.Input<List<String>>? sourceTags;
   /// A list of service accounts indicating sets of instances located in the
   /// network that may make network connections as specified in allowed[].
@@ -118,6 +125,7 @@ class FirewallState {
   /// Creates a new [FirewallState].
   /// [allows] The list of ALLOW rules specified by this firewall. Each rule
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [denies] The list of DENY rules specified by this firewall. Each rule specifies
   /// [description] An optional description of this resource. Provide this property when
   /// [destinationRanges] If destination ranges are specified, the firewall will apply only to
@@ -126,7 +134,7 @@ class FirewallState {
   /// [enableLogging] This field denotes whether to enable logging for a particular firewall rule.
   /// [logConfig] This field denotes the logging options for a particular firewall rule.
   /// [name] Name of the resource. Provided by the client when the resource is
-  /// [network] The name or self_link of the network to attach this firewall to.
+  /// [network] The name or selfLink of the network to attach this firewall to.
   /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [priority] Priority for this rule. This is an integer between 0 and 65535, both
   /// [project] The ID of the project in which the resource belongs.
@@ -139,6 +147,7 @@ class FirewallState {
   const FirewallState({
     this.allows,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.denies,
     this.description,
     this.destinationRanges,
@@ -163,6 +172,7 @@ class FirewallState {
     return <String, dynamic>{
       'allows': ?pulumi.Input.mapOptionalInputValue<List<FirewallAllow>, List<Map<String, dynamic>>>(allows, (value) => pulumi.Input.encodeList<FirewallAllow, Map<String, dynamic>>(value, (value) => value.toMap())),
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'denies': ?pulumi.Input.mapOptionalInputValue<List<FirewallDeny>, List<Map<String, dynamic>>>(denies, (value) => pulumi.Input.encodeList<FirewallDeny, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'destinationRanges': ?destinationRanges,
@@ -188,6 +198,7 @@ class FirewallState {
     return FirewallState(
       allows: (() { final guardedValue = map['allows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FirewallAllow>(guardedValue, (value) => FirewallAllow.fromMap((value as Map).cast<String, dynamic>()))); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       denies: (() { final guardedValue = map['denies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FirewallDeny>(guardedValue, (value) => FirewallDeny.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationRanges: (() { final guardedValue = map['destinationRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -209,4 +220,3 @@ class FirewallState {
     );
   }
 }
-

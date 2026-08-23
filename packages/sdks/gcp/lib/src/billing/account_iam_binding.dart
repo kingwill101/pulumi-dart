@@ -109,6 +109,27 @@ import 'account_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/billing.viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_billing_accountiampolicy" "editor" {
+///   billing_account_id = "00AA00-000AAA-00AA0A"
+///   policy_data        = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,10 +138,11 @@ import 'account_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.billing.AccountIamPolicy;
 /// import com.pulumi.gcp.billing.AccountIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,6 +254,21 @@ import 'account_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_billing_accountiambinding" "editor" {
+///   billing_account_id = "00AA00-000AAA-00AA0A"
+///   role               = "roles/billing.viewer"
+///   members            = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -240,8 +277,8 @@ import 'account_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.billing.AccountIamBinding;
 /// import com.pulumi.gcp.billing.AccountIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -335,6 +372,21 @@ import 'account_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_billing_accountiammember" "editor" {
+///   billing_account_id = "00AA00-000AAA-00AA0A"
+///   role               = "roles/billing.viewer"
+///   member             = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -343,8 +395,8 @@ import 'account_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.billing.AccountIamMember;
 /// import com.pulumi.gcp.billing.AccountIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -472,6 +524,27 @@ import 'account_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/billing.viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_billing_accountiampolicy" "editor" {
+///   billing_account_id = "00AA00-000AAA-00AA0A"
+///   policy_data        = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -480,10 +553,11 @@ import 'account_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.billing.AccountIamPolicy;
 /// import com.pulumi.gcp.billing.AccountIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -595,6 +669,21 @@ import 'account_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_billing_accountiambinding" "editor" {
+///   billing_account_id = "00AA00-000AAA-00AA0A"
+///   role               = "roles/billing.viewer"
+///   members            = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -603,8 +692,8 @@ import 'account_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.billing.AccountIamBinding;
 /// import com.pulumi.gcp.billing.AccountIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -698,6 +787,21 @@ import 'account_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_billing_accountiammember" "editor" {
+///   billing_account_id = "00AA00-000AAA-00AA0A"
+///   role               = "roles/billing.viewer"
+///   member             = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -706,8 +810,8 @@ import 'account_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.billing.AccountIamMember;
 /// import com.pulumi.gcp.billing.AccountIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -741,29 +845,8 @@ import 'account_iam_binding_state.dart';
 ///
 /// ## Import
 ///
-/// ### Importing IAM policies
-///
-/// IAM policy imports use the `billing_account_id` identifier of the Billing Account resource only. For example:
-///
-/// * `{{billing_account_id}}`
-///
-/// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-///
-/// tf
-///
-/// import {
-///
-/// id = {{billing_account_id}}
-///
-/// to = google_billing_account_iam_policy.default
-///
-/// }
-///
-/// The `pulumi import` command can also be used:
-///
-/// ```sh
-/// $ pulumi import gcp:billing/accountIamBinding:AccountIamBinding default {{billing_account_id}}
-/// ```
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// full name of the custom role, e.g. `organizations/my-org-id/roles/my-custom-role`.
 class AccountIamBinding extends pulumi.CustomResource {
   /// The billing account id.
   ///

@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_cluster_config_master_config_accelerator.dart';
 import 'cluster_cluster_config_master_config_disk_config.dart';
+import 'cluster_cluster_config_master_config_instance_flexibility_policy.dart';
 
 class ClusterClusterConfigMasterConfig {
   /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
@@ -12,6 +13,8 @@ class ClusterClusterConfigMasterConfig {
   /// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
   /// for more information.
   final pulumi.Input<String>? imageUri;
+  /// Instance flexibility Policy allowing a mixture of VM shapes.
+  final pulumi.Input<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy>? instanceFlexibilityPolicy;
   /// List of master instance names which
   /// have been assigned to the cluster.
   final pulumi.Input<List<String>>? instanceNames;
@@ -32,6 +35,7 @@ class ClusterClusterConfigMasterConfig {
   /// [accelerators] The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
   /// [diskConfig] Disk Config
   /// [imageUri] The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
+  /// [instanceFlexibilityPolicy] Instance flexibility Policy allowing a mixture of VM shapes.
   /// [instanceNames] List of master instance names which
   /// [machineType] The name of a Google Compute Engine machine type
   /// [minCpuPlatform] The name of a minimum generation of CPU family
@@ -40,6 +44,7 @@ class ClusterClusterConfigMasterConfig {
     this.accelerators,
     this.diskConfig,
     this.imageUri,
+    this.instanceFlexibilityPolicy,
     this.instanceNames,
     this.machineType,
     this.minCpuPlatform,
@@ -51,6 +56,7 @@ class ClusterClusterConfigMasterConfig {
       'accelerators': ?pulumi.Input.mapOptionalInputValue<List<ClusterClusterConfigMasterConfigAccelerator>, List<Map<String, dynamic>>>(accelerators, (value) => pulumi.Input.encodeList<ClusterClusterConfigMasterConfigAccelerator, Map<String, dynamic>>(value, (value) => value.toMap())),
       'diskConfig': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigMasterConfigDiskConfig, Map<String, dynamic>>(diskConfig, (value) => value.toMap()),
       'imageUri': ?imageUri,
+      'instanceFlexibilityPolicy': ?pulumi.Input.mapOptionalInputValue<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy, Map<String, dynamic>>(instanceFlexibilityPolicy, (value) => value.toMap()),
       'instanceNames': ?instanceNames,
       'machineType': ?machineType,
       'minCpuPlatform': ?minCpuPlatform,
@@ -63,6 +69,7 @@ class ClusterClusterConfigMasterConfig {
       accelerators: (() { final guardedValue = map['accelerators']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterClusterConfigMasterConfigAccelerator>(guardedValue, (value) => ClusterClusterConfigMasterConfigAccelerator.fromMap((value as Map).cast<String, dynamic>()))); })(),
       diskConfig: (() { final guardedValue = map['diskConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigMasterConfigDiskConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       imageUri: (() { final guardedValue = map['imageUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      instanceFlexibilityPolicy: (() { final guardedValue = map['instanceFlexibilityPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instanceNames: (() { final guardedValue = map['instanceNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minCpuPlatform: (() { final guardedValue = map['minCpuPlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -70,4 +77,3 @@ class ClusterClusterConfigMasterConfig {
     );
   }
 }
-

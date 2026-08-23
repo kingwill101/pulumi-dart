@@ -67,6 +67,21 @@ import 'get_listing_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_bigqueryanalyticshub_getdataexchangeiampolicy" "policy" {
+///   project          = dataExchange.project
+///   location         = dataExchange.location
+///   data_exchange_id = dataExchange.dataExchangeId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -75,8 +90,8 @@ import 'get_listing_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigqueryanalyticshub.BigqueryanalyticshubFunctions;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetDataExchangeIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -89,9 +104,9 @@ import 'get_listing_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = BigqueryanalyticshubFunctions.getDataExchangeIamPolicy(GetDataExchangeIamPolicyArgs.builder()
-///             .project(dataExchange.project())
-///             .location(dataExchange.location())
-///             .dataExchangeId(dataExchange.dataExchangeId())
+///             .project(dataExchange.get("project"))
+///             .location(dataExchange.get("location"))
+///             .dataExchangeId(dataExchange.get("dataExchangeId"))
 ///             .build());
 ///
 ///     }
@@ -189,6 +204,22 @@ Future<GetDataExchangeIamPolicyResult> getDataExchangeIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_bigqueryanalyticshub_getlistingiampolicy" "policy" {
+///   project          = listing.project
+///   location         = listing.location
+///   data_exchange_id = listing.dataExchangeId
+///   listing_id       = listing.listingId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -197,8 +228,8 @@ Future<GetDataExchangeIamPolicyResult> getDataExchangeIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigqueryanalyticshub.BigqueryanalyticshubFunctions;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetListingIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -211,10 +242,10 @@ Future<GetDataExchangeIamPolicyResult> getDataExchangeIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = BigqueryanalyticshubFunctions.getListingIamPolicy(GetListingIamPolicyArgs.builder()
-///             .project(listing.project())
-///             .location(listing.location())
-///             .dataExchangeId(listing.dataExchangeId())
-///             .listingId(listing.listingId())
+///             .project(listing.get("project"))
+///             .location(listing.get("location"))
+///             .dataExchangeId(listing.get("dataExchangeId"))
+///             .listingId(listing.get("listingId"))
 ///             .build());
 ///
 ///     }

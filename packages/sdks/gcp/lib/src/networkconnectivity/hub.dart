@@ -84,6 +84,23 @@ import 'hub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_hub" "primary" {
+///   name        = "basic"
+///   description = "A sample hub"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +109,8 @@ import 'hub_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networkconnectivity.Hub;
 /// import com.pulumi.gcp.networkconnectivity.HubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -187,6 +204,21 @@ import 'hub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_hub" "primary" {
+///   name        = "basic"
+///   description = "A sample hub with Private Service Connect transitivity is enabled"
+///   export_psc  = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +227,8 @@ import 'hub_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networkconnectivity.Hub;
 /// import com.pulumi.gcp.networkconnectivity.HubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -298,6 +330,23 @@ import 'hub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_hub" "primary" {
+///   name        = "mesh"
+///   description = "A sample mesh hub"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -306,8 +355,8 @@ import 'hub_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networkconnectivity.Hub;
 /// import com.pulumi.gcp.networkconnectivity.HubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -414,6 +463,24 @@ import 'hub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_hub" "primary" {
+///   name        = "star"
+///   description = "A sample star hub"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   preset_topology = "STAR"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -422,8 +489,8 @@ import 'hub_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networkconnectivity.Hub;
 /// import com.pulumi.gcp.networkconnectivity.HubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -536,6 +603,25 @@ import 'hub_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_hub" "primary" {
+///   name            = "policy"
+///   description     = "A sample hub with PRESET policy_mode and STAR topology"
+///   policy_mode     = "PRESET"
+///   preset_topology = "STAR"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -544,8 +630,8 @@ import 'hub_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networkconnectivity.Hub;
 /// import com.pulumi.gcp.networkconnectivity.HubArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -587,27 +673,27 @@ import 'hub_state.dart';
 /// Hub can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/hubs/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Hub can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkconnectivity/hub:Hub default projects/{{project}}/locations/global/hubs/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/hub:Hub default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/hub:Hub default {{name}}
 /// ```
 class Hub extends pulumi.CustomResource {
   /// Output only. The time the hub was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of the hub.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -616,7 +702,7 @@ class Hub extends pulumi.CustomResource {
   late final pulumi.Output<bool> exportPsc;
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
   late final pulumi.Output<String> name;
@@ -657,6 +743,7 @@ class Hub extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     exportPsc = registerOutput<bool>('exportPsc');
@@ -696,6 +783,7 @@ class Hub extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     exportPsc = registerOutput<bool>('exportPsc');

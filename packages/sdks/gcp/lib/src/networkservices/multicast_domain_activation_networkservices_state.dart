@@ -11,6 +11,13 @@ class MulticastDomainActivationNetworkservicesState {
   /// The timestamp when the multicast domain activation was
   /// created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional text description of the multicast domain activation.
   final pulumi.Input<String>? description;
   /// Option to allow disabling placement policy for multicast infrastructure.
@@ -21,7 +28,7 @@ class MulticastDomainActivationNetworkservicesState {
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Labels as key-value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
@@ -71,6 +78,7 @@ class MulticastDomainActivationNetworkservicesState {
   /// Creates a new [MulticastDomainActivationNetworkservicesState].
   /// [adminNetwork] The URL of the admin network.
   /// [createTime] The timestamp when the multicast domain activation was
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional text description of the multicast domain activation.
   /// [disablePlacementPolicy] Option to allow disabling placement policy for multicast infrastructure.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -88,6 +96,7 @@ class MulticastDomainActivationNetworkservicesState {
   const MulticastDomainActivationNetworkservicesState({
     this.adminNetwork,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.disablePlacementPolicy,
     this.effectiveLabels,
@@ -108,6 +117,7 @@ class MulticastDomainActivationNetworkservicesState {
     return <String, dynamic>{
       'adminNetwork': ?adminNetwork,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'disablePlacementPolicy': ?disablePlacementPolicy,
       'effectiveLabels': ?effectiveLabels,
@@ -129,6 +139,7 @@ class MulticastDomainActivationNetworkservicesState {
     return MulticastDomainActivationNetworkservicesState(
       adminNetwork: (() { final guardedValue = map['adminNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disablePlacementPolicy: (() { final guardedValue = map['disablePlacementPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -146,4 +157,3 @@ class MulticastDomainActivationNetworkservicesState {
     );
   }
 }
-

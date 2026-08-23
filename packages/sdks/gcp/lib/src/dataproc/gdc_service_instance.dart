@@ -110,6 +110,29 @@ import 'gdc_service_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_gdcserviceinstance" "service-instance" {
+///   service_instance_id = "tf-e2e-service-instance"
+///   project             = "my-project"
+///   location            = "us-west2"
+///   gdce_cluster = {
+///     gdce_cluster = "projects/gdce-cluster-monitoring/locations/us-west2/clusters/gdce-prism-prober-ord106"
+///   }
+///   display_name = "A service instance"
+///   labels = {
+///     "test-label" = "label-value"
+///   }
+///   service_account = "dataprocgdc-cep-workflows@gdce-cluster-monitoring.iam.gserviceaccount.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +142,8 @@ import 'gdc_service_instance_state.dart';
 /// import com.pulumi.gcp.dataproc.GdcServiceInstance;
 /// import com.pulumi.gcp.dataproc.GdcServiceInstanceArgs;
 /// import com.pulumi.gcp.dataproc.inputs.GdcServiceInstanceGdceClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,39 +192,39 @@ import 'gdc_service_instance_state.dart';
 /// ServiceInstance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/serviceInstances/{{service_instance_id}}`
-///
 /// * `{{project}}/{{location}}/{{service_instance_id}}`
-///
 /// * `{{location}}/{{service_instance_id}}`
+///
 ///
 /// When using the `pulumi import` command, ServiceInstance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default projects/{{project}}/locations/{{location}}/serviceInstances/{{service_instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{project}}/{{location}}/{{service_instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataproc/gdcServiceInstance:GdcServiceInstance default {{location}}/{{service_instance_id}}
 /// ```
 class GdcServiceInstance extends pulumi.CustomResource {
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-provided human-readable name to be used in user interfaces.
   late final pulumi.Output<String?> displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-  /// Effective service account associated with ServiceInstance. This will be the service_account if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
+  /// Effective service account associated with ServiceInstance. This will be the serviceAccount if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
   late final pulumi.Output<String> effectiveServiceAccount;
   /// Gdce cluster information.
   /// Structure is documented below.
   late final pulumi.Output<GdcServiceInstanceGdceCluster?> gdceCluster;
   /// The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Location of the resource.
   late final pulumi.Output<String> location;
@@ -265,6 +288,7 @@ class GdcServiceInstance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     effectiveServiceAccount = registerOutput<String>('effectiveServiceAccount');
@@ -309,6 +333,7 @@ class GdcServiceInstance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     effectiveServiceAccount = registerOutput<String>('effectiveServiceAccount');

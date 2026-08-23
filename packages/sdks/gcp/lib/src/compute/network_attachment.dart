@@ -171,7 +171,7 @@ import 'network_attachment_state.dart';
 /// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("basic-subnetwork"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 		})
 /// 		if err != nil {
@@ -219,6 +219,49 @@ import 'network_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_networkattachment" "default" {
+///   name                  = "basic-network-attachment"
+///   region                = "us-central1"
+///   description           = "basic network attachment description"
+///   connection_preference = "ACCEPT_MANUAL"
+///   subnetworks           = [gcp_compute_subnetwork.default.self_link]
+///   producer_accept_lists = [gcp_organizations_project.accepted_producer_project.project_id]
+///   producer_reject_lists = [gcp_organizations_project.rejected_producer_project.project_id]
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "basic-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "basic-subnetwork"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+///   ip_cidr_range = "10.0.0.0/16"
+/// }
+/// resource "gcp_organizations_project" "rejected_producer_project" {
+///   project_id      = "prj-rejected"
+///   name            = "prj-rejected"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_organizations_project" "accepted_producer_project" {
+///   project_id      = "prj-accepted"
+///   name            = "prj-accepted"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -233,8 +276,8 @@ import 'network_attachment_state.dart';
 /// import com.pulumi.gcp.organizations.ProjectArgs;
 /// import com.pulumi.gcp.compute.NetworkAttachment;
 /// import com.pulumi.gcp.compute.NetworkAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -497,7 +540,7 @@ import 'network_attachment_state.dart';
 /// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("basic-subnetwork"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 		})
 /// 		if err != nil {
@@ -508,7 +551,7 @@ import 'network_attachment_state.dart';
 /// 			Region:      pulumi.String("us-central1"),
 /// 			Description: pulumi.String("my basic network attachment"),
 /// 			Subnetworks: pulumi.StringArray{
-/// 				defaultSubnetwork.ID(),
+/// 				defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
 /// 		})
@@ -540,6 +583,49 @@ import 'network_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name                    = "basic-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "basic-subnetwork"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+///   ip_cidr_range = "10.0.0.0/16"
+/// }
+/// resource "gcp_compute_networkattachment" "default" {
+///   name                  = "basic-network-attachment"
+///   region                = "us-central1"
+///   description           = "my basic network attachment"
+///   subnetworks           = [gcp_compute_subnetwork.default.id]
+///   connection_preference = "ACCEPT_AUTOMATIC"
+/// }
+/// resource "gcp_compute_instance" "default" {
+///   name         = "basic-instance"
+///   zone         = "us-central1-a"
+///   machine_type = "e2-micro"
+///   boot_disk = {
+///     initialize_params = {
+///       image = "debian-cloud/debian-11"
+///     }
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
+///   network_interfaces {
+///     network_attachment = gcp_compute_networkattachment.default.self_link
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -557,8 +643,8 @@ import 'network_attachment_state.dart';
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -657,28 +743,17 @@ import 'network_attachment_state.dart';
 /// NetworkAttachment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, NetworkAttachment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default {{name}}
 /// ```
 class NetworkAttachment extends pulumi.CustomResource {
@@ -690,6 +765,13 @@ class NetworkAttachment extends pulumi.CustomResource {
   late final pulumi.Output<String> connectionPreference;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
   /// Fingerprint of this resource. A hash of the contents stored in this object. This
@@ -735,6 +817,7 @@ class NetworkAttachment extends pulumi.CustomResource {
     connectionEndpoints = registerOutput<List<Map<String, dynamic>>>('connectionEndpoints');
     connectionPreference = registerOutput<String>('connectionPreference');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     kind = registerOutput<String>('kind');
@@ -775,6 +858,7 @@ class NetworkAttachment extends pulumi.CustomResource {
     connectionEndpoints = registerOutput<List<Map<String, dynamic>>>('connectionEndpoints');
     connectionPreference = registerOutput<String>('connectionPreference');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     kind = registerOutput<String>('kind');

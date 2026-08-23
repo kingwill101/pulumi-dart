@@ -6,18 +6,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnrollmentState {
   /// Resource annotations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// A CEL expression identifying which messages this enrollment applies to.
   final pulumi.Input<String>? celMatch;
   /// The creation time.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Destination is the Pipeline that the Enrollment is delivering to. It must
   /// point to the full resource name of a Pipeline. Format:
   /// "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
   final pulumi.Input<String>? destination;
   /// Resource display name.
   final pulumi.Input<String>? displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -30,7 +38,7 @@ class EnrollmentState {
   final pulumi.Input<String>? etag;
   /// Resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
@@ -57,9 +65,10 @@ class EnrollmentState {
   /// [annotations] Resource annotations.
   /// [celMatch] A CEL expression identifying which messages this enrollment applies to.
   /// [createTime] The creation time.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [destination] Destination is the Pipeline that the Enrollment is delivering to. It must
   /// [displayName] Resource display name.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [enrollmentId] The user-provided ID to be assigned to the Enrollment. It should match the
   /// [etag] This checksum is computed by the server based on the value of other
@@ -75,6 +84,7 @@ class EnrollmentState {
     this.annotations,
     this.celMatch,
     this.createTime,
+    this.deletionPolicy,
     this.destination,
     this.displayName,
     this.effectiveAnnotations,
@@ -96,6 +106,7 @@ class EnrollmentState {
       'annotations': ?annotations,
       'celMatch': ?celMatch,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'destination': ?destination,
       'displayName': ?displayName,
       'effectiveAnnotations': ?effectiveAnnotations,
@@ -118,6 +129,7 @@ class EnrollmentState {
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       celMatch: (() { final guardedValue = map['celMatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -135,4 +147,3 @@ class EnrollmentState {
     );
   }
 }
-

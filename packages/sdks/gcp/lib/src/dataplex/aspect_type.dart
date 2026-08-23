@@ -174,6 +174,23 @@ import 'aspect_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_aspecttype" "test_aspect_type_basic" {
+///   aspect_type_id      = "aspect-type-basic"
+///   project             = "my-project-name"
+///   location            = "us-central1"
+///   data_classification = "DATA_CLASSIFICATION_UNSPECIFIED"
+///   metadata_template   = "{\n  \\\"name\\\": \\\"tf-test-template\\\",\n  \\\"type\\\": \\\"record\\\",\n  \\\"recordFields\\\": [\n    {\n      \\\"name\\\": \\\"type\\\",\n      \\\"type\\\": \\\"enum\\\",\n      \\\"annotations\\\": {\n        \\\"displayName\\\": \\\"Type\\\",\n        \\\"description\\\": \\\"Specifies the type of view represented by the entry.\\\"\n      },\n      \\\"index\\\": 1,\n      \\\"constraints\\\": {\n        \\\"required\\\": true\n      },\n      \\\"enumValues\\\": [\n        {\n          \\\"name\\\": \\\"VIEW\\\",\n          \\\"index\\\": 1\n        }\n      ]\n    }\n  ]\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -182,8 +199,8 @@ import 'aspect_type_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.AspectType;
 /// import com.pulumi.gcp.dataplex.AspectTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -871,6 +888,28 @@ import 'aspect_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_aspecttype" "test_aspect_type_full" {
+///   aspect_type_id = "aspect-type-full"
+///   project        = "my-project-name"
+///   location       = "us-central1"
+///   labels = {
+///     "tag" = "test-tf"
+///   }
+///   display_name        = "terraform aspect type"
+///   description         = "data aspect type created by Terraform"
+///   data_classification = "METADATA_AND_DATA"
+///   metadata_template   = "{\n  \\\"type\\\": \\\"record\\\",\n  \\\"name\\\": \\\"Schema\\\",\n  \\\"recordFields\\\": [\n    {\n      \\\"name\\\": \\\"fields\\\",\n      \\\"type\\\": \\\"array\\\",\n      \\\"index\\\": 1,\n      \\\"arrayItems\\\": {\n        \\\"name\\\": \\\"field\\\",\n        \\\"type\\\": \\\"record\\\",\n        \\\"typeId\\\": \\\"field\\\",\n        \\\"recordFields\\\": [\n          {\n            \\\"name\\\": \\\"name\\\",\n            \\\"type\\\": \\\"string\\\",\n            \\\"index\\\": 1,\n            \\\"constraints\\\": {\n              \\\"required\\\": true\n            }\n          },\n          {\n            \\\"name\\\": \\\"description\\\",\n            \\\"type\\\": \\\"string\\\",\n            \\\"index\\\": 2\n          },\n          {\n            \\\"name\\\": \\\"dataType\\\",\n            \\\"type\\\": \\\"string\\\",\n            \\\"index\\\": 3,\n            \\\"constraints\\\": {\n              \\\"required\\\": true\n            }\n          },\n          {\n            \\\"name\\\": \\\"metadataType\\\",\n            \\\"type\\\": \\\"enum\\\",\n            \\\"index\\\": 4,\n            \\\"constraints\\\": {\n              \\\"required\\\": true\n            },\n            \\\"enumValues\\\": [\n              {\n                \\\"name\\\": \\\"BOOLEAN\\\",\n                \\\"index\\\": 1\n              },\n              {\n                \\\"name\\\": \\\"NUMBER\\\",\n                \\\"index\\\": 2\n              },\n              {\n                \\\"name\\\": \\\"STRING\\\",\n                \\\"index\\\": 3\n              },\n              {\n                \\\"name\\\": \\\"BYTES\\\",\n                \\\"index\\\": 4\n              },\n              {\n                \\\"name\\\": \\\"DATETIME\\\",\n                \\\"index\\\": 5\n              },\n              {\n                \\\"name\\\": \\\"TIMESTAMP\\\",\n                \\\"index\\\": 6\n              },\n              {\n                \\\"name\\\": \\\"GEOSPATIAL\\\",\n                \\\"index\\\": 7\n              },\n              {\n                \\\"name\\\": \\\"STRUCT\\\",\n                \\\"index\\\": 8\n              },\n              {\n                \\\"name\\\": \\\"OTHER\\\",\n                \\\"index\\\": 100\n              }\n            ]\n          },\n          {\n            \\\"name\\\": \\\"mode\\\",\n            \\\"type\\\": \\\"enum\\\",\n            \\\"index\\\": 5,\n            \\\"enumValues\\\": [\n              {\n                \\\"name\\\": \\\"NULLABLE\\\",\n                \\\"index\\\": 1\n              },\n              {\n                \\\"name\\\": \\\"REPEATED\\\",\n                \\\"index\\\": 2\n              },\n              {\n                \\\"name\\\": \\\"REQUIRED\\\",\n                \\\"index\\\": 3\n              }\n            ]\n          },\n          {\n            \\\"name\\\": \\\"defaultValue\\\",\n            \\\"type\\\": \\\"string\\\",\n            \\\"index\\\": 6\n          },\n          {\n            \\\"name\\\": \\\"annotations\\\",\n            \\\"type\\\": \\\"map\\\",\n            \\\"index\\\": 7,\n            \\\"mapItems\\\": {\n              \\\"name\\\": \\\"label\\\",\n              \\\"type\\\": \\\"string\\\"\n            }\n          },\n          {\n            \\\"name\\\": \\\"fields\\\",\n            \\\"type\\\": \\\"array\\\",\n            \\\"index\\\": 20,\n            \\\"arrayItems\\\": {\n              \\\"name\\\": \\\"field\\\",\n              \\\"type\\\": \\\"record\\\",\n              \\\"typeRef\\\": \\\"field\\\"\n            }\n          }\n        ]\n      }\n    }\n  ]\n}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -879,8 +918,8 @@ import 'aspect_type_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.AspectType;
 /// import com.pulumi.gcp.dataplex.AspectTypeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1186,22 +1225,15 @@ import 'aspect_type_state.dart';
 /// AspectType can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/aspectTypes/{{aspect_type_id}}`
-///
 /// * `{{project}}/{{location}}/{{aspect_type_id}}`
-///
 /// * `{{location}}/{{aspect_type_id}}`
+///
 ///
 /// When using the `pulumi import` command, AspectType can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataplex/aspectType:AspectType default projects/{{project}}/locations/{{location}}/aspectTypes/{{aspect_type_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/aspectType:AspectType default {{project}}/{{location}}/{{aspect_type_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/aspectType:AspectType default {{location}}/{{aspect_type_id}}
 /// ```
 class AspectType extends pulumi.CustomResource {
@@ -1215,6 +1247,13 @@ class AspectType extends pulumi.CustomResource {
   /// &lt;br&gt;&lt;br&gt;
   /// Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
   late final pulumi.Output<String?> dataClassification;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the AspectType.
   late final pulumi.Output<String?> description;
   /// User friendly display name.
@@ -1224,7 +1263,7 @@ class AspectType extends pulumi.CustomResource {
   /// User-defined labels for the AspectType.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location where aspect type will be created in.
   late final pulumi.Output<String?> location;
@@ -1263,6 +1302,7 @@ class AspectType extends pulumi.CustomResource {
     aspectTypeId = registerOutput<String?>('aspectTypeId');
     createTime = registerOutput<String>('createTime');
     dataClassification = registerOutput<String?>('dataClassification');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1303,6 +1343,7 @@ class AspectType extends pulumi.CustomResource {
     aspectTypeId = registerOutput<String?>('aspectTypeId');
     createTime = registerOutput<String>('createTime');
     dataClassification = registerOutput<String?>('dataClassification');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

@@ -14,6 +14,7 @@ class GetBackupVaultResult {
   final String backupVaultId;
   final String createTime;
   final bool deletable;
+  final String deletionPolicy;
   final String description;
   final Map<String, String> effectiveAnnotations;
   final Map<String, String> effectiveLabels;
@@ -22,6 +23,7 @@ class GetBackupVaultResult {
   final String etag;
   final bool forceDelete;
   final bool forceUpdate;
+  final bool forceUpdateAccessRestriction;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool ignoreBackupPlanReferences;
@@ -47,6 +49,7 @@ class GetBackupVaultResult {
   /// [backupVaultId] Required.
   /// [createTime] Required.
   /// [deletable] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [effectiveAnnotations] Required.
   /// [effectiveLabels] Required.
@@ -55,6 +58,7 @@ class GetBackupVaultResult {
   /// [etag] Required.
   /// [forceDelete] Required.
   /// [forceUpdate] Required.
+  /// [forceUpdateAccessRestriction] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ignoreBackupPlanReferences] Required.
   /// [ignoreInactiveDatasources] Required.
@@ -78,6 +82,7 @@ class GetBackupVaultResult {
     required this.backupVaultId,
     required this.createTime,
     required this.deletable,
+    required this.deletionPolicy,
     required this.description,
     required this.effectiveAnnotations,
     required this.effectiveLabels,
@@ -86,6 +91,7 @@ class GetBackupVaultResult {
     required this.etag,
     required this.forceDelete,
     required this.forceUpdate,
+    required this.forceUpdateAccessRestriction,
     required this.id,
     required this.ignoreBackupPlanReferences,
     required this.ignoreInactiveDatasources,
@@ -112,6 +118,7 @@ class GetBackupVaultResult {
       'backupVaultId': backupVaultId,
       'createTime': createTime,
       'deletable': deletable,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'effectiveAnnotations': effectiveAnnotations,
       'effectiveLabels': effectiveLabels,
@@ -120,6 +127,7 @@ class GetBackupVaultResult {
       'etag': etag,
       'forceDelete': forceDelete,
       'forceUpdate': forceUpdate,
+      'forceUpdateAccessRestriction': forceUpdateAccessRestriction,
       'id': id,
       'ignoreBackupPlanReferences': ignoreBackupPlanReferences,
       'ignoreInactiveDatasources': ignoreInactiveDatasources,
@@ -147,6 +155,7 @@ class GetBackupVaultResult {
       backupVaultId: map['backupVaultId'] as String,
       createTime: map['createTime'] as String,
       deletable: map['deletable'] as bool,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       effectiveAnnotations: (map['effectiveAnnotations'] as Map).cast<String, String>(),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -155,6 +164,7 @@ class GetBackupVaultResult {
       etag: map['etag'] as String,
       forceDelete: map['forceDelete'] as bool,
       forceUpdate: map['forceUpdate'] as bool,
+      forceUpdateAccessRestriction: map['forceUpdateAccessRestriction'] as bool,
       id: map['id'] as String,
       ignoreBackupPlanReferences: map['ignoreBackupPlanReferences'] as bool,
       ignoreInactiveDatasources: map['ignoreInactiveDatasources'] as bool,
@@ -171,4 +181,3 @@ class GetBackupVaultResult {
     );
   }
 }
-

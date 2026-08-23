@@ -2,6 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hl7_store_iam_policy_args.dart';
 import 'hl7_store_iam_policy_state.dart';
 
+/// &gt; **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// Three different resources help you manage your IAM policy for Healthcare HL7v2 store. Each of these resources serves a different use case:
 ///
 /// * `gcp.healthcare.Hl7StoreIamPolicy`: Authoritative. Sets the IAM policy for the HL7v2 store and replaces any existing policy already attached.
@@ -108,6 +111,27 @@ import 'hl7_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/editor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_healthcare_hl7storeiampolicy" "hl7_v2_store" {
+///   hl7_v2_store_id = "your-hl7-v2-store-id"
+///   policy_data     = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,10 +140,11 @@ import 'hl7_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.healthcare.Hl7StoreIamPolicy;
 /// import com.pulumi.gcp.healthcare.Hl7StoreIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -232,6 +257,21 @@ import 'hl7_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_hl7storeiambinding" "hl7_v2_store" {
+///   hl7_v2_store_id = "your-hl7-v2-store-id"
+///   role            = "roles/editor"
+///   members         = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -240,8 +280,8 @@ import 'hl7_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.Hl7StoreIamBinding;
 /// import com.pulumi.gcp.healthcare.Hl7StoreIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,6 +376,21 @@ import 'hl7_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_hl7storeiammember" "hl7_v2_store" {
+///   hl7_v2_store_id = "your-hl7-v2-store-id"
+///   role            = "roles/editor"
+///   member          = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -344,8 +399,8 @@ import 'hl7_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.Hl7StoreIamMember;
 /// import com.pulumi.gcp.healthcare.Hl7StoreIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -444,6 +499,21 @@ import 'hl7_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_hl7storeiambinding" "hl7_v2_store" {
+///   hl7_v2_store_id = "your-hl7-v2-store-id"
+///   role            = "roles/editor"
+///   members         = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -452,8 +522,8 @@ import 'hl7_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.Hl7StoreIamBinding;
 /// import com.pulumi.gcp.healthcare.Hl7StoreIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -548,6 +618,21 @@ import 'hl7_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_hl7storeiammember" "hl7_v2_store" {
+///   hl7_v2_store_id = "your-hl7-v2-store-id"
+///   role            = "roles/editor"
+///   member          = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -556,8 +641,8 @@ import 'hl7_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.Hl7StoreIamMember;
 /// import com.pulumi.gcp.healthcare.Hl7StoreIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -592,29 +677,8 @@ import 'hl7_store_iam_policy_state.dart';
 ///
 /// ## Import
 ///
-/// ### Importing IAM policies
-///
-/// IAM policy imports use the identifier of the Google Cloud Healthcare HL7v2 store resource. For example:
-///
-/// * `"{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"`
-///
-/// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-///
-/// tf
-///
-/// import {
-///
-/// id = "{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"
-///
-/// to = google_healthcare_hl7_v2_store_iam_policy.default
-///
-/// }
-///
-/// The `pulumi import` command can also be used:
-///
-/// ```sh
-/// $ pulumi import gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy default {{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}
-/// ```
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class Hl7StoreIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the HL7v2 store's IAM policy.
   late final pulumi.Output<String> etag;

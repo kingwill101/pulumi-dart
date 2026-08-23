@@ -4,6 +4,7 @@
 /// Result data returned by getIamCustomRole.
 class GetIamCustomRoleResult {
   final bool deleted;
+  final String deletionPolicy;
   final String description;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
@@ -16,6 +17,7 @@ class GetIamCustomRoleResult {
 
   /// Creates a new [GetIamCustomRoleResult].
   /// [deleted] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
@@ -26,6 +28,7 @@ class GetIamCustomRoleResult {
   /// [title] Required.
   const GetIamCustomRoleResult({
     required this.deleted,
+    required this.deletionPolicy,
     required this.description,
     required this.id,
     required this.name,
@@ -39,6 +42,7 @@ class GetIamCustomRoleResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'deleted': deleted,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'id': id,
       'name': name,
@@ -53,6 +57,7 @@ class GetIamCustomRoleResult {
   factory GetIamCustomRoleResult.fromMap(Map<String, dynamic> map) {
     return GetIamCustomRoleResult(
       deleted: map['deleted'] as bool,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
@@ -64,4 +69,3 @@ class GetIamCustomRoleResult {
     );
   }
 }
-

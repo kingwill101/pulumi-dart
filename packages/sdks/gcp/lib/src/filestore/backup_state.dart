@@ -8,6 +8,13 @@ class BackupState {
   final pulumi.Input<String>? capacityGb;
   /// The time when the snapshot was created in RFC3339 text format.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
   final pulumi.Input<String>? description;
   /// Amount of bytes that will be downloaded if the backup is restored.
@@ -19,7 +26,7 @@ class BackupState {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
   final pulumi.Input<String>? location;
@@ -56,6 +63,7 @@ class BackupState {
   /// Creates a new [BackupState].
   /// [capacityGb] The amount of bytes needed to allocate a full copy of the snapshot content.
   /// [createTime] The time when the snapshot was created in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
   /// [downloadBytes] Amount of bytes that will be downloaded if the backup is restored.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -74,6 +82,7 @@ class BackupState {
   const BackupState({
     this.capacityGb,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.downloadBytes,
     this.effectiveLabels,
@@ -95,6 +104,7 @@ class BackupState {
     return <String, dynamic>{
       'capacityGb': ?capacityGb,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'downloadBytes': ?downloadBytes,
       'effectiveLabels': ?effectiveLabels,
@@ -117,6 +127,7 @@ class BackupState {
     return BackupState(
       capacityGb: (() { final guardedValue = map['capacityGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       downloadBytes: (() { final guardedValue = map['downloadBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -135,4 +146,3 @@ class BackupState {
     );
   }
 }
-

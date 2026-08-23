@@ -6,6 +6,19 @@ import 'registration_management_settings.dart';
 import 'registration_state.dart';
 import 'registration_yearly_price.dart';
 
+/// Registers a new domain name and creates a corresponding Registration resource.
+///
+///
+/// To get more information about Registration, see:
+///
+/// * [API documentation](https://cloud.google.com/domains/docs/reference/rest/v1/projects.locations.registrations)
+/// * How-to Guides
+/// * [Register a domain with Cloud Domains](https://cloud.google.com/domains/docs/buy-register-domain)
+///
+/// &gt; **Warning:** The Terraform implementation of this resource will not actually delete a Registration during
+/// `terraform destroy`. Instead it will "abandon" the resource and remove it from state.
+/// For information on deleting a registered domain, see https://cloud.google.com/domains/docs/delete-domain
+///
 /// ## Example Usage
 ///
 /// ### Clouddomains Registration Full
@@ -332,6 +345,71 @@ import 'registration_yearly_price.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_clouddomains_registration" "my_registration" {
+///   domain_name = "example-domain.com"
+///   location    = "global"
+///   labels = {
+///     "labelkey" = "labelvalue"
+///   }
+///   yearly_price = {
+///     currency_code = "USD"
+///     units         = 12
+///   }
+///   dns_settings = {
+///     custom_dns = {
+///       name_servers = ["ns-cloud-a1.googledomains.com.", "ns-cloud-a2.googledomains.com.", "ns-cloud-a3.googledomains.com.", "ns-cloud-a4.googledomains.com."]
+///     }
+///   }
+///   contact_settings = {
+///     privacy = "REDACTED_CONTACT_DATA"
+///     registrant_contact = {
+///       phone_number = "+12345000000"
+///       email        = "user@example.com"
+///       postal_address = {
+///         region_code         = "US"
+///         postal_code         = "95050"
+///         administrative_area = "CA"
+///         locality            = "Example City"
+///         address_lines       = ["1234 Example street"]
+///         recipients          = ["example recipient"]
+///       }
+///     }
+///     admin_contact = {
+///       phone_number = "+12345000000"
+///       email        = "user@example.com"
+///       postal_address = {
+///         region_code         = "US"
+///         postal_code         = "95050"
+///         administrative_area = "CA"
+///         locality            = "Example City"
+///         address_lines       = ["1234 Example street"]
+///         recipients          = ["example recipient"]
+///       }
+///     }
+///     technical_contact = {
+///       phone_number = "+12345000000"
+///       email        = "user@example.com"
+///       postal_address = {
+///         region_code         = "US"
+///         postal_code         = "95050"
+///         administrative_area = "CA"
+///         locality            = "Example City"
+///         address_lines       = ["1234 Example street"]
+///         recipients          = ["example recipient"]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -350,8 +428,8 @@ import 'registration_yearly_price.dart';
 /// import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsAdminContactPostalAddressArgs;
 /// import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsTechnicalContactArgs;
 /// import com.pulumi.gcp.clouddomains.inputs.RegistrationContactSettingsTechnicalContactPostalAddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -490,22 +568,15 @@ import 'registration_yearly_price.dart';
 /// Registration can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}`
-///
 /// * `{{project}}/{{location}}/{{domain_name}}`
-///
 /// * `{{location}}/{{domain_name}}`
+///
 ///
 /// When using the `pulumi import` command, Registration can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:clouddomains/registration:Registration default projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:clouddomains/registration:Registration default {{project}}/{{location}}/{{domain_name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:clouddomains/registration:Registration default {{location}}/{{domain_name}}
 /// ```
 class Registration extends pulumi.CustomResource {
@@ -531,7 +602,7 @@ class Registration extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> issues;
   /// Set of labels associated with the Registration.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location for the resource
   late final pulumi.Output<String> location;

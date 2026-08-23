@@ -1,0 +1,26 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+class GetClusterRollbackSafeUpgrade {
+  /// A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+  final pulumi.Input<String> controlPlaneSoakDuration;
+
+  /// Creates a new [GetClusterRollbackSafeUpgrade].
+  /// [controlPlaneSoakDuration] A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+  const GetClusterRollbackSafeUpgrade({
+    required this.controlPlaneSoakDuration,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'controlPlaneSoakDuration': controlPlaneSoakDuration,
+    };
+  }
+
+  factory GetClusterRollbackSafeUpgrade.fromMap(Map<String, dynamic> map) {
+    return GetClusterRollbackSafeUpgrade(
+      controlPlaneSoakDuration: pulumi.Input.fromValue(map['controlPlaneSoakDuration'] as String),
+    );
+  }
+}

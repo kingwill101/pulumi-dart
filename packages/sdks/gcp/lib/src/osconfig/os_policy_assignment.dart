@@ -444,6 +444,93 @@ import 'os_policy_assignment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_osconfig_ospolicyassignment" "primary" {
+///   instance_filter = {
+///     all = false
+///     exclusion_labels = [{
+///       "labels" = {
+///         "label-two" = "value-two"
+///       }
+///     }]
+///     inclusion_labels = [{
+///       "labels" = {
+///         "label-one" = "value-one"
+///       }
+///     }]
+///     inventories = [{
+///       "osShortName" = "centos"
+///       "osVersion"   = "8.*"
+///     }]
+///   }
+///   location = "us-central1-a"
+///   name     = "policy-assignment"
+///   os_policies {
+///     id   = "policy"
+///     mode = "VALIDATION"
+///     resource_groups {
+///       resources {
+///         id = "apt-to-yum"
+///         repository = {
+///           apt = {
+///             archive_type = "DEB"
+///             components   = ["doc"]
+///             distribution = "debian"
+///             uri          = "https://atl.mirrors.clouvider.net/debian"
+///             gpg_key      = ".gnupg/pubring.kbx"
+///           }
+///         }
+///       }
+///       resources {
+///         id = "exec1"
+///         exec = {
+///           validate = {
+///             interpreter = "SHELL"
+///             args        = ["arg1"]
+///             file = {
+///               local_path = "$HOME/script.sh"
+///             }
+///             output_file_path = "$HOME/out"
+///           }
+///           enforce = {
+///             interpreter = "SHELL"
+///             args        = ["arg1"]
+///             file = {
+///               allow_insecure = true
+///               remote = {
+///                 uri             = "https://www.example.com/script.sh"
+///                 sha256_checksum = "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063"
+///               }
+///             }
+///             output_file_path = "$HOME/out"
+///           }
+///         }
+///       }
+///       inventory_filters {
+///         os_short_name = "centos"
+///         os_version    = "8.*"
+///       }
+///     }
+///     allow_no_resource_group_match = false
+///     description                   = "A test os policy"
+///   }
+///   rollout = {
+///     disruption_budget = {
+///       percent = 100
+///     }
+///     min_wait_duration = "3s"
+///   }
+///   description = "A test os policy assignment"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -453,11 +540,25 @@ import 'os_policy_assignment_state.dart';
 /// import com.pulumi.gcp.osconfig.OsPolicyAssignment;
 /// import com.pulumi.gcp.osconfig.OsPolicyAssignmentArgs;
 /// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentInstanceFilterArgs;
+/// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentInstanceFilterExclusionLabelArgs;
+/// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentInstanceFilterInclusionLabelArgs;
+/// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentInstanceFilterInventoryArgs;
 /// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyArgs;
+/// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupArgs;
+/// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs;
+/// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs;
+/// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs;
+/// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs;
+/// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs;
+/// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs;
+/// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs;
+/// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs;
+/// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs;
+/// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs;
 /// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentRolloutArgs;
 /// import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentRolloutDisruptionBudgetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -616,22 +717,15 @@ import 'os_policy_assignment_state.dart';
 /// OSPolicyAssignment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/osPolicyAssignments/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, OSPolicyAssignment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:osconfig/osPolicyAssignment:OsPolicyAssignment default projects/{{project}}/locations/{{location}}/osPolicyAssignments/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:osconfig/osPolicyAssignment:OsPolicyAssignment default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:osconfig/osPolicyAssignment:OsPolicyAssignment default {{location}}/{{name}}
 /// ```
 class OsPolicyAssignment extends pulumi.CustomResource {
@@ -643,6 +737,13 @@ class OsPolicyAssignment extends pulumi.CustomResource {
   /// Output only. Indicates that this revision deletes the OS policy
   /// assignment.
   late final pulumi.Output<bool> deleted;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// OS policy assignment description. Length of the description is limited to 1024 characters.
   late final pulumi.Output<String?> description;
   /// The etag for this OS policy assignment. If this is provided on
@@ -661,7 +762,7 @@ class OsPolicyAssignment extends pulumi.CustomResource {
   /// The project for the resource
   late final pulumi.Output<String> project;
   /// Output only. Indicates that reconciliation is in progress
-  /// for the revision. This value is `true` when the `rollout_state` is one of:
+  /// for the revision. This value is `true` when the `rolloutState` is one of:
   late final pulumi.Output<bool> reconciling;
   /// Output only. The timestamp that the revision was
   /// created.
@@ -672,7 +773,7 @@ class OsPolicyAssignment extends pulumi.CustomResource {
   /// Rollout to deploy the OS policy assignment. A rollout
   /// is triggered in the following situations: 1) OSPolicyAssignment is created.
   /// 2) OSPolicyAssignment is updated and the update contains changes to one of
-  /// the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+  /// the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
   /// is deleted. Structure is documented below.
   late final pulumi.Output<OsPolicyAssignmentRollout> rollout;
   /// Output only. OS policy assignment rollout state
@@ -699,6 +800,7 @@ class OsPolicyAssignment extends pulumi.CustomResource {
         ) {
     baseline = registerOutput<bool>('baseline');
     deleted = registerOutput<bool>('deleted');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     instanceFilter = registerOutput<OsPolicyAssignmentInstanceFilter>('instanceFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OsPolicyAssignmentInstanceFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -740,6 +842,7 @@ class OsPolicyAssignment extends pulumi.CustomResource {
         ) {
     baseline = registerOutput<bool>('baseline');
     deleted = registerOutput<bool>('deleted');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     instanceFilter = registerOutput<OsPolicyAssignmentInstanceFilter>('instanceFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OsPolicyAssignmentInstanceFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });

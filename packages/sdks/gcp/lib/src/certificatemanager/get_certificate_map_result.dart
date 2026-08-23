@@ -6,6 +6,7 @@ import 'get_certificate_map_gclb_target.dart';
 /// Result data returned by getCertificateMap.
 class GetCertificateMapResult {
   final String createTime;
+  final String deletionPolicy;
   final String description;
   final Map<String, String> effectiveLabels;
   final List<GetCertificateMapGclbTarget> gclbTargets;
@@ -19,6 +20,7 @@ class GetCertificateMapResult {
 
   /// Creates a new [GetCertificateMapResult].
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [effectiveLabels] Required.
   /// [gclbTargets] Required.
@@ -30,6 +32,7 @@ class GetCertificateMapResult {
   /// [updateTime] Required.
   const GetCertificateMapResult({
     required this.createTime,
+    required this.deletionPolicy,
     required this.description,
     required this.effectiveLabels,
     required this.gclbTargets,
@@ -44,6 +47,7 @@ class GetCertificateMapResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'effectiveLabels': effectiveLabels,
       'gclbTargets': pulumi.Input.encodeList<GetCertificateMapGclbTarget, Map<String, dynamic>>(gclbTargets, (value) => value.toMap()),
@@ -59,6 +63,7 @@ class GetCertificateMapResult {
   factory GetCertificateMapResult.fromMap(Map<String, dynamic> map) {
     return GetCertificateMapResult(
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       gclbTargets: pulumi.Input.decodeList<GetCertificateMapGclbTarget>(map['gclbTargets']!, (value) => GetCertificateMapGclbTarget.fromMap((value as Map).cast<String, dynamic>())),
@@ -71,4 +76,3 @@ class GetCertificateMapResult {
     );
   }
 }
-

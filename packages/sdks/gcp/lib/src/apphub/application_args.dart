@@ -14,6 +14,13 @@ class ApplicationArgs {
   /// Consumer provided attributes.
   /// Structure is documented below.
   final pulumi.Input<ApplicationAttributes>? attributes;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. User-defined description of an Application.
   final pulumi.Input<String>? description;
   /// Optional. User-defined name for the Application.
@@ -30,6 +37,7 @@ class ApplicationArgs {
   /// Creates a new [ApplicationArgs].
   /// [applicationId] Required. The Application identifier.
   /// [attributes] Consumer provided attributes.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Optional. User-defined description of an Application.
   /// [displayName] Optional. User-defined name for the Application.
   /// [location] Part of `parent`. See documentation of `projectsId`.
@@ -38,6 +46,7 @@ class ApplicationArgs {
   const ApplicationArgs({
     required this.applicationId,
     this.attributes,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     required this.location,
@@ -49,6 +58,7 @@ class ApplicationArgs {
     return <String, dynamic>{
       'applicationId': applicationId,
       'attributes': ?pulumi.Input.mapOptionalInputValue<ApplicationAttributes, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'location': location,
@@ -61,6 +71,7 @@ class ApplicationArgs {
     return ApplicationArgs(
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
       attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationAttributes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -69,4 +80,3 @@ class ApplicationArgs {
     );
   }
 }
-

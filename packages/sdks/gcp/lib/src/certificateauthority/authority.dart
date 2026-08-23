@@ -149,8 +149,6 @@ import 'authority_user_defined_access_urls.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -194,6 +192,48 @@ import 'authority_user_defined_access_urls.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_authority" "default" {
+///   pool                     = "ca-pool"
+///   certificate_authority_id = "my-certificate-authority"
+///   location                 = "us-central1"
+///   deletion_protection      = true
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "ACME"
+///         common_name  = "my-certificate-authority"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {}
+///       }
+///     }
+///   }
+///   # is_ca *MUST* be true for certificate authorities
+///   # cert_sign and crl_sign *MUST* be true for certificate authorities
+///   lifetime ="${10*365*24*3600}s"
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -211,8 +251,8 @@ import 'authority_user_defined_access_urls.dart';
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -384,8 +424,6 @@ import 'authority_user_defined_access_urls.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -428,6 +466,47 @@ import 'authority_user_defined_access_urls.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_authority" "default" {
+///   pool                     = "ca-pool"
+///   certificate_authority_id = "my-certificate-authority"
+///   location                 = "us-central1"
+///   deletion_protection      = true
+///   config = {
+///     subject_config = {
+///       subject = {
+///         common_name = "my-certificate-authority"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {}
+///       }
+///     }
+///   }
+///   # is_ca *MUST* be true for certificate authorities
+///   # cert_sign and crl_sign *MUST* be true for certificate authorities
+///   lifetime ="${10*365*24*3600}s"
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -445,8 +524,8 @@ import 'authority_user_defined_access_urls.dart';
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -561,7 +640,7 @@ import 'authority_user_defined_access_urls.dart';
 ///             },
 ///         },
 ///     },
-///     lifetime: `${5 * 365 * 24 * 3600}s`,
+///     lifetime: "157680000s",
 ///     keySpec: {
 ///         algorithm: "RSA_PKCS1_2048_SHA256",
 ///     },
@@ -631,7 +710,7 @@ import 'authority_user_defined_access_urls.dart';
 ///             },
 ///         },
 ///     },
-///     lifetime=f"{5 * 365 * 24 * 3600}s",
+///     lifetime="157680000s",
 ///     key_spec={
 ///         "algorithm": "RSA_PKCS1_2048_SHA256",
 ///     },
@@ -724,7 +803,7 @@ import 'authority_user_defined_access_urls.dart';
 ///                 },
 ///             },
 ///         },
-///         Lifetime = $"{5 * 365 * 24 * 3600}s",
+///         Lifetime = "157680000s",
 ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
 ///         {
 ///             Algorithm = "RSA_PKCS1_2048_SHA256",
@@ -738,8 +817,6 @@ import 'authority_user_defined_access_urls.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -809,7 +886,7 @@ import 'authority_user_defined_access_urls.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			Lifetime: pulumi.Sprintf("%vs", 5*365*24*3600),
+/// 			Lifetime: pulumi.String("157680000s"),
 /// 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
 /// 				Algorithm: pulumi.String("RSA_PKCS1_2048_SHA256"),
 /// 			},
@@ -820,6 +897,92 @@ import 'authority_user_defined_access_urls.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_authority" "root-ca" {
+///   pool                     = "ca-pool"
+///   certificate_authority_id = "my-certificate-authority-root"
+///   location                 = "us-central1"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "ACME"
+///         common_name  = "my-certificate-authority"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {}
+///       }
+///     }
+///   }
+///   # is_ca *MUST* be true for certificate authorities
+///   # cert_sign and crl_sign *MUST* be true for certificate authorities
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+///   ignore_active_certificates_on_deletion = true
+/// }
+/// resource "gcp_certificateauthority_authority" "default" {
+///   pool                     = "ca-pool"
+///   certificate_authority_id = "my-certificate-authority-sub"
+///   location                 = "us-central1"
+///   deletion_protection      = true
+///   subordinate_config = {
+///     certificate_authority = gcp_certificateauthority_authority.root-ca.name
+///   }
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "ACME"
+///         common_name  = "my-subordinate-authority"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca                       = true
+///         zero_max_issuer_path_length = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {}
+///       }
+///     }
+///   }
+///   # Force the sub CA to only issue leaf certs.
+///   # Use e.g.
+///   #    max_issuer_path_length = 1
+///   # if you need to chain more subordinates.
+///   # Force the sub CA to only issue leaf certs.
+///   # Use e.g.
+///   #    max_issuer_path_length = 1
+///   # if you need to chain more subordinates.
+///   lifetime = "157680000s"
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_2048_SHA256"
+///   }
+///   type = "SUBORDINATE"
 /// }
 /// ```
 /// ```java
@@ -840,8 +1003,8 @@ import 'authority_user_defined_access_urls.dart';
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthoritySubordinateConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -916,7 +1079,7 @@ import 'authority_user_defined_access_urls.dart';
 ///                         .build())
 ///                     .build())
 ///                 .build())
-///             .lifetime(String.format("%ss", 5 * 365 * 24 * 3600))
+///             .lifetime("157680000s")
 ///             .keySpec(AuthorityKeySpecArgs.builder()
 ///                 .algorithm("RSA_PKCS1_2048_SHA256")
 ///                 .build())
@@ -925,6 +1088,60 @@ import 'authority_user_defined_access_urls.dart';
 ///
 ///     }
 /// }
+/// ```
+/// ```yaml
+/// resources:
+///   root-ca:
+///     type: gcp:certificateauthority:Authority
+///     properties:
+///       pool: ca-pool
+///       certificateAuthorityId: my-certificate-authority-root
+///       location: us-central1
+///       config:
+///         subjectConfig:
+///           subject:
+///             organization: ACME
+///             commonName: my-certificate-authority
+///         x509Config:
+///           caOptions:
+///             isCa: true
+///           keyUsage:
+///             baseKeyUsage:
+///               certSign: true
+///               crlSign: true
+///             extendedKeyUsage: {}
+///       keySpec:
+///         algorithm: RSA_PKCS1_4096_SHA256
+///       deletionProtection: false
+///       skipGracePeriod: true
+///       ignoreActiveCertificatesOnDeletion: true
+///   default:
+///     type: gcp:certificateauthority:Authority
+///     properties:
+///       pool: ca-pool
+///       certificateAuthorityId: my-certificate-authority-sub
+///       location: us-central1
+///       deletionProtection: true
+///       subordinateConfig:
+///         certificateAuthority: ${["root-ca"].name}
+///       config:
+///         subjectConfig:
+///           subject:
+///             organization: ACME
+///             commonName: my-subordinate-authority
+///         x509Config:
+///           caOptions:
+///             isCa: true
+///             zeroMaxIssuerPathLength: true
+///           keyUsage:
+///             baseKeyUsage:
+///               certSign: true
+///               crlSign: true
+///             extendedKeyUsage: {}
+///       lifetime: 157680000s
+///       keySpec:
+///         algorithm: RSA_PKCS1_2048_SHA256
+///       type: SUBORDINATE
 /// ```
 ///
 /// ### Privateca Certificate Authority Byo Key
@@ -1260,6 +1477,70 @@ import 'authority_user_defined_access_urls.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_serviceidentity" "privateca_sa" {
+///   service = "privateca.googleapis.com"
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "privateca_sa_keyuser_signerverifier" {
+///   crypto_key_id = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"
+///   role          = "roles/cloudkms.signerVerifier"
+///   member        = gcp_projects_serviceidentity.privateca_sa.member
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "privateca_sa_keyuser_viewer" {
+///   crypto_key_id = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"
+///   role          = "roles/viewer"
+///   member        = gcp_projects_serviceidentity.privateca_sa.member
+/// }
+/// resource "gcp_certificateauthority_authority" "default" {
+///   depends_on               = [gcp_kms_cryptokeyiammember.privateca_sa_keyuser_signerverifier, gcp_kms_cryptokeyiammember.privateca_sa_keyuser_viewer]
+///   pool                     = "ca-pool"
+///   certificate_authority_id = "my-certificate-authority"
+///   location                 = "us-central1"
+///   deletion_protection      = true
+///   key_spec = {
+///     cloud_kms_key_version = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1"
+///   }
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "Example, Org."
+///         common_name  = "Example Authority"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {}
+///       }
+///       name_constraints = {
+///         critical                  = true
+///         permitted_dns_names       = ["*.example.com"]
+///         excluded_dns_names        = ["*.deny.example.com"]
+///         permitted_ip_ranges       = ["10.0.0.0/8"]
+///         excluded_ip_ranges        = ["10.1.1.0/24"]
+///         permitted_email_addresses = [".example.com"]
+///         excluded_email_addresses  = [".deny.example.com"]
+///         permitted_uris            = [".example.com"]
+///         excluded_uris             = [".deny.example.com"]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1283,8 +1564,8 @@ import 'authority_user_defined_access_urls.dart';
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigNameConstraintsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1565,8 +1846,6 @@ import 'authority_user_defined_access_urls.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1613,6 +1892,49 @@ import 'authority_user_defined_access_urls.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_authority" "default" {
+///   pool                     = "ca-pool"
+///   certificate_authority_id = "my-certificate-authority"
+///   location                 = "us-central1"
+///   deletion_protection      = true
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "ACME"
+///         common_name  = "my-certificate-authority"
+///       }
+///     }
+///     subject_key_id = {
+///       key_id = "4cf3372289b1d411b999dbb9ebcd44744b6b2fca"
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {}
+///       }
+///     }
+///   }
+///   lifetime ="${10*365*24*3600}s"
+///   key_spec = {
+///     cloud_kms_key_version = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1631,8 +1953,8 @@ import 'authority_user_defined_access_urls.dart';
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1843,8 +2165,6 @@ import 'authority_user_defined_access_urls.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1898,6 +2218,52 @@ import 'authority_user_defined_access_urls.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_authority" "default" {
+///   pool                     = "ca-pool"
+///   certificate_authority_id = "my-certificate-authority"
+///   location                 = "us-central1"
+///   deletion_protection      = true
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "ACME"
+///         common_name  = "my-certificate-authority"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {}
+///       }
+///     }
+///   }
+///   # is_ca *MUST* be true for certificate authorities
+///   # cert_sign and crl_sign *MUST* be true for certificate authorities
+///   lifetime ="${10*365*24*3600}s"
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   user_defined_access_urls = {
+///     aia_issuing_certificate_urls = ["http://example.com/ca.crt", "http://example.com/anotherca.crt"]
+///     crl_access_urls              = ["http://example.com/crl1.crt", "http://example.com/crl2.crt"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1916,8 +2282,8 @@ import 'authority_user_defined_access_urls.dart';
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityUserDefinedAccessUrlsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1979,22 +2345,15 @@ import 'authority_user_defined_access_urls.dart';
 /// CertificateAuthority can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}`
-///
 /// * `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}`
-///
 /// * `{{location}}/{{pool}}/{{certificate_authority_id}}`
+///
 ///
 /// When using the `pulumi import` command, CertificateAuthority can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificateauthority/authority:Authority default {{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{pool}}/{{certificate_authority_id}}
 /// ```
 class Authority extends pulumi.CustomResource {
@@ -2010,6 +2369,17 @@ class Authority extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the CertificateAuthority.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the CertificateAuthority will fail.
+  /// When the field is set to false, deleting the CertificateAuthority is allowed.
   late final pulumi.Output<bool?> deletionProtection;
   /// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
   /// Possible values: ENABLED, DISABLED, STAGED.
@@ -2035,7 +2405,7 @@ class Authority extends pulumi.CustomResource {
   /// "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
   /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -2106,6 +2476,7 @@ class Authority extends pulumi.CustomResource {
     certificateAuthorityId = registerOutput<String>('certificateAuthorityId');
     config = registerOutput<AuthorityConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     desiredState = registerOutput<String?>('desiredState');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -2156,6 +2527,7 @@ class Authority extends pulumi.CustomResource {
     certificateAuthorityId = registerOutput<String>('certificateAuthorityId');
     config = registerOutput<AuthorityConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     desiredState = registerOutput<String?>('desiredState');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

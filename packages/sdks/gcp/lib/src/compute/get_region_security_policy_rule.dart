@@ -30,8 +30,8 @@ class GetRegionSecurityPolicyRule {
   /// Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
   /// For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
   /// Example:
-  /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
-  /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
+  /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4FragmentOffset" values: - "1-0x1fff"
+  /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
   final pulumi.Input<List<GetRegionSecurityPolicyRuleNetworkMatch>> networkMatches;
   /// Preconfigured WAF configuration to be applied for the rule.
   /// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
@@ -42,7 +42,7 @@ class GetRegionSecurityPolicyRule {
   /// The priority must be a positive value between 0 and 2147483647.
   /// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
   final pulumi.Input<int> priority;
-  /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+  /// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
   final pulumi.Input<List<GetRegionSecurityPolicyRuleRateLimitOption>> rateLimitOptions;
 
   /// Creates a new [GetRegionSecurityPolicyRule].
@@ -53,7 +53,7 @@ class GetRegionSecurityPolicyRule {
   /// [preconfiguredWafConfigs] Preconfigured WAF configuration to be applied for the rule.
   /// [preview] If set to true, the specified action is not enforced.
   /// [priority] An integer indicating the priority of a rule in the list.
-  /// [rateLimitOptions] Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+  /// [rateLimitOptions] Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
   const GetRegionSecurityPolicyRule({
     required this.action,
     required this.description,
@@ -91,4 +91,3 @@ class GetRegionSecurityPolicyRule {
     );
   }
 }
-

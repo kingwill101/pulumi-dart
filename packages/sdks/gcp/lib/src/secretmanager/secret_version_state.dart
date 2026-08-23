@@ -8,10 +8,16 @@ class SecretVersionState {
   final pulumi.Input<String>? createTime;
   /// The deletion policy for the secret version. Setting `ABANDON` allows the resource
   /// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-  /// disabled rather than deleted. Default is `DELETE`. Possible values are:
+  /// disabled rather than deleted.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  ///
+  /// Default is `DELETE`. Possible values are:
   /// * DELETE
   /// * DISABLE
   /// * ABANDON
+  /// * PREVENT
   final pulumi.Input<String>? deletionPolicy;
   /// The time at which the Secret was destroyed. Only present if state is DESTROYED.
   final pulumi.Input<String>? destroyTime;
@@ -35,7 +41,7 @@ class SecretVersionState {
   /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   /// **Note**: This property is write-only and will not be read from the API.
   ///
-  /// &gt; **Note:** One of `secret_data` or `secret_data_wo` can only be set.
+  /// &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
   final pulumi.Input<String>? secretDataWo;
   /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   final pulumi.Input<int>? secretDataWoVersion;
@@ -104,4 +110,3 @@ class SecretVersionState {
     );
   }
 }
-

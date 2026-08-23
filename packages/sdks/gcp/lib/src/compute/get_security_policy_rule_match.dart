@@ -6,20 +6,20 @@ import 'get_security_policy_rule_match_expr.dart';
 import 'get_security_policy_rule_match_expr_option.dart';
 
 class GetSecurityPolicyRuleMatch {
-  /// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
+  /// The configuration options available when specifying versioned_expr. This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
   final pulumi.Input<List<GetSecurityPolicyRuleMatchConfig>> configs;
   /// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
   final pulumi.Input<List<GetSecurityPolicyRuleMatchExprOption>> exprOptions;
   /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
   final pulumi.Input<List<GetSecurityPolicyRuleMatchExpr>> exprs;
-  /// Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding src_ip_ranges field in config.
+  /// Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding srcIpRanges field in config.
   final pulumi.Input<String> versionedExpr;
 
   /// Creates a new [GetSecurityPolicyRuleMatch].
-  /// [configs] The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
+  /// [configs] The configuration options available when specifying versioned_expr. This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
   /// [exprOptions] The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
   /// [exprs] User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
-  /// [versionedExpr] Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding src_ip_ranges field in config.
+  /// [versionedExpr] Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding srcIpRanges field in config.
   const GetSecurityPolicyRuleMatch({
     required this.configs,
     required this.exprOptions,
@@ -45,4 +45,3 @@ class GetSecurityPolicyRuleMatch {
     );
   }
 }
-

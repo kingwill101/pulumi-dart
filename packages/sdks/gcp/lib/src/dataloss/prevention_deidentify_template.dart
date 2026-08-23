@@ -480,6 +480,96 @@ import 'prevention_deidentify_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventiondeidentifytemplate" "basic" {
+///   parent       = "projects/my-project-name"
+///   description  = "Description"
+///   display_name = "Displayname"
+///   deidentify_config = {
+///     info_type_transformations = {
+///       transformations = [{
+///         "infoTypes" = [{
+///           "name" = "FIRST_NAME"
+///         }]
+///         "primitiveTransformation" = {
+///           "replaceWithInfoTypeConfig" = true
+///         }
+///         }, {
+///         "infoTypes" = [{
+///           "name" = "PHONE_NUMBER"
+///           }, {
+///           "name" = "AGE"
+///         }]
+///         "primitiveTransformation" = {
+///           "replaceConfig" = {
+///             "newValue" = {
+///               "integerValue" = 9
+///             }
+///           }
+///         }
+///         }, {
+///         "infoTypes" = [{
+///           "name" = "EMAIL_ADDRESS"
+///           }, {
+///           "name" = "LAST_NAME"
+///         }]
+///         "primitiveTransformation" = {
+///           "characterMaskConfig" = {
+///             "maskingCharacter" = "X"
+///             "numberToMask"     = 4
+///             "reverseOrder"     = true
+///             "charactersToIgnores" = [{
+///               "commonCharactersToIgnore" = "PUNCTUATION"
+///             }]
+///           }
+///         }
+///         }, {
+///         "infoTypes" = [{
+///           "name" = "DATE_OF_BIRTH"
+///         }]
+///         "primitiveTransformation" = {
+///           "replaceConfig" = {
+///             "newValue" = {
+///               "dateValue" = {
+///                 "year"  = 2020
+///                 "month" = 1
+///                 "day"   = 1
+///               }
+///             }
+///           }
+///         }
+///         }, {
+///         "infoTypes" = [{
+///           "name" = "CREDIT_CARD_NUMBER"
+///         }]
+///         "primitiveTransformation" = {
+///           "cryptoDeterministicConfig" = {
+///             "context" = {
+///               "name" = "sometweak"
+///             }
+///             "cryptoKey" = {
+///               "transient" = {
+///                 "name" = "beep"
+///               }
+///             }
+///             "surrogateInfoType" = {
+///               "name" = "abc"
+///             }
+///           }
+///         }
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -490,8 +580,21 @@ import 'prevention_deidentify_template_state.dart';
 /// import com.pulumi.gcp.dataloss.PreventionDeidentifyTemplateArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -703,7 +806,7 @@ import 'prevention_deidentify_template_state.dart';
 ///                 {
 ///                     "redaction_color": {
 ///                         "red": 0.5,
-///                         "blue": 1,
+///                         "blue": float(1),
 ///                         "green": 0.2,
 ///                     },
 ///                     "selected_info_types": {
@@ -747,7 +850,7 @@ import 'prevention_deidentify_template_state.dart';
 ///                         RedactionColor = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs
 ///                         {
 ///                             Red = 0.5,
-///                             Blue = 1,
+///                             Blue = 1.0,
 ///                             Green = 0.2,
 ///                         },
 ///                         SelectedInfoTypes = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs
@@ -826,6 +929,42 @@ import 'prevention_deidentify_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataloss_preventiondeidentifytemplate" "basic" {
+///   parent       = "projects/my-project-name"
+///   description  = "Description"
+///   display_name = "Displayname"
+///   deidentify_config = {
+///     image_transformations = {
+///       transforms = [{
+///         "redactionColor" = {
+///           "red"   = 0.5
+///           "blue"  = 1
+///           "green" = 0.2
+///         }
+///         "selectedInfoTypes" = {
+///           "infoTypes" = [{
+///             "name"    = "COLOR_INFO"
+///             "version" = "latest"
+///           }]
+///         }
+///         }, {
+///         "allInfoTypes" = {}
+///         }, {
+///         "allText" = {}
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -836,8 +975,14 @@ import 'prevention_deidentify_template_state.dart';
 /// import com.pulumi.gcp.dataloss.PreventionDeidentifyTemplateArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigArgs;
 /// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs;
+/// import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -913,16 +1058,13 @@ import 'prevention_deidentify_template_state.dart';
 /// DeidentifyTemplate can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/deidentifyTemplates/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, DeidentifyTemplate can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/deidentifyTemplates/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/{{name}}
 /// ```
 class PreventionDeidentifyTemplate extends pulumi.CustomResource {
@@ -931,6 +1073,13 @@ class PreventionDeidentifyTemplate extends pulumi.CustomResource {
   /// Configuration of the deidentify template
   /// Structure is documented below.
   late final pulumi.Output<PreventionDeidentifyTemplateDeidentifyConfig> deidentifyConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of the template.
   late final pulumi.Output<String?> description;
   /// User set display name of the template.
@@ -966,6 +1115,7 @@ class PreventionDeidentifyTemplate extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deidentifyConfig = registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>('deidentifyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionDeidentifyTemplateDeidentifyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
@@ -999,6 +1149,7 @@ class PreventionDeidentifyTemplate extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deidentifyConfig = registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>('deidentifyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionDeidentifyTemplateDeidentifyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');

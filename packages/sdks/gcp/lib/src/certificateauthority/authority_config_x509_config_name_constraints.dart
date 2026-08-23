@@ -96,4 +96,3 @@ class AuthorityConfigX509ConfigNameConstraints {
     );
   }
 }
-

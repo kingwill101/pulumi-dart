@@ -6,6 +6,13 @@ import 'cx_intent_training_phrase.dart';
 
 /// Input properties used for looking up and filtering CxIntent resources.
 class CxIntentState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
   final pulumi.Input<String>? description;
   /// The human-readable name of the intent, unique within the agent.
@@ -15,23 +22,23 @@ class CxIntentState {
   /// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
   /// The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
   ///
-  /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
+  /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `isDefaultNegativeIntent = true` because they will compete to control a single Default Negative Intent resource in GCP.
   final pulumi.Input<bool>? isDefaultNegativeIntent;
   /// Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
   /// The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
   ///
-  /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
+  /// &gt; Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `isDefaultWelcomeIntent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
   final pulumi.Input<bool>? isDefaultWelcomeIntent;
   /// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
   /// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
-  /// To manage the fallback intent, set `is_default_negative_intent = true`
+  /// To manage the fallback intent, set `isDefaultNegativeIntent = true`
   final pulumi.Input<bool>? isFallback;
   /// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
   /// Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The language of the following fields in intent:
   /// Intent.training_phrases.parts.text
@@ -58,6 +65,7 @@ class CxIntentState {
   final pulumi.Input<List<CxIntentTrainingPhrase>>? trainingPhrases;
 
   /// Creates a new [CxIntentState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
   /// [displayName] The human-readable name of the intent, unique within the agent.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -73,6 +81,7 @@ class CxIntentState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [trainingPhrases] The collection of training phrases the agent is trained on to identify the intent.
   const CxIntentState({
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.effectiveLabels,
@@ -91,6 +100,7 @@ class CxIntentState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
@@ -110,6 +120,7 @@ class CxIntentState {
 
   factory CxIntentState.fromMap(Map<String, dynamic> map) {
     return CxIntentState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -127,4 +138,3 @@ class CxIntentState {
     );
   }
 }
-

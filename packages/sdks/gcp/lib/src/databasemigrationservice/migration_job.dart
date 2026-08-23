@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'migration_job_args.dart';
 import 'migration_job_dump_flags.dart';
+import 'migration_job_objects_config.dart';
 import 'migration_job_performance_config.dart';
+import 'migration_job_postgres_homogeneous_config.dart';
 import 'migration_job_reverse_ssh_connectivity.dart';
 import 'migration_job_state.dart';
 import 'migration_job_vpc_peering_connectivity.dart';
@@ -56,7 +58,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         foo: "bar",
 ///     },
 ///     mysql: {
-///         host: sourceCsql.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+///         host: sourceCsql.ipAddresses[0].ipAddress,
 ///         port: 3306,
 ///         username: sourceSqldbUser.name,
 ///         password: sourceSqldbUser.password,
@@ -416,7 +418,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 			},
 /// 			Mysql: &databasemigrationservice.ConnectionProfileMysqlArgs{
 /// 				Host: sourceCsql.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
-/// 					return &ipAddresses[0].IpAddress, nil
+/// 					return ipAddresses[0].IpAddress, nil
 /// 				}).(pulumi.StringPtrOutput),
 /// 				Port:     pulumi.Int(3306),
 /// 				Username: sourceSqldbUser.Name,
@@ -480,7 +482,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 				DumpParallelLevel: pulumi.String("MAX"),
 /// 			},
 /// 			VpcPeeringConnectivity: &databasemigrationservice.MigrationJobVpcPeeringConnectivityArgs{
-/// 				Vpc: _default.ID(),
+/// 				Vpc: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DumpType: pulumi.String("LOGICAL"),
 /// 			DumpFlags: &databasemigrationservice.MigrationJobDumpFlagsArgs{
@@ -500,6 +502,109 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "source_csql" {
+///   name             = "source-csql"
+///   database_version = "MYSQL_5_7"
+///   settings = {
+///     tier                        = "db-n1-standard-1"
+///     deletion_protection_enabled = false
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_sql_sslcert" "source_sql_client_cert" {
+///   depends_on  = [gcp_sql_databaseinstance.source_csql]
+///   common_name = "cert"
+///   instance    = gcp_sql_databaseinstance.source_csql.name
+/// }
+/// resource "gcp_sql_user" "source_sqldb_user" {
+///   depends_on = [gcp_sql_sslcert.source_sql_client_cert]
+///   name       = "username"
+///   instance   = gcp_sql_databaseinstance.source_csql.name
+///   password   = "password"
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "source_cp" {
+///   depends_on            = [gcp_sql_user.source_sqldb_user]
+///   location              = "us-central1"
+///   connection_profile_id = "source-cp"
+///   display_name          = "source-cp_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   mysql = {
+///     host     = gcp_sql_databaseinstance.source_csql.ip_addresses[0].ip_address
+///     port     = 3306
+///     username = gcp_sql_user.source_sqldb_user.name
+///     password = gcp_sql_user.source_sqldb_user.password
+///     ssl = {
+///       client_key         = gcp_sql_sslcert.source_sql_client_cert.private_key
+///       client_certificate = gcp_sql_sslcert.source_sql_client_cert.cert
+///       ca_certificate     = gcp_sql_sslcert.source_sql_client_cert.server_ca_cert
+///       type               = "SERVER_CLIENT"
+///     }
+///     cloud_sql_id = "source-csql"
+///   }
+/// }
+/// resource "gcp_sql_databaseinstance" "destination_csql" {
+///   name             = "destination-csql"
+///   database_version = "MYSQL_5_7"
+///   settings = {
+///     tier                        = "db-n1-standard-1"
+///     deletion_protection_enabled = false
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "destination_cp" {
+///   depends_on            = [gcp_sql_databaseinstance.destination_csql]
+///   location              = "us-central1"
+///   connection_profile_id = "destination-cp"
+///   display_name          = "destination-cp_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   mysql = {
+///     cloud_sql_id = "destination-csql"
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "destination-csql"
+/// }
+/// resource "gcp_databasemigrationservice_migrationjob" "mysqltomysql" {
+///   location         = "us-central1"
+///   migration_job_id = "my-migrationid"
+///   display_name     = "my-migrationid_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   performance_config = {
+///     dump_parallel_level = "MAX"
+///   }
+///   vpc_peering_connectivity = {
+///     vpc = gcp_compute_network.default.id
+///   }
+///   dump_type = "LOGICAL"
+///   dump_flags = {
+///     dump_flags = [{
+///       "name"  = "max-allowed-packet"
+///       "value" = "1073741824"
+///     }]
+///   }
+///   source      = gcp_databasemigrationservice_connectionprofile.source_cp.name
+///   destination = gcp_databasemigrationservice_connectionprofile.destination_cp.name
+///   type        = "CONTINUOUS"
 /// }
 /// ```
 /// ```java
@@ -528,9 +633,10 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobPerformanceConfigArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobVpcPeeringConnectivityArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobDumpFlagsArgs;
+/// import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobDumpFlagsDumpFlagArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -576,7 +682,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///             .displayName("source-cp_display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .mysql(ConnectionProfileMysqlArgs.builder()
-///                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
+///                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
 ///                 .port(3306)
 ///                 .username(sourceSqldbUser.name())
 ///                 .password(sourceSqldbUser.password())
@@ -792,7 +898,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         foo: "bar",
 ///     },
 ///     postgresql: {
-///         host: sourceCsql.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+///         host: sourceCsql.ipAddresses[0].ipAddress,
 ///         port: 3306,
 ///         username: sourceSqldbUser.name,
 ///         password: sourceSqldbUser.password,
@@ -1101,7 +1207,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 			},
 /// 			Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
 /// 				Host: sourceCsql.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
-/// 					return &ipAddresses[0].IpAddress, nil
+/// 					return ipAddresses[0].IpAddress, nil
 /// 				}).(pulumi.StringPtrOutput),
 /// 				Port:     pulumi.Int(3306),
 /// 				Username: sourceSqldbUser.Name,
@@ -1167,6 +1273,94 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "source_csql" {
+///   name             = "source-csql"
+///   database_version = "POSTGRES_15"
+///   settings = {
+///     tier                        = "db-custom-2-13312"
+///     deletion_protection_enabled = false
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_sql_sslcert" "source_sql_client_cert" {
+///   depends_on  = [gcp_sql_databaseinstance.source_csql]
+///   common_name = "cert"
+///   instance    = gcp_sql_databaseinstance.source_csql.name
+/// }
+/// resource "gcp_sql_user" "source_sqldb_user" {
+///   depends_on = [gcp_sql_sslcert.source_sql_client_cert]
+///   name       = "username"
+///   instance   = gcp_sql_databaseinstance.source_csql.name
+///   password   = "password"
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "source_cp" {
+///   depends_on            = [gcp_sql_user.source_sqldb_user]
+///   location              = "us-central1"
+///   connection_profile_id = "source-cp"
+///   display_name          = "source-cp_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   postgresql = {
+///     host     = gcp_sql_databaseinstance.source_csql.ip_addresses[0].ip_address
+///     port     = 3306
+///     username = gcp_sql_user.source_sqldb_user.name
+///     password = gcp_sql_user.source_sqldb_user.password
+///     ssl = {
+///       client_key         = gcp_sql_sslcert.source_sql_client_cert.private_key
+///       client_certificate = gcp_sql_sslcert.source_sql_client_cert.cert
+///       ca_certificate     = gcp_sql_sslcert.source_sql_client_cert.server_ca_cert
+///       type               = "SERVER_CLIENT"
+///     }
+///     cloud_sql_id = "source-csql"
+///   }
+/// }
+/// resource "gcp_sql_databaseinstance" "destination_csql" {
+///   name             = "destination-csql"
+///   database_version = "POSTGRES_15"
+///   settings = {
+///     tier                        = "db-custom-2-13312"
+///     deletion_protection_enabled = false
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "destination_cp" {
+///   depends_on            = [gcp_sql_databaseinstance.destination_csql]
+///   location              = "us-central1"
+///   connection_profile_id = "destination-cp"
+///   display_name          = "destination-cp_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   postgresql = {
+///     cloud_sql_id = "destination-csql"
+///   }
+/// }
+/// resource "gcp_databasemigrationservice_migrationjob" "psqltopsql" {
+///   location         = "us-central1"
+///   migration_job_id = "my-migrationid"
+///   display_name     = "my-migrationid_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   static_ip_connectivity = {}
+///   source                 = gcp_databasemigrationservice_connectionprofile.source_cp.name
+///   destination            = gcp_databasemigrationservice_connectionprofile.destination_cp.name
+///   type                   = "CONTINUOUS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1190,8 +1384,8 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// import com.pulumi.gcp.databasemigrationservice.MigrationJobArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobStaticIpConnectivityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1237,7 +1431,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///             .displayName("source-cp_display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
-///                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
+///                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
 ///                 .port(3306)
 ///                 .username(sourceSqldbUser.name())
 ///                 .password(sourceSqldbUser.password())
@@ -1387,6 +1581,873 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///       arguments: {}
 /// ```
 ///
+/// ### Database Migration Service Migration Job Postgres To Postgres Objects
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const project = gcp.organizations.getProject({});
+/// const sourceCsql = new gcp.sql.DatabaseInstance("source_csql", {
+///     name: "source-csql",
+///     databaseVersion: "POSTGRES_15",
+///     settings: {
+///         tier: "db-custom-2-13312",
+///         deletionProtectionEnabled: false,
+///     },
+///     deletionProtection: false,
+/// });
+/// const sourceSqlClientCert = new gcp.sql.SslCert("source_sql_client_cert", {
+///     commonName: "cert",
+///     instance: sourceCsql.name,
+/// }, {
+///     dependsOn: [sourceCsql],
+/// });
+/// const sourceSqldbUser = new gcp.sql.User("source_sqldb_user", {
+///     name: "username",
+///     instance: sourceCsql.name,
+///     password: "password",
+/// }, {
+///     dependsOn: [sourceSqlClientCert],
+/// });
+/// const sourceCp = new gcp.databasemigrationservice.ConnectionProfile("source_cp", {
+///     location: "us-central1",
+///     connectionProfileId: "source-cp",
+///     displayName: "source-cp_display",
+///     labels: {
+///         foo: "bar",
+///     },
+///     postgresql: {
+///         host: sourceCsql.ipAddresses[0].ipAddress,
+///         port: 3306,
+///         username: sourceSqldbUser.name,
+///         password: sourceSqldbUser.password,
+///         ssl: {
+///             clientKey: sourceSqlClientCert.privateKey,
+///             clientCertificate: sourceSqlClientCert.cert,
+///             caCertificate: sourceSqlClientCert.serverCaCert,
+///             type: "SERVER_CLIENT",
+///         },
+///         cloudSqlId: "source-csql",
+///     },
+/// }, {
+///     dependsOn: [sourceSqldbUser],
+/// });
+/// const destinationCsql = new gcp.sql.DatabaseInstance("destination_csql", {
+///     name: "destination-csql",
+///     databaseVersion: "POSTGRES_15",
+///     settings: {
+///         tier: "db-custom-2-13312",
+///         deletionProtectionEnabled: false,
+///     },
+///     deletionProtection: false,
+/// });
+/// const destinationCp = new gcp.databasemigrationservice.ConnectionProfile("destination_cp", {
+///     location: "us-central1",
+///     connectionProfileId: "destination-cp",
+///     displayName: "destination-cp_display",
+///     labels: {
+///         foo: "bar",
+///     },
+///     postgresql: {
+///         cloudSqlId: "destination-csql",
+///     },
+/// }, {
+///     dependsOn: [destinationCsql],
+/// });
+/// const psqltopsqlobjects = new gcp.databasemigrationservice.MigrationJob("psqltopsqlobjects", {
+///     location: "us-central1",
+///     migrationJobId: "my-migrationid",
+///     displayName: "my-migrationid_display",
+///     labels: {
+///         foo: "bar",
+///     },
+///     staticIpConnectivity: {},
+///     source: sourceCp.name,
+///     destination: destinationCp.name,
+///     type: "CONTINUOUS",
+///     objectsConfig: {
+///         sourceObjectsConfig: {
+///             objectsSelectionType: "SPECIFIED_OBJECTS",
+///             objectConfigs: [
+///                 {
+///                     objectIdentifier: {
+///                         type: "DATABASE",
+///                         database: "my_database",
+///                     },
+///                 },
+///                 {
+///                     objectIdentifier: {
+///                         type: "TABLE",
+///                         database: "my_other_database",
+///                         schema: "public",
+///                         table: "users",
+///                     },
+///                 },
+///             ],
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// project = gcp.organizations.get_project()
+/// source_csql = gcp.sql.DatabaseInstance("source_csql",
+///     name="source-csql",
+///     database_version="POSTGRES_15",
+///     settings={
+///         "tier": "db-custom-2-13312",
+///         "deletion_protection_enabled": False,
+///     },
+///     deletion_protection=False)
+/// source_sql_client_cert = gcp.sql.SslCert("source_sql_client_cert",
+///     common_name="cert",
+///     instance=source_csql.name,
+///     opts = pulumi.ResourceOptions(depends_on=[source_csql]))
+/// source_sqldb_user = gcp.sql.User("source_sqldb_user",
+///     name="username",
+///     instance=source_csql.name,
+///     password="password",
+///     opts = pulumi.ResourceOptions(depends_on=[source_sql_client_cert]))
+/// source_cp = gcp.databasemigrationservice.ConnectionProfile("source_cp",
+///     location="us-central1",
+///     connection_profile_id="source-cp",
+///     display_name="source-cp_display",
+///     labels={
+///         "foo": "bar",
+///     },
+///     postgresql={
+///         "host": source_csql.ip_addresses[0].ip_address,
+///         "port": 3306,
+///         "username": source_sqldb_user.name,
+///         "password": source_sqldb_user.password,
+///         "ssl": {
+///             "client_key": source_sql_client_cert.private_key,
+///             "client_certificate": source_sql_client_cert.cert,
+///             "ca_certificate": source_sql_client_cert.server_ca_cert,
+///             "type": "SERVER_CLIENT",
+///         },
+///         "cloud_sql_id": "source-csql",
+///     },
+///     opts = pulumi.ResourceOptions(depends_on=[source_sqldb_user]))
+/// destination_csql = gcp.sql.DatabaseInstance("destination_csql",
+///     name="destination-csql",
+///     database_version="POSTGRES_15",
+///     settings={
+///         "tier": "db-custom-2-13312",
+///         "deletion_protection_enabled": False,
+///     },
+///     deletion_protection=False)
+/// destination_cp = gcp.databasemigrationservice.ConnectionProfile("destination_cp",
+///     location="us-central1",
+///     connection_profile_id="destination-cp",
+///     display_name="destination-cp_display",
+///     labels={
+///         "foo": "bar",
+///     },
+///     postgresql={
+///         "cloud_sql_id": "destination-csql",
+///     },
+///     opts = pulumi.ResourceOptions(depends_on=[destination_csql]))
+/// psqltopsqlobjects = gcp.databasemigrationservice.MigrationJob("psqltopsqlobjects",
+///     location="us-central1",
+///     migration_job_id="my-migrationid",
+///     display_name="my-migrationid_display",
+///     labels={
+///         "foo": "bar",
+///     },
+///     static_ip_connectivity={},
+///     source=source_cp.name,
+///     destination=destination_cp.name,
+///     type="CONTINUOUS",
+///     objects_config={
+///         "source_objects_config": {
+///             "objects_selection_type": "SPECIFIED_OBJECTS",
+///             "object_configs": [
+///                 {
+///                     "object_identifier": {
+///                         "type": "DATABASE",
+///                         "database": "my_database",
+///                     },
+///                 },
+///                 {
+///                     "object_identifier": {
+///                         "type": "TABLE",
+///                         "database": "my_other_database",
+///                         "schema": "public",
+///                         "table": "users",
+///                     },
+///                 },
+///             ],
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var project = Gcp.Organizations.GetProject.Invoke();
+///
+///     var sourceCsql = new Gcp.Sql.DatabaseInstance("source_csql", new()
+///     {
+///         Name = "source-csql",
+///         DatabaseVersion = "POSTGRES_15",
+///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+///         {
+///             Tier = "db-custom-2-13312",
+///             DeletionProtectionEnabled = false,
+///         },
+///         DeletionProtection = false,
+///     });
+///
+///     var sourceSqlClientCert = new Gcp.Sql.SslCert("source_sql_client_cert", new()
+///     {
+///         CommonName = "cert",
+///         Instance = sourceCsql.Name,
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             sourceCsql,
+///         },
+///     });
+///
+///     var sourceSqldbUser = new Gcp.Sql.User("source_sqldb_user", new()
+///     {
+///         Name = "username",
+///         Instance = sourceCsql.Name,
+///         Password = "password",
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             sourceSqlClientCert,
+///         },
+///     });
+///
+///     var sourceCp = new Gcp.DatabaseMigrationService.ConnectionProfile("source_cp", new()
+///     {
+///         Location = "us-central1",
+///         ConnectionProfileId = "source-cp",
+///         DisplayName = "source-cp_display",
+///         Labels =
+///         {
+///             { "foo", "bar" },
+///         },
+///         Postgresql = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlArgs
+///         {
+///             Host = sourceCsql.IpAddresses.Apply(ipAddresses => ipAddresses[0].IpAddress),
+///             Port = 3306,
+///             Username = sourceSqldbUser.Name,
+///             Password = sourceSqldbUser.Password,
+///             Ssl = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlSslArgs
+///             {
+///                 ClientKey = sourceSqlClientCert.PrivateKey,
+///                 ClientCertificate = sourceSqlClientCert.Cert,
+///                 CaCertificate = sourceSqlClientCert.ServerCaCert,
+///                 Type = "SERVER_CLIENT",
+///             },
+///             CloudSqlId = "source-csql",
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             sourceSqldbUser,
+///         },
+///     });
+///
+///     var destinationCsql = new Gcp.Sql.DatabaseInstance("destination_csql", new()
+///     {
+///         Name = "destination-csql",
+///         DatabaseVersion = "POSTGRES_15",
+///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+///         {
+///             Tier = "db-custom-2-13312",
+///             DeletionProtectionEnabled = false,
+///         },
+///         DeletionProtection = false,
+///     });
+///
+///     var destinationCp = new Gcp.DatabaseMigrationService.ConnectionProfile("destination_cp", new()
+///     {
+///         Location = "us-central1",
+///         ConnectionProfileId = "destination-cp",
+///         DisplayName = "destination-cp_display",
+///         Labels =
+///         {
+///             { "foo", "bar" },
+///         },
+///         Postgresql = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlArgs
+///         {
+///             CloudSqlId = "destination-csql",
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             destinationCsql,
+///         },
+///     });
+///
+///     var psqltopsqlobjects = new Gcp.DatabaseMigrationService.MigrationJob("psqltopsqlobjects", new()
+///     {
+///         Location = "us-central1",
+///         MigrationJobId = "my-migrationid",
+///         DisplayName = "my-migrationid_display",
+///         Labels =
+///         {
+///             { "foo", "bar" },
+///         },
+///         StaticIpConnectivity = null,
+///         Source = sourceCp.Name,
+///         Destination = destinationCp.Name,
+///         Type = "CONTINUOUS",
+///         ObjectsConfig = new Gcp.DatabaseMigrationService.Inputs.MigrationJobObjectsConfigArgs
+///         {
+///             SourceObjectsConfig = new Gcp.DatabaseMigrationService.Inputs.MigrationJobObjectsConfigSourceObjectsConfigArgs
+///             {
+///                 ObjectsSelectionType = "SPECIFIED_OBJECTS",
+///                 ObjectConfigs = new[]
+///                 {
+///                     new Gcp.DatabaseMigrationService.Inputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs
+///                     {
+///                         ObjectIdentifier = new Gcp.DatabaseMigrationService.Inputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs
+///                         {
+///                             Type = "DATABASE",
+///                             Database = "my_database",
+///                         },
+///                     },
+///                     new Gcp.DatabaseMigrationService.Inputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs
+///                     {
+///                         ObjectIdentifier = new Gcp.DatabaseMigrationService.Inputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs
+///                         {
+///                             Type = "TABLE",
+///                             Database = "my_other_database",
+///                             Schema = "public",
+///                             Table = "users",
+///                         },
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		sourceCsql, err := sql.NewDatabaseInstance(ctx, "source_csql", &sql.DatabaseInstanceArgs{
+/// 			Name:            pulumi.String("source-csql"),
+/// 			DatabaseVersion: pulumi.String("POSTGRES_15"),
+/// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+/// 				Tier:                      pulumi.String("db-custom-2-13312"),
+/// 				DeletionProtectionEnabled: pulumi.Bool(false),
+/// 			},
+/// 			DeletionProtection: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		sourceSqlClientCert, err := sql.NewSslCert(ctx, "source_sql_client_cert", &sql.SslCertArgs{
+/// 			CommonName: pulumi.String("cert"),
+/// 			Instance:   sourceCsql.Name,
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			sourceCsql,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		sourceSqldbUser, err := sql.NewUser(ctx, "source_sqldb_user", &sql.UserArgs{
+/// 			Name:     pulumi.String("username"),
+/// 			Instance: sourceCsql.Name,
+/// 			Password: pulumi.String("password"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			sourceSqlClientCert,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		sourceCp, err := databasemigrationservice.NewConnectionProfile(ctx, "source_cp", &databasemigrationservice.ConnectionProfileArgs{
+/// 			Location:            pulumi.String("us-central1"),
+/// 			ConnectionProfileId: pulumi.String("source-cp"),
+/// 			DisplayName:         pulumi.String("source-cp_display"),
+/// 			Labels: pulumi.StringMap{
+/// 				"foo": pulumi.String("bar"),
+/// 			},
+/// 			Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
+/// 				Host: sourceCsql.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
+/// 					return ipAddresses[0].IpAddress, nil
+/// 				}).(pulumi.StringPtrOutput),
+/// 				Port:     pulumi.Int(3306),
+/// 				Username: sourceSqldbUser.Name,
+/// 				Password: sourceSqldbUser.Password,
+/// 				Ssl: &databasemigrationservice.ConnectionProfilePostgresqlSslArgs{
+/// 					ClientKey:         sourceSqlClientCert.PrivateKey,
+/// 					ClientCertificate: sourceSqlClientCert.Cert,
+/// 					CaCertificate:     sourceSqlClientCert.ServerCaCert,
+/// 					Type:              pulumi.String("SERVER_CLIENT"),
+/// 				},
+/// 				CloudSqlId: pulumi.String("source-csql"),
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			sourceSqldbUser,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		destinationCsql, err := sql.NewDatabaseInstance(ctx, "destination_csql", &sql.DatabaseInstanceArgs{
+/// 			Name:            pulumi.String("destination-csql"),
+/// 			DatabaseVersion: pulumi.String("POSTGRES_15"),
+/// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+/// 				Tier:                      pulumi.String("db-custom-2-13312"),
+/// 				DeletionProtectionEnabled: pulumi.Bool(false),
+/// 			},
+/// 			DeletionProtection: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		destinationCp, err := databasemigrationservice.NewConnectionProfile(ctx, "destination_cp", &databasemigrationservice.ConnectionProfileArgs{
+/// 			Location:            pulumi.String("us-central1"),
+/// 			ConnectionProfileId: pulumi.String("destination-cp"),
+/// 			DisplayName:         pulumi.String("destination-cp_display"),
+/// 			Labels: pulumi.StringMap{
+/// 				"foo": pulumi.String("bar"),
+/// 			},
+/// 			Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
+/// 				CloudSqlId: pulumi.String("destination-csql"),
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			destinationCsql,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = databasemigrationservice.NewMigrationJob(ctx, "psqltopsqlobjects", &databasemigrationservice.MigrationJobArgs{
+/// 			Location:       pulumi.String("us-central1"),
+/// 			MigrationJobId: pulumi.String("my-migrationid"),
+/// 			DisplayName:    pulumi.String("my-migrationid_display"),
+/// 			Labels: pulumi.StringMap{
+/// 				"foo": pulumi.String("bar"),
+/// 			},
+/// 			StaticIpConnectivity: &databasemigrationservice.MigrationJobStaticIpConnectivityArgs{},
+/// 			Source:               sourceCp.Name,
+/// 			Destination:          destinationCp.Name,
+/// 			Type:                 pulumi.String("CONTINUOUS"),
+/// 			ObjectsConfig: &databasemigrationservice.MigrationJobObjectsConfigArgs{
+/// 				SourceObjectsConfig: &databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigArgs{
+/// 					ObjectsSelectionType: pulumi.String("SPECIFIED_OBJECTS"),
+/// 					ObjectConfigs: databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArray{
+/// 						&databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs{
+/// 							ObjectIdentifier: &databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs{
+/// 								Type:     pulumi.String("DATABASE"),
+/// 								Database: pulumi.String("my_database"),
+/// 							},
+/// 						},
+/// 						&databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs{
+/// 							ObjectIdentifier: &databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs{
+/// 								Type:     pulumi.String("TABLE"),
+/// 								Database: pulumi.String("my_other_database"),
+/// 								Schema:   pulumi.String("public"),
+/// 								Table:    pulumi.String("users"),
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "source_csql" {
+///   name             = "source-csql"
+///   database_version = "POSTGRES_15"
+///   settings = {
+///     tier                        = "db-custom-2-13312"
+///     deletion_protection_enabled = false
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_sql_sslcert" "source_sql_client_cert" {
+///   depends_on  = [gcp_sql_databaseinstance.source_csql]
+///   common_name = "cert"
+///   instance    = gcp_sql_databaseinstance.source_csql.name
+/// }
+/// resource "gcp_sql_user" "source_sqldb_user" {
+///   depends_on = [gcp_sql_sslcert.source_sql_client_cert]
+///   name       = "username"
+///   instance   = gcp_sql_databaseinstance.source_csql.name
+///   password   = "password"
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "source_cp" {
+///   depends_on            = [gcp_sql_user.source_sqldb_user]
+///   location              = "us-central1"
+///   connection_profile_id = "source-cp"
+///   display_name          = "source-cp_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   postgresql = {
+///     host     = gcp_sql_databaseinstance.source_csql.ip_addresses[0].ip_address
+///     port     = 3306
+///     username = gcp_sql_user.source_sqldb_user.name
+///     password = gcp_sql_user.source_sqldb_user.password
+///     ssl = {
+///       client_key         = gcp_sql_sslcert.source_sql_client_cert.private_key
+///       client_certificate = gcp_sql_sslcert.source_sql_client_cert.cert
+///       ca_certificate     = gcp_sql_sslcert.source_sql_client_cert.server_ca_cert
+///       type               = "SERVER_CLIENT"
+///     }
+///     cloud_sql_id = "source-csql"
+///   }
+/// }
+/// resource "gcp_sql_databaseinstance" "destination_csql" {
+///   name             = "destination-csql"
+///   database_version = "POSTGRES_15"
+///   settings = {
+///     tier                        = "db-custom-2-13312"
+///     deletion_protection_enabled = false
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "destination_cp" {
+///   depends_on            = [gcp_sql_databaseinstance.destination_csql]
+///   location              = "us-central1"
+///   connection_profile_id = "destination-cp"
+///   display_name          = "destination-cp_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   postgresql = {
+///     cloud_sql_id = "destination-csql"
+///   }
+/// }
+/// resource "gcp_databasemigrationservice_migrationjob" "psqltopsqlobjects" {
+///   location         = "us-central1"
+///   migration_job_id = "my-migrationid"
+///   display_name     = "my-migrationid_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   static_ip_connectivity = {}
+///   source                 = gcp_databasemigrationservice_connectionprofile.source_cp.name
+///   destination            = gcp_databasemigrationservice_connectionprofile.destination_cp.name
+///   type                   = "CONTINUOUS"
+///   objects_config = {
+///     source_objects_config = {
+///       objects_selection_type = "SPECIFIED_OBJECTS"
+///       object_configs = [{
+///         "objectIdentifier" = {
+///           "type"     = "DATABASE"
+///           "database" = "my_database"
+///         }
+///         }, {
+///         "objectIdentifier" = {
+///           "type"     = "TABLE"
+///           "database" = "my_other_database"
+///           "schema"   = "public"
+///           "table"    = "users"
+///         }
+///       }]
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import com.pulumi.gcp.sql.DatabaseInstance;
+/// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+/// import com.pulumi.gcp.sql.SslCert;
+/// import com.pulumi.gcp.sql.SslCertArgs;
+/// import com.pulumi.gcp.sql.User;
+/// import com.pulumi.gcp.sql.UserArgs;
+/// import com.pulumi.gcp.databasemigrationservice.ConnectionProfile;
+/// import com.pulumi.gcp.databasemigrationservice.ConnectionProfileArgs;
+/// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlArgs;
+/// import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlSslArgs;
+/// import com.pulumi.gcp.databasemigrationservice.MigrationJob;
+/// import com.pulumi.gcp.databasemigrationservice.MigrationJobArgs;
+/// import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobStaticIpConnectivityArgs;
+/// import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobObjectsConfigArgs;
+/// import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobObjectsConfigSourceObjectsConfigArgs;
+/// import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs;
+/// import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+///             .build());
+///
+///         var sourceCsql = new DatabaseInstance("sourceCsql", DatabaseInstanceArgs.builder()
+///             .name("source-csql")
+///             .databaseVersion("POSTGRES_15")
+///             .settings(DatabaseInstanceSettingsArgs.builder()
+///                 .tier("db-custom-2-13312")
+///                 .deletionProtectionEnabled(false)
+///                 .build())
+///             .deletionProtection(false)
+///             .build());
+///
+///         var sourceSqlClientCert = new SslCert("sourceSqlClientCert", SslCertArgs.builder()
+///             .commonName("cert")
+///             .instance(sourceCsql.name())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(sourceCsql)
+///                 .build());
+///
+///         var sourceSqldbUser = new User("sourceSqldbUser", UserArgs.builder()
+///             .name("username")
+///             .instance(sourceCsql.name())
+///             .password("password")
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(sourceSqlClientCert)
+///                 .build());
+///
+///         var sourceCp = new ConnectionProfile("sourceCp", ConnectionProfileArgs.builder()
+///             .location("us-central1")
+///             .connectionProfileId("source-cp")
+///             .displayName("source-cp_display")
+///             .labels(Map.of("foo", "bar"))
+///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
+///                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
+///                 .port(3306)
+///                 .username(sourceSqldbUser.name())
+///                 .password(sourceSqldbUser.password())
+///                 .ssl(ConnectionProfilePostgresqlSslArgs.builder()
+///                     .clientKey(sourceSqlClientCert.privateKey())
+///                     .clientCertificate(sourceSqlClientCert.cert())
+///                     .caCertificate(sourceSqlClientCert.serverCaCert())
+///                     .type("SERVER_CLIENT")
+///                     .build())
+///                 .cloudSqlId("source-csql")
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(sourceSqldbUser)
+///                 .build());
+///
+///         var destinationCsql = new DatabaseInstance("destinationCsql", DatabaseInstanceArgs.builder()
+///             .name("destination-csql")
+///             .databaseVersion("POSTGRES_15")
+///             .settings(DatabaseInstanceSettingsArgs.builder()
+///                 .tier("db-custom-2-13312")
+///                 .deletionProtectionEnabled(false)
+///                 .build())
+///             .deletionProtection(false)
+///             .build());
+///
+///         var destinationCp = new ConnectionProfile("destinationCp", ConnectionProfileArgs.builder()
+///             .location("us-central1")
+///             .connectionProfileId("destination-cp")
+///             .displayName("destination-cp_display")
+///             .labels(Map.of("foo", "bar"))
+///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
+///                 .cloudSqlId("destination-csql")
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(destinationCsql)
+///                 .build());
+///
+///         var psqltopsqlobjects = new MigrationJob("psqltopsqlobjects", MigrationJobArgs.builder()
+///             .location("us-central1")
+///             .migrationJobId("my-migrationid")
+///             .displayName("my-migrationid_display")
+///             .labels(Map.of("foo", "bar"))
+///             .staticIpConnectivity(MigrationJobStaticIpConnectivityArgs.builder()
+///                 .build())
+///             .source(sourceCp.name())
+///             .destination(destinationCp.name())
+///             .type("CONTINUOUS")
+///             .objectsConfig(MigrationJobObjectsConfigArgs.builder()
+///                 .sourceObjectsConfig(MigrationJobObjectsConfigSourceObjectsConfigArgs.builder()
+///                     .objectsSelectionType("SPECIFIED_OBJECTS")
+///                     .objectConfigs(
+///                         MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs.builder()
+///                             .objectIdentifier(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs.builder()
+///                                 .type("DATABASE")
+///                                 .database("my_database")
+///                                 .build())
+///                             .build(),
+///                         MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs.builder()
+///                             .objectIdentifier(MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs.builder()
+///                                 .type("TABLE")
+///                                 .database("my_other_database")
+///                                 .schema("public")
+///                                 .table("users")
+///                                 .build())
+///                             .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   sourceCsql:
+///     type: gcp:sql:DatabaseInstance
+///     name: source_csql
+///     properties:
+///       name: source-csql
+///       databaseVersion: POSTGRES_15
+///       settings:
+///         tier: db-custom-2-13312
+///         deletionProtectionEnabled: false
+///       deletionProtection: false
+///   sourceSqlClientCert:
+///     type: gcp:sql:SslCert
+///     name: source_sql_client_cert
+///     properties:
+///       commonName: cert
+///       instance: ${sourceCsql.name}
+///     options:
+///       dependsOn:
+///         - ${sourceCsql}
+///   sourceSqldbUser:
+///     type: gcp:sql:User
+///     name: source_sqldb_user
+///     properties:
+///       name: username
+///       instance: ${sourceCsql.name}
+///       password: password
+///     options:
+///       dependsOn:
+///         - ${sourceSqlClientCert}
+///   sourceCp:
+///     type: gcp:databasemigrationservice:ConnectionProfile
+///     name: source_cp
+///     properties:
+///       location: us-central1
+///       connectionProfileId: source-cp
+///       displayName: source-cp_display
+///       labels:
+///         foo: bar
+///       postgresql:
+///         host: ${sourceCsql.ipAddresses[0].ipAddress}
+///         port: 3306
+///         username: ${sourceSqldbUser.name}
+///         password: ${sourceSqldbUser.password}
+///         ssl:
+///           clientKey: ${sourceSqlClientCert.privateKey}
+///           clientCertificate: ${sourceSqlClientCert.cert}
+///           caCertificate: ${sourceSqlClientCert.serverCaCert}
+///           type: SERVER_CLIENT
+///         cloudSqlId: source-csql
+///     options:
+///       dependsOn:
+///         - ${sourceSqldbUser}
+///   destinationCsql:
+///     type: gcp:sql:DatabaseInstance
+///     name: destination_csql
+///     properties:
+///       name: destination-csql
+///       databaseVersion: POSTGRES_15
+///       settings:
+///         tier: db-custom-2-13312
+///         deletionProtectionEnabled: false
+///       deletionProtection: false
+///   destinationCp:
+///     type: gcp:databasemigrationservice:ConnectionProfile
+///     name: destination_cp
+///     properties:
+///       location: us-central1
+///       connectionProfileId: destination-cp
+///       displayName: destination-cp_display
+///       labels:
+///         foo: bar
+///       postgresql:
+///         cloudSqlId: destination-csql
+///     options:
+///       dependsOn:
+///         - ${destinationCsql}
+///   psqltopsqlobjects:
+///     type: gcp:databasemigrationservice:MigrationJob
+///     properties:
+///       location: us-central1
+///       migrationJobId: my-migrationid
+///       displayName: my-migrationid_display
+///       labels:
+///         foo: bar
+///       staticIpConnectivity: {}
+///       source: ${sourceCp.name}
+///       destination: ${destinationCp.name}
+///       type: CONTINUOUS
+///       objectsConfig:
+///         sourceObjectsConfig:
+///           objectsSelectionType: SPECIFIED_OBJECTS
+///           objectConfigs:
+///             - objectIdentifier:
+///                 type: DATABASE
+///                 database: my_database
+///             - objectIdentifier:
+///                 type: TABLE
+///                 database: my_other_database
+///                 schema: public
+///                 table: users
+/// variables:
+///   project:
+///     fn::invoke:
+///       function: gcp:organizations:getProject
+///       arguments: {}
+/// ```
+///
 /// ### Database Migration Service Migration Job Postgres To Alloydb
 ///
 ///
@@ -1426,7 +2487,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///         foo: "bar",
 ///     },
 ///     postgresql: {
-///         host: sourceCsql.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+///         host: sourceCsql.ipAddresses[0].ipAddress,
 ///         port: 3306,
 ///         username: sourceSqldbUser.name,
 ///         password: sourceSqldbUser.password,
@@ -1831,7 +2892,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 			},
 /// 			Postgresql: &databasemigrationservice.ConnectionProfilePostgresqlArgs{
 /// 				Host: sourceCsql.IpAddresses.ApplyT(func(ipAddresses []sql.DatabaseInstanceIpAddress) (*string, error) {
-/// 					return &ipAddresses[0].IpAddress, nil
+/// 					return ipAddresses[0].IpAddress, nil
 /// 				}).(pulumi.StringPtrOutput),
 /// 				Port:     pulumi.Int(3306),
 /// 				Username: sourceSqldbUser.Name,
@@ -1860,7 +2921,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 			ClusterId: pulumi.String("destination-alloydb"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-/// 				Network: _default.ID(),
+/// 				Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DatabaseVersion: pulumi.String("POSTGRES_15"),
 /// 			InitialUser: &alloydb.ClusterInitialUserArgs{
@@ -1877,13 +2938,13 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      _default.ID(),
+/// 			Network:      _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: _default.ID(),
+/// 			Network: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -1938,6 +2999,119 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "source_csql" {
+///   name             = "source-csql"
+///   database_version = "POSTGRES_15"
+///   settings = {
+///     tier                        = "db-custom-2-13312"
+///     deletion_protection_enabled = false
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_sql_sslcert" "source_sql_client_cert" {
+///   depends_on  = [gcp_sql_databaseinstance.source_csql]
+///   common_name = "cert"
+///   instance    = gcp_sql_databaseinstance.source_csql.name
+/// }
+/// resource "gcp_sql_user" "source_sqldb_user" {
+///   depends_on = [gcp_sql_sslcert.source_sql_client_cert]
+///   name       = "username"
+///   instance   = gcp_sql_databaseinstance.source_csql.name
+///   password   = "password"
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "source_cp" {
+///   depends_on            = [gcp_sql_user.source_sqldb_user]
+///   location              = "us-central1"
+///   connection_profile_id = "source-cp"
+///   display_name          = "source-cp_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   postgresql = {
+///     host     = gcp_sql_databaseinstance.source_csql.ip_addresses[0].ip_address
+///     port     = 3306
+///     username = gcp_sql_user.source_sqldb_user.name
+///     password = gcp_sql_user.source_sqldb_user.password
+///     ssl = {
+///       client_key         = gcp_sql_sslcert.source_sql_client_cert.private_key
+///       client_certificate = gcp_sql_sslcert.source_sql_client_cert.cert
+///       ca_certificate     = gcp_sql_sslcert.source_sql_client_cert.server_ca_cert
+///       type               = "SERVER_CLIENT"
+///     }
+///     cloud_sql_id = "source-csql"
+///   }
+/// }
+/// resource "gcp_alloydb_cluster" "destination_alloydb" {
+///   cluster_id = "destination-alloydb"
+///   location   = "us-central1"
+///   network_config = {
+///     network = gcp_compute_network.default.id
+///   }
+///   database_version = "POSTGRES_15"
+///   initial_user = {
+///     user     = "destination-alloydb"
+///     password = "destination-alloydb"
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_alloydb_instance" "destination_alloydb_primary" {
+///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   cluster       = gcp_alloydb_cluster.destination_alloydb.name
+///   instance_id   = "destination-alloydb-primary"
+///   instance_type = "PRIMARY"
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "destination-alloydb"
+///   address_type  = "INTERNAL"
+///   purpose       = "VPC_PEERING"
+///   prefix_length = 16
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   network                 = gcp_compute_network.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "destination-alloydb"
+/// }
+/// resource "gcp_databasemigrationservice_connectionprofile" "destination_cp" {
+///   depends_on            = [gcp_alloydb_cluster.destination_alloydb, gcp_alloydb_instance.destination_alloydb_primary]
+///   location              = "us-central1"
+///   connection_profile_id = "destination-cp"
+///   display_name          = "destination-cp_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   postgresql = {
+///     alloydb_cluster_id = "destination-alloydb"
+///   }
+/// }
+/// resource "gcp_databasemigrationservice_migrationjob" "psqltoalloydb" {
+///   location         = "us-central1"
+///   migration_job_id = "my-migrationid"
+///   display_name     = "my-migrationid_display"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   static_ip_connectivity = {}
+///   source                 = gcp_databasemigrationservice_connectionprofile.source_cp.name
+///   destination            = gcp_databasemigrationservice_connectionprofile.destination_cp.name
+///   type                   = "CONTINUOUS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1973,8 +3147,8 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// import com.pulumi.gcp.databasemigrationservice.MigrationJobArgs;
 /// import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobStaticIpConnectivityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2020,7 +3194,7 @@ import 'migration_job_vpc_peering_connectivity.dart';
 ///             .displayName("source-cp_display")
 ///             .labels(Map.of("foo", "bar"))
 ///             .postgresql(ConnectionProfilePostgresqlArgs.builder()
-///                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses[0].ipAddress()))
+///                 .host(sourceCsql.ipAddresses().applyValue(_ipAddresses -> _ipAddresses.get(0).ipAddress()))
 ///                 .port(3306)
 ///                 .username(sourceSqldbUser.name())
 ///                 .password(sourceSqldbUser.password())
@@ -2243,27 +3417,30 @@ import 'migration_job_vpc_peering_connectivity.dart';
 /// MigrationJob can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}`
-///
 /// * `{{project}}/{{location}}/{{migration_job_id}}`
-///
 /// * `{{location}}/{{migration_job_id}}`
+///
 ///
 /// When using the `pulumi import` command, MigrationJob can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default projects/{{project}}/locations/{{location}}/migrationJobs/{{migration_job_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{project}}/{{location}}/{{migration_job_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:databasemigrationservice/migrationJob:MigrationJob default {{location}}/{{migration_job_id}}
 /// ```
 class MigrationJob extends pulumi.CustomResource {
   /// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// The desired state of the migration job. If set to `RUNNING`, the migration job will be started.
+  /// Possible values are: `NOT_STARTED`, `RUNNING`.
+  late final pulumi.Output<String> desiredState;
   /// The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
   late final pulumi.Output<String> destination;
   /// The migration job display name.
@@ -2273,7 +3450,7 @@ class MigrationJob extends pulumi.CustomResource {
   late final pulumi.Output<MigrationJobDumpFlags?> dumpFlags;
   /// The path to the dump file in Google Cloud Storage,
   /// in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
-  /// This field and the "dump_flags" field are mutually exclusive.
+  /// This field and the "dumpFlags" field are mutually exclusive.
   late final pulumi.Output<String?> dumpPath;
   /// The type of the data dump. Supported for MySQL to CloudSQL for MySQL
   /// migrations only.
@@ -2287,7 +3464,7 @@ class MigrationJob extends pulumi.CustomResource {
   /// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location where the migration job should reside.
   late final pulumi.Output<String?> location;
@@ -2295,11 +3472,18 @@ class MigrationJob extends pulumi.CustomResource {
   late final pulumi.Output<String> migrationJobId;
   /// The name of this migration job resource in the form of projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
   late final pulumi.Output<String> name;
+  /// The objects that need to be migrated. If unset, the default is to migrate
+  /// all objects available on the source.
+  /// Structure is documented below.
+  late final pulumi.Output<MigrationJobObjectsConfig> objectsConfig;
   /// Data dump parallelism settings used by the migration.
   /// Structure is documented below.
   late final pulumi.Output<MigrationJobPerformanceConfig?> performanceConfig;
   /// The current migration job phase.
   late final pulumi.Output<String> phase;
+  /// PostgreSQL to PostgreSQL configuration.
+  /// Structure is documented below.
+  late final pulumi.Output<MigrationJobPostgresHomogeneousConfig?> postgresHomogeneousConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -2318,6 +3502,8 @@ class MigrationJob extends pulumi.CustomResource {
   /// You can retrieve the public IP of the Cloud SQL instance from the
   /// Cloud SQL console or using Cloud SQL APIs.
   late final pulumi.Output<Map<String, dynamic>?> staticIpConnectivity;
+  /// If set to true, will stop the pulumi up if there are validation warnings.
+  late final pulumi.Output<bool?> stopOnWarnings;
   /// The type of the migration job.
   /// Possible values are: `ONE_TIME`, `CONTINUOUS`.
   late final pulumi.Output<String> type;
@@ -2340,6 +3526,8 @@ class MigrationJob extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    desiredState = registerOutput<String>('desiredState');
     destination = registerOutput<String>('destination');
     displayName = registerOutput<String?>('displayName');
     dumpFlags = registerOutput<MigrationJobDumpFlags?>('dumpFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobDumpFlags.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2351,14 +3539,17 @@ class MigrationJob extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     migrationJobId = registerOutput<String>('migrationJobId');
     this.name = registerOutput<String>('name');
+    objectsConfig = registerOutput<MigrationJobObjectsConfig>('objectsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobObjectsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     performanceConfig = registerOutput<MigrationJobPerformanceConfig?>('performanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobPerformanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     phase = registerOutput<String>('phase');
+    postgresHomogeneousConfig = registerOutput<MigrationJobPostgresHomogeneousConfig?>('postgresHomogeneousConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobPostgresHomogeneousConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reverseSshConnectivity = registerOutput<MigrationJobReverseSshConnectivity?>('reverseSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobReverseSshConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     source = registerOutput<String>('source');
     state = registerOutput<String>('state');
     staticIpConnectivity = registerOutput<Map<String, dynamic>?>('staticIpConnectivity');
+    stopOnWarnings = registerOutput<bool?>('stopOnWarnings');
     type = registerOutput<String>('type');
     vpcPeeringConnectivity = registerOutput<MigrationJobVpcPeeringConnectivity?>('vpcPeeringConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobVpcPeeringConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -2387,6 +3578,8 @@ class MigrationJob extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    desiredState = registerOutput<String>('desiredState');
     destination = registerOutput<String>('destination');
     displayName = registerOutput<String?>('displayName');
     dumpFlags = registerOutput<MigrationJobDumpFlags?>('dumpFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobDumpFlags.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2398,14 +3591,17 @@ class MigrationJob extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     migrationJobId = registerOutput<String>('migrationJobId');
     this.name = registerOutput<String>('name');
+    objectsConfig = registerOutput<MigrationJobObjectsConfig>('objectsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobObjectsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     performanceConfig = registerOutput<MigrationJobPerformanceConfig?>('performanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobPerformanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     phase = registerOutput<String>('phase');
+    postgresHomogeneousConfig = registerOutput<MigrationJobPostgresHomogeneousConfig?>('postgresHomogeneousConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobPostgresHomogeneousConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     reverseSshConnectivity = registerOutput<MigrationJobReverseSshConnectivity?>('reverseSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobReverseSshConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     source = registerOutput<String>('source');
     this.state = registerOutput<String>('state');
     staticIpConnectivity = registerOutput<Map<String, dynamic>?>('staticIpConnectivity');
+    stopOnWarnings = registerOutput<bool?>('stopOnWarnings');
     type = registerOutput<String>('type');
     vpcPeeringConnectivity = registerOutput<MigrationJobVpcPeeringConnectivity?>('vpcPeeringConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobVpcPeeringConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

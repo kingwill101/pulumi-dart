@@ -13,6 +13,13 @@ class InsightsReportConfigArgs {
   /// Options for configuring the format of the inventory report CSV file.
   /// Structure is documented below.
   final pulumi.Input<InsightsReportConfigCsvOptions>? csvOptions;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
   final pulumi.Input<String>? displayName;
   /// If set, all the inventory report details associated with this report configuration are deleted.
@@ -34,6 +41,7 @@ class InsightsReportConfigArgs {
 
   /// Creates a new [InsightsReportConfigArgs].
   /// [csvOptions] Options for configuring the format of the inventory report CSV file.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
   /// [forceDestroy] If set, all the inventory report details associated with this report configuration are deleted.
   /// [frequencyOptions] Options for configuring how inventory reports are generated.
@@ -43,6 +51,7 @@ class InsightsReportConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   const InsightsReportConfigArgs({
     this.csvOptions,
+    this.deletionPolicy,
     this.displayName,
     this.forceDestroy,
     this.frequencyOptions,
@@ -55,6 +64,7 @@ class InsightsReportConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'csvOptions': ?pulumi.Input.mapOptionalInputValue<InsightsReportConfigCsvOptions, Map<String, dynamic>>(csvOptions, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'forceDestroy': ?forceDestroy,
       'frequencyOptions': ?pulumi.Input.mapOptionalInputValue<InsightsReportConfigFrequencyOptions, Map<String, dynamic>>(frequencyOptions, (value) => value.toMap()),
@@ -68,6 +78,7 @@ class InsightsReportConfigArgs {
   factory InsightsReportConfigArgs.fromMap(Map<String, dynamic> map) {
     return InsightsReportConfigArgs(
       csvOptions: (() { final guardedValue = map['csvOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InsightsReportConfigCsvOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       frequencyOptions: (() { final guardedValue = map['frequencyOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InsightsReportConfigFrequencyOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -78,4 +89,3 @@ class InsightsReportConfigArgs {
     );
   }
 }
-

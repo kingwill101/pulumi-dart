@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_subscription_cloud_storage_config_avro_config.dart';
+import 'get_subscription_cloud_storage_config_text_config.dart';
 
 class GetSubscriptionCloudStorageConfig {
   /// If set, message data will be written to Cloud Storage in Avro format.
@@ -29,6 +30,8 @@ class GetSubscriptionCloudStorageConfig {
   final pulumi.Input<String> serviceAccountEmail;
   /// An output-only field that indicates whether or not the subscription can receive messages.
   final pulumi.Input<String> state;
+  /// If set, message data will be written to Cloud Storage in text format.
+  final pulumi.Input<List<GetSubscriptionCloudStorageConfigTextConfig>> textConfigs;
 
   /// Creates a new [GetSubscriptionCloudStorageConfig].
   /// [avroConfigs] If set, message data will be written to Cloud Storage in Avro format.
@@ -41,6 +44,7 @@ class GetSubscriptionCloudStorageConfig {
   /// [maxMessages] The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
   /// [serviceAccountEmail] The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
   /// [state] An output-only field that indicates whether or not the subscription can receive messages.
+  /// [textConfigs] If set, message data will be written to Cloud Storage in text format.
   const GetSubscriptionCloudStorageConfig({
     required this.avroConfigs,
     required this.bucket,
@@ -52,6 +56,7 @@ class GetSubscriptionCloudStorageConfig {
     required this.maxMessages,
     required this.serviceAccountEmail,
     required this.state,
+    required this.textConfigs,
   });
 
   Map<String, dynamic> toMap() {
@@ -66,6 +71,7 @@ class GetSubscriptionCloudStorageConfig {
       'maxMessages': maxMessages,
       'serviceAccountEmail': serviceAccountEmail,
       'state': state,
+      'textConfigs': pulumi.Input.mapInputValue<List<GetSubscriptionCloudStorageConfigTextConfig>, List<Map<String, dynamic>>>(textConfigs, (value) => pulumi.Input.encodeList<GetSubscriptionCloudStorageConfigTextConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -81,7 +87,7 @@ class GetSubscriptionCloudStorageConfig {
       maxMessages: pulumi.Input.fromValue(map['maxMessages'] as int),
       serviceAccountEmail: pulumi.Input.fromValue(map['serviceAccountEmail'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
+      textConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSubscriptionCloudStorageConfigTextConfig>(map['textConfigs']!, (value) => GetSubscriptionCloudStorageConfigTextConfig.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
-

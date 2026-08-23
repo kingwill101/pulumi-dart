@@ -15,6 +15,9 @@ import 'certificate_state.dart';
 ///
 ///
 ///
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `self_managed.pem_private_key_wo`.
+/// Read more about Write-only Arguments.
+///
 /// ## Example Usage
 ///
 /// ### Certificate Manager Google Managed Certificate Dns
@@ -171,8 +174,8 @@ import 'certificate_state.dart';
 /// 					instance2.Domain,
 /// 				},
 /// 				DnsAuthorizations: pulumi.StringArray{
-/// 					instance.ID(),
-/// 					instance2.ID(),
+/// 					instance.ID().ToIDOutput().ToStringOutput(),
+/// 					instance2.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -181,6 +184,38 @@ import 'certificate_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificate" "default" {
+///   name        = "dns-cert"
+///   description = "The default cert"
+///   scope       = "EDGE_CACHE"
+///   labels = {
+///     "env" = "test"
+///   }
+///   managed = {
+///     domains            = [gcp_certificatemanager_dnsauthorization.instance.domain, gcp_certificatemanager_dnsauthorization.instance2.domain]
+///     dns_authorizations = [gcp_certificatemanager_dnsauthorization.instance.id, gcp_certificatemanager_dnsauthorization.instance2.id]
+///   }
+/// }
+/// resource "gcp_certificatemanager_dnsauthorization" "instance" {
+///   name        = "dns-auth"
+///   description = "The default dnss"
+///   domain      = "subdomain.hashicorptest.com"
+/// }
+/// resource "gcp_certificatemanager_dnsauthorization" "instance2" {
+///   name        = "dns-auth2"
+///   description = "The default dnss"
+///   domain      = "subdomain2.hashicorptest.com"
 /// }
 /// ```
 /// ```java
@@ -194,8 +229,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.gcp.certificatemanager.Certificate;
 /// import com.pulumi.gcp.certificatemanager.CertificateArgs;
 /// import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -579,7 +614,7 @@ import 'certificate_state.dart';
 /// 			Description: pulumi.String("sample description for the certificate issuanceConfigs"),
 /// 			CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
 /// 				CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
-/// 					CaPool: pool.ID(),
+/// 					CaPool: pool.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Lifetime:                 pulumi.String("1814400s"),
@@ -599,7 +634,7 @@ import 'certificate_state.dart';
 /// 				Domains: pulumi.StringArray{
 /// 					pulumi.String("terraform.subdomain1.com"),
 /// 				},
-/// 				IssuanceConfig: issuanceconfig.ID(),
+/// 				IssuanceConfig: issuanceconfig.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -607,6 +642,80 @@ import 'certificate_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificate" "default" {
+///   name        = "issuance-config-cert"
+///   description = "The default cert"
+///   scope       = "EDGE_CACHE"
+///   managed = {
+///     domains         = ["terraform.subdomain1.com"]
+///     issuance_config = gcp_certificatemanager_certificateissuanceconfig.issuanceconfig.id
+///   }
+/// }
+/// # creating certificate_issuance_config to use it in the managed certificate
+/// resource "gcp_certificatemanager_certificateissuanceconfig" "issuanceconfig" {
+///   depends_on  = [gcp_certificateauthority_authority.ca_authority]
+///   name        = "issuance-config"
+///   description = "sample description for the certificate issuanceConfigs"
+///   certificate_authority_config = {
+///     certificate_authority_service_config = {
+///       ca_pool = gcp_certificateauthority_capool.pool.id
+///     }
+///   }
+///   lifetime                   = "1814400s"
+///   rotation_window_percentage = 34
+///   key_algorithm              = "ECDSA_P256"
+/// }
+/// resource "gcp_certificateauthority_capool" "pool" {
+///   name     = "ca-pool"
+///   location = "us-central1"
+///   tier     = "ENTERPRISE"
+/// }
+/// resource "gcp_certificateauthority_authority" "ca_authority" {
+///   location                 = "us-central1"
+///   pool                     = gcp_certificateauthority_capool.pool.name
+///   certificate_authority_id = "ca-authority"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "HashiCorp"
+///         common_name  = "my-certificate-authority"
+///       }
+///       subject_alt_name = {
+///         dns_names = ["hashicorp.com"]
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+///   ignore_active_certificates_on_deletion = true
 /// }
 /// ```
 /// ```java
@@ -637,8 +746,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.gcp.certificatemanager.CertificateArgs;
 /// import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -786,65 +895,41 @@ import 'certificate_state.dart';
 ///       ignoreActiveCertificatesOnDeletion: true
 /// ```
 ///
-/// ### Certificate Manager Certificate Basic
+/// ### Certificate Manager Self Managed Certificate
 ///
 ///
 ///
 /// ```typescript
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
+/// import * as std from "@pulumi/std";
 ///
-/// const instance = new gcp.certificatemanager.DnsAuthorization("instance", {
-///     name: "dns-auth",
-///     description: "The default dnss",
-///     domain: "subdomain.hashicorptest.com",
-/// });
-/// const instance2 = new gcp.certificatemanager.DnsAuthorization("instance2", {
-///     name: "dns-auth2",
-///     description: "The default dnss",
-///     domain: "subdomain2.hashicorptest.com",
-/// });
 /// const _default = new gcp.certificatemanager.Certificate("default", {
 ///     name: "self-managed-cert",
 ///     description: "Global cert",
-///     scope: "EDGE_CACHE",
-///     managed: {
-///         domains: [
-///             instance.domain,
-///             instance2.domain,
-///         ],
-///         dnsAuthorizations: [
-///             instance.id,
-///             instance2.id,
-///         ],
+///     scope: "ALL_REGIONS",
+///     selfManaged: {
+///         pemCertificate: std.file({
+///             input: "test-fixtures/cert.pem",
+///         }).then(invoke => invoke.result),
+///         pemPrivateKey: std.file({
+///             input: "test-fixtures/private-key.pem",
+///         }).then(invoke => invoke.result),
 ///     },
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_gcp as gcp
+/// import pulumi_std as std
 ///
-/// instance = gcp.certificatemanager.DnsAuthorization("instance",
-///     name="dns-auth",
-///     description="The default dnss",
-///     domain="subdomain.hashicorptest.com")
-/// instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
-///     name="dns-auth2",
-///     description="The default dnss",
-///     domain="subdomain2.hashicorptest.com")
 /// default = gcp.certificatemanager.Certificate("default",
 ///     name="self-managed-cert",
 ///     description="Global cert",
-///     scope="EDGE_CACHE",
-///     managed={
-///         "domains": [
-///             instance.domain,
-///             instance2.domain,
-///         ],
-///         "dns_authorizations": [
-///             instance.id,
-///             instance2.id,
-///         ],
+///     scope="ALL_REGIONS",
+///     self_managed={
+///         "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+///         "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
 ///     })
 /// ```
 /// ```csharp
@@ -852,40 +937,25 @@ import 'certificate_state.dart';
 /// using System.Linq;
 /// using Pulumi;
 /// using Gcp = Pulumi.Gcp;
+/// using Std = Pulumi.Std;
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var instance = new Gcp.CertificateManager.DnsAuthorization("instance", new()
-///     {
-///         Name = "dns-auth",
-///         Description = "The default dnss",
-///         Domain = "subdomain.hashicorptest.com",
-///     });
-///
-///     var instance2 = new Gcp.CertificateManager.DnsAuthorization("instance2", new()
-///     {
-///         Name = "dns-auth2",
-///         Description = "The default dnss",
-///         Domain = "subdomain2.hashicorptest.com",
-///     });
-///
 ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
 ///     {
 ///         Name = "self-managed-cert",
 ///         Description = "Global cert",
-///         Scope = "EDGE_CACHE",
-///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
+///         Scope = "ALL_REGIONS",
+///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
 ///         {
-///             Domains = new[]
+///             PemCertificate = Std.File.Invoke(new()
 ///             {
-///                 instance.Domain,
-///                 instance2.Domain,
-///             },
-///             DnsAuthorizations = new[]
+///                 Input = "test-fixtures/cert.pem",
+///             }).Apply(invoke => invoke.Result),
+///             PemPrivateKey = Std.File.Invoke(new()
 ///             {
-///                 instance.Id,
-///                 instance2.Id,
-///             },
+///                 Input = "test-fixtures/private-key.pem",
+///             }).Apply(invoke => invoke.Result),
 ///         },
 ///     });
 ///
@@ -896,40 +966,31 @@ import 'certificate_state.dart';
 ///
 /// import (
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		instance, err := certificatemanager.NewDnsAuthorization(ctx, "instance", &certificatemanager.DnsAuthorizationArgs{
-/// 			Name:        pulumi.String("dns-auth"),
-/// 			Description: pulumi.String("The default dnss"),
-/// 			Domain:      pulumi.String("subdomain.hashicorptest.com"),
-/// 		})
+/// 		invokeFile, err := std.File(ctx, &std.FileArgs{
+/// 			Input: "test-fixtures/cert.pem",
+/// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		instance2, err := certificatemanager.NewDnsAuthorization(ctx, "instance2", &certificatemanager.DnsAuthorizationArgs{
-/// 			Name:        pulumi.String("dns-auth2"),
-/// 			Description: pulumi.String("The default dnss"),
-/// 			Domain:      pulumi.String("subdomain2.hashicorptest.com"),
-/// 		})
+/// 		invokeFile1, err := std.File(ctx, &std.FileArgs{
+/// 			Input: "test-fixtures/private-key.pem",
+/// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
 /// 			Name:        pulumi.String("self-managed-cert"),
 /// 			Description: pulumi.String("Global cert"),
-/// 			Scope:       pulumi.String("EDGE_CACHE"),
-/// 			Managed: &certificatemanager.CertificateManagedArgs{
-/// 				Domains: pulumi.StringArray{
-/// 					instance.Domain,
-/// 					instance2.Domain,
-/// 				},
-/// 				DnsAuthorizations: pulumi.StringArray{
-/// 					instance.ID(),
-/// 					instance2.ID(),
-/// 				},
+/// 			Scope:       pulumi.String("ALL_REGIONS"),
+/// 			SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
+/// 				PemCertificate: pulumi.String(invokeFile.Result),
+/// 				PemPrivateKey:  pulumi.String(invokeFile1.Result),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -939,19 +1000,41 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificate" "default" {
+///   name        = "self-managed-cert"
+///   description = "Global cert"
+///   scope       = "ALL_REGIONS"
+///   self_managed = {
+///     pem_certificate = file("test-fixtures/cert.pem")
+///     pem_private_key = file("test-fixtures/private-key.pem")
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.certificatemanager.DnsAuthorization;
-/// import com.pulumi.gcp.certificatemanager.DnsAuthorizationArgs;
 /// import com.pulumi.gcp.certificatemanager.Certificate;
 /// import com.pulumi.gcp.certificatemanager.CertificateArgs;
-/// import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.FileArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -963,29 +1046,17 @@ import 'certificate_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         var instance = new DnsAuthorization("instance", DnsAuthorizationArgs.builder()
-///             .name("dns-auth")
-///             .description("The default dnss")
-///             .domain("subdomain.hashicorptest.com")
-///             .build());
-///
-///         var instance2 = new DnsAuthorization("instance2", DnsAuthorizationArgs.builder()
-///             .name("dns-auth2")
-///             .description("The default dnss")
-///             .domain("subdomain2.hashicorptest.com")
-///             .build());
-///
 ///         var default_ = new Certificate("default", CertificateArgs.builder()
 ///             .name("self-managed-cert")
 ///             .description("Global cert")
-///             .scope("EDGE_CACHE")
-///             .managed(CertificateManagedArgs.builder()
-///                 .domains(
-///                     instance.domain(),
-///                     instance2.domain())
-///                 .dnsAuthorizations(
-///                     instance.id(),
-///                     instance2.id())
+///             .scope("ALL_REGIONS")
+///             .selfManaged(CertificateSelfManagedArgs.builder()
+///                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+///                     .input("test-fixtures/cert.pem")
+///                     .build()).result())
+///                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
+///                     .input("test-fixtures/private-key.pem")
+///                     .build()).result())
 ///                 .build())
 ///             .build());
 ///
@@ -999,26 +1070,252 @@ import 'certificate_state.dart';
 ///     properties:
 ///       name: self-managed-cert
 ///       description: Global cert
-///       scope: EDGE_CACHE
-///       managed:
-///         domains:
-///           - ${instance.domain}
-///           - ${instance2.domain}
-///         dnsAuthorizations:
-///           - ${instance.id}
-///           - ${instance2.id}
-///   instance:
-///     type: gcp:certificatemanager:DnsAuthorization
-///     properties:
-///       name: dns-auth
-///       description: The default dnss
-///       domain: subdomain.hashicorptest.com
-///   instance2:
-///     type: gcp:certificatemanager:DnsAuthorization
-///     properties:
-///       name: dns-auth2
-///       description: The default dnss
-///       domain: subdomain2.hashicorptest.com
+///       scope: ALL_REGIONS
+///       selfManaged:
+///         pemCertificate:
+///           fn::invoke:
+///             function: std:file
+///             arguments:
+///               input: test-fixtures/cert.pem
+///             return: result
+///         pemPrivateKey:
+///           fn::invoke:
+///             function: std:file
+///             arguments:
+///               input: test-fixtures/private-key.pem
+///             return: result
+/// ```
+///
+/// ### Certificate Manager Self Managed Certificate Write Only
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as std from "@pulumi/std";
+///
+/// const _default = new gcp.certificatemanager.Certificate("default", {
+///     name: "self-managed-cert",
+///     description: "Global cert",
+///     scope: "ALL_REGIONS",
+///     selfManaged: {
+///         pemCertificate: std.file({
+///             input: "test-fixtures/cert.pem",
+///         }).then(invoke => invoke.result),
+///         pemPrivateKeyWo: std.file({
+///             input: "test-fixtures/private-key.pem",
+///         }).then(invoke => invoke.result),
+///         pemPrivateKeyWoVersion: output(Promise.all([std.filesha256({
+///             input: "test-fixtures/private-key.pem",
+///         }).then(invoke => std.parseint({
+///             input: invoke.result,
+///             base: 16,
+///         })), std.pow({
+///             base: 2,
+///             exponent: 32,
+///         })]).then(([invoke, invoke1]) => invoke.result % invoke1.result)).apply(x =>String(x)),
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumi_std as std
+///
+/// default = gcp.certificatemanager.Certificate("default",
+///     name="self-managed-cert",
+///     description="Global cert",
+///     scope="ALL_REGIONS",
+///     self_managed={
+///         "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+///         "pem_private_key_wo": std.file(input="test-fixtures/private-key.pem").result,
+///         "pem_private_key_wo_version": output(output(std.parseint(input=std.filesha256(input="test-fixtures/private-key.pem").result,
+///             base=16).result).apply(lambda x: float(x)) % std.pow(base=2,
+///             exponent=32).result).apply(lambda x: str(x)),
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Std = Pulumi.Std;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.CertificateManager.Certificate("default", new()
+///     {
+///         Name = "self-managed-cert",
+///         Description = "Global cert",
+///         Scope = "ALL_REGIONS",
+///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
+///         {
+///             PemCertificate = Std.File.Invoke(new()
+///             {
+///                 Input = "test-fixtures/cert.pem",
+///             }).Apply(invoke => invoke.Result),
+///             PemPrivateKeyWo = Std.File.Invoke(new()
+///             {
+///                 Input = "test-fixtures/private-key.pem",
+///             }).Apply(invoke => invoke.Result),
+///             PemPrivateKeyWoVersion = Output.Create(Output.Tuple(Std.Filesha256.Invoke(new()
+///             {
+///                 Input = "test-fixtures/private-key.pem",
+///             }).Apply(invoke => Std.Parseint.Invoke(new()
+///             {
+///                 Input = invoke.Result,
+///                 Base = 16,
+///             })), Std.Pow.Invoke(new()
+///             {
+///                 Base = 2.0,
+///                 Exponent = 32.0,
+///             })).Apply(values =>
+///             {
+///                 var invoke = values.Item1;
+///                 var invoke1 = values.Item2;
+///                 return (double)invoke.Result % invoke1.Result;
+///             })).Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		invokeFile, err := std.File(ctx, &std.FileArgs{
+/// 			Input: "test-fixtures/cert.pem",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeFile1, err := std.File(ctx, &std.FileArgs{
+/// 			Input: "test-fixtures/private-key.pem",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeParseint2, err := std.Parseint(ctx, &std.ParseintArgs{
+/// 			Input: std.Filesha256(ctx, std.Filesha256Args{
+/// 				Input: "test-fixtures/private-key.pem",
+/// 			}, nil).Result,
+/// 			Base: pulumi.IntRef(16),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokePow3, err := std.Pow(ctx, &std.PowArgs{
+/// 			Base:     2,
+/// 			Exponent: 32,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+/// 			Name:        pulumi.String("self-managed-cert"),
+/// 			Description: pulumi.String("Global cert"),
+/// 			Scope:       pulumi.String("ALL_REGIONS"),
+/// 			SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
+/// 				PemCertificate:         pulumi.String(invokeFile.Result),
+/// 				PemPrivateKeyWo:        pulumi.String(invokeFile1.Result),
+/// 				PemPrivateKeyWoVersion: pulumi.String(pulumi.Float64(invokeParseint2.Result) % pulumi.Float64(invokePow3.Result)),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificate" "default" {
+///   name        = "self-managed-cert"
+///   description = "Global cert"
+///   scope       = "ALL_REGIONS"
+///   self_managed = {
+///     pem_certificate            = file("test-fixtures/cert.pem")
+///     pem_private_key_wo         = file("test-fixtures/private-key.pem")
+///     pem_private_key_wo_version = parseint(filesha256("test-fixtures/private-key.pem"), 16) % pow(2, 32)
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.certificatemanager.Certificate;
+/// import com.pulumi.gcp.certificatemanager.CertificateArgs;
+/// import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.FileArgs;
+/// import com.pulumi.std.inputs.Filesha256Args;
+/// import com.pulumi.std.inputs.ParseintArgs;
+/// import com.pulumi.std.inputs.PowArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Certificate("default", CertificateArgs.builder()
+///             .name("self-managed-cert")
+///             .description("Global cert")
+///             .scope("ALL_REGIONS")
+///             .selfManaged(CertificateSelfManagedArgs.builder()
+///                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+///                     .input("test-fixtures/cert.pem")
+///                     .build()).result())
+///                 .pemPrivateKeyWo(StdFunctions.file(FileArgs.builder()
+///                     .input("test-fixtures/private-key.pem")
+///                     .build()).result())
+///                 .pemPrivateKeyWoVersion(Output.tuple(StdFunctions.parseint(ParseintArgs.builder()
+///                     .input(StdFunctions.filesha256(Filesha256Args.builder()
+///                         .input("test-fixtures/private-key.pem")
+///                         .build()).result())
+///                     .base(16)
+///                     .build()).result(), StdFunctions.pow(PowArgs.builder()
+///                     .base(2.0)
+///                     .exponent(32.0)
+///                     .build()).result()).applyValue(values -> {
+///                     var __convert = values.t1;
+///                     var __convert1 = values.t2;
+///                     return __convert % __convert1;
+///                 }))
+///                 .build())
+///             .build());
+///
+///     }
+/// }
 /// ```
 ///
 /// ### Certificate Manager Self Managed Certificate Regional
@@ -1126,6 +1423,28 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificate" "default" {
+///   name        = "self-managed-cert"
+///   description = "Regional cert"
+///   location    = "us-central1"
+///   self_managed = {
+///     pem_certificate = file("test-fixtures/cert.pem")
+///     pem_private_key = file("test-fixtures/private-key.pem")
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1137,8 +1456,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1501,7 +1820,7 @@ import 'certificate_state.dart';
 /// 			Description: pulumi.String("sample description for the certificate issuanceConfigs"),
 /// 			CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
 /// 				CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
-/// 					CaPool: pool.ID(),
+/// 					CaPool: pool.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Lifetime:                 pulumi.String("1814400s"),
@@ -1521,7 +1840,7 @@ import 'certificate_state.dart';
 /// 				Domains: pulumi.StringArray{
 /// 					pulumi.String("terraform.subdomain1.com"),
 /// 				},
-/// 				IssuanceConfig: issuanceconfig.ID(),
+/// 				IssuanceConfig: issuanceconfig.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1529,6 +1848,80 @@ import 'certificate_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificate" "default" {
+///   name        = "issuance-config-cert"
+///   description = "sample google managed all_regions certificate with issuance config for terraform"
+///   scope       = "ALL_REGIONS"
+///   managed = {
+///     domains         = ["terraform.subdomain1.com"]
+///     issuance_config = gcp_certificatemanager_certificateissuanceconfig.issuanceconfig.id
+///   }
+/// }
+/// # creating certificate_issuance_config to use it in the managed certificate
+/// resource "gcp_certificatemanager_certificateissuanceconfig" "issuanceconfig" {
+///   depends_on  = [gcp_certificateauthority_authority.ca_authority]
+///   name        = "issuance-config"
+///   description = "sample description for the certificate issuanceConfigs"
+///   certificate_authority_config = {
+///     certificate_authority_service_config = {
+///       ca_pool = gcp_certificateauthority_capool.pool.id
+///     }
+///   }
+///   lifetime                   = "1814400s"
+///   rotation_window_percentage = 34
+///   key_algorithm              = "ECDSA_P256"
+/// }
+/// resource "gcp_certificateauthority_capool" "pool" {
+///   name     = "ca-pool"
+///   location = "us-central1"
+///   tier     = "ENTERPRISE"
+/// }
+/// resource "gcp_certificateauthority_authority" "ca_authority" {
+///   location                 = "us-central1"
+///   pool                     = gcp_certificateauthority_capool.pool.name
+///   certificate_authority_id = "ca-authority"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "HashiCorp"
+///         common_name  = "my-certificate-authority"
+///       }
+///       subject_alt_name = {
+///         dns_names = ["hashicorp.com"]
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+///   ignore_active_certificates_on_deletion = true
 /// }
 /// ```
 /// ```java
@@ -1559,8 +1952,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.gcp.certificatemanager.CertificateArgs;
 /// import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1849,8 +2242,8 @@ import 'certificate_state.dart';
 /// 					instance2.Domain,
 /// 				},
 /// 				DnsAuthorizations: pulumi.StringArray{
-/// 					instance.ID(),
-/// 					instance2.ID(),
+/// 					instance.ID().ToIDOutput().ToStringOutput(),
+/// 					instance2.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -1859,6 +2252,35 @@ import 'certificate_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificate" "default" {
+///   name        = "dns-cert"
+///   description = "The default cert"
+///   scope       = "ALL_REGIONS"
+///   managed = {
+///     domains            = [gcp_certificatemanager_dnsauthorization.instance.domain, gcp_certificatemanager_dnsauthorization.instance2.domain]
+///     dns_authorizations = [gcp_certificatemanager_dnsauthorization.instance.id, gcp_certificatemanager_dnsauthorization.instance2.id]
+///   }
+/// }
+/// resource "gcp_certificatemanager_dnsauthorization" "instance" {
+///   name        = "dns-auth"
+///   description = "The default dnss"
+///   domain      = "subdomain.hashicorptest.com"
+/// }
+/// resource "gcp_certificatemanager_dnsauthorization" "instance2" {
+///   name        = "dns-auth2"
+///   description = "The default dnss"
+///   domain      = "subdomain2.hashicorptest.com"
 /// }
 /// ```
 /// ```java
@@ -1872,8 +2294,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.gcp.certificatemanager.Certificate;
 /// import com.pulumi.gcp.certificatemanager.CertificateArgs;
 /// import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2049,7 +2471,7 @@ import 'certificate_state.dart';
 /// 					instance.Domain,
 /// 				},
 /// 				DnsAuthorizations: pulumi.StringArray{
-/// 					instance.ID(),
+/// 					instance.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -2058,6 +2480,31 @@ import 'certificate_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificate" "default" {
+///   name        = "dns-cert"
+///   description = "regional managed certs"
+///   location    = "us-central1"
+///   managed = {
+///     domains            = [gcp_certificatemanager_dnsauthorization.instance.domain]
+///     dns_authorizations = [gcp_certificatemanager_dnsauthorization.instance.id]
+///   }
+/// }
+/// resource "gcp_certificatemanager_dnsauthorization" "instance" {
+///   name        = "dns-auth"
+///   location    = "us-central1"
+///   description = "The default dnss"
+///   domain      = "subdomain.hashicorptest.com"
 /// }
 /// ```
 /// ```java
@@ -2071,8 +2518,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.gcp.certificatemanager.Certificate;
 /// import com.pulumi.gcp.certificatemanager.CertificateArgs;
 /// import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2231,6 +2678,28 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificate" "default" {
+///   name        = "client-auth-cert"
+///   description = "Global cert"
+///   scope       = "CLIENT_AUTH"
+///   self_managed = {
+///     pem_certificate = file("test-fixtures/cert.pem")
+///     pem_private_key = file("test-fixtures/private-key.pem")
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2242,8 +2711,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2301,32 +2770,32 @@ import 'certificate_state.dart';
 /// Certificate can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/certificates/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificatemanager/certificate:Certificate default {{location}}/{{name}}
 /// ```
 class Certificate extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human-readable description of the resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Set of label tags associated with the Certificate resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The Certificate Manager location. If not specified, "global" is used.
   late final pulumi.Output<String?> location;
@@ -2360,6 +2829,9 @@ class Certificate extends pulumi.CustomResource {
   /// Certificate data for a SelfManaged Certificate.
   /// SelfManaged Certificates are uploaded by the user. Updating such
   /// certificates before they expire remains the user's responsibility.
+  /// The certificate data can be updated in place; changes to `pemCertificate`
+  /// and `pemPrivateKey` are applied via the API's PATCH method instead of
+  /// forcing recreation of the certificate.
   /// Structure is documented below.
   late final pulumi.Output<CertificateSelfManaged?> selfManaged;
 
@@ -2377,6 +2849,7 @@ class Certificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -2413,6 +2886,7 @@ class Certificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

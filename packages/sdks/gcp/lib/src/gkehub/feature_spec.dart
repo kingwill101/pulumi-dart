@@ -5,6 +5,7 @@ import 'feature_spec_clusterupgrade.dart';
 import 'feature_spec_fleetobservability.dart';
 import 'feature_spec_multiclusteringress.dart';
 import 'feature_spec_rbacrolebindingactuation.dart';
+import 'feature_spec_workloadidentity.dart';
 
 class FeatureSpec {
   /// Clusterupgrade feature spec.
@@ -19,17 +20,22 @@ class FeatureSpec {
   /// RBACRolebinding Actuation feature spec.
   /// Structure is documented below.
   final pulumi.Input<FeatureSpecRbacrolebindingactuation>? rbacrolebindingactuation;
+  /// Workload Identity feature spec.
+  /// Structure is documented below.
+  final pulumi.Input<FeatureSpecWorkloadidentity>? workloadidentity;
 
   /// Creates a new [FeatureSpec].
   /// [clusterupgrade] Clusterupgrade feature spec.
   /// [fleetobservability] Fleet Observability feature spec.
   /// [multiclusteringress] Multicluster Ingress-specific spec.
   /// [rbacrolebindingactuation] RBACRolebinding Actuation feature spec.
+  /// [workloadidentity] Workload Identity feature spec.
   const FeatureSpec({
     this.clusterupgrade,
     this.fleetobservability,
     this.multiclusteringress,
     this.rbacrolebindingactuation,
+    this.workloadidentity,
   });
 
   Map<String, dynamic> toMap() {
@@ -38,6 +44,7 @@ class FeatureSpec {
       'fleetobservability': ?pulumi.Input.mapOptionalInputValue<FeatureSpecFleetobservability, Map<String, dynamic>>(fleetobservability, (value) => value.toMap()),
       'multiclusteringress': ?pulumi.Input.mapOptionalInputValue<FeatureSpecMulticlusteringress, Map<String, dynamic>>(multiclusteringress, (value) => value.toMap()),
       'rbacrolebindingactuation': ?pulumi.Input.mapOptionalInputValue<FeatureSpecRbacrolebindingactuation, Map<String, dynamic>>(rbacrolebindingactuation, (value) => value.toMap()),
+      'workloadidentity': ?pulumi.Input.mapOptionalInputValue<FeatureSpecWorkloadidentity, Map<String, dynamic>>(workloadidentity, (value) => value.toMap()),
     };
   }
 
@@ -47,7 +54,7 @@ class FeatureSpec {
       fleetobservability: (() { final guardedValue = map['fleetobservability']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeatureSpecFleetobservability.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       multiclusteringress: (() { final guardedValue = map['multiclusteringress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeatureSpecMulticlusteringress.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rbacrolebindingactuation: (() { final guardedValue = map['rbacrolebindingactuation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeatureSpecRbacrolebindingactuation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      workloadidentity: (() { final guardedValue = map['workloadidentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeatureSpecWorkloadidentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

@@ -10,7 +10,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   final pulumi.Input<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget> disruptionBudget;
   /// Required. This determines the minimum duration of time to wait after the
   /// configuration changes are applied through the current rollout. A
-  /// VM continues to count towards the `disruption_budget` at least
+  /// VM continues to count towards the `disruptionBudget` at least
   /// until this duration of time has passed after configuration changes are
   /// applied.
   final pulumi.Input<String> minWaitDuration;
@@ -37,4 +37,3 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     );
   }
 }
-

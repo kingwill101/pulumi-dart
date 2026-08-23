@@ -7,6 +7,13 @@ import 'ai_dataset_encryption_spec.dart';
 class AiDatasetState {
   /// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
   final pulumi.Input<String>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -17,7 +24,7 @@ class AiDatasetState {
   /// A set of key/value label pairs to assign to this Workflow.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
   final pulumi.Input<String>? metadataSchemaUri;
@@ -36,6 +43,7 @@ class AiDatasetState {
 
   /// Creates a new [AiDatasetState].
   /// [createTime] The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [encryptionSpec] Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
@@ -48,6 +56,7 @@ class AiDatasetState {
   /// [updateTime] The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   const AiDatasetState({
     this.createTime,
+    this.deletionPolicy,
     this.displayName,
     this.effectiveLabels,
     this.encryptionSpec,
@@ -63,6 +72,7 @@ class AiDatasetState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
       'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<AiDatasetEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
@@ -79,6 +89,7 @@ class AiDatasetState {
   factory AiDatasetState.fromMap(Map<String, dynamic> map) {
     return AiDatasetState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       encryptionSpec: (() { final guardedValue = map['encryptionSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiDatasetEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -92,4 +103,3 @@ class AiDatasetState {
     );
   }
 }
-

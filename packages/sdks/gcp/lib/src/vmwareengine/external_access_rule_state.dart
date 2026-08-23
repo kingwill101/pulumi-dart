@@ -13,6 +13,13 @@ class ExternalAccessRuleState {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-provided description for the external access rule.
   final pulumi.Input<String>? description;
   /// If destination ranges are specified, the external access rule applies only to
@@ -49,6 +56,7 @@ class ExternalAccessRuleState {
   /// Creates a new [ExternalAccessRuleState].
   /// [action] The action that the external access rule performs.
   /// [createTime] Creation time of this resource.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User-provided description for the external access rule.
   /// [destinationIpRanges] If destination ranges are specified, the external access rule applies only to
   /// [destinationPorts] A list of destination ports to which the external access rule applies.
@@ -64,6 +72,7 @@ class ExternalAccessRuleState {
   const ExternalAccessRuleState({
     this.action,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.destinationIpRanges,
     this.destinationPorts,
@@ -82,6 +91,7 @@ class ExternalAccessRuleState {
     return <String, dynamic>{
       'action': ?action,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'destinationIpRanges': ?pulumi.Input.mapOptionalInputValue<List<ExternalAccessRuleDestinationIpRange>, List<Map<String, dynamic>>>(destinationIpRanges, (value) => pulumi.Input.encodeList<ExternalAccessRuleDestinationIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'destinationPorts': ?destinationPorts,
@@ -101,6 +111,7 @@ class ExternalAccessRuleState {
     return ExternalAccessRuleState(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationIpRanges: (() { final guardedValue = map['destinationIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExternalAccessRuleDestinationIpRange>(guardedValue, (value) => ExternalAccessRuleDestinationIpRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
       destinationPorts: (() { final guardedValue = map['destinationPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -116,4 +127,3 @@ class ExternalAccessRuleState {
     );
   }
 }
-

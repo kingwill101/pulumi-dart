@@ -158,13 +158,13 @@ import 'ai_index_endpoint_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(24),
-/// 			Network:      vertexNetwork.ID(),
+/// 			Network:      vertexNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vertexVpcConnection, err := servicenetworking.NewConnection(ctx, "vertex_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: vertexNetwork.ID(),
+/// 			Network: vertexNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				vertexRange.Name,
@@ -197,6 +197,44 @@ import 'ai_index_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aiindexendpoint" "index_endpoint" {
+///   depends_on   = [gcp_servicenetworking_connection.vertex_vpc_connection]
+///   display_name = "sample-endpoint"
+///   description  = "A sample vertex endpoint"
+///   region       = "us-central1"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   network ="projects/${data.gcp_organizations_getproject.project.number}/global/networks/${gcp_compute_network.vertex_network.name}"
+/// }
+/// resource "gcp_servicenetworking_connection" "vertex_vpc_connection" {
+///   network                 = gcp_compute_network.vertex_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.vertex_range.name]
+/// }
+/// resource "gcp_compute_globaladdress" "vertex_range" {
+///   name          = "address-name"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 24
+///   network       = gcp_compute_network.vertex_network.id
+/// }
+/// resource "gcp_compute_network" "vertex_network" {
+///   name = "network-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -214,8 +252,8 @@ import 'ai_index_endpoint_state.dart';
 /// import com.pulumi.gcp.vertex.AiIndexEndpoint;
 /// import com.pulumi.gcp.vertex.AiIndexEndpointArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -411,6 +449,31 @@ import 'ai_index_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aiindexendpoint" "index_endpoint" {
+///   display_name = "sample-endpoint"
+///   description  = "A sample vertex endpoint"
+///   region       = "us-central1"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   private_service_connect_config = {
+///     enable_private_service_connect = true
+///     project_allowlists             = [data.gcp_organizations_getproject.project.name]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -422,8 +485,8 @@ import 'ai_index_endpoint_state.dart';
 /// import com.pulumi.gcp.vertex.AiIndexEndpoint;
 /// import com.pulumi.gcp.vertex.AiIndexEndpointArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiIndexEndpointPrivateServiceConnectConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -553,6 +616,25 @@ import 'ai_index_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aiindexendpoint" "index_endpoint" {
+///   display_name = "sample-endpoint"
+///   description  = "A sample vertex endpoint with an public endpoint"
+///   region       = "us-central1"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   public_endpoint_enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -561,8 +643,8 @@ import 'ai_index_endpoint_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.AiIndexEndpoint;
 /// import com.pulumi.gcp.vertex.AiIndexEndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -605,33 +687,29 @@ import 'ai_index_endpoint_state.dart';
 /// IndexEndpoint can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, IndexEndpoint can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default {{name}}
 /// ```
 class AiIndexEndpoint extends pulumi.CustomResource {
   /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the Index.
   late final pulumi.Output<String?> description;
   /// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -645,7 +723,7 @@ class AiIndexEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> etag;
   /// The labels with user-defined metadata to organize your Indexes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The resource name of the Index.
   late final pulumi.Output<String> name;
@@ -687,6 +765,7 @@ class AiIndexEndpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -728,6 +807,7 @@ class AiIndexEndpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

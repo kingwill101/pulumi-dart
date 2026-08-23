@@ -5,8 +5,8 @@ import 'job_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud Run (v2 API) Job. Each of these resources serves a different use case:
 ///
 /// * `gcp.cloudrunv2.JobIamPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
-/// * `gcp.cloudrunv2.JobIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
-/// * `gcp.cloudrunv2.JobIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
+/// * `gcp.cloudrunv2.JobIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.cloudrunv2.JobIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +15,6 @@ import 'job_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.cloudrunv2.JobIamPolicy` **cannot** be used in conjunction with `gcp.cloudrunv2.JobIamBinding` and `gcp.cloudrunv2.JobIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.cloudrunv2.JobIamBinding` resources **can be** used in conjunction with `gcp.cloudrunv2.JobIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.cloudrunv2.JobIamPolicy
@@ -122,6 +121,29 @@ import 'job_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_jobiampolicy" "policy" {
+///   project     = default.project
+///   location    = default.location
+///   name        = default.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,10 +152,11 @@ import 'job_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.cloudrunv2.JobIamPolicy;
 /// import com.pulumi.gcp.cloudrunv2.JobIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,9 +176,9 @@ import 'job_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new JobIamPolicy("policy", JobIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .name(default_.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -257,6 +280,23 @@ import 'job_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_jobiambinding" "binding" {
+///   project  = default.project
+///   location = default.location
+///   name     = default.name
+///   role     = "roles/viewer"
+///   members  = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -265,8 +305,8 @@ import 'job_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrunv2.JobIamBinding;
 /// import com.pulumi.gcp.cloudrunv2.JobIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -279,9 +319,9 @@ import 'job_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new JobIamBinding("binding", JobIamBindingArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .name(default_.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -372,6 +412,23 @@ import 'job_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_jobiammember" "member" {
+///   project  = default.project
+///   location = default.location
+///   name     = default.name
+///   role     = "roles/viewer"
+///   member   = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -380,8 +437,8 @@ import 'job_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrunv2.JobIamMember;
 /// import com.pulumi.gcp.cloudrunv2.JobIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -394,9 +451,9 @@ import 'job_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new JobIamMember("member", JobIamMemberArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .name(default_.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -427,8 +484,8 @@ import 'job_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud Run (v2 API) Job. Each of these resources serves a different use case:
 ///
 /// * `gcp.cloudrunv2.JobIamPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
-/// * `gcp.cloudrunv2.JobIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
-/// * `gcp.cloudrunv2.JobIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
+/// * `gcp.cloudrunv2.JobIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.cloudrunv2.JobIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -437,7 +494,6 @@ import 'job_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.cloudrunv2.JobIamPolicy` **cannot** be used in conjunction with `gcp.cloudrunv2.JobIamBinding` and `gcp.cloudrunv2.JobIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.cloudrunv2.JobIamBinding` resources **can be** used in conjunction with `gcp.cloudrunv2.JobIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.cloudrunv2.JobIamPolicy
@@ -544,6 +600,29 @@ import 'job_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_jobiampolicy" "policy" {
+///   project     = default.project
+///   location    = default.location
+///   name        = default.name
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -552,10 +631,11 @@ import 'job_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.cloudrunv2.JobIamPolicy;
 /// import com.pulumi.gcp.cloudrunv2.JobIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -575,9 +655,9 @@ import 'job_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new JobIamPolicy("policy", JobIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .name(default_.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -679,6 +759,23 @@ import 'job_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_jobiambinding" "binding" {
+///   project  = default.project
+///   location = default.location
+///   name     = default.name
+///   role     = "roles/viewer"
+///   members  = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -687,8 +784,8 @@ import 'job_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrunv2.JobIamBinding;
 /// import com.pulumi.gcp.cloudrunv2.JobIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -701,9 +798,9 @@ import 'job_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new JobIamBinding("binding", JobIamBindingArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .name(default_.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -794,6 +891,23 @@ import 'job_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrunv2_jobiammember" "member" {
+///   project  = default.project
+///   location = default.location
+///   name     = default.name
+///   role     = "roles/viewer"
+///   member   = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -802,8 +916,8 @@ import 'job_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudrunv2.JobIamMember;
 /// import com.pulumi.gcp.cloudrunv2.JobIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -816,9 +930,9 @@ import 'job_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new JobIamMember("member", JobIamMemberArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .name(default_.name())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .name(default_.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -844,11 +958,8 @@ import 'job_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{location}}/jobs/{{name}}
-///
 /// * {{project}}/{{location}}/{{name}}
-///
 /// * {{location}}/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -856,25 +967,21 @@ import 'job_iam_policy_state.dart';
 /// Cloud Run (v2 API) job IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:cloudrunv2/jobIamPolicy:JobIamPolicy editor "projects/{{project}}/locations/{{location}}/jobs/{{job}} roles/viewer user:jane@example.com"
+/// $ terraform import google_cloud_run_v2_job_iam_member.editor "projects/{{project}}/locations/{{location}}/jobs/{{job}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:cloudrunv2/jobIamPolicy:JobIamPolicy editor "projects/{{project}}/locations/{{location}}/jobs/{{job}} roles/viewer"
+/// $ terraform import google_cloud_run_v2_job_iam_binding.editor "projects/{{project}}/locations/{{location}}/jobs/{{job}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:cloudrunv2/jobIamPolicy:JobIamPolicy editor projects/{{project}}/locations/{{location}}/jobs/{{job}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class JobIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the IAM policy.

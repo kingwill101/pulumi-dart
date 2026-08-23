@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'snapshot_params.dart';
 import 'snapshot_snapshot_encryption_key.dart';
 import 'snapshot_source_disk_encryption_key.dart';
 
@@ -15,12 +16,20 @@ class SnapshotState {
   final pulumi.Input<String>? chainName;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// Size of the snapshot, specified in GB.
   final pulumi.Input<int>? diskSizeGb;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+  /// (Optional, Beta)
   /// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
   final pulumi.Input<bool>? guestFlush;
   /// The fingerprint used for optimistic locking of this resource. Used
@@ -28,7 +37,7 @@ class SnapshotState {
   final pulumi.Input<String>? labelFingerprint;
   /// Labels to apply to this Snapshot.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// A list of public visible licenses that apply to this snapshot. This
   /// can be because the original image had licenses attached (such as a
@@ -43,6 +52,9 @@ class SnapshotState {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   final pulumi.Input<String>? name;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  final pulumi.Input<SnapshotParams>? params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -89,14 +101,16 @@ class SnapshotState {
   /// Creates a new [SnapshotState].
   /// [chainName] Creates the new snapshot in the snapshot chain labeled with the
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [diskSizeGb] Size of the snapshot, specified in GB.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  /// [guestFlush] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+  /// [guestFlush] (Optional, Beta)
   /// [labelFingerprint] The fingerprint used for optimistic locking of this resource. Used
   /// [labels] Labels to apply to this Snapshot.
   /// [licenses] A list of public visible licenses that apply to this snapshot. This
   /// [name] Name of the resource; provided by the client when the resource is
+  /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [selfLink] The URI of the created resource.
@@ -112,6 +126,7 @@ class SnapshotState {
   const SnapshotState({
     this.chainName,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.diskSizeGb,
     this.effectiveLabels,
@@ -120,6 +135,7 @@ class SnapshotState {
     this.labels,
     this.licenses,
     this.name,
+    this.params,
     this.project,
     this.pulumiLabels,
     this.selfLink,
@@ -138,6 +154,7 @@ class SnapshotState {
     return <String, dynamic>{
       'chainName': ?chainName,
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'diskSizeGb': ?diskSizeGb,
       'effectiveLabels': ?effectiveLabels,
@@ -146,6 +163,7 @@ class SnapshotState {
       'labels': ?labels,
       'licenses': ?licenses,
       'name': ?name,
+      'params': ?pulumi.Input.mapOptionalInputValue<SnapshotParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
       'selfLink': ?selfLink,
@@ -165,6 +183,7 @@ class SnapshotState {
     return SnapshotState(
       chainName: (() { final guardedValue = map['chainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -173,6 +192,7 @@ class SnapshotState {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       licenses: (() { final guardedValue = map['licenses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SnapshotParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -188,4 +208,3 @@ class SnapshotState {
     );
   }
 }
-

@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interconnect_attachment_l2_forwarding.dart';
+import 'interconnect_attachment_params.dart';
 
 /// {@template pulumi_compute_interconnect_attachment_interconnect_attachment_args_doc}
 /// The set of arguments for InterconnectAttachment.
@@ -38,6 +39,13 @@ class InterconnectAttachmentArgs {
   /// fail if all possible /29s are in use on Google's edge. If not supplied,
   /// Google will randomly select an unused /29 from all of link-local space.
   final pulumi.Input<List<String>>? candidateSubnets;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// Desired availability domain for the attachment. Only available for type
@@ -88,7 +96,7 @@ class InterconnectAttachmentArgs {
   /// method. Each label key/value pair must comply with RFC1035. Label values may be empty.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
   /// Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
@@ -100,12 +108,11 @@ class InterconnectAttachmentArgs {
   /// lowercase letter, and all following characters must be a dash, lowercase
   /// letter, or digit, except the last character, which cannot be a dash.
   final pulumi.Input<String>? name;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  final pulumi.Input<InterconnectAttachmentParams>? params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  ///
-  ///
-  ///
-  /// &lt;a name="nested_l2_forwarding"&gt;&lt;/a&gt;The `l2_forwarding` block supports:
   final pulumi.Input<String>? project;
   /// Region where the regional interconnect attachment resides.
   final pulumi.Input<String>? region;
@@ -143,6 +150,7 @@ class InterconnectAttachmentArgs {
   /// [candidateCustomerRouterIpAddress] Single IPv4 address + prefix length to be configured on the customer router interface for this
   /// [candidateCustomerRouterIpv6Address] Single IPv6 address + prefix length to be configured on the customer router interface for this
   /// [candidateSubnets] Up to 16 candidate prefixes that can be used to restrict the allocation
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [edgeAvailabilityDomain] Desired availability domain for the attachment. Only available for type
   /// [encryption] Indicates the user-supplied encryption option of this interconnect
@@ -152,6 +160,7 @@ class InterconnectAttachmentArgs {
   /// [labels] Labels for this resource. These can only be added or modified by the setLabels
   /// [mtu] Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
   /// [name] Name of the resource. Provided by the client when the resource is created. The
+  /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Region where the regional interconnect attachment resides.
   /// [router] URL of the cloud router to be used for dynamic routing. This router must be in
@@ -167,6 +176,7 @@ class InterconnectAttachmentArgs {
     this.candidateCustomerRouterIpAddress,
     this.candidateCustomerRouterIpv6Address,
     this.candidateSubnets,
+    this.deletionPolicy,
     this.description,
     this.edgeAvailabilityDomain,
     this.encryption,
@@ -176,6 +186,7 @@ class InterconnectAttachmentArgs {
     this.labels,
     this.mtu,
     this.name,
+    this.params,
     this.project,
     this.region,
     this.router,
@@ -194,6 +205,7 @@ class InterconnectAttachmentArgs {
       'candidateCustomerRouterIpAddress': ?candidateCustomerRouterIpAddress,
       'candidateCustomerRouterIpv6Address': ?candidateCustomerRouterIpv6Address,
       'candidateSubnets': ?candidateSubnets,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'edgeAvailabilityDomain': ?edgeAvailabilityDomain,
       'encryption': ?encryption,
@@ -203,6 +215,7 @@ class InterconnectAttachmentArgs {
       'labels': ?labels,
       'mtu': ?mtu,
       'name': ?name,
+      'params': ?pulumi.Input.mapOptionalInputValue<InterconnectAttachmentParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'project': ?project,
       'region': ?region,
       'router': ?router,
@@ -222,6 +235,7 @@ class InterconnectAttachmentArgs {
       candidateCustomerRouterIpAddress: (() { final guardedValue = map['candidateCustomerRouterIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       candidateCustomerRouterIpv6Address: (() { final guardedValue = map['candidateCustomerRouterIpv6Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       candidateSubnets: (() { final guardedValue = map['candidateSubnets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       edgeAvailabilityDomain: (() { final guardedValue = map['edgeAvailabilityDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -231,6 +245,7 @@ class InterconnectAttachmentArgs {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InterconnectAttachmentParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       router: (() { final guardedValue = map['router']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -241,4 +256,3 @@ class InterconnectAttachmentArgs {
     );
   }
 }
-

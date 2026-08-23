@@ -115,7 +115,7 @@ import 'job_state.dart';
 /// 			Description: pulumi.String("test job"),
 /// 			Schedule:    pulumi.String("*/2 * * * *"),
 /// 			PubsubTarget: &cloudscheduler.JobPubsubTargetArgs{
-/// 				TopicName: topic.ID(),
+/// 				TopicName: topic.ID().ToIDOutput().ToStringOutput(),
 /// 				Data:      pulumi.String(invokeBase64encode.Result),
 /// 			},
 /// 		})
@@ -124,6 +124,31 @@ import 'job_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "job-topic"
+/// }
+/// resource "gcp_cloudscheduler_job" "job" {
+///   name        = "test-job"
+///   description = "test job"
+///   schedule    = "*/2 * * * *"
+///   pubsub_target = {
+///     topic_name = gcp_pubsub_topic.topic.id
+///     data       = base64encode("test")
+///   }
 /// }
 /// ```
 /// ```java
@@ -139,8 +164,8 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.cloudscheduler.inputs.JobPubsubTargetArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -325,6 +350,37 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudscheduler_job" "job" {
+///   name             = "test-job"
+///   description      = "test http job"
+///   schedule         = "*/8 * * * *"
+///   time_zone        = "America/New_York"
+///   attempt_deadline = "320s"
+///   retry_config = {
+///     retry_count = 1
+///   }
+///   http_target = {
+///     http_method = "POST"
+///     uri         = "https://example.com/"
+///     body        = base64encode("{\"foo\":\"bar\"}")
+///     headers = {
+///       "Content-Type" = "application/json"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -337,8 +393,8 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -533,6 +589,38 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudscheduler_job" "job" {
+///   paused           = true
+///   name             = "test-job"
+///   description      = "test http job with updated fields"
+///   schedule         = "*/8 * * * *"
+///   time_zone        = "America/New_York"
+///   attempt_deadline = "320s"
+///   retry_config = {
+///     retry_count = 1
+///   }
+///   http_target = {
+///     http_method = "POST"
+///     uri         = "https://example.com/ping"
+///     body        = base64encode("{\"foo\":\"bar\"}")
+///     headers = {
+///       "Content-Type" = "application/json"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -545,8 +633,8 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -740,6 +828,38 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudscheduler_job" "job" {
+///   name             = "test-job"
+///   schedule         = "*/4 * * * *"
+///   description      = "test app engine job"
+///   time_zone        = "Europe/London"
+///   attempt_deadline = "320s"
+///   retry_config = {
+///     min_backoff_duration = "1s"
+///     max_retry_duration   = "10s"
+///     max_doublings        = 2
+///     retry_count          = 3
+///   }
+///   app_engine_http_target = {
+///     http_method = "POST"
+///     app_engine_routing = {
+///       service  = "web"
+///       version  = "prod"
+///       instance = "my-instance-001"
+///     }
+///     relative_uri = "/ping"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -751,8 +871,8 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.cloudscheduler.inputs.JobRetryConfigArgs;
 /// import com.pulumi.gcp.cloudscheduler.inputs.JobAppEngineHttpTargetArgs;
 /// import com.pulumi.gcp.cloudscheduler.inputs.JobAppEngineHttpTargetAppEngineRoutingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -923,6 +1043,33 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getdefaultserviceaccount" "default" {
+/// }
+///
+/// resource "gcp_cloudscheduler_job" "job" {
+///   name             = "test-job"
+///   description      = "test http job"
+///   schedule         = "*/8 * * * *"
+///   time_zone        = "America/New_York"
+///   attempt_deadline = "320s"
+///   http_target = {
+///     http_method = "GET"
+///     uri         = "https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs"
+///     oauth_token = {
+///       service_account_email = data.gcp_compute_getdefaultserviceaccount.default.email
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -935,8 +1082,8 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.cloudscheduler.JobArgs;
 /// import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetArgs;
 /// import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetOauthTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1100,6 +1247,33 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getdefaultserviceaccount" "default" {
+/// }
+///
+/// resource "gcp_cloudscheduler_job" "job" {
+///   name             = "test-job"
+///   description      = "test http job"
+///   schedule         = "*/8 * * * *"
+///   time_zone        = "America/New_York"
+///   attempt_deadline = "320s"
+///   http_target = {
+///     http_method = "GET"
+///     uri         = "https://example.com/ping"
+///     oidc_token = {
+///       service_account_email = data.gcp_compute_getdefaultserviceaccount.default.email
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1112,8 +1286,8 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.cloudscheduler.JobArgs;
 /// import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetArgs;
 /// import com.pulumi.gcp.cloudscheduler.inputs.JobHttpTargetOidcTokenArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1174,28 +1348,17 @@ import 'job_state.dart';
 /// Job can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/jobs/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:cloudscheduler/job:Job default projects/{{project}}/locations/{{region}}/jobs/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudscheduler/job:Job default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudscheduler/job:Job default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudscheduler/job:Job default {{name}}
 /// ```
 class Job extends pulumi.CustomResource {
@@ -1213,11 +1376,18 @@ class Job extends pulumi.CustomResource {
   /// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
   late final pulumi.Output<String?> attemptDeadline;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human-readable description for the job.
   /// This string must not contain more than 500 characters.
   late final pulumi.Output<String?> description;
   /// HTTP target.
-  /// If the job providers a http_target the cron will
+  /// If the job providers a httpTarget the cron will
   /// send a request to the targeted url
   /// Structure is documented below.
   late final pulumi.Output<JobHttpTarget?> httpTarget;
@@ -1264,6 +1434,7 @@ class Job extends pulumi.CustomResource {
         ) {
     appEngineHttpTarget = registerOutput<JobAppEngineHttpTarget?>('appEngineHttpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobAppEngineHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     attemptDeadline = registerOutput<String?>('attemptDeadline');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     httpTarget = registerOutput<JobHttpTarget?>('httpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -1302,6 +1473,7 @@ class Job extends pulumi.CustomResource {
         ) {
     appEngineHttpTarget = registerOutput<JobAppEngineHttpTarget?>('appEngineHttpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobAppEngineHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     attemptDeadline = registerOutput<String?>('attemptDeadline');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     httpTarget = registerOutput<JobHttpTarget?>('httpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

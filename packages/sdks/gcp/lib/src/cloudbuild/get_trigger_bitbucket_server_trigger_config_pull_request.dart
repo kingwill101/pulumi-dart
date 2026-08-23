@@ -8,13 +8,13 @@ class GetTriggerBitbucketServerTriggerConfigPullRequest {
   final pulumi.Input<String> branch;
   /// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
   final pulumi.Input<String> commentControl;
-  /// If true, branches that do NOT match the git_ref will trigger a build.
+  /// If true, branches that do NOT match the gitRef will trigger a build.
   final pulumi.Input<bool> invertRegex;
 
   /// Creates a new [GetTriggerBitbucketServerTriggerConfigPullRequest].
   /// [branch] Regex of branches to match.
   /// [commentControl] Configure builds to run whether a repository owner or collaborator need to comment /gcbrun. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
-  /// [invertRegex] If true, branches that do NOT match the git_ref will trigger a build.
+  /// [invertRegex] If true, branches that do NOT match the gitRef will trigger a build.
   const GetTriggerBitbucketServerTriggerConfigPullRequest({
     required this.branch,
     required this.commentControl,
@@ -37,4 +37,3 @@ class GetTriggerBitbucketServerTriggerConfigPullRequest {
     );
   }
 }
-

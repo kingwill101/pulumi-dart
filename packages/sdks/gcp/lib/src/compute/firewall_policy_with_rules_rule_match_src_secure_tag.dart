@@ -11,7 +11,7 @@ class FirewallPolicyWithRulesRuleMatchSrcSecureTag {
   /// `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
   /// or its network is deleted.
   ///
-  /// &lt;a name="nested_rule_match_layer4_config"&gt;&lt;/a&gt;The `layer4_config` block supports:
+  /// &lt;a name="nestedRuleMatchLayer4Config"&gt;&lt;/a&gt;The `layer4Config` block supports:
   final pulumi.Input<String>? state;
 
   /// Creates a new [FirewallPolicyWithRulesRuleMatchSrcSecureTag].
@@ -36,4 +36,3 @@ class FirewallPolicyWithRulesRuleMatchSrcSecureTag {
     );
   }
 }
-

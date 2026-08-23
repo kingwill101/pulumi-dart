@@ -17,6 +17,13 @@ class BitbucketServerConfigArgs {
   /// Connected Bitbucket Server repositories for this config.
   /// Structure is documented below.
   final pulumi.Input<List<BitbucketServerConfigConnectedRepository>>? connectedRepositories;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
   /// If you need to change it, please create another BitbucketServerConfig.
   final pulumi.Input<String> hostUri;
@@ -42,6 +49,7 @@ class BitbucketServerConfigArgs {
   /// [apiKey] Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
   /// [configId] The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
   /// [connectedRepositories] Connected Bitbucket Server repositories for this config.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [hostUri] Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
   /// [location] The location of this bitbucket server config.
   /// [peeredNetwork] The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
@@ -53,6 +61,7 @@ class BitbucketServerConfigArgs {
     required this.apiKey,
     required this.configId,
     this.connectedRepositories,
+    this.deletionPolicy,
     required this.hostUri,
     required this.location,
     this.peeredNetwork,
@@ -67,6 +76,7 @@ class BitbucketServerConfigArgs {
       'apiKey': apiKey,
       'configId': configId,
       'connectedRepositories': ?pulumi.Input.mapOptionalInputValue<List<BitbucketServerConfigConnectedRepository>, List<Map<String, dynamic>>>(connectedRepositories, (value) => pulumi.Input.encodeList<BitbucketServerConfigConnectedRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': ?deletionPolicy,
       'hostUri': hostUri,
       'location': location,
       'peeredNetwork': ?peeredNetwork,
@@ -82,6 +92,7 @@ class BitbucketServerConfigArgs {
       apiKey: pulumi.Input.fromValue(map['apiKey'] as String),
       configId: pulumi.Input.fromValue(map['configId'] as String),
       connectedRepositories: (() { final guardedValue = map['connectedRepositories']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BitbucketServerConfigConnectedRepository>(guardedValue, (value) => BitbucketServerConfigConnectedRepository.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostUri: pulumi.Input.fromValue(map['hostUri'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       peeredNetwork: (() { final guardedValue = map['peeredNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -92,4 +103,3 @@ class BitbucketServerConfigArgs {
     );
   }
 }
-

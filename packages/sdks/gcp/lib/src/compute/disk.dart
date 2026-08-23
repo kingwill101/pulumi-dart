@@ -31,6 +31,7 @@ import 'disk_state.dart';
 /// * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
 ///
 ///
+///
 /// ## Example Usage
 ///
 /// ### Disk Basic
@@ -116,6 +117,26 @@ import 'disk_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_disk" "default" {
+///   name  = "test-disk"
+///   type  = "pd-ssd"
+///   zone  = "us-central1-a"
+///   image = "debian-11-bullseye-v20220719"
+///   labels = {
+///     "environment" = "dev"
+///   }
+///   physical_block_size_bytes = 4096
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +145,8 @@ import 'disk_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.Disk;
 /// import com.pulumi.gcp.compute.DiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -259,7 +280,7 @@ import 'disk_state.dart';
 /// 			Type: pulumi.String("pd-ssd"),
 /// 			Zone: pulumi.String("us-east1-c"),
 /// 			AsyncPrimaryDisk: &compute.DiskAsyncPrimaryDiskArgs{
-/// 				Disk: primary.ID(),
+/// 				Disk: primary.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
 /// 		})
@@ -268,6 +289,31 @@ import 'disk_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_disk" "primary" {
+///   name                      = "async-test-disk"
+///   type                      = "pd-ssd"
+///   zone                      = "us-central1-a"
+///   physical_block_size_bytes = 4096
+/// }
+/// resource "gcp_compute_disk" "secondary" {
+///   name = "async-secondary-test-disk"
+///   type = "pd-ssd"
+///   zone = "us-east1-c"
+///   async_primary_disk = {
+///     disk = gcp_compute_disk.primary.id
+///   }
+///   physical_block_size_bytes = 4096
 /// }
 /// ```
 /// ```java
@@ -279,8 +325,8 @@ import 'disk_state.dart';
 /// import com.pulumi.gcp.compute.Disk;
 /// import com.pulumi.gcp.compute.DiskArgs;
 /// import com.pulumi.gcp.compute.inputs.DiskAsyncPrimaryDiskArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -468,6 +514,35 @@ import 'disk_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_disk" "default" {
+///   name = "test-disk-features"
+///   type = "pd-ssd"
+///   zone = "us-central1-a"
+///   labels = {
+///     "environment" = "dev"
+///   }
+///   guest_os_features {
+///     type = "SECURE_BOOT"
+///   }
+///   guest_os_features {
+///     type = "MULTI_IP_SUBNET"
+///   }
+///   guest_os_features {
+///     type = "WINDOWS"
+///   }
+///   licenses                  = ["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"]
+///   physical_block_size_bytes = 4096
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -477,8 +552,8 @@ import 'disk_state.dart';
 /// import com.pulumi.gcp.compute.Disk;
 /// import com.pulumi.gcp.compute.DiskArgs;
 /// import com.pulumi.gcp.compute.inputs.DiskGuestOsFeatureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -537,28 +612,17 @@ import 'disk_state.dart';
 /// Disk can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}`
-///
 /// * `{{zone}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/disk:Disk default {{name}}
 /// ```
 class Disk extends pulumi.CustomResource {
@@ -582,6 +646,13 @@ class Disk extends pulumi.CustomResource {
   late final pulumi.Output<String?> createSnapshotBeforeDestroyPrefix;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
@@ -601,14 +672,17 @@ class Disk extends pulumi.CustomResource {
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Whether this disk is using confidential compute mode.
-  /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
+  /// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
   late final pulumi.Output<bool> enableConfidentialCompute;
+  /// (Optional, Beta)
+  /// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+  late final pulumi.Output<bool?> eraseWindowsVssSignature;
   /// A list of features to enable on the guest operating system.
   /// Applicable only for bootable disks.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> guestOsFeatures;
   /// The image from which to initialize this disk. This can be
-  /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
+  /// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
   /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
   /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
   /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
@@ -617,6 +691,7 @@ class Disk extends pulumi.CustomResource {
   /// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
   /// These images can be referred by family name here.
   late final pulumi.Output<String?> image;
+  /// (Optional, Beta, Deprecated)
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
   ///
   /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -627,7 +702,7 @@ class Disk extends pulumi.CustomResource {
   /// Labels to apply to this disk.  A list of key-&gt;value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Last attach timestamp in RFC3339 text format.
   late final pulumi.Output<String> lastAttachTimestamp;
@@ -635,6 +710,7 @@ class Disk extends pulumi.CustomResource {
   late final pulumi.Output<String> lastDetachTimestamp;
   /// Any applicable license URI.
   late final pulumi.Output<List<String>> licenses;
+  /// (Optional, Beta)
   /// Indicates whether or not the disk can be read/write attached to more than one instance.
   late final pulumi.Output<bool?> multiWriter;
   /// Name of the resource. Provided by the client when the resource is
@@ -668,6 +744,7 @@ class Disk extends pulumi.CustomResource {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+  /// (Optional, Beta)
   /// Resource policies applied to this disk for automatic snapshot creations.
   /// ~&gt;**NOTE** This value does not support updating the
   /// resource policy, as resource policies can not be updated more than
@@ -786,11 +863,13 @@ class Disk extends pulumi.CustomResource {
     createSnapshotBeforeDestroy = registerOutput<bool?>('createSnapshotBeforeDestroy');
     createSnapshotBeforeDestroyPrefix = registerOutput<String?>('createSnapshotBeforeDestroyPrefix');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskEncryptionKey = registerOutput<DiskDiskEncryptionKey?>('diskEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskDiskEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     diskId = registerOutput<String>('diskId');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableConfidentialCompute = registerOutput<bool>('enableConfidentialCompute');
+    eraseWindowsVssSignature = registerOutput<bool?>('eraseWindowsVssSignature');
     guestOsFeatures = registerOutput<List<Map<String, dynamic>>>('guestOsFeatures');
     image = registerOutput<String?>('image');
     interface = registerOutput<String?>('interface');
@@ -855,11 +934,13 @@ class Disk extends pulumi.CustomResource {
     createSnapshotBeforeDestroy = registerOutput<bool?>('createSnapshotBeforeDestroy');
     createSnapshotBeforeDestroyPrefix = registerOutput<String?>('createSnapshotBeforeDestroyPrefix');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskEncryptionKey = registerOutput<DiskDiskEncryptionKey?>('diskEncryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskDiskEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     diskId = registerOutput<String>('diskId');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableConfidentialCompute = registerOutput<bool>('enableConfidentialCompute');
+    eraseWindowsVssSignature = registerOutput<bool?>('eraseWindowsVssSignature');
     guestOsFeatures = registerOutput<List<Map<String, dynamic>>>('guestOsFeatures');
     image = registerOutput<String?>('image');
     interface = registerOutput<String?>('interface');

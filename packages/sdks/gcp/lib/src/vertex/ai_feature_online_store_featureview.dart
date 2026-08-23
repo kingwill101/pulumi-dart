@@ -341,6 +341,57 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aifeatureonlinestore" "featureonlinestore" {
+///   name = "example_feature_view"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   region = "us-central1"
+///   bigtable = {
+///     auto_scaling = {
+///       min_node_count         = 1
+///       max_node_count         = 2
+///       cpu_utilization_target = 80
+///     }
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "tf-test-dataset" {
+///   dataset_id    = "example_feature_view"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "US"
+/// }
+/// resource "gcp_bigquery_table" "tf-test-table" {
+///   deletion_protection = false
+///   dataset_id          = gcp_bigquery_dataset.tf-test-dataset.dataset_id
+///   table_id            = "example_feature_view"
+///   schema              = "  [\n  {\n    \\\"name\\\": \\\"entity_id\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"description\\\": \\\"Test default entity_id\\\"\n  },\n    {\n    \\\"name\\\": \\\"test_entity_column\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"description\\\": \\\"test secondary entity column\\\"\n  },\n  {\n    \\\"name\\\": \\\"feature_timestamp\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"type\\\": \\\"TIMESTAMP\\\",\n    \\\"description\\\": \\\"Default timestamp value\\\"\n  }\n]\n"
+/// }
+/// resource "gcp_vertex_aifeatureonlinestorefeatureview" "featureview" {
+///   name                 = "example_feature_view"
+///   region               = "us-central1"
+///   feature_online_store = gcp_vertex_aifeatureonlinestore.featureonlinestore.name
+///   sync_config = {
+///     cron = "0 0 * * *"
+///   }
+///   big_query_source = {
+///     uri               ="bq://${gcp_bigquery_table.tf-test-table.project}.${gcp_bigquery_table.tf-test-table.dataset_id}.${gcp_bigquery_table.tf-test-table.table_id}"
+///     entity_id_columns = ["test_entity_column"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -361,8 +412,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -939,6 +990,79 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeatureonlinestore" "featureonlinestore" {
+///   name = "example_feature_view_feature_registry"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   region = "us-central1"
+///   bigtable = {
+///     auto_scaling = {
+///       min_node_count         = 1
+///       max_node_count         = 2
+///       cpu_utilization_target = 80
+///     }
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "sample_dataset" {
+///   dataset_id    = "example_feature_view_feature_registry"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "US"
+/// }
+/// resource "gcp_bigquery_table" "sample_table" {
+///   deletion_protection = false
+///   dataset_id          = gcp_bigquery_dataset.sample_dataset.dataset_id
+///   table_id            = "example_feature_view_feature_registry"
+///   schema              = "[\n    {\n        \\\"name\\\": \\\"feature_id\\\",\n        \\\"type\\\": \\\"STRING\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    },\n    {\n        \\\"name\\\": \\\"example_feature_view_feature_registry\\\",\n        \\\"type\\\": \\\"STRING\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    },\n    {\n        \\\"name\\\": \\\"feature_timestamp\\\",\n        \\\"type\\\": \\\"TIMESTAMP\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    }\n]\n"
+/// }
+/// resource "gcp_vertex_aifeaturegroup" "sample_feature_group" {
+///   name        = "example_feature_view_feature_registry"
+///   description = "A sample feature group"
+///   region      = "us-central1"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   big_query = {
+///     big_query_source = {
+///       input_uri ="bq://${gcp_bigquery_table.sample_table.project}.${gcp_bigquery_table.sample_table.dataset_id}.${gcp_bigquery_table.sample_table.table_id}"
+///     }
+///     entity_id_columns = ["feature_id"]
+///   }
+/// }
+/// resource "gcp_vertex_aifeaturegroupfeature" "sample_feature" {
+///   name          = "example_feature_view_feature_registry"
+///   region        = "us-central1"
+///   feature_group = gcp_vertex_aifeaturegroup.sample_feature_group.name
+///   description   = "A sample feature"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// resource "gcp_vertex_aifeatureonlinestorefeatureview" "featureview_featureregistry" {
+///   name                 = "example_feature_view_feature_registry"
+///   region               = "us-central1"
+///   feature_online_store = gcp_vertex_aifeatureonlinestore.featureonlinestore.name
+///   sync_config = {
+///     cron = "0 0 * * *"
+///   }
+///   feature_registry_source = {
+///     feature_groups = [{
+///       "featureGroupId" = gcp_vertex_aifeaturegroup.sample_feature_group.name
+///       "featureIds"     = [gcp_vertex_aifeaturegroupfeature.sample_feature.name]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -963,8 +1087,9 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreFeatureviewArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1163,8 +1288,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///
 /// const testProject = gcp.organizations.getProject({});
 /// const project = new gcp.organizations.Project("project", {
-///     projectId: "tf-test_45397",
-///     name: "tf-test_16451",
+///     projectId: "tf-test_79241",
+///     name: "tf-test_57926",
 ///     orgId: "123456789",
 ///     billingAccount: "000000-0000000-0000000-000000",
 ///     deletionPolicy: "DELETE",
@@ -1287,8 +1412,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///
 /// test_project = gcp.organizations.get_project()
 /// project = gcp.organizations.Project("project",
-///     project_id="tf-test_45397",
-///     name="tf-test_16451",
+///     project_id="tf-test_79241",
+///     name="tf-test_57926",
 ///     org_id="123456789",
 ///     billing_account="000000-0000000-0000000-000000",
 ///     deletion_policy="DELETE")
@@ -1407,8 +1532,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///
 ///     var project = new Gcp.Organizations.Project("project", new()
 ///     {
-///         ProjectId = "tf-test_45397",
-///         Name = "tf-test_16451",
+///         ProjectId = "tf-test_79241",
+///         Name = "tf-test_57926",
 ///         OrgId = "123456789",
 ///         BillingAccount = "000000-0000000-0000000-000000",
 ///         DeletionPolicy = "DELETE",
@@ -1618,8 +1743,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// 			return err
 /// 		}
 /// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("tf-test_45397"),
-/// 			Name:           pulumi.String("tf-test_16451"),
+/// 			ProjectId:      pulumi.String("tf-test_79241"),
+/// 			Name:           pulumi.String("tf-test_57926"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 /// 			DeletionPolicy: pulumi.String("DELETE"),
@@ -1786,6 +1911,117 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "testProject" {
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "tf-test_79241"
+///   name            = "tf-test_57926"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "time_sleep" "wait_60_seconds" {
+///   depends_on      = [gcp_organizations_project.project]
+///   create_duration = "60s"
+/// }
+/// resource "time_sleep" "wait_30_seconds" {
+///   depends_on      = [gcp_bigquery_datasetiammember.viewer]
+///   create_duration = "30s"
+/// }
+/// resource "gcp_projects_service" "vertexai" {
+///   depends_on = [time_sleep.wait_60_seconds]
+///   service    = "aiplatform.googleapis.com"
+///   project    = gcp_organizations_project.project.project_id
+/// }
+/// resource "gcp_bigquery_datasetiammember" "viewer" {
+///   depends_on = [gcp_vertex_aifeatureonlinestore.featureonlinestore]
+///   project    = data.gcp_organizations_getproject.testProject.project_id
+///   dataset_id = gcp_bigquery_dataset.sample_dataset.dataset_id
+///   role       = "roles/bigquery.dataViewer"
+///   member     ="serviceAccount:service-${gcp_organizations_project.project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_vertex_aifeatureonlinestore" "featureonlinestore" {
+///   depends_on = [gcp_projects_service.vertexai]
+///   name       = "example_cross_project_featureview"
+///   project    = gcp_organizations_project.project.project_id
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   region = "us-central1"
+///   bigtable = {
+///     auto_scaling = {
+///       min_node_count         = 1
+///       max_node_count         = 2
+///       cpu_utilization_target = 80
+///     }
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "sample_dataset" {
+///   dataset_id    = "example_cross_project_featureview"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "US"
+/// }
+/// resource "gcp_bigquery_table" "sample_table" {
+///   deletion_protection = false
+///   dataset_id          = gcp_bigquery_dataset.sample_dataset.dataset_id
+///   table_id            = "example_cross_project_featureview"
+///   schema              = "[\n    {\n        \\\"name\\\": \\\"feature_id\\\",\n        \\\"type\\\": \\\"STRING\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    },\n    {\n        \\\"name\\\": \\\"example_cross_project_featureview\\\",\n        \\\"type\\\": \\\"STRING\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    },\n    {\n        \\\"name\\\": \\\"feature_timestamp\\\",\n        \\\"type\\\": \\\"TIMESTAMP\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    }\n]\n"
+/// }
+/// resource "gcp_vertex_aifeaturegroup" "sample_feature_group" {
+///   name        = "example_cross_project_featureview"
+///   description = "A sample feature group"
+///   region      = "us-central1"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   big_query = {
+///     big_query_source = {
+///       input_uri ="bq://${gcp_bigquery_table.sample_table.project}.${gcp_bigquery_table.sample_table.dataset_id}.${gcp_bigquery_table.sample_table.table_id}"
+///     }
+///     entity_id_columns = ["feature_id"]
+///   }
+/// }
+/// resource "gcp_vertex_aifeaturegroupfeature" "sample_feature" {
+///   name          = "example_cross_project_featureview"
+///   region        = "us-central1"
+///   feature_group = gcp_vertex_aifeaturegroup.sample_feature_group.name
+///   description   = "A sample feature"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// resource "gcp_vertex_aifeatureonlinestorefeatureview" "cross_project_featureview" {
+///   depends_on           = [gcp_projects_service.vertexai, time_sleep.wait_30_seconds]
+///   name                 = "example_cross_project_featureview"
+///   project              = gcp_organizations_project.project.project_id
+///   region               = "us-central1"
+///   feature_online_store = gcp_vertex_aifeatureonlinestore.featureonlinestore.name
+///   sync_config = {
+///     continuous = true
+///   }
+///   feature_registry_source = {
+///     feature_groups = [{
+///       "featureGroupId" = gcp_vertex_aifeaturegroup.sample_feature_group.name
+///       "featureIds"     = [gcp_vertex_aifeaturegroupfeature.sample_feature.name]
+///     }]
+///     project_number = data.gcp_organizations_getproject.testProject.number
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1820,9 +2056,10 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreFeatureviewArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1838,8 +2075,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///             .build());
 ///
 ///         var project = new Project("project", ProjectArgs.builder()
-///             .projectId("tf-test_45397")
-///             .name("tf-test_16451")
+///             .projectId("tf-test_79241")
+///             .name("tf-test_57926")
 ///             .orgId("123456789")
 ///             .billingAccount("000000-0000000-0000000-000000")
 ///             .deletionPolicy("DELETE")
@@ -1976,8 +2213,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///   project:
 ///     type: gcp:organizations:Project
 ///     properties:
-///       projectId: tf-test_45397
-///       name: tf-test_16451
+///       projectId: tf-test_79241
+///       name: tf-test_57926
 ///       orgId: '123456789'
 ///       billingAccount: 000000-0000000-0000000-000000
 ///       deletionPolicy: DELETE
@@ -2569,6 +2806,64 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aifeatureonlinestore" "featureonlinestore" {
+///   name = "example_feature_view_vector_search"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   region    = "us-central1"
+///   optimized = {}
+///   embedding_management = {
+///     enabled = true
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "tf-test-dataset" {
+///   dataset_id    = "example_feature_view_vector_search"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "US"
+/// }
+/// resource "gcp_bigquery_table" "tf-test-table" {
+///   deletion_protection = false
+///   dataset_id          = gcp_bigquery_dataset.tf-test-dataset.dataset_id
+///   table_id            = "example_feature_view_vector_search"
+///   schema              = "[\n{\n  \\\"name\\\": \\\"test_primary_id\\\",\n  \\\"mode\\\": \\\"NULLABLE\\\",\n  \\\"type\\\": \\\"STRING\\\",\n  \\\"description\\\": \\\"primary test id\\\"\n},\n{\n  \\\"name\\\": \\\"embedding\\\",\n  \\\"mode\\\": \\\"REPEATED\\\",\n  \\\"type\\\": \\\"FLOAT\\\",\n  \\\"description\\\": \\\"embedding column for primary_id column\\\"\n},\n{\n  \\\"name\\\": \\\"country\\\",\n  \\\"mode\\\": \\\"NULLABLE\\\",\n  \\\"type\\\": \\\"STRING\\\",\n  \\\"description\\\": \\\"country\\\"\n},\n{\n  \\\"name\\\": \\\"test_crowding_column\\\",\n  \\\"mode\\\": \\\"NULLABLE\\\",\n  \\\"type\\\": \\\"INTEGER\\\",\n  \\\"description\\\": \\\"test crowding column\\\"\n},\n{\n  \\\"name\\\": \\\"entity_id\\\",\n  \\\"mode\\\": \\\"NULLABLE\\\",\n  \\\"type\\\": \\\"STRING\\\",\n  \\\"description\\\": \\\"Test default entity_id\\\"\n},\n{\n  \\\"name\\\": \\\"test_entity_column\\\",\n  \\\"mode\\\": \\\"NULLABLE\\\",\n  \\\"type\\\": \\\"STRING\\\",\n  \\\"description\\\": \\\"test secondary entity column\\\"\n},\n{\n  \\\"name\\\": \\\"feature_timestamp\\\",\n  \\\"mode\\\": \\\"NULLABLE\\\",\n  \\\"type\\\": \\\"TIMESTAMP\\\",\n  \\\"description\\\": \\\"Default timestamp value\\\"\n}\n]\n"
+/// }
+/// resource "gcp_vertex_aifeatureonlinestorefeatureview" "featureview_vector_search" {
+///   name                 = "example_feature_view_vector_search"
+///   region               = "us-central1"
+///   feature_online_store = gcp_vertex_aifeatureonlinestore.featureonlinestore.name
+///   sync_config = {
+///     cron = "0 0 * * *"
+///   }
+///   big_query_source = {
+///     uri               ="bq://${gcp_bigquery_table.tf-test-table.project}.${gcp_bigquery_table.tf-test-table.dataset_id}.${gcp_bigquery_table.tf-test-table.table_id}"
+///     entity_id_columns = ["test_entity_column"]
+///   }
+///   vector_search_config = {
+///     embedding_column      = "embedding"
+///     filter_columns        = ["country"]
+///     crowding_column       = "test_crowding_column"
+///     distance_measure_type = "DOT_PRODUCT_DISTANCE"
+///     tree_ah_config = {
+///       leaf_node_embedding_count = "1000"
+///     }
+///     embedding_dimension = "2"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2591,8 +2886,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2813,28 +3108,17 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// FeatureOnlineStoreFeatureview can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}`
-///
 /// * `{{region}}/{{feature_online_store}}/{{name}}`
-///
 /// * `{{feature_online_store}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{project}}/{{region}}/{{feature_online_store}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{region}}/{{feature_online_store}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{feature_online_store}}/{{name}}
 /// ```
 class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
@@ -2843,6 +3127,13 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
   late final pulumi.Output<AiFeatureOnlineStoreFeatureviewBigQuerySource?> bigQuerySource;
   /// The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The name of the FeatureOnlineStore to use for the featureview.
@@ -2853,7 +3144,7 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
   /// A set of key/value label pairs to assign to this FeatureView.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Name of the FeatureView. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   late final pulumi.Output<String> name;
@@ -2870,6 +3161,7 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
   late final pulumi.Output<AiFeatureOnlineStoreFeatureviewSyncConfig?> syncConfig;
   /// The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> updateTime;
+  /// (Optional, Beta)
   /// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
   /// Structure is documented below.
   late final pulumi.Output<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?> vectorSearchConfig;
@@ -2890,6 +3182,7 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
         ) {
     bigQuerySource = registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>('bigQuerySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     featureOnlineStore = registerOutput<String>('featureOnlineStore');
     featureRegistrySource = registerOutput<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>('featureRegistrySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2928,6 +3221,7 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
         ) {
     bigQuerySource = registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>('bigQuerySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     featureOnlineStore = registerOutput<String>('featureOnlineStore');
     featureRegistrySource = registerOutput<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>('featureRegistrySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });

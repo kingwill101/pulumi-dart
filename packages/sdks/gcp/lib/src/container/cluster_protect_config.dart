@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_protect_config_workload_config.dart';
 
 class ClusterProtectConfig {
-  /// WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
+  /// ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
   final pulumi.Input<ClusterProtectConfigWorkloadConfig>? workloadConfig;
-  /// Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+  /// ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
   final pulumi.Input<String>? workloadVulnerabilityMode;
 
   /// Creates a new [ClusterProtectConfig].
-  /// [workloadConfig] WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
-  /// [workloadVulnerabilityMode] Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+  /// [workloadConfig] ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
+  /// [workloadVulnerabilityMode] ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
   const ClusterProtectConfig({
     this.workloadConfig,
     this.workloadVulnerabilityMode,
@@ -31,4 +31,3 @@ class ClusterProtectConfig {
     );
   }
 }
-

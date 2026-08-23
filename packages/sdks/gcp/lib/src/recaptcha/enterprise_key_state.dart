@@ -13,6 +13,13 @@ class EnterpriseKeyState {
   final pulumi.Input<EnterpriseKeyAndroidSettings>? androidSettings;
   /// The timestamp corresponding to the creation of this Key.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human-readable display name of this key. Modifiable by user.
   ///
   ///
@@ -26,7 +33,7 @@ class EnterpriseKeyState {
   /// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The resource id for the Key, which is the same as the Site Key itself.
   final pulumi.Input<String>? name;
@@ -44,6 +51,7 @@ class EnterpriseKeyState {
   /// Creates a new [EnterpriseKeyState].
   /// [androidSettings] Settings for keys that can be used by Android apps.
   /// [createTime] The timestamp corresponding to the creation of this Key.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [displayName] Human-readable display name of this key. Modifiable by user.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [iosSettings] Settings for keys that can be used by iOS apps.
@@ -57,6 +65,7 @@ class EnterpriseKeyState {
   const EnterpriseKeyState({
     this.androidSettings,
     this.createTime,
+    this.deletionPolicy,
     this.displayName,
     this.effectiveLabels,
     this.iosSettings,
@@ -73,6 +82,7 @@ class EnterpriseKeyState {
     return <String, dynamic>{
       'androidSettings': ?pulumi.Input.mapOptionalInputValue<EnterpriseKeyAndroidSettings, Map<String, dynamic>>(androidSettings, (value) => value.toMap()),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
       'iosSettings': ?pulumi.Input.mapOptionalInputValue<EnterpriseKeyIosSettings, Map<String, dynamic>>(iosSettings, (value) => value.toMap()),
@@ -90,6 +100,7 @@ class EnterpriseKeyState {
     return EnterpriseKeyState(
       androidSettings: (() { final guardedValue = map['androidSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseKeyAndroidSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       iosSettings: (() { final guardedValue = map['iosSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterpriseKeyIosSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -103,4 +114,3 @@ class EnterpriseKeyState {
     );
   }
 }
-

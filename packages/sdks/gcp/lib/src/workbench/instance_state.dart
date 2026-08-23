@@ -11,12 +11,21 @@ class InstanceState {
   final pulumi.Input<String>? createTime;
   /// Output only. Email address of entity that sent original CreateInstance request.
   final pulumi.Input<String>? creator;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
   final pulumi.Input<String>? desiredState;
   /// Optional. If true, the workbench instance will not register with the proxy.
   final pulumi.Input<bool>? disableProxyAccess;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+  /// Optional. If true, deletion protection will be enabled for this Workbench Instance.
+  final pulumi.Input<bool>? enableDeletionProtection;
   /// Flag to enable managed end user credentials for the instance.
   final pulumi.Input<bool>? enableManagedEuc;
   /// Flag that specifies that a notebook can be accessed with third party
@@ -26,8 +35,8 @@ class InstanceState {
   /// Structure is documented below.
   final pulumi.Input<InstanceGceSetup>? gceSetup;
   /// 'Output only. Additional information about instance health. Example:
-  /// healthInfo": { "docker_proxy_agent_status": "1", "docker_status": "1", "jupyterlab_api_status":
-  /// "-1", "jupyterlab_status": "-1", "updated": "2020-10-18 09:40:03.573409" }'
+  /// healthInfo": { "dockerProxyAgentStatus": "1", "dockerStatus": "1", "jupyterlabApiStatus":
+  /// "-1", "jupyterlabStatus": "-1", "updated": "2020-10-18 09:40:03.573409" }'
   final pulumi.Input<List<Map<String, dynamic>>>? healthInfos;
   /// Output only. Instance health_state.
   final pulumi.Input<String>? healthState;
@@ -43,7 +52,7 @@ class InstanceState {
   /// by the UpdateInstance method.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Part of `parent`. See documentation of `projectsId`.
   final pulumi.Input<String>? location;
@@ -70,9 +79,11 @@ class InstanceState {
   /// Creates a new [InstanceState].
   /// [createTime] An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
   /// [creator] Output only. Email address of entity that sent original CreateInstance request.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [desiredState] Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
   /// [disableProxyAccess] Optional. If true, the workbench instance will not register with the proxy.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  /// [enableDeletionProtection] Optional. If true, deletion protection will be enabled for this Workbench Instance.
   /// [enableManagedEuc] Flag to enable managed end user credentials for the instance.
   /// [enableThirdPartyIdentity] Flag that specifies that a notebook can be accessed with third party
   /// [gceSetup] The definition of how to configure a VM instance outside of Resources and Identity.
@@ -92,9 +103,11 @@ class InstanceState {
   const InstanceState({
     this.createTime,
     this.creator,
+    this.deletionPolicy,
     this.desiredState,
     this.disableProxyAccess,
     this.effectiveLabels,
+    this.enableDeletionProtection,
     this.enableManagedEuc,
     this.enableThirdPartyIdentity,
     this.gceSetup,
@@ -117,9 +130,11 @@ class InstanceState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'creator': ?creator,
+      'deletionPolicy': ?deletionPolicy,
       'desiredState': ?desiredState,
       'disableProxyAccess': ?disableProxyAccess,
       'effectiveLabels': ?effectiveLabels,
+      'enableDeletionProtection': ?enableDeletionProtection,
       'enableManagedEuc': ?enableManagedEuc,
       'enableThirdPartyIdentity': ?enableThirdPartyIdentity,
       'gceSetup': ?pulumi.Input.mapOptionalInputValue<InstanceGceSetup, Map<String, dynamic>>(gceSetup, (value) => value.toMap()),
@@ -143,9 +158,11 @@ class InstanceState {
     return InstanceState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creator: (() { final guardedValue = map['creator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       desiredState: (() { final guardedValue = map['desiredState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disableProxyAccess: (() { final guardedValue = map['disableProxyAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      enableDeletionProtection: (() { final guardedValue = map['enableDeletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableManagedEuc: (() { final guardedValue = map['enableManagedEuc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableThirdPartyIdentity: (() { final guardedValue = map['enableThirdPartyIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       gceSetup: (() { final guardedValue = map['gceSetup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGceSetup.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -165,4 +182,3 @@ class InstanceState {
     );
   }
 }
-

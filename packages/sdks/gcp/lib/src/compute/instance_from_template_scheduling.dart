@@ -6,6 +6,7 @@ import 'instance_from_template_scheduling_local_ssd_recovery_timeout.dart';
 import 'instance_from_template_scheduling_max_run_duration.dart';
 import 'instance_from_template_scheduling_node_affinity.dart';
 import 'instance_from_template_scheduling_on_instance_stop_action.dart';
+import 'instance_from_template_scheduling_preemption_notice_duration.dart';
 
 class InstanceFromTemplateScheduling {
   /// Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
@@ -36,7 +37,9 @@ class InstanceFromTemplateScheduling {
   final pulumi.Input<InstanceFromTemplateSchedulingOnInstanceStopAction>? onInstanceStopAction;
   /// Whether the instance is preemptible.
   final pulumi.Input<bool>? preemptible;
-  /// Whether the instance is spot. If this is set as SPOT.
+  /// The duration of the notice that the instance will receive before it is preempted.
+  final pulumi.Input<InstanceFromTemplateSchedulingPreemptionNoticeDuration>? preemptionNoticeDuration;
+  /// Describes the desired provisioning model for the instance. Possible values are STANDARD, SPOT, FLEX_START, and RESERVATION_BOUND. For STANDARD, resources are provisioned immediately. For SPOT, resources are offered at a discount compared to standard pricing but may be preempted. For FLEX_START, resources are offered at a discount with flexible start times. For RESERVATION_BOUND, the instance is bound to a specific reservation and will only consume capacity from that reservation.
   final pulumi.Input<String>? provisioningModel;
   /// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
   final pulumi.Input<bool>? skipGuestOsShutdown;
@@ -59,7 +62,8 @@ class InstanceFromTemplateScheduling {
   /// [onHostMaintenance] Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
   /// [onInstanceStopAction] Defines the behaviour for instances with the instance_termination_action.
   /// [preemptible] Whether the instance is preemptible.
-  /// [provisioningModel] Whether the instance is spot. If this is set as SPOT.
+  /// [preemptionNoticeDuration] The duration of the notice that the instance will receive before it is preempted.
+  /// [provisioningModel] Describes the desired provisioning model for the instance. Possible values are STANDARD, SPOT, FLEX_START, and RESERVATION_BOUND. For STANDARD, resources are provisioned immediately. For SPOT, resources are offered at a discount compared to standard pricing but may be preempted. For FLEX_START, resources are offered at a discount with flexible start times. For RESERVATION_BOUND, the instance is bound to a specific reservation and will only consume capacity from that reservation.
   /// [skipGuestOsShutdown] Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
   /// [terminationTime] Specifies the timestamp, when the instance will be terminated,
   const InstanceFromTemplateScheduling({
@@ -76,6 +80,7 @@ class InstanceFromTemplateScheduling {
     this.onHostMaintenance,
     this.onInstanceStopAction,
     this.preemptible,
+    this.preemptionNoticeDuration,
     this.provisioningModel,
     this.skipGuestOsShutdown,
     this.terminationTime,
@@ -96,6 +101,7 @@ class InstanceFromTemplateScheduling {
       'onHostMaintenance': ?onHostMaintenance,
       'onInstanceStopAction': ?pulumi.Input.mapOptionalInputValue<InstanceFromTemplateSchedulingOnInstanceStopAction, Map<String, dynamic>>(onInstanceStopAction, (value) => value.toMap()),
       'preemptible': ?preemptible,
+      'preemptionNoticeDuration': ?pulumi.Input.mapOptionalInputValue<InstanceFromTemplateSchedulingPreemptionNoticeDuration, Map<String, dynamic>>(preemptionNoticeDuration, (value) => value.toMap()),
       'provisioningModel': ?provisioningModel,
       'skipGuestOsShutdown': ?skipGuestOsShutdown,
       'terminationTime': ?terminationTime,
@@ -117,10 +123,10 @@ class InstanceFromTemplateScheduling {
       onHostMaintenance: (() { final guardedValue = map['onHostMaintenance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       onInstanceStopAction: (() { final guardedValue = map['onInstanceStopAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceFromTemplateSchedulingOnInstanceStopAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       preemptible: (() { final guardedValue = map['preemptible']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      preemptionNoticeDuration: (() { final guardedValue = map['preemptionNoticeDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceFromTemplateSchedulingPreemptionNoticeDuration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       provisioningModel: (() { final guardedValue = map['provisioningModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       skipGuestOsShutdown: (() { final guardedValue = map['skipGuestOsShutdown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       terminationTime: (() { final guardedValue = map['terminationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

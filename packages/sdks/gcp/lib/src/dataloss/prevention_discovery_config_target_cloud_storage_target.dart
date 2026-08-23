@@ -11,7 +11,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTarget {
   final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTargetConditions>? conditions;
   /// Disable profiling for buckets that match this filter.
   final pulumi.Input<Map<String, dynamic>>? disabled;
-  /// The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+  /// The buckets the generationCadence applies to. The first target with a matching filter will be the one to apply to a bucket.
   /// Structure is documented below.
   final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTargetFilter> filter;
   /// How often and when to update profiles. New buckets that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
@@ -21,7 +21,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTarget {
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTarget].
   /// [conditions] In addition to matching the filter, these conditions must be true before a profile is generated.
   /// [disabled] Disable profiling for buckets that match this filter.
-  /// [filter] The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
+  /// [filter] The buckets the generationCadence applies to. The first target with a matching filter will be the one to apply to a bucket.
   /// [generationCadence] How often and when to update profiles. New buckets that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
   const PreventionDiscoveryConfigTargetCloudStorageTarget({
     this.conditions,
@@ -48,4 +48,3 @@ class PreventionDiscoveryConfigTargetCloudStorageTarget {
     );
   }
 }
-

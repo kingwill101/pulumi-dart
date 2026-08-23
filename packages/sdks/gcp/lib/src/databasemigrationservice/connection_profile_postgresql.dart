@@ -1,13 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'connection_profile_postgresql_private_connectivity.dart';
 import 'connection_profile_postgresql_ssl.dart';
 
 class ConnectionProfilePostgresql {
-  /// If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+  /// If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
   final pulumi.Input<String>? alloydbClusterId;
-  /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+  /// If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
   final pulumi.Input<String>? cloudSqlId;
+  /// The name of the specific database within the host.
+  final pulumi.Input<String>? database;
   /// The IP or hostname of the source MySQL database.
   final pulumi.Input<String>? host;
   /// (Output)
@@ -22,6 +25,9 @@ class ConnectionProfilePostgresql {
   final pulumi.Input<bool>? passwordSet;
   /// The network port of the source MySQL database.
   final pulumi.Input<int>? port;
+  /// Private connectivity.
+  /// Structure is documented below.
+  final pulumi.Input<ConnectionProfilePostgresqlPrivateConnectivity>? privateConnectivity;
   /// SSL configuration for the destination to connect to the source database.
   /// Structure is documented below.
   final pulumi.Input<ConnectionProfilePostgresqlSsl>? ssl;
@@ -29,23 +35,27 @@ class ConnectionProfilePostgresql {
   final pulumi.Input<String>? username;
 
   /// Creates a new [ConnectionProfilePostgresql].
-  /// [alloydbClusterId] If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
-  /// [cloudSqlId] If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+  /// [alloydbClusterId] If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+  /// [cloudSqlId] If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
+  /// [database] The name of the specific database within the host.
   /// [host] The IP or hostname of the source MySQL database.
   /// [networkArchitecture] (Output)
   /// [password] Input only. The password for the user that Database Migration Service will be using to connect to the database.
   /// [passwordSet] (Output)
   /// [port] The network port of the source MySQL database.
+  /// [privateConnectivity] Private connectivity.
   /// [ssl] SSL configuration for the destination to connect to the source database.
   /// [username] The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
   const ConnectionProfilePostgresql({
     this.alloydbClusterId,
     this.cloudSqlId,
+    this.database,
     this.host,
     this.networkArchitecture,
     this.password,
     this.passwordSet,
     this.port,
+    this.privateConnectivity,
     this.ssl,
     this.username,
   });
@@ -54,11 +64,13 @@ class ConnectionProfilePostgresql {
     return <String, dynamic>{
       'alloydbClusterId': ?alloydbClusterId,
       'cloudSqlId': ?cloudSqlId,
+      'database': ?database,
       'host': ?host,
       'networkArchitecture': ?networkArchitecture,
       'password': ?password,
       'passwordSet': ?passwordSet,
       'port': ?port,
+      'privateConnectivity': ?pulumi.Input.mapOptionalInputValue<ConnectionProfilePostgresqlPrivateConnectivity, Map<String, dynamic>>(privateConnectivity, (value) => value.toMap()),
       'ssl': ?pulumi.Input.mapOptionalInputValue<ConnectionProfilePostgresqlSsl, Map<String, dynamic>>(ssl, (value) => value.toMap()),
       'username': ?username,
     };
@@ -68,14 +80,15 @@ class ConnectionProfilePostgresql {
     return ConnectionProfilePostgresql(
       alloydbClusterId: (() { final guardedValue = map['alloydbClusterId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cloudSqlId: (() { final guardedValue = map['cloudSqlId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      database: (() { final guardedValue = map['database']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkArchitecture: (() { final guardedValue = map['networkArchitecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       passwordSet: (() { final guardedValue = map['passwordSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      privateConnectivity: (() { final guardedValue = map['privateConnectivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionProfilePostgresqlPrivateConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ssl: (() { final guardedValue = map['ssl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionProfilePostgresqlSsl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       username: (() { final guardedValue = map['username']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

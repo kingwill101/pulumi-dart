@@ -5,6 +5,7 @@ import 'get_app_connector_principal_info.dart';
 
 /// Result data returned by getAppConnector.
 class GetAppConnectorResult {
+  final String deletionPolicy;
   final String displayName;
   final Map<String, String> effectiveLabels;
   /// The provider-assigned unique ID for this managed resource.
@@ -18,6 +19,7 @@ class GetAppConnectorResult {
   final String state;
 
   /// Creates a new [GetAppConnectorResult].
+  /// [deletionPolicy] Required.
   /// [displayName] Required.
   /// [effectiveLabels] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -29,6 +31,7 @@ class GetAppConnectorResult {
   /// [region] Optional.
   /// [state] Required.
   const GetAppConnectorResult({
+    required this.deletionPolicy,
     required this.displayName,
     required this.effectiveLabels,
     required this.id,
@@ -43,6 +46,7 @@ class GetAppConnectorResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': deletionPolicy,
       'displayName': displayName,
       'effectiveLabels': effectiveLabels,
       'id': id,
@@ -58,6 +62,7 @@ class GetAppConnectorResult {
 
   factory GetAppConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetAppConnectorResult(
+      deletionPolicy: map['deletionPolicy'] as String,
       displayName: map['displayName'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       id: map['id'] as String,
@@ -71,4 +76,3 @@ class GetAppConnectorResult {
     );
   }
 }
-

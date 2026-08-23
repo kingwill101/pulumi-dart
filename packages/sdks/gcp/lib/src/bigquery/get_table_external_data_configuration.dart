@@ -12,7 +12,7 @@ import 'get_table_external_data_configuration_parquet_option.dart';
 class GetTableExternalDataConfiguration {
   /// Let BigQuery try to autodetect the schema and format of the table.
   final pulumi.Input<bool> autodetect;
-  /// Additional options if source_format is set to "AVRO"
+  /// Additional options if sourceFormat is set to "AVRO"
   final pulumi.Input<List<GetTableExternalDataConfigurationAvroOption>> avroOptions;
   /// Additional options if sourceFormat is set to BIGTABLE.
   final pulumi.Input<List<GetTableExternalDataConfigurationBigtableOption>> bigtableOptions;
@@ -20,13 +20,13 @@ class GetTableExternalDataConfiguration {
   final pulumi.Input<String> compression;
   /// The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connectionId can have the form "&lt;project&gt;.&lt;location&gt;.&lt;connection_id&gt;" or "projects/&lt;project&gt;/locations/&lt;location&gt;/connections/&lt;connection_id&gt;".
   final pulumi.Input<String> connectionId;
-  /// Additional properties to set if source_format is set to "CSV".
+  /// Additional properties to set if sourceFormat is set to "CSV".
   final pulumi.Input<List<GetTableExternalDataConfigurationCsvOption>> csvOptions;
   /// The data types that could be used as a target type when converting decimal values.
   final pulumi.Input<List<String>> decimalTargetTypes;
   /// Specifies how source URIs are interpreted for constructing the file set to load.  By default source URIs are expanded against the underlying storage.  Other options include specifying manifest files. Only applicable to object storage systems.
   final pulumi.Input<String> fileSetSpecType;
-  /// Additional options if source_format is set to "GOOGLE_SHEETS".
+  /// Additional options if sourceFormat is set to "GOOGLE_SHEETS".
   final pulumi.Input<List<GetTableExternalDataConfigurationGoogleSheetsOption>> googleSheetsOptions;
   /// When set, configures hive partitioning support. Not all storage formats support hive partitioning -- requesting hive partitioning on an unsupported format will lead to an error, as will providing an invalid specification.
   final pulumi.Input<List<GetTableExternalDataConfigurationHivePartitioningOption>> hivePartitioningOptions;
@@ -55,14 +55,14 @@ class GetTableExternalDataConfiguration {
 
   /// Creates a new [GetTableExternalDataConfiguration].
   /// [autodetect] Let BigQuery try to autodetect the schema and format of the table.
-  /// [avroOptions] Additional options if source_format is set to "AVRO"
+  /// [avroOptions] Additional options if sourceFormat is set to "AVRO"
   /// [bigtableOptions] Additional options if sourceFormat is set to BIGTABLE.
   /// [compression] The compression type of the data source. Valid values are "NONE" or "GZIP".
   /// [connectionId] The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connectionId can have the form "&lt;project&gt;.&lt;location&gt;.&lt;connection_id&gt;" or "projects/&lt;project&gt;/locations/&lt;location&gt;/connections/&lt;connection_id&gt;".
-  /// [csvOptions] Additional properties to set if source_format is set to "CSV".
+  /// [csvOptions] Additional properties to set if sourceFormat is set to "CSV".
   /// [decimalTargetTypes] The data types that could be used as a target type when converting decimal values.
   /// [fileSetSpecType] Specifies how source URIs are interpreted for constructing the file set to load.  By default source URIs are expanded against the underlying storage.  Other options include specifying manifest files. Only applicable to object storage systems.
-  /// [googleSheetsOptions] Additional options if source_format is set to "GOOGLE_SHEETS".
+  /// [googleSheetsOptions] Additional options if sourceFormat is set to "GOOGLE_SHEETS".
   /// [hivePartitioningOptions] When set, configures hive partitioning support. Not all storage formats support hive partitioning -- requesting hive partitioning on an unsupported format will lead to an error, as will providing an invalid specification.
   /// [ignoreUnknownValues] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
   /// [jsonExtension] Load option to be used together with sourceFormat newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and sourceFormat must be set to NEWLINE_DELIMITED_JSON).
@@ -151,4 +151,3 @@ class GetTableExternalDataConfiguration {
     );
   }
 }
-

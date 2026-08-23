@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig {
-  /// Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+  /// Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
   final pulumi.Input<bool>? enableIntegrityMonitoring;
-  /// Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+  /// Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
   final pulumi.Input<bool>? enableSecureBoot;
-  /// Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+  /// Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
   final pulumi.Input<bool>? enableVtpm;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig].
-  /// [enableIntegrityMonitoring] Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
-  /// [enableSecureBoot] Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
-  /// [enableVtpm] Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+  /// [enableIntegrityMonitoring] Defines whether instances have [Integrity Monitoring](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+  /// [enableSecureBoot] Defines whether instances have [Secure Boot](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+  /// [enableVtpm] Defines whether instances have the [vTPM](https://docs.cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
   const WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig({
     this.enableIntegrityMonitoring,
     this.enableSecureBoot,
@@ -36,4 +36,3 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
     );
   }
 }
-

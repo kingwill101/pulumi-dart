@@ -23,25 +23,25 @@ import 'entry_link_state.dart';
 ///
 /// const entry_group_basic = new gcp.dataplex.EntryGroup("entry-group-basic", {
 ///     location: "us-central1",
-///     entryGroupId: "tf-test-entry-group_9106",
+///     entryGroupId: "tf-test-entry-group_12125",
 ///     project: "1111111111111",
 /// });
 /// const entry_type_basic = new gcp.dataplex.EntryType("entry-type-basic", {
-///     entryTypeId: "tf-test-entry-type_75223",
+///     entryTypeId: "tf-test-entry-type_15022",
 ///     location: "us-central1",
 ///     project: "1111111111111",
 /// });
 /// const source = new gcp.dataplex.Entry("source", {
 ///     location: "us-central1",
 ///     entryGroupId: entry_group_basic.entryGroupId,
-///     entryId: "tf-test-source-entry_27169",
+///     entryId: "tf-test-source-entry_82749",
 ///     entryType: entry_type_basic.name,
 ///     project: "1111111111111",
 /// });
 /// const target = new gcp.dataplex.Entry("target", {
 ///     location: "us-central1",
 ///     entryGroupId: entry_group_basic.entryGroupId,
-///     entryId: "tf-test-target-entry_41819",
+///     entryId: "tf-test-target-entry_89648",
 ///     entryType: entry_type_basic.name,
 ///     project: "1111111111111",
 /// });
@@ -49,7 +49,7 @@ import 'entry_link_state.dart';
 ///     project: "1111111111111",
 ///     location: "us-central1",
 ///     entryGroupId: entry_group_basic.entryGroupId,
-///     entryLinkId: "tf-test-entry-link_75092",
+///     entryLinkId: "tf-test-entry-link_64612",
 ///     entryLinkType: "projects/655216118709/locations/global/entryLinkTypes/related",
 ///     entryReferences: [
 ///         {
@@ -67,29 +67,29 @@ import 'entry_link_state.dart';
 ///
 /// entry_group_basic = gcp.dataplex.EntryGroup("entry-group-basic",
 ///     location="us-central1",
-///     entry_group_id="tf-test-entry-group_9106",
+///     entry_group_id="tf-test-entry-group_12125",
 ///     project="1111111111111")
 /// entry_type_basic = gcp.dataplex.EntryType("entry-type-basic",
-///     entry_type_id="tf-test-entry-type_75223",
+///     entry_type_id="tf-test-entry-type_15022",
 ///     location="us-central1",
 ///     project="1111111111111")
 /// source = gcp.dataplex.Entry("source",
 ///     location="us-central1",
 ///     entry_group_id=entry_group_basic.entry_group_id,
-///     entry_id="tf-test-source-entry_27169",
+///     entry_id="tf-test-source-entry_82749",
 ///     entry_type=entry_type_basic.name,
 ///     project="1111111111111")
 /// target = gcp.dataplex.Entry("target",
 ///     location="us-central1",
 ///     entry_group_id=entry_group_basic.entry_group_id,
-///     entry_id="tf-test-target-entry_41819",
+///     entry_id="tf-test-target-entry_89648",
 ///     entry_type=entry_type_basic.name,
 ///     project="1111111111111")
 /// basic_entry_link = gcp.dataplex.EntryLink("basic_entry_link",
 ///     project="1111111111111",
 ///     location="us-central1",
 ///     entry_group_id=entry_group_basic.entry_group_id,
-///     entry_link_id="tf-test-entry-link_75092",
+///     entry_link_id="tf-test-entry-link_64612",
 ///     entry_link_type="projects/655216118709/locations/global/entryLinkTypes/related",
 ///     entry_references=[
 ///         {
@@ -111,13 +111,13 @@ import 'entry_link_state.dart';
 ///     var entry_group_basic = new Gcp.DataPlex.EntryGroup("entry-group-basic", new()
 ///     {
 ///         Location = "us-central1",
-///         EntryGroupId = "tf-test-entry-group_9106",
+///         EntryGroupId = "tf-test-entry-group_12125",
 ///         Project = "1111111111111",
 ///     });
 ///
 ///     var entry_type_basic = new Gcp.DataPlex.EntryType("entry-type-basic", new()
 ///     {
-///         EntryTypeId = "tf-test-entry-type_75223",
+///         EntryTypeId = "tf-test-entry-type_15022",
 ///         Location = "us-central1",
 ///         Project = "1111111111111",
 ///     });
@@ -126,7 +126,7 @@ import 'entry_link_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         EntryGroupId = entry_group_basic.EntryGroupId,
-///         EntryId = "tf-test-source-entry_27169",
+///         EntryId = "tf-test-source-entry_82749",
 ///         EntryType = entry_type_basic.Name,
 ///         Project = "1111111111111",
 ///     });
@@ -135,7 +135,7 @@ import 'entry_link_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         EntryGroupId = entry_group_basic.EntryGroupId,
-///         EntryId = "tf-test-target-entry_41819",
+///         EntryId = "tf-test-target-entry_89648",
 ///         EntryType = entry_type_basic.Name,
 ///         Project = "1111111111111",
 ///     });
@@ -145,7 +145,7 @@ import 'entry_link_state.dart';
 ///         Project = "1111111111111",
 ///         Location = "us-central1",
 ///         EntryGroupId = entry_group_basic.EntryGroupId,
-///         EntryLinkId = "tf-test-entry-link_75092",
+///         EntryLinkId = "tf-test-entry-link_64612",
 ///         EntryLinkType = "projects/655216118709/locations/global/entryLinkTypes/related",
 ///         EntryReferences = new[]
 ///         {
@@ -174,14 +174,14 @@ import 'entry_link_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		entry_group_basic, err := dataplex.NewEntryGroup(ctx, "entry-group-basic", &dataplex.EntryGroupArgs{
 /// 			Location:     pulumi.String("us-central1"),
-/// 			EntryGroupId: pulumi.String("tf-test-entry-group_9106"),
+/// 			EntryGroupId: pulumi.String("tf-test-entry-group_12125"),
 /// 			Project:      pulumi.String("1111111111111"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		entry_type_basic, err := dataplex.NewEntryType(ctx, "entry-type-basic", &dataplex.EntryTypeArgs{
-/// 			EntryTypeId: pulumi.String("tf-test-entry-type_75223"),
+/// 			EntryTypeId: pulumi.String("tf-test-entry-type_15022"),
 /// 			Location:    pulumi.String("us-central1"),
 /// 			Project:     pulumi.String("1111111111111"),
 /// 		})
@@ -191,7 +191,7 @@ import 'entry_link_state.dart';
 /// 		source, err := dataplex.NewEntry(ctx, "source", &dataplex.EntryArgs{
 /// 			Location:     pulumi.String("us-central1"),
 /// 			EntryGroupId: entry_group_basic.EntryGroupId,
-/// 			EntryId:      pulumi.String("tf-test-source-entry_27169"),
+/// 			EntryId:      pulumi.String("tf-test-source-entry_82749"),
 /// 			EntryType:    entry_type_basic.Name,
 /// 			Project:      pulumi.String("1111111111111"),
 /// 		})
@@ -201,7 +201,7 @@ import 'entry_link_state.dart';
 /// 		target, err := dataplex.NewEntry(ctx, "target", &dataplex.EntryArgs{
 /// 			Location:     pulumi.String("us-central1"),
 /// 			EntryGroupId: entry_group_basic.EntryGroupId,
-/// 			EntryId:      pulumi.String("tf-test-target-entry_41819"),
+/// 			EntryId:      pulumi.String("tf-test-target-entry_89648"),
 /// 			EntryType:    entry_type_basic.Name,
 /// 			Project:      pulumi.String("1111111111111"),
 /// 		})
@@ -212,7 +212,7 @@ import 'entry_link_state.dart';
 /// 			Project:       pulumi.String("1111111111111"),
 /// 			Location:      pulumi.String("us-central1"),
 /// 			EntryGroupId:  entry_group_basic.EntryGroupId,
-/// 			EntryLinkId:   pulumi.String("tf-test-entry-link_75092"),
+/// 			EntryLinkId:   pulumi.String("tf-test-entry-link_64612"),
 /// 			EntryLinkType: pulumi.String("projects/655216118709/locations/global/entryLinkTypes/related"),
 /// 			EntryReferences: dataplex.EntryLinkEntryReferenceArray{
 /// 				&dataplex.EntryLinkEntryReferenceArgs{
@@ -230,6 +230,53 @@ import 'entry_link_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_entrygroup" "entry-group-basic" {
+///   location       = "us-central1"
+///   entry_group_id = "tf-test-entry-group_12125"
+///   project        = "1111111111111"
+/// }
+/// resource "gcp_dataplex_entry" "source" {
+///   location       = "us-central1"
+///   entry_group_id = gcp_dataplex_entrygroup.entry-group-basic.entry_group_id
+///   entry_id       = "tf-test-source-entry_82749"
+///   entry_type     = gcp_dataplex_entrytype.entry-type-basic.name
+///   project        = "1111111111111"
+/// }
+/// resource "gcp_dataplex_entrytype" "entry-type-basic" {
+///   entry_type_id = "tf-test-entry-type_15022"
+///   location      = "us-central1"
+///   project       = "1111111111111"
+/// }
+/// resource "gcp_dataplex_entry" "target" {
+///   location       = "us-central1"
+///   entry_group_id = gcp_dataplex_entrygroup.entry-group-basic.entry_group_id
+///   entry_id       = "tf-test-target-entry_89648"
+///   entry_type     = gcp_dataplex_entrytype.entry-type-basic.name
+///   project        = "1111111111111"
+/// }
+/// resource "gcp_dataplex_entrylink" "basic_entry_link" {
+///   project         = "1111111111111"
+///   location        = "us-central1"
+///   entry_group_id  = gcp_dataplex_entrygroup.entry-group-basic.entry_group_id
+///   entry_link_id   = "tf-test-entry-link_64612"
+///   entry_link_type = "projects/655216118709/locations/global/entryLinkTypes/related"
+///   entry_references {
+///     name = gcp_dataplex_entry.source.name
+///   }
+///   entry_references {
+///     name = gcp_dataplex_entry.target.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +292,8 @@ import 'entry_link_state.dart';
 /// import com.pulumi.gcp.dataplex.EntryLink;
 /// import com.pulumi.gcp.dataplex.EntryLinkArgs;
 /// import com.pulumi.gcp.dataplex.inputs.EntryLinkEntryReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,12 +307,12 @@ import 'entry_link_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var entry_group_basic = new EntryGroup("entry-group-basic", EntryGroupArgs.builder()
 ///             .location("us-central1")
-///             .entryGroupId("tf-test-entry-group_9106")
+///             .entryGroupId("tf-test-entry-group_12125")
 ///             .project("1111111111111")
 ///             .build());
 ///
 ///         var entry_type_basic = new EntryType("entry-type-basic", EntryTypeArgs.builder()
-///             .entryTypeId("tf-test-entry-type_75223")
+///             .entryTypeId("tf-test-entry-type_15022")
 ///             .location("us-central1")
 ///             .project("1111111111111")
 ///             .build());
@@ -273,7 +320,7 @@ import 'entry_link_state.dart';
 ///         var source = new Entry("source", EntryArgs.builder()
 ///             .location("us-central1")
 ///             .entryGroupId(entry_group_basic.entryGroupId())
-///             .entryId("tf-test-source-entry_27169")
+///             .entryId("tf-test-source-entry_82749")
 ///             .entryType(entry_type_basic.name())
 ///             .project("1111111111111")
 ///             .build());
@@ -281,7 +328,7 @@ import 'entry_link_state.dart';
 ///         var target = new Entry("target", EntryArgs.builder()
 ///             .location("us-central1")
 ///             .entryGroupId(entry_group_basic.entryGroupId())
-///             .entryId("tf-test-target-entry_41819")
+///             .entryId("tf-test-target-entry_89648")
 ///             .entryType(entry_type_basic.name())
 ///             .project("1111111111111")
 ///             .build());
@@ -290,7 +337,7 @@ import 'entry_link_state.dart';
 ///             .project("1111111111111")
 ///             .location("us-central1")
 ///             .entryGroupId(entry_group_basic.entryGroupId())
-///             .entryLinkId("tf-test-entry-link_75092")
+///             .entryLinkId("tf-test-entry-link_64612")
 ///             .entryLinkType("projects/655216118709/locations/global/entryLinkTypes/related")
 ///             .entryReferences(
 ///                 EntryLinkEntryReferenceArgs.builder()
@@ -310,20 +357,20 @@ import 'entry_link_state.dart';
 ///     type: gcp:dataplex:EntryGroup
 ///     properties:
 ///       location: us-central1
-///       entryGroupId: tf-test-entry-group_9106
+///       entryGroupId: tf-test-entry-group_12125
 ///       project: '1111111111111'
 ///   source:
 ///     type: gcp:dataplex:Entry
 ///     properties:
 ///       location: us-central1
 ///       entryGroupId: ${["entry-group-basic"].entryGroupId}
-///       entryId: tf-test-source-entry_27169
+///       entryId: tf-test-source-entry_82749
 ///       entryType: ${["entry-type-basic"].name}
 ///       project: '1111111111111'
 ///   entry-type-basic:
 ///     type: gcp:dataplex:EntryType
 ///     properties:
-///       entryTypeId: tf-test-entry-type_75223
+///       entryTypeId: tf-test-entry-type_15022
 ///       location: us-central1
 ///       project: '1111111111111'
 ///   target:
@@ -331,7 +378,7 @@ import 'entry_link_state.dart';
 ///     properties:
 ///       location: us-central1
 ///       entryGroupId: ${["entry-group-basic"].entryGroupId}
-///       entryId: tf-test-target-entry_41819
+///       entryId: tf-test-target-entry_89648
 ///       entryType: ${["entry-type-basic"].name}
 ///       project: '1111111111111'
 ///   basicEntryLink:
@@ -341,7 +388,7 @@ import 'entry_link_state.dart';
 ///       project: '1111111111111'
 ///       location: us-central1
 ///       entryGroupId: ${["entry-group-basic"].entryGroupId}
-///       entryLinkId: tf-test-entry-link_75092
+///       entryLinkId: tf-test-entry-link_64612
 ///       entryLinkType: projects/655216118709/locations/global/entryLinkTypes/related
 ///       entryReferences:
 ///         - name: ${source.name}
@@ -355,44 +402,49 @@ import 'entry_link_state.dart';
 /// ```typescript
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
+/// import * as time from "@pulumiverse/time";
 ///
 /// const entry_group_full = new gcp.dataplex.EntryGroup("entry-group-full", {
 ///     location: "us-central1",
-///     entryGroupId: "tf-test-entry-group_2605",
+///     entryGroupId: "tf-test-entry-group_34242",
 ///     project: "1111111111111",
 /// });
 /// const entry_type_full = new gcp.dataplex.EntryType("entry-type-full", {
-///     entryTypeId: "tf-test-entry-type_22375",
+///     entryTypeId: "tf-test-entry-type_22061",
 ///     location: "us-central1",
 ///     project: "1111111111111",
 /// });
 /// const source = new gcp.dataplex.Entry("source", {
 ///     location: "us-central1",
 ///     entryGroupId: entry_group_full.entryGroupId,
-///     entryId: "tf-test-source-entry_34535",
+///     entryId: "tf-test-source-entry_9723",
 ///     entryType: entry_type_full.name,
 ///     project: "1111111111111",
 /// });
 /// const termTestIdFull = new gcp.dataplex.Glossary("term_test_id_full", {
-///     glossaryId: "tf-test-glossary_29439",
+///     glossaryId: "tf-test-glossary_60461",
 ///     location: "us-central1",
 /// });
 /// const termTestIdFullGlossaryTerm = new gcp.dataplex.GlossaryTerm("term_test_id_full", {
 ///     parent: pulumi.interpolate`projects/${termTestIdFull.project}/locations/us-central1/glossaries/${termTestIdFull.glossaryId}`,
 ///     glossaryId: termTestIdFull.glossaryId,
 ///     location: "us-central1",
-///     termId: "tf-test-term-full_87786",
+///     termId: "tf-test-term-full_45397",
 ///     labels: {
 ///         tag: "test-tf",
 ///     },
 ///     displayName: "terraform term",
 ///     description: "term created by Terraform",
 /// });
+/// // Introduce a 45-second wait after the glossary resource creation
+/// const wait_for_sync = new time.Sleep("wait-for-sync", {createDuration: "45s"}, {
+///     dependsOn: [termTestIdFullGlossaryTerm],
+/// });
 /// const fullEntryLink = new gcp.dataplex.EntryLink("full_entry_link", {
 ///     project: "1111111111111",
 ///     location: "us-central1",
 ///     entryGroupId: entry_group_full.entryGroupId,
-///     entryLinkId: "tf-test-entry-link_2067",
+///     entryLinkId: "tf-test-entry-link_16451",
 ///     entryLinkType: "projects/655216118709/locations/global/entryLinkTypes/definition",
 ///     entryReferences: [
 ///         {
@@ -401,32 +453,35 @@ import 'entry_link_state.dart';
 ///             path: "",
 ///         },
 ///         {
-///             name: pulumi.all([entry_group_full.project, entry_group_full.project, termTestIdFull.glossaryId, termTestIdFullGlossaryTerm.termId]).apply(([entry-group-fullProject, entry-group-fullProject1, glossaryId, termId]) => `projects/${entry_group_fullProject}/locations/us-central1/entryGroups/@dataplex/entries/projects/${entry_group_fullProject1}/locations/us-central1/glossaries/${glossaryId}/terms/${termId}`),
+///             name: pulumi.interpolate`projects/${entry_group_full.project}/locations/us-central1/entryGroups/@dataplex/entries/projects/${entry_group_full.project}/locations/us-central1/glossaries/${termTestIdFull.glossaryId}/terms/${termTestIdFullGlossaryTerm.termId}`,
 ///             type: "TARGET",
 ///         },
 ///     ],
+/// }, {
+///     dependsOn: [wait_for_sync],
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_gcp as gcp
+/// import pulumiverse_time as time
 ///
 /// entry_group_full = gcp.dataplex.EntryGroup("entry-group-full",
 ///     location="us-central1",
-///     entry_group_id="tf-test-entry-group_2605",
+///     entry_group_id="tf-test-entry-group_34242",
 ///     project="1111111111111")
 /// entry_type_full = gcp.dataplex.EntryType("entry-type-full",
-///     entry_type_id="tf-test-entry-type_22375",
+///     entry_type_id="tf-test-entry-type_22061",
 ///     location="us-central1",
 ///     project="1111111111111")
 /// source = gcp.dataplex.Entry("source",
 ///     location="us-central1",
 ///     entry_group_id=entry_group_full.entry_group_id,
-///     entry_id="tf-test-source-entry_34535",
+///     entry_id="tf-test-source-entry_9723",
 ///     entry_type=entry_type_full.name,
 ///     project="1111111111111")
 /// term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
-///     glossary_id="tf-test-glossary_29439",
+///     glossary_id="tf-test-glossary_60461",
 ///     location="us-central1")
 /// term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
 ///     parent=pulumi.Output.all(
@@ -436,17 +491,20 @@ import 'entry_link_state.dart';
 /// ,
 ///     glossary_id=term_test_id_full.glossary_id,
 ///     location="us-central1",
-///     term_id="tf-test-term-full_87786",
+///     term_id="tf-test-term-full_45397",
 ///     labels={
 ///         "tag": "test-tf",
 ///     },
 ///     display_name="terraform term",
 ///     description="term created by Terraform")
+/// # Introduce a 45-second wait after the glossary resource creation
+/// wait_for_sync = time.Sleep("wait-for-sync", create_duration="45s",
+/// opts = pulumi.ResourceOptions(depends_on=[term_test_id_full_glossary_term]))
 /// full_entry_link = gcp.dataplex.EntryLink("full_entry_link",
 ///     project="1111111111111",
 ///     location="us-central1",
 ///     entry_group_id=entry_group_full.entry_group_id,
-///     entry_link_id="tf-test-entry-link_2067",
+///     entry_link_id="tf-test-entry-link_16451",
 ///     entry_link_type="projects/655216118709/locations/global/entryLinkTypes/definition",
 ///     entry_references=[
 ///         {
@@ -456,34 +514,35 @@ import 'entry_link_state.dart';
 ///         },
 ///         {
 ///             "name": pulumi.Output.all(
-///                 entry-group-fullProject=entry_group_full.project,
-///                 entry-group-fullProject1=entry_group_full.project,
+///                 project=entry_group_full.project,
 ///                 glossary_id=term_test_id_full.glossary_id,
 ///                 term_id=term_test_id_full_glossary_term.term_id
-/// ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['entry-group-fullProject']}/locations/us-central1/entryGroups/@dataplex/entries/projects/{resolved_outputs['entry-group-fullProject1']}/locations/us-central1/glossaries/{resolved_outputs['glossary_id']}/terms/{resolved_outputs['term_id']}")
+/// ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us-central1/entryGroups/@dataplex/entries/projects/{resolved_outputs['project']}/locations/us-central1/glossaries/{resolved_outputs['glossary_id']}/terms/{resolved_outputs['term_id']}")
 /// ,
 ///             "type": "TARGET",
 ///         },
-///     ])
+///     ],
+///     opts = pulumi.ResourceOptions(depends_on=[wait_for_sync]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
 /// using Pulumi;
 /// using Gcp = Pulumi.Gcp;
+/// using Time = Pulumiverse.Time;
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
 ///     var entry_group_full = new Gcp.DataPlex.EntryGroup("entry-group-full", new()
 ///     {
 ///         Location = "us-central1",
-///         EntryGroupId = "tf-test-entry-group_2605",
+///         EntryGroupId = "tf-test-entry-group_34242",
 ///         Project = "1111111111111",
 ///     });
 ///
 ///     var entry_type_full = new Gcp.DataPlex.EntryType("entry-type-full", new()
 ///     {
-///         EntryTypeId = "tf-test-entry-type_22375",
+///         EntryTypeId = "tf-test-entry-type_22061",
 ///         Location = "us-central1",
 ///         Project = "1111111111111",
 ///     });
@@ -492,14 +551,14 @@ import 'entry_link_state.dart';
 ///     {
 ///         Location = "us-central1",
 ///         EntryGroupId = entry_group_full.EntryGroupId,
-///         EntryId = "tf-test-source-entry_34535",
+///         EntryId = "tf-test-source-entry_9723",
 ///         EntryType = entry_type_full.Name,
 ///         Project = "1111111111111",
 ///     });
 ///
 ///     var termTestIdFull = new Gcp.DataPlex.Glossary("term_test_id_full", new()
 ///     {
-///         GlossaryId = "tf-test-glossary_29439",
+///         GlossaryId = "tf-test-glossary_60461",
 ///         Location = "us-central1",
 ///     });
 ///
@@ -513,7 +572,7 @@ import 'entry_link_state.dart';
 ///         }),
 ///         GlossaryId = termTestIdFull.GlossaryId,
 ///         Location = "us-central1",
-///         TermId = "tf-test-term-full_87786",
+///         TermId = "tf-test-term-full_45397",
 ///         Labels =
 ///         {
 ///             { "tag", "test-tf" },
@@ -522,12 +581,24 @@ import 'entry_link_state.dart';
 ///         Description = "term created by Terraform",
 ///     });
 ///
+///     // Introduce a 45-second wait after the glossary resource creation
+///     var wait_for_sync = new Time.Sleep("wait-for-sync", new()
+///     {
+///         CreateDuration = "45s",
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             termTestIdFullGlossaryTerm,
+///         },
+///     });
+///
 ///     var fullEntryLink = new Gcp.DataPlex.EntryLink("full_entry_link", new()
 ///     {
 ///         Project = "1111111111111",
 ///         Location = "us-central1",
 ///         EntryGroupId = entry_group_full.EntryGroupId,
-///         EntryLinkId = "tf-test-entry-link_2067",
+///         EntryLinkId = "tf-test-entry-link_16451",
 ///         EntryLinkType = "projects/655216118709/locations/global/entryLinkTypes/definition",
 ///         EntryReferences = new[]
 ///         {
@@ -539,16 +610,21 @@ import 'entry_link_state.dart';
 ///             },
 ///             new Gcp.DataPlex.Inputs.EntryLinkEntryReferenceArgs
 ///             {
-///                 Name = Output.Tuple(entry_group_full.Project, entry_group_full.Project, termTestIdFull.GlossaryId, termTestIdFullGlossaryTerm.TermId).Apply(values =>
+///                 Name = Output.Tuple(entry_group_full.Project, termTestIdFull.GlossaryId, termTestIdFullGlossaryTerm.TermId).Apply(values =>
 ///                 {
-///                     var entry-group-fullProject = values.Item1;
-///                     var entry-group-fullProject1 = values.Item2;
-///                     var glossaryId = values.Item3;
-///                     var termId = values.Item4;
-///                     return $"projects/{entry_group_fullProject}/locations/us-central1/entryGroups/@dataplex/entries/projects/{entry_group_fullProject1}/locations/us-central1/glossaries/{glossaryId}/terms/{termId}";
+///                     var project = values.Item1;
+///                     var glossaryId = values.Item2;
+///                     var termId = values.Item3;
+///                     return $"projects/{project}/locations/us-central1/entryGroups/@dataplex/entries/projects/{project}/locations/us-central1/glossaries/{glossaryId}/terms/{termId}";
 ///                 }),
 ///                 Type = "TARGET",
 ///             },
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             wait_for_sync,
 ///         },
 ///     });
 ///
@@ -562,20 +638,21 @@ import 'entry_link_state.dart';
 ///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		entry_group_full, err := dataplex.NewEntryGroup(ctx, "entry-group-full", &dataplex.EntryGroupArgs{
 /// 			Location:     pulumi.String("us-central1"),
-/// 			EntryGroupId: pulumi.String("tf-test-entry-group_2605"),
+/// 			EntryGroupId: pulumi.String("tf-test-entry-group_34242"),
 /// 			Project:      pulumi.String("1111111111111"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		entry_type_full, err := dataplex.NewEntryType(ctx, "entry-type-full", &dataplex.EntryTypeArgs{
-/// 			EntryTypeId: pulumi.String("tf-test-entry-type_22375"),
+/// 			EntryTypeId: pulumi.String("tf-test-entry-type_22061"),
 /// 			Location:    pulumi.String("us-central1"),
 /// 			Project:     pulumi.String("1111111111111"),
 /// 		})
@@ -585,7 +662,7 @@ import 'entry_link_state.dart';
 /// 		source, err := dataplex.NewEntry(ctx, "source", &dataplex.EntryArgs{
 /// 			Location:     pulumi.String("us-central1"),
 /// 			EntryGroupId: entry_group_full.EntryGroupId,
-/// 			EntryId:      pulumi.String("tf-test-source-entry_34535"),
+/// 			EntryId:      pulumi.String("tf-test-source-entry_9723"),
 /// 			EntryType:    entry_type_full.Name,
 /// 			Project:      pulumi.String("1111111111111"),
 /// 		})
@@ -593,7 +670,7 @@ import 'entry_link_state.dart';
 /// 			return err
 /// 		}
 /// 		termTestIdFull, err := dataplex.NewGlossary(ctx, "term_test_id_full", &dataplex.GlossaryArgs{
-/// 			GlossaryId: pulumi.String("tf-test-glossary_29439"),
+/// 			GlossaryId: pulumi.String("tf-test-glossary_60461"),
 /// 			Location:   pulumi.String("us-central1"),
 /// 		})
 /// 		if err != nil {
@@ -607,7 +684,7 @@ import 'entry_link_state.dart';
 /// 			}).(pulumi.StringOutput),
 /// 			GlossaryId: termTestIdFull.GlossaryId,
 /// 			Location:   pulumi.String("us-central1"),
-/// 			TermId:     pulumi.String("tf-test-term-full_87786"),
+/// 			TermId:     pulumi.String("tf-test-term-full_45397"),
 /// 			Labels: pulumi.StringMap{
 /// 				"tag": pulumi.String("test-tf"),
 /// 			},
@@ -617,11 +694,20 @@ import 'entry_link_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
+/// 		// Introduce a 45-second wait after the glossary resource creation
+/// 		wait_for_sync, err := time.NewSleep(ctx, "wait-for-sync", &time.SleepArgs{
+/// 			CreateDuration: pulumi.String("45s"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			termTestIdFullGlossaryTerm,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
 /// 		_, err = dataplex.NewEntryLink(ctx, "full_entry_link", &dataplex.EntryLinkArgs{
 /// 			Project:       pulumi.String("1111111111111"),
 /// 			Location:      pulumi.String("us-central1"),
 /// 			EntryGroupId:  entry_group_full.EntryGroupId,
-/// 			EntryLinkId:   pulumi.String("tf-test-entry-link_2067"),
+/// 			EntryLinkId:   pulumi.String("tf-test-entry-link_16451"),
 /// 			EntryLinkType: pulumi.String("projects/655216118709/locations/global/entryLinkTypes/definition"),
 /// 			EntryReferences: dataplex.EntryLinkEntryReferenceArray{
 /// 				&dataplex.EntryLinkEntryReferenceArgs{
@@ -630,22 +716,90 @@ import 'entry_link_state.dart';
 /// 					Path: pulumi.String(""),
 /// 				},
 /// 				&dataplex.EntryLinkEntryReferenceArgs{
-/// 					Name: pulumi.All(entry_group_full.Project, entry_group_full.Project, termTestIdFull.GlossaryId, termTestIdFullGlossaryTerm.TermId).ApplyT(func(_args []interface{}) (string, error) {
-/// 						entry - group - fullProject := _args[0].(string)
-/// 						entry - group - fullProject1 := _args[1].(string)
-/// 						glossaryId := _args[2].(string)
-/// 						termId := _args[3].(*string)
-/// 						return fmt.Sprintf("projects/%v/locations/us-central1/entryGroups/@dataplex/entries/projects/%v/locations/us-central1/glossaries/%v/terms/%v", entry_group_fullProject, entry_group_fullProject1, glossaryId, termId), nil
+/// 					Name: pulumi.All(entry_group_full.Project, termTestIdFull.GlossaryId, termTestIdFullGlossaryTerm.TermId).ApplyT(func(_args []interface{}) (string, error) {
+/// 						project := _args[0].(string)
+/// 						glossaryId := _args[1].(string)
+/// 						termId := _args[2].(*string)
+/// 						return fmt.Sprintf("projects/%v/locations/us-central1/entryGroups/@dataplex/entries/projects/%v/locations/us-central1/glossaries/%v/terms/%v", project, project, glossaryId, termId), nil
 /// 					}).(pulumi.StringOutput),
 /// 					Type: pulumi.String("TARGET"),
 /// 				},
 /// 			},
-/// 		})
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			wait_for_sync,
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_entrygroup" "entry-group-full" {
+///   location       = "us-central1"
+///   entry_group_id = "tf-test-entry-group_34242"
+///   project        = "1111111111111"
+/// }
+/// resource "gcp_dataplex_entry" "source" {
+///   location       = "us-central1"
+///   entry_group_id = gcp_dataplex_entrygroup.entry-group-full.entry_group_id
+///   entry_id       = "tf-test-source-entry_9723"
+///   entry_type     = gcp_dataplex_entrytype.entry-type-full.name
+///   project        = "1111111111111"
+/// }
+/// resource "gcp_dataplex_entrytype" "entry-type-full" {
+///   entry_type_id = "tf-test-entry-type_22061"
+///   location      = "us-central1"
+///   project       = "1111111111111"
+/// }
+/// resource "gcp_dataplex_glossary" "term_test_id_full" {
+///   glossary_id = "tf-test-glossary_60461"
+///   location    = "us-central1"
+/// }
+/// resource "gcp_dataplex_glossaryterm" "term_test_id_full" {
+///   parent      ="projects/${gcp_dataplex_glossary.term_test_id_full.project}/locations/us-central1/glossaries/${gcp_dataplex_glossary.term_test_id_full.glossary_id}"
+///   glossary_id = gcp_dataplex_glossary.term_test_id_full.glossary_id
+///   location    = "us-central1"
+///   term_id     = "tf-test-term-full_45397"
+///   labels = {
+///     "tag" = "test-tf"
+///   }
+///   display_name = "terraform term"
+///   description  = "term created by Terraform"
+/// }
+/// # Introduce a 45-second wait after the glossary resource creation
+/// resource "time_sleep" "wait-for-sync" {
+///   depends_on      = [gcp_dataplex_glossaryterm.term_test_id_full]
+///   create_duration = "45s"
+/// }
+/// resource "gcp_dataplex_entrylink" "full_entry_link" {
+///   depends_on      = [time_sleep.wait-for-sync]
+///   project         = "1111111111111"
+///   location        = "us-central1"
+///   entry_group_id  = gcp_dataplex_entrygroup.entry-group-full.entry_group_id
+///   entry_link_id   = "tf-test-entry-link_16451"
+///   entry_link_type = "projects/655216118709/locations/global/entryLinkTypes/definition"
+///   entry_references {
+///     name = gcp_dataplex_entry.source.name
+///     type = "SOURCE"
+///     path = ""
+///   }
+///   entry_references {
+///     name ="projects/${gcp_dataplex_entrygroup.entry-group-full.project}/locations/us-central1/entryGroups/@dataplex/entries/projects/${gcp_dataplex_entrygroup.entry-group-full.project}/locations/us-central1/glossaries/${gcp_dataplex_glossary.term_test_id_full.glossary_id}/terms/${gcp_dataplex_glossaryterm.term_test_id_full.term_id}"
+///     type = "TARGET"
+///   }
 /// }
 /// ```
 /// ```java
@@ -664,11 +818,14 @@ import 'entry_link_state.dart';
 /// import com.pulumi.gcp.dataplex.GlossaryArgs;
 /// import com.pulumi.gcp.dataplex.GlossaryTerm;
 /// import com.pulumi.gcp.dataplex.GlossaryTermArgs;
+/// import com.pulumiverse.time.Sleep;
+/// import com.pulumiverse.time.SleepArgs;
 /// import com.pulumi.gcp.dataplex.EntryLink;
 /// import com.pulumi.gcp.dataplex.EntryLinkArgs;
 /// import com.pulumi.gcp.dataplex.inputs.EntryLinkEntryReferenceArgs;
-/// import java.util.List;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -682,12 +839,12 @@ import 'entry_link_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var entry_group_full = new EntryGroup("entry-group-full", EntryGroupArgs.builder()
 ///             .location("us-central1")
-///             .entryGroupId("tf-test-entry-group_2605")
+///             .entryGroupId("tf-test-entry-group_34242")
 ///             .project("1111111111111")
 ///             .build());
 ///
 ///         var entry_type_full = new EntryType("entry-type-full", EntryTypeArgs.builder()
-///             .entryTypeId("tf-test-entry-type_22375")
+///             .entryTypeId("tf-test-entry-type_22061")
 ///             .location("us-central1")
 ///             .project("1111111111111")
 ///             .build());
@@ -695,13 +852,13 @@ import 'entry_link_state.dart';
 ///         var source = new Entry("source", EntryArgs.builder()
 ///             .location("us-central1")
 ///             .entryGroupId(entry_group_full.entryGroupId())
-///             .entryId("tf-test-source-entry_34535")
+///             .entryId("tf-test-source-entry_9723")
 ///             .entryType(entry_type_full.name())
 ///             .project("1111111111111")
 ///             .build());
 ///
 ///         var termTestIdFull = new Glossary("termTestIdFull", GlossaryArgs.builder()
-///             .glossaryId("tf-test-glossary_29439")
+///             .glossaryId("tf-test-glossary_60461")
 ///             .location("us-central1")
 ///             .build());
 ///
@@ -713,17 +870,24 @@ import 'entry_link_state.dart';
 ///             }))
 ///             .glossaryId(termTestIdFull.glossaryId())
 ///             .location("us-central1")
-///             .termId("tf-test-term-full_87786")
+///             .termId("tf-test-term-full_45397")
 ///             .labels(Map.of("tag", "test-tf"))
 ///             .displayName("terraform term")
 ///             .description("term created by Terraform")
 ///             .build());
 ///
+///         // Introduce a 45-second wait after the glossary resource creation
+///         var wait_for_sync = new Sleep("wait-for-sync", SleepArgs.builder()
+///             .createDuration("45s")
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(termTestIdFullGlossaryTerm)
+///                 .build());
+///
 ///         var fullEntryLink = new EntryLink("fullEntryLink", EntryLinkArgs.builder()
 ///             .project("1111111111111")
 ///             .location("us-central1")
 ///             .entryGroupId(entry_group_full.entryGroupId())
-///             .entryLinkId("tf-test-entry-link_2067")
+///             .entryLinkId("tf-test-entry-link_16451")
 ///             .entryLinkType("projects/655216118709/locations/global/entryLinkTypes/definition")
 ///             .entryReferences(
 ///                 EntryLinkEntryReferenceArgs.builder()
@@ -732,16 +896,17 @@ import 'entry_link_state.dart';
 ///                     .path("")
 ///                     .build(),
 ///                 EntryLinkEntryReferenceArgs.builder()
-///                     .name(Output.tuple(entry_group_full.project(), entry_group_full.project(), termTestIdFull.glossaryId(), termTestIdFullGlossaryTerm.termId()).applyValue(values -> {
-///                         var entry-group-fullProject = values.t1;
-///                         var entry-group-fullProject1 = values.t2;
-///                         var glossaryId = values.t3;
-///                         var termId = values.t4;
-///                         return String.format("projects/%s/locations/us-central1/entryGroups/@dataplex/entries/projects/%s/locations/us-central1/glossaries/%s/terms/%s", entry_group_fullProject,entry_group_fullProject1,glossaryId,termId);
+///                     .name(Output.tuple(entry_group_full.project(), termTestIdFull.glossaryId(), termTestIdFullGlossaryTerm.termId()).applyValue(values -> {
+///                         var project = values.t1;
+///                         var glossaryId = values.t2;
+///                         var termId = values.t3;
+///                         return String.format("projects/%s/locations/us-central1/entryGroups/@dataplex/entries/projects/%s/locations/us-central1/glossaries/%s/terms/%s", project,project,glossaryId,termId);
 ///                     }))
 ///                     .type("TARGET")
 ///                     .build())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(wait_for_sync)
+///                 .build());
 ///
 ///     }
 /// }
@@ -752,27 +917,27 @@ import 'entry_link_state.dart';
 ///     type: gcp:dataplex:EntryGroup
 ///     properties:
 ///       location: us-central1
-///       entryGroupId: tf-test-entry-group_2605
+///       entryGroupId: tf-test-entry-group_34242
 ///       project: '1111111111111'
 ///   source:
 ///     type: gcp:dataplex:Entry
 ///     properties:
 ///       location: us-central1
 ///       entryGroupId: ${["entry-group-full"].entryGroupId}
-///       entryId: tf-test-source-entry_34535
+///       entryId: tf-test-source-entry_9723
 ///       entryType: ${["entry-type-full"].name}
 ///       project: '1111111111111'
 ///   entry-type-full:
 ///     type: gcp:dataplex:EntryType
 ///     properties:
-///       entryTypeId: tf-test-entry-type_22375
+///       entryTypeId: tf-test-entry-type_22061
 ///       location: us-central1
 ///       project: '1111111111111'
 ///   termTestIdFull:
 ///     type: gcp:dataplex:Glossary
 ///     name: term_test_id_full
 ///     properties:
-///       glossaryId: tf-test-glossary_29439
+///       glossaryId: tf-test-glossary_60461
 ///       location: us-central1
 ///   termTestIdFullGlossaryTerm:
 ///     type: gcp:dataplex:GlossaryTerm
@@ -781,11 +946,19 @@ import 'entry_link_state.dart';
 ///       parent: projects/${termTestIdFull.project}/locations/us-central1/glossaries/${termTestIdFull.glossaryId}
 ///       glossaryId: ${termTestIdFull.glossaryId}
 ///       location: us-central1
-///       termId: tf-test-term-full_87786
+///       termId: tf-test-term-full_45397
 ///       labels:
 ///         tag: test-tf
 ///       displayName: terraform term
 ///       description: term created by Terraform
+///   # Introduce a 45-second wait after the glossary resource creation
+///   wait-for-sync:
+///     type: time:Sleep
+///     properties:
+///       createDuration: 45s
+///     options:
+///       dependsOn:
+///         - ${termTestIdFullGlossaryTerm}
 ///   fullEntryLink:
 ///     type: gcp:dataplex:EntryLink
 ///     name: full_entry_link
@@ -793,7 +966,7 @@ import 'entry_link_state.dart';
 ///       project: '1111111111111'
 ///       location: us-central1
 ///       entryGroupId: ${["entry-group-full"].entryGroupId}
-///       entryLinkId: tf-test-entry-link_2067
+///       entryLinkId: tf-test-entry-link_16451
 ///       entryLinkType: projects/655216118709/locations/global/entryLinkTypes/definition
 ///       entryReferences:
 ///         - name: ${source.name}
@@ -801,35 +974,40 @@ import 'entry_link_state.dart';
 ///           path: ""
 ///         - name: projects/${["entry-group-full"].project}/locations/us-central1/entryGroups/@dataplex/entries/projects/${["entry-group-full"].project}/locations/us-central1/glossaries/${termTestIdFull.glossaryId}/terms/${termTestIdFullGlossaryTerm.termId}
 ///           type: TARGET
+///     options:
+///       dependsOn:
+///         - ${["wait-for-sync"]}
 /// ```
-///
 ///
 /// ## Import
 ///
 /// EntryLink can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}/entryLinks/{{entry_link_id}}`
-///
 /// * `{{project}}/{{location}}/{{entry_group_id}}/{{entry_link_id}}`
-///
 /// * `{{location}}/{{entry_group_id}}/{{entry_link_id}}`
+///
 ///
 /// When using the `pulumi import` command, EntryLink can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataplex/entryLink:EntryLink default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}/entryLinks/{{entry_link_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/entryLink:EntryLink default {{project}}/{{location}}/{{entry_group_id}}/{{entry_link_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/entryLink:EntryLink default {{location}}/{{entry_group_id}}/{{entry_link_id}}
 /// ```
 class EntryLink extends pulumi.CustomResource {
+  /// The Aspects attached to the Entry Link.
+  /// Structure is documented below.
+  late final pulumi.Output<List<Map<String, dynamic>>?> aspects;
   /// The time when the Entry Link was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The id of the entry group this entry link is in.
   late final pulumi.Output<String> entryGroupId;
   /// The id of the entry link to create.
@@ -865,7 +1043,9 @@ class EntryLink extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    aspects = registerOutput<List<Map<String, dynamic>>?>('aspects');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     entryGroupId = registerOutput<String>('entryGroupId');
     entryLinkId = registerOutput<String>('entryLinkId');
     entryLinkType = registerOutput<String>('entryLinkType');
@@ -899,7 +1079,9 @@ class EntryLink extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    aspects = registerOutput<List<Map<String, dynamic>>?>('aspects');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     entryGroupId = registerOutput<String>('entryGroupId');
     entryLinkId = registerOutput<String>('entryLinkId');
     entryLinkType = registerOutput<String>('entryLinkType');

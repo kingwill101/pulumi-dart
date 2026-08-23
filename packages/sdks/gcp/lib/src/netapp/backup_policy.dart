@@ -106,6 +106,28 @@ import 'backup_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_netapp_backuppolicy" "test_backup_policy_full" {
+///   name                 = "test-backup-policy-full"
+///   location             = "us-central1"
+///   daily_backup_limit   = 2
+///   weekly_backup_limit  = 1
+///   monthly_backup_limit = 1
+///   description          = "TF test backup schedule"
+///   enabled              = true
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +136,8 @@ import 'backup_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.netapp.BackupPolicy;
 /// import com.pulumi.gcp.netapp.BackupPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -164,22 +186,15 @@ import 'backup_policy_state.dart';
 /// BackupPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, BackupPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default projects/{{project}}/locations/{{location}}/backupPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/backupPolicy:BackupPolicy default {{location}}/{{name}}
 /// ```
 class BackupPolicy extends pulumi.CustomResource {
@@ -189,6 +204,13 @@ class BackupPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Number of daily backups to keep. Note that the minimum daily backup limit is 2.
   late final pulumi.Output<int> dailyBackupLimit;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -199,7 +221,7 @@ class BackupPolicy extends pulumi.CustomResource {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Name of the region for the policy to apply to.
   late final pulumi.Output<String> location;
@@ -235,6 +257,7 @@ class BackupPolicy extends pulumi.CustomResource {
     assignedVolumeCount = registerOutput<int>('assignedVolumeCount');
     createTime = registerOutput<String>('createTime');
     dailyBackupLimit = registerOutput<int>('dailyBackupLimit');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enabled = registerOutput<bool?>('enabled');
@@ -274,6 +297,7 @@ class BackupPolicy extends pulumi.CustomResource {
     assignedVolumeCount = registerOutput<int>('assignedVolumeCount');
     createTime = registerOutput<String>('createTime');
     dailyBackupLimit = registerOutput<int>('dailyBackupLimit');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enabled = registerOutput<bool?>('enabled');

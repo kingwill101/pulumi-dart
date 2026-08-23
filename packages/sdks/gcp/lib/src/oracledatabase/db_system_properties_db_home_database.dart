@@ -42,6 +42,10 @@ class DbSystemPropertiesDbHomeDatabase {
   /// FAILED_ENABLING
   /// FAILED_DISABLING
   final pulumi.Input<String>? opsInsightsStatus;
+  /// The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+  final pulumi.Input<String>? pluggableDatabaseId;
+  /// The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
+  final pulumi.Input<String>? pluggableDatabaseName;
   /// The properties of a Database.
   /// Structure is documented below.
   final pulumi.Input<DbSystemPropertiesDbHomeDatabaseProperties>? properties;
@@ -61,6 +65,8 @@ class DbSystemPropertiesDbHomeDatabase {
   /// [ncharacterSet] The national character set for the database. The default is AL16UTF16.
   /// [ociUrl] (Output)
   /// [opsInsightsStatus] (Output)
+  /// [pluggableDatabaseId] The ID of the pluggable database associated with Database. The ID must be unique within the project and location.
+  /// [pluggableDatabaseName] The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
   /// [properties] The properties of a Database.
   /// [tdeWalletPassword] The TDE wallet password for the database.
   const DbSystemPropertiesDbHomeDatabase({
@@ -76,6 +82,8 @@ class DbSystemPropertiesDbHomeDatabase {
     this.ncharacterSet,
     this.ociUrl,
     this.opsInsightsStatus,
+    this.pluggableDatabaseId,
+    this.pluggableDatabaseName,
     this.properties,
     this.tdeWalletPassword,
   });
@@ -94,6 +102,8 @@ class DbSystemPropertiesDbHomeDatabase {
       'ncharacterSet': ?ncharacterSet,
       'ociUrl': ?ociUrl,
       'opsInsightsStatus': ?opsInsightsStatus,
+      'pluggableDatabaseId': ?pluggableDatabaseId,
+      'pluggableDatabaseName': ?pluggableDatabaseName,
       'properties': ?pulumi.Input.mapOptionalInputValue<DbSystemPropertiesDbHomeDatabaseProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'tdeWalletPassword': ?tdeWalletPassword,
     };
@@ -113,9 +123,10 @@ class DbSystemPropertiesDbHomeDatabase {
       ncharacterSet: (() { final guardedValue = map['ncharacterSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ociUrl: (() { final guardedValue = map['ociUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       opsInsightsStatus: (() { final guardedValue = map['opsInsightsStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pluggableDatabaseId: (() { final guardedValue = map['pluggableDatabaseId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pluggableDatabaseName: (() { final guardedValue = map['pluggableDatabaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DbSystemPropertiesDbHomeDatabaseProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tdeWalletPassword: (() { final guardedValue = map['tdeWalletPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

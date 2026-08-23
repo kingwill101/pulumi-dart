@@ -6,11 +6,11 @@ import 'framework_deployment_target_resource_config_target_resource_creation_con
 
 class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig {
   /// FolderCreationConfig contains the config to create a new folder to be used
-  /// as the target_resource of a deployment.
+  /// as the targetResource of a deployment.
   /// Structure is documented below.
   final pulumi.Input<FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig>? folderCreationConfig;
   /// ProjectCreationConfig contains the config to create a new project to be used
-  /// as the target_resource of a deployment.
+  /// as the targetResource of a deployment.
   /// Structure is documented below.
   final pulumi.Input<FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig>? projectCreationConfig;
 
@@ -36,4 +36,3 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig {
     );
   }
 }
-

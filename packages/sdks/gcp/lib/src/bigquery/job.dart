@@ -192,6 +192,46 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_table" "foo" {
+///   deletion_protection = false
+///   dataset_id          = gcp_bigquery_dataset.bar.dataset_id
+///   table_id            = "job_query_table"
+/// }
+/// resource "gcp_bigquery_dataset" "bar" {
+///   dataset_id    = "job_query_dataset"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "US"
+/// }
+/// resource "gcp_bigquery_job" "job" {
+///   job_id = "job_query"
+///   labels = {
+///     "example-label" = "example-value"
+///   }
+///   query = {
+///     query = "SELECT state FROM [lookerdata:cdc.project_tycho_reports]"
+///     destination_table = {
+///       project_id = gcp_bigquery_table.foo.project
+///       dataset_id = gcp_bigquery_table.foo.dataset_id
+///       table_id   = gcp_bigquery_table.foo.table_id
+///     }
+///     allow_large_results = true
+///     flatten_results     = true
+///     script_options = {
+///       key_result_statement = "LAST"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +247,8 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.bigquery.inputs.JobQueryArgs;
 /// import com.pulumi.gcp.bigquery.inputs.JobQueryDestinationTableArgs;
 /// import com.pulumi.gcp.bigquery.inputs.JobQueryScriptOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -447,10 +487,10 @@ import 'job_state.dart';
 /// 			Query: &bigquery.JobQueryArgs{
 /// 				Query: pulumi.String("SELECT state FROM [lookerdata:cdc.project_tycho_reports]"),
 /// 				DestinationTable: &bigquery.JobQueryDestinationTableArgs{
-/// 					TableId: foo.ID(),
+/// 					TableId: foo.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				DefaultDataset: &bigquery.JobQueryDefaultDatasetArgs{
-/// 					DatasetId: bar.ID(),
+/// 					DatasetId: bar.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				AllowLargeResults: pulumi.Bool(true),
 /// 				FlattenResults:    pulumi.Bool(true),
@@ -464,6 +504,47 @@ import 'job_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_table" "foo" {
+///   deletion_protection = false
+///   dataset_id          = gcp_bigquery_dataset.bar.dataset_id
+///   table_id            = "job_query_table"
+/// }
+/// resource "gcp_bigquery_dataset" "bar" {
+///   dataset_id    = "job_query_dataset"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "US"
+/// }
+/// resource "gcp_bigquery_job" "job" {
+///   job_id = "job_query"
+///   labels = {
+///     "example-label" = "example-value"
+///   }
+///   query = {
+///     query = "SELECT state FROM [lookerdata:cdc.project_tycho_reports]"
+///     destination_table = {
+///       table_id = gcp_bigquery_table.foo.id
+///     }
+///     default_dataset = {
+///       dataset_id = gcp_bigquery_dataset.bar.id
+///     }
+///     allow_large_results = true
+///     flatten_results     = true
+///     script_options = {
+///       key_result_statement = "LAST"
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -482,8 +563,8 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.bigquery.inputs.JobQueryDestinationTableArgs;
 /// import com.pulumi.gcp.bigquery.inputs.JobQueryDefaultDatasetArgs;
 /// import com.pulumi.gcp.bigquery.inputs.JobQueryScriptOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -750,6 +831,45 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_table" "foo" {
+///   deletion_protection = false
+///   dataset_id          = gcp_bigquery_dataset.bar.dataset_id
+///   table_id            = "job_load_table"
+/// }
+/// resource "gcp_bigquery_dataset" "bar" {
+///   dataset_id    = "job_load_dataset"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "US"
+/// }
+/// resource "gcp_bigquery_job" "job" {
+///   job_id = "job_load"
+///   labels = {
+///     "my_job" = "load"
+///   }
+///   load = {
+///     source_uris = ["gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"]
+///     destination_table = {
+///       project_id = gcp_bigquery_table.foo.project
+///       dataset_id = gcp_bigquery_table.foo.dataset_id
+///       table_id   = gcp_bigquery_table.foo.table_id
+///     }
+///     skip_leading_rows     = 1
+///     schema_update_options = ["ALLOW_FIELD_RELAXATION", "ALLOW_FIELD_ADDITION"]
+///     write_disposition     = "WRITE_APPEND"
+///     autodetect            = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -764,8 +884,8 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.bigquery.JobArgs;
 /// import com.pulumi.gcp.bigquery.inputs.JobLoadArgs;
 /// import com.pulumi.gcp.bigquery.inputs.JobLoadDestinationTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1108,6 +1228,59 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        ="${local.project}-bq-geojson"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "object" {
+///   name    = "geojson-data.jsonl"
+///   bucket  = gcp_storage_bucket.bucket.name
+///   content = "{\\\"type\\\":\\\"Feature\\\",\\\"properties\\\":{\\\"continent\\\":\\\"Europe\\\",\\\"region\\\":\\\"Scandinavia\\\"},\\\"geometry\\\":{\\\"type\\\":\\\"Polygon\\\",\\\"coordinates\\\":[[[-30.94,53.33],[33.05,53.33],[33.05,71.86],[-30.94,71.86],[-30.94,53.33]]]}}\n{\\\"type\\\":\\\"Feature\\\",\\\"properties\\\":{\\\"continent\\\":\\\"Africa\\\",\\\"region\\\":\\\"West Africa\\\"},\\\"geometry\\\":{\\\"type\\\":\\\"Polygon\\\",\\\"coordinates\\\":[[[-23.91,0],[11.95,0],[11.95,18.98],[-23.91,18.98],[-23.91,0]]]}}\n"
+/// }
+/// resource "gcp_bigquery_table" "foo" {
+///   deletion_protection = false
+///   dataset_id          = gcp_bigquery_dataset.bar.dataset_id
+///   table_id            = "job_load_table"
+/// }
+/// resource "gcp_bigquery_dataset" "bar" {
+///   dataset_id    = "job_load_dataset"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "US"
+/// }
+/// resource "gcp_bigquery_job" "job" {
+///   depends_on = [gcp_storage_bucketobject.object]
+///   job_id     = "job_load"
+///   labels = {
+///     "my_job" = "load"
+///   }
+///   load = {
+///     source_uris = ["gs://${gcp_storage_bucketobject.object.bucket}/${gcp_storage_bucketobject.object.name}"]
+///     destination_table = {
+///       project_id = gcp_bigquery_table.foo.project
+///       dataset_id = gcp_bigquery_table.foo.dataset_id
+///       table_id   = gcp_bigquery_table.foo.table_id
+///     }
+///     write_disposition = "WRITE_TRUNCATE"
+///     autodetect        = true
+///     source_format     = "NEWLINE_DELIMITED_JSON"
+///     json_extension    = "GEOJSON"
+///   }
+/// }
+/// locals {
+///   project = "my-project-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1127,8 +1300,8 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.bigquery.inputs.JobLoadArgs;
 /// import com.pulumi.gcp.bigquery.inputs.JobLoadDestinationTableArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1517,6 +1690,59 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "test" {
+///   name                        = "job_load_bucket"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "test" {
+///   name   = "job_load_bucket_object"
+///   source = fileAsset("./test-fixtures/test.parquet.gzip")
+///   bucket = gcp_storage_bucket.test.name
+/// }
+/// resource "gcp_bigquery_dataset" "test" {
+///   dataset_id    = "job_load_dataset"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "US"
+/// }
+/// resource "gcp_bigquery_table" "test" {
+///   deletion_protection = false
+///   table_id            = "job_load_table"
+///   dataset_id          = gcp_bigquery_dataset.test.dataset_id
+/// }
+/// resource "gcp_bigquery_job" "job" {
+///   job_id = "job_load"
+///   labels = {
+///     "my_job" = "load"
+///   }
+///   load = {
+///     source_uris = ["gs://${gcp_storage_bucketobject.test.bucket}/${gcp_storage_bucketobject.test.name}"]
+///     destination_table = {
+///       project_id = gcp_bigquery_table.test.project
+///       dataset_id = gcp_bigquery_table.test.dataset_id
+///       table_id   = gcp_bigquery_table.test.table_id
+///     }
+///     schema_update_options = ["ALLOW_FIELD_RELAXATION", "ALLOW_FIELD_ADDITION"]
+///     write_disposition     = "WRITE_APPEND"
+///     source_format         = "PARQUET"
+///     autodetect            = true
+///     parquet_options = {
+///       enum_as_string        = true
+///       enable_list_inference = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1537,8 +1763,8 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.bigquery.inputs.JobLoadDestinationTableArgs;
 /// import com.pulumi.gcp.bigquery.inputs.JobLoadParquetOptionsArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1619,7 +1845,7 @@ import 'job_state.dart';
 ///     properties:
 ///       name: job_load_bucket_object
 ///       source:
-///         fn::FileAsset: ./test-fixtures/test.parquet.gzip
+///         fn::fileAsset: ./test-fixtures/test.parquet.gzip
 ///       bucket: ${test.name}
 ///   testDataset:
 ///     type: gcp:bigquery:Dataset
@@ -1670,19 +1896,19 @@ import 'job_state.dart';
 ///
 /// const count = 2;
 /// const sourceDataset: gcp.bigquery.Dataset[] = [];
-/// for (const range = {value: 0}; range.value < count; range.value++) {
-///     sourceDataset.push(new gcp.bigquery.Dataset(`source-${range.value}`, {
-///         datasetId: `job_copy_${range.value}_dataset`,
+/// for (let range = 0; range < count; range++) {
+///     sourceDataset.push(new gcp.bigquery.Dataset(`source-${range}`, {
+///         datasetId: `job_copy_${range}_dataset`,
 ///         friendlyName: "test",
 ///         description: "This is a test description",
 ///         location: "US",
 ///     }));
 /// }
 /// const source: gcp.bigquery.Table[] = [];
-/// for (const range = {value: 0}; range.value < count; range.value++) {
-///     source.push(new gcp.bigquery.Table(`source-${range.value}`, {
-///         datasetId: sourceDataset[range.value].datasetId,
-///         tableId: `job_copy_${range.value}_table`,
+/// for (let range = 0; range < count; range++) {
+///     source.push(new gcp.bigquery.Table(`source-${range}`, {
+///         datasetId: sourceDataset[range].datasetId,
+///         tableId: `job_copy_${range}_table`,
 ///         deletionProtection: false,
 ///         schema: `[
 ///   {
@@ -1776,21 +2002,22 @@ import 'job_state.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// from typing import Any
 /// import pulumi_gcp as gcp
 ///
 /// count = 2
-/// source_dataset = []
-/// for range in [{"value": i} for i in range(0, count)]:
-///     source_dataset.append(gcp.bigquery.Dataset(f"source-{range['value']}",
-///         dataset_id=f"job_copy_{range['value']}_dataset",
+/// source_dataset: list[gcp.bigquery.Dataset] = []
+/// for source_dataset_range in [{"value": i} for i in range(0, count)]:
+///     source_dataset.append(gcp.bigquery.Dataset(f"source-{source_dataset_range['value']}",
+///         dataset_id=f"job_copy_{source_dataset_range['value']}_dataset",
 ///         friendly_name="test",
 ///         description="This is a test description",
 ///         location="US"))
-/// source = []
-/// for range in [{"value": i} for i in range(0, count)]:
-///     source.append(gcp.bigquery.Table(f"source-{range['value']}",
-///         dataset_id=source_dataset[range["value"]].dataset_id,
-///         table_id=f"job_copy_{range['value']}_table",
+/// source: list[gcp.bigquery.Table] = []
+/// for source_range in [{"value": i} for i in range(0, count)]:
+///     source.append(gcp.bigquery.Table(f"source-{source_range['value']}",
+///         dataset_id=source_dataset[source_range["value"]].dataset_id,
+///         table_id=f"job_copy_{source_range['value']}_table",
 ///         deletion_protection=False,
 ///         schema="""[
 ///   {
@@ -2169,6 +2396,81 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+///   project_id = "my-project-name"
+/// }
+///
+/// resource "gcp_bigquery_table" "source" {
+///   count               = local.count
+///   dataset_id          = gcp_bigquery_dataset.source[count.index].dataset_id
+///   table_id            ="job_copy_${count.index}_table"
+///   deletion_protection = false
+///   schema              = "[\n  {\n    \\\"name\\\": \\\"name\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"post_abbr\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"date\\\",\n    \\\"type\\\": \\\"DATE\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  }\n]\n"
+/// }
+/// resource "gcp_bigquery_dataset" "source" {
+///   count         = local.count
+///   dataset_id    ="job_copy_${count.index}_dataset"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "US"
+/// }
+/// resource "gcp_bigquery_table" "dest" {
+///   depends_on          = [gcp_kms_cryptokeyiammember.encrypt_role]
+///   deletion_protection = false
+///   dataset_id          = gcp_bigquery_dataset.dest.dataset_id
+///   table_id            = "job_copy_dest_table"
+///   schema              = "[\n  {\n    \\\"name\\\": \\\"name\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"post_abbr\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"date\\\",\n    \\\"type\\\": \\\"DATE\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  }\n]\n"
+///   encryption_configuration = {
+///     kms_key_name = "example-key"
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "dest" {
+///   dataset_id    = "job_copy_dest_dataset"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "US"
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "encrypt_role" {
+///   crypto_key_id = "example-key"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:bq-${data.gcp_organizations_getproject.project.number}@bigquery-encryption.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_bigquery_job" "job" {
+///   depends_on = [gcp_kms_cryptokeyiammember.encrypt_role]
+///   job_id     = "job_copy"
+///   copy = {
+///     source_tables = [{
+///       "projectId" = gcp_bigquery_table.source[0].project
+///       "datasetId" = gcp_bigquery_table.source[0].datasetId
+///       "tableId"   = gcp_bigquery_table.source[0].tableId
+///       }, {
+///       "projectId" = gcp_bigquery_table.source[1].project
+///       "datasetId" = gcp_bigquery_table.source[1].datasetId
+///       "tableId"   = gcp_bigquery_table.source[1].tableId
+///     }]
+///     destination_table = {
+///       project_id = gcp_bigquery_table.dest.project
+///       dataset_id = gcp_bigquery_table.dest.dataset_id
+///       table_id   = gcp_bigquery_table.dest.table_id
+///     }
+///     destination_encryption_configuration = {
+///       kms_key_name = "example-key"
+///     }
+///   }
+/// }
+/// locals {
+///   count = 2
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2187,12 +2489,13 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.bigquery.Job;
 /// import com.pulumi.gcp.bigquery.JobArgs;
 /// import com.pulumi.gcp.bigquery.inputs.JobCopyArgs;
+/// import com.pulumi.gcp.bigquery.inputs.JobCopySourceTableArgs;
 /// import com.pulumi.gcp.bigquery.inputs.JobCopyDestinationTableArgs;
 /// import com.pulumi.gcp.bigquery.inputs.JobCopyDestinationEncryptionConfigurationArgs;
 /// import com.pulumi.codegen.internal.KeyedValue;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2296,14 +2599,14 @@ import 'job_state.dart';
 ///             .copy(JobCopyArgs.builder()
 ///                 .sourceTables(
 ///                     JobCopySourceTableArgs.builder()
-///                         .projectId(source[0].project())
-///                         .datasetId(source[0].datasetId())
-///                         .tableId(source[0].tableId())
+///                         .projectId(source.get(0).project())
+///                         .datasetId(source.get(0).datasetId())
+///                         .tableId(source.get(0).tableId())
 ///                         .build(),
 ///                     JobCopySourceTableArgs.builder()
-///                         .projectId(source[1].project())
-///                         .datasetId(source[1].datasetId())
-///                         .tableId(source[1].tableId())
+///                         .projectId(source.get(1).project())
+///                         .datasetId(source.get(1).datasetId())
+///                         .tableId(source.get(1).tableId())
 ///                         .build())
 ///                 .destinationTable(JobCopyDestinationTableArgs.builder()
 ///                     .projectId(dest.project())
@@ -2576,6 +2879,46 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_table" "source-one" {
+///   deletion_protection = false
+///   dataset_id          = gcp_bigquery_dataset.source-one.dataset_id
+///   table_id            = "job_extract_table"
+///   schema              = "[\n  {\n    \\\"name\\\": \\\"name\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"post_abbr\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"date\\\",\n    \\\"type\\\": \\\"DATE\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  }\n]\n"
+/// }
+/// resource "gcp_bigquery_dataset" "source-one" {
+///   dataset_id    = "job_extract_dataset"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "US"
+/// }
+/// resource "gcp_storage_bucket" "dest" {
+///   name          = "job_extract_bucket"
+///   location      = "US"
+///   force_destroy = true
+/// }
+/// resource "gcp_bigquery_job" "job" {
+///   job_id = "job_extract"
+///   extract = {
+///     destination_uris = ["${gcp_storage_bucket.dest.url}/extract"]
+///     source_table = {
+///       project_id = gcp_bigquery_table.source-one.project
+///       dataset_id = gcp_bigquery_table.source-one.dataset_id
+///       table_id   = gcp_bigquery_table.source-one.table_id
+///     }
+///     destination_format = "NEWLINE_DELIMITED_JSON"
+///     compression        = "GZIP"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2592,8 +2935,8 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.bigquery.JobArgs;
 /// import com.pulumi.gcp.bigquery.inputs.JobExtractArgs;
 /// import com.pulumi.gcp.bigquery.inputs.JobExtractSourceTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2721,40 +3064,21 @@ import 'job_state.dart';
 /// Job can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/jobs/{{job_id}}/location/{{location}}`
-///
 /// * `projects/{{project}}/jobs/{{job_id}}`
-///
 /// * `{{project}}/{{job_id}}/{{location}}`
-///
 /// * `{{job_id}}/{{location}}`
-///
 /// * `{{project}}/{{job_id}}`
-///
 /// * `{{job_id}}`
+///
 ///
 /// When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}/location/{{location}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}/{{location}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/job:Job default {{job_id}}/{{location}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/job:Job default {{job_id}}
 /// ```
 class Job extends pulumi.CustomResource {
@@ -2777,7 +3101,7 @@ class Job extends pulumi.CustomResource {
   /// The labels associated with this job. You can use these to organize and group your jobs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Configures a load job.
   /// Structure is documented below.
@@ -2787,13 +3111,13 @@ class Job extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-  /// (Output)
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// Configures a query job.
   /// Structure is documented below.
   late final pulumi.Output<JobQuery?> query;
+  /// (Optional, Beta)
   /// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
   /// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
   late final pulumi.Output<String?> reservation;

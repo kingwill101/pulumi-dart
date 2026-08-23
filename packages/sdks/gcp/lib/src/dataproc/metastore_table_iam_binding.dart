@@ -6,8 +6,8 @@ import 'metastore_table_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Dataproc Metastore Table. Each of these resources serves a different use case:
 ///
 /// * `gcp.dataproc.MetastoreTableIamPolicy`: Authoritative. Sets the IAM policy for the table and replaces any existing policy already attached.
-/// * `gcp.dataproc.MetastoreTableIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved.
-/// * `gcp.dataproc.MetastoreTableIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the table are preserved.
+/// * `gcp.dataproc.MetastoreTableIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.dataproc.MetastoreTableIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the table are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -16,7 +16,6 @@ import 'metastore_table_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.dataproc.MetastoreTableIamPolicy` **cannot** be used in conjunction with `gcp.dataproc.MetastoreTableIamBinding` and `gcp.dataproc.MetastoreTableIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.dataproc.MetastoreTableIamBinding` resources **can be** used in conjunction with `gcp.dataproc.MetastoreTableIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.dataproc.MetastoreTableIamPolicy
@@ -131,6 +130,31 @@ import 'metastore_table_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoretableiampolicy" "policy" {
+///   project     = dpmsService.project
+///   location    = dpmsService.location
+///   service_id  = dpmsService.serviceId
+///   database_id = hive.hiveConfig[0].properties["database"]
+///   table       = hive.hiveConfig[0].properties["table"]
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -139,10 +163,11 @@ import 'metastore_table_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.dataproc.MetastoreTableIamPolicy;
 /// import com.pulumi.gcp.dataproc.MetastoreTableIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -162,11 +187,11 @@ import 'metastore_table_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new MetastoreTableIamPolicy("policy", MetastoreTableIamPolicyArgs.builder()
-///             .project(dpmsService.project())
-///             .location(dpmsService.location())
-///             .serviceId(dpmsService.serviceId())
-///             .databaseId(hive.hiveConfig()[0].properties().database())
-///             .table(hive.hiveConfig()[0].properties().table())
+///             .project(dpmsService.get("project"))
+///             .location(dpmsService.get("location"))
+///             .serviceId(dpmsService.get("serviceId"))
+///             .databaseId(hive.get("hiveConfig")[0].get("properties").get("database"))
+///             .table(hive.get("hiveConfig")[0].get("properties").get("table"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -181,8 +206,8 @@ import 'metastore_table_iam_binding_state.dart';
 ///       project: ${dpmsService.project}
 ///       location: ${dpmsService.location}
 ///       serviceId: ${dpmsService.serviceId}
-///       databaseId: ${hive.hiveConfig[0].properties.database}
-///       table: ${hive.hiveConfig[0].properties.table}
+///       databaseId: ${hive.hiveConfig[0].properties["database"]}
+///       table: ${hive.hiveConfig[0].properties["table"]}
 ///       policyData: ${admin.policyData}
 /// variables:
 ///   admin:
@@ -278,6 +303,25 @@ import 'metastore_table_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoretableiambinding" "binding" {
+///   project     = dpmsService.project
+///   location    = dpmsService.location
+///   service_id  = dpmsService.serviceId
+///   database_id = hive.hiveConfig[0].properties["database"]
+///   table       = hive.hiveConfig[0].properties["table"]
+///   role        = "roles/viewer"
+///   members     = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -286,8 +330,8 @@ import 'metastore_table_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.MetastoreTableIamBinding;
 /// import com.pulumi.gcp.dataproc.MetastoreTableIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -300,11 +344,11 @@ import 'metastore_table_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new MetastoreTableIamBinding("binding", MetastoreTableIamBindingArgs.builder()
-///             .project(dpmsService.project())
-///             .location(dpmsService.location())
-///             .serviceId(dpmsService.serviceId())
-///             .databaseId(hive.hiveConfig()[0].properties().database())
-///             .table(hive.hiveConfig()[0].properties().table())
+///             .project(dpmsService.get("project"))
+///             .location(dpmsService.get("location"))
+///             .serviceId(dpmsService.get("serviceId"))
+///             .databaseId(hive.get("hiveConfig")[0].get("properties").get("database"))
+///             .table(hive.get("hiveConfig")[0].get("properties").get("table"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -320,8 +364,8 @@ import 'metastore_table_iam_binding_state.dart';
 ///       project: ${dpmsService.project}
 ///       location: ${dpmsService.location}
 ///       serviceId: ${dpmsService.serviceId}
-///       databaseId: ${hive.hiveConfig[0].properties.database}
-///       table: ${hive.hiveConfig[0].properties.table}
+///       databaseId: ${hive.hiveConfig[0].properties["database"]}
+///       table: ${hive.hiveConfig[0].properties["table"]}
 ///       role: roles/viewer
 ///       members:
 ///         - user:jane@example.com
@@ -405,6 +449,25 @@ import 'metastore_table_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoretableiammember" "member" {
+///   project     = dpmsService.project
+///   location    = dpmsService.location
+///   service_id  = dpmsService.serviceId
+///   database_id = hive.hiveConfig[0].properties["database"]
+///   table       = hive.hiveConfig[0].properties["table"]
+///   role        = "roles/viewer"
+///   member      = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -413,8 +476,8 @@ import 'metastore_table_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.MetastoreTableIamMember;
 /// import com.pulumi.gcp.dataproc.MetastoreTableIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -427,11 +490,11 @@ import 'metastore_table_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new MetastoreTableIamMember("member", MetastoreTableIamMemberArgs.builder()
-///             .project(dpmsService.project())
-///             .location(dpmsService.location())
-///             .serviceId(dpmsService.serviceId())
-///             .databaseId(hive.hiveConfig()[0].properties().database())
-///             .table(hive.hiveConfig()[0].properties().table())
+///             .project(dpmsService.get("project"))
+///             .location(dpmsService.get("location"))
+///             .serviceId(dpmsService.get("serviceId"))
+///             .databaseId(hive.get("hiveConfig")[0].get("properties").get("database"))
+///             .table(hive.get("hiveConfig")[0].get("properties").get("table"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -447,8 +510,8 @@ import 'metastore_table_iam_binding_state.dart';
 ///       project: ${dpmsService.project}
 ///       location: ${dpmsService.location}
 ///       serviceId: ${dpmsService.serviceId}
-///       databaseId: ${hive.hiveConfig[0].properties.database}
-///       table: ${hive.hiveConfig[0].properties.table}
+///       databaseId: ${hive.hiveConfig[0].properties["database"]}
+///       table: ${hive.hiveConfig[0].properties["table"]}
 ///       role: roles/viewer
 ///       member: user:jane@example.com
 /// ```
@@ -464,8 +527,8 @@ import 'metastore_table_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Dataproc Metastore Table. Each of these resources serves a different use case:
 ///
 /// * `gcp.dataproc.MetastoreTableIamPolicy`: Authoritative. Sets the IAM policy for the table and replaces any existing policy already attached.
-/// * `gcp.dataproc.MetastoreTableIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved.
-/// * `gcp.dataproc.MetastoreTableIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the table are preserved.
+/// * `gcp.dataproc.MetastoreTableIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.dataproc.MetastoreTableIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the table are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -474,7 +537,6 @@ import 'metastore_table_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.dataproc.MetastoreTableIamPolicy` **cannot** be used in conjunction with `gcp.dataproc.MetastoreTableIamBinding` and `gcp.dataproc.MetastoreTableIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.dataproc.MetastoreTableIamBinding` resources **can be** used in conjunction with `gcp.dataproc.MetastoreTableIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.dataproc.MetastoreTableIamPolicy
@@ -589,6 +651,31 @@ import 'metastore_table_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoretableiampolicy" "policy" {
+///   project     = dpmsService.project
+///   location    = dpmsService.location
+///   service_id  = dpmsService.serviceId
+///   database_id = hive.hiveConfig[0].properties["database"]
+///   table       = hive.hiveConfig[0].properties["table"]
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -597,10 +684,11 @@ import 'metastore_table_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.dataproc.MetastoreTableIamPolicy;
 /// import com.pulumi.gcp.dataproc.MetastoreTableIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -620,11 +708,11 @@ import 'metastore_table_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new MetastoreTableIamPolicy("policy", MetastoreTableIamPolicyArgs.builder()
-///             .project(dpmsService.project())
-///             .location(dpmsService.location())
-///             .serviceId(dpmsService.serviceId())
-///             .databaseId(hive.hiveConfig()[0].properties().database())
-///             .table(hive.hiveConfig()[0].properties().table())
+///             .project(dpmsService.get("project"))
+///             .location(dpmsService.get("location"))
+///             .serviceId(dpmsService.get("serviceId"))
+///             .databaseId(hive.get("hiveConfig")[0].get("properties").get("database"))
+///             .table(hive.get("hiveConfig")[0].get("properties").get("table"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -639,8 +727,8 @@ import 'metastore_table_iam_binding_state.dart';
 ///       project: ${dpmsService.project}
 ///       location: ${dpmsService.location}
 ///       serviceId: ${dpmsService.serviceId}
-///       databaseId: ${hive.hiveConfig[0].properties.database}
-///       table: ${hive.hiveConfig[0].properties.table}
+///       databaseId: ${hive.hiveConfig[0].properties["database"]}
+///       table: ${hive.hiveConfig[0].properties["table"]}
 ///       policyData: ${admin.policyData}
 /// variables:
 ///   admin:
@@ -736,6 +824,25 @@ import 'metastore_table_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoretableiambinding" "binding" {
+///   project     = dpmsService.project
+///   location    = dpmsService.location
+///   service_id  = dpmsService.serviceId
+///   database_id = hive.hiveConfig[0].properties["database"]
+///   table       = hive.hiveConfig[0].properties["table"]
+///   role        = "roles/viewer"
+///   members     = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -744,8 +851,8 @@ import 'metastore_table_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.MetastoreTableIamBinding;
 /// import com.pulumi.gcp.dataproc.MetastoreTableIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -758,11 +865,11 @@ import 'metastore_table_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new MetastoreTableIamBinding("binding", MetastoreTableIamBindingArgs.builder()
-///             .project(dpmsService.project())
-///             .location(dpmsService.location())
-///             .serviceId(dpmsService.serviceId())
-///             .databaseId(hive.hiveConfig()[0].properties().database())
-///             .table(hive.hiveConfig()[0].properties().table())
+///             .project(dpmsService.get("project"))
+///             .location(dpmsService.get("location"))
+///             .serviceId(dpmsService.get("serviceId"))
+///             .databaseId(hive.get("hiveConfig")[0].get("properties").get("database"))
+///             .table(hive.get("hiveConfig")[0].get("properties").get("table"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -778,8 +885,8 @@ import 'metastore_table_iam_binding_state.dart';
 ///       project: ${dpmsService.project}
 ///       location: ${dpmsService.location}
 ///       serviceId: ${dpmsService.serviceId}
-///       databaseId: ${hive.hiveConfig[0].properties.database}
-///       table: ${hive.hiveConfig[0].properties.table}
+///       databaseId: ${hive.hiveConfig[0].properties["database"]}
+///       table: ${hive.hiveConfig[0].properties["table"]}
 ///       role: roles/viewer
 ///       members:
 ///         - user:jane@example.com
@@ -863,6 +970,25 @@ import 'metastore_table_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_metastoretableiammember" "member" {
+///   project     = dpmsService.project
+///   location    = dpmsService.location
+///   service_id  = dpmsService.serviceId
+///   database_id = hive.hiveConfig[0].properties["database"]
+///   table       = hive.hiveConfig[0].properties["table"]
+///   role        = "roles/viewer"
+///   member      = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -871,8 +997,8 @@ import 'metastore_table_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.MetastoreTableIamMember;
 /// import com.pulumi.gcp.dataproc.MetastoreTableIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -885,11 +1011,11 @@ import 'metastore_table_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new MetastoreTableIamMember("member", MetastoreTableIamMemberArgs.builder()
-///             .project(dpmsService.project())
-///             .location(dpmsService.location())
-///             .serviceId(dpmsService.serviceId())
-///             .databaseId(hive.hiveConfig()[0].properties().database())
-///             .table(hive.hiveConfig()[0].properties().table())
+///             .project(dpmsService.get("project"))
+///             .location(dpmsService.get("location"))
+///             .serviceId(dpmsService.get("serviceId"))
+///             .databaseId(hive.get("hiveConfig")[0].get("properties").get("database"))
+///             .table(hive.get("hiveConfig")[0].get("properties").get("table"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -905,8 +1031,8 @@ import 'metastore_table_iam_binding_state.dart';
 ///       project: ${dpmsService.project}
 ///       location: ${dpmsService.location}
 ///       serviceId: ${dpmsService.serviceId}
-///       databaseId: ${hive.hiveConfig[0].properties.database}
-///       table: ${hive.hiveConfig[0].properties.table}
+///       databaseId: ${hive.hiveConfig[0].properties["database"]}
+///       table: ${hive.hiveConfig[0].properties["table"]}
 ///       role: roles/viewer
 ///       member: user:jane@example.com
 /// ```
@@ -917,11 +1043,8 @@ import 'metastore_table_iam_binding_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{location}}/services/{{serviceId}}/databases/{{databaseId}}/tables/{{name}}
-///
 /// * {{project}}/{{location}}/{{serviceId}}/{{databaseId}}/{{name}}
-///
 /// * {{location}}/{{serviceId}}/{{databaseId}}/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -929,25 +1052,21 @@ import 'metastore_table_iam_binding_state.dart';
 /// Dataproc Metastore table IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:dataproc/metastoreTableIamBinding:MetastoreTableIamBinding editor "projects/{{project}}/locations/{{location}}/services/{{serviceId}}/databases/{{databaseId}}/tables/{{table}} roles/viewer user:jane@example.com"
+/// $ terraform import google_dataproc_metastore_table_iam_member.editor "projects/{{project}}/locations/{{location}}/services/{{serviceId}}/databases/{{databaseId}}/tables/{{table}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:dataproc/metastoreTableIamBinding:MetastoreTableIamBinding editor "projects/{{project}}/locations/{{location}}/services/{{serviceId}}/databases/{{databaseId}}/tables/{{table}} roles/viewer"
+/// $ terraform import google_dataproc_metastore_table_iam_binding.editor "projects/{{project}}/locations/{{location}}/services/{{serviceId}}/databases/{{databaseId}}/tables/{{table}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:dataproc/metastoreTableIamBinding:MetastoreTableIamBinding editor projects/{{project}}/locations/{{location}}/services/{{serviceId}}/databases/{{databaseId}}/tables/{{table}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class MetastoreTableIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<MetastoreTableIamBindingCondition?> condition;

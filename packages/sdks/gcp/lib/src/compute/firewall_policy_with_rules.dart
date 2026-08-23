@@ -587,7 +587,7 @@ import 'firewall_policy_with_rules_state.dart';
 /// 			Name:                    pulumi.String("spg"),
 /// 			Parent:                  pulumi.String("organizations/123456789"),
 /// 			Description:             pulumi.String("my description"),
-/// 			ThreatPreventionProfile: securityProfile1.ID(),
+/// 			ThreatPreventionProfile: securityProfile1.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -613,7 +613,7 @@ import 'firewall_policy_with_rules_state.dart';
 /// 		}
 /// 		basicValue, err := tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 /// 			Description: pulumi.String("For valuename resources."),
-/// 			Parent:      basicKey.ID(),
+/// 			Parent:      basicKey.ID().ToIDOutput().ToStringOutput(),
 /// 			ShortName:   pulumi.String("tag-value"),
 /// 		})
 /// 		if err != nil {
@@ -650,7 +650,7 @@ import 'firewall_policy_with_rules_state.dart';
 /// 							pulumi.String("iplist-tor-exit-nodes"),
 /// 						},
 /// 						DestAddressGroups: pulumi.StringArray{
-/// 							addressGroup1.ID(),
+/// 							addressGroup1.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 						Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
 /// 							&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
@@ -687,7 +687,7 @@ import 'firewall_policy_with_rules_state.dart';
 /// 							pulumi.String("iplist-public-clouds"),
 /// 						},
 /// 						SrcAddressGroups: pulumi.StringArray{
-/// 							addressGroup1.ID(),
+/// 							addressGroup1.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 						Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
 /// 							&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
@@ -706,7 +706,7 @@ import 'firewall_policy_with_rules_state.dart';
 /// 					TargetServiceAccounts: pulumi.StringArray{
 /// 						pulumi.String("test@google.com"),
 /// 					},
-/// 					SecurityProfileGroup: securityProfileGroup1.ID().ApplyT(func(id string) (string, error) {
+/// 					SecurityProfileGroup: securityProfileGroup1.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 						return fmt.Sprintf("//networksecurity.googleapis.com/%v", id), nil
 /// 					}).(pulumi.StringOutput),
 /// 					TlsInspect: pulumi.Bool(true),
@@ -730,7 +730,7 @@ import 'firewall_policy_with_rules_state.dart';
 /// 					Direction:     pulumi.String("INGRESS"),
 /// 					TargetSecureTags: compute.FirewallPolicyWithRulesRuleTargetSecureTagArray{
 /// 						&compute.FirewallPolicyWithRulesRuleTargetSecureTagArgs{
-/// 							Name: basicValue.ID(),
+/// 							Name: basicValue.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 					Match: &compute.FirewallPolicyWithRulesRuleMatchArgs{
@@ -739,7 +739,7 @@ import 'firewall_policy_with_rules_state.dart';
 /// 						},
 /// 						SrcSecureTags: compute.FirewallPolicyWithRulesRuleMatchSrcSecureTagArray{
 /// 							&compute.FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs{
-/// 								Name: basicValue.ID(),
+/// 								Name: basicValue.ID().ToIDOutput().ToStringOutput(),
 /// 							},
 /// 						},
 /// 						Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
@@ -759,6 +759,138 @@ import 'firewall_policy_with_rules_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_compute_firewallpolicywithrules" "primary" {
+///   short_name  = "fw-policy"
+///   description = "Terraform test"
+///   parent      = "organizations/123456789"
+///   rules {
+///     description      = "tcp rule"
+///     priority         = 1000
+///     enable_logging   = true
+///     action           = "allow"
+///     direction        = "EGRESS"
+///     target_resources = [gcp_compute_network.network.self_link]
+///     match = {
+///       dest_ip_ranges            = ["11.100.0.1/32"]
+///       dest_fqdns                = ["www.yyy.com", "www.zzz.com"]
+///       dest_region_codes         = ["HK", "IN"]
+///       dest_threat_intelligences = ["iplist-search-engines-crawlers", "iplist-tor-exit-nodes"]
+///       dest_address_groups       = [gcp_networksecurity_addressgroup.address_group_1.id]
+///       layer4_configs = [{
+///         "ipProtocol" = "tcp"
+///         "ports"      = [8080, 7070]
+///       }]
+///     }
+///   }
+///   rules {
+///     description    = "udp rule"
+///     priority       = 2000
+///     enable_logging = false
+///     action         = "deny"
+///     direction      = "INGRESS"
+///     disabled       = true
+///     match = {
+///       src_ip_ranges            = ["0.0.0.0/0"]
+///       src_fqdns                = ["www.abc.com", "www.def.com"]
+///       src_region_codes         = ["US", "CA"]
+///       src_threat_intelligences = ["iplist-known-malicious-ips", "iplist-public-clouds"]
+///       src_address_groups       = [gcp_networksecurity_addressgroup.address_group_1.id]
+///       layer4_configs = [{
+///         "ipProtocol" = "udp"
+///       }]
+///     }
+///   }
+///   rules {
+///     description             = "security profile group rule"
+///     rule_name               = "tcp rule"
+///     priority                = 3000
+///     enable_logging          = false
+///     action                  = "apply_security_profile_group"
+///     direction               = "INGRESS"
+///     target_service_accounts = ["test@google.com"]
+///     security_profile_group  ="//networksecurity.googleapis.com/${gcp_networksecurity_securityprofilegroup.security_profile_group_1.id}"
+///     tls_inspect             = true
+///     match = {
+///       src_ip_ranges = ["0.0.0.0/0"]
+///       layer4_configs = [{
+///         "ipProtocol" = "tcp"
+///       }]
+///     }
+///   }
+///   rules {
+///     description    = "secure tags"
+///     rule_name      = "secure tags rule"
+///     priority       = 4000
+///     enable_logging = false
+///     action         = "allow"
+///     direction      = "INGRESS"
+///     target_secure_tags {
+///       name = gcp_tags_tagvalue.basic_value.id
+///     }
+///     match = {
+///       src_ip_ranges = ["11.100.0.1/32"]
+///       src_secure_tags = [{
+///         "name" = gcp_tags_tagvalue.basic_value.id
+///       }]
+///       layer4_configs = [{
+///         "ipProtocol" = "tcp"
+///         "ports"      = [8080]
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_networksecurity_addressgroup" "address_group_1" {
+///   name        = "address-group"
+///   parent      = "organizations/123456789"
+///   description = "Global address group"
+///   location    = "global"
+///   items       = ["208.80.154.224/32"]
+///   type        = "IPV4"
+///   capacity    = 100
+/// }
+/// resource "gcp_networksecurity_securityprofilegroup" "security_profile_group_1" {
+///   name                      = "spg"
+///   parent                    = "organizations/123456789"
+///   description               = "my description"
+///   threat_prevention_profile = gcp_networksecurity_securityprofile.security_profile_1.id
+/// }
+/// resource "gcp_networksecurity_securityprofile" "security_profile_1" {
+///   name     = "sp"
+///   type     = "THREAT_PREVENTION"
+///   parent   = "organizations/123456789"
+///   location = "global"
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_tags_tagkey" "basic_key" {
+///   description = "For keyname resources."
+///   parent      = "organizations/123456789"
+///   purpose     = "GCE_FIREWALL"
+///   short_name  = "tag-key"
+///   purpose_data = {
+///     "organization" = "auto"
+///   }
+/// }
+/// resource "gcp_tags_tagvalue" "basic_value" {
+///   description = "For valuename resources."
+///   parent      = gcp_tags_tagkey.basic_key.id
+///   short_name  = "tag-value"
 /// }
 /// ```
 /// ```java
@@ -785,8 +917,11 @@ import 'firewall_policy_with_rules_state.dart';
 /// import com.pulumi.gcp.compute.FirewallPolicyWithRulesArgs;
 /// import com.pulumi.gcp.compute.inputs.FirewallPolicyWithRulesRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.FirewallPolicyWithRulesRuleMatchArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs;
+/// import com.pulumi.gcp.compute.inputs.FirewallPolicyWithRulesRuleTargetSecureTagArgs;
+/// import com.pulumi.gcp.compute.inputs.FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1095,21 +1230,25 @@ import 'firewall_policy_with_rules_state.dart';
 /// FirewallPolicyWithRules can be imported using any of these accepted formats:
 ///
 /// * `locations/global/firewallPolicies/{{policy_id}}`
-///
 /// * `{{policy_id}}`
+///
 ///
 /// When using the `pulumi import` command, FirewallPolicyWithRules can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules default locations/global/firewallPolicies/{{policy_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules default {{policy_id}}
 /// ```
 class FirewallPolicyWithRules extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Fingerprint of the resource. This field is used internally during updates of this resource.
@@ -1149,6 +1288,7 @@ class FirewallPolicyWithRules extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     parent = registerOutput<String>('parent');
@@ -1185,6 +1325,7 @@ class FirewallPolicyWithRules extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     parent = registerOutput<String>('parent');

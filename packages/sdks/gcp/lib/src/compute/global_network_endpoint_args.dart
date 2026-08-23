@@ -7,8 +7,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_global_network_endpoint_global_network_endpoint_args_doc}
 class GlobalNetworkEndpointArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Fully qualified domain name of network endpoint.
-  /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+  /// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
   final pulumi.Input<String>? fqdn;
   /// The global network endpoint group this endpoint is part of.
   final pulumi.Input<String> globalNetworkEndpointGroup;
@@ -21,12 +28,14 @@ class GlobalNetworkEndpointArgs {
   final pulumi.Input<String>? project;
 
   /// Creates a new [GlobalNetworkEndpointArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [fqdn] Fully qualified domain name of network endpoint.
   /// [globalNetworkEndpointGroup] The global network endpoint group this endpoint is part of.
   /// [ipAddress] IPv4 address external endpoint.
   /// [port] Port number of the external endpoint.
   /// [project] The ID of the project in which the resource belongs.
   const GlobalNetworkEndpointArgs({
+    this.deletionPolicy,
     this.fqdn,
     required this.globalNetworkEndpointGroup,
     this.ipAddress,
@@ -36,6 +45,7 @@ class GlobalNetworkEndpointArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'fqdn': ?fqdn,
       'globalNetworkEndpointGroup': globalNetworkEndpointGroup,
       'ipAddress': ?ipAddress,
@@ -46,6 +56,7 @@ class GlobalNetworkEndpointArgs {
 
   factory GlobalNetworkEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GlobalNetworkEndpointArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       globalNetworkEndpointGroup: pulumi.Input.fromValue(map['globalNetworkEndpointGroup'] as String),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -54,4 +65,3 @@ class GlobalNetworkEndpointArgs {
     );
   }
 }
-

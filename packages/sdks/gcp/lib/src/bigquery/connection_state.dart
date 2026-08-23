@@ -6,6 +6,7 @@ import 'connection_azure.dart';
 import 'connection_cloud_resource.dart';
 import 'connection_cloud_spanner.dart';
 import 'connection_cloud_sql.dart';
+import 'connection_configuration.dart';
 import 'connection_spark.dart';
 
 /// Input properties used for looking up and filtering Connection resources.
@@ -25,8 +26,20 @@ class ConnectionState {
   /// Connection properties specific to the Cloud SQL.
   /// Structure is documented below.
   final pulumi.Input<ConnectionCloudSql>? cloudSql;
+  /// Connector configuration. This is a generic configuration that is used to connect to
+  /// external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+  /// Connector framework.
+  /// Structure is documented below.
+  final pulumi.Input<ConnectionConfiguration>? configuration;
   /// Optional connection id that should be assigned to the created connection.
   final pulumi.Input<String>? connectionId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A descriptive description for the connection
   final pulumi.Input<String>? description;
   /// A descriptive name for the connection
@@ -34,7 +47,7 @@ class ConnectionState {
   /// True if the connection has credential assigned.
   final pulumi.Input<bool>? hasCredential;
   /// Optional. The Cloud KMS key that is used for encryption.
-  /// Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+  /// Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
   final pulumi.Input<String>? kmsKeyName;
   /// The geographic location where the connection should reside.
   /// Cloud SQL instance must be in the same location as the connection
@@ -60,7 +73,9 @@ class ConnectionState {
   /// [cloudResource] Container for connection properties for delegation of access to GCP resources.
   /// [cloudSpanner] Connection properties specific to Cloud Spanner
   /// [cloudSql] Connection properties specific to the Cloud SQL.
+  /// [configuration] Connector configuration. This is a generic configuration that is used to connect to
   /// [connectionId] Optional connection id that should be assigned to the created connection.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A descriptive description for the connection
   /// [friendlyName] A descriptive name for the connection
   /// [hasCredential] True if the connection has credential assigned.
@@ -75,7 +90,9 @@ class ConnectionState {
     this.cloudResource,
     this.cloudSpanner,
     this.cloudSql,
+    this.configuration,
     this.connectionId,
+    this.deletionPolicy,
     this.description,
     this.friendlyName,
     this.hasCredential,
@@ -93,7 +110,9 @@ class ConnectionState {
       'cloudResource': ?pulumi.Input.mapOptionalInputValue<ConnectionCloudResource, Map<String, dynamic>>(cloudResource, (value) => value.toMap()),
       'cloudSpanner': ?pulumi.Input.mapOptionalInputValue<ConnectionCloudSpanner, Map<String, dynamic>>(cloudSpanner, (value) => value.toMap()),
       'cloudSql': ?pulumi.Input.mapOptionalInputValue<ConnectionCloudSql, Map<String, dynamic>>(cloudSql, (value) => value.toMap()),
+      'configuration': ?pulumi.Input.mapOptionalInputValue<ConnectionConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
       'connectionId': ?connectionId,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'friendlyName': ?friendlyName,
       'hasCredential': ?hasCredential,
@@ -112,7 +131,9 @@ class ConnectionState {
       cloudResource: (() { final guardedValue = map['cloudResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionCloudResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cloudSpanner: (() { final guardedValue = map['cloudSpanner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionCloudSpanner.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cloudSql: (() { final guardedValue = map['cloudSql']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionCloudSql.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       connectionId: (() { final guardedValue = map['connectionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hasCredential: (() { final guardedValue = map['hasCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -124,4 +145,3 @@ class ConnectionState {
     );
   }
 }
-

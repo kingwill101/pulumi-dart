@@ -28,6 +28,13 @@ class ClusterArgs {
   /// specified explicitly for a node pool in this cluster. If unspecified, the
   /// Kubernetes default value will be used.
   final pulumi.Input<int>? defaultMaxPodsPerNode;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Address pools for cluster data plane external load balancing.
   final pulumi.Input<List<String>>? externalLoadBalancerIpv4AddressPools;
   /// Fleet related configuration.
@@ -38,7 +45,7 @@ class ClusterArgs {
   final pulumi.Input<ClusterFleet> fleet;
   /// User-defined labels for the edgecloud cluster.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location of the resource.
   final pulumi.Input<String> location;
@@ -70,6 +77,7 @@ class ClusterArgs {
   /// [controlPlane] The configuration of the cluster control plane.
   /// [controlPlaneEncryption] Remote control plane disk encryption options. This field is only used when
   /// [defaultMaxPodsPerNode] The default maximum number of pods per node used if a maximum value is not
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [externalLoadBalancerIpv4AddressPools] Address pools for cluster data plane external load balancing.
   /// [fleet] Fleet related configuration.
   /// [labels] User-defined labels for the edgecloud cluster.
@@ -86,6 +94,7 @@ class ClusterArgs {
     this.controlPlane,
     this.controlPlaneEncryption,
     this.defaultMaxPodsPerNode,
+    this.deletionPolicy,
     this.externalLoadBalancerIpv4AddressPools,
     required this.fleet,
     this.labels,
@@ -105,6 +114,7 @@ class ClusterArgs {
       'controlPlane': ?pulumi.Input.mapOptionalInputValue<ClusterControlPlane, Map<String, dynamic>>(controlPlane, (value) => value.toMap()),
       'controlPlaneEncryption': ?pulumi.Input.mapOptionalInputValue<ClusterControlPlaneEncryption, Map<String, dynamic>>(controlPlaneEncryption, (value) => value.toMap()),
       'defaultMaxPodsPerNode': ?defaultMaxPodsPerNode,
+      'deletionPolicy': ?deletionPolicy,
       'externalLoadBalancerIpv4AddressPools': ?externalLoadBalancerIpv4AddressPools,
       'fleet': pulumi.Input.mapInputValue<ClusterFleet, Map<String, dynamic>>(fleet, (value) => value.toMap()),
       'labels': ?labels,
@@ -125,6 +135,7 @@ class ClusterArgs {
       controlPlane: (() { final guardedValue = map['controlPlane']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       controlPlaneEncryption: (() { final guardedValue = map['controlPlaneEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterControlPlaneEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       defaultMaxPodsPerNode: (() { final guardedValue = map['defaultMaxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalLoadBalancerIpv4AddressPools: (() { final guardedValue = map['externalLoadBalancerIpv4AddressPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       fleet: pulumi.Input.fromValue(ClusterFleet.fromMap((map['fleet']! as Map).cast<String, dynamic>())),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -139,4 +150,3 @@ class ClusterArgs {
     );
   }
 }
-

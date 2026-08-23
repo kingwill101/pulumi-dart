@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'template_template_metadata_filter_version_selector.dart';
 import 'template_template_metadata_multi_language_detection.dart';
 
 class TemplateTemplateMetadata {
@@ -20,6 +21,10 @@ class TemplateTemplateMetadata {
   /// INSPECT_ONLY
   /// INSPECT_AND_BLOCK
   final pulumi.Input<String>? enforcementType;
+  /// Selects the filter version to use for this template. Set exactly one of
+  /// 'alias' or 'version'.
+  /// Structure is documented below.
+  final pulumi.Input<TemplateTemplateMetadataFilterVersionSelector>? filterVersionSelector;
   /// If true, partial detector failures should be ignored.
   final pulumi.Input<bool>? ignorePartialInvocationFailures;
   /// If true, log sanitize operations.
@@ -36,6 +41,7 @@ class TemplateTemplateMetadata {
   /// [customPromptSafetyErrorCode] Indicates the custom error code set by the user to be returned to the end
   /// [customPromptSafetyErrorMessage] Indicates the custom error message set by the user to be returned to the
   /// [enforcementType] Possible values:
+  /// [filterVersionSelector] Selects the filter version to use for this template. Set exactly one of
   /// [ignorePartialInvocationFailures] If true, partial detector failures should be ignored.
   /// [logSanitizeOperations] If true, log sanitize operations.
   /// [logTemplateOperations] If true, log template crud operations.
@@ -46,6 +52,7 @@ class TemplateTemplateMetadata {
     this.customPromptSafetyErrorCode,
     this.customPromptSafetyErrorMessage,
     this.enforcementType,
+    this.filterVersionSelector,
     this.ignorePartialInvocationFailures,
     this.logSanitizeOperations,
     this.logTemplateOperations,
@@ -59,6 +66,7 @@ class TemplateTemplateMetadata {
       'customPromptSafetyErrorCode': ?customPromptSafetyErrorCode,
       'customPromptSafetyErrorMessage': ?customPromptSafetyErrorMessage,
       'enforcementType': ?enforcementType,
+      'filterVersionSelector': ?pulumi.Input.mapOptionalInputValue<TemplateTemplateMetadataFilterVersionSelector, Map<String, dynamic>>(filterVersionSelector, (value) => value.toMap()),
       'ignorePartialInvocationFailures': ?ignorePartialInvocationFailures,
       'logSanitizeOperations': ?logSanitizeOperations,
       'logTemplateOperations': ?logTemplateOperations,
@@ -73,6 +81,7 @@ class TemplateTemplateMetadata {
       customPromptSafetyErrorCode: (() { final guardedValue = map['customPromptSafetyErrorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       customPromptSafetyErrorMessage: (() { final guardedValue = map['customPromptSafetyErrorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enforcementType: (() { final guardedValue = map['enforcementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filterVersionSelector: (() { final guardedValue = map['filterVersionSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TemplateTemplateMetadataFilterVersionSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ignorePartialInvocationFailures: (() { final guardedValue = map['ignorePartialInvocationFailures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       logSanitizeOperations: (() { final guardedValue = map['logSanitizeOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       logTemplateOperations: (() { final guardedValue = map['logTemplateOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -80,4 +89,3 @@ class TemplateTemplateMetadata {
     );
   }
 }
-

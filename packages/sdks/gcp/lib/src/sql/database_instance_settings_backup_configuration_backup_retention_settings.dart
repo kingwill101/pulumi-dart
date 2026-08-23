@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
-  /// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
+  /// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
   /// is 'COUNT', we will retain this many backups.
   final pulumi.Input<int> retainedBackups;
   /// The unit that 'retained_backups' represents. Defaults to `COUNT`.
   final pulumi.Input<String>? retentionUnit;
 
   /// Creates a new [DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings].
-  /// [retainedBackups] Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
+  /// [retainedBackups] Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
   /// [retentionUnit] The unit that 'retained_backups' represents. Defaults to `COUNT`.
   const DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings({
     required this.retainedBackups,
@@ -31,4 +31,3 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
     );
   }
 }
-

@@ -24,4 +24,3 @@ class GetClusterEnableK8sBetaApi {
     );
   }
 }
-

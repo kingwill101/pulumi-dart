@@ -173,6 +173,42 @@ import 'workforce_pool_provider_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workforcepool" "pool" {
+///   workforce_pool_id = "example-pool"
+///   parent            = "organizations/123456789"
+///   location          = "global"
+/// }
+/// resource "gcp_iam_workforcepoolprovider" "provider" {
+///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
+///   location          = gcp_iam_workforcepool.pool.location
+///   provider_id       = "example-prvdr"
+///   attribute_mapping = {
+///     "google.subject" = "assertion.sub"
+///   }
+///   saml = {
+///     idp_metadata_xml = "<?xml version=\"1.0\"?><md:EntityDescriptor xmlns:md=\"urn:oasis:names:tc:SAML:2.0:metadata\" entityID=\"https://test.com\"><md:IDPSSODescriptor protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\"> <md:KeyDescriptor use=\"signing\"><ds:KeyInfo xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"><ds:X509Data><ds:X509Certificate>MIIDpDCCAoygAwIBAgIGAX7/5qPhMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEzARBgNVBAMMCmRldi00NTg0MjExHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wHhcNMjIwMjE2MDAxOTEyWhcNMzIwMjE2MDAyMDEyWjCBkjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRMwEQYDVQQDDApkZXYtNDU4NDIxMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrBl7GKz52cRpxF9xCsirnRuMxnhFBaUrsHqAQrLqWmdlpNYZTVg+T9iQ+aq/iE68L+BRZcZniKIvW58wqqS0ltXVvIkXuDSvnvnkkI5yMIVErR20K8jSOKQm1FmK+fgAJ4koshFiu9oLiqu0Ejc0DuL3/XRsb4RuxjktKTb1khgBBtb+7idEk0sFR0RPefAweXImJkDHDm7SxjDwGJUubbqpdTxasPr0W+AHI1VUzsUsTiHAoyb0XDkYqHfDzhj/ZdIEl4zHQ3bEZvlD984ztAnmX2SuFLLKfXeAAGHei8MMixJvwxYkkPeYZ/5h8WgBZPP4heS2CPjwYExt29L8QIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQARjJFz++a9Z5IQGFzsZMrX2EDR5ML4xxUiQkbhld1S1PljOLcYFARDmUC2YYHOueU4ee8Jid9nPGEUebV/4Jok+b+oQh+dWMgiWjSLI7h5q4OYZ3VJtdlVwgMFt2iz+/4yBKMUZ50g3Qgg36vE34us+eKitg759JgCNsibxn0qtJgSPm0sgP2L6yTaLnoEUbXBRxCwynTSkp9ZijZqEzbhN0e2dWv7Rx/nfpohpDP6vEiFImKFHpDSv3M/5de1ytQzPFrZBYt9WlzlYwE1aD9FHCxdd+rWgYMVVoRaRmndpV/Rq3QUuDuFJtaoX11bC7ExkOpg9KstZzA63i3VcfYv</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor><md:SingleSignOnService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://test.com/sso\"/></md:IDPSSODescriptor></md:EntityDescriptor>"
+///   }
+/// }
+/// resource "gcp_iam_workforcepoolproviderkey" "example" {
+///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
+///   location          = gcp_iam_workforcepool.pool.location
+///   provider_id       = gcp_iam_workforcepoolprovider.provider.provider_id
+///   key_id            = "example-key"
+///   key_data = {
+///     key_spec = "RSA_2048"
+///   }
+///   use = "ENCRYPTION"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +223,8 @@ import 'workforce_pool_provider_key_state.dart';
 /// import com.pulumi.gcp.iam.WorkforcePoolProviderKey;
 /// import com.pulumi.gcp.iam.WorkforcePoolProviderKeyArgs;
 /// import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderKeyKeyDataArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -266,19 +302,23 @@ import 'workforce_pool_provider_key_state.dart';
 /// WorkforcePoolProviderKey can be imported using any of these accepted formats:
 ///
 /// * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}/keys/{{key_id}}`
-///
 /// * `{{location}}/{{workforce_pool_id}}/{{provider_id}}/{{key_id}}`
+///
 ///
 /// When using the `pulumi import` command, WorkforcePoolProviderKey can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}/keys/{{key_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey default {{location}}/{{workforce_pool_id}}/{{provider_id}}/{{key_id}}
 /// ```
 class WorkforcePoolProviderKey extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The time after which the key will be permanently deleted and cannot be recovered.
   /// Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
   late final pulumi.Output<String> expireTime;
@@ -316,6 +356,7 @@ class WorkforcePoolProviderKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     expireTime = registerOutput<String>('expireTime');
     keyData = registerOutput<WorkforcePoolProviderKeyKeyData>('keyData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolProviderKeyKeyData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyId = registerOutput<String>('keyId');
@@ -350,6 +391,7 @@ class WorkforcePoolProviderKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     expireTime = registerOutput<String>('expireTime');
     keyData = registerOutput<WorkforcePoolProviderKeyKeyData>('keyData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolProviderKeyKeyData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyId = registerOutput<String>('keyId');

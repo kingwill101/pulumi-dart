@@ -87,6 +87,23 @@ import 'organization_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_organizationpolicy" "serial_port_policy" {
+///   project    = "your-project-id"
+///   constraint = "compute.disableSerialPortAccess"
+///   boolean_policy = {
+///     enforced = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -96,8 +113,8 @@ import 'organization_policy_state.dart';
 /// import com.pulumi.gcp.projects.OrganizationPolicy;
 /// import com.pulumi.gcp.projects.OrganizationPolicyArgs;
 /// import com.pulumi.gcp.projects.inputs.OrganizationPolicyBooleanPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -213,6 +230,25 @@ import 'organization_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_organizationpolicy" "services_policy" {
+///   project    = "your-project-id"
+///   constraint = "serviceuser.services"
+///   list_policy = {
+///     allow = {
+///       all = true
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -223,8 +259,8 @@ import 'organization_policy_state.dart';
 /// import com.pulumi.gcp.projects.OrganizationPolicyArgs;
 /// import com.pulumi.gcp.projects.inputs.OrganizationPolicyListPolicyArgs;
 /// import com.pulumi.gcp.projects.inputs.OrganizationPolicyListPolicyAllowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -352,6 +388,26 @@ import 'organization_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_organizationpolicy" "services_policy" {
+///   project    = "your-project-id"
+///   constraint = "serviceuser.services"
+///   list_policy = {
+///     suggested_value = "compute.googleapis.com"
+///     deny = {
+///       values = ["cloudresourcemanager.googleapis.com"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -362,8 +418,8 @@ import 'organization_policy_state.dart';
 /// import com.pulumi.gcp.projects.OrganizationPolicyArgs;
 /// import com.pulumi.gcp.projects.inputs.OrganizationPolicyListPolicyArgs;
 /// import com.pulumi.gcp.projects.inputs.OrganizationPolicyListPolicyDenyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -475,6 +531,23 @@ import 'organization_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_organizationpolicy" "services_policy" {
+///   project    = "your-project-id"
+///   constraint = "serviceuser.services"
+///   restore_policy = {
+///     default = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -484,8 +557,8 @@ import 'organization_policy_state.dart';
 /// import com.pulumi.gcp.projects.OrganizationPolicy;
 /// import com.pulumi.gcp.projects.OrganizationPolicyArgs;
 /// import com.pulumi.gcp.projects.inputs.OrganizationPolicyRestorePolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -526,22 +599,15 @@ import 'organization_policy_state.dart';
 /// Project organization policies can be imported using any of the follow formats:
 ///
 /// * `projects/{{project_id}}:constraints/{{constraint}}`
-///
 /// * `{{project_id}}:constraints/{{constraint}}`
-///
 /// * `{{project_id}}:{{constraint}}`
+///
 ///
 /// When using the `pulumi import` command, project organization policies can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy default projects/{{project_id}}:constraints/{{constraint}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy default {{project_id}}:constraints/{{constraint}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy default {{project_id}}:{{constraint}}
 /// ```
 class OrganizationPolicy extends pulumi.CustomResource {
@@ -551,6 +617,15 @@ class OrganizationPolicy extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> constraint;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// - - -
+  late final pulumi.Output<String> deletionPolicy;
   /// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
   late final pulumi.Output<String> etag;
   /// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
@@ -559,10 +634,8 @@ class OrganizationPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// A restore policy is a constraint to restore the default policy. Structure is documented below.
   ///
-  /// &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+  /// &gt; **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
   /// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-  ///
-  /// - - -
   late final pulumi.Output<OrganizationPolicyRestorePolicy?> restorePolicy;
   /// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
   late final pulumi.Output<String> updateTime;
@@ -585,6 +658,7 @@ class OrganizationPolicy extends pulumi.CustomResource {
         ) {
     booleanPolicy = registerOutput<OrganizationPolicyBooleanPolicy?>('booleanPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyBooleanPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     constraint = registerOutput<String>('constraint');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     listPolicy = registerOutput<OrganizationPolicyListPolicy?>('listPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyListPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
@@ -618,6 +692,7 @@ class OrganizationPolicy extends pulumi.CustomResource {
         ) {
     booleanPolicy = registerOutput<OrganizationPolicyBooleanPolicy?>('booleanPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyBooleanPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     constraint = registerOutput<String>('constraint');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     listPolicy = registerOutput<OrganizationPolicyListPolicy?>('listPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationPolicyListPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');

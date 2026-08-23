@@ -7,6 +7,13 @@ import 'object_access_control_project_team.dart';
 class ObjectAccessControlState {
   /// The name of the bucket.
   final pulumi.Input<String>? bucket;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The domain associated with the entity.
   final pulumi.Input<String>? domain;
   /// The email address associated with the entity.
@@ -36,6 +43,7 @@ class ObjectAccessControlState {
 
   /// Creates a new [ObjectAccessControlState].
   /// [bucket] The name of the bucket.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [domain] The domain associated with the entity.
   /// [email] The email address associated with the entity.
   /// [entity] The entity holding the permission, in one of the following forms:
@@ -46,6 +54,7 @@ class ObjectAccessControlState {
   /// [role] The access permission for the entity.
   const ObjectAccessControlState({
     this.bucket,
+    this.deletionPolicy,
     this.domain,
     this.email,
     this.entity,
@@ -59,6 +68,7 @@ class ObjectAccessControlState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': ?bucket,
+      'deletionPolicy': ?deletionPolicy,
       'domain': ?domain,
       'email': ?email,
       'entity': ?entity,
@@ -73,6 +83,7 @@ class ObjectAccessControlState {
   factory ObjectAccessControlState.fromMap(Map<String, dynamic> map) {
     return ObjectAccessControlState(
       bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entity: (() { final guardedValue = map['entity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -84,4 +95,3 @@ class ObjectAccessControlState {
     );
   }
 }
-

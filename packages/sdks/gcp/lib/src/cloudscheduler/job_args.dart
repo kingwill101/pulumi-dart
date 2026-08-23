@@ -25,11 +25,18 @@ class JobArgs {
   /// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
   final pulumi.Input<String>? attemptDeadline;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human-readable description for the job.
   /// This string must not contain more than 500 characters.
   final pulumi.Input<String>? description;
   /// HTTP target.
-  /// If the job providers a http_target the cron will
+  /// If the job providers a httpTarget the cron will
   /// send a request to the targeted url
   /// Structure is documented below.
   final pulumi.Input<JobHttpTarget>? httpTarget;
@@ -61,6 +68,7 @@ class JobArgs {
   /// Creates a new [JobArgs].
   /// [appEngineHttpTarget] App Engine HTTP target.
   /// [attemptDeadline] The deadline for job attempts. If the request handler does not respond by this deadline then the request is
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A human-readable description for the job.
   /// [httpTarget] HTTP target.
   /// [name] The name of the job.
@@ -74,6 +82,7 @@ class JobArgs {
   const JobArgs({
     this.appEngineHttpTarget,
     this.attemptDeadline,
+    this.deletionPolicy,
     this.description,
     this.httpTarget,
     this.name,
@@ -90,6 +99,7 @@ class JobArgs {
     return <String, dynamic>{
       'appEngineHttpTarget': ?pulumi.Input.mapOptionalInputValue<JobAppEngineHttpTarget, Map<String, dynamic>>(appEngineHttpTarget, (value) => value.toMap()),
       'attemptDeadline': ?attemptDeadline,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'httpTarget': ?pulumi.Input.mapOptionalInputValue<JobHttpTarget, Map<String, dynamic>>(httpTarget, (value) => value.toMap()),
       'name': ?name,
@@ -107,6 +117,7 @@ class JobArgs {
     return JobArgs(
       appEngineHttpTarget: (() { final guardedValue = map['appEngineHttpTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobAppEngineHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       attemptDeadline: (() { final guardedValue = map['attemptDeadline']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       httpTarget: (() { final guardedValue = map['httpTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -120,4 +131,3 @@ class JobArgs {
     );
   }
 }
-

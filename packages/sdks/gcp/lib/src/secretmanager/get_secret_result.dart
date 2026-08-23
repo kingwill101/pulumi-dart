@@ -9,6 +9,7 @@ import 'get_secret_topic.dart';
 class GetSecretResult {
   final Map<String, String> annotations;
   final String createTime;
+  final String deletionPolicy;
   final bool deletionProtection;
   final Map<String, String> effectiveAnnotations;
   final Map<String, String> effectiveLabels;
@@ -31,6 +32,7 @@ class GetSecretResult {
   /// Creates a new [GetSecretResult].
   /// [annotations] Required.
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [effectiveAnnotations] Required.
   /// [effectiveLabels] Required.
@@ -51,6 +53,7 @@ class GetSecretResult {
   const GetSecretResult({
     required this.annotations,
     required this.createTime,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.effectiveAnnotations,
     required this.effectiveLabels,
@@ -74,6 +77,7 @@ class GetSecretResult {
     return <String, dynamic>{
       'annotations': annotations,
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'effectiveAnnotations': effectiveAnnotations,
       'effectiveLabels': effectiveLabels,
@@ -98,6 +102,7 @@ class GetSecretResult {
     return GetSecretResult(
       annotations: (map['annotations'] as Map).cast<String, String>(),
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       effectiveAnnotations: (map['effectiveAnnotations'] as Map).cast<String, String>(),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -118,4 +123,3 @@ class GetSecretResult {
     );
   }
 }
-

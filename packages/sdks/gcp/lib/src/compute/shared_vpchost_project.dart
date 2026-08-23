@@ -112,6 +112,30 @@ import 'shared_vpchost_project_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// # A host project provides network resources to associated service projects.
+/// resource "gcp_compute_sharedvpchostproject" "host" {
+///   project = "host-project-id"
+/// }
+/// # A service project gains access to network resources provided by its
+/// # associated host project.
+/// resource "gcp_compute_sharedvpcserviceproject" "service1" {
+///   host_project    = gcp_compute_sharedvpchostproject.host.project
+///   service_project = "service-project-id-1"
+/// }
+/// resource "gcp_compute_sharedvpcserviceproject" "service2" {
+///   host_project    = gcp_compute_sharedvpchostproject.host.project
+///   service_project = "service-project-id-2"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,8 +146,8 @@ import 'shared_vpchost_project_state.dart';
 /// import com.pulumi.gcp.compute.SharedVPCHostProjectArgs;
 /// import com.pulumi.gcp.compute.SharedVPCServiceProject;
 /// import com.pulumi.gcp.compute.SharedVPCServiceProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -183,12 +207,21 @@ import 'shared_vpchost_project_state.dart';
 ///
 /// * `{{project_id}}`
 ///
+///
 /// When using the `pulumi import` command, Google Compute Engine Shared VPC host projects can be imported using one of the formats above. For example:
+///
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/sharedVPCHostProject:SharedVPCHostProject default {{project_id}}
 /// ```
 class SharedVPCHostProject extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The ID of the project that will serve as a Shared VPC host project
   late final pulumi.Output<String> project;
 
@@ -206,6 +239,7 @@ class SharedVPCHostProject extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     project = registerOutput<String>('project');
   }
 
@@ -232,6 +266,7 @@ class SharedVPCHostProject extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     project = registerOutput<String>('project');
   }
 }

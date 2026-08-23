@@ -111,6 +111,27 @@ import 'runtime_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_colab_runtimetemplate" "runtime-template" {
+///   name         = "colab-runtime-template"
+///   display_name = "Runtime template basic"
+///   location     = "us-central1"
+///   machine_spec = {
+///     machine_type = "e2-standard-4"
+///   }
+///   network_spec = {
+///     enable_internet_access = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +142,8 @@ import 'runtime_template_state.dart';
 /// import com.pulumi.gcp.colab.RuntimeTemplateArgs;
 /// import com.pulumi.gcp.colab.inputs.RuntimeTemplateMachineSpecArgs;
 /// import com.pulumi.gcp.colab.inputs.RuntimeTemplateNetworkSpecArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -180,6 +201,7 @@ import 'runtime_template_state.dart';
 ///     networkSpec: {
 ///         enableInternetAccess: true,
 ///     },
+///     softwareConfig: {},
 /// });
 /// ```
 /// ```python
@@ -194,7 +216,8 @@ import 'runtime_template_state.dart';
 ///     },
 ///     network_spec={
 ///         "enable_internet_access": True,
-///     })
+///     },
+///     software_config={})
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -216,6 +239,7 @@ import 'runtime_template_state.dart';
 ///         {
 ///             EnableInternetAccess = true,
 ///         },
+///         SoftwareConfig = null,
 ///     });
 ///
 /// });
@@ -239,12 +263,34 @@ import 'runtime_template_state.dart';
 /// 			NetworkSpec: &colab.RuntimeTemplateNetworkSpecArgs{
 /// 				EnableInternetAccess: pulumi.Bool(true),
 /// 			},
+/// 			SoftwareConfig: &colab.RuntimeTemplateSoftwareConfigArgs{},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_colab_runtimetemplate" "runtime-template" {
+///   display_name = "Runtime template no name"
+///   location     = "us-central1"
+///   machine_spec = {
+///     machine_type = "e2-standard-4"
+///   }
+///   network_spec = {
+///     enable_internet_access = true
+///   }
+///   software_config = {}
 /// }
 /// ```
 /// ```java
@@ -257,8 +303,9 @@ import 'runtime_template_state.dart';
 /// import com.pulumi.gcp.colab.RuntimeTemplateArgs;
 /// import com.pulumi.gcp.colab.inputs.RuntimeTemplateMachineSpecArgs;
 /// import com.pulumi.gcp.colab.inputs.RuntimeTemplateNetworkSpecArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -279,6 +326,8 @@ import 'runtime_template_state.dart';
 ///             .networkSpec(RuntimeTemplateNetworkSpecArgs.builder()
 ///                 .enableInternetAccess(true)
 ///                 .build())
+///             .softwareConfig(RuntimeTemplateSoftwareConfigArgs.builder()
+///                 .build())
 ///             .build());
 ///
 ///     }
@@ -295,6 +344,7 @@ import 'runtime_template_state.dart';
 ///         machineType: e2-standard-4
 ///       networkSpec:
 ///         enableInternetAccess: true
+///       softwareConfig: {}
 /// ```
 ///
 /// ### Colab Runtime Template Full
@@ -363,6 +413,9 @@ import 'runtime_template_state.dart';
 ///             postStartupScriptUrl: "gs://colab-enterprise-pss-secure/secure_pss.sh",
 ///             postStartupScriptBehavior: "RUN_ONCE",
 ///         },
+///         colabImage: {
+///             releaseName: "py312",
+///         },
 ///     },
 /// });
 /// ```
@@ -425,6 +478,9 @@ import 'runtime_template_state.dart';
 ///             "post_startup_script": "echo 'hello world'",
 ///             "post_startup_script_url": "gs://colab-enterprise-pss-secure/secure_pss.sh",
 ///             "post_startup_script_behavior": "RUN_ONCE",
+///         },
+///         "colab_image": {
+///             "release_name": "py312",
 ///         },
 ///     })
 /// ```
@@ -514,6 +570,10 @@ import 'runtime_template_state.dart';
 ///                 PostStartupScriptUrl = "gs://colab-enterprise-pss-secure/secure_pss.sh",
 ///                 PostStartupScriptBehavior = "RUN_ONCE",
 ///             },
+///             ColabImage = new Gcp.Colab.Inputs.RuntimeTemplateSoftwareConfigColabImageArgs
+///             {
+///                 ReleaseName = "py312",
+///             },
 ///         },
 ///     });
 ///
@@ -539,7 +599,7 @@ import 'runtime_template_state.dart';
 /// 		}
 /// 		mySubnetwork, err := compute.NewSubnetwork(ctx, "my_subnetwork", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("colab-test-default"),
-/// 			Network:     myNetwork.ID(),
+/// 			Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 /// 		})
@@ -562,8 +622,8 @@ import 'runtime_template_state.dart';
 /// 			},
 /// 			NetworkSpec: &colab.RuntimeTemplateNetworkSpecArgs{
 /// 				EnableInternetAccess: pulumi.Bool(true),
-/// 				Network:              myNetwork.ID(),
-/// 				Subnetwork:           mySubnetwork.ID(),
+/// 				Network:              myNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 				Subnetwork:           mySubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Labels: pulumi.StringMap{
 /// 				"k": pulumi.String("val"),
@@ -596,6 +656,9 @@ import 'runtime_template_state.dart';
 /// 					PostStartupScriptUrl:      pulumi.String("gs://colab-enterprise-pss-secure/secure_pss.sh"),
 /// 					PostStartupScriptBehavior: pulumi.String("RUN_ONCE"),
 /// 				},
+/// 				ColabImage: &colab.RuntimeTemplateSoftwareConfigColabImageArgs{
+/// 					ReleaseName: pulumi.String("py312"),
+/// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -603,6 +666,76 @@ import 'runtime_template_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "my_network" {
+///   name                    = "colab-test-default"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "my_subnetwork" {
+///   name          = "colab-test-default"
+///   network       = gcp_compute_network.my_network.id
+///   region        = "us-central1"
+///   ip_cidr_range = "10.0.1.0/24"
+/// }
+/// resource "gcp_colab_runtimetemplate" "runtime-template" {
+///   name         = "colab-runtime-template"
+///   display_name = "Runtime template full"
+///   location     = "us-central1"
+///   description  = "Full runtime template"
+///   machine_spec = {
+///     machine_type      = "n1-standard-2"
+///     accelerator_type  = "NVIDIA_TESLA_T4"
+///     accelerator_count = "1"
+///   }
+///   data_persistent_disk_spec = {
+///     disk_type    = "pd-standard"
+///     disk_size_gb = 200
+///   }
+///   network_spec = {
+///     enable_internet_access = true
+///     network                = gcp_compute_network.my_network.id
+///     subnetwork             = gcp_compute_subnetwork.my_subnetwork.id
+///   }
+///   labels = {
+///     "k" = "val"
+///   }
+///   idle_shutdown_config = {
+///     idle_timeout = "3600s"
+///   }
+///   euc_config = {
+///     euc_disabled = false
+///   }
+///   shielded_vm_config = {
+///     enable_secure_boot = false
+///   }
+///   network_tags = ["abc", "def"]
+///   encryption_spec = {
+///     kms_key_name = "my-crypto-key"
+///   }
+///   software_config = {
+///     envs = [{
+///       "name"  = "TEST"
+///       "value" = 1
+///     }]
+///     post_startup_script_config = {
+///       post_startup_script          = "echo 'hello world'"
+///       post_startup_script_url      = "gs://colab-enterprise-pss-secure/secure_pss.sh"
+///       post_startup_script_behavior = "RUN_ONCE"
+///     }
+///     colab_image = {
+///       release_name = "py312"
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -625,9 +758,11 @@ import 'runtime_template_state.dart';
 /// import com.pulumi.gcp.colab.inputs.RuntimeTemplateShieldedVmConfigArgs;
 /// import com.pulumi.gcp.colab.inputs.RuntimeTemplateEncryptionSpecArgs;
 /// import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigArgs;
+/// import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigEnvArgs;
 /// import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigColabImageArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -696,6 +831,9 @@ import 'runtime_template_state.dart';
 ///                     .postStartupScriptUrl("gs://colab-enterprise-pss-secure/secure_pss.sh")
 ///                     .postStartupScriptBehavior("RUN_ONCE")
 ///                     .build())
+///                 .colabImage(RuntimeTemplateSoftwareConfigColabImageArgs.builder()
+///                     .releaseName("py312")
+///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -757,6 +895,8 @@ import 'runtime_template_state.dart';
 ///           postStartupScript: echo 'hello world'
 ///           postStartupScriptUrl: gs://colab-enterprise-pss-secure/secure_pss.sh
 ///           postStartupScriptBehavior: RUN_ONCE
+///         colabImage:
+///           releaseName: py312
 /// ```
 ///
 ///
@@ -765,28 +905,28 @@ import 'runtime_template_state.dart';
 /// RuntimeTemplate can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/notebookRuntimeTemplates/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RuntimeTemplate can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:colab/runtimeTemplate:RuntimeTemplate default projects/{{project}}/locations/{{location}}/notebookRuntimeTemplates/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:colab/runtimeTemplate:RuntimeTemplate default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:colab/runtimeTemplate:RuntimeTemplate default {{location}}/{{name}}
 /// ```
 class RuntimeTemplate extends pulumi.CustomResource {
   /// The configuration for the data disk of the runtime.
   /// Structure is documented below.
   late final pulumi.Output<RuntimeTemplateDataPersistentDiskSpec> dataPersistentDiskSpec;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the Runtime Template.
   late final pulumi.Output<String?> description;
   /// Required. The display name of the Runtime Template.
@@ -804,7 +944,7 @@ class RuntimeTemplate extends pulumi.CustomResource {
   late final pulumi.Output<RuntimeTemplateIdleShutdownConfig> idleShutdownConfig;
   /// Labels to identify and group the runtime template.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>> labels;
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   late final pulumi.Output<String> location;
@@ -846,6 +986,7 @@ class RuntimeTemplate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataPersistentDiskSpec = registerOutput<RuntimeTemplateDataPersistentDiskSpec>('dataPersistentDiskSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateDataPersistentDiskSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -888,6 +1029,7 @@ class RuntimeTemplate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataPersistentDiskSpec = registerOutput<RuntimeTemplateDataPersistentDiskSpec>('dataPersistentDiskSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateDataPersistentDiskSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

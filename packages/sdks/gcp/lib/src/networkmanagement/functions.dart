@@ -4,7 +4,7 @@ import 'get_connectivity_test_run_result.dart';
 import 'get_connectivity_tests_args.dart';
 import 'get_connectivity_tests_result.dart';
 
-/// !&gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
+/// &gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
 ///
 /// A connectivity test is a static analysis of your resource configurations
 /// that enables you to evaluate connectivity to and from Google Cloud
@@ -241,7 +241,7 @@ import 'get_connectivity_tests_result.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Network: vpc.ID(),
+/// 					Network: vpc.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("source-vm"),
@@ -261,7 +261,7 @@ import 'get_connectivity_tests_result.dart';
 /// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 /// 						&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 /// 					},
-/// 					Network: vpc.ID(),
+/// 					Network: vpc.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Name:        pulumi.String("dest-vm"),
@@ -278,10 +278,10 @@ import 'get_connectivity_tests_result.dart';
 /// 		instance_test, err := networkmanagement.NewConnectivityTest(ctx, "instance-test", &networkmanagement.ConnectivityTestArgs{
 /// 			Name: pulumi.String("conn-test-instances"),
 /// 			Source: &networkmanagement.ConnectivityTestSourceArgs{
-/// 				Instance: source.ID(),
+/// 				Instance: source.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Destination: &networkmanagement.ConnectivityTestDestinationArgs{
-/// 				Instance: destination.ID(),
+/// 				Instance: destination.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Protocol: pulumi.String("TCP"),
 /// 			Labels: pulumi.StringMap{
@@ -298,6 +298,68 @@ import 'get_connectivity_tests_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_networkmanagement_getconnectivitytestrun" "instance-test-run" {
+///   name = gcp_networkmanagement_connectivitytest.instance-test.name
+/// }
+/// data "gcp_compute_getimage" "debian9" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_networkmanagement_connectivitytest" "instance-test" {
+///   name = "conn-test-instances"
+///   source = {
+///     instance = gcp_compute_instance.source.id
+///   }
+///   destination = {
+///     instance = gcp_compute_instance.destination.id
+///   }
+///   protocol = "TCP"
+///   labels = {
+///     "env" = "test"
+///   }
+/// }
+/// resource "gcp_compute_instance" "source" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     network = gcp_compute_network.vpc.id
+///   }
+///   name         = "source-vm"
+///   machine_type = "e2-medium"
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.debian9.id
+///     }
+///   }
+/// }
+/// resource "gcp_compute_instance" "destination" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     network = gcp_compute_network.vpc.id
+///   }
+///   name         = "dest-vm"
+///   machine_type = "e2-medium"
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.debian9.id
+///     }
+///   }
+/// }
+/// resource "gcp_compute_network" "vpc" {
+///   name = "conn-test-net"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -311,6 +373,7 @@ import 'get_connectivity_tests_result.dart';
 /// import com.pulumi.gcp.compute.Instance;
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.networkmanagement.ConnectivityTest;
@@ -319,8 +382,8 @@ import 'get_connectivity_tests_result.dart';
 /// import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestDestinationArgs;
 /// import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
 /// import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestRunArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -522,6 +585,19 @@ Future<GetConnectivityTestRunResult> getConnectivityTestRun(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_networkmanagement_getconnectivitytests" "tests" {
+///   filter = "name:projects/project-id/locations/global/connectivityTests/my-tests"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -530,8 +606,8 @@ Future<GetConnectivityTestRunResult> getConnectivityTestRun(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
 /// import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

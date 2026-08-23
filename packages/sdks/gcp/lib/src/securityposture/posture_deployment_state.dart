@@ -6,6 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PostureDeploymentState {
   /// Time the posture deployment was created in UTC.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the posture deployment.
   final pulumi.Input<String>? description;
   /// This is an output only optional field which will be filled in case when
@@ -14,7 +21,7 @@ class PostureDeploymentState {
   final pulumi.Input<String>? desiredPostureId;
   /// This is an output only optional field which will be filled in case when
   /// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-  /// It denotes the desired posture revision_id to be deployed.
+  /// It denotes the desired posture revisionId to be deployed.
   final pulumi.Input<String>? desiredPostureRevisionId;
   /// For Resource freshness validation (https://google.aip.dev/154)
   final pulumi.Input<String>? etag;
@@ -51,6 +58,7 @@ class PostureDeploymentState {
 
   /// Creates a new [PostureDeploymentState].
   /// [createTime] Time the posture deployment was created in UTC.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the posture deployment.
   /// [desiredPostureId] This is an output only optional field which will be filled in case when
   /// [desiredPostureRevisionId] This is an output only optional field which will be filled in case when
@@ -68,6 +76,7 @@ class PostureDeploymentState {
   /// [updateTime] Time the posture deployment was updated in UTC.
   const PostureDeploymentState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.desiredPostureId,
     this.desiredPostureRevisionId,
@@ -88,6 +97,7 @@ class PostureDeploymentState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'desiredPostureId': ?desiredPostureId,
       'desiredPostureRevisionId': ?desiredPostureRevisionId,
@@ -109,6 +119,7 @@ class PostureDeploymentState {
   factory PostureDeploymentState.fromMap(Map<String, dynamic> map) {
     return PostureDeploymentState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       desiredPostureId: (() { final guardedValue = map['desiredPostureId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       desiredPostureRevisionId: (() { final guardedValue = map['desiredPostureRevisionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -127,4 +138,3 @@ class PostureDeploymentState {
     );
   }
 }
-

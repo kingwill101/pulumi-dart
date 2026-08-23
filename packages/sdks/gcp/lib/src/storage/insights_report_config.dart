@@ -210,8 +210,6 @@ import 'insights_report_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -285,6 +283,63 @@ import 'insights_report_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_storage_insightsreportconfig" "config" {
+///   depends_on   = [gcp_storage_bucketiammember.admin]
+///   display_name = "Test Report Config"
+///   location     = "us-central1"
+///   frequency_options = {
+///     frequency = "WEEKLY"
+///     start_date = {
+///       day   = 15
+///       month = 3
+///       year  = 2050
+///     }
+///     end_date = {
+///       day   = 15
+///       month = 4
+///       year  = 2050
+///     }
+///   }
+///   csv_options = {
+///     record_separator = "\n"
+///     delimiter        = ","
+///     header_required  = false
+///   }
+///   object_metadata_report_options = {
+///     metadata_fields = ["bucket", "name", "project"]
+///     storage_filters = {
+///       bucket = gcp_storage_bucket.report_bucket.name
+///     }
+///     storage_destination_options = {
+///       bucket           = gcp_storage_bucket.report_bucket.name
+///       destination_path = "test-insights-reports"
+///     }
+///   }
+/// }
+/// resource "gcp_storage_bucket" "report_bucket" {
+///   name                        = "my-bucket"
+///   location                    = "us-central1"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketiammember" "admin" {
+///   bucket = gcp_storage_bucket.report_bucket.name
+///   role   = "roles/storage.admin"
+///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-storageinsights.iam.gserviceaccount.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -307,8 +362,8 @@ import 'insights_report_config_state.dart';
 /// import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs;
 /// import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -440,28 +495,28 @@ import 'insights_report_config_state.dart';
 /// ReportConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ReportConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default {{location}}/{{name}}
 /// ```
 class InsightsReportConfig extends pulumi.CustomResource {
   /// Options for configuring the format of the inventory report CSV file.
   /// Structure is documented below.
   late final pulumi.Output<InsightsReportConfigCsvOptions?> csvOptions;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
   late final pulumi.Output<String?> displayName;
   /// If set, all the inventory report details associated with this report configuration are deleted.
@@ -498,6 +553,7 @@ class InsightsReportConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     csvOptions = registerOutput<InsightsReportConfigCsvOptions?>('csvOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigCsvOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     frequencyOptions = registerOutput<InsightsReportConfigFrequencyOptions?>('frequencyOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigFrequencyOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -532,6 +588,7 @@ class InsightsReportConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     csvOptions = registerOutput<InsightsReportConfigCsvOptions?>('csvOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigCsvOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     frequencyOptions = registerOutput<InsightsReportConfigFrequencyOptions?>('frequencyOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigFrequencyOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

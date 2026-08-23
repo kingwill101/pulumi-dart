@@ -6,6 +6,15 @@ import 'get_config_result.dart';
 import 'get_variable_args.dart';
 import 'get_variable_result.dart';
 
+/// To get more information about RuntimeConfigs, see:
+///
+/// * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+/// * How-to Guides
+/// * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+///
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta datasources.
+///
 /// ## Example Usage
 ///
 ///
@@ -58,6 +67,19 @@ import 'get_variable_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_runtimeconfig_getconfig" "run-service" {
+///   name = "my-service"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -66,8 +88,8 @@ import 'get_variable_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
 /// import com.pulumi.gcp.runtimeconfig.inputs.GetConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -109,6 +131,11 @@ Future<GetConfigResult> getConfig(
   return GetConfigResult.fromMap(result);
 }
 
+/// Retrieves the current IAM policy data for config
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -165,6 +192,20 @@ Future<GetConfigResult> getConfig(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_runtimeconfig_getconfigiampolicy" "policy" {
+///   project = config.project
+///   config  = config.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -173,8 +214,8 @@ Future<GetConfigResult> getConfig(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
 /// import com.pulumi.gcp.runtimeconfig.inputs.GetConfigIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -187,8 +228,8 @@ Future<GetConfigResult> getConfig(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = RuntimeconfigFunctions.getConfigIamPolicy(GetConfigIamPolicyArgs.builder()
-///             .project(config.project())
-///             .config(config.name())
+///             .project(config.get("project"))
+///             .config(config.get("name"))
 ///             .build());
 ///
 ///     }
@@ -218,6 +259,15 @@ Future<GetConfigIamPolicyResult> getConfigIamPolicy(
   return GetConfigIamPolicyResult.fromMap(result);
 }
 
+/// To get more information about RuntimeConfigs, see:
+///
+/// * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
+/// * How-to Guides
+/// * [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
+///
+/// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta datasources.
+///
 /// ## Example Usage
 ///
 ///
@@ -274,6 +324,20 @@ Future<GetConfigIamPolicyResult> getConfigIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_runtimeconfig_getvariable" "run-service" {
+///   parent = "my-service"
+///   name   = "prod-variables/hostname"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -282,8 +346,8 @@ Future<GetConfigIamPolicyResult> getConfigIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.runtimeconfig.RuntimeconfigFunctions;
 /// import com.pulumi.gcp.runtimeconfig.inputs.GetVariableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

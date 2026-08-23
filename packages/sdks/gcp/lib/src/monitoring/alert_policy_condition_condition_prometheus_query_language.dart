@@ -13,6 +13,12 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage {
   /// This field is optional. If this field is not empty, then it must be a
   /// valid Prometheus label name.
   final pulumi.Input<String>? alertRule;
+  /// Whether to disable metric existence validation for this condition.
+  /// This allows alerting policies to be defined on metrics that do not yet
+  /// exist, improving advanced customer workflows such as configuring
+  /// alerting policies using Terraform.
+  /// Users with the `monitoring.alertPolicyViewer` role are able to see the
+  /// name of the non-existent metric in the alerting policy condition.
   final pulumi.Input<bool>? disableMetricValidation;
   /// Alerts are considered firing once their PromQL expression evaluated
   /// to be "true" for this long. Alerts whose PromQL expression was not
@@ -48,7 +54,7 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage {
 
   /// Creates a new [AlertPolicyConditionConditionPrometheusQueryLanguage].
   /// [alertRule] The alerting rule name of this alert in the corresponding Prometheus
-  /// [disableMetricValidation] Optional.
+  /// [disableMetricValidation] Whether to disable metric existence validation for this condition.
   /// [duration] Alerts are considered firing once their PromQL expression evaluated
   /// [evaluationInterval] How often this rule should be evaluated. Must be a positive multiple
   /// [labels] Labels to add to or overwrite in the PromQL query result. Label names
@@ -88,4 +94,3 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage {
     );
   }
 }
-

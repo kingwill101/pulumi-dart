@@ -6,6 +6,7 @@ import 'get_management_server_network.dart';
 
 /// Result data returned by getManagementServer.
 class GetManagementServerResult {
+  final String deletionPolicy;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -17,6 +18,7 @@ class GetManagementServerResult {
   final String type;
 
   /// Creates a new [GetManagementServerResult].
+  /// [deletionPolicy] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
   /// [managementUris] Required.
@@ -26,6 +28,7 @@ class GetManagementServerResult {
   /// [project] Required.
   /// [type] Required.
   const GetManagementServerResult({
+    required this.deletionPolicy,
     required this.id,
     required this.location,
     required this.managementUris,
@@ -38,6 +41,7 @@ class GetManagementServerResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': deletionPolicy,
       'id': id,
       'location': location,
       'managementUris': pulumi.Input.encodeList<GetManagementServerManagementUri, Map<String, dynamic>>(managementUris, (value) => value.toMap()),
@@ -51,6 +55,7 @@ class GetManagementServerResult {
 
   factory GetManagementServerResult.fromMap(Map<String, dynamic> map) {
     return GetManagementServerResult(
+      deletionPolicy: map['deletionPolicy'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       managementUris: pulumi.Input.decodeList<GetManagementServerManagementUri>(map['managementUris']!, (value) => GetManagementServerManagementUri.fromMap((value as Map).cast<String, dynamic>())),
@@ -62,4 +67,3 @@ class GetManagementServerResult {
     );
   }
 }
-

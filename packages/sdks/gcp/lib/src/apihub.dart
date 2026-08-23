@@ -39,3 +39,6 @@ export 'apihub/plugin_instance_auth_config_user_password_config.dart';
 export 'apihub/plugin_instance_auth_config_user_password_config_password.dart';
 export 'apihub/plugin_instance_state.dart';
 export 'apihub/plugin_state.dart';
+export 'apihub/runtime_project_attachment.dart';
+export 'apihub/runtime_project_attachment_args.dart';
+export 'apihub/runtime_project_attachment_state.dart';

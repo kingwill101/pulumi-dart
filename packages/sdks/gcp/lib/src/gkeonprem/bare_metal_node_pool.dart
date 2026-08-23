@@ -429,6 +429,86 @@ import 'bare_metal_node_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkeonprem_baremetalcluster" "default-basic" {
+///   name                     = "my-cluster"
+///   location                 = "us-west1"
+///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
+///   bare_metal_version       = "1.12.3"
+///   network_config = {
+///     island_mode_cidr = {
+///       service_address_cidr_blocks = ["172.26.0.0/16"]
+///       pod_address_cidr_blocks     = ["10.240.0.0/13"]
+///     }
+///   }
+///   control_plane = {
+///     control_plane_node_pool_config = {
+///       node_pool_config = {
+///         labels           = {}
+///         operating_system = "LINUX"
+///         node_configs = [{
+///           "labels" = {}
+///           "nodeIp" = "10.200.0.9"
+///         }]
+///       }
+///     }
+///   }
+///   load_balancer = {
+///     port_config = {
+///       control_plane_load_balancer_port = 443
+///     }
+///     vip_config = {
+///       control_plane_vip = "10.200.0.13"
+///       ingress_vip       = "10.200.0.14"
+///     }
+///     metal_lb_config = {
+///       address_pools = [{
+///         "pool"      = "pool1"
+///         "addresses" = ["10.200.0.14/32", "10.200.0.15/32", "10.200.0.16/32", "10.200.0.17/32", "10.200.0.18/32", "fd00:1::f/128", "fd00:1::10/128", "fd00:1::11/128", "fd00:1::12/128"]
+///       }]
+///     }
+///   }
+///   storage = {
+///     lvp_share_config = {
+///       lvp_config = {
+///         path          = "/mnt/localpv-share"
+///         storage_class = "local-shared"
+///       }
+///       shared_path_pv_count = 5
+///     }
+///     lvp_node_mounts_config = {
+///       path          = "/mnt/localpv-disk"
+///       storage_class = "local-disks"
+///     }
+///   }
+///   security_config = {
+///     authorization = {
+///       admin_users = [{
+///         "username" = "admin@hashicorptest.com"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_gkeonprem_baremetalnodepool" "nodepool-basic" {
+///   name               = "my-nodepool"
+///   bare_metal_cluster = gcp_gkeonprem_baremetalcluster.default-basic.name
+///   location           = "us-west1"
+///   node_pool_config = {
+///     operating_system = "LINUX"
+///     node_configs = [{
+///       "nodeIp" = "10.200.0.11"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -442,21 +522,25 @@ import 'bare_metal_node_pool_state.dart';
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerPortConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerVipConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerMetalLbConfigArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigLvpConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpNodeMountsConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigAuthorizationArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigAuthorizationAdminUserArgs;
 /// import com.pulumi.gcp.gkeonprem.BareMetalNodePool;
 /// import com.pulumi.gcp.gkeonprem.BareMetalNodePoolArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalNodePoolNodePoolConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.gkeonprem.inputs.BareMetalNodePoolNodePoolConfigNodeConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1080,6 +1164,95 @@ import 'bare_metal_node_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkeonprem_baremetalcluster" "default-full" {
+///   name                     = "my-cluster"
+///   location                 = "us-west1"
+///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
+///   bare_metal_version       = "1.12.3"
+///   network_config = {
+///     island_mode_cidr = {
+///       service_address_cidr_blocks = ["172.26.0.0/16"]
+///       pod_address_cidr_blocks     = ["10.240.0.0/13"]
+///     }
+///   }
+///   control_plane = {
+///     control_plane_node_pool_config = {
+///       node_pool_config = {
+///         labels           = {}
+///         operating_system = "LINUX"
+///         node_configs = [{
+///           "labels" = {}
+///           "nodeIp" = "10.200.0.9"
+///         }]
+///       }
+///     }
+///   }
+///   load_balancer = {
+///     port_config = {
+///       control_plane_load_balancer_port = 443
+///     }
+///     vip_config = {
+///       control_plane_vip = "10.200.0.13"
+///       ingress_vip       = "10.200.0.14"
+///     }
+///     metal_lb_config = {
+///       address_pools = [{
+///         "pool"      = "pool1"
+///         "addresses" = ["10.200.0.14/32", "10.200.0.15/32", "10.200.0.16/32", "10.200.0.17/32", "10.200.0.18/32", "fd00:1::f/128", "fd00:1::10/128", "fd00:1::11/128", "fd00:1::12/128"]
+///       }]
+///     }
+///   }
+///   storage = {
+///     lvp_share_config = {
+///       lvp_config = {
+///         path          = "/mnt/localpv-share"
+///         storage_class = "local-shared"
+///       }
+///       shared_path_pv_count = 5
+///     }
+///     lvp_node_mounts_config = {
+///       path          = "/mnt/localpv-disk"
+///       storage_class = "local-disks"
+///     }
+///   }
+///   security_config = {
+///     authorization = {
+///       admin_users = [{
+///         "username" = "admin@hashicorptest.com"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_gkeonprem_baremetalnodepool" "nodepool-full" {
+///   name               = "my-nodepool"
+///   display_name       = "test-name"
+///   bare_metal_cluster = gcp_gkeonprem_baremetalcluster.default-full.name
+///   location           = "us-west1"
+///   annotations        = {}
+///   node_pool_config = {
+///     operating_system = "LINUX"
+///     labels           = {}
+///     node_configs = [{
+///       "nodeIp" = "10.200.0.11"
+///       "labels" = {}
+///     }]
+///     taints = [{
+///       "key"    = "test-key"
+///       "value"  = "test-value"
+///       "effect" = "NO_EXECUTE"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1093,21 +1266,26 @@ import 'bare_metal_node_pool_state.dart';
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerPortConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerVipConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerMetalLbConfigArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigLvpConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpNodeMountsConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigAuthorizationArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigAuthorizationAdminUserArgs;
 /// import com.pulumi.gcp.gkeonprem.BareMetalNodePool;
 /// import com.pulumi.gcp.gkeonprem.BareMetalNodePoolArgs;
 /// import com.pulumi.gcp.gkeonprem.inputs.BareMetalNodePoolNodePoolConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.gkeonprem.inputs.BareMetalNodePoolNodePoolConfigNodeConfigArgs;
+/// import com.pulumi.gcp.gkeonprem.inputs.BareMetalNodePoolNodePoolConfigTaintArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1298,22 +1476,15 @@ import 'bare_metal_node_pool_state.dart';
 /// BareMetalNodePool can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}`
-///
 /// * `{{location}}/{{bare_metal_cluster}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, BareMetalNodePool can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default {{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default {{location}}/{{bare_metal_cluster}}/{{name}}
 /// ```
 class BareMetalNodePool extends pulumi.CustomResource {
@@ -1327,7 +1498,7 @@ class BareMetalNodePool extends pulumi.CustomResource {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// The cluster this node pool belongs to.
   late final pulumi.Output<String> bareMetalCluster;
@@ -1335,8 +1506,16 @@ class BareMetalNodePool extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// The time the cluster was deleted, in RFC3339 text format.
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The display name for the Bare Metal Node Pool.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
@@ -1385,6 +1564,7 @@ class BareMetalNodePool extends pulumi.CustomResource {
     bareMetalCluster = registerOutput<String>('bareMetalCluster');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');
@@ -1426,6 +1606,7 @@ class BareMetalNodePool extends pulumi.CustomResource {
     bareMetalCluster = registerOutput<String>('bareMetalCluster');
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');

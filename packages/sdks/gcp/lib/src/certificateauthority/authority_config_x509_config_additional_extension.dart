@@ -39,4 +39,3 @@ class AuthorityConfigX509ConfigAdditionalExtension {
     );
   }
 }
-

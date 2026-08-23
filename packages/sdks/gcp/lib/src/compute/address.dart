@@ -77,6 +77,19 @@ import 'address_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_address" "ip_address" {
+///   name = "my-address"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +98,8 @@ import 'address_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.Address;
 /// import com.pulumi.gcp.compute.AddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -206,14 +219,14 @@ import 'address_state.dart';
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     _default.ID(),
+/// 			Network:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewAddress(ctx, "internal_with_subnet_and_address", &compute.AddressArgs{
 /// 			Name:        pulumi.String("my-internal-address"),
-/// 			Subnetwork:  defaultSubnetwork.ID(),
+/// 			Subnetwork:  defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressType: pulumi.String("INTERNAL"),
 /// 			Address:     pulumi.String("10.0.42.42"),
 /// 			Region:      pulumi.String("us-central1"),
@@ -223,6 +236,32 @@ import 'address_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name = "my-network"
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "my-subnet"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_compute_address" "internal_with_subnet_and_address" {
+///   name         = "my-internal-address"
+///   subnetwork   = gcp_compute_subnetwork.default.id
+///   address_type = "INTERNAL"
+///   address      = "10.0.42.42"
+///   region       = "us-central1"
 /// }
 /// ```
 /// ```java
@@ -237,8 +276,8 @@ import 'address_state.dart';
 /// import com.pulumi.gcp.compute.SubnetworkArgs;
 /// import com.pulumi.gcp.compute.Address;
 /// import com.pulumi.gcp.compute.AddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -359,6 +398,21 @@ import 'address_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_address" "internal_with_gce_endpoint" {
+///   name         = "my-internal-address-"
+///   address_type = "INTERNAL"
+///   purpose      = "GCE_ENDPOINT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -367,8 +421,8 @@ import 'address_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.Address;
 /// import com.pulumi.gcp.compute.AddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -552,6 +606,40 @@ import 'address_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "debianImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_address" "static" {
+///   name = "ipv4-address"
+/// }
+/// resource "gcp_compute_instance" "instance_with_ip" {
+///   name         = "vm-instance"
+///   machine_type = "f1-micro"
+///   zone         = "us-central1-a"
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.debianImage.self_link
+///     }
+///   }
+///   network_interfaces {
+///     network = "default"
+///     access_configs {
+///       nat_ip = gcp_compute_address.static.address
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -567,8 +655,9 @@ import 'address_state.dart';
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -732,6 +821,28 @@ import 'address_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_address" "ipsec-interconnect-address" {
+///   name          = "test-address"
+///   address_type  = "INTERNAL"
+///   purpose       = "IPSEC_INTERCONNECT"
+///   address       = "192.168.1.0"
+///   prefix_length = 29
+///   network       = gcp_compute_network.network.self_link
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "test-network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -742,8 +853,8 @@ import 'address_state.dart';
 /// import com.pulumi.gcp.compute.NetworkArgs;
 /// import com.pulumi.gcp.compute.Address;
 /// import com.pulumi.gcp.compute.AddressArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -795,28 +906,17 @@ import 'address_state.dart';
 /// Address can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/addresses/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Address can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/address:Address default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/address:Address default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/address:Address default {{name}}
 /// ```
 class Address extends pulumi.CustomResource {
@@ -824,19 +924,29 @@ class Address extends pulumi.CustomResource {
   /// The IP address must be inside the specified subnetwork,
   /// if any. Set by the API if undefined.
   late final pulumi.Output<String> address;
+  /// The unique numeric identifier for the resource. This identifier is defined by the server.
+  late final pulumi.Output<String> addressId;
   /// The type of address to reserve.
-  /// Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
+  /// Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
   /// Default value is `EXTERNAL`.
   /// Possible values are: `INTERNAL`, `EXTERNAL`.
   late final pulumi.Output<String?> addressType;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
-  /// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-  /// The PDP must support enhanced IPv4 allocations.
+  /// Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+  /// If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+  /// If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
   /// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
   /// Full resource URL, as in:
   /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -858,7 +968,7 @@ class Address extends pulumi.CustomResource {
   /// Labels to apply to this address.  A list of key-&gt;value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -926,8 +1036,10 @@ class Address extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     address = registerOutput<String>('address');
+    addressId = registerOutput<String>('addressId');
     addressType = registerOutput<String?>('addressType');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     ipCollection = registerOutput<String?>('ipCollection');
@@ -972,8 +1084,10 @@ class Address extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     address = registerOutput<String>('address');
+    addressId = registerOutput<String>('addressId');
     addressType = registerOutput<String?>('addressType');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     ipCollection = registerOutput<String?>('ipCollection');

@@ -15,9 +15,9 @@ import 'document_state.dart';
 /// &gt; **Warning:** This resource creates a Firestore Document on a project that already has
 /// a Firestore database. If you haven't already created it, you may
 /// create a `gcp.firestore.Database` resource with `type` set to
-/// `"FIRESTORE_NATIVE"` and `location_id` set to your chosen location.
+/// `"FIRESTORE_NATIVE"` and `locationId` set to your chosen location.
 /// If you wish to use App Engine, you may instead create a
-/// `gcp.appengine.Application` resource with `database_type` set to
+/// `gcp.appengine.Application` resource with `databaseType` set to
 /// `"CLOUD_FIRESTORE"`. Your Firestore location will be the same as
 /// the App Engine location specified.
 ///
@@ -187,7 +187,7 @@ import 'document_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		firestore, err := projects.NewService(ctx, "firestore", &projects.ServiceArgs{
+/// 		firestore2, err := projects.NewService(ctx, "firestore", &projects.ServiceArgs{
 /// 			Project: project.ProjectId,
 /// 			Service: pulumi.String("firestore.googleapis.com"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -202,7 +202,7 @@ import 'document_state.dart';
 /// 			LocationId: pulumi.String("nam5"),
 /// 			Type:       pulumi.String("FIRESTORE_NATIVE"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			firestore,
+/// 			firestore2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -219,6 +219,48 @@ import 'document_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "project-id"
+///   name            = "project-id"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "time_sleep" "wait_60_seconds" {
+///   depends_on      = [gcp_organizations_project.project]
+///   create_duration = "60s"
+/// }
+/// resource "gcp_projects_service" "firestore" {
+///   depends_on = [time_sleep.wait_60_seconds]
+///   project    = gcp_organizations_project.project.project_id
+///   service    = "firestore.googleapis.com"
+/// }
+/// resource "gcp_firestore_database" "database" {
+///   depends_on  = [gcp_projects_service.firestore]
+///   project     = gcp_organizations_project.project.project_id
+///   name        = "(default)"
+///   location_id = "nam5"
+///   type        = "FIRESTORE_NATIVE"
+/// }
+/// resource "gcp_firestore_document" "mydoc" {
+///   project     = gcp_organizations_project.project.project_id
+///   database    = gcp_firestore_database.database.name
+///   collection  = "somenewcollection"
+///   document_id = "my-doc-id"
+///   fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}"
 /// }
 /// ```
 /// ```java
@@ -238,8 +280,8 @@ import 'document_state.dart';
 /// import com.pulumi.gcp.firestore.Document;
 /// import com.pulumi.gcp.firestore.DocumentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -546,7 +588,7 @@ import 'document_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		firestore, err := projects.NewService(ctx, "firestore", &projects.ServiceArgs{
+/// 		firestore2, err := projects.NewService(ctx, "firestore", &projects.ServiceArgs{
 /// 			Project: project.ProjectId,
 /// 			Service: pulumi.String("firestore.googleapis.com"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -561,7 +603,7 @@ import 'document_state.dart';
 /// 			LocationId: pulumi.String("nam5"),
 /// 			Type:       pulumi.String("FIRESTORE_NATIVE"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			firestore,
+/// 			firestore2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
@@ -604,6 +646,62 @@ import 'document_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "project-id"
+///   name            = "project-id"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "time_sleep" "wait_60_seconds" {
+///   depends_on      = [gcp_organizations_project.project]
+///   create_duration = "60s"
+/// }
+/// resource "gcp_projects_service" "firestore" {
+///   depends_on = [time_sleep.wait_60_seconds]
+///   project    = gcp_organizations_project.project.project_id
+///   service    = "firestore.googleapis.com"
+/// }
+/// resource "gcp_firestore_database" "database" {
+///   depends_on  = [gcp_projects_service.firestore]
+///   project     = gcp_organizations_project.project.project_id
+///   name        = "(default)"
+///   location_id = "nam5"
+///   type        = "FIRESTORE_NATIVE"
+/// }
+/// resource "gcp_firestore_document" "mydoc" {
+///   project     = gcp_organizations_project.project.project_id
+///   database    = gcp_firestore_database.database.name
+///   collection  = "somenewcollection"
+///   document_id = "my-doc-id"
+///   fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}"
+/// }
+/// resource "gcp_firestore_document" "sub_document" {
+///   project     = gcp_organizations_project.project.project_id
+///   database    = gcp_firestore_database.database.name
+///   collection  ="${gcp_firestore_document.mydoc.path}/subdocs"
+///   document_id = "bitcoinkey"
+///   fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}"
+/// }
+/// resource "gcp_firestore_document" "sub_sub_document" {
+///   project     = gcp_organizations_project.project.project_id
+///   database    = gcp_firestore_database.database.name
+///   collection  ="${gcp_firestore_document.sub_document.path}/subsubdocs"
+///   document_id = "asecret"
+///   fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -621,8 +719,8 @@ import 'document_state.dart';
 /// import com.pulumi.gcp.firestore.Document;
 /// import com.pulumi.gcp.firestore.DocumentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -760,6 +858,7 @@ import 'document_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, Document can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -772,6 +871,13 @@ class Document extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// The Firestore database id. Defaults to `"(default)"`.
   late final pulumi.Output<String?> database;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The client-assigned document ID to use for this document during creation.
   late final pulumi.Output<String> documentId;
   /// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
@@ -804,6 +910,7 @@ class Document extends pulumi.CustomResource {
     collection = registerOutput<String>('collection');
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String?>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     documentId = registerOutput<String>('documentId');
     fields = registerOutput<String>('fields');
     this.name = registerOutput<String>('name');
@@ -838,6 +945,7 @@ class Document extends pulumi.CustomResource {
     collection = registerOutput<String>('collection');
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String?>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     documentId = registerOutput<String>('documentId');
     fields = registerOutput<String>('fields');
     this.name = registerOutput<String>('name');

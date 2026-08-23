@@ -4,6 +4,9 @@ import 'hosting_release_state.dart';
 
 /// A Release is a particular collection of configurations that is set to be public at a particular time.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about Release, see:
 ///
 /// * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.releases)
@@ -145,6 +148,35 @@ import 'hosting_release_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "site-id"
+/// }
+/// resource "gcp_firebase_hostingversion" "default" {
+///   site_id = gcp_firebase_hostingsite.default.site_id
+///   config = {
+///     redirects = [{
+///       "glob"       = "/google/**"
+///       "statusCode" = 302
+///       "location"   = "https://www.google.com"
+///     }]
+///   }
+/// }
+/// resource "gcp_firebase_hostingrelease" "default" {
+///   site_id      = gcp_firebase_hostingsite.default.site_id
+///   version_name = gcp_firebase_hostingversion.default.name
+///   message      = "Test release"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -156,10 +188,11 @@ import 'hosting_release_state.dart';
 /// import com.pulumi.gcp.firebase.HostingVersion;
 /// import com.pulumi.gcp.firebase.HostingVersionArgs;
 /// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
+/// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigRedirectArgs;
 /// import com.pulumi.gcp.firebase.HostingRelease;
 /// import com.pulumi.gcp.firebase.HostingReleaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -379,6 +412,40 @@ import 'hosting_release_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "site-with-channel"
+/// }
+/// resource "gcp_firebase_hostingversion" "default" {
+///   site_id = gcp_firebase_hostingsite.default.site_id
+///   config = {
+///     redirects = [{
+///       "glob"       = "/google/**"
+///       "statusCode" = 302
+///       "location"   = "https://www.google.com"
+///     }]
+///   }
+/// }
+/// resource "gcp_firebase_hostingchannel" "default" {
+///   site_id    = gcp_firebase_hostingsite.default.site_id
+///   channel_id = "channel-id"
+/// }
+/// resource "gcp_firebase_hostingrelease" "default" {
+///   site_id      = gcp_firebase_hostingsite.default.site_id
+///   channel_id   = gcp_firebase_hostingchannel.default.channel_id
+///   version_name = gcp_firebase_hostingversion.default.name
+///   message      = "Test release in channel"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -390,12 +457,13 @@ import 'hosting_release_state.dart';
 /// import com.pulumi.gcp.firebase.HostingVersion;
 /// import com.pulumi.gcp.firebase.HostingVersionArgs;
 /// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
+/// import com.pulumi.gcp.firebase.inputs.HostingVersionConfigRedirectArgs;
 /// import com.pulumi.gcp.firebase.HostingChannel;
 /// import com.pulumi.gcp.firebase.HostingChannelArgs;
 /// import com.pulumi.gcp.firebase.HostingRelease;
 /// import com.pulumi.gcp.firebase.HostingReleaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -553,6 +621,25 @@ import 'hosting_release_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "site-id"
+/// }
+/// resource "gcp_firebase_hostingrelease" "default" {
+///   site_id = gcp_firebase_hostingsite.default.site_id
+///   type    = "SITE_DISABLE"
+///   message = "Take down site"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -563,8 +650,8 @@ import 'hosting_release_state.dart';
 /// import com.pulumi.gcp.firebase.HostingSiteArgs;
 /// import com.pulumi.gcp.firebase.HostingRelease;
 /// import com.pulumi.gcp.firebase.HostingReleaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -612,28 +699,17 @@ import 'hosting_release_state.dart';
 /// Release can be imported using any of these accepted formats:
 ///
 /// * `sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}`
-///
 /// * `sites/{{site_id}}/releases/{{release_id}}`
-///
 /// * `{{site_id}}/{{channel_id}}/{{release_id}}`
-///
 /// * `{{site_id}}/{{release_id}}`
+///
 ///
 /// When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/releases/{{release_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{channel_id}}/{{release_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{release_id}}
 /// ```
 class HostingRelease extends pulumi.CustomResource {
@@ -651,7 +727,7 @@ class HostingRelease extends pulumi.CustomResource {
   /// Required. The ID of the site to which the release belongs.
   late final pulumi.Output<String> siteId;
   /// The type of the release; indicates what happened to the content of the site. There is no need to specify
-  /// `DEPLOY` or `ROLLBACK` type if a `version_name` is provided.
+  /// `DEPLOY` or `ROLLBACK` type if a `versionName` is provided.
   /// DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
   /// ROLLBACK: The release points back to a previously deployed version. Output only.
   /// SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
@@ -659,7 +735,7 @@ class HostingRelease extends pulumi.CustomResource {
   late final pulumi.Output<String> type;
   /// The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
   /// The content of the version specified will be actively displayed on the appropriate URL.
-  /// The Version must belong to the same site as in the `site_id`.
+  /// The Version must belong to the same site as in the `siteId`.
   /// This parameter must be empty if the `type` of the release is `SITE_DISABLE`.
   late final pulumi.Output<String?> versionName;
 

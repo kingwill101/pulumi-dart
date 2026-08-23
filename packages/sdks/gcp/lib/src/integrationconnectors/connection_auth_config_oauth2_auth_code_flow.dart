@@ -49,4 +49,3 @@ class ConnectionAuthConfigOauth2AuthCodeFlow {
     );
   }
 }
-

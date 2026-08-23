@@ -9,6 +9,13 @@ import 'cx_playbook_llm_model_settings.dart';
 /// {@endtemplate}
 /// {@macro pulumi_diagflow_cx_playbook_cx_playbook_args_doc}
 class CxPlaybookArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The human-readable name of the playbook, unique within an agent.
   final pulumi.Input<String> displayName;
   /// High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
@@ -29,6 +36,7 @@ class CxPlaybookArgs {
   final pulumi.Input<List<String>>? referencedTools;
 
   /// Creates a new [CxPlaybookArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The human-readable name of the playbook, unique within an agent.
   /// [goal] High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
   /// [instruction] Instruction to accomplish target goal.
@@ -37,6 +45,7 @@ class CxPlaybookArgs {
   /// [playbookType] Type of the playbook.
   /// [referencedTools] The resource name of tools referenced by the current playbook in the instructions. If not provided explicitly, they are will be implied using the tool being referenced in goal and steps.
   const CxPlaybookArgs({
+    this.deletionPolicy,
     required this.displayName,
     required this.goal,
     this.instruction,
@@ -48,6 +57,7 @@ class CxPlaybookArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'displayName': displayName,
       'goal': goal,
       'instruction': ?pulumi.Input.mapOptionalInputValue<CxPlaybookInstruction, Map<String, dynamic>>(instruction, (value) => value.toMap()),
@@ -60,6 +70,7 @@ class CxPlaybookArgs {
 
   factory CxPlaybookArgs.fromMap(Map<String, dynamic> map) {
     return CxPlaybookArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       goal: pulumi.Input.fromValue(map['goal'] as String),
       instruction: (() { final guardedValue = map['instruction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CxPlaybookInstruction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -70,4 +81,3 @@ class CxPlaybookArgs {
     );
   }
 }
-

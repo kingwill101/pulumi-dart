@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetRegionInstanceGroupManagerNamedPort {
-  /// The name of the instance group. Either `name` or `self_link` must be provided.
+  /// The name of the instance group. Either `name` or `selfLink` must be provided.
   final pulumi.Input<String> name;
   /// The port number.
   final pulumi.Input<int> port;
 
   /// Creates a new [GetRegionInstanceGroupManagerNamedPort].
-  /// [name] The name of the instance group. Either `name` or `self_link` must be provided.
+  /// [name] The name of the instance group. Either `name` or `selfLink` must be provided.
   /// [port] The port number.
   const GetRegionInstanceGroupManagerNamedPort({
     required this.name,
@@ -30,4 +30,3 @@ class GetRegionInstanceGroupManagerNamedPort {
     );
   }
 }
-

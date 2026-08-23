@@ -6,6 +6,7 @@ import 'get_parameter_policy_member.dart';
 /// Result data returned by getParameter.
 class GetParameterResult {
   final String createTime;
+  final String deletionPolicy;
   final Map<String, String> effectiveLabels;
   final String format;
   /// The provider-assigned unique ID for this managed resource.
@@ -21,6 +22,7 @@ class GetParameterResult {
 
   /// Creates a new [GetParameterResult].
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [effectiveLabels] Required.
   /// [format] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -34,6 +36,7 @@ class GetParameterResult {
   /// [updateTime] Required.
   const GetParameterResult({
     required this.createTime,
+    required this.deletionPolicy,
     required this.effectiveLabels,
     required this.format,
     required this.id,
@@ -50,6 +53,7 @@ class GetParameterResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'effectiveLabels': effectiveLabels,
       'format': format,
       'id': id,
@@ -67,6 +71,7 @@ class GetParameterResult {
   factory GetParameterResult.fromMap(Map<String, dynamic> map) {
     return GetParameterResult(
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       format: map['format'] as String,
       id: map['id'] as String,
@@ -81,4 +86,3 @@ class GetParameterResult {
     );
   }
 }
-

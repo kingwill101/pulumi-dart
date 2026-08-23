@@ -9,14 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionNetworkEndpointArgs {
   /// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
   final pulumi.Input<int>? clientDestinationPort;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Fully qualified domain name of network endpoint.
-  /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
+  /// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
   final pulumi.Input<String>? fqdn;
   /// The name for a specific VM instance that the IP address belongs to.
   /// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
   final pulumi.Input<String>? instance;
   /// IPv4 address external endpoint.
-  /// This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
+  /// This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
   final pulumi.Input<String>? ipAddress;
   /// Port number of network endpoint.
   final pulumi.Input<int> port;
@@ -30,6 +37,7 @@ class RegionNetworkEndpointArgs {
 
   /// Creates a new [RegionNetworkEndpointArgs].
   /// [clientDestinationPort] Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [fqdn] Fully qualified domain name of network endpoint.
   /// [instance] The name for a specific VM instance that the IP address belongs to.
   /// [ipAddress] IPv4 address external endpoint.
@@ -39,6 +47,7 @@ class RegionNetworkEndpointArgs {
   /// [regionNetworkEndpointGroup] The network endpoint group this endpoint is part of.
   const RegionNetworkEndpointArgs({
     this.clientDestinationPort,
+    this.deletionPolicy,
     this.fqdn,
     this.instance,
     this.ipAddress,
@@ -51,6 +60,7 @@ class RegionNetworkEndpointArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientDestinationPort': ?clientDestinationPort,
+      'deletionPolicy': ?deletionPolicy,
       'fqdn': ?fqdn,
       'instance': ?instance,
       'ipAddress': ?ipAddress,
@@ -64,6 +74,7 @@ class RegionNetworkEndpointArgs {
   factory RegionNetworkEndpointArgs.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointArgs(
       clientDestinationPort: (() { final guardedValue = map['clientDestinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -74,4 +85,3 @@ class RegionNetworkEndpointArgs {
     );
   }
 }
-

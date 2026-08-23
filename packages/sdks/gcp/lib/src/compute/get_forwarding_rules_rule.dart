@@ -41,9 +41,17 @@ class GetForwardingRulesRule {
   final pulumi.Input<String> baseForwardingRule;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   final pulumi.Input<String> description;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>> effectiveLabels;
   /// The unique identifier number for the resource. This identifier is defined by the server.
   final pulumi.Input<int> forwardingRuleId;
@@ -238,6 +246,7 @@ class GetForwardingRulesRule {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>> pulumiLabels;
+  /// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
   final pulumi.Input<bool> recreateClosedPsc;
   /// The region you want to get the forwarding rules from.
   ///
@@ -294,8 +303,9 @@ class GetForwardingRulesRule {
   /// [backendService] Identifies the backend service to which the forwarding rule sends traffic.
   /// [baseForwardingRule] [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
   /// [description] An optional description of this resource. Provide this property when
-  /// [effectiveLabels] Required.
+  /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   /// [forwardingRuleId] The unique identifier number for the resource. This identifier is defined by the server.
   /// [ipAddress] IP address for which this forwarding rule accepts traffic. When a client
   /// [ipCollection] Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
@@ -315,7 +325,7 @@ class GetForwardingRulesRule {
   /// [pscConnectionId] The PSC connection id of the PSC Forwarding Rule.
   /// [pscConnectionStatus] The PSC connection status of the PSC Forwarding Rule. Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED', 'REJECTED', 'CLOSED'
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  /// [recreateClosedPsc] Required.
+  /// [recreateClosedPsc] This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
   /// [region] The region you want to get the forwarding rules from.
   /// [selfLink] The URI of the resource.
   /// [serviceDirectoryRegistrations] Service Directory resources to register this forwarding rule with.
@@ -331,6 +341,7 @@ class GetForwardingRulesRule {
     required this.backendService,
     required this.baseForwardingRule,
     required this.creationTimestamp,
+    required this.deletionPolicy,
     required this.description,
     required this.effectiveLabels,
     required this.forwardingRuleId,
@@ -371,6 +382,7 @@ class GetForwardingRulesRule {
       'backendService': backendService,
       'baseForwardingRule': baseForwardingRule,
       'creationTimestamp': creationTimestamp,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'effectiveLabels': effectiveLabels,
       'forwardingRuleId': forwardingRuleId,
@@ -412,6 +424,7 @@ class GetForwardingRulesRule {
       backendService: pulumi.Input.fromValue(map['backendService'] as String),
       baseForwardingRule: pulumi.Input.fromValue(map['baseForwardingRule'] as String),
       creationTimestamp: pulumi.Input.fromValue(map['creationTimestamp'] as String),
+      deletionPolicy: pulumi.Input.fromValue(map['deletionPolicy'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       effectiveLabels: pulumi.Input.fromValue((map['effectiveLabels'] as Map).cast<String, String>()),
       forwardingRuleId: pulumi.Input.fromValue(map['forwardingRuleId'] as int),
@@ -445,4 +458,3 @@ class GetForwardingRulesRule {
     );
   }
 }
-

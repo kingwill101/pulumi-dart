@@ -7,6 +7,7 @@ import 'get_data_source_data_source_gcp_resource.dart';
 
 /// Result data returned by getDataSource.
 class GetDataSourceResult {
+  final bool backupBlockedByVaultAccessRestriction;
   final List<GetDataSourceBackupConfigInfo> backupConfigInfos;
   final String backupCount;
   final String backupVaultId;
@@ -27,6 +28,7 @@ class GetDataSourceResult {
   final String updateTime;
 
   /// Creates a new [GetDataSourceResult].
+  /// [backupBlockedByVaultAccessRestriction] Required.
   /// [backupConfigInfos] Required.
   /// [backupCount] Required.
   /// [backupVaultId] Required.
@@ -45,6 +47,7 @@ class GetDataSourceResult {
   /// [totalStoredBytes] Required.
   /// [updateTime] Required.
   const GetDataSourceResult({
+    required this.backupBlockedByVaultAccessRestriction,
     required this.backupConfigInfos,
     required this.backupCount,
     required this.backupVaultId,
@@ -66,6 +69,7 @@ class GetDataSourceResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'backupBlockedByVaultAccessRestriction': backupBlockedByVaultAccessRestriction,
       'backupConfigInfos': pulumi.Input.encodeList<GetDataSourceBackupConfigInfo, Map<String, dynamic>>(backupConfigInfos, (value) => value.toMap()),
       'backupCount': backupCount,
       'backupVaultId': backupVaultId,
@@ -88,6 +92,7 @@ class GetDataSourceResult {
 
   factory GetDataSourceResult.fromMap(Map<String, dynamic> map) {
     return GetDataSourceResult(
+      backupBlockedByVaultAccessRestriction: map['backupBlockedByVaultAccessRestriction'] as bool,
       backupConfigInfos: pulumi.Input.decodeList<GetDataSourceBackupConfigInfo>(map['backupConfigInfos']!, (value) => GetDataSourceBackupConfigInfo.fromMap((value as Map).cast<String, dynamic>())),
       backupCount: map['backupCount'] as String,
       backupVaultId: map['backupVaultId'] as String,
@@ -108,4 +113,3 @@ class GetDataSourceResult {
     );
   }
 }
-

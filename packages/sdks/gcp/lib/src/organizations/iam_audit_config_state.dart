@@ -7,18 +7,18 @@ import 'iam_audit_config_audit_log_config.dart';
 class IamAuditConfigState {
   /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
   final pulumi.Input<List<IamAuditConfigAuditLogConfig>>? auditLogConfigs;
-  /// The etag of iam policy
+  /// (Computed) The etag of the organization's IAM policy.
   final pulumi.Input<String>? etag;
-  /// The numeric ID of the organization in which you want to manage the audit logging config.
+  /// The organization id of the target organization.
   final pulumi.Input<String>? orgId;
-  /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+  /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
   final pulumi.Input<String>? service;
 
   /// Creates a new [IamAuditConfigState].
   /// [auditLogConfigs] The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-  /// [etag] The etag of iam policy
-  /// [orgId] The numeric ID of the organization in which you want to manage the audit logging config.
-  /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_organization\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+  /// [etag] (Computed) The etag of the organization's IAM policy.
+  /// [orgId] The organization id of the target organization.
+  /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.organizations.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
   const IamAuditConfigState({
     this.auditLogConfigs,
     this.etag,
@@ -44,4 +44,3 @@ class IamAuditConfigState {
     );
   }
 }
-

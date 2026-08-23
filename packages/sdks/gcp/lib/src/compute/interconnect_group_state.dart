@@ -16,6 +16,13 @@ class InterconnectGroupState {
   final pulumi.Input<List<InterconnectGroupConfigured>>? configureds;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
   /// The user's intent for this group. This is the only required field besides
@@ -46,6 +53,7 @@ class InterconnectGroupState {
   /// Creates a new [InterconnectGroupState].
   /// [configureds] The status of the group as configured. This has the same
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you create the resource.
   /// [intent] The user's intent for this group. This is the only required field besides
   /// [interconnects] Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
@@ -55,6 +63,7 @@ class InterconnectGroupState {
   const InterconnectGroupState({
     this.configureds,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.intent,
     this.interconnects,
@@ -67,6 +76,7 @@ class InterconnectGroupState {
     return <String, dynamic>{
       'configureds': ?pulumi.Input.mapOptionalInputValue<List<InterconnectGroupConfigured>, List<Map<String, dynamic>>>(configureds, (value) => pulumi.Input.encodeList<InterconnectGroupConfigured, Map<String, dynamic>>(value, (value) => value.toMap())),
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'intent': ?pulumi.Input.mapOptionalInputValue<InterconnectGroupIntent, Map<String, dynamic>>(intent, (value) => value.toMap()),
       'interconnects': ?pulumi.Input.mapOptionalInputValue<List<InterconnectGroupInterconnect>, List<Map<String, dynamic>>>(interconnects, (value) => pulumi.Input.encodeList<InterconnectGroupInterconnect, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -80,6 +90,7 @@ class InterconnectGroupState {
     return InterconnectGroupState(
       configureds: (() { final guardedValue = map['configureds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InterconnectGroupConfigured>(guardedValue, (value) => InterconnectGroupConfigured.fromMap((value as Map).cast<String, dynamic>()))); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       intent: (() { final guardedValue = map['intent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InterconnectGroupIntent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       interconnects: (() { final guardedValue = map['interconnects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InterconnectGroupInterconnect>(guardedValue, (value) => InterconnectGroupInterconnect.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -89,4 +100,3 @@ class InterconnectGroupState {
     );
   }
 }
-

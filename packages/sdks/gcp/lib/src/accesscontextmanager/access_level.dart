@@ -15,10 +15,10 @@ import 'access_level_state.dart';
 /// * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 ///
 /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-/// you must specify a `billing_project` and set `user_project_override` to true
+/// you must specify a `billingProject` and set `userProjectOverride` to true
 /// in the provider configuration. Otherwise the ACM API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
-/// `billing_project` you defined.
+/// `billingProject` you defined.
 ///
 /// ## Example Usage
 ///
@@ -185,6 +185,36 @@ import 'access_level_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_accesslevel" "access-level" {
+///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/accessLevels/chromeos_no_lock"
+///   title  = "chromeos_no_lock"
+///   basic = {
+///     conditions = [{
+///       "devicePolicy" = {
+///         "requireScreenLock" = true
+///         "osConstraints" = [{
+///           "osType" = "DESKTOP_CHROME_OS"
+///         }]
+///       }
+///       "regions" = ["CH", "IT", "US"]
+///     }]
+///   }
+/// }
+/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+///   parent = "organizations/123456789"
+///   title  = "my policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -196,8 +226,11 @@ import 'access_level_state.dart';
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevel;
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevelArgs;
 /// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,6 +302,7 @@ import 'access_level_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, AccessLevel can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -282,9 +316,16 @@ class AccessLevel extends pulumi.CustomResource {
   /// See CEL spec at: https://github.com/google/cel-spec.
   /// Structure is documented below.
   late final pulumi.Output<AccessLevelCustom?> custom;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the AccessLevel and its use. Does not affect behavior.
   late final pulumi.Output<String?> description;
-  /// Resource name for the Access Level. The short_name component must begin
+  /// Resource name for the Access Level. The shortName component must begin
   /// with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
   late final pulumi.Output<String> name;
@@ -310,6 +351,7 @@ class AccessLevel extends pulumi.CustomResource {
         ) {
     basic = registerOutput<AccessLevelBasic?>('basic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelBasic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     custom = registerOutput<AccessLevelCustom?>('custom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelCustom.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
@@ -341,6 +383,7 @@ class AccessLevel extends pulumi.CustomResource {
         ) {
     basic = registerOutput<AccessLevelBasic?>('basic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelBasic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     custom = registerOutput<AccessLevelCustom?>('custom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessLevelCustom.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');

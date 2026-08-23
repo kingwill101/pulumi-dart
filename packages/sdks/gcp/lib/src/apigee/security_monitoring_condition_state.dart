@@ -8,6 +8,13 @@ class SecurityMonitoringConditionState {
   final pulumi.Input<String>? conditionId;
   /// The timestamp at which this profile was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A nested object resource.
   final pulumi.Input<Map<String, dynamic>>? includeAllResources;
   /// Name of the security monitoring condition resource,
@@ -30,6 +37,7 @@ class SecurityMonitoringConditionState {
   /// Creates a new [SecurityMonitoringConditionState].
   /// [conditionId] Resource ID of the security monitoring condition.
   /// [createTime] The timestamp at which this profile was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [includeAllResources] A nested object resource.
   /// [name] Name of the security monitoring condition resource,
   /// [orgId] The Apigee Organization associated with the Apigee Security Monitoring Condition,
@@ -41,6 +49,7 @@ class SecurityMonitoringConditionState {
   const SecurityMonitoringConditionState({
     this.conditionId,
     this.createTime,
+    this.deletionPolicy,
     this.includeAllResources,
     this.name,
     this.orgId,
@@ -55,6 +64,7 @@ class SecurityMonitoringConditionState {
     return <String, dynamic>{
       'conditionId': ?conditionId,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'includeAllResources': ?includeAllResources,
       'name': ?name,
       'orgId': ?orgId,
@@ -70,6 +80,7 @@ class SecurityMonitoringConditionState {
     return SecurityMonitoringConditionState(
       conditionId: (() { final guardedValue = map['conditionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       includeAllResources: (() { final guardedValue = map['includeAllResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orgId: (() { final guardedValue = map['orgId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -81,4 +92,3 @@ class SecurityMonitoringConditionState {
     );
   }
 }
-

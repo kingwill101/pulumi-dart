@@ -5,6 +5,7 @@ import 'get_notification_channel_sensitive_label.dart';
 
 /// Result data returned by getNotificationChannel.
 class GetNotificationChannelResult {
+  final String deletionPolicy;
   /// An optional human-readable description of this notification channel.
   final String description;
   final String? displayName;
@@ -27,6 +28,7 @@ class GetNotificationChannelResult {
   final String verificationStatus;
 
   /// Creates a new [GetNotificationChannelResult].
+  /// [deletionPolicy] Required.
   /// [description] An optional human-readable description of this notification channel.
   /// [displayName] Optional.
   /// [enabled] Whether notifications are forwarded to the described channel.
@@ -40,6 +42,7 @@ class GetNotificationChannelResult {
   /// [userLabels] User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field.
   /// [verificationStatus] Indicates whether this channel has been verified or not.
   const GetNotificationChannelResult({
+    required this.deletionPolicy,
     required this.description,
     this.displayName,
     required this.enabled,
@@ -56,6 +59,7 @@ class GetNotificationChannelResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'displayName': ?displayName,
       'enabled': enabled,
@@ -73,6 +77,7 @@ class GetNotificationChannelResult {
 
   factory GetNotificationChannelResult.fromMap(Map<String, dynamic> map) {
     return GetNotificationChannelResult(
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enabled: map['enabled'] as bool,
@@ -88,4 +93,3 @@ class GetNotificationChannelResult {
     );
   }
 }
-

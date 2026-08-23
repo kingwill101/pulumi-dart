@@ -11,7 +11,7 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpec {
   final pulumi.Input<String>? entrypointModule;
   /// Optional. The name of the callable object within the
   /// entrypointModule to use as the application If not specified,
-  /// defaults to "root_agent".
+  /// defaults to "rootAgent".
   final pulumi.Input<String>? entrypointObject;
   /// Optional. The path to the requirements file, relative to the
   /// source root. If not specified, defaults to "requirements.txt".
@@ -51,4 +51,3 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpec {
     );
   }
 }
-

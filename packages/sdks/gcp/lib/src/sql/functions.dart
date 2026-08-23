@@ -74,6 +74,20 @@ import 'get_tiers_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_sql_getbackuprun" "backup" {
+///   instance    = main.name
+///   most_recent = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +96,8 @@ import 'get_tiers_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sql.SqlFunctions;
 /// import com.pulumi.gcp.sql.inputs.GetBackupRunArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -96,7 +110,7 @@ import 'get_tiers_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var backup = SqlFunctions.getBackupRun(GetBackupRunArgs.builder()
-///             .instance(main.name())
+///             .instance(main.get("name"))
 ///             .mostRecent(true)
 ///             .build());
 ///
@@ -204,6 +218,20 @@ Future<GetCaCertsResult> getCaCerts(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_sql_getdatabase" "qa" {
+///   name     = "test-sql-database"
+///   instance = main.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -212,8 +240,8 @@ Future<GetCaCertsResult> getCaCerts(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sql.SqlFunctions;
 /// import com.pulumi.gcp.sql.inputs.GetDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -227,7 +255,7 @@ Future<GetCaCertsResult> getCaCerts(
 ///     public static void stack(Context ctx) {
 ///         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
 ///             .name("test-sql-database")
-///             .instance(main.name())
+///             .instance(main.get("name"))
 ///             .build());
 ///
 ///     }
@@ -311,6 +339,19 @@ Future<GetDatabaseResult> getDatabase(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_sql_getdatabaseinstance" "qa" {
+///   name = "test-sql-instance"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -319,8 +360,8 @@ Future<GetDatabaseResult> getDatabase(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sql.SqlFunctions;
 /// import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -427,6 +468,23 @@ Future<GetDatabaseInstanceResult> getDatabaseInstance(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_sql_getdatabaseinstancelatestrecoverytime" "default" {
+///   instance = "sample-instance"
+/// }
+///
+/// output "latestRecoveryTime" {
+///   value = data.gcp_sql_getdatabaseinstancelatestrecoverytime.default
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -435,8 +493,8 @@ Future<GetDatabaseInstanceResult> getDatabaseInstance(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sql.SqlFunctions;
 /// import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceLatestRecoveryTimeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -535,6 +593,19 @@ Future<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRec
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_sql_getdatabaseinstances" "qa" {
+///   project = "test-project"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -543,8 +614,8 @@ Future<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRec
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sql.SqlFunctions;
 /// import com.pulumi.gcp.sql.inputs.GetDatabaseInstancesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -639,6 +710,19 @@ Future<GetDatabaseInstancesResult> getDatabaseInstances(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_sql_getdatabases" "qa" {
+///   instance = main.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -647,8 +731,8 @@ Future<GetDatabaseInstancesResult> getDatabaseInstances(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.sql.SqlFunctions;
 /// import com.pulumi.gcp.sql.inputs.GetDatabasesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -661,7 +745,7 @@ Future<GetDatabaseInstancesResult> getDatabaseInstances(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
-///             .instance(main.name())
+///             .instance(main.get("name"))
 ///             .build());
 ///
 ///     }
@@ -740,6 +824,26 @@ Future<GetDatabasesResult> getDatabases(
 ///         ["avaialbleTiers"] = allAvailableTiers,
 ///     };
 /// });
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_sql_gettiers" "tiers" {
+///   project = "sample-project"
+/// }
+///
+/// locals {
+///   allAvailableTiers = [for v in data.gcp_sql_gettiers.tiers.tiers : v.tier]
+/// }
+/// output "avaialbleTiers" {
+///   value = local.allAvailableTiers
+/// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_sql_get_tiers_get_tiers_args_doc}
 /// [options] Invoke options controlling this call.

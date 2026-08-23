@@ -17,17 +17,23 @@ class GetInstanceFileShare {
   /// projects/{projectId}/locations/{locationId}/backups/{backupId},
   /// that this file share has been restored from.
   final pulumi.Input<String> sourceBackup;
+  /// The resource name of the BackupDR backup, in the format
+  /// 'projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}',
+  /// that this file share has been restored from.
+  final pulumi.Input<String> sourceBackupdrBackup;
 
   /// Creates a new [GetInstanceFileShare].
   /// [capacityGb] File share capacity in GiB. This must be at least 1024 GiB
   /// [name] The name of a Filestore instance.
   /// [nfsExportOptions] Nfs Export Options. There is a limit of 10 export options per file share.
   /// [sourceBackup] The resource name of the backup, in the format
+  /// [sourceBackupdrBackup] The resource name of the BackupDR backup, in the format
   const GetInstanceFileShare({
     required this.capacityGb,
     required this.name,
     required this.nfsExportOptions,
     required this.sourceBackup,
+    required this.sourceBackupdrBackup,
   });
 
   Map<String, dynamic> toMap() {
@@ -36,6 +42,7 @@ class GetInstanceFileShare {
       'name': name,
       'nfsExportOptions': pulumi.Input.mapInputValue<List<GetInstanceFileShareNfsExportOption>, List<Map<String, dynamic>>>(nfsExportOptions, (value) => pulumi.Input.encodeList<GetInstanceFileShareNfsExportOption, Map<String, dynamic>>(value, (value) => value.toMap())),
       'sourceBackup': sourceBackup,
+      'sourceBackupdrBackup': sourceBackupdrBackup,
     };
   }
 
@@ -45,7 +52,7 @@ class GetInstanceFileShare {
       name: pulumi.Input.fromValue(map['name'] as String),
       nfsExportOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceFileShareNfsExportOption>(map['nfsExportOptions']!, (value) => GetInstanceFileShareNfsExportOption.fromMap((value as Map).cast<String, dynamic>()))),
       sourceBackup: pulumi.Input.fromValue(map['sourceBackup'] as String),
+      sourceBackupdrBackup: pulumi.Input.fromValue(map['sourceBackupdrBackup'] as String),
     );
   }
 }
-

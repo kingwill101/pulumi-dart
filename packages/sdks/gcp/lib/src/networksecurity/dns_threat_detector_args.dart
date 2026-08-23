@@ -7,13 +7,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_networksecurity_dns_threat_detector_dns_threat_detector_args_doc}
 class DnsThreatDetectorArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// List of networks that are excluded from detection. Format: projects/{project}/global/networks/{name}.
   final pulumi.Input<List<String>>? excludedNetworks;
   /// Set of label tags associated with the DNS Threat Detector resource.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location of the DNS Threat Detector. The only supported value is `global`.
   final pulumi.Input<String>? location;
@@ -26,6 +33,7 @@ class DnsThreatDetectorArgs {
   final pulumi.Input<String>? threatDetectorProvider;
 
   /// Creates a new [DnsThreatDetectorArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [excludedNetworks] List of networks that are excluded from detection. Format: projects/{project}/global/networks/{name}.
   /// [labels] Set of label tags associated with the DNS Threat Detector resource.
   /// [location] The location of the DNS Threat Detector. The only supported value is `global`.
@@ -33,6 +41,7 @@ class DnsThreatDetectorArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [threatDetectorProvider] DNS Threat Detection provider. The only supported value is `INFOBLOX`.
   const DnsThreatDetectorArgs({
+    this.deletionPolicy,
     this.excludedNetworks,
     this.labels,
     this.location,
@@ -43,6 +52,7 @@ class DnsThreatDetectorArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'excludedNetworks': ?excludedNetworks,
       'labels': ?labels,
       'location': ?location,
@@ -54,6 +64,7 @@ class DnsThreatDetectorArgs {
 
   factory DnsThreatDetectorArgs.fromMap(Map<String, dynamic> map) {
     return DnsThreatDetectorArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       excludedNetworks: (() { final guardedValue = map['excludedNetworks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -63,4 +74,3 @@ class DnsThreatDetectorArgs {
     );
   }
 }
-

@@ -23,6 +23,13 @@ class AlertPolicyArgs {
   /// one to six conditions.
   /// Structure is documented below.
   final pulumi.Input<List<AlertPolicyCondition>> conditions;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A short name or phrase used to identify the policy in
   /// dashboards, notifications, and incidents. To avoid confusion, don't use
   /// the same display name for multiple policies in the same project. The
@@ -64,6 +71,7 @@ class AlertPolicyArgs {
   /// [alertStrategy] Control over how this alert policy's notification channels are notified.
   /// [combiner] How to combine the results of multiple conditions to
   /// [conditions] A list of conditions for the policy. The conditions are combined by
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] A short name or phrase used to identify the policy in
   /// [documentation] Documentation that is included with notifications and incidents related
   /// [enabled] Whether or not the policy is enabled. The default is true.
@@ -75,6 +83,7 @@ class AlertPolicyArgs {
     this.alertStrategy,
     required this.combiner,
     required this.conditions,
+    this.deletionPolicy,
     required this.displayName,
     this.documentation,
     this.enabled,
@@ -89,6 +98,7 @@ class AlertPolicyArgs {
       'alertStrategy': ?pulumi.Input.mapOptionalInputValue<AlertPolicyAlertStrategy, Map<String, dynamic>>(alertStrategy, (value) => value.toMap()),
       'combiner': combiner,
       'conditions': pulumi.Input.mapInputValue<List<AlertPolicyCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<AlertPolicyCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': ?deletionPolicy,
       'displayName': displayName,
       'documentation': ?pulumi.Input.mapOptionalInputValue<AlertPolicyDocumentation, Map<String, dynamic>>(documentation, (value) => value.toMap()),
       'enabled': ?enabled,
@@ -104,6 +114,7 @@ class AlertPolicyArgs {
       alertStrategy: (() { final guardedValue = map['alertStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AlertPolicyAlertStrategy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       combiner: pulumi.Input.fromValue(map['combiner'] as String),
       conditions: pulumi.Input.fromValue(pulumi.Input.decodeList<AlertPolicyCondition>(map['conditions']!, (value) => AlertPolicyCondition.fromMap((value as Map).cast<String, dynamic>()))),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       documentation: (() { final guardedValue = map['documentation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AlertPolicyDocumentation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -114,4 +125,3 @@ class AlertPolicyArgs {
     );
   }
 }
-

@@ -9,7 +9,7 @@ class SettingsAccessSettingsWorkforceIdentitySettings {
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_access_settings_workforce_identity_settings_oauth2"&gt;&lt;/a&gt;The `oauth2` block supports:
+  /// &lt;a name="nestedAccessSettingsWorkforceIdentitySettingsOauth2"&gt;&lt;/a&gt;The `oauth2` block supports:
   final pulumi.Input<SettingsAccessSettingsWorkforceIdentitySettingsOauth2>? oauth2;
   /// The workforce pool resources. Only one workforce pool is accepted.
   final pulumi.Input<String>? workforcePools;
@@ -36,4 +36,3 @@ class SettingsAccessSettingsWorkforceIdentitySettings {
     );
   }
 }
-

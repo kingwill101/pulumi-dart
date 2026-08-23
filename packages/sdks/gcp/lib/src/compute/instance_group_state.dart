@@ -5,10 +5,17 @@ import 'instance_group_named_port.dart';
 
 /// Input properties used for looking up and filtering InstanceGroup resources.
 class InstanceGroupState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional textual description of the instance
   /// group.
   final pulumi.Input<String>? description;
-  /// The list of instances in the group, in `self_link` format.
+  /// The list of instances in the group, in `selfLink` format.
   /// When adding instances they must all be in the same network and zone as the instance group.
   final pulumi.Input<List<String>>? instances;
   /// The name of the instance group. Must be 1-63
@@ -37,8 +44,9 @@ class InstanceGroupState {
   final pulumi.Input<String>? zone;
 
   /// Creates a new [InstanceGroupState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [description] An optional textual description of the instance
-  /// [instances] The list of instances in the group, in `self_link` format.
+  /// [instances] The list of instances in the group, in `selfLink` format.
   /// [name] The name of the instance group. Must be 1-63
   /// [namedPorts] The named port configuration. See the section below
   /// [network] The URL of the network the instance group is in. If
@@ -47,6 +55,7 @@ class InstanceGroupState {
   /// [size] The number of instances in the group.
   /// [zone] The zone that this instance group should be created in.
   const InstanceGroupState({
+    this.deletionPolicy,
     this.description,
     this.instances,
     this.name,
@@ -60,6 +69,7 @@ class InstanceGroupState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'instances': ?instances,
       'name': ?name,
@@ -74,6 +84,7 @@ class InstanceGroupState {
 
   factory InstanceGroupState.fromMap(Map<String, dynamic> map) {
     return InstanceGroupState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -86,4 +97,3 @@ class InstanceGroupState {
     );
   }
 }
-

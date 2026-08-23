@@ -11,6 +11,13 @@ class ConnectorState {
   final pulumi.Input<String>? connectCluster;
   /// The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
   final pulumi.Input<String>? connectorId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   final pulumi.Input<String>? location;
   /// The name of the connector. The `connector` segment is used when connecting directly to the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER/connectors/CONNECTOR_ID`.
@@ -28,6 +35,7 @@ class ConnectorState {
   /// [configs] Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.
   /// [connectCluster] The connect cluster name.
   /// [connectorId] The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [location] ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   /// [name] The name of the connector. The `connector` segment is used when connecting directly to the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER/connectors/CONNECTOR_ID`.
   /// [project] The ID of the project in which the resource belongs.
@@ -37,6 +45,7 @@ class ConnectorState {
     this.configs,
     this.connectCluster,
     this.connectorId,
+    this.deletionPolicy,
     this.location,
     this.name,
     this.project,
@@ -49,6 +58,7 @@ class ConnectorState {
       'configs': ?configs,
       'connectCluster': ?connectCluster,
       'connectorId': ?connectorId,
+      'deletionPolicy': ?deletionPolicy,
       'location': ?location,
       'name': ?name,
       'project': ?project,
@@ -62,6 +72,7 @@ class ConnectorState {
       configs: (() { final guardedValue = map['configs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       connectCluster: (() { final guardedValue = map['connectCluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       connectorId: (() { final guardedValue = map['connectorId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -70,4 +81,3 @@ class ConnectorState {
     );
   }
 }
-

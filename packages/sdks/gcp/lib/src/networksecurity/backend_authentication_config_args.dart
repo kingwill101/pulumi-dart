@@ -10,11 +10,18 @@ class BackendAuthenticationConfigArgs {
   /// Reference to a Certificate resource from the certificatemanager.googleapis.com namespace.
   /// Used by a BackendService to negotiate mTLS when the backend connection uses TLS and the backend requests a client certificate. Must have a CLIENT_AUTH scope.
   final pulumi.Input<String>? clientCertificate;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
   /// Set of label tags associated with the BackendAuthenticationConfig resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location of the backend authentication config.
   /// The default value is `global`.
@@ -35,6 +42,7 @@ class BackendAuthenticationConfigArgs {
 
   /// Creates a new [BackendAuthenticationConfigArgs].
   /// [clientCertificate] Reference to a Certificate resource from the certificatemanager.googleapis.com namespace.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A free-text description of the resource. Max length 1024 characters.
   /// [labels] Set of label tags associated with the BackendAuthenticationConfig resource.
   /// [location] The location of the backend authentication config.
@@ -44,6 +52,7 @@ class BackendAuthenticationConfigArgs {
   /// [wellKnownRoots] Well known roots to use for server certificate validation. If set to NONE, the BackendService will only validate server certificates against roots specified in TrustConfig.
   const BackendAuthenticationConfigArgs({
     this.clientCertificate,
+    this.deletionPolicy,
     this.description,
     this.labels,
     this.location,
@@ -56,6 +65,7 @@ class BackendAuthenticationConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientCertificate': ?clientCertificate,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'labels': ?labels,
       'location': ?location,
@@ -69,6 +79,7 @@ class BackendAuthenticationConfigArgs {
   factory BackendAuthenticationConfigArgs.fromMap(Map<String, dynamic> map) {
     return BackendAuthenticationConfigArgs(
       clientCertificate: (() { final guardedValue = map['clientCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -79,4 +90,3 @@ class BackendAuthenticationConfigArgs {
     );
   }
 }
-

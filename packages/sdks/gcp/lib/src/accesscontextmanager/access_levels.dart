@@ -2,6 +2,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_levels_args.dart';
 import 'access_levels_state.dart';
 
+/// Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is done atomically.
+/// This is a bulk edit of all Access Levels and may override existing Access Levels created by `gcp.accesscontextmanager.AccessLevel`,
+/// thus causing a permadiff if used alongside `gcp.accesscontextmanager.AccessLevel` on the same parent.
+///
+///
+/// To get more information about AccessLevels, see:
+///
+/// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
+/// * How-to Guides
+/// * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+///
+/// &gt; **Warning:** This resource is authoritative over the access levels under an access policy. Due to a limitation in Terraform,
+/// it will overwrite all preexisting access levels during a create opration without displaying the old values on
+/// the left side of plan. To prevent this, we recommend importing the resource before applying it if overwriting
+/// preexisting rules, as the plan will correctly display the complete changes to your access policy if the
+/// resource is present in state.
+///
 /// ## Example Usage
 ///
 /// ### Access Context Manager Access Levels Basic
@@ -279,6 +296,53 @@ import 'access_levels_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_accesslevels" "access-levels" {
+///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
+///   access_levels {
+///     name  ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/accessLevels/chromeos_no_lock"
+///     title = "chromeos_no_lock"
+///     basic = {
+///       conditions = [{
+///         "devicePolicy" = {
+///           "requireScreenLock" = true
+///           "osConstraints" = [{
+///             "osType" = "DESKTOP_CHROME_OS"
+///           }]
+///         }
+///         "regions" = ["CH", "IT", "US"]
+///       }]
+///     }
+///   }
+///   access_levels {
+///     name  ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/accessLevels/mac_no_lock"
+///     title = "mac_no_lock"
+///     basic = {
+///       conditions = [{
+///         "devicePolicy" = {
+///           "requireScreenLock" = true
+///           "osConstraints" = [{
+///             "osType" = "DESKTOP_MAC"
+///           }]
+///         }
+///         "regions" = ["CH", "IT", "US"]
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+///   parent = "organizations/123456789"
+///   title  = "my policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -291,8 +355,11 @@ import 'access_levels_state.dart';
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevelsArgs;
 /// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelsAccessLevelArgs;
 /// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelsAccessLevelBasicArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelsAccessLevelBasicConditionArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -397,22 +464,26 @@ import 'access_levels_state.dart';
 /// AccessLevels can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/accessLevels`
-///
 /// * `{{parent}}`
+///
 ///
 /// When using the `pulumi import` command, AccessLevels can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}/accessLevels
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}
 /// ```
 class AccessLevels extends pulumi.CustomResource {
   /// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> accessLevels;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The AccessPolicy this AccessLevel lives in.
   /// Format: accessPolicies/{policy_id}
   late final pulumi.Output<String> parent;
@@ -432,6 +503,7 @@ class AccessLevels extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessLevels = registerOutput<List<Map<String, dynamic>>?>('accessLevels');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     parent = registerOutput<String>('parent');
   }
 
@@ -459,6 +531,7 @@ class AccessLevels extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessLevels = registerOutput<List<Map<String, dynamic>>?>('accessLevels');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     parent = registerOutput<String>('parent');
   }
 }

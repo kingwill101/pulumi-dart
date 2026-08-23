@@ -95,6 +95,25 @@ import 'backup_channel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkebackup_backupchannel" "basic" {
+///   name                = "basic-channel"
+///   location            = "us-central1"
+///   description         = "Description"
+///   destination_project = "projects/24240755850"
+///   labels = {
+///     "key" = "some-value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +122,8 @@ import 'backup_channel_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkebackup.BackupChannel;
 /// import com.pulumi.gcp.gkebackup.BackupChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -146,32 +165,32 @@ import 'backup_channel_state.dart';
 /// BackupChannel can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/backupChannels/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, BackupChannel can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkebackup/backupChannel:BackupChannel default projects/{{project}}/locations/{{location}}/backupChannels/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkebackup/backupChannel:BackupChannel default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkebackup/backupChannel:BackupChannel default {{location}}/{{name}}
 /// ```
 class BackupChannel extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User specified descriptive string for this BackupChannel.
   late final pulumi.Output<String?> description;
   /// The project where Backups are allowed to be stored.
   /// The format is `projects/{project}`.
   /// {project} can be project number or project id.
   late final pulumi.Output<String> destinationProject;
-  /// The project_id where Backups are allowed to be stored.
+  /// The projectId where Backups are allowed to be stored.
   /// Example Project ID: "my-project-id".
   late final pulumi.Output<String> destinationProjectId;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -188,7 +207,7 @@ class BackupChannel extends pulumi.CustomResource {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The region of the Backup Channel.
   late final pulumi.Output<String> location;
@@ -217,6 +236,7 @@ class BackupChannel extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destinationProject = registerOutput<String>('destinationProject');
     destinationProjectId = registerOutput<String>('destinationProjectId');
@@ -253,6 +273,7 @@ class BackupChannel extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destinationProject = registerOutput<String>('destinationProject');
     destinationProjectId = registerOutput<String>('destinationProjectId');

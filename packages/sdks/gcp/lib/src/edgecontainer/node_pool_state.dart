@@ -10,11 +10,18 @@ class NodePoolState {
   final pulumi.Input<String>? cluster;
   /// The time when the node pool was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Labels associated with this resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Local disk encryption options. This field is only used when enabling CMEK support.
   /// Structure is documented below.
@@ -48,6 +55,7 @@ class NodePoolState {
   /// Creates a new [NodePoolState].
   /// [cluster] The name of the target Distributed Cloud Edge Cluster.
   /// [createTime] The time when the node pool was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [labels] Labels associated with this resource.
   /// [localDiskEncryption] Local disk encryption options. This field is only used when enabling CMEK support.
@@ -64,6 +72,7 @@ class NodePoolState {
   const NodePoolState({
     this.cluster,
     this.createTime,
+    this.deletionPolicy,
     this.effectiveLabels,
     this.labels,
     this.localDiskEncryption,
@@ -83,6 +92,7 @@ class NodePoolState {
     return <String, dynamic>{
       'cluster': ?cluster,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'effectiveLabels': ?effectiveLabels,
       'labels': ?labels,
       'localDiskEncryption': ?pulumi.Input.mapOptionalInputValue<NodePoolLocalDiskEncryption, Map<String, dynamic>>(localDiskEncryption, (value) => value.toMap()),
@@ -103,6 +113,7 @@ class NodePoolState {
     return NodePoolState(
       cluster: (() { final guardedValue = map['cluster']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       localDiskEncryption: (() { final guardedValue = map['localDiskEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolLocalDiskEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -119,4 +130,3 @@ class NodePoolState {
     );
   }
 }
-

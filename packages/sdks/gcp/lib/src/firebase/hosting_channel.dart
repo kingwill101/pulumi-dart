@@ -6,6 +6,9 @@ import 'hosting_channel_state.dart';
 /// `live` channel that serves content to the Firebase-provided subdomains and any
 /// connected custom domains.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about Channel, see:
 ///
 /// * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.channels)
@@ -92,6 +95,24 @@ import 'hosting_channel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "site-with-channel"
+/// }
+/// resource "gcp_firebase_hostingchannel" "default" {
+///   site_id    = gcp_firebase_hostingsite.default.site_id
+///   channel_id = "channel-basic"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -102,8 +123,8 @@ import 'hosting_channel_state.dart';
 /// import com.pulumi.gcp.firebase.HostingSiteArgs;
 /// import com.pulumi.gcp.firebase.HostingChannel;
 /// import com.pulumi.gcp.firebase.HostingChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -242,6 +263,29 @@ import 'hosting_channel_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_hostingsite" "default" {
+///   project = "my-project-name"
+///   site_id = "site-with-channel"
+/// }
+/// resource "gcp_firebase_hostingchannel" "full" {
+///   site_id                = gcp_firebase_hostingsite.default.site_id
+///   channel_id             = "channel-full"
+///   ttl                    = "86400s"
+///   retained_release_count = 20
+///   labels = {
+///     "some-key" = "some-value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -252,8 +296,8 @@ import 'hosting_channel_state.dart';
 /// import com.pulumi.gcp.firebase.HostingSiteArgs;
 /// import com.pulumi.gcp.firebase.HostingChannel;
 /// import com.pulumi.gcp.firebase.HostingChannelArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -305,21 +349,25 @@ import 'hosting_channel_state.dart';
 /// Channel can be imported using any of these accepted formats:
 ///
 /// * `sites/{{site_id}}/channels/{{channel_id}}`
-///
 /// * `{{site_id}}/{{channel_id}}`
+///
 ///
 /// When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/hostingChannel:HostingChannel default sites/{{site_id}}/channels/{{channel_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/hostingChannel:HostingChannel default {{site_id}}/{{channel_id}}
 /// ```
 class HostingChannel extends pulumi.CustomResource {
   /// Required. Immutable. A unique ID within the site that identifies the channel.
   late final pulumi.Output<String> channelId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The time at which the channel will be automatically deleted. If null, the channel
@@ -328,7 +376,7 @@ class HostingChannel extends pulumi.CustomResource {
   late final pulumi.Output<String> expireTime;
   /// Text labels used for extra metadata and/or filtering
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The fully-qualified resource name for the channel, in the format:
   /// sites/SITE_ID/channels/CHANNEL_ID
@@ -341,7 +389,7 @@ class HostingChannel extends pulumi.CustomResource {
   late final pulumi.Output<int> retainedReleaseCount;
   /// Required. The ID of the site in which to create this channel.
   late final pulumi.Output<String> siteId;
-  /// Input only. A time-to-live for this channel. Sets `expire_time` to the provided
+  /// Input only. A time-to-live for this channel. Sets `expireTime` to the provided
   /// duration past the time of the request. A duration in seconds with up to nine fractional
   /// digits, terminated by 's'. Example: "86400s" (one day).
   late final pulumi.Output<String?> ttl;
@@ -361,6 +409,7 @@ class HostingChannel extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     channelId = registerOutput<String>('channelId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     expireTime = registerOutput<String>('expireTime');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -395,6 +444,7 @@ class HostingChannel extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     channelId = registerOutput<String>('channelId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     expireTime = registerOutput<String>('expireTime');
     labels = registerOutput<Map<String, String>?>('labels');

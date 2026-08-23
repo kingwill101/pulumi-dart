@@ -12,14 +12,22 @@ class AddressArgs {
   /// if any. Set by the API if undefined.
   final pulumi.Input<String>? address;
   /// The type of address to reserve.
-  /// Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
+  /// Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
   /// Default value is `EXTERNAL`.
   /// Possible values are: `INTERNAL`, `EXTERNAL`.
   final pulumi.Input<String>? addressType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
-  /// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-  /// The PDP must support enhanced IPv4 allocations.
+  /// Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+  /// If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+  /// If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
   /// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
   /// Full resource URL, as in:
   /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -38,7 +46,7 @@ class AddressArgs {
   /// Labels to apply to this address.  A list of key-&gt;value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -87,8 +95,9 @@ class AddressArgs {
   /// Creates a new [AddressArgs].
   /// [address] The static external IP address represented by this resource.
   /// [addressType] The type of address to reserve.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
-  /// [ipCollection] Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+  /// [ipCollection] Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
   /// [ipVersion] The IP Version that will be used by this address. The default value is `IPV4`.
   /// [ipv6EndpointType] The endpoint type of this address, which should be VM or NETLB. This is
   /// [labels] Labels to apply to this address.  A list of key-&gt;value pairs.
@@ -103,6 +112,7 @@ class AddressArgs {
   const AddressArgs({
     this.address,
     this.addressType,
+    this.deletionPolicy,
     this.description,
     this.ipCollection,
     this.ipVersion,
@@ -122,6 +132,7 @@ class AddressArgs {
     return <String, dynamic>{
       'address': ?address,
       'addressType': ?addressType,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'ipCollection': ?ipCollection,
       'ipVersion': ?ipVersion,
@@ -142,6 +153,7 @@ class AddressArgs {
     return AddressArgs(
       address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       addressType: (() { final guardedValue = map['addressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipCollection: (() { final guardedValue = map['ipCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipVersion: (() { final guardedValue = map['ipVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -158,4 +170,3 @@ class AddressArgs {
     );
   }
 }
-

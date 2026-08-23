@@ -18,7 +18,7 @@ class AppLanguageSettings {
   /// to terminate the conversation.
   final pulumi.Input<String>? fallbackAction;
   /// List of languages codes supported by the app, in addition to the
-  /// `default_language_code`.
+  /// `defaultLanguageCode`.
   final pulumi.Input<List<String>>? supportedLanguageCodes;
 
   /// Creates a new [AppLanguageSettings].
@@ -51,4 +51,3 @@ class AppLanguageSettings {
     );
   }
 }
-

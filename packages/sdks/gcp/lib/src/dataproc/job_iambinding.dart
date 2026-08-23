@@ -117,6 +117,29 @@ import 'job_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/editor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_dataproc_jobiampolicy" "editor" {
+///   project     = "your-project"
+///   region      = "your-region"
+///   job_id      = "your-dataproc-job"
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,10 +148,11 @@ import 'job_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.dataproc.JobIAMPolicy;
 /// import com.pulumi.gcp.dataproc.JobIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -244,6 +268,21 @@ import 'job_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_jobiambinding" "editor" {
+///   job_id  = "your-dataproc-job"
+///   role    = "roles/editor"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -252,8 +291,8 @@ import 'job_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.JobIAMBinding;
 /// import com.pulumi.gcp.dataproc.JobIAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -347,6 +386,21 @@ import 'job_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_jobiammember" "editor" {
+///   job_id = "your-dataproc-job"
+///   role   = "roles/editor"
+///   member = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -355,8 +409,8 @@ import 'job_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.JobIAMMember;
 /// import com.pulumi.gcp.dataproc.JobIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -492,6 +546,29 @@ import 'job_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/editor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_dataproc_jobiampolicy" "editor" {
+///   project     = "your-project"
+///   region      = "your-region"
+///   job_id      = "your-dataproc-job"
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -500,10 +577,11 @@ import 'job_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.dataproc.JobIAMPolicy;
 /// import com.pulumi.gcp.dataproc.JobIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -619,6 +697,21 @@ import 'job_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_jobiambinding" "editor" {
+///   job_id  = "your-dataproc-job"
+///   role    = "roles/editor"
+///   members = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -627,8 +720,8 @@ import 'job_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.JobIAMBinding;
 /// import com.pulumi.gcp.dataproc.JobIAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -722,6 +815,21 @@ import 'job_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_jobiammember" "editor" {
+///   job_id = "your-dataproc-job"
+///   role   = "roles/editor"
+///   member = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -730,8 +838,8 @@ import 'job_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.JobIAMMember;
 /// import com.pulumi.gcp.dataproc.JobIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -765,29 +873,8 @@ import 'job_iambinding_state.dart';
 ///
 /// ## Import
 ///
-/// ### Importing IAM policies
-///
-/// IAM policy imports use the `job_id` identifier of the Dataproc Job resource only. For example:
-///
-/// * `projects/{project}/regions/{region}/jobs/{job_id}`
-///
-/// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-///
-/// tf
-///
-/// import {
-///
-/// id = "projects/{project}/regions/{region}/jobs/{job_id}"
-///
-/// to = google_dataproc_job_iam_policy.default
-///
-/// }
-///
-/// The `pulumi import` command can also be used:
-///
-/// ```sh
-/// $ pulumi import gcp:dataproc/jobIAMBinding:JobIAMBinding default "projects/{project}/regions/{region}/jobs/{job_id}"
-/// ```
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class JobIAMBinding extends pulumi.CustomResource {
   late final pulumi.Output<JobIAMBindingCondition?> condition;
   /// (Computed) The etag of the jobs's IAM policy.

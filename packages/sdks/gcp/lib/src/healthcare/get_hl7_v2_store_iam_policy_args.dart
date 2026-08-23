@@ -31,4 +31,3 @@ class GetHl7V2StoreIamPolicyArgs {
     );
   }
 }
-

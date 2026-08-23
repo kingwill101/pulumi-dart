@@ -10,6 +10,13 @@ import 'data_exchange_sharing_environment_config.dart';
 class DataExchangeArgs {
   /// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   final pulumi.Input<String> dataExchangeId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the data exchange.
   final pulumi.Input<String>? description;
   /// Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
@@ -37,6 +44,7 @@ class DataExchangeArgs {
 
   /// Creates a new [DataExchangeArgs].
   /// [dataExchangeId] The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the data exchange.
   /// [discoveryType] Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
   /// [displayName] Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
@@ -49,6 +57,7 @@ class DataExchangeArgs {
   /// [sharingEnvironmentConfig] Configurable data sharing environment option for a data exchange.
   const DataExchangeArgs({
     required this.dataExchangeId,
+    this.deletionPolicy,
     this.description,
     this.discoveryType,
     required this.displayName,
@@ -64,6 +73,7 @@ class DataExchangeArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataExchangeId': dataExchangeId,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'discoveryType': ?discoveryType,
       'displayName': displayName,
@@ -80,6 +90,7 @@ class DataExchangeArgs {
   factory DataExchangeArgs.fromMap(Map<String, dynamic> map) {
     return DataExchangeArgs(
       dataExchangeId: pulumi.Input.fromValue(map['dataExchangeId'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       discoveryType: (() { final guardedValue = map['discoveryType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
@@ -93,4 +104,3 @@ class DataExchangeArgs {
     );
   }
 }
-

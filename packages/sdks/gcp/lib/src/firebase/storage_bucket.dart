@@ -5,6 +5,9 @@ import 'storage_bucket_state.dart';
 /// An association between a Firebase project and a Google Cloud Storage bucket.
 /// This association enables integration of Cloud Storage buckets with Firebase such as Firebase SDKS, Authentication, and Security Rules.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about Bucket, see:
 ///
 /// * [API documentation](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets)
@@ -96,6 +99,25 @@ import 'storage_bucket_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "default" {
+///   name                        = "test_bucket"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_firebase_storagebucket" "default" {
+///   project   = "my-project-name"
+///   bucket_id = gcp_storage_bucket.default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +128,8 @@ import 'storage_bucket_state.dart';
 /// import com.pulumi.gcp.storage.BucketArgs;
 /// import com.pulumi.gcp.firebase.StorageBucket;
 /// import com.pulumi.gcp.firebase.StorageBucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -155,27 +177,27 @@ import 'storage_bucket_state.dart';
 /// Bucket can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/buckets/{{bucket_id}}`
-///
 /// * `{{project}}/{{bucket_id}}`
-///
 /// * `{{bucket_id}}`
+///
 ///
 /// When using the `pulumi import` command, Bucket can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/storageBucket:StorageBucket default projects/{{project}}/buckets/{{bucket_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{project}}/{{bucket_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{bucket_id}}
 /// ```
 class StorageBucket extends pulumi.CustomResource {
   /// Required. Immutable. The ID of the underlying Google Cloud Storage bucket
   late final pulumi.Output<String?> bucketId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
   late final pulumi.Output<String> name;
   /// The ID of the project in which the resource belongs.
@@ -197,6 +219,7 @@ class StorageBucket extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucketId = registerOutput<String?>('bucketId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
   }
@@ -225,6 +248,7 @@ class StorageBucket extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucketId = registerOutput<String?>('bucketId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
   }

@@ -6,6 +6,7 @@ import 'region_composite_health_check_state.dart';
 /// the health destination resource to which the aggregated health result from
 /// the health source resources is delivered.
 ///
+///
 /// To get more information about RegionCompositeHealthCheck, see:
 ///
 /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionCompositeHealthChecks)
@@ -233,7 +234,7 @@ import 'region_composite_health_check_state.dart';
 /// 		defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 /// 			Name:                pulumi.String("test-composite-health-check-bs"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			HealthChecks:        defaultHealthCheck.ID(),
+/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
 /// 		})
 /// 		if err != nil {
@@ -243,8 +244,8 @@ import 'region_composite_health_check_state.dart';
 /// 			Name:                    pulumi.String("test-composite-health-check-hs"),
 /// 			Region:                  pulumi.String("us-central1"),
 /// 			SourceType:              pulumi.String("BACKEND_SERVICE"),
-/// 			Sources:                 defaultRegionBackendService.ID(),
-/// 			HealthAggregationPolicy: hap.ID(),
+/// 			Sources:                 defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+/// 			HealthAggregationPolicy: hap.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -260,7 +261,7 @@ import 'region_composite_health_check_state.dart';
 /// 			Name:        pulumi.String("test-composite-health-check-sub"),
 /// 			IpCidrRange: pulumi.String("10.2.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -269,9 +270,9 @@ import 'region_composite_health_check_state.dart';
 /// 			Name:                pulumi.String("test-composite-health-check-fr"),
 /// 			Region:              pulumi.String("us-central1"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
-/// 			BackendService:      defaultRegionBackendService.ID(),
-/// 			Network:             defaultNetwork.ID(),
-/// 			Subnetwork:          defaultSubnetwork.ID(),
+/// 			BackendService:      defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+/// 			Network:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Subnetwork:          defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			IpProtocol:          pulumi.String("TCP"),
 /// 			AllPorts:            pulumi.Bool(true),
 /// 		})
@@ -283,15 +284,76 @@ import 'region_composite_health_check_state.dart';
 /// 			Description: pulumi.String("test regional composite health check resource"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			HealthSources: pulumi.StringArray{
-/// 				_default.ID(),
+/// 				_default.ID().ToIDOutput().ToStringOutput(),
 /// 			},
-/// 			HealthDestination: defaultForwardingRule.ID(),
+/// 			HealthDestination: defaultForwardingRule.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regioncompositehealthcheck" "example_test_composite_health_check" {
+///   name               = "test-composite-health-check"
+///   description        = "test regional composite health check resource"
+///   region             = "us-central1"
+///   health_sources     = [gcp_compute_regionhealthsource.default.id]
+///   health_destination = gcp_compute_forwardingrule.default.id
+/// }
+/// resource "gcp_compute_regionhealthsource" "default" {
+///   name                      = "test-composite-health-check-hs"
+///   region                    = "us-central1"
+///   source_type               = "BACKEND_SERVICE"
+///   sources                   = gcp_compute_regionbackendservice.default.id
+///   health_aggregation_policy = gcp_compute_regionhealthaggregationpolicy.hap.id
+/// }
+/// resource "gcp_compute_regionhealthaggregationpolicy" "hap" {
+///   name        = "test-composite-health-check-hap"
+///   description = "health aggregation policy for health source"
+///   region      = "us-central1"
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name = "test-composite-health-check-hc"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "default" {
+///   name                  = "test-composite-health-check-bs"
+///   region                = "us-central1"
+///   health_checks         = gcp_compute_healthcheck.default.id
+///   load_balancing_scheme = "INTERNAL"
+/// }
+/// resource "gcp_compute_forwardingrule" "default" {
+///   name                  = "test-composite-health-check-fr"
+///   region                = "us-central1"
+///   load_balancing_scheme = "INTERNAL"
+///   backend_service       = gcp_compute_regionbackendservice.default.id
+///   network               = gcp_compute_network.default.id
+///   subnetwork            = gcp_compute_subnetwork.default.id
+///   ip_protocol           = "TCP"
+///   all_ports             = true
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "test-composite-health-check-net"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "test-composite-health-check-sub"
+///   ip_cidr_range = "10.2.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
 /// }
 /// ```
 /// ```java
@@ -317,8 +379,8 @@ import 'region_composite_health_check_state.dart';
 /// import com.pulumi.gcp.compute.ForwardingRuleArgs;
 /// import com.pulumi.gcp.compute.RegionCompositeHealthCheck;
 /// import com.pulumi.gcp.compute.RegionCompositeHealthCheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -467,33 +529,29 @@ import 'region_composite_health_check_state.dart';
 /// RegionCompositeHealthCheck can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/compositeHealthChecks/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionCompositeHealthCheck can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck default projects/{{project}}/regions/{{region}}/compositeHealthChecks/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck default {{name}}
 /// ```
 class RegionCompositeHealthCheck extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
   late final pulumi.Output<String?> description;
@@ -549,6 +607,7 @@ class RegionCompositeHealthCheck extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     healthDestination = registerOutput<String>('healthDestination');
@@ -583,6 +642,7 @@ class RegionCompositeHealthCheck extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     healthDestination = registerOutput<String>('healthDestination');

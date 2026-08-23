@@ -9,6 +9,13 @@ class PipelineState {
   /// The timestamp when the pipeline was initially created. Set by the Data Pipelines service.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
   final pulumi.Input<String>? displayName;
   /// Number of jobs.
@@ -50,6 +57,7 @@ class PipelineState {
 
   /// Creates a new [PipelineState].
   /// [createTime] The timestamp when the pipeline was initially created. Set by the Data Pipelines service.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
   /// [jobCount] Number of jobs.
   /// [lastUpdateTime] The timestamp when the pipeline was last modified. Set by the Data Pipelines service.
@@ -64,6 +72,7 @@ class PipelineState {
   /// [workload] Workload information for creating new jobs.
   const PipelineState({
     this.createTime,
+    this.deletionPolicy,
     this.displayName,
     this.jobCount,
     this.lastUpdateTime,
@@ -81,6 +90,7 @@ class PipelineState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'jobCount': ?jobCount,
       'lastUpdateTime': ?lastUpdateTime,
@@ -99,6 +109,7 @@ class PipelineState {
   factory PipelineState.fromMap(Map<String, dynamic> map) {
     return PipelineState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       jobCount: (() { final guardedValue = map['jobCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       lastUpdateTime: (() { final guardedValue = map['lastUpdateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -114,4 +125,3 @@ class PipelineState {
     );
   }
 }
-

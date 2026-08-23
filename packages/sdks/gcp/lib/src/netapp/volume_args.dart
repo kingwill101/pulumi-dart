@@ -6,6 +6,7 @@ import 'volume_block_device.dart';
 import 'volume_cache_parameters.dart';
 import 'volume_export_policy.dart';
 import 'volume_hybrid_replication_parameters.dart';
+import 'volume_large_capacity_config.dart';
 import 'volume_restore_parameters.dart';
 import 'volume_snapshot_policy.dart';
 import 'volume_tiering_policy.dart';
@@ -30,7 +31,14 @@ class VolumeArgs {
   /// Policy to determine if the volume should be deleted forcefully.
   /// Volumes may have nested snapshot resources. Deleting such a volume will fail.
   /// Setting this parameter to FORCE will delete volumes including nested snapshots.
-  /// Possible values: DEFAULT, FORCE.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+  ///
+  /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE.
   final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
@@ -47,10 +55,15 @@ class VolumeArgs {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
   final pulumi.Input<bool>? largeCapacity;
+  /// Configuration for a Large Capacity Volume. A Large Capacity Volume
+  /// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+  /// internal constituents, and must be created in a large capacity pool.
+  /// Structure is documented below.
+  final pulumi.Input<VolumeLargeCapacityConfig>? largeCapacityConfig;
   /// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
   final pulumi.Input<String> location;
   /// Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
@@ -82,7 +95,7 @@ class VolumeArgs {
   /// If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
   final pulumi.Input<bool>? snapshotDirectory;
   /// Snapshot policy defines the schedule for automatic snapshot creation.
-  /// To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+  /// To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
   /// Structure is documented below.
   final pulumi.Input<VolumeSnapshotPolicy>? snapshotPolicy;
   /// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
@@ -107,6 +120,7 @@ class VolumeArgs {
   /// [kerberosEnabled] Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
   /// [labels] Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   /// [largeCapacity] Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+  /// [largeCapacityConfig] Configuration for a Large Capacity Volume. A Large Capacity Volume
   /// [location] Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
   /// [multipleEndpoints] Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
   /// [name] The name of the volume. Needs to be unique per location.
@@ -135,6 +149,7 @@ class VolumeArgs {
     this.kerberosEnabled,
     this.labels,
     this.largeCapacity,
+    this.largeCapacityConfig,
     required this.location,
     this.multipleEndpoints,
     this.name,
@@ -166,6 +181,7 @@ class VolumeArgs {
       'kerberosEnabled': ?kerberosEnabled,
       'labels': ?labels,
       'largeCapacity': ?largeCapacity,
+      'largeCapacityConfig': ?pulumi.Input.mapOptionalInputValue<VolumeLargeCapacityConfig, Map<String, dynamic>>(largeCapacityConfig, (value) => value.toMap()),
       'location': location,
       'multipleEndpoints': ?multipleEndpoints,
       'name': ?name,
@@ -198,6 +214,7 @@ class VolumeArgs {
       kerberosEnabled: (() { final guardedValue = map['kerberosEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       largeCapacity: (() { final guardedValue = map['largeCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      largeCapacityConfig: (() { final guardedValue = map['largeCapacityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeLargeCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       multipleEndpoints: (() { final guardedValue = map['multipleEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -217,4 +234,3 @@ class VolumeArgs {
     );
   }
 }
-

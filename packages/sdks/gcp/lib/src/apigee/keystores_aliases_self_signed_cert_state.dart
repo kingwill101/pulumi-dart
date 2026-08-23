@@ -16,6 +16,13 @@ class KeystoresAliasesSelfSignedCertState {
   /// Chain of certificates under this alias.
   /// Structure is documented below.
   final pulumi.Input<List<KeystoresAliasesSelfSignedCertCertsInfo>>? certsInfos;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The Apigee environment name
   final pulumi.Input<String>? environment;
   /// Key size. Default and maximum value is 2048 bits.
@@ -39,6 +46,7 @@ class KeystoresAliasesSelfSignedCertState {
   /// [alias] Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
   /// [certValidityInDays] Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
   /// [certsInfos] Chain of certificates under this alias.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [environment] The Apigee environment name
   /// [keySize] Key size. Default and maximum value is 2048 bits.
   /// [keystore] The Apigee keystore name associated in an Apigee environment
@@ -51,6 +59,7 @@ class KeystoresAliasesSelfSignedCertState {
     this.alias,
     this.certValidityInDays,
     this.certsInfos,
+    this.deletionPolicy,
     this.environment,
     this.keySize,
     this.keystore,
@@ -66,6 +75,7 @@ class KeystoresAliasesSelfSignedCertState {
       'alias': ?alias,
       'certValidityInDays': ?certValidityInDays,
       'certsInfos': ?pulumi.Input.mapOptionalInputValue<List<KeystoresAliasesSelfSignedCertCertsInfo>, List<Map<String, dynamic>>>(certsInfos, (value) => pulumi.Input.encodeList<KeystoresAliasesSelfSignedCertCertsInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': ?deletionPolicy,
       'environment': ?environment,
       'keySize': ?keySize,
       'keystore': ?keystore,
@@ -82,6 +92,7 @@ class KeystoresAliasesSelfSignedCertState {
       alias: (() { final guardedValue = map['alias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       certValidityInDays: (() { final guardedValue = map['certValidityInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       certsInfos: (() { final guardedValue = map['certsInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KeystoresAliasesSelfSignedCertCertsInfo>(guardedValue, (value) => KeystoresAliasesSelfSignedCertCertsInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keystore: (() { final guardedValue = map['keystore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -93,4 +104,3 @@ class KeystoresAliasesSelfSignedCertState {
     );
   }
 }
-

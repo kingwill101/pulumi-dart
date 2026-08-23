@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FrameworkDeploymentCloudControlDeploymentReference {
   /// (Output)
   /// The name of the CloudControlDeployment. The format is:
-  /// organizations/{org}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
+  /// {parent}/locations/{location}/cloudControlDeployments/{cloud_control_deployment_id}
   final pulumi.Input<String>? cloudControlDeployment;
 
   /// Creates a new [FrameworkDeploymentCloudControlDeploymentReference].
@@ -26,4 +26,3 @@ class FrameworkDeploymentCloudControlDeploymentReference {
     );
   }
 }
-

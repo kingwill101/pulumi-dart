@@ -80,6 +80,21 @@ import 'global_network_endpoint_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_globalnetworkendpointgroup" "neg" {
+///   name                  = "my-lb-neg"
+///   default_port          = "90"
+///   network_endpoint_type = "INTERNET_FQDN_PORT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +103,8 @@ import 'global_network_endpoint_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.GlobalNetworkEndpointGroup;
 /// import com.pulumi.gcp.compute.GlobalNetworkEndpointGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -182,6 +197,21 @@ import 'global_network_endpoint_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_globalnetworkendpointgroup" "neg" {
+///   name                  = "my-lb-neg"
+///   network_endpoint_type = "INTERNET_IP_PORT"
+///   default_port          = 90
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -190,8 +220,8 @@ import 'global_network_endpoint_group_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.GlobalNetworkEndpointGroup;
 /// import com.pulumi.gcp.compute.GlobalNetworkEndpointGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -228,28 +258,28 @@ import 'global_network_endpoint_group_state.dart';
 /// GlobalNetworkEndpointGroup can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/networkEndpointGroups/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, GlobalNetworkEndpointGroup can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default projects/{{project}}/global/networkEndpointGroups/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{name}}
 /// ```
 class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
   /// The default port used if the port number is not specified in the
   /// network endpoint.
   late final pulumi.Output<int?> defaultPort;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
@@ -285,6 +315,7 @@ class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     defaultPort = registerOutput<int?>('defaultPort');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     networkEndpointType = registerOutput<String>('networkEndpointType');
@@ -316,6 +347,7 @@ class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     defaultPort = registerOutput<int?>('defaultPort');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     networkEndpointType = registerOutput<String>('networkEndpointType');

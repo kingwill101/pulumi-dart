@@ -10,7 +10,7 @@ class RegionBackendServiceCdnPolicyCacheKeyPolicy {
   /// If true, http and https requests will be cached separately.
   final pulumi.Input<bool>? includeProtocol;
   /// If true, include query string parameters in the cache key
-  /// according to query_string_whitelist and
+  /// according to queryStringWhitelist and
   /// query_string_blacklist. If neither is set, the entire query
   /// string will be included.
   /// If false, the query string will be excluded from the cache
@@ -18,13 +18,13 @@ class RegionBackendServiceCdnPolicyCacheKeyPolicy {
   final pulumi.Input<bool>? includeQueryString;
   /// Names of query string parameters to exclude in cache keys.
   /// All other parameters will be included. Either specify
-  /// query_string_whitelist or query_string_blacklist, not both.
+  /// queryStringWhitelist or query_string_blacklist, not both.
   /// '&' and '=' will be percent encoded and not treated as
   /// delimiters.
   final pulumi.Input<List<String>>? queryStringBlacklists;
   /// Names of query string parameters to include in cache keys.
   /// All other parameters will be excluded. Either specify
-  /// query_string_whitelist or query_string_blacklist, not both.
+  /// queryStringWhitelist or query_string_blacklist, not both.
   /// '&' and '=' will be percent encoded and not treated as
   /// delimiters.
   final pulumi.Input<List<String>>? queryStringWhitelists;
@@ -67,4 +67,3 @@ class RegionBackendServiceCdnPolicyCacheKeyPolicy {
     );
   }
 }
-

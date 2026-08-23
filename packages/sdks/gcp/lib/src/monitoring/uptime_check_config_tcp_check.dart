@@ -7,12 +7,12 @@ class UptimeCheckConfigTcpCheck {
   /// Contains information needed to add pings to a TCP check.
   /// Structure is documented below.
   final pulumi.Input<UptimeCheckConfigTcpCheckPingConfig>? pingConfig;
-  /// The port to the page to run the check against. Will be combined with host (specified within the `monitored_resource`) to construct the full URL.
+  /// The port to the page to run the check against. Will be combined with host (specified within the `monitoredResource`) to construct the full URL.
   final pulumi.Input<int> port;
 
   /// Creates a new [UptimeCheckConfigTcpCheck].
   /// [pingConfig] Contains information needed to add pings to a TCP check.
-  /// [port] The port to the page to run the check against. Will be combined with host (specified within the `monitored_resource`) to construct the full URL.
+  /// [port] The port to the page to run the check against. Will be combined with host (specified within the `monitoredResource`) to construct the full URL.
   const UptimeCheckConfigTcpCheck({
     this.pingConfig,
     required this.port,
@@ -32,4 +32,3 @@ class UptimeCheckConfigTcpCheck {
     );
   }
 }
-

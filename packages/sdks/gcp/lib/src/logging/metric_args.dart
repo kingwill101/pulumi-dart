@@ -16,6 +16,13 @@ class MetricArgs {
   /// describes the bucket boundaries used to create a histogram of the extracted values.
   /// Structure is documented below.
   final pulumi.Input<MetricBucketOptions>? bucketOptions;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of this metric, which is used in documentation. The maximum length of the
   /// description is 8000 characters.
   final pulumi.Input<String>? description;
@@ -35,7 +42,7 @@ class MetricArgs {
   /// number of log entries matching the filter expression.
   /// Structure is documented below.
   final pulumi.Input<MetricMetricDescriptor>? metricDescriptor;
-  /// The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
+  /// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
   /// Metric identifiers are limited to 100 characters and can include only the following
   /// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
   /// character (/) denotes a hierarchy of name pieces, and it cannot be the first character
@@ -56,17 +63,19 @@ class MetricArgs {
   /// Creates a new [MetricArgs].
   /// [bucketName] The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
   /// [bucketOptions] The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of this metric, which is used in documentation. The maximum length of the
   /// [disabled] If set to True, then this metric is disabled and it does not generate any points.
   /// [filter] An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
   /// [labelExtractors] A map from a label key string to an extractor expression which is used to extract data from a log
   /// [metricDescriptor] The optional metric descriptor associated with the logs-based metric.
-  /// [name] The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
+  /// [name] The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
   /// [project] The ID of the project in which the resource belongs.
   /// [valueExtractor] A valueExtractor is required when using a distribution logs-based metric to extract the values to
   const MetricArgs({
     this.bucketName,
     this.bucketOptions,
+    this.deletionPolicy,
     this.description,
     this.disabled,
     required this.filter,
@@ -81,6 +90,7 @@ class MetricArgs {
     return <String, dynamic>{
       'bucketName': ?bucketName,
       'bucketOptions': ?pulumi.Input.mapOptionalInputValue<MetricBucketOptions, Map<String, dynamic>>(bucketOptions, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'disabled': ?disabled,
       'filter': filter,
@@ -96,6 +106,7 @@ class MetricArgs {
     return MetricArgs(
       bucketName: (() { final guardedValue = map['bucketName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bucketOptions: (() { final guardedValue = map['bucketOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetricBucketOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       filter: pulumi.Input.fromValue(map['filter'] as String),
@@ -107,4 +118,3 @@ class MetricArgs {
     );
   }
 }
-

@@ -13,6 +13,13 @@ class ProjectSinkState {
   /// routing logs to a destination outside this sink's project. If not specified, a Logging service account
   /// will automatically be generated.
   final pulumi.Input<String>? customWriterIdentity;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of this sink. The maximum length of the description is 8000 characters.
   final pulumi.Input<String>? description;
   /// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
@@ -38,9 +45,12 @@ class ProjectSinkState {
   /// The ID of the project to create the sink in. If omitted, the project associated with the provider is
   /// used.
   final pulumi.Input<String>? project;
-  /// Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
-  /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-  /// `bigquery_options`, you must set `unique_writer_identity` to true.
+  /// Whether to use a service agent as the `writerIdentity` for this sink. If `false`,
+  /// `writerIdentity` is `serviceAccount:cloud-logs@system.gserviceaccount.com` and the sink's destination must be in the
+  /// same project as the sink. If `true` (the default), `writerIdentity` is a service agent shared by sinks with the same
+  /// parent. You must set `uniqueWriterIdentity` to `true` to publish logs across projects or use `bigqueryOptions`.
+  /// See the [`projects.sinks.create` API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/create#query-parameters)
+  /// for more information.
   final pulumi.Input<bool>? uniqueWriterIdentity;
   /// The identity associated with this sink. This identity must be granted write access to the
   /// configured `destination`.
@@ -49,6 +59,7 @@ class ProjectSinkState {
   /// Creates a new [ProjectSinkState].
   /// [bigqueryOptions] Options that affect sinks exporting data to BigQuery. Structure documented below.
   /// [customWriterIdentity] A user managed service account that will be used to write
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [description] A description of this sink. The maximum length of the description is 8000 characters.
   /// [destination] The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
   /// [disabled] If set to True, then this sink is disabled and it does not export any log entries.
@@ -56,11 +67,12 @@ class ProjectSinkState {
   /// [filter] The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// [name] The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
   /// [project] The ID of the project to create the sink in. If omitted, the project associated with the provider is
-  /// [uniqueWriterIdentity] Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
+  /// [uniqueWriterIdentity] Whether to use a service agent as the `writerIdentity` for this sink. If `false`,
   /// [writerIdentity] The identity associated with this sink. This identity must be granted write access to the
   const ProjectSinkState({
     this.bigqueryOptions,
     this.customWriterIdentity,
+    this.deletionPolicy,
     this.description,
     this.destination,
     this.disabled,
@@ -76,6 +88,7 @@ class ProjectSinkState {
     return <String, dynamic>{
       'bigqueryOptions': ?pulumi.Input.mapOptionalInputValue<ProjectSinkBigqueryOptions, Map<String, dynamic>>(bigqueryOptions, (value) => value.toMap()),
       'customWriterIdentity': ?customWriterIdentity,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'destination': ?destination,
       'disabled': ?disabled,
@@ -92,6 +105,7 @@ class ProjectSinkState {
     return ProjectSinkState(
       bigqueryOptions: (() { final guardedValue = map['bigqueryOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProjectSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customWriterIdentity: (() { final guardedValue = map['customWriterIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -104,4 +118,3 @@ class ProjectSinkState {
     );
   }
 }
-

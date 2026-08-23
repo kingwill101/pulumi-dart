@@ -18,19 +18,23 @@ import 'instance_attachment_state.dart';
 /// InstanceAttachment can be imported using any of these accepted formats:
 ///
 /// * `{{instance_id}}/attachments/{{name}}`
-///
 /// * `{{instance_id}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, InstanceAttachment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/attachments/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/{{name}}
 /// ```
 class InstanceAttachment extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The resource ID of the environment.
   late final pulumi.Output<String> environment;
   /// The Apigee instance associated with the Apigee environment,
@@ -53,6 +57,7 @@ class InstanceAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');
@@ -81,6 +86,7 @@ class InstanceAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     instanceId = registerOutput<String>('instanceId');
     this.name = registerOutput<String>('name');

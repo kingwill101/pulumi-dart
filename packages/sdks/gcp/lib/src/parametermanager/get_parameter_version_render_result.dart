@@ -15,7 +15,7 @@ class GetParameterVersionRenderResult {
   final String parameterData;
   final String parameterVersionId;
   final String project;
-  /// The Rendered Parameter Data specifies that if you use `__REF__()` to reference a secret and the format is JSON or YAML, the placeholder `__REF__()` will be replaced with the actual secret value. However, if the format is UNFORMATTED, it will stay the same as the original `parameter_data`.
+  /// The Rendered Parameter Data specifies that if you use `__REF__()` to reference a secret and the format is JSON or YAML, the placeholder `__REF__()` will be replaced with the actual secret value. However, if the format is UNFORMATTED, it will stay the same as the original `parameterData`.
   final String renderedParameterData;
 
   /// Creates a new [GetParameterVersionRenderResult].
@@ -26,7 +26,7 @@ class GetParameterVersionRenderResult {
   /// [parameterData] The Parameter data.
   /// [parameterVersionId] Required.
   /// [project] Required.
-  /// [renderedParameterData] The Rendered Parameter Data specifies that if you use `__REF__()` to reference a secret and the format is JSON or YAML, the placeholder `__REF__()` will be replaced with the actual secret value. However, if the format is UNFORMATTED, it will stay the same as the original `parameter_data`.
+  /// [renderedParameterData] The Rendered Parameter Data specifies that if you use `__REF__()` to reference a secret and the format is JSON or YAML, the placeholder `__REF__()` will be replaced with the actual secret value. However, if the format is UNFORMATTED, it will stay the same as the original `parameterData`.
   const GetParameterVersionRenderResult({
     required this.disabled,
     required this.id,
@@ -64,4 +64,3 @@ class GetParameterVersionRenderResult {
     );
   }
 }
-

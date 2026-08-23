@@ -11,7 +11,7 @@ class ClusterControlPlaneEncryption {
   final pulumi.Input<String>? kmsKey;
   /// (Output)
   /// The Cloud KMS CryptoKeyVersion currently in use for protecting control
-  /// plane disks. Only applicable if kms_key is set.
+  /// plane disks. Only applicable if kmsKey is set.
   final pulumi.Input<String>? kmsKeyActiveVersion;
   /// (Output)
   /// Availability of the Cloud KMS CryptoKey. If not `KEY_AVAILABLE`, then
@@ -21,12 +21,12 @@ class ClusterControlPlaneEncryption {
   final pulumi.Input<String>? kmsKeyState;
   /// (Output)
   /// Error status returned by Cloud KMS when using this key. This field may be
-  /// populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
+  /// populated only if `kmsKeyState` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
   /// If populated, this field contains the error status reported by Cloud KMS.
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_control_plane_encryption_kms_status"&gt;&lt;/a&gt;The `kms_status` block contains:
+  /// &lt;a name="nestedControlPlaneEncryptionKmsStatus"&gt;&lt;/a&gt;The `kmsStatus` block contains:
   final pulumi.Input<List<ClusterControlPlaneEncryptionKmsStatus>>? kmsStatuses;
 
   /// Creates a new [ClusterControlPlaneEncryption].
@@ -59,4 +59,3 @@ class ClusterControlPlaneEncryption {
     );
   }
 }
-

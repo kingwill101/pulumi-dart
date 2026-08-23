@@ -16,6 +16,7 @@ class GetInsightsDatasetConfigResult {
   final String createTime;
   final String datasetConfigId;
   final String datasetConfigState;
+  final String deletionPolicy;
   final String description;
   final List<GetInsightsDatasetConfigExcludeCloudStorageBucket> excludeCloudStorageBuckets;
   final List<GetInsightsDatasetConfigExcludeCloudStorageLocation> excludeCloudStorageLocations;
@@ -43,6 +44,7 @@ class GetInsightsDatasetConfigResult {
   /// [createTime] Required.
   /// [datasetConfigId] Required.
   /// [datasetConfigState] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [excludeCloudStorageBuckets] Required.
   /// [excludeCloudStorageLocations] Required.
@@ -68,6 +70,7 @@ class GetInsightsDatasetConfigResult {
     required this.createTime,
     required this.datasetConfigId,
     required this.datasetConfigState,
+    required this.deletionPolicy,
     required this.description,
     required this.excludeCloudStorageBuckets,
     required this.excludeCloudStorageLocations,
@@ -96,6 +99,7 @@ class GetInsightsDatasetConfigResult {
       'createTime': createTime,
       'datasetConfigId': datasetConfigId,
       'datasetConfigState': datasetConfigState,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'excludeCloudStorageBuckets': pulumi.Input.encodeList<GetInsightsDatasetConfigExcludeCloudStorageBucket, Map<String, dynamic>>(excludeCloudStorageBuckets, (value) => value.toMap()),
       'excludeCloudStorageLocations': pulumi.Input.encodeList<GetInsightsDatasetConfigExcludeCloudStorageLocation, Map<String, dynamic>>(excludeCloudStorageLocations, (value) => value.toMap()),
@@ -125,6 +129,7 @@ class GetInsightsDatasetConfigResult {
       createTime: map['createTime'] as String,
       datasetConfigId: map['datasetConfigId'] as String,
       datasetConfigState: map['datasetConfigState'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       excludeCloudStorageBuckets: pulumi.Input.decodeList<GetInsightsDatasetConfigExcludeCloudStorageBucket>(map['excludeCloudStorageBuckets']!, (value) => GetInsightsDatasetConfigExcludeCloudStorageBucket.fromMap((value as Map).cast<String, dynamic>())),
       excludeCloudStorageLocations: pulumi.Input.decodeList<GetInsightsDatasetConfigExcludeCloudStorageLocation>(map['excludeCloudStorageLocations']!, (value) => GetInsightsDatasetConfigExcludeCloudStorageLocation.fromMap((value as Map).cast<String, dynamic>())),
@@ -148,4 +153,3 @@ class GetInsightsDatasetConfigResult {
     );
   }
 }
-

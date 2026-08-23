@@ -47,7 +47,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch {
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_rule_match_layer4_config"&gt;&lt;/a&gt;The `layer4_config` block supports:
+  /// &lt;a name="nestedRuleMatchLayer4Config"&gt;&lt;/a&gt;The `layer4Config` block supports:
   final pulumi.Input<List<RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag>>? srcSecureTags;
   /// Names of Network Threat Intelligence lists.
   /// The IPs in these lists will be matched against traffic source.
@@ -115,4 +115,3 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch {
     );
   }
 }
-

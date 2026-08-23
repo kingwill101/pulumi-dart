@@ -138,7 +138,7 @@ import 'volume_snapshot_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "test-network",
+/// 			Name: pulumi.StringRef("test-network"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -180,6 +180,41 @@ import 'volume_snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "default" {
+///   name = "test-network"
+/// }
+///
+/// resource "gcp_netapp_storagepool" "default" {
+///   name          = "test-pool"
+///   location      = "us-west2"
+///   service_level = "PREMIUM"
+///   capacity_gib  = 2048
+///   network       = data.gcp_compute_getnetwork.default.id
+/// }
+/// resource "gcp_netapp_volume" "default" {
+///   location     = gcp_netapp_storagepool.default.location
+///   name         = "test-volume"
+///   capacity_gib = 100
+///   share_name   = "test-volume"
+///   storage_pool = gcp_netapp_storagepool.default.name
+///   protocols    = ["NFSV3"]
+/// }
+/// resource "gcp_netapp_volumesnapshot" "test_snapshot" {
+///   depends_on  = [gcp_netapp_volume.default]
+///   location    = gcp_netapp_volume.default.location
+///   volume_name = gcp_netapp_volume.default.name
+///   name        = "testvolumesnap"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +230,8 @@ import 'volume_snapshot_state.dart';
 /// import com.pulumi.gcp.netapp.VolumeSnapshot;
 /// import com.pulumi.gcp.netapp.VolumeSnapshotArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -286,25 +321,25 @@ import 'volume_snapshot_state.dart';
 /// VolumeSnapshot can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/snapshots/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{volume_name}}/{{name}}`
-///
 /// * `{{location}}/{{volume_name}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, VolumeSnapshot can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:netapp/volumeSnapshot:VolumeSnapshot default projects/{{project}}/locations/{{location}}/volumes/{{volume_name}}/snapshots/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/volumeSnapshot:VolumeSnapshot default {{project}}/{{location}}/{{volume_name}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/volumeSnapshot:VolumeSnapshot default {{location}}/{{volume_name}}/{{name}}
 /// ```
 class VolumeSnapshot extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description for the snapshot.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -312,7 +347,7 @@ class VolumeSnapshot extends pulumi.CustomResource {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Name of the snapshot location. Snapshots are child resources of volumes and live in the same location.
   late final pulumi.Output<String> location;
@@ -343,6 +378,7 @@ class VolumeSnapshot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -377,6 +413,7 @@ class VolumeSnapshot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

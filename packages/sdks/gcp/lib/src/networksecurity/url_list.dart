@@ -80,6 +80,21 @@ import 'url_list_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_urllist" "default" {
+///   name     = "my-url-lists"
+///   location = "us-central1"
+///   values   = ["www.example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +103,8 @@ import 'url_list_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networksecurity.UrlList;
 /// import com.pulumi.gcp.networksecurity.UrlListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -204,6 +219,22 @@ import 'url_list_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_urllist" "default" {
+///   name        = "my-url-lists"
+///   location    = "us-central1"
+///   description = "my description"
+///   values      = ["www.example.com", "about.example.com", "github.com/example-org/*"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -212,8 +243,8 @@ import 'url_list_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networksecurity.UrlList;
 /// import com.pulumi.gcp.networksecurity.UrlListArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -258,22 +289,15 @@ import 'url_list_state.dart';
 /// UrlLists can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/urlLists/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, UrlLists can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networksecurity/urlList:UrlList default projects/{{project}}/locations/{{location}}/urlLists/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/urlList:UrlList default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/urlList:UrlList default {{location}}/{{name}}
 /// ```
 class UrlList extends pulumi.CustomResource {
@@ -281,6 +305,13 @@ class UrlList extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC 'Zulu' format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: '2014-10-02T15:01:23Z' and '2014-10-02T15:01:23.045123456Z'
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Free-text description of the resource.
   late final pulumi.Output<String?> description;
   /// The location of the url lists.
@@ -313,6 +344,7 @@ class UrlList extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -345,6 +377,7 @@ class UrlList extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

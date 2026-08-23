@@ -8,6 +8,13 @@ import 'entry_type_required_aspect.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dataplex_entry_type_entry_type_args_doc}
 class EntryTypeArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the EntryType.
   final pulumi.Input<String>? description;
   /// User friendly display name.
@@ -17,7 +24,7 @@ class EntryTypeArgs {
   /// User-defined labels for the EntryType.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location where entry type will be created in.
   final pulumi.Input<String>? location;
@@ -35,6 +42,7 @@ class EntryTypeArgs {
   final pulumi.Input<List<String>>? typeAliases;
 
   /// Creates a new [EntryTypeArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the EntryType.
   /// [displayName] User friendly display name.
   /// [entryTypeId] The entry type id of the entry type.
@@ -46,6 +54,7 @@ class EntryTypeArgs {
   /// [system] The system that Entries of this type belongs to.
   /// [typeAliases] Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
   const EntryTypeArgs({
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.entryTypeId,
@@ -60,6 +69,7 @@ class EntryTypeArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'entryTypeId': ?entryTypeId,
@@ -75,6 +85,7 @@ class EntryTypeArgs {
 
   factory EntryTypeArgs.fromMap(Map<String, dynamic> map) {
     return EntryTypeArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entryTypeId: (() { final guardedValue = map['entryTypeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -88,4 +99,3 @@ class EntryTypeArgs {
     );
   }
 }
-

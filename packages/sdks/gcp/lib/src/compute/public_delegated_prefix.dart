@@ -102,13 +102,36 @@ import 'public_delegated_prefix_state.dart';
 /// 			Region:       pulumi.String("us-central1"),
 /// 			Description:  pulumi.String("my description"),
 /// 			IpCidrRange:  pulumi.String("127.127.0.0/24"),
-/// 			ParentPrefix: advertised.ID(),
+/// 			ParentPrefix: advertised.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_publicadvertisedprefix" "advertised" {
+///   name                = "my-prefix"
+///   description         = "description"
+///   dns_verification_ip = "127.127.0.0"
+///   ip_cidr_range       = "127.127.0.0/16"
+/// }
+/// resource "gcp_compute_publicdelegatedprefix" "prefixes" {
+///   name          = "my-prefix"
+///   region        = "us-central1"
+///   description   = "my description"
+///   ip_cidr_range = "127.127.0.0/24"
+///   parent_prefix = gcp_compute_publicadvertisedprefix.advertised.id
 /// }
 /// ```
 /// ```java
@@ -121,8 +144,8 @@ import 'public_delegated_prefix_state.dart';
 /// import com.pulumi.gcp.compute.PublicAdvertisedPrefixArgs;
 /// import com.pulumi.gcp.compute.PublicDelegatedPrefix;
 /// import com.pulumi.gcp.compute.PublicDelegatedPrefixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -295,7 +318,7 @@ import 'public_delegated_prefix_state.dart';
 /// 			Description:  pulumi.String("test-delegation-mode-pdp"),
 /// 			Region:       pulumi.String("us-west1"),
 /// 			IpCidrRange:  pulumi.String("2001:db8::/40"),
-/// 			ParentPrefix: advertised.ID(),
+/// 			ParentPrefix: advertised.ID().ToIDOutput().ToStringOutput(),
 /// 			Mode:         pulumi.String("DELEGATION"),
 /// 		})
 /// 		if err != nil {
@@ -306,7 +329,7 @@ import 'public_delegated_prefix_state.dart';
 /// 			Description:             pulumi.String("test-forwarding-rule-mode-pdp"),
 /// 			Region:                  pulumi.String("us-west1"),
 /// 			IpCidrRange:             pulumi.String("2001:db8::/48"),
-/// 			ParentPrefix:            prefix.ID(),
+/// 			ParentPrefix:            prefix.ID().ToIDOutput().ToStringOutput(),
 /// 			AllocatablePrefixLength: pulumi.Int(64),
 /// 			Mode:                    pulumi.String("EXTERNAL_IPV6_FORWARDING_RULE_CREATION"),
 /// 		})
@@ -315,6 +338,40 @@ import 'public_delegated_prefix_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_publicadvertisedprefix" "advertised" {
+///   name                = "ipv6-pap"
+///   description         = "description"
+///   dns_verification_ip = "2001:db8::"
+///   ip_cidr_range       = "2001:db8::/32"
+///   pdp_scope           = "REGIONAL"
+/// }
+/// resource "gcp_compute_publicdelegatedprefix" "prefix" {
+///   name          = "ipv6-root-pdp"
+///   description   = "test-delegation-mode-pdp"
+///   region        = "us-west1"
+///   ip_cidr_range = "2001:db8::/40"
+///   parent_prefix = gcp_compute_publicadvertisedprefix.advertised.id
+///   mode          = "DELEGATION"
+/// }
+/// resource "gcp_compute_publicdelegatedprefix" "subprefix" {
+///   name                      = "ipv6-sub-pdp"
+///   description               = "test-forwarding-rule-mode-pdp"
+///   region                    = "us-west1"
+///   ip_cidr_range             = "2001:db8::/48"
+///   parent_prefix             = gcp_compute_publicdelegatedprefix.prefix.id
+///   allocatable_prefix_length = 64
+///   mode                      = "EXTERNAL_IPV6_FORWARDING_RULE_CREATION"
 /// }
 /// ```
 /// ```java
@@ -327,8 +384,8 @@ import 'public_delegated_prefix_state.dart';
 /// import com.pulumi.gcp.compute.PublicAdvertisedPrefixArgs;
 /// import com.pulumi.gcp.compute.PublicDelegatedPrefix;
 /// import com.pulumi.gcp.compute.PublicDelegatedPrefixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -522,7 +579,7 @@ import 'public_delegated_prefix_state.dart';
 /// 			Description:  pulumi.String("test-delegation-mode-pdp"),
 /// 			Region:       pulumi.String("us-east1"),
 /// 			IpCidrRange:  pulumi.String("2001:db8::/40"),
-/// 			ParentPrefix: advertised.ID(),
+/// 			ParentPrefix: advertised.ID().ToIDOutput().ToStringOutput(),
 /// 			Mode:         pulumi.String("DELEGATION"),
 /// 		})
 /// 		if err != nil {
@@ -533,7 +590,7 @@ import 'public_delegated_prefix_state.dart';
 /// 			Description:  pulumi.String("test-subnet-mode-pdp"),
 /// 			Region:       pulumi.String("us-east1"),
 /// 			IpCidrRange:  pulumi.String("2001:db8::/48"),
-/// 			ParentPrefix: prefix.ID(),
+/// 			ParentPrefix: prefix.ID().ToIDOutput().ToStringOutput(),
 /// 			Mode:         pulumi.String("EXTERNAL_IPV6_SUBNETWORK_CREATION"),
 /// 		})
 /// 		if err != nil {
@@ -541,6 +598,39 @@ import 'public_delegated_prefix_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_publicadvertisedprefix" "advertised" {
+///   name                = "ipv6-pap"
+///   description         = "description"
+///   dns_verification_ip = "2001:db8::"
+///   ip_cidr_range       = "2001:db8::/32"
+///   pdp_scope           = "REGIONAL"
+/// }
+/// resource "gcp_compute_publicdelegatedprefix" "prefix" {
+///   name          = "ipv6-root-pdp"
+///   description   = "test-delegation-mode-pdp"
+///   region        = "us-east1"
+///   ip_cidr_range = "2001:db8::/40"
+///   parent_prefix = gcp_compute_publicadvertisedprefix.advertised.id
+///   mode          = "DELEGATION"
+/// }
+/// resource "gcp_compute_publicdelegatedprefix" "subprefix" {
+///   name          = "ipv6-sub-pdp"
+///   description   = "test-subnet-mode-pdp"
+///   region        = "us-east1"
+///   ip_cidr_range = "2001:db8::/48"
+///   parent_prefix = gcp_compute_publicdelegatedprefix.prefix.id
+///   mode          = "EXTERNAL_IPV6_SUBNETWORK_CREATION"
 /// }
 /// ```
 /// ```java
@@ -553,8 +643,8 @@ import 'public_delegated_prefix_state.dart';
 /// import com.pulumi.gcp.compute.PublicAdvertisedPrefixArgs;
 /// import com.pulumi.gcp.compute.PublicDelegatedPrefix;
 /// import com.pulumi.gcp.compute.PublicDelegatedPrefixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -746,7 +836,7 @@ import 'public_delegated_prefix_state.dart';
 /// 			Description:  pulumi.String("test-delegation-mode-pdp"),
 /// 			Region:       pulumi.String("us-east1"),
 /// 			IpCidrRange:  pulumi.String("2001:db8::/40"),
-/// 			ParentPrefix: advertised.ID(),
+/// 			ParentPrefix: advertised.ID().ToIDOutput().ToStringOutput(),
 /// 			Mode:         pulumi.String("DELEGATION"),
 /// 		})
 /// 		if err != nil {
@@ -757,7 +847,7 @@ import 'public_delegated_prefix_state.dart';
 /// 			Description:  pulumi.String("test-subnet-mode-pdp"),
 /// 			Region:       pulumi.String("us-east1"),
 /// 			IpCidrRange:  pulumi.String("2001:db8::/48"),
-/// 			ParentPrefix: prefix.ID(),
+/// 			ParentPrefix: prefix.ID().ToIDOutput().ToStringOutput(),
 /// 			Mode:         pulumi.String("INTERNAL_IPV6_SUBNETWORK_CREATION"),
 /// 		})
 /// 		if err != nil {
@@ -765,6 +855,39 @@ import 'public_delegated_prefix_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_publicadvertisedprefix" "advertised" {
+///   name             = "ipv6-pap"
+///   description      = "description"
+///   ip_cidr_range    = "2001:db8::/32"
+///   pdp_scope        = "REGIONAL"
+///   ipv6_access_type = "INTERNAL"
+/// }
+/// resource "gcp_compute_publicdelegatedprefix" "prefix" {
+///   name          = "ipv6-root-pdp"
+///   description   = "test-delegation-mode-pdp"
+///   region        = "us-east1"
+///   ip_cidr_range = "2001:db8::/40"
+///   parent_prefix = gcp_compute_publicadvertisedprefix.advertised.id
+///   mode          = "DELEGATION"
+/// }
+/// resource "gcp_compute_publicdelegatedprefix" "subprefix" {
+///   name          = "ipv6-sub-pdp"
+///   description   = "test-subnet-mode-pdp"
+///   region        = "us-east1"
+///   ip_cidr_range = "2001:db8::/48"
+///   parent_prefix = gcp_compute_publicdelegatedprefix.prefix.id
+///   mode          = "INTERNAL_IPV6_SUBNETWORK_CREATION"
 /// }
 /// ```
 /// ```java
@@ -777,8 +900,8 @@ import 'public_delegated_prefix_state.dart';
 /// import com.pulumi.gcp.compute.PublicAdvertisedPrefixArgs;
 /// import com.pulumi.gcp.compute.PublicDelegatedPrefix;
 /// import com.pulumi.gcp.compute.PublicDelegatedPrefixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -855,33 +978,29 @@ import 'public_delegated_prefix_state.dart';
 /// PublicDelegatedPrefix can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, PublicDelegatedPrefix can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{name}}
 /// ```
 class PublicDelegatedPrefix extends pulumi.CustomResource {
   /// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
   late final pulumi.Output<int> allocatablePrefixLength;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// (Output)
@@ -945,6 +1064,7 @@ class PublicDelegatedPrefix extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     allocatablePrefixLength = registerOutput<int>('allocatablePrefixLength');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     enableEnhancedIpv4Allocation = registerOutput<bool>('enableEnhancedIpv4Allocation');
     ipCidrRange = registerOutput<String>('ipCidrRange');
@@ -983,6 +1103,7 @@ class PublicDelegatedPrefix extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     allocatablePrefixLength = registerOutput<int>('allocatablePrefixLength');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     enableEnhancedIpv4Allocation = registerOutput<bool>('enableEnhancedIpv4Allocation');
     ipCidrRange = registerOutput<String>('ipCidrRange');

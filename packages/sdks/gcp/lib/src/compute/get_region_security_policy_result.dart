@@ -10,6 +10,7 @@ import 'get_region_security_policy_user_defined_field.dart';
 class GetRegionSecurityPolicyResult {
   final List<GetRegionSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfigs;
   final List<GetRegionSecurityPolicyDdosProtectionConfig> ddosProtectionConfigs;
+  final String deletionPolicy;
   final String description;
   final String fingerprint;
   /// The provider-assigned unique ID for this managed resource.
@@ -27,6 +28,7 @@ class GetRegionSecurityPolicyResult {
   /// Creates a new [GetRegionSecurityPolicyResult].
   /// [advancedOptionsConfigs] Required.
   /// [ddosProtectionConfigs] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [fingerprint] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -42,6 +44,7 @@ class GetRegionSecurityPolicyResult {
   const GetRegionSecurityPolicyResult({
     required this.advancedOptionsConfigs,
     required this.ddosProtectionConfigs,
+    required this.deletionPolicy,
     required this.description,
     required this.fingerprint,
     required this.id,
@@ -60,6 +63,7 @@ class GetRegionSecurityPolicyResult {
     return <String, dynamic>{
       'advancedOptionsConfigs': pulumi.Input.encodeList<GetRegionSecurityPolicyAdvancedOptionsConfig, Map<String, dynamic>>(advancedOptionsConfigs, (value) => value.toMap()),
       'ddosProtectionConfigs': pulumi.Input.encodeList<GetRegionSecurityPolicyDdosProtectionConfig, Map<String, dynamic>>(ddosProtectionConfigs, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'fingerprint': fingerprint,
       'id': id,
@@ -79,6 +83,7 @@ class GetRegionSecurityPolicyResult {
     return GetRegionSecurityPolicyResult(
       advancedOptionsConfigs: pulumi.Input.decodeList<GetRegionSecurityPolicyAdvancedOptionsConfig>(map['advancedOptionsConfigs']!, (value) => GetRegionSecurityPolicyAdvancedOptionsConfig.fromMap((value as Map).cast<String, dynamic>())),
       ddosProtectionConfigs: pulumi.Input.decodeList<GetRegionSecurityPolicyDdosProtectionConfig>(map['ddosProtectionConfigs']!, (value) => GetRegionSecurityPolicyDdosProtectionConfig.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       fingerprint: map['fingerprint'] as String,
       id: map['id'] as String,
@@ -94,4 +99,3 @@ class GetRegionSecurityPolicyResult {
     );
   }
 }
-

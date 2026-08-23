@@ -15,6 +15,13 @@ class KeystoresAliasesSelfSignedCertArgs {
   final pulumi.Input<String> alias;
   /// Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
   final pulumi.Input<int>? certValidityInDays;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The Apigee environment name
   final pulumi.Input<String> environment;
   /// Key size. Default and maximum value is 2048 bits.
@@ -35,6 +42,7 @@ class KeystoresAliasesSelfSignedCertArgs {
   /// Creates a new [KeystoresAliasesSelfSignedCertArgs].
   /// [alias] Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
   /// [certValidityInDays] Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [environment] The Apigee environment name
   /// [keySize] Key size. Default and maximum value is 2048 bits.
   /// [keystore] The Apigee keystore name associated in an Apigee environment
@@ -45,6 +53,7 @@ class KeystoresAliasesSelfSignedCertArgs {
   const KeystoresAliasesSelfSignedCertArgs({
     required this.alias,
     this.certValidityInDays,
+    this.deletionPolicy,
     required this.environment,
     this.keySize,
     required this.keystore,
@@ -58,6 +67,7 @@ class KeystoresAliasesSelfSignedCertArgs {
     return <String, dynamic>{
       'alias': alias,
       'certValidityInDays': ?certValidityInDays,
+      'deletionPolicy': ?deletionPolicy,
       'environment': environment,
       'keySize': ?keySize,
       'keystore': keystore,
@@ -72,6 +82,7 @@ class KeystoresAliasesSelfSignedCertArgs {
     return KeystoresAliasesSelfSignedCertArgs(
       alias: pulumi.Input.fromValue(map['alias'] as String),
       certValidityInDays: (() { final guardedValue = map['certValidityInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environment: pulumi.Input.fromValue(map['environment'] as String),
       keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keystore: pulumi.Input.fromValue(map['keystore'] as String),
@@ -82,4 +93,3 @@ class KeystoresAliasesSelfSignedCertArgs {
     );
   }
 }
-

@@ -16,6 +16,13 @@ class SecurityPolicyRuleState {
   /// * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
   final pulumi.Input<String>? action;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
   /// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
@@ -38,7 +45,7 @@ class SecurityPolicyRuleState {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-  /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+  /// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
   /// Structure is documented below.
   final pulumi.Input<SecurityPolicyRuleRateLimitOptions>? rateLimitOptions;
   /// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
@@ -49,6 +56,7 @@ class SecurityPolicyRuleState {
 
   /// Creates a new [SecurityPolicyRuleState].
   /// [action] The Action to perform when the rule is matched. The following are the valid actions:
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you create the resource.
   /// [headerAction] Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// [match] A match condition that incoming traffic is evaluated against.
@@ -56,11 +64,12 @@ class SecurityPolicyRuleState {
   /// [preview] If set to true, the specified action is not enforced.
   /// [priority] An integer indicating the priority of a rule in the list.
   /// [project] The ID of the project in which the resource belongs.
-  /// [rateLimitOptions] Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+  /// [rateLimitOptions] Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
   /// [redirectOptions] Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// [securityPolicy] The name of the security policy this rule belongs to.
   const SecurityPolicyRuleState({
     this.action,
+    this.deletionPolicy,
     this.description,
     this.headerAction,
     this.match,
@@ -76,6 +85,7 @@ class SecurityPolicyRuleState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': ?action,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'headerAction': ?pulumi.Input.mapOptionalInputValue<SecurityPolicyRuleHeaderAction, Map<String, dynamic>>(headerAction, (value) => value.toMap()),
       'match': ?pulumi.Input.mapOptionalInputValue<SecurityPolicyRuleMatch, Map<String, dynamic>>(match, (value) => value.toMap()),
@@ -92,6 +102,7 @@ class SecurityPolicyRuleState {
   factory SecurityPolicyRuleState.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleState(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       headerAction: (() { final guardedValue = map['headerAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyRuleHeaderAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       match: (() { final guardedValue = map['match']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityPolicyRuleMatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -105,4 +116,3 @@ class SecurityPolicyRuleState {
     );
   }
 }
-

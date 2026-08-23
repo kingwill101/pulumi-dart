@@ -8,6 +8,13 @@ class DataSharingWithGoogleSettingState {
   final pulumi.Input<String>? createTime;
   /// Id of the Data Sharing With Google Setting.
   final pulumi.Input<String>? dataSharingWithGoogleSettingId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Whether data sharing should be enabled in GA products.
@@ -16,7 +23,7 @@ class DataSharingWithGoogleSettingState {
   final pulumi.Input<bool>? enablePreviewDataSharing;
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
@@ -35,6 +42,7 @@ class DataSharingWithGoogleSettingState {
   /// Creates a new [DataSharingWithGoogleSettingState].
   /// [createTime] Create time stamp.
   /// [dataSharingWithGoogleSettingId] Id of the Data Sharing With Google Setting.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [enableDataSharing] Whether data sharing should be enabled in GA products.
   /// [enablePreviewDataSharing] Whether data sharing should be enabled in Preview products.
@@ -47,6 +55,7 @@ class DataSharingWithGoogleSettingState {
   const DataSharingWithGoogleSettingState({
     this.createTime,
     this.dataSharingWithGoogleSettingId,
+    this.deletionPolicy,
     this.effectiveLabels,
     this.enableDataSharing,
     this.enablePreviewDataSharing,
@@ -62,6 +71,7 @@ class DataSharingWithGoogleSettingState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'dataSharingWithGoogleSettingId': ?dataSharingWithGoogleSettingId,
+      'deletionPolicy': ?deletionPolicy,
       'effectiveLabels': ?effectiveLabels,
       'enableDataSharing': ?enableDataSharing,
       'enablePreviewDataSharing': ?enablePreviewDataSharing,
@@ -78,6 +88,7 @@ class DataSharingWithGoogleSettingState {
     return DataSharingWithGoogleSettingState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataSharingWithGoogleSettingId: (() { final guardedValue = map['dataSharingWithGoogleSettingId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       enableDataSharing: (() { final guardedValue = map['enableDataSharing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enablePreviewDataSharing: (() { final guardedValue = map['enablePreviewDataSharing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -90,4 +101,3 @@ class DataSharingWithGoogleSettingState {
     );
   }
 }
-

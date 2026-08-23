@@ -10,6 +10,13 @@ class TargetPoolArgs {
   /// URL to the backup target pool. Must also set
   /// failover_ratio.
   final pulumi.Input<String>? backupPool;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Textual description field.
   final pulumi.Input<String>? description;
   /// Ratio (0 to 1) of failed nodes before using the
@@ -35,7 +42,7 @@ class TargetPoolArgs {
   /// Where the target pool resides. Defaults to project
   /// region.
   final pulumi.Input<String>? region;
-  /// The resource URL for the security policy associated with this target pool.
+  /// ) The resource URL for the security policy associated with this target pool.
   final pulumi.Input<String>? securityPolicy;
   /// How to distribute load. Options are "NONE" (no
   /// affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
@@ -44,6 +51,7 @@ class TargetPoolArgs {
 
   /// Creates a new [TargetPoolArgs].
   /// [backupPool] URL to the backup target pool. Must also set
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [description] Textual description field.
   /// [failoverRatio] Ratio (0 to 1) of failed nodes before using the
   /// [healthChecks] List of zero or one health check name or self_link. Only
@@ -51,10 +59,11 @@ class TargetPoolArgs {
   /// [name] A unique name for the resource, required by GCE. Changing
   /// [project] The ID of the project in which the resource belongs. If it
   /// [region] Where the target pool resides. Defaults to project
-  /// [securityPolicy] The resource URL for the security policy associated with this target pool.
+  /// [securityPolicy] ) The resource URL for the security policy associated with this target pool.
   /// [sessionAffinity] How to distribute load. Options are "NONE" (no
   const TargetPoolArgs({
     this.backupPool,
+    this.deletionPolicy,
     this.description,
     this.failoverRatio,
     this.healthChecks,
@@ -69,6 +78,7 @@ class TargetPoolArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'backupPool': ?backupPool,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'failoverRatio': ?failoverRatio,
       'healthChecks': ?healthChecks,
@@ -84,6 +94,7 @@ class TargetPoolArgs {
   factory TargetPoolArgs.fromMap(Map<String, dynamic> map) {
     return TargetPoolArgs(
       backupPool: (() { final guardedValue = map['backupPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       failoverRatio: (() { final guardedValue = map['failoverRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       healthChecks: (() { final guardedValue = map['healthChecks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -96,4 +107,3 @@ class TargetPoolArgs {
     );
   }
 }
-

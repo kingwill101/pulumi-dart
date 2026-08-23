@@ -128,6 +128,32 @@ import 'schema_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_schema" "basic" {
+///   location      = gcp_discoveryengine_datastore.basic.location
+///   data_store_id = gcp_discoveryengine_datastore.basic.data_store_id
+///   schema_id     = "schema-id"
+///   json_schema   = "{\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"datetime_detection\":true,\"type\":\"object\",\"geolocation_detection\":true}"
+/// }
+/// resource "gcp_discoveryengine_datastore" "basic" {
+///   location                     = "global"
+///   data_store_id                = "data-store-id"
+///   display_name                 = "tf-test-structured-datastore"
+///   industry_vertical            = "GENERIC"
+///   content_config               = "NO_CONTENT"
+///   solution_types               = ["SOLUTION_TYPE_SEARCH"]
+///   create_advanced_site_search  = false
+///   skip_default_schema_creation = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -138,8 +164,8 @@ import 'schema_state.dart';
 /// import com.pulumi.gcp.discoveryengine.DataStoreArgs;
 /// import com.pulumi.gcp.discoveryengine.Schema;
 /// import com.pulumi.gcp.discoveryengine.SchemaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -202,27 +228,27 @@ import 'schema_state.dart';
 /// Schema can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}/schemas/{{schema_id}}`
-///
 /// * `{{project}}/{{location}}/{{data_store_id}}/{{schema_id}}`
-///
 /// * `{{location}}/{{data_store_id}}/{{schema_id}}`
+///
 ///
 /// When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/schema:Schema default projects/{{project}}/locations/{{location}}/collections/default_collection/dataStores/{{data_store_id}}/schemas/{{schema_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/schema:Schema default {{project}}/{{location}}/{{data_store_id}}/{{schema_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/schema:Schema default {{location}}/{{data_store_id}}/{{schema_id}}
 /// ```
 class Schema extends pulumi.CustomResource {
   /// The unique id of the data store.
   late final pulumi.Output<String> dataStoreId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The JSON representation of the schema.
   late final pulumi.Output<String?> jsonSchema;
   /// The geographic location where the data store should reside. The value can
@@ -254,6 +280,7 @@ class Schema extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataStoreId = registerOutput<String>('dataStoreId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     jsonSchema = registerOutput<String?>('jsonSchema');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -285,6 +312,7 @@ class Schema extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataStoreId = registerOutput<String>('dataStoreId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     jsonSchema = registerOutput<String?>('jsonSchema');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

@@ -230,13 +230,13 @@ import 'instance_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      memcacheNetwork.ID(),
+/// 			Network:      memcacheNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		privateServiceConnection, err := servicenetworking.NewConnection(ctx, "private_service_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: memcacheNetwork.ID(),
+/// 			Network: memcacheNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				serviceRange.Name,
@@ -280,6 +280,65 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// // This example assumes this network already exists.
+/// // The API creates a tenant network per network authorized for a
+/// // Memcache instance and that network is not deleted when the user-created
+/// // network (authorized_network) is deleted, so this prevents issues
+/// // with tenant network quota.
+/// // If this network hasn't been created and you are using this example in your
+/// // config, add an additional network resource or change
+/// // this from "data"to "resource"
+/// resource "gcp_compute_network" "memcache_network" {
+///   name = "test-network"
+/// }
+/// resource "gcp_compute_globaladdress" "service_range" {
+///   name          = "address"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.memcache_network.id
+/// }
+/// resource "gcp_servicenetworking_connection" "private_service_connection" {
+///   network                 = gcp_compute_network.memcache_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.service_range.name]
+/// }
+/// resource "gcp_memcache_instance" "instance" {
+///   name                = "test-instance"
+///   authorized_network  = gcp_servicenetworking_connection.private_service_connection.network
+///   deletion_protection = false
+///   labels = {
+///     "env" = "test"
+///   }
+///   node_config = {
+///     cpu_count      = 1
+///     memory_size_mb = 1024
+///   }
+///   node_count       = 1
+///   memcache_version = "MEMCACHE_1_5"
+///   maintenance_policy = {
+///     weekly_maintenance_windows = [{
+///       "day"      = "SATURDAY"
+///       "duration" = "14400s"
+///       "startTime" = {
+///         "hours"   = 0
+///         "minutes" = 30
+///         "seconds" = 0
+///         "nanos"   = 0
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -296,8 +355,10 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.memcache.InstanceArgs;
 /// import com.pulumi.gcp.memcache.inputs.InstanceNodeConfigArgs;
 /// import com.pulumi.gcp.memcache.inputs.InstanceMaintenancePolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.memcache.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs;
+/// import com.pulumi.gcp.memcache.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -425,28 +486,17 @@ import 'instance_state.dart';
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:memcache/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:memcache/instance:Instance default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:memcache/instance:Instance default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:memcache/instance:Instance default {{name}}
 /// ```
 class Instance extends pulumi.CustomResource {
@@ -455,6 +505,19 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> authorizedNetwork;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the instance.
+  /// When a `terraform destroy` or `pulumi up` would delete the instance,
+  /// the command will fail if this field is not set to false in Terraform state.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the instance will fail.
+  /// When the field is set to false, deleting the instance is allowed.
   late final pulumi.Output<bool?> deletionProtection;
   /// Endpoint for Discovery API
   late final pulumi.Output<String> discoveryEndpoint;
@@ -465,7 +528,7 @@ class Instance extends pulumi.CustomResource {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Maintenance policy for an instance.
   /// Structure is documented below.
@@ -526,6 +589,7 @@ class Instance extends pulumi.CustomResource {
         ) {
     authorizedNetwork = registerOutput<String>('authorizedNetwork');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     discoveryEndpoint = registerOutput<String>('discoveryEndpoint');
     displayName = registerOutput<String>('displayName');
@@ -572,6 +636,7 @@ class Instance extends pulumi.CustomResource {
         ) {
     authorizedNetwork = registerOutput<String>('authorizedNetwork');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     discoveryEndpoint = registerOutput<String>('discoveryEndpoint');
     displayName = registerOutput<String>('displayName');

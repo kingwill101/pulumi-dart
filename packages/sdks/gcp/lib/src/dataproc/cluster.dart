@@ -11,7 +11,7 @@ import 'cluster_virtual_cluster_config.dart';
 /// * [Official Documentation](https://cloud.google.com/dataproc/docs)
 ///
 ///
-/// !&gt; **Warning:** Due to limitations of the API, all arguments except
+/// &gt; **Warning:** Due to limitations of the API, all arguments except
 /// `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing `cluster_config.worker_config.min_num_instances` will be ignored. Changing others will cause recreation of the
 /// whole cluster!
 ///
@@ -74,6 +74,20 @@ import 'cluster_virtual_cluster_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_cluster" "simplecluster" {
+///   name   = "simplecluster"
+///   region = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -82,8 +96,8 @@ import 'cluster_virtual_cluster_config.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.Cluster;
 /// import com.pulumi.gcp.dataproc.ClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -133,7 +147,7 @@ import 'cluster_virtual_cluster_config.dart';
 ///     },
 ///     clusterConfig: {
 ///         stagingBucket: "dataproc-staging-bucket",
-///         clusterTier: "CLUSTER_TIER_STANDARD",
+///         engine: "DEFAULT",
 ///         masterConfig: {
 ///             numInstances: 1,
 ///             machineType: "e2-medium",
@@ -191,7 +205,7 @@ import 'cluster_virtual_cluster_config.dart';
 ///     },
 ///     cluster_config={
 ///         "staging_bucket": "dataproc-staging-bucket",
-///         "cluster_tier": "CLUSTER_TIER_STANDARD",
+///         "engine": "DEFAULT",
 ///         "master_config": {
 ///             "num_instances": 1,
 ///             "machine_type": "e2-medium",
@@ -258,7 +272,7 @@ import 'cluster_virtual_cluster_config.dart';
 ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
 ///         {
 ///             StagingBucket = "dataproc-staging-bucket",
-///             ClusterTier = "CLUSTER_TIER_STANDARD",
+///             Engine = "DEFAULT",
 ///             MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
 ///             {
 ///                 NumInstances = 1,
@@ -345,7 +359,7 @@ import 'cluster_virtual_cluster_config.dart';
 /// 			},
 /// 			ClusterConfig: &dataproc.ClusterClusterConfigArgs{
 /// 				StagingBucket: pulumi.String("dataproc-staging-bucket"),
-/// 				ClusterTier:   pulumi.String("CLUSTER_TIER_STANDARD"),
+/// 				Engine:        pulumi.String("DEFAULT"),
 /// 				MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
 /// 					NumInstances: pulumi.Int(1),
 /// 					MachineType:  pulumi.String("e2-medium"),
@@ -397,6 +411,67 @@ import 'cluster_virtual_cluster_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "default" {
+///   account_id   = "service-account-id"
+///   display_name = "Service Account"
+/// }
+/// resource "gcp_dataproc_cluster" "mycluster" {
+///   name                          = "mycluster"
+///   region                        = "us-central1"
+///   graceful_decommission_timeout = "120s"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   cluster_config = {
+///     staging_bucket = "dataproc-staging-bucket"
+///     engine         = "DEFAULT"
+///     master_config = {
+///       num_instances = 1
+///       machine_type  = "e2-medium"
+///       disk_config = {
+///         boot_disk_type    = "pd-ssd"
+///         boot_disk_size_gb = 30
+///       }
+///     }
+///     worker_config = {
+///       num_instances    = 2
+///       machine_type     = "e2-medium"
+///       min_cpu_platform = "Intel Skylake"
+///       disk_config = {
+///         boot_disk_size_gb = 30
+///         num_local_ssds    = 1
+///       }
+///     }
+///     preemptible_worker_config = {
+///       num_instances = 0
+///     }
+///     software_config = {
+///       image_version = "2.0.35-debian10"
+///       override_properties = {
+///         "dataproc:dataproc.allow.zero.workers" = "true"
+///       }
+///     }
+///     gce_cluster_config = {
+///       tags                   = ["foo", "bar"]
+///       service_account        = gcp_serviceaccount_account.default.email
+///       service_account_scopes = ["cloud-platform"]
+///     }
+///     initialization_actions = [{
+///       "script"     = "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh"
+///       "timeoutSec" = 500
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -415,8 +490,9 @@ import 'cluster_virtual_cluster_config.dart';
 /// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigPreemptibleWorkerConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigSoftwareConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigInitializationActionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -440,7 +516,7 @@ import 'cluster_virtual_cluster_config.dart';
 ///             .labels(Map.of("foo", "bar"))
 ///             .clusterConfig(ClusterClusterConfigArgs.builder()
 ///                 .stagingBucket("dataproc-staging-bucket")
-///                 .clusterTier("CLUSTER_TIER_STANDARD")
+///                 .engine("DEFAULT")
 ///                 .masterConfig(ClusterClusterConfigMasterConfigArgs.builder()
 ///                     .numInstances(1)
 ///                     .machineType("e2-medium")
@@ -499,7 +575,7 @@ import 'cluster_virtual_cluster_config.dart';
 ///         foo: bar
 ///       clusterConfig:
 ///         stagingBucket: dataproc-staging-bucket
-///         clusterTier: CLUSTER_TIER_STANDARD
+///         engine: DEFAULT
 ///         masterConfig:
 ///           numInstances: 1
 ///           machineType: e2-medium
@@ -642,6 +718,31 @@ import 'cluster_virtual_cluster_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_cluster" "accelerated_cluster" {
+///   name   = "my-cluster-with-gpu"
+///   region = "us-central1"
+///   cluster_config = {
+///     gce_cluster_config = {
+///       zone = "us-central1-a"
+///     }
+///     master_config = {
+///       accelerators = [{
+///         "acceleratorType"  = "nvidia-tesla-k80"
+///         "acceleratorCount" = "1"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -653,8 +754,9 @@ import 'cluster_virtual_cluster_config.dart';
 /// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigAcceleratorArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -710,15 +812,31 @@ class Cluster extends pulumi.CustomResource {
   /// Allows you to configure various aspects of the cluster.
   /// Structure defined below.
   late final pulumi.Output<ClusterClusterConfig> clusterConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// - - -
+  late final pulumi.Output<String> deletionPolicy;
   /// The list of labels (key/value pairs) to be applied to
   /// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
   /// which is the name of the cluster.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
+  /// Does not affect auto scaling decomissioning from an autoscaling policy.
+  /// Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
+  /// Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
+  /// Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of
+  /// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  /// Only supported on Dataproc image versions 1.2 and higher.
+  /// For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
   late final pulumi.Output<String?> gracefulDecommissionTimeout;
-  /// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
-  ///
-  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+  /// The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
+  /// instances in the cluster.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The name of the cluster, unique within the project and
   /// zone.
@@ -752,6 +870,7 @@ class Cluster extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     clusterConfig = registerOutput<ClusterClusterConfig>('clusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gracefulDecommissionTimeout = registerOutput<String?>('gracefulDecommissionTimeout');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -786,6 +905,7 @@ class Cluster extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     clusterConfig = registerOutput<ClusterClusterConfig>('clusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gracefulDecommissionTimeout = registerOutput<String?>('gracefulDecommissionTimeout');
     labels = registerOutput<Map<String, String>?>('labels');

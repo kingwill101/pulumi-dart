@@ -66,8 +66,6 @@ import 'get_project_service_account_result.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accessapproval"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -93,6 +91,25 @@ import 'get_project_service_account_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_accessapproval_getfolderserviceaccount" "serviceAccount" {
+///   folder_id = "my-folder"
+/// }
+///
+/// resource "gcp_kms_cryptokeyiammember" "iam" {
+///   crypto_key_id = cryptoKey.id
+///   role          = "roles/cloudkms.signerVerifier"
+///   member        ="serviceAccount:${data.gcp_accessapproval_getfolderserviceaccount.serviceAccount.account_email}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -103,8 +120,8 @@ import 'get_project_service_account_result.dart';
 /// import com.pulumi.gcp.accessapproval.inputs.GetFolderServiceAccountArgs;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMember;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -121,7 +138,7 @@ import 'get_project_service_account_result.dart';
 ///             .build());
 ///
 ///         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
-///             .cryptoKeyId(cryptoKey.id())
+///             .cryptoKeyId(cryptoKey.get("id"))
 ///             .role("roles/cloudkms.signerVerifier")
 ///             .member(String.format("serviceAccount:%s", serviceAccount.accountEmail()))
 ///             .build());
@@ -219,8 +236,6 @@ Future<GetFolderServiceAccountResult> getFolderServiceAccount(
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accessapproval"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -246,6 +261,25 @@ Future<GetFolderServiceAccountResult> getFolderServiceAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_accessapproval_getorganizationserviceaccount" "serviceAccount" {
+///   organization_id = "my-organization"
+/// }
+///
+/// resource "gcp_kms_cryptokeyiammember" "iam" {
+///   crypto_key_id = cryptoKey.id
+///   role          = "roles/cloudkms.signerVerifier"
+///   member        ="serviceAccount:${data.gcp_accessapproval_getorganizationserviceaccount.serviceAccount.account_email}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -256,8 +290,8 @@ Future<GetFolderServiceAccountResult> getFolderServiceAccount(
 /// import com.pulumi.gcp.accessapproval.inputs.GetOrganizationServiceAccountArgs;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMember;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -274,7 +308,7 @@ Future<GetFolderServiceAccountResult> getFolderServiceAccount(
 ///             .build());
 ///
 ///         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
-///             .cryptoKeyId(cryptoKey.id())
+///             .cryptoKeyId(cryptoKey.get("id"))
 ///             .role("roles/cloudkms.signerVerifier")
 ///             .member(String.format("serviceAccount:%s", serviceAccount.accountEmail()))
 ///             .build());
@@ -316,7 +350,7 @@ Future<GetOrganizationServiceAccountResult> getOrganizationServiceAccount(
 ///
 /// Each Google Cloud project has a unique service account used by Access Approval.
 /// When using Access Approval with a
-/// [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
+/// [custom signing key](https://docs.cloud.google.com/assured-workloads/access-approval/docs/review-approve-access-requests-custom-keys),
 /// this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
 /// Cloud KMS key used to sign approvals.
 ///
@@ -372,8 +406,6 @@ Future<GetOrganizationServiceAccountResult> getOrganizationServiceAccount(
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accessapproval"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -399,6 +431,25 @@ Future<GetOrganizationServiceAccountResult> getOrganizationServiceAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_accessapproval_getprojectserviceaccount" "serviceAccount" {
+///   project_id = "my-project"
+/// }
+///
+/// resource "gcp_kms_cryptokeyiammember" "iam" {
+///   crypto_key_id = cryptoKey.id
+///   role          = "roles/cloudkms.signerVerifier"
+///   member        ="serviceAccount:${data.gcp_accessapproval_getprojectserviceaccount.serviceAccount.account_email}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -409,8 +460,8 @@ Future<GetOrganizationServiceAccountResult> getOrganizationServiceAccount(
 /// import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMember;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -427,7 +478,7 @@ Future<GetOrganizationServiceAccountResult> getOrganizationServiceAccount(
 ///             .build());
 ///
 ///         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
-///             .cryptoKeyId(cryptoKey.id())
+///             .cryptoKeyId(cryptoKey.get("id"))
 ///             .role("roles/cloudkms.signerVerifier")
 ///             .member(String.format("serviceAccount:%s", serviceAccount.accountEmail()))
 ///             .build());

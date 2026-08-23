@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instant_snapshot_args.dart';
+import 'instant_snapshot_params.dart';
 import 'instant_snapshot_state.dart';
 
 /// Represents an instant snapshot resource.
@@ -105,6 +106,26 @@ import 'instant_snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_disk" "foo" {
+///   name = "example-disk"
+///   type = "pd-ssd"
+///   size = 10
+/// }
+/// resource "gcp_compute_instantsnapshot" "default" {
+///   name        = "instant-snapshot"
+///   zone        = "us-central1-a"
+///   source_disk = gcp_compute_disk.foo.self_link
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +136,8 @@ import 'instant_snapshot_state.dart';
 /// import com.pulumi.gcp.compute.DiskArgs;
 /// import com.pulumi.gcp.compute.InstantSnapshot;
 /// import com.pulumi.gcp.compute.InstantSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -165,33 +186,29 @@ import 'instant_snapshot_state.dart';
 /// InstantSnapshot can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/instantSnapshots/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}`
-///
 /// * `{{zone}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, InstantSnapshot can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default projects/{{project}}/zones/{{zone}}/instantSnapshots/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{project}}/{{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/instantSnapshot:InstantSnapshot default {{name}}
 /// ```
 class InstantSnapshot extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Size of the snapshot, specified in GB.
@@ -203,7 +220,7 @@ class InstantSnapshot extends pulumi.CustomResource {
   late final pulumi.Output<String> labelFingerprint;
   /// Labels to apply to this InstantSnapshot.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Name of the resource; provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -213,6 +230,9 @@ class InstantSnapshot extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  late final pulumi.Output<InstantSnapshotParams?> params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -243,12 +263,14 @@ class InstantSnapshot extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskSizeGb = registerOutput<int>('diskSizeGb');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labelFingerprint = registerOutput<String>('labelFingerprint');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
+    params = registerOutput<InstantSnapshotParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstantSnapshotParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     selfLink = registerOutput<String>('selfLink');
@@ -281,12 +303,14 @@ class InstantSnapshot extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskSizeGb = registerOutput<int>('diskSizeGb');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labelFingerprint = registerOutput<String>('labelFingerprint');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
+    params = registerOutput<InstantSnapshotParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstantSnapshotParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     selfLink = registerOutput<String>('selfLink');

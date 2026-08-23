@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_monitoring_get_app_engine_service_get_app_engine_service_args_doc}
 class GetAppEngineServiceArgs {
   /// The ID of the App Engine module underlying this
-  /// service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
+  /// service. Corresponds to the moduleId resource label in the [gaeApp](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
   ///
   /// - - -
   ///
@@ -40,4 +40,3 @@ class GetAppEngineServiceArgs {
     );
   }
 }
-

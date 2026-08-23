@@ -6,6 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallPolicyState {
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
   /// Fingerprint of the resource. This field is used internally during updates of this resource.
@@ -29,6 +36,7 @@ class FirewallPolicyState {
 
   /// Creates a new [FirewallPolicyState].
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you create the resource.
   /// [fingerprint] Fingerprint of the resource. This field is used internally during updates of this resource.
   /// [firewallPolicyId] The unique identifier for the resource. This identifier is defined by the server.
@@ -40,6 +48,7 @@ class FirewallPolicyState {
   /// [shortName] User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
   const FirewallPolicyState({
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.fingerprint,
     this.firewallPolicyId,
@@ -54,6 +63,7 @@ class FirewallPolicyState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'fingerprint': ?fingerprint,
       'firewallPolicyId': ?firewallPolicyId,
@@ -69,6 +79,7 @@ class FirewallPolicyState {
   factory FirewallPolicyState.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyState(
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firewallPolicyId: (() { final guardedValue = map['firewallPolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -81,4 +92,3 @@ class FirewallPolicyState {
     );
   }
 }
-

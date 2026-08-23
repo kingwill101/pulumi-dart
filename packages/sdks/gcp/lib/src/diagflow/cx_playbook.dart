@@ -212,22 +212,22 @@ import 'cx_playbook_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal([]map[string]interface{}{
-/// 			map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal([]map[string]string{
+/// 			{
 /// 				"text": "step 1 1",
 /// 			},
-/// 			map[string]interface{}{
+/// 			{
 /// 				"text": "step 1 2",
-/// 				"steps": []map[string]interface{}{
-/// 					map[string]interface{}{
+/// 				"steps": []map[string]string{
+/// 					{
 /// 						"text": "step 1 2 1",
 /// 					},
-/// 					map[string]interface{}{
+/// 					{
 /// 						"text": "step 1 2 2",
 /// 					},
 /// 				},
 /// 			},
-/// 			map[string]interface{}{
+/// 			{
 /// 				"text": "step 1 3",
 /// 			},
 /// 		})
@@ -236,7 +236,7 @@ import 'cx_playbook_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = diagflow.NewCxPlaybook(ctx, "my-playbook", &diagflow.CxPlaybookArgs{
-/// 			Parent:       agent.ID(),
+/// 			Parent:       agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:  pulumi.String("Example Display Name"),
 /// 			Goal:         pulumi.String("Example Goal"),
 /// 			PlaybookType: pulumi.String("ROUTINE"),
@@ -262,6 +262,50 @@ import 'cx_playbook_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name          = "dialogflowcx-agent-basic"
+///   location              = "global"
+///   default_language_code = "en"
+///   time_zone             = "America/New_York"
+///   description           = "Example description."
+/// }
+/// resource "gcp_diagflow_cxplaybook" "my-playbook" {
+///   parent        = gcp_diagflow_cxagent.agent.id
+///   display_name  = "Example Display Name"
+///   goal          = "Example Goal"
+///   playbook_type = "ROUTINE"
+///   instruction = {
+///     steps = [{
+///       "text" = "step 1"
+///       "steps" = jsonencode([{
+///         "text" = "step 1 1"
+///         }, {
+///         "text" = "step 1 2"
+///         "steps" = [{
+///           "text" = "step 1 2 1"
+///           }, {
+///           "text" = "step 1 2 2"
+///         }]
+///         }, {
+///         "text" = "step 1 3"
+///       }])
+///       }, {
+///       "text" = "step 2"
+///       }, {
+///       "text" = "step 3"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -273,9 +317,10 @@ import 'cx_playbook_state.dart';
 /// import com.pulumi.gcp.diagflow.CxPlaybook;
 /// import com.pulumi.gcp.diagflow.CxPlaybookArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxPlaybookInstructionArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxPlaybookInstructionStepArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -696,7 +741,7 @@ import 'cx_playbook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxWebhook(ctx, "my_webhook", &diagflow.CxWebhookArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("MyWebhook"),
 /// 			GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 /// 				Uri: pulumi.String("https://example.com"),
@@ -706,7 +751,7 @@ import 'cx_playbook_state.dart';
 /// 			return err
 /// 		}
 /// 		myTool, err := diagflow.NewCxTool(ctx, "my_tool", &diagflow.CxToolArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("Example Tool"),
 /// 			Description: pulumi.String("Example Description"),
 /// 		})
@@ -714,7 +759,7 @@ import 'cx_playbook_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxGenerator(ctx, "my_generator", &diagflow.CxGeneratorArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("TF Prompt generator"),
 /// 			LlmModelSettings: &diagflow.CxGeneratorLlmModelSettingsArgs{
 /// 				Model:      pulumi.String("gemini-2.0-flash-001"),
@@ -730,22 +775,22 @@ import 'cx_playbook_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal([]map[string]interface{}{
-/// 			map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal([]map[string]string{
+/// 			{
 /// 				"text": "step 1 1",
 /// 			},
-/// 			map[string]interface{}{
+/// 			{
 /// 				"text": "step 1 2",
-/// 				"steps": []map[string]interface{}{
-/// 					map[string]interface{}{
+/// 				"steps": []map[string]string{
+/// 					{
 /// 						"text": "step 1 2 1",
 /// 					},
-/// 					map[string]interface{}{
+/// 					{
 /// 						"text": "step 1 2 2",
 /// 					},
 /// 				},
 /// 			},
-/// 			map[string]interface{}{
+/// 			{
 /// 				"text": "step 1 3",
 /// 			},
 /// 		})
@@ -754,7 +799,7 @@ import 'cx_playbook_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = diagflow.NewCxPlaybook(ctx, "my-playbook", &diagflow.CxPlaybookArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("Playbook Example with Fulfillment"),
 /// 			Goal:        pulumi.String("Example Goal"),
 /// 			Instruction: &diagflow.CxPlaybookInstructionArgs{
@@ -777,7 +822,7 @@ import 'cx_playbook_state.dart';
 /// 				PromptText: pulumi.String("Return me some great results"),
 /// 			},
 /// 			ReferencedTools: pulumi.StringArray{
-/// 				myTool.ID(),
+/// 				myTool.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -785,6 +830,86 @@ import 'cx_playbook_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name          = "dialogflowcx-agent"
+///   location              = "global"
+///   default_language_code = "en"
+///   time_zone             = "America/New_York"
+///   description           = "Example description."
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "dialogflowcx-bucket"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_diagflow_cxwebhook" "my_webhook" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "MyWebhook"
+///   generic_web_service = {
+///     uri = "https://example.com"
+///   }
+/// }
+/// resource "gcp_diagflow_cxtool" "my_tool" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "Example Tool"
+///   description  = "Example Description"
+/// }
+/// resource "gcp_diagflow_cxgenerator" "my_generator" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "TF Prompt generator"
+///   llm_model_settings = {
+///     model       = "gemini-2.0-flash-001"
+///     prompt_text = "Return me some great results"
+///   }
+///   prompt_text = {
+///     text = "Send me great results in french"
+///   }
+///   model_parameter = {
+///     temperature = 0.55
+///   }
+/// }
+/// resource "gcp_diagflow_cxplaybook" "my-playbook" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "Playbook Example with Fulfillment"
+///   goal         = "Example Goal"
+///   instruction = {
+///     guidelines = "Example Guidelines"
+///     steps = [{
+///       "text" = "step 1"
+///       "steps" = jsonencode([{
+///         "text" = "step 1 1"
+///         }, {
+///         "text" = "step 1 2"
+///         "steps" = [{
+///           "text" = "step 1 2 1"
+///           }, {
+///           "text" = "step 1 2 2"
+///         }]
+///         }, {
+///         "text" = "step 1 3"
+///       }])
+///       }, {
+///       "text" = "step 2"
+///       }, {
+///       "text" = "step 3"
+///     }]
+///   }
+///   llm_model_settings = {
+///     model       = "gemini-2.0-flash-001"
+///     prompt_text = "Return me some great results"
+///   }
+///   referenced_tools = [gcp_diagflow_cxtool.my_tool.id]
 /// }
 /// ```
 /// ```java
@@ -810,10 +935,11 @@ import 'cx_playbook_state.dart';
 /// import com.pulumi.gcp.diagflow.CxPlaybook;
 /// import com.pulumi.gcp.diagflow.CxPlaybookArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxPlaybookInstructionArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxPlaybookInstructionStepArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxPlaybookLlmModelSettingsArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -992,22 +1118,26 @@ import 'cx_playbook_state.dart';
 /// Playbook can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/playbooks/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Playbook can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxPlaybook:CxPlaybook default {{parent}}/playbooks/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/cxPlaybook:CxPlaybook default {{parent}}/{{name}}
 /// ```
 class CxPlaybook extends pulumi.CustomResource {
   /// The timestamp of initial playbook creation.
   /// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The human-readable name of the playbook, unique within an agent.
   late final pulumi.Output<String> displayName;
   /// High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
@@ -1054,6 +1184,7 @@ class CxPlaybook extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     goal = registerOutput<String>('goal');
     instruction = registerOutput<CxPlaybookInstruction?>('instruction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPlaybookInstruction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1092,6 +1223,7 @@ class CxPlaybook extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     goal = registerOutput<String>('goal');
     instruction = registerOutput<CxPlaybookInstruction?>('instruction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPlaybookInstruction.fromMap((guardedValue as Map).cast<String, dynamic>()); });

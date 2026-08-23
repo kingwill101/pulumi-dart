@@ -2,20 +2,19 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repository_initial_config.dart';
+import 'repository_scan_config.dart';
 
 /// {@template pulumi_securesourcemanager_repository_repository_args_doc}
 /// The set of arguments for Repository.
 /// {@endtemplate}
 /// {@macro pulumi_securesourcemanager_repository_repository_args_doc}
 class RepositoryArgs {
-  /// The deletion policy for the repository. Setting `ABANDON` allows the resource
-  /// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-  /// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-  /// by erroring out during plan.
-  /// Default is `PREVENT`.  Possible values are:
-  /// * DELETE
-  /// * PREVENT
-  /// * ABANDON
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
   final pulumi.Input<String>? deletionPolicy;
   /// Description of the repository, which cannot exceed 500 characters.
   final pulumi.Input<String>? description;
@@ -31,15 +30,22 @@ class RepositoryArgs {
   final pulumi.Input<String>? project;
   /// The ID for the Repository.
   final pulumi.Input<String> repositoryId;
+  /// Provides configuration for scanning.
+  /// Structure is documented below.
+  final pulumi.Input<RepositoryScanConfig>? scanConfig;
+  /// Repository level service account.
+  final pulumi.Input<String>? serviceAccount;
 
   /// Creates a new [RepositoryArgs].
-  /// [deletionPolicy] The deletion policy for the repository. Setting `ABANDON` allows the resource
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
   /// [description] Description of the repository, which cannot exceed 500 characters.
   /// [initialConfig] Initial configurations for the repository.
   /// [instance] The name of the instance in which the repository is hosted.
   /// [location] The location for the Repository.
   /// [project] The ID of the project in which the resource belongs.
   /// [repositoryId] The ID for the Repository.
+  /// [scanConfig] Provides configuration for scanning.
+  /// [serviceAccount] Repository level service account.
   const RepositoryArgs({
     this.deletionPolicy,
     this.description,
@@ -48,6 +54,8 @@ class RepositoryArgs {
     required this.location,
     this.project,
     required this.repositoryId,
+    this.scanConfig,
+    this.serviceAccount,
   });
 
   Map<String, dynamic> toMap() {
@@ -59,6 +67,8 @@ class RepositoryArgs {
       'location': location,
       'project': ?project,
       'repositoryId': repositoryId,
+      'scanConfig': ?pulumi.Input.mapOptionalInputValue<RepositoryScanConfig, Map<String, dynamic>>(scanConfig, (value) => value.toMap()),
+      'serviceAccount': ?serviceAccount,
     };
   }
 
@@ -71,7 +81,8 @@ class RepositoryArgs {
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
+      scanConfig: (() { final guardedValue = map['scanConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryScanConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

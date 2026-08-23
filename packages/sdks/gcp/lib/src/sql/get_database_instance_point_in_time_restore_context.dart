@@ -11,6 +11,8 @@ class GetDatabaseInstancePointInTimeRestoreContext {
   final pulumi.Input<String> pointInTime;
   /// Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
   final pulumi.Input<String> preferredZone;
+  /// The region of the target instance to restore to.
+  final pulumi.Input<String> region;
   /// The name of the target instance to restore to.
   final pulumi.Input<String> targetInstance;
 
@@ -19,12 +21,14 @@ class GetDatabaseInstancePointInTimeRestoreContext {
   /// [datasource] The Google Cloud Backup and Disaster Recovery Datasource URI. For example: "projects/my-project/locations/us-central1/datasources/my-datasource".
   /// [pointInTime] The date and time to which you want to restore the instance.
   /// [preferredZone] Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
+  /// [region] The region of the target instance to restore to.
   /// [targetInstance] The name of the target instance to restore to.
   const GetDatabaseInstancePointInTimeRestoreContext({
     required this.allocatedIpRange,
     required this.datasource,
     required this.pointInTime,
     required this.preferredZone,
+    required this.region,
     required this.targetInstance,
   });
 
@@ -34,6 +38,7 @@ class GetDatabaseInstancePointInTimeRestoreContext {
       'datasource': datasource,
       'pointInTime': pointInTime,
       'preferredZone': preferredZone,
+      'region': region,
       'targetInstance': targetInstance,
     };
   }
@@ -44,8 +49,8 @@ class GetDatabaseInstancePointInTimeRestoreContext {
       datasource: pulumi.Input.fromValue(map['datasource'] as String),
       pointInTime: pulumi.Input.fromValue(map['pointInTime'] as String),
       preferredZone: pulumi.Input.fromValue(map['preferredZone'] as String),
+      region: pulumi.Input.fromValue(map['region'] as String),
       targetInstance: pulumi.Input.fromValue(map['targetInstance'] as String),
     );
   }
 }
-

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareAdminClusterLoadBalancerVipConfig {
   /// The VIP to configure the load balancer for add-ons.
   ///
-  /// &lt;a name="nested_load_balancer_f5_config"&gt;&lt;/a&gt;The `f5_config` block supports:
+  /// &lt;a name="nestedLoadBalancerF5Config"&gt;&lt;/a&gt;The `f5Config` block supports:
   final pulumi.Input<String>? addonsVip;
   /// The VIP which you previously set aside for the Kubernetes
   /// API of this VMware Admin Cluster.
@@ -33,4 +33,3 @@ class VmwareAdminClusterLoadBalancerVipConfig {
     );
   }
 }
-

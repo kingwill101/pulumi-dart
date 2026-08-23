@@ -168,6 +168,40 @@ import 'domain_mapping_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudrun_service" "default" {
+///   name     = "cloudrun-srv"
+///   location = "us-central1"
+///   metadata = {
+///     namespace = "my-project-name"
+///   }
+///   template = {
+///     spec = {
+///       containers = [{
+///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_cloudrun_domainmapping" "default" {
+///   location = "us-central1"
+///   name     = "verified-domain.com"
+///   metadata = {
+///     namespace = "my-project-name"
+///   }
+///   spec = {
+///     route_name = gcp_cloudrun_service.default.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -179,12 +213,13 @@ import 'domain_mapping_state.dart';
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+/// import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
 /// import com.pulumi.gcp.cloudrun.DomainMapping;
 /// import com.pulumi.gcp.cloudrun.DomainMappingArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.DomainMappingMetadataArgs;
 /// import com.pulumi.gcp.cloudrun.inputs.DomainMappingSpecArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -256,25 +291,25 @@ import 'domain_mapping_state.dart';
 /// DomainMapping can be imported using any of these accepted formats:
 ///
 /// * `locations/{{location}}/namespaces/{{project}}/domainmappings/{{name}}`
-///
 /// * `{{location}}/{{project}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, DomainMapping can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default locations/{{location}}/namespaces/{{project}}/domainmappings/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{name}}
 /// ```
 class DomainMapping extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The location of the cloud run instance. eg us-central1
   late final pulumi.Output<String> location;
   /// Metadata associated with this DomainMapping.
@@ -306,6 +341,7 @@ class DomainMapping extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     metadata = registerOutput<DomainMappingMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -337,6 +373,7 @@ class DomainMapping extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     metadata = registerOutput<DomainMappingMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainMappingMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

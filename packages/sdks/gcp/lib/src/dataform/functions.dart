@@ -2,6 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_repository_iam_policy_args.dart';
 import 'get_repository_iam_policy_result.dart';
 
+/// Retrieves the current IAM policy data for repository
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -62,6 +65,21 @@ import 'get_repository_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataform_getrepositoryiampolicy" "policy" {
+///   project    = dataformRepository.project
+///   region     = dataformRepository.region
+///   repository = dataformRepository.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -70,8 +88,8 @@ import 'get_repository_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataform.DataformFunctions;
 /// import com.pulumi.gcp.dataform.inputs.GetRepositoryIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -84,9 +102,9 @@ import 'get_repository_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataformFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-///             .project(dataformRepository.project())
-///             .region(dataformRepository.region())
-///             .repository(dataformRepository.name())
+///             .project(dataformRepository.get("project"))
+///             .region(dataformRepository.get("region"))
+///             .repository(dataformRepository.get("name"))
 ///             .build());
 ///
 ///     }

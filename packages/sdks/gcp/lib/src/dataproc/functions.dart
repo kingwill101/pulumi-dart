@@ -79,6 +79,21 @@ import 'get_metastore_table_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataproc_getautoscalingpolicyiampolicy" "policy" {
+///   project   = basic.project
+///   location  = basic.location
+///   policy_id = basic.policyId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +102,8 @@ import 'get_metastore_table_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.DataprocFunctions;
 /// import com.pulumi.gcp.dataproc.inputs.GetAutoscalingPolicyIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -101,9 +116,9 @@ import 'get_metastore_table_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataprocFunctions.getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs.builder()
-///             .project(basic.project())
-///             .location(basic.location())
-///             .policyId(basic.policyId())
+///             .project(basic.get("project"))
+///             .location(basic.get("location"))
+///             .policyId(basic.get("policyId"))
 ///             .build());
 ///
 ///     }
@@ -192,6 +207,20 @@ Future<GetAutoscalingPolicyIamPolicyResult> getAutoscalingPolicyIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataproc_getclusteriampolicy" "policy" {
+///   cluster = cluster.name
+///   region  = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -200,8 +229,8 @@ Future<GetAutoscalingPolicyIamPolicyResult> getAutoscalingPolicyIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.DataprocFunctions;
 /// import com.pulumi.gcp.dataproc.inputs.GetClusterIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -214,7 +243,7 @@ Future<GetAutoscalingPolicyIamPolicyResult> getAutoscalingPolicyIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
-///             .cluster(cluster.name())
+///             .cluster(cluster.get("name"))
 ///             .region("us-central1")
 ///             .build());
 ///
@@ -303,6 +332,20 @@ Future<GetClusterIamPolicyResult> getClusterIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataproc_getjobiampolicy" "policy" {
+///   job_id = pyspark.reference[0].jobId
+///   region = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -311,8 +354,8 @@ Future<GetClusterIamPolicyResult> getClusterIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.DataprocFunctions;
 /// import com.pulumi.gcp.dataproc.inputs.GetJobIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -325,7 +368,7 @@ Future<GetClusterIamPolicyResult> getClusterIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-///             .jobId(pyspark.reference()[0].jobId())
+///             .jobId(pyspark.get("reference")[0].get("jobId"))
 ///             .region("us-central1")
 ///             .build());
 ///
@@ -423,6 +466,22 @@ Future<GetJobIamPolicyResult> getJobIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataproc_getmetastoredatabaseiampolicy" "policy" {
+///   project    = dpmsService.project
+///   location   = dpmsService.location
+///   service_id = dpmsService.serviceId
+///   database   = hive.hiveConfig[0].properties["database"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -431,8 +490,8 @@ Future<GetJobIamPolicyResult> getJobIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.DataprocFunctions;
 /// import com.pulumi.gcp.dataproc.inputs.GetMetastoreDatabaseIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -445,10 +504,10 @@ Future<GetJobIamPolicyResult> getJobIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataprocFunctions.getMetastoreDatabaseIamPolicy(GetMetastoreDatabaseIamPolicyArgs.builder()
-///             .project(dpmsService.project())
-///             .location(dpmsService.location())
-///             .serviceId(dpmsService.serviceId())
-///             .database(hive.hiveConfig()[0].properties().database())
+///             .project(dpmsService.get("project"))
+///             .location(dpmsService.get("location"))
+///             .serviceId(dpmsService.get("serviceId"))
+///             .database(hive.get("hiveConfig")[0].get("properties").get("database"))
 ///             .build());
 ///
 ///     }
@@ -463,7 +522,7 @@ Future<GetJobIamPolicyResult> getJobIamPolicy(
 ///         project: ${dpmsService.project}
 ///         location: ${dpmsService.location}
 ///         serviceId: ${dpmsService.serviceId}
-///         database: ${hive.hiveConfig[0].properties.database}
+///         database: ${hive.hiveConfig[0].properties["database"]}
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataproc_get_metastore_database_iam_policy_get_metastore_database_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -543,6 +602,21 @@ Future<GetMetastoreDatabaseIamPolicyResult> getMetastoreDatabaseIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataproc_getmetastorefederationiampolicy" "policy" {
+///   project       = default.project
+///   location      = default.location
+///   federation_id = default.federationId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -551,8 +625,8 @@ Future<GetMetastoreDatabaseIamPolicyResult> getMetastoreDatabaseIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.DataprocFunctions;
 /// import com.pulumi.gcp.dataproc.inputs.GetMetastoreFederationIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -565,9 +639,9 @@ Future<GetMetastoreDatabaseIamPolicyResult> getMetastoreDatabaseIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataprocFunctions.getMetastoreFederationIamPolicy(GetMetastoreFederationIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .federationId(default_.federationId())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .federationId(default_.get("federationId"))
 ///             .build());
 ///
 ///     }
@@ -656,6 +730,20 @@ Future<GetMetastoreFederationIamPolicyResult> getMetastoreFederationIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataproc_getmetastoreservice" "foo" {
+///   service_id = "foo-bar"
+///   location   = "global"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -664,8 +752,8 @@ Future<GetMetastoreFederationIamPolicyResult> getMetastoreFederationIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.DataprocFunctions;
 /// import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -772,6 +860,21 @@ Future<GetMetastoreServiceResult> getMetastoreService(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataproc_getmetastoreserviceiampolicy" "policy" {
+///   project    = default.project
+///   location   = default.location
+///   service_id = default.serviceId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -780,8 +883,8 @@ Future<GetMetastoreServiceResult> getMetastoreService(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.DataprocFunctions;
 /// import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -794,9 +897,9 @@ Future<GetMetastoreServiceResult> getMetastoreService(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataprocFunctions.getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs.builder()
-///             .project(default_.project())
-///             .location(default_.location())
-///             .serviceId(default_.serviceId())
+///             .project(default_.get("project"))
+///             .location(default_.get("location"))
+///             .serviceId(default_.get("serviceId"))
 ///             .build());
 ///
 ///     }
@@ -898,6 +1001,23 @@ Future<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_dataproc_getmetastoretableiampolicy" "policy" {
+///   project     = dpmsService.project
+///   location    = dpmsService.location
+///   service_id  = dpmsService.serviceId
+///   database_id = hive.hiveConfig[0].properties["database"]
+///   table       = hive.hiveConfig[0].properties["table"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -906,8 +1026,8 @@ Future<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataproc.DataprocFunctions;
 /// import com.pulumi.gcp.dataproc.inputs.GetMetastoreTableIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -920,11 +1040,11 @@ Future<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DataprocFunctions.getMetastoreTableIamPolicy(GetMetastoreTableIamPolicyArgs.builder()
-///             .project(dpmsService.project())
-///             .location(dpmsService.location())
-///             .serviceId(dpmsService.serviceId())
-///             .databaseId(hive.hiveConfig()[0].properties().database())
-///             .table(hive.hiveConfig()[0].properties().table())
+///             .project(dpmsService.get("project"))
+///             .location(dpmsService.get("location"))
+///             .serviceId(dpmsService.get("serviceId"))
+///             .databaseId(hive.get("hiveConfig")[0].get("properties").get("database"))
+///             .table(hive.get("hiveConfig")[0].get("properties").get("table"))
 ///             .build());
 ///
 ///     }
@@ -939,8 +1059,8 @@ Future<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicy(
 ///         project: ${dpmsService.project}
 ///         location: ${dpmsService.location}
 ///         serviceId: ${dpmsService.serviceId}
-///         databaseId: ${hive.hiveConfig[0].properties.database}
-///         table: ${hive.hiveConfig[0].properties.table}
+///         databaseId: ${hive.hiveConfig[0].properties["database"]}
+///         table: ${hive.hiveConfig[0].properties["table"]}
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_dataproc_get_metastore_table_iam_policy_get_metastore_table_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.

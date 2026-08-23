@@ -11,6 +11,7 @@ import 'instance_template_reservation_affinity.dart';
 import 'instance_template_scheduling.dart';
 import 'instance_template_service_account.dart';
 import 'instance_template_shielded_instance_config.dart';
+import 'instance_template_workload_identity_config.dart';
 
 /// Input properties used for looking up and filtering InstanceTemplate resources.
 class InstanceTemplateState {
@@ -31,8 +32,8 @@ class InstanceTemplateState {
   final pulumi.Input<List<InstanceTemplateDisk>>? disks;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
-  /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-  /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+  /// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+  /// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
   final pulumi.Input<bool>? enableDisplay;
   /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
   final pulumi.Input<List<InstanceTemplateGuestAccelerator>>? guestAccelerators;
@@ -47,7 +48,14 @@ class InstanceTemplateState {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
-  /// The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+  /// The machine type to create.
+  ///
+  /// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+  ///
+  /// More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
+  /// create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
+  ///
+  /// - - -
   final pulumi.Input<String>? machineType;
   /// Metadata key/value pairs to make available from
   /// within instances created from this template.
@@ -55,7 +63,7 @@ class InstanceTemplateState {
   /// The unique fingerprint of the metadata.
   final pulumi.Input<String>? metadataFingerprint;
   /// An alternative to using the
-  /// startup-script metadata key, mostly to match the compute_instance resource.
+  /// startup-script metadata key, mostly to match the computeInstance resource.
   /// This replaces the startup-script metadata key on the created instance and
   /// thus the two mechanisms are not allowed to be used simultaneously.
   final pulumi.Input<String>? metadataStartupScript;
@@ -70,17 +78,17 @@ class InstanceTemplateState {
   /// Prefixes with lengths longer than 37 characters will use a shortened
   /// UUID that will be more prone to collisions.
   ///
-  /// Resulting name for a `name_prefix` &lt;= 37 characters:
-  /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
-  /// Resulting name for a `name_prefix` 38 - 54 characters:
-  /// `name_prefix` + YYmmdd + 3 digit incremental counter
+  /// Resulting name for a `namePrefix` &lt;= 37 characters:
+  /// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+  /// Resulting name for a `namePrefix` 38 - 54 characters:
+  /// `namePrefix` + YYmmdd + 3 digit incremental counter
   final pulumi.Input<String>? namePrefix;
   /// Networks to attach to instances created from
   /// this template. This can be specified multiple times for multiple networks.
   /// Structure is documented below.
   final pulumi.Input<List<InstanceTemplateNetworkInterface>>? networkInterfaces;
   /// (Optional, Configures network performance settings for the instance created from the
-  /// template. Structure is documented below. **Note**: `machine_type`
+  /// template. Structure is documented below. **Note**: `machineType`
   /// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
   /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
   /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
@@ -107,7 +115,7 @@ class InstanceTemplateState {
   final pulumi.Input<InstanceTemplateReservationAffinity>? reservationAffinity;
   /// A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
   final pulumi.Input<Map<String, String>>? resourceManagerTags;
-  /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+  /// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
   final pulumi.Input<String>? resourcePolicies;
   /// The scheduling strategy to use. More details about
   /// this configuration option are detailed below.
@@ -120,12 +128,15 @@ class InstanceTemplateState {
   /// Service account to attach to the instance. Structure is documented below.
   final pulumi.Input<InstanceTemplateServiceAccount>? serviceAccount;
   /// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-  /// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+  /// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
   final pulumi.Input<InstanceTemplateShieldedInstanceConfig>? shieldedInstanceConfig;
   /// Tags to attach to the instance.
   final pulumi.Input<List<String>>? tags;
   /// The unique fingerprint of the tags.
   final pulumi.Input<String>? tagsFingerprint;
+  /// Workload Identity Config. More details about
+  /// this configuration option are detailed below.
+  final pulumi.Input<InstanceTemplateWorkloadIdentityConfig>? workloadIdentityConfig;
 
   /// Creates a new [InstanceTemplateState].
   /// [advancedMachineFeatures] Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
@@ -135,12 +146,12 @@ class InstanceTemplateState {
   /// [description] A brief description of this resource.
   /// [disks] Disks to attach to instances created from this template.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  /// [enableDisplay] Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+  /// [enableDisplay] ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
   /// [guestAccelerators] List of the type and count of accelerator cards attached to the instance. Structure documented below.
   /// [instanceDescription] A brief description to use for instances
   /// [keyRevocationActionType] Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
   /// [labels] A set of key/value label pairs to assign to instances
-  /// [machineType] The machine type to create. To create a machine with a custom type (such as extended memory), format the value like custom-VCPUS-MEM_IN_MB like custom-6-20480 for 6 vCPU and 20GB of RAM.
+  /// [machineType] The machine type to create.
   /// [metadata] Metadata key/value pairs to make available from
   /// [metadataFingerprint] The unique fingerprint of the metadata.
   /// [metadataStartupScript] An alternative to using the
@@ -156,7 +167,7 @@ class InstanceTemplateState {
   /// [region] An instance template is a global resource that is not
   /// [reservationAffinity] Specifies the reservations that this instance can consume from.
   /// [resourceManagerTags] A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
-  /// [resourcePolicies] - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+  /// [resourcePolicies] - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
   /// [scheduling] The scheduling strategy to use. More details about
   /// [selfLink] The URI of the created resource.
   /// [selfLinkUnique] A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
@@ -164,6 +175,7 @@ class InstanceTemplateState {
   /// [shieldedInstanceConfig] Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
   /// [tags] Tags to attach to the instance.
   /// [tagsFingerprint] The unique fingerprint of the tags.
+  /// [workloadIdentityConfig] Workload Identity Config. More details about
   const InstanceTemplateState({
     this.advancedMachineFeatures,
     this.canIpForward,
@@ -201,6 +213,7 @@ class InstanceTemplateState {
     this.shieldedInstanceConfig,
     this.tags,
     this.tagsFingerprint,
+    this.workloadIdentityConfig,
   });
 
   Map<String, dynamic> toMap() {
@@ -241,6 +254,7 @@ class InstanceTemplateState {
       'shieldedInstanceConfig': ?pulumi.Input.mapOptionalInputValue<InstanceTemplateShieldedInstanceConfig, Map<String, dynamic>>(shieldedInstanceConfig, (value) => value.toMap()),
       'tags': ?tags,
       'tagsFingerprint': ?tagsFingerprint,
+      'workloadIdentityConfig': ?pulumi.Input.mapOptionalInputValue<InstanceTemplateWorkloadIdentityConfig, Map<String, dynamic>>(workloadIdentityConfig, (value) => value.toMap()),
     };
   }
 
@@ -282,7 +296,7 @@ class InstanceTemplateState {
       shieldedInstanceConfig: (() { final guardedValue = map['shieldedInstanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceTemplateShieldedInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tagsFingerprint: (() { final guardedValue = map['tagsFingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadIdentityConfig: (() { final guardedValue = map['workloadIdentityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceTemplateWorkloadIdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

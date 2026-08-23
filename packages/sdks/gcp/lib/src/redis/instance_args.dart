@@ -29,12 +29,25 @@ class InstanceArgs {
   /// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
   /// instance. If this is provided, CMEK is enabled.
   final pulumi.Input<String>? customerManagedKey;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the instance.
+  /// When a`terraform destroy` or `pulumi up` would delete the instance,
+  /// the command will fail if this field is not set to false in Terraform state.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the instance will fail.
+  /// When the field is set to false, deleting the instance is allowed.
   final pulumi.Input<bool>? deletionProtection;
   /// An arbitrary and optional user-provided name for the instance.
   final pulumi.Input<String>? displayName;
   /// Resource labels to represent user provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The zone where the instance will be provisioned. If not provided,
   /// the service will choose a zone for the instance. For STANDARD_HA tier,
@@ -109,7 +122,8 @@ class InstanceArgs {
   /// [authorizedNetwork] The full name of the Google Compute Engine network to which the
   /// [connectMode] The connection mode of the Redis instance.
   /// [customerManagedKey] Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the instance.
   /// [displayName] An arbitrary and optional user-provided name for the instance.
   /// [labels] Resource labels to represent user provided metadata.
   /// [locationId] The zone where the instance will be provisioned. If not provided,
@@ -134,6 +148,7 @@ class InstanceArgs {
     this.authorizedNetwork,
     this.connectMode,
     this.customerManagedKey,
+    this.deletionPolicy,
     this.deletionProtection,
     this.displayName,
     this.labels,
@@ -162,6 +177,7 @@ class InstanceArgs {
       'authorizedNetwork': ?authorizedNetwork,
       'connectMode': ?connectMode,
       'customerManagedKey': ?customerManagedKey,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'displayName': ?displayName,
       'labels': ?labels,
@@ -191,6 +207,7 @@ class InstanceArgs {
       authorizedNetwork: (() { final guardedValue = map['authorizedNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       connectMode: (() { final guardedValue = map['connectMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customerManagedKey: (() { final guardedValue = map['customerManagedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -213,4 +230,3 @@ class InstanceArgs {
     );
   }
 }
-

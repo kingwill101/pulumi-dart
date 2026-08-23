@@ -4,9 +4,10 @@ import 'gateway_advertised_route_state.dart';
 
 /// A gateway advertised route is a route that a gateway spoke advertises somewhere.
 ///
+///
 /// To get more information about GatewayAdvertisedRoute, see:
 ///
-/// * [API documentation](https://docs.cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes.gatewayAdvertisedRoutes)
+/// * [API documentation](https://docs.cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.spokes.gatewayAdvertisedRoutes)
 /// * How-to Guides
 /// * [QUICKSTART_TITLE](https://docs.cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/ncc-gateway-overview)
 ///
@@ -25,7 +26,7 @@ import 'gateway_advertised_route_state.dart';
 ///     autoCreateSubnetworks: false,
 /// });
 /// const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
-///     name: "tf-test-subnet_6529",
+///     name: "tf-test-subnet_48153",
 ///     ipCidrRange: "10.0.0.0/28",
 ///     region: "us-central1",
 ///     network: network.selfLink,
@@ -75,7 +76,7 @@ import 'gateway_advertised_route_state.dart';
 ///     name="net-spoke",
 ///     auto_create_subnetworks=False)
 /// subnetwork = gcp.compute.Subnetwork("subnetwork",
-///     name="tf-test-subnet_6529",
+///     name="tf-test-subnet_48153",
 ///     ip_cidr_range="10.0.0.0/28",
 ///     region="us-central1",
 ///     network=network.self_link)
@@ -129,7 +130,7 @@ import 'gateway_advertised_route_state.dart';
 ///
 ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
 ///     {
-///         Name = "tf-test-subnet_6529",
+///         Name = "tf-test-subnet_48153",
 ///         IpCidrRange = "10.0.0.0/28",
 ///         Region = "us-central1",
 ///         Network = network.SelfLink,
@@ -206,7 +207,7 @@ import 'gateway_advertised_route_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-/// 			Name:        pulumi.String("tf-test-subnet_6529"),
+/// 			Name:        pulumi.String("tf-test-subnet_48153"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/28"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			Network:     network.SelfLink,
@@ -232,7 +233,7 @@ import 'gateway_advertised_route_state.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"label-one": pulumi.String("value-one"),
 /// 			},
-/// 			Hub: basicHub.ID(),
+/// 			Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
 /// 			Gateway: &networkconnectivity.SpokeGatewayArgs{
 /// 				IpRangeReservations: networkconnectivity.SpokeGatewayIpRangeReservationArray{
 /// 					&networkconnectivity.SpokeGatewayIpRangeReservationArgs{
@@ -265,6 +266,62 @@ import 'gateway_advertised_route_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "net-spoke"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnetwork" {
+///   name          = "tf-test-subnet_48153"
+///   ip_cidr_range = "10.0.0.0/28"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network.self_link
+/// }
+/// resource "gcp_networkconnectivity_hub" "basic_hub" {
+///   name        = "hub"
+///   description = "A sample hub"
+///   labels = {
+///     "label-two" = "value-one"
+///   }
+///   preset_topology = "HYBRID_INSPECTION"
+/// }
+/// resource "gcp_networkconnectivity_spoke" "primary" {
+///   name        = "spoke-name"
+///   location    = "us-central1"
+///   description = "A sample spoke of type Gateway"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   hub = gcp_networkconnectivity_hub.basic_hub.id
+///   gateway = {
+///     ip_range_reservations = [{
+///       "ipRange" = "10.0.0.0/23"
+///     }]
+///     capacity = "CAPACITY_1_GBPS"
+///   }
+///   group = "gateways"
+/// }
+/// resource "gcp_networkconnectivity_gatewayadvertisedroute" "default" {
+///   spoke    = gcp_networkconnectivity_spoke.primary.name
+///   location = "us-central1"
+///   name     = "gateway-advertised-route-name"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   description = "description of the gateway advertised route"
+///   ip_range    = "0.0.0.0/24"
+///   recipient   = "ADVERTISE_TO_HUB"
+///   priority    = 200
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -280,10 +337,11 @@ import 'gateway_advertised_route_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.Spoke;
 /// import com.pulumi.gcp.networkconnectivity.SpokeArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.SpokeGatewayArgs;
+/// import com.pulumi.gcp.networkconnectivity.inputs.SpokeGatewayIpRangeReservationArgs;
 /// import com.pulumi.gcp.networkconnectivity.GatewayAdvertisedRoute;
 /// import com.pulumi.gcp.networkconnectivity.GatewayAdvertisedRouteArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -301,7 +359,7 @@ import 'gateway_advertised_route_state.dart';
 ///             .build());
 ///
 ///         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
-///             .name("tf-test-subnet_6529")
+///             .name("tf-test-subnet_48153")
 ///             .ipCidrRange("10.0.0.0/28")
 ///             .region("us-central1")
 ///             .network(network.selfLink())
@@ -353,7 +411,7 @@ import 'gateway_advertised_route_state.dart';
 ///   subnetwork:
 ///     type: gcp:compute:Subnetwork
 ///     properties:
-///       name: tf-test-subnet_6529
+///       name: tf-test-subnet_48153
 ///       ipCidrRange: 10.0.0.0/28
 ///       region: us-central1
 ///       network: ${network.selfLink}
@@ -400,27 +458,27 @@ import 'gateway_advertised_route_state.dart';
 /// GatewayAdvertisedRoute can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/spokes/{{spoke}}/gatewayAdvertisedRoutes/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{spoke}}/{{name}}`
-///
 /// * `{{location}}/{{spoke}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, GatewayAdvertisedRoute can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default projects/{{project}}/locations/{{location}}/spokes/{{spoke}}/gatewayAdvertisedRoutes/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{project}}/{{location}}/{{spoke}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute default {{location}}/{{spoke}}/{{name}}
 /// ```
 class GatewayAdvertisedRoute extends pulumi.CustomResource {
   /// The time the gateway advertised route was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of the gateway advertised route.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -430,7 +488,7 @@ class GatewayAdvertisedRoute extends pulumi.CustomResource {
   late final pulumi.Output<String?> ipRange;
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location for the resource
   late final pulumi.Output<String> location;
@@ -474,6 +532,7 @@ class GatewayAdvertisedRoute extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     ipRange = registerOutput<String?>('ipRange');
@@ -514,6 +573,7 @@ class GatewayAdvertisedRoute extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     ipRange = registerOutput<String?>('ipRange');

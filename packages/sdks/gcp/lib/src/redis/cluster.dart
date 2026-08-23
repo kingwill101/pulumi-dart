@@ -9,6 +9,91 @@ import 'cluster_persistence_config.dart';
 import 'cluster_state.dart';
 import 'cluster_zone_distribution_config.dart';
 
+/// A Google Cloud Redis Cluster instance.
+///
+///
+/// To get more information about Cluster, see:
+///
+/// * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
+/// * How-to Guides
+/// * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
+///
+/// &gt; **Note:** For [Multiple VPC Networking](https://cloud.google.com/memorystore/docs/cluster/about-multiple-vpc-networking) if you want to use
+/// [User-registered PSC Connections](https://cloud.google.com/memorystore/docs/cluster/about-multiple-vpc-networking#psc_connection_types),
+/// then please use `gcp.redis.ClusterUserCreatedConnections` resource.
+///
+/// For [Cross Region Replication](https://cloud.google.com/memorystore/docs/cluster/about-cross-region-replication), please follow the instructions below for performing certain update and failover (switchover and detach) operations
+///
+/// **Cross Region Replication**
+///
+/// **Settings updated on primary and propagated to secondaries**
+///
+/// The settings listed [here](https://cloud.google.com/memorystore/docs/cluster/about-cross-region-replication#set_on_primary)
+/// are only allowed to be updated on the primary cluster and the changes are automatically propagated to the secondary clusters.
+/// To keep the Terraform configuration and state in sync for such settings, please follow the below steps to update them:
+/// 1. Update the setting on the primary cluster:
+/// * Update the setting to its new desired value in the Terraform configuration file.
+/// * Execute `pulumi up` to apply the change and wait for it to complete.
+/// 1. Detect configuration drift on the secondary cluster(s):
+/// * Execute `pulumi preview`. This should reveal a diff for the modified setting. The proposed value in the pulumi preview should align with the updated value applied to the primary cluster in the preceding step.
+/// 1. Reconcile secondary cluster(s) configuration:
+/// * Manually edit the Terraform configuration file(s) for the secondary cluster(s) to update the setting with the latest value from the state.
+/// * Execute `pulumi preview` once again. This should not generate any diff, confirming the configuration is in sync with the infrastructure.
+///
+/// **Switchover**
+///
+/// To perform a [switchover](https://cloud.google.com/memorystore/docs/cluster/working-with-cross-region-replication#perform_a_switchover), please follow the below steps:
+/// 1. Ensure that the Terraform configuration file for the secondary cluster that needs to become the new primary has the `crossClusterReplicationConfig` field. If it is not present:
+/// * Add the `crossClusterReplicationConfig` field to the configuration file to match the latest value in the state.
+/// * Execute `pulumi preview`. This should not generate any diff, confirming the configuration is in sync with the infrastructure.
+/// 1. Update the `crossClusterReplicationConfig` field of the secondary that needs to become the new primary:
+/// * Change `cross_cluster_replication_config.cluster_role` from `SECONDARY` to `PRIMARY`.
+/// * Remove `cross_cluster_replication_config.primary_cluster` field.
+/// * Set `cross_cluster_replication_config.secondary_clusters` list with the new secondaries. The new secondaries are the current primary and other secondary clusters(if any).
+///
+/// &gt; You can refer to the current value of `cross_cluster_replication_config.membership` field to lookup the current primary and secondary clusters.
+/// 1. Execute switchover:
+/// * Execute`pulumi up` to apply the change and wait for it to complete.
+/// 1. Fix any configuration drifts on the previous primary and other secondary clusters:
+/// * Execute `pulumi preview`. If any diffs are reported for `crossClusterReplicationConfig` field:
+/// * Manually update `crossClusterReplicationConfig` field in the configuration file(s) for those clusters with the latest value from the state.
+/// * Execute `pulumi preview` once again. This should not generate any diff, confirming the configuration is in sync with the infrastructure.
+///
+/// **Detach a secondary cluster**
+///
+/// To [detach](https://cloud.google.com/memorystore/docs/cluster/working-with-cross-region-replication#detach_secondary_clusters_option_1) a secondary cluster, please follow the below steps:
+/// 1. Ensure that the Terraform configuration file for the secondary cluster that needs to be detached has the `crossClusterReplicationConfig` field. If it is not present:
+/// * Add the `crossClusterReplicationConfig` field to the configuration file to match the latest value in the state.
+/// * Execute `pulumi preview`. This should not generate any diff, confirming the configuration is in sync with the infrastructure.
+/// 1. Update the `crossClusterReplicationConfig` field of the secondary that needs to be detached:
+/// * Change `cross_cluster_replication_config.cluster_role` from `SECONDARY` to `NONE`.
+/// * Remove `cross_cluster_replication_config.primary_cluster`.
+/// 1. Execute detach:
+/// * Execute`pulumi up` to apply the change and wait for it to complete.
+/// 1. Fix any configuration drifts on the primary cluster:
+/// * Execute `pulumi preview`. If any diff is reported for `crossClusterReplicationConfig` field:
+/// * Manually update `crossClusterReplicationConfig` field in the configuration file with the latest value from the state.
+/// * Execute `pulumi preview` once again. This should not generate any diff, confirming the configuration is in sync with the infrastructure.
+///
+/// **Detach secondary cluster(s) via primary cluster**
+///
+/// To [detach](https://cloud.google.com/memorystore/docs/cluster/working-with-cross-region-replication#detach_secondary_clusters_option_2) secondary clusters via primary, please follow the below steps:
+/// 1. Ensure that the Terraform configuration file for the primary cluster from which the secondary(ies) has(ve) to be detached has the `crossClusterReplicationConfig` field. If it is not present:
+/// * Add the `crossClusterReplicationConfig` field to the configuration file to match the latest value in the state.
+/// * Execute `pulumi preview`. This should not generate any diff, confirming the configuration is in sync with the infrastructure.
+/// 1. Update the `crossClusterReplicationConfig` field of the primary cluster:
+/// * If you are detaching all secondaries from the primary:
+/// * Change `cross_cluster_replication_config.cluster_role` from `PRIMARY` to `NONE`.
+/// * Remove `cross_cluster_replication_config.secondary_clusters` list field.
+/// * If you are detaching a subset of secondaries:
+/// * Update `cross_cluster_replication_config.secondary_clusters` list field to remove the secondary clusters that need to be detached.
+/// 1. Execute detach:
+/// * Execute `pulumi up` to apply the change and wait for it to complete.
+/// 1. Fix any configuration drifts on the secondary cluster(s) that was detached:
+/// * Execute `pulumi preview`. If any diffs are reported for `crossClusterReplicationConfig` field:
+/// * Manually update `crossClusterReplicationConfig` field in the configuration file(s) for those clusters with the latest value from the state.
+/// * Execute `pulumi preview` once again. This should not generate any diff, confirming the configuration is in sync with the infrastructure.
+///
 /// ## Example Usage
 ///
 /// ### Redis Cluster Ha With Labels
@@ -250,7 +335,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID(),
+/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -260,10 +345,10 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      consumerNet.ID(),
+/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					consumerSubnet.ID(),
+/// 					consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -279,7 +364,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			},
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID(),
+/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Region:                pulumi.String("us-central1"),
@@ -317,6 +402,71 @@ import 'cluster_zone_distribution_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_redis_cluster" "cluster-ha-with-labels" {
+///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   name        = "ha-cluster"
+///   shard_count = 3
+///   labels = {
+///     "my_key"    = "my_val"
+///     "other_key" = "other_val"
+///   }
+///   psc_configs {
+///     network = gcp_compute_network.consumer_net.id
+///   }
+///   region                  = "us-central1"
+///   replica_count           = 1
+///   node_type               = "REDIS_SHARED_CORE_NANO"
+///   transit_encryption_mode = "TRANSIT_ENCRYPTION_MODE_DISABLED"
+///   authorization_mode      = "AUTH_MODE_DISABLED"
+///   redis_configs = {
+///     "maxmemory-policy" = "volatile-ttl"
+///   }
+///   deletion_protection_enabled = true
+///   zone_distribution_config = {
+///     mode = "MULTI_ZONE"
+///   }
+///   maintenance_policy = {
+///     weekly_maintenance_windows = [{
+///       "day" = "MONDAY"
+///       "startTime" = {
+///         "hours"   = 1
+///         "minutes" = 0
+///         "seconds" = 0
+///         "nanos"   = 0
+///       }
+///     }]
+///   }
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+///   name          = "my-policy"
+///   location      = "us-central1"
+///   service_class = "gcp-memorystore-redis"
+///   description   = "my basic service connection policy"
+///   network       = gcp_compute_network.consumer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.consumer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   name          = "my-subnet"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.consumer_net.id
+/// }
+/// resource "gcp_compute_network" "consumer_net" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -335,9 +485,11 @@ import 'cluster_zone_distribution_config.dart';
 /// import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+/// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs;
+/// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -696,7 +848,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID(),
+/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -706,10 +858,10 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      consumerNet.ID(),
+/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					consumerSubnet.ID(),
+/// 					consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -721,7 +873,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(3),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID(),
+/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Region:                pulumi.String("us-central1"),
@@ -759,6 +911,67 @@ import 'cluster_zone_distribution_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_redis_cluster" "cluster-ha" {
+///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   name        = "ha-cluster"
+///   shard_count = 3
+///   psc_configs {
+///     network = gcp_compute_network.consumer_net.id
+///   }
+///   region                  = "us-central1"
+///   replica_count           = 1
+///   node_type               = "REDIS_SHARED_CORE_NANO"
+///   transit_encryption_mode = "TRANSIT_ENCRYPTION_MODE_DISABLED"
+///   authorization_mode      = "AUTH_MODE_DISABLED"
+///   redis_configs = {
+///     "maxmemory-policy" = "volatile-ttl"
+///   }
+///   deletion_protection_enabled = true
+///   zone_distribution_config = {
+///     mode = "MULTI_ZONE"
+///   }
+///   maintenance_policy = {
+///     weekly_maintenance_windows = [{
+///       "day" = "MONDAY"
+///       "startTime" = {
+///         "hours"   = 1
+///         "minutes" = 0
+///         "seconds" = 0
+///         "nanos"   = 0
+///       }
+///     }]
+///   }
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+///   name          = "my-policy"
+///   location      = "us-central1"
+///   service_class = "gcp-memorystore-redis"
+///   description   = "my basic service connection policy"
+///   network       = gcp_compute_network.consumer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.consumer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   name          = "my-subnet"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.consumer_net.id
+/// }
+/// resource "gcp_compute_network" "consumer_net" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -777,9 +990,11 @@ import 'cluster_zone_distribution_config.dart';
 /// import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+/// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs;
+/// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1112,7 +1327,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID(),
+/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1122,10 +1337,10 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      consumerNet.ID(),
+/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					consumerSubnet.ID(),
+/// 					consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -1137,7 +1352,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(3),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID(),
+/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Region: pulumi.String("us-central1"),
@@ -1169,6 +1384,61 @@ import 'cluster_zone_distribution_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_redis_cluster" "cluster-ha-single-zone" {
+///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   name        = "ha-cluster-single-zone"
+///   shard_count = 3
+///   psc_configs {
+///     network = gcp_compute_network.consumer_net.id
+///   }
+///   region = "us-central1"
+///   zone_distribution_config = {
+///     mode = "SINGLE_ZONE"
+///     zone = "us-central1-f"
+///   }
+///   maintenance_policy = {
+///     weekly_maintenance_windows = [{
+///       "day" = "MONDAY"
+///       "startTime" = {
+///         "hours"   = 1
+///         "minutes" = 0
+///         "seconds" = 0
+///         "nanos"   = 0
+///       }
+///     }]
+///   }
+///   deletion_protection_enabled = true
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+///   name          = "my-policy"
+///   location      = "us-central1"
+///   service_class = "gcp-memorystore-redis"
+///   description   = "my basic service connection policy"
+///   network       = gcp_compute_network.consumer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.consumer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   name          = "my-subnet"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.consumer_net.id
+/// }
+/// resource "gcp_compute_network" "consumer_net" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1187,9 +1457,11 @@ import 'cluster_zone_distribution_config.dart';
 /// import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+/// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs;
+/// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1770,7 +2042,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("mysubnet-primary-cluster"),
 /// 			IpCidrRange: pulumi.String("10.0.1.0/29"),
 /// 			Region:      pulumi.String("us-east1"),
-/// 			Network:     consumerNet.ID(),
+/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1780,10 +2052,10 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("us-east1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("Primary cluster service connection policy"),
-/// 			Network:      consumerNet.ID(),
+/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					primaryClusterConsumerSubnet.ID(),
+/// 					primaryClusterConsumerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -1796,7 +2068,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Region: pulumi.String("us-east1"),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID(),
+/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
@@ -1841,7 +2113,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("mysubnet-secondary-cluster"),
 /// 			IpCidrRange: pulumi.String("10.0.2.0/29"),
 /// 			Region:      pulumi.String("europe-west1"),
-/// 			Network:     consumerNet.ID(),
+/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1851,10 +2123,10 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("europe-west1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("Secondary cluster service connection policy"),
-/// 			Network:      consumerNet.ID(),
+/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					secondaryClusterConsumerSubnet.ID(),
+/// 					secondaryClusterConsumerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -1867,7 +2139,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Region: pulumi.String("europe-west1"),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID(),
+/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
@@ -1905,7 +2177,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			CrossClusterReplicationConfig: &redis.ClusterCrossClusterReplicationConfigArgs{
 /// 				ClusterRole: pulumi.String("SECONDARY"),
 /// 				PrimaryCluster: &redis.ClusterCrossClusterReplicationConfigPrimaryClusterArgs{
-/// 					Cluster: primaryCluster.ID(),
+/// 					Cluster: primaryCluster.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -1916,6 +2188,137 @@ import 'cluster_zone_distribution_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// // Primary cluster
+/// resource "gcp_redis_cluster" "primary_cluster" {
+///   depends_on = [gcp_networkconnectivity_serviceconnectionpolicy.primary_cluster_region_scp]
+///   name       = "my-primary-cluster"
+///   region     = "us-east1"
+///   psc_configs {
+///     network = gcp_compute_network.consumer_net.id
+///   }
+///   authorization_mode      = "AUTH_MODE_DISABLED"
+///   transit_encryption_mode = "TRANSIT_ENCRYPTION_MODE_DISABLED"
+///   shard_count             = 3
+///   redis_configs = {
+///     "maxmemory-policy" = "volatile-ttl"
+///   }
+///   node_type = "REDIS_HIGHMEM_MEDIUM"
+///   persistence_config = {
+///     mode = "RDB"
+///     rdb_config = {
+///       rdb_snapshot_period     = "ONE_HOUR"
+///       rdb_snapshot_start_time = "2024-10-02T15:01:23Z"
+///     }
+///   }
+///   zone_distribution_config = {
+///     mode = "MULTI_ZONE"
+///   }
+///   replica_count = 1
+///   maintenance_policy = {
+///     weekly_maintenance_windows = [{
+///       "day" = "MONDAY"
+///       "startTime" = {
+///         "hours"   = 1
+///         "minutes" = 0
+///         "seconds" = 0
+///         "nanos"   = 0
+///       }
+///     }]
+///   }
+///   deletion_protection_enabled = true
+/// }
+/// // Secondary cluster
+/// resource "gcp_redis_cluster" "secondary_cluster" {
+///   depends_on = [gcp_networkconnectivity_serviceconnectionpolicy.secondary_cluster_region_scp]
+///   name       = "my-secondary-cluster"
+///   region     = "europe-west1"
+///   psc_configs {
+///     network = gcp_compute_network.consumer_net.id
+///   }
+///   authorization_mode      = "AUTH_MODE_DISABLED"
+///   transit_encryption_mode = "TRANSIT_ENCRYPTION_MODE_DISABLED"
+///   shard_count             = 3
+///   redis_configs = {
+///     "maxmemory-policy" = "volatile-ttl"
+///   }
+///   node_type = "REDIS_HIGHMEM_MEDIUM"
+///   persistence_config = {
+///     mode = "RDB"
+///     rdb_config = {
+///       rdb_snapshot_period     = "ONE_HOUR"
+///       rdb_snapshot_start_time = "2024-10-02T15:01:23Z"
+///     }
+///   }
+///   zone_distribution_config = {
+///     mode = "MULTI_ZONE"
+///   }
+///   replica_count = 2
+///   maintenance_policy = {
+///     weekly_maintenance_windows = [{
+///       "day" = "WEDNESDAY"
+///       "startTime" = {
+///         "hours"   = 1
+///         "minutes" = 0
+///         "seconds" = 0
+///         "nanos"   = 0
+///       }
+///     }]
+///   }
+///   deletion_protection_enabled = true
+///   // Cross cluster replication config
+///   cross_cluster_replication_config = {
+///     cluster_role = "SECONDARY"
+///     primary_cluster = {
+///       cluster = gcp_redis_cluster.primary_cluster.id
+///     }
+///   }
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "primary_cluster_region_scp" {
+///   name          = "mypolicy-primary-cluster"
+///   location      = "us-east1"
+///   service_class = "gcp-memorystore-redis"
+///   description   = "Primary cluster service connection policy"
+///   network       = gcp_compute_network.consumer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.primary_cluster_consumer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "primary_cluster_consumer_subnet" {
+///   name          = "mysubnet-primary-cluster"
+///   ip_cidr_range = "10.0.1.0/29"
+///   region        = "us-east1"
+///   network       = gcp_compute_network.consumer_net.id
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "secondary_cluster_region_scp" {
+///   name          = "mypolicy-secondary-cluster"
+///   location      = "europe-west1"
+///   service_class = "gcp-memorystore-redis"
+///   description   = "Secondary cluster service connection policy"
+///   network       = gcp_compute_network.consumer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.secondary_cluster_consumer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "secondary_cluster_consumer_subnet" {
+///   name          = "mysubnet-secondary-cluster"
+///   ip_cidr_range = "10.0.2.0/29"
+///   region        = "europe-west1"
+///   network       = gcp_compute_network.consumer_net.id
+/// }
+/// resource "gcp_compute_network" "consumer_net" {
+///   name                    = "mynetwork"
+///   auto_create_subnetworks = false
 /// }
 /// ```
 /// ```java
@@ -1938,11 +2341,13 @@ import 'cluster_zone_distribution_config.dart';
 /// import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigRdbConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+/// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs;
+/// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterCrossClusterReplicationConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterCrossClusterReplicationConfigPrimaryClusterArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2455,7 +2860,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID(),
+/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2465,10 +2870,10 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      consumerNet.ID(),
+/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					consumerSubnet.ID(),
+/// 					consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -2480,7 +2885,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(3),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID(),
+/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Region:                pulumi.String("us-central1"),
@@ -2525,6 +2930,74 @@ import 'cluster_zone_distribution_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_redis_cluster" "cluster-rdb" {
+///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   name        = "rdb-cluster"
+///   shard_count = 3
+///   psc_configs {
+///     network = gcp_compute_network.consumer_net.id
+///   }
+///   region                  = "us-central1"
+///   replica_count           = 0
+///   node_type               = "REDIS_SHARED_CORE_NANO"
+///   transit_encryption_mode = "TRANSIT_ENCRYPTION_MODE_DISABLED"
+///   authorization_mode      = "AUTH_MODE_DISABLED"
+///   redis_configs = {
+///     "maxmemory-policy" = "volatile-ttl"
+///   }
+///   deletion_protection_enabled = true
+///   zone_distribution_config = {
+///     mode = "MULTI_ZONE"
+///   }
+///   maintenance_policy = {
+///     weekly_maintenance_windows = [{
+///       "day" = "MONDAY"
+///       "startTime" = {
+///         "hours"   = 1
+///         "minutes" = 0
+///         "seconds" = 0
+///         "nanos"   = 0
+///       }
+///     }]
+///   }
+///   persistence_config = {
+///     mode = "RDB"
+///     rdb_config = {
+///       rdb_snapshot_period     = "ONE_HOUR"
+///       rdb_snapshot_start_time = "2024-10-02T15:01:23Z"
+///     }
+///   }
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+///   name          = "my-policy"
+///   location      = "us-central1"
+///   service_class = "gcp-memorystore-redis"
+///   description   = "my basic service connection policy"
+///   network       = gcp_compute_network.consumer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.consumer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   name          = "my-subnet"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.consumer_net.id
+/// }
+/// resource "gcp_compute_network" "consumer_net" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2543,11 +3016,13 @@ import 'cluster_zone_distribution_config.dart';
 /// import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+/// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs;
+/// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigRdbConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2931,7 +3406,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID(),
+/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2941,10 +3416,10 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      consumerNet.ID(),
+/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					consumerSubnet.ID(),
+/// 					consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -2956,7 +3431,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(3),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID(),
+/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Region:                pulumi.String("us-central1"),
@@ -3000,6 +3475,73 @@ import 'cluster_zone_distribution_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_redis_cluster" "cluster-aof" {
+///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   name        = "aof-cluster"
+///   shard_count = 3
+///   psc_configs {
+///     network = gcp_compute_network.consumer_net.id
+///   }
+///   region                  = "us-central1"
+///   replica_count           = 0
+///   node_type               = "REDIS_SHARED_CORE_NANO"
+///   transit_encryption_mode = "TRANSIT_ENCRYPTION_MODE_DISABLED"
+///   authorization_mode      = "AUTH_MODE_DISABLED"
+///   redis_configs = {
+///     "maxmemory-policy" = "volatile-ttl"
+///   }
+///   deletion_protection_enabled = true
+///   zone_distribution_config = {
+///     mode = "MULTI_ZONE"
+///   }
+///   maintenance_policy = {
+///     weekly_maintenance_windows = [{
+///       "day" = "MONDAY"
+///       "startTime" = {
+///         "hours"   = 1
+///         "minutes" = 0
+///         "seconds" = 0
+///         "nanos"   = 0
+///       }
+///     }]
+///   }
+///   persistence_config = {
+///     mode = "AOF"
+///     aof_config = {
+///       append_fsync = "EVERYSEC"
+///     }
+///   }
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+///   name          = "my-policy"
+///   location      = "us-central1"
+///   service_class = "gcp-memorystore-redis"
+///   description   = "my basic service connection policy"
+///   network       = gcp_compute_network.consumer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.consumer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   name          = "my-subnet"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.consumer_net.id
+/// }
+/// resource "gcp_compute_network" "consumer_net" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3018,11 +3560,13 @@ import 'cluster_zone_distribution_config.dart';
 /// import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+/// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs;
+/// import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigArgs;
 /// import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigAofConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3321,7 +3865,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Name:        pulumi.String("my-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     consumerNet.ID(),
+/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -3331,10 +3875,10 @@ import 'cluster_zone_distribution_config.dart';
 /// 			Location:     pulumi.String("us-central1"),
 /// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
 /// 			Description:  pulumi.String("my basic service connection policy"),
-/// 			Network:      consumerNet.ID(),
+/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 /// 				Subnetworks: pulumi.StringArray{
-/// 					consumerSubnet.ID(),
+/// 					consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -3346,7 +3890,7 @@ import 'cluster_zone_distribution_config.dart';
 /// 			ShardCount: pulumi.Int(3),
 /// 			PscConfigs: redis.ClusterPscConfigArray{
 /// 				&redis.ClusterPscConfigArgs{
-/// 					Network: consumerNet.ID(),
+/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			KmsKey:                    pulumi.String("my-key"),
@@ -3364,6 +3908,50 @@ import 'cluster_zone_distribution_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_redis_cluster" "cluster-cmek" {
+///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default]
+///   name        = "cmek-cluster"
+///   shard_count = 3
+///   psc_configs {
+///     network = gcp_compute_network.consumer_net.id
+///   }
+///   kms_key                     = "my-key"
+///   region                      = "us-central1"
+///   deletion_protection_enabled = true
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+///   name          = "my-policy"
+///   location      = "us-central1"
+///   service_class = "gcp-memorystore-redis"
+///   description   = "my basic service connection policy"
+///   network       = gcp_compute_network.consumer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.consumer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   name          = "my-subnet"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.consumer_net.id
+/// }
+/// resource "gcp_compute_network" "consumer_net" {
+///   name                    = "my-network"
+///   auto_create_subnetworks = false
 /// }
 /// ```
 /// ```java
@@ -3385,8 +3973,8 @@ import 'cluster_zone_distribution_config.dart';
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3487,34 +4075,686 @@ import 'cluster_zone_distribution_config.dart';
 ///       arguments: {}
 /// ```
 ///
+/// ### Redis Cluster Flexible Ca
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.certificateauthority.CaPool("default", {
+///     name: "ca-pool",
+///     location: "us-central1",
+///     tier: "ENTERPRISE",
+/// });
+/// const defaultAuthority = new gcp.certificateauthority.Authority("default", {
+///     pool: _default.name,
+///     certificateAuthorityId: "ca-auth",
+///     location: "us-central1",
+///     config: {
+///         subjectConfig: {
+///             subject: {
+///                 organization: "Google",
+///                 commonName: "my-redis-ca",
+///             },
+///         },
+///         x509Config: {
+///             caOptions: {
+///                 isCa: true,
+///             },
+///             keyUsage: {
+///                 baseKeyUsage: {
+///                     certSign: true,
+///                     crlSign: true,
+///                 },
+///                 extendedKeyUsage: {
+///                     serverAuth: true,
+///                 },
+///             },
+///         },
+///     },
+///     keySpec: {
+///         algorithm: "RSA_PKCS1_4096_SHA256",
+///     },
+///     ignoreActiveCertificatesOnDeletion: true,
+///     deletionProtection: false,
+///     skipGracePeriod: true,
+/// });
+/// const consumerNet = new gcp.compute.Network("consumer_net", {
+///     name: "ca-network",
+///     autoCreateSubnetworks: false,
+/// });
+/// const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
+///     name: "ca-subnet",
+///     ipCidrRange: "10.0.0.248/29",
+///     region: "us-central1",
+///     network: consumerNet.id,
+/// });
+/// const defaultServiceConnectionPolicy = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
+///     name: "ca-policy",
+///     location: "us-central1",
+///     serviceClass: "gcp-memorystore-redis",
+///     network: consumerNet.id,
+///     pscConfig: {
+///         subnetworks: [consumerSubnet.id],
+///     },
+/// });
+/// const test_cluster = new gcp.redis.Cluster("test-cluster", {
+///     name: "ca-cluster",
+///     shardCount: 3,
+///     region: "us-central1",
+///     pscConfigs: [{
+///         network: consumerNet.id,
+///     }],
+///     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION",
+///     serverCaMode: "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA",
+///     serverCaPool: _default.id,
+///     deletionProtectionEnabled: true,
+/// }, {
+///     dependsOn: [
+///         defaultServiceConnectionPolicy,
+///         defaultAuthority,
+///     ],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.certificateauthority.CaPool("default",
+///     name="ca-pool",
+///     location="us-central1",
+///     tier="ENTERPRISE")
+/// default_authority = gcp.certificateauthority.Authority("default",
+///     pool=default.name,
+///     certificate_authority_id="ca-auth",
+///     location="us-central1",
+///     config={
+///         "subject_config": {
+///             "subject": {
+///                 "organization": "Google",
+///                 "common_name": "my-redis-ca",
+///             },
+///         },
+///         "x509_config": {
+///             "ca_options": {
+///                 "is_ca": True,
+///             },
+///             "key_usage": {
+///                 "base_key_usage": {
+///                     "cert_sign": True,
+///                     "crl_sign": True,
+///                 },
+///                 "extended_key_usage": {
+///                     "server_auth": True,
+///                 },
+///             },
+///         },
+///     },
+///     key_spec={
+///         "algorithm": "RSA_PKCS1_4096_SHA256",
+///     },
+///     ignore_active_certificates_on_deletion=True,
+///     deletion_protection=False,
+///     skip_grace_period=True)
+/// consumer_net = gcp.compute.Network("consumer_net",
+///     name="ca-network",
+///     auto_create_subnetworks=False)
+/// consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+///     name="ca-subnet",
+///     ip_cidr_range="10.0.0.248/29",
+///     region="us-central1",
+///     network=consumer_net.id)
+/// default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+///     name="ca-policy",
+///     location="us-central1",
+///     service_class="gcp-memorystore-redis",
+///     network=consumer_net.id,
+///     psc_config={
+///         "subnetworks": [consumer_subnet.id],
+///     })
+/// test_cluster = gcp.redis.Cluster("test-cluster",
+///     name="ca-cluster",
+///     shard_count=3,
+///     region="us-central1",
+///     psc_configs=[{
+///         "network": consumer_net.id,
+///     }],
+///     transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION",
+///     server_ca_mode="SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA",
+///     server_ca_pool=default.id,
+///     deletion_protection_enabled=True,
+///     opts = pulumi.ResourceOptions(depends_on=[
+///             default_service_connection_policy,
+///             default_authority,
+///         ]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
+///     {
+///         Name = "ca-pool",
+///         Location = "us-central1",
+///         Tier = "ENTERPRISE",
+///     });
+///
+///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("default", new()
+///     {
+///         Pool = @default.Name,
+///         CertificateAuthorityId = "ca-auth",
+///         Location = "us-central1",
+///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+///         {
+///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+///             {
+///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+///                 {
+///                     Organization = "Google",
+///                     CommonName = "my-redis-ca",
+///                 },
+///             },
+///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+///             {
+///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+///                 {
+///                     IsCa = true,
+///                 },
+///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+///                 {
+///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+///                     {
+///                         CertSign = true,
+///                         CrlSign = true,
+///                     },
+///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+///                     {
+///                         ServerAuth = true,
+///                     },
+///                 },
+///             },
+///         },
+///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+///         {
+///             Algorithm = "RSA_PKCS1_4096_SHA256",
+///         },
+///         IgnoreActiveCertificatesOnDeletion = true,
+///         DeletionProtection = false,
+///         SkipGracePeriod = true,
+///     });
+///
+///     var consumerNet = new Gcp.Compute.Network("consumer_net", new()
+///     {
+///         Name = "ca-network",
+///         AutoCreateSubnetworks = false,
+///     });
+///
+///     var consumerSubnet = new Gcp.Compute.Subnetwork("consumer_subnet", new()
+///     {
+///         Name = "ca-subnet",
+///         IpCidrRange = "10.0.0.248/29",
+///         Region = "us-central1",
+///         Network = consumerNet.Id,
+///     });
+///
+///     var defaultServiceConnectionPolicy = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
+///     {
+///         Name = "ca-policy",
+///         Location = "us-central1",
+///         ServiceClass = "gcp-memorystore-redis",
+///         Network = consumerNet.Id,
+///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
+///         {
+///             Subnetworks = new[]
+///             {
+///                 consumerSubnet.Id,
+///             },
+///         },
+///     });
+///
+///     var test_cluster = new Gcp.Redis.Cluster("test-cluster", new()
+///     {
+///         Name = "ca-cluster",
+///         ShardCount = 3,
+///         Region = "us-central1",
+///         PscConfigs = new[]
+///         {
+///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
+///             {
+///                 Network = consumerNet.Id,
+///             },
+///         },
+///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION",
+///         ServerCaMode = "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA",
+///         ServerCaPool = @default.Id,
+///         DeletionProtectionEnabled = true,
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             defaultServiceConnectionPolicy,
+///             defaultAuthority,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_default, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
+/// 			Name:     pulumi.String("ca-pool"),
+/// 			Location: pulumi.String("us-central1"),
+/// 			Tier:     pulumi.String("ENTERPRISE"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+/// 			Pool:                   _default.Name,
+/// 			CertificateAuthorityId: pulumi.String("ca-auth"),
+/// 			Location:               pulumi.String("us-central1"),
+/// 			Config: &certificateauthority.AuthorityConfigArgs{
+/// 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+/// 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+/// 						Organization: pulumi.String("Google"),
+/// 						CommonName:   pulumi.String("my-redis-ca"),
+/// 					},
+/// 				},
+/// 				X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+/// 					CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+/// 						IsCa: pulumi.Bool(true),
+/// 					},
+/// 					KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+/// 						BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+/// 							CertSign: pulumi.Bool(true),
+/// 							CrlSign:  pulumi.Bool(true),
+/// 						},
+/// 						ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+/// 							ServerAuth: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+/// 				Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+/// 			},
+/// 			IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+/// 			DeletionProtection:                 pulumi.Bool(false),
+/// 			SkipGracePeriod:                    pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		consumerNet, err := compute.NewNetwork(ctx, "consumer_net", &compute.NetworkArgs{
+/// 			Name:                  pulumi.String("ca-network"),
+/// 			AutoCreateSubnetworks: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
+/// 			Name:        pulumi.String("ca-subnet"),
+/// 			IpCidrRange: pulumi.String("10.0.0.248/29"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultServiceConnectionPolicy, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
+/// 			Name:         pulumi.String("ca-policy"),
+/// 			Location:     pulumi.String("us-central1"),
+/// 			ServiceClass: pulumi.String("gcp-memorystore-redis"),
+/// 			Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 			PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+/// 				Subnetworks: pulumi.StringArray{
+/// 					consumerSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = redis.NewCluster(ctx, "test-cluster", &redis.ClusterArgs{
+/// 			Name:       pulumi.String("ca-cluster"),
+/// 			ShardCount: pulumi.Int(3),
+/// 			Region:     pulumi.String("us-central1"),
+/// 			PscConfigs: redis.ClusterPscConfigArray{
+/// 				&redis.ClusterPscConfigArgs{
+/// 					Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
+/// 				},
+/// 			},
+/// 			TransitEncryptionMode:     pulumi.String("TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"),
+/// 			ServerCaMode:              pulumi.String("SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA"),
+/// 			ServerCaPool:              _default.ID().ToIDOutput().ToStringOutput(),
+/// 			DeletionProtectionEnabled: pulumi.Bool(true),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			defaultServiceConnectionPolicy,
+/// 			defaultAuthority,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_redis_cluster" "test-cluster" {
+///   depends_on  = [gcp_networkconnectivity_serviceconnectionpolicy.default, gcp_certificateauthority_authority.default]
+///   name        = "ca-cluster"
+///   shard_count = 3
+///   region      = "us-central1"
+///   psc_configs {
+///     network = gcp_compute_network.consumer_net.id
+///   }
+///   transit_encryption_mode     = "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"
+///   server_ca_mode              = "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA"
+///   server_ca_pool              = gcp_certificateauthority_capool.default.id
+///   deletion_protection_enabled = true
+/// }
+/// resource "gcp_certificateauthority_capool" "default" {
+///   name     = "ca-pool"
+///   location = "us-central1"
+///   tier     = "ENTERPRISE"
+/// }
+/// resource "gcp_certificateauthority_authority" "default" {
+///   pool                     = gcp_certificateauthority_capool.default.name
+///   certificate_authority_id = "ca-auth"
+///   location                 = "us-central1"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "Google"
+///         common_name  = "my-redis-ca"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   ignore_active_certificates_on_deletion = true
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+/// }
+/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+///   name          = "ca-policy"
+///   location      = "us-central1"
+///   service_class = "gcp-memorystore-redis"
+///   network       = gcp_compute_network.consumer_net.id
+///   psc_config = {
+///     subnetworks = [gcp_compute_subnetwork.consumer_subnet.id]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "consumer_subnet" {
+///   name          = "ca-subnet"
+///   ip_cidr_range = "10.0.0.248/29"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.consumer_net.id
+/// }
+/// resource "gcp_compute_network" "consumer_net" {
+///   name                    = "ca-network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.certificateauthority.CaPool;
+/// import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+/// import com.pulumi.gcp.certificateauthority.Authority;
+/// import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+/// import com.pulumi.gcp.compute.Network;
+/// import com.pulumi.gcp.compute.NetworkArgs;
+/// import com.pulumi.gcp.compute.Subnetwork;
+/// import com.pulumi.gcp.compute.SubnetworkArgs;
+/// import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicy;
+/// import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
+/// import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
+/// import com.pulumi.gcp.redis.Cluster;
+/// import com.pulumi.gcp.redis.ClusterArgs;
+/// import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new CaPool("default", CaPoolArgs.builder()
+///             .name("ca-pool")
+///             .location("us-central1")
+///             .tier("ENTERPRISE")
+///             .build());
+///
+///         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
+///             .pool(default_.name())
+///             .certificateAuthorityId("ca-auth")
+///             .location("us-central1")
+///             .config(AuthorityConfigArgs.builder()
+///                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+///                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+///                         .organization("Google")
+///                         .commonName("my-redis-ca")
+///                         .build())
+///                     .build())
+///                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+///                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+///                         .isCa(true)
+///                         .build())
+///                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+///                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+///                             .certSign(true)
+///                             .crlSign(true)
+///                             .build())
+///                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+///                             .serverAuth(true)
+///                             .build())
+///                         .build())
+///                     .build())
+///                 .build())
+///             .keySpec(AuthorityKeySpecArgs.builder()
+///                 .algorithm("RSA_PKCS1_4096_SHA256")
+///                 .build())
+///             .ignoreActiveCertificatesOnDeletion(true)
+///             .deletionProtection(false)
+///             .skipGracePeriod(true)
+///             .build());
+///
+///         var consumerNet = new Network("consumerNet", NetworkArgs.builder()
+///             .name("ca-network")
+///             .autoCreateSubnetworks(false)
+///             .build());
+///
+///         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
+///             .name("ca-subnet")
+///             .ipCidrRange("10.0.0.248/29")
+///             .region("us-central1")
+///             .network(consumerNet.id())
+///             .build());
+///
+///         var defaultServiceConnectionPolicy = new ServiceConnectionPolicy("defaultServiceConnectionPolicy", ServiceConnectionPolicyArgs.builder()
+///             .name("ca-policy")
+///             .location("us-central1")
+///             .serviceClass("gcp-memorystore-redis")
+///             .network(consumerNet.id())
+///             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
+///                 .subnetworks(consumerSubnet.id())
+///                 .build())
+///             .build());
+///
+///         var test_cluster = new Cluster("test-cluster", ClusterArgs.builder()
+///             .name("ca-cluster")
+///             .shardCount(3)
+///             .region("us-central1")
+///             .pscConfigs(ClusterPscConfigArgs.builder()
+///                 .network(consumerNet.id())
+///                 .build())
+///             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION")
+///             .serverCaMode("SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA")
+///             .serverCaPool(default_.id())
+///             .deletionProtectionEnabled(true)
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(
+///                     defaultServiceConnectionPolicy,
+///                     defaultAuthority)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   test-cluster:
+///     type: gcp:redis:Cluster
+///     properties:
+///       name: ca-cluster
+///       shardCount: 3
+///       region: us-central1
+///       pscConfigs:
+///         - network: ${consumerNet.id}
+///       transitEncryptionMode: TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+///       serverCaMode: SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+///       serverCaPool: ${default.id}
+///       deletionProtectionEnabled: true
+///     options:
+///       dependsOn:
+///         - ${defaultServiceConnectionPolicy}
+///         - ${defaultAuthority}
+///   default:
+///     type: gcp:certificateauthority:CaPool
+///     properties:
+///       name: ca-pool
+///       location: us-central1
+///       tier: ENTERPRISE
+///   defaultAuthority:
+///     type: gcp:certificateauthority:Authority
+///     name: default
+///     properties:
+///       pool: ${default.name}
+///       certificateAuthorityId: ca-auth
+///       location: us-central1
+///       config:
+///         subjectConfig:
+///           subject:
+///             organization: Google
+///             commonName: my-redis-ca
+///         x509Config:
+///           caOptions:
+///             isCa: true
+///           keyUsage:
+///             baseKeyUsage:
+///               certSign: true
+///               crlSign: true
+///             extendedKeyUsage:
+///               serverAuth: true
+///       keySpec:
+///         algorithm: RSA_PKCS1_4096_SHA256
+///       ignoreActiveCertificatesOnDeletion: true
+///       deletionProtection: false
+///       skipGracePeriod: true
+///   defaultServiceConnectionPolicy:
+///     type: gcp:networkconnectivity:ServiceConnectionPolicy
+///     name: default
+///     properties:
+///       name: ca-policy
+///       location: us-central1
+///       serviceClass: gcp-memorystore-redis
+///       network: ${consumerNet.id}
+///       pscConfig:
+///         subnetworks:
+///           - ${consumerSubnet.id}
+///   consumerSubnet:
+///     type: gcp:compute:Subnetwork
+///     name: consumer_subnet
+///     properties:
+///       name: ca-subnet
+///       ipCidrRange: 10.0.0.248/29
+///       region: us-central1
+///       network: ${consumerNet.id}
+///   consumerNet:
+///     type: gcp:compute:Network
+///     name: consumer_net
+///     properties:
+///       name: ca-network
+///       autoCreateSubnetworks: false
+/// ```
+///
 ///
 /// ## Import
 ///
 /// Cluster can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/clusters/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:redis/cluster:Cluster default projects/{{project}}/locations/{{region}}/clusters/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:redis/cluster:Cluster default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:redis/cluster:Cluster default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:redis/cluster:Cluster default {{name}}
 /// ```
 class Cluster extends pulumi.CustomResource {
@@ -3537,6 +4777,13 @@ class Cluster extends pulumi.CustomResource {
   /// Cross cluster replication config
   /// Structure is documented below.
   late final pulumi.Output<ClusterCrossClusterReplicationConfig> crossClusterReplicationConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. Indicates if the cluster is deletion protected or not.
   /// If the value if set to true, any delete cluster operation will fail.
   /// Default value is true.
@@ -3557,7 +4804,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String?> kmsKey;
   /// Resource labels to represent user provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Maintenance policy for a cluster
   /// Structure is documented below.
@@ -3565,13 +4812,13 @@ class Cluster extends pulumi.CustomResource {
   /// Upcoming maintenance schedule.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> maintenanceSchedules;
-  /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
+  /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
   /// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
   late final pulumi.Output<String?> maintenanceVersion;
   /// Backups that generated and managed by memorystore.
   /// Structure is documented below.
   late final pulumi.Output<ClusterManagedBackupSource?> managedBackupSource;
-  /// Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+  /// Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transitEncryptionMode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> managedServerCas;
   /// Unique name of the resource in this scope including project and location using the form:
@@ -3579,7 +4826,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The nodeType for the Redis cluster.
   /// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-  /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+  /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
   late final pulumi.Output<String> nodeType;
   /// Persistence config (RDB, AOF) for the cluster.
   /// Structure is documented below.
@@ -3611,6 +4858,14 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Optional. The number of replica nodes per shard.
   late final pulumi.Output<int?> replicaCount;
+  /// The serverCaMode for the TLS enabled Redis cluster.
+  /// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+  /// Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+  late final pulumi.Output<String> serverCaMode;
+  /// The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+  /// as the server_ca_mode.
+  /// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+  late final pulumi.Output<String?> serverCaPool;
   /// Required. Number of shards for the Redis cluster.
   late final pulumi.Output<int> shardCount;
   /// Output only. Redis memory size in GB for the entire cluster.
@@ -3651,6 +4906,7 @@ class Cluster extends pulumi.CustomResource {
     backupCollection = registerOutput<String>('backupCollection');
     createTime = registerOutput<String>('createTime');
     crossClusterReplicationConfig = registerOutput<ClusterCrossClusterReplicationConfig>('crossClusterReplicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCrossClusterReplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
     discoveryEndpoints = registerOutput<List<Map<String, dynamic>>>('discoveryEndpoints');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -3675,6 +4931,8 @@ class Cluster extends pulumi.CustomResource {
     redisConfigs = registerOutput<Map<String, String>?>('redisConfigs');
     region = registerOutput<String>('region');
     replicaCount = registerOutput<int?>('replicaCount');
+    serverCaMode = registerOutput<String>('serverCaMode');
+    serverCaPool = registerOutput<String?>('serverCaPool');
     shardCount = registerOutput<int>('shardCount');
     sizeGb = registerOutput<int>('sizeGb');
     state = registerOutput<String>('state');
@@ -3713,6 +4971,7 @@ class Cluster extends pulumi.CustomResource {
     backupCollection = registerOutput<String>('backupCollection');
     createTime = registerOutput<String>('createTime');
     crossClusterReplicationConfig = registerOutput<ClusterCrossClusterReplicationConfig>('crossClusterReplicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCrossClusterReplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
     discoveryEndpoints = registerOutput<List<Map<String, dynamic>>>('discoveryEndpoints');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -3737,6 +4996,8 @@ class Cluster extends pulumi.CustomResource {
     redisConfigs = registerOutput<Map<String, String>?>('redisConfigs');
     region = registerOutput<String>('region');
     replicaCount = registerOutput<int?>('replicaCount');
+    serverCaMode = registerOutput<String>('serverCaMode');
+    serverCaPool = registerOutput<String?>('serverCaPool');
     shardCount = registerOutput<int>('shardCount');
     sizeGb = registerOutput<int>('sizeGb');
     this.state = registerOutput<String>('state');

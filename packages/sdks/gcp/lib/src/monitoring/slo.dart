@@ -147,6 +147,36 @@ import 'slo_windows_based_sli.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_monitoring_getappengineservice" "default" {
+///   module_id = "default"
+/// }
+///
+/// resource "gcp_monitoring_slo" "appeng_slo" {
+///   service         = data.gcp_monitoring_getappengineservice.default.service_id
+///   slo_id          = "ae-slo"
+///   display_name    = "Test SLO for App Engine"
+///   goal            = 0.9
+///   calendar_period = "DAY"
+///   basic_sli = {
+///     latency = {
+///       threshold = "1s"
+///     }
+///   }
+///   user_labels = {
+///     "my_key"       = "my_value"
+///     "my_other_key" = "my_other_value"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +189,8 @@ import 'slo_windows_based_sli.dart';
 /// import com.pulumi.gcp.monitoring.SloArgs;
 /// import com.pulumi.gcp.monitoring.inputs.SloBasicSliArgs;
 /// import com.pulumi.gcp.monitoring.inputs.SloBasicSliLatencyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -346,6 +376,35 @@ import 'slo_windows_based_sli.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_customservice" "customsrv" {
+///   service_id   = "custom-srv-request-slos"
+///   display_name = "My Custom Service"
+/// }
+/// resource "gcp_monitoring_slo" "request_based_slo" {
+///   service             = gcp_monitoring_customservice.customsrv.service_id
+///   slo_id              = "consumed-api-slo"
+///   display_name        = "Test SLO with request based SLI (good total ratio)"
+///   goal                = 0.9
+///   rolling_period_days = 30
+///   request_based_sli = {
+///     distribution_cut = {
+///       distribution_filter = "metric.type=\"serviceruntime.googleapis.com/api/request_latencies\" resource.type=\"api\"  "
+///       range = {
+///         max = 0.5
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -359,8 +418,8 @@ import 'slo_windows_based_sli.dart';
 /// import com.pulumi.gcp.monitoring.inputs.SloRequestBasedSliArgs;
 /// import com.pulumi.gcp.monitoring.inputs.SloRequestBasedSliDistributionCutArgs;
 /// import com.pulumi.gcp.monitoring.inputs.SloRequestBasedSliDistributionCutRangeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -554,6 +613,33 @@ import 'slo_windows_based_sli.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_customservice" "customsrv" {
+///   service_id   = "custom-srv-windows-slos"
+///   display_name = "My Custom Service"
+/// }
+/// resource "gcp_monitoring_slo" "windows_based" {
+///   service         = gcp_monitoring_customservice.customsrv.service_id
+///   display_name    = "Test SLO with window based SLI"
+///   goal            = 0.95
+///   calendar_period = "FORTNIGHT"
+///   windows_based_sli = {
+///     window_period          = "400s"
+///     good_bad_metric_filter = join(" AND ", ["metric.type=\"monitoring.googleapis.com/uptime_check/check_passed\"", "resource.type=\"uptime_url\""])
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -567,8 +653,8 @@ import 'slo_windows_based_sli.dart';
 /// import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JoinArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -689,7 +775,7 @@ import 'slo_windows_based_sli.dart';
 ///                     "resource.type=\"gce_instance\"",
 ///                 ]).result,
 ///             "range": {
-///                 "max": 5,
+///                 "max": float(5),
 ///             },
 ///         },
 ///     })
@@ -731,7 +817,7 @@ import 'slo_windows_based_sli.dart';
 ///                 }).Apply(invoke => invoke.Result),
 ///                 Range = new Gcp.Monitoring.Inputs.SloWindowsBasedSliMetricMeanInRangeRangeArgs
 ///                 {
-///                     Max = 5,
+///                     Max = 5.0,
 ///                 },
 ///             },
 ///         },
@@ -789,6 +875,38 @@ import 'slo_windows_based_sli.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_customservice" "customsrv" {
+///   service_id   = "custom-srv-windows-slos"
+///   display_name = "My Custom Service"
+/// }
+/// resource "gcp_monitoring_slo" "windows_based" {
+///   service             = gcp_monitoring_customservice.customsrv.service_id
+///   display_name        = "Test SLO with window based SLI"
+///   goal                = 0.9
+///   rolling_period_days = 20
+///   windows_based_sli = {
+///     window_period = "600s"
+///     metric_mean_in_range = {
+///       time_series = join(" AND ", ["metric.type=\"agent.googleapis.com/cassandra/client_request/latency/95p\"", "resource.type=\"gce_instance\""])
+///       range = {
+///         max = 5
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -804,8 +922,8 @@ import 'slo_windows_based_sli.dart';
 /// import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliMetricMeanInRangeRangeArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JoinArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -934,7 +1052,7 @@ import 'slo_windows_based_sli.dart';
 ///                     "resource.type=\"uptime_url\"",
 ///                 ]).result,
 ///             "range": {
-///                 "max": 5000,
+///                 "max": float(5000),
 ///             },
 ///         },
 ///     })
@@ -976,7 +1094,7 @@ import 'slo_windows_based_sli.dart';
 ///                 }).Apply(invoke => invoke.Result),
 ///                 Range = new Gcp.Monitoring.Inputs.SloWindowsBasedSliMetricSumInRangeRangeArgs
 ///                 {
-///                     Max = 5000,
+///                     Max = 5000.0,
 ///                 },
 ///             },
 ///         },
@@ -1034,6 +1152,38 @@ import 'slo_windows_based_sli.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_customservice" "customsrv" {
+///   service_id   = "custom-srv-windows-slos"
+///   display_name = "My Custom Service"
+/// }
+/// resource "gcp_monitoring_slo" "windows_based" {
+///   service             = gcp_monitoring_customservice.customsrv.service_id
+///   display_name        = "Test SLO with window based SLI"
+///   goal                = 0.9
+///   rolling_period_days = 20
+///   windows_based_sli = {
+///     window_period = "400s"
+///     metric_sum_in_range = {
+///       time_series = join(" AND ", ["metric.type=\"monitoring.googleapis.com/uptime_check/request_latency\"", "resource.type=\"uptime_url\""])
+///       range = {
+///         max = 5000
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1049,8 +1199,8 @@ import 'slo_windows_based_sli.dart';
 /// import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliMetricSumInRangeRangeArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JoinArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1188,8 +1338,8 @@ import 'slo_windows_based_sli.dart';
 ///                             "resource.type=\"consumed_api\"",
 ///                         ]).result,
 ///                     "range": {
-///                         "min": 1,
-///                         "max": 9,
+///                         "min": float(1),
+///                         "max": float(9),
 ///                     },
 ///                 },
 ///             },
@@ -1238,8 +1388,8 @@ import 'slo_windows_based_sli.dart';
 ///                         }).Apply(invoke => invoke.Result),
 ///                         Range = new Gcp.Monitoring.Inputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs
 ///                         {
-///                             Min = 1,
-///                             Max = 9,
+///                             Min = 1.0,
+///                             Max = 9.0,
 ///                         },
 ///                     },
 ///                 },
@@ -1305,6 +1455,44 @@ import 'slo_windows_based_sli.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_customservice" "customsrv" {
+///   service_id   = "custom-srv-windows-slos"
+///   display_name = "My Custom Service"
+/// }
+/// resource "gcp_monitoring_slo" "windows_based" {
+///   service             = gcp_monitoring_customservice.customsrv.service_id
+///   display_name        = "Test SLO with window based SLI"
+///   goal                = 0.9
+///   rolling_period_days = 20
+///   windows_based_sli = {
+///     window_period = "100s"
+///     good_total_ratio_threshold = {
+///       threshold = 0.1
+///       performance = {
+///         distribution_cut = {
+///           distribution_filter = join(" AND ", ["metric.type=\"serviceruntime.googleapis.com/api/request_latencies\"", "resource.type=\"consumed_api\""])
+///           range = {
+///             min = 1
+///             max = 9
+///           }
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1322,8 +1510,8 @@ import 'slo_windows_based_sli.dart';
 /// import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JoinArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1411,22 +1599,15 @@ import 'slo_windows_based_sli.dart';
 /// Slo can be imported using any of these accepted formats:
 ///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{project}} {{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Slo can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:monitoring/slo:Slo default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:monitoring/slo:Slo default "{{project}} {{name}}"
-/// ```
-///
-/// ```sh
+/// $ terraform import google_monitoring_slo.default "{{project}} {{name}}"
 /// $ pulumi import gcp:monitoring/slo:Slo default {{name}}
 /// ```
 class Slo extends pulumi.CustomResource {
@@ -1435,13 +1616,20 @@ class Slo extends pulumi.CustomResource {
   /// SLIs are used to measure and calculate the quality of the Service's
   /// performance with respect to a single aspect of service quality.
   /// Exactly one of the following must be set:
-  /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+  /// `basicSli`, `requestBasedSli`, `windowsBasedSli`
   /// Structure is documented below.
   late final pulumi.Output<SloBasicSli?> basicSli;
   /// A calendar period, semantically "since the start of the current
   /// &lt;calendarPeriod&gt;".
   /// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
   late final pulumi.Output<String?> calendarPeriod;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Name used for UI elements listing this SLO.
   late final pulumi.Output<String?> displayName;
   /// The fraction of service that must be good in order for this objective
@@ -1459,7 +1647,7 @@ class Slo extends pulumi.CustomResource {
   /// It is used to measure and calculate the quality of the Service's
   /// performance with respect to a single aspect of service quality.
   /// Exactly one of the following must be set:
-  /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+  /// `basicSli`, `requestBasedSli`, `windowsBasedSli`
   /// Structure is documented below.
   late final pulumi.Output<SloRequestBasedSli?> requestBasedSli;
   /// A rolling time period, semantically "in the past X days".
@@ -1476,13 +1664,13 @@ class Slo extends pulumi.CustomResource {
   /// must begin with a letter.
   late final pulumi.Output<Map<String, String>?> userLabels;
   /// A windows-based SLI defines the criteria for time windows.
-  /// good_service is defined based off the count of these time windows
+  /// goodService is defined based off the count of these time windows
   /// for which the provided service was of good quality.
   /// A SLI describes a good service. It is used to measure and calculate
   /// the quality of the Service's performance with respect to a single
   /// aspect of service quality.
   /// Exactly one of the following must be set:
-  /// `basic_sli`, `request_based_sli`, `windows_based_sli`
+  /// `basicSli`, `requestBasedSli`, `windowsBasedSli`
   /// Structure is documented below.
   late final pulumi.Output<SloWindowsBasedSli?> windowsBasedSli;
 
@@ -1502,6 +1690,7 @@ class Slo extends pulumi.CustomResource {
         ) {
     basicSli = registerOutput<SloBasicSli?>('basicSli', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SloBasicSli.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     calendarPeriod = registerOutput<String?>('calendarPeriod');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     goal = registerOutput<double>('goal');
     this.name = registerOutput<String>('name');
@@ -1539,6 +1728,7 @@ class Slo extends pulumi.CustomResource {
         ) {
     basicSli = registerOutput<SloBasicSli?>('basicSli', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SloBasicSli.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     calendarPeriod = registerOutput<String?>('calendarPeriod');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     goal = registerOutput<double>('goal');
     this.name = registerOutput<String>('name');

@@ -154,8 +154,6 @@ import 'acl_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -213,6 +211,51 @@ import 'acl_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_managedkafka_cluster" "cluster" {
+///   cluster_id = "my-cluster"
+///   location   = "us-central1"
+///   capacity_config = {
+///     vcpu_count   = 3
+///     memory_bytes = 3221225472
+///   }
+///   gcp_config = {
+///     access_config = {
+///       network_configs = [{
+///         "subnet" ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/subnetworks/default"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_managedkafka_acl" "example" {
+///   acl_id   = "topic/mytopic"
+///   cluster  = gcp_managedkafka_cluster.cluster.cluster_id
+///   location = "us-central1"
+///   acl_entries {
+///     principal       = "User:admin@my-project.iam.gserviceaccount.com"
+///     permission_type = "ALLOW"
+///     operation       = "ALL"
+///     host            = "*"
+///   }
+///   acl_entries {
+///     principal       = "User:producer-client@my-project.iam.gserviceaccount.com"
+///     permission_type = "ALLOW"
+///     operation       = "WRITE"
+///     host            = "*"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -226,11 +269,12 @@ import 'acl_state.dart';
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
+/// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs;
 /// import com.pulumi.gcp.managedkafka.Acl;
 /// import com.pulumi.gcp.managedkafka.AclArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.AclAclEntryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -326,6 +370,7 @@ import 'acl_state.dart';
 ///
 /// * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/acls/{{acl_id}}`
 ///
+///
 /// When using the `pulumi import` command, Acl can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -343,6 +388,13 @@ class Acl extends pulumi.CustomResource {
   late final pulumi.Output<String> aclId;
   /// The cluster name.
   late final pulumi.Output<String> cluster;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// `etag` is used for concurrency control. An `etag` is returned in the
   /// response to `GetAcl` and `CreateAcl`. Callers are required to put that etag
   /// in the request to `UpdateAcl` to ensure that their change will be applied
@@ -381,6 +433,7 @@ class Acl extends pulumi.CustomResource {
     aclEntries = registerOutput<List<Map<String, dynamic>>>('aclEntries');
     aclId = registerOutput<String>('aclId');
     cluster = registerOutput<String>('cluster');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -416,6 +469,7 @@ class Acl extends pulumi.CustomResource {
     aclEntries = registerOutput<List<Map<String, dynamic>>>('aclEntries');
     aclId = registerOutput<String>('aclId');
     cluster = registerOutput<String>('cluster');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

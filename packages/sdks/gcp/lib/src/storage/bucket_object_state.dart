@@ -29,7 +29,16 @@ class BucketObjectState {
   /// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
   /// Structure is documented below.
   final pulumi.Input<BucketObjectCustomerEncryption>? customerEncryption;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
   final pulumi.Input<String>? deletionPolicy;
+  /// Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+  ///
+  /// &gt; **Warning:** For dynamically populated files or objects, `detectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `sourceMd5hash` instead.
   final pulumi.Input<String>? detectMd5hash;
   /// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
   final pulumi.Input<bool>? eventBasedHold;
@@ -49,7 +58,7 @@ class BucketObjectState {
   ///
   /// One of the following is required:
   final pulumi.Input<Map<String, String>>? metadata;
-  /// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+  /// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
   final pulumi.Input<String>? name;
   /// (Computed) The name of the object. Use this field in interpolations with `gcp.storage.ObjectACL` to recreate
   /// `gcp.storage.ObjectACL` resources when your `gcp.storage.BucketObject` is recreated.
@@ -83,8 +92,8 @@ class BucketObjectState {
   /// [contexts] Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
   /// [crc32c] (Computed) Base 64 CRC32 hash of the uploaded data.
   /// [customerEncryption] Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
-  /// [deletionPolicy] Optional.
-  /// [detectMd5hash] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// [detectMd5hash] Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
   /// [eventBasedHold] Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
   /// [forceEmptyContentType] When set to true, it ensure the object's Content-Type is empty.
   /// [generation] (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
@@ -93,7 +102,7 @@ class BucketObjectState {
   /// [md5hexhash] (Computed) Hex value of md5hash`
   /// [mediaLink] (Computed) A url reference to download this object.
   /// [metadata] User-provided metadata, in key/value pairs.
-  /// [name] The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+  /// [name] The name of the object. If you're interpolating the name of this object, see `outputName` instead.
   /// [outputName] (Computed) The name of the object. Use this field in interpolations with `gcp.storage.ObjectACL` to recreate
   /// [retention] The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
   /// [selfLink] (Computed) A url reference to this object.
@@ -198,4 +207,3 @@ class BucketObjectState {
     );
   }
 }
-

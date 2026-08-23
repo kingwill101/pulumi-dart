@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_get_backup_run_get_backup_run_args_doc}
 class GetBackupRunArgs {
   /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-  /// If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
+  /// If left empty and multiple backups exist for the instance, `mostRecent` must be set to `true`.
   final pulumi.Input<int>? backupId;
   /// The name of the instance the backup is taken from.
   final pulumi.Input<String> instance;
@@ -49,4 +49,3 @@ class GetBackupRunArgs {
     );
   }
 }
-

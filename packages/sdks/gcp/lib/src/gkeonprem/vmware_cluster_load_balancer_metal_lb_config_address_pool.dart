@@ -13,7 +13,7 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPool {
   final pulumi.Input<bool>? avoidBuggyIps;
   /// If true, prevent IP addresses from being automatically assigned.
   ///
-  /// &lt;a name="nested_dataplane_v2"&gt;&lt;/a&gt;The `dataplane_v2` block supports:
+  /// &lt;a name="nestedDataplaneV2"&gt;&lt;/a&gt;The `dataplaneV2` block supports:
   final pulumi.Input<bool>? manualAssign;
   /// The name of the address pool.
   final pulumi.Input<String> pool;
@@ -48,4 +48,3 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPool {
     );
   }
 }
-

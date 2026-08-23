@@ -69,6 +69,19 @@ import 'workload_identity_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "example" {
+///   workload_identity_pool_id = "example-pool"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -77,8 +90,8 @@ import 'workload_identity_pool_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPool;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -175,6 +188,23 @@ import 'workload_identity_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "example" {
+///   workload_identity_pool_id = "example-pool"
+///   display_name              = "Name of the pool"
+///   description               = "Identity pool operates in FEDERATION_ONLY mode"
+///   disabled                  = true
+///   mode                      = "FEDERATION_ONLY"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -183,8 +213,8 @@ import 'workload_identity_pool_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPool;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -247,6 +277,7 @@ import 'workload_identity_pool_state.dart';
 ///         additionalTrustBundles: [
 ///             {
 ///                 trustDomain: "example.com",
+///                 trustDefaultSharedCa: false,
 ///                 trustAnchors: [
 ///                     {
 ///                         pemCertificate: std.file({
@@ -262,6 +293,7 @@ import 'workload_identity_pool_state.dart';
 ///             },
 ///             {
 ///                 trustDomain: "example.net",
+///                 trustDefaultSharedCa: false,
 ///                 trustAnchors: [
 ///                     {
 ///                         pemCertificate: std.file({
@@ -277,6 +309,9 @@ import 'workload_identity_pool_state.dart';
 ///             },
 ///         ],
 ///     },
+///     attestationRules: [{
+///         googleCloudResource: "//run.googleapis.com/projects/1111111111111/type/Service/*",
+///     }],
 /// });
 /// ```
 /// ```python
@@ -303,6 +338,7 @@ import 'workload_identity_pool_state.dart';
 ///         "additional_trust_bundles": [
 ///             {
 ///                 "trust_domain": "example.com",
+///                 "trust_default_shared_ca": False,
 ///                 "trust_anchors": [
 ///                     {
 ///                         "pem_certificate": std.file(input="test-fixtures/trust_anchor_1.pem").result,
@@ -314,6 +350,7 @@ import 'workload_identity_pool_state.dart';
 ///             },
 ///             {
 ///                 "trust_domain": "example.net",
+///                 "trust_default_shared_ca": False,
 ///                 "trust_anchors": [
 ///                     {
 ///                         "pem_certificate": std.file(input="test-fixtures/trust_anchor_3.pem").result,
@@ -324,7 +361,10 @@ import 'workload_identity_pool_state.dart';
 ///                 ],
 ///             },
 ///         ],
-///     })
+///     },
+///     attestation_rules=[{
+///         "google_cloud_resource": "//run.googleapis.com/projects/1111111111111/type/Service/*",
+///     }])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -360,6 +400,7 @@ import 'workload_identity_pool_state.dart';
 ///                 new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs
 ///                 {
 ///                     TrustDomain = "example.com",
+///                     TrustDefaultSharedCa = false,
 ///                     TrustAnchors = new[]
 ///                     {
 ///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
@@ -381,6 +422,475 @@ import 'workload_identity_pool_state.dart';
 ///                 new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs
 ///                 {
 ///                     TrustDomain = "example.net",
+///                     TrustDefaultSharedCa = false,
+///                     TrustAnchors = new[]
+///                     {
+///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
+///                         {
+///                             PemCertificate = Std.File.Invoke(new()
+///                             {
+///                                 Input = "test-fixtures/trust_anchor_3.pem",
+///                             }).Apply(invoke => invoke.Result),
+///                         },
+///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
+///                         {
+///                             PemCertificate = Std.File.Invoke(new()
+///                             {
+///                                 Input = "test-fixtures/trust_anchor_4.pem",
+///                             }).Apply(invoke => invoke.Result),
+///                         },
+///                     },
+///                 },
+///             },
+///         },
+///         AttestationRules = new[]
+///         {
+///             new Gcp.Iam.Inputs.WorkloadIdentityPoolAttestationRuleArgs
+///             {
+///                 GoogleCloudResource = "//run.googleapis.com/projects/1111111111111/type/Service/*",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		invokeFile, err := std.File(ctx, &std.FileArgs{
+/// 			Input: "test-fixtures/trust_anchor_1.pem",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeFile1, err := std.File(ctx, &std.FileArgs{
+/// 			Input: "test-fixtures/trust_anchor_2.pem",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeFile2, err := std.File(ctx, &std.FileArgs{
+/// 			Input: "test-fixtures/trust_anchor_3.pem",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeFile3, err := std.File(ctx, &std.FileArgs{
+/// 			Input: "test-fixtures/trust_anchor_4.pem",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = iam.NewWorkloadIdentityPool(ctx, "example", &iam.WorkloadIdentityPoolArgs{
+/// 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
+/// 			DisplayName:            pulumi.String("Name of the pool"),
+/// 			Description:            pulumi.String("Identity pool operates in TRUST_DOMAIN mode"),
+/// 			Disabled:               pulumi.Bool(true),
+/// 			Mode:                   pulumi.String("TRUST_DOMAIN"),
+/// 			InlineCertificateIssuanceConfig: &iam.WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs{
+/// 				CaPools: pulumi.StringMap{
+/// 					"us-central1": pulumi.String("projects/project-bar/locations/us-central1/caPools/ca-pool-bar"),
+/// 					"asia-east2":  pulumi.String("projects/project-foo/locations/asia-east2/caPools/ca-pool-foo"),
+/// 				},
+/// 				Lifetime:                 pulumi.String("86400s"),
+/// 				RotationWindowPercentage: pulumi.Int(50),
+/// 				KeyAlgorithm:             pulumi.String("ECDSA_P256"),
+/// 			},
+/// 			InlineTrustConfig: &iam.WorkloadIdentityPoolInlineTrustConfigArgs{
+/// 				AdditionalTrustBundles: iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArray{
+/// 					&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs{
+/// 						TrustDomain:          pulumi.String("example.com"),
+/// 						TrustDefaultSharedCa: pulumi.Bool(false),
+/// 						TrustAnchors: iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArray{
+/// 							&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs{
+/// 								PemCertificate: pulumi.String(invokeFile.Result),
+/// 							},
+/// 							&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs{
+/// 								PemCertificate: pulumi.String(invokeFile1.Result),
+/// 							},
+/// 						},
+/// 					},
+/// 					&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs{
+/// 						TrustDomain:          pulumi.String("example.net"),
+/// 						TrustDefaultSharedCa: pulumi.Bool(false),
+/// 						TrustAnchors: iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArray{
+/// 							&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs{
+/// 								PemCertificate: pulumi.String(invokeFile2.Result),
+/// 							},
+/// 							&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs{
+/// 								PemCertificate: pulumi.String(invokeFile3.Result),
+/// 							},
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 			AttestationRules: iam.WorkloadIdentityPoolAttestationRuleArray{
+/// 				&iam.WorkloadIdentityPoolAttestationRuleArgs{
+/// 					GoogleCloudResource: pulumi.String("//run.googleapis.com/projects/1111111111111/type/Service/*"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "example" {
+///   workload_identity_pool_id = "example-pool"
+///   display_name              = "Name of the pool"
+///   description               = "Identity pool operates in TRUST_DOMAIN mode"
+///   disabled                  = true
+///   mode                      = "TRUST_DOMAIN"
+///   inline_certificate_issuance_config = {
+///     ca_pools = {
+///       "us-central1" = "projects/project-bar/locations/us-central1/caPools/ca-pool-bar"
+///       "asia-east2"  = "projects/project-foo/locations/asia-east2/caPools/ca-pool-foo"
+///     }
+///     lifetime                   = "86400s"
+///     rotation_window_percentage = 50
+///     key_algorithm              = "ECDSA_P256"
+///   }
+///   inline_trust_config = {
+///     additional_trust_bundles = [{
+///       "trustDomain"          = "example.com"
+///       "trustDefaultSharedCa" = false
+///       "trustAnchors" = [{
+///         "pemCertificate" = file("test-fixtures/trust_anchor_1.pem")
+///         }, {
+///         "pemCertificate" = file("test-fixtures/trust_anchor_2.pem")
+///       }]
+///       }, {
+///       "trustDomain"          = "example.net"
+///       "trustDefaultSharedCa" = false
+///       "trustAnchors" = [{
+///         "pemCertificate" = file("test-fixtures/trust_anchor_3.pem")
+///         }, {
+///         "pemCertificate" = file("test-fixtures/trust_anchor_4.pem")
+///       }]
+///     }]
+///   }
+///   attestation_rules {
+///     google_cloud_resource = "//run.googleapis.com/projects/1111111111111/type/Service/*"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.iam.WorkloadIdentityPool;
+/// import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
+/// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs;
+/// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigArgs;
+/// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs;
+/// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs;
+/// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolAttestationRuleArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.FileArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new WorkloadIdentityPool("example", WorkloadIdentityPoolArgs.builder()
+///             .workloadIdentityPoolId("example-pool")
+///             .displayName("Name of the pool")
+///             .description("Identity pool operates in TRUST_DOMAIN mode")
+///             .disabled(true)
+///             .mode("TRUST_DOMAIN")
+///             .inlineCertificateIssuanceConfig(WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs.builder()
+///                 .caPools(Map.ofEntries(
+///                     Map.entry("us-central1", "projects/project-bar/locations/us-central1/caPools/ca-pool-bar"),
+///                     Map.entry("asia-east2", "projects/project-foo/locations/asia-east2/caPools/ca-pool-foo")
+///                 ))
+///                 .lifetime("86400s")
+///                 .rotationWindowPercentage(50)
+///                 .keyAlgorithm("ECDSA_P256")
+///                 .build())
+///             .inlineTrustConfig(WorkloadIdentityPoolInlineTrustConfigArgs.builder()
+///                 .additionalTrustBundles(
+///                     WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs.builder()
+///                         .trustDomain("example.com")
+///                         .trustDefaultSharedCa(false)
+///                         .trustAnchors(
+///                             WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs.builder()
+///                                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+///                                     .input("test-fixtures/trust_anchor_1.pem")
+///                                     .build()).result())
+///                                 .build(),
+///                             WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs.builder()
+///                                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+///                                     .input("test-fixtures/trust_anchor_2.pem")
+///                                     .build()).result())
+///                                 .build())
+///                         .build(),
+///                     WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs.builder()
+///                         .trustDomain("example.net")
+///                         .trustDefaultSharedCa(false)
+///                         .trustAnchors(
+///                             WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs.builder()
+///                                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+///                                     .input("test-fixtures/trust_anchor_3.pem")
+///                                     .build()).result())
+///                                 .build(),
+///                             WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs.builder()
+///                                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+///                                     .input("test-fixtures/trust_anchor_4.pem")
+///                                     .build()).result())
+///                                 .build())
+///                         .build())
+///                 .build())
+///             .attestationRules(WorkloadIdentityPoolAttestationRuleArgs.builder()
+///                 .googleCloudResource("//run.googleapis.com/projects/1111111111111/type/Service/*")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: gcp:iam:WorkloadIdentityPool
+///     properties:
+///       workloadIdentityPoolId: example-pool
+///       displayName: Name of the pool
+///       description: Identity pool operates in TRUST_DOMAIN mode
+///       disabled: true
+///       mode: TRUST_DOMAIN
+///       inlineCertificateIssuanceConfig:
+///         caPools:
+///           us-central1: projects/project-bar/locations/us-central1/caPools/ca-pool-bar
+///           asia-east2: projects/project-foo/locations/asia-east2/caPools/ca-pool-foo
+///         lifetime: 86400s
+///         rotationWindowPercentage: 50
+///         keyAlgorithm: ECDSA_P256
+///       inlineTrustConfig:
+///         additionalTrustBundles:
+///           - trustDomain: example.com
+///             trustDefaultSharedCa: false
+///             trustAnchors:
+///               - pemCertificate:
+///                   fn::invoke:
+///                     function: std:file
+///                     arguments:
+///                       input: test-fixtures/trust_anchor_1.pem
+///                     return: result
+///               - pemCertificate:
+///                   fn::invoke:
+///                     function: std:file
+///                     arguments:
+///                       input: test-fixtures/trust_anchor_2.pem
+///                     return: result
+///           - trustDomain: example.net
+///             trustDefaultSharedCa: false
+///             trustAnchors:
+///               - pemCertificate:
+///                   fn::invoke:
+///                     function: std:file
+///                     arguments:
+///                       input: test-fixtures/trust_anchor_3.pem
+///                     return: result
+///               - pemCertificate:
+///                   fn::invoke:
+///                     function: std:file
+///                     arguments:
+///                       input: test-fixtures/trust_anchor_4.pem
+///                     return: result
+///       attestationRules:
+///         - googleCloudResource: //run.googleapis.com/projects/1111111111111/type/Service/*
+/// ```
+///
+/// ### Iam Workload Identity Pool Full Trust Domain Mode With Default Shared Ca
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as std from "@pulumi/std";
+///
+/// const example = new gcp.iam.WorkloadIdentityPool("example", {
+///     workloadIdentityPoolId: "example-pool",
+///     displayName: "Name of the pool",
+///     description: "Identity pool operates in TRUST_DOMAIN mode",
+///     disabled: true,
+///     mode: "TRUST_DOMAIN",
+///     inlineCertificateIssuanceConfig: {
+///         useDefaultSharedCa: true,
+///         lifetime: "86400s",
+///         rotationWindowPercentage: 50,
+///         keyAlgorithm: "ECDSA_P256",
+///     },
+///     inlineTrustConfig: {
+///         additionalTrustBundles: [
+///             {
+///                 trustDomain: "example.com",
+///                 trustDefaultSharedCa: true,
+///                 trustAnchors: [
+///                     {
+///                         pemCertificate: std.file({
+///                             input: "test-fixtures/trust_anchor_1.pem",
+///                         }).then(invoke => invoke.result),
+///                     },
+///                     {
+///                         pemCertificate: std.file({
+///                             input: "test-fixtures/trust_anchor_2.pem",
+///                         }).then(invoke => invoke.result),
+///                     },
+///                 ],
+///             },
+///             {
+///                 trustDomain: "example.net",
+///                 trustDefaultSharedCa: true,
+///                 trustAnchors: [
+///                     {
+///                         pemCertificate: std.file({
+///                             input: "test-fixtures/trust_anchor_3.pem",
+///                         }).then(invoke => invoke.result),
+///                     },
+///                     {
+///                         pemCertificate: std.file({
+///                             input: "test-fixtures/trust_anchor_4.pem",
+///                         }).then(invoke => invoke.result),
+///                     },
+///                 ],
+///             },
+///         ],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumi_std as std
+///
+/// example = gcp.iam.WorkloadIdentityPool("example",
+///     workload_identity_pool_id="example-pool",
+///     display_name="Name of the pool",
+///     description="Identity pool operates in TRUST_DOMAIN mode",
+///     disabled=True,
+///     mode="TRUST_DOMAIN",
+///     inline_certificate_issuance_config={
+///         "use_default_shared_ca": True,
+///         "lifetime": "86400s",
+///         "rotation_window_percentage": 50,
+///         "key_algorithm": "ECDSA_P256",
+///     },
+///     inline_trust_config={
+///         "additional_trust_bundles": [
+///             {
+///                 "trust_domain": "example.com",
+///                 "trust_default_shared_ca": True,
+///                 "trust_anchors": [
+///                     {
+///                         "pem_certificate": std.file(input="test-fixtures/trust_anchor_1.pem").result,
+///                     },
+///                     {
+///                         "pem_certificate": std.file(input="test-fixtures/trust_anchor_2.pem").result,
+///                     },
+///                 ],
+///             },
+///             {
+///                 "trust_domain": "example.net",
+///                 "trust_default_shared_ca": True,
+///                 "trust_anchors": [
+///                     {
+///                         "pem_certificate": std.file(input="test-fixtures/trust_anchor_3.pem").result,
+///                     },
+///                     {
+///                         "pem_certificate": std.file(input="test-fixtures/trust_anchor_4.pem").result,
+///                     },
+///                 ],
+///             },
+///         ],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Std = Pulumi.Std;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Gcp.Iam.WorkloadIdentityPool("example", new()
+///     {
+///         WorkloadIdentityPoolId = "example-pool",
+///         DisplayName = "Name of the pool",
+///         Description = "Identity pool operates in TRUST_DOMAIN mode",
+///         Disabled = true,
+///         Mode = "TRUST_DOMAIN",
+///         InlineCertificateIssuanceConfig = new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs
+///         {
+///             UseDefaultSharedCa = true,
+///             Lifetime = "86400s",
+///             RotationWindowPercentage = 50,
+///             KeyAlgorithm = "ECDSA_P256",
+///         },
+///         InlineTrustConfig = new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigArgs
+///         {
+///             AdditionalTrustBundles = new[]
+///             {
+///                 new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs
+///                 {
+///                     TrustDomain = "example.com",
+///                     TrustDefaultSharedCa = true,
+///                     TrustAnchors = new[]
+///                     {
+///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
+///                         {
+///                             PemCertificate = Std.File.Invoke(new()
+///                             {
+///                                 Input = "test-fixtures/trust_anchor_1.pem",
+///                             }).Apply(invoke => invoke.Result),
+///                         },
+///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
+///                         {
+///                             PemCertificate = Std.File.Invoke(new()
+///                             {
+///                                 Input = "test-fixtures/trust_anchor_2.pem",
+///                             }).Apply(invoke => invoke.Result),
+///                         },
+///                     },
+///                 },
+///                 new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs
+///                 {
+///                     TrustDomain = "example.net",
+///                     TrustDefaultSharedCa = true,
 ///                     TrustAnchors = new[]
 ///                     {
 ///                         new Gcp.Iam.Inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs
@@ -447,10 +957,7 @@ import 'workload_identity_pool_state.dart';
 /// 			Disabled:               pulumi.Bool(true),
 /// 			Mode:                   pulumi.String("TRUST_DOMAIN"),
 /// 			InlineCertificateIssuanceConfig: &iam.WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs{
-/// 				CaPools: pulumi.StringMap{
-/// 					"us-central1": pulumi.String("projects/project-bar/locations/us-central1/caPools/ca-pool-bar"),
-/// 					"asia-east2":  pulumi.String("projects/project-foo/locations/asia-east2/caPools/ca-pool-foo"),
-/// 				},
+/// 				UseDefaultSharedCa:       pulumi.Bool(true),
 /// 				Lifetime:                 pulumi.String("86400s"),
 /// 				RotationWindowPercentage: pulumi.Int(50),
 /// 				KeyAlgorithm:             pulumi.String("ECDSA_P256"),
@@ -458,7 +965,8 @@ import 'workload_identity_pool_state.dart';
 /// 			InlineTrustConfig: &iam.WorkloadIdentityPoolInlineTrustConfigArgs{
 /// 				AdditionalTrustBundles: iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArray{
 /// 					&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs{
-/// 						TrustDomain: pulumi.String("example.com"),
+/// 						TrustDomain:          pulumi.String("example.com"),
+/// 						TrustDefaultSharedCa: pulumi.Bool(true),
 /// 						TrustAnchors: iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArray{
 /// 							&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs{
 /// 								PemCertificate: pulumi.String(invokeFile.Result),
@@ -469,7 +977,8 @@ import 'workload_identity_pool_state.dart';
 /// 						},
 /// 					},
 /// 					&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs{
-/// 						TrustDomain: pulumi.String("example.net"),
+/// 						TrustDomain:          pulumi.String("example.net"),
+/// 						TrustDefaultSharedCa: pulumi.Bool(true),
 /// 						TrustAnchors: iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArray{
 /// 							&iam.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs{
 /// 								PemCertificate: pulumi.String(invokeFile2.Result),
@@ -489,6 +998,51 @@ import 'workload_identity_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "example" {
+///   workload_identity_pool_id = "example-pool"
+///   display_name              = "Name of the pool"
+///   description               = "Identity pool operates in TRUST_DOMAIN mode"
+///   disabled                  = true
+///   mode                      = "TRUST_DOMAIN"
+///   inline_certificate_issuance_config = {
+///     use_default_shared_ca      = true
+///     lifetime                   = "86400s"
+///     rotation_window_percentage = 50
+///     key_algorithm              = "ECDSA_P256"
+///   }
+///   inline_trust_config = {
+///     additional_trust_bundles = [{
+///       "trustDomain"          = "example.com"
+///       "trustDefaultSharedCa" = true
+///       "trustAnchors" = [{
+///         "pemCertificate" = file("test-fixtures/trust_anchor_1.pem")
+///         }, {
+///         "pemCertificate" = file("test-fixtures/trust_anchor_2.pem")
+///       }]
+///       }, {
+///       "trustDomain"          = "example.net"
+///       "trustDefaultSharedCa" = true
+///       "trustAnchors" = [{
+///         "pemCertificate" = file("test-fixtures/trust_anchor_3.pem")
+///         }, {
+///         "pemCertificate" = file("test-fixtures/trust_anchor_4.pem")
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -499,10 +1053,12 @@ import 'workload_identity_pool_state.dart';
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs;
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigArgs;
+/// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs;
+/// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -521,10 +1077,7 @@ import 'workload_identity_pool_state.dart';
 ///             .disabled(true)
 ///             .mode("TRUST_DOMAIN")
 ///             .inlineCertificateIssuanceConfig(WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs.builder()
-///                 .caPools(Map.ofEntries(
-///                     Map.entry("us-central1", "projects/project-bar/locations/us-central1/caPools/ca-pool-bar"),
-///                     Map.entry("asia-east2", "projects/project-foo/locations/asia-east2/caPools/ca-pool-foo")
-///                 ))
+///                 .useDefaultSharedCa(true)
 ///                 .lifetime("86400s")
 ///                 .rotationWindowPercentage(50)
 ///                 .keyAlgorithm("ECDSA_P256")
@@ -533,6 +1086,7 @@ import 'workload_identity_pool_state.dart';
 ///                 .additionalTrustBundles(
 ///                     WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs.builder()
 ///                         .trustDomain("example.com")
+///                         .trustDefaultSharedCa(true)
 ///                         .trustAnchors(
 ///                             WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs.builder()
 ///                                 .pemCertificate(StdFunctions.file(FileArgs.builder()
@@ -547,6 +1101,7 @@ import 'workload_identity_pool_state.dart';
 ///                         .build(),
 ///                     WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs.builder()
 ///                         .trustDomain("example.net")
+///                         .trustDefaultSharedCa(true)
 ///                         .trustAnchors(
 ///                             WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs.builder()
 ///                                 .pemCertificate(StdFunctions.file(FileArgs.builder()
@@ -576,15 +1131,14 @@ import 'workload_identity_pool_state.dart';
 ///       disabled: true
 ///       mode: TRUST_DOMAIN
 ///       inlineCertificateIssuanceConfig:
-///         caPools:
-///           us-central1: projects/project-bar/locations/us-central1/caPools/ca-pool-bar
-///           asia-east2: projects/project-foo/locations/asia-east2/caPools/ca-pool-foo
+///         useDefaultSharedCa: true
 ///         lifetime: 86400s
 ///         rotationWindowPercentage: 50
 ///         keyAlgorithm: ECDSA_P256
 ///       inlineTrustConfig:
 ///         additionalTrustBundles:
 ///           - trustDomain: example.com
+///             trustDefaultSharedCa: true
 ///             trustAnchors:
 ///               - pemCertificate:
 ///                   fn::invoke:
@@ -599,6 +1153,7 @@ import 'workload_identity_pool_state.dart';
 ///                       input: test-fixtures/trust_anchor_2.pem
 ///                     return: result
 ///           - trustDomain: example.net
+///             trustDefaultSharedCa: true
 ///             trustAnchors:
 ///               - pemCertificate:
 ///                   fn::invoke:
@@ -620,25 +1175,30 @@ import 'workload_identity_pool_state.dart';
 /// WorkloadIdentityPool can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}`
-///
 /// * `{{project}}/{{workload_identity_pool_id}}`
-///
 /// * `{{workload_identity_pool_id}}`
+///
 ///
 /// When using the `pulumi import` command, WorkloadIdentityPool can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{project}}/{{workload_identity_pool_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{workload_identity_pool_id}}
 /// ```
 class WorkloadIdentityPool extends pulumi.CustomResource {
+  /// Defines which workloads can receive an identity within a pool. When an AttestationRule is
+  /// defined under a managed identity, matching workloads may receive that identity. A maximum of
+  /// 50 AttestationRules can be set.
+  /// Structure is documented below.
+  late final pulumi.Output<List<Map<String, dynamic>>?> attestationRules;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of the pool. Cannot exceed 256 characters.
   late final pulumi.Output<String?> description;
   /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
@@ -661,7 +1221,6 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
   late final pulumi.Output<WorkloadIdentityPoolInlineTrustConfig?> inlineTrustConfig;
   /// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
   /// are in `FEDERATION_ONLY` mode.
-  ///
   /// &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
   /// `pulumi preview` may show an update if you change this field's value, `pulumi up`
   /// **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
@@ -676,8 +1235,14 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
   /// format: `ns/&lt;namespace&gt;/sa/&lt;workload_identifier&gt;`.
   /// `gcp.iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
   /// mode pools.
-  /// Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
-  late final pulumi.Output<String?> mode;
+  /// * `SYSTEM_TRUST_DOMAIN`: Pools are managed by Google Cloud services. Neither
+  /// `gcp.iam.WorkloadIdentityPoolNamespace`s nor `gcp.iam.WorkloadIdentityPoolProvider`s
+  /// can be created within `SYSTEM_TRUST_DOMAIN` mode pools. All identities within a
+  /// `SYSTEM_TRUST_DOMAIN` mode pool are in one of the following formats:
+  /// * `spiffe://&lt;trust-domain&gt;/ns/&lt;kubernetes-namespace&gt;/sa/&lt;kubernetes-service-account&gt;`
+  /// * `spiffe://&lt;trust-domain&gt;/resources/&lt;resource-scope&gt;/&lt;resource-name&gt;`
+  /// Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
+  late final pulumi.Output<String> mode;
   /// The resource name of the pool as
   /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
   late final pulumi.Output<String> name;
@@ -713,12 +1278,14 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    attestationRules = registerOutput<List<Map<String, dynamic>>?>('attestationRules');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
     inlineCertificateIssuanceConfig = registerOutput<WorkloadIdentityPoolInlineCertificateIssuanceConfig?>('inlineCertificateIssuanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inlineTrustConfig = registerOutput<WorkloadIdentityPoolInlineTrustConfig?>('inlineTrustConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolInlineTrustConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    mode = registerOutput<String?>('mode');
+    mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
@@ -748,12 +1315,14 @@ class WorkloadIdentityPool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    attestationRules = registerOutput<List<Map<String, dynamic>>?>('attestationRules');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String?>('displayName');
     inlineCertificateIssuanceConfig = registerOutput<WorkloadIdentityPoolInlineCertificateIssuanceConfig?>('inlineCertificateIssuanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     inlineTrustConfig = registerOutput<WorkloadIdentityPoolInlineTrustConfig?>('inlineTrustConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityPoolInlineTrustConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    mode = registerOutput<String?>('mode');
+    mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');

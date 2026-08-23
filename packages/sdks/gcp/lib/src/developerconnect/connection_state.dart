@@ -8,13 +8,14 @@ import 'connection_github_config.dart';
 import 'connection_github_enterprise_config.dart';
 import 'connection_gitlab_config.dart';
 import 'connection_gitlab_enterprise_config.dart';
+import 'connection_http_config.dart';
 import 'connection_installation_state.dart';
 
 /// Input properties used for looking up and filtering Connection resources.
 class ConnectionState {
   /// Optional. Allows clients to store small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Configuration for connections to an instance of Bitbucket Cloud.
   /// Structure is documented below.
@@ -24,7 +25,7 @@ class ConnectionState {
   final pulumi.Input<ConnectionBitbucketDataCenterConfig>? bitbucketDataCenterConfig;
   /// Required. Id of the requesting object
   /// If auto-generating Id server-side, remove this field and
-  /// connection_id from the method_signature of Create RPC
+  /// connectionId from the methodSignature of Create RPC
   final pulumi.Input<String>? connectionId;
   /// Output only. [Output only] Create timestamp
   final pulumi.Input<String>? createTime;
@@ -34,10 +35,18 @@ class ConnectionState {
   final pulumi.Input<ConnectionCryptoKeyConfig>? cryptoKeyConfig;
   /// Output only. [Output only] Delete timestamp
   final pulumi.Input<String>? deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. If disabled is set to true, functionality is disabled for this connection.
   /// Repository based API methods and webhooks processing for repositories in
   /// this connection will be disabled.
   final pulumi.Input<bool>? disabled;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -57,6 +66,9 @@ class ConnectionState {
   /// Configuration for connections to an instance of GitLab Enterprise.
   /// Structure is documented below.
   final pulumi.Input<ConnectionGitlabEnterpriseConfig>? gitlabEnterpriseConfig;
+  /// Configuration for connections to an HTTP service provider.
+  /// Structure is documented below.
+  final pulumi.Input<ConnectionHttpConfig>? httpConfig;
   /// Describes stage and necessary actions to be taken by the
   /// user to complete the installation. Used for GitHub and GitHub Enterprise
   /// based connections.
@@ -64,7 +76,7 @@ class ConnectionState {
   final pulumi.Input<List<ConnectionInstallationState>>? installationStates;
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
@@ -93,14 +105,16 @@ class ConnectionState {
   /// [createTime] Output only. [Output only] Create timestamp
   /// [cryptoKeyConfig] The crypto key configuration. This field is used by the Customer-managed
   /// [deleteTime] Output only. [Output only] Delete timestamp
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disabled] Optional. If disabled is set to true, functionality is disabled for this connection.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] Optional. This checksum is computed by the server based on the value of other
   /// [githubConfig] Configuration for connections to github.com.
   /// [githubEnterpriseConfig] Configuration for connections to an instance of GitHub Enterprise.
   /// [gitlabConfig] Configuration for connections to gitlab.com.
   /// [gitlabEnterpriseConfig] Configuration for connections to an instance of GitLab Enterprise.
+  /// [httpConfig] Configuration for connections to an HTTP service provider.
   /// [installationStates] Describes stage and necessary actions to be taken by the
   /// [labels] Optional. Labels as key value pairs
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -118,6 +132,7 @@ class ConnectionState {
     this.createTime,
     this.cryptoKeyConfig,
     this.deleteTime,
+    this.deletionPolicy,
     this.disabled,
     this.effectiveAnnotations,
     this.effectiveLabels,
@@ -126,6 +141,7 @@ class ConnectionState {
     this.githubEnterpriseConfig,
     this.gitlabConfig,
     this.gitlabEnterpriseConfig,
+    this.httpConfig,
     this.installationStates,
     this.labels,
     this.location,
@@ -146,6 +162,7 @@ class ConnectionState {
       'createTime': ?createTime,
       'cryptoKeyConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionCryptoKeyConfig, Map<String, dynamic>>(cryptoKeyConfig, (value) => value.toMap()),
       'deleteTime': ?deleteTime,
+      'deletionPolicy': ?deletionPolicy,
       'disabled': ?disabled,
       'effectiveAnnotations': ?effectiveAnnotations,
       'effectiveLabels': ?effectiveLabels,
@@ -154,6 +171,7 @@ class ConnectionState {
       'githubEnterpriseConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionGithubEnterpriseConfig, Map<String, dynamic>>(githubEnterpriseConfig, (value) => value.toMap()),
       'gitlabConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionGitlabConfig, Map<String, dynamic>>(gitlabConfig, (value) => value.toMap()),
       'gitlabEnterpriseConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionGitlabEnterpriseConfig, Map<String, dynamic>>(gitlabEnterpriseConfig, (value) => value.toMap()),
+      'httpConfig': ?pulumi.Input.mapOptionalInputValue<ConnectionHttpConfig, Map<String, dynamic>>(httpConfig, (value) => value.toMap()),
       'installationStates': ?pulumi.Input.mapOptionalInputValue<List<ConnectionInstallationState>, List<Map<String, dynamic>>>(installationStates, (value) => pulumi.Input.encodeList<ConnectionInstallationState, Map<String, dynamic>>(value, (value) => value.toMap())),
       'labels': ?labels,
       'location': ?location,
@@ -175,6 +193,7 @@ class ConnectionState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cryptoKeyConfig: (() { final guardedValue = map['cryptoKeyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionCryptoKeyConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -183,6 +202,7 @@ class ConnectionState {
       githubEnterpriseConfig: (() { final guardedValue = map['githubEnterpriseConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionGithubEnterpriseConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       gitlabConfig: (() { final guardedValue = map['gitlabConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionGitlabConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       gitlabEnterpriseConfig: (() { final guardedValue = map['gitlabEnterpriseConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionGitlabEnterpriseConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      httpConfig: (() { final guardedValue = map['httpConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionHttpConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       installationStates: (() { final guardedValue = map['installationStates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionInstallationState>(guardedValue, (value) => ConnectionInstallationState.fromMap((value as Map).cast<String, dynamic>()))); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -195,4 +215,3 @@ class ConnectionState {
     );
   }
 }
-

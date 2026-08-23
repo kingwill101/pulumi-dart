@@ -8,19 +8,19 @@ import 'cx_tool_version_tool_open_api_spec_authentication_service_agent_auth_con
 
 class CxToolVersionToolOpenApiSpecAuthentication {
   /// Config for API key auth.
-  /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+  /// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
   final pulumi.Input<CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfig>? apiKeyConfig;
   /// Config for bearer token auth.
-  /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+  /// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
   final pulumi.Input<CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig>? bearerTokenConfig;
   /// Config for OAuth.
-  /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+  /// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
   final pulumi.Input<CxToolVersionToolOpenApiSpecAuthenticationOauthConfig>? oauthConfig;
   /// Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
-  /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+  /// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
   final pulumi.Input<CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig>? serviceAgentAuthConfig;
 
@@ -54,4 +54,3 @@ class CxToolVersionToolOpenApiSpecAuthentication {
     );
   }
 }
-

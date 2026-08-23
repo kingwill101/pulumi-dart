@@ -184,6 +184,44 @@ import 'app_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instance" "instance" {
+///   name = "bt-instance"
+///   clusters {
+///     cluster_id   = "cluster-1"
+///     zone         = "us-central1-a"
+///     num_nodes    = 3
+///     storage_type = "HDD"
+///   }
+///   clusters {
+///     cluster_id   = "cluster-2"
+///     zone         = "us-central1-b"
+///     num_nodes    = 3
+///     storage_type = "HDD"
+///   }
+///   clusters {
+///     cluster_id   = "cluster-3"
+///     zone         = "us-central1-c"
+///     num_nodes    = 3
+///     storage_type = "HDD"
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_bigtable_appprofile" "ap" {
+///   instance                      = gcp_bigtable_instance.instance.name
+///   app_profile_id                = "bt-profile"
+///   multi_cluster_routing_use_any = true
+///   ignore_warnings               = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +233,8 @@ import 'app_profile_state.dart';
 /// import com.pulumi.gcp.bigtable.inputs.InstanceClusterArgs;
 /// import com.pulumi.gcp.bigtable.AppProfile;
 /// import com.pulumi.gcp.bigtable.AppProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -400,6 +438,35 @@ import 'app_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instance" "instance" {
+///   name = "bt-instance"
+///   clusters {
+///     cluster_id   = "cluster-1"
+///     zone         = "us-central1-b"
+///     num_nodes    = 3
+///     storage_type = "HDD"
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_bigtable_appprofile" "ap" {
+///   instance       = gcp_bigtable_instance.instance.name
+///   app_profile_id = "bt-profile"
+///   single_cluster_routing = {
+///     cluster_id                 = "cluster-1"
+///     allow_transactional_writes = true
+///   }
+///   ignore_warnings = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -412,8 +479,8 @@ import 'app_profile_state.dart';
 /// import com.pulumi.gcp.bigtable.AppProfile;
 /// import com.pulumi.gcp.bigtable.AppProfileArgs;
 /// import com.pulumi.gcp.bigtable.inputs.AppProfileSingleClusterRoutingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -659,6 +726,45 @@ import 'app_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instance" "instance" {
+///   name = "bt-instance"
+///   clusters {
+///     cluster_id   = "cluster-1"
+///     zone         = "us-central1-a"
+///     num_nodes    = 3
+///     storage_type = "HDD"
+///   }
+///   clusters {
+///     cluster_id   = "cluster-2"
+///     zone         = "us-central1-b"
+///     num_nodes    = 3
+///     storage_type = "HDD"
+///   }
+///   clusters {
+///     cluster_id   = "cluster-3"
+///     zone         = "us-central1-c"
+///     num_nodes    = 3
+///     storage_type = "HDD"
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_bigtable_appprofile" "ap" {
+///   instance                          = gcp_bigtable_instance.instance.name
+///   app_profile_id                    = "bt-profile"
+///   multi_cluster_routing_use_any     = true
+///   multi_cluster_routing_cluster_ids = ["cluster-1", "cluster-2"]
+///   ignore_warnings                   = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -670,8 +776,8 @@ import 'app_profile_state.dart';
 /// import com.pulumi.gcp.bigtable.inputs.InstanceClusterArgs;
 /// import com.pulumi.gcp.bigtable.AppProfile;
 /// import com.pulumi.gcp.bigtable.AppProfileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -894,6 +1000,38 @@ import 'app_profile_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instance" "instance" {
+///   name = "bt-instance"
+///   clusters {
+///     cluster_id   = "cluster-1"
+///     zone         = "us-central1-b"
+///     num_nodes    = 3
+///     storage_type = "HDD"
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_bigtable_appprofile" "ap" {
+///   instance       = gcp_bigtable_instance.instance.name
+///   app_profile_id = "bt-profile"
+///   single_cluster_routing = {
+///     cluster_id                 = "cluster-1"
+///     allow_transactional_writes = true
+///   }
+///   standard_isolation = {
+///     priority = "PRIORITY_LOW"
+///   }
+///   ignore_warnings = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -907,8 +1045,8 @@ import 'app_profile_state.dart';
 /// import com.pulumi.gcp.bigtable.AppProfileArgs;
 /// import com.pulumi.gcp.bigtable.inputs.AppProfileSingleClusterRoutingArgs;
 /// import com.pulumi.gcp.bigtable.inputs.AppProfileStandardIsolationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -978,22 +1116,15 @@ import 'app_profile_state.dart';
 /// AppProfile can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}`
-///
 /// * `{{project}}/{{instance}}/{{app_profile_id}}`
-///
 /// * `{{instance}}/{{app_profile_id}}`
+///
 ///
 /// When using the `pulumi import` command, AppProfile can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigquery/appProfile:AppProfile default projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/appProfile:AppProfile default {{project}}/{{instance}}/{{app_profile_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
 /// ```
 class AppProfile extends pulumi.CustomResource {
@@ -1002,6 +1133,13 @@ class AppProfile extends pulumi.CustomResource {
   /// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
   /// Structure is documented below.
   late final pulumi.Output<AppProfileDataBoostIsolationReadOnly?> dataBoostIsolationReadOnly;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Long form description of the use case for this app profile.
   late final pulumi.Output<String?> description;
   /// If true, ignore safety checks when deleting/updating the app profile.
@@ -1044,6 +1182,7 @@ class AppProfile extends pulumi.CustomResource {
         ) {
     appProfileId = registerOutput<String>('appProfileId');
     dataBoostIsolationReadOnly = registerOutput<AppProfileDataBoostIsolationReadOnly?>('dataBoostIsolationReadOnly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppProfileDataBoostIsolationReadOnly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
     instance = registerOutput<String?>('instance');
@@ -1081,6 +1220,7 @@ class AppProfile extends pulumi.CustomResource {
         ) {
     appProfileId = registerOutput<String>('appProfileId');
     dataBoostIsolationReadOnly = registerOutput<AppProfileDataBoostIsolationReadOnly?>('dataBoostIsolationReadOnly', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppProfileDataBoostIsolationReadOnly.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
     instance = registerOutput<String?>('instance');

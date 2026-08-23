@@ -11,6 +11,13 @@ import 'topic_schema_settings.dart';
 /// {@endtemplate}
 /// {@macro pulumi_pubsub_topic_topic_args_doc}
 class TopicArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Settings for ingestion from a data source into this topic.
   /// Structure is documented below.
   final pulumi.Input<TopicIngestionDataSourceSettings>? ingestionDataSourceSettings;
@@ -23,7 +30,7 @@ class TopicArgs {
   /// A set of key/value label pairs to assign to this Topic.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Indicates the minimum duration to retain a message after it is published
   /// to the topic. If this field is set, messages published to the topic in
@@ -62,6 +69,7 @@ class TopicArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [TopicArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [ingestionDataSourceSettings] Settings for ingestion from a data source into this topic.
   /// [kmsKeyName] The resource name of the Cloud KMS CryptoKey to be used to protect access
   /// [labels] A set of key/value label pairs to assign to this Topic.
@@ -73,6 +81,7 @@ class TopicArgs {
   /// [schemaSettings] Settings for validating messages published against a schema.
   /// [tags] Input only. Resource manager tags to be bound to the topic. Tag keys and
   const TopicArgs({
+    this.deletionPolicy,
     this.ingestionDataSourceSettings,
     this.kmsKeyName,
     this.labels,
@@ -87,6 +96,7 @@ class TopicArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'ingestionDataSourceSettings': ?pulumi.Input.mapOptionalInputValue<TopicIngestionDataSourceSettings, Map<String, dynamic>>(ingestionDataSourceSettings, (value) => value.toMap()),
       'kmsKeyName': ?kmsKeyName,
       'labels': ?labels,
@@ -102,6 +112,7 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ingestionDataSourceSettings: (() { final guardedValue = map['ingestionDataSourceSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TopicIngestionDataSourceSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -115,4 +126,3 @@ class TopicArgs {
     );
   }
 }
-

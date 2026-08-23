@@ -6,6 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionHealthSourceState {
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
   final pulumi.Input<String>? description;
@@ -50,6 +57,7 @@ class RegionHealthSourceState {
 
   /// Creates a new [RegionHealthSourceState].
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you
   /// [fingerprint] Fingerprint of this resource. A hash of the contents stored in this object.
   /// [healthAggregationPolicy] URL to the `HealthAggregationPolicy` resource. Must be set. Must
@@ -61,6 +69,7 @@ class RegionHealthSourceState {
   /// [sources] URLs to the source resources. Must be size 1. Must be a
   const RegionHealthSourceState({
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.fingerprint,
     this.healthAggregationPolicy,
@@ -75,6 +84,7 @@ class RegionHealthSourceState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'fingerprint': ?fingerprint,
       'healthAggregationPolicy': ?healthAggregationPolicy,
@@ -90,6 +100,7 @@ class RegionHealthSourceState {
   factory RegionHealthSourceState.fromMap(Map<String, dynamic> map) {
     return RegionHealthSourceState(
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       healthAggregationPolicy: (() { final guardedValue = map['healthAggregationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -102,4 +113,3 @@ class RegionHealthSourceState {
     );
   }
 }
-

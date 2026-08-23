@@ -12,13 +12,21 @@ import 'node_group_share_settings.dart';
 class NodeGroupArgs {
   /// If you use sole-tenant nodes for your workloads, you can use the node
   /// group autoscaler to automatically manage the sizes of your node groups.
-  /// One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+  /// One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
   /// Structure is documented below.
   final pulumi.Input<NodeGroupAutoscalingPolicy>? autoscalingPolicy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional textual description of the resource.
   final pulumi.Input<String>? description;
-  /// The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+  /// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
   final pulumi.Input<int>? initialSize;
+  /// (Optional, Beta)
   /// Specifies the frequency of planned maintenance events. Set to one of the following:
   /// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
   /// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
@@ -44,9 +52,10 @@ class NodeGroupArgs {
 
   /// Creates a new [NodeGroupArgs].
   /// [autoscalingPolicy] If you use sole-tenant nodes for your workloads, you can use the node
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional textual description of the resource.
-  /// [initialSize] The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
-  /// [maintenanceInterval] Specifies the frequency of planned maintenance events. Set to one of the following:
+  /// [initialSize] The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
+  /// [maintenanceInterval] (Optional, Beta)
   /// [maintenancePolicy] Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
   /// [maintenanceWindow] contains properties for the timeframe of maintenance
   /// [name] Name of the resource.
@@ -56,6 +65,7 @@ class NodeGroupArgs {
   /// [zone] Zone where this node group is located
   const NodeGroupArgs({
     this.autoscalingPolicy,
+    this.deletionPolicy,
     this.description,
     this.initialSize,
     this.maintenanceInterval,
@@ -71,6 +81,7 @@ class NodeGroupArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoscalingPolicy': ?pulumi.Input.mapOptionalInputValue<NodeGroupAutoscalingPolicy, Map<String, dynamic>>(autoscalingPolicy, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'initialSize': ?initialSize,
       'maintenanceInterval': ?maintenanceInterval,
@@ -87,6 +98,7 @@ class NodeGroupArgs {
   factory NodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupArgs(
       autoscalingPolicy: (() { final guardedValue = map['autoscalingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeGroupAutoscalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       initialSize: (() { final guardedValue = map['initialSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       maintenanceInterval: (() { final guardedValue = map['maintenanceInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -100,4 +112,3 @@ class NodeGroupArgs {
     );
   }
 }
-

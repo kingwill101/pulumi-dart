@@ -7,6 +7,7 @@ import 'cx_tool_version_tool_function_spec.dart';
 import 'cx_tool_version_tool_open_api_spec.dart';
 
 class CxToolVersionTool {
+  /// (Optional, Beta)
   /// Integration connectors tool specification.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
   /// Structure is documented below.
@@ -36,7 +37,7 @@ class CxToolVersionTool {
   final pulumi.Input<String>? toolType;
 
   /// Creates a new [CxToolVersionTool].
-  /// [connectorSpec] Integration connectors tool specification.
+  /// [connectorSpec] (Optional, Beta)
   /// [dataStoreSpec] Data store search tool specification.
   /// [description] High level description of the Tool and its usage.
   /// [displayName] The human-readable name of the tool, unique within the agent.
@@ -81,4 +82,3 @@ class CxToolVersionTool {
     );
   }
 }
-

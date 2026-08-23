@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'entry_link_aspect.dart';
 import 'entry_link_entry_reference.dart';
 
 /// {@template pulumi_dataplex_entry_link_entry_link_args_doc}
@@ -8,6 +9,16 @@ import 'entry_link_entry_reference.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dataplex_entry_link_entry_link_args_doc}
 class EntryLinkArgs {
+  /// The Aspects attached to the Entry Link.
+  /// Structure is documented below.
+  final pulumi.Input<List<EntryLinkAspect>>? aspects;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The id of the entry group this entry link is in.
   final pulumi.Input<String> entryGroupId;
   /// The id of the entry link to create.
@@ -25,6 +36,8 @@ class EntryLinkArgs {
   final pulumi.Input<String>? project;
 
   /// Creates a new [EntryLinkArgs].
+  /// [aspects] The Aspects attached to the Entry Link.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [entryGroupId] The id of the entry group this entry link is in.
   /// [entryLinkId] The id of the entry link to create.
   /// [entryLinkType] Relative resource name of the Entry Link Type used to create this Entry Link. For example:
@@ -32,6 +45,8 @@ class EntryLinkArgs {
   /// [location] The location for the entry.
   /// [project] The ID of the project in which the resource belongs.
   const EntryLinkArgs({
+    this.aspects,
+    this.deletionPolicy,
     required this.entryGroupId,
     required this.entryLinkId,
     required this.entryLinkType,
@@ -42,6 +57,8 @@ class EntryLinkArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'aspects': ?pulumi.Input.mapOptionalInputValue<List<EntryLinkAspect>, List<Map<String, dynamic>>>(aspects, (value) => pulumi.Input.encodeList<EntryLinkAspect, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': ?deletionPolicy,
       'entryGroupId': entryGroupId,
       'entryLinkId': entryLinkId,
       'entryLinkType': entryLinkType,
@@ -53,6 +70,8 @@ class EntryLinkArgs {
 
   factory EntryLinkArgs.fromMap(Map<String, dynamic> map) {
     return EntryLinkArgs(
+      aspects: (() { final guardedValue = map['aspects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EntryLinkAspect>(guardedValue, (value) => EntryLinkAspect.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entryGroupId: pulumi.Input.fromValue(map['entryGroupId'] as String),
       entryLinkId: pulumi.Input.fromValue(map['entryLinkId'] as String),
       entryLinkType: pulumi.Input.fromValue(map['entryLinkType'] as String),
@@ -62,4 +81,3 @@ class EntryLinkArgs {
     );
   }
 }
-

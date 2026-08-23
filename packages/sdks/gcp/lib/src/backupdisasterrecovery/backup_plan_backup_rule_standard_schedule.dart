@@ -11,11 +11,11 @@ class BackupPlanBackupRuleStandardSchedule {
   final pulumi.Input<BackupPlanBackupRuleStandardScheduleBackupWindow>? backupWindow;
   /// Specifies days of months like 1, 5, or 14 on which jobs will run.
   final pulumi.Input<List<int>>? daysOfMonths;
-  /// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
+  /// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
   /// Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final pulumi.Input<List<String>>? daysOfWeeks;
   /// Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
-  /// This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
+  /// This is required for `recurrenceType`, `HOURLY` and is not applicable otherwise.
   final pulumi.Input<int>? hourlyFrequency;
   /// Specifies values of months
   /// Each value may be one of: `MONTH_UNSPECIFIED`, `JANUARY`, `FEBRUARY`, `MARCH`, `APRIL`, `MAY`, `JUNE`, `JULY`, `AUGUST`, `SEPTEMBER`, `OCTOBER`, `NOVEMBER`, `DECEMBER`.
@@ -32,7 +32,7 @@ class BackupPlanBackupRuleStandardSchedule {
   /// Creates a new [BackupPlanBackupRuleStandardSchedule].
   /// [backupWindow] A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
   /// [daysOfMonths] Specifies days of months like 1, 5, or 14 on which jobs will run.
-  /// [daysOfWeeks] Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
+  /// [daysOfWeeks] Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
   /// [hourlyFrequency] Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
   /// [months] Specifies values of months
   /// [recurrenceType] RecurrenceType enumerates the applicable periodicity for the schedule.
@@ -75,4 +75,3 @@ class BackupPlanBackupRuleStandardSchedule {
     );
   }
 }
-

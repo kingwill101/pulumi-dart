@@ -267,13 +267,13 @@ import 'security_action_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      apigeeNetwork.ID(),
+/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID(),
+/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
@@ -285,7 +285,7 @@ import 'security_action_state.dart';
 /// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 /// 			AnalyticsRegion:   pulumi.String("us-central1"),
 /// 			ProjectId:         pulumi.String(current.Project),
-/// 			AuthorizedNetwork: apigeeNetwork.ID(),
+/// 			AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
 /// 		}))
@@ -296,7 +296,7 @@ import 'security_action_state.dart';
 /// 			Name:        pulumi.String("my-environment"),
 /// 			Description: pulumi.String("Apigee Environment"),
 /// 			DisplayName: pulumi.String("environment-1"),
-/// 			OrgId:       apigeeOrg.ID(),
+/// 			OrgId:       apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -341,6 +341,68 @@ import 'security_action_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getclientconfig" "current" {
+/// }
+///
+/// resource "gcp_compute_network" "apigee_network" {
+///   name = "my-network"
+/// }
+/// resource "gcp_compute_globaladdress" "apigee_range" {
+///   name          = "my-address"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.apigee_network.id
+/// }
+/// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   network                 = gcp_compute_network.apigee_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+/// }
+/// resource "gcp_apigee_organization" "apigee_org" {
+///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   analytics_region   = "us-central1"
+///   project_id         = data.gcp_organizations_getclientconfig.current.project
+///   authorized_network = gcp_compute_network.apigee_network.id
+/// }
+/// resource "gcp_apigee_environment" "env" {
+///   name         = "my-environment"
+///   description  = "Apigee Environment"
+///   display_name = "environment-1"
+///   org_id       = gcp_apigee_organization.apigee_org.id
+/// }
+/// resource "gcp_apigee_addonsconfig" "apigee_org_security_addons_config" {
+///   org = gcp_apigee_organization.apigee_org.name
+///   addons_config = {
+///     api_security_config = {
+///       enabled = true
+///     }
+///   }
+/// }
+/// resource "gcp_apigee_securityaction" "apigee_security_action" {
+///   depends_on         = [gcp_apigee_addonsconfig.apigee_org_security_addons_config]
+///   security_action_id = "my-security-action"
+///   org_id             = gcp_apigee_organization.apigee_org.name
+///   env_id             = gcp_apigee_environment.env.name
+///   description        = "Apigee Security Action"
+///   state              = "ENABLED"
+///   condition_config = {
+///     ip_address_ranges = ["100.0.220.1", "200.0.0.1"]
+///     bot_reasons       = ["Flooder", "Public Cloud Azure", "Public Cloud AWS"]
+///   }
+///   allow       = {}
+///   expire_time = "2025-12-31T23:59:59Z"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -367,8 +429,8 @@ import 'security_action_state.dart';
 /// import com.pulumi.gcp.apigee.inputs.SecurityActionConditionConfigArgs;
 /// import com.pulumi.gcp.apigee.inputs.SecurityActionAllowArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -533,16 +595,13 @@ import 'security_action_state.dart';
 /// SecurityAction can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{org_id}}/environments/{{env_id}}/securityActions/{{security_action_id}}`
-///
 /// * `{{org_id}}/{{env_id}}/{{security_action_id}}`
+///
 ///
 /// When using the `pulumi import` command, SecurityAction can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/securityAction:SecurityAction default organizations/{{org_id}}/environments/{{env_id}}/securityActions/{{security_action_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/securityAction:SecurityAction default {{org_id}}/{{env_id}}/{{security_action_id}}
 /// ```
 class SecurityAction extends pulumi.CustomResource {
@@ -561,6 +620,13 @@ class SecurityAction extends pulumi.CustomResource {
   /// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
   /// Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Deny a request through if it matches this SecurityAction.
   /// Structure is documented below.
   late final pulumi.Output<SecurityActionDeny?> deny;
@@ -610,6 +676,7 @@ class SecurityAction extends pulumi.CustomResource {
     apiProxies = registerOutput<List<String>?>('apiProxies');
     conditionConfig = registerOutput<SecurityActionConditionConfig>('conditionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityActionConditionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deny = registerOutput<SecurityActionDeny?>('deny', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityActionDeny.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     envId = registerOutput<String>('envId');
@@ -649,6 +716,7 @@ class SecurityAction extends pulumi.CustomResource {
     apiProxies = registerOutput<List<String>?>('apiProxies');
     conditionConfig = registerOutput<SecurityActionConditionConfig>('conditionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityActionConditionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deny = registerOutput<SecurityActionDeny?>('deny', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityActionDeny.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     envId = registerOutput<String>('envId');

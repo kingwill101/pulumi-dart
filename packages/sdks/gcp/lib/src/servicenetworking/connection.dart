@@ -133,14 +133,14 @@ import 'connection_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      peeringNetwork.ID(),
+/// 			Network:      peeringNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Create a private connection
 /// 		_default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-/// 			Network: peeringNetwork.ID(),
+/// 			Network: peeringNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -163,6 +163,41 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// # Create a VPC network
+/// resource "gcp_compute_network" "peering_network" {
+///   name = "peering-network"
+/// }
+/// # Create an IP address
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "private-ip-alloc"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.peering_network.id
+/// }
+/// # Create a private connection
+/// resource "gcp_servicenetworking_connection" "default" {
+///   network                 = gcp_compute_network.peering_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// # (Optional) Import or export custom routes
+/// resource "gcp_compute_networkpeeringroutesconfig" "peering_routes" {
+///   peering              = gcp_servicenetworking_connection.default.peering
+///   network              = gcp_compute_network.peering_network.name
+///   import_custom_routes = true
+///   export_custom_routes = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -177,8 +212,8 @@ import 'connection_state.dart';
 /// import com.pulumi.gcp.servicenetworking.ConnectionArgs;
 /// import com.pulumi.gcp.compute.NetworkPeeringRoutesConfig;
 /// import com.pulumi.gcp.compute.NetworkPeeringRoutesConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -265,21 +300,23 @@ import 'connection_state.dart';
 /// ServiceNetworkingConnection can be imported using any of these accepted formats
 ///
 /// * `{{peering-network}}:{{service}}`
-///
 /// * `projects/{{project}}/global/networks/{{peering-network}}:{{service}}`
+///
 ///
 /// When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:servicenetworking/connection:Connection default {{peering-network}}:{{service}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:servicenetworking/connection:Connection default /projects/{{project}}/global/networks/{{peering-network}}:{{service}}
 /// ```
 class Connection extends pulumi.CustomResource {
-  /// The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
-  late final pulumi.Output<String?> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE" or any other value, deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Name of VPC network connected with service producers using VPC peering.
   late final pulumi.Output<String> network;
   /// (Computed) The name of the VPC Network Peering connection that was created by the service producer.
@@ -309,7 +346,7 @@ class Connection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     network = registerOutput<String>('network');
     peering = registerOutput<String>('peering');
     reservedPeeringRanges = registerOutput<List<String>>('reservedPeeringRanges');
@@ -340,7 +377,7 @@ class Connection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     network = registerOutput<String>('network');
     peering = registerOutput<String>('peering');
     reservedPeeringRanges = registerOutput<List<String>>('reservedPeeringRanges');

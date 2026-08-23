@@ -161,13 +161,13 @@ import 'env_group_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      apigeeNetwork.ID(),
+/// 			Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: apigeeNetwork.ID(),
+/// 			Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				apigeeRange.Name,
@@ -179,7 +179,7 @@ import 'env_group_state.dart';
 /// 		apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 /// 			AnalyticsRegion:   pulumi.String("us-central1"),
 /// 			ProjectId:         pulumi.String(current.Project),
-/// 			AuthorizedNetwork: apigeeNetwork.ID(),
+/// 			AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			apigeeVpcConnection,
 /// 		}))
@@ -191,13 +191,52 @@ import 'env_group_state.dart';
 /// 			Hostnames: pulumi.StringArray{
 /// 				pulumi.String("abc.foo.com"),
 /// 			},
-/// 			OrgId: apigeeOrg.ID(),
+/// 			OrgId: apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getclientconfig" "current" {
+/// }
+///
+/// resource "gcp_compute_network" "apigee_network" {
+///   name = "apigee-network"
+/// }
+/// resource "gcp_compute_globaladdress" "apigee_range" {
+///   name          = "apigee-range"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.apigee_network.id
+/// }
+/// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   network                 = gcp_compute_network.apigee_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+/// }
+/// resource "gcp_apigee_organization" "apigee_org" {
+///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   analytics_region   = "us-central1"
+///   project_id         = data.gcp_organizations_getclientconfig.current.project
+///   authorized_network = gcp_compute_network.apigee_network.id
+/// }
+/// resource "gcp_apigee_envgroup" "env_grp" {
+///   name      = "my-envgroup"
+///   hostnames = ["abc.foo.com"]
+///   org_id    = gcp_apigee_organization.apigee_org.id
 /// }
 /// ```
 /// ```java
@@ -218,8 +257,8 @@ import 'env_group_state.dart';
 /// import com.pulumi.gcp.apigee.EnvGroup;
 /// import com.pulumi.gcp.apigee.EnvGroupArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -323,19 +362,23 @@ import 'env_group_state.dart';
 /// Envgroup can be imported using any of these accepted formats:
 ///
 /// * `{{org_id}}/envgroups/{{name}}`
-///
 /// * `{{org_id}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Envgroup can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apigee/envGroup:EnvGroup default {{org_id}}/envgroups/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apigee/envGroup:EnvGroup default {{org_id}}/{{name}}
 /// ```
 class EnvGroup extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Hostnames of the environment group.
   late final pulumi.Output<List<String>?> hostnames;
   /// The resource ID of the environment group.
@@ -358,6 +401,7 @@ class EnvGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     hostnames = registerOutput<List<String>?>('hostnames');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
@@ -386,6 +430,7 @@ class EnvGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     hostnames = registerOutput<List<String>?>('hostnames');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');

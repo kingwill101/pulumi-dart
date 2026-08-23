@@ -84,6 +84,25 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataflow_job" "big_data_job" {
+///   name              = "dataflow-job"
+///   template_gcs_path = "gs://my-bucket/templates/template_file"
+///   temp_gcs_location = "gs://my-bucket/tmp_dir"
+///   parameters = {
+///     "foo" = "bar"
+///     "baz" = "qux"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +111,8 @@ import 'job_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataflow.Job;
 /// import com.pulumi.gcp.dataflow.JobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -132,9 +151,7 @@ import 'job_state.dart';
 ///         baz: qux
 /// ```
 ///
-///
 /// ### Streaming Job
-///
 ///
 /// ```typescript
 /// import * as pulumi from "@pulumi/pulumi";
@@ -288,7 +305,7 @@ import 'job_state.dart';
 /// 				"inputFilePattern": bucket1.Url.ApplyT(func(url string) (string, error) {
 /// 					return fmt.Sprintf("%v/*.json", url), nil
 /// 				}).(pulumi.StringOutput),
-/// 				"outputTopic": topic.ID(),
+/// 				"outputTopic": topic.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			TransformNameMapping: pulumi.StringMap{
 /// 				"name": pulumi.String("test_job"),
@@ -303,6 +320,44 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "dataflow-job1"
+/// }
+/// resource "gcp_storage_bucket" "bucket1" {
+///   name          = "tf-test-bucket1"
+///   location      = "US"
+///   force_destroy = true
+/// }
+/// resource "gcp_storage_bucket" "bucket2" {
+///   name          = "tf-test-bucket2"
+///   location      = "US"
+///   force_destroy = true
+/// }
+/// resource "gcp_dataflow_job" "pubsub_stream" {
+///   name                    = "tf-test-dataflow-job1"
+///   template_gcs_path       = "gs://my-bucket/templates/template_file"
+///   temp_gcs_location       = "gs://my-bucket/tmp_dir"
+///   enable_streaming_engine = true
+///   parameters = {
+///     "inputFilePattern" ="${gcp_storage_bucket.bucket1.url}/*.json"
+///     "outputTopic"      = gcp_pubsub_topic.topic.id
+///   }
+///   transform_name_mapping = {
+///     "name" = "test_job"
+///     "env"  = "test"
+///   }
+///   on_delete = "cancel"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -315,8 +370,8 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.storage.BucketArgs;
 /// import com.pulumi.gcp.dataflow.Job;
 /// import com.pulumi.gcp.dataflow.JobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -401,13 +456,13 @@ import 'job_state.dart';
 ///
 /// ## Note on "destroy" / "apply"
 ///
-/// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.
+/// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Terraform / Google resources.
 ///
 /// The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
 ///
-/// A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "drain". When `on_delete` is set to `"drain"` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
+/// A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "drain". When `onDelete` is set to `"drain"` in the configuration, you may experience a long wait for your `terraform destroy` to complete.
 ///
-/// You can potentially short-circuit the wait by setting `skip_wait_on_job_termination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a random_id resource, for example:
+/// You can potentially short-circuit the wait by setting `skipWaitOnJobTermination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a randomId resource, for example:
 ///
 ///
 /// ```typescript
@@ -443,7 +498,7 @@ import 'job_state.dart';
 /// big_data_job_subscription_id = config.get("bigDataJobSubscriptionId")
 /// if big_data_job_subscription_id is None:
 ///     big_data_job_subscription_id = "projects/myproject/subscriptions/messages"
-/// big_data_job_name_suffix = random.index.Id("big_data_job_name_suffix",
+/// big_data_job_name_suffix = random.Id("big_data_job_name_suffix",
 ///     byte_length=4,
 ///     keepers={
 ///         region: region,
@@ -469,7 +524,7 @@ import 'job_state.dart';
 /// {
 ///     var config = new Config();
 ///     var bigDataJobSubscriptionId = config.Get("bigDataJobSubscriptionId") ?? "projects/myproject/subscriptions/messages";
-///     var bigDataJobNameSuffix = new Random.Index.Id("big_data_job_name_suffix", new()
+///     var bigDataJobNameSuffix = new Random.Id("big_data_job_name_suffix", new()
 ///     {
 ///         ByteLength = 4,
 ///         Keepers =
@@ -497,8 +552,6 @@ import 'job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataflow"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -538,6 +591,39 @@ import 'job_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_id" "big_data_job_name_suffix" {
+///   byte_length = 4
+///   keepers = {
+///     "region"         = region
+///     "subscriptionId" = var.bigDataJobSubscriptionId
+///   }
+/// }
+/// resource "gcp_dataflow_flextemplatejob" "big_data_job" {
+///   name                         ="dataflow-flextemplates-job-${random_id.big_data_job_name_suffix.dec}"
+///   region                       = region
+///   container_spec_gcs_path      = "gs://my-bucket/templates/template.json"
+///   skip_wait_on_job_termination = true
+///   parameters = {
+///     "inputSubscription" = var.bigDataJobSubscriptionId
+///   }
+/// }
+/// variable "bigDataJobSubscriptionId" {
+///   type    = string
+///   default = "projects/myproject/subscriptions/messages"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -548,8 +634,8 @@ import 'job_state.dart';
 /// import com.pulumi.random.IdArgs;
 /// import com.pulumi.gcp.dataflow.FlexTemplateJob;
 /// import com.pulumi.gcp.dataflow.FlexTemplateJobArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -572,7 +658,7 @@ import 'job_state.dart';
 ///             .build());
 ///
 ///         var bigDataJob = new FlexTemplateJob("bigDataJob", FlexTemplateJobArgs.builder()
-///             .name(String.format("dataflow-flextemplates-job-%s", bigDataJobNameSuffix.dec()))
+///             .name(String.format("dataflow-flextemplates-job-%s", bigDataJobNameSuffix.get("dec")))
 ///             .region(region)
 ///             .containerSpecGcsPath("gs://my-bucket/templates/template.json")
 ///             .skipWaitOnJobTermination(true)
@@ -615,14 +701,22 @@ import 'job_state.dart';
 ///
 /// * `{{id}}`
 ///
+///
 /// When using the `pulumi import` command, dataflow jobs can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataflow/job:Job default {{id}}
 /// ```
 class Job extends pulumi.CustomResource {
-  /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+  /// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
   late final pulumi.Output<List<String>> additionalExperiments;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
@@ -635,7 +729,7 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<String?> kmsKeyName;
   /// User labels to be specified for the job. Keys and values should follow the restrictions
   /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The machine type to use for the job.
   late final pulumi.Output<String?> machineType;
@@ -693,6 +787,7 @@ class Job extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     additionalExperiments = registerOutput<List<String>>('additionalExperiments');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableStreamingEngine = registerOutput<bool?>('enableStreamingEngine');
     ipConfiguration = registerOutput<String?>('ipConfiguration');
@@ -743,6 +838,7 @@ class Job extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     additionalExperiments = registerOutput<List<String>>('additionalExperiments');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     enableStreamingEngine = registerOutput<bool?>('enableStreamingEngine');
     ipConfiguration = registerOutput<String?>('ipConfiguration');

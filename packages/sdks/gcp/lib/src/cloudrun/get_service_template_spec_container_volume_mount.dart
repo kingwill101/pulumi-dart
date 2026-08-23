@@ -6,14 +6,17 @@ class GetServiceTemplateSpecContainerVolumeMount {
   /// Path within the container at which the volume should be mounted.  Must
   /// not contain ':'.
   final pulumi.Input<String> mountPath;
-  /// The name of the Cloud Run Service.
+  /// Name must be unique within a Google Cloud project and region.
+  /// Is required when creating resources. Name is primarily intended
+  /// for creation idempotence and configuration definition. Cannot be updated.
+  /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   final pulumi.Input<String> name;
   /// Path within the volume from which the container's volume should be mounted.
   final pulumi.Input<String> subPath;
 
   /// Creates a new [GetServiceTemplateSpecContainerVolumeMount].
   /// [mountPath] Path within the container at which the volume should be mounted.  Must
-  /// [name] The name of the Cloud Run Service.
+  /// [name] Name must be unique within a Google Cloud project and region.
   /// [subPath] Path within the volume from which the container's volume should be mounted.
   const GetServiceTemplateSpecContainerVolumeMount({
     required this.mountPath,
@@ -37,4 +40,3 @@ class GetServiceTemplateSpecContainerVolumeMount {
     );
   }
 }
-

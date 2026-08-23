@@ -23,6 +23,13 @@ class BackupPlanArgs {
   /// (except deletes), including the deactivated field itself. It also prevents any new Backups
   /// from being created via this BackupPlan (including scheduled Backups).
   final pulumi.Input<bool>? deactivated;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User specified descriptive string for this BackupPlan.
   final pulumi.Input<String>? description;
   /// Description: A set of custom labels supplied by the user.
@@ -30,7 +37,7 @@ class BackupPlanArgs {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The region of the Backup Plan.
   final pulumi.Input<String> location;
@@ -48,6 +55,7 @@ class BackupPlanArgs {
   /// [backupSchedule] Defines a schedule for automatic Backup creation via this BackupPlan.
   /// [cluster] The source cluster from which Backups will be created via this BackupPlan.
   /// [deactivated] This flag indicates whether this BackupPlan has been deactivated.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User specified descriptive string for this BackupPlan.
   /// [labels] Description: A set of custom labels supplied by the user.
   /// [location] The region of the Backup Plan.
@@ -59,6 +67,7 @@ class BackupPlanArgs {
     this.backupSchedule,
     required this.cluster,
     this.deactivated,
+    this.deletionPolicy,
     this.description,
     this.labels,
     required this.location,
@@ -73,6 +82,7 @@ class BackupPlanArgs {
       'backupSchedule': ?pulumi.Input.mapOptionalInputValue<BackupPlanBackupSchedule, Map<String, dynamic>>(backupSchedule, (value) => value.toMap()),
       'cluster': cluster,
       'deactivated': ?deactivated,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'labels': ?labels,
       'location': location,
@@ -88,6 +98,7 @@ class BackupPlanArgs {
       backupSchedule: (() { final guardedValue = map['backupSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackupPlanBackupSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cluster: pulumi.Input.fromValue(map['cluster'] as String),
       deactivated: (() { final guardedValue = map['deactivated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -97,4 +108,3 @@ class BackupPlanArgs {
     );
   }
 }
-

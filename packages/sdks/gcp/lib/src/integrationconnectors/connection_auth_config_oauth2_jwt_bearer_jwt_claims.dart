@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionAuthConfigOauth2JwtBearerJwtClaims {
   /// Value for the "aud" claim.
   ///
-  /// &lt;a name="nested_auth_config_oauth2_client_credentials"&gt;&lt;/a&gt;The `oauth2_client_credentials` block supports:
+  /// &lt;a name="nestedAuthConfigOauth2ClientCredentials"&gt;&lt;/a&gt;The `oauth2ClientCredentials` block supports:
   final pulumi.Input<String>? audience;
   /// Value for the "iss" claim.
   final pulumi.Input<String>? issuer;
@@ -38,4 +38,3 @@ class ConnectionAuthConfigOauth2JwtBearerJwtClaims {
     );
   }
 }
-

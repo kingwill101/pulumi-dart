@@ -84,6 +84,22 @@ import 'domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_activedirectory_domain" "ad-domain" {
+///   domain_name         = "tfgen.org.com"
+///   locations           = ["us-central1"]
+///   reserved_ip_range   = "192.168.255.0/24"
+///   deletion_protection = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +108,8 @@ import 'domain_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.activedirectory.Domain;
 /// import com.pulumi.gcp.activedirectory.DomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -133,22 +149,15 @@ import 'domain_state.dart';
 /// Domain can be imported using any of these accepted formats:
 ///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{project}} {{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Domain can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:activedirectory/domain:Domain default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:activedirectory/domain:Domain default "{{project}} {{name}}"
-/// ```
-///
-/// ```sh
+/// $ terraform import google_active_directory_domain.default "{{project}} {{name}}"
 /// $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
 /// ```
 class Domain extends pulumi.CustomResource {
@@ -158,6 +167,19 @@ class Domain extends pulumi.CustomResource {
   /// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
   /// If CIDR subnets overlap between networks, domain creation will fail.
   late final pulumi.Output<List<String>?> authorizedNetworks;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the domain. Defaults to true.
+  /// When a`terraform destroy` or `pulumi up` would delete the domain,
+  /// the command will fail if this field is not set to false in Terraform state.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the domain will fail.
+  /// When the field is set to false, deleting the domain is allowed.
   late final pulumi.Output<bool?> deletionProtection;
   /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
   /// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
@@ -169,7 +191,7 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<String> fqdn;
   /// Resource labels that can contain user-provided metadata
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
   /// e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -202,6 +224,7 @@ class Domain extends pulumi.CustomResource {
         ) {
     admin = registerOutput<String?>('admin');
     authorizedNetworks = registerOutput<List<String>?>('authorizedNetworks');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     domainName = registerOutput<String>('domainName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -239,6 +262,7 @@ class Domain extends pulumi.CustomResource {
         ) {
     admin = registerOutput<String?>('admin');
     authorizedNetworks = registerOutput<List<String>?>('authorizedNetworks');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     domainName = registerOutput<String>('domainName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

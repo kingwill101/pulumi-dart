@@ -6,12 +6,12 @@ class GetInstanceDesiredPscAutoConnection {
   /// Required. The consumer network where the IP address resides, in the form of
   /// projects/{project_id}/global/networks/{network_id}.
   final pulumi.Input<String> network;
-  /// Required. The consumer project_id where the forwarding rule is created from.
+  /// Required. The consumer projectId where the forwarding rule is created from.
   final pulumi.Input<String> projectId;
 
   /// Creates a new [GetInstanceDesiredPscAutoConnection].
   /// [network] Required. The consumer network where the IP address resides, in the form of
-  /// [projectId] Required. The consumer project_id where the forwarding rule is created from.
+  /// [projectId] Required. The consumer projectId where the forwarding rule is created from.
   const GetInstanceDesiredPscAutoConnection({
     required this.network,
     required this.projectId,
@@ -31,4 +31,3 @@ class GetInstanceDesiredPscAutoConnection {
     );
   }
 }
-

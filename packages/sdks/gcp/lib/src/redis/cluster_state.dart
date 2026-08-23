@@ -37,6 +37,13 @@ class ClusterState {
   /// Cross cluster replication config
   /// Structure is documented below.
   final pulumi.Input<ClusterCrossClusterReplicationConfig>? crossClusterReplicationConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. Indicates if the cluster is deletion protected or not.
   /// If the value if set to true, any delete cluster operation will fail.
   /// Default value is true.
@@ -57,7 +64,7 @@ class ClusterState {
   final pulumi.Input<String>? kmsKey;
   /// Resource labels to represent user provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Maintenance policy for a cluster
   /// Structure is documented below.
@@ -65,13 +72,13 @@ class ClusterState {
   /// Upcoming maintenance schedule.
   /// Structure is documented below.
   final pulumi.Input<List<ClusterMaintenanceSchedule>>? maintenanceSchedules;
-  /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
+  /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
   /// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
   final pulumi.Input<String>? maintenanceVersion;
   /// Backups that generated and managed by memorystore.
   /// Structure is documented below.
   final pulumi.Input<ClusterManagedBackupSource>? managedBackupSource;
-  /// Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+  /// Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transitEncryptionMode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
   /// Structure is documented below.
   final pulumi.Input<List<ClusterManagedServerCa>>? managedServerCas;
   /// Unique name of the resource in this scope including project and location using the form:
@@ -79,7 +86,7 @@ class ClusterState {
   final pulumi.Input<String>? name;
   /// The nodeType for the Redis cluster.
   /// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-  /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+  /// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
   final pulumi.Input<String>? nodeType;
   /// Persistence config (RDB, AOF) for the cluster.
   /// Structure is documented below.
@@ -111,6 +118,14 @@ class ClusterState {
   final pulumi.Input<String>? region;
   /// Optional. The number of replica nodes per shard.
   final pulumi.Input<int>? replicaCount;
+  /// The serverCaMode for the TLS enabled Redis cluster.
+  /// If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
+  /// Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
+  final pulumi.Input<String>? serverCaMode;
+  /// The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
+  /// as the server_ca_mode.
+  /// Format: projects/{project}/locations/{region}/caPools/{caPoolId}
+  final pulumi.Input<String>? serverCaPool;
   /// Required. Number of shards for the Redis cluster.
   final pulumi.Input<int>? shardCount;
   /// Output only. Redis memory size in GB for the entire cluster.
@@ -138,6 +153,7 @@ class ClusterState {
   /// [backupCollection] The backup collection full resource name.
   /// [createTime] The timestamp associated with the cluster creation request. A timestamp in
   /// [crossClusterReplicationConfig] Cross cluster replication config
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deletionProtectionEnabled] Optional. Indicates if the cluster is deletion protected or not.
   /// [discoveryEndpoints] Output only. Endpoints created on each given network,
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -147,9 +163,9 @@ class ClusterState {
   /// [labels] Resource labels to represent user provided metadata.
   /// [maintenancePolicy] Maintenance policy for a cluster
   /// [maintenanceSchedules] Upcoming maintenance schedule.
-  /// [maintenanceVersion] This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
+  /// [maintenanceVersion] This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
   /// [managedBackupSource] Backups that generated and managed by memorystore.
-  /// [managedServerCas] Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
+  /// [managedServerCas] Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transitEncryptionMode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
   /// [name] Unique name of the resource in this scope including project and location using the form:
   /// [nodeType] The nodeType for the Redis cluster.
   /// [persistenceConfig] Persistence config (RDB, AOF) for the cluster.
@@ -162,6 +178,8 @@ class ClusterState {
   /// [redisConfigs] Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
   /// [region] The name of the region of the Redis cluster.
   /// [replicaCount] Optional. The number of replica nodes per shard.
+  /// [serverCaMode] The serverCaMode for the TLS enabled Redis cluster.
+  /// [serverCaPool] The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
   /// [shardCount] Required. Number of shards for the Redis cluster.
   /// [sizeGb] Output only. Redis memory size in GB for the entire cluster.
   /// [state] The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
@@ -176,6 +194,7 @@ class ClusterState {
     this.backupCollection,
     this.createTime,
     this.crossClusterReplicationConfig,
+    this.deletionPolicy,
     this.deletionProtectionEnabled,
     this.discoveryEndpoints,
     this.effectiveLabels,
@@ -200,6 +219,8 @@ class ClusterState {
     this.redisConfigs,
     this.region,
     this.replicaCount,
+    this.serverCaMode,
+    this.serverCaPool,
     this.shardCount,
     this.sizeGb,
     this.state,
@@ -217,6 +238,7 @@ class ClusterState {
       'backupCollection': ?backupCollection,
       'createTime': ?createTime,
       'crossClusterReplicationConfig': ?pulumi.Input.mapOptionalInputValue<ClusterCrossClusterReplicationConfig, Map<String, dynamic>>(crossClusterReplicationConfig, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtectionEnabled': ?deletionProtectionEnabled,
       'discoveryEndpoints': ?pulumi.Input.mapOptionalInputValue<List<ClusterDiscoveryEndpoint>, List<Map<String, dynamic>>>(discoveryEndpoints, (value) => pulumi.Input.encodeList<ClusterDiscoveryEndpoint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'effectiveLabels': ?effectiveLabels,
@@ -241,6 +263,8 @@ class ClusterState {
       'redisConfigs': ?redisConfigs,
       'region': ?region,
       'replicaCount': ?replicaCount,
+      'serverCaMode': ?serverCaMode,
+      'serverCaPool': ?serverCaPool,
       'shardCount': ?shardCount,
       'sizeGb': ?sizeGb,
       'state': ?state,
@@ -259,6 +283,7 @@ class ClusterState {
       backupCollection: (() { final guardedValue = map['backupCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       crossClusterReplicationConfig: (() { final guardedValue = map['crossClusterReplicationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterCrossClusterReplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtectionEnabled: (() { final guardedValue = map['deletionProtectionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       discoveryEndpoints: (() { final guardedValue = map['discoveryEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterDiscoveryEndpoint>(guardedValue, (value) => ClusterDiscoveryEndpoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -283,6 +308,8 @@ class ClusterState {
       redisConfigs: (() { final guardedValue = map['redisConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      serverCaMode: (() { final guardedValue = map['serverCaMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverCaPool: (() { final guardedValue = map['serverCaPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shardCount: (() { final guardedValue = map['shardCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -293,4 +320,3 @@ class ClusterState {
     );
   }
 }
-

@@ -5,6 +5,13 @@ import 'lite_subscription_delivery_config.dart';
 
 /// Input properties used for looking up and filtering LiteSubscription resources.
 class LiteSubscriptionState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The settings for this subscription's message delivery.
   /// Structure is documented below.
   final pulumi.Input<LiteSubscriptionDeliveryConfig>? deliveryConfig;
@@ -21,6 +28,7 @@ class LiteSubscriptionState {
   final pulumi.Input<String>? zone;
 
   /// Creates a new [LiteSubscriptionState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deliveryConfig] The settings for this subscription's message delivery.
   /// [name] Name of the subscription.
   /// [project] The ID of the project in which the resource belongs.
@@ -28,6 +36,7 @@ class LiteSubscriptionState {
   /// [topic] A reference to a Topic resource.
   /// [zone] The zone of the pubsub lite topic.
   const LiteSubscriptionState({
+    this.deletionPolicy,
     this.deliveryConfig,
     this.name,
     this.project,
@@ -38,6 +47,7 @@ class LiteSubscriptionState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'deliveryConfig': ?pulumi.Input.mapOptionalInputValue<LiteSubscriptionDeliveryConfig, Map<String, dynamic>>(deliveryConfig, (value) => value.toMap()),
       'name': ?name,
       'project': ?project,
@@ -49,6 +59,7 @@ class LiteSubscriptionState {
 
   factory LiteSubscriptionState.fromMap(Map<String, dynamic> map) {
     return LiteSubscriptionState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deliveryConfig: (() { final guardedValue = map['deliveryConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LiteSubscriptionDeliveryConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -58,4 +69,3 @@ class LiteSubscriptionState {
     );
   }
 }
-

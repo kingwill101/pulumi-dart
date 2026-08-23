@@ -8,7 +8,7 @@ class JobTemplateConfigElementaryStreamVideoStream {
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_config_elementary_streams_video_stream_h264"&gt;&lt;/a&gt;The `h264` block supports:
+  /// &lt;a name="nestedConfigElementaryStreamsVideoStreamH264"&gt;&lt;/a&gt;The `h264` block supports:
   final pulumi.Input<JobTemplateConfigElementaryStreamVideoStreamH264>? h264;
 
   /// Creates a new [JobTemplateConfigElementaryStreamVideoStream].
@@ -29,4 +29,3 @@ class JobTemplateConfigElementaryStreamVideoStream {
     );
   }
 }
-

@@ -3,10 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
+  /// (Optional, Beta)
   /// This field indicates whether zonal affinity is enabled or not.
   /// Default value is `ZONAL_AFFINITY_DISABLED`.
   /// Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
   final pulumi.Input<String>? spillover;
+  /// (Optional, Beta)
   /// The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
   /// to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
   /// distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
@@ -15,8 +17,8 @@ class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
   final pulumi.Input<double>? spilloverRatio;
 
   /// Creates a new [BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity].
-  /// [spillover] This field indicates whether zonal affinity is enabled or not.
-  /// [spilloverRatio] The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+  /// [spillover] (Optional, Beta)
+  /// [spilloverRatio] (Optional, Beta)
   const BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity({
     this.spillover,
     this.spilloverRatio,
@@ -36,4 +38,3 @@ class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
     );
   }
 }
-

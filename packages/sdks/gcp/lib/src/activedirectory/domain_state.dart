@@ -10,6 +10,19 @@ class DomainState {
   /// The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
   /// If CIDR subnets overlap between networks, domain creation will fail.
   final pulumi.Input<List<String>>? authorizedNetworks;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the domain. Defaults to true.
+  /// When a`terraform destroy` or `pulumi up` would delete the domain,
+  /// the command will fail if this field is not set to false in Terraform state.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the domain will fail.
+  /// When the field is set to false, deleting the domain is allowed.
   final pulumi.Input<bool>? deletionProtection;
   /// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
   /// of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
@@ -21,7 +34,7 @@ class DomainState {
   final pulumi.Input<String>? fqdn;
   /// Resource labels that can contain user-provided metadata
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
   /// e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -41,7 +54,8 @@ class DomainState {
   /// Creates a new [DomainState].
   /// [admin] The name of delegated administrator account used to perform Active Directory operations.
   /// [authorizedNetworks] The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the domain. Defaults to true.
   /// [domainName] The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [fqdn] The fully-qualified domain name of the exposed domain used by clients to connect to the service.
@@ -54,6 +68,7 @@ class DomainState {
   const DomainState({
     this.admin,
     this.authorizedNetworks,
+    this.deletionPolicy,
     this.deletionProtection,
     this.domainName,
     this.effectiveLabels,
@@ -70,6 +85,7 @@ class DomainState {
     return <String, dynamic>{
       'admin': ?admin,
       'authorizedNetworks': ?authorizedNetworks,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'domainName': ?domainName,
       'effectiveLabels': ?effectiveLabels,
@@ -87,6 +103,7 @@ class DomainState {
     return DomainState(
       admin: (() { final guardedValue = map['admin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authorizedNetworks: (() { final guardedValue = map['authorizedNetworks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -100,4 +117,3 @@ class DomainState {
     );
   }
 }
-

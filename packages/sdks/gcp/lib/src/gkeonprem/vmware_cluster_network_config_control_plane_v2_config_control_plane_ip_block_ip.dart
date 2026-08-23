@@ -30,4 +30,3 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp {
     );
   }
 }
-

@@ -179,6 +179,43 @@ import 'session_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_sessiontemplate" "example_session_templates_jupyter" {
+///   name     = "projects/my-project-name/locations/us-central1/sessionTemplates/jupyter-session-template"
+///   location = "us-central1"
+///   labels = {
+///     "session_template_test" = "terraform"
+///   }
+///   runtime_config = {
+///     properties = {
+///       "spark.dynamicAllocation.enabled" = "false"
+///       "spark.executor.instances"        = "2"
+///     }
+///   }
+///   environment_config = {
+///     execution_config = {
+///       subnetwork_uri = "default"
+///       idle_ttl       = "3600s"
+///       network_tags   = ["tag1"]
+///       authentication_config = {
+///         user_workload_authentication_type = "END_USER_CREDENTIALS"
+///       }
+///     }
+///   }
+///   jupyter_session = {
+///     kernel       = "PYTHON"
+///     display_name = "tf python kernel"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -192,8 +229,8 @@ import 'session_template_state.dart';
 /// import com.pulumi.gcp.dataproc.inputs.SessionTemplateEnvironmentConfigExecutionConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.SessionTemplateJupyterSessionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -746,7 +783,7 @@ import 'session_template_state.dart';
 /// 				PeripheralsConfig: &dataproc.SessionTemplateEnvironmentConfigPeripheralsConfigArgs{
 /// 					MetastoreService: ms.Name,
 /// 					SparkHistoryServerConfig: &dataproc.SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs{
-/// 						DataprocCluster: basic.ID(),
+/// 						DataprocCluster: basic.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -762,6 +799,117 @@ import 'session_template_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+/// data "gcp_storage_getprojectserviceaccount" "gcsAccount" {
+/// }
+///
+/// resource "gcp_dataproc_sessiontemplate" "dataproc_session_templates_jupyter_full" {
+///   depends_on = [gcp_kms_cryptokeyiammember.crypto_key_member_1]
+///   name       = "projects/my-project-name/locations/us-central1/sessionTemplates/jupyter-session-template"
+///   location   = "us-central1"
+///   labels = {
+///     "session_template_test" = "terraform"
+///   }
+///   runtime_config = {
+///     properties = {
+///       "spark.dynamicAllocation.enabled" = "false"
+///       "spark.executor.instances"        = "2"
+///     }
+///     version         = "2.2"
+///     container_image = "us-docker.pkg.dev/my-project-name/s8s-spark-test-images/s8s-spark:latest"
+///   }
+///   environment_config = {
+///     execution_config = {
+///       ttl             = "3600s"
+///       network_tags    = ["tag1"]
+///       kms_key         = "example-key"
+///       subnetwork_uri  = "default"
+///       service_account ="${data.gcp_organizations_getproject.project.number}-compute@developer.gserviceaccount.com"
+///       staging_bucket  = gcp_storage_bucket.bucket.name
+///       authentication_config = {
+///         user_workload_authentication_type = "SERVICE_ACCOUNT"
+///       }
+///     }
+///     peripherals_config = {
+///       metastore_service = gcp_dataproc_metastoreservice.ms.name
+///       spark_history_server_config = {
+///         dataproc_cluster = gcp_dataproc_cluster.basic.id
+///       }
+///     }
+///   }
+///   jupyter_session = {
+///     kernel       = "PYTHON"
+///     display_name = "tf python kernel"
+///   }
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   uniform_bucket_level_access = true
+///   name                        = "dataproc-bucket"
+///   location                    = "US"
+///   force_destroy               = true
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "crypto_key_member_1" {
+///   crypto_key_id = "example-key"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@dataproc-accounts.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_dataproc_cluster" "basic" {
+///   name   = "jupyter-session-template"
+///   region = "us-central1"
+///   cluster_config = {
+///     software_config = {
+///       override_properties = {
+///         "dataproc:dataproc.allow.zero.workers" = "true"
+///         "spark:spark.history.fs.logDirectory"  ="gs://${gcp_storage_bucket.bucket.name}/*/spark-job-history"
+///       }
+///     }
+///     gce_cluster_config = {
+///       subnetwork = "default"
+///     }
+///     endpoint_config = {
+///       enable_http_port_access = true
+///     }
+///     master_config = {
+///       num_instances = 1
+///       machine_type  = "e2-standard-2"
+///       disk_config = {
+///         boot_disk_size_gb = 35
+///       }
+///     }
+///     metastore_config = {
+///       dataproc_metastore_service = gcp_dataproc_metastoreservice.ms.name
+///     }
+///   }
+/// }
+/// resource "gcp_dataproc_metastoreservice" "ms" {
+///   service_id = "jupyter-session-template"
+///   location   = "us-central1"
+///   port       = 9080
+///   tier       = "DEVELOPER"
+///   maintenance_window = {
+///     hour_of_day = 2
+///     day_of_week = "SUNDAY"
+///   }
+///   hive_metastore_config = {
+///     version = "3.1.2"
+///   }
+///   network_config = {
+///     consumers = [{
+///       "subnetwork" = "projects/my-project-name/regions/us-central1/subnetworks/default"
+///     }]
+///   }
 /// }
 /// ```
 /// ```java
@@ -783,6 +931,7 @@ import 'session_template_state.dart';
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigArgs;
+/// import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigConsumerArgs;
 /// import com.pulumi.gcp.dataproc.Cluster;
 /// import com.pulumi.gcp.dataproc.ClusterArgs;
 /// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigArgs;
@@ -802,8 +951,8 @@ import 'session_template_state.dart';
 /// import com.pulumi.gcp.dataproc.inputs.SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.SessionTemplateJupyterSessionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1154,6 +1303,36 @@ import 'session_template_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_sessiontemplate" "example_session_templates_spark_connect" {
+///   name     = "projects/my-project-name/locations/us-central1/sessionTemplates/sc-session-template"
+///   location = "us-central1"
+///   labels = {
+///     "session_template_test" = "terraform"
+///   }
+///   runtime_config = {
+///     properties = {
+///       "spark.dynamicAllocation.enabled" = "false"
+///       "spark.executor.instances"        = "2"
+///     }
+///   }
+///   environment_config = {
+///     execution_config = {
+///       subnetwork_uri = "default"
+///       ttl            = "3600s"
+///       network_tags   = ["tag1"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1165,8 +1344,8 @@ import 'session_template_state.dart';
 /// import com.pulumi.gcp.dataproc.inputs.SessionTemplateRuntimeConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.SessionTemplateEnvironmentConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.SessionTemplateEnvironmentConfigExecutionConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1229,6 +1408,7 @@ import 'session_template_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, SessionTemplate can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -1239,6 +1419,13 @@ class SessionTemplate extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// The email address of the user who created the session template.
   late final pulumi.Output<String> creator;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Environment configuration for the session execution.
@@ -1250,7 +1437,7 @@ class SessionTemplate extends pulumi.CustomResource {
   /// The labels to associate with this session template.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location in which the session template will be created in.
   late final pulumi.Output<String?> location;
@@ -1289,6 +1476,7 @@ class SessionTemplate extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     environmentConfig = registerOutput<SessionTemplateEnvironmentConfig?>('environmentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jupyterSession = registerOutput<SessionTemplateJupyterSession?>('jupyterSession', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateJupyterSession.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1328,6 +1516,7 @@ class SessionTemplate extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     environmentConfig = registerOutput<SessionTemplateEnvironmentConfig?>('environmentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jupyterSession = registerOutput<SessionTemplateJupyterSession?>('jupyterSession', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SessionTemplateJupyterSession.fromMap((guardedValue as Map).cast<String, dynamic>()); });

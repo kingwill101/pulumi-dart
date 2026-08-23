@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_firebase_get_web_app_get_web_app_args_doc}
 class GetWebAppArgs {
-  /// The app_ip of name of the Firebase webApp.
+  /// The appIp of name of the Firebase webApp.
   ///
   ///
   /// - - -
@@ -17,7 +17,7 @@ class GetWebAppArgs {
   final pulumi.Input<String>? project;
 
   /// Creates a new [GetWebAppArgs].
-  /// [appId] The app_ip of name of the Firebase webApp.
+  /// [appId] The appIp of name of the Firebase webApp.
   /// [project] The ID of the project in which the resource belongs.
   const GetWebAppArgs({
     required this.appId,
@@ -38,4 +38,3 @@ class GetWebAppArgs {
     );
   }
 }
-

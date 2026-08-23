@@ -5,8 +5,8 @@ import 'consent_store_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud Healthcare ConsentStore. Each of these resources serves a different use case:
 ///
 /// * `gcp.healthcare.ConsentStoreIamPolicy`: Authoritative. Sets the IAM policy for the consentstore and replaces any existing policy already attached.
-/// * `gcp.healthcare.ConsentStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the consentstore are preserved.
-/// * `gcp.healthcare.ConsentStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the consentstore are preserved.
+/// * `gcp.healthcare.ConsentStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the consentstore are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.healthcare.ConsentStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the consentstore are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +15,6 @@ import 'consent_store_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.healthcare.ConsentStoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.ConsentStoreIamBinding` and `gcp.healthcare.ConsentStoreIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.healthcare.ConsentStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.ConsentStoreIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.healthcare.ConsentStoreIamPolicy
@@ -118,6 +117,28 @@ import 'consent_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_healthcare_consentstoreiampolicy" "policy" {
+///   dataset          = my-consent.dataset
+///   consent_store_id = my-consent.name
+///   policy_data      = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,10 +147,11 @@ import 'consent_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.healthcare.ConsentStoreIamPolicy;
 /// import com.pulumi.gcp.healthcare.ConsentStoreIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -149,8 +171,8 @@ import 'consent_store_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new ConsentStoreIamPolicy("policy", ConsentStoreIamPolicyArgs.builder()
-///             .dataset(my_consent.dataset())
-///             .consentStoreId(my_consent.name())
+///             .dataset(my_consent.get("dataset"))
+///             .consentStoreId(my_consent.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -247,6 +269,22 @@ import 'consent_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_consentstoreiambinding" "binding" {
+///   dataset          = my-consent.dataset
+///   consent_store_id = my-consent.name
+///   role             = "roles/viewer"
+///   members          = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -255,8 +293,8 @@ import 'consent_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.ConsentStoreIamBinding;
 /// import com.pulumi.gcp.healthcare.ConsentStoreIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,8 +307,8 @@ import 'consent_store_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ConsentStoreIamBinding("binding", ConsentStoreIamBindingArgs.builder()
-///             .dataset(my_consent.dataset())
-///             .consentStoreId(my_consent.name())
+///             .dataset(my_consent.get("dataset"))
+///             .consentStoreId(my_consent.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -356,6 +394,22 @@ import 'consent_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_consentstoreiammember" "member" {
+///   dataset          = my-consent.dataset
+///   consent_store_id = my-consent.name
+///   role             = "roles/viewer"
+///   member           = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -364,8 +418,8 @@ import 'consent_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.ConsentStoreIamMember;
 /// import com.pulumi.gcp.healthcare.ConsentStoreIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -378,8 +432,8 @@ import 'consent_store_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ConsentStoreIamMember("member", ConsentStoreIamMemberArgs.builder()
-///             .dataset(my_consent.dataset())
-///             .consentStoreId(my_consent.name())
+///             .dataset(my_consent.get("dataset"))
+///             .consentStoreId(my_consent.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -410,8 +464,8 @@ import 'consent_store_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Cloud Healthcare ConsentStore. Each of these resources serves a different use case:
 ///
 /// * `gcp.healthcare.ConsentStoreIamPolicy`: Authoritative. Sets the IAM policy for the consentstore and replaces any existing policy already attached.
-/// * `gcp.healthcare.ConsentStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the consentstore are preserved.
-/// * `gcp.healthcare.ConsentStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the consentstore are preserved.
+/// * `gcp.healthcare.ConsentStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the consentstore are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.healthcare.ConsentStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the consentstore are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -420,7 +474,6 @@ import 'consent_store_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.healthcare.ConsentStoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.ConsentStoreIamBinding` and `gcp.healthcare.ConsentStoreIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.healthcare.ConsentStoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.ConsentStoreIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.healthcare.ConsentStoreIamPolicy
@@ -523,6 +576,28 @@ import 'consent_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_healthcare_consentstoreiampolicy" "policy" {
+///   dataset          = my-consent.dataset
+///   consent_store_id = my-consent.name
+///   policy_data      = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -531,10 +606,11 @@ import 'consent_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.healthcare.ConsentStoreIamPolicy;
 /// import com.pulumi.gcp.healthcare.ConsentStoreIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -554,8 +630,8 @@ import 'consent_store_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new ConsentStoreIamPolicy("policy", ConsentStoreIamPolicyArgs.builder()
-///             .dataset(my_consent.dataset())
-///             .consentStoreId(my_consent.name())
+///             .dataset(my_consent.get("dataset"))
+///             .consentStoreId(my_consent.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -652,6 +728,22 @@ import 'consent_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_consentstoreiambinding" "binding" {
+///   dataset          = my-consent.dataset
+///   consent_store_id = my-consent.name
+///   role             = "roles/viewer"
+///   members          = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -660,8 +752,8 @@ import 'consent_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.ConsentStoreIamBinding;
 /// import com.pulumi.gcp.healthcare.ConsentStoreIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -674,8 +766,8 @@ import 'consent_store_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ConsentStoreIamBinding("binding", ConsentStoreIamBindingArgs.builder()
-///             .dataset(my_consent.dataset())
-///             .consentStoreId(my_consent.name())
+///             .dataset(my_consent.get("dataset"))
+///             .consentStoreId(my_consent.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -761,6 +853,22 @@ import 'consent_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_consentstoreiammember" "member" {
+///   dataset          = my-consent.dataset
+///   consent_store_id = my-consent.name
+///   role             = "roles/viewer"
+///   member           = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -769,8 +877,8 @@ import 'consent_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.ConsentStoreIamMember;
 /// import com.pulumi.gcp.healthcare.ConsentStoreIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -783,8 +891,8 @@ import 'consent_store_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ConsentStoreIamMember("member", ConsentStoreIamMemberArgs.builder()
-///             .dataset(my_consent.dataset())
-///             .consentStoreId(my_consent.name())
+///             .dataset(my_consent.get("dataset"))
+///             .consentStoreId(my_consent.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -809,7 +917,6 @@ import 'consent_store_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * {{dataset}}/consentStores/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -817,25 +924,21 @@ import 'consent_store_iam_policy_state.dart';
 /// Cloud Healthcare consentstore IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy editor "{{dataset}}/consentStores/{{consent_store}} roles/viewer user:jane@example.com"
+/// $ terraform import google_healthcare_consent_store_iam_member.editor "{{dataset}}/consentStores/{{consent_store}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy editor "{{dataset}}/consentStores/{{consent_store}} roles/viewer"
+/// $ terraform import google_healthcare_consent_store_iam_binding.editor "{{dataset}}/consentStores/{{consent_store}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy editor {{dataset}}/consentStores/{{consent_store}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class ConsentStoreIamPolicy extends pulumi.CustomResource {
   /// Used to find the parent resource to bind the IAM policy to

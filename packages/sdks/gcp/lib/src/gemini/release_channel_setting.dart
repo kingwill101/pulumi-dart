@@ -83,6 +83,24 @@ import 'release_channel_setting_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gemini_releasechannelsetting" "example" {
+///   release_channel_setting_id = "ls1-tf"
+///   location                   = "global"
+///   labels = {
+///     "my_key" = "my_value"
+///   }
+///   release_channel = "EXPERIMENTAL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -91,8 +109,8 @@ import 'release_channel_setting_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gemini.ReleaseChannelSetting;
 /// import com.pulumi.gcp.gemini.ReleaseChannelSettingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -132,32 +150,32 @@ import 'release_channel_setting_state.dart';
 /// ReleaseChannelSetting can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}`
-///
 /// * `{{project}}/{{location}}/{{release_channel_setting_id}}`
-///
 /// * `{{location}}/{{release_channel_setting_id}}`
+///
 ///
 /// When using the `pulumi import` command, ReleaseChannelSetting can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default projects/{{project}}/locations/{{location}}/releaseChannelSettings/{{release_channel_setting_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{project}}/{{location}}/{{release_channel_setting_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gemini/releaseChannelSetting:ReleaseChannelSetting default {{location}}/{{release_channel_setting_id}}
 /// ```
 class ReleaseChannelSetting extends pulumi.CustomResource {
   /// Create time stamp.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -195,6 +213,7 @@ class ReleaseChannelSetting extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
@@ -230,6 +249,7 @@ class ReleaseChannelSetting extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');

@@ -2,11 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tag_template_iam_policy_args.dart';
 import 'tag_template_iam_policy_state.dart';
 
+/// &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `gcp.dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
+///
 /// Three different resources help you manage your IAM policy for Data Catalog TagTemplate. Each of these resources serves a different use case:
 ///
 /// * `gcp.datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.
-/// * `gcp.datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved.
-/// * `gcp.datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved.
+/// * `gcp.datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +17,6 @@ import 'tag_template_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.datacatalog.TagTemplateIamPolicy` **cannot** be used in conjunction with `gcp.datacatalog.TagTemplateIamBinding` and `gcp.datacatalog.TagTemplateIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.datacatalog.TagTemplateIamBinding` resources **can be** used in conjunction with `gcp.datacatalog.TagTemplateIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.datacatalog.TagTemplateIamPolicy
@@ -114,6 +115,27 @@ import 'tag_template_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_tagtemplateiampolicy" "policy" {
+///   tag_template = basicTagTemplate.name
+///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -122,10 +144,11 @@ import 'tag_template_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.datacatalog.TagTemplateIamPolicy;
 /// import com.pulumi.gcp.datacatalog.TagTemplateIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -145,7 +168,7 @@ import 'tag_template_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new TagTemplateIamPolicy("policy", TagTemplateIamPolicyArgs.builder()
-///             .tagTemplate(basicTagTemplate.name())
+///             .tagTemplate(basicTagTemplate.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -237,6 +260,21 @@ import 'tag_template_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_tagtemplateiambinding" "binding" {
+///   tag_template = basicTagTemplate.name
+///   role         = "roles/viewer"
+///   members      = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +283,8 @@ import 'tag_template_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.datacatalog.TagTemplateIamBinding;
 /// import com.pulumi.gcp.datacatalog.TagTemplateIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -259,7 +297,7 @@ import 'tag_template_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new TagTemplateIamBinding("binding", TagTemplateIamBindingArgs.builder()
-///             .tagTemplate(basicTagTemplate.name())
+///             .tagTemplate(basicTagTemplate.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -340,6 +378,21 @@ import 'tag_template_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_tagtemplateiammember" "member" {
+///   tag_template = basicTagTemplate.name
+///   role         = "roles/viewer"
+///   member       = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -348,8 +401,8 @@ import 'tag_template_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.datacatalog.TagTemplateIamMember;
 /// import com.pulumi.gcp.datacatalog.TagTemplateIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -362,7 +415,7 @@ import 'tag_template_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new TagTemplateIamMember("member", TagTemplateIamMemberArgs.builder()
-///             .tagTemplate(basicTagTemplate.name())
+///             .tagTemplate(basicTagTemplate.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -387,12 +440,13 @@ import 'tag_template_iam_policy_state.dart';
 /// -
 ///
 /// # IAM policy for Data Catalog TagTemplate
+/// &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `gcp.dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
 ///
 /// Three different resources help you manage your IAM policy for Data Catalog TagTemplate. Each of these resources serves a different use case:
 ///
 /// * `gcp.datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.
-/// * `gcp.datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved.
-/// * `gcp.datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved.
+/// * `gcp.datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -401,7 +455,6 @@ import 'tag_template_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.datacatalog.TagTemplateIamPolicy` **cannot** be used in conjunction with `gcp.datacatalog.TagTemplateIamBinding` and `gcp.datacatalog.TagTemplateIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.datacatalog.TagTemplateIamBinding` resources **can be** used in conjunction with `gcp.datacatalog.TagTemplateIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.datacatalog.TagTemplateIamPolicy
@@ -500,6 +553,27 @@ import 'tag_template_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_tagtemplateiampolicy" "policy" {
+///   tag_template = basicTagTemplate.name
+///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -508,10 +582,11 @@ import 'tag_template_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.datacatalog.TagTemplateIamPolicy;
 /// import com.pulumi.gcp.datacatalog.TagTemplateIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -531,7 +606,7 @@ import 'tag_template_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new TagTemplateIamPolicy("policy", TagTemplateIamPolicyArgs.builder()
-///             .tagTemplate(basicTagTemplate.name())
+///             .tagTemplate(basicTagTemplate.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -623,6 +698,21 @@ import 'tag_template_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_tagtemplateiambinding" "binding" {
+///   tag_template = basicTagTemplate.name
+///   role         = "roles/viewer"
+///   members      = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -631,8 +721,8 @@ import 'tag_template_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.datacatalog.TagTemplateIamBinding;
 /// import com.pulumi.gcp.datacatalog.TagTemplateIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -645,7 +735,7 @@ import 'tag_template_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new TagTemplateIamBinding("binding", TagTemplateIamBindingArgs.builder()
-///             .tagTemplate(basicTagTemplate.name())
+///             .tagTemplate(basicTagTemplate.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -726,6 +816,21 @@ import 'tag_template_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_tagtemplateiammember" "member" {
+///   tag_template = basicTagTemplate.name
+///   role         = "roles/viewer"
+///   member       = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -734,8 +839,8 @@ import 'tag_template_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.datacatalog.TagTemplateIamMember;
 /// import com.pulumi.gcp.datacatalog.TagTemplateIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -748,7 +853,7 @@ import 'tag_template_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new TagTemplateIamMember("member", TagTemplateIamMemberArgs.builder()
-///             .tagTemplate(basicTagTemplate.name())
+///             .tagTemplate(basicTagTemplate.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -772,11 +877,8 @@ import 'tag_template_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{region}}/tagTemplates/{{tag_template}}
-///
 /// * {{project}}/{{region}}/{{tag_template}}
-///
 /// * {{region}}/{{tag_template}}
-///
 /// * {{tag_template}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -784,25 +886,21 @@ import 'tag_template_iam_policy_state.dart';
 /// Data Catalog tagtemplate IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:datacatalog/tagTemplateIamPolicy:TagTemplateIamPolicy editor "projects/{{project}}/locations/{{region}}/tagTemplates/{{tag_template}} roles/viewer user:jane@example.com"
+/// $ terraform import google_data_catalog_tag_template_iam_member.editor "projects/{{project}}/locations/{{region}}/tagTemplates/{{tag_template}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:datacatalog/tagTemplateIamPolicy:TagTemplateIamPolicy editor "projects/{{project}}/locations/{{region}}/tagTemplates/{{tag_template}} roles/viewer"
+/// $ terraform import google_data_catalog_tag_template_iam_binding.editor "projects/{{project}}/locations/{{region}}/tagTemplates/{{tag_template}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:datacatalog/tagTemplateIamPolicy:TagTemplateIamPolicy editor projects/{{project}}/locations/{{region}}/tagTemplates/{{tag_template}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class TagTemplateIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the IAM policy.

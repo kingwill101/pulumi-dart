@@ -6,6 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EgressPolicyState {
   /// The name of the Access Policy this resource belongs to.
   final pulumi.Input<String>? accessPolicyId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The name of the Service Perimeter to add this resource to.
   final pulumi.Input<String>? egressPolicyName;
   /// A GCP resource that is inside of the service perimeter.
@@ -13,10 +20,12 @@ class EgressPolicyState {
 
   /// Creates a new [EgressPolicyState].
   /// [accessPolicyId] The name of the Access Policy this resource belongs to.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [egressPolicyName] The name of the Service Perimeter to add this resource to.
   /// [resource] A GCP resource that is inside of the service perimeter.
   const EgressPolicyState({
     this.accessPolicyId,
+    this.deletionPolicy,
     this.egressPolicyName,
     this.resource,
   });
@@ -24,6 +33,7 @@ class EgressPolicyState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessPolicyId': ?accessPolicyId,
+      'deletionPolicy': ?deletionPolicy,
       'egressPolicyName': ?egressPolicyName,
       'resource': ?resource,
     };
@@ -32,9 +42,9 @@ class EgressPolicyState {
   factory EgressPolicyState.fromMap(Map<String, dynamic> map) {
     return EgressPolicyState(
       accessPolicyId: (() { final guardedValue = map['accessPolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       egressPolicyName: (() { final guardedValue = map['egressPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

@@ -30,7 +30,7 @@ class RegistrationState {
   final pulumi.Input<List<String>>? issues;
   /// Set of labels associated with the Registration.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location for the resource
   final pulumi.Input<String>? location;
@@ -146,4 +146,3 @@ class RegistrationState {
     );
   }
 }
-

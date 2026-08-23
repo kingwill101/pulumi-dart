@@ -259,6 +259,60 @@ import 'workforce_pool_provider_scim_tenant_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workforcepool" "pool" {
+///   workforce_pool_id = "example-pool"
+///   parent            = "organizations/123456789"
+///   location          = "global"
+/// }
+/// resource "gcp_iam_workforcepoolprovider" "provider" {
+///   location          = "global"
+///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
+///   provider_id       = "example-prvdr"
+///   attribute_mapping = {
+///     "google.subject" = "assertion.sub"
+///   }
+///   oidc = {
+///     issuer_uri = "https://accounts.thirdparty.com"
+///     client_id  = "client-id"
+///     client_secret = {
+///       value = {
+///         plain_text = "client-secret"
+///       }
+///     }
+///     web_sso_config = {
+///       response_type             = "CODE"
+///       assertion_claims_behavior = "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS"
+///       additional_scopes         = ["groups", "roles"]
+///     }
+///   }
+///   display_name        = "Display name"
+///   description         = "A sample OIDC workforce pool provider."
+///   disabled            = false
+///   attribute_condition = "true"
+/// }
+/// resource "gcp_iam_workforcepoolproviderscimtenant" "example" {
+///   location          = "global"
+///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
+///   provider_id       = gcp_iam_workforcepoolprovider.provider.provider_id
+///   scim_tenant_id    = "example-scim-tenant"
+///   display_name      = "Example SCIM Tenant"
+///   description       = "A basic SCIM tenant for IAM Workforce Pool Provider"
+///   claim_mapping = {
+///     "google.subject" = "user.externalId"
+///     "google.group"   = "group.externalId"
+///   }
+///   hard_delete = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -275,8 +329,8 @@ import 'workforce_pool_provider_scim_tenant_state.dart';
 /// import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcWebSsoConfigArgs;
 /// import com.pulumi.gcp.iam.WorkforcePoolProviderScimTenant;
 /// import com.pulumi.gcp.iam.WorkforcePoolProviderScimTenantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -391,16 +445,13 @@ import 'workforce_pool_provider_scim_tenant_state.dart';
 /// WorkforcePoolProviderScimTenant can be imported using any of these accepted formats:
 ///
 /// * `locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}/scimTenants/{{scim_tenant_id}}`
-///
 /// * `{{location}}/{{workforce_pool_id}}/{{provider_id}}/{{scim_tenant_id}}`
+///
 ///
 /// When using the `pulumi import` command, WorkforcePoolProviderScimTenant can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant default locations/{{location}}/workforcePools/{{workforce_pool_id}}/providers/{{provider_id}}/scimTenants/{{scim_tenant_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant default {{location}}/{{workforce_pool_id}}/{{provider_id}}/{{scim_tenant_id}}
 /// ```
 class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
@@ -412,6 +463,13 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
   late final pulumi.Output<String> baseUri;
   /// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
   late final pulumi.Output<Map<String, String>?> claimMapping;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A user-specified description of the provider. Cannot exceed 256 characters.
   late final pulumi.Output<String?> description;
   /// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
@@ -456,6 +514,7 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
         ) {
     baseUri = registerOutput<String>('baseUri');
     claimMapping = registerOutput<Map<String, String>?>('claimMapping');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     hardDelete = registerOutput<bool?>('hardDelete');
@@ -494,6 +553,7 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
         ) {
     baseUri = registerOutput<String>('baseUri');
     claimMapping = registerOutput<Map<String, String>?>('claimMapping');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     hardDelete = registerOutput<bool?>('hardDelete');

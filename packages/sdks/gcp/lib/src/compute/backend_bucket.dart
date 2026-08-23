@@ -108,6 +108,26 @@ import 'backend_bucket_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendbucket" "image_backend" {
+///   name        = "image-backend-bucket"
+///   description = "Contains beautiful images"
+///   bucket_name = gcp_storage_bucket.image_bucket.name
+///   enable_cdn  = true
+/// }
+/// resource "gcp_storage_bucket" "image_bucket" {
+///   name     = "image-store-bucket"
+///   location = "EU"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +138,8 @@ import 'backend_bucket_state.dart';
 /// import com.pulumi.gcp.storage.BucketArgs;
 /// import com.pulumi.gcp.compute.BackendBucket;
 /// import com.pulumi.gcp.compute.BackendBucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,13 +290,39 @@ import 'backend_bucket_state.dart';
 /// 			Description:        pulumi.String("Contains beautiful images"),
 /// 			BucketName:         imageBackendBucket.Name,
 /// 			EnableCdn:          pulumi.Bool(true),
-/// 			EdgeSecurityPolicy: policy.ID(),
+/// 			EdgeSecurityPolicy: policy.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendbucket" "image_backend" {
+///   name                 = "image-backend-bucket"
+///   description          = "Contains beautiful images"
+///   bucket_name          = gcp_storage_bucket.image_backend.name
+///   enable_cdn           = true
+///   edge_security_policy = gcp_compute_securitypolicy.policy.id
+/// }
+/// resource "gcp_storage_bucket" "image_backend" {
+///   name     = "image-store-bucket"
+///   location = "EU"
+/// }
+/// resource "gcp_compute_securitypolicy" "policy" {
+///   name        = "image-store-bucket"
+///   description = "basic security policy"
+///   type        = "CLOUD_ARMOR_EDGE"
 /// }
 /// ```
 /// ```java
@@ -291,8 +337,8 @@ import 'backend_bucket_state.dart';
 /// import com.pulumi.gcp.compute.SecurityPolicyArgs;
 /// import com.pulumi.gcp.compute.BackendBucket;
 /// import com.pulumi.gcp.compute.BackendBucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -465,6 +511,31 @@ import 'backend_bucket_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendbucket" "image_backend" {
+///   name        = "image-backend-bucket"
+///   description = "Contains beautiful images"
+///   bucket_name = gcp_storage_bucket.image_bucket.name
+///   enable_cdn  = true
+///   cdn_policy = {
+///     cache_key_policy = {
+///       query_string_whitelists = ["image-version"]
+///     }
+///   }
+/// }
+/// resource "gcp_storage_bucket" "image_bucket" {
+///   name     = "image-backend-bucket"
+///   location = "EU"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -477,8 +548,8 @@ import 'backend_bucket_state.dart';
 /// import com.pulumi.gcp.compute.BackendBucketArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendBucketCdnPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendBucketCdnPolicyCacheKeyPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -646,6 +717,31 @@ import 'backend_bucket_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendbucket" "image_backend" {
+///   name        = "image-backend-bucket"
+///   description = "Contains beautiful images"
+///   bucket_name = gcp_storage_bucket.image_bucket.name
+///   enable_cdn  = true
+///   cdn_policy = {
+///     cache_key_policy = {
+///       include_http_headers = ["X-My-Header-Field"]
+///     }
+///   }
+/// }
+/// resource "gcp_storage_bucket" "image_bucket" {
+///   name     = "image-backend-bucket"
+///   location = "EU"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -658,8 +754,8 @@ import 'backend_bucket_state.dart';
 /// import com.pulumi.gcp.compute.BackendBucketArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendBucketCdnPolicyArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendBucketCdnPolicyCacheKeyPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -719,22 +815,15 @@ import 'backend_bucket_state.dart';
 /// BackendBucket can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/backendBuckets/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, BackendBucket can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/backendBucket:BackendBucket default projects/{{project}}/global/backendBuckets/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/backendBucket:BackendBucket default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/backendBucket:BackendBucket default {{name}}
 /// ```
 class BackendBucket extends pulumi.CustomResource {
@@ -750,6 +839,13 @@ class BackendBucket extends pulumi.CustomResource {
   late final pulumi.Output<String> creationTimestamp;
   /// Headers that the HTTP/S load balancer should add to proxied responses.
   late final pulumi.Output<List<String>?> customResponseHeaders;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional textual description of the resource; provided by the
   /// client when the resource is created.
   late final pulumi.Output<String?> description;
@@ -799,6 +895,7 @@ class BackendBucket extends pulumi.CustomResource {
     compressionMode = registerOutput<String?>('compressionMode');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customResponseHeaders = registerOutput<List<String>?>('customResponseHeaders');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
     enableCdn = registerOutput<bool?>('enableCdn');
@@ -837,6 +934,7 @@ class BackendBucket extends pulumi.CustomResource {
     compressionMode = registerOutput<String?>('compressionMode');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customResponseHeaders = registerOutput<List<String>?>('customResponseHeaders');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
     enableCdn = registerOutput<bool?>('enableCdn');

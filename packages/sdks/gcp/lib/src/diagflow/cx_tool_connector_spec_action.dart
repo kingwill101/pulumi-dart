@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_tool_connector_spec_action_entity_operation.dart';
 
 class CxToolConnectorSpecAction {
-  /// ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
+  /// ID of a Connection action for the tool to use. This field is part of a required union field `actionSpec`.
   final pulumi.Input<String>? connectionActionId;
-  /// Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
+  /// Entity operation configuration for the tool to use. This field is part of a required union field `actionSpec`.
   /// Structure is documented below.
   final pulumi.Input<CxToolConnectorSpecActionEntityOperation>? entityOperation;
   /// Entity fields to use as inputs for the operation.
@@ -17,8 +17,8 @@ class CxToolConnectorSpecAction {
   final pulumi.Input<List<String>>? outputFields;
 
   /// Creates a new [CxToolConnectorSpecAction].
-  /// [connectionActionId] ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
-  /// [entityOperation] Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
+  /// [connectionActionId] ID of a Connection action for the tool to use. This field is part of a required union field `actionSpec`.
+  /// [entityOperation] Entity operation configuration for the tool to use. This field is part of a required union field `actionSpec`.
   /// [inputFields] Entity fields to use as inputs for the operation.
   /// [outputFields] Entity fields to return from the operation.
   const CxToolConnectorSpecAction({
@@ -46,4 +46,3 @@ class CxToolConnectorSpecAction {
     );
   }
 }
-

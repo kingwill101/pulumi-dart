@@ -13,7 +13,7 @@ import 'user_state.dart';
 ///
 ///
 ///
-/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `password_wo`.
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `passwordWo`.
 /// Read more about Write-only Arguments.
 ///
 /// ## Example Usage
@@ -227,13 +227,13 @@ import 'user_state.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      defaultNetwork.ID(),
+/// 			Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: defaultNetwork.ID(),
+/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -274,6 +274,59 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_alloydb_instance" "default" {
+///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   cluster       = gcp_alloydb_cluster.default.name
+///   instance_id   = "alloydb-instance"
+///   instance_type = "PRIMARY"
+/// }
+/// resource "gcp_alloydb_cluster" "default" {
+///   cluster_id = "alloydb-cluster"
+///   location   = "us-central1"
+///   network_config = {
+///     network = defaultGoogleComputeNetwork.id
+///   }
+///   initial_user = {
+///     password = "cluster_secret"
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "alloydb-network"
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "alloydb-cluster"
+///   address_type  = "INTERNAL"
+///   purpose       = "VPC_PEERING"
+///   prefix_length = 16
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   network                 = gcp_compute_network.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// resource "gcp_alloydb_user" "user1" {
+///   depends_on     = [gcp_alloydb_instance.default]
+///   cluster        = gcp_alloydb_cluster.default.name
+///   user_id        = "user1"
+///   user_type      = "ALLOYDB_BUILT_IN"
+///   password       = "user_secret"
+///   database_roles = ["alloydbsuperuser"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -297,8 +350,8 @@ import 'user_state.dart';
 /// import com.pulumi.gcp.alloydb.User;
 /// import com.pulumi.gcp.alloydb.UserArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -314,7 +367,7 @@ import 'user_state.dart';
 ///             .clusterId("alloydb-cluster")
 ///             .location("us-central1")
 ///             .networkConfig(ClusterNetworkConfigArgs.builder()
-///                 .network(defaultGoogleComputeNetwork.id())
+///                 .network(defaultGoogleComputeNetwork.get("id"))
 ///                 .build())
 ///             .initialUser(ClusterInitialUserArgs.builder()
 ///                 .password("cluster_secret")
@@ -618,7 +671,7 @@ import 'user_state.dart';
 /// 			ClusterId: pulumi.String("alloydb-cluster"),
 /// 			Location:  pulumi.String("us-central1"),
 /// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-/// 				Network: defaultNetwork.ID(),
+/// 				Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			InitialUser: &alloydb.ClusterInitialUserArgs{
 /// 				Password: pulumi.String("cluster_secret"),
@@ -633,13 +686,13 @@ import 'user_state.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(16),
-/// 			Network:      defaultNetwork.ID(),
+/// 			Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: defaultNetwork.ID(),
+/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -679,6 +732,58 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_alloydb_instance" "default" {
+///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   cluster       = gcp_alloydb_cluster.default.name
+///   instance_id   = "alloydb-instance"
+///   instance_type = "PRIMARY"
+/// }
+/// resource "gcp_alloydb_cluster" "default" {
+///   cluster_id = "alloydb-cluster"
+///   location   = "us-central1"
+///   network_config = {
+///     network = gcp_compute_network.default.id
+///   }
+///   initial_user = {
+///     password = "cluster_secret"
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "alloydb-network"
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "alloydb-cluster"
+///   address_type  = "INTERNAL"
+///   purpose       = "VPC_PEERING"
+///   prefix_length = 16
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   network                 = gcp_compute_network.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// resource "gcp_alloydb_user" "user2" {
+///   depends_on     = [gcp_alloydb_instance.default]
+///   cluster        = gcp_alloydb_cluster.default.name
+///   user_id        = "user2@foo.com"
+///   user_type      = "ALLOYDB_IAM_USER"
+///   database_roles = ["alloydbiamuser"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -702,8 +807,8 @@ import 'user_state.dart';
 /// import com.pulumi.gcp.alloydb.User;
 /// import com.pulumi.gcp.alloydb.UserArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -836,22 +941,15 @@ import 'user_state.dart';
 /// User can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}`
-///
 /// * `{{project}}/{{location}}/{{cluster}}/{{user_id}}`
-///
 /// * `{{location}}/{{cluster}}/{{user_id}}`
+///
 ///
 /// When using the `pulumi import` command, User can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:alloydb/user:User default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:alloydb/user:User default {{project}}/{{location}}/{{cluster}}/{{user_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:alloydb/user:User default {{location}}/{{cluster}}/{{user_id}}
 /// ```
 class User extends pulumi.CustomResource {
@@ -860,6 +958,13 @@ class User extends pulumi.CustomResource {
   late final pulumi.Output<String> cluster;
   /// List of database roles this database user has.
   late final pulumi.Output<List<String>?> databaseRoles;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
   late final pulumi.Output<String> name;
   /// Password for this database user.
@@ -870,9 +975,9 @@ class User extends pulumi.CustomResource {
   /// Password for this database user.
   /// **Note**: This property is write-only and will not be read from the API.
   ///
-  /// &gt; **Note:** One of `password` or `password_wo` can only be set.
+  /// &gt; **Note:** One of `password` or `passwordWo` can only be set.
   late final pulumi.Output<String?> passwordWo;
-  /// Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  /// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   late final pulumi.Output<String?> passwordWoVersion;
   /// The database role name of the user.
   late final pulumi.Output<String> userId;
@@ -896,6 +1001,7 @@ class User extends pulumi.CustomResource {
         ) {
     cluster = registerOutput<String>('cluster');
     databaseRoles = registerOutput<List<String>?>('databaseRoles');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     password = registerOutput<String?>('password');
     passwordWo = registerOutput<String?>('passwordWo');
@@ -929,6 +1035,7 @@ class User extends pulumi.CustomResource {
         ) {
     cluster = registerOutput<String>('cluster');
     databaseRoles = registerOutput<List<String>?>('databaseRoles');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     password = registerOutput<String?>('password');
     passwordWo = registerOutput<String?>('passwordWo');

@@ -5,12 +5,12 @@ import 'tag_template_field_type_enum_type.dart';
 
 class TagTemplateFieldType {
   /// Represents an enum type.
-  /// Exactly one of `primitive_type` or `enum_type` must be set
+  /// Exactly one of `primitiveType` or `enumType` must be set
   /// Structure is documented below.
   final pulumi.Input<TagTemplateFieldTypeEnumType>? enumType;
   /// Represents primitive types - string, bool etc.
-  /// Exactly one of `primitive_type` or `enum_type` must be set
-  /// Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
+  /// Exactly one of `primitiveType` or `enumType` must be set
+  /// Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`, `RICHTEXT`.
   final pulumi.Input<String>? primitiveType;
 
   /// Creates a new [TagTemplateFieldType].
@@ -35,4 +35,3 @@ class TagTemplateFieldType {
     );
   }
 }
-

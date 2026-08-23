@@ -11,6 +11,8 @@ import 'get_datasets_args.dart';
 import 'get_datasets_result.dart';
 import 'get_default_service_account_args.dart';
 import 'get_default_service_account_result.dart';
+import 'get_routine_iam_policy_args.dart';
+import 'get_routine_iam_policy_result.dart';
 import 'get_table_args.dart';
 import 'get_table_iam_policy_args.dart';
 import 'get_table_iam_policy_result.dart';
@@ -81,6 +83,21 @@ import 'get_tables_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_bigquery_getconnectioniampolicy" "policy" {
+///   project       = connection.project
+///   location      = connection.location
+///   connection_id = connection.connectionId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +106,8 @@ import 'get_tables_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.BigqueryFunctions;
 /// import com.pulumi.gcp.bigquery.inputs.GetConnectionIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -103,9 +120,9 @@ import 'get_tables_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = BigqueryFunctions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-///             .project(connection.project())
-///             .location(connection.location())
-///             .connectionId(connection.connectionId())
+///             .project(connection.get("project"))
+///             .location(connection.get("location"))
+///             .connectionId(connection.get("connectionId"))
 ///             .build());
 ///
 ///     }
@@ -199,6 +216,21 @@ Future<GetConnectionIamPolicyResult> getConnectionIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_bigquery_getdatapolicyv2datapolicyiampolicy" "policy" {
+///   project        = basicDataPolicy.project
+///   location       = basicDataPolicy.location
+///   data_policy_id = basicDataPolicy.dataPolicyId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +239,8 @@ Future<GetConnectionIamPolicyResult> getConnectionIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.BigqueryFunctions;
 /// import com.pulumi.gcp.bigquery.inputs.GetDatapolicyv2DataPolicyIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -221,9 +253,9 @@ Future<GetConnectionIamPolicyResult> getConnectionIamPolicy(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = BigqueryFunctions.getDatapolicyv2DataPolicyIamPolicy(GetDatapolicyv2DataPolicyIamPolicyArgs.builder()
-///             .project(basicDataPolicy.project())
-///             .location(basicDataPolicy.location())
-///             .dataPolicyId(basicDataPolicy.dataPolicyId())
+///             .project(basicDataPolicy.get("project"))
+///             .location(basicDataPolicy.get("location"))
+///             .dataPolicyId(basicDataPolicy.get("dataPolicyId"))
 ///             .build());
 ///
 ///     }
@@ -314,6 +346,20 @@ Future<GetDatapolicyv2DataPolicyIamPolicyResult> getDatapolicyv2DataPolicyIamPol
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_bigquery_getdataset" "dataset" {
+///   dataset_id = "my-bq-dataset"
+///   project    = "my-project"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -322,8 +368,8 @@ Future<GetDatapolicyv2DataPolicyIamPolicyResult> getDatapolicyv2DataPolicyIamPol
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.BigqueryFunctions;
 /// import com.pulumi.gcp.bigquery.inputs.GetDatasetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -421,6 +467,19 @@ Future<GetDatasetResult> getDataset(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_bigquery_getdatasetiampolicy" "policy" {
+///   dataset_id = dataset.datasetId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -429,8 +488,8 @@ Future<GetDatasetResult> getDataset(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.BigqueryFunctions;
 /// import com.pulumi.gcp.bigquery.inputs.GetDatasetIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -443,7 +502,7 @@ Future<GetDatasetResult> getDataset(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = BigqueryFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-///             .datasetId(dataset.datasetId())
+///             .datasetId(dataset.get("datasetId"))
 ///             .build());
 ///
 ///     }
@@ -528,6 +587,19 @@ Future<GetDatasetIamPolicyResult> getDatasetIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_bigquery_getdatasets" "datasets" {
+///   project = "my-project"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -536,8 +608,8 @@ Future<GetDatasetIamPolicyResult> getDatasetIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.BigqueryFunctions;
 /// import com.pulumi.gcp.bigquery.inputs.GetDatasetsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -636,8 +708,6 @@ Future<GetDatasetsResult> getDatasets(
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -661,6 +731,24 @@ Future<GetDatasetsResult> getDatasets(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_bigquery_getdefaultserviceaccount" "bqSa" {
+/// }
+///
+/// resource "gcp_kms_cryptokeyiammember" "key_sa_user" {
+///   crypto_key_id = key.id
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:${data.gcp_bigquery_getdefaultserviceaccount.bqSa.email}"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -671,8 +759,8 @@ Future<GetDatasetsResult> getDatasets(
 /// import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMember;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -688,7 +776,7 @@ Future<GetDatasetsResult> getDatasets(
 ///             .build());
 ///
 ///         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
-///             .cryptoKeyId(key.id())
+///             .cryptoKeyId(key.get("id"))
 ///             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
 ///             .member(String.format("serviceAccount:%s", bqSa.email()))
 ///             .build());
@@ -724,6 +812,139 @@ Future<GetDefaultServiceAccountResult> getDefaultServiceAccount(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDefaultServiceAccountResult.fromMap(result);
+}
+
+/// Retrieves the current IAM policy data for routine
+///
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const policy = gcp.bigquery.getRoutineIamPolicy({
+///     project: sproc.project,
+///     datasetId: sproc.datasetId,
+///     routineId: sproc.routineId,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// policy = gcp.bigquery.get_routine_iam_policy(project=sproc["project"],
+///     dataset_id=sproc["datasetId"],
+///     routine_id=sproc["routineId"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var policy = Gcp.BigQuery.GetRoutineIamPolicy.Invoke(new()
+///     {
+///         Project = sproc.Project,
+///         DatasetId = sproc.DatasetId,
+///         RoutineId = sproc.RoutineId,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := bigquery.LookupRoutineIamPolicy(ctx, &bigquery.LookupRoutineIamPolicyArgs{
+/// 			Project:   pulumi.StringRef(sproc.Project),
+/// 			DatasetId: sproc.DatasetId,
+/// 			RoutineId: sproc.RoutineId,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_bigquery_getroutineiampolicy" "policy" {
+///   project    = sproc.project
+///   dataset_id = sproc.datasetId
+///   routine_id = sproc.routineId
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.bigquery.BigqueryFunctions;
+/// import com.pulumi.gcp.bigquery.inputs.GetRoutineIamPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var policy = BigqueryFunctions.getRoutineIamPolicy(GetRoutineIamPolicyArgs.builder()
+///             .project(sproc.get("project"))
+///             .datasetId(sproc.get("datasetId"))
+///             .routineId(sproc.get("routineId"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   policy:
+///     fn::invoke:
+///       function: gcp:bigquery:getRoutineIamPolicy
+///       arguments:
+///         project: ${sproc.project}
+///         datasetId: ${sproc.datasetId}
+///         routineId: ${sproc.routineId}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_bigquery_get_routine_iam_policy_get_routine_iam_policy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetRoutineIamPolicyResult> getRoutineIamPolicy(
+  GetRoutineIamPolicyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:bigquery/getRoutineIamPolicy:getRoutineIamPolicy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetRoutineIamPolicyResult.fromMap(result);
 }
 
 /// Get a specific table in a BigQuery dataset. For more information see
@@ -790,6 +1011,21 @@ Future<GetDefaultServiceAccountResult> getDefaultServiceAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_bigquery_gettable" "table" {
+///   project    = "my-project"
+///   dataset_id = "my-bq-dataset"
+///   table_id   = "my-table"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -798,8 +1034,8 @@ Future<GetDefaultServiceAccountResult> getDefaultServiceAccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.BigqueryFunctions;
 /// import com.pulumi.gcp.bigquery.inputs.GetTableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -908,6 +1144,21 @@ Future<GetTableResult> getTable(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_bigquery_gettableiampolicy" "policy" {
+///   project    = test.project
+///   dataset_id = test.datasetId
+///   table_id   = test.tableId
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -916,8 +1167,8 @@ Future<GetTableResult> getTable(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.BigqueryFunctions;
 /// import com.pulumi.gcp.bigquery.inputs.GetTableIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -930,9 +1181,9 @@ Future<GetTableResult> getTable(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = BigqueryFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-///             .project(test.project())
-///             .datasetId(test.datasetId())
-///             .tableId(test.tableId())
+///             .project(test.get("project"))
+///             .datasetId(test.get("datasetId"))
+///             .tableId(test.get("tableId"))
 ///             .build());
 ///
 ///     }
@@ -1023,6 +1274,20 @@ Future<GetTableIamPolicyResult> getTableIamPolicy(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_bigquery_gettables" "tables" {
+///   dataset_id = "my-bq-dataset"
+///   project    = "my-project"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1031,8 +1296,8 @@ Future<GetTableIamPolicyResult> getTableIamPolicy(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.BigqueryFunctions;
 /// import com.pulumi.gcp.bigquery.inputs.GetTablesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

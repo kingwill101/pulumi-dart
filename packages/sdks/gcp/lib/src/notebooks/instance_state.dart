@@ -37,6 +37,13 @@ class InstanceState {
   /// Possible disk types for notebook instances.
   /// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
   final pulumi.Input<String>? dataDiskType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
   final pulumi.Input<String>? desiredState;
   /// Disk encryption method used on the boot and data disks, defaults to GMEK.
@@ -61,7 +68,7 @@ class InstanceState {
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// A reference to the zone where the machine resides.
   final pulumi.Input<String>? location;
@@ -139,6 +146,7 @@ class InstanceState {
   /// [customGpuDriverPath] Specify a custom Cloud Storage path where the GPU driver is stored.
   /// [dataDiskSizeGb] The size of the data disk in GB attached to this instance,
   /// [dataDiskType] Possible disk types for notebook instances.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [desiredState] Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
   /// [diskEncryption] Disk encryption method used on the boot and data disks, defaults to GMEK.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -177,6 +185,7 @@ class InstanceState {
     this.customGpuDriverPath,
     this.dataDiskSizeGb,
     this.dataDiskType,
+    this.deletionPolicy,
     this.desiredState,
     this.diskEncryption,
     this.effectiveLabels,
@@ -218,6 +227,7 @@ class InstanceState {
       'customGpuDriverPath': ?customGpuDriverPath,
       'dataDiskSizeGb': ?dataDiskSizeGb,
       'dataDiskType': ?dataDiskType,
+      'deletionPolicy': ?deletionPolicy,
       'desiredState': ?desiredState,
       'diskEncryption': ?diskEncryption,
       'effectiveLabels': ?effectiveLabels,
@@ -260,6 +270,7 @@ class InstanceState {
       customGpuDriverPath: (() { final guardedValue = map['customGpuDriverPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataDiskSizeGb: (() { final guardedValue = map['dataDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       dataDiskType: (() { final guardedValue = map['dataDiskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       desiredState: (() { final guardedValue = map['desiredState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskEncryption: (() { final guardedValue = map['diskEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -292,4 +303,3 @@ class InstanceState {
     );
   }
 }
-

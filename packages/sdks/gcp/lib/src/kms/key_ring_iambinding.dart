@@ -119,7 +119,7 @@ import 'key_ring_iambinding_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kms.NewKeyRingIAMPolicy(ctx, "key_ring", &kms.KeyRingIAMPolicyArgs{
-/// 			KeyRingId:  keyring.ID(),
+/// 			KeyRingId:  keyring.ID().ToIDOutput().ToStringOutput(),
 /// 			PolicyData: pulumi.String(admin.PolicyData),
 /// 		})
 /// 		if err != nil {
@@ -127,6 +127,31 @@ import 'key_ring_iambinding_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/editor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_kms_keyring" "keyring" {
+///   name     = "keyring-example"
+///   location = "global"
+/// }
+/// resource "gcp_kms_keyringiampolicy" "key_ring" {
+///   key_ring_id = gcp_kms_keyring.keyring.id
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -139,10 +164,11 @@ import 'key_ring_iambinding_state.dart';
 /// import com.pulumi.gcp.kms.KeyRingArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.kms.KeyRingIAMPolicy;
 /// import com.pulumi.gcp.kms.KeyRingIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -326,7 +352,7 @@ import 'key_ring_iambinding_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kms.NewKeyRingIAMPolicy(ctx, "key_ring", &kms.KeyRingIAMPolicyArgs{
-/// 			KeyRingId:  keyring.ID(),
+/// 			KeyRingId:  keyring.ID().ToIDOutput().ToStringOutput(),
 /// 			PolicyData: pulumi.String(admin.PolicyData),
 /// 		})
 /// 		if err != nil {
@@ -334,6 +360,36 @@ import 'key_ring_iambinding_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/editor"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyring" "keyring" {
+///   name     = "keyring-example"
+///   location = "global"
+/// }
+/// resource "gcp_kms_keyringiampolicy" "key_ring" {
+///   key_ring_id = gcp_kms_keyring.keyring.id
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -346,10 +402,12 @@ import 'key_ring_iambinding_state.dart';
 /// import com.pulumi.gcp.kms.KeyRingArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.kms.KeyRingIAMPolicy;
 /// import com.pulumi.gcp.kms.KeyRingIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -481,6 +539,21 @@ import 'key_ring_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyringiambinding" "key_ring" {
+///   key_ring_id = "your-key-ring-id"
+///   role        = "roles/cloudkms.admin"
+///   members     = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -489,8 +562,8 @@ import 'key_ring_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.KeyRingIAMBinding;
 /// import com.pulumi.gcp.kms.KeyRingIAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -611,6 +684,26 @@ import 'key_ring_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyringiambinding" "key_ring" {
+///   key_ring_id = "your-key-ring-id"
+///   role        = "roles/cloudkms.admin"
+///   members     = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -620,8 +713,8 @@ import 'key_ring_iambinding_state.dart';
 /// import com.pulumi.gcp.kms.KeyRingIAMBinding;
 /// import com.pulumi.gcp.kms.KeyRingIAMBindingArgs;
 /// import com.pulumi.gcp.kms.inputs.KeyRingIAMBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -725,6 +818,21 @@ import 'key_ring_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyringiammember" "key_ring" {
+///   key_ring_id = "your-key-ring-id"
+///   role        = "roles/cloudkms.admin"
+///   member      = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -733,8 +841,8 @@ import 'key_ring_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.KeyRingIAMMember;
 /// import com.pulumi.gcp.kms.KeyRingIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -849,6 +957,26 @@ import 'key_ring_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyringiammember" "key_ring" {
+///   key_ring_id = "your-key-ring-id"
+///   role        = "roles/cloudkms.admin"
+///   member      = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -858,8 +986,8 @@ import 'key_ring_iambinding_state.dart';
 /// import com.pulumi.gcp.kms.KeyRingIAMMember;
 /// import com.pulumi.gcp.kms.KeyRingIAMMemberArgs;
 /// import com.pulumi.gcp.kms.inputs.KeyRingIAMMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -967,6 +1095,21 @@ import 'key_ring_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyringiambinding" "key_ring" {
+///   key_ring_id = "your-key-ring-id"
+///   role        = "roles/cloudkms.admin"
+///   members     = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -975,8 +1118,8 @@ import 'key_ring_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.KeyRingIAMBinding;
 /// import com.pulumi.gcp.kms.KeyRingIAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1097,6 +1240,26 @@ import 'key_ring_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyringiambinding" "key_ring" {
+///   key_ring_id = "your-key-ring-id"
+///   role        = "roles/cloudkms.admin"
+///   members     = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1106,8 +1269,8 @@ import 'key_ring_iambinding_state.dart';
 /// import com.pulumi.gcp.kms.KeyRingIAMBinding;
 /// import com.pulumi.gcp.kms.KeyRingIAMBindingArgs;
 /// import com.pulumi.gcp.kms.inputs.KeyRingIAMBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1211,6 +1374,21 @@ import 'key_ring_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyringiammember" "key_ring" {
+///   key_ring_id = "your-key-ring-id"
+///   role        = "roles/cloudkms.admin"
+///   member      = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1219,8 +1397,8 @@ import 'key_ring_iambinding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.KeyRingIAMMember;
 /// import com.pulumi.gcp.kms.KeyRingIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1335,6 +1513,26 @@ import 'key_ring_iambinding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyringiammember" "key_ring" {
+///   key_ring_id = "your-key-ring-id"
+///   role        = "roles/cloudkms.admin"
+///   member      = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1344,8 +1542,8 @@ import 'key_ring_iambinding_state.dart';
 /// import com.pulumi.gcp.kms.KeyRingIAMMember;
 /// import com.pulumi.gcp.kms.KeyRingIAMMemberArgs;
 /// import com.pulumi.gcp.kms.inputs.KeyRingIAMMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1388,30 +1586,6 @@ import 'key_ring_iambinding_state.dart';
 ///
 ///
 /// ## Import
-///
-/// ### Importing IAM policies
-///
-/// IAM policy imports use the identifier of the Cloud KMS key ring only. For example:
-///
-/// * `{{project_id}}/{{location}}/{{key_ring_name}}`
-///
-/// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-///
-/// tf
-///
-/// import {
-///
-/// id = "{{project_id}}/{{location}}/{{key_ring_name}}"
-///
-/// to = google_kms_key_ring_iam_policy.default
-///
-/// }
-///
-/// The `pulumi import` command can also be used:
-///
-/// ```sh
-/// $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding default {{project_id}}/{{location}}/{{key_ring_name}}
-/// ```
 class KeyRingIAMBinding extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.

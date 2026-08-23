@@ -5,8 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupScheduleEncryptionConfig {
   /// The encryption type of backups created by the backup schedule.
   /// Possible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.
-  /// If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.
-  /// If your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION.
+  /// If you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName or kmsKeyNames.
   /// Possible values are: `USE_DATABASE_ENCRYPTION`, `GOOGLE_DEFAULT_ENCRYPTION`, `CUSTOMER_MANAGED_ENCRYPTION`.
   final pulumi.Input<String> encryptionType;
   /// The resource name of the Cloud KMS key to use for encryption.
@@ -42,4 +41,3 @@ class BackupScheduleEncryptionConfig {
     );
   }
 }
-

@@ -13,6 +13,13 @@ class AssetState {
   final pulumi.Input<String>? createTime;
   /// The zone for the resource
   final pulumi.Input<String>? dataplexZone;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. Description of the asset.
   final pulumi.Input<String>? description;
   /// Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
@@ -26,7 +33,7 @@ class AssetState {
   /// Optional. User defined labels for the asset.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The lake for the resource
   final pulumi.Input<String>? lake;
@@ -54,6 +61,7 @@ class AssetState {
   /// Creates a new [AssetState].
   /// [createTime] Output only. The time when the asset was created.
   /// [dataplexZone] The zone for the resource
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [description] Optional. Description of the asset.
   /// [discoverySpec] Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
   /// [discoveryStatuses] Output only. Status of the discovery feature applied to data referenced by this asset.
@@ -74,6 +82,7 @@ class AssetState {
   const AssetState({
     this.createTime,
     this.dataplexZone,
+    this.deletionPolicy,
     this.description,
     this.discoverySpec,
     this.discoveryStatuses,
@@ -97,6 +106,7 @@ class AssetState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'dataplexZone': ?dataplexZone,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'discoverySpec': ?pulumi.Input.mapOptionalInputValue<AssetDiscoverySpec, Map<String, dynamic>>(discoverySpec, (value) => value.toMap()),
       'discoveryStatuses': ?pulumi.Input.mapOptionalInputValue<List<AssetDiscoveryStatus>, List<Map<String, dynamic>>>(discoveryStatuses, (value) => pulumi.Input.encodeList<AssetDiscoveryStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -121,6 +131,7 @@ class AssetState {
     return AssetState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataplexZone: (() { final guardedValue = map['dataplexZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       discoverySpec: (() { final guardedValue = map['discoverySpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssetDiscoverySpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       discoveryStatuses: (() { final guardedValue = map['discoveryStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AssetDiscoveryStatus>(guardedValue, (value) => AssetDiscoveryStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -141,4 +152,3 @@ class AssetState {
     );
   }
 }
-

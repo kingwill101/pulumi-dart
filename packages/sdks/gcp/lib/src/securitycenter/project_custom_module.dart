@@ -128,6 +128,31 @@ import 'project_custom_module_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securitycenter_projectcustommodule" "example" {
+///   display_name     = "basic_custom_module"
+///   enablement_state = "ENABLED"
+///   custom_config = {
+///     predicate = {
+///       expression = "resource.rotationPeriod > duration(\"2592000s\")"
+///     }
+///     resource_selector = {
+///       resource_types = ["cloudkms.googleapis.com/CryptoKey"]
+///     }
+///     description    = "The rotation period of the identified cryptokey resource exceeds 30 days."
+///     recommendation = "Set the rotation period to at most 30 days."
+///     severity       = "MEDIUM"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -139,8 +164,8 @@ import 'project_custom_module_state.dart';
 /// import com.pulumi.gcp.securitycenter.inputs.ProjectCustomModuleCustomConfigArgs;
 /// import com.pulumi.gcp.securitycenter.inputs.ProjectCustomModuleCustomConfigPredicateArgs;
 /// import com.pulumi.gcp.securitycenter.inputs.ProjectCustomModuleCustomConfigResourceSelectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -363,6 +388,45 @@ import 'project_custom_module_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_securitycenter_projectcustommodule" "example" {
+///   display_name     = "full_custom_module"
+///   enablement_state = "ENABLED"
+///   custom_config = {
+///     predicate = {
+///       expression  = "resource.rotationPeriod > duration(\"2592000s\")"
+///       title       = "Purpose of the expression"
+///       description = "description of the expression"
+///       location    = "location of the expression"
+///     }
+///     custom_output = {
+///       properties = [{
+///         "name" = "duration"
+///         "valueExpression" = {
+///           "expression"  = "resource.rotationPeriod"
+///           "title"       = "Purpose of the expression"
+///           "description" = "description of the expression"
+///           "location"    = "location of the expression"
+///         }
+///       }]
+///     }
+///     resource_selector = {
+///       resource_types = ["cloudkms.googleapis.com/CryptoKey"]
+///     }
+///     severity       = "LOW"
+///     description    = "Description of the custom module"
+///     recommendation = "Steps to resolve violation"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -374,9 +438,11 @@ import 'project_custom_module_state.dart';
 /// import com.pulumi.gcp.securitycenter.inputs.ProjectCustomModuleCustomConfigArgs;
 /// import com.pulumi.gcp.securitycenter.inputs.ProjectCustomModuleCustomConfigPredicateArgs;
 /// import com.pulumi.gcp.securitycenter.inputs.ProjectCustomModuleCustomConfigCustomOutputArgs;
+/// import com.pulumi.gcp.securitycenter.inputs.ProjectCustomModuleCustomConfigCustomOutputPropertyArgs;
+/// import com.pulumi.gcp.securitycenter.inputs.ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpressionArgs;
 /// import com.pulumi.gcp.securitycenter.inputs.ProjectCustomModuleCustomConfigResourceSelectorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -456,32 +522,32 @@ import 'project_custom_module_state.dart';
 /// ProjectCustomModule can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/securityHealthAnalyticsSettings/customModules/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ProjectCustomModule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default projects/{{project}}/securityHealthAnalyticsSettings/customModules/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securitycenter/projectCustomModule:ProjectCustomModule default {{name}}
 /// ```
 class ProjectCustomModule extends pulumi.CustomResource {
   /// If empty, indicates that the custom module was created in the organization,folder,
-  /// or project in which you are viewing the custom module. Otherwise, ancestor_module
+  /// or project in which you are viewing the custom module. Otherwise, ancestorModule
   /// specifies the organization or folder from which the custom module is inherited.
   late final pulumi.Output<String> ancestorModule;
   /// The user specified custom configuration for the module.
   /// Structure is documented below.
   late final pulumi.Output<ProjectCustomModuleCustomConfig> customConfig;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The display name of the Security Health Analytics custom module. This
   /// display name becomes the finding category for all findings that are
   /// returned by this custom module. The display name must be between 1 and
@@ -520,6 +586,7 @@ class ProjectCustomModule extends pulumi.CustomResource {
         ) {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<ProjectCustomModuleCustomConfig>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enablementState = registerOutput<String>('enablementState');
     lastEditor = registerOutput<String>('lastEditor');
@@ -553,6 +620,7 @@ class ProjectCustomModule extends pulumi.CustomResource {
         ) {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<ProjectCustomModuleCustomConfig>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enablementState = registerOutput<String>('enablementState');
     lastEditor = registerOutput<String>('lastEditor');

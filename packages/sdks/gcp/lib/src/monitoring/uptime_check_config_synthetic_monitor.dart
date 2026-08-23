@@ -8,7 +8,7 @@ class UptimeCheckConfigSyntheticMonitor {
   /// Structure is documented below.
   ///
   ///
-  /// &lt;a name="nested_synthetic_monitor_cloud_function_v2"&gt;&lt;/a&gt;The `cloud_function_v2` block supports:
+  /// &lt;a name="nestedSyntheticMonitorCloudFunctionV2"&gt;&lt;/a&gt;The `cloudFunctionV2` block supports:
   final pulumi.Input<UptimeCheckConfigSyntheticMonitorCloudFunctionV2> cloudFunctionV2;
 
   /// Creates a new [UptimeCheckConfigSyntheticMonitor].
@@ -29,4 +29,3 @@ class UptimeCheckConfigSyntheticMonitor {
     );
   }
 }
-

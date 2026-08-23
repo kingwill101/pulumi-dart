@@ -316,7 +316,7 @@ import 'cx_tool_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxTool(ctx, "open_api_tool", &diagflow.CxToolArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("Example Open API Tool"),
 /// 			Description: pulumi.String("Example Description"),
 /// 			OpenApiSpec: &diagflow.CxToolOpenApiSpecArgs{
@@ -393,6 +393,53 @@ import 'cx_tool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name          = "dialogflowcx-agent-open-api"
+///   location              = "global"
+///   default_language_code = "en"
+///   time_zone             = "America/New_York"
+///   description           = "Example description."
+/// }
+/// resource "gcp_diagflow_cxtool" "open_api_tool" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "Example Open API Tool"
+///   description  = "Example Description"
+///   open_api_spec = {
+///     authentication = {
+///       oauth_config = {
+///         oauth_grant_type                 = "CLIENT_CREDENTIAL"
+///         client_id                        = "example client ID"
+///         client_secret                    = "example client secret"
+///         scopes                           = ["example scope"]
+///         secret_version_for_client_secret = "projects/-/secrets/-/versions/-"
+///         token_endpoint                   = "https://example.com/oauth/token"
+///       }
+///     }
+///     tls_config = {
+///       ca_certs = [{
+///         "displayName" = "example ca cert name"
+///         "cert"        = base64encode("example cert")
+///       }]
+///     }
+///     service_directory_config = {
+///       service = "projects/-/locations/-/namespaces/-/services/-"
+///     }
+///     text_schema = "    {\n      \\\"openapi\\\": \\\"3.0.0\\\",\n      \\\"info\\\": {\n        \\\"title\\\": \\\"Time API\\\",\n        \\\"version\\\": \\\"1.0.0\\\",\n        \\\"description\\\": \\\"A simple API to get the current time.\\\"\n      },\n      \\\"servers\\\": [\n        {\n          \\\"url\\\": \\\"https://example-api-endpoint.com\\\"\n        }\n      ],\n      \\\"paths\\\": {\n        \\\"/time\\\": {\n          \\\"get\\\": {\n            \\\"operationId\\\": \\\"getCurrentTime\\\",\n            \\\"summary\\\": \\\"Gets the current server time.\\\",\n            \\\"responses\\\": {\n              \\\"200\\\": {\n                \\\"description\\\": \\\"Successful response with the current time.\\\",\n                \\\"content\\\": {\n                  \\\"application/json\\\": {\n                    \\\"schema\\\": {\n                      \\\"type\\\": \\\"object\\\",\n                      \\\"properties\\\": {\n                        \\\"currentTime\\\": {\n                          \\\"type\\\": \\\"string\\\",\n                          \\\"format\\\": \\\"date-time\\\",\n                          \\\"description\\\": \\\"The current time in ISO 8601 format.\\\"\n                        }\n                      }\n                    }\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -407,11 +454,12 @@ import 'cx_tool_state.dart';
 /// import com.pulumi.gcp.diagflow.inputs.CxToolOpenApiSpecAuthenticationArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxToolOpenApiSpecAuthenticationOauthConfigArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxToolOpenApiSpecTlsConfigArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxToolOpenApiSpecTlsConfigCaCertArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxToolOpenApiSpecServiceDirectoryConfigArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -787,7 +835,7 @@ import 'cx_tool_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxTool(ctx, "data_store_tool", &diagflow.CxToolArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("Example Data Store Tool"),
 /// 			Description: pulumi.String("Example Description"),
 /// 			DataStoreSpec: &diagflow.CxToolDataStoreSpecArgs{
@@ -813,6 +861,50 @@ import 'cx_tool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   depends_on                    = [gcp_discoveryengine_datastore.my_datastore]
+///   display_name                  = "dialogflowcx-agent-data-store"
+///   location                      = "global"
+///   default_language_code         = "en"
+///   time_zone                     = "America/New_York"
+///   description                   = "Example description."
+///   delete_chat_engine_on_destroy = true
+/// }
+/// resource "gcp_diagflow_cxtool" "data_store_tool" {
+///   depends_on   = [gcp_discoveryengine_datastore.my_datastore, gcp_diagflow_cxagent.agent]
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "Example Data Store Tool"
+///   description  = "Example Description"
+///   data_store_spec = {
+///     data_store_connections = [{
+///       "dataStoreType"          = "UNSTRUCTURED"
+///       "dataStore"              ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/collections/default_collection/dataStores/${gcp_discoveryengine_datastore.my_datastore.data_store_id}"
+///       "documentProcessingMode" = "DOCUMENTS"
+///     }]
+///     fallback_prompt = {}
+///   }
+/// }
+/// resource "gcp_discoveryengine_datastore" "my_datastore" {
+///   location          = "global"
+///   data_store_id     = "datastore-tool"
+///   display_name      = "datastore for Tool test"
+///   industry_vertical = "GENERIC"
+///   content_config    = "NO_CONTENT"
+///   solution_types    = ["SOLUTION_TYPE_CHAT"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -828,10 +920,11 @@ import 'cx_tool_state.dart';
 /// import com.pulumi.gcp.diagflow.CxTool;
 /// import com.pulumi.gcp.diagflow.CxToolArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxToolDataStoreSpecArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxToolDataStoreSpecDataStoreConnectionArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxToolDataStoreSpecFallbackPromptArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1096,7 +1189,7 @@ import 'cx_tool_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxTool(ctx, "function_tool", &diagflow.CxToolArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("Example Function Tool"),
 /// 			Description: pulumi.String("Example Description"),
 /// 			FunctionSpec: &diagflow.CxToolFunctionSpecArgs{
@@ -1132,6 +1225,32 @@ import 'cx_tool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name          = "dialogflowcx-agent-fucntion"
+///   location              = "global"
+///   default_language_code = "en"
+///   time_zone             = "America/New_York"
+///   description           = "Example description."
+/// }
+/// resource "gcp_diagflow_cxtool" "function_tool" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "Example Function Tool"
+///   description  = "Example Description"
+///   function_spec = {
+///     input_schema  = "      {\n        \\\"type\\\": \\\"object\\\",\n        \\\"properties\\\": {\n          \\\"message_to_echo\\\": {\n            \\\"type\\\": \\\"string\\\",\n            \\\"description\\\": \\\"The message that should be echoed back.\\\"\n          }\n        },\n        \\\"required\\\": [\n          \\\"message_to_echo\\\"\n        ]\n      }\n"
+///     output_schema = "      {\n        \\\"type\\\": \\\"object\\\",\n        \\\"properties\\\": {\n          \\\"echoed_message\\\": {\n            \\\"type\\\": \\\"string\\\",\n            \\\"description\\\": \\\"The message that is echoed back.\\\"\n          }\n        }\n      }\n"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1143,8 +1262,8 @@ import 'cx_tool_state.dart';
 /// import com.pulumi.gcp.diagflow.CxTool;
 /// import com.pulumi.gcp.diagflow.CxToolArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxToolFunctionSpecArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1619,7 +1738,7 @@ import 'cx_tool_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxTool(ctx, "connector_tool", &diagflow.CxToolArgs{
-/// 			Parent:      agent.ID(),
+/// 			Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("Example Connector Tool"),
 /// 			Description: pulumi.String("Example Description"),
 /// 			ConnectorSpec: &diagflow.CxToolConnectorSpecArgs{
@@ -1654,6 +1773,89 @@ import 'cx_tool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "testProject" {
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name                  = "dialogflowcx-agent-connector"
+///   location                      = "us-central1"
+///   default_language_code         = "en"
+///   time_zone                     = "America/New_York"
+///   description                   = "Example description."
+///   delete_chat_engine_on_destroy = true
+/// }
+/// resource "gcp_integrationconnectors_connection" "integration_connector" {
+///   name              = "terraform-df-cx-tool-connection"
+///   location          = "us-central1"
+///   connector_version ="projects/${gcp_diagflow_cxagent.agent.project}/locations/global/providers/gcp/connectors/bigquery/versions/1"
+///   description       = "tf created description"
+///   config_variables {
+///     key          = "dataset_id"
+///     string_value = gcp_bigquery_dataset.bq_dataset.dataset_id
+///   }
+///   config_variables {
+///     key          = "project_id"
+///     string_value = gcp_diagflow_cxagent.agent.project
+///   }
+///   config_variables {
+///     key           = "support_native_data_type"
+///     boolean_value = false
+///   }
+///   config_variables {
+///     key           = "proxy_enabled"
+///     boolean_value = false
+///   }
+///   service_account ="${data.gcp_organizations_getproject.testProject.number}-compute@developer.gserviceaccount.com"
+///   auth_config = {
+///     auth_type = "AUTH_TYPE_UNSPECIFIED"
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "bq_dataset" {
+///   dataset_id                 = "terraformdatasetdfcxtool"
+///   friendly_name              = "test"
+///   description                = "This is a test description"
+///   location                   = "us-central1"
+///   delete_contents_on_destroy = true
+/// }
+/// resource "gcp_bigquery_table" "bq_table" {
+///   deletion_protection = false
+///   dataset_id          = gcp_bigquery_dataset.bq_dataset.dataset_id
+///   table_id            = "terraformdatasetdfcxtooltable"
+/// }
+/// resource "gcp_bigquery_datasetiammember" "connector_sa_dataset_perms" {
+///   project    = data.gcp_organizations_getproject.testProject.project_id
+///   dataset_id = gcp_bigquery_dataset.bq_dataset.dataset_id
+///   role       = "roles/bigquery.dataEditor"
+///   member     ="serviceAccount:${data.gcp_organizations_getproject.testProject.number}-compute@developer.gserviceaccount.com"
+/// }
+/// resource "gcp_diagflow_cxtool" "connector_tool" {
+///   parent       = gcp_diagflow_cxagent.agent.id
+///   display_name = "Example Connector Tool"
+///   description  = "Example Description"
+///   connector_spec = {
+///     name ="projects/${gcp_diagflow_cxagent.agent.project}/locations/us-central1/connections/${gcp_integrationconnectors_connection.integration_connector.name}"
+///     actions = [{
+///       "connectionActionId" = "ExecuteCustomQuery"
+///       "inputFields"        = ["test1"]
+///       "outputFields"       = ["test1"]
+///       }, {
+///       "entityOperation" = {
+///         "entityId"  = gcp_bigquery_table.bq_table.table_id
+///         "operation" = "LIST"
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1677,8 +1879,10 @@ import 'cx_tool_state.dart';
 /// import com.pulumi.gcp.diagflow.CxTool;
 /// import com.pulumi.gcp.diagflow.CxToolArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxToolConnectorSpecArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.diagflow.inputs.CxToolConnectorSpecActionArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxToolConnectorSpecActionEntityOperationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1865,19 +2069,17 @@ import 'cx_tool_state.dart';
 /// Tool can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/tools/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Tool can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxTool:CxTool default {{parent}}/tools/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/cxTool:CxTool default {{parent}}/{{name}}
 /// ```
 class CxTool extends pulumi.CustomResource {
+  /// (Optional, Beta)
   /// Integration connectors tool specification.
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
   /// Structure is documented below.
@@ -1886,6 +2088,13 @@ class CxTool extends pulumi.CustomResource {
   /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
   late final pulumi.Output<CxToolDataStoreSpec?> dataStoreSpec;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// High level description of the Tool and its usage.
   late final pulumi.Output<String> description;
   /// The human-readable name of the tool, unique within the agent.
@@ -1923,6 +2132,7 @@ class CxTool extends pulumi.CustomResource {
         ) {
     connectorSpec = registerOutput<CxToolConnectorSpec?>('connectorSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolConnectorSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataStoreSpec = registerOutput<CxToolDataStoreSpec?>('dataStoreSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolDataStoreSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     functionSpec = registerOutput<CxToolFunctionSpec?>('functionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolFunctionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1957,6 +2167,7 @@ class CxTool extends pulumi.CustomResource {
         ) {
     connectorSpec = registerOutput<CxToolConnectorSpec?>('connectorSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolConnectorSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataStoreSpec = registerOutput<CxToolDataStoreSpec?>('dataStoreSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolDataStoreSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     functionSpec = registerOutput<CxToolFunctionSpec?>('functionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxToolFunctionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });

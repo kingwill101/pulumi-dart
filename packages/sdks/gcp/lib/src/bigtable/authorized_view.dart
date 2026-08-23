@@ -3,6 +3,16 @@ import 'authorized_view_args.dart';
 import 'authorized_view_state.dart';
 import 'authorized_view_subset_view.dart';
 
+/// Creates a Google Cloud Bigtable authorized view inside a table. For more information see
+/// [the official documentation](https://cloud.google.com/bigtable/) and
+/// [API](https://cloud.google.com/bigtable/docs/go/reference).
+///
+/// &gt; **Note:** It is strongly recommended to set `lifecycle { preventDestroy = true }`
+/// on authorized views in order to prevent accidental data loss. See
+/// Terraform docs
+/// for more information on lifecycle parameters.
+///
+///
 /// ## Example Usage
 ///
 ///
@@ -306,6 +316,55 @@ import 'authorized_view_subset_view.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instance" "instance" {
+///   name = "tf-instance"
+///   clusters {
+///     cluster_id   = "tf-instance-cluster"
+///     zone         = "us-central1-b"
+///     num_nodes    = 3
+///     storage_type = "HDD"
+///   }
+/// }
+/// resource "gcp_bigtable_table" "table" {
+///   name          = "tf-table"
+///   instance_name = gcp_bigtable_instance.instance.name
+///   split_keys    = ["a", "b", "c"]
+///   column_families {
+///     family = "family-first"
+///   }
+///   column_families {
+///     family = "family-second"
+///   }
+///   change_stream_retention = "24h0m0s"
+/// }
+/// resource "gcp_bigtable_authorizedview" "authorized_view" {
+///   name          = "tf-authorized-view"
+///   instance_name = gcp_bigtable_instance.instance.name
+///   table_name    = gcp_bigtable_table.table.name
+///   subset_view = {
+///     row_prefixes = [base64encode("prefix#")]
+///     family_subsets = [{
+///       "familyName" = "family-first"
+///       "qualifiers" = [base64encode("qualifier"), base64encode("qualifier-second")]
+///       }, {
+///       "familyName"        = "family-second"
+///       "qualifierPrefixes" = [""]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -321,10 +380,11 @@ import 'authorized_view_subset_view.dart';
 /// import com.pulumi.gcp.bigtable.AuthorizedView;
 /// import com.pulumi.gcp.bigtable.AuthorizedViewArgs;
 /// import com.pulumi.gcp.bigtable.inputs.AuthorizedViewSubsetViewArgs;
+/// import com.pulumi.gcp.bigtable.inputs.AuthorizedViewSubsetViewFamilySubsetArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -454,25 +514,29 @@ import 'authorized_view_subset_view.dart';
 /// Bigtable Authorized Views can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/instances/{{instance_name}}/tables/{{table_name}}/authorizedViews/{{name}}`
-///
 /// * `{{project}}/{{instance_name}}/{{table_name}}/{{name}}`
-///
 /// * `{{instance_name}}/{{table_name}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Bigtable Authorized Views can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default projects/{{project}}/instances/{{instance_name}}/tables/{{table_name}}/authorizedViews/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default {{project}}/{{instance_name}}/{{table_name}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigtable/authorizedView:AuthorizedView default {{instance_name}}/{{table_name}}/{{name}}
 /// ```
 class AuthorizedView extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// -----
+  late final pulumi.Output<String> deletionPolicy;
+  /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
+  /// If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
   late final pulumi.Output<String> deletionProtection;
   /// The name of the Bigtable instance in which the authorized view belongs.
   late final pulumi.Output<String> instanceName;
@@ -482,8 +546,6 @@ class AuthorizedView extends pulumi.CustomResource {
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
   /// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-  ///
-  /// -----
   late final pulumi.Output<AuthorizedViewSubsetView?> subsetView;
   /// The name of the Bigtable table in which the authorized view belongs.
   late final pulumi.Output<String> tableName;
@@ -502,6 +564,7 @@ class AuthorizedView extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<String>('deletionProtection');
     instanceName = registerOutput<String>('instanceName');
     this.name = registerOutput<String>('name');
@@ -533,6 +596,7 @@ class AuthorizedView extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<String>('deletionProtection');
     instanceName = registerOutput<String>('instanceName');
     this.name = registerOutput<String>('name');

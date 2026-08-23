@@ -9,6 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPolicyArgs {
   /// Number of daily backups to keep. Note that the minimum daily backup limit is 2.
   final pulumi.Input<int> dailyBackupLimit;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// If enabled, make backups automatically according to the schedules.
@@ -17,7 +24,7 @@ class BackupPolicyArgs {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Name of the region for the policy to apply to.
   final pulumi.Input<String> location;
@@ -33,6 +40,7 @@ class BackupPolicyArgs {
 
   /// Creates a new [BackupPolicyArgs].
   /// [dailyBackupLimit] Number of daily backups to keep. Note that the minimum daily backup limit is 2.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [enabled] If enabled, make backups automatically according to the schedules.
   /// [labels] Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -43,6 +51,7 @@ class BackupPolicyArgs {
   /// [weeklyBackupLimit] Number of weekly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
   const BackupPolicyArgs({
     required this.dailyBackupLimit,
+    this.deletionPolicy,
     this.description,
     this.enabled,
     this.labels,
@@ -56,6 +65,7 @@ class BackupPolicyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dailyBackupLimit': dailyBackupLimit,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'enabled': ?enabled,
       'labels': ?labels,
@@ -70,6 +80,7 @@ class BackupPolicyArgs {
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
       dailyBackupLimit: pulumi.Input.fromValue(map['dailyBackupLimit'] as int),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -81,4 +92,3 @@ class BackupPolicyArgs {
     );
   }
 }
-

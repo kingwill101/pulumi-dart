@@ -100,6 +100,25 @@ import 'intent_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_agent" "basic_agent" {
+///   display_name          = "example_agent"
+///   default_language_code = "en"
+///   time_zone             = "America/New_York"
+/// }
+/// resource "gcp_diagflow_intent" "basic_intent" {
+///   depends_on   = [gcp_diagflow_agent.basic_agent]
+///   display_name = "basic-intent"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -111,8 +130,8 @@ import 'intent_state.dart';
 /// import com.pulumi.gcp.diagflow.Intent;
 /// import com.pulumi.gcp.diagflow.IntentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -412,6 +431,55 @@ import 'intent_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "agent_project" {
+///   project_id      = "my-project"
+///   name            = "my-project"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_projects_service" "agent_project" {
+///   project                    = gcp_organizations_project.agent_project.project_id
+///   service                    = "dialogflow.googleapis.com"
+///   disable_dependent_services = false
+/// }
+/// resource "gcp_serviceaccount_account" "dialogflow_service_account" {
+///   account_id = "my-account"
+/// }
+/// resource "gcp_projects_iammember" "agent_create" {
+///   project = gcp_projects_service.agent_project.project
+///   role    = "roles/dialogflow.admin"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.dialogflow_service_account.email}"
+/// }
+/// resource "gcp_diagflow_agent" "basic_agent" {
+///   project               = gcp_organizations_project.agent_project.project_id
+///   display_name          = "example_agent"
+///   default_language_code = "en"
+///   time_zone             = "America/New_York"
+/// }
+/// resource "gcp_diagflow_intent" "full_intent" {
+///   depends_on                 = [gcp_diagflow_agent.basic_agent]
+///   project                    = gcp_organizations_project.agent_project.project_id
+///   display_name               = "full-intent"
+///   webhook_state              = "WEBHOOK_STATE_ENABLED"
+///   priority                   = 1
+///   is_fallback                = false
+///   ml_disabled                = true
+///   action                     = "some_action"
+///   reset_contexts             = true
+///   input_context_names        = ["projects/${gcp_organizations_project.agent_project.project_id}/agent/sessions/-/contexts/some_id"]
+///   events                     = ["some_event"]
+///   default_response_platforms = ["FACEBOOK", "SLACK"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -431,8 +499,8 @@ import 'intent_state.dart';
 /// import com.pulumi.gcp.diagflow.Intent;
 /// import com.pulumi.gcp.diagflow.IntentArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -563,6 +631,7 @@ import 'intent_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -576,6 +645,13 @@ class Intent extends pulumi.CustomResource {
   /// (i.e. default platform).
   /// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
   late final pulumi.Output<List<String>?> defaultResponsePlatforms;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name of this intent to be displayed on the console.
   late final pulumi.Output<String> displayName;
   /// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
@@ -638,6 +714,7 @@ class Intent extends pulumi.CustomResource {
         ) {
     action = registerOutput<String>('action');
     defaultResponsePlatforms = registerOutput<List<String>?>('defaultResponsePlatforms');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     events = registerOutput<List<String>?>('events');
     followupIntentInfos = registerOutput<List<Map<String, dynamic>>>('followupIntentInfos');
@@ -678,6 +755,7 @@ class Intent extends pulumi.CustomResource {
         ) {
     action = registerOutput<String>('action');
     defaultResponsePlatforms = registerOutput<List<String>?>('defaultResponsePlatforms');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     events = registerOutput<List<String>?>('events');
     followupIntentInfos = registerOutput<List<Map<String, dynamic>>>('followupIntentInfos');

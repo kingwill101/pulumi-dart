@@ -107,6 +107,26 @@ import 'instance_user_metadata.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_looker_instance" "looker-instance" {
+///   name             = "my-instance"
+///   platform_edition = "LOOKER_CORE_STANDARD_ANNUAL"
+///   region           = "us-central1"
+///   oauth_config = {
+///     client_id     = "my-client-id"
+///     client_secret = "my-client-secret"
+///   }
+///   deletion_policy = "DEFAULT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,8 +136,8 @@ import 'instance_user_metadata.dart';
 /// import com.pulumi.gcp.looker.Instance;
 /// import com.pulumi.gcp.looker.InstanceArgs;
 /// import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -376,6 +396,57 @@ import 'instance_user_metadata.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_looker_instance" "looker-instance" {
+///   name              = "my-instance"
+///   platform_edition  = "LOOKER_CORE_STANDARD_ANNUAL"
+///   region            = "us-central1"
+///   public_ip_enabled = true
+///   gemini_enabled    = true
+///   admin_settings = {
+///     allowed_email_domains = ["google.com"]
+///   }
+///   maintenance_window = {
+///     day_of_week = "THURSDAY"
+///     start_time = {
+///       hours   = 22
+///       minutes = 0
+///       seconds = 0
+///       nanos   = 0
+///     }
+///   }
+///   deny_maintenance_period = {
+///     start_date = {
+///       year  = 2050
+///       month = 1
+///       day   = 1
+///     }
+///     end_date = {
+///       year  = 2050
+///       month = 2
+///       day   = 1
+///     }
+///     time = {
+///       hours   = 10
+///       minutes = 0
+///       seconds = 0
+///       nanos   = 0
+///     }
+///   }
+///   oauth_config = {
+///     client_id     = "my-client-id"
+///     client_secret = "my-client-secret"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -392,8 +463,8 @@ import 'instance_user_metadata.dart';
 /// import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodEndDateArgs;
 /// import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodTimeArgs;
 /// import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -576,6 +647,27 @@ import 'instance_user_metadata.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_looker_instance" "looker-instance" {
+///   name              = "my-instance-fips"
+///   platform_edition  = "LOOKER_CORE_ENTERPRISE_ANNUAL"
+///   region            = "us-central1"
+///   public_ip_enabled = true
+///   fips_enabled      = true
+///   oauth_config = {
+///     client_id     = "my-client-id"
+///     client_secret = "my-client-secret"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -585,8 +677,8 @@ import 'instance_user_metadata.dart';
 /// import com.pulumi.gcp.looker.Instance;
 /// import com.pulumi.gcp.looker.InstanceArgs;
 /// import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -887,8 +979,6 @@ import 'instance_user_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/looker"
@@ -910,13 +1000,13 @@ import 'instance_user_metadata.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(20),
-/// 			Network:      lookerNetwork.ID(),
+/// 			Network:      lookerNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		lookerVpcConnection, err := servicenetworking.NewConnection(ctx, "looker_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: lookerNetwork.ID(),
+/// 			Network: lookerNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				lookerRange.Name,
@@ -933,7 +1023,7 @@ import 'instance_user_metadata.dart';
 /// 			PublicIpEnabled:  pulumi.Bool(false),
 /// 			GeminiEnabled:    pulumi.Bool(true),
 /// 			ReservedRange:    lookerRange.Name,
-/// 			ConsumerNetwork:  lookerNetwork.ID(),
+/// 			ConsumerNetwork:  lookerNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			AdminSettings: &looker.InstanceAdminSettingsArgs{
 /// 				AllowedEmailDomains: pulumi.StringArray{
 /// 					pulumi.String("google.com"),
@@ -995,6 +1085,87 @@ import 'instance_user_metadata.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_looker_instance" "looker-instance" {
+///   depends_on         = [gcp_servicenetworking_connection.looker_vpc_connection]
+///   name               = "my-instance"
+///   platform_edition   = "LOOKER_CORE_ENTERPRISE_ANNUAL"
+///   region             = "us-central1"
+///   private_ip_enabled = true
+///   public_ip_enabled  = false
+///   gemini_enabled     = true
+///   reserved_range     = gcp_compute_globaladdress.looker_range.name
+///   consumer_network   = gcp_compute_network.looker_network.id
+///   admin_settings = {
+///     allowed_email_domains = ["google.com"]
+///   }
+///   encryption_config = {
+///     kms_key_name = "looker-kms-key"
+///   }
+///   maintenance_window = {
+///     day_of_week = "THURSDAY"
+///     start_time = {
+///       hours   = 22
+///       minutes = 0
+///       seconds = 0
+///       nanos   = 0
+///     }
+///   }
+///   deny_maintenance_period = {
+///     start_date = {
+///       year  = 2050
+///       month = 1
+///       day   = 1
+///     }
+///     end_date = {
+///       year  = 2050
+///       month = 2
+///       day   = 1
+///     }
+///     time = {
+///       hours   = 10
+///       minutes = 0
+///       seconds = 0
+///       nanos   = 0
+///     }
+///   }
+///   oauth_config = {
+///     client_id     = "my-client-id"
+///     client_secret = "my-client-secret"
+///   }
+/// }
+/// resource "gcp_servicenetworking_connection" "looker_vpc_connection" {
+///   network                 = gcp_compute_network.looker_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.looker_range.name]
+/// }
+/// resource "gcp_compute_globaladdress" "looker_range" {
+///   name          = "looker-range"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 20
+///   network       = gcp_compute_network.looker_network.id
+/// }
+/// resource "gcp_compute_network" "looker_network" {
+///   name = "looker-network"
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+///   crypto_key_id = "looker-kms-key"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-looker.iam.gserviceaccount.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1023,8 +1194,8 @@ import 'instance_user_metadata.dart';
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMember;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1289,6 +1460,28 @@ import 'instance_user_metadata.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_looker_instance" "looker-instance" {
+///   name             = "my-instance"
+///   platform_edition = "LOOKER_CORE_STANDARD_ANNUAL"
+///   region           = "us-central1"
+///   oauth_config = {
+///     client_id     = "my-client-id"
+///     client_secret = "my-client-secret"
+///   }
+///   custom_domain = {
+///     domain = "my-custom-domain.com"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1299,8 +1492,8 @@ import 'instance_user_metadata.dart';
 /// import com.pulumi.gcp.looker.InstanceArgs;
 /// import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
 /// import com.pulumi.gcp.looker.inputs.InstanceCustomDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1452,6 +1645,31 @@ import 'instance_user_metadata.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_looker_instance" "looker-instance" {
+///   name               = "my-instance"
+///   platform_edition   = "LOOKER_CORE_ENTERPRISE_ANNUAL"
+///   region             = "us-central1"
+///   private_ip_enabled = false
+///   public_ip_enabled  = false
+///   psc_enabled        = true
+///   oauth_config = {
+///     client_id     = "my-client-id"
+///     client_secret = "my-client-secret"
+///   }
+///   psc_config = {
+///     allowed_vpcs = ["projects/test-project/global/networks/test"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1462,8 +1680,8 @@ import 'instance_user_metadata.dart';
 /// import com.pulumi.gcp.looker.InstanceArgs;
 /// import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
 /// import com.pulumi.gcp.looker.inputs.InstancePscConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1596,6 +1814,26 @@ import 'instance_user_metadata.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_looker_instance" "looker-instance" {
+///   name             = "my-instance"
+///   platform_edition = "LOOKER_CORE_STANDARD_ANNUAL"
+///   region           = "us-central1"
+///   oauth_config = {
+///     client_id     = "my-client-id"
+///     client_secret = "my-client-secret"
+///   }
+///   deletion_policy = "FORCE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1605,8 +1843,8 @@ import 'instance_user_metadata.dart';
 /// import com.pulumi.gcp.looker.Instance;
 /// import com.pulumi.gcp.looker.InstanceArgs;
 /// import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1652,28 +1890,17 @@ import 'instance_user_metadata.dart';
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:looker/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:looker/instance:Instance default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:looker/instance:Instance default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:looker/instance:Instance default {{name}}
 /// ```
 class Instance extends pulumi.CustomResource {
@@ -1696,10 +1923,18 @@ class Instance extends pulumi.CustomResource {
   /// Structure is documented below.
   late final pulumi.Output<InstanceCustomDomain?> customDomain;
   /// Policy to determine if the cluster should be deleted forcefully.
-  /// If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+  /// If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
   /// of its nested resources. If set to "DEFAULT", Looker instances that still have
-  /// nested resources will return an error. Possible values: DEFAULT, FORCE
-  late final pulumi.Output<String?> deletionPolicy;
+  /// nested resources will return an error.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+  ///
+  /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
+  late final pulumi.Output<String> deletionPolicy;
   /// Maintenance denial period for this instance.
   /// You must allow at least 14 days of maintenance availability
   /// between any two deny maintenance periods.
@@ -1801,7 +2036,7 @@ class Instance extends pulumi.CustomResource {
     controlledEgressEnabled = registerOutput<bool?>('controlledEgressEnabled');
     createTime = registerOutput<String>('createTime');
     customDomain = registerOutput<InstanceCustomDomain?>('customDomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceCustomDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     denyMaintenancePeriod = registerOutput<InstanceDenyMaintenancePeriod?>('denyMaintenancePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDenyMaintenancePeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     egressPublicIp = registerOutput<String>('egressPublicIp');
     encryptionConfig = registerOutput<InstanceEncryptionConfig>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1856,7 +2091,7 @@ class Instance extends pulumi.CustomResource {
     controlledEgressEnabled = registerOutput<bool?>('controlledEgressEnabled');
     createTime = registerOutput<String>('createTime');
     customDomain = registerOutput<InstanceCustomDomain?>('customDomain', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceCustomDomain.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     denyMaintenancePeriod = registerOutput<InstanceDenyMaintenancePeriod?>('denyMaintenancePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDenyMaintenancePeriod.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     egressPublicIp = registerOutput<String>('egressPublicIp');
     encryptionConfig = registerOutput<InstanceEncryptionConfig>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

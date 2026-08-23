@@ -28,6 +28,13 @@ class TriggerState {
   final pulumi.Input<TriggerBuild>? build;
   /// Time when the trigger was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Human-readable description of the trigger.
   final pulumi.Input<String>? description;
   /// Configuration for triggers that respond to Developer Connect events.
@@ -36,8 +43,8 @@ class TriggerState {
   /// Whether the trigger is disabled or not. If true, the trigger will never result in a build.
   final pulumi.Input<bool>? disabled;
   /// Path, from the source root, to a file whose contents is used for the template.
-  /// Either a filename or build template must be provided. Set this only when using trigger_template or github.
-  /// When using Pub/Sub, Webhook or Manual set the file name using git_file_source instead.
+  /// Either a filename or build template must be provided. Set this only when using triggerTemplate or github.
+  /// When using Pub/Sub, Webhook or Manual set the file name using gitFileSource instead.
   final pulumi.Input<String>? filename;
   /// A Common Expression Language string. Used only with Pub/Sub and Webhook.
   final pulumi.Input<String>? filter;
@@ -45,7 +52,6 @@ class TriggerState {
   /// Structure is documented below.
   final pulumi.Input<TriggerGitFileSource>? gitFileSource;
   /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-  /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
   /// Structure is documented below.
   final pulumi.Input<TriggerGithub>? github;
   /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
@@ -53,7 +59,7 @@ class TriggerState {
   /// If ignoredFiles and changed files are both empty, then they are not
   /// used to determine whether or not to trigger a build.
   /// If ignoredFiles is not empty, then we ignore any files that match any
-  /// of the ignored_file globs. If the change has no files that are outside
+  /// of the ignoredFile globs. If the change has no files that are outside
   /// of the ignoredFiles globs, then we do not trigger a build.
   final pulumi.Input<List<String>>? ignoredFiles;
   /// Build logs will be sent back to GitHub as part of the checkrun
@@ -81,7 +87,6 @@ class TriggerState {
   final pulumi.Input<String>? project;
   /// PubsubConfig describes the configuration of a trigger that creates
   /// a build whenever a Pub/Sub message is published.
-  /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
   /// Structure is documented below.
   final pulumi.Input<TriggerPubsubConfig>? pubsubConfig;
   /// The configuration of a trigger that creates a build whenever an event from Repo API is received.
@@ -97,7 +102,6 @@ class TriggerState {
   /// This field is used only for those triggers that do not respond to SCM events.
   /// Triggers that respond to such events build source at whatever commit caused the event.
   /// This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-  /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
   /// Structure is documented below.
   final pulumi.Input<TriggerSourceToBuild>? sourceToBuild;
   /// Substitutions data for Build resource.
@@ -110,12 +114,10 @@ class TriggerState {
   /// Branch and tag names in trigger templates are interpreted as regular
   /// expressions. Any branch or tag change that matches that regular
   /// expression will trigger a build.
-  /// One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
   /// Structure is documented below.
   final pulumi.Input<TriggerTriggerTemplate>? triggerTemplate;
   /// WebhookConfig describes the configuration of a trigger that creates
   /// a build whenever a webhook is sent to a trigger's webhook URL.
-  /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
   /// Structure is documented below.
   final pulumi.Input<TriggerWebhookConfig>? webhookConfig;
 
@@ -124,6 +126,7 @@ class TriggerState {
   /// [bitbucketServerTriggerConfig] BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
   /// [build] Contents of the build template. Either a filename or build template must be provided.
   /// [createTime] Time when the trigger was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Human-readable description of the trigger.
   /// [developerConnectEventConfig] Configuration for triggers that respond to Developer Connect events.
   /// [disabled] Whether the trigger is disabled or not. If true, the trigger will never result in a build.
@@ -151,6 +154,7 @@ class TriggerState {
     this.bitbucketServerTriggerConfig,
     this.build,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.developerConnectEventConfig,
     this.disabled,
@@ -181,6 +185,7 @@ class TriggerState {
       'bitbucketServerTriggerConfig': ?pulumi.Input.mapOptionalInputValue<TriggerBitbucketServerTriggerConfig, Map<String, dynamic>>(bitbucketServerTriggerConfig, (value) => value.toMap()),
       'build': ?pulumi.Input.mapOptionalInputValue<TriggerBuild, Map<String, dynamic>>(build, (value) => value.toMap()),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'developerConnectEventConfig': ?pulumi.Input.mapOptionalInputValue<TriggerDeveloperConnectEventConfig, Map<String, dynamic>>(developerConnectEventConfig, (value) => value.toMap()),
       'disabled': ?disabled,
@@ -212,6 +217,7 @@ class TriggerState {
       bitbucketServerTriggerConfig: (() { final guardedValue = map['bitbucketServerTriggerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TriggerBitbucketServerTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       build: (() { final guardedValue = map['build']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TriggerBuild.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       developerConnectEventConfig: (() { final guardedValue = map['developerConnectEventConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TriggerDeveloperConnectEventConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -237,4 +243,3 @@ class TriggerState {
     );
   }
 }
-

@@ -37,7 +37,7 @@ import 'deny_policy_state.dart';
 /// const example = new gcp.iam.DenyPolicy("example", {
 ///     parent: std.urlencodeOutput({
 ///         input: pulumi.interpolate`cloudresourcemanager.googleapis.com/projects/${project.projectId}`,
-///     }).apply(invoke => invoke.result),
+///     }).result,
 ///     name: "my-deny-policy",
 ///     displayName: "A deny rule",
 ///     rules: [
@@ -83,7 +83,7 @@ import 'deny_policy_state.dart';
 ///     display_name="Test Service Account",
 ///     project=project.project_id)
 /// example = gcp.iam.DenyPolicy("example",
-///     parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).apply(lambda invoke: invoke.result),
+///     parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).result,
 ///     name="my-deny-policy",
 ///     display_name="A deny rule",
 ///     rules=[
@@ -230,13 +230,11 @@ import 'deny_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = iam.NewDenyPolicy(ctx, "example", &iam.DenyPolicyArgs{
-/// 			Parent: pulumi.String(std.UrlencodeOutput(ctx, std.UrlencodeOutputArgs{
+/// 			Parent: std.UrlencodeOutput(ctx, std.UrlencodeOutputArgs{
 /// 				Input: project.ProjectId.ApplyT(func(projectId string) (string, error) {
 /// 					return fmt.Sprintf("cloudresourcemanager.googleapis.com/projects/%v", projectId), nil
 /// 				}).(pulumi.StringOutput),
-/// 			}, nil).ApplyT(func(invoke std.UrlencodeResult) (*string, error) {
-/// 				return invoke.Result, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}, nil).Result(),
 /// 			Name:        pulumi.String("my-deny-policy"),
 /// 			DisplayName: pulumi.String("A deny rule"),
 /// 			Rules: iam.DenyPolicyRuleArray{
@@ -284,6 +282,59 @@ import 'deny_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "my-project"
+///   name            = "my-project"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_iam_denypolicy" "example" {
+///   parent       = urlencode("cloudresourcemanager.googleapis.com/projects/${gcp_organizations_project.project.project_id}")
+///   name         = "my-deny-policy"
+///   display_name = "A deny rule"
+///   rules {
+///     description = "First rule"
+///     deny_rule = {
+///       denied_principals = ["principalSet://goog/public:all"]
+///       denial_condition = {
+///         title      = "Some expr"
+///         expression = "!resource.matchTag('12345678/env', 'test')"
+///       }
+///       denied_permissions = ["cloudresourcemanager.googleapis.com/projects.update"]
+///     }
+///   }
+///   rules {
+///     description = "Second rule"
+///     deny_rule = {
+///       denied_principals = ["principalSet://goog/public:all"]
+///       denial_condition = {
+///         title      = "Some expr"
+///         expression = "!resource.matchTag('12345678/env', 'test')"
+///       }
+///       denied_permissions   = ["cloudresourcemanager.googleapis.com/projects.update"]
+///       exception_principals = ["principal://iam.googleapis.com/projects/-/serviceAccounts/${gcp_serviceaccount_account.test-account.email}"]
+///     }
+///   }
+/// }
+/// resource "gcp_serviceaccount_account" "test-account" {
+///   account_id   = "svc-acc"
+///   display_name = "Test Service Account"
+///   project      = gcp_organizations_project.project.project_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -301,8 +352,8 @@ import 'deny_policy_state.dart';
 /// import com.pulumi.gcp.iam.inputs.DenyPolicyRuleDenyRuleDenialConditionArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.UrlencodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -420,12 +471,20 @@ import 'deny_policy_state.dart';
 ///
 /// * `{{parent}}/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, DenyPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iam/denyPolicy:DenyPolicy default {{parent}}/{{name}}
 /// ```
 class DenyPolicy extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The display name of the rule.
   late final pulumi.Output<String?> displayName;
   /// The hash of the resource. Used internally during updates.
@@ -452,6 +511,7 @@ class DenyPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
@@ -482,6 +542,7 @@ class DenyPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');

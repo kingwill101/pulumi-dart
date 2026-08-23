@@ -51,6 +51,13 @@ class RouterPeerArgs {
   /// You can choose a value from 0 to 65335. If you don't provide a value,
   /// Google Cloud assigns a priority of 100 to the ranges.
   final pulumi.Input<int>? customLearnedRoutePriority;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The status of the BGP peer connection. If set to false, any active session
   /// with the peer is terminated and all associated routing information is removed.
   /// If set to true, the peer connection can be established with routing information.
@@ -60,9 +67,11 @@ class RouterPeerArgs {
   final pulumi.Input<bool>? enableIpv4;
   /// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
   final pulumi.Input<bool>? enableIpv6;
+  /// (Optional, Beta)
   /// routers.list of export policies applied to this peer, in the order they must be evaluated.
   /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
   final pulumi.Input<List<String>>? exportPolicies;
+  /// (Optional, Beta)
   /// routers.list of import policies applied to this peer, in the order they must be evaluated.
   /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
   final pulumi.Input<List<String>>? importPolicies;
@@ -92,7 +101,7 @@ class RouterPeerArgs {
   /// Each BGP interface may use a different value.
   final pulumi.Input<int> peerAsn;
   /// IP address of the BGP interface outside Google Cloud Platform.
-  /// Only IPv4 is supported. Required if `ip_address` is set.
+  /// Only IPv4 is supported. Required if `ipAddress` is set.
   final pulumi.Input<String>? peerIpAddress;
   /// IPv4 address of the BGP interface outside Google Cloud Platform.
   final pulumi.Input<String>? peerIpv4NexthopAddress;
@@ -118,10 +127,10 @@ class RouterPeerArgs {
   /// this Cloud Router. The VM instance is the peer side of the BGP session.
   final pulumi.Input<String>? routerApplianceInstance;
   /// The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
-  /// This value has to be set true to force the advertised_route_priority to be 0.
+  /// This value has to be set true to force the advertisedRoutePriority to be 0.
   final pulumi.Input<bool>? zeroAdvertisedRoutePriority;
   /// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
-  /// This value has to be set true to force the custom_learned_route_priority to be 0.
+  /// This value has to be set true to force the customLearnedRoutePriority to be 0.
   final pulumi.Input<bool>? zeroCustomLearnedRoutePriority;
 
   /// Creates a new [RouterPeerArgs].
@@ -132,11 +141,12 @@ class RouterPeerArgs {
   /// [bfd] BFD configuration for the BGP peering.
   /// [customLearnedIpRanges] The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
   /// [customLearnedRoutePriority] The user-defined custom learned route priority for a BGP session.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [enable] The status of the BGP peer connection. If set to false, any active session
   /// [enableIpv4] Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
   /// [enableIpv6] Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
-  /// [exportPolicies] routers.list of export policies applied to this peer, in the order they must be evaluated.
-  /// [importPolicies] routers.list of import policies applied to this peer, in the order they must be evaluated.
+  /// [exportPolicies] (Optional, Beta)
+  /// [importPolicies] (Optional, Beta)
   /// [interface] Name of the interface the BGP peer is associated with.
   /// [ipAddress] IP address of the interface inside Google Cloud Platform.
   /// [ipv4NexthopAddress] IPv4 address of the interface inside Google Cloud Platform.
@@ -161,6 +171,7 @@ class RouterPeerArgs {
     this.bfd,
     this.customLearnedIpRanges,
     this.customLearnedRoutePriority,
+    this.deletionPolicy,
     this.enable,
     this.enableIpv4,
     this.enableIpv6,
@@ -193,6 +204,7 @@ class RouterPeerArgs {
       'bfd': ?pulumi.Input.mapOptionalInputValue<RouterPeerBfd, Map<String, dynamic>>(bfd, (value) => value.toMap()),
       'customLearnedIpRanges': ?pulumi.Input.mapOptionalInputValue<List<RouterPeerCustomLearnedIpRange>, List<Map<String, dynamic>>>(customLearnedIpRanges, (value) => pulumi.Input.encodeList<RouterPeerCustomLearnedIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'customLearnedRoutePriority': ?customLearnedRoutePriority,
+      'deletionPolicy': ?deletionPolicy,
       'enable': ?enable,
       'enableIpv4': ?enableIpv4,
       'enableIpv6': ?enableIpv6,
@@ -226,6 +238,7 @@ class RouterPeerArgs {
       bfd: (() { final guardedValue = map['bfd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouterPeerBfd.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customLearnedIpRanges: (() { final guardedValue = map['customLearnedIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RouterPeerCustomLearnedIpRange>(guardedValue, (value) => RouterPeerCustomLearnedIpRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
       customLearnedRoutePriority: (() { final guardedValue = map['customLearnedRoutePriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enable: (() { final guardedValue = map['enable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableIpv4: (() { final guardedValue = map['enableIpv4']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableIpv6: (() { final guardedValue = map['enableIpv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -250,4 +263,3 @@ class RouterPeerArgs {
     );
   }
 }
-

@@ -222,7 +222,7 @@ import 'instance_group_manager_update_policy.dart';
 /// 				},
 /// 			},
 /// 			AutoHealingPolicies: &compute.InstanceGroupManagerAutoHealingPoliciesArgs{
-/// 				HealthCheck:     autohealing.ID(),
+/// 				HealthCheck:     autohealing.ID().ToIDOutput().ToStringOutput(),
 /// 				InitialDelaySec: pulumi.Int(300),
 /// 			},
 /// 		})
@@ -231,6 +231,53 @@ import 'instance_group_manager_update_policy.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_healthcheck" "autohealing" {
+///   name                = "autohealing-health-check"
+///   check_interval_sec  = 5
+///   timeout_sec         = 5
+///   healthy_threshold   = 2
+///   unhealthy_threshold = 10 # 50 seconds
+///   http_health_check = {
+///     request_path = "/healthz"
+///     port         = "8080"
+///   }
+/// }
+/// resource "gcp_compute_instancegroupmanager" "appserver" {
+///   name               = "appserver-igm"
+///   base_instance_name = "app"
+///   zone               = "us-central1-a"
+///   versions {
+///     instance_template = appserverGoogleComputeInstanceTemplate.selfLinkUnique
+///   }
+///   all_instances_config = {
+///     metadata = {
+///       "metadata_key" = "metadata_value"
+///     }
+///     labels = {
+///       "label_key" = "label_value"
+///     }
+///   }
+///   target_pools = [appserverGoogleComputeTargetPool.id]
+///   target_size  = 2
+///   named_ports {
+///     name = "customhttp"
+///     port = 8888
+///   }
+///   auto_healing_policies = {
+///     health_check      = gcp_compute_healthcheck.autohealing.id
+///     initial_delay_sec = 300
+///   }
 /// }
 /// ```
 /// ```java
@@ -248,8 +295,8 @@ import 'instance_group_manager_update_policy.dart';
 /// import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAllInstancesConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceGroupManagerNamedPortArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAutoHealingPoliciesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -278,13 +325,13 @@ import 'instance_group_manager_update_policy.dart';
 ///             .baseInstanceName("app")
 ///             .zone("us-central1-a")
 ///             .versions(InstanceGroupManagerVersionArgs.builder()
-///                 .instanceTemplate(appserverGoogleComputeInstanceTemplate.selfLinkUnique())
+///                 .instanceTemplate(appserverGoogleComputeInstanceTemplate.get("selfLinkUnique"))
 ///                 .build())
 ///             .allInstancesConfig(InstanceGroupManagerAllInstancesConfigArgs.builder()
 ///                 .metadata(Map.of("metadata_key", "metadata_value"))
 ///                 .labels(Map.of("label_key", "label_value"))
 ///                 .build())
-///             .targetPools(appserverGoogleComputeTargetPool.id())
+///             .targetPools(appserverGoogleComputeTargetPool.get("id"))
 ///             .targetSize(2)
 ///             .namedPorts(InstanceGroupManagerNamedPortArgs.builder()
 ///                 .name("customhttp")
@@ -458,6 +505,33 @@ import 'instance_group_manager_update_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_instancegroupmanager" "appserver" {
+///   name               = "appserver-igm"
+///   base_instance_name = "app"
+///   zone               = "us-central1-a"
+///   target_size        = 5
+///   versions {
+///     name              = "appserver"
+///     instance_template = appserverGoogleComputeInstanceTemplate.selfLinkUnique
+///   }
+///   versions {
+///     name              = "appserver-canary"
+///     instance_template = appserver-canary.selfLinkUnique
+///     target_size = {
+///       fixed = 1
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -468,8 +542,8 @@ import 'instance_group_manager_update_policy.dart';
 /// import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionTargetSizeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -489,11 +563,11 @@ import 'instance_group_manager_update_policy.dart';
 ///             .versions(
 ///                 InstanceGroupManagerVersionArgs.builder()
 ///                     .name("appserver")
-///                     .instanceTemplate(appserverGoogleComputeInstanceTemplate.selfLinkUnique())
+///                     .instanceTemplate(appserverGoogleComputeInstanceTemplate.get("selfLinkUnique"))
 ///                     .build(),
 ///                 InstanceGroupManagerVersionArgs.builder()
 ///                     .name("appserver-canary")
-///                     .instanceTemplate(appserver_canary.selfLinkUnique())
+///                     .instanceTemplate(appserver_canary.get("selfLinkUnique"))
 ///                     .targetSize(InstanceGroupManagerVersionTargetSizeArgs.builder()
 ///                         .fixed(1)
 ///                         .build())
@@ -634,6 +708,32 @@ import 'instance_group_manager_update_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_instancegroupmanager" "igm-sr" {
+///   name               = "tf-sr-igm"
+///   base_instance_name = "tf-sr-igm-instance"
+///   zone               = "us-central1-a"
+///   target_size        = 5
+///   versions {
+///     instance_template = sr-igm.selfLink
+///     name              = "primary"
+///   }
+///   standby_policy = {
+///     initial_delay_sec = 30
+///     mode              = "MANUAL"
+///   }
+///   target_suspended_size = 2
+///   target_stopped_size   = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -644,8 +744,8 @@ import 'instance_group_manager_update_policy.dart';
 /// import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceGroupManagerStandbyPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -663,7 +763,7 @@ import 'instance_group_manager_update_policy.dart';
 ///             .zone("us-central1-a")
 ///             .targetSize(5)
 ///             .versions(InstanceGroupManagerVersionArgs.builder()
-///                 .instanceTemplate(sr_igm.selfLink())
+///                 .instanceTemplate(sr_igm.get("selfLink"))
 ///                 .name("primary")
 ///                 .build())
 ///             .standbyPolicy(InstanceGroupManagerStandbyPolicyArgs.builder()
@@ -972,6 +1072,60 @@ import 'instance_group_manager_update_policy.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_resourcepolicy" "workload_policy" {
+///   name   = "tf-test-gce-policy"
+///   region = "us-central1"
+///   workload_policy = {
+///     type = "HIGH_THROUGHPUT"
+///   }
+/// }
+/// resource "gcp_compute_instancetemplate" "igm-basic" {
+///   name           = "igm-instance-template"
+///   machine_type   = "a4-highgpu-8g"
+///   can_ip_forward = false
+///   tags           = ["foo", "bar"]
+///   disks {
+///     source_image = data.gcp_compute_getimage.myImage.self_link
+///     auto_delete  = true
+///     boot         = true
+///     disk_type    = "hyperdisk-balanced"
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
+///   service_account = {
+///     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
+///   }
+/// }
+/// resource "gcp_compute_instancegroupmanager" "igm-workload-policy" {
+///   description = "Terraform test instance group manager"
+///   name        = "igm-basic-workload-policy"
+///   versions {
+///     name              = "prod"
+///     instance_template = gcp_compute_instancetemplate.igm-basic.self_link
+///   }
+///   base_instance_name = "tf-test-igm-no-tp"
+///   zone               = "us-central1-b"
+///   target_size        = 0
+///   resource_policies = {
+///     workload_policy = gcp_compute_resourcepolicy.workload_policy.self_link
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -992,8 +1146,8 @@ import 'instance_group_manager_update_policy.dart';
 /// import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceGroupManagerResourcePoliciesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1118,30 +1272,22 @@ import 'instance_group_manager_update_policy.dart';
 ///
 /// Instance group managers can be imported using any of these accepted formats:
 ///
+/// ```sh
 /// * `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example:
 ///
-/// ```sh
-/// $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
+/// ```
+/// $ terraform import google_compute_instance_group_manager.default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
+/// $ terraform import google_compute_instance_group_manager.default {{project}}/{{zone}}/{{name}}
+/// $ terraform import google_compute_instance_group_manager.default {{project}}/{{name}}
+/// $ terraform import google_compute_instance_group_manager.default {{name}}
 /// ```
 ///
-/// ```sh
-/// $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{zone}}/{{name}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{name}}
 /// ```
 class InstanceGroupManager extends pulumi.CustomResource {
   /// Properties to set on all instances in the group. After setting
@@ -1160,6 +1306,15 @@ class InstanceGroupManager extends pulumi.CustomResource {
   late final pulumi.Output<String> baseInstanceName;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// - - -
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional textual description of the instance
   /// group manager.
   late final pulumi.Output<String?> description;
@@ -1187,14 +1342,12 @@ class InstanceGroupManager extends pulumi.CustomResource {
   /// for details on configuration.
   late final pulumi.Output<List<Map<String, dynamic>>?> namedPorts;
   late final pulumi.Output<String> operation;
-  /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+  /// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
   late final pulumi.Output<InstanceGroupManagerParams?> params;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
   /// Resource policies for this managed instance group. Structure is documented below.
-  ///
-  /// - - -
   late final pulumi.Output<InstanceGroupManagerResourcePolicies?> resourcePolicies;
   /// The URL of the created resource.
   late final pulumi.Output<String> selfLink;
@@ -1212,8 +1365,13 @@ class InstanceGroupManager extends pulumi.CustomResource {
   /// instances in the group are added. Updating the target pools attribute does
   /// not affect existing instances.
   late final pulumi.Output<List<String>?> targetPools;
-  /// The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
+  /// The target number of running instances for this managed
+  /// instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
+  /// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
+  /// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
   late final pulumi.Output<int> targetSize;
+  /// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
+  late final pulumi.Output<List<Map<String, dynamic>>> targetSizePolicies;
   /// The target number of stopped instances for this managed instance group.
   late final pulumi.Output<int> targetStoppedSize;
   /// The target number of suspended instances for this managed instance group.
@@ -1228,7 +1386,7 @@ class InstanceGroupManager extends pulumi.CustomResource {
   /// returning. Note that if this is set to true and the operation does not succeed, this provider will
   /// continue trying until it times out.
   late final pulumi.Output<bool?> waitForInstances;
-  /// When used with `wait_for_instances` it specifies the status to wait for.
+  /// When used with `waitForInstances` it specifies the status to wait for.
   /// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
   /// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
   /// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
@@ -1257,6 +1415,7 @@ class InstanceGroupManager extends pulumi.CustomResource {
     autoHealingPolicies = registerOutput<InstanceGroupManagerAutoHealingPolicies?>('autoHealingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerAutoHealingPolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     baseInstanceName = registerOutput<String>('baseInstanceName');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     instanceGroup = registerOutput<String>('instanceGroup');
@@ -1277,6 +1436,7 @@ class InstanceGroupManager extends pulumi.CustomResource {
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     targetPools = registerOutput<List<String>?>('targetPools');
     targetSize = registerOutput<int>('targetSize');
+    targetSizePolicies = registerOutput<List<Map<String, dynamic>>>('targetSizePolicies');
     targetStoppedSize = registerOutput<int>('targetStoppedSize');
     targetSuspendedSize = registerOutput<int>('targetSuspendedSize');
     updatePolicy = registerOutput<InstanceGroupManagerUpdatePolicy>('updatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1313,6 +1473,7 @@ class InstanceGroupManager extends pulumi.CustomResource {
     autoHealingPolicies = registerOutput<InstanceGroupManagerAutoHealingPolicies?>('autoHealingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerAutoHealingPolicies.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     baseInstanceName = registerOutput<String>('baseInstanceName');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     instanceGroup = registerOutput<String>('instanceGroup');
@@ -1333,6 +1494,7 @@ class InstanceGroupManager extends pulumi.CustomResource {
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
     targetPools = registerOutput<List<String>?>('targetPools');
     targetSize = registerOutput<int>('targetSize');
+    targetSizePolicies = registerOutput<List<Map<String, dynamic>>>('targetSizePolicies');
     targetStoppedSize = registerOutput<int>('targetStoppedSize');
     targetSuspendedSize = registerOutput<int>('targetSuspendedSize');
     updatePolicy = registerOutput<InstanceGroupManagerUpdatePolicy>('updatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupManagerUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -11,6 +11,7 @@ class GetBackendBucketResult {
   final String compressionMode;
   final String creationTimestamp;
   final List<String> customResponseHeaders;
+  final String deletionPolicy;
   final String description;
   final String edgeSecurityPolicy;
   final bool enableCdn;
@@ -28,6 +29,7 @@ class GetBackendBucketResult {
   /// [compressionMode] Required.
   /// [creationTimestamp] Required.
   /// [customResponseHeaders] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [edgeSecurityPolicy] Required.
   /// [enableCdn] Required.
@@ -43,6 +45,7 @@ class GetBackendBucketResult {
     required this.compressionMode,
     required this.creationTimestamp,
     required this.customResponseHeaders,
+    required this.deletionPolicy,
     required this.description,
     required this.edgeSecurityPolicy,
     required this.enableCdn,
@@ -61,6 +64,7 @@ class GetBackendBucketResult {
       'compressionMode': compressionMode,
       'creationTimestamp': creationTimestamp,
       'customResponseHeaders': customResponseHeaders,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'edgeSecurityPolicy': edgeSecurityPolicy,
       'enableCdn': enableCdn,
@@ -80,6 +84,7 @@ class GetBackendBucketResult {
       compressionMode: map['compressionMode'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
       customResponseHeaders: (map['customResponseHeaders'] as List).cast<String>(),
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       edgeSecurityPolicy: map['edgeSecurityPolicy'] as String,
       enableCdn: map['enableCdn'] as bool,
@@ -92,4 +97,3 @@ class GetBackendBucketResult {
     );
   }
 }
-

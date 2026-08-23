@@ -12,6 +12,7 @@ class GetEntitlementResult {
   final List<GetEntitlementAdditionalNotificationTarget> additionalNotificationTargets;
   final List<GetEntitlementApprovalWorkflow> approvalWorkflows;
   final String createTime;
+  final String deletionPolicy;
   final List<GetEntitlementEligibleUser> eligibleUsers;
   final String? entitlementId;
   final String etag;
@@ -30,6 +31,7 @@ class GetEntitlementResult {
   /// [additionalNotificationTargets] Required.
   /// [approvalWorkflows] Required.
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [eligibleUsers] Required.
   /// [entitlementId] Optional.
   /// [etag] Required.
@@ -46,6 +48,7 @@ class GetEntitlementResult {
     required this.additionalNotificationTargets,
     required this.approvalWorkflows,
     required this.createTime,
+    required this.deletionPolicy,
     required this.eligibleUsers,
     this.entitlementId,
     required this.etag,
@@ -65,6 +68,7 @@ class GetEntitlementResult {
       'additionalNotificationTargets': pulumi.Input.encodeList<GetEntitlementAdditionalNotificationTarget, Map<String, dynamic>>(additionalNotificationTargets, (value) => value.toMap()),
       'approvalWorkflows': pulumi.Input.encodeList<GetEntitlementApprovalWorkflow, Map<String, dynamic>>(approvalWorkflows, (value) => value.toMap()),
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'eligibleUsers': pulumi.Input.encodeList<GetEntitlementEligibleUser, Map<String, dynamic>>(eligibleUsers, (value) => value.toMap()),
       'entitlementId': ?entitlementId,
       'etag': etag,
@@ -85,6 +89,7 @@ class GetEntitlementResult {
       additionalNotificationTargets: pulumi.Input.decodeList<GetEntitlementAdditionalNotificationTarget>(map['additionalNotificationTargets']!, (value) => GetEntitlementAdditionalNotificationTarget.fromMap((value as Map).cast<String, dynamic>())),
       approvalWorkflows: pulumi.Input.decodeList<GetEntitlementApprovalWorkflow>(map['approvalWorkflows']!, (value) => GetEntitlementApprovalWorkflow.fromMap((value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       eligibleUsers: pulumi.Input.decodeList<GetEntitlementEligibleUser>(map['eligibleUsers']!, (value) => GetEntitlementEligibleUser.fromMap((value as Map).cast<String, dynamic>())),
       entitlementId: (() { final guardedValue = map['entitlementId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: map['etag'] as String,
@@ -100,4 +105,3 @@ class GetEntitlementResult {
     );
   }
 }
-

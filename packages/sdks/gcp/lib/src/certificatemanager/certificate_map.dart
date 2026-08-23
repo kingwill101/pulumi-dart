@@ -84,6 +84,24 @@ import 'certificate_map_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificatemap" "default" {
+///   name        = "cert-map"
+///   description = "My acceptance test certificate map"
+///   labels = {
+///     "terraform" = true
+///     "acc-test"  = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +110,8 @@ import 'certificate_map_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.certificatemanager.CertificateMap;
 /// import com.pulumi.gcp.certificatemanager.CertificateMapArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -135,22 +153,15 @@ import 'certificate_map_state.dart';
 /// CertificateMap can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/certificateMaps/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, CertificateMap can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default projects/{{project}}/locations/global/certificateMaps/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificatemanager/certificateMap:CertificateMap default {{name}}
 /// ```
 class CertificateMap extends pulumi.CustomResource {
@@ -158,6 +169,13 @@ class CertificateMap extends pulumi.CustomResource {
   /// accurate to nanoseconds with up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human-readable description of the resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -168,7 +186,7 @@ class CertificateMap extends pulumi.CustomResource {
   /// Set of labels associated with a Certificate Map resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// A user-defined name of the Certificate Map. Certificate Map names must be unique
   /// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
@@ -199,6 +217,7 @@ class CertificateMap extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gclbTargets = registerOutput<List<Map<String, dynamic>>>('gclbTargets');
@@ -233,6 +252,7 @@ class CertificateMap extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gclbTargets = registerOutput<List<Map<String, dynamic>>>('gclbTargets');

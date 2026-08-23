@@ -35,7 +35,7 @@ class WidgetConfigArgs {
   /// Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
   /// Structure is documented below.
   final pulumi.Input<WidgetConfigUiSettings>? uiSettings;
-  /// The unique ID to use for the WidgetConfig. Currently only accepts "default_search_widget_config".
+  /// The unique ID to use for the WidgetConfig. Currently only accepts "defaultSearchWidgetConfig".
   final pulumi.Input<String>? widgetConfigId;
 
   /// Creates a new [WidgetConfigArgs].
@@ -47,7 +47,7 @@ class WidgetConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [uiBranding] Describes search widget UI branding settings, such as the widget title, logo,
   /// [uiSettings] Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
-  /// [widgetConfigId] The unique ID to use for the WidgetConfig. Currently only accepts "default_search_widget_config".
+  /// [widgetConfigId] The unique ID to use for the WidgetConfig. Currently only accepts "defaultSearchWidgetConfig".
   const WidgetConfigArgs({
     this.accessSettings,
     this.collectionId,
@@ -88,4 +88,3 @@ class WidgetConfigArgs {
     );
   }
 }
-

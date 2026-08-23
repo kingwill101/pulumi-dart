@@ -64,6 +64,19 @@ import 'project_cloud_armor_tier_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_projectcloudarmortier" "cloud_armor_tier_config" {
+///   cloud_armor_tier = "CA_STANDARD"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -72,8 +85,8 @@ import 'project_cloud_armor_tier_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.ProjectCloudArmorTier;
 /// import com.pulumi.gcp.compute.ProjectCloudArmorTierArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -204,7 +217,7 @@ import 'project_cloud_armor_tier_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+/// 		compute2, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
 /// 			Project: project.ProjectId,
 /// 			Service: pulumi.String("compute.googleapis.com"),
 /// 		})
@@ -215,13 +228,39 @@ import 'project_cloud_armor_tier_state.dart';
 /// 			Project:        project.ProjectId,
 /// 			CloudArmorTier: pulumi.String("CA_STANDARD"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			compute,
+/// 			compute2,
 /// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "your_project_id"
+///   name            = "your_project_id"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_projects_service" "compute" {
+///   project = gcp_organizations_project.project.project_id
+///   service = "compute.googleapis.com"
+/// }
+/// resource "gcp_compute_projectcloudarmortier" "cloud_armor_tier_config" {
+///   depends_on       = [gcp_projects_service.compute]
+///   project          = gcp_organizations_project.project.project_id
+///   cloud_armor_tier = "CA_STANDARD"
 /// }
 /// ```
 /// ```java
@@ -237,8 +276,8 @@ import 'project_cloud_armor_tier_state.dart';
 /// import com.pulumi.gcp.compute.ProjectCloudArmorTier;
 /// import com.pulumi.gcp.compute.ProjectCloudArmorTierArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -305,22 +344,26 @@ import 'project_cloud_armor_tier_state.dart';
 /// ProjectCloudArmorTier can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}`
-///
 /// * `{{project}}`
+///
 ///
 /// When using the `pulumi import` command, ProjectCloudArmorTier can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier default projects/{{project}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/projectCloudArmorTier:ProjectCloudArmorTier default {{project}}
 /// ```
 class ProjectCloudArmorTier extends pulumi.CustomResource {
   /// Managed protection tier to be set.
   /// Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
   late final pulumi.Output<String> cloudArmorTier;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -340,6 +383,7 @@ class ProjectCloudArmorTier extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cloudArmorTier = registerOutput<String>('cloudArmorTier');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     project = registerOutput<String>('project');
   }
 
@@ -367,6 +411,7 @@ class ProjectCloudArmorTier extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cloudArmorTier = registerOutput<String>('cloudArmorTier');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     project = registerOutput<String>('project');
   }
 }

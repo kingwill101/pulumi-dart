@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_networksecurity_firewall_endpoint_association_firewall_endpoint_association_args_doc}
 class FirewallEndpointAssociationArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Whether the association is disabled. True indicates that traffic will not be intercepted.
   /// &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
   /// otherwise on an update the association can be disabled.
@@ -16,7 +23,7 @@ class FirewallEndpointAssociationArgs {
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location (zone) of the firewall endpoint association.
   final pulumi.Input<String> location;
@@ -31,6 +38,7 @@ class FirewallEndpointAssociationArgs {
   final pulumi.Input<String>? tlsInspectionPolicy;
 
   /// Creates a new [FirewallEndpointAssociationArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disabled] Whether the association is disabled. True indicates that traffic will not be intercepted.
   /// [firewallEndpoint] The URL of the firewall endpoint that is being associated.
   /// [labels] A map of key/value label pairs to assign to the resource.
@@ -40,6 +48,7 @@ class FirewallEndpointAssociationArgs {
   /// [parent] The name of the parent this firewall endpoint association belongs to.
   /// [tlsInspectionPolicy] The URL of the TlsInspectionPolicy that is being associated.
   const FirewallEndpointAssociationArgs({
+    this.deletionPolicy,
     this.disabled,
     required this.firewallEndpoint,
     this.labels,
@@ -52,6 +61,7 @@ class FirewallEndpointAssociationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'disabled': ?disabled,
       'firewallEndpoint': firewallEndpoint,
       'labels': ?labels,
@@ -65,6 +75,7 @@ class FirewallEndpointAssociationArgs {
 
   factory FirewallEndpointAssociationArgs.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointAssociationArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       firewallEndpoint: pulumi.Input.fromValue(map['firewallEndpoint'] as String),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -76,4 +87,3 @@ class FirewallEndpointAssociationArgs {
     );
   }
 }
-

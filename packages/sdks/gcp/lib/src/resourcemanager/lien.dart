@@ -113,6 +113,27 @@ import 'lien_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_resourcemanager_lien" "lien" {
+///   parent       ="projects/${gcp_organizations_project.project.number}"
+///   restrictions = ["resourcemanager.projects.delete"]
+///   origin       = "machine-readable-explanation"
+///   reason       = "This project is an important environment"
+/// }
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "staging-project"
+///   name            = "A very important project!"
+///   deletion_policy = "DELETE"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -123,8 +144,8 @@ import 'lien_state.dart';
 /// import com.pulumi.gcp.organizations.ProjectArgs;
 /// import com.pulumi.gcp.resourcemanager.Lien;
 /// import com.pulumi.gcp.resourcemanager.LienArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -177,6 +198,7 @@ import 'lien_state.dart';
 ///
 /// * `{{parent}}/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, Lien can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -185,6 +207,13 @@ import 'lien_state.dart';
 class Lien extends pulumi.CustomResource {
   /// Time of creation
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A system-generated unique identifier for this Lien.
   late final pulumi.Output<String> name;
   /// A stable, user-visible/meaningful string identifying the origin
@@ -221,6 +250,7 @@ class Lien extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     origin = registerOutput<String>('origin');
     parent = registerOutput<String>('parent');
@@ -252,6 +282,7 @@ class Lien extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     origin = registerOutput<String>('origin');
     parent = registerOutput<String>('parent');

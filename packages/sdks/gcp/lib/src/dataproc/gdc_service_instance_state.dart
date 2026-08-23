@@ -7,18 +7,25 @@ import 'gdc_service_instance_gdce_cluster.dart';
 class GdcServiceInstanceState {
   /// The timestamp when the resource was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-provided human-readable name to be used in user interfaces.
   final pulumi.Input<String>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
-  /// Effective service account associated with ServiceInstance. This will be the service_account if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
+  /// Effective service account associated with ServiceInstance. This will be the serviceAccount if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
   final pulumi.Input<String>? effectiveServiceAccount;
   /// Gdce cluster information.
   /// Structure is documented below.
   final pulumi.Input<GdcServiceInstanceGdceCluster>? gdceCluster;
   /// The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Location of the resource.
   final pulumi.Input<String>? location;
@@ -69,9 +76,10 @@ class GdcServiceInstanceState {
 
   /// Creates a new [GdcServiceInstanceState].
   /// [createTime] The timestamp when the resource was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] User-provided human-readable name to be used in user interfaces.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  /// [effectiveServiceAccount] Effective service account associated with ServiceInstance. This will be the service_account if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
+  /// [effectiveServiceAccount] Effective service account associated with ServiceInstance. This will be the serviceAccount if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
   /// [gdceCluster] Gdce cluster information.
   /// [labels] The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
   /// [location] Location of the resource.
@@ -89,6 +97,7 @@ class GdcServiceInstanceState {
   /// [updateTime] The timestamp when the resource was most recently updated.
   const GdcServiceInstanceState({
     this.createTime,
+    this.deletionPolicy,
     this.displayName,
     this.effectiveLabels,
     this.effectiveServiceAccount,
@@ -112,6 +121,7 @@ class GdcServiceInstanceState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'effectiveLabels': ?effectiveLabels,
       'effectiveServiceAccount': ?effectiveServiceAccount,
@@ -136,6 +146,7 @@ class GdcServiceInstanceState {
   factory GdcServiceInstanceState.fromMap(Map<String, dynamic> map) {
     return GdcServiceInstanceState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       effectiveServiceAccount: (() { final guardedValue = map['effectiveServiceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -157,4 +168,3 @@ class GdcServiceInstanceState {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class NetworkFirewallPolicyRuleMatchLayer4Config {
     );
   }
 }
-

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'record_set_routing_policy_wrr_health_checked_targets.dart';
 
 class RecordSetRoutingPolicyWrr {
-  /// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+  /// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
   /// Structure is documented below.
   final pulumi.Input<RecordSetRoutingPolicyWrrHealthCheckedTargets>? healthCheckedTargets;
   /// Same as `rrdatas` above.
@@ -13,7 +13,7 @@ class RecordSetRoutingPolicyWrr {
   final pulumi.Input<double> weight;
 
   /// Creates a new [RecordSetRoutingPolicyWrr].
-  /// [healthCheckedTargets] The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+  /// [healthCheckedTargets] The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
   /// [rrdatas] Same as `rrdatas` above.
   /// [weight] The ratio of traffic routed to the target.
   const RecordSetRoutingPolicyWrr({
@@ -38,4 +38,3 @@ class RecordSetRoutingPolicyWrr {
     );
   }
 }
-

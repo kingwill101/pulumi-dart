@@ -131,6 +131,32 @@ import 'api_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_apikey" "primary" {
+///   name         = "key"
+///   display_name = "sample-key"
+///   restrictions = {
+///     android_key_restrictions = {
+///       allowed_applications = [{
+///         "packageName"     = "com.example.app123"
+///         "sha1Fingerprint" = "1699466a142d4682a5f91b50fdf400f2358e2b0b"
+///       }]
+///     }
+///     api_targets = [{
+///       "service" = "translate.googleapis.com"
+///       "methods" = ["GET*"]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +167,10 @@ import 'api_key_state.dart';
 /// import com.pulumi.gcp.projects.ApiKeyArgs;
 /// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
 /// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsAndroidKeyRestrictionsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs;
+/// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsApiTargetArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -303,6 +331,29 @@ import 'api_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_apikey" "primary" {
+///   name         = "key"
+///   display_name = "sample-key"
+///   restrictions = {
+///     api_targets = [{
+///       "service" = "translate.googleapis.com"
+///       "methods" = ["GET*"]
+///     }]
+///     browser_key_restrictions = {
+///       allowed_referrers = [".*"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -312,9 +363,10 @@ import 'api_key_state.dart';
 /// import com.pulumi.gcp.projects.ApiKey;
 /// import com.pulumi.gcp.projects.ApiKeyArgs;
 /// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
+/// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsApiTargetArgs;
 /// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsBrowserKeyRestrictionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -471,6 +523,29 @@ import 'api_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_apikey" "primary" {
+///   name         = "key"
+///   display_name = "sample-key"
+///   restrictions = {
+///     api_targets = [{
+///       "service" = "translate.googleapis.com"
+///       "methods" = ["GET*"]
+///     }]
+///     ios_key_restrictions = {
+///       allowed_bundle_ids = ["com.google.app.macos"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -480,9 +555,10 @@ import 'api_key_state.dart';
 /// import com.pulumi.gcp.projects.ApiKey;
 /// import com.pulumi.gcp.projects.ApiKeyArgs;
 /// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
+/// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsApiTargetArgs;
 /// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsIosKeyRestrictionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -585,6 +661,20 @@ import 'api_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_apikey" "primary" {
+///   name         = "key"
+///   display_name = "sample-key"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -593,8 +683,8 @@ import 'api_key_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.projects.ApiKey;
 /// import com.pulumi.gcp.projects.ApiKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -734,6 +824,29 @@ import 'api_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_apikey" "primary" {
+///   name         = "key"
+///   display_name = "sample-key"
+///   restrictions = {
+///     api_targets = [{
+///       "service" = "translate.googleapis.com"
+///       "methods" = ["GET*"]
+///     }]
+///     server_key_restrictions = {
+///       allowed_ips = ["127.0.0.1"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -743,9 +856,10 @@ import 'api_key_state.dart';
 /// import com.pulumi.gcp.projects.ApiKey;
 /// import com.pulumi.gcp.projects.ApiKeyArgs;
 /// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
+/// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsApiTargetArgs;
 /// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsServerKeyRestrictionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -909,6 +1023,33 @@ import 'api_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_projects_apikey" "primary" {
+///   name                  = "key"
+///   display_name          = "sample-key"
+///   project               = gcp_organizations_project.project.project_id
+///   service_account_email = gcp_serviceaccount_account.key_service_account.email
+/// }
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "app"
+///   name            = "app"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_serviceaccount_account" "key_service_account" {
+///   account_id   = "app"
+///   project      = gcp_organizations_project.project.project_id
+///   display_name = "Test Service Account"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -921,8 +1062,8 @@ import 'api_key_state.dart';
 /// import com.pulumi.gcp.serviceaccount.AccountArgs;
 /// import com.pulumi.gcp.projects.ApiKey;
 /// import com.pulumi.gcp.projects.ApiKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -986,27 +1127,26 @@ import 'api_key_state.dart';
 /// ## Import
 ///
 /// Key can be imported using any of these accepted formats:
-///
 /// * `projects/{{project}}/locations/global/keys/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:projects/apiKey:ApiKey default projects/{{project}}/locations/global/keys/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:projects/apiKey:ApiKey default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:projects/apiKey:ApiKey default {{name}}
 /// ```
 class ApiKey extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Human-readable display name of this API key. Modifiable by user.
   late final pulumi.Output<String?> displayName;
   /// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
@@ -1021,7 +1161,7 @@ class ApiKey extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// Key restrictions.
   late final pulumi.Output<ApiKeyRestrictions?> restrictions;
-  /// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
+  /// The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
   late final pulumi.Output<String?> serviceAccountEmail;
   /// Output only. Unique id in UUID4 format.
   late final pulumi.Output<String> uid;
@@ -1040,6 +1180,7 @@ class ApiKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     keyString = registerOutput<String>('keyString');
     this.name = registerOutput<String>('name');
@@ -1072,6 +1213,7 @@ class ApiKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     keyString = registerOutput<String>('keyString');
     this.name = registerOutput<String>('name');

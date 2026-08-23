@@ -175,6 +175,34 @@ import 'entity_type_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_agent" "basic_agent" {
+///   display_name          = "example_agent"
+///   default_language_code = "en"
+///   time_zone             = "America/New_York"
+/// }
+/// resource "gcp_diagflow_entitytype" "basic_entity_type" {
+///   depends_on   = [gcp_diagflow_agent.basic_agent]
+///   display_name = "basic-entity-type"
+///   kind         = "KIND_MAP"
+///   entities {
+///     value    = "value1"
+///     synonyms = ["synonym1", "synonym2"]
+///   }
+///   entities {
+///     value    = "value2"
+///     synonyms = ["synonym3", "synonym4"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +215,8 @@ import 'entity_type_state.dart';
 /// import com.pulumi.gcp.diagflow.EntityTypeArgs;
 /// import com.pulumi.gcp.diagflow.inputs.EntityTypeEntityArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -265,12 +293,20 @@ import 'entity_type_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
 /// ```
 class EntityType extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name of this entity type to be displayed on the console.
   late final pulumi.Output<String> displayName;
   /// Enables fuzzy entity extraction during classification.
@@ -306,6 +342,7 @@ class EntityType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enableFuzzyExtraction = registerOutput<bool?>('enableFuzzyExtraction');
     entities = registerOutput<List<Map<String, dynamic>>?>('entities');
@@ -337,6 +374,7 @@ class EntityType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enableFuzzyExtraction = registerOutput<bool?>('enableFuzzyExtraction');
     entities = registerOutput<List<Map<String, dynamic>>?>('entities');

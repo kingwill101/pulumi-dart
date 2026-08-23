@@ -92,6 +92,25 @@ import 'endpoint_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_integrationconnectors_endpointattachment" "sampleendpointattachment" {
+///   name               = "test-endpoint-attachment"
+///   location           = "us-central1"
+///   description        = "tf created description"
+///   service_attachment = "projects/connectors-example/regions/us-central1/serviceAttachments/test"
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +119,8 @@ import 'endpoint_attachment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.integrationconnectors.EndpointAttachment;
 /// import com.pulumi.gcp.integrationconnectors.EndpointAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -143,27 +162,27 @@ import 'endpoint_attachment_state.dart';
 /// EndpointAttachment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/endpointAttachments/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, EndpointAttachment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:integrationconnectors/endpointAttachment:EndpointAttachment default projects/{{project}}/locations/{{location}}/endpointAttachments/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:integrationconnectors/endpointAttachment:EndpointAttachment default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:integrationconnectors/endpointAttachment:EndpointAttachment default {{location}}/{{name}}
 /// ```
 class EndpointAttachment extends pulumi.CustomResource {
   /// Time the Namespace was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -175,7 +194,7 @@ class EndpointAttachment extends pulumi.CustomResource {
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Location in which Endpoint Attachment needs to be created.
   late final pulumi.Output<String> location;
@@ -207,6 +226,7 @@ class EndpointAttachment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpointGlobalAccess = registerOutput<bool?>('endpointGlobalAccess');
@@ -244,6 +264,7 @@ class EndpointAttachment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpointGlobalAccess = registerOutput<bool?>('endpointGlobalAccess');

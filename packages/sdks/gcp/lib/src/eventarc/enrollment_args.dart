@@ -9,10 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnrollmentArgs {
   /// Resource annotations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// A CEL expression identifying which messages this enrollment applies to.
   final pulumi.Input<String> celMatch;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Destination is the Pipeline that the Enrollment is delivering to. It must
   /// point to the full resource name of a Pipeline. Format:
   /// "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
@@ -24,7 +31,7 @@ class EnrollmentArgs {
   final pulumi.Input<String> enrollmentId;
   /// Resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
@@ -39,6 +46,7 @@ class EnrollmentArgs {
   /// Creates a new [EnrollmentArgs].
   /// [annotations] Resource annotations.
   /// [celMatch] A CEL expression identifying which messages this enrollment applies to.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [destination] Destination is the Pipeline that the Enrollment is delivering to. It must
   /// [displayName] Resource display name.
   /// [enrollmentId] The user-provided ID to be assigned to the Enrollment. It should match the
@@ -49,6 +57,7 @@ class EnrollmentArgs {
   const EnrollmentArgs({
     this.annotations,
     required this.celMatch,
+    this.deletionPolicy,
     required this.destination,
     this.displayName,
     required this.enrollmentId,
@@ -62,6 +71,7 @@ class EnrollmentArgs {
     return <String, dynamic>{
       'annotations': ?annotations,
       'celMatch': celMatch,
+      'deletionPolicy': ?deletionPolicy,
       'destination': destination,
       'displayName': ?displayName,
       'enrollmentId': enrollmentId,
@@ -76,6 +86,7 @@ class EnrollmentArgs {
     return EnrollmentArgs(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       celMatch: pulumi.Input.fromValue(map['celMatch'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destination: pulumi.Input.fromValue(map['destination'] as String),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enrollmentId: pulumi.Input.fromValue(map['enrollmentId'] as String),
@@ -86,4 +97,3 @@ class EnrollmentArgs {
     );
   }
 }
-

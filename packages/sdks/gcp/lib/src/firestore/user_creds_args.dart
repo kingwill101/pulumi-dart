@@ -9,6 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserCredsArgs {
   /// The Firestore database ID.
   final pulumi.Input<String> database;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The ID to use for the user creds, which will become the final component
   /// of the user cred's resource name.
   /// This value should be 4-63 characters. Valid characters are /[a-z][0-9]-/
@@ -21,10 +28,12 @@ class UserCredsArgs {
 
   /// Creates a new [UserCredsArgs].
   /// [database] The Firestore database ID.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [name] The ID to use for the user creds, which will become the final component
   /// [project] The ID of the project in which the resource belongs.
   const UserCredsArgs({
     required this.database,
+    this.deletionPolicy,
     this.name,
     this.project,
   });
@@ -32,6 +41,7 @@ class UserCredsArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'database': database,
+      'deletionPolicy': ?deletionPolicy,
       'name': ?name,
       'project': ?project,
     };
@@ -40,9 +50,9 @@ class UserCredsArgs {
   factory UserCredsArgs.fromMap(Map<String, dynamic> map) {
     return UserCredsArgs(
       database: pulumi.Input.fromValue(map['database'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

@@ -76,6 +76,21 @@ import 'dataset_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_dataset" "default" {
+///   name      = "example-dataset"
+///   location  = "us-central1"
+///   time_zone = "UTC"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +99,8 @@ import 'dataset_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.healthcare.Dataset;
 /// import com.pulumi.gcp.healthcare.DatasetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,8 +246,6 @@ import 'dataset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -254,14 +267,14 @@ import 'dataset_state.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("example-key"),
-/// 			KeyRing: keyRing.ID(),
+/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose: pulumi.String("ENCRYPT_DECRYPT"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		healthcareCmekKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "healthcare_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
-/// 			CryptoKeyId: cryptoKey.ID(),
+/// 			CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 /// 			Members: pulumi.StringArray{
 /// 				pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-healthcare.iam.gserviceaccount.com", project.Number),
@@ -275,7 +288,7 @@ import 'dataset_state.dart';
 /// 			Location: pulumi.String("us-central1"),
 /// 			TimeZone: pulumi.String("UTC"),
 /// 			EncryptionSpec: &healthcare.DatasetEncryptionSpecArgs{
-/// 				KmsKeyName: cryptoKey.ID(),
+/// 				KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			healthcareCmekKeyuser,
@@ -285,6 +298,42 @@ import 'dataset_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_healthcare_dataset" "default" {
+///   depends_on = [gcp_kms_cryptokeyiambinding.healthcare_cmek_keyuser]
+///   name       = "example-dataset"
+///   location   = "us-central1"
+///   time_zone  = "UTC"
+///   encryption_spec = {
+///     kms_key_name = gcp_kms_cryptokey.crypto_key.id
+///   }
+/// }
+/// resource "gcp_kms_cryptokey" "crypto_key" {
+///   name     = "example-key"
+///   key_ring = gcp_kms_keyring.key_ring.id
+///   purpose  = "ENCRYPT_DECRYPT"
+/// }
+/// resource "gcp_kms_keyring" "key_ring" {
+///   name     = "example-keyring"
+///   location = "us-central1"
+/// }
+/// resource "gcp_kms_cryptokeyiambinding" "healthcare_cmek_keyuser" {
+///   crypto_key_id = gcp_kms_cryptokey.crypto_key.id
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   members       = ["serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-healthcare.iam.gserviceaccount.com"]
 /// }
 /// ```
 /// ```java
@@ -305,8 +354,8 @@ import 'dataset_state.dart';
 /// import com.pulumi.gcp.healthcare.DatasetArgs;
 /// import com.pulumi.gcp.healthcare.inputs.DatasetEncryptionSpecArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -399,25 +448,25 @@ import 'dataset_state.dart';
 /// Dataset can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/datasets/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:healthcare/dataset:Dataset default projects/{{project}}/locations/{{location}}/datasets/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:healthcare/dataset:Dataset default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:healthcare/dataset:Dataset default {{location}}/{{name}}
 /// ```
 class Dataset extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<DatasetEncryptionSpec> encryptionSpec;
@@ -449,6 +498,7 @@ class Dataset extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     encryptionSpec = registerOutput<DatasetEncryptionSpec>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -480,6 +530,7 @@ class Dataset extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     encryptionSpec = registerOutput<DatasetEncryptionSpec>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

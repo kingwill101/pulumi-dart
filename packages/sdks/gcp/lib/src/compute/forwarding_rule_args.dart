@@ -23,7 +23,7 @@ class ForwardingRuleArgs {
   /// forwarding rule. The L3_DEFAULT protocol requires `allPorts` be set to
   /// true.
   final pulumi.Input<bool>? allPorts;
-  /// This field is used along with the `backend_service` field for
+  /// This field is used along with the `backendService` field for
   /// internal load balancing or with the `target` field for internal
   /// TargetInstance.
   /// If the field is set to `TRUE`, clients can access ILB from all
@@ -37,6 +37,13 @@ class ForwardingRuleArgs {
   /// Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
   /// must be omitted for all other load balancer types.
   final pulumi.Input<String>? backendService;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   final pulumi.Input<String>? description;
@@ -110,7 +117,7 @@ class ForwardingRuleArgs {
   /// Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Specifies the forwarding rule type.
   /// Note that an empty string value (`""`) is also supported for some use
@@ -198,6 +205,7 @@ class ForwardingRuleArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+  /// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
   final pulumi.Input<bool>? recreateClosedPsc;
   /// A reference to the region where the regional forwarding rule resides.
   /// This field is not applicable to global forwarding rules.
@@ -237,9 +245,10 @@ class ForwardingRuleArgs {
 
   /// Creates a new [ForwardingRuleArgs].
   /// [allPorts] The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
-  /// [allowGlobalAccess] This field is used along with the `backend_service` field for
+  /// [allowGlobalAccess] This field is used along with the `backendService` field for
   /// [allowPscGlobalAccess] This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
   /// [backendService] Identifies the backend service to which the forwarding rule sends traffic.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when
   /// [ipAddress] IP address for which this forwarding rule accepts traffic. When a client
   /// [ipCollection] Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
@@ -255,7 +264,7 @@ class ForwardingRuleArgs {
   /// [portRange] The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
   /// [ports] The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
   /// [project] The ID of the project in which the resource belongs.
-  /// [recreateClosedPsc] Optional.
+  /// [recreateClosedPsc] This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
   /// [region] A reference to the region where the regional forwarding rule resides.
   /// [serviceDirectoryRegistrations] Service Directory resources to register this forwarding rule with.
   /// [serviceLabel] An optional prefix to the service name for this Forwarding Rule.
@@ -267,6 +276,7 @@ class ForwardingRuleArgs {
     this.allowGlobalAccess,
     this.allowPscGlobalAccess,
     this.backendService,
+    this.deletionPolicy,
     this.description,
     this.ipAddress,
     this.ipCollection,
@@ -297,6 +307,7 @@ class ForwardingRuleArgs {
       'allowGlobalAccess': ?allowGlobalAccess,
       'allowPscGlobalAccess': ?allowPscGlobalAccess,
       'backendService': ?backendService,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'ipAddress': ?ipAddress,
       'ipCollection': ?ipCollection,
@@ -328,6 +339,7 @@ class ForwardingRuleArgs {
       allowGlobalAccess: (() { final guardedValue = map['allowGlobalAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       allowPscGlobalAccess: (() { final guardedValue = map['allowPscGlobalAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       backendService: (() { final guardedValue = map['backendService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipCollection: (() { final guardedValue = map['ipCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -353,4 +365,3 @@ class ForwardingRuleArgs {
     );
   }
 }
-

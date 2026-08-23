@@ -110,6 +110,29 @@ import 'preference_set_virtual_machine_preferences.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_migrationcenter_preferenceset" "default" {
+///   location          = "us-central1"
+///   preference_set_id = "preference-set-test"
+///   description       = "Terraform integration test description"
+///   display_name      = "Terraform integration test display"
+///   virtual_machine_preferences = {
+///     vmware_engine_preferences = {
+///       cpu_overcommit_ratio = 1.5
+///     }
+///     sizing_optimization_strategy = "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE"
+///     target_product               = "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -120,8 +143,8 @@ import 'preference_set_virtual_machine_preferences.dart';
 /// import com.pulumi.gcp.migrationcenter.PreferenceSetArgs;
 /// import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesArgs;
 /// import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -371,6 +394,51 @@ import 'preference_set_virtual_machine_preferences.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_migrationcenter_preferenceset" "default" {
+///   location          = "us-central1"
+///   preference_set_id = "preference-set-test"
+///   description       = "Terraform integration test description"
+///   display_name      = "Terraform integration test display"
+///   virtual_machine_preferences = {
+///     vmware_engine_preferences = {
+///       cpu_overcommit_ratio                    = 1.5
+///       storage_deduplication_compression_ratio = 1.3
+///       commitment_plan                         = "ON_DEMAND"
+///     }
+///     sizing_optimization_strategy = "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE"
+///     target_product               = "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE"
+///     commitment_plan              = "COMMITMENT_PLAN_ONE_YEAR"
+///     region_preferences = {
+///       preferred_regions = ["us-central1"]
+///     }
+///     sole_tenancy_preferences = {
+///       commitment_plan         = "ON_DEMAND"
+///       cpu_overcommit_ratio    = 1.2
+///       host_maintenance_policy = "HOST_MAINTENANCE_POLICY_DEFAULT"
+///       node_types = [{
+///         "nodeName" = "tf-test"
+///       }]
+///     }
+///     compute_engine_preferences = {
+///       license_type = "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE"
+///       machine_preferences = {
+///         allowed_machine_series = [{
+///           "code" = "C3"
+///         }]
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -383,10 +451,12 @@ import 'preference_set_virtual_machine_preferences.dart';
 /// import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs;
 /// import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs;
 /// import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs;
+/// import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs;
 /// import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs;
 /// import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -470,33 +540,257 @@ import 'preference_set_virtual_machine_preferences.dart';
 ///               - code: C3
 /// ```
 ///
+/// ### Preference Set Compute Engine Preferences Disk Type
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.migrationcenter.PreferenceSet("default", {
+///     location: "us-central1",
+///     preferenceSetId: "preference-set-test",
+///     description: "Terraform integration test description",
+///     displayName: "Terraform integration test display",
+///     virtualMachinePreferences: {
+///         sizingOptimizationStrategy: "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+///         targetProduct: "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+///         computeEnginePreferences: {
+///             licenseType: "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
+///             machinePreferences: {
+///                 allowedMachineSeries: [{
+///                     code: "C3",
+///                 }],
+///             },
+///             persistentDiskType: "PERSISTENT_DISK_TYPE_SSD",
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.migrationcenter.PreferenceSet("default",
+///     location="us-central1",
+///     preference_set_id="preference-set-test",
+///     description="Terraform integration test description",
+///     display_name="Terraform integration test display",
+///     virtual_machine_preferences={
+///         "sizing_optimization_strategy": "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+///         "target_product": "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+///         "compute_engine_preferences": {
+///             "license_type": "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
+///             "machine_preferences": {
+///                 "allowed_machine_series": [{
+///                     "code": "C3",
+///                 }],
+///             },
+///             "persistent_disk_type": "PERSISTENT_DISK_TYPE_SSD",
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.MigrationCenter.PreferenceSet("default", new()
+///     {
+///         Location = "us-central1",
+///         PreferenceSetId = "preference-set-test",
+///         Description = "Terraform integration test description",
+///         DisplayName = "Terraform integration test display",
+///         VirtualMachinePreferences = new Gcp.MigrationCenter.Inputs.PreferenceSetVirtualMachinePreferencesArgs
+///         {
+///             SizingOptimizationStrategy = "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE",
+///             TargetProduct = "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE",
+///             ComputeEnginePreferences = new Gcp.MigrationCenter.Inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs
+///             {
+///                 LicenseType = "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
+///                 MachinePreferences = new Gcp.MigrationCenter.Inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs
+///                 {
+///                     AllowedMachineSeries = new[]
+///                     {
+///                         new Gcp.MigrationCenter.Inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs
+///                         {
+///                             Code = "C3",
+///                         },
+///                     },
+///                 },
+///                 PersistentDiskType = "PERSISTENT_DISK_TYPE_SSD",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/migrationcenter"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := migrationcenter.NewPreferenceSet(ctx, "default", &migrationcenter.PreferenceSetArgs{
+/// 			Location:        pulumi.String("us-central1"),
+/// 			PreferenceSetId: pulumi.String("preference-set-test"),
+/// 			Description:     pulumi.String("Terraform integration test description"),
+/// 			DisplayName:     pulumi.String("Terraform integration test display"),
+/// 			VirtualMachinePreferences: &migrationcenter.PreferenceSetVirtualMachinePreferencesArgs{
+/// 				SizingOptimizationStrategy: pulumi.String("SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE"),
+/// 				TargetProduct:              pulumi.String("COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE"),
+/// 				ComputeEnginePreferences: &migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs{
+/// 					LicenseType: pulumi.String("LICENSE_TYPE_BRING_YOUR_OWN_LICENSE"),
+/// 					MachinePreferences: &migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs{
+/// 						AllowedMachineSeries: migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArray{
+/// 							&migrationcenter.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs{
+/// 								Code: pulumi.String("C3"),
+/// 							},
+/// 						},
+/// 					},
+/// 					PersistentDiskType: pulumi.String("PERSISTENT_DISK_TYPE_SSD"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_migrationcenter_preferenceset" "default" {
+///   location          = "us-central1"
+///   preference_set_id = "preference-set-test"
+///   description       = "Terraform integration test description"
+///   display_name      = "Terraform integration test display"
+///   virtual_machine_preferences = {
+///     sizing_optimization_strategy = "SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE"
+///     target_product               = "COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE"
+///     compute_engine_preferences = {
+///       license_type = "LICENSE_TYPE_BRING_YOUR_OWN_LICENSE"
+///       machine_preferences = {
+///         allowed_machine_series = [{
+///           "code" = "C3"
+///         }]
+///       }
+///       persistent_disk_type = "PERSISTENT_DISK_TYPE_SSD"
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.migrationcenter.PreferenceSet;
+/// import com.pulumi.gcp.migrationcenter.PreferenceSetArgs;
+/// import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesArgs;
+/// import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs;
+/// import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs;
+/// import com.pulumi.gcp.migrationcenter.inputs.PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new PreferenceSet("default", PreferenceSetArgs.builder()
+///             .location("us-central1")
+///             .preferenceSetId("preference-set-test")
+///             .description("Terraform integration test description")
+///             .displayName("Terraform integration test display")
+///             .virtualMachinePreferences(PreferenceSetVirtualMachinePreferencesArgs.builder()
+///                 .sizingOptimizationStrategy("SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE")
+///                 .targetProduct("COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE")
+///                 .computeEnginePreferences(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs.builder()
+///                     .licenseType("LICENSE_TYPE_BRING_YOUR_OWN_LICENSE")
+///                     .machinePreferences(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs.builder()
+///                         .allowedMachineSeries(PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs.builder()
+///                             .code("C3")
+///                             .build())
+///                         .build())
+///                     .persistentDiskType("PERSISTENT_DISK_TYPE_SSD")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:migrationcenter:PreferenceSet
+///     properties:
+///       location: us-central1
+///       preferenceSetId: preference-set-test
+///       description: Terraform integration test description
+///       displayName: Terraform integration test display
+///       virtualMachinePreferences:
+///         sizingOptimizationStrategy: SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE
+///         targetProduct: COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE
+///         computeEnginePreferences:
+///           licenseType: LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
+///           machinePreferences:
+///             allowedMachineSeries:
+///               - code: C3
+///           persistentDiskType: PERSISTENT_DISK_TYPE_SSD
+/// ```
+///
 ///
 /// ## Import
 ///
 /// PreferenceSet can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}`
-///
 /// * `{{project}}/{{location}}/{{preference_set_id}}`
-///
 /// * `{{location}}/{{preference_set_id}}`
+///
 ///
 /// When using the `pulumi import` command, PreferenceSet can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default projects/{{project}}/locations/{{location}}/preferenceSets/{{preference_set_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default {{project}}/{{location}}/{{preference_set_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:migrationcenter/preferenceSet:PreferenceSet default {{location}}/{{preference_set_id}}
 /// ```
 class PreferenceSet extends pulumi.CustomResource {
   /// Output only. The timestamp when the preference set was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of the preference set.
   late final pulumi.Output<String?> description;
   /// User-friendly display name. Maximum length is 63 characters.
@@ -531,6 +825,7 @@ class PreferenceSet extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
@@ -565,6 +860,7 @@ class PreferenceSet extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');

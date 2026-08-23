@@ -36,12 +36,6 @@ import 'version_state.dart';
 /// const waitEnableServiceApi = new time.Sleep("wait_enable_service_api", {createDuration: "30s"}, {
 ///     dependsOn: [dialogflow],
 /// });
-/// const gcpSa = new gcp.projects.ServiceIdentity("gcp_sa", {
-///     service: "dialogflow.googleapis.com",
-///     project: project.projectId,
-/// }, {
-///     dependsOn: [waitEnableServiceApi],
-/// });
 /// const basicAgent = new gcp.diagflow.Agent("basic_agent", {
 ///     displayName: "example_agent",
 ///     defaultLanguageCode: "en",
@@ -73,10 +67,6 @@ import 'version_state.dart';
 ///     service="dialogflow.googleapis.com")
 /// wait_enable_service_api = time.Sleep("wait_enable_service_api", create_duration="30s",
 /// opts = pulumi.ResourceOptions(depends_on=[dialogflow]))
-/// gcp_sa = gcp.projects.ServiceIdentity("gcp_sa",
-///     service="dialogflow.googleapis.com",
-///     project=project.project_id,
-///     opts = pulumi.ResourceOptions(depends_on=[wait_enable_service_api]))
 /// basic_agent = gcp.diagflow.Agent("basic_agent",
 ///     display_name="example_agent",
 ///     default_language_code="en",
@@ -120,18 +110,6 @@ import 'version_state.dart';
 ///         DependsOn =
 ///         {
 ///             dialogflow,
-///         },
-///     });
-///
-///     var gcpSa = new Gcp.Projects.ServiceIdentity("gcp_sa", new()
-///     {
-///         Service = "dialogflow.googleapis.com",
-///         Project = project.ProjectId,
-///     }, new CustomResourceOptions
-///     {
-///         DependsOn =
-///         {
-///             waitEnableServiceApi,
 ///         },
 ///     });
 ///
@@ -203,15 +181,6 @@ import 'version_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = projects.NewServiceIdentity(ctx, "gcp_sa", &projects.ServiceIdentityArgs{
-/// 			Service: pulumi.String("dialogflow.googleapis.com"),
-/// 			Project: project.ProjectId,
-/// 		}, pulumi.DependsOn([]pulumi.Resource{
-/// 			waitEnableServiceApi,
-/// 		}))
-/// 		if err != nil {
-/// 			return err
-/// 		}
 /// 		basicAgent, err := diagflow.NewAgent(ctx, "basic_agent", &diagflow.AgentArgs{
 /// 			DisplayName:         pulumi.String("example_agent"),
 /// 			DefaultLanguageCode: pulumi.String("en"),
@@ -238,6 +207,46 @@ import 'version_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "project" {
+///   project_id      = "my-proj"
+///   name            = "my-proj"
+///   org_id          = "123456789"
+///   billing_account = "000000-0000000-0000000-000000"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_projects_service" "dialogflow" {
+///   project = gcp_organizations_project.project.project_id
+///   service = "dialogflow.googleapis.com"
+/// }
+/// resource "time_sleep" "wait_enable_service_api" {
+///   depends_on      = [gcp_projects_service.dialogflow]
+///   create_duration = "30s"
+/// }
+/// resource "gcp_diagflow_agent" "basic_agent" {
+///   depends_on            = [time_sleep.wait_enable_service_api]
+///   display_name          = "example_agent"
+///   default_language_code = "en"
+///   time_zone             = "America/New_York"
+///   project               = gcp_organizations_project.project.project_id
+/// }
+/// resource "gcp_diagflow_version" "full_version" {
+///   depends_on  = [gcp_diagflow_agent.basic_agent]
+///   description = "Dialogflow Version"
+///   parent      ="projects/${gcp_organizations_project.project.project_id}/agent"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -250,15 +259,13 @@ import 'version_state.dart';
 /// import com.pulumi.gcp.projects.ServiceArgs;
 /// import com.pulumiverse.time.Sleep;
 /// import com.pulumiverse.time.SleepArgs;
-/// import com.pulumi.gcp.projects.ServiceIdentity;
-/// import com.pulumi.gcp.projects.ServiceIdentityArgs;
 /// import com.pulumi.gcp.diagflow.Agent;
 /// import com.pulumi.gcp.diagflow.AgentArgs;
 /// import com.pulumi.gcp.diagflow.Version;
 /// import com.pulumi.gcp.diagflow.VersionArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -287,13 +294,6 @@ import 'version_state.dart';
 ///             .createDuration("30s")
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(dialogflow)
-///                 .build());
-///
-///         var gcpSa = new ServiceIdentity("gcpSa", ServiceIdentityArgs.builder()
-///             .service("dialogflow.googleapis.com")
-///             .project(project.projectId())
-///             .build(), CustomResourceOptions.builder()
-///                 .dependsOn(waitEnableServiceApi)
 ///                 .build());
 ///
 ///         var basicAgent = new Agent("basicAgent", AgentArgs.builder()
@@ -338,15 +338,6 @@ import 'version_state.dart';
 ///     options:
 ///       dependsOn:
 ///         - ${dialogflow}
-///   gcpSa:
-///     type: gcp:projects:ServiceIdentity
-///     name: gcp_sa
-///     properties:
-///       service: dialogflow.googleapis.com
-///       project: ${project.projectId}
-///     options:
-///       dependsOn:
-///         - ${waitEnableServiceApi}
 ///   basicAgent:
 ///     type: gcp:diagflow:Agent
 ///     name: basic_agent
@@ -375,19 +366,23 @@ import 'version_state.dart';
 /// Version can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/versions/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/version:Version default {{parent}}/versions/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/version:Version default {{parent}}/{{name}}
 /// ```
 class Version extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The developer-provided description of this version.
   late final pulumi.Output<String?> description;
   /// The unique identifier of this agent version.
@@ -414,6 +409,7 @@ class Version extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
@@ -444,6 +440,7 @@ class Version extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');

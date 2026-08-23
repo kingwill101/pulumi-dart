@@ -6,6 +6,7 @@ import 'volume_block_device.dart';
 import 'volume_cache_parameters.dart';
 import 'volume_export_policy.dart';
 import 'volume_hybrid_replication_parameters.dart';
+import 'volume_large_capacity_config.dart';
 import 'volume_mount_option.dart';
 import 'volume_restore_parameters.dart';
 import 'volume_snapshot_policy.dart';
@@ -34,7 +35,14 @@ class VolumeState {
   /// Policy to determine if the volume should be deleted forcefully.
   /// Volumes may have nested snapshot resources. Deleting such a volume will fail.
   /// Setting this parameter to FORCE will delete volumes including nested snapshots.
-  /// Possible values: DEFAULT, FORCE.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+  ///
+  /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE.
   final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
@@ -61,10 +69,15 @@ class VolumeState {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
   final pulumi.Input<bool>? largeCapacity;
+  /// Configuration for a Large Capacity Volume. A Large Capacity Volume
+  /// supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple
+  /// internal constituents, and must be created in a large capacity pool.
+  /// Structure is documented below.
+  final pulumi.Input<VolumeLargeCapacityConfig>? largeCapacityConfig;
   /// Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
   final pulumi.Input<bool>? ldapEnabled;
   /// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
@@ -112,7 +125,7 @@ class VolumeState {
   /// If enabled, a NFS volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots. Will enable "Previous Versions" support for SMB.
   final pulumi.Input<bool>? snapshotDirectory;
   /// Snapshot policy defines the schedule for automatic snapshot creation.
-  /// To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
+  /// To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
   /// Structure is documented below.
   final pulumi.Input<VolumeSnapshotPolicy>? snapshotPolicy;
   /// State of the volume.
@@ -153,6 +166,7 @@ class VolumeState {
   /// [kmsConfig] Reports the CMEK policy resurce name being used for volume encryption. Inherited from storage pool.
   /// [labels] Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   /// [largeCapacity] Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+  /// [largeCapacityConfig] Configuration for a Large Capacity Volume. A Large Capacity Volume
   /// [ldapEnabled] Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
   /// [location] Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
   /// [mountOptions] Reports mount instructions for this volume.
@@ -200,6 +214,7 @@ class VolumeState {
     this.kmsConfig,
     this.labels,
     this.largeCapacity,
+    this.largeCapacityConfig,
     this.ldapEnabled,
     this.location,
     this.mountOptions,
@@ -250,6 +265,7 @@ class VolumeState {
       'kmsConfig': ?kmsConfig,
       'labels': ?labels,
       'largeCapacity': ?largeCapacity,
+      'largeCapacityConfig': ?pulumi.Input.mapOptionalInputValue<VolumeLargeCapacityConfig, Map<String, dynamic>>(largeCapacityConfig, (value) => value.toMap()),
       'ldapEnabled': ?ldapEnabled,
       'location': ?location,
       'mountOptions': ?pulumi.Input.mapOptionalInputValue<List<VolumeMountOption>, List<Map<String, dynamic>>>(mountOptions, (value) => pulumi.Input.encodeList<VolumeMountOption, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -301,6 +317,7 @@ class VolumeState {
       kmsConfig: (() { final guardedValue = map['kmsConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       largeCapacity: (() { final guardedValue = map['largeCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      largeCapacityConfig: (() { final guardedValue = map['largeCapacityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeLargeCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ldapEnabled: (() { final guardedValue = map['ldapEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mountOptions: (() { final guardedValue = map['mountOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VolumeMountOption>(guardedValue, (value) => VolumeMountOption.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -331,4 +348,3 @@ class VolumeState {
     );
   }
 }
-

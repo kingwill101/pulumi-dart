@@ -212,6 +212,49 @@ import 'user_workloads_config_map_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_serviceaccount_account" "test" {
+///   account_id   = "test-sa"
+///   display_name = "Test Service Account for Composer Environment"
+/// }
+/// resource "gcp_projects_iammember" "composer-worker" {
+///   project = data.gcp_organizations_getproject.project.project_id
+///   role    = "roles/composer.worker"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.test.email}"
+/// }
+/// resource "gcp_composer_environment" "environment" {
+///   depends_on = [gcp_projects_iammember.composer-worker]
+///   name       = "test-environment"
+///   region     = "us-central1"
+///   config = {
+///     software_config = {
+///       image_version = "composer-3-airflow-2"
+///     }
+///     node_config = {
+///       service_account = gcp_serviceaccount_account.test.name
+///     }
+///   }
+/// }
+/// resource "gcp_composer_userworkloadsconfigmap" "config_map" {
+///   name        = "test-config-map"
+///   region      = "us-central1"
+///   environment = gcp_composer_environment.environment.name
+///   data = {
+///     "api_host" = "apihost:443"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -232,8 +275,8 @@ import 'user_workloads_config_map_state.dart';
 /// import com.pulumi.gcp.composer.UserWorkloadsConfigMap;
 /// import com.pulumi.gcp.composer.UserWorkloadsConfigMapArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -332,34 +375,30 @@ import 'user_workloads_config_map_state.dart';
 /// UserWorkloadsConfigMap can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/environments/{{environment}}/userWorkloadsConfigMaps/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{environment}}/{{name}}`
-///
 /// * `{{region}}/{{environment}}/{{name}}`
-///
 /// * `{{environment}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, UserWorkloadsConfigMap can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap default projects/{{project}}/locations/{{region}}/environments/{{environment}}/userWorkloadsConfigMaps/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap default {{project}}/{{region}}/{{environment}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap default {{region}}/{{environment}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap default {{environment}}/{{name}}
 /// ```
 class UserWorkloadsConfigMap extends pulumi.CustomResource {
   /// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
   /// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
   late final pulumi.Output<Map<String, String>?> data;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Environment where the Kubernetes ConfigMap will be stored and used.
   late final pulumi.Output<String> environment;
   /// Name of the Kubernetes ConfigMap.
@@ -385,6 +424,7 @@ class UserWorkloadsConfigMap extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     data = registerOutput<Map<String, String>?>('data');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -415,6 +455,7 @@ class UserWorkloadsConfigMap extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     data = registerOutput<Map<String, String>?>('data');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

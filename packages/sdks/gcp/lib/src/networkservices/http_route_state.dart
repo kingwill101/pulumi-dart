@@ -7,6 +7,13 @@ import 'http_route_rule.dart';
 class HttpRouteState {
   /// Time the HttpRoute was created in UTC.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -18,7 +25,7 @@ class HttpRouteState {
   final pulumi.Input<List<String>>? hostnames;
   /// Set of label tags associated with the HttpRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
   /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;.
@@ -42,6 +49,7 @@ class HttpRouteState {
 
   /// Creates a new [HttpRouteState].
   /// [createTime] Time the HttpRoute was created in UTC.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A free-text description of the resource. Max length 1024 characters.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [gateways] Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
@@ -56,6 +64,7 @@ class HttpRouteState {
   /// [updateTime] Time the HttpRoute was updated in UTC.
   const HttpRouteState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.gateways,
@@ -73,6 +82,7 @@ class HttpRouteState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'gateways': ?gateways,
@@ -91,6 +101,7 @@ class HttpRouteState {
   factory HttpRouteState.fromMap(Map<String, dynamic> map) {
     return HttpRouteState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       gateways: (() { final guardedValue = map['gateways']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -106,4 +117,3 @@ class HttpRouteState {
     );
   }
 }
-

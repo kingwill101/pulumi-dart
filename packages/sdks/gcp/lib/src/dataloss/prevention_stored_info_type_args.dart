@@ -10,6 +10,13 @@ import 'prevention_stored_info_type_regex.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dataloss_prevention_stored_info_type_prevention_stored_info_type_args_doc}
 class PreventionStoredInfoTypeArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of the info type.
   final pulumi.Input<String>? description;
   /// Dictionary which defines the rule.
@@ -35,6 +42,7 @@ class PreventionStoredInfoTypeArgs {
   final pulumi.Input<String>? storedInfoTypeId;
 
   /// Creates a new [PreventionStoredInfoTypeArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of the info type.
   /// [dictionary] Dictionary which defines the rule.
   /// [displayName] User set display name of the info type.
@@ -43,6 +51,7 @@ class PreventionStoredInfoTypeArgs {
   /// [regex] Regular expression which defines the rule.
   /// [storedInfoTypeId] The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
   const PreventionStoredInfoTypeArgs({
+    this.deletionPolicy,
     this.description,
     this.dictionary,
     this.displayName,
@@ -54,6 +63,7 @@ class PreventionStoredInfoTypeArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'dictionary': ?pulumi.Input.mapOptionalInputValue<PreventionStoredInfoTypeDictionary, Map<String, dynamic>>(dictionary, (value) => value.toMap()),
       'displayName': ?displayName,
@@ -66,6 +76,7 @@ class PreventionStoredInfoTypeArgs {
 
   factory PreventionStoredInfoTypeArgs.fromMap(Map<String, dynamic> map) {
     return PreventionStoredInfoTypeArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dictionary: (() { final guardedValue = map['dictionary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionStoredInfoTypeDictionary.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -76,4 +87,3 @@ class PreventionStoredInfoTypeArgs {
     );
   }
 }
-

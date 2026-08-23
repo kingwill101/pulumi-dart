@@ -107,6 +107,25 @@ import 'default_object_access_control_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_defaultobjectaccesscontrol" "public_rule" {
+///   bucket = gcp_storage_bucket.bucket.name
+///   role   = "READER"
+///   entity = "allUsers"
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name     = "static-content-bucket"
+///   location = "US"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -117,8 +136,8 @@ import 'default_object_access_control_state.dart';
 /// import com.pulumi.gcp.storage.BucketArgs;
 /// import com.pulumi.gcp.storage.DefaultObjectAccessControl;
 /// import com.pulumi.gcp.storage.DefaultObjectAccessControlArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -167,6 +186,7 @@ import 'default_object_access_control_state.dart';
 ///
 /// * `{{bucket}}/{{entity}}`
 ///
+///
 /// When using the `pulumi import` command, DefaultObjectAccessControl can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -175,6 +195,13 @@ import 'default_object_access_control_state.dart';
 class DefaultObjectAccessControl extends pulumi.CustomResource {
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The domain associated with the entity.
   late final pulumi.Output<String> domain;
   /// The email address associated with the entity.
@@ -217,6 +244,7 @@ class DefaultObjectAccessControl extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucket = registerOutput<String>('bucket');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     domain = registerOutput<String>('domain');
     email = registerOutput<String>('email');
     entity = registerOutput<String>('entity');
@@ -251,6 +279,7 @@ class DefaultObjectAccessControl extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucket = registerOutput<String>('bucket');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     domain = registerOutput<String>('domain');
     email = registerOutput<String>('email');
     entity = registerOutput<String>('entity');

@@ -11,6 +11,13 @@ class EnvironmentState {
   final pulumi.Input<EnvironmentContainerImage>? containerImage;
   /// Instance creation time
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A brief description of this environment.
   final pulumi.Input<String>? description;
   /// Display name of this environment for the UI.
@@ -33,6 +40,7 @@ class EnvironmentState {
   /// Creates a new [EnvironmentState].
   /// [containerImage] Use a container image to start the notebook instance.
   /// [createTime] Instance creation time
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A brief description of this environment.
   /// [displayName] Display name of this environment for the UI.
   /// [location] A reference to the zone where the machine resides.
@@ -43,6 +51,7 @@ class EnvironmentState {
   const EnvironmentState({
     this.containerImage,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.location,
@@ -56,6 +65,7 @@ class EnvironmentState {
     return <String, dynamic>{
       'containerImage': ?pulumi.Input.mapOptionalInputValue<EnvironmentContainerImage, Map<String, dynamic>>(containerImage, (value) => value.toMap()),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'location': ?location,
@@ -70,6 +80,7 @@ class EnvironmentState {
     return EnvironmentState(
       containerImage: (() { final guardedValue = map['containerImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnvironmentContainerImage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -80,4 +91,3 @@ class EnvironmentState {
     );
   }
 }
-

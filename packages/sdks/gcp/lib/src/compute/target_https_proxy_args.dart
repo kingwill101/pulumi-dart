@@ -9,15 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetHttpsProxyArgs {
   /// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
   /// Certificate manager certificates only apply when the load balancing scheme is set to INTERNAL_MANAGED.
-  /// For EXTERNAL and EXTERNAL_MANAGED, use certificate_map instead.
+  /// For EXTERNAL and EXTERNAL_MANAGED, use certificateMap instead.
   /// sslCertificates and certificateManagerCertificates fields can not be defined together.
-  /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
+  /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
   final pulumi.Input<List<String>>? certificateManagerCertificates;
   /// A reference to the CertificateMap resource uri that identifies a certificate map
   /// associated with the given target proxy. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
-  /// For INTERNAL_MANAGED, use certificate_manager_certificates instead.
+  /// For INTERNAL_MANAGED, use certificateManagerCertificates instead.
   /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
   final pulumi.Input<String>? certificateMap;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// Specifies how long to keep a connection open, after completing a response,
@@ -86,6 +93,7 @@ class TargetHttpsProxyArgs {
   /// Creates a new [TargetHttpsProxyArgs].
   /// [certificateManagerCertificates] URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
   /// [certificateMap] A reference to the CertificateMap resource uri that identifies a certificate map
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [httpKeepAliveTimeoutSec] Specifies how long to keep a connection open, after completing a response,
   /// [name] Name of the resource. Provided by the client when the resource is
@@ -100,6 +108,7 @@ class TargetHttpsProxyArgs {
   const TargetHttpsProxyArgs({
     this.certificateManagerCertificates,
     this.certificateMap,
+    this.deletionPolicy,
     this.description,
     this.httpKeepAliveTimeoutSec,
     this.name,
@@ -117,6 +126,7 @@ class TargetHttpsProxyArgs {
     return <String, dynamic>{
       'certificateManagerCertificates': ?certificateManagerCertificates,
       'certificateMap': ?certificateMap,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'httpKeepAliveTimeoutSec': ?httpKeepAliveTimeoutSec,
       'name': ?name,
@@ -135,6 +145,7 @@ class TargetHttpsProxyArgs {
     return TargetHttpsProxyArgs(
       certificateManagerCertificates: (() { final guardedValue = map['certificateManagerCertificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       certificateMap: (() { final guardedValue = map['certificateMap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       httpKeepAliveTimeoutSec: (() { final guardedValue = map['httpKeepAliveTimeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -149,4 +160,3 @@ class TargetHttpsProxyArgs {
     );
   }
 }
-

@@ -5,6 +5,9 @@ import 'v2_queued_resource_tpu.dart';
 
 /// A Cloud TPU Queued Resource.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about QueuedResource, see:
 ///
 /// * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.queuedResources)
@@ -127,6 +130,32 @@ import 'v2_queued_resource_tpu.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_tpu_v2queuedresource" "qr" {
+///   name    = "test-qr"
+///   zone    = "us-central1-c"
+///   project = "my-project-name"
+///   tpu = {
+///     node_specs = [{
+///       "parent" = "projects/my-project-name/locations/us-central1-c"
+///       "nodeId" = "test-tpu"
+///       "node" = {
+///         "runtimeVersion"  = "tpu-vm-tf-2.13.0"
+///         "acceleratorType" = "v2-8"
+///         "description"     = "Text description of the TPU."
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,8 +165,10 @@ import 'v2_queued_resource_tpu.dart';
 /// import com.pulumi.gcp.tpu.V2QueuedResource;
 /// import com.pulumi.gcp.tpu.V2QueuedResourceArgs;
 /// import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuNodeSpecArgs;
+/// import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuNodeSpecNodeArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -342,7 +373,7 @@ import 'v2_queued_resource_tpu.dart';
 /// 			Name:        pulumi.String("tpu-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     network.ID(),
+/// 			Network:     network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -363,8 +394,8 @@ import 'v2_queued_resource_tpu.dart';
 /// 							NetworkConfig: &tpu.V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs{
 /// 								CanIpForward:      pulumi.Bool(true),
 /// 								EnableExternalIps: pulumi.Bool(true),
-/// 								Network:           network.ID(),
-/// 								Subnetwork:        subnet.ID(),
+/// 								Network:           network.ID().ToIDOutput().ToStringOutput(),
+/// 								Subnetwork:        subnet.ID().ToIDOutput().ToStringOutput(),
 /// 								QueueCount:        pulumi.Int(32),
 /// 							},
 /// 						},
@@ -377,6 +408,49 @@ import 'v2_queued_resource_tpu.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_tpu_v2queuedresource" "qr" {
+///   name    = "test-qr"
+///   zone    = "us-central1-c"
+///   project = "my-project-name"
+///   tpu = {
+///     node_specs = [{
+///       "parent" = "projects/my-project-name/locations/us-central1-c"
+///       "nodeId" = "test-tpu"
+///       "node" = {
+///         "runtimeVersion"  = "tpu-vm-tf-2.13.0"
+///         "acceleratorType" = "v2-8"
+///         "description"     = "Text description of the TPU."
+///         "networkConfig" = {
+///           "canIpForward"      = true
+///           "enableExternalIps" = true
+///           "network"           = gcp_compute_network.network.id
+///           "subnetwork"        = gcp_compute_subnetwork.subnet.id
+///           "queueCount"        = 32
+///         }
+///       }
+///     }]
+///   }
+/// }
+/// resource "gcp_compute_subnetwork" "subnet" {
+///   name          = "tpu-subnet"
+///   ip_cidr_range = "10.0.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network.id
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "tpu-net"
+///   auto_create_subnetworks = false
 /// }
 /// ```
 /// ```java
@@ -392,8 +466,11 @@ import 'v2_queued_resource_tpu.dart';
 /// import com.pulumi.gcp.tpu.V2QueuedResource;
 /// import com.pulumi.gcp.tpu.V2QueuedResourceArgs;
 /// import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuNodeSpecArgs;
+/// import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuNodeSpecNodeArgs;
+/// import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -486,31 +563,27 @@ import 'v2_queued_resource_tpu.dart';
 /// QueuedResource can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{zone}}/queuedResources/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}`
-///
 /// * `{{zone}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, QueuedResource can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default projects/{{project}}/locations/{{zone}}/queuedResources/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{project}}/{{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:tpu/v2QueuedResource:V2QueuedResource default {{name}}
 /// ```
 class V2QueuedResource extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The immutable name of the Queued Resource.
   late final pulumi.Output<String> name;
   /// The ID of the project in which the resource belongs.
@@ -536,6 +609,7 @@ class V2QueuedResource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     tpu = registerOutput<V2QueuedResourceTpu?>('tpu', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2QueuedResourceTpu.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -565,6 +639,7 @@ class V2QueuedResource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     tpu = registerOutput<V2QueuedResourceTpu?>('tpu', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2QueuedResourceTpu.fromMap((guardedValue as Map).cast<String, dynamic>()); });

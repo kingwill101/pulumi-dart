@@ -27,7 +27,7 @@ class WebTypeComputeIamBindingState {
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
   /// The role that should be applied. Only one
-  /// `gcp.iap.WebTypeComputeIamBinding` can be used per role. Note that custom roles must be of the format
+  /// `gcp.iap.WebTypeComputeIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final pulumi.Input<String>? role;
 
@@ -65,4 +65,3 @@ class WebTypeComputeIamBindingState {
     );
   }
 }
-

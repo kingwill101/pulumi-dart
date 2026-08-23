@@ -114,14 +114,14 @@ import 'endpoint_state.dart';
 /// 		}
 /// 		exampleService, err := servicedirectory.NewService(ctx, "example", &servicedirectory.ServiceArgs{
 /// 			ServiceId: pulumi.String("example-service"),
-/// 			Namespace: example.ID(),
+/// 			Namespace: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = servicedirectory.NewEndpoint(ctx, "example", &servicedirectory.EndpointArgs{
 /// 			EndpointId: pulumi.String("example-endpoint"),
-/// 			Service:    exampleService.ID(),
+/// 			Service:    exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			Metadata: pulumi.StringMap{
 /// 				"stage":  pulumi.String("prod"),
 /// 				"region": pulumi.String("us-central1"),
@@ -136,6 +136,34 @@ import 'endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_servicedirectory_namespace" "example" {
+///   namespace_id = "example-namespace"
+///   location     = "us-central1"
+/// }
+/// resource "gcp_servicedirectory_service" "example" {
+///   service_id = "example-service"
+///   namespace  = gcp_servicedirectory_namespace.example.id
+/// }
+/// resource "gcp_servicedirectory_endpoint" "example" {
+///   endpoint_id = "example-endpoint"
+///   service     = gcp_servicedirectory_service.example.id
+///   metadata = {
+///     "stage"  = "prod"
+///     "region" = "us-central1"
+///   }
+///   address = "1.2.3.4"
+///   port    = 5353
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -148,8 +176,8 @@ import 'endpoint_state.dart';
 /// import com.pulumi.gcp.servicedirectory.ServiceArgs;
 /// import com.pulumi.gcp.servicedirectory.Endpoint;
 /// import com.pulumi.gcp.servicedirectory.EndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -345,14 +373,14 @@ import 'endpoint_state.dart';
 /// 		}
 /// 		exampleService, err := servicedirectory.NewService(ctx, "example", &servicedirectory.ServiceArgs{
 /// 			ServiceId: pulumi.String("example-service"),
-/// 			Namespace: exampleNamespace.ID(),
+/// 			Namespace: exampleNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = servicedirectory.NewEndpoint(ctx, "example", &servicedirectory.EndpointArgs{
 /// 			EndpointId: pulumi.String("example-endpoint"),
-/// 			Service:    exampleService.ID(),
+/// 			Service:    exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			Metadata: pulumi.StringMap{
 /// 				"stage":  pulumi.String("prod"),
 /// 				"region": pulumi.String("us-central1"),
@@ -368,6 +396,41 @@ import 'endpoint_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_compute_network" "example" {
+///   name = "example-network"
+/// }
+/// resource "gcp_servicedirectory_namespace" "example" {
+///   namespace_id = "example-namespace"
+///   location     = "us-central1"
+/// }
+/// resource "gcp_servicedirectory_service" "example" {
+///   service_id = "example-service"
+///   namespace  = gcp_servicedirectory_namespace.example.id
+/// }
+/// resource "gcp_servicedirectory_endpoint" "example" {
+///   endpoint_id = "example-endpoint"
+///   service     = gcp_servicedirectory_service.example.id
+///   metadata = {
+///     "stage"  = "prod"
+///     "region" = "us-central1"
+///   }
+///   network ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/networks/${gcp_compute_network.example.name}"
+///   address = "1.2.3.4"
+///   port    = 5353
 /// }
 /// ```
 /// ```java
@@ -386,8 +449,8 @@ import 'endpoint_state.dart';
 /// import com.pulumi.gcp.servicedirectory.ServiceArgs;
 /// import com.pulumi.gcp.servicedirectory.Endpoint;
 /// import com.pulumi.gcp.servicedirectory.EndpointArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -474,27 +537,27 @@ import 'endpoint_state.dart';
 /// Endpoint can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}`
-///
 /// * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
-///
 /// * `{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}`
+///
 ///
 /// When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:servicedirectory/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
 /// ```
 class Endpoint extends pulumi.CustomResource {
   /// IPv4 or IPv6 address of the endpoint.
   late final pulumi.Output<String?> address;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The Resource ID must be 1-63 characters long, including digits,
   /// lowercase letters or the hyphen character.
   late final pulumi.Output<String> endpointId;
@@ -529,6 +592,7 @@ class Endpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     address = registerOutput<String?>('address');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     endpointId = registerOutput<String>('endpointId');
     metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
@@ -561,6 +625,7 @@ class Endpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     address = registerOutput<String?>('address');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     endpointId = registerOutput<String>('endpointId');
     metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');

@@ -10,8 +10,10 @@ class DomainMappingMetadata {
   /// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
   /// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+  /// (Output)
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// (Output)
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -24,12 +26,11 @@ class DomainMappingMetadata {
   /// and routes.
   /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// In Cloud Run the namespace must be equal to either the
   /// project ID or project number.
   final pulumi.Input<String> namespace;
-  /// (Output)
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
@@ -53,12 +54,12 @@ class DomainMappingMetadata {
 
   /// Creates a new [DomainMappingMetadata].
   /// [annotations] Annotations is a key value map stored with a resource that
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] (Output)
   /// [effectiveLabels] (Output)
   /// [generation] (Output)
   /// [labels] Map of string keys and values that can be used to organize and categorize
   /// [namespace] In Cloud Run the namespace must be equal to either the
-  /// [pulumiLabels] (Output)
+  /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [resourceVersion] (Output)
   /// [selfLink] (Output)
   /// [uid] (Output)
@@ -105,4 +106,3 @@ class DomainMappingMetadata {
     );
   }
 }
-

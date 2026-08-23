@@ -10,6 +10,13 @@ class WorkloadIdentityPoolManagedIdentityState {
   /// 50 AttestationRules can be set.
   /// Structure is documented below.
   final pulumi.Input<List<WorkloadIdentityPoolManagedIdentityAttestationRule>>? attestationRules;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of the managed identity. Cannot exceed 256 characters.
   final pulumi.Input<String>? description;
   /// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
@@ -37,7 +44,6 @@ class WorkloadIdentityPoolManagedIdentityState {
   /// * contain only lowercase alphanumeric characters or `-`
   /// * start with an alphanumeric character
   /// * end with an alphanumeric character
-  ///
   /// The prefix `gcp-` will be reserved for future uses.
   final pulumi.Input<String>? workloadIdentityPoolManagedIdentityId;
   /// The ID to use for the namespace. This value must:
@@ -45,12 +51,12 @@ class WorkloadIdentityPoolManagedIdentityState {
   /// * contain only lowercase alphanumeric characters or `-`
   /// * start with an alphanumeric character
   /// * end with an alphanumeric character
-  ///
   /// The prefix `gcp-` will be reserved for future uses.
   final pulumi.Input<String>? workloadIdentityPoolNamespaceId;
 
   /// Creates a new [WorkloadIdentityPoolManagedIdentityState].
   /// [attestationRules] Defines which workloads can receive an identity within a pool. When an AttestationRule is
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of the managed identity. Cannot exceed 256 characters.
   /// [disabled] Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
   /// [name] The resource name of the managed identity as
@@ -61,6 +67,7 @@ class WorkloadIdentityPoolManagedIdentityState {
   /// [workloadIdentityPoolNamespaceId] The ID to use for the namespace. This value must:
   const WorkloadIdentityPoolManagedIdentityState({
     this.attestationRules,
+    this.deletionPolicy,
     this.description,
     this.disabled,
     this.name,
@@ -74,6 +81,7 @@ class WorkloadIdentityPoolManagedIdentityState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attestationRules': ?pulumi.Input.mapOptionalInputValue<List<WorkloadIdentityPoolManagedIdentityAttestationRule>, List<Map<String, dynamic>>>(attestationRules, (value) => pulumi.Input.encodeList<WorkloadIdentityPoolManagedIdentityAttestationRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'disabled': ?disabled,
       'name': ?name,
@@ -88,6 +96,7 @@ class WorkloadIdentityPoolManagedIdentityState {
   factory WorkloadIdentityPoolManagedIdentityState.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolManagedIdentityState(
       attestationRules: (() { final guardedValue = map['attestationRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkloadIdentityPoolManagedIdentityAttestationRule>(guardedValue, (value) => WorkloadIdentityPoolManagedIdentityAttestationRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -99,4 +108,3 @@ class WorkloadIdentityPoolManagedIdentityState {
     );
   }
 }
-

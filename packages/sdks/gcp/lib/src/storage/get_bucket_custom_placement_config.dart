@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetBucketCustomPlacementConfig {
-  /// The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the data_locations changes, it will recreate the bucket.
+  /// The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the dataLocations changes, it will recreate the bucket.
   final pulumi.Input<List<String>> dataLocations;
 
   /// Creates a new [GetBucketCustomPlacementConfig].
-  /// [dataLocations] The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the data_locations changes, it will recreate the bucket.
+  /// [dataLocations] The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the dataLocations changes, it will recreate the bucket.
   const GetBucketCustomPlacementConfig({
     required this.dataLocations,
   });
@@ -24,4 +24,3 @@ class GetBucketCustomPlacementConfig {
     );
   }
 }
-

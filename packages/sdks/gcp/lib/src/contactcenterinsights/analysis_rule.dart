@@ -76,6 +76,20 @@ import 'analysis_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_contactcenterinsights_analysisrule" "analysis_rule_basic" {
+///   location     = "us-central1"
+///   display_name = "analysis-rule-display-name"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +98,8 @@ import 'analysis_rule_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.contactcenterinsights.AnalysisRule;
 /// import com.pulumi.gcp.contactcenterinsights.AnalysisRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -288,6 +302,44 @@ import 'analysis_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_contactcenterinsights_analysisrule" "analysis_rule_full" {
+///   location            = "us-central1"
+///   display_name        = "analysis-rule-display-name"
+///   conversation_filter = "agent_id = \"1\""
+///   annotator_selector = {
+///     run_interruption_annotator = false
+///     issue_models               = ["projects/1111111111111/locations/us-central1/issueModels/some_issue_model_id"]
+///     phrase_matchers            = ["projects/1111111111111/locations/us-central1/phraseMatchers/123"]
+///     qa_config = {
+///       scorecard_list = {
+///         qa_scorecard_revisions = ["projects/1111111111111/locations/us-central1/qaScorecards/*/revisions/some_scorecard_revision_id"]
+///       }
+///     }
+///     run_entity_annotator         = false
+///     run_intent_annotator         = false
+///     run_issue_model_annotator    = false
+///     run_phrase_matcher_annotator = false
+///     run_qa_annotator             = false
+///     run_sentiment_annotator      = false
+///     run_silence_annotator        = true
+///     run_summarization_annotator  = false
+///     summarization_config = {
+///       summarization_model = "BASELINE_MODEL"
+///     }
+///   }
+///   analysis_percentage = 0.5
+///   active              = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -300,8 +352,8 @@ import 'analysis_rule_state.dart';
 /// import com.pulumi.gcp.contactcenterinsights.inputs.AnalysisRuleAnnotatorSelectorQaConfigArgs;
 /// import com.pulumi.gcp.contactcenterinsights.inputs.AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs;
 /// import com.pulumi.gcp.contactcenterinsights.inputs.AnalysisRuleAnnotatorSelectorSummarizationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -551,6 +603,44 @@ import 'analysis_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_contactcenterinsights_analysisrule" "analysis_rule_profile" {
+///   location            = "us-central1"
+///   display_name        = "analysis-rule-display-name"
+///   conversation_filter = "agent_id = \"1\""
+///   annotator_selector = {
+///     run_interruption_annotator = false
+///     issue_models               = ["projects/1111111111111/locations/us-central1/issueModels/some_issue_model_id"]
+///     phrase_matchers            = ["projects/1111111111111/locations/us-central1/phraseMatchers/123"]
+///     qa_config = {
+///       scorecard_list = {
+///         qa_scorecard_revisions = ["projects/1111111111111/locations/us-central1/qaScorecards/*/revisions/some_scorecard_revision_id"]
+///       }
+///     }
+///     run_entity_annotator         = false
+///     run_intent_annotator         = false
+///     run_issue_model_annotator    = false
+///     run_phrase_matcher_annotator = false
+///     run_qa_annotator             = false
+///     run_sentiment_annotator      = false
+///     run_silence_annotator        = true
+///     run_summarization_annotator  = false
+///     summarization_config = {
+///       conversation_profile = "projects/1111111111111/locations/us-central1/conversationProfiles/some_conversation_profile"
+///     }
+///   }
+///   analysis_percentage = 0.5
+///   active              = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -563,8 +653,8 @@ import 'analysis_rule_state.dart';
 /// import com.pulumi.gcp.contactcenterinsights.inputs.AnalysisRuleAnnotatorSelectorQaConfigArgs;
 /// import com.pulumi.gcp.contactcenterinsights.inputs.AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs;
 /// import com.pulumi.gcp.contactcenterinsights.inputs.AnalysisRuleAnnotatorSelectorSummarizationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -647,22 +737,15 @@ import 'analysis_rule_state.dart';
 /// AnalysisRule can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/analysisRules/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, AnalysisRule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:contactcenterinsights/analysisRule:AnalysisRule default projects/{{project}}/locations/{{location}}/analysisRules/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:contactcenterinsights/analysisRule:AnalysisRule default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:contactcenterinsights/analysisRule:AnalysisRule default {{location}}/{{name}}
 /// ```
 class AnalysisRule extends pulumi.CustomResource {
@@ -671,7 +754,7 @@ class AnalysisRule extends pulumi.CustomResource {
   late final pulumi.Output<bool?> active;
   /// Percentage of conversations that we should apply this analysis setting
   /// automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
-  /// are sampled in a determenestic way. The original runtime_percentage &
+  /// are sampled in a determenestic way. The original runtimePercentage &
   /// upload percentage will be replaced by defining filters on the conversation.
   late final pulumi.Output<double?> analysisPercentage;
   /// Selector of all available annotators and phrase matchers to run.
@@ -685,6 +768,13 @@ class AnalysisRule extends pulumi.CustomResource {
   late final pulumi.Output<String?> conversationFilter;
   /// Output only. The time at which this analysis rule was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Display Name of the analysis rule.
   late final pulumi.Output<String?> displayName;
   /// Location of the resource.
@@ -716,6 +806,7 @@ class AnalysisRule extends pulumi.CustomResource {
     annotatorSelector = registerOutput<AnalysisRuleAnnotatorSelector?>('annotatorSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalysisRuleAnnotatorSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     conversationFilter = registerOutput<String?>('conversationFilter');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -751,6 +842,7 @@ class AnalysisRule extends pulumi.CustomResource {
     annotatorSelector = registerOutput<AnalysisRuleAnnotatorSelector?>('annotatorSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalysisRuleAnnotatorSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     conversationFilter = registerOutput<String?>('conversationFilter');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

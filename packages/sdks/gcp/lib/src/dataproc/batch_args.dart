@@ -16,13 +16,20 @@ class BatchArgs {
   /// The ID to use for the batch, which will become the final component of the batch's resource name.
   /// This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
   final pulumi.Input<String>? batchId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Environment configuration for the batch execution.
   /// Structure is documented below.
   final pulumi.Input<BatchEnvironmentConfig>? environmentConfig;
   /// The labels to associate with this batch.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location in which the batch will be created in.
   final pulumi.Input<String>? location;
@@ -47,6 +54,7 @@ class BatchArgs {
 
   /// Creates a new [BatchArgs].
   /// [batchId] The ID to use for the batch, which will become the final component of the batch's resource name.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [environmentConfig] Environment configuration for the batch execution.
   /// [labels] The labels to associate with this batch.
   /// [location] The location in which the batch will be created in.
@@ -58,6 +66,7 @@ class BatchArgs {
   /// [sparkSqlBatch] Spark SQL batch config.
   const BatchArgs({
     this.batchId,
+    this.deletionPolicy,
     this.environmentConfig,
     this.labels,
     this.location,
@@ -72,6 +81,7 @@ class BatchArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'batchId': ?batchId,
+      'deletionPolicy': ?deletionPolicy,
       'environmentConfig': ?pulumi.Input.mapOptionalInputValue<BatchEnvironmentConfig, Map<String, dynamic>>(environmentConfig, (value) => value.toMap()),
       'labels': ?labels,
       'location': ?location,
@@ -87,6 +97,7 @@ class BatchArgs {
   factory BatchArgs.fromMap(Map<String, dynamic> map) {
     return BatchArgs(
       batchId: (() { final guardedValue = map['batchId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environmentConfig: (() { final guardedValue = map['environmentConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BatchEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -99,4 +110,3 @@ class BatchArgs {
     );
   }
 }
-

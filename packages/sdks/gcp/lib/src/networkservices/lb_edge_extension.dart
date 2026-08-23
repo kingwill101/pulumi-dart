@@ -96,6 +96,10 @@ import 'lb_edge_extension_state.dart';
 ///             failOpen: false,
 ///             supportedEvents: ["REQUEST_HEADERS"],
 ///             forwardHeaders: ["custom-header"],
+///             forwardAttributes: [
+///                 "request.host",
+///                 "request.path",
+///             ],
 ///         }],
 ///     }],
 ///     labels: {
@@ -149,7 +153,7 @@ import 'lb_edge_extension_state.dart';
 ///     },
 ///     log_config={
 ///         "enable": True,
-///         "sample_rate": 1,
+///         "sample_rate": float(1),
 ///         "min_log_level": "WARN",
 ///     },
 ///     versions=[{
@@ -177,6 +181,10 @@ import 'lb_edge_extension_state.dart';
 ///             "fail_open": False,
 ///             "supported_events": ["REQUEST_HEADERS"],
 ///             "forward_headers": ["custom-header"],
+///             "forward_attributes": [
+///                 "request.host",
+///                 "request.path",
+///             ],
 ///         }],
 ///     }],
 ///     labels={
@@ -266,7 +274,7 @@ import 'lb_edge_extension_state.dart';
 ///         LogConfig = new Gcp.NetworkServices.Inputs.WasmPluginLogConfigArgs
 ///         {
 ///             Enable = true,
-///             SampleRate = 1,
+///             SampleRate = 1.0,
 ///             MinLogLevel = "WARN",
 ///         },
 ///         Versions = new[]
@@ -318,6 +326,11 @@ import 'lb_edge_extension_state.dart';
 ///                         {
 ///                             "custom-header",
 ///                         },
+///                         ForwardAttributes = new[]
+///                         {
+///                             "request.host",
+///                             "request.path",
+///                         },
 ///                     },
 ///                 },
 ///             },
@@ -354,7 +367,7 @@ import 'lb_edge_extension_state.dart';
 /// 		defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
 /// 			Name:           pulumi.String("elb-url-map"),
 /// 			Description:    pulumi.String("a description"),
-/// 			DefaultService: defaultBackendService.ID(),
+/// 			DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.URLMapHostRuleArray{
 /// 				&compute.URLMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -366,13 +379,13 @@ import 'lb_edge_extension_state.dart';
 /// 			PathMatchers: compute.URLMapPathMatcherArray{
 /// 				&compute.URLMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: defaultBackendService.ID(),
+/// 					DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 					PathRules: compute.URLMapPathMatcherPathRuleArray{
 /// 						&compute.URLMapPathMatcherPathRuleArgs{
 /// 							Paths: pulumi.StringArray{
 /// 								pulumi.String("/*"),
 /// 							},
-/// 							Service: defaultBackendService.ID(),
+/// 							Service: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
@@ -384,7 +397,7 @@ import 'lb_edge_extension_state.dart';
 /// 		defaultTargetHttpProxy, err := compute.NewTargetHttpProxy(ctx, "default", &compute.TargetHttpProxyArgs{
 /// 			Name:        pulumi.String("elb-target-http-proxy"),
 /// 			Description: pulumi.String("a description"),
-/// 			UrlMap:      defaultURLMap.ID(),
+/// 			UrlMap:      defaultURLMap.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -392,7 +405,7 @@ import 'lb_edge_extension_state.dart';
 /// 		// forwarding rule
 /// 		_default, err := compute.NewGlobalForwardingRule(ctx, "default", &compute.GlobalForwardingRuleArgs{
 /// 			Name:                pulumi.String("elb-forwarding-rule"),
-/// 			Target:              defaultTargetHttpProxy.ID(),
+/// 			Target:              defaultTargetHttpProxy.ID().ToIDOutput().ToStringOutput(),
 /// 			PortRange:           pulumi.String("80"),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 			NetworkTier:         pulumi.String("PREMIUM"),
@@ -443,13 +456,17 @@ import 'lb_edge_extension_state.dart';
 /// 					Extensions: networkservices.LbEdgeExtensionExtensionChainExtensionArray{
 /// 						&networkservices.LbEdgeExtensionExtensionChainExtensionArgs{
 /// 							Name:     pulumi.String("ext11"),
-/// 							Service:  wasm_plugin.ID(),
+/// 							Service:  wasm_plugin.ID().ToIDOutput().ToStringOutput(),
 /// 							FailOpen: pulumi.Bool(false),
 /// 							SupportedEvents: pulumi.StringArray{
 /// 								pulumi.String("REQUEST_HEADERS"),
 /// 							},
 /// 							ForwardHeaders: pulumi.StringArray{
 /// 								pulumi.String("custom-header"),
+/// 							},
+/// 							ForwardAttributes: pulumi.StringArray{
+/// 								pulumi.String("request.host"),
+/// 								pulumi.String("request.path"),
 /// 							},
 /// 						},
 /// 					},
@@ -466,6 +483,98 @@ import 'lb_edge_extension_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// # forwarding rule
+/// resource "gcp_compute_globalforwardingrule" "default" {
+///   name                  = "elb-forwarding-rule"
+///   target                = gcp_compute_targethttpproxy.default.id
+///   port_range            = "80"
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   network_tier          = "PREMIUM"
+/// }
+/// resource "gcp_compute_targethttpproxy" "default" {
+///   name        = "elb-target-http-proxy"
+///   description = "a description"
+///   url_map     = gcp_compute_urlmap.default.id
+/// }
+/// resource "gcp_compute_urlmap" "default" {
+///   name            = "elb-url-map"
+///   description     = "a description"
+///   default_service = gcp_compute_backendservice.default.id
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_backendservice.default.id
+///     path_rules {
+///       paths   = ["/*"]
+///       service = gcp_compute_backendservice.default.id
+///     }
+///   }
+/// }
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "elb-backend-subnet"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+/// }
+/// resource "gcp_networkservices_lbedgeextension" "default" {
+///   name                  = "elb-edge-ext"
+///   description           = "my edge extension"
+///   location              = "global"
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   forwarding_rules      = [gcp_compute_globalforwardingrule.default.self_link]
+///   extension_chains {
+///     name = "chain1"
+///     match_condition = {
+///       cel_expression = "request.host == 'example.com'"
+///     }
+///     extensions {
+///       name               = "ext11"
+///       service            = gcp_networkservices_wasmplugin.wasm-plugin.id
+///       fail_open          = false
+///       supported_events   = ["REQUEST_HEADERS"]
+///       forward_headers    = ["custom-header"]
+///       forward_attributes = ["request.host", "request.path"]
+///     }
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_networkservices_wasmplugin" "wasm-plugin" {
+///   name            = "elb-wasm-plugin-data"
+///   description     = "my wasm plugin"
+///   main_version_id = "v1"
+///   labels = {
+///     "test_label" = "test_value"
+///   }
+///   log_config = {
+///     enable        = true
+///     sample_rate   = 1
+///     min_log_level = "WARN"
+///   }
+///   versions {
+///     version_name = "v1"
+///     description  = "v1 version of my wasm plugin"
+///     image_uri    = "projects/my-project-name/locations/us-central1/repositories/repository-standard/genericArtifacts/my-wasm-plugin:v1"
+///     labels = {
+///       "test_label" = "test_value"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -478,6 +587,7 @@ import 'lb_edge_extension_state.dart';
 /// import com.pulumi.gcp.compute.URLMapArgs;
 /// import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleArgs;
 /// import com.pulumi.gcp.compute.TargetHttpProxy;
 /// import com.pulumi.gcp.compute.TargetHttpProxyArgs;
 /// import com.pulumi.gcp.compute.GlobalForwardingRule;
@@ -490,8 +600,9 @@ import 'lb_edge_extension_state.dart';
 /// import com.pulumi.gcp.networkservices.LbEdgeExtensionArgs;
 /// import com.pulumi.gcp.networkservices.inputs.LbEdgeExtensionExtensionChainArgs;
 /// import com.pulumi.gcp.networkservices.inputs.LbEdgeExtensionExtensionChainMatchConditionArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networkservices.inputs.LbEdgeExtensionExtensionChainExtensionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -579,6 +690,9 @@ import 'lb_edge_extension_state.dart';
 ///                     .failOpen(false)
 ///                     .supportedEvents("REQUEST_HEADERS")
 ///                     .forwardHeaders("custom-header")
+///                     .forwardAttributes(
+///                         "request.host",
+///                         "request.path")
 ///                     .build())
 ///                 .build())
 ///             .labels(Map.of("foo", "bar"))
@@ -654,6 +768,9 @@ import 'lb_edge_extension_state.dart';
 ///                 - REQUEST_HEADERS
 ///               forwardHeaders:
 ///                 - custom-header
+///               forwardAttributes:
+///                 - request.host
+///                 - request.path
 ///       labels:
 ///         foo: bar
 ///   wasm-plugin:
@@ -682,25 +799,25 @@ import 'lb_edge_extension_state.dart';
 /// LbEdgeExtension can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/lbEdgeExtensions/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, LbEdgeExtension can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/lbEdgeExtension:LbEdgeExtension default projects/{{project}}/locations/{{location}}/lbEdgeExtensions/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/lbEdgeExtension:LbEdgeExtension default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/lbEdgeExtension:LbEdgeExtension default {{location}}/{{name}}
 /// ```
 class LbEdgeExtension extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human-readable description of the resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -716,7 +833,7 @@ class LbEdgeExtension extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> forwardingRules;
   /// Set of labels associated with the LbEdgeExtension resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// All forwarding rules referenced by this extension must share the same load balancing scheme.
   /// Possible values are: `EXTERNAL_MANAGED`.
@@ -746,6 +863,7 @@ class LbEdgeExtension extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     extensionChains = registerOutput<List<Map<String, dynamic>>>('extensionChains');
@@ -781,6 +899,7 @@ class LbEdgeExtension extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     extensionChains = registerOutput<List<Map<String, dynamic>>>('extensionChains');

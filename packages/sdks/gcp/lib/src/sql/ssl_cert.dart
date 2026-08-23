@@ -5,6 +5,7 @@ import 'ssl_cert_state.dart';
 /// Creates a new Google SQL SSL Cert on a Google SQL Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts).
 ///
 ///
+/// Read more about sensitive data in state.
 ///
 /// ## Example Usage
 ///
@@ -34,7 +35,7 @@ import 'ssl_cert_state.dart';
 /// import pulumi_gcp as gcp
 /// import pulumi_random as random
 ///
-/// db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+/// db_name_suffix = random.Id("db_name_suffix", byte_length=4)
 /// main = gcp.sql.DatabaseInstance("main",
 ///     name=f"main-instance-{db_name_suffix['hex']}",
 ///     database_version="MYSQL_5_7",
@@ -54,7 +55,7 @@ import 'ssl_cert_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
 ///     {
 ///         ByteLength = 4,
 ///     });
@@ -81,8 +82,6 @@ import 'ssl_cert_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -117,6 +116,33 @@ import 'ssl_cert_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_id" "db_name_suffix" {
+///   byte_length = 4
+/// }
+/// resource "gcp_sql_databaseinstance" "main" {
+///   name             ="main-instance-${random_id.db_name_suffix.hex}"
+///   database_version = "MYSQL_5_7"
+///   settings = {
+///     tier = "db-f1-micro"
+///   }
+/// }
+/// resource "gcp_sql_sslcert" "client_cert" {
+///   common_name = "client-name"
+///   instance    = gcp_sql_databaseinstance.main.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +156,8 @@ import 'ssl_cert_state.dart';
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.SslCert;
 /// import com.pulumi.gcp.sql.SslCertArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -148,7 +174,7 @@ import 'ssl_cert_state.dart';
 ///             .build());
 ///
 ///         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-///             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+///             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
 ///             .databaseVersion("MYSQL_5_7")
 ///             .settings(DatabaseInstanceSettingsArgs.builder()
 ///                 .tier("db-f1-micro")
@@ -200,6 +226,13 @@ class SslCert extends pulumi.CustomResource {
   /// The time when the certificate was created in RFC 3339 format,
   /// for example 2012-11-15T16:19:00.094Z.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The time when the certificate expires in RFC 3339 format,
   /// for example 2012-11-15T16:19:00.094Z.
   late final pulumi.Output<String> expirationTime;
@@ -234,6 +267,7 @@ class SslCert extends pulumi.CustomResource {
     certSerialNumber = registerOutput<String>('certSerialNumber');
     commonName = registerOutput<String>('commonName');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     expirationTime = registerOutput<String>('expirationTime');
     instance = registerOutput<String>('instance');
     privateKey = registerOutput<String>('privateKey');
@@ -269,6 +303,7 @@ class SslCert extends pulumi.CustomResource {
     certSerialNumber = registerOutput<String>('certSerialNumber');
     commonName = registerOutput<String>('commonName');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     expirationTime = registerOutput<String>('expirationTime');
     instance = registerOutput<String>('instance');
     privateKey = registerOutput<String>('privateKey');

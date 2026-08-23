@@ -17,7 +17,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResource {
   /// PolicyOrchestrator creation.
   ///
   ///
-  /// &lt;a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"&gt;&lt;/a&gt;The `os_policy_assignment_v1_payload` block supports:
+  /// &lt;a name="nestedOrchestratedResourceOsPolicyAssignmentV1Payload"&gt;&lt;/a&gt;The `osPolicyAssignmentV1Payload` block supports:
   final pulumi.Input<String>? id;
   /// OS policy assignment is an API resource that is used to
   /// apply a set of OS policies to a dynamically targeted group of Compute Engine
@@ -55,4 +55,3 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResource {
     );
   }
 }
-

@@ -25,6 +25,13 @@ class GuardrailArgs {
   /// Guardrail that bans certain content from being used in the conversation.
   /// Structure is documented below.
   final pulumi.Input<GuardrailContentFilter>? contentFilter;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the guardrail.
   final pulumi.Input<String>? description;
   /// Display name of the guardrail.
@@ -59,6 +66,7 @@ class GuardrailArgs {
   /// [app] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [codeCallback] Guardrail that blocks the conversation based on the code callbacks
   /// [contentFilter] Guardrail that bans certain content from being used in the conversation.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the guardrail.
   /// [displayName] Display name of the guardrail.
   /// [enabled] Whether the guardrail is enabled.
@@ -73,6 +81,7 @@ class GuardrailArgs {
     required this.app,
     this.codeCallback,
     this.contentFilter,
+    this.deletionPolicy,
     this.description,
     required this.displayName,
     this.enabled,
@@ -90,6 +99,7 @@ class GuardrailArgs {
       'app': app,
       'codeCallback': ?pulumi.Input.mapOptionalInputValue<GuardrailCodeCallback, Map<String, dynamic>>(codeCallback, (value) => value.toMap()),
       'contentFilter': ?pulumi.Input.mapOptionalInputValue<GuardrailContentFilter, Map<String, dynamic>>(contentFilter, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': displayName,
       'enabled': ?enabled,
@@ -108,6 +118,7 @@ class GuardrailArgs {
       app: pulumi.Input.fromValue(map['app'] as String),
       codeCallback: (() { final guardedValue = map['codeCallback']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuardrailCodeCallback.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       contentFilter: (() { final guardedValue = map['contentFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuardrailContentFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -120,4 +131,3 @@ class GuardrailArgs {
     );
   }
 }
-

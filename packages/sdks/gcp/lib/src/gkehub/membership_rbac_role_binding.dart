@@ -5,6 +5,9 @@ import 'membership_rbac_role_binding_role.dart';
 
 /// RBACRoleBinding represents a rbacrolebinding across the Fleet.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about MembershipRBACRoleBinding, see:
 ///
 /// * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.memberships)
@@ -30,7 +33,7 @@ import 'membership_rbac_role_binding_role.dart';
 ///     subnetwork: "default",
 /// });
 /// const membership = new gcp.gkehub.Membership("membership", {
-///     membershipId: "tf-test-membership_1443",
+///     membershipId: "tf-test-membership_19370",
 ///     endpoint: {
 ///         gkeCluster: {
 ///             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
@@ -41,7 +44,7 @@ import 'membership_rbac_role_binding_role.dart';
 /// });
 /// const project = gcp.organizations.getProject({});
 /// const membershipRbacRoleBinding = new gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding", {
-///     membershipRbacRoleBindingId: "tf-test-membership-rbac-role-binding_26032",
+///     membershipRbacRoleBindingId: "tf-test-membership-rbac-role-binding_76273",
 ///     membershipId: membership.membershipId,
 ///     user: project.then(project => `service-${project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com`),
 ///     role: {
@@ -64,7 +67,7 @@ import 'membership_rbac_role_binding_role.dart';
 ///     network="default",
 ///     subnetwork="default")
 /// membership = gcp.gkehub.Membership("membership",
-///     membership_id="tf-test-membership_1443",
+///     membership_id="tf-test-membership_19370",
 ///     endpoint={
 ///         "gke_cluster": {
 ///             "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
@@ -73,7 +76,7 @@ import 'membership_rbac_role_binding_role.dart';
 ///     opts = pulumi.ResourceOptions(depends_on=[primary]))
 /// project = gcp.organizations.get_project()
 /// membership_rbac_role_binding = gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding",
-///     membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_26032",
+///     membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_76273",
 ///     membership_id=membership.membership_id,
 ///     user=f"service-{project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com",
 ///     role={
@@ -102,7 +105,7 @@ import 'membership_rbac_role_binding_role.dart';
 ///
 ///     var membership = new Gcp.GkeHub.Membership("membership", new()
 ///     {
-///         MembershipId = "tf-test-membership_1443",
+///         MembershipId = "tf-test-membership_19370",
 ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
 ///         {
 ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
@@ -122,7 +125,7 @@ import 'membership_rbac_role_binding_role.dart';
 ///
 ///     var membershipRbacRoleBinding = new Gcp.GkeHub.MembershipRbacRoleBinding("membership_rbac_role_binding", new()
 ///     {
-///         MembershipRbacRoleBindingId = "tf-test-membership-rbac-role-binding_26032",
+///         MembershipRbacRoleBindingId = "tf-test-membership-rbac-role-binding_76273",
 ///         MembershipId = membership.MembershipId,
 ///         User = $"service-{project.Apply(getProjectResult => getProjectResult.Number)}@gcp-sa-anthossupport.iam.gserviceaccount.com",
 ///         Role = new Gcp.GkeHub.Inputs.MembershipRbacRoleBindingRoleArgs
@@ -166,10 +169,10 @@ import 'membership_rbac_role_binding_role.dart';
 /// 			return err
 /// 		}
 /// 		membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
-/// 			MembershipId: pulumi.String("tf-test-membership_1443"),
+/// 			MembershipId: pulumi.String("tf-test-membership_19370"),
 /// 			Endpoint: &gkehub.MembershipEndpointArgs{
 /// 				GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-/// 					ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
+/// 					ResourceLink: primary.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 						return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 /// 					}).(pulumi.StringOutput),
 /// 				},
@@ -185,7 +188,7 @@ import 'membership_rbac_role_binding_role.dart';
 /// 			return err
 /// 		}
 /// 		_, err = gkehub.NewMembershipRbacRoleBinding(ctx, "membership_rbac_role_binding", &gkehub.MembershipRbacRoleBindingArgs{
-/// 			MembershipRbacRoleBindingId: pulumi.String("tf-test-membership-rbac-role-binding_26032"),
+/// 			MembershipRbacRoleBindingId: pulumi.String("tf-test-membership-rbac-role-binding_76273"),
 /// 			MembershipId:                membership.MembershipId,
 /// 			User:                        pulumi.Sprintf("service-%v@gcp-sa-anthossupport.iam.gserviceaccount.com", project.Number),
 /// 			Role: &gkehub.MembershipRbacRoleBindingRoleArgs{
@@ -200,6 +203,46 @@ import 'membership_rbac_role_binding_role.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_container_cluster" "primary" {
+///   name                = "basic-cluster"
+///   location            = "us-central1-a"
+///   initial_node_count  = 1
+///   deletion_protection = true
+///   network             = "default"
+///   subnetwork          = "default"
+/// }
+/// resource "gcp_gkehub_membership" "membership" {
+///   depends_on    = [gcp_container_cluster.primary]
+///   membership_id = "tf-test-membership_19370"
+///   endpoint = {
+///     gke_cluster = {
+///       resource_link ="//container.googleapis.com/${gcp_container_cluster.primary.id}"
+///     }
+///   }
+/// }
+/// resource "gcp_gkehub_membershiprbacrolebinding" "membership_rbac_role_binding" {
+///   depends_on                      = [gcp_gkehub_membership.membership]
+///   membership_rbac_role_binding_id = "tf-test-membership-rbac-role-binding_76273"
+///   membership_id                   = gcp_gkehub_membership.membership.membership_id
+///   user                            ="service-${data.gcp_organizations_getproject.project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com"
+///   role = {
+///     predefined_role = "ANTHOS_SUPPORT"
+///   }
+///   location = "global"
 /// }
 /// ```
 /// ```java
@@ -220,8 +263,8 @@ import 'membership_rbac_role_binding_role.dart';
 /// import com.pulumi.gcp.gkehub.MembershipRbacRoleBindingArgs;
 /// import com.pulumi.gcp.gkehub.inputs.MembershipRbacRoleBindingRoleArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -243,7 +286,7 @@ import 'membership_rbac_role_binding_role.dart';
 ///             .build());
 ///
 ///         var membership = new Membership("membership", MembershipArgs.builder()
-///             .membershipId("tf-test-membership_1443")
+///             .membershipId("tf-test-membership_19370")
 ///             .endpoint(MembershipEndpointArgs.builder()
 ///                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
 ///                     .resourceLink(primary.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
@@ -257,7 +300,7 @@ import 'membership_rbac_role_binding_role.dart';
 ///             .build());
 ///
 ///         var membershipRbacRoleBinding = new MembershipRbacRoleBinding("membershipRbacRoleBinding", MembershipRbacRoleBindingArgs.builder()
-///             .membershipRbacRoleBindingId("tf-test-membership-rbac-role-binding_26032")
+///             .membershipRbacRoleBindingId("tf-test-membership-rbac-role-binding_76273")
 ///             .membershipId(membership.membershipId())
 ///             .user(String.format("service-%s@gcp-sa-anthossupport.iam.gserviceaccount.com", project.number()))
 ///             .role(MembershipRbacRoleBindingRoleArgs.builder()
@@ -285,7 +328,7 @@ import 'membership_rbac_role_binding_role.dart';
 ///   membership:
 ///     type: gcp:gkehub:Membership
 ///     properties:
-///       membershipId: tf-test-membership_1443
+///       membershipId: tf-test-membership_19370
 ///       endpoint:
 ///         gkeCluster:
 ///           resourceLink: //container.googleapis.com/${primary.id}
@@ -296,7 +339,7 @@ import 'membership_rbac_role_binding_role.dart';
 ///     type: gcp:gkehub:MembershipRbacRoleBinding
 ///     name: membership_rbac_role_binding
 ///     properties:
-///       membershipRbacRoleBindingId: tf-test-membership-rbac-role-binding_26032
+///       membershipRbacRoleBindingId: tf-test-membership-rbac-role-binding_76273
 ///       membershipId: ${membership.membershipId}
 ///       user: service-${project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com
 ///       role:
@@ -318,22 +361,15 @@ import 'membership_rbac_role_binding_role.dart';
 /// MembershipRBACRoleBinding can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/rbacrolebindings/{{membership_rbac_role_binding_id}}`
-///
 /// * `{{project}}/{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
-///
 /// * `{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}`
+///
 ///
 /// When using the `pulumi import` command, MembershipRBACRoleBinding can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/rbacrolebindings/{{membership_rbac_role_binding_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default {{project}}/{{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding default {{location}}/{{membership_id}}/{{membership_rbac_role_binding_id}}
 /// ```
 class MembershipRbacRoleBinding extends pulumi.CustomResource {
@@ -341,6 +377,13 @@ class MembershipRbacRoleBinding extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Time the RBAC Role Binding was deleted in UTC.
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Location of the Membership
   late final pulumi.Output<String> location;
   /// Id of the membership
@@ -384,6 +427,7 @@ class MembershipRbacRoleBinding extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     membershipId = registerOutput<String>('membershipId');
     membershipRbacRoleBindingId = registerOutput<String>('membershipRbacRoleBindingId');
@@ -421,6 +465,7 @@ class MembershipRbacRoleBinding extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     membershipId = registerOutput<String>('membershipId');
     membershipRbacRoleBindingId = registerOutput<String>('membershipRbacRoleBindingId');

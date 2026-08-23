@@ -20,7 +20,7 @@ class GetInstancePscAutoConnection {
   final pulumi.Input<String> network;
   /// Output only. Ports of the exposed endpoint.
   final pulumi.Input<int> port;
-  /// Output only. The consumer project_id where the forwarding rule is created from.
+  /// Output only. The consumer projectId where the forwarding rule is created from.
   final pulumi.Input<String> projectId;
   /// Output only. The PSC connection id of the forwarding rule connected to the
   /// service attachment.
@@ -39,7 +39,7 @@ class GetInstancePscAutoConnection {
   /// [ipAddress] Output only. The IP allocated on the consumer network for the PSC forwarding rule.
   /// [network] Output only. The consumer network where the IP address resides, in the form of
   /// [port] Output only. Ports of the exposed endpoint.
-  /// [projectId] Output only. The consumer project_id where the forwarding rule is created from.
+  /// [projectId] Output only. The consumer projectId where the forwarding rule is created from.
   /// [pscConnectionId] Output only. The PSC connection id of the forwarding rule connected to the
   /// [pscConnectionStatus] Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
   /// [serviceAttachment] Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
@@ -83,4 +83,3 @@ class GetInstancePscAutoConnection {
     );
   }
 }
-

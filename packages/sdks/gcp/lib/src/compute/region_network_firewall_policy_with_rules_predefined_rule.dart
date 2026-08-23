@@ -7,7 +7,7 @@ import 'region_network_firewall_policy_with_rules_predefined_rule_target_secure_
 class RegionNetworkFirewallPolicyWithRulesPredefinedRule {
   /// (Output)
   /// The Action to perform when the client connection triggers the rule. Can currently be either
-  /// "allow", "deny", "apply_security_profile_group" or "goto_next".
+  /// "allow", "deny", "applySecurityProfileGroup" or "gotoNext".
   final pulumi.Input<String>? action;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
@@ -48,7 +48,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRule {
   /// A list of secure tags that controls which instances the firewall rule
   /// applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
   /// firewall rule applies only to instances in the VPC network that have one
-  /// of those EFFECTIVE secure tags, if all the target_secure_tag are in
+  /// of those EFFECTIVE secure tags, if all the targetSecureTag are in
   /// INEFFECTIVE state, then this rule will be ignored.
   /// &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as
   /// &lt;code&gt;targetServiceAccounts&lt;/code&gt;.
@@ -129,4 +129,3 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRule {
     );
   }
 }
-

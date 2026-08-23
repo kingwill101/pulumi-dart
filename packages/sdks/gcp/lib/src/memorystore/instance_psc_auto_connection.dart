@@ -26,7 +26,7 @@ class InstancePscAutoConnection {
   /// Output only. Ports of the exposed endpoint.
   final pulumi.Input<int>? port;
   /// (Output)
-  /// Output only. The consumer project_id where the forwarding rule is created from.
+  /// Output only. The consumer projectId where the forwarding rule is created from.
   final pulumi.Input<String>? projectId;
   /// (Output)
   /// Output only. The PSC connection id of the forwarding rule connected to the
@@ -92,4 +92,3 @@ class InstancePscAutoConnection {
     );
   }
 }
-

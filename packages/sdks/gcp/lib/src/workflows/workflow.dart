@@ -198,7 +198,7 @@ import 'workflow_state.dart';
 /// 			Name:           pulumi.String("workflow"),
 /// 			Region:         pulumi.String("us-central1"),
 /// 			Description:    pulumi.String("Magic"),
-/// 			ServiceAccount: testAccount.ID(),
+/// 			ServiceAccount: testAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			CallLogLevel:   pulumi.String("LOG_ERRORS_ONLY"),
 /// 			Labels: pulumi.StringMap{
 /// 				"env": pulumi.String("test"),
@@ -242,6 +242,35 @@ import 'workflow_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_serviceaccount_account" "test_account" {
+///   account_id   = "my-account"
+///   display_name = "Test Service Account"
+/// }
+/// resource "gcp_workflows_workflow" "example" {
+///   name            = "workflow"
+///   region          = "us-central1"
+///   description     = "Magic"
+///   service_account = gcp_serviceaccount_account.test_account.id
+///   call_log_level  = "LOG_ERRORS_ONLY"
+///   labels = {
+///     "env" = "test"
+///   }
+///   user_env_vars = {
+///     "url" = "https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam"
+///   }
+///   deletion_protection = false
+///   source_contents     = "# This is a sample workflow. You can replace it with your source code.\n#\n# This workflow does the following:\n# - reads current time and date information from an external API and stores\n#   the response in currentTime variable\n# - retrieves a list of Wikipedia articles related to the day of the week\n#   from currentTime\n# - returns the list of articles as an output of the workflow\n#\n# Note: In Terraform you need to escape the $$ or it will cause errors.\n\n- getCurrentTime:\n    call: http.get\n    args:\n        url: $${sys.get_env(\\\"url\\\")}\n    result: currentTime\n- readWikipedia:\n    call: http.get\n    args:\n        url: https://en.wikipedia.org/w/api.php\n        query:\n            action: opensearch\n            search: $${currentTime.body.dayOfWeek}\n    result: wikiResult\n- returnOutput:\n    return: $${wikiResult.body[1]}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -252,8 +281,8 @@ import 'workflow_state.dart';
 /// import com.pulumi.gcp.serviceaccount.AccountArgs;
 /// import com.pulumi.gcp.workflows.Workflow;
 /// import com.pulumi.gcp.workflows.WorkflowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -598,7 +627,7 @@ import 'workflow_state.dart';
 /// Name: pulumi.String("workflow"),
 /// Region: pulumi.String("us-central1"),
 /// Description: pulumi.String("Magic"),
-/// ServiceAccount: testAccount.ID(),
+/// ServiceAccount: testAccount.ID().ToIDOutput().ToStringOutput(),
 /// DeletionProtection: pulumi.Bool(false),
 /// Tags: pulumi.All(tagKey.ShortName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
 /// tagKeyShortName := _args[0].(string)
@@ -642,6 +671,42 @@ import 'workflow_state.dart';
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_tags_tagkey" "tag_key" {
+///   parent     ="projects/${data.gcp_organizations_getproject.project.number}"
+///   short_name = "tag_key"
+/// }
+/// resource "gcp_tags_tagvalue" "tag_value" {
+///   parent     ="tagKeys/${gcp_tags_tagkey.tag_key.name}"
+///   short_name = "tag_value"
+/// }
+/// resource "gcp_serviceaccount_account" "test_account" {
+///   account_id   = "my-account"
+///   display_name = "Test Service Account"
+/// }
+/// resource "gcp_workflows_workflow" "example" {
+///   name                = "workflow"
+///   region              = "us-central1"
+///   description         = "Magic"
+///   service_account     = gcp_serviceaccount_account.test_account.id
+///   deletion_protection = false
+///   tags = {
+///     "${data.gcp_organizations_getproject.project.project_id}/${gcp_tags_tagkey.tag_key.short_name}" = gcp_tags_tagvalue.tag_value.short_name
+///   }
+///   source_contents = "# This is a sample workflow. You can replace it with your source code.\n#\n# This workflow does the following:\n# - reads current time and date information from an external API and stores\n#   the response in currentTime variable\n# - retrieves a list of Wikipedia articles related to the day of the week\n#   from currentTime\n# - returns the list of articles as an output of the workflow\n#\n# Note: In Terraform you need to escape the $$ or it will cause errors.\n\n- getCurrentTime:\n    call: http.get\n    args:\n        url: $${sys.get_env(\\\"url\\\")}\n    result: currentTime\n- readWikipedia:\n    call: http.get\n    args:\n        url: https://en.wikipedia.org/w/api.php\n        query:\n            action: opensearch\n            search: $${currentTime.body.dayOfWeek}\n    result: wikiResult\n- returnOutput:\n    return: $${wikiResult.body[1]}\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -658,8 +723,8 @@ import 'workflow_state.dart';
 /// import com.pulumi.gcp.serviceaccount.AccountArgs;
 /// import com.pulumi.gcp.workflows.Workflow;
 /// import com.pulumi.gcp.workflows.WorkflowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -812,6 +877,19 @@ class Workflow extends pulumi.CustomResource {
   /// The KMS key used to encrypt workflow and execution data.
   /// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
   late final pulumi.Output<String?> cryptoKeyName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the workflow. Defaults to true.
+  /// When a`terraform destroy` or `pulumi up` would delete the workflow,
+  /// the command will fail if this field is not set to false in Terraform state.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the workflow will fail.
+  /// When the field is set to false, deleting the workflow is allowed.
   late final pulumi.Output<bool?> deletionProtection;
   /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
   late final pulumi.Output<String> description;
@@ -825,7 +903,7 @@ class Workflow extends pulumi.CustomResource {
   /// A set of key/value label pairs to assign to this Workflow.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Name of the Workflow.
   late final pulumi.Output<String> name;
@@ -846,11 +924,12 @@ class Workflow extends pulumi.CustomResource {
   /// account represents the identity of the workflow and determines what permissions the workflow has.
   /// Format: projects/{project}/serviceAccounts/{account} or {account}.
   /// Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
-  /// The {account} value can be the email address or the unique_id of the service account.
+  /// The {account} value can be the email address or the uniqueId of the service account.
   /// If not provided, workflow will use the project's default service account.
   /// Modifying this field for an existing workflow results in a new workflow revision.
   late final pulumi.Output<String> serviceAccount;
   /// Workflow code to be executed. The size limit is 128KB.
+  /// &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
   late final pulumi.Output<String?> sourceContents;
   /// State of the workflow deployment.
   late final pulumi.Output<String> state;
@@ -880,6 +959,7 @@ class Workflow extends pulumi.CustomResource {
     callLogLevel = registerOutput<String?>('callLogLevel');
     createTime = registerOutput<String>('createTime');
     cryptoKeyName = registerOutput<String?>('cryptoKeyName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -925,6 +1005,7 @@ class Workflow extends pulumi.CustomResource {
     callLogLevel = registerOutput<String?>('callLogLevel');
     createTime = registerOutput<String>('createTime');
     cryptoKeyName = registerOutput<String?>('cryptoKeyName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

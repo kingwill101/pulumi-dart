@@ -340,8 +340,6 @@ import 'transfer_job_transfer_spec.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -381,7 +379,7 @@ import 'transfer_job_transfer_spec.dart';
 /// 			return err
 /// 		}
 /// 		notificationConfig, err := pubsub.NewTopicIAMMember(ctx, "notification_config", &pubsub.TopicIAMMemberArgs{
-/// 			Topic:  topic.ID(),
+/// 			Topic:  topic.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:   pulumi.String("roles/pubsub.publisher"),
 /// 			Member: pulumi.Sprintf("serviceAccount:%v", _default.Email),
 /// 		})
@@ -433,7 +431,7 @@ import 'transfer_job_transfer_spec.dart';
 /// 				RepeatInterval: pulumi.String("604800s"),
 /// 			},
 /// 			NotificationConfig: &storage.TransferJobNotificationConfigArgs{
-/// 				PubsubTopic: topic.ID(),
+/// 				PubsubTopic: topic.ID().ToIDOutput().ToStringOutput(),
 /// 				EventTypes: pulumi.StringArray{
 /// 					pulumi.String("TRANSFER_OPERATION_SUCCESS"),
 /// 					pulumi.String("TRANSFER_OPERATION_FAILED"),
@@ -459,6 +457,93 @@ import 'transfer_job_transfer_spec.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_gettransferprojectserviceaccount" "default" {
+///   project = project
+/// }
+///
+/// resource "gcp_storage_bucket" "s3-backup-bucket" {
+///   name          ="${awsS3Bucket}-backup"
+///   storage_class = "NEARLINE"
+///   project       = project
+///   location      = "US"
+/// }
+/// resource "gcp_storage_bucketiammember" "s3-backup-bucket" {
+///   depends_on = [gcp_storage_bucket.s3-backup-bucket]
+///   bucket     = gcp_storage_bucket.s3-backup-bucket.name
+///   role       = "roles/storage.admin"
+///   member     ="serviceAccount:${data.gcp_storage_gettransferprojectserviceaccount.default.email}"
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = pubsubTopicName
+/// }
+/// resource "gcp_pubsub_topiciammember" "notification_config" {
+///   topic  = gcp_pubsub_topic.topic.id
+///   role   = "roles/pubsub.publisher"
+///   member ="serviceAccount:${data.gcp_storage_gettransferprojectserviceaccount.default.email}"
+/// }
+/// resource "gcp_storage_transferjob" "s3-bucket-nightly-backup" {
+///   depends_on  = [gcp_storage_bucketiammember.s3-backup-bucket, gcp_pubsub_topiciammember.notification_config]
+///   description = "Nightly backup of S3 bucket"
+///   project     = project
+///   transfer_spec = {
+///     object_conditions = {
+///       max_time_elapsed_since_last_modification = "600s"
+///       exclude_prefixes                         = ["requests.gz"]
+///     }
+///     transfer_options = {
+///       delete_objects_unique_in_sink = false
+///     }
+///     aws_s3_data_source = {
+///       bucket_name = awsS3Bucket
+///       aws_access_key = {
+///         access_key_id     = awsAccessKey
+///         secret_access_key = awsSecretKey
+///       }
+///     }
+///     gcs_data_sink = {
+///       bucket_name = gcp_storage_bucket.s3-backup-bucket.name
+///       path        = "foo/bar/"
+///     }
+///   }
+///   schedule = {
+///     schedule_start_date = {
+///       year  = 2018
+///       month = 10
+///       day   = 1
+///     }
+///     schedule_end_date = {
+///       year  = 2019
+///       month = 1
+///       day   = 15
+///     }
+///     start_time_of_day = {
+///       hours   = 23
+///       minutes = 30
+///       seconds = 0
+///       nanos   = 0
+///     }
+///     repeat_interval = "604800s"
+///   }
+///   notification_config = {
+///     pubsub_topic   = gcp_pubsub_topic.topic.id
+///     event_types    = ["TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED"]
+///     payload_format = "JSON"
+///   }
+///   logging_config = {
+///     log_actions       = ["COPY", "DELETE"]
+///     log_action_states = ["SUCCEEDED", "FAILED"]
+///   }
 /// }
 /// ```
 /// ```java
@@ -492,8 +577,8 @@ import 'transfer_job_transfer_spec.dart';
 /// import com.pulumi.gcp.storage.inputs.TransferJobNotificationConfigArgs;
 /// import com.pulumi.gcp.storage.inputs.TransferJobLoggingConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -697,6 +782,7 @@ import 'transfer_job_transfer_spec.dart';
 ///
 /// * `{{project_id}}/{{name}}`, where `name` is a numeric value.
 ///
+///
 /// When using the `pulumi import` command, Storage Transfer Jobs can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -705,11 +791,18 @@ import 'transfer_job_transfer_spec.dart';
 class TransferJob extends pulumi.CustomResource {
   /// When the Transfer Job was created.
   late final pulumi.Output<String> creationTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// When the Transfer Job was deleted.
   late final pulumi.Output<String> deletionTime;
   /// Unique description to identify the Transfer Job.
   late final pulumi.Output<String> description;
-  /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+  /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
   late final pulumi.Output<TransferJobEventStream?> eventStream;
   /// When the Transfer Job was last modified.
   late final pulumi.Output<String> lastModificationTime;
@@ -722,17 +815,17 @@ class TransferJob extends pulumi.CustomResource {
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-  /// Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+  /// Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
   ///
   /// - - -
   late final pulumi.Output<TransferJobReplicationSpec?> replicationSpec;
-  /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+  /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
   late final pulumi.Output<TransferJobSchedule?> schedule;
   /// The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
   late final pulumi.Output<String?> serviceAccount;
   /// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
   late final pulumi.Output<String?> status;
-  /// Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
+  /// Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
   late final pulumi.Output<TransferJobTransferSpec?> transferSpec;
 
   /// Creates a new [TransferJob].
@@ -750,6 +843,7 @@ class TransferJob extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTime = registerOutput<String>('creationTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionTime = registerOutput<String>('deletionTime');
     description = registerOutput<String>('description');
     eventStream = registerOutput<TransferJobEventStream?>('eventStream', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransferJobEventStream.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -789,6 +883,7 @@ class TransferJob extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTime = registerOutput<String>('creationTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionTime = registerOutput<String>('deletionTime');
     description = registerOutput<String>('description');
     eventStream = registerOutput<TransferJobEventStream?>('eventStream', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransferJobEventStream.fromMap((guardedValue as Map).cast<String, dynamic>()); });

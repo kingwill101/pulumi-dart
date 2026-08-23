@@ -18,10 +18,17 @@ class BareMetalNodePoolArgs {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// The cluster this node pool belongs to.
   final pulumi.Input<String> bareMetalCluster;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The display name for the Bare Metal Node Pool.
   final pulumi.Input<String>? displayName;
   /// The location of the resource.
@@ -38,6 +45,7 @@ class BareMetalNodePoolArgs {
   /// Creates a new [BareMetalNodePoolArgs].
   /// [annotations] Annotations on the Bare Metal Node Pool.
   /// [bareMetalCluster] The cluster this node pool belongs to.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The display name for the Bare Metal Node Pool.
   /// [location] The location of the resource.
   /// [name] The bare metal node pool name.
@@ -46,6 +54,7 @@ class BareMetalNodePoolArgs {
   const BareMetalNodePoolArgs({
     this.annotations,
     required this.bareMetalCluster,
+    this.deletionPolicy,
     this.displayName,
     required this.location,
     this.name,
@@ -57,6 +66,7 @@ class BareMetalNodePoolArgs {
     return <String, dynamic>{
       'annotations': ?annotations,
       'bareMetalCluster': bareMetalCluster,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'location': location,
       'name': ?name,
@@ -69,6 +79,7 @@ class BareMetalNodePoolArgs {
     return BareMetalNodePoolArgs(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       bareMetalCluster: pulumi.Input.fromValue(map['bareMetalCluster'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -77,4 +88,3 @@ class BareMetalNodePoolArgs {
     );
   }
 }
-

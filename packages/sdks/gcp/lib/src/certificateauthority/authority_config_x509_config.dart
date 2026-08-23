@@ -60,4 +60,3 @@ class AuthorityConfigX509Config {
     );
   }
 }
-

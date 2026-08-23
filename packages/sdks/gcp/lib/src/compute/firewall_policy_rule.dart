@@ -290,7 +290,7 @@ import 'firewall_policy_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-/// 			Parent:      folder.ID(),
+/// 			Parent:      folder.ID().ToIDOutput().ToStringOutput(),
 /// 			ShortName:   pulumi.String("fw-policy"),
 /// 			Description: pulumi.String("Resource created for Terraform acceptance testing"),
 /// 		})
@@ -321,7 +321,7 @@ import 'firewall_policy_rule_state.dart';
 /// 				},
 /// 				SrcAddressGroups: pulumi.StringArray{},
 /// 				DestAddressGroups: pulumi.StringArray{
-/// 					basicGlobalNetworksecurityAddressGroup.ID(),
+/// 					basicGlobalNetworksecurityAddressGroup.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
 /// 					&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
@@ -356,7 +356,7 @@ import 'firewall_policy_rule_state.dart';
 /// 		}
 /// 		_, err = tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 /// 			Description: pulumi.String("For valuename resources."),
-/// 			Parent:      basicKey.ID(),
+/// 			Parent:      basicKey.ID().ToIDOutput().ToStringOutput(),
 /// 			ShortName:   pulumi.String("tag-value"),
 /// 		})
 /// 		if err != nil {
@@ -364,6 +364,74 @@ import 'firewall_policy_rule_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_addressgroup" "basic_global_networksecurity_address_group" {
+///   name        = "address-group"
+///   parent      = "organizations/123456789"
+///   description = "Sample global networksecurity_address_group"
+///   location    = "global"
+///   items       = ["208.80.154.224/32"]
+///   type        = "IPV4"
+///   capacity    = 100
+/// }
+/// resource "gcp_organizations_folder" "folder" {
+///   display_name        = "folder"
+///   parent              = "organizations/123456789"
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_firewallpolicy" "default" {
+///   parent      = gcp_organizations_folder.folder.id
+///   short_name  = "fw-policy"
+///   description = "Resource created for Terraform acceptance testing"
+/// }
+/// resource "gcp_compute_firewallpolicyrule" "primary" {
+///   firewall_policy         = gcp_compute_firewallpolicy.default.name
+///   description             = "Resource created for Terraform acceptance testing"
+///   priority                = 9000
+///   enable_logging          = true
+///   action                  = "allow"
+///   direction               = "EGRESS"
+///   disabled                = false
+///   target_service_accounts = ["my@service-account.com"]
+///   match = {
+///     dest_ip_ranges            = ["11.100.0.1/32"]
+///     dest_fqdns                = []
+///     dest_region_codes         = ["US"]
+///     dest_threat_intelligences = ["iplist-known-malicious-ips"]
+///     src_address_groups        = []
+///     dest_address_groups       = [gcp_networksecurity_addressgroup.basic_global_networksecurity_address_group.id]
+///     layer4_configs = [{
+///       "ipProtocol" = "tcp"
+///       "ports"      = [8080]
+///       }, {
+///       "ipProtocol" = "udp"
+///       "ports"      = [22]
+///     }]
+///   }
+/// }
+/// resource "gcp_tags_tagkey" "basic_key" {
+///   description = "For keyname resources."
+///   parent      = "organizations/123456789"
+///   purpose     = "GCE_FIREWALL"
+///   short_name  = "tag-key"
+///   purpose_data = {
+///     "organization" = "auto"
+///   }
+/// }
+/// resource "gcp_tags_tagvalue" "basic_value" {
+///   description = "For valuename resources."
+///   parent      = gcp_tags_tagkey.basic_key.id
+///   short_name  = "tag-value"
 /// }
 /// ```
 /// ```java
@@ -381,12 +449,13 @@ import 'firewall_policy_rule_state.dart';
 /// import com.pulumi.gcp.compute.FirewallPolicyRule;
 /// import com.pulumi.gcp.compute.FirewallPolicyRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchLayer4ConfigArgs;
 /// import com.pulumi.gcp.tags.TagKey;
 /// import com.pulumi.gcp.tags.TagKeyArgs;
 /// import com.pulumi.gcp.tags.TagValue;
 /// import com.pulumi.gcp.tags.TagValueArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -715,7 +784,7 @@ import 'firewall_policy_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-/// 			Parent:      folder.ID(),
+/// 			Parent:      folder.ID().ToIDOutput().ToStringOutput(),
 /// 			ShortName:   pulumi.String("fw-policy"),
 /// 			Description: pulumi.String("Firewall policy"),
 /// 		})
@@ -742,7 +811,7 @@ import 'firewall_policy_rule_state.dart';
 /// 				},
 /// 				SrcNetworkScope: pulumi.String("VPC_NETWORKS"),
 /// 				SrcNetworks: pulumi.StringArray{
-/// 					network.ID(),
+/// 					network.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
 /// 					&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
@@ -767,6 +836,50 @@ import 'firewall_policy_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_folder" "folder" {
+///   display_name        = "folder"
+///   parent              = "organizations/123456789"
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_firewallpolicy" "default" {
+///   parent      = gcp_organizations_folder.folder.id
+///   short_name  = "fw-policy"
+///   description = "Firewall policy"
+/// }
+/// resource "gcp_compute_firewallpolicyrule" "primary" {
+///   firewall_policy = gcp_compute_firewallpolicy.default.name
+///   description     = "Firewall policy rule with network scope"
+///   priority        = 9000
+///   action          = "allow"
+///   direction       = "INGRESS"
+///   disabled        = false
+///   match = {
+///     src_ip_ranges     = ["11.100.0.1/32"]
+///     src_network_scope = "VPC_NETWORKS"
+///     src_networks      = [gcp_compute_network.network.id]
+///     layer4_configs = [{
+///       "ipProtocol" = "tcp"
+///       "ports"      = [8080]
+///       }, {
+///       "ipProtocol" = "udp"
+///       "ports"      = [22]
+///     }]
+///   }
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "network"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -782,8 +895,9 @@ import 'firewall_policy_rule_state.dart';
 /// import com.pulumi.gcp.compute.FirewallPolicyRule;
 /// import com.pulumi.gcp.compute.FirewallPolicyRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchLayer4ConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -879,6 +993,587 @@ import 'firewall_policy_rule_state.dart';
 ///     properties:
 ///       name: network
 ///       autoCreateSubnetworks: false
+/// ```
+///
+/// ### Firewall Policy Rule Network Context
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const folder = new gcp.organizations.Folder("folder", {
+///     displayName: "folder",
+///     parent: "organizations/123456789",
+///     deletionProtection: false,
+/// });
+/// const _default = new gcp.compute.FirewallPolicy("default", {
+///     parent: folder.id,
+///     shortName: "fw-policy",
+///     description: "Firewall policy",
+/// });
+/// const primary = new gcp.compute.FirewallPolicyRule("primary", {
+///     firewallPolicy: _default.name,
+///     description: "Firewall policy rule with network context",
+///     priority: 8000,
+///     action: "allow",
+///     direction: "INGRESS",
+///     disabled: false,
+///     match: {
+///         srcIpRanges: ["11.100.0.1/32"],
+///         srcNetworkContext: "INTERNET",
+///         layer4Configs: [
+///             {
+///                 ipProtocol: "tcp",
+///                 ports: ["8080"],
+///             },
+///             {
+///                 ipProtocol: "udp",
+///                 ports: ["22"],
+///             },
+///         ],
+///     },
+/// });
+/// const egress_primary = new gcp.compute.FirewallPolicyRule("egress-primary", {
+///     firewallPolicy: _default.name,
+///     description: "Firewall policy rule with network context",
+///     priority: 9000,
+///     action: "allow",
+///     direction: "EGRESS",
+///     disabled: false,
+///     match: {
+///         destIpRanges: ["11.100.0.1/32"],
+///         destNetworkContext: "NON_INTERNET",
+///         layer4Configs: [{
+///             ipProtocol: "tcp",
+///         }],
+///     },
+/// });
+/// const unset_primary = new gcp.compute.FirewallPolicyRule("unset-primary", {
+///     firewallPolicy: _default.name,
+///     description: "Firewall policy rule with network context",
+///     priority: 10000,
+///     action: "allow",
+///     direction: "EGRESS",
+///     disabled: false,
+///     match: {
+///         destIpRanges: ["11.100.0.1/32"],
+///         destNetworkContext: "UNSPECIFIED",
+///         layer4Configs: [{
+///             ipProtocol: "tcp",
+///         }],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// folder = gcp.organizations.Folder("folder",
+///     display_name="folder",
+///     parent="organizations/123456789",
+///     deletion_protection=False)
+/// default = gcp.compute.FirewallPolicy("default",
+///     parent=folder.id,
+///     short_name="fw-policy",
+///     description="Firewall policy")
+/// primary = gcp.compute.FirewallPolicyRule("primary",
+///     firewall_policy=default.name,
+///     description="Firewall policy rule with network context",
+///     priority=8000,
+///     action="allow",
+///     direction="INGRESS",
+///     disabled=False,
+///     match={
+///         "src_ip_ranges": ["11.100.0.1/32"],
+///         "src_network_context": "INTERNET",
+///         "layer4_configs": [
+///             {
+///                 "ip_protocol": "tcp",
+///                 "ports": ["8080"],
+///             },
+///             {
+///                 "ip_protocol": "udp",
+///                 "ports": ["22"],
+///             },
+///         ],
+///     })
+/// egress_primary = gcp.compute.FirewallPolicyRule("egress-primary",
+///     firewall_policy=default.name,
+///     description="Firewall policy rule with network context",
+///     priority=9000,
+///     action="allow",
+///     direction="EGRESS",
+///     disabled=False,
+///     match={
+///         "dest_ip_ranges": ["11.100.0.1/32"],
+///         "dest_network_context": "NON_INTERNET",
+///         "layer4_configs": [{
+///             "ip_protocol": "tcp",
+///         }],
+///     })
+/// unset_primary = gcp.compute.FirewallPolicyRule("unset-primary",
+///     firewall_policy=default.name,
+///     description="Firewall policy rule with network context",
+///     priority=10000,
+///     action="allow",
+///     direction="EGRESS",
+///     disabled=False,
+///     match={
+///         "dest_ip_ranges": ["11.100.0.1/32"],
+///         "dest_network_context": "UNSPECIFIED",
+///         "layer4_configs": [{
+///             "ip_protocol": "tcp",
+///         }],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var folder = new Gcp.Organizations.Folder("folder", new()
+///     {
+///         DisplayName = "folder",
+///         Parent = "organizations/123456789",
+///         DeletionProtection = false,
+///     });
+///
+///     var @default = new Gcp.Compute.FirewallPolicy("default", new()
+///     {
+///         Parent = folder.Id,
+///         ShortName = "fw-policy",
+///         Description = "Firewall policy",
+///     });
+///
+///     var primary = new Gcp.Compute.FirewallPolicyRule("primary", new()
+///     {
+///         FirewallPolicy = @default.Name,
+///         Description = "Firewall policy rule with network context",
+///         Priority = 8000,
+///         Action = "allow",
+///         Direction = "INGRESS",
+///         Disabled = false,
+///         Match = new Gcp.Compute.Inputs.FirewallPolicyRuleMatchArgs
+///         {
+///             SrcIpRanges = new[]
+///             {
+///                 "11.100.0.1/32",
+///             },
+///             SrcNetworkContext = "INTERNET",
+///             Layer4Configs = new[]
+///             {
+///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+///                 {
+///                     IpProtocol = "tcp",
+///                     Ports = new[]
+///                     {
+///                         "8080",
+///                     },
+///                 },
+///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+///                 {
+///                     IpProtocol = "udp",
+///                     Ports = new[]
+///                     {
+///                         "22",
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+///     var egress_primary = new Gcp.Compute.FirewallPolicyRule("egress-primary", new()
+///     {
+///         FirewallPolicy = @default.Name,
+///         Description = "Firewall policy rule with network context",
+///         Priority = 9000,
+///         Action = "allow",
+///         Direction = "EGRESS",
+///         Disabled = false,
+///         Match = new Gcp.Compute.Inputs.FirewallPolicyRuleMatchArgs
+///         {
+///             DestIpRanges = new[]
+///             {
+///                 "11.100.0.1/32",
+///             },
+///             DestNetworkContext = "NON_INTERNET",
+///             Layer4Configs = new[]
+///             {
+///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+///                 {
+///                     IpProtocol = "tcp",
+///                 },
+///             },
+///         },
+///     });
+///
+///     var unset_primary = new Gcp.Compute.FirewallPolicyRule("unset-primary", new()
+///     {
+///         FirewallPolicy = @default.Name,
+///         Description = "Firewall policy rule with network context",
+///         Priority = 10000,
+///         Action = "allow",
+///         Direction = "EGRESS",
+///         Disabled = false,
+///         Match = new Gcp.Compute.Inputs.FirewallPolicyRuleMatchArgs
+///         {
+///             DestIpRanges = new[]
+///             {
+///                 "11.100.0.1/32",
+///             },
+///             DestNetworkContext = "UNSPECIFIED",
+///             Layer4Configs = new[]
+///             {
+///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+///                 {
+///                     IpProtocol = "tcp",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		folder, err := organizations.NewFolder(ctx, "folder", &organizations.FolderArgs{
+/// 			DisplayName:        pulumi.String("folder"),
+/// 			Parent:             pulumi.String("organizations/123456789"),
+/// 			DeletionProtection: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
+/// 			Parent:      folder.ID().ToIDOutput().ToStringOutput(),
+/// 			ShortName:   pulumi.String("fw-policy"),
+/// 			Description: pulumi.String("Firewall policy"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewFirewallPolicyRule(ctx, "primary", &compute.FirewallPolicyRuleArgs{
+/// 			FirewallPolicy: _default.Name,
+/// 			Description:    pulumi.String("Firewall policy rule with network context"),
+/// 			Priority:       pulumi.Int(8000),
+/// 			Action:         pulumi.String("allow"),
+/// 			Direction:      pulumi.String("INGRESS"),
+/// 			Disabled:       pulumi.Bool(false),
+/// 			Match: &compute.FirewallPolicyRuleMatchArgs{
+/// 				SrcIpRanges: pulumi.StringArray{
+/// 					pulumi.String("11.100.0.1/32"),
+/// 				},
+/// 				SrcNetworkContext: pulumi.String("INTERNET"),
+/// 				Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
+/// 					&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
+/// 						IpProtocol: pulumi.String("tcp"),
+/// 						Ports: pulumi.StringArray{
+/// 							pulumi.String("8080"),
+/// 						},
+/// 					},
+/// 					&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
+/// 						IpProtocol: pulumi.String("udp"),
+/// 						Ports: pulumi.StringArray{
+/// 							pulumi.String("22"),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewFirewallPolicyRule(ctx, "egress-primary", &compute.FirewallPolicyRuleArgs{
+/// 			FirewallPolicy: _default.Name,
+/// 			Description:    pulumi.String("Firewall policy rule with network context"),
+/// 			Priority:       pulumi.Int(9000),
+/// 			Action:         pulumi.String("allow"),
+/// 			Direction:      pulumi.String("EGRESS"),
+/// 			Disabled:       pulumi.Bool(false),
+/// 			Match: &compute.FirewallPolicyRuleMatchArgs{
+/// 				DestIpRanges: pulumi.StringArray{
+/// 					pulumi.String("11.100.0.1/32"),
+/// 				},
+/// 				DestNetworkContext: pulumi.String("NON_INTERNET"),
+/// 				Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
+/// 					&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
+/// 						IpProtocol: pulumi.String("tcp"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewFirewallPolicyRule(ctx, "unset-primary", &compute.FirewallPolicyRuleArgs{
+/// 			FirewallPolicy: _default.Name,
+/// 			Description:    pulumi.String("Firewall policy rule with network context"),
+/// 			Priority:       pulumi.Int(10000),
+/// 			Action:         pulumi.String("allow"),
+/// 			Direction:      pulumi.String("EGRESS"),
+/// 			Disabled:       pulumi.Bool(false),
+/// 			Match: &compute.FirewallPolicyRuleMatchArgs{
+/// 				DestIpRanges: pulumi.StringArray{
+/// 					pulumi.String("11.100.0.1/32"),
+/// 				},
+/// 				DestNetworkContext: pulumi.String("UNSPECIFIED"),
+/// 				Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
+/// 					&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
+/// 						IpProtocol: pulumi.String("tcp"),
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_folder" "folder" {
+///   display_name        = "folder"
+///   parent              = "organizations/123456789"
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_firewallpolicy" "default" {
+///   parent      = gcp_organizations_folder.folder.id
+///   short_name  = "fw-policy"
+///   description = "Firewall policy"
+/// }
+/// resource "gcp_compute_firewallpolicyrule" "primary" {
+///   firewall_policy = gcp_compute_firewallpolicy.default.name
+///   description     = "Firewall policy rule with network context"
+///   priority        = 8000
+///   action          = "allow"
+///   direction       = "INGRESS"
+///   disabled        = false
+///   match = {
+///     src_ip_ranges       = ["11.100.0.1/32"]
+///     src_network_context = "INTERNET"
+///     layer4_configs = [{
+///       "ipProtocol" = "tcp"
+///       "ports"      = [8080]
+///       }, {
+///       "ipProtocol" = "udp"
+///       "ports"      = [22]
+///     }]
+///   }
+/// }
+/// resource "gcp_compute_firewallpolicyrule" "egress-primary" {
+///   firewall_policy = gcp_compute_firewallpolicy.default.name
+///   description     = "Firewall policy rule with network context"
+///   priority        = 9000
+///   action          = "allow"
+///   direction       = "EGRESS"
+///   disabled        = false
+///   match = {
+///     dest_ip_ranges       = ["11.100.0.1/32"]
+///     dest_network_context = "NON_INTERNET"
+///     layer4_configs = [{
+///       "ipProtocol" = "tcp"
+///     }]
+///   }
+/// }
+/// resource "gcp_compute_firewallpolicyrule" "unset-primary" {
+///   firewall_policy = gcp_compute_firewallpolicy.default.name
+///   description     = "Firewall policy rule with network context"
+///   priority        = 10000
+///   action          = "allow"
+///   direction       = "EGRESS"
+///   disabled        = false
+///   match = {
+///     dest_ip_ranges       = ["11.100.0.1/32"]
+///     dest_network_context = "UNSPECIFIED"
+///     layer4_configs = [{
+///       "ipProtocol" = "tcp"
+///     }]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.Folder;
+/// import com.pulumi.gcp.organizations.FolderArgs;
+/// import com.pulumi.gcp.compute.FirewallPolicy;
+/// import com.pulumi.gcp.compute.FirewallPolicyArgs;
+/// import com.pulumi.gcp.compute.FirewallPolicyRule;
+/// import com.pulumi.gcp.compute.FirewallPolicyRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchLayer4ConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var folder = new Folder("folder", FolderArgs.builder()
+///             .displayName("folder")
+///             .parent("organizations/123456789")
+///             .deletionProtection(false)
+///             .build());
+///
+///         var default_ = new FirewallPolicy("default", FirewallPolicyArgs.builder()
+///             .parent(folder.id())
+///             .shortName("fw-policy")
+///             .description("Firewall policy")
+///             .build());
+///
+///         var primary = new FirewallPolicyRule("primary", FirewallPolicyRuleArgs.builder()
+///             .firewallPolicy(default_.name())
+///             .description("Firewall policy rule with network context")
+///             .priority(8000)
+///             .action("allow")
+///             .direction("INGRESS")
+///             .disabled(false)
+///             .match(FirewallPolicyRuleMatchArgs.builder()
+///                 .srcIpRanges("11.100.0.1/32")
+///                 .srcNetworkContext("INTERNET")
+///                 .layer4Configs(
+///                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+///                         .ipProtocol("tcp")
+///                         .ports("8080")
+///                         .build(),
+///                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+///                         .ipProtocol("udp")
+///                         .ports("22")
+///                         .build())
+///                 .build())
+///             .build());
+///
+///         var egress_primary = new FirewallPolicyRule("egress-primary", FirewallPolicyRuleArgs.builder()
+///             .firewallPolicy(default_.name())
+///             .description("Firewall policy rule with network context")
+///             .priority(9000)
+///             .action("allow")
+///             .direction("EGRESS")
+///             .disabled(false)
+///             .match(FirewallPolicyRuleMatchArgs.builder()
+///                 .destIpRanges("11.100.0.1/32")
+///                 .destNetworkContext("NON_INTERNET")
+///                 .layer4Configs(FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+///                     .ipProtocol("tcp")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///         var unset_primary = new FirewallPolicyRule("unset-primary", FirewallPolicyRuleArgs.builder()
+///             .firewallPolicy(default_.name())
+///             .description("Firewall policy rule with network context")
+///             .priority(10000)
+///             .action("allow")
+///             .direction("EGRESS")
+///             .disabled(false)
+///             .match(FirewallPolicyRuleMatchArgs.builder()
+///                 .destIpRanges("11.100.0.1/32")
+///                 .destNetworkContext("UNSPECIFIED")
+///                 .layer4Configs(FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+///                     .ipProtocol("tcp")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   folder:
+///     type: gcp:organizations:Folder
+///     properties:
+///       displayName: folder
+///       parent: organizations/123456789
+///       deletionProtection: false
+///   default:
+///     type: gcp:compute:FirewallPolicy
+///     properties:
+///       parent: ${folder.id}
+///       shortName: fw-policy
+///       description: Firewall policy
+///   primary:
+///     type: gcp:compute:FirewallPolicyRule
+///     properties:
+///       firewallPolicy: ${default.name}
+///       description: Firewall policy rule with network context
+///       priority: 8000
+///       action: allow
+///       direction: INGRESS
+///       disabled: false
+///       match:
+///         srcIpRanges:
+///           - 11.100.0.1/32
+///         srcNetworkContext: INTERNET
+///         layer4Configs:
+///           - ipProtocol: tcp
+///             ports:
+///               - 8080
+///           - ipProtocol: udp
+///             ports:
+///               - 22
+///   egress-primary:
+///     type: gcp:compute:FirewallPolicyRule
+///     properties:
+///       firewallPolicy: ${default.name}
+///       description: Firewall policy rule with network context
+///       priority: 9000
+///       action: allow
+///       direction: EGRESS
+///       disabled: false
+///       match:
+///         destIpRanges:
+///           - 11.100.0.1/32
+///         destNetworkContext: NON_INTERNET
+///         layer4Configs:
+///           - ipProtocol: tcp
+///   unset-primary:
+///     type: gcp:compute:FirewallPolicyRule
+///     properties:
+///       firewallPolicy: ${default.name}
+///       description: Firewall policy rule with network context
+///       priority: 10000
+///       action: allow
+///       direction: EGRESS
+///       disabled: false
+///       match:
+///         destIpRanges:
+///           - 11.100.0.1/32
+///         destNetworkContext: UNSPECIFIED
+///         layer4Configs:
+///           - ipProtocol: tcp
 /// ```
 ///
 /// ### Firewall Policy Rule Secure Tags
@@ -1109,7 +1804,7 @@ import 'firewall_policy_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-/// 			Parent:      folder.ID(),
+/// 			Parent:      folder.ID().ToIDOutput().ToStringOutput(),
 /// 			ShortName:   pulumi.String("fw-policy"),
 /// 			Description: pulumi.String("Resource created for Terraform acceptance testing"),
 /// 		})
@@ -1130,7 +1825,7 @@ import 'firewall_policy_rule_state.dart';
 /// 		}
 /// 		basicValue, err := tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 /// 			Description: pulumi.String("For valuename resources."),
-/// 			Parent:      basicKey.ID(),
+/// 			Parent:      basicKey.ID().ToIDOutput().ToStringOutput(),
 /// 			ShortName:   pulumi.String("tag-value"),
 /// 		})
 /// 		if err != nil {
@@ -1146,7 +1841,7 @@ import 'firewall_policy_rule_state.dart';
 /// 			Disabled:       pulumi.Bool(false),
 /// 			TargetSecureTags: compute.FirewallPolicyRuleTargetSecureTagArray{
 /// 				&compute.FirewallPolicyRuleTargetSecureTagArgs{
-/// 					Name: basicValue.ID(),
+/// 					Name: basicValue.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Match: &compute.FirewallPolicyRuleMatchArgs{
@@ -1155,7 +1850,7 @@ import 'firewall_policy_rule_state.dart';
 /// 				},
 /// 				SrcSecureTags: compute.FirewallPolicyRuleMatchSrcSecureTagArray{
 /// 					&compute.FirewallPolicyRuleMatchSrcSecureTagArgs{
-/// 						Name: basicValue.ID(),
+/// 						Name: basicValue.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 				Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
@@ -1181,6 +1876,65 @@ import 'firewall_policy_rule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_folder" "folder" {
+///   display_name        = "folder"
+///   parent              = "organizations/123456789"
+///   deletion_protection = false
+/// }
+/// resource "gcp_compute_firewallpolicy" "default" {
+///   parent      = gcp_organizations_folder.folder.id
+///   short_name  = "fw-policy"
+///   description = "Resource created for Terraform acceptance testing"
+/// }
+/// resource "gcp_compute_firewallpolicyrule" "primary" {
+///   firewall_policy = gcp_compute_firewallpolicy.default.name
+///   description     = "Resource created for Terraform acceptance testing"
+///   priority        = 9000
+///   enable_logging  = true
+///   action          = "allow"
+///   direction       = "INGRESS"
+///   disabled        = false
+///   target_secure_tags {
+///     name = gcp_tags_tagvalue.basic_value.id
+///   }
+///   match = {
+///     src_ip_ranges = ["11.100.0.1/32"]
+///     src_secure_tags = [{
+///       "name" = gcp_tags_tagvalue.basic_value.id
+///     }]
+///     layer4_configs = [{
+///       "ipProtocol" = "tcp"
+///       "ports"      = [8080]
+///       }, {
+///       "ipProtocol" = "udp"
+///       "ports"      = [22]
+///     }]
+///   }
+/// }
+/// resource "gcp_tags_tagkey" "basic_key" {
+///   description = "For keyname resources."
+///   parent      = "organizations/123456789"
+///   purpose     = "GCE_FIREWALL"
+///   short_name  = "tag-key"
+///   purpose_data = {
+///     "organization" = "auto"
+///   }
+/// }
+/// resource "gcp_tags_tagvalue" "basic_value" {
+///   description = "For valuename resources."
+///   parent      = gcp_tags_tagkey.basic_key.id
+///   short_name  = "tag-value"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1199,8 +1953,10 @@ import 'firewall_policy_rule_state.dart';
 /// import com.pulumi.gcp.compute.FirewallPolicyRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleTargetSecureTagArgs;
 /// import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchSrcSecureTagArgs;
+/// import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchLayer4ConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1332,23 +2088,27 @@ import 'firewall_policy_rule_state.dart';
 /// FirewallPolicyRule can be imported using any of these accepted formats:
 ///
 /// * `locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}`
-///
 /// * `{{firewall_policy}}/{{priority}}`
+///
 ///
 /// When using the `pulumi import` command, FirewallPolicyRule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule default locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule default {{firewall_policy}}/{{priority}}
 /// ```
 class FirewallPolicyRule extends pulumi.CustomResource {
-  /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
+  /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
   late final pulumi.Output<String> action;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description for this resource.
   late final pulumi.Output<String?> description;
   /// The direction in which this rule applies.
@@ -1361,7 +2121,7 @@ class FirewallPolicyRule extends pulumi.CustomResource {
   /// Denotes whether to enable logging for a particular rule.
   /// If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
   /// Logs may be exported to BigQuery or Pub/Sub.
-  /// Note: you cannot enable logging on "goto_next" rules.
+  /// Note: you cannot enable logging on "gotoNext" rules.
   late final pulumi.Output<bool?> enableLogging;
   /// The firewall policy of the resource.
   late final pulumi.Output<String> firewallPolicy;
@@ -1411,6 +2171,7 @@ class FirewallPolicyRule extends pulumi.CustomResource {
         ) {
     action = registerOutput<String>('action');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool?>('disabled');
@@ -1452,6 +2213,7 @@ class FirewallPolicyRule extends pulumi.CustomResource {
         ) {
     action = registerOutput<String>('action');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool?>('disabled');

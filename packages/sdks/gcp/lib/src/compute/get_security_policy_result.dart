@@ -10,6 +10,7 @@ import 'get_security_policy_rule.dart';
 class GetSecurityPolicyResult {
   final List<GetSecurityPolicyAdaptiveProtectionConfig> adaptiveProtectionConfigs;
   final List<GetSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfigs;
+  final String deletionPolicy;
   final String description;
   final Map<String, String> effectiveLabels;
   final String fingerprint;
@@ -28,6 +29,7 @@ class GetSecurityPolicyResult {
   /// Creates a new [GetSecurityPolicyResult].
   /// [adaptiveProtectionConfigs] Required.
   /// [advancedOptionsConfigs] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [effectiveLabels] Required.
   /// [fingerprint] Required.
@@ -44,6 +46,7 @@ class GetSecurityPolicyResult {
   const GetSecurityPolicyResult({
     required this.adaptiveProtectionConfigs,
     required this.advancedOptionsConfigs,
+    required this.deletionPolicy,
     required this.description,
     required this.effectiveLabels,
     required this.fingerprint,
@@ -63,6 +66,7 @@ class GetSecurityPolicyResult {
     return <String, dynamic>{
       'adaptiveProtectionConfigs': pulumi.Input.encodeList<GetSecurityPolicyAdaptiveProtectionConfig, Map<String, dynamic>>(adaptiveProtectionConfigs, (value) => value.toMap()),
       'advancedOptionsConfigs': pulumi.Input.encodeList<GetSecurityPolicyAdvancedOptionsConfig, Map<String, dynamic>>(advancedOptionsConfigs, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'effectiveLabels': effectiveLabels,
       'fingerprint': fingerprint,
@@ -83,6 +87,7 @@ class GetSecurityPolicyResult {
     return GetSecurityPolicyResult(
       adaptiveProtectionConfigs: pulumi.Input.decodeList<GetSecurityPolicyAdaptiveProtectionConfig>(map['adaptiveProtectionConfigs']!, (value) => GetSecurityPolicyAdaptiveProtectionConfig.fromMap((value as Map).cast<String, dynamic>())),
       advancedOptionsConfigs: pulumi.Input.decodeList<GetSecurityPolicyAdvancedOptionsConfig>(map['advancedOptionsConfigs']!, (value) => GetSecurityPolicyAdvancedOptionsConfig.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       fingerprint: map['fingerprint'] as String,
@@ -99,4 +104,3 @@ class GetSecurityPolicyResult {
     );
   }
 }
-

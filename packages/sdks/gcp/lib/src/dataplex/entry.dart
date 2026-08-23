@@ -141,6 +141,33 @@ import 'entry_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_entrygroup" "entry-group-basic" {
+///   entry_group_id = "entry-group-basic"
+///   project        = "1111111111111"
+///   location       = "us-central1"
+/// }
+/// resource "gcp_dataplex_entrytype" "entry-type-basic" {
+///   entry_type_id = "entry-type-basic"
+///   project       = "1111111111111"
+///   location      = "us-central1"
+/// }
+/// resource "gcp_dataplex_entry" "test_basic" {
+///   entry_group_id = gcp_dataplex_entrygroup.entry-group-basic.entry_group_id
+///   project        = "1111111111111"
+///   location       = "us-central1"
+///   entry_id       = "entry-basic"
+///   entry_type     = gcp_dataplex_entrytype.entry-type-basic.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -153,8 +180,8 @@ import 'entry_state.dart';
 /// import com.pulumi.gcp.dataplex.EntryTypeArgs;
 /// import com.pulumi.gcp.dataplex.Entry;
 /// import com.pulumi.gcp.dataplex.EntryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -781,6 +808,82 @@ import 'entry_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_aspecttype" "aspect-type-full-one" {
+///   aspect_type_id    = "aspect-type-full-one"
+///   location          = "us-central1"
+///   project           = "1111111111111"
+///   metadata_template = "{\n  \\\"name\\\": \\\"tf-test-template\\\",\n  \\\"type\\\": \\\"record\\\",\n  \\\"recordFields\\\": [\n    {\n      \\\"name\\\": \\\"type\\\",\n      \\\"type\\\": \\\"enum\\\",\n      \\\"annotations\\\": {\n        \\\"displayName\\\": \\\"Type\\\",\n        \\\"description\\\": \\\"Specifies the type of view represented by the entry.\\\"\n      },\n      \\\"index\\\": 1,\n      \\\"constraints\\\": {\n        \\\"required\\\": true\n      },\n      \\\"enumValues\\\": [\n        {\n          \\\"name\\\": \\\"VIEW\\\",\n          \\\"index\\\": 1\n        }\n      ]\n    }\n  ]\n}\n"
+/// }
+/// resource "gcp_dataplex_aspecttype" "aspect-type-full-two" {
+///   aspect_type_id    = "aspect-type-full-two"
+///   location          = "us-central1"
+///   project           = "1111111111111"
+///   metadata_template = "{\n  \\\"name\\\": \\\"tf-test-template\\\",\n  \\\"type\\\": \\\"record\\\",\n  \\\"recordFields\\\": [\n    {\n      \\\"name\\\": \\\"story\\\",\n      \\\"type\\\": \\\"enum\\\",\n      \\\"annotations\\\": {\n        \\\"displayName\\\": \\\"Story\\\",\n        \\\"description\\\": \\\"Specifies the story of an entry.\\\"\n      },\n      \\\"index\\\": 1,\n      \\\"constraints\\\": {\n        \\\"required\\\": true\n      },\n      \\\"enumValues\\\": [\n        {\n          \\\"name\\\": \\\"SEQUENCE\\\",\n          \\\"index\\\": 1\n        }\n      ]\n    }\n  ]\n}\n"
+/// }
+/// resource "gcp_dataplex_entrygroup" "entry-group-full" {
+///   entry_group_id = "entry-group-full"
+///   project        = "1111111111111"
+///   location       = "us-central1"
+/// }
+/// resource "gcp_dataplex_entrytype" "entry-type-full" {
+///   entry_type_id = "entry-type-full"
+///   project       = "1111111111111"
+///   location      = "us-central1"
+///   required_aspects {
+///     type = gcp_dataplex_aspecttype.aspect-type-full-one.name
+///   }
+/// }
+/// resource "gcp_dataplex_entry" "test_entry_full" {
+///   depends_on           = [gcp_dataplex_aspecttype.aspect-type-full-two, gcp_dataplex_aspecttype.aspect-type-full-one]
+///   entry_group_id       = gcp_dataplex_entrygroup.entry-group-full.entry_group_id
+///   project              = "1111111111111"
+///   location             = "us-central1"
+///   entry_id             = "entry-full/has/slashes"
+///   entry_type           = gcp_dataplex_entrytype.entry-type-full.name
+///   fully_qualified_name = "bigquery:1111111111111.test-dataset"
+///   parent_entry         = "projects/1111111111111/locations/us-central1/entryGroups/entry-group-full/entries/some-other-entry"
+///   entry_source = {
+///     resource     = "bigquery:1111111111111.test-dataset"
+///     system       = "System III"
+///     platform     = "BigQuery"
+///     display_name = "Human readable name"
+///     description  = "Description from source system"
+///     labels = {
+///       "some-label" = "some-value"
+///     }
+///     ancestors = [{
+///       "name" = "ancestor-one"
+///       "type" = "type-one"
+///       }, {
+///       "name" = "ancestor-two"
+///       "type" = "type-two"
+///     }]
+///     create_time = "2023-08-03T19:19:00.094Z"
+///     update_time = "2023-08-03T20:19:00.094Z"
+///   }
+///   aspects {
+///     aspect_key = "1111111111111.us-central1.aspect-type-full-one"
+///     aspect = {
+///       data = "          {\\\"type\\\": \\\"VIEW\\\"    }\n"
+///     }
+///   }
+///   aspects {
+///     aspect_key = "1111111111111.us-central1.aspect-type-full-two"
+///     aspect = {
+///       data = "          {\\\"story\\\": \\\"SEQUENCE\\\"    }\n"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -797,11 +900,12 @@ import 'entry_state.dart';
 /// import com.pulumi.gcp.dataplex.Entry;
 /// import com.pulumi.gcp.dataplex.EntryArgs;
 /// import com.pulumi.gcp.dataplex.inputs.EntryEntrySourceArgs;
+/// import com.pulumi.gcp.dataplex.inputs.EntryEntrySourceAncestorArgs;
 /// import com.pulumi.gcp.dataplex.inputs.EntryAspectArgs;
 /// import com.pulumi.gcp.dataplex.inputs.EntryAspectAspectArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1562,18 +1666,18 @@ import 'entry_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal([]map[string]interface{}{
-/// 			map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal([]map[string]string{
+/// 			{
 /// 				"name": "event_time",
 /// 				"type": "TIMESTAMP",
 /// 				"mode": "REQUIRED",
 /// 			},
-/// 			map[string]interface{}{
+/// 			{
 /// 				"name": "user_id",
 /// 				"type": "STRING",
 /// 				"mode": "NULLABLE",
 /// 			},
-/// 			map[string]interface{}{
+/// 			{
 /// 				"name": "event_type",
 /// 				"type": "STRING",
 /// 				"mode": "NULLABLE",
@@ -1635,6 +1739,75 @@ import 'entry_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_aspecttype" "aspect-type-full-one" {
+///   aspect_type_id    = "aspect-type-one"
+///   location          = "us-central1"
+///   project           = "1111111111111"
+///   metadata_template = "{\n  \\\"name\\\": \\\"tf-test-template\\\",\n  \\\"type\\\": \\\"record\\\",\n  \\\"recordFields\\\": [\n    {\n      \\\"name\\\": \\\"type\\\",\n      \\\"type\\\": \\\"enum\\\",\n      \\\"annotations\\\": {\n        \\\"displayName\\\": \\\"Type\\\",\n        \\\"description\\\": \\\"Specifies the type of view represented by the entry.\\\"\n      },\n      \\\"index\\\": 1,\n      \\\"constraints\\\": {\n        \\\"required\\\": true\n      },\n      \\\"enumValues\\\": [\n        {\n          \\\"name\\\": \\\"VIEW\\\",\n          \\\"index\\\": 1\n        }\n      ]\n    }\n  ]\n}\n"
+/// }
+/// resource "gcp_dataplex_aspecttype" "aspect-type-full-two" {
+///   aspect_type_id    = "aspect-type-two"
+///   location          = "us-central1"
+///   project           = "1111111111111"
+///   metadata_template = "{\n  \\\"name\\\": \\\"tf-test-template\\\",\n  \\\"type\\\": \\\"record\\\",\n  \\\"recordFields\\\": [\n    {\n      \\\"name\\\": \\\"story\\\",\n      \\\"type\\\": \\\"enum\\\",\n      \\\"annotations\\\": {\n        \\\"displayName\\\": \\\"Story\\\",\n        \\\"description\\\": \\\"Specifies the story of an entry.\\\"\n      },\n      \\\"index\\\": 1,\n      \\\"constraints\\\": {\n        \\\"required\\\": true\n      },\n      \\\"enumValues\\\": [\n        {\n          \\\"name\\\": \\\"SEQUENCE\\\",\n          \\\"index\\\": 1\n        }\n      ]\n    }\n  ]\n}\n"
+/// }
+/// resource "gcp_bigquery_dataset" "example-dataset" {
+///   dataset_id                 = "dataset_basic"
+///   friendly_name              = "Example Dataset"
+///   location                   = "us-central1"
+///   delete_contents_on_destroy = true
+/// }
+/// resource "gcp_bigquery_table" "example-table" {
+///   dataset_id          = gcp_bigquery_dataset.example-dataset.dataset_id
+///   table_id            = "table-basic"
+///   deletion_protection = false
+///   # Define the table schema
+///   schema = jsonencode([{
+///     "name" = "event_time"
+///     "type" = "TIMESTAMP"
+///     "mode" = "REQUIRED"
+///     }, {
+///     "name" = "user_id"
+///     "type" = "STRING"
+///     "mode" = "NULLABLE"
+///     }, {
+///     "name" = "event_type"
+///     "type" = "STRING"
+///     "mode" = "NULLABLE"
+///   }])
+/// }
+/// resource "gcp_dataplex_entry" "tf_test_table" {
+///   depends_on           = [gcp_dataplex_aspecttype.aspect-type-full-two, gcp_dataplex_aspecttype.aspect-type-full-one]
+///   entry_group_id       = "@bigquery"
+///   project              = "1111111111111"
+///   location             = "us-central1"
+///   entry_id             ="bigquery.googleapis.com/projects/my-project-name/datasets/${gcp_bigquery_dataset.example-dataset.dataset_id}/tables/${gcp_bigquery_table.example-table.table_id}"
+///   entry_type           = "projects/655216118709/locations/global/entryTypes/bigquery-table"
+///   fully_qualified_name ="bigquery:my-project-name.${gcp_bigquery_dataset.example-dataset.dataset_id}.${gcp_bigquery_table.example-table.table_id}"
+///   parent_entry         ="projects/1111111111111/locations/us-central1/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/my-project-name/datasets/${gcp_bigquery_dataset.example-dataset.dataset_id}"
+///   aspects {
+///     aspect_key = "1111111111111.us-central1.aspect-type-one"
+///     aspect = {
+///       data = "          {\\\"type\\\": \\\"VIEW\\\"    }\n"
+///     }
+///   }
+///   aspects {
+///     aspect_key = "1111111111111.us-central1.aspect-type-two@Schema.event_type"
+///     aspect = {
+///       data = "          {\\\"story\\\": \\\"SEQUENCE\\\"    }\n"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1653,8 +1826,8 @@ import 'entry_state.dart';
 /// import com.pulumi.gcp.dataplex.inputs.EntryAspectAspectArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1924,6 +2097,7 @@ import 'entry_state.dart';
 /// ```typescript
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
+/// import * as time from "@pulumiverse/time";
 ///
 /// const example_glossary = new gcp.dataplex.Glossary("example-glossary", {
 ///     glossaryId: "glossary-basic",
@@ -1935,11 +2109,15 @@ import 'entry_state.dart';
 ///     location: "us-central1",
 ///     termId: "glossary-term",
 /// });
+/// // Introduce a 45-second wait after the glossary resource creation
+/// const wait_for_sync = new time.Sleep("wait-for-sync", {createDuration: "45s"}, {
+///     dependsOn: [example_glossary_term],
+/// });
 /// const tfTestGlossaryTerm = new gcp.dataplex.Entry("tf_test_glossary_term", {
 ///     entryGroupId: "@dataplex",
 ///     project: "1111111111111",
 ///     location: "us-central1",
-///     entryId: pulumi.all([example_glossary.glossaryId, example_glossary_term.termId]).apply(([glossaryId, termId]) => `projects/1111111111111/locations/us-central1/glossaries/${glossaryId}/terms/${termId}`),
+///     entryId: pulumi.interpolate`projects/1111111111111/locations/us-central1/glossaries/${example_glossary.glossaryId}/terms/${example_glossary_term.termId}`,
 ///     entryType: "projects/655216118709/locations/global/entryTypes/glossary-term",
 ///     parentEntry: pulumi.interpolate`projects/1111111111111/locations/us-central1/entryGroups/@dataplex/entries/projects/1111111111111/locations/us-central1/glossaries/${example_glossary.glossaryId}`,
 ///     aspects: [{
@@ -1948,11 +2126,14 @@ import 'entry_state.dart';
 ///             data: "           {\\\"content\\\": \\\"Term Content\\\"    }\n",
 ///         },
 ///     }],
+/// }, {
+///     dependsOn: [wait_for_sync],
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_gcp as gcp
+/// import pulumiverse_time as time
 ///
 /// example_glossary = gcp.dataplex.Glossary("example-glossary",
 ///     glossary_id="glossary-basic",
@@ -1962,6 +2143,9 @@ import 'entry_state.dart';
 ///     glossary_id=example_glossary.glossary_id,
 ///     location="us-central1",
 ///     term_id="glossary-term")
+/// # Introduce a 45-second wait after the glossary resource creation
+/// wait_for_sync = time.Sleep("wait-for-sync", create_duration="45s",
+/// opts = pulumi.ResourceOptions(depends_on=[example_glossary_term]))
 /// tf_test_glossary_term = gcp.dataplex.Entry("tf_test_glossary_term",
 ///     entry_group_id="@dataplex",
 ///     project="1111111111111",
@@ -1978,13 +2162,15 @@ import 'entry_state.dart';
 ///         "aspect": {
 ///             "data": "           {\\\"content\\\": \\\"Term Content\\\"    }\n",
 ///         },
-///     }])
+///     }],
+///     opts = pulumi.ResourceOptions(depends_on=[wait_for_sync]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
 /// using Pulumi;
 /// using Gcp = Pulumi.Gcp;
+/// using Time = Pulumiverse.Time;
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
@@ -2000,6 +2186,18 @@ import 'entry_state.dart';
 ///         GlossaryId = example_glossary.GlossaryId,
 ///         Location = "us-central1",
 ///         TermId = "glossary-term",
+///     });
+///
+///     // Introduce a 45-second wait after the glossary resource creation
+///     var wait_for_sync = new Time.Sleep("wait-for-sync", new()
+///     {
+///         CreateDuration = "45s",
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             example_glossary_term,
+///         },
 ///     });
 ///
 ///     var tfTestGlossaryTerm = new Gcp.DataPlex.Entry("tf_test_glossary_term", new()
@@ -2027,6 +2225,12 @@ import 'entry_state.dart';
 ///                 },
 ///             },
 ///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             wait_for_sync,
+///         },
 ///     });
 ///
 /// });
@@ -2039,6 +2243,7 @@ import 'entry_state.dart';
 ///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
 ///
 /// func main() {
@@ -2058,6 +2263,15 @@ import 'entry_state.dart';
 /// 			Location:   pulumi.String("us-central1"),
 /// 			TermId:     pulumi.String("glossary-term"),
 /// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		// Introduce a 45-second wait after the glossary resource creation
+/// 		wait_for_sync, err := time.NewSleep(ctx, "wait-for-sync", &time.SleepArgs{
+/// 			CreateDuration: pulumi.String("45s"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			example_glossary_term,
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
@@ -2082,12 +2296,57 @@ import 'entry_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 		})
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			wait_for_sync,
+/// 		}))
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_glossary" "example-glossary" {
+///   glossary_id = "glossary-basic"
+///   location    = "us-central1"
+/// }
+/// resource "gcp_dataplex_glossaryterm" "example-glossary-term" {
+///   parent      ="projects/my-project-name/locations/us-central1/glossaries/${gcp_dataplex_glossary.example-glossary.glossary_id}"
+///   glossary_id = gcp_dataplex_glossary.example-glossary.glossary_id
+///   location    = "us-central1"
+///   term_id     = "glossary-term"
+/// }
+/// # Introduce a 45-second wait after the glossary resource creation
+/// resource "time_sleep" "wait-for-sync" {
+///   depends_on      = [gcp_dataplex_glossaryterm.example-glossary-term]
+///   create_duration = "45s"
+/// }
+/// resource "gcp_dataplex_entry" "tf_test_glossary_term" {
+///   depends_on     = [time_sleep.wait-for-sync]
+///   entry_group_id = "@dataplex"
+///   project        = "1111111111111"
+///   location       = "us-central1"
+///   entry_id       ="projects/1111111111111/locations/us-central1/glossaries/${gcp_dataplex_glossary.example-glossary.glossary_id}/terms/${gcp_dataplex_glossaryterm.example-glossary-term.term_id}"
+///   entry_type     = "projects/655216118709/locations/global/entryTypes/glossary-term"
+///   parent_entry   ="projects/1111111111111/locations/us-central1/entryGroups/@dataplex/entries/projects/1111111111111/locations/us-central1/glossaries/${gcp_dataplex_glossary.example-glossary.glossary_id}"
+///   aspects {
+///     aspect_key = "655216118709.global.overview"
+///     aspect = {
+///       data = "           {\\\"content\\\": \\\"Term Content\\\"    }\n"
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -2100,12 +2359,15 @@ import 'entry_state.dart';
 /// import com.pulumi.gcp.dataplex.GlossaryArgs;
 /// import com.pulumi.gcp.dataplex.GlossaryTerm;
 /// import com.pulumi.gcp.dataplex.GlossaryTermArgs;
+/// import com.pulumiverse.time.Sleep;
+/// import com.pulumiverse.time.SleepArgs;
 /// import com.pulumi.gcp.dataplex.Entry;
 /// import com.pulumi.gcp.dataplex.EntryArgs;
 /// import com.pulumi.gcp.dataplex.inputs.EntryAspectArgs;
 /// import com.pulumi.gcp.dataplex.inputs.EntryAspectAspectArgs;
-/// import java.util.List;
+/// import com.pulumi.resources.CustomResourceOptions;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2129,6 +2391,13 @@ import 'entry_state.dart';
 ///             .termId("glossary-term")
 ///             .build());
 ///
+///         // Introduce a 45-second wait after the glossary resource creation
+///         var wait_for_sync = new Sleep("wait-for-sync", SleepArgs.builder()
+///             .createDuration("45s")
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(example_glossary_term)
+///                 .build());
+///
 ///         var tfTestGlossaryTerm = new Entry("tfTestGlossaryTerm", EntryArgs.builder()
 ///             .entryGroupId("@dataplex")
 ///             .project("1111111111111")
@@ -2148,7 +2417,9 @@ import 'entry_state.dart';
 ///                     """)
 ///                     .build())
 ///                 .build())
-///             .build());
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(wait_for_sync)
+///                 .build());
 ///
 ///     }
 /// }
@@ -2167,6 +2438,14 @@ import 'entry_state.dart';
 ///       glossaryId: ${["example-glossary"].glossaryId}
 ///       location: us-central1
 ///       termId: glossary-term
+///   # Introduce a 45-second wait after the glossary resource creation
+///   wait-for-sync:
+///     type: time:Sleep
+///     properties:
+///       createDuration: 45s
+///     options:
+///       dependsOn:
+///         - ${["example-glossary-term"]}
 ///   tfTestGlossaryTerm:
 ///     type: gcp:dataplex:Entry
 ///     name: tf_test_glossary_term
@@ -2182,6 +2461,9 @@ import 'entry_state.dart';
 ///           aspect:
 ///             data: |2
 ///                          {\"content\": \"Term Content\"    }
+///     options:
+///       dependsOn:
+///         - ${["wait-for-sync"]}
 /// ```
 ///
 ///
@@ -2190,22 +2472,15 @@ import 'entry_state.dart';
 /// Entry can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}/entries/{{entry_id}}`
-///
 /// * `{{project}}/{{location}}/{{entry_group_id}}/{{entry_id}}`
-///
 /// * `{{location}}/{{entry_group_id}}/{{entry_id}}`
+///
 ///
 /// When using the `pulumi import` command, Entry can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataplex/entry:Entry default projects/{{project}}/locations/{{location}}/entryGroups/{{entry_group_id}}/entries/{{entry_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/entry:Entry default {{project}}/{{location}}/{{entry_group_id}}/{{entry_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/entry:Entry default {{location}}/{{entry_group_id}}/{{entry_id}}
 /// ```
 class Entry extends pulumi.CustomResource {
@@ -2214,6 +2489,13 @@ class Entry extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> aspects;
   /// The time when the Entry was created in Dataplex.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The entry group id of the entry group the entry will be created in.
   late final pulumi.Output<String?> entryGroupId;
   /// The entry id of the entry.
@@ -2254,6 +2536,7 @@ class Entry extends pulumi.CustomResource {
         ) {
     aspects = registerOutput<List<Map<String, dynamic>>?>('aspects');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     entryGroupId = registerOutput<String?>('entryGroupId');
     entryId = registerOutput<String?>('entryId');
     entrySource = registerOutput<EntryEntrySource>('entrySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntryEntrySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2291,6 +2574,7 @@ class Entry extends pulumi.CustomResource {
         ) {
     aspects = registerOutput<List<Map<String, dynamic>>?>('aspects');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     entryGroupId = registerOutput<String?>('entryGroupId');
     entryId = registerOutput<String?>('entryId');
     entrySource = registerOutput<EntryEntrySource>('entrySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntryEntrySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });

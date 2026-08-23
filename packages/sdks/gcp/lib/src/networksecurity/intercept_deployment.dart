@@ -234,7 +234,7 @@ import 'intercept_deployment_state.dart';
 /// 		backendService, err := compute.NewRegionBackendService(ctx, "backend_service", &compute.RegionBackendServiceArgs{
 /// 			Name:                pulumi.String("example-bs"),
 /// 			Region:              pulumi.String("us-central1"),
-/// 			HealthChecks:        healthCheck.ID(),
+/// 			HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			Protocol:            pulumi.String("UDP"),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
 /// 		})
@@ -246,7 +246,7 @@ import 'intercept_deployment_state.dart';
 /// 			Region:              pulumi.String("us-central1"),
 /// 			Network:             network.Name,
 /// 			Subnetwork:          subnetwork.Name,
-/// 			BackendService:      backendService.ID(),
+/// 			BackendService:      backendService.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL"),
 /// 			Ports: pulumi.StringArray{
 /// 				pulumi.String("6081"),
@@ -259,7 +259,7 @@ import 'intercept_deployment_state.dart';
 /// 		deploymentGroup, err := networksecurity.NewInterceptDeploymentGroup(ctx, "deployment_group", &networksecurity.InterceptDeploymentGroupArgs{
 /// 			InterceptDeploymentGroupId: pulumi.String("example-dg"),
 /// 			Location:                   pulumi.String("global"),
-/// 			Network:                    network.ID(),
+/// 			Network:                    network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -267,8 +267,8 @@ import 'intercept_deployment_state.dart';
 /// 		_, err = networksecurity.NewInterceptDeployment(ctx, "default", &networksecurity.InterceptDeploymentArgs{
 /// 			InterceptDeploymentId:    pulumi.String("example-deployment"),
 /// 			Location:                 pulumi.String("us-central1-a"),
-/// 			ForwardingRule:           forwardingRule.ID(),
-/// 			InterceptDeploymentGroup: deploymentGroup.ID(),
+/// 			ForwardingRule:           forwardingRule.ID().ToIDOutput().ToStringOutput(),
+/// 			InterceptDeploymentGroup: deploymentGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:              pulumi.String("some description"),
 /// 			Labels: pulumi.StringMap{
 /// 				"foo": pulumi.String("bar"),
@@ -279,6 +279,65 @@ import 'intercept_deployment_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "network" {
+///   name                    = "example-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "subnetwork" {
+///   name          = "example-subnet"
+///   region        = "us-central1"
+///   ip_cidr_range = "10.1.0.0/16"
+///   network       = gcp_compute_network.network.name
+/// }
+/// resource "gcp_compute_regionhealthcheck" "health_check" {
+///   name   = "example-hc"
+///   region = "us-central1"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// resource "gcp_compute_regionbackendservice" "backend_service" {
+///   name                  = "example-bs"
+///   region                = "us-central1"
+///   health_checks         = gcp_compute_regionhealthcheck.health_check.id
+///   protocol              = "UDP"
+///   load_balancing_scheme = "INTERNAL"
+/// }
+/// resource "gcp_compute_forwardingrule" "forwarding_rule" {
+///   name                  = "example-fwr"
+///   region                = "us-central1"
+///   network               = gcp_compute_network.network.name
+///   subnetwork            = gcp_compute_subnetwork.subnetwork.name
+///   backend_service       = gcp_compute_regionbackendservice.backend_service.id
+///   load_balancing_scheme = "INTERNAL"
+///   ports                 = [6081]
+///   ip_protocol           = "UDP"
+/// }
+/// resource "gcp_networksecurity_interceptdeploymentgroup" "deployment_group" {
+///   intercept_deployment_group_id = "example-dg"
+///   location                      = "global"
+///   network                       = gcp_compute_network.network.id
+/// }
+/// resource "gcp_networksecurity_interceptdeployment" "default" {
+///   intercept_deployment_id    = "example-deployment"
+///   location                   = "us-central1-a"
+///   forwarding_rule            = gcp_compute_forwardingrule.forwarding_rule.id
+///   intercept_deployment_group = gcp_networksecurity_interceptdeploymentgroup.deployment_group.id
+///   description                = "some description"
+///   labels = {
+///     "foo" = "bar"
+///   }
 /// }
 /// ```
 /// ```java
@@ -302,8 +361,8 @@ import 'intercept_deployment_state.dart';
 /// import com.pulumi.gcp.networksecurity.InterceptDeploymentGroupArgs;
 /// import com.pulumi.gcp.networksecurity.InterceptDeployment;
 /// import com.pulumi.gcp.networksecurity.InterceptDeploymentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -441,28 +500,28 @@ import 'intercept_deployment_state.dart';
 /// InterceptDeployment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/interceptDeployments/{{intercept_deployment_id}}`
-///
 /// * `{{project}}/{{location}}/{{intercept_deployment_id}}`
-///
 /// * `{{location}}/{{intercept_deployment_id}}`
+///
 ///
 /// When using the `pulumi import` command, InterceptDeployment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networksecurity/interceptDeployment:InterceptDeployment default projects/{{project}}/locations/{{location}}/interceptDeployments/{{intercept_deployment_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/interceptDeployment:InterceptDeployment default {{project}}/{{location}}/{{intercept_deployment_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/interceptDeployment:InterceptDeployment default {{location}}/{{intercept_deployment_id}}
 /// ```
 class InterceptDeployment extends pulumi.CustomResource {
   /// The timestamp when the resource was created.
   /// See https://google.aip.dev/148#timestamps.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-provided description of the deployment.
   /// Used as additional context for the deployment.
   late final pulumi.Output<String?> description;
@@ -481,7 +540,7 @@ class InterceptDeployment extends pulumi.CustomResource {
   late final pulumi.Output<String> interceptDeploymentId;
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The cloud location of the deployment, e.g. `us-central1-a` or `asia-south1-b`.
   late final pulumi.Output<String> location;
@@ -529,6 +588,7 @@ class InterceptDeployment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     forwardingRule = registerOutput<String>('forwardingRule');
@@ -568,6 +628,7 @@ class InterceptDeployment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     forwardingRule = registerOutput<String>('forwardingRule');

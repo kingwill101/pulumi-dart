@@ -150,13 +150,45 @@ import 'target_instance_state.dart';
 /// 		}
 /// 		_, err = compute.NewTargetInstance(ctx, "default", &compute.TargetInstanceArgs{
 /// 			Name:     pulumi.String("target"),
-/// 			Instance: target_vm.ID(),
+/// 			Instance: target_vm.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "vmimage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_targetinstance" "default" {
+///   name     = "target"
+///   instance = gcp_compute_instance.target-vm.id
+/// }
+/// resource "gcp_compute_instance" "target-vm" {
+///   name         = "target-vm"
+///   machine_type = "e2-medium"
+///   zone         = "us-central1-a"
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.vmimage.self_link
+///     }
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
 /// }
 /// ```
 /// ```java
@@ -174,8 +206,8 @@ import 'target_instance_state.dart';
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
 /// import com.pulumi.gcp.compute.TargetInstance;
 /// import com.pulumi.gcp.compute.TargetInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -359,7 +391,7 @@ import 'target_instance_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		target_vm, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// 			Name: "default",
+/// 			Name: pulumi.StringRef("default"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -391,7 +423,7 @@ import 'target_instance_state.dart';
 /// 		}
 /// 		_, err = compute.NewTargetInstance(ctx, "custom_network", &compute.TargetInstanceArgs{
 /// 			Name:     pulumi.String("custom-network"),
-/// 			Instance: target_vmInstance.ID(),
+/// 			Instance: target_vmInstance.ID().ToIDOutput().ToStringOutput(),
 /// 			Network:  pulumi.String(target_vm.SelfLink),
 /// 		})
 /// 		if err != nil {
@@ -399,6 +431,42 @@ import 'target_instance_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getnetwork" "target-vm" {
+///   name = "default"
+/// }
+/// data "gcp_compute_getimage" "vmimage" {
+///   family  = "debian-12"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_targetinstance" "custom_network" {
+///   name     = "custom-network"
+///   instance = gcp_compute_instance.target-vm.id
+///   network  = data.gcp_compute_getnetwork.target-vm.self_link
+/// }
+/// resource "gcp_compute_instance" "target-vm" {
+///   name         = "custom-network-target-vm"
+///   machine_type = "e2-medium"
+///   zone         = "us-central1-a"
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.vmimage.self_link
+///     }
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
 /// }
 /// ```
 /// ```java
@@ -417,8 +485,8 @@ import 'target_instance_state.dart';
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
 /// import com.pulumi.gcp.compute.TargetInstance;
 /// import com.pulumi.gcp.compute.TargetInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -540,7 +608,7 @@ import 'target_instance_state.dart';
 /// });
 /// const policyddosprotection = new gcp.compute.RegionSecurityPolicy("policyddosprotection", {
 ///     region: "southamerica-west1",
-///     name: "tf-test-policyddos_85840",
+///     name: "tf-test-policyddos_80332",
 ///     description: "ddos protection security policy to set target instance",
 ///     type: "CLOUD_ARMOR_NETWORK",
 ///     ddosProtectionConfig: {
@@ -549,7 +617,7 @@ import 'target_instance_state.dart';
 /// });
 /// const edgeSecService = new gcp.compute.NetworkEdgeSecurityService("edge_sec_service", {
 ///     region: "southamerica-west1",
-///     name: "tf-test-edgesec_60302",
+///     name: "tf-test-edgesec_13293",
 ///     securityPolicy: policyddosprotection.selfLink,
 /// });
 /// const regionsecuritypolicy = new gcp.compute.RegionSecurityPolicy("regionsecuritypolicy", {
@@ -601,7 +669,7 @@ import 'target_instance_state.dart';
 ///     })
 /// policyddosprotection = gcp.compute.RegionSecurityPolicy("policyddosprotection",
 ///     region="southamerica-west1",
-///     name="tf-test-policyddos_85840",
+///     name="tf-test-policyddos_80332",
 ///     description="ddos protection security policy to set target instance",
 ///     type="CLOUD_ARMOR_NETWORK",
 ///     ddos_protection_config={
@@ -609,7 +677,7 @@ import 'target_instance_state.dart';
 ///     })
 /// edge_sec_service = gcp.compute.NetworkEdgeSecurityService("edge_sec_service",
 ///     region="southamerica-west1",
-///     name="tf-test-edgesec_60302",
+///     name="tf-test-edgesec_13293",
 ///     security_policy=policyddosprotection.self_link)
 /// regionsecuritypolicy = gcp.compute.RegionSecurityPolicy("regionsecuritypolicy",
 ///     name="region-secpolicy",
@@ -684,7 +752,7 @@ import 'target_instance_state.dart';
 ///     var policyddosprotection = new Gcp.Compute.RegionSecurityPolicy("policyddosprotection", new()
 ///     {
 ///         Region = "southamerica-west1",
-///         Name = "tf-test-policyddos_85840",
+///         Name = "tf-test-policyddos_80332",
 ///         Description = "ddos protection security policy to set target instance",
 ///         Type = "CLOUD_ARMOR_NETWORK",
 ///         DdosProtectionConfig = new Gcp.Compute.Inputs.RegionSecurityPolicyDdosProtectionConfigArgs
@@ -696,7 +764,7 @@ import 'target_instance_state.dart';
 ///     var edgeSecService = new Gcp.Compute.NetworkEdgeSecurityService("edge_sec_service", new()
 ///     {
 ///         Region = "southamerica-west1",
-///         Name = "tf-test-edgesec_60302",
+///         Name = "tf-test-edgesec_13293",
 ///         SecurityPolicy = policyddosprotection.SelfLink,
 ///     });
 ///
@@ -745,7 +813,7 @@ import 'target_instance_state.dart';
 /// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 /// 			Name:                    pulumi.String("custom-default-subnet"),
 /// 			IpCidrRange:             pulumi.String("10.1.2.0/24"),
-/// 			Network:                 _default.ID(),
+/// 			Network:                 _default.ID().ToIDOutput().ToStringOutput(),
 /// 			PrivateIpv6GoogleAccess: pulumi.String("DISABLE_GOOGLE_ACCESS"),
 /// 			Purpose:                 pulumi.String("PRIVATE"),
 /// 			Region:                  pulumi.String("southamerica-west1"),
@@ -785,7 +853,7 @@ import 'target_instance_state.dart';
 /// 		}
 /// 		policyddosprotection, err := compute.NewRegionSecurityPolicy(ctx, "policyddosprotection", &compute.RegionSecurityPolicyArgs{
 /// 			Region:      pulumi.String("southamerica-west1"),
-/// 			Name:        pulumi.String("tf-test-policyddos_85840"),
+/// 			Name:        pulumi.String("tf-test-policyddos_80332"),
 /// 			Description: pulumi.String("ddos protection security policy to set target instance"),
 /// 			Type:        pulumi.String("CLOUD_ARMOR_NETWORK"),
 /// 			DdosProtectionConfig: &compute.RegionSecurityPolicyDdosProtectionConfigArgs{
@@ -797,7 +865,7 @@ import 'target_instance_state.dart';
 /// 		}
 /// 		edgeSecService, err := compute.NewNetworkEdgeSecurityService(ctx, "edge_sec_service", &compute.NetworkEdgeSecurityServiceArgs{
 /// 			Region:         pulumi.String("southamerica-west1"),
-/// 			Name:           pulumi.String("tf-test-edgesec_60302"),
+/// 			Name:           pulumi.String("tf-test-edgesec_13293"),
 /// 			SecurityPolicy: policyddosprotection.SelfLink,
 /// 		})
 /// 		if err != nil {
@@ -817,7 +885,7 @@ import 'target_instance_state.dart';
 /// 		_, err = compute.NewTargetInstance(ctx, "default", &compute.TargetInstanceArgs{
 /// 			Name:           pulumi.String("target-instance"),
 /// 			Zone:           pulumi.String("southamerica-west1-a"),
-/// 			Instance:       target_vm.ID(),
+/// 			Instance:       target_vm.ID().ToIDOutput().ToStringOutput(),
 /// 			SecurityPolicy: regionsecuritypolicy.SelfLink,
 /// 		})
 /// 		if err != nil {
@@ -825,6 +893,78 @@ import 'target_instance_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "vmimage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name                    = "custom-default-network"
+///   auto_create_subnetworks = false
+///   routing_mode            = "REGIONAL"
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name                       = "custom-default-subnet"
+///   ip_cidr_range              = "10.1.2.0/24"
+///   network                    = gcp_compute_network.default.id
+///   private_ipv6_google_access = "DISABLE_GOOGLE_ACCESS"
+///   purpose                    = "PRIVATE"
+///   region                     = "southamerica-west1"
+///   stack_type                 = "IPV4_ONLY"
+/// }
+/// resource "gcp_compute_instance" "target-vm" {
+///   network_interfaces {
+///     access_configs {
+///     }
+///     network    = gcp_compute_network.default.self_link
+///     subnetwork = gcp_compute_subnetwork.default.self_link
+///   }
+///   name         = "target-vm"
+///   machine_type = "e2-medium"
+///   zone         = "southamerica-west1-a"
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.vmimage.self_link
+///     }
+///   }
+/// }
+/// resource "gcp_compute_regionsecuritypolicy" "policyddosprotection" {
+///   region      = "southamerica-west1"
+///   name        = "tf-test-policyddos_80332"
+///   description = "ddos protection security policy to set target instance"
+///   type        = "CLOUD_ARMOR_NETWORK"
+///   ddos_protection_config = {
+///     ddos_protection = "ADVANCED_PREVIEW"
+///   }
+/// }
+/// resource "gcp_compute_networkedgesecurityservice" "edge_sec_service" {
+///   region          = "southamerica-west1"
+///   name            = "tf-test-edgesec_13293"
+///   security_policy = gcp_compute_regionsecuritypolicy.policyddosprotection.self_link
+/// }
+/// resource "gcp_compute_regionsecuritypolicy" "regionsecuritypolicy" {
+///   depends_on  = [gcp_compute_networkedgesecurityservice.edge_sec_service]
+///   name        = "region-secpolicy"
+///   region      = "southamerica-west1"
+///   description = "basic security policy for target instance"
+///   type        = "CLOUD_ARMOR_NETWORK"
+/// }
+/// resource "gcp_compute_targetinstance" "default" {
+///   name            = "target-instance"
+///   zone            = "southamerica-west1-a"
+///   instance        = gcp_compute_instance.target-vm.id
+///   security_policy = gcp_compute_regionsecuritypolicy.regionsecuritypolicy.self_link
 /// }
 /// ```
 /// ```java
@@ -842,6 +982,7 @@ import 'target_instance_state.dart';
 /// import com.pulumi.gcp.compute.Instance;
 /// import com.pulumi.gcp.compute.InstanceArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+/// import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
 /// import com.pulumi.gcp.compute.RegionSecurityPolicy;
@@ -852,8 +993,8 @@ import 'target_instance_state.dart';
 /// import com.pulumi.gcp.compute.TargetInstance;
 /// import com.pulumi.gcp.compute.TargetInstanceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -905,7 +1046,7 @@ import 'target_instance_state.dart';
 ///
 ///         var policyddosprotection = new RegionSecurityPolicy("policyddosprotection", RegionSecurityPolicyArgs.builder()
 ///             .region("southamerica-west1")
-///             .name("tf-test-policyddos_85840")
+///             .name("tf-test-policyddos_80332")
 ///             .description("ddos protection security policy to set target instance")
 ///             .type("CLOUD_ARMOR_NETWORK")
 ///             .ddosProtectionConfig(RegionSecurityPolicyDdosProtectionConfigArgs.builder()
@@ -915,7 +1056,7 @@ import 'target_instance_state.dart';
 ///
 ///         var edgeSecService = new NetworkEdgeSecurityService("edgeSecService", NetworkEdgeSecurityServiceArgs.builder()
 ///             .region("southamerica-west1")
-///             .name("tf-test-edgesec_60302")
+///             .name("tf-test-edgesec_13293")
 ///             .securityPolicy(policyddosprotection.selfLink())
 ///             .build());
 ///
@@ -975,7 +1116,7 @@ import 'target_instance_state.dart';
 ///     type: gcp:compute:RegionSecurityPolicy
 ///     properties:
 ///       region: southamerica-west1
-///       name: tf-test-policyddos_85840
+///       name: tf-test-policyddos_80332
 ///       description: ddos protection security policy to set target instance
 ///       type: CLOUD_ARMOR_NETWORK
 ///       ddosProtectionConfig:
@@ -985,7 +1126,7 @@ import 'target_instance_state.dart';
 ///     name: edge_sec_service
 ///     properties:
 ///       region: southamerica-west1
-///       name: tf-test-edgesec_60302
+///       name: tf-test-edgesec_13293
 ///       securityPolicy: ${policyddosprotection.selfLink}
 ///   regionsecuritypolicy:
 ///     type: gcp:compute:RegionSecurityPolicy
@@ -1020,33 +1161,29 @@ import 'target_instance_state.dart';
 /// TargetInstance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}`
-///
 /// * `{{zone}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/targetInstance:TargetInstance default {{project}}/{{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/targetInstance:TargetInstance default {{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/targetInstance:TargetInstance default {{name}}
 /// ```
 class TargetInstance extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// The Compute instance VM handling traffic for this target instance.
@@ -1069,11 +1206,13 @@ class TargetInstance extends pulumi.CustomResource {
   /// Default value is `NO_NAT`.
   /// Possible values are: `NO_NAT`.
   late final pulumi.Output<String?> natPolicy;
+  /// (Optional, Beta)
   /// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
   late final pulumi.Output<String?> network;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// (Optional, Beta)
   /// The resource URL for the security policy associated with this target instance.
   late final pulumi.Output<String?> securityPolicy;
   /// The URI of the created resource.
@@ -1096,6 +1235,7 @@ class TargetInstance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
@@ -1131,6 +1271,7 @@ class TargetInstance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');

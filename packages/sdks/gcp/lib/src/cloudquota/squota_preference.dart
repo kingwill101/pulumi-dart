@@ -110,6 +110,29 @@ import 'squota_preference_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudquota_squotapreference" "preference" {
+///   parent = "projects/my-project-name"
+///   name   = "compute_googleapis_com-CPUS-per-project_us-east1"
+///   dimensions = {
+///     "region" = "us-east1"
+///   }
+///   service       = "compute.googleapis.com"
+///   quota_id      = "CPUS-per-project-region"
+///   contact_email = "testuser@gmail.com"
+///   quota_config = {
+///     preferred_value = 200
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -119,8 +142,8 @@ import 'squota_preference_state.dart';
 /// import com.pulumi.gcp.cloudquota.SQuotaPreference;
 /// import com.pulumi.gcp.cloudquota.SQuotaPreferenceArgs;
 /// import com.pulumi.gcp.cloudquota.inputs.SQuotaPreferenceQuotaConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,6 +193,7 @@ import 'squota_preference_state.dart';
 ///
 /// * `{{parent}}/locations/global/quotaPreferences/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, QuotaPreference can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -182,7 +206,7 @@ class SQuotaPreference extends pulumi.CustomResource {
   /// Create time stamp.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
   late final pulumi.Output<String> createTime;
-  /// The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
+  /// The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "networkId", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
   /// NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
   /// Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
   late final pulumi.Output<Map<String, String>> dimensions;

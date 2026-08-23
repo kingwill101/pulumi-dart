@@ -4,6 +4,7 @@
 /// Result data returned by getHostingChannel.
 class GetHostingChannelResult {
   final String channelId;
+  final String deletionPolicy;
   final Map<String, String> effectiveLabels;
   final String expireTime;
   /// The provider-assigned unique ID for this managed resource.
@@ -18,6 +19,7 @@ class GetHostingChannelResult {
 
   /// Creates a new [GetHostingChannelResult].
   /// [channelId] Required.
+  /// [deletionPolicy] Required.
   /// [effectiveLabels] Required.
   /// [expireTime] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -29,6 +31,7 @@ class GetHostingChannelResult {
   /// [ttl] Required.
   const GetHostingChannelResult({
     required this.channelId,
+    required this.deletionPolicy,
     required this.effectiveLabels,
     required this.expireTime,
     required this.id,
@@ -43,6 +46,7 @@ class GetHostingChannelResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'channelId': channelId,
+      'deletionPolicy': deletionPolicy,
       'effectiveLabels': effectiveLabels,
       'expireTime': expireTime,
       'id': id,
@@ -58,6 +62,7 @@ class GetHostingChannelResult {
   factory GetHostingChannelResult.fromMap(Map<String, dynamic> map) {
     return GetHostingChannelResult(
       channelId: map['channelId'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       expireTime: map['expireTime'] as String,
       id: map['id'] as String,
@@ -70,4 +75,3 @@ class GetHostingChannelResult {
     );
   }
 }
-

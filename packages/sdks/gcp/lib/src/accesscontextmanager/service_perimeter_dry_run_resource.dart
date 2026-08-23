@@ -9,7 +9,7 @@ import 'service_perimeter_dry_run_resource_state.dart';
 /// If your perimeter is NOT in dry-run mode use `gcp.accesscontextmanager.ServicePerimeterResource` instead.
 ///
 /// &gt; **Note:** If this resource is used alongside a `gcp.accesscontextmanager.ServicePerimeter` resource,
-/// the service perimeter resource must have a `lifecycle` block with `ignore_changes = [spec[0].resources]` so
+/// the service perimeter resource must have a `lifecycle` block with `ignoreChanges = [spec[0].resources]` so
 /// they don't fight over which resources should be in the policy.
 ///
 ///
@@ -20,10 +20,10 @@ import 'service_perimeter_dry_run_resource_state.dart';
 /// * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 ///
 /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-/// you must specify a `billing_project` and set `user_project_override` to true
+/// you must specify a `billingProject` and set `userProjectOverride` to true
 /// in the provider configuration. Otherwise the ACM API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
-/// `billing_project` you defined.
+/// `billingProject` you defined.
 ///
 /// ## Example Usage
 ///
@@ -157,6 +157,33 @@ import 'service_perimeter_dry_run_resource_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_serviceperimeterdryrunresource" "service-perimeter-dry-run-resource" {
+///   perimeter_name = gcp_accesscontextmanager_serviceperimeter.service-perimeter-dry-run-resource.name
+///   resource       = "projects/987654321"
+/// }
+/// resource "gcp_accesscontextmanager_serviceperimeter" "service-perimeter-dry-run-resource" {
+///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/servicePerimeters/restrict_all"
+///   title  = "restrict_all"
+///   spec = {
+///     restricted_services = ["storage.googleapis.com"]
+///   }
+///   use_explicit_dry_run_spec = true
+/// }
+/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+///   parent = "organizations/123456789"
+///   title  = "my policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -170,8 +197,8 @@ import 'service_perimeter_dry_run_resource_state.dart';
 /// import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterSpecArgs;
 /// import com.pulumi.gcp.accesscontextmanager.ServicePerimeterDryRunResource;
 /// import com.pulumi.gcp.accesscontextmanager.ServicePerimeterDryRunResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -238,6 +265,7 @@ import 'service_perimeter_dry_run_resource_state.dart';
 ///
 /// * `{{perimeter_name}}/{{resource}}`
 ///
+///
 /// When using the `pulumi import` command, ServicePerimeterDryRunResource can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -246,6 +274,13 @@ import 'service_perimeter_dry_run_resource_state.dart';
 class ServicePerimeterDryRunResource extends pulumi.CustomResource {
   /// The name of the Access Policy this resource belongs to.
   late final pulumi.Output<String> accessPolicyId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
   late final pulumi.Output<String> etag;
   /// The name of the Service Perimeter to add this resource to.
@@ -270,6 +305,7 @@ class ServicePerimeterDryRunResource extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     perimeterName = registerOutput<String>('perimeterName');
     resource = registerOutput<String>('resource');
@@ -299,6 +335,7 @@ class ServicePerimeterDryRunResource extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     perimeterName = registerOutput<String>('perimeterName');
     resource = registerOutput<String>('resource');

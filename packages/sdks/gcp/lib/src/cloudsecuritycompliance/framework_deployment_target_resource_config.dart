@@ -8,7 +8,7 @@ class FrameworkDeploymentTargetResourceConfig {
   /// or projects/{project}
   final pulumi.Input<String>? existingTargetResource;
   /// TargetResourceCreationConfig contains the config to create a new resource to
-  /// be used as the target_resource of a deployment.
+  /// be used as the targetResource of a deployment.
   /// Structure is documented below.
   final pulumi.Input<FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig>? targetResourceCreationConfig;
 
@@ -34,4 +34,3 @@ class FrameworkDeploymentTargetResourceConfig {
     );
   }
 }
-

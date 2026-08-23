@@ -3,17 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ToolOpenApiToolServiceDirectoryConfig {
-  /// (Output)
-  /// The name of [Service
-  /// Directory](https://cloud.google.com/service-directory) service.
-  /// Format:
-  /// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-  /// Location of the service directory must be the same as the location of the
-  /// app.
+  /// The name of Service Directory service.
+  /// Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
   final pulumi.Input<String>? service;
 
   /// Creates a new [ToolOpenApiToolServiceDirectoryConfig].
-  /// [service] (Output)
+  /// [service] The name of Service Directory service.
   const ToolOpenApiToolServiceDirectoryConfig({
     this.service,
   });
@@ -30,4 +25,3 @@ class ToolOpenApiToolServiceDirectoryConfig {
     );
   }
 }
-

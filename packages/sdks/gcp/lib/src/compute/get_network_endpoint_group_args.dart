@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_get_network_endpoint_group_get_network_endpoint_group_args_doc}
 class GetNetworkEndpointGroupArgs {
   /// The Network Endpoint Group name.
-  /// Provide either this or a `self_link`.
+  /// Provide either this or a `selfLink`.
   final pulumi.Input<String>? name;
   /// The ID of the project to list versions in.
   /// If it is not provided, the provider project is used.
@@ -48,4 +48,3 @@ class GetNetworkEndpointGroupArgs {
     );
   }
 }
-

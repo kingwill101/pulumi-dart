@@ -7,12 +7,12 @@ import 'get_uptime_check_ips_uptime_check_ip.dart';
 class GetUptimeCheckIPsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// A list of uptime check IPs used by Stackdriver Monitoring. Each `uptime_check_ip` contains:
+  /// A list of uptime check IPs used by Stackdriver Monitoring. Each `uptimeCheckIp` contains:
   final List<GetUptimeCheckIPsUptimeCheckIp> uptimeCheckIps;
 
   /// Creates a new [GetUptimeCheckIPsResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [uptimeCheckIps] A list of uptime check IPs used by Stackdriver Monitoring. Each `uptime_check_ip` contains:
+  /// [uptimeCheckIps] A list of uptime check IPs used by Stackdriver Monitoring. Each `uptimeCheckIp` contains:
   const GetUptimeCheckIPsResult({
     required this.id,
     required this.uptimeCheckIps,
@@ -32,4 +32,3 @@ class GetUptimeCheckIPsResult {
     );
   }
 }
-

@@ -65,6 +65,19 @@ import 'network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "vpc_network" {
+///   name = "vpc-network"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +86,8 @@ import 'network_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.Network;
 /// import com.pulumi.gcp.compute.NetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -168,6 +181,22 @@ import 'network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "vpc_network" {
+///   project                 = "my-project-name"
+///   name                    = "vpc-network"
+///   auto_create_subnetworks = true
+///   mtu                     = 1460
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +205,8 @@ import 'network_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.Network;
 /// import com.pulumi.gcp.compute.NetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -277,6 +306,22 @@ import 'network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "vpc_network" {
+///   project                                   = "my-project-name"
+///   name                                      = "vpc-network"
+///   auto_create_subnetworks                   = true
+///   network_firewall_policy_enforcement_order = "BEFORE_CLASSIC_FIREWALL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -285,8 +330,8 @@ import 'network_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.Network;
 /// import com.pulumi.gcp.compute.NetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -382,6 +427,21 @@ import 'network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "vpc_network" {
+///   project      = "my-project-name"
+///   name         = "vpc-network"
+///   routing_mode = "GLOBAL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -390,8 +450,8 @@ import 'network_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.Network;
 /// import com.pulumi.gcp.compute.NetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -489,6 +549,22 @@ import 'network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "vpc_network" {
+///   project                      = "my-project-name"
+///   name                         = "vpc-network"
+///   routing_mode                 = "GLOBAL"
+///   bgp_best_path_selection_mode = "STANDARD"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -497,8 +573,8 @@ import 'network_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.Network;
 /// import com.pulumi.gcp.compute.NetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -606,6 +682,24 @@ import 'network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "vpc_network" {
+///   project                      = "my-project-name"
+///   name                         = "vpc-network"
+///   routing_mode                 = "GLOBAL"
+///   bgp_best_path_selection_mode = "STANDARD"
+///   bgp_always_compare_med       = true
+///   bgp_inter_region_cost        = "ADD_COST_TO_MED"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -614,8 +708,8 @@ import 'network_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.Network;
 /// import com.pulumi.gcp.compute.NetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -731,6 +825,27 @@ import 'network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_network" "vpc_network" {
+///   name                         = "vpc-network"
+///   auto_create_subnetworks      = false
+///   routing_mode                 = "GLOBAL"
+///   project                      = "my-project-name"
+///   bgp_best_path_selection_mode = "LEGACY"
+///   bgp_always_compare_med       = false
+///   # By setting this to true, any previous value for bgp_always_compare_med
+///   # will be cleared, reverting it to the API default.
+///   delete_bgp_always_compare_med = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -739,8 +854,8 @@ import 'network_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.compute.Network;
 /// import com.pulumi.gcp.compute.NetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -787,22 +902,15 @@ import 'network_state.dart';
 /// Network can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/networks/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/network:Network default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/network:Network default {{name}}
 /// ```
 class Network extends pulumi.CustomResource {
@@ -821,12 +929,19 @@ class Network extends pulumi.CustomResource {
   /// Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
   /// Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
   late final pulumi.Output<String> bgpInterRegionCost;
-  /// If set to `true`, the `bgp_always_compare_med` field will be cleared.
-  /// If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
+  /// If set to `true`, the `bgpAlwaysCompareMed` field will be cleared.
+  /// If set to `false` (the default), `bgpAlwaysCompareMed` will be set to the value specified in the configuration.
   late final pulumi.Output<bool?> deleteBgpAlwaysCompareMed;
   /// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
   /// immediately after network creation. Defaults to `false`.
   late final pulumi.Output<bool?> deleteDefaultRoutesOnCreate;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource. The resource must be
   /// recreated to modify this field.
   late final pulumi.Output<String?> description;
@@ -907,6 +1022,7 @@ class Network extends pulumi.CustomResource {
     bgpInterRegionCost = registerOutput<String>('bgpInterRegionCost');
     deleteBgpAlwaysCompareMed = registerOutput<bool?>('deleteBgpAlwaysCompareMed');
     deleteDefaultRoutesOnCreate = registerOutput<bool?>('deleteDefaultRoutesOnCreate');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     enableUlaInternalIpv6 = registerOutput<bool?>('enableUlaInternalIpv6');
     gatewayIpv4 = registerOutput<String>('gatewayIpv4');
@@ -952,6 +1068,7 @@ class Network extends pulumi.CustomResource {
     bgpInterRegionCost = registerOutput<String>('bgpInterRegionCost');
     deleteBgpAlwaysCompareMed = registerOutput<bool?>('deleteBgpAlwaysCompareMed');
     deleteDefaultRoutesOnCreate = registerOutput<bool?>('deleteDefaultRoutesOnCreate');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     enableUlaInternalIpv6 = registerOutput<bool?>('enableUlaInternalIpv6');
     gatewayIpv4 = registerOutput<String>('gatewayIpv4');

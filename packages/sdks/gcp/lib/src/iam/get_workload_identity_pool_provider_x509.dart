@@ -29,4 +29,3 @@ class GetWorkloadIdentityPoolProviderX509 {
     );
   }
 }
-

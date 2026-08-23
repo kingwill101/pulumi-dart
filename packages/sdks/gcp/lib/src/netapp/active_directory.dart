@@ -193,6 +193,40 @@ import 'active_directory_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_netapp_activedirectory" "test_active_directory_full" {
+///   name                   = "test-active-directory-full"
+///   location               = "us-central1"
+///   domain                 = "ad.internal"
+///   dns                    = "172.30.64.3"
+///   net_bios_prefix        = "smbserver"
+///   username               = "user"
+///   password               = "pass"
+///   aes_encryption         = false
+///   backup_operators       = ["test1", "test2"]
+///   administrators         = ["test1", "test2"]
+///   description            = "ActiveDirectory is the public representation of the active directory config."
+///   encrypt_dc_connections = false
+///   kdc_hostname           = "hostname"
+///   kdc_ip                 = "10.10.0.11"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   ldap_signing        = false
+///   nfs_users_with_ldap = false
+///   organizational_unit = "CN=Computers"
+///   security_operators  = ["test1", "test2"]
+///   site                = "test-site"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +235,8 @@ import 'active_directory_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.netapp.ActiveDirectory;
 /// import com.pulumi.gcp.netapp.ActiveDirectoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -287,22 +321,15 @@ import 'active_directory_state.dart';
 /// ActiveDirectory can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ActiveDirectory can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default {{location}}/{{name}}
 /// ```
 class ActiveDirectory extends pulumi.CustomResource {
@@ -314,6 +341,13 @@ class ActiveDirectory extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> backupOperators;
   /// Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Comma separated list of DNS server IP addresses for the Active Directory domain.
@@ -331,7 +365,7 @@ class ActiveDirectory extends pulumi.CustomResource {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Specifies whether or not the LDAP traffic needs to be signed.
   late final pulumi.Output<bool?> ldapSigning;
@@ -349,6 +383,8 @@ class ActiveDirectory extends pulumi.CustomResource {
   /// Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
   /// Defaults to `CN=Computers` if left empty.
   late final pulumi.Output<String> organizationalUnit;
+  /// Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+  /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> password;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
@@ -386,6 +422,7 @@ class ActiveDirectory extends pulumi.CustomResource {
     aesEncryption = registerOutput<bool?>('aesEncryption');
     backupOperators = registerOutput<List<String>?>('backupOperators');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dns = registerOutput<String>('dns');
     domain = registerOutput<String>('domain');
@@ -437,6 +474,7 @@ class ActiveDirectory extends pulumi.CustomResource {
     aesEncryption = registerOutput<bool?>('aesEncryption');
     backupOperators = registerOutput<List<String>?>('backupOperators');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dns = registerOutput<String>('dns');
     domain = registerOutput<String>('domain');

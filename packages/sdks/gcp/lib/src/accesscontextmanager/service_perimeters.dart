@@ -280,6 +280,53 @@ import 'service_perimeters_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_accesscontextmanager_serviceperimeters" "service-perimeter" {
+///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
+///   service_perimeters {
+///     name  ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/servicePerimeters/"
+///     title = ""
+///     status = {
+///       restricted_services = ["storage.googleapis.com"]
+///     }
+///   }
+///   service_perimeters {
+///     name  ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/servicePerimeters/"
+///     title = ""
+///     status = {
+///       restricted_services = ["bigtable.googleapis.com"]
+///     }
+///   }
+/// }
+/// resource "gcp_accesscontextmanager_accesslevel" "access-level" {
+///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/accessLevels/chromeos_no_lock"
+///   title  = "chromeos_no_lock"
+///   basic = {
+///     conditions = [{
+///       "devicePolicy" = {
+///         "requireScreenLock" = false
+///         "osConstraints" = [{
+///           "osType" = "DESKTOP_CHROME_OS"
+///         }]
+///       }
+///       "regions" = ["CH", "IT", "US"]
+///     }]
+///   }
+/// }
+/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+///   parent = "organizations/123456789"
+///   title  = "my policy"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -295,8 +342,11 @@ import 'service_perimeters_state.dart';
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevel;
 /// import com.pulumi.gcp.accesscontextmanager.AccessLevelArgs;
 /// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyArgs;
+/// import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -401,19 +451,23 @@ import 'service_perimeters_state.dart';
 /// ServicePerimeters can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/servicePerimeters`
-///
 /// * `{{parent}}`
+///
 ///
 /// When using the `pulumi import` command, ServicePerimeters can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}/servicePerimeters
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}
 /// ```
 class ServicePerimeters extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The AccessPolicy this ServicePerimeter lives in.
   /// Format: accessPolicies/{policy_id}
   late final pulumi.Output<String> parent;
@@ -435,6 +489,7 @@ class ServicePerimeters extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     parent = registerOutput<String>('parent');
     servicePerimeters = registerOutput<List<Map<String, dynamic>>?>('servicePerimeters');
   }
@@ -462,6 +517,7 @@ class ServicePerimeters extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     parent = registerOutput<String>('parent');
     servicePerimeters = registerOutput<List<Map<String, dynamic>>?>('servicePerimeters');
   }

@@ -11,37 +11,42 @@ class GetNetworkArgs {
   ///
   ///
   /// - - -
-  final pulumi.Input<String> name;
+  final pulumi.Input<String>? name;
   /// A full or partial URL of the network profile to apply to this network.
   final pulumi.Input<String>? networkProfile;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+  /// The URI of the resource.
+  final pulumi.Input<String>? selfLink;
 
   /// Creates a new [GetNetworkArgs].
   /// [name] The name of the network.
   /// [networkProfile] A full or partial URL of the network profile to apply to this network.
   /// [project] The ID of the project in which the resource belongs. If it
+  /// [selfLink] The URI of the resource.
   const GetNetworkArgs({
-    required this.name,
+    this.name,
     this.networkProfile,
     this.project,
+    this.selfLink,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'name': name,
+      'name': ?name,
       'networkProfile': ?networkProfile,
       'project': ?project,
+      'selfLink': ?selfLink,
     };
   }
 
   factory GetNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkArgs(
-      name: pulumi.Input.fromValue(map['name'] as String),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

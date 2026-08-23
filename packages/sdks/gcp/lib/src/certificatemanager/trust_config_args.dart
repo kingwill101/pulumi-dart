@@ -13,11 +13,18 @@ class TrustConfigArgs {
   /// the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.
   /// Structure is documented below.
   final pulumi.Input<List<TrustConfigAllowlistedCertificate>>? allowlistedCertificates;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// One or more paragraphs of text description of a trust config.
   final pulumi.Input<String>? description;
   /// Set of label tags associated with the trust config.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The trust config location.
   final pulumi.Input<String> location;
@@ -33,6 +40,7 @@ class TrustConfigArgs {
 
   /// Creates a new [TrustConfigArgs].
   /// [allowlistedCertificates] Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] One or more paragraphs of text description of a trust config.
   /// [labels] Set of label tags associated with the trust config.
   /// [location] The trust config location.
@@ -41,6 +49,7 @@ class TrustConfigArgs {
   /// [trustStores] Set of trust stores to perform validation against.
   const TrustConfigArgs({
     this.allowlistedCertificates,
+    this.deletionPolicy,
     this.description,
     this.labels,
     required this.location,
@@ -52,6 +61,7 @@ class TrustConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowlistedCertificates': ?pulumi.Input.mapOptionalInputValue<List<TrustConfigAllowlistedCertificate>, List<Map<String, dynamic>>>(allowlistedCertificates, (value) => pulumi.Input.encodeList<TrustConfigAllowlistedCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'labels': ?labels,
       'location': location,
@@ -64,6 +74,7 @@ class TrustConfigArgs {
   factory TrustConfigArgs.fromMap(Map<String, dynamic> map) {
     return TrustConfigArgs(
       allowlistedCertificates: (() { final guardedValue = map['allowlistedCertificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TrustConfigAllowlistedCertificate>(guardedValue, (value) => TrustConfigAllowlistedCertificate.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
@@ -73,4 +84,3 @@ class TrustConfigArgs {
     );
   }
 }
-

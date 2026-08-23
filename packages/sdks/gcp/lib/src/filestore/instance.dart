@@ -125,6 +125,29 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_filestore_instance" "instance" {
+///   name     = "test-instance"
+///   location = "us-central1-b"
+///   tier     = "BASIC_HDD"
+///   file_shares = {
+///     capacity_gb = 1024
+///     name        = "share1"
+///   }
+///   networks {
+///     network = "default"
+///     modes   = ["MODE_IPV4"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -135,8 +158,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.filestore.InstanceArgs;
 /// import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
 /// import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -361,6 +384,41 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_filestore_instance" "instance" {
+///   name     = "test-instance"
+///   location = "us-central1-b"
+///   tier     = "BASIC_SSD"
+///   file_shares = {
+///     capacity_gb = 2560
+///     name        = "share1"
+///     nfs_export_options = [{
+///       "ipRanges"   = ["10.0.0.0/24"]
+///       "accessMode" = "READ_WRITE"
+///       "squashMode" = "NO_ROOT_SQUASH"
+///       }, {
+///       "ipRanges"   = ["10.10.0.0/24"]
+///       "accessMode" = "READ_ONLY"
+///       "squashMode" = "ROOT_SQUASH"
+///       "anonUid"    = 123
+///       "anonGid"    = 456
+///     }]
+///   }
+///   networks {
+///     network      = "default"
+///     modes        = ["MODE_IPV4"]
+///     connect_mode = "DIRECT_PEERING"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -370,9 +428,10 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.filestore.Instance;
 /// import com.pulumi.gcp.filestore.InstanceArgs;
 /// import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
+/// import com.pulumi.gcp.filestore.inputs.InstanceFileSharesNfsExportOptionArgs;
 /// import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -554,6 +613,30 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_filestore_instance" "instance" {
+///   name     = "test-instance"
+///   location = "us-central1"
+///   tier     = "ENTERPRISE"
+///   protocol = "NFS_V4_1"
+///   file_shares = {
+///     capacity_gb = 1024
+///     name        = "share1"
+///   }
+///   networks {
+///     network = "default"
+///     modes   = ["MODE_IPV4"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -564,8 +647,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.filestore.InstanceArgs;
 /// import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
 /// import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -734,7 +817,7 @@ import 'instance_state.dart';
 /// 		}
 /// 		filestoreKey, err := kms.NewCryptoKey(ctx, "filestore_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("filestore-key"),
-/// 			KeyRing: filestoreKeyring.ID(),
+/// 			KeyRing: filestoreKeyring.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -755,13 +838,45 @@ import 'instance_state.dart';
 /// 					},
 /// 				},
 /// 			},
-/// 			KmsKeyName: filestoreKey.ID(),
+/// 			KmsKeyName: filestoreKey.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_filestore_instance" "instance" {
+///   name     = "test-instance"
+///   location = "us-central1"
+///   tier     = "ENTERPRISE"
+///   file_shares = {
+///     capacity_gb = 1024
+///     name        = "share1"
+///   }
+///   networks {
+///     network = "default"
+///     modes   = ["MODE_IPV4"]
+///   }
+///   kms_key_name = gcp_kms_cryptokey.filestore_key.id
+/// }
+/// resource "gcp_kms_keyring" "filestore_keyring" {
+///   name     = "filestore-keyring"
+///   location = "us-central1"
+/// }
+/// resource "gcp_kms_cryptokey" "filestore_key" {
+///   name     = "filestore-key"
+///   key_ring = gcp_kms_keyring.filestore_keyring.id
 /// }
 /// ```
 /// ```java
@@ -778,8 +893,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.filestore.InstanceArgs;
 /// import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
 /// import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -855,33 +970,35 @@ import 'instance_state.dart';
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:filestore/instance:Instance default {{location}}/{{name}}
 /// ```
 class Instance extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Indicates whether the instance is protected against deletion.
   late final pulumi.Output<bool?> deletionProtectionEnabled;
   /// The reason for enabling deletion protection.
   late final pulumi.Output<String?> deletionProtectionReason;
   /// A description of the instance.
   late final pulumi.Output<String?> description;
+  /// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
+  late final pulumi.Output<String?> desiredReplicaState;
   /// Directory Services configuration.
   /// Should only be set if protocol is "NFS_V4_1".
   /// Structure is documented below.
@@ -899,7 +1016,7 @@ class Instance extends pulumi.CustomResource {
   /// Structure is documented below.
   late final pulumi.Output<InstanceFileShares> fileShares;
   /// Replication configuration, once set, this cannot be updated.
-  /// Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+  /// Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
   /// Structure is documented below.
   late final pulumi.Output<InstanceInitialReplication?> initialReplication;
   /// KMS key name used for data encryption.
@@ -907,7 +1024,7 @@ class Instance extends pulumi.CustomResource {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
   late final pulumi.Output<String> location;
@@ -968,9 +1085,11 @@ class Instance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
     deletionProtectionReason = registerOutput<String?>('deletionProtectionReason');
     description = registerOutput<String?>('description');
+    desiredReplicaState = registerOutput<String?>('desiredReplicaState');
     directoryServices = registerOutput<InstanceDirectoryServices?>('directoryServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDirectoryServices.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     effectiveReplications = registerOutput<List<Map<String, dynamic>>>('effectiveReplications');
@@ -1015,9 +1134,11 @@ class Instance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtectionEnabled = registerOutput<bool?>('deletionProtectionEnabled');
     deletionProtectionReason = registerOutput<String?>('deletionProtectionReason');
     description = registerOutput<String?>('description');
+    desiredReplicaState = registerOutput<String?>('desiredReplicaState');
     directoryServices = registerOutput<InstanceDirectoryServices?>('directoryServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceDirectoryServices.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     effectiveReplications = registerOutput<List<Map<String, dynamic>>>('effectiveReplications');

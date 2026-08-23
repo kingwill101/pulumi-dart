@@ -6,6 +6,7 @@ import 'ai_endpoint_private_service_connect_config_psc_automation_config.dart';
 class AiEndpointPrivateServiceConnectConfig {
   /// Required. If true, expose the IndexEndpoint via private service connect.
   final pulumi.Input<bool> enablePrivateServiceConnect;
+  /// (Optional, Beta)
   /// If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
   final pulumi.Input<bool>? enableSecurePrivateServiceConnect;
   /// A list of Projects from which the forwarding rule will target the service attachment.
@@ -16,7 +17,7 @@ class AiEndpointPrivateServiceConnectConfig {
 
   /// Creates a new [AiEndpointPrivateServiceConnectConfig].
   /// [enablePrivateServiceConnect] Required. If true, expose the IndexEndpoint via private service connect.
-  /// [enableSecurePrivateServiceConnect] If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+  /// [enableSecurePrivateServiceConnect] (Optional, Beta)
   /// [projectAllowlists] A list of Projects from which the forwarding rule will target the service attachment.
   /// [pscAutomationConfigs] List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
   const AiEndpointPrivateServiceConnectConfig({
@@ -44,4 +45,3 @@ class AiEndpointPrivateServiceConnectConfig {
     );
   }
 }
-

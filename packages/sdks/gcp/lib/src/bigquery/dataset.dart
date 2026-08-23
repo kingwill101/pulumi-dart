@@ -5,6 +5,19 @@ import 'dataset_external_catalog_dataset_options.dart';
 import 'dataset_external_dataset_reference.dart';
 import 'dataset_state.dart';
 
+/// Datasets allow you to organize and control access to your tables.
+///
+///
+/// To get more information about Dataset, see:
+///
+/// * [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets)
+/// * How-to Guides
+/// * [Datasets Intro](https://cloud.google.com/bigquery/docs/datasets-intro)
+///
+/// &gt; **Warning:** You must specify the role field using the legacy format `OWNER` instead of `roles/bigquery.dataOwner`.
+/// The API does accept both formats but it will always return the legacy format which results in Terraform
+/// showing permanent diff on each plan and apply operation.
+///
 /// ## Example Usage
 ///
 /// ### Bigquery Dataset Basic
@@ -147,6 +160,37 @@ import 'dataset_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "dataset" {
+///   dataset_id                  = "example_dataset"
+///   friendly_name               = "test"
+///   description                 = "This is a test description"
+///   location                    = "EU"
+///   default_table_expiration_ms = 3600000
+///   labels = {
+///     "env" = "default"
+///   }
+///   accesses {
+///     role          = "roles/bigquery.dataOwner"
+///     user_by_email = gcp_serviceaccount_account.bqowner.email
+///   }
+///   accesses {
+///     role   = "READER"
+///     domain = "hashicorp.com"
+///   }
+/// }
+/// resource "gcp_serviceaccount_account" "bqowner" {
+///   account_id = "bqowner"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -158,8 +202,8 @@ import 'dataset_state.dart';
 /// import com.pulumi.gcp.bigquery.Dataset;
 /// import com.pulumi.gcp.bigquery.DatasetArgs;
 /// import com.pulumi.gcp.bigquery.inputs.DatasetAccessArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -321,7 +365,7 @@ import 'dataset_state.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("example-key"),
-/// 			KeyRing: keyRing.ID(),
+/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -333,7 +377,7 @@ import 'dataset_state.dart';
 /// 			Location:                 pulumi.String("US"),
 /// 			DefaultTableExpirationMs: pulumi.Int(3600000),
 /// 			DefaultEncryptionConfiguration: &bigquery.DatasetDefaultEncryptionConfigurationArgs{
-/// 				KmsKeyName: cryptoKey.ID(),
+/// 				KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -341,6 +385,34 @@ import 'dataset_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "dataset" {
+///   dataset_id                  = "example_dataset"
+///   friendly_name               = "test"
+///   description                 = "This is a test description"
+///   location                    = "US"
+///   default_table_expiration_ms = 3600000
+///   default_encryption_configuration = {
+///     kms_key_name = gcp_kms_cryptokey.crypto_key.id
+///   }
+/// }
+/// resource "gcp_kms_cryptokey" "crypto_key" {
+///   name     = "example-key"
+///   key_ring = gcp_kms_keyring.key_ring.id
+/// }
+/// resource "gcp_kms_keyring" "key_ring" {
+///   name     = "example-keyring"
+///   location = "us"
 /// }
 /// ```
 /// ```java
@@ -356,8 +428,8 @@ import 'dataset_state.dart';
 /// import com.pulumi.gcp.bigquery.Dataset;
 /// import com.pulumi.gcp.bigquery.DatasetArgs;
 /// import com.pulumi.gcp.bigquery.inputs.DatasetDefaultEncryptionConfigurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -691,6 +763,64 @@ import 'dataset_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "public" {
+///   dataset_id                  = "public"
+///   friendly_name               = "test"
+///   description                 = "This dataset is public"
+///   location                    = "EU"
+///   default_table_expiration_ms = 3600000
+///   labels = {
+///     "env" = "default"
+///   }
+///   accesses {
+///     role          = "OWNER"
+///     user_by_email = gcp_serviceaccount_account.bqowner.email
+///   }
+///   accesses {
+///     role   = "READER"
+///     domain = "hashicorp.com"
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "dataset" {
+///   dataset_id                  = "private"
+///   friendly_name               = "test"
+///   description                 = "This dataset is private"
+///   location                    = "EU"
+///   default_table_expiration_ms = 3600000
+///   labels = {
+///     "env" = "default"
+///   }
+///   accesses {
+///     role          = "OWNER"
+///     user_by_email = gcp_serviceaccount_account.bqowner.email
+///   }
+///   accesses {
+///     role   = "READER"
+///     domain = "hashicorp.com"
+///   }
+///   accesses {
+///     dataset = {
+///       dataset = {
+///         project_id = gcp_bigquery_dataset.public.project
+///         dataset_id = gcp_bigquery_dataset.public.dataset_id
+///       }
+///       target_types = ["VIEWS"]
+///     }
+///   }
+/// }
+/// resource "gcp_serviceaccount_account" "bqowner" {
+///   account_id = "bqowner"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -704,8 +834,8 @@ import 'dataset_state.dart';
 /// import com.pulumi.gcp.bigquery.inputs.DatasetAccessArgs;
 /// import com.pulumi.gcp.bigquery.inputs.DatasetAccessDatasetArgs;
 /// import com.pulumi.gcp.bigquery.inputs.DatasetAccessDatasetDatasetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1006,18 +1136,18 @@ import 'dataset_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"typeKind": "INT64",
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON1, err := json.Marshal(map[string][]map[string]interface{}{
 /// 			"columns": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"name": "value",
-/// 					"type": map[string]interface{}{
+/// 					"type": map[string]string{
 /// 						"typeKind": "INT64",
 /// 					},
 /// 				},
@@ -1069,6 +1199,57 @@ import 'dataset_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "public" {
+///   dataset_id  = "public_dataset"
+///   description = "This dataset is public"
+/// }
+/// resource "gcp_bigquery_routine" "public" {
+///   dataset_id      = gcp_bigquery_dataset.public.dataset_id
+///   routine_id      = "public_routine"
+///   routine_type    = "TABLE_VALUED_FUNCTION"
+///   language        = "SQL"
+///   definition_body = "SELECT 1 + value AS value\n"
+///   arguments {
+///     name          = "value"
+///     argument_kind = "FIXED_TYPE"
+///     data_type = jsonencode({
+///       "typeKind" = "INT64"
+///     })
+///   }
+///   return_table_type = jsonencode({
+///     "columns" = [{
+///       "name" = "value"
+///       "type" = {
+///         "typeKind" = "INT64"
+///       }
+///     }]
+///   })
+/// }
+/// resource "gcp_bigquery_dataset" "private" {
+///   dataset_id  = "private_dataset"
+///   description = "This dataset is private"
+///   accesses {
+///     role          = "OWNER"
+///     user_by_email = "my@service-account.com"
+///   }
+///   accesses {
+///     routine = {
+///       project_id = gcp_bigquery_routine.public.project
+///       dataset_id = gcp_bigquery_routine.public.dataset_id
+///       routine_id = gcp_bigquery_routine.public.routine_id
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1083,8 +1264,8 @@ import 'dataset_state.dart';
 /// import com.pulumi.gcp.bigquery.inputs.DatasetAccessArgs;
 /// import com.pulumi.gcp.bigquery.inputs.DatasetAccessRoutineArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1274,6 +1455,26 @@ import 'dataset_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "dataset" {
+///   dataset_id    = "example_dataset"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "aws-us-east-1"
+///   external_dataset_reference = {
+///     external_source = "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database"
+///     connection      = "projects/project/locations/aws-us-east-1/connections/connection"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1283,8 +1484,8 @@ import 'dataset_state.dart';
 /// import com.pulumi.gcp.bigquery.Dataset;
 /// import com.pulumi.gcp.bigquery.DatasetArgs;
 /// import com.pulumi.gcp.bigquery.inputs.DatasetExternalDatasetReferenceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1416,6 +1617,28 @@ import 'dataset_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "dataset" {
+///   dataset_id    = "example_dataset"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "US"
+///   external_catalog_dataset_options = {
+///     parameters = {
+///       "dataset_owner" = "test_dataset_owner"
+///     }
+///     default_storage_location_uri = "gs://test_dataset/tables"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1425,8 +1648,8 @@ import 'dataset_state.dart';
 /// import com.pulumi.gcp.bigquery.Dataset;
 /// import com.pulumi.gcp.bigquery.DatasetArgs;
 /// import com.pulumi.gcp.bigquery.inputs.DatasetExternalCatalogDatasetOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1473,22 +1696,15 @@ import 'dataset_state.dart';
 /// Dataset can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/datasets/{{dataset_id}}`
-///
 /// * `{{project}}/{{dataset_id}}`
-///
 /// * `{{dataset_id}}`
+///
 ///
 /// When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
 /// ```
 class Dataset extends pulumi.CustomResource {
@@ -1547,6 +1763,13 @@ class Dataset extends pulumi.CustomResource {
   /// dataset when destroying the resource; otherwise,
   /// destroying the resource will fail if tables are present.
   late final pulumi.Output<bool?> deleteContentsOnDestroy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A user-friendly description of the dataset
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1570,7 +1793,7 @@ class Dataset extends pulumi.CustomResource {
   /// organize and group your datasets.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The date when this dataset or any of its tables was last modified, in
   /// milliseconds since the epoch.
@@ -1628,6 +1851,7 @@ class Dataset extends pulumi.CustomResource {
     defaultPartitionExpirationMs = registerOutput<int?>('defaultPartitionExpirationMs');
     defaultTableExpirationMs = registerOutput<int?>('defaultTableExpirationMs');
     deleteContentsOnDestroy = registerOutput<bool?>('deleteContentsOnDestroy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');
@@ -1677,6 +1901,7 @@ class Dataset extends pulumi.CustomResource {
     defaultPartitionExpirationMs = registerOutput<int?>('defaultPartitionExpirationMs');
     defaultTableExpirationMs = registerOutput<int?>('defaultTableExpirationMs');
     deleteContentsOnDestroy = registerOutput<bool?>('deleteContentsOnDestroy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     etag = registerOutput<String>('etag');

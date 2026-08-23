@@ -19,6 +19,7 @@ class GetTableResult {
   final List<String> clusterings;
   final int creationTime;
   final String datasetId;
+  final String deletionPolicy;
   final bool deletionProtection;
   final String description;
   final Map<String, String> effectiveLabels;
@@ -62,6 +63,7 @@ class GetTableResult {
   /// [clusterings] Required.
   /// [creationTime] Required.
   /// [datasetId] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [description] Required.
   /// [effectiveLabels] Required.
@@ -103,6 +105,7 @@ class GetTableResult {
     required this.clusterings,
     required this.creationTime,
     required this.datasetId,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.description,
     required this.effectiveLabels,
@@ -147,6 +150,7 @@ class GetTableResult {
       'clusterings': clusterings,
       'creationTime': creationTime,
       'datasetId': datasetId,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'description': description,
       'effectiveLabels': effectiveLabels,
@@ -192,6 +196,7 @@ class GetTableResult {
       clusterings: (map['clusterings'] as List).cast<String>(),
       creationTime: map['creationTime'] as int,
       datasetId: map['datasetId'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -231,4 +236,3 @@ class GetTableResult {
     );
   }
 }
-

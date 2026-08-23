@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BucketCustomPlacementConfig {
-  /// The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+  /// The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the dataLocations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
   final pulumi.Input<List<String>> dataLocations;
 
   /// Creates a new [BucketCustomPlacementConfig].
-  /// [dataLocations] The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the data_locations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
+  /// [dataLocations] The list of individual regions that comprise a dual-region bucket. See [Cloud Storage bucket locations](https://cloud.google.com/storage/docs/dual-regions#availability) for a list of acceptable regions. **Note**: If any of the dataLocations changes, it will [recreate the bucket](https://cloud.google.com/storage/docs/locations#key-concepts).
   const BucketCustomPlacementConfig({
     required this.dataLocations,
   });
@@ -24,4 +24,3 @@ class BucketCustomPlacementConfig {
     );
   }
 }
-

@@ -5,7 +5,6 @@ import 'certificate_state.dart';
 
 /// A Certificate corresponds to a signed X.509 certificate issued by a Certificate.
 ///
-///
 /// &gt; **Note:** The Certificate Authority that is referenced by this resource **must** be
 /// `tier = "ENTERPRISE"`
 ///
@@ -117,7 +116,7 @@ import 'certificate_state.dart';
 ///             format: "PEM",
 ///             key: std.base64encodeOutput({
 ///                 input: certKey.publicKeyPem,
-///             }).apply(invoke => invoke.result),
+///             }).result,
 ///         },
 ///     },
 /// });
@@ -218,7 +217,7 @@ import 'certificate_state.dart';
 ///         },
 ///         "public_key": {
 ///             "format": "PEM",
-///             "key": std.base64encode_output(input=cert_key.public_key_pem).apply(lambda invoke: invoke.result),
+///             "key": std.base64encode_output(input=cert_key.public_key_pem).result,
 ///         },
 ///     })
 /// ```
@@ -541,9 +540,7 @@ import 'certificate_state.dart';
 /// 					Format: pulumi.String("PEM"),
 /// 					Key: std.Base64encodeOutput(ctx, std.Base64encodeOutputArgs{
 /// 						Input: certKey.PublicKeyPem,
-/// 					}, nil).ApplyT(func(invoke std.Base64encodeResult) (*string, error) {
-/// 						return invoke.Result, nil
-/// 					}).(pulumi.StringPtrOutput),
+/// 					}, nil).Result(),
 /// 				},
 /// 			},
 /// 		})
@@ -552,6 +549,120 @@ import 'certificate_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///     tls = {
+///       source = "pulumi/tls"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capool" "default" {
+///   location = "us-central1"
+///   name     = "default"
+///   tier     = "ENTERPRISE"
+/// }
+/// resource "gcp_certificateauthority_authority" "default" {
+///   location                 = "us-central1"
+///   pool                     = gcp_certificateauthority_capool.default.name
+///   certificate_authority_id = "my-authority"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "HashiCorp"
+///         common_name  = "my-certificate-authority"
+///       }
+///       subject_alt_name = {
+///         dns_names = ["hashicorp.com"]
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+///   ignore_active_certificates_on_deletion = true
+/// }
+/// resource "tls_privatekey" "cert_key" {
+///   algorithm = "RSA"
+/// }
+/// resource "gcp_certificateauthority_certificate" "default" {
+///   location              = "us-central1"
+///   pool                  = gcp_certificateauthority_capool.default.name
+///   certificate_authority = gcp_certificateauthority_authority.default.certificate_authority_id
+///   lifetime              = "86000s"
+///   name                  = "cert-1"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         common_name         = "san1.example.com"
+///         country_code        = "us"
+///         organization        = "google"
+///         organizational_unit = "enterprise"
+///         locality            = "mountain view"
+///         province            = "california"
+///         street_address      = "1600 amphitheatre parkway"
+///       }
+///       subject_alt_name = {
+///         email_addresses = ["email@example.com"]
+///         ip_addresses    = ["127.0.0.1"]
+///         uris            = ["http://www.ietf.org/rfc/rfc3986.txt"]
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = false
+///         }
+///       }
+///       name_constraints = {
+///         critical                  = true
+///         permitted_dns_names       = ["*.example.com"]
+///         excluded_dns_names        = ["*.deny.example.com"]
+///         permitted_ip_ranges       = ["10.0.0.0/8"]
+///         excluded_ip_ranges        = ["10.1.1.0/24"]
+///         permitted_email_addresses = [".example.com"]
+///         excluded_email_addresses  = [".deny.example.com"]
+///         permitted_uris            = [".example.com"]
+///         excluded_uris             = [".deny.example.com"]
+///       }
+///     }
+///     public_key = {
+///       format = "PEM"
+///       key    = base64encode(tls_privatekey.cert_key.public_key_pem)
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -591,8 +702,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigPublicKeyArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Base64encodeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1434,13 +1545,140 @@ import 'certificate_state.dart';
 /// 			Name:                 pulumi.String("my-certificate"),
 /// 			Lifetime:             pulumi.String("860s"),
 /// 			PemCsr:               pulumi.String(invokeFile.Result),
-/// 			CertificateTemplate:  defaultCertificateTemplate.ID(),
+/// 			CertificateTemplate:  defaultCertificateTemplate.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capool" "default" {
+///   location = "us-central1"
+///   name     = "my-pool"
+///   tier     = "ENTERPRISE"
+/// }
+/// resource "gcp_certificateauthority_certificatetemplate" "default" {
+///   location    = "us-central1"
+///   name        = "my-certificate-template"
+///   description = "An updated sample certificate template"
+///   identity_constraints = {
+///     allow_subject_alt_names_passthrough = true
+///     allow_subject_passthrough           = true
+///     cel_expression = {
+///       description = "Always true"
+///       expression  = "true"
+///       location    = "any.file.anywhere"
+///       title       = "Sample expression"
+///     }
+///   }
+///   passthrough_extensions = {
+///     additional_extensions = [{
+///       "objectIdPaths" = [1, 6]
+///     }]
+///     known_extensions = ["EXTENDED_KEY_USAGE"]
+///   }
+///   predefined_values = {
+///     additional_extensions = [{
+///       "objectId" = {
+///         "objectIdPaths" = [1, 6]
+///       }
+///       "value"    = "c3RyaW5nCg=="
+///       "critical" = true
+///     }]
+///     aia_ocsp_servers = ["string"]
+///     ca_options = {
+///       is_ca                  = false
+///       max_issuer_path_length = 6
+///     }
+///     key_usage = {
+///       base_key_usage = {
+///         cert_sign          = false
+///         content_commitment = true
+///         crl_sign           = false
+///         data_encipherment  = true
+///         decipher_only      = true
+///         digital_signature  = true
+///         encipher_only      = true
+///         key_agreement      = true
+///         key_encipherment   = true
+///       }
+///       extended_key_usage = {
+///         client_auth      = true
+///         code_signing     = true
+///         email_protection = true
+///         ocsp_signing     = true
+///         server_auth      = true
+///         time_stamping    = true
+///       }
+///       unknown_extended_key_usages = [{
+///         "objectIdPaths" = [1, 6]
+///       }]
+///     }
+///     policy_ids = [{
+///       "objectIdPaths" = [1, 6]
+///     }]
+///   }
+/// }
+/// resource "gcp_certificateauthority_authority" "default" {
+///   location                 = "us-central1"
+///   pool                     = gcp_certificateauthority_capool.default.name
+///   certificate_authority_id = "my-authority"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "HashiCorp"
+///         common_name  = "my-certificate-authority"
+///       }
+///       subject_alt_name = {
+///         dns_names = ["hashicorp.com"]
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = false
+///         }
+///       }
+///     }
+///   }
+///   # is_ca *MUST* be true for certificate authorities
+///   # cert_sign and crl_sign *MUST* be true for certificate authorities
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+///   ignore_active_certificates_on_deletion = true
+/// }
+/// resource "gcp_certificateauthority_certificate" "default" {
+///   location              = "us-central1"
+///   pool                  = gcp_certificateauthority_capool.default.name
+///   certificate_authority = gcp_certificateauthority_authority.default.certificate_authority_id
+///   name                  = "my-certificate"
+///   lifetime              = "860s"
+///   pem_csr               = file("test-fixtures/rsa_csr.pem")
+///   certificate_template  = gcp_certificateauthority_certificatetemplate.default.id
 /// }
 /// ```
 /// ```java
@@ -1456,11 +1694,16 @@ import 'certificate_state.dart';
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplateIdentityConstraintsArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplateIdentityConstraintsCelExpressionArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePassthroughExtensionsArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesAdditionalExtensionArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesCaOptionsArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesPolicyIdArgs;
 /// import com.pulumi.gcp.certificateauthority.Authority;
 /// import com.pulumi.gcp.certificateauthority.AuthorityArgs;
 /// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
@@ -1477,8 +1720,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.gcp.certificateauthority.CertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2011,6 +2254,70 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capool" "default" {
+///   location = "us-central1"
+///   name     = "my-pool"
+///   tier     = "ENTERPRISE"
+/// }
+/// resource "gcp_certificateauthority_authority" "default" {
+///   location                 = "us-central1"
+///   pool                     = gcp_certificateauthority_capool.default.name
+///   certificate_authority_id = "my-authority"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "HashiCorp"
+///         common_name  = "my-certificate-authority"
+///       }
+///       subject_alt_name = {
+///         dns_names = ["hashicorp.com"]
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = false
+///         }
+///       }
+///     }
+///   }
+///   # is_ca *MUST* be true for certificate authorities
+///   # cert_sign and crl_sign *MUST* be true for certificate authorities
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+///   ignore_active_certificates_on_deletion = true
+/// }
+/// resource "gcp_certificateauthority_certificate" "default" {
+///   location              = "us-central1"
+///   pool                  = gcp_certificateauthority_capool.default.name
+///   certificate_authority = gcp_certificateauthority_authority.default.certificate_authority_id
+///   name                  = "my-certificate"
+///   lifetime              = "860s"
+///   pem_csr               = file("test-fixtures/rsa_csr.pem")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2035,8 +2342,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.gcp.certificateauthority.CertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2579,6 +2886,100 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capool" "default" {
+///   location = "us-central1"
+///   name     = "my-pool"
+///   tier     = "ENTERPRISE"
+/// }
+/// resource "gcp_certificateauthority_authority" "default" {
+///   location                 = "us-central1"
+///   pool                     = gcp_certificateauthority_capool.default.name
+///   certificate_authority_id = "my-authority"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "HashiCorp"
+///         common_name  = "my-certificate-authority"
+///       }
+///       subject_alt_name = {
+///         dns_names = ["hashicorp.com"]
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           digital_signature = true
+///           cert_sign         = true
+///           crl_sign          = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+///   lifetime = "86400s"
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+///   ignore_active_certificates_on_deletion = true
+/// }
+/// resource "gcp_certificateauthority_certificate" "default" {
+///   depends_on = [gcp_certificateauthority_authority.default]
+///   location   = "us-central1"
+///   pool       = gcp_certificateauthority_capool.default.name
+///   name       = "my-certificate"
+///   lifetime   = "860s"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         common_name         = "san1.example.com"
+///         country_code        = "us"
+///         organization        = "google"
+///         organizational_unit = "enterprise"
+///         locality            = "mountain view"
+///         province            = "california"
+///         street_address      = "1600 amphitheatre parkway"
+///         postal_code         = "94109"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = false
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           crl_sign = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///     public_key = {
+///       format = "PEM"
+///       key    = filebase64("test-fixtures/rsa_public.pem")
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2613,8 +3014,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3228,6 +3629,103 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capool" "default" {
+///   location = "us-central1"
+///   name     = "my-pool"
+///   tier     = "ENTERPRISE"
+/// }
+/// resource "gcp_certificateauthority_authority" "default" {
+///   location                 = "us-central1"
+///   pool                     = gcp_certificateauthority_capool.default.name
+///   certificate_authority_id = "my-authority"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "HashiCorp"
+///         common_name  = "my-certificate-authority"
+///       }
+///       subject_alt_name = {
+///         dns_names = ["hashicorp.com"]
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           digital_signature = true
+///           cert_sign         = true
+///           crl_sign          = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+///   lifetime = "86400s"
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+///   ignore_active_certificates_on_deletion = true
+/// }
+/// resource "gcp_certificateauthority_certificate" "default" {
+///   depends_on = [gcp_certificateauthority_authority.default]
+///   location   = "us-central1"
+///   pool       = gcp_certificateauthority_capool.default.name
+///   name       = "my-certificate"
+///   lifetime   = "860s"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         common_name         = "san1.example.com"
+///         country_code        = "us"
+///         organization        = "google"
+///         organizational_unit = "enterprise"
+///         locality            = "mountain view"
+///         province            = "california"
+///         street_address      = "1600 amphitheatre parkway"
+///         postal_code         = "94109"
+///       }
+///     }
+///     subject_key_id = {
+///       key_id = "4cf3372289b1d411b999dbb9ebcd44744b6b2fca"
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = false
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           crl_sign = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///     public_key = {
+///       format = "PEM"
+///       key    = filebase64("test-fixtures/rsa_public.pem")
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3263,8 +3761,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3450,34 +3948,701 @@ import 'certificate_state.dart';
 ///         - ${defaultAuthority}
 /// ```
 ///
+/// ### Privateca Certificate Subject Config Org Optional
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as std from "@pulumi/std";
+///
+/// const _default = new gcp.certificateauthority.CaPool("default", {
+///     location: "us-central1",
+///     name: "my-pool",
+///     tier: "ENTERPRISE",
+/// });
+/// const defaultAuthority = new gcp.certificateauthority.Authority("default", {
+///     location: "us-central1",
+///     pool: _default.name,
+///     certificateAuthorityId: "my-authority",
+///     config: {
+///         subjectConfig: {
+///             subject: {
+///                 commonName: "my-certificate-authority",
+///             },
+///             subjectAltName: {
+///                 dnsNames: ["hashicorp.com"],
+///             },
+///         },
+///         x509Config: {
+///             caOptions: {
+///                 isCa: true,
+///             },
+///             keyUsage: {
+///                 baseKeyUsage: {
+///                     digitalSignature: true,
+///                     certSign: true,
+///                     crlSign: true,
+///                 },
+///                 extendedKeyUsage: {
+///                     serverAuth: true,
+///                 },
+///             },
+///         },
+///     },
+///     lifetime: "86400s",
+///     keySpec: {
+///         algorithm: "RSA_PKCS1_4096_SHA256",
+///     },
+///     deletionProtection: false,
+///     skipGracePeriod: true,
+///     ignoreActiveCertificatesOnDeletion: true,
+/// });
+/// const defaultCertificate = new gcp.certificateauthority.Certificate("default", {
+///     location: "us-central1",
+///     pool: _default.name,
+///     name: "my-certificate",
+///     lifetime: "860s",
+///     config: {
+///         subjectConfig: {
+///             subject: {
+///                 commonName: "san1.example.com",
+///             },
+///         },
+///         x509Config: {
+///             caOptions: {
+///                 isCa: false,
+///             },
+///             keyUsage: {
+///                 baseKeyUsage: {
+///                     crlSign: true,
+///                 },
+///                 extendedKeyUsage: {
+///                     serverAuth: true,
+///                 },
+///             },
+///         },
+///         publicKey: {
+///             format: "PEM",
+///             key: std.filebase64({
+///                 input: "test-fixtures/rsa_public.pem",
+///             }).then(invoke => invoke.result),
+///         },
+///     },
+/// }, {
+///     dependsOn: [defaultAuthority],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumi_std as std
+///
+/// default = gcp.certificateauthority.CaPool("default",
+///     location="us-central1",
+///     name="my-pool",
+///     tier="ENTERPRISE")
+/// default_authority = gcp.certificateauthority.Authority("default",
+///     location="us-central1",
+///     pool=default.name,
+///     certificate_authority_id="my-authority",
+///     config={
+///         "subject_config": {
+///             "subject": {
+///                 "common_name": "my-certificate-authority",
+///             },
+///             "subject_alt_name": {
+///                 "dns_names": ["hashicorp.com"],
+///             },
+///         },
+///         "x509_config": {
+///             "ca_options": {
+///                 "is_ca": True,
+///             },
+///             "key_usage": {
+///                 "base_key_usage": {
+///                     "digital_signature": True,
+///                     "cert_sign": True,
+///                     "crl_sign": True,
+///                 },
+///                 "extended_key_usage": {
+///                     "server_auth": True,
+///                 },
+///             },
+///         },
+///     },
+///     lifetime="86400s",
+///     key_spec={
+///         "algorithm": "RSA_PKCS1_4096_SHA256",
+///     },
+///     deletion_protection=False,
+///     skip_grace_period=True,
+///     ignore_active_certificates_on_deletion=True)
+/// default_certificate = gcp.certificateauthority.Certificate("default",
+///     location="us-central1",
+///     pool=default.name,
+///     name="my-certificate",
+///     lifetime="860s",
+///     config={
+///         "subject_config": {
+///             "subject": {
+///                 "common_name": "san1.example.com",
+///             },
+///         },
+///         "x509_config": {
+///             "ca_options": {
+///                 "is_ca": False,
+///             },
+///             "key_usage": {
+///                 "base_key_usage": {
+///                     "crl_sign": True,
+///                 },
+///                 "extended_key_usage": {
+///                     "server_auth": True,
+///                 },
+///             },
+///         },
+///         "public_key": {
+///             "format": "PEM",
+///             "key": std.filebase64(input="test-fixtures/rsa_public.pem").result,
+///         },
+///     },
+///     opts = pulumi.ResourceOptions(depends_on=[default_authority]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Std = Pulumi.Std;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
+///     {
+///         Location = "us-central1",
+///         Name = "my-pool",
+///         Tier = "ENTERPRISE",
+///     });
+///
+///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("default", new()
+///     {
+///         Location = "us-central1",
+///         Pool = @default.Name,
+///         CertificateAuthorityId = "my-authority",
+///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+///         {
+///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+///             {
+///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+///                 {
+///                     CommonName = "my-certificate-authority",
+///                 },
+///                 SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
+///                 {
+///                     DnsNames = new[]
+///                     {
+///                         "hashicorp.com",
+///                     },
+///                 },
+///             },
+///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+///             {
+///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+///                 {
+///                     IsCa = true,
+///                 },
+///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+///                 {
+///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+///                     {
+///                         DigitalSignature = true,
+///                         CertSign = true,
+///                         CrlSign = true,
+///                     },
+///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+///                     {
+///                         ServerAuth = true,
+///                     },
+///                 },
+///             },
+///         },
+///         Lifetime = "86400s",
+///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+///         {
+///             Algorithm = "RSA_PKCS1_4096_SHA256",
+///         },
+///         DeletionProtection = false,
+///         SkipGracePeriod = true,
+///         IgnoreActiveCertificatesOnDeletion = true,
+///     });
+///
+///     var defaultCertificate = new Gcp.CertificateAuthority.Certificate("default", new()
+///     {
+///         Location = "us-central1",
+///         Pool = @default.Name,
+///         Name = "my-certificate",
+///         Lifetime = "860s",
+///         Config = new Gcp.CertificateAuthority.Inputs.CertificateConfigArgs
+///         {
+///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.CertificateConfigSubjectConfigArgs
+///             {
+///                 Subject = new Gcp.CertificateAuthority.Inputs.CertificateConfigSubjectConfigSubjectArgs
+///                 {
+///                     CommonName = "san1.example.com",
+///                 },
+///             },
+///             X509Config = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigArgs
+///             {
+///                 CaOptions = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigCaOptionsArgs
+///                 {
+///                     IsCa = false,
+///                 },
+///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigKeyUsageArgs
+///                 {
+///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs
+///                     {
+///                         CrlSign = true,
+///                     },
+///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+///                     {
+///                         ServerAuth = true,
+///                     },
+///                 },
+///             },
+///             PublicKey = new Gcp.CertificateAuthority.Inputs.CertificateConfigPublicKeyArgs
+///             {
+///                 Format = "PEM",
+///                 Key = Std.Filebase64.Invoke(new()
+///                 {
+///                     Input = "test-fixtures/rsa_public.pem",
+///                 }).Apply(invoke => invoke.Result),
+///             },
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             defaultAuthority,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-std/sdk/go/std"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_default, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
+/// 			Location: pulumi.String("us-central1"),
+/// 			Name:     pulumi.String("my-pool"),
+/// 			Tier:     pulumi.String("ENTERPRISE"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+/// 			Location:               pulumi.String("us-central1"),
+/// 			Pool:                   _default.Name,
+/// 			CertificateAuthorityId: pulumi.String("my-authority"),
+/// 			Config: &certificateauthority.AuthorityConfigArgs{
+/// 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+/// 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+/// 						CommonName: pulumi.String("my-certificate-authority"),
+/// 					},
+/// 					SubjectAltName: &certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs{
+/// 						DnsNames: pulumi.StringArray{
+/// 							pulumi.String("hashicorp.com"),
+/// 						},
+/// 					},
+/// 				},
+/// 				X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+/// 					CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+/// 						IsCa: pulumi.Bool(true),
+/// 					},
+/// 					KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+/// 						BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+/// 							DigitalSignature: pulumi.Bool(true),
+/// 							CertSign:         pulumi.Bool(true),
+/// 							CrlSign:          pulumi.Bool(true),
+/// 						},
+/// 						ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+/// 							ServerAuth: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 			Lifetime: pulumi.String("86400s"),
+/// 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+/// 				Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+/// 			},
+/// 			DeletionProtection:                 pulumi.Bool(false),
+/// 			SkipGracePeriod:                    pulumi.Bool(true),
+/// 			IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+/// 			Input: "test-fixtures/rsa_public.pem",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = certificateauthority.NewCertificate(ctx, "default", &certificateauthority.CertificateArgs{
+/// 			Location: pulumi.String("us-central1"),
+/// 			Pool:     _default.Name,
+/// 			Name:     pulumi.String("my-certificate"),
+/// 			Lifetime: pulumi.String("860s"),
+/// 			Config: &certificateauthority.CertificateConfigArgs{
+/// 				SubjectConfig: &certificateauthority.CertificateConfigSubjectConfigArgs{
+/// 					Subject: &certificateauthority.CertificateConfigSubjectConfigSubjectArgs{
+/// 						CommonName: pulumi.String("san1.example.com"),
+/// 					},
+/// 				},
+/// 				X509Config: &certificateauthority.CertificateConfigX509ConfigArgs{
+/// 					CaOptions: &certificateauthority.CertificateConfigX509ConfigCaOptionsArgs{
+/// 						IsCa: pulumi.Bool(false),
+/// 					},
+/// 					KeyUsage: &certificateauthority.CertificateConfigX509ConfigKeyUsageArgs{
+/// 						BaseKeyUsage: &certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+/// 							CrlSign: pulumi.Bool(true),
+/// 						},
+/// 						ExtendedKeyUsage: &certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+/// 							ServerAuth: pulumi.Bool(true),
+/// 						},
+/// 					},
+/// 				},
+/// 				PublicKey: &certificateauthority.CertificateConfigPublicKeyArgs{
+/// 					Format: pulumi.String("PEM"),
+/// 					Key:    pulumi.String(invokeFilebase64.Result),
+/// 				},
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			defaultAuthority,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificateauthority_capool" "default" {
+///   location = "us-central1"
+///   name     = "my-pool"
+///   tier     = "ENTERPRISE"
+/// }
+/// resource "gcp_certificateauthority_authority" "default" {
+///   location                 = "us-central1"
+///   pool                     = gcp_certificateauthority_capool.default.name
+///   certificate_authority_id = "my-authority"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         common_name = "my-certificate-authority"
+///       }
+///       subject_alt_name = {
+///         dns_names = ["hashicorp.com"]
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           digital_signature = true
+///           cert_sign         = true
+///           crl_sign          = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+///   lifetime = "86400s"
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+///   ignore_active_certificates_on_deletion = true
+/// }
+/// resource "gcp_certificateauthority_certificate" "default" {
+///   depends_on = [gcp_certificateauthority_authority.default]
+///   location   = "us-central1"
+///   pool       = gcp_certificateauthority_capool.default.name
+///   name       = "my-certificate"
+///   lifetime   = "860s"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         common_name = "san1.example.com"
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = false
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           crl_sign = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///     public_key = {
+///       format = "PEM"
+///       key    = filebase64("test-fixtures/rsa_public.pem")
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.certificateauthority.CaPool;
+/// import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+/// import com.pulumi.gcp.certificateauthority.Authority;
+/// import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+/// import com.pulumi.gcp.certificateauthority.Certificate;
+/// import com.pulumi.gcp.certificateauthority.CertificateArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectConfigSubjectArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigCaOptionsArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+/// import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigPublicKeyArgs;
+/// import com.pulumi.std.StdFunctions;
+/// import com.pulumi.std.inputs.Filebase64Args;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new CaPool("default", CaPoolArgs.builder()
+///             .location("us-central1")
+///             .name("my-pool")
+///             .tier("ENTERPRISE")
+///             .build());
+///
+///         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
+///             .location("us-central1")
+///             .pool(default_.name())
+///             .certificateAuthorityId("my-authority")
+///             .config(AuthorityConfigArgs.builder()
+///                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+///                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+///                         .commonName("my-certificate-authority")
+///                         .build())
+///                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
+///                         .dnsNames("hashicorp.com")
+///                         .build())
+///                     .build())
+///                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+///                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+///                         .isCa(true)
+///                         .build())
+///                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+///                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+///                             .digitalSignature(true)
+///                             .certSign(true)
+///                             .crlSign(true)
+///                             .build())
+///                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+///                             .serverAuth(true)
+///                             .build())
+///                         .build())
+///                     .build())
+///                 .build())
+///             .lifetime("86400s")
+///             .keySpec(AuthorityKeySpecArgs.builder()
+///                 .algorithm("RSA_PKCS1_4096_SHA256")
+///                 .build())
+///             .deletionProtection(false)
+///             .skipGracePeriod(true)
+///             .ignoreActiveCertificatesOnDeletion(true)
+///             .build());
+///
+///         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()
+///             .location("us-central1")
+///             .pool(default_.name())
+///             .name("my-certificate")
+///             .lifetime("860s")
+///             .config(CertificateConfigArgs.builder()
+///                 .subjectConfig(CertificateConfigSubjectConfigArgs.builder()
+///                     .subject(CertificateConfigSubjectConfigSubjectArgs.builder()
+///                         .commonName("san1.example.com")
+///                         .build())
+///                     .build())
+///                 .x509Config(CertificateConfigX509ConfigArgs.builder()
+///                     .caOptions(CertificateConfigX509ConfigCaOptionsArgs.builder()
+///                         .isCa(false)
+///                         .build())
+///                     .keyUsage(CertificateConfigX509ConfigKeyUsageArgs.builder()
+///                         .baseKeyUsage(CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+///                             .crlSign(true)
+///                             .build())
+///                         .extendedKeyUsage(CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+///                             .serverAuth(true)
+///                             .build())
+///                         .build())
+///                     .build())
+///                 .publicKey(CertificateConfigPublicKeyArgs.builder()
+///                     .format("PEM")
+///                     .key(StdFunctions.filebase64(Filebase64Args.builder()
+///                         .input("test-fixtures/rsa_public.pem")
+///                         .build()).result())
+///                     .build())
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(defaultAuthority)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:certificateauthority:CaPool
+///     properties:
+///       location: us-central1
+///       name: my-pool
+///       tier: ENTERPRISE
+///   defaultAuthority:
+///     type: gcp:certificateauthority:Authority
+///     name: default
+///     properties:
+///       location: us-central1
+///       pool: ${default.name}
+///       certificateAuthorityId: my-authority
+///       config:
+///         subjectConfig:
+///           subject:
+///             commonName: my-certificate-authority
+///           subjectAltName:
+///             dnsNames:
+///               - hashicorp.com
+///         x509Config:
+///           caOptions:
+///             isCa: true
+///           keyUsage:
+///             baseKeyUsage:
+///               digitalSignature: true
+///               certSign: true
+///               crlSign: true
+///             extendedKeyUsage:
+///               serverAuth: true
+///       lifetime: 86400s
+///       keySpec:
+///         algorithm: RSA_PKCS1_4096_SHA256
+///       deletionProtection: false
+///       skipGracePeriod: true
+///       ignoreActiveCertificatesOnDeletion: true
+///   defaultCertificate:
+///     type: gcp:certificateauthority:Certificate
+///     name: default
+///     properties:
+///       location: us-central1
+///       pool: ${default.name}
+///       name: my-certificate
+///       lifetime: 860s
+///       config:
+///         subjectConfig:
+///           subject:
+///             commonName: san1.example.com
+///         x509Config:
+///           caOptions:
+///             isCa: false
+///           keyUsage:
+///             baseKeyUsage:
+///               crlSign: true
+///             extendedKeyUsage:
+///               serverAuth: true
+///         publicKey:
+///           format: PEM
+///           key:
+///             fn::invoke:
+///               function: std:filebase64
+///               arguments:
+///                 input: test-fixtures/rsa_public.pem
+///               return: result
+///     options:
+///       dependsOn:
+///         - ${defaultAuthority}
+/// ```
+///
 ///
 /// ## Import
 ///
 /// Certificate can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{pool}}/{{name}}`
-///
 /// * `{{location}}/{{pool}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificateauthority/certificate:Certificate default {{project}}/{{location}}/{{pool}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificateauthority/certificate:Certificate default {{location}}/{{pool}}/{{name}}
 /// ```
 class Certificate extends pulumi.CustomResource {
   /// The Certificate Authority ID that should issue the certificate. For example, to issue a Certificate from
   /// a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
-  /// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
+  /// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
   /// should be set to `my-ca`.
   late final pulumi.Output<String?> certificateAuthority;
   /// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
@@ -3495,6 +4660,13 @@ class Certificate extends pulumi.CustomResource {
   /// The time that this resource was created on the server.
   /// This is in RFC3339 text format.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
@@ -3502,7 +4674,7 @@ class Certificate extends pulumi.CustomResource {
   /// Labels with user-defined metadata to apply to this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
   /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -3554,6 +4726,7 @@ class Certificate extends pulumi.CustomResource {
     certificateTemplate = registerOutput<String?>('certificateTemplate');
     config = registerOutput<CertificateConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     issuerCertificateAuthority = registerOutput<String>('issuerCertificateAuthority');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -3598,6 +4771,7 @@ class Certificate extends pulumi.CustomResource {
     certificateTemplate = registerOutput<String?>('certificateTemplate');
     config = registerOutput<CertificateConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     issuerCertificateAuthority = registerOutput<String>('issuerCertificateAuthority');
     labels = registerOutput<Map<String, String>?>('labels');

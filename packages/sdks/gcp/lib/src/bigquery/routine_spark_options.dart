@@ -15,7 +15,7 @@ class RoutineSparkOptions {
   /// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see Apache Spark.
   final pulumi.Input<List<String>>? jarUris;
   /// The fully qualified name of a class in jarUris, for example, com.example.wordcount.
-  /// Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
+  /// Exactly one of mainClass and mainJarUri field should be set for Java/Scala language type.
   final pulumi.Input<String>? mainClass;
   /// The main file/jar URI of the Spark application.
   /// Exactly one of the definitionBody field and the mainFileUri field must be set for Python.
@@ -84,4 +84,3 @@ class RoutineSparkOptions {
     );
   }
 }
-

@@ -13,6 +13,13 @@ import 'spoke_linked_vpn_tunnels.dart';
 /// {@endtemplate}
 /// {@macro pulumi_networkconnectivity_spoke_spoke_args_doc}
 class SpokeArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of the spoke.
   final pulumi.Input<String>? description;
   /// This is a gateway that can apply specialized processing to traffic going through it.
@@ -24,7 +31,7 @@ class SpokeArgs {
   final pulumi.Input<String> hub;
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
   /// Structure is documented below.
@@ -50,6 +57,7 @@ class SpokeArgs {
   final pulumi.Input<String>? project;
 
   /// Creates a new [SpokeArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of the spoke.
   /// [gateway] This is a gateway that can apply specialized processing to traffic going through it.
   /// [group] The name of the group that this spoke is associated with.
@@ -64,6 +72,7 @@ class SpokeArgs {
   /// [name] Immutable. The name of the spoke. Spoke names must be unique.
   /// [project] The ID of the project in which the resource belongs.
   const SpokeArgs({
+    this.deletionPolicy,
     this.description,
     this.gateway,
     this.group,
@@ -81,6 +90,7 @@ class SpokeArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'gateway': ?pulumi.Input.mapOptionalInputValue<SpokeGateway, Map<String, dynamic>>(gateway, (value) => value.toMap()),
       'group': ?group,
@@ -99,6 +109,7 @@ class SpokeArgs {
 
   factory SpokeArgs.fromMap(Map<String, dynamic> map) {
     return SpokeArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gateway: (() { final guardedValue = map['gateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SpokeGateway.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -115,4 +126,3 @@ class SpokeArgs {
     );
   }
 }
-

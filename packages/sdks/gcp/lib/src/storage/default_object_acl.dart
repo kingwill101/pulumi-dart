@@ -108,6 +108,24 @@ import 'default_object_aclstate.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "image-store" {
+///   name     = "image-store-bucket"
+///   location = "EU"
+/// }
+/// resource "gcp_storage_defaultobjectacl" "image-store-default-acl" {
+///   bucket        = gcp_storage_bucket.image-store.name
+///   role_entities = ["OWNER:user-my.email@gmail.com", "READER:group-mygroup"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +136,8 @@ import 'default_object_aclstate.dart';
 /// import com.pulumi.gcp.storage.BucketArgs;
 /// import com.pulumi.gcp.storage.DefaultObjectACL;
 /// import com.pulumi.gcp.storage.DefaultObjectACLArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -169,6 +187,13 @@ import 'default_object_aclstate.dart';
 class DefaultObjectACL extends pulumi.CustomResource {
   /// The name of the bucket it applies to.
   late final pulumi.Output<String> bucket;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// List of role/entity pairs in the form `ROLE:entity`.
   /// See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
   /// Omitting the field is the same as providing an empty list.
@@ -189,6 +214,7 @@ class DefaultObjectACL extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucket = registerOutput<String>('bucket');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     roleEntities = registerOutput<List<String>>('roleEntities');
   }
 
@@ -216,6 +242,7 @@ class DefaultObjectACL extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucket = registerOutput<String>('bucket');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     roleEntities = registerOutput<List<String>>('roleEntities');
   }
 }

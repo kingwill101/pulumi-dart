@@ -6,10 +6,10 @@ import 'get_region_security_policy_rule_rate_limit_option_enforce_on_key_config.
 import 'get_region_security_policy_rule_rate_limit_option_rate_limit_threshold.dart';
 
 class GetRegionSecurityPolicyRuleRateLimitOption {
-  /// Can only be specified if the action for the rule is "rate_based_ban".
+  /// Can only be specified if the action for the rule is "rateBasedBan".
   /// If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
   final pulumi.Input<int> banDurationSec;
-  /// Can only be specified if the action for the rule is "rate_based_ban".
+  /// Can only be specified if the action for the rule is "rateBasedBan".
   /// If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
   final pulumi.Input<List<GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold>> banThresholds;
   /// Action to take for requests that are under the configured rate limit threshold.
@@ -43,8 +43,8 @@ class GetRegionSecurityPolicyRuleRateLimitOption {
   final pulumi.Input<List<GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold>> rateLimitThresholds;
 
   /// Creates a new [GetRegionSecurityPolicyRuleRateLimitOption].
-  /// [banDurationSec] Can only be specified if the action for the rule is "rate_based_ban".
-  /// [banThresholds] Can only be specified if the action for the rule is "rate_based_ban".
+  /// [banDurationSec] Can only be specified if the action for the rule is "rateBasedBan".
+  /// [banThresholds] Can only be specified if the action for the rule is "rateBasedBan".
   /// [conformAction] Action to take for requests that are under the configured rate limit threshold.
   /// [enforceOnKey] Determines the key to enforce the rateLimitThreshold on. Possible values are:
   /// [enforceOnKeyConfigs] If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
@@ -88,4 +88,3 @@ class GetRegionSecurityPolicyRuleRateLimitOption {
     );
   }
 }
-

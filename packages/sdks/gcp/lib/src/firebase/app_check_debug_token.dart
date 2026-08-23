@@ -151,6 +151,36 @@ import 'app_check_debug_token_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_webapp" "default" {
+///   project      = "my-project-name"
+///   display_name = "Web App for debug token"
+/// }
+/// # It takes a while for App Check to recognize the new app
+/// # If your app already exists, you don't have to wait 30 seconds.
+/// resource "time_sleep" "wait_30s" {
+///   depends_on      = [gcp_firebase_webapp.default]
+///   create_duration = "30s"
+/// }
+/// resource "gcp_firebase_appcheckdebugtoken" "default" {
+///   depends_on   = [time_sleep.wait_30s]
+///   project      = "my-project-name"
+///   app_id       = gcp_firebase_webapp.default.app_id
+///   display_name = "Debug Token"
+///   token        = "00000000-AAAA-BBBB-CCCC-000000000000"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -164,8 +194,8 @@ import 'app_check_debug_token_state.dart';
 /// import com.pulumi.gcp.firebase.AppCheckDebugToken;
 /// import com.pulumi.gcp.firebase.AppCheckDebugTokenArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -238,22 +268,15 @@ import 'app_check_debug_token_state.dart';
 /// DebugToken can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/apps/{{app_id}}/debugTokens/{{debug_token_id}}`
-///
 /// * `{{project}}/{{app_id}}/{{debug_token_id}}`
-///
 /// * `{{app_id}}/{{debug_token_id}}`
+///
 ///
 /// When using the `pulumi import` command, DebugToken can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default projects/{{project}}/apps/{{app_id}}/debugTokens/{{debug_token_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default {{project}}/{{app_id}}/{{debug_token_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appCheckDebugToken:AppCheckDebugToken default {{app_id}}/{{debug_token_id}}
 /// ```
 class AppCheckDebugToken extends pulumi.CustomResource {
@@ -264,6 +287,13 @@ class AppCheckDebugToken extends pulumi.CustomResource {
   late final pulumi.Output<String> appId;
   /// The last segment of the resource name of the debug token.
   late final pulumi.Output<String> debugTokenId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human readable display name used to identify this debug token.
   late final pulumi.Output<String> displayName;
   /// The ID of the project in which the resource belongs.
@@ -294,6 +324,7 @@ class AppCheckDebugToken extends pulumi.CustomResource {
         ) {
     appId = registerOutput<String>('appId');
     debugTokenId = registerOutput<String>('debugTokenId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     project = registerOutput<String>('project');
     token = registerOutput<String>('token');
@@ -324,6 +355,7 @@ class AppCheckDebugToken extends pulumi.CustomResource {
         ) {
     appId = registerOutput<String>('appId');
     debugTokenId = registerOutput<String>('debugTokenId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     project = registerOutput<String>('project');
     token = registerOutput<String>('token');

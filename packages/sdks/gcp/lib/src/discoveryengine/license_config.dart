@@ -125,6 +125,33 @@ import 'license_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_licenseconfig" "basic" {
+///   location          = "global"
+///   license_config_id = "license-config-id"
+///   license_count     = 50
+///   subscription_tier = "SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT"
+///   start_date = {
+///     year  = 2099
+///     month = 1
+///     day   = 1
+///   }
+///   end_date = {
+///     year  = 2100
+///     month = 1
+///     day   = 1
+///   }
+///   subscription_term = "SUBSCRIPTION_TERM_ONE_YEAR"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -135,8 +162,8 @@ import 'license_config_state.dart';
 /// import com.pulumi.gcp.discoveryengine.LicenseConfigArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.LicenseConfigStartDateArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.LicenseConfigEndDateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,22 +222,15 @@ import 'license_config_state.dart';
 /// LicenseConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/licenseConfigs/{{license_config_id}}`
-///
 /// * `{{project}}/{{location}}/{{license_config_id}}`
-///
 /// * `{{location}}/{{license_config_id}}`
+///
 ///
 /// When using the `pulumi import` command, LicenseConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/licenseConfig:LicenseConfig default projects/{{project}}/locations/{{location}}/licenseConfigs/{{license_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/licenseConfig:LicenseConfig default {{project}}/{{location}}/{{license_config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/licenseConfig:LicenseConfig default {{location}}/{{license_config_id}}
 /// ```
 class LicenseConfig extends pulumi.CustomResource {

@@ -125,8 +125,6 @@ import 'topic_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -175,6 +173,44 @@ import 'topic_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_managedkafka_cluster" "cluster" {
+///   cluster_id = "my-cluster"
+///   location   = "us-central1"
+///   capacity_config = {
+///     vcpu_count   = 3
+///     memory_bytes = 3221225472
+///   }
+///   gcp_config = {
+///     access_config = {
+///       network_configs = [{
+///         "subnet" ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/subnetworks/default"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_managedkafka_topic" "example" {
+///   topic_id           = "my-topic"
+///   cluster            = gcp_managedkafka_cluster.cluster.cluster_id
+///   location           = "us-central1"
+///   partition_count    = 2
+///   replication_factor = 3
+///   configs = {
+///     "cleanup.policy" = "compact"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -188,10 +224,11 @@ import 'topic_state.dart';
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
 /// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
+/// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs;
 /// import com.pulumi.gcp.managedkafka.Topic;
 /// import com.pulumi.gcp.managedkafka.TopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -271,22 +308,15 @@ import 'topic_state.dart';
 /// Topic can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/topics/{{topic_id}}`
-///
 /// * `{{project}}/{{location}}/{{cluster}}/{{topic_id}}`
-///
 /// * `{{location}}/{{cluster}}/{{topic_id}}`
+///
 ///
 /// When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:managedkafka/topic:Topic default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/topics/{{topic_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:managedkafka/topic:Topic default {{project}}/{{location}}/{{cluster}}/{{topic_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:managedkafka/topic:Topic default {{location}}/{{cluster}}/{{topic_id}}
 /// ```
 class Topic extends pulumi.CustomResource {
@@ -294,6 +324,13 @@ class Topic extends pulumi.CustomResource {
   late final pulumi.Output<String> cluster;
   /// Configuration for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy=compact`, `compression.type=producer`.
   late final pulumi.Output<Map<String, String>?> configs;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   late final pulumi.Output<String> location;
   /// The name of the topic. The `topic` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/topics/TOPIC_ID`.
@@ -324,6 +361,7 @@ class Topic extends pulumi.CustomResource {
         ) {
     cluster = registerOutput<String>('cluster');
     configs = registerOutput<Map<String, String>?>('configs');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     partitionCount = registerOutput<int?>('partitionCount');
@@ -357,6 +395,7 @@ class Topic extends pulumi.CustomResource {
         ) {
     cluster = registerOutput<String>('cluster');
     configs = registerOutput<Map<String, String>?>('configs');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     partitionCount = registerOutput<int?>('partitionCount');

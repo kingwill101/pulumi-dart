@@ -162,6 +162,31 @@ import 'firewall_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_firewall" "default" {
+///   name    = "test-firewall"
+///   network = gcp_compute_network.default.name
+///   allows {
+///     protocol = "icmp"
+///   }
+///   allows {
+///     protocol = "tcp"
+///     ports    = ["80", "8080", "1000-2000"]
+///   }
+///   source_tags = ["web"]
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name = "test-network"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -173,8 +198,8 @@ import 'firewall_state.dart';
 /// import com.pulumi.gcp.compute.Firewall;
 /// import com.pulumi.gcp.compute.FirewallArgs;
 /// import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -356,6 +381,28 @@ import 'firewall_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_firewall" "rules" {
+///   project     = "my-project-name"
+///   name        = "my-firewall-rule"
+///   network     = "default"
+///   description = "Creates firewall rule targeting tagged instances"
+///   allows {
+///     protocol = "tcp"
+///     ports    = ["80", "8080", "1000-2000"]
+///   }
+///   source_tags = ["foo"]
+///   target_tags = ["web"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -365,8 +412,8 @@ import 'firewall_state.dart';
 /// import com.pulumi.gcp.compute.Firewall;
 /// import com.pulumi.gcp.compute.FirewallArgs;
 /// import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -424,22 +471,15 @@ import 'firewall_state.dart';
 /// Firewall can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/firewalls/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Firewall can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/firewall:Firewall default projects/{{project}}/global/firewalls/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/firewall:Firewall default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/firewall:Firewall default {{name}}
 /// ```
 class Firewall extends pulumi.CustomResource {
@@ -450,6 +490,13 @@ class Firewall extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>?> allows;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The list of DENY rules specified by this firewall. Each rule specifies
   /// a protocol and port-range tuple that describes a denied connection.
   /// Structure is documented below.
@@ -462,8 +509,8 @@ class Firewall extends pulumi.CustomResource {
   /// must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
   late final pulumi.Output<List<String>> destinationRanges;
   /// Direction of traffic to which this firewall applies; default is
-  /// INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
-  /// `source_tags` or `source_service_accounts` is required.
+  /// INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
+  /// `sourceTags` or `sourceServiceAccounts` is required.
   /// Possible values are: `INGRESS`, `EGRESS`.
   late final pulumi.Output<String> direction;
   /// Denotes whether the firewall rule is disabled, i.e not applied to the
@@ -472,7 +519,7 @@ class Firewall extends pulumi.CustomResource {
   /// is unspecified, the firewall rule will be enabled.
   late final pulumi.Output<bool?> disabled;
   /// This field denotes whether to enable logging for a particular firewall rule.
-  /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
+  /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
   late final pulumi.Output<bool> enableLogging;
   /// This field denotes the logging options for a particular firewall rule.
   /// If defined, logging is enabled, and logs will be exported to Cloud Logging.
@@ -486,7 +533,7 @@ class Firewall extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
-  /// The name or self_link of the network to attach this firewall to.
+  /// The name or selfLink of the network to attach this firewall to.
   late final pulumi.Output<String> network;
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
@@ -511,7 +558,7 @@ class Firewall extends pulumi.CustomResource {
   /// source IP that belongs to a tag listed in the sourceTags property. The
   /// connection does not need to match both properties for the firewall to
   /// apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
-  /// `source_ranges`, `source_tags` or `source_service_accounts` is required.
+  /// `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
   late final pulumi.Output<List<String>?> sourceRanges;
   /// If source service accounts are specified, the firewall will apply only
   /// to traffic originating from an instance with a service account in this
@@ -524,7 +571,7 @@ class Firewall extends pulumi.CustomResource {
   /// sourceServiceAccount. The connection does not need to match both
   /// properties for the firewall to apply. sourceServiceAccounts cannot be
   /// used at the same time as sourceTags or targetTags. For INGRESS traffic,
-  /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
+  /// one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
   late final pulumi.Output<List<String>?> sourceServiceAccounts;
   /// If source tags are specified, the firewall will apply only to traffic
   /// with source IP that belongs to a tag listed in source tags. Source
@@ -535,7 +582,7 @@ class Firewall extends pulumi.CustomResource {
   /// source IP address within sourceRanges OR the source IP that belongs to
   /// a tag listed in the sourceTags property. The connection does not need
   /// to match both properties for the firewall to apply. For INGRESS traffic,
-  /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
+  /// one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
   late final pulumi.Output<List<String>?> sourceTags;
   /// A list of service accounts indicating sets of instances located in the
   /// network that may make network connections as specified in allowed[].
@@ -566,6 +613,7 @@ class Firewall extends pulumi.CustomResource {
         ) {
     allows = registerOutput<List<Map<String, dynamic>>?>('allows');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     denies = registerOutput<List<Map<String, dynamic>>?>('denies');
     description = registerOutput<String?>('description');
     destinationRanges = registerOutput<List<String>>('destinationRanges');
@@ -611,6 +659,7 @@ class Firewall extends pulumi.CustomResource {
         ) {
     allows = registerOutput<List<Map<String, dynamic>>?>('allows');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     denies = registerOutput<List<Map<String, dynamic>>?>('denies');
     description = registerOutput<String?>('description');
     destinationRanges = registerOutput<List<String>>('destinationRanges');

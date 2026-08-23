@@ -32,7 +32,7 @@ import 'bi_reservation_state.dart';
 ///
 /// reservation = gcp.bigquery.BiReservation("reservation",
 ///     location="us-west2",
-///     size=3000000000)
+///     size=int(3000000000))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,7 +45,7 @@ import 'bi_reservation_state.dart';
 ///     var reservation = new Gcp.BigQuery.BiReservation("reservation", new()
 ///     {
 ///         Location = "us-west2",
-///         Size = 3000000000,
+///         Size = (int)3000000000,
 ///     });
 ///
 /// });
@@ -71,6 +71,20 @@ import 'bi_reservation_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_bireservation" "reservation" {
+///   location = "us-west2"
+///   size     = "3000000000"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +93,8 @@ import 'bi_reservation_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigquery.BiReservation;
 /// import com.pulumi.gcp.bigquery.BiReservationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -115,25 +129,25 @@ import 'bi_reservation_state.dart';
 /// BiReservation can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/biReservation`
-///
 /// * `{{project}}/{{location}}`
-///
 /// * `{{location}}`
+///
 ///
 /// When using the `pulumi import` command, BiReservation can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigquery/biReservation:BiReservation default projects/{{project}}/locations/{{location}}/biReservation
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/biReservation:BiReservation default {{project}}/{{location}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/biReservation:BiReservation default {{location}}
 /// ```
 class BiReservation extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// LOCATION_DESCRIPTION
   late final pulumi.Output<String> location;
   /// The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
@@ -164,6 +178,7 @@ class BiReservation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     preferredTables = registerOutput<List<Map<String, dynamic>>?>('preferredTables');
@@ -195,6 +210,7 @@ class BiReservation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     preferredTables = registerOutput<List<Map<String, dynamic>>?>('preferredTables');

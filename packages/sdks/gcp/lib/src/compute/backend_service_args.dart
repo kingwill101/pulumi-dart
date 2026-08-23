@@ -23,7 +23,7 @@ import 'backend_service_tls_settings.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_backend_service_backend_service_args_doc}
 class BackendServiceArgs {
-  /// Lifetime of cookies in seconds if session_affinity is
+  /// Lifetime of cookies in seconds if sessionAffinity is
   /// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
   /// only until the end of the browser session (or equivalent). The
   /// maximum allowed value for TTL is one day.
@@ -36,7 +36,7 @@ class BackendServiceArgs {
   /// Structure is documented below.
   final pulumi.Input<BackendServiceCdnPolicy>? cdnPolicy;
   /// Settings controlling the volume of connections to a backend service. This field
-  /// is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
+  /// is applicable only when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
   final pulumi.Input<BackendServiceCircuitBreakers>? circuitBreakers;
   /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
@@ -50,8 +50,8 @@ class BackendServiceArgs {
   /// policy is applicable only for HTTP connections. The affinity to a particular
   /// destination host will be lost when one or more hosts are added/removed from the
   /// destination service. This field specifies parameters that control consistent
-  /// hashing. This field only applies if the load_balancing_scheme is set to
-  /// INTERNAL_SELF_MANAGED. This field is only applicable when locality_lb_policy is
+  /// hashing. This field only applies if the loadBalancingScheme is set to
+  /// INTERNAL_SELF_MANAGED. This field is only applicable when localityLbPolicy is
   /// set to MAGLEV or RING_HASH.
   /// Structure is documented below.
   final pulumi.Input<BackendServiceConsistentHash>? consistentHash;
@@ -64,8 +64,16 @@ class BackendServiceArgs {
   /// Headers that the HTTP/S load balancer should add to proxied
   /// responses.
   final pulumi.Input<List<String>>? customResponseHeaders;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
+  /// (Optional, Beta)
   /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
   /// feature which together with Service Extension allows customized and complex routing logic.
   /// Structure is documented below.
@@ -162,17 +170,17 @@ class BackendServiceArgs {
   /// X-Endpoint-Load-Metrics. The reported metrics
   /// to use for computing the weights are specified via the
   /// backends[].customMetrics fields.
-  /// locality_lb_policy is applicable to either:
-  /// * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
+  /// localityLbPolicy is applicable to either:
+  /// * A regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C,
   /// and loadBalancingScheme set to INTERNAL_MANAGED.
-  /// * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+  /// * A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
   /// Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
   /// Network Load Balancing. The default is MAGLEV.
-  /// If session_affinity is not NONE, and locality_lb_policy is not set to MAGLEV, WEIGHTED_MAGLEV,
+  /// If sessionAffinity is not NONE, and localityLbPolicy is not set to MAGLEV, WEIGHTED_MAGLEV,
   /// or RING_HASH, session affinity settings will not take effect.
   /// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-  /// by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
+  /// by a URL map that is bound to target gRPC proxy that has validateForProxyless
   /// field set to true.
   /// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
   final pulumi.Input<String>? localityLbPolicy;
@@ -196,6 +204,7 @@ class BackendServiceArgs {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   final pulumi.Input<String>? name;
+  /// (Optional, Beta)
   /// Configures traffic steering properties of internal passthrough Network Load Balancers.
   /// Structure is documented below.
   final pulumi.Input<BackendServiceNetworkPassThroughLbTrafficPolicy>? networkPassThroughLbTrafficPolicy;
@@ -224,9 +233,9 @@ class BackendServiceArgs {
   /// The security policy associated with this backend service.
   final pulumi.Input<String>? securityPolicy;
   /// The security settings that apply to this backend service. This field is applicable to either
-  /// a regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C, and
-  /// load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
-  /// load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+  /// a regional backend service with the serviceProtocol set to HTTP, HTTPS, HTTP2 or H2C, and
+  /// loadBalancingScheme set to INTERNAL_MANAGED; or a global backend service with the
+  /// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
   final pulumi.Input<BackendServiceSecuritySettings>? securitySettings;
   /// URL to networkservices.ServiceLbPolicy resource.
@@ -249,7 +258,7 @@ class BackendServiceArgs {
   final pulumi.Input<BackendServiceTlsSettings>? tlsSettings;
 
   /// Creates a new [BackendServiceArgs].
-  /// [affinityCookieTtlSec] Lifetime of cookies in seconds if session_affinity is
+  /// [affinityCookieTtlSec] Lifetime of cookies in seconds if sessionAffinity is
   /// [backends] The set of backends that serve this BackendService.
   /// [cdnPolicy] Cloud CDN configuration for this BackendService.
   /// [circuitBreakers] Settings controlling the volume of connections to a backend service. This field
@@ -259,8 +268,9 @@ class BackendServiceArgs {
   /// [customMetrics] List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
   /// [customRequestHeaders] Headers that the HTTP/S load balancer should add to proxied
   /// [customResponseHeaders] Headers that the HTTP/S load balancer should add to proxied
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
-  /// [dynamicForwarding] Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+  /// [dynamicForwarding] (Optional, Beta)
   /// [edgeSecurityPolicy] The resource URL for the edge security policy associated with this backend service.
   /// [enableCdn] If true, enable Cloud CDN for this BackendService.
   /// [externalManagedMigrationState] Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and
@@ -274,7 +284,7 @@ class BackendServiceArgs {
   /// [logConfig] This field denotes the logging options for the load balancer traffic served by this backend service.
   /// [maxStreamDuration] Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the
   /// [name] Name of the resource. Provided by the client when the resource is
-  /// [networkPassThroughLbTrafficPolicy] Configures traffic steering properties of internal passthrough Network Load Balancers.
+  /// [networkPassThroughLbTrafficPolicy] (Optional, Beta)
   /// [outlierDetection] Settings controlling eviction of unhealthy hosts from the load balancing pool.
   /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [portName] Name of backend port. The same name should appear in the instance
@@ -298,6 +308,7 @@ class BackendServiceArgs {
     this.customMetrics,
     this.customRequestHeaders,
     this.customResponseHeaders,
+    this.deletionPolicy,
     this.description,
     this.dynamicForwarding,
     this.edgeSecurityPolicy,
@@ -340,6 +351,7 @@ class BackendServiceArgs {
       'customMetrics': ?pulumi.Input.mapOptionalInputValue<List<BackendServiceCustomMetric>, List<Map<String, dynamic>>>(customMetrics, (value) => pulumi.Input.encodeList<BackendServiceCustomMetric, Map<String, dynamic>>(value, (value) => value.toMap())),
       'customRequestHeaders': ?customRequestHeaders,
       'customResponseHeaders': ?customResponseHeaders,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'dynamicForwarding': ?pulumi.Input.mapOptionalInputValue<BackendServiceDynamicForwarding, Map<String, dynamic>>(dynamicForwarding, (value) => value.toMap()),
       'edgeSecurityPolicy': ?edgeSecurityPolicy,
@@ -383,6 +395,7 @@ class BackendServiceArgs {
       customMetrics: (() { final guardedValue = map['customMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BackendServiceCustomMetric>(guardedValue, (value) => BackendServiceCustomMetric.fromMap((value as Map).cast<String, dynamic>()))); })(),
       customRequestHeaders: (() { final guardedValue = map['customRequestHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       customResponseHeaders: (() { final guardedValue = map['customResponseHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dynamicForwarding: (() { final guardedValue = map['dynamicForwarding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendServiceDynamicForwarding.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       edgeSecurityPolicy: (() { final guardedValue = map['edgeSecurityPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -414,4 +427,3 @@ class BackendServiceArgs {
     );
   }
 }
-

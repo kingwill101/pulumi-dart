@@ -48,7 +48,7 @@ import 'generator_summarization_context.dart';
 ///     description="A v4.0 summarization generator.",
 ///     inference_parameter={
 ///         "max_output_tokens": 1024,
-///         "temperature": 0,
+///         "temperature": float(0),
 ///         "top_k": 40,
 ///         "top_p": 0.95,
 ///     },
@@ -73,7 +73,7 @@ import 'generator_summarization_context.dart';
 ///         InferenceParameter = new Gcp.Diagflow.Inputs.GeneratorInferenceParameterArgs
 ///         {
 ///             MaxOutputTokens = 1024,
-///             Temperature = 0,
+///             Temperature = 0.0,
 ///             TopK = 40,
 ///             TopP = 0.95,
 ///         },
@@ -119,6 +119,31 @@ import 'generator_summarization_context.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_generator" "summarization_basic_generator" {
+///   location    = "global"
+///   description = "A v4.0 summarization generator."
+///   inference_parameter = {
+///     max_output_tokens = 1024
+///     temperature       = 0
+///     top_k             = 40
+///     top_p             = 0.95
+///   }
+///   summarization_context = {
+///     version              = "4.0"
+///     output_language_code = "en"
+///   }
+///   trigger_event = "MANUAL_CALL"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -129,8 +154,8 @@ import 'generator_summarization_context.dart';
 /// import com.pulumi.gcp.diagflow.GeneratorArgs;
 /// import com.pulumi.gcp.diagflow.inputs.GeneratorInferenceParameterArgs;
 /// import com.pulumi.gcp.diagflow.inputs.GeneratorSummarizationContextArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -186,25 +211,25 @@ import 'generator_summarization_context.dart';
 /// Generator can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/generators/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Generator can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/generator:Generator default projects/{{project}}/locations/{{location}}/generators/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/generator:Generator default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/generator:Generator default {{location}}/{{name}}
 /// ```
 class Generator extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. Human readable description of the generator.
   late final pulumi.Output<String?> description;
   /// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
@@ -242,6 +267,7 @@ class Generator extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     generatorId = registerOutput<String>('generatorId');
     inferenceParameter = registerOutput<GeneratorInferenceParameter?>('inferenceParameter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GeneratorInferenceParameter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -276,6 +302,7 @@ class Generator extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     generatorId = registerOutput<String>('generatorId');
     inferenceParameter = registerOutput<GeneratorInferenceParameter?>('inferenceParameter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GeneratorInferenceParameter.fromMap((guardedValue as Map).cast<String, dynamic>()); });

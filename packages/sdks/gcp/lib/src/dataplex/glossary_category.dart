@@ -17,14 +17,14 @@ import 'glossary_category_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const categoryTestId = new gcp.dataplex.Glossary("category_test_id", {
-///     glossaryId: "tf-test-glossary_79169",
+///     glossaryId: "tf-test-glossary_34599",
 ///     location: "us-central1",
 /// });
 /// const categoryTestIdGlossaryCategory = new gcp.dataplex.GlossaryCategory("category_test_id", {
 ///     parent: pulumi.interpolate`projects/${categoryTestId.project}/locations/us-central1/glossaries/${categoryTestId.glossaryId}`,
 ///     glossaryId: categoryTestId.glossaryId,
 ///     location: "us-central1",
-///     categoryId: "tf-test-category-basic_56529",
+///     categoryId: "tf-test-category-basic_79513",
 /// });
 /// ```
 /// ```python
@@ -32,7 +32,7 @@ import 'glossary_category_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// category_test_id = gcp.dataplex.Glossary("category_test_id",
-///     glossary_id="tf-test-glossary_79169",
+///     glossary_id="tf-test-glossary_34599",
 ///     location="us-central1")
 /// category_test_id_glossary_category = gcp.dataplex.GlossaryCategory("category_test_id",
 ///     parent=pulumi.Output.all(
@@ -42,7 +42,7 @@ import 'glossary_category_state.dart';
 /// ,
 ///     glossary_id=category_test_id.glossary_id,
 ///     location="us-central1",
-///     category_id="tf-test-category-basic_56529")
+///     category_id="tf-test-category-basic_79513")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -54,7 +54,7 @@ import 'glossary_category_state.dart';
 /// {
 ///     var categoryTestId = new Gcp.DataPlex.Glossary("category_test_id", new()
 ///     {
-///         GlossaryId = "tf-test-glossary_79169",
+///         GlossaryId = "tf-test-glossary_34599",
 ///         Location = "us-central1",
 ///     });
 ///
@@ -68,7 +68,7 @@ import 'glossary_category_state.dart';
 ///         }),
 ///         GlossaryId = categoryTestId.GlossaryId,
 ///         Location = "us-central1",
-///         CategoryId = "tf-test-category-basic_56529",
+///         CategoryId = "tf-test-category-basic_79513",
 ///     });
 ///
 /// });
@@ -86,7 +86,7 @@ import 'glossary_category_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		categoryTestId, err := dataplex.NewGlossary(ctx, "category_test_id", &dataplex.GlossaryArgs{
-/// 			GlossaryId: pulumi.String("tf-test-glossary_79169"),
+/// 			GlossaryId: pulumi.String("tf-test-glossary_34599"),
 /// 			Location:   pulumi.String("us-central1"),
 /// 		})
 /// 		if err != nil {
@@ -100,13 +100,33 @@ import 'glossary_category_state.dart';
 /// 			}).(pulumi.StringOutput),
 /// 			GlossaryId: categoryTestId.GlossaryId,
 /// 			Location:   pulumi.String("us-central1"),
-/// 			CategoryId: pulumi.String("tf-test-category-basic_56529"),
+/// 			CategoryId: pulumi.String("tf-test-category-basic_79513"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_glossary" "category_test_id" {
+///   glossary_id = "tf-test-glossary_34599"
+///   location    = "us-central1"
+/// }
+/// resource "gcp_dataplex_glossarycategory" "category_test_id" {
+///   parent      ="projects/${gcp_dataplex_glossary.category_test_id.project}/locations/us-central1/glossaries/${gcp_dataplex_glossary.category_test_id.glossary_id}"
+///   glossary_id = gcp_dataplex_glossary.category_test_id.glossary_id
+///   location    = "us-central1"
+///   category_id = "tf-test-category-basic_79513"
 /// }
 /// ```
 /// ```java
@@ -119,8 +139,8 @@ import 'glossary_category_state.dart';
 /// import com.pulumi.gcp.dataplex.GlossaryArgs;
 /// import com.pulumi.gcp.dataplex.GlossaryCategory;
 /// import com.pulumi.gcp.dataplex.GlossaryCategoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -133,7 +153,7 @@ import 'glossary_category_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var categoryTestId = new Glossary("categoryTestId", GlossaryArgs.builder()
-///             .glossaryId("tf-test-glossary_79169")
+///             .glossaryId("tf-test-glossary_34599")
 ///             .location("us-central1")
 ///             .build());
 ///
@@ -145,7 +165,7 @@ import 'glossary_category_state.dart';
 ///             }))
 ///             .glossaryId(categoryTestId.glossaryId())
 ///             .location("us-central1")
-///             .categoryId("tf-test-category-basic_56529")
+///             .categoryId("tf-test-category-basic_79513")
 ///             .build());
 ///
 ///     }
@@ -157,7 +177,7 @@ import 'glossary_category_state.dart';
 ///     type: gcp:dataplex:Glossary
 ///     name: category_test_id
 ///     properties:
-///       glossaryId: tf-test-glossary_79169
+///       glossaryId: tf-test-glossary_34599
 ///       location: us-central1
 ///   categoryTestIdGlossaryCategory:
 ///     type: gcp:dataplex:GlossaryCategory
@@ -166,7 +186,7 @@ import 'glossary_category_state.dart';
 ///       parent: projects/${categoryTestId.project}/locations/us-central1/glossaries/${categoryTestId.glossaryId}
 ///       glossaryId: ${categoryTestId.glossaryId}
 ///       location: us-central1
-///       categoryId: tf-test-category-basic_56529
+///       categoryId: tf-test-category-basic_79513
 /// ```
 ///
 /// ### Dataplex Glossary Category Full
@@ -178,14 +198,14 @@ import 'glossary_category_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const categoryTestIdFull = new gcp.dataplex.Glossary("category_test_id_full", {
-///     glossaryId: "tf-test-glossary_75413",
+///     glossaryId: "tf-test-glossary_55500",
 ///     location: "us-central1",
 /// });
 /// const categoryTestIdFullGlossaryCategory = new gcp.dataplex.GlossaryCategory("category_test_id_full", {
 ///     parent: pulumi.interpolate`projects/${categoryTestIdFull.project}/locations/us-central1/glossaries/${categoryTestIdFull.glossaryId}`,
 ///     glossaryId: categoryTestIdFull.glossaryId,
 ///     location: "us-central1",
-///     categoryId: "tf-test-category-full_55138",
+///     categoryId: "tf-test-category-full_12223",
 ///     labels: {
 ///         tag: "test-tf",
 ///     },
@@ -198,7 +218,7 @@ import 'glossary_category_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// category_test_id_full = gcp.dataplex.Glossary("category_test_id_full",
-///     glossary_id="tf-test-glossary_75413",
+///     glossary_id="tf-test-glossary_55500",
 ///     location="us-central1")
 /// category_test_id_full_glossary_category = gcp.dataplex.GlossaryCategory("category_test_id_full",
 ///     parent=pulumi.Output.all(
@@ -208,7 +228,7 @@ import 'glossary_category_state.dart';
 /// ,
 ///     glossary_id=category_test_id_full.glossary_id,
 ///     location="us-central1",
-///     category_id="tf-test-category-full_55138",
+///     category_id="tf-test-category-full_12223",
 ///     labels={
 ///         "tag": "test-tf",
 ///     },
@@ -225,7 +245,7 @@ import 'glossary_category_state.dart';
 /// {
 ///     var categoryTestIdFull = new Gcp.DataPlex.Glossary("category_test_id_full", new()
 ///     {
-///         GlossaryId = "tf-test-glossary_75413",
+///         GlossaryId = "tf-test-glossary_55500",
 ///         Location = "us-central1",
 ///     });
 ///
@@ -239,7 +259,7 @@ import 'glossary_category_state.dart';
 ///         }),
 ///         GlossaryId = categoryTestIdFull.GlossaryId,
 ///         Location = "us-central1",
-///         CategoryId = "tf-test-category-full_55138",
+///         CategoryId = "tf-test-category-full_12223",
 ///         Labels =
 ///         {
 ///             { "tag", "test-tf" },
@@ -263,7 +283,7 @@ import 'glossary_category_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		categoryTestIdFull, err := dataplex.NewGlossary(ctx, "category_test_id_full", &dataplex.GlossaryArgs{
-/// 			GlossaryId: pulumi.String("tf-test-glossary_75413"),
+/// 			GlossaryId: pulumi.String("tf-test-glossary_55500"),
 /// 			Location:   pulumi.String("us-central1"),
 /// 		})
 /// 		if err != nil {
@@ -277,7 +297,7 @@ import 'glossary_category_state.dart';
 /// 			}).(pulumi.StringOutput),
 /// 			GlossaryId: categoryTestIdFull.GlossaryId,
 /// 			Location:   pulumi.String("us-central1"),
-/// 			CategoryId: pulumi.String("tf-test-category-full_55138"),
+/// 			CategoryId: pulumi.String("tf-test-category-full_12223"),
 /// 			Labels: pulumi.StringMap{
 /// 				"tag": pulumi.String("test-tf"),
 /// 			},
@@ -291,6 +311,31 @@ import 'glossary_category_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_glossary" "category_test_id_full" {
+///   glossary_id = "tf-test-glossary_55500"
+///   location    = "us-central1"
+/// }
+/// resource "gcp_dataplex_glossarycategory" "category_test_id_full" {
+///   parent      ="projects/${gcp_dataplex_glossary.category_test_id_full.project}/locations/us-central1/glossaries/${gcp_dataplex_glossary.category_test_id_full.glossary_id}"
+///   glossary_id = gcp_dataplex_glossary.category_test_id_full.glossary_id
+///   location    = "us-central1"
+///   category_id = "tf-test-category-full_12223"
+///   labels = {
+///     "tag" = "test-tf"
+///   }
+///   display_name = "terraform category"
+///   description  = "category created by Terraform"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -301,8 +346,8 @@ import 'glossary_category_state.dart';
 /// import com.pulumi.gcp.dataplex.GlossaryArgs;
 /// import com.pulumi.gcp.dataplex.GlossaryCategory;
 /// import com.pulumi.gcp.dataplex.GlossaryCategoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -315,7 +360,7 @@ import 'glossary_category_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var categoryTestIdFull = new Glossary("categoryTestIdFull", GlossaryArgs.builder()
-///             .glossaryId("tf-test-glossary_75413")
+///             .glossaryId("tf-test-glossary_55500")
 ///             .location("us-central1")
 ///             .build());
 ///
@@ -327,7 +372,7 @@ import 'glossary_category_state.dart';
 ///             }))
 ///             .glossaryId(categoryTestIdFull.glossaryId())
 ///             .location("us-central1")
-///             .categoryId("tf-test-category-full_55138")
+///             .categoryId("tf-test-category-full_12223")
 ///             .labels(Map.of("tag", "test-tf"))
 ///             .displayName("terraform category")
 ///             .description("category created by Terraform")
@@ -342,7 +387,7 @@ import 'glossary_category_state.dart';
 ///     type: gcp:dataplex:Glossary
 ///     name: category_test_id_full
 ///     properties:
-///       glossaryId: tf-test-glossary_75413
+///       glossaryId: tf-test-glossary_55500
 ///       location: us-central1
 ///   categoryTestIdFullGlossaryCategory:
 ///     type: gcp:dataplex:GlossaryCategory
@@ -351,7 +396,7 @@ import 'glossary_category_state.dart';
 ///       parent: projects/${categoryTestIdFull.project}/locations/us-central1/glossaries/${categoryTestIdFull.glossaryId}
 ///       glossaryId: ${categoryTestIdFull.glossaryId}
 ///       location: us-central1
-///       categoryId: tf-test-category-full_55138
+///       categoryId: tf-test-category-full_12223
 ///       labels:
 ///         tag: test-tf
 ///       displayName: terraform category
@@ -364,22 +409,15 @@ import 'glossary_category_state.dart';
 /// GlossaryCategory can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/categories/{{category_id}}`
-///
 /// * `{{project}}/{{location}}/{{glossary_id}}/{{category_id}}`
-///
 /// * `{{location}}/{{glossary_id}}/{{category_id}}`
+///
 ///
 /// When using the `pulumi import` command, GlossaryCategory can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default projects/{{project}}/locations/{{location}}/glossaries/{{glossary_id}}/categories/{{category_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{project}}/{{location}}/{{glossary_id}}/{{category_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataplex/glossaryCategory:GlossaryCategory default {{location}}/{{glossary_id}}/{{category_id}}
 /// ```
 class GlossaryCategory extends pulumi.CustomResource {
@@ -387,6 +425,13 @@ class GlossaryCategory extends pulumi.CustomResource {
   late final pulumi.Output<String?> categoryId;
   /// The time at which the GlossaryCategory was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The user-mutable description of the GlossaryCategory.
   late final pulumi.Output<String?> description;
   /// User friendly display name of the GlossaryCategory. This is user-mutable. This will be same as the categoryId, if not specified.
@@ -398,7 +443,7 @@ class GlossaryCategory extends pulumi.CustomResource {
   /// User-defined labels for the GlossaryCategory.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location where the glossary category should reside.
   late final pulumi.Output<String> location;
@@ -433,6 +478,7 @@ class GlossaryCategory extends pulumi.CustomResource {
         ) {
     categoryId = registerOutput<String?>('categoryId');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -472,6 +518,7 @@ class GlossaryCategory extends pulumi.CustomResource {
         ) {
     categoryId = registerOutput<String?>('categoryId');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

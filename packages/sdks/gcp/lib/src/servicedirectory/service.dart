@@ -95,7 +95,7 @@ import 'service_state.dart';
 /// 		}
 /// 		_, err = servicedirectory.NewService(ctx, "example", &servicedirectory.ServiceArgs{
 /// 			ServiceId: pulumi.String("example-service"),
-/// 			Namespace: example.ID(),
+/// 			Namespace: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Metadata: pulumi.StringMap{
 /// 				"stage":  pulumi.String("prod"),
 /// 				"region": pulumi.String("us-central1"),
@@ -108,6 +108,28 @@ import 'service_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_servicedirectory_namespace" "example" {
+///   namespace_id = "example-namespace"
+///   location     = "us-central1"
+/// }
+/// resource "gcp_servicedirectory_service" "example" {
+///   service_id = "example-service"
+///   namespace  = gcp_servicedirectory_namespace.example.id
+///   metadata = {
+///     "stage"  = "prod"
+///     "region" = "us-central1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -118,8 +140,8 @@ import 'service_state.dart';
 /// import com.pulumi.gcp.servicedirectory.NamespaceArgs;
 /// import com.pulumi.gcp.servicedirectory.Service;
 /// import com.pulumi.gcp.servicedirectory.ServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -172,25 +194,25 @@ import 'service_state.dart';
 /// Service can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}`
-///
 /// * `{{project}}/{{location}}/{{namespace_id}}/{{service_id}}`
-///
 /// * `{{location}}/{{namespace_id}}/{{service_id}}`
+///
 ///
 /// When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:servicedirectory/service:Service default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:servicedirectory/service:Service default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:servicedirectory/service:Service default {{location}}/{{namespace_id}}/{{service_id}}
 /// ```
 class Service extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Metadata for the service. This data can be consumed
   /// by service clients. The entire metadata dictionary may contain
   /// up to 2000 characters, spread across all key-value pairs.
@@ -219,6 +241,7 @@ class Service extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');
@@ -248,6 +271,7 @@ class Service extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String>('namespace');

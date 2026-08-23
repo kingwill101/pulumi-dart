@@ -90,6 +90,24 @@ import 'backup_vault_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_netapp_backupvault" "test_backup_vault" {
+///   name        = "test-backup-vault"
+///   location    = "us-west1"
+///   description = "Terraform created vault"
+///   labels = {
+///     "creator" = "testuser"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -98,8 +116,8 @@ import 'backup_vault_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.netapp.BackupVault;
 /// import com.pulumi.gcp.netapp.BackupVaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -140,22 +158,15 @@ import 'backup_vault_state.dart';
 /// BackupVault can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/backupVaults/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, BackupVault can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:netapp/backupVault:BackupVault default projects/{{project}}/locations/{{location}}/backupVaults/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/backupVault:BackupVault default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:netapp/backupVault:BackupVault default {{location}}/{{name}}
 /// ```
 class BackupVault extends pulumi.CustomResource {
@@ -167,18 +178,35 @@ class BackupVault extends pulumi.CustomResource {
   /// Type of the backup vault to be created. Default is IN_REGION.
   /// Possible values are: `BACKUP_VAULT_TYPE_UNSPECIFIED`, `IN_REGION`, `CROSS_REGION`.
   late final pulumi.Output<String> backupVaultType;
+  /// The crypto key version used to encrypt the backup vault.
+  /// Format:
+  /// `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
+  late final pulumi.Output<String> backupsCryptoKeyVersion;
   /// Create time of the backup vault. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Name of the Backup vault created in backup region.
   late final pulumi.Output<String> destinationBackupVault;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// Encryption state of customer-managed encryption keys (CMEK) backups.
+  late final pulumi.Output<String> encryptionState;
+  /// Specifies the Key Management System (KMS) configuration to be used for
+  /// backup encryption. Format:
+  /// `projects/{{project}}/locations/{{location}}/kmsConfigs/{{kms_config}}`
+  late final pulumi.Output<String?> kmsConfig;
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Location (region) of the backup vault.
   late final pulumi.Output<String> location;
@@ -214,10 +242,14 @@ class BackupVault extends pulumi.CustomResource {
     backupRegion = registerOutput<String?>('backupRegion');
     backupRetentionPolicy = registerOutput<BackupVaultBackupRetentionPolicy?>('backupRetentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupVaultBackupRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupVaultType = registerOutput<String>('backupVaultType');
+    backupsCryptoKeyVersion = registerOutput<String>('backupsCryptoKeyVersion');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destinationBackupVault = registerOutput<String>('destinationBackupVault');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    encryptionState = registerOutput<String>('encryptionState');
+    kmsConfig = registerOutput<String?>('kmsConfig');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -254,10 +286,14 @@ class BackupVault extends pulumi.CustomResource {
     backupRegion = registerOutput<String?>('backupRegion');
     backupRetentionPolicy = registerOutput<BackupVaultBackupRetentionPolicy?>('backupRetentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupVaultBackupRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupVaultType = registerOutput<String>('backupVaultType');
+    backupsCryptoKeyVersion = registerOutput<String>('backupsCryptoKeyVersion');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destinationBackupVault = registerOutput<String>('destinationBackupVault');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    encryptionState = registerOutput<String>('encryptionState');
+    kmsConfig = registerOutput<String?>('kmsConfig');
     labels = registerOutput<Map<String, String>?>('labels');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

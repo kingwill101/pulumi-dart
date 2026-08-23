@@ -22,13 +22,21 @@ class AutonomousDatabaseArgs {
   /// the project. The name must begin with a letter and can
   /// contain a maximum of 30 alphanumeric characters.
   final pulumi.Input<String>? database;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
   final pulumi.Input<bool>? deletionProtection;
   /// The display name for the Autonomous Database. The name does not have to
   /// be unique within your project.
   final pulumi.Input<String>? displayName;
   /// The labels or tags associated with the Autonomous Database.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
   final pulumi.Input<String> location;
@@ -39,7 +47,7 @@ class AutonomousDatabaseArgs {
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
-  /// the odb_subnet and backup_odb_subnet.
+  /// the odbSubnet and backup_odb_subnet.
   final pulumi.Input<String>? odbNetwork;
   /// The name of the OdbSubnet associated with the Autonomous Database for
   /// IP allocation. Format:
@@ -60,7 +68,8 @@ class AutonomousDatabaseArgs {
   /// [autonomousDatabaseId] The ID of the Autonomous Database to create. This value is restricted
   /// [cidr] The subnet CIDR range for the Autonmous Database.
   /// [database] The name of the Autonomous Database. The database name must be unique in
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
   /// [displayName] The display name for the Autonomous Database. The name does not have to
   /// [labels] The labels or tags associated with the Autonomous Database.
   /// [location] Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
@@ -75,6 +84,7 @@ class AutonomousDatabaseArgs {
     required this.autonomousDatabaseId,
     this.cidr,
     this.database,
+    this.deletionPolicy,
     this.deletionProtection,
     this.displayName,
     this.labels,
@@ -93,6 +103,7 @@ class AutonomousDatabaseArgs {
       'autonomousDatabaseId': autonomousDatabaseId,
       'cidr': ?cidr,
       'database': ?database,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'displayName': ?displayName,
       'labels': ?labels,
@@ -112,6 +123,7 @@ class AutonomousDatabaseArgs {
       autonomousDatabaseId: pulumi.Input.fromValue(map['autonomousDatabaseId'] as String),
       cidr: (() { final guardedValue = map['cidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       database: (() { final guardedValue = map['database']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -125,4 +137,3 @@ class AutonomousDatabaseArgs {
     );
   }
 }
-

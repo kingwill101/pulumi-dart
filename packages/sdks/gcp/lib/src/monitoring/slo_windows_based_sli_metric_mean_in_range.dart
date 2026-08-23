@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'slo_windows_based_sli_metric_mean_in_range_range.dart';
 
 class SloWindowsBasedSliMetricMeanInRange {
-  /// Range of numerical values. The computed good_service
+  /// Range of numerical values. The computed goodService
   /// will be the count of values x in the Distribution such
   /// that range.min &lt;= x &lt;= range.max. inclusive of min and
   /// max. Open ranges can be defined by setting
-  /// just one of min or max. Mean value `X` of `time_series`
+  /// just one of min or max. Mean value `X` of `timeSeries`
   /// values should satisfy `range.min &lt;= X &lt;= range.max` for a
   /// good service.
   /// Structure is documented below.
@@ -22,7 +22,7 @@ class SloWindowsBasedSliMetricMeanInRange {
   final pulumi.Input<String> timeSeries;
 
   /// Creates a new [SloWindowsBasedSliMetricMeanInRange].
-  /// [range] Range of numerical values. The computed good_service
+  /// [range] Range of numerical values. The computed goodService
   /// [timeSeries] A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   const SloWindowsBasedSliMetricMeanInRange({
     required this.range,
@@ -43,4 +43,3 @@ class SloWindowsBasedSliMetricMeanInRange {
     );
   }
 }
-

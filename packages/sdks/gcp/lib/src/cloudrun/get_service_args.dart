@@ -8,19 +8,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudrun_get_service_get_service_args_doc}
 class GetServiceArgs {
   /// The location of the cloud run instance. eg us-central1
-  ///
-  /// - - -
   final pulumi.Input<String> location;
-  /// The name of the Cloud Run Service.
+  /// Name must be unique within a Google Cloud project and region.
+  /// Is required when creating resources. Name is primarily intended
+  /// for creation idempotence and configuration definition. Cannot be updated.
+  /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   final pulumi.Input<String> name;
-  /// The project in which the resource belongs. If it
-  /// is not provided, the provider project is used.
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
 
   /// Creates a new [GetServiceArgs].
   /// [location] The location of the cloud run instance. eg us-central1
-  /// [name] The name of the Cloud Run Service.
-  /// [project] The project in which the resource belongs. If it
+  /// [name] Name must be unique within a Google Cloud project and region.
+  /// [project] The ID of the project in which the resource belongs.
   const GetServiceArgs({
     required this.location,
     required this.name,
@@ -43,4 +44,3 @@ class GetServiceArgs {
     );
   }
 }
-

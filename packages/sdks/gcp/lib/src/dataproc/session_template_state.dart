@@ -11,6 +11,13 @@ class SessionTemplateState {
   final pulumi.Input<String>? createTime;
   /// The email address of the user who created the session template.
   final pulumi.Input<String>? creator;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Environment configuration for the session execution.
@@ -22,7 +29,7 @@ class SessionTemplateState {
   /// The labels to associate with this session template.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location in which the session template will be created in.
   final pulumi.Input<String>? location;
@@ -48,6 +55,7 @@ class SessionTemplateState {
   /// Creates a new [SessionTemplateState].
   /// [createTime] The time when the session template was created.
   /// [creator] The email address of the user who created the session template.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [environmentConfig] Environment configuration for the session execution.
   /// [jupyterSession] Jupyter configuration for an interactive session.
@@ -63,6 +71,7 @@ class SessionTemplateState {
   const SessionTemplateState({
     this.createTime,
     this.creator,
+    this.deletionPolicy,
     this.effectiveLabels,
     this.environmentConfig,
     this.jupyterSession,
@@ -81,6 +90,7 @@ class SessionTemplateState {
     return <String, dynamic>{
       'createTime': ?createTime,
       'creator': ?creator,
+      'deletionPolicy': ?deletionPolicy,
       'effectiveLabels': ?effectiveLabels,
       'environmentConfig': ?pulumi.Input.mapOptionalInputValue<SessionTemplateEnvironmentConfig, Map<String, dynamic>>(environmentConfig, (value) => value.toMap()),
       'jupyterSession': ?pulumi.Input.mapOptionalInputValue<SessionTemplateJupyterSession, Map<String, dynamic>>(jupyterSession, (value) => value.toMap()),
@@ -100,6 +110,7 @@ class SessionTemplateState {
     return SessionTemplateState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creator: (() { final guardedValue = map['creator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       environmentConfig: (() { final guardedValue = map['environmentConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SessionTemplateEnvironmentConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       jupyterSession: (() { final guardedValue = map['jupyterSession']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SessionTemplateJupyterSession.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -115,4 +126,3 @@ class SessionTemplateState {
     );
   }
 }
-

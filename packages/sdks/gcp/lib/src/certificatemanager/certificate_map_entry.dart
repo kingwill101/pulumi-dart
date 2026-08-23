@@ -225,8 +225,8 @@ import 'certificate_map_entry_state.dart';
 /// 					instance2.Domain,
 /// 				},
 /// 				DnsAuthorizations: pulumi.StringArray{
-/// 					instance.ID(),
-/// 					instance2.ID(),
+/// 					instance.ID().ToIDOutput().ToStringOutput(),
+/// 					instance2.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -242,7 +242,7 @@ import 'certificate_map_entry_state.dart';
 /// 				"acc-test":  pulumi.String("true"),
 /// 			},
 /// 			Certificates: pulumi.StringArray{
-/// 				certificate.ID(),
+/// 				certificate.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Matcher: pulumi.String("PRIMARY"),
 /// 		})
@@ -251,6 +251,54 @@ import 'certificate_map_entry_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificatemap" "certificate_map" {
+///   name        = "cert-map-entry"
+///   description = "My acceptance test certificate map"
+///   labels = {
+///     "terraform" = true
+///     "acc-test"  = true
+///   }
+/// }
+/// resource "gcp_certificatemanager_certificatemapentry" "default" {
+///   name        = "cert-map-entry"
+///   description = "My acceptance test certificate map entry"
+///   map         = gcp_certificatemanager_certificatemap.certificate_map.name
+///   labels = {
+///     "terraform" = true
+///     "acc-test"  = true
+///   }
+///   certificates = [gcp_certificatemanager_certificate.certificate.id]
+///   matcher      = "PRIMARY"
+/// }
+/// resource "gcp_certificatemanager_certificate" "certificate" {
+///   name        = "cert-map-entry"
+///   description = "The default cert"
+///   scope       = "DEFAULT"
+///   managed = {
+///     domains            = [gcp_certificatemanager_dnsauthorization.instance.domain, gcp_certificatemanager_dnsauthorization.instance2.domain]
+///     dns_authorizations = [gcp_certificatemanager_dnsauthorization.instance.id, gcp_certificatemanager_dnsauthorization.instance2.id]
+///   }
+/// }
+/// resource "gcp_certificatemanager_dnsauthorization" "instance" {
+///   name        = "dns-auth"
+///   description = "The default dnss"
+///   domain      = "subdomain.hashicorptest.com"
+/// }
+/// resource "gcp_certificatemanager_dnsauthorization" "instance2" {
+///   name        = "dns-auth2"
+///   description = "The default dnss"
+///   domain      = "subdomain2.hashicorptest.com"
 /// }
 /// ```
 /// ```java
@@ -268,8 +316,8 @@ import 'certificate_map_entry_state.dart';
 /// import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
 /// import com.pulumi.gcp.certificatemanager.CertificateMapEntry;
 /// import com.pulumi.gcp.certificatemanager.CertificateMapEntryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -387,22 +435,15 @@ import 'certificate_map_entry_state.dart';
 /// CertificateMapEntry can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}`
-///
 /// * `{{project}}/{{map}}/{{name}}`
-///
 /// * `{{map}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, CertificateMapEntry can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{project}}/{{map}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{map}}/{{name}}
 /// ```
 class CertificateMapEntry extends pulumi.CustomResource {
@@ -414,6 +455,13 @@ class CertificateMapEntry extends pulumi.CustomResource {
   /// with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human-readable description of the resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -427,7 +475,7 @@ class CertificateMapEntry extends pulumi.CustomResource {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// A map entry that is inputted into the certificate map
   late final pulumi.Output<String> map;
@@ -466,6 +514,7 @@ class CertificateMapEntry extends pulumi.CustomResource {
         ) {
     certificates = registerOutput<List<String>>('certificates');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     hostname = registerOutput<String?>('hostname');
@@ -504,6 +553,7 @@ class CertificateMapEntry extends pulumi.CustomResource {
         ) {
     certificates = registerOutput<List<String>>('certificates');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     hostname = registerOutput<String?>('hostname');

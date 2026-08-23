@@ -153,7 +153,7 @@ import 'cx_generator_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxGenerator(ctx, "generator", &diagflow.CxGeneratorArgs{
-/// 			Parent:       agent.ID(),
+/// 			Parent:       agent.ID().ToIDOutput().ToStringOutput(),
 /// 			LanguageCode: pulumi.String("fr"),
 /// 			DisplayName:  pulumi.String("TF Prompt generator"),
 /// 			LlmModelSettings: &diagflow.CxGeneratorLlmModelSettingsArgs{
@@ -174,6 +174,39 @@ import 'cx_generator_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name             = "dialogflowcx-agent-fucntion"
+///   location                 = "global"
+///   default_language_code    = "en"
+///   supported_language_codes = ["fr", "de", "es"]
+///   time_zone                = "America/New_York"
+///   description              = "Example description."
+/// }
+/// resource "gcp_diagflow_cxgenerator" "generator" {
+///   parent        = gcp_diagflow_cxagent.agent.id
+///   language_code = "fr"
+///   display_name  = "TF Prompt generator"
+///   llm_model_settings = {
+///     model       = "gemini-2.0-flash-001"
+///     prompt_text = "Return me some great results"
+///   }
+///   prompt_text = {
+///     text = "Send me great results in french"
+///   }
+///   model_parameter = {
+///     temperature = 0.55
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +220,8 @@ import 'cx_generator_state.dart';
 /// import com.pulumi.gcp.diagflow.inputs.CxGeneratorLlmModelSettingsArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxGeneratorPromptTextArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxGeneratorModelParameterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -266,19 +299,23 @@ import 'cx_generator_state.dart';
 /// Generator can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/generators/{{name}}`
-///
 /// * `{{parent}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Generator can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxGenerator:CxGenerator default {{parent}}/generators/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/cxGenerator:CxGenerator default {{parent}}/{{name}}
 /// ```
 class CxGenerator extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The human-readable name of the generator, unique within the agent.
   late final pulumi.Output<String> displayName;
   /// The language to create generators for the following fields:
@@ -318,6 +355,7 @@ class CxGenerator extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     languageCode = registerOutput<String?>('languageCode');
     llmModelSettings = registerOutput<CxGeneratorLlmModelSettings?>('llmModelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorLlmModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -351,6 +389,7 @@ class CxGenerator extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     languageCode = registerOutput<String?>('languageCode');
     llmModelSettings = registerOutput<CxGeneratorLlmModelSettings?>('llmModelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxGeneratorLlmModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

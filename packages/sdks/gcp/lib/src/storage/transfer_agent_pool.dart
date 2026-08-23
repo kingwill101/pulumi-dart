@@ -99,8 +99,6 @@ import 'transfer_agent_pool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -138,6 +136,33 @@ import 'transfer_agent_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_storage_gettransferprojectserviceaccount" "default" {
+///   project = "my-project-name"
+/// }
+///
+/// resource "gcp_projects_iammember" "pubsub_editor_role" {
+///   project = "my-project-name"
+///   role    = "roles/pubsub.editor"
+///   member  ="serviceAccount:${data.gcp_storage_gettransferprojectserviceaccount.default.email}"
+/// }
+/// resource "gcp_storage_transferagentpool" "example" {
+///   depends_on   = [gcp_projects_iammember.pubsub_editor_role]
+///   name         = "agent-pool-example"
+///   display_name = "Source A to destination Z"
+///   bandwidth_limit = {
+///     limit_mbps = "120"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -152,8 +177,8 @@ import 'transfer_agent_pool_state.dart';
 /// import com.pulumi.gcp.storage.TransferAgentPoolArgs;
 /// import com.pulumi.gcp.storage.inputs.TransferAgentPoolBandwidthLimitArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -221,28 +246,28 @@ import 'transfer_agent_pool_state.dart';
 /// AgentPool can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/agentPools/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, AgentPool can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default projects/{{project}}/agentPools/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{name}}
 /// ```
 class TransferAgentPool extends pulumi.CustomResource {
   /// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
   /// Structure is documented below.
   late final pulumi.Output<TransferAgentPoolBandwidthLimit?> bandwidthLimit;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Specifies the client-specified AgentPool description.
   late final pulumi.Output<String?> displayName;
   /// The ID of the agent pool to create.
@@ -275,6 +300,7 @@ class TransferAgentPool extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bandwidthLimit = registerOutput<TransferAgentPoolBandwidthLimit?>('bandwidthLimit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransferAgentPoolBandwidthLimit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -305,6 +331,7 @@ class TransferAgentPool extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bandwidthLimit = registerOutput<TransferAgentPoolBandwidthLimit?>('bandwidthLimit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransferAgentPoolBandwidthLimit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

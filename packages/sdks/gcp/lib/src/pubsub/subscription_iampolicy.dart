@@ -108,6 +108,27 @@ import 'subscription_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/editor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_pubsub_subscriptioniampolicy" "editor" {
+///   subscription = "your-subscription-name"
+///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -116,10 +137,11 @@ import 'subscription_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.pubsub.SubscriptionIAMPolicy;
 /// import com.pulumi.gcp.pubsub.SubscriptionIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -231,6 +253,21 @@ import 'subscription_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_subscriptioniambinding" "editor" {
+///   subscription = "your-subscription-name"
+///   role         = "roles/editor"
+///   members      = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -239,8 +276,8 @@ import 'subscription_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.SubscriptionIAMBinding;
 /// import com.pulumi.gcp.pubsub.SubscriptionIAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -334,6 +371,21 @@ import 'subscription_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_subscriptioniammember" "editor" {
+///   subscription = "your-subscription-name"
+///   role         = "roles/editor"
+///   member       = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -342,8 +394,8 @@ import 'subscription_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.SubscriptionIAMMember;
 /// import com.pulumi.gcp.pubsub.SubscriptionIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -372,6 +424,181 @@ import 'subscription_iampolicy_state.dart';
 ///       subscription: your-subscription-name
 ///       role: roles/editor
 ///       member: user:jane@example.com
+/// ```
+///
+///
+/// ## gcp.pubsub.SubscriptionIAMPolicy
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const admin = gcp.organizations.getIAMPolicy({
+///     bindings: [{
+///         role: "roles/editor",
+///         members: ["user:jane@example.com"],
+///     }],
+/// });
+/// const editor = new gcp.pubsub.SubscriptionIAMPolicy("editor", {
+///     subscription: "your-subscription-name",
+///     policyData: admin.then(admin => admin.policyData),
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// admin = gcp.organizations.get_iam_policy(bindings=[{
+///     "role": "roles/editor",
+///     "members": ["user:jane@example.com"],
+/// }])
+/// editor = gcp.pubsub.SubscriptionIAMPolicy("editor",
+///     subscription="your-subscription-name",
+///     policy_data=admin.policy_data)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+///     {
+///         Bindings = new[]
+///         {
+///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+///             {
+///                 Role = "roles/editor",
+///                 Members = new[]
+///                 {
+///                     "user:jane@example.com",
+///                 },
+///             },
+///         },
+///     });
+///
+///     var editor = new Gcp.PubSub.SubscriptionIAMPolicy("editor", new()
+///     {
+///         Subscription = "your-subscription-name",
+///         PolicyData = admin.Apply(getIAMPolicyResult => getIAMPolicyResult.PolicyData),
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+/// 			Bindings: []organizations.GetIAMPolicyBinding{
+/// 				{
+/// 					Role: "roles/editor",
+/// 					Members: []string{
+/// 						"user:jane@example.com",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = pubsub.NewSubscriptionIAMPolicy(ctx, "editor", &pubsub.SubscriptionIAMPolicyArgs{
+/// 			Subscription: pulumi.String("your-subscription-name"),
+/// 			PolicyData:   pulumi.String(admin.PolicyData),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/editor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_pubsub_subscriptioniampolicy" "editor" {
+///   subscription = "your-subscription-name"
+///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.pubsub.SubscriptionIAMPolicy;
+/// import com.pulumi.gcp.pubsub.SubscriptionIAMPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+///             .bindings(GetIAMPolicyBindingArgs.builder()
+///                 .role("roles/editor")
+///                 .members("user:jane@example.com")
+///                 .build())
+///             .build());
+///
+///         var editor = new SubscriptionIAMPolicy("editor", SubscriptionIAMPolicyArgs.builder()
+///             .subscription("your-subscription-name")
+///             .policyData(admin.policyData())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   editor:
+///     type: gcp:pubsub:SubscriptionIAMPolicy
+///     properties:
+///       subscription: your-subscription-name
+///       policyData: ${admin.policyData}
+/// variables:
+///   admin:
+///     fn::invoke:
+///       function: gcp:organizations:getIAMPolicy
+///       arguments:
+///         bindings:
+///           - role: roles/editor
+///             members:
+///               - user:jane@example.com
 /// ```
 ///
 ///
@@ -441,6 +668,21 @@ import 'subscription_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_subscriptioniambinding" "editor" {
+///   subscription = "your-subscription-name"
+///   role         = "roles/editor"
+///   members      = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -449,8 +691,8 @@ import 'subscription_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.SubscriptionIAMBinding;
 /// import com.pulumi.gcp.pubsub.SubscriptionIAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -544,6 +786,21 @@ import 'subscription_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_pubsub_subscriptioniammember" "editor" {
+///   subscription = "your-subscription-name"
+///   role         = "roles/editor"
+///   member       = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -552,8 +809,8 @@ import 'subscription_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.pubsub.SubscriptionIAMMember;
 /// import com.pulumi.gcp.pubsub.SubscriptionIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -587,29 +844,8 @@ import 'subscription_iampolicy_state.dart';
 ///
 /// ## Import
 ///
-/// ### Importing IAM policies
-///
-/// IAM policy imports use the identifier of the Pubsub Subscription resource. For example:
-///
-/// * `"projects/{{project_id}}/subscriptions/{{subscription}}"`
-///
-/// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-///
-/// tf
-///
-/// import {
-///
-/// id = "projects/{{project_id}}/subscriptions/{{subscription}}"
-///
-/// to = google_pubsub_subscription_iam_policy.default
-///
-/// }
-///
-/// The `pulumi import` command can also be used:
-///
-/// ```sh
-/// $ pulumi import gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy default projects/{{project_id}}/subscriptions/{{subscription}}
-/// ```
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class SubscriptionIAMPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the subscription's IAM policy.
   late final pulumi.Output<String> etag;

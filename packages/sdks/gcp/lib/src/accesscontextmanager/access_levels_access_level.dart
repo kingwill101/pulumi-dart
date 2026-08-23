@@ -14,7 +14,7 @@ class AccessLevelsAccessLevel {
   final pulumi.Input<AccessLevelsAccessLevelCustom>? custom;
   /// Description of the AccessLevel and its use. Does not affect behavior.
   final pulumi.Input<String>? description;
-  /// Resource name for the Access Level. The short_name component must begin
+  /// Resource name for the Access Level. The shortName component must begin
   /// with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
   final pulumi.Input<String> name;
@@ -25,7 +25,7 @@ class AccessLevelsAccessLevel {
   /// [basic] A set of predefined conditions for the access level and a combining function.
   /// [custom] Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
   /// [description] Description of the AccessLevel and its use. Does not affect behavior.
-  /// [name] Resource name for the Access Level. The short_name component must begin
+  /// [name] Resource name for the Access Level. The shortName component must begin
   /// [title] Human readable title. Must be unique within the Policy.
   const AccessLevelsAccessLevel({
     this.basic,
@@ -55,4 +55,3 @@ class AccessLevelsAccessLevel {
     );
   }
 }
-

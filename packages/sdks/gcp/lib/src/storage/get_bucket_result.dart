@@ -20,6 +20,7 @@ class GetBucketResult {
   final List<GetBucketCor> cors;
   final List<GetBucketCustomPlacementConfig> customPlacementConfigs;
   final bool defaultEventBasedHold;
+  final String deletionPolicy;
   final Map<String, String> effectiveLabels;
   final bool enableObjectRetention;
   final List<GetBucketEncryption> encryptions;
@@ -55,6 +56,7 @@ class GetBucketResult {
   /// [cors] Required.
   /// [customPlacementConfigs] Required.
   /// [defaultEventBasedHold] Required.
+  /// [deletionPolicy] Required.
   /// [effectiveLabels] Required.
   /// [enableObjectRetention] Required.
   /// [encryptions] Required.
@@ -88,6 +90,7 @@ class GetBucketResult {
     required this.cors,
     required this.customPlacementConfigs,
     required this.defaultEventBasedHold,
+    required this.deletionPolicy,
     required this.effectiveLabels,
     required this.enableObjectRetention,
     required this.encryptions,
@@ -124,6 +127,7 @@ class GetBucketResult {
       'cors': pulumi.Input.encodeList<GetBucketCor, Map<String, dynamic>>(cors, (value) => value.toMap()),
       'customPlacementConfigs': pulumi.Input.encodeList<GetBucketCustomPlacementConfig, Map<String, dynamic>>(customPlacementConfigs, (value) => value.toMap()),
       'defaultEventBasedHold': defaultEventBasedHold,
+      'deletionPolicy': deletionPolicy,
       'effectiveLabels': effectiveLabels,
       'enableObjectRetention': enableObjectRetention,
       'encryptions': pulumi.Input.encodeList<GetBucketEncryption, Map<String, dynamic>>(encryptions, (value) => value.toMap()),
@@ -161,6 +165,7 @@ class GetBucketResult {
       cors: pulumi.Input.decodeList<GetBucketCor>(map['cors']!, (value) => GetBucketCor.fromMap((value as Map).cast<String, dynamic>())),
       customPlacementConfigs: pulumi.Input.decodeList<GetBucketCustomPlacementConfig>(map['customPlacementConfigs']!, (value) => GetBucketCustomPlacementConfig.fromMap((value as Map).cast<String, dynamic>())),
       defaultEventBasedHold: map['defaultEventBasedHold'] as bool,
+      deletionPolicy: map['deletionPolicy'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       enableObjectRetention: map['enableObjectRetention'] as bool,
       encryptions: pulumi.Input.decodeList<GetBucketEncryption>(map['encryptions']!, (value) => GetBucketEncryption.fromMap((value as Map).cast<String, dynamic>())),
@@ -192,4 +197,3 @@ class GetBucketResult {
     );
   }
 }
-

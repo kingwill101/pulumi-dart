@@ -14,7 +14,7 @@ class DatabaseInstanceReplicaConfiguration {
   /// certificate.
   final pulumi.Input<String>? clientCertificate;
   /// PEM representation of the replica's private key. The
-  /// corresponding public key in encoded in the `client_certificate`.
+  /// corresponding public key in encoded in the `clientCertificate`.
   final pulumi.Input<String>? clientKey;
   /// The number of seconds
   /// between connect retries. MySQL's default is 60 seconds.
@@ -104,4 +104,3 @@ class DatabaseInstanceReplicaConfiguration {
     );
   }
 }
-

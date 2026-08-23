@@ -77,7 +77,7 @@ import 'parameter_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-basic", &parametermanager.ParameterVersionArgs{
-/// 			Parameter:          parameter_basic.ID(),
+/// 			Parameter:          parameter_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			ParameterVersionId: pulumi.String("parameter_version"),
 /// 			ParameterData:      pulumi.String("app-parameter-version-data"),
 /// 		})
@@ -86,6 +86,24 @@ import 'parameter_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parametermanager_parameter" "parameter-basic" {
+///   parameter_id = "parameter"
+/// }
+/// resource "gcp_parametermanager_parameterversion" "parameter-version-basic" {
+///   parameter            = gcp_parametermanager_parameter.parameter-basic.id
+///   parameter_version_id = "parameter_version"
+///   parameter_data       = "app-parameter-version-data"
 /// }
 /// ```
 /// ```java
@@ -98,8 +116,8 @@ import 'parameter_version_state.dart';
 /// import com.pulumi.gcp.parametermanager.ParameterArgs;
 /// import com.pulumi.gcp.parametermanager.ParameterVersion;
 /// import com.pulumi.gcp.parametermanager.ParameterVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -222,7 +240,7 @@ import 'parameter_version_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"key1": "val1",
 /// 			"key2": "val2",
 /// 		})
@@ -231,7 +249,7 @@ import 'parameter_version_state.dart';
 /// 		}
 /// 		json0 := string(tmpJSON0)
 /// 		_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-json-format", &parametermanager.ParameterVersionArgs{
-/// 			Parameter:          parameter_basic.ID(),
+/// 			Parameter:          parameter_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			ParameterVersionId: pulumi.String("parameter_version"),
 /// 			ParameterData:      pulumi.String(json0),
 /// 		})
@@ -240,6 +258,28 @@ import 'parameter_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parametermanager_parameter" "parameter-basic" {
+///   parameter_id = "parameter"
+///   format       = "JSON"
+/// }
+/// resource "gcp_parametermanager_parameterversion" "parameter-version-with-json-format" {
+///   parameter            = gcp_parametermanager_parameter.parameter-basic.id
+///   parameter_version_id = "parameter_version"
+///   parameter_data = jsonencode({
+///     "key1" = "val1"
+///     "key2" = "val2"
+///   })
 /// }
 /// ```
 /// ```java
@@ -253,8 +293,8 @@ import 'parameter_version_state.dart';
 /// import com.pulumi.gcp.parametermanager.ParameterVersion;
 /// import com.pulumi.gcp.parametermanager.ParameterVersionArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -382,7 +422,7 @@ import 'parameter_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-kms-key", &parametermanager.ParameterVersionArgs{
-/// 			Parameter:          parameter_basic.ID(),
+/// 			Parameter:          parameter_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			ParameterVersionId: pulumi.String("parameter_version"),
 /// 			ParameterData:      pulumi.String("app-parameter-version-data"),
 /// 		})
@@ -391,6 +431,28 @@ import 'parameter_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_parametermanager_parameter" "parameter-basic" {
+///   parameter_id = "parameter"
+///   kms_key      = "kms-key"
+/// }
+/// resource "gcp_parametermanager_parameterversion" "parameter-version-with-kms-key" {
+///   parameter            = gcp_parametermanager_parameter.parameter-basic.id
+///   parameter_version_id = "parameter_version"
+///   parameter_data       = "app-parameter-version-data"
 /// }
 /// ```
 /// ```java
@@ -405,8 +467,8 @@ import 'parameter_version_state.dart';
 /// import com.pulumi.gcp.parametermanager.ParameterArgs;
 /// import com.pulumi.gcp.parametermanager.ParameterVersion;
 /// import com.pulumi.gcp.parametermanager.ParameterVersionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -541,7 +603,7 @@ import 'parameter_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-json-format-with-file", &parametermanager.ParameterVersionArgs{
-/// 			Parameter:          parameter_basic.ID(),
+/// 			Parameter:          parameter_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			ParameterVersionId: pulumi.String("parameter_version"),
 /// 			ParameterData:      pulumi.String(invokeFile.Result),
 /// 		})
@@ -550,6 +612,28 @@ import 'parameter_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parametermanager_parameter" "parameter-basic" {
+///   parameter_id = "parameter"
+///   format       = "JSON"
+/// }
+/// resource "gcp_parametermanager_parameterversion" "parameter-version-with-json-format-with-file" {
+///   parameter            = gcp_parametermanager_parameter.parameter-basic.id
+///   parameter_version_id = "parameter_version"
+///   parameter_data       = file("parameter-json-data.json")
 /// }
 /// ```
 /// ```java
@@ -564,8 +648,8 @@ import 'parameter_version_state.dart';
 /// import com.pulumi.gcp.parametermanager.ParameterVersionArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -699,7 +783,7 @@ import 'parameter_version_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-yaml-format-with-file", &parametermanager.ParameterVersionArgs{
-/// 			Parameter:          parameter_basic.ID(),
+/// 			Parameter:          parameter_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			ParameterVersionId: pulumi.String("parameter_version"),
 /// 			ParameterData:      pulumi.String(invokeFile.Result),
 /// 		})
@@ -708,6 +792,28 @@ import 'parameter_version_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parametermanager_parameter" "parameter-basic" {
+///   parameter_id = "parameter"
+///   format       = "YAML"
+/// }
+/// resource "gcp_parametermanager_parameterversion" "parameter-version-with-yaml-format-with-file" {
+///   parameter            = gcp_parametermanager_parameter.parameter-basic.id
+///   parameter_version_id = "parameter_version"
+///   parameter_data       = file("parameter-yaml-data.yaml")
 /// }
 /// ```
 /// ```java
@@ -722,8 +828,8 @@ import 'parameter_version_state.dart';
 /// import com.pulumi.gcp.parametermanager.ParameterVersionArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -778,6 +884,7 @@ import 'parameter_version_state.dart';
 ///
 /// * `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
 ///
+///
 /// When using the `pulumi import` command, ParameterVersion can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -786,6 +893,13 @@ import 'parameter_version_state.dart';
 class ParameterVersion extends pulumi.CustomResource {
   /// The time at which the Parameter Version was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
   late final pulumi.Output<bool?> disabled;
   /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
@@ -819,6 +933,7 @@ class ParameterVersion extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
     this.name = registerOutput<String>('name');
@@ -852,6 +967,7 @@ class ParameterVersion extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
     this.name = registerOutput<String>('name');

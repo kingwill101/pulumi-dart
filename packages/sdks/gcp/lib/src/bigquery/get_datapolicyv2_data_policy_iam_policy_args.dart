@@ -43,4 +43,3 @@ class GetDatapolicyv2DataPolicyIamPolicyArgs {
     );
   }
 }
-

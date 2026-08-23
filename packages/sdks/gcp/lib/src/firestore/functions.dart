@@ -75,6 +75,22 @@ import 'get_document_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firestore_document" "mydoc" {
+///   project     = database.project
+///   database    = database.name
+///   collection  = "somenewcollection"
+///   document_id = "my-doc-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +99,8 @@ import 'get_document_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.firestore.Document;
 /// import com.pulumi.gcp.firestore.DocumentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -97,8 +113,8 @@ import 'get_document_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var mydoc = new Document("mydoc", DocumentArgs.builder()
-///             .project(database.project())
-///             .database(database.name())
+///             .project(database.get("project"))
+///             .database(database.get("name"))
 ///             .collection("somenewcollection")
 ///             .documentId("my-doc-id")
 ///             .build());

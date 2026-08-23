@@ -273,7 +273,7 @@ import 'occurence_state.dart';
 /// 		}
 /// 		_, err = containeranalysis.NewOccurence(ctx, "occurrence", &containeranalysis.OccurenceArgs{
 /// 			ResourceUri: pulumi.String("gcr.io/my-project/my-image"),
-/// 			NoteName:    note.ID(),
+/// 			NoteName:    note.ID().ToIDOutput().ToStringOutput(),
 /// 			Attestation: &containeranalysis.OccurenceAttestationArgs{
 /// 				SerializedPayload: pulumi.String(invokeFilebase64.Result),
 /// 				Signatures: containeranalysis.OccurenceAttestationSignatureArray{
@@ -289,6 +289,63 @@ import 'occurence_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_kms_getkmskeyring" "keyring" {
+///   name     = "my-key-ring"
+///   location = "global"
+/// }
+/// data "gcp_kms_getkmscryptokey" "crypto-key" {
+///   name     = "my-key"
+///   key_ring = data.gcp_kms_getkmskeyring.keyring.id
+/// }
+/// data "gcp_kms_getkmscryptokeyversion" "version" {
+///   crypto_key = data.gcp_kms_getkmscryptokey.crypto-key.id
+/// }
+///
+/// resource "gcp_binaryauthorization_attestor" "attestor" {
+///   name = "attestor"
+///   attestation_authority_note = {
+///     note_reference = gcp_containeranalysis_note.note.name
+///     public_keys = [{
+///       "id" = data.gcp_kms_getkmscryptokeyversion.version.id
+///       "pkixPublicKey" = {
+///         "publicKeyPem"       = data.gcp_kms_getkmscryptokeyversion.version.public_keys[0].pem
+///         "signatureAlgorithm" = data.gcp_kms_getkmscryptokeyversion.version.public_keys[0].algorithm
+///       }
+///     }]
+///   }
+/// }
+/// resource "gcp_containeranalysis_note" "note" {
+///   name = "attestation-note"
+///   attestation_authority = {
+///     hint = {
+///       human_readable_name = "Attestor Note"
+///     }
+///   }
+/// }
+/// resource "gcp_containeranalysis_occurence" "occurrence" {
+///   resource_uri = "gcr.io/my-project/my-image"
+///   note_name    = gcp_containeranalysis_note.note.id
+///   attestation = {
+///     serialized_payload = filebase64("path/to/my/payload.json")
+///     signatures = [{
+///       "publicKeyId"       = data.gcp_kms_getkmscryptokeyversion.version.id
+///       "serializedPayload" = filebase64("path/to/my/payload.json.sig")
+///     }]
+///   }
 /// }
 /// ```
 /// ```java
@@ -308,13 +365,16 @@ import 'occurence_state.dart';
 /// import com.pulumi.gcp.binaryauthorization.Attestor;
 /// import com.pulumi.gcp.binaryauthorization.AttestorArgs;
 /// import com.pulumi.gcp.binaryauthorization.inputs.AttestorAttestationAuthorityNoteArgs;
+/// import com.pulumi.gcp.binaryauthorization.inputs.AttestorAttestationAuthorityNotePublicKeyArgs;
+/// import com.pulumi.gcp.binaryauthorization.inputs.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs;
 /// import com.pulumi.gcp.containeranalysis.Occurence;
 /// import com.pulumi.gcp.containeranalysis.OccurenceArgs;
 /// import com.pulumi.gcp.containeranalysis.inputs.OccurenceAttestationArgs;
+/// import com.pulumi.gcp.containeranalysis.inputs.OccurenceAttestationSignatureArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -448,22 +508,15 @@ import 'occurence_state.dart';
 /// Occurrence can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/occurrences/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Occurrence can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:containeranalysis/occurence:Occurence default projects/{{project}}/occurrences/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:containeranalysis/occurence:Occurence default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:containeranalysis/occurence:Occurence default {{name}}
 /// ```
 class Occurence extends pulumi.CustomResource {
@@ -479,6 +532,13 @@ class Occurence extends pulumi.CustomResource {
   late final pulumi.Output<OccurenceAttestation> attestation;
   /// The time when the repository was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The note kind which explicitly denotes which of the occurrence
   /// details are specified. This field can be used as a filter in list
   /// requests.
@@ -517,6 +577,7 @@ class Occurence extends pulumi.CustomResource {
         ) {
     attestation = registerOutput<OccurenceAttestation>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OccurenceAttestation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     noteName = registerOutput<String>('noteName');
@@ -551,6 +612,7 @@ class Occurence extends pulumi.CustomResource {
         ) {
     attestation = registerOutput<OccurenceAttestation>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OccurenceAttestation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     noteName = registerOutput<String>('noteName');

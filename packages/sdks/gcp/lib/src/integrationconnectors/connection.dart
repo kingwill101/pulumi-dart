@@ -103,8 +103,6 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/integrationconnectors"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -139,6 +137,33 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "testProject" {
+/// }
+///
+/// resource "gcp_integrationconnectors_connection" "pubsubconnection" {
+///   name              = "test-pubsub"
+///   location          = "us-central1"
+///   connector_version ="projects/${data.gcp_organizations_getproject.testProject.project_id}/locations/global/providers/gcp/connectors/pubsub/versions/1"
+///   description       = "tf created description"
+///   config_variables {
+///     key          = "project_id"
+///     string_value = "connectors-example"
+///   }
+///   config_variables {
+///     key          = "topic_id"
+///     string_value = "test"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -150,8 +175,8 @@ import 'connection_state.dart';
 /// import com.pulumi.gcp.integrationconnectors.Connection;
 /// import com.pulumi.gcp.integrationconnectors.ConnectionArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionConfigVariableArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1012,8 +1037,6 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/integrationconnectors"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -1042,14 +1065,14 @@ import 'connection_state.dart';
 /// 			return err
 /// 		}
 /// 		secret_version_basic, err := secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-/// 			Secret:     secret_basic.ID(),
+/// 			Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("dummypassword"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = secretmanager.NewSecretIamMember(ctx, "secret_iam", &secretmanager.SecretIamMemberArgs{
-/// 			SecretId: secret_basic.ID(),
+/// 			SecretId: secret_basic.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:     pulumi.String("roles/secretmanager.admin"),
 /// 			Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", testProject.Number),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -1281,6 +1304,223 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "testProject" {
+/// }
+///
+/// resource "gcp_secretmanager_secret" "secret-basic" {
+///   secret_id = "test-secret"
+///   replication = {
+///     user_managed = {
+///       replicas = [{
+///         "location" = "us-central1"
+///       }]
+///     }
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret-version-basic" {
+///   secret      = gcp_secretmanager_secret.secret-basic.id
+///   secret_data = "dummypassword"
+/// }
+/// resource "gcp_secretmanager_secretiammember" "secret_iam" {
+///   depends_on = [gcp_secretmanager_secretversion.secret-version-basic]
+///   secret_id  = gcp_secretmanager_secret.secret-basic.id
+///   role       = "roles/secretmanager.admin"
+///   member     ="serviceAccount:${data.gcp_organizations_getproject.testProject.number}-compute@developer.gserviceaccount.com"
+/// }
+/// resource "gcp_integrationconnectors_connection" "zendeskconnection" {
+///   name              = "test-zendesk"
+///   description       = "tf updated description"
+///   location          = "us-central1"
+///   service_account   ="${data.gcp_organizations_getproject.testProject.number}-compute@developer.gserviceaccount.com"
+///   connector_version ="projects/${data.gcp_organizations_getproject.testProject.project_id}/locations/global/providers/zendesk/connectors/zendesk/versions/1"
+///   config_variables {
+///     key           = "proxy_enabled"
+///     boolean_value = false
+///   }
+///   config_variables {
+///     key           = "sample_integer_value"
+///     integer_value = 1
+///   }
+///   config_variables {
+///     key = "sample_encryption_key_value"
+///     encryption_key_value = {
+///       type         = "GOOGLE_MANAGED"
+///       kms_key_name = "sampleKMSKkey"
+///     }
+///   }
+///   config_variables {
+///     key = "sample_secret_value"
+///     secret_value = {
+///       secret_version = gcp_secretmanager_secretversion.secret-version-basic.name
+///     }
+///   }
+///   suspended = false
+///   auth_config = {
+///     additional_variables = [{
+///       "key"         = "sample_string"
+///       "stringValue" = "sampleString"
+///       }, {
+///       "key"          = "sample_boolean"
+///       "booleanValue" = false
+///       }, {
+///       "key"          = "sample_integer"
+///       "integerValue" = 1
+///       }, {
+///       "key" = "sample_secret_value"
+///       "secretValue" = {
+///         "secretVersion" = gcp_secretmanager_secretversion.secret-version-basic.name
+///       }
+///       }, {
+///       "key" = "sample_encryption_key_value"
+///       "encryptionKeyValue" = {
+///         "type"       = "GOOGLE_MANAGED"
+///         "kmsKeyName" = "sampleKMSKkey"
+///       }
+///     }]
+///     auth_type = "USER_PASSWORD"
+///     auth_key  = "sampleAuthKey"
+///     user_password = {
+///       username = "user@xyz.com"
+///       password = {
+///         secret_version = gcp_secretmanager_secretversion.secret-version-basic.name
+///       }
+///     }
+///   }
+///   destination_configs {
+///     key = "url"
+///     destinations {
+///       host = "https://test.zendesk.com"
+///       port = 80
+///     }
+///   }
+///   lock_config = {
+///     locked = false
+///     reason = "Its not locked"
+///   }
+///   log_config = {
+///     enabled = true
+///   }
+///   node_config = {
+///     min_node_count = 2
+///     max_node_count = 50
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   ssl_config = {
+///     additional_variables = [{
+///       "key"         = "sample_string"
+///       "stringValue" = "sampleString"
+///       }, {
+///       "key"          = "sample_boolean"
+///       "booleanValue" = false
+///       }, {
+///       "key"          = "sample_integer"
+///       "integerValue" = 1
+///       }, {
+///       "key" = "sample_secret_value"
+///       "secretValue" = {
+///         "secretVersion" = gcp_secretmanager_secretversion.secret-version-basic.name
+///       }
+///       }, {
+///       "key" = "sample_encryption_key_value"
+///       "encryptionKeyValue" = {
+///         "type"       = "GOOGLE_MANAGED"
+///         "kmsKeyName" = "sampleKMSKkey"
+///       }
+///     }]
+///     client_cert_type = "PEM"
+///     client_certificate = {
+///       secret_version = gcp_secretmanager_secretversion.secret-version-basic.name
+///     }
+///     client_private_key = {
+///       secret_version = gcp_secretmanager_secretversion.secret-version-basic.name
+///     }
+///     client_private_key_pass = {
+///       secret_version = gcp_secretmanager_secretversion.secret-version-basic.name
+///     }
+///     private_server_certificate = {
+///       secret_version = gcp_secretmanager_secretversion.secret-version-basic.name
+///     }
+///     server_cert_type = "PEM"
+///     trust_model      = "PRIVATE"
+///     type             = "TLS"
+///     use_ssl          = true
+///   }
+///   eventing_enablement_type = "EVENTING_AND_CONNECTION"
+///   eventing_config = {
+///     additional_variables = [{
+///       "key"         = "sample_string"
+///       "stringValue" = "sampleString"
+///       }, {
+///       "key"          = "sample_boolean"
+///       "booleanValue" = false
+///       }, {
+///       "key"          = "sample_integer"
+///       "integerValue" = 1
+///       }, {
+///       "key" = "sample_secret_value"
+///       "secretValue" = {
+///         "secretVersion" = gcp_secretmanager_secretversion.secret-version-basic.name
+///       }
+///       }, {
+///       "key" = "sample_encryption_key_value"
+///       "encryptionKeyValue" = {
+///         "type"       = "GOOGLE_MANAGED"
+///         "kmsKeyName" = "sampleKMSKkey"
+///       }
+///     }]
+///     registration_destination_config = {
+///       key = "registration_destination_config"
+///       destinations = [{
+///         "host" = "https://test.zendesk.com"
+///         "port" = 80
+///       }]
+///     }
+///     auth_config = {
+///       auth_type = "USER_PASSWORD"
+///       auth_key  = "sampleAuthKey"
+///       user_password = {
+///         username = "user@xyz.com"
+///         password = {
+///           secret_version = gcp_secretmanager_secretversion.secret-version-basic.name
+///         }
+///       }
+///       additional_variables = [{
+///         "key"         = "sample_string"
+///         "stringValue" = "sampleString"
+///         }, {
+///         "key"          = "sample_boolean"
+///         "booleanValue" = false
+///         }, {
+///         "key"          = "sample_integer"
+///         "integerValue" = 1
+///         }, {
+///         "key" = "sample_secret_value"
+///         "secretValue" = {
+///           "secretVersion" = gcp_secretmanager_secretversion.secret-version-basic.name
+///         }
+///         }, {
+///         "key" = "sample_encryption_key_value"
+///         "encryptionKeyValue" = {
+///           "type"       = "GOOGLE_MANAGED"
+///           "kmsKeyName" = "sampleKMSKkey"
+///         }
+///       }]
+///     }
+///     enrichment_enabled = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1293,6 +1533,7 @@ import 'connection_state.dart';
 /// import com.pulumi.gcp.secretmanager.SecretArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+/// import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedReplicaArgs;
 /// import com.pulumi.gcp.secretmanager.SecretVersion;
 /// import com.pulumi.gcp.secretmanager.SecretVersionArgs;
 /// import com.pulumi.gcp.secretmanager.SecretIamMember;
@@ -1303,25 +1544,39 @@ import 'connection_state.dart';
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionConfigVariableEncryptionKeyValueArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionConfigVariableSecretValueArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigArgs;
+/// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigAdditionalVariableArgs;
+/// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigAdditionalVariableSecretValueArgs;
+/// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigUserPasswordArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigUserPasswordPasswordArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionDestinationConfigArgs;
+/// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionDestinationConfigDestinationArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionLockConfigArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionLogConfigArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionNodeConfigArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigArgs;
+/// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigAdditionalVariableArgs;
+/// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigAdditionalVariableSecretValueArgs;
+/// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigClientCertificateArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigClientPrivateKeyArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigClientPrivateKeyPassArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigPrivateServerCertificateArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigArgs;
+/// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAdditionalVariableArgs;
+/// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAdditionalVariableSecretValueArgs;
+/// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigRegistrationDestinationConfigArgs;
+/// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigUserPasswordArgs;
 /// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs;
+/// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigAdditionalVariableArgs;
+/// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs;
+/// import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1733,22 +1988,15 @@ import 'connection_state.dart';
 /// Connection can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/connections/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:integrationconnectors/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:integrationconnectors/connection:Connection default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:integrationconnectors/connection:Connection default {{location}}/{{name}}
 /// ```
 class Connection extends pulumi.CustomResource {
@@ -1769,6 +2017,13 @@ class Connection extends pulumi.CustomResource {
   late final pulumi.Output<String> connectorVersionLaunchStage;
   /// Time the Namespace was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An arbitrary description for the Connection.
   late final pulumi.Output<String?> description;
   /// Define the Connectors target endpoint.
@@ -1788,7 +2043,7 @@ class Connection extends pulumi.CustomResource {
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Location in which Connection needs to be created.
   late final pulumi.Output<String> location;
@@ -1849,6 +2104,7 @@ class Connection extends pulumi.CustomResource {
     connectorVersionInfraConfigs = registerOutput<List<Map<String, dynamic>>>('connectorVersionInfraConfigs');
     connectorVersionLaunchStage = registerOutput<String>('connectorVersionLaunchStage');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destinationConfigs = registerOutput<List<Map<String, dynamic>>?>('destinationConfigs');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1902,6 +2158,7 @@ class Connection extends pulumi.CustomResource {
     connectorVersionInfraConfigs = registerOutput<List<Map<String, dynamic>>>('connectorVersionInfraConfigs');
     connectorVersionLaunchStage = registerOutput<String>('connectorVersionLaunchStage');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     destinationConfigs = registerOutput<List<Map<String, dynamic>>?>('destinationConfigs');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

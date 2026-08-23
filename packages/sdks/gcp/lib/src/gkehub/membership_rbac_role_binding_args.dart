@@ -8,6 +8,13 @@ import 'membership_rbac_role_binding_role.dart';
 /// {@endtemplate}
 /// {@macro pulumi_gkehub_membership_rbac_role_binding_membership_rbac_role_binding_args_doc}
 class MembershipRbacRoleBindingArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Location of the Membership
   final pulumi.Input<String> location;
   /// Id of the membership
@@ -27,6 +34,7 @@ class MembershipRbacRoleBindingArgs {
   final pulumi.Input<String> user;
 
   /// Creates a new [MembershipRbacRoleBindingArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [location] Location of the Membership
   /// [membershipId] Id of the membership
   /// [membershipRbacRoleBindingId] The client-provided identifier of the RBAC Role Binding.
@@ -34,6 +42,7 @@ class MembershipRbacRoleBindingArgs {
   /// [role] Role to bind to the principal.
   /// [user] Principal that is be authorized in the cluster (at least of one the oneof
   const MembershipRbacRoleBindingArgs({
+    this.deletionPolicy,
     required this.location,
     required this.membershipId,
     required this.membershipRbacRoleBindingId,
@@ -44,6 +53,7 @@ class MembershipRbacRoleBindingArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'location': location,
       'membershipId': membershipId,
       'membershipRbacRoleBindingId': membershipRbacRoleBindingId,
@@ -55,6 +65,7 @@ class MembershipRbacRoleBindingArgs {
 
   factory MembershipRbacRoleBindingArgs.fromMap(Map<String, dynamic> map) {
     return MembershipRbacRoleBindingArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       membershipId: pulumi.Input.fromValue(map['membershipId'] as String),
       membershipRbacRoleBindingId: pulumi.Input.fromValue(map['membershipRbacRoleBindingId'] as String),
@@ -64,4 +75,3 @@ class MembershipRbacRoleBindingArgs {
     );
   }
 }
-

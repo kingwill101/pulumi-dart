@@ -154,6 +154,39 @@ import 'autoscaling_policy_worker_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_cluster" "basic" {
+///   name   = "dataproc-policy"
+///   region = "us-central1"
+///   cluster_config = {
+///     autoscaling_config = {
+///       policy_uri = gcp_dataproc_autoscalingpolicy.asp.name
+///     }
+///   }
+/// }
+/// resource "gcp_dataproc_autoscalingpolicy" "asp" {
+///   policy_id = "dataproc-policy"
+///   location  = "us-central1"
+///   worker_config = {
+///     max_instances = 3
+///   }
+///   basic_algorithm = {
+///     yarn_config = {
+///       graceful_decommission_timeout = "30s"
+///       scale_up_factor               = 0.5
+///       scale_down_factor             = 0.5
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -169,8 +202,8 @@ import 'autoscaling_policy_worker_config.dart';
 /// import com.pulumi.gcp.dataproc.ClusterArgs;
 /// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigAutoscalingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -240,28 +273,28 @@ import 'autoscaling_policy_worker_config.dart';
 /// AutoscalingPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}`
-///
 /// * `{{project}}/{{location}}/{{policy_id}}`
-///
 /// * `{{location}}/{{policy_id}}`
+///
 ///
 /// When using the `pulumi import` command, AutoscalingPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{project}}/{{location}}/{{policy_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{location}}/{{policy_id}}
 /// ```
 class AutoscalingPolicy extends pulumi.CustomResource {
   /// Basic algorithm for autoscaling.
   /// Structure is documented below.
   late final pulumi.Output<AutoscalingPolicyBasicAlgorithm?> basicAlgorithm;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The  location where the autoscaling policy should reside.
   /// The default value is `global`.
   late final pulumi.Output<String?> location;
@@ -296,6 +329,7 @@ class AutoscalingPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     basicAlgorithm = registerOutput<AutoscalingPolicyBasicAlgorithm?>('basicAlgorithm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingPolicyBasicAlgorithm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');
@@ -328,6 +362,7 @@ class AutoscalingPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     basicAlgorithm = registerOutput<AutoscalingPolicyBasicAlgorithm?>('basicAlgorithm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingPolicyBasicAlgorithm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');

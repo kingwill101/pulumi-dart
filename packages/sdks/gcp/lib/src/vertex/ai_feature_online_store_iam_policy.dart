@@ -5,8 +5,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Vertex AI FeatureOnlineStore. Each of these resources serves a different use case:
 ///
 /// * `gcp.vertex.AiFeatureOnlineStoreIamPolicy`: Authoritative. Sets the IAM policy for the featureonlinestore and replaces any existing policy already attached.
-/// * `gcp.vertex.AiFeatureOnlineStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featureonlinestore are preserved.
-/// * `gcp.vertex.AiFeatureOnlineStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featureonlinestore are preserved.
+/// * `gcp.vertex.AiFeatureOnlineStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featureonlinestore are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.vertex.AiFeatureOnlineStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featureonlinestore are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -16,6 +16,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 ///
 /// &gt; **Note:** `gcp.vertex.AiFeatureOnlineStoreIamBinding` resources **can be** used in conjunction with `gcp.vertex.AiFeatureOnlineStoreIamMember` resources **only if** they do not grant privilege to the same role.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 ///
 /// ## gcp.vertex.AiFeatureOnlineStoreIamPolicy
 ///
@@ -117,6 +119,28 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeatureonlinestoreiampolicy" "policy" {
+///   region               = featureOnlineStore.region
+///   feature_online_store = featureOnlineStore.name
+///   policy_data          = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -125,10 +149,11 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreIamPolicy;
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -148,8 +173,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new AiFeatureOnlineStoreIamPolicy("policy", AiFeatureOnlineStoreIamPolicyArgs.builder()
-///             .region(featureOnlineStore.region())
-///             .featureOnlineStore(featureOnlineStore.name())
+///             .region(featureOnlineStore.get("region"))
+///             .featureOnlineStore(featureOnlineStore.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -246,6 +271,22 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeatureonlinestoreiambinding" "binding" {
+///   region               = featureOnlineStore.region
+///   feature_online_store = featureOnlineStore.name
+///   role                 = "roles/viewer"
+///   members              = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -254,8 +295,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreIamBinding;
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -268,8 +309,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new AiFeatureOnlineStoreIamBinding("binding", AiFeatureOnlineStoreIamBindingArgs.builder()
-///             .region(featureOnlineStore.region())
-///             .featureOnlineStore(featureOnlineStore.name())
+///             .region(featureOnlineStore.get("region"))
+///             .featureOnlineStore(featureOnlineStore.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -355,6 +396,22 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeatureonlinestoreiammember" "member" {
+///   region               = featureOnlineStore.region
+///   feature_online_store = featureOnlineStore.name
+///   role                 = "roles/viewer"
+///   member               = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -363,8 +420,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreIamMember;
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -377,8 +434,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new AiFeatureOnlineStoreIamMember("member", AiFeatureOnlineStoreIamMemberArgs.builder()
-///             .region(featureOnlineStore.region())
-///             .featureOnlineStore(featureOnlineStore.name())
+///             .region(featureOnlineStore.get("region"))
+///             .featureOnlineStore(featureOnlineStore.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -408,8 +465,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Vertex AI FeatureOnlineStore. Each of these resources serves a different use case:
 ///
 /// * `gcp.vertex.AiFeatureOnlineStoreIamPolicy`: Authoritative. Sets the IAM policy for the featureonlinestore and replaces any existing policy already attached.
-/// * `gcp.vertex.AiFeatureOnlineStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featureonlinestore are preserved.
-/// * `gcp.vertex.AiFeatureOnlineStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featureonlinestore are preserved.
+/// * `gcp.vertex.AiFeatureOnlineStoreIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the featureonlinestore are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.vertex.AiFeatureOnlineStoreIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the featureonlinestore are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -419,6 +476,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 ///
 /// &gt; **Note:** `gcp.vertex.AiFeatureOnlineStoreIamBinding` resources **can be** used in conjunction with `gcp.vertex.AiFeatureOnlineStoreIamMember` resources **only if** they do not grant privilege to the same role.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
 ///
 /// ## gcp.vertex.AiFeatureOnlineStoreIamPolicy
 ///
@@ -520,6 +579,28 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeatureonlinestoreiampolicy" "policy" {
+///   region               = featureOnlineStore.region
+///   feature_online_store = featureOnlineStore.name
+///   policy_data          = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -528,10 +609,11 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreIamPolicy;
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -551,8 +633,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new AiFeatureOnlineStoreIamPolicy("policy", AiFeatureOnlineStoreIamPolicyArgs.builder()
-///             .region(featureOnlineStore.region())
-///             .featureOnlineStore(featureOnlineStore.name())
+///             .region(featureOnlineStore.get("region"))
+///             .featureOnlineStore(featureOnlineStore.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -649,6 +731,22 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeatureonlinestoreiambinding" "binding" {
+///   region               = featureOnlineStore.region
+///   feature_online_store = featureOnlineStore.name
+///   role                 = "roles/viewer"
+///   members              = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -657,8 +755,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreIamBinding;
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -671,8 +769,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new AiFeatureOnlineStoreIamBinding("binding", AiFeatureOnlineStoreIamBindingArgs.builder()
-///             .region(featureOnlineStore.region())
-///             .featureOnlineStore(featureOnlineStore.name())
+///             .region(featureOnlineStore.get("region"))
+///             .featureOnlineStore(featureOnlineStore.get("name"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -758,6 +856,22 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeatureonlinestoreiammember" "member" {
+///   region               = featureOnlineStore.region
+///   feature_online_store = featureOnlineStore.name
+///   role                 = "roles/viewer"
+///   member               = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -766,8 +880,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreIamMember;
 /// import com.pulumi.gcp.vertex.AiFeatureOnlineStoreIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -780,8 +894,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new AiFeatureOnlineStoreIamMember("member", AiFeatureOnlineStoreIamMemberArgs.builder()
-///             .region(featureOnlineStore.region())
-///             .featureOnlineStore(featureOnlineStore.name())
+///             .region(featureOnlineStore.get("region"))
+///             .featureOnlineStore(featureOnlineStore.get("name"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -806,11 +920,8 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{region}}/featureOnlineStores/{{name}}
-///
 /// * {{project}}/{{region}}/{{name}}
-///
 /// * {{region}}/{{name}}
-///
 /// * {{name}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -818,25 +929,21 @@ import 'ai_feature_online_store_iam_policy_state.dart';
 /// Vertex AI featureonlinestore IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:vertex/aiFeatureOnlineStoreIamPolicy:AiFeatureOnlineStoreIamPolicy editor "projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}} roles/viewer user:jane@example.com"
+/// $ terraform import google_vertex_ai_feature_online_store_iam_member.editor "projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:vertex/aiFeatureOnlineStoreIamPolicy:AiFeatureOnlineStoreIamPolicy editor "projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}} roles/viewer"
+/// $ terraform import google_vertex_ai_feature_online_store_iam_binding.editor "projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureOnlineStoreIamPolicy:AiFeatureOnlineStoreIamPolicy editor projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class AiFeatureOnlineStoreIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the IAM policy.

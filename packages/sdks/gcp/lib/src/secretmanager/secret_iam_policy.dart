@@ -5,8 +5,8 @@ import 'secret_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Secret Manager Secret. Each of these resources serves a different use case:
 ///
 /// * `gcp.secretmanager.SecretIamPolicy`: Authoritative. Sets the IAM policy for the secret and replaces any existing policy already attached.
-/// * `gcp.secretmanager.SecretIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the secret are preserved.
-/// * `gcp.secretmanager.SecretIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the secret are preserved.
+/// * `gcp.secretmanager.SecretIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the secret are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.secretmanager.SecretIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the secret are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -14,7 +14,7 @@ import 'secret_iam_policy_state.dart';
 ///
 /// &gt; **Note:** `gcp.secretmanager.SecretIamPolicy` **cannot** be used in conjunction with `gcp.secretmanager.SecretIamBinding` and `gcp.secretmanager.SecretIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.secretmanager.SecretIamBinding` resources **can be** used in conjunction with `gcp.secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.secretmanager.SecretIamBinding` resources **can be** used in conjunction with `gcp.secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -119,6 +119,28 @@ import 'secret_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/secretmanager.secretAccessor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secretiampolicy" "policy" {
+///   project     = secret-basic.project
+///   secret_id   = secret-basic.secretId
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,10 +149,11 @@ import 'secret_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.secretmanager.SecretIamPolicy;
 /// import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -150,8 +173,8 @@ import 'secret_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
-///             .project(secret_basic.project())
-///             .secretId(secret_basic.secretId())
+///             .project(secret_basic.get("project"))
+///             .secretId(secret_basic.get("secretId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -299,6 +322,33 @@ import 'secret_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/secretmanager.secretAccessor"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secretiampolicy" "policy" {
+///   project     = secret-basic.project
+///   secret_id   = secret-basic.secretId
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -307,10 +357,12 @@ import 'secret_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.secretmanager.SecretIamPolicy;
 /// import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -335,8 +387,8 @@ import 'secret_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
-///             .project(secret_basic.project())
-///             .secretId(secret_basic.secretId())
+///             .project(secret_basic.get("project"))
+///             .secretId(secret_basic.get("secretId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -436,6 +488,22 @@ import 'secret_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secretiambinding" "binding" {
+///   project   = secret-basic.project
+///   secret_id = secret-basic.secretId
+///   role      = "roles/secretmanager.secretAccessor"
+///   members   = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -444,8 +512,8 @@ import 'secret_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretIamBinding;
 /// import com.pulumi.gcp.secretmanager.SecretIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -458,8 +526,8 @@ import 'secret_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()
-///             .project(secret_basic.project())
-///             .secretId(secret_basic.secretId())
+///             .project(secret_basic.get("project"))
+///             .secretId(secret_basic.get("secretId"))
 ///             .role("roles/secretmanager.secretAccessor")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -571,6 +639,27 @@ import 'secret_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secretiambinding" "binding" {
+///   project   = secret-basic.project
+///   secret_id = secret-basic.secretId
+///   role      = "roles/secretmanager.secretAccessor"
+///   members   = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -580,8 +669,8 @@ import 'secret_iam_policy_state.dart';
 /// import com.pulumi.gcp.secretmanager.SecretIamBinding;
 /// import com.pulumi.gcp.secretmanager.SecretIamBindingArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -594,8 +683,8 @@ import 'secret_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()
-///             .project(secret_basic.project())
-///             .secretId(secret_basic.secretId())
+///             .project(secret_basic.get("project"))
+///             .secretId(secret_basic.get("secretId"))
 ///             .role("roles/secretmanager.secretAccessor")
 ///             .members("user:jane@example.com")
 ///             .condition(SecretIamBindingConditionArgs.builder()
@@ -689,6 +778,22 @@ import 'secret_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secretiammember" "member" {
+///   project   = secret-basic.project
+///   secret_id = secret-basic.secretId
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -697,8 +802,8 @@ import 'secret_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretIamMember;
 /// import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -711,8 +816,8 @@ import 'secret_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()
-///             .project(secret_basic.project())
-///             .secretId(secret_basic.secretId())
+///             .project(secret_basic.get("project"))
+///             .secretId(secret_basic.get("secretId"))
 ///             .role("roles/secretmanager.secretAccessor")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -818,6 +923,27 @@ import 'secret_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secretiammember" "member" {
+///   project   = secret-basic.project
+///   secret_id = secret-basic.secretId
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -827,8 +953,8 @@ import 'secret_iam_policy_state.dart';
 /// import com.pulumi.gcp.secretmanager.SecretIamMember;
 /// import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -841,8 +967,8 @@ import 'secret_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()
-///             .project(secret_basic.project())
-///             .secretId(secret_basic.secretId())
+///             .project(secret_basic.get("project"))
+///             .secretId(secret_basic.get("secretId"))
 ///             .role("roles/secretmanager.secretAccessor")
 ///             .member("user:jane@example.com")
 ///             .condition(SecretIamMemberConditionArgs.builder()
@@ -880,8 +1006,8 @@ import 'secret_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for Secret Manager Secret. Each of these resources serves a different use case:
 ///
 /// * `gcp.secretmanager.SecretIamPolicy`: Authoritative. Sets the IAM policy for the secret and replaces any existing policy already attached.
-/// * `gcp.secretmanager.SecretIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the secret are preserved.
-/// * `gcp.secretmanager.SecretIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the secret are preserved.
+/// * `gcp.secretmanager.SecretIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the secret are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.secretmanager.SecretIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the secret are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -889,7 +1015,7 @@ import 'secret_iam_policy_state.dart';
 ///
 /// &gt; **Note:** `gcp.secretmanager.SecretIamPolicy` **cannot** be used in conjunction with `gcp.secretmanager.SecretIamBinding` and `gcp.secretmanager.SecretIamMember` or they will fight over what your policy should be.
 ///
-/// &gt; **Note:** `gcp.secretmanager.SecretIamBinding` resources **can be** used in conjunction with `gcp.secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role.
+/// &gt; **Note:** `gcp.secretmanager.SecretIamBinding` resources **can be** used in conjunction with `gcp.secretmanager.SecretIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 ///
 /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 ///
@@ -994,6 +1120,28 @@ import 'secret_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/secretmanager.secretAccessor"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secretiampolicy" "policy" {
+///   project     = secret-basic.project
+///   secret_id   = secret-basic.secretId
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1002,10 +1150,11 @@ import 'secret_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.secretmanager.SecretIamPolicy;
 /// import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1025,8 +1174,8 @@ import 'secret_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
-///             .project(secret_basic.project())
-///             .secretId(secret_basic.secretId())
+///             .project(secret_basic.get("project"))
+///             .secretId(secret_basic.get("secretId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1174,6 +1323,33 @@ import 'secret_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/secretmanager.secretAccessor"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secretiampolicy" "policy" {
+///   project     = secret-basic.project
+///   secret_id   = secret-basic.secretId
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1182,10 +1358,12 @@ import 'secret_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.secretmanager.SecretIamPolicy;
 /// import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1210,8 +1388,8 @@ import 'secret_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
-///             .project(secret_basic.project())
-///             .secretId(secret_basic.secretId())
+///             .project(secret_basic.get("project"))
+///             .secretId(secret_basic.get("secretId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1311,6 +1489,22 @@ import 'secret_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secretiambinding" "binding" {
+///   project   = secret-basic.project
+///   secret_id = secret-basic.secretId
+///   role      = "roles/secretmanager.secretAccessor"
+///   members   = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1319,8 +1513,8 @@ import 'secret_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretIamBinding;
 /// import com.pulumi.gcp.secretmanager.SecretIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1333,8 +1527,8 @@ import 'secret_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()
-///             .project(secret_basic.project())
-///             .secretId(secret_basic.secretId())
+///             .project(secret_basic.get("project"))
+///             .secretId(secret_basic.get("secretId"))
 ///             .role("roles/secretmanager.secretAccessor")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -1446,6 +1640,27 @@ import 'secret_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secretiambinding" "binding" {
+///   project   = secret-basic.project
+///   secret_id = secret-basic.secretId
+///   role      = "roles/secretmanager.secretAccessor"
+///   members   = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1455,8 +1670,8 @@ import 'secret_iam_policy_state.dart';
 /// import com.pulumi.gcp.secretmanager.SecretIamBinding;
 /// import com.pulumi.gcp.secretmanager.SecretIamBindingArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1469,8 +1684,8 @@ import 'secret_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()
-///             .project(secret_basic.project())
-///             .secretId(secret_basic.secretId())
+///             .project(secret_basic.get("project"))
+///             .secretId(secret_basic.get("secretId"))
 ///             .role("roles/secretmanager.secretAccessor")
 ///             .members("user:jane@example.com")
 ///             .condition(SecretIamBindingConditionArgs.builder()
@@ -1564,6 +1779,22 @@ import 'secret_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secretiammember" "member" {
+///   project   = secret-basic.project
+///   secret_id = secret-basic.secretId
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1572,8 +1803,8 @@ import 'secret_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.secretmanager.SecretIamMember;
 /// import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1586,8 +1817,8 @@ import 'secret_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()
-///             .project(secret_basic.project())
-///             .secretId(secret_basic.secretId())
+///             .project(secret_basic.get("project"))
+///             .secretId(secret_basic.get("secretId"))
 ///             .role("roles/secretmanager.secretAccessor")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -1693,6 +1924,27 @@ import 'secret_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secretiammember" "member" {
+///   project   = secret-basic.project
+///   secret_id = secret-basic.secretId
+///   role      = "roles/secretmanager.secretAccessor"
+///   member    = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1702,8 +1954,8 @@ import 'secret_iam_policy_state.dart';
 /// import com.pulumi.gcp.secretmanager.SecretIamMember;
 /// import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
 /// import com.pulumi.gcp.secretmanager.inputs.SecretIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1716,8 +1968,8 @@ import 'secret_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()
-///             .project(secret_basic.project())
-///             .secretId(secret_basic.secretId())
+///             .project(secret_basic.get("project"))
+///             .secretId(secret_basic.get("secretId"))
 ///             .role("roles/secretmanager.secretAccessor")
 ///             .member("user:jane@example.com")
 ///             .condition(SecretIamMemberConditionArgs.builder()
@@ -1751,9 +2003,7 @@ import 'secret_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/secrets/{{secret_id}}
-///
 /// * {{project}}/{{secret_id}}
-///
 /// * {{secret_id}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -1761,25 +2011,21 @@ import 'secret_iam_policy_state.dart';
 /// Secret Manager secret IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:secretmanager/secretIamPolicy:SecretIamPolicy editor "projects/{{project}}/secrets/{{secret_id}} roles/secretmanager.secretAccessor user:jane@example.com"
+/// $ terraform import google_secret_manager_secret_iam_member.editor "projects/{{project}}/secrets/{{secret_id}} roles/secretmanager.secretAccessor user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:secretmanager/secretIamPolicy:SecretIamPolicy editor "projects/{{project}}/secrets/{{secret_id}} roles/secretmanager.secretAccessor"
+/// $ terraform import google_secret_manager_secret_iam_binding.editor "projects/{{project}}/secrets/{{secret_id}} roles/secretmanager.secretAccessor"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:secretmanager/secretIamPolicy:SecretIamPolicy editor projects/{{project}}/secrets/{{secret_id}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class SecretIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the IAM policy.

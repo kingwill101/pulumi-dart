@@ -6,7 +6,7 @@ import 'backup_plan_backup_rule_standard_schedule.dart';
 class BackupPlanBackupRule {
   /// Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
   final pulumi.Input<int> backupRetentionDays;
-  /// The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
+  /// The unique ID of this `BackupRule`. The `ruleId` is unique per `BackupPlan`.
   final pulumi.Input<String> ruleId;
   /// StandardSchedule defines a schedule that runs within the confines of a defined window of days.
   /// Structure is documented below.
@@ -14,7 +14,7 @@ class BackupPlanBackupRule {
 
   /// Creates a new [BackupPlanBackupRule].
   /// [backupRetentionDays] Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
-  /// [ruleId] The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
+  /// [ruleId] The unique ID of this `BackupRule`. The `ruleId` is unique per `BackupPlan`.
   /// [standardSchedule] StandardSchedule defines a schedule that runs within the confines of a defined window of days.
   const BackupPlanBackupRule({
     required this.backupRetentionDays,
@@ -38,4 +38,3 @@ class BackupPlanBackupRule {
     );
   }
 }
-

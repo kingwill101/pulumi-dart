@@ -9,6 +9,13 @@ import 'prevention_job_trigger_trigger.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dataloss_prevention_job_trigger_prevention_job_trigger_args_doc}
 class PreventionJobTriggerArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of the job trigger.
   final pulumi.Input<String>? description;
   /// User set display name of the job trigger.
@@ -32,6 +39,7 @@ class PreventionJobTriggerArgs {
   final pulumi.Input<List<PreventionJobTriggerTrigger>> triggers;
 
   /// Creates a new [PreventionJobTriggerArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A description of the job trigger.
   /// [displayName] User set display name of the job trigger.
   /// [inspectJob] Controls what and how to inspect for findings.
@@ -40,6 +48,7 @@ class PreventionJobTriggerArgs {
   /// [triggerId] The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// [triggers] What event needs to occur for a new job to be started.
   const PreventionJobTriggerArgs({
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.inspectJob,
@@ -51,6 +60,7 @@ class PreventionJobTriggerArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'inspectJob': ?pulumi.Input.mapOptionalInputValue<PreventionJobTriggerInspectJob, Map<String, dynamic>>(inspectJob, (value) => value.toMap()),
@@ -63,6 +73,7 @@ class PreventionJobTriggerArgs {
 
   factory PreventionJobTriggerArgs.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inspectJob: (() { final guardedValue = map['inspectJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionJobTriggerInspectJob.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -73,4 +84,3 @@ class PreventionJobTriggerArgs {
     );
   }
 }
-

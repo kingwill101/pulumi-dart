@@ -159,7 +159,7 @@ import 'backup_state.dart';
 /// 			Name:            pulumi.String("fs-bkup"),
 /// 			Location:        pulumi.String("us-central1"),
 /// 			Description:     pulumi.String("This is a filestore backup for the test instance"),
-/// 			SourceInstance:  instance.ID(),
+/// 			SourceInstance:  instance.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceFileShare: pulumi.String("share1"),
 /// 			Labels: pulumi.StringMap{
 /// 				"files":       pulumi.String("label1"),
@@ -171,6 +171,41 @@ import 'backup_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_filestore_instance" "instance" {
+///   name     = "fs-inst"
+///   location = "us-central1-b"
+///   tier     = "BASIC_HDD"
+///   file_shares = {
+///     capacity_gb = 1024
+///     name        = "share1"
+///   }
+///   networks {
+///     network      = "default"
+///     modes        = ["MODE_IPV4"]
+///     connect_mode = "DIRECT_PEERING"
+///   }
+/// }
+/// resource "gcp_filestore_backup" "backup" {
+///   name              = "fs-bkup"
+///   location          = "us-central1"
+///   description       = "This is a filestore backup for the test instance"
+///   source_instance   = gcp_filestore_instance.instance.id
+///   source_file_share = "share1"
+///   labels = {
+///     "files"       = "label1"
+///     "other-label" = "label2"
+///   }
 /// }
 /// ```
 /// ```java
@@ -185,8 +220,8 @@ import 'backup_state.dart';
 /// import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
 /// import com.pulumi.gcp.filestore.Backup;
 /// import com.pulumi.gcp.filestore.BackupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -263,22 +298,15 @@ import 'backup_state.dart';
 /// Backup can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/backups/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:filestore/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:filestore/backup:Backup default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:filestore/backup:Backup default {{location}}/{{name}}
 /// ```
 class Backup extends pulumi.CustomResource {
@@ -286,6 +314,13 @@ class Backup extends pulumi.CustomResource {
   late final pulumi.Output<String> capacityGb;
   /// The time when the snapshot was created in RFC3339 text format.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
   late final pulumi.Output<String?> description;
   /// Amount of bytes that will be downloaded if the backup is restored.
@@ -297,7 +332,7 @@ class Backup extends pulumi.CustomResource {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
   late final pulumi.Output<String> location;
@@ -347,6 +382,7 @@ class Backup extends pulumi.CustomResource {
         ) {
     capacityGb = registerOutput<String>('capacityGb');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     downloadBytes = registerOutput<String>('downloadBytes');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -389,6 +425,7 @@ class Backup extends pulumi.CustomResource {
         ) {
     capacityGb = registerOutput<String>('capacityGb');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     downloadBytes = registerOutput<String>('downloadBytes');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

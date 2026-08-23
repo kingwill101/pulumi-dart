@@ -41,4 +41,3 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4Config {
     );
   }
 }
-

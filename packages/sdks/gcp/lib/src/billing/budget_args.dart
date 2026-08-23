@@ -25,6 +25,13 @@ class BudgetArgs {
   /// spend against the budget.
   /// Structure is documented below.
   final pulumi.Input<BudgetBudgetFilter>? budgetFilter;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User data for display name in UI. Must be &lt;= 60 chars.
   final pulumi.Input<String>? displayName;
   /// The ownership scope of the budget. The ownership scope and users'
@@ -42,6 +49,7 @@ class BudgetArgs {
   /// [amount] The budgeted amount for each usage period.
   /// [billingAccount] ID of the billing account to set a budget on.
   /// [budgetFilter] Filters that define which resources are used to compute the actual
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] User data for display name in UI. Must be &lt;= 60 chars.
   /// [ownershipScope] The ownership scope of the budget. The ownership scope and users'
   /// [thresholdRules] Rules that trigger alerts (notifications of thresholds being
@@ -50,6 +58,7 @@ class BudgetArgs {
     required this.amount,
     required this.billingAccount,
     this.budgetFilter,
+    this.deletionPolicy,
     this.displayName,
     this.ownershipScope,
     this.thresholdRules,
@@ -61,6 +70,7 @@ class BudgetArgs {
       'amount': pulumi.Input.mapInputValue<BudgetAmount, Map<String, dynamic>>(amount, (value) => value.toMap()),
       'billingAccount': billingAccount,
       'budgetFilter': ?pulumi.Input.mapOptionalInputValue<BudgetBudgetFilter, Map<String, dynamic>>(budgetFilter, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'ownershipScope': ?ownershipScope,
       'thresholdRules': ?pulumi.Input.mapOptionalInputValue<List<BudgetThresholdRule>, List<Map<String, dynamic>>>(thresholdRules, (value) => pulumi.Input.encodeList<BudgetThresholdRule, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -73,10 +83,10 @@ class BudgetArgs {
       amount: pulumi.Input.fromValue(BudgetAmount.fromMap((map['amount']! as Map).cast<String, dynamic>())),
       billingAccount: pulumi.Input.fromValue(map['billingAccount'] as String),
       budgetFilter: (() { final guardedValue = map['budgetFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BudgetBudgetFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ownershipScope: (() { final guardedValue = map['ownershipScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       thresholdRules: (() { final guardedValue = map['thresholdRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BudgetThresholdRule>(guardedValue, (value) => BudgetThresholdRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }
-

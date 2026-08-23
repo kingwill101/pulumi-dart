@@ -7,7 +7,7 @@ import 'bucket_aclstate.dart';
 /// and
 /// [API](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls).
 ///
-/// Bucket ACLs can be managed non authoritatively using the `storage_bucket_access_control` resource. Do not use these two resources in conjunction to manage the same bucket.
+/// Bucket ACLs can be managed non authoritatively using the `storageBucketAccessControl` resource. Do not use these two resources in conjunction to manage the same bucket.
 ///
 /// Permissions can be granted either by ACLs or Cloud IAM policies. In general, permissions granted by Cloud IAM policies do not appear in ACLs, and permissions granted by ACLs do not appear in Cloud IAM policies. The only exception is for ACLs applied directly on a bucket and certain bucket-level Cloud IAM policies, as described in [Cloud IAM relation to ACLs](https://cloud.google.com/storage/docs/access-control/iam#acls).
 ///
@@ -105,6 +105,24 @@ import 'bucket_aclstate.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "image-store" {
+///   name     = "image-store-bucket"
+///   location = "EU"
+/// }
+/// resource "gcp_storage_bucketacl" "image-store-acl" {
+///   bucket        = gcp_storage_bucket.image-store.name
+///   role_entities = ["OWNER:user-my.email@gmail.com", "READER:group-mygroup"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -115,8 +133,8 @@ import 'bucket_aclstate.dart';
 /// import com.pulumi.gcp.storage.BucketArgs;
 /// import com.pulumi.gcp.storage.BucketACL;
 /// import com.pulumi.gcp.storage.BucketACLArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -170,9 +188,16 @@ class BucketACL extends pulumi.CustomResource {
   late final pulumi.Output<String> bucket;
   /// Configure this ACL to be the default ACL.
   late final pulumi.Output<String?> defaultAcl;
-  /// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `roleEntity` is not.
   late final pulumi.Output<String?> predefinedAcl;
-  /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
+  /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefinedAcl` is not.
   late final pulumi.Output<List<String>> roleEntities;
 
   /// Creates a new [BucketACL].
@@ -191,6 +216,7 @@ class BucketACL extends pulumi.CustomResource {
         ) {
     bucket = registerOutput<String>('bucket');
     defaultAcl = registerOutput<String?>('defaultAcl');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     predefinedAcl = registerOutput<String?>('predefinedAcl');
     roleEntities = registerOutput<List<String>>('roleEntities');
   }
@@ -220,6 +246,7 @@ class BucketACL extends pulumi.CustomResource {
         ) {
     bucket = registerOutput<String>('bucket');
     defaultAcl = registerOutput<String?>('defaultAcl');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     predefinedAcl = registerOutput<String?>('predefinedAcl');
     roleEntities = registerOutput<List<String>>('roleEntities');
   }

@@ -10,12 +10,18 @@ class RegionalSecretVersionState {
   /// The customer-managed encryption configuration of the regional secret.
   /// Structure is documented below.
   final pulumi.Input<List<RegionalSecretVersionCustomerManagedEncryption>>? customerManagedEncryptions;
-  /// The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+  /// The deletion policy for the secret version. Setting `ABANDON` allows the resource
   /// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-  /// disabled rather than deleted. Default is `DELETE`. Possible values are:
+  /// disabled rather than deleted.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  ///
+  /// Default is `DELETE`. Possible values are:
   /// * DELETE
   /// * DISABLE
   /// * ABANDON
+  /// * PREVENT
   final pulumi.Input<String>? deletionPolicy;
   /// The time at which the regional secret version was destroyed. Only present if state is DESTROYED.
   final pulumi.Input<String>? destroyTime;
@@ -39,7 +45,7 @@ class RegionalSecretVersionState {
   /// Creates a new [RegionalSecretVersionState].
   /// [createTime] The time at which the regional secret version was created.
   /// [customerManagedEncryptions] The customer-managed encryption configuration of the regional secret.
-  /// [deletionPolicy] The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+  /// [deletionPolicy] The deletion policy for the secret version. Setting `ABANDON` allows the resource
   /// [destroyTime] The time at which the regional secret version was destroyed. Only present if state is DESTROYED.
   /// [enabled] The current state of the regional secret version.
   /// [isSecretDataBase64] If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
@@ -94,4 +100,3 @@ class RegionalSecretVersionState {
     );
   }
 }
-

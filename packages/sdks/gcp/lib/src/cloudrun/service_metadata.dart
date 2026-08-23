@@ -25,8 +25,10 @@ class ServiceMetadata {
   /// - `run.googleapis.com/scalingMode` sets the type of scaling mode for the service. The supported values for scaling mode are "manual" and "automatic". If not provided, it defaults to "automatic".
   /// - `run.googleapis.com/manualInstanceCount` sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+  /// (Output)
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// (Output)
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -38,12 +40,11 @@ class ServiceMetadata {
   /// (scope and select) objects. May match selectors of replication controllers
   /// and routes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// In Cloud Run the namespace must be equal to either the
   /// project ID or project number.
   final pulumi.Input<String>? namespace;
-  /// (Output)
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>>? pulumiLabels;
@@ -64,12 +65,12 @@ class ServiceMetadata {
 
   /// Creates a new [ServiceMetadata].
   /// [annotations] Annotations is a key value map stored with a resource that
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] (Output)
   /// [effectiveLabels] (Output)
   /// [generation] (Output)
   /// [labels] Map of string keys and values that can be used to organize and categorize
   /// [namespace] In Cloud Run the namespace must be equal to either the
-  /// [pulumiLabels] (Output)
+  /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [resourceVersion] (Output)
   /// [selfLink] (Output)
   /// [uid] (Output)
@@ -116,4 +117,3 @@ class ServiceMetadata {
     );
   }
 }
-

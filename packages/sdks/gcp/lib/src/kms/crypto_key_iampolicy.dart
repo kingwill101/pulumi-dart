@@ -120,7 +120,7 @@ import 'crypto_key_iampolicy_state.dart';
 /// 		}
 /// 		key, err := kms.NewCryptoKey(ctx, "key", &kms.CryptoKeyArgs{
 /// 			Name:           pulumi.String("crypto-key-example"),
-/// 			KeyRing:        keyring.ID(),
+/// 			KeyRing:        keyring.ID().ToIDOutput().ToStringOutput(),
 /// 			RotationPeriod: pulumi.String("7776000s"),
 /// 		})
 /// 		if err != nil {
@@ -140,7 +140,7 @@ import 'crypto_key_iampolicy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = kms.NewCryptoKeyIAMPolicy(ctx, "crypto_key", &kms.CryptoKeyIAMPolicyArgs{
-/// 			CryptoKeyId: key.ID(),
+/// 			CryptoKeyId: key.ID().ToIDOutput().ToStringOutput(),
 /// 			PolicyData:  pulumi.String(admin.PolicyData),
 /// 		})
 /// 		if err != nil {
@@ -148,6 +148,36 @@ import 'crypto_key_iampolicy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/cloudkms.cryptoKeyEncrypter"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_kms_keyring" "keyring" {
+///   name     = "keyring-example"
+///   location = "global"
+/// }
+/// resource "gcp_kms_cryptokey" "key" {
+///   name            = "crypto-key-example"
+///   key_ring        = gcp_kms_keyring.keyring.id
+///   rotation_period = "7776000s"
+/// }
+/// resource "gcp_kms_cryptokeyiampolicy" "crypto_key" {
+///   crypto_key_id = gcp_kms_cryptokey.key.id
+///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -162,10 +192,11 @@ import 'crypto_key_iampolicy_state.dart';
 /// import com.pulumi.gcp.kms.CryptoKeyArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMPolicy;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -330,6 +361,27 @@ import 'crypto_key_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/cloudkms.cryptoKeyEncrypter"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -338,8 +390,10 @@ import 'crypto_key_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -447,6 +501,21 @@ import 'crypto_key_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_cryptokeyiambinding" "crypto_key" {
+///   crypto_key_id = key.id
+///   role          = "roles/cloudkms.cryptoKeyEncrypter"
+///   members       = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -455,8 +524,8 @@ import 'crypto_key_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -469,7 +538,7 @@ import 'crypto_key_iampolicy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var cryptoKey = new CryptoKeyIAMBinding("cryptoKey", CryptoKeyIAMBindingArgs.builder()
-///             .cryptoKeyId(key.id())
+///             .cryptoKeyId(key.get("id"))
 ///             .role("roles/cloudkms.cryptoKeyEncrypter")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -577,6 +646,26 @@ import 'crypto_key_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_cryptokeyiambinding" "crypto_key" {
+///   crypto_key_id = key.id
+///   role          = "roles/cloudkms.cryptoKeyEncrypter"
+///   members       = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -586,8 +675,8 @@ import 'crypto_key_iampolicy_state.dart';
 /// import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
 /// import com.pulumi.gcp.kms.inputs.CryptoKeyIAMBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -600,7 +689,7 @@ import 'crypto_key_iampolicy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var cryptoKey = new CryptoKeyIAMBinding("cryptoKey", CryptoKeyIAMBindingArgs.builder()
-///             .cryptoKeyId(key.id())
+///             .cryptoKeyId(key.get("id"))
 ///             .role("roles/cloudkms.cryptoKeyEncrypter")
 ///             .members("user:jane@example.com")
 ///             .condition(CryptoKeyIAMBindingConditionArgs.builder()
@@ -689,6 +778,21 @@ import 'crypto_key_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+///   crypto_key_id = key.id
+///   role          = "roles/cloudkms.cryptoKeyEncrypter"
+///   member        = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -697,8 +801,8 @@ import 'crypto_key_iampolicy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMember;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -711,7 +815,7 @@ import 'crypto_key_iampolicy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
-///             .cryptoKeyId(key.id())
+///             .cryptoKeyId(key.get("id"))
 ///             .role("roles/cloudkms.cryptoKeyEncrypter")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -813,6 +917,26 @@ import 'crypto_key_iampolicy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+///   crypto_key_id = key.id
+///   role          = "roles/cloudkms.cryptoKeyEncrypter"
+///   member        = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -822,8 +946,8 @@ import 'crypto_key_iampolicy_state.dart';
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMember;
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
 /// import com.pulumi.gcp.kms.inputs.CryptoKeyIAMMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -836,7 +960,7 @@ import 'crypto_key_iampolicy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
-///             .cryptoKeyId(key.id())
+///             .cryptoKeyId(key.get("id"))
 ///             .role("roles/cloudkms.cryptoKeyEncrypter")
 ///             .member("user:jane@example.com")
 ///             .condition(CryptoKeyIAMMemberConditionArgs.builder()
@@ -866,30 +990,6 @@ import 'crypto_key_iampolicy_state.dart';
 ///
 ///
 /// ## Import
-///
-/// ### Importing IAM policies
-///
-/// IAM policy imports use the identifier of the KMS crypto key only. For example:
-///
-/// * `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}`
-///
-/// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-///
-/// tf
-///
-/// import {
-///
-/// id = "{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}"
-///
-/// to = google_kms_crypto_key_iam_policy.default
-///
-/// }
-///
-/// The `pulumi import` command can also be used:
-///
-/// ```sh
-/// $ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy default {{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}
-/// ```
 class CryptoKeyIAMPolicy extends pulumi.CustomResource {
   /// The crypto key ID, in the form
   /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or

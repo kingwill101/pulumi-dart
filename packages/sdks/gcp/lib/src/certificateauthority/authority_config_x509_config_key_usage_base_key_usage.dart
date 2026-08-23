@@ -72,4 +72,3 @@ class AuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
     );
   }
 }
-

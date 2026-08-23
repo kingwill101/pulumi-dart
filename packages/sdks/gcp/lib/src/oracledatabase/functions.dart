@@ -15,6 +15,22 @@ import 'get_db_nodes_args.dart';
 import 'get_db_nodes_result.dart';
 import 'get_db_servers_args.dart';
 import 'get_db_servers_result.dart';
+import 'get_exascale_db_storage_vault_args.dart';
+import 'get_exascale_db_storage_vault_result.dart';
+import 'get_exascale_db_storage_vaults_args.dart';
+import 'get_exascale_db_storage_vaults_result.dart';
+import 'get_goldengate_connection_types_args.dart';
+import 'get_goldengate_connection_types_result.dart';
+import 'get_goldengate_deployment_environments_args.dart';
+import 'get_goldengate_deployment_environments_result.dart';
+import 'get_goldengate_deployment_types_args.dart';
+import 'get_goldengate_deployment_types_result.dart';
+import 'get_goldengate_deployment_versions_args.dart';
+import 'get_goldengate_deployment_versions_result.dart';
+import 'get_odb_network_args.dart';
+import 'get_odb_network_result.dart';
+import 'get_odb_subnet_args.dart';
+import 'get_odb_subnet_result.dart';
 
 /// Get information about an AutonomousDatabase.
 ///
@@ -77,6 +93,20 @@ import 'get_db_servers_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getautonomousdatabase" "my-instance" {
+///   location               = "us-east4"
+///   autonomous_database_id = "autonomous_database_id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +115,8 @@ import 'get_db_servers_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
 /// import com.pulumi.gcp.oracledatabase.inputs.GetAutonomousDatabaseArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -187,6 +217,19 @@ Future<GetAutonomousDatabaseResult> getAutonomousDatabase(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getautonomousdatabases" "my-adbs" {
+///   location = "us-east4"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +238,8 @@ Future<GetAutonomousDatabaseResult> getAutonomousDatabase(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
 /// import com.pulumi.gcp.oracledatabase.inputs.GetAutonomousDatabasesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -299,6 +342,20 @@ Future<GetAutonomousDatabasesResult> getAutonomousDatabases(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getcloudexadatainfrastructure" "my-instance" {
+///   location                        = "us-east4"
+///   cloud_exadata_infrastructure_id = "exadata-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -307,8 +364,8 @@ Future<GetAutonomousDatabasesResult> getAutonomousDatabases(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
 /// import com.pulumi.gcp.oracledatabase.inputs.GetCloudExadataInfrastructureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -409,6 +466,19 @@ Future<GetCloudExadataInfrastructureResult> getCloudExadataInfrastructure(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getcloudexadatainfrastructures" "myExadatas" {
+///   location = "us-east4"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -417,8 +487,8 @@ Future<GetCloudExadataInfrastructureResult> getCloudExadataInfrastructure(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
 /// import com.pulumi.gcp.oracledatabase.inputs.GetCloudExadataInfrastructuresArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -521,6 +591,20 @@ Future<GetCloudExadataInfrastructuresResult> getCloudExadataInfrastructures(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getcloudvmcluster" "my-vmcluster" {
+///   location            = "us-east4"
+///   cloud_vm_cluster_id = "vmcluster-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -529,8 +613,8 @@ Future<GetCloudExadataInfrastructuresResult> getCloudExadataInfrastructures(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
 /// import com.pulumi.gcp.oracledatabase.inputs.GetCloudVmClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -631,6 +715,19 @@ Future<GetCloudVmClusterResult> getCloudVmCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getcloudvmclusters" "myVmclusters" {
+///   location = "us-east4"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -639,8 +736,8 @@ Future<GetCloudVmClusterResult> getCloudVmCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
 /// import com.pulumi.gcp.oracledatabase.inputs.GetCloudVmClustersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -743,6 +840,20 @@ Future<GetCloudVmClustersResult> getCloudVmClusters(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getdbnodes" "myDbNodes" {
+///   location         = "us-east4"
+///   cloud_vm_cluster = "vmcluster-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -751,8 +862,8 @@ Future<GetCloudVmClustersResult> getCloudVmClusters(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
 /// import com.pulumi.gcp.oracledatabase.inputs.GetDbNodesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -787,30 +898,30 @@ Future<GetCloudVmClustersResult> getCloudVmClusters(
 ///
 /// The following attributes are exported:
 ///
-/// * `db_nodes` - List of dbNodes. Structure is documented below.
+/// * `dbNodes` - List of dbNodes. Structure is documented below.
 ///
-/// &lt;a name="nested_dbnodes"&gt;&lt;/a&gt; The `db_nodes` block supports:
+/// &lt;a name="nestedDbnodes"&gt;&lt;/a&gt; The `dbNodes` block supports:
 ///
 /// * `name` - The name of the database node resource in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}/dbNodes/{db_node}
 ///
 /// * `properties` - Various properties of the database node. Structure is documented below.
 ///
-/// &lt;a name="nested_properties"&gt;&lt;/a&gt; The `properties` block supports:
+/// &lt;a name="nestedProperties"&gt;&lt;/a&gt; The `properties` block supports:
 ///
 /// * `ocid`- OCID of database node.
 ///
-/// * `ocpu_count` - OCPU count per database node.
+/// * `ocpuCount` - OCPU count per database node.
 ///
-/// * `memory_size_gb` - The allocated memory in GBs on the database node.
+/// * `memorySizeGb` - The allocated memory in GBs on the database node.
 ///
-/// * `db_node_storage_size_gb` - The allocated local node storage in GBs on the database node.
+/// * `dbNodeStorageSizeGb` - The allocated local node storage in GBs on the database node.
 ///
-/// * `db_server_ocid` - The OCID of the Database server associated with the database node.
+/// * `dbServerOcid` - The OCID of the Database server associated with the database node.
 ///
 /// * `hostname` - The host name for the database node.
 ///
 /// * `state` - State of the database node.
-/// &lt;a name="nested_states"&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
+/// &lt;a name="nestedStates"&gt;&lt;/a&gt;Possible values for `state` are:&lt;br&gt;
 /// `PROVISIONING` - Indicates that the resource is being provisioned.&lt;br&gt;
 /// `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
 /// `UPDATING` - Indicates that the resource is being updated.&lt;br&gt;
@@ -821,7 +932,7 @@ Future<GetCloudVmClustersResult> getCloudVmClusters(
 /// `TERMINATED` - Indicates that the resource is terminated.&lt;br&gt;
 /// `FAILED` - Indicates that the resource has failed.&lt;br&gt;
 ///
-/// * `total_cpu_core_count` - The total number of CPU cores reserved on the database node.
+/// * `totalCpuCoreCount` - The total number of CPU cores reserved on the database node.
 /// [args] Arguments passed to this invoke. {@macro pulumi_oracledatabase_get_db_nodes_get_db_nodes_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDbNodesResult> getDbNodes(
@@ -898,6 +1009,20 @@ Future<GetDbNodesResult> getDbNodes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getdbservers" "myDbServers" {
+///   location                     = "us-east4"
+///   cloud_exadata_infrastructure = "exadata-id"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -906,8 +1031,8 @@ Future<GetDbNodesResult> getDbNodes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
 /// import com.pulumi.gcp.oracledatabase.inputs.GetDbServersArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -942,41 +1067,41 @@ Future<GetDbNodesResult> getDbNodes(
 ///
 /// The following attributes are exported:
 ///
-/// * `db_servers` - List of dbServers. Structure is documented below.
+/// * `dbServers` - List of dbServers. Structure is documented below.
 ///
-/// &lt;a name="nested_dbservers"&gt;&lt;/a&gt; The `db_servers` block supports:
+/// &lt;a name="nestedDbservers"&gt;&lt;/a&gt; The `dbServers` block supports:
 ///
-/// * `display_name` - User friendly name for the resource.
+/// * `displayName` - User friendly name for the resource.
 ///
 /// * `properties` - Various properties of the databse server. Structure is documented below.
 ///
-/// &lt;a name="nested_properties"&gt;&lt;/a&gt; The `properties` block supports:
+/// &lt;a name="nestedProperties"&gt;&lt;/a&gt; The `properties` block supports:
 ///
 /// * `ocid` - The OCID of database server.
 ///
-/// * `ocpu_count` - The OCPU count per database.
+/// * `ocpuCount` - The OCPU count per database.
 ///
-/// * `max_ocpu_count` - The total number of CPU cores available.
+/// * `maxOcpuCount` - The total number of CPU cores available.
 ///
-/// * `memory_size_gb` - The allocated memory in gigabytes on the database server.
+/// * `memorySizeGb` - The allocated memory in gigabytes on the database server.
 ///
-/// * `max_memory_size_gb` - The total memory available in gigabytes.
+/// * `maxMemorySizeGb` - The total memory available in gigabytes.
 ///
-/// * `db_node_storage_size_gb` - The local storage per VM.
+/// * `dbNodeStorageSizeGb` - The local storage per VM.
 ///
-/// * `max_db_node_storage_size_gb` - The total local node storage available in GBs.
+/// * `maxDbNodeStorageSizeGb` - The total local node storage available in GBs.
 ///
-/// * `vm_count` - The VM count per database.
+/// * `vmCount` - The VM count per database.
 ///
 /// * `state` - The current state of the database server.
-/// &lt;a name="nested_states"&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
+/// &lt;a name="nestedStates"&gt;&lt;/a&gt;Allowed values for `state` are:&lt;br&gt;
 /// `CREATING` - Indicates that the resource is being created.&lt;br&gt;
 /// `AVAILABLE` - Indicates that the resource is available.&lt;br&gt;
 /// `UNAVAILABLE` - Indicates that the resource is unavailable.&lt;br&gt;
 /// `DELETING` - Indicates that the resource is being deleted.&lt;br&gt;
 /// `DELETED` - Indicates that the resource has been deleted.&lt;br&gt;
 ///
-/// * `db_node_ids` - The OCID of database nodes associated with the database server.
+/// * `dbNodeIds` - The OCID of database nodes associated with the database server.
 /// [args] Arguments passed to this invoke. {@macro pulumi_oracledatabase_get_db_servers_get_db_servers_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDbServersResult> getDbServers(
@@ -990,4 +1115,1117 @@ Future<GetDbServersResult> getDbServers(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDbServersResult.fromMap(result);
+}
+
+/// Get information about an ExascaleDbStorageVault.
+///
+/// For more information see the
+/// [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.exascaleDbStorageVaults).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const my_vault = gcp.oracledatabase.getExascaleDbStorageVault({
+///     location: "us-east4",
+///     exascaleDbStorageVaultId: "vault-id",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_vault = gcp.oracledatabase.get_exascale_db_storage_vault(location="us-east4",
+///     exascale_db_storage_vault_id="vault-id")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var my_vault = Gcp.OracleDatabase.GetExascaleDbStorageVault.Invoke(new()
+///     {
+///         Location = "us-east4",
+///         ExascaleDbStorageVaultId = "vault-id",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := oracledatabase.LookupExascaleDbStorageVault(ctx, &oracledatabase.LookupExascaleDbStorageVaultArgs{
+/// 			Location:                 "us-east4",
+/// 			ExascaleDbStorageVaultId: "vault-id",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getexascaledbstoragevault" "my-vault" {
+///   location                     = "us-east4"
+///   exascale_db_storage_vault_id = "vault-id"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+/// import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var my-vault = OracledatabaseFunctions.getExascaleDbStorageVault(GetExascaleDbStorageVaultArgs.builder()
+///             .location("us-east4")
+///             .exascaleDbStorageVaultId("vault-id")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   my-vault:
+///     fn::invoke:
+///       function: gcp:oracledatabase:getExascaleDbStorageVault
+///       arguments:
+///         location: us-east4
+///         exascaleDbStorageVaultId: vault-id
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_oracledatabase_get_exascale_db_storage_vault_get_exascale_db_storage_vault_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetExascaleDbStorageVaultResult> getExascaleDbStorageVault(
+  GetExascaleDbStorageVaultArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:oracledatabase/getExascaleDbStorageVault:getExascaleDbStorageVault',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetExascaleDbStorageVaultResult.fromMap(result);
+}
+
+/// List all ExascaleDbStorageVaults.
+///
+/// For more information see the
+/// [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.exascaleDbStorageVaults).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const myVaults = gcp.oracledatabase.getExascaleDbStorageVaults({
+///     location: "us-east4",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_vaults = gcp.oracledatabase.get_exascale_db_storage_vaults(location="us-east4")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var myVaults = Gcp.OracleDatabase.GetExascaleDbStorageVaults.Invoke(new()
+///     {
+///         Location = "us-east4",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := oracledatabase.GetExascaleDbStorageVaults(ctx, &oracledatabase.GetExascaleDbStorageVaultsArgs{
+/// 			Location: "us-east4",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getexascaledbstoragevaults" "myVaults" {
+///   location = "us-east4"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+/// import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var myVaults = OracledatabaseFunctions.getExascaleDbStorageVaults(GetExascaleDbStorageVaultsArgs.builder()
+///             .location("us-east4")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   myVaults:
+///     fn::invoke:
+///       function: gcp:oracledatabase:getExascaleDbStorageVaults
+///       arguments:
+///         location: us-east4
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_oracledatabase_get_exascale_db_storage_vaults_get_exascale_db_storage_vaults_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetExascaleDbStorageVaultsResult> getExascaleDbStorageVaults(
+  GetExascaleDbStorageVaultsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:oracledatabase/getExascaleDbStorageVaults:getExascaleDbStorageVaults',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetExascaleDbStorageVaultsResult.fromMap(result);
+}
+
+/// List all GoldenGate Connection Types in a location.
+///
+/// For more information see the
+/// [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateConnectionTypes).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const myConnectionTypes = gcp.oracledatabase.getGoldengateConnectionTypes({
+///     location: "us-east4",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_connection_types = gcp.oracledatabase.get_goldengate_connection_types(location="us-east4")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var myConnectionTypes = Gcp.OracleDatabase.GetGoldengateConnectionTypes.Invoke(new()
+///     {
+///         Location = "us-east4",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := oracledatabase.GetGoldengateConnectionTypes(ctx, &oracledatabase.GetGoldengateConnectionTypesArgs{
+/// 			Location: "us-east4",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getgoldengateconnectiontypes" "myConnectionTypes" {
+///   location = "us-east4"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+/// import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateConnectionTypesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var myConnectionTypes = OracledatabaseFunctions.getGoldengateConnectionTypes(GetGoldengateConnectionTypesArgs.builder()
+///             .location("us-east4")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   myConnectionTypes:
+///     fn::invoke:
+///       function: gcp:oracledatabase:getGoldengateConnectionTypes
+///       arguments:
+///         location: us-east4
+/// ```
+///
+///
+/// ## Attributes reference
+///
+/// The following attributes are exported:
+///
+/// * `goldengateConnectionTypes` - List of GoldenGate Connection Types. Structure is documented below.
+///
+/// &lt;a name="nestedGoldengateConnectionTypes"&gt;&lt;/a&gt; The `goldengateConnectionTypes` block supports:
+///
+/// * `name` - The name of the GoldenGate Connection Type resource. Format: `projects/{project}/locations/{location}/goldenGateConnectionTypes/{golden_gate_connection_type}`
+///
+/// * `connectionType` - The connection type of the GoldenGate Connection Type resource.
+///
+/// * `technologyTypes` - An array of technologyTypes supported for the connection type.
+/// [args] Arguments passed to this invoke. {@macro pulumi_oracledatabase_get_goldengate_connection_types_get_goldengate_connection_types_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetGoldengateConnectionTypesResult> getGoldengateConnectionTypes(
+  GetGoldengateConnectionTypesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:oracledatabase/getGoldengateConnectionTypes:getGoldengateConnectionTypes',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetGoldengateConnectionTypesResult.fromMap(result);
+}
+
+/// List all GoldenGate Deployment Environments in a location.
+///
+/// For more information see the
+/// [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentEnvironments).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const myEnvironments = gcp.oracledatabase.getGoldengateDeploymentEnvironments({
+///     location: "us-east4",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_environments = gcp.oracledatabase.get_goldengate_deployment_environments(location="us-east4")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var myEnvironments = Gcp.OracleDatabase.GetGoldengateDeploymentEnvironments.Invoke(new()
+///     {
+///         Location = "us-east4",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := oracledatabase.GetGoldengateDeploymentEnvironments(ctx, &oracledatabase.GetGoldengateDeploymentEnvironmentsArgs{
+/// 			Location: "us-east4",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getgoldengatedeploymentenvironments" "myEnvironments" {
+///   location = "us-east4"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+/// import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentEnvironmentsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var myEnvironments = OracledatabaseFunctions.getGoldengateDeploymentEnvironments(GetGoldengateDeploymentEnvironmentsArgs.builder()
+///             .location("us-east4")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   myEnvironments:
+///     fn::invoke:
+///       function: gcp:oracledatabase:getGoldengateDeploymentEnvironments
+///       arguments:
+///         location: us-east4
+/// ```
+///
+///
+/// ## Attributes reference
+///
+/// The following attributes are exported:
+///
+/// * `goldengateDeploymentEnvironments` - List of GoldenGate Deployment Environments. Structure is documented below.
+///
+/// &lt;a name="nestedGoldengateDeploymentEnvironments"&gt;&lt;/a&gt; The `goldengateDeploymentEnvironments` block supports:
+///
+/// * `name` - The name of the GoldenGate Deployment Environment resource. Format: `projects/{project}/locations/{location}/goldenGateDeploymentEnvironments/{golden_gate_deployment_environment}`
+///
+/// * `category` - The category of the GoldenGate Deployment Environment resource.
+///
+/// * `displayName` - The display name of the GoldenGate Deployment Environment resource.
+///
+/// * `defaultCpuCoreCount` - The default CPU core count of the GoldenGate Deployment Environment resource.
+///
+/// * `environmentType` - The environment type of the GoldenGate Deployment Environment resource.
+///
+/// * `autoScalingEnabled` - Whether auto scaling is enabled by default for the GoldenGate Deployment Environment resource.
+///
+/// * `maxCpuCoreCount` - The max CPU core count of the GoldenGate Deployment Environment resource.
+///
+/// * `memoryGbPerCpuCore` - The memory per CPU core in GBs of the GoldenGate Deployment Environment resource.
+///
+/// * `minCpuCoreCount` - The min CPU core count of the GoldenGate Deployment Environment resource.
+///
+/// * `networkBandwidthGbpsPerCpuCore` - The network bandwidth per CPU core in Gbps of the GoldenGate Deployment Environment resource.
+///
+/// * `storageUsageLimitGbPerCpuCore` - The storage usage limit per CPU core in GBs of the GoldenGate Deployment Environment resource.
+/// [args] Arguments passed to this invoke. {@macro pulumi_oracledatabase_get_goldengate_deployment_environments_get_goldengate_deployment_environments_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetGoldengateDeploymentEnvironmentsResult> getGoldengateDeploymentEnvironments(
+  GetGoldengateDeploymentEnvironmentsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:oracledatabase/getGoldengateDeploymentEnvironments:getGoldengateDeploymentEnvironments',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetGoldengateDeploymentEnvironmentsResult.fromMap(result);
+}
+
+/// List all GoldenGate Deployment Types in a location.
+///
+/// For more information see the
+/// [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentTypes).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const myDeploymentTypes = gcp.oracledatabase.getGoldengateDeploymentTypes({
+///     location: "us-east4",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_deployment_types = gcp.oracledatabase.get_goldengate_deployment_types(location="us-east4")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var myDeploymentTypes = Gcp.OracleDatabase.GetGoldengateDeploymentTypes.Invoke(new()
+///     {
+///         Location = "us-east4",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := oracledatabase.GetGoldengateDeploymentTypes(ctx, &oracledatabase.GetGoldengateDeploymentTypesArgs{
+/// 			Location: "us-east4",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getgoldengatedeploymenttypes" "myDeploymentTypes" {
+///   location = "us-east4"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+/// import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentTypesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var myDeploymentTypes = OracledatabaseFunctions.getGoldengateDeploymentTypes(GetGoldengateDeploymentTypesArgs.builder()
+///             .location("us-east4")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   myDeploymentTypes:
+///     fn::invoke:
+///       function: gcp:oracledatabase:getGoldengateDeploymentTypes
+///       arguments:
+///         location: us-east4
+/// ```
+///
+///
+/// ## Attributes reference
+///
+/// The following attributes are exported:
+///
+/// * `goldengateDeploymentTypes` - List of GoldenGate Deployment Types. Structure is documented below.
+///
+/// &lt;a name="nestedGoldengateDeploymentTypes"&gt;&lt;/a&gt; The `goldengateDeploymentTypes` block supports:
+///
+/// * `name` - The name of the GoldenGate Deployment Type resource. Format: `projects/{project}/locations/{location}/goldenGateDeploymentTypes/{golden_gate_deployment_type}`
+///
+/// * `deploymentType` - The deployment type of the GoldenGate Deployment Type resource.
+///
+/// * `category` - The category of the GoldenGate Deployment Type resource.
+///
+/// * `connectionTypes` - The connection types of the GoldenGate Deployment Type resource.
+///
+/// * `displayName` - The display name of the GoldenGate Deployment Type resource.
+///
+/// * `oggVersion` - The OGG version of the GoldenGate Deployment Type resource.
+///
+/// * `sourceTechnologies` - The source technologies of the GoldenGate Deployment Type resource.
+///
+/// * `targetTechnologies` - The target technologies of the GoldenGate Deployment Type resource.
+///
+/// * `supportedCapabilities` - The supported capabilities of the GoldenGate Deployment Type resource.
+///
+/// * `supportedTechnologiesUrl` - The supported technologies URL of the GoldenGate Deployment Type resource.
+///
+/// * `defaultUsername` - The default username of the GoldenGate Deployment Type resource.
+/// [args] Arguments passed to this invoke. {@macro pulumi_oracledatabase_get_goldengate_deployment_types_get_goldengate_deployment_types_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetGoldengateDeploymentTypesResult> getGoldengateDeploymentTypes(
+  GetGoldengateDeploymentTypesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:oracledatabase/getGoldengateDeploymentTypes:getGoldengateDeploymentTypes',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetGoldengateDeploymentTypesResult.fromMap(result);
+}
+
+/// List all Goldengate Deployment Versions in a location.
+///
+/// For more information see the
+/// [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentVersions).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const myDeploymentVersions = gcp.oracledatabase.getGoldengateDeploymentVersions({
+///     location: "us-east4",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_deployment_versions = gcp.oracledatabase.get_goldengate_deployment_versions(location="us-east4")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var myDeploymentVersions = Gcp.OracleDatabase.GetGoldengateDeploymentVersions.Invoke(new()
+///     {
+///         Location = "us-east4",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := oracledatabase.GetGoldengateDeploymentVersions(ctx, &oracledatabase.GetGoldengateDeploymentVersionsArgs{
+/// 			Location: "us-east4",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getgoldengatedeploymentversions" "myDeploymentVersions" {
+///   location = "us-east4"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+/// import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentVersionsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var myDeploymentVersions = OracledatabaseFunctions.getGoldengateDeploymentVersions(GetGoldengateDeploymentVersionsArgs.builder()
+///             .location("us-east4")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   myDeploymentVersions:
+///     fn::invoke:
+///       function: gcp:oracledatabase:getGoldengateDeploymentVersions
+///       arguments:
+///         location: us-east4
+/// ```
+///
+///
+/// ## Attributes reference
+///
+/// The following attributes are exported:
+///
+/// * `goldengateDeploymentVersions` - List of Goldengate Deployment Versions. Structure is documented below.
+///
+/// &lt;a name="nestedGoldengateDeploymentVersions"&gt;&lt;/a&gt; The `goldengateDeploymentVersions` block supports:
+///
+/// * `name` - The name of the Goldengate Deployment Version resource. Format: `projects/{project}/locations/{location}/goldengateDeploymentVersions/{goldengate_deployment_version}`
+///
+/// * `ocid` - The Oracle Cloud Infrastructure OCID of the Goldengate Deployment Version resource.
+///
+/// * `properties` - The properties of the Goldengate Deployment Version resource. Structure is documented below.
+///
+/// &lt;a name="nestedProperties"&gt;&lt;/a&gt; The `properties` block supports:
+///
+/// * `deploymentType` - The deployment type of the Goldengate Deployment Version resource.
+///
+/// * `securityFix` - Specifies whether this version has a security fix.
+///
+/// * `oggVersion` - The OGG version of the Goldengate Deployment Version resource.
+///
+/// * `releaseType` - The release type of the Goldengate Deployment Version resource.
+///
+/// * `releaseTime` - The release time of the Goldengate Deployment Version resource.
+///
+/// * `supportEndTime` - The support end time of the Goldengate Deployment Version resource.
+/// [args] Arguments passed to this invoke. {@macro pulumi_oracledatabase_get_goldengate_deployment_versions_get_goldengate_deployment_versions_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetGoldengateDeploymentVersionsResult> getGoldengateDeploymentVersions(
+  GetGoldengateDeploymentVersionsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:oracledatabase/getGoldengateDeploymentVersions:getGoldengateDeploymentVersions',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetGoldengateDeploymentVersionsResult.fromMap(result);
+}
+
+/// Get information about an ODB Network.
+///
+/// For more information see the
+/// [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const my_network = gcp.oracledatabase.getOdbNetwork({
+///     location: "us-east4",
+///     odbNetworkId: "my-network-id",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_network = gcp.oracledatabase.get_odb_network(location="us-east4",
+///     odb_network_id="my-network-id")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var my_network = Gcp.OracleDatabase.GetOdbNetwork.Invoke(new()
+///     {
+///         Location = "us-east4",
+///         OdbNetworkId = "my-network-id",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := oracledatabase.LookupOdbNetwork(ctx, &oracledatabase.LookupOdbNetworkArgs{
+/// 			Location:     "us-east4",
+/// 			OdbNetworkId: "my-network-id",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getodbnetwork" "my-network" {
+///   location       = "us-east4"
+///   odb_network_id = "my-network-id"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+/// import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var my-network = OracledatabaseFunctions.getOdbNetwork(GetOdbNetworkArgs.builder()
+///             .location("us-east4")
+///             .odbNetworkId("my-network-id")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   my-network:
+///     fn::invoke:
+///       function: gcp:oracledatabase:getOdbNetwork
+///       arguments:
+///         location: us-east4
+///         odbNetworkId: my-network-id
+/// ```
+///
+///
+/// ## Attributes reference
+///
+/// See gcp.oracledatabase.OdbNetwork resource for details of the available attributes.
+/// [args] Arguments passed to this invoke. {@macro pulumi_oracledatabase_get_odb_network_get_odb_network_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetOdbNetworkResult> getOdbNetwork(
+  GetOdbNetworkArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:oracledatabase/getOdbNetwork:getOdbNetwork',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetOdbNetworkResult.fromMap(result);
+}
+
+/// Get information about an ODB Subnet.
+///
+/// For more information see the
+/// * [API documentation](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.odbNetworks.odbSubnets)
+///
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const my_subnet = gcp.oracledatabase.getOdbSubnet({
+///     location: "us-east4",
+///     odbnetwork: "my-network-id",
+///     odbSubnetId: "my-subnet-id",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_subnet = gcp.oracledatabase.get_odb_subnet(location="us-east4",
+///     odbnetwork="my-network-id",
+///     odb_subnet_id="my-subnet-id")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var my_subnet = Gcp.OracleDatabase.GetOdbSubnet.Invoke(new()
+///     {
+///         Location = "us-east4",
+///         Odbnetwork = "my-network-id",
+///         OdbSubnetId = "my-subnet-id",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := oracledatabase.LookupOdbSubnet(ctx, &oracledatabase.LookupOdbSubnetArgs{
+/// 			Location:    "us-east4",
+/// 			Odbnetwork:  "my-network-id",
+/// 			OdbSubnetId: "my-subnet-id",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_oracledatabase_getodbsubnet" "my-subnet" {
+///   location      = "us-east4"
+///   odbnetwork    = "my-network-id"
+///   odb_subnet_id = "my-subnet-id"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+/// import com.pulumi.gcp.oracledatabase.inputs.GetOdbSubnetArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var my-subnet = OracledatabaseFunctions.getOdbSubnet(GetOdbSubnetArgs.builder()
+///             .location("us-east4")
+///             .odbnetwork("my-network-id")
+///             .odbSubnetId("my-subnet-id")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   my-subnet:
+///     fn::invoke:
+///       function: gcp:oracledatabase:getOdbSubnet
+///       arguments:
+///         location: us-east4
+///         odbnetwork: my-network-id
+///         odbSubnetId: my-subnet-id
+/// ```
+///
+///
+/// ## Attributes reference
+///
+/// See gcp.oracledatabase.OdbSubnet resource for details of the available attributes.
+/// [args] Arguments passed to this invoke. {@macro pulumi_oracledatabase_get_odb_subnet_get_odb_subnet_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetOdbSubnetResult> getOdbSubnet(
+  GetOdbSubnetArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'gcp:oracledatabase/getOdbSubnet:getOdbSubnet',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetOdbSubnetResult.fromMap(result);
 }

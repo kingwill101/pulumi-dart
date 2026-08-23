@@ -9,6 +9,13 @@ class RouterStatusBestRoute {
   final pulumi.Input<List<RouterStatusBestRouteAsPath>> asPaths;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String> deletionPolicy;
   /// An optional description of this resource. Provide this property
   /// when you create the resource.
   final pulumi.Input<String> description;
@@ -54,7 +61,7 @@ class RouterStatusBestRoute {
   /// * 'zones/zone/instances/instance'
   /// * Just the instance name, with the zone in 'next_hop_instance_zone'.
   final pulumi.Input<String> nextHopInstance;
-  /// The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL.
+  /// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
   final pulumi.Input<String> nextHopInstanceZone;
   /// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
   final pulumi.Input<String> nextHopInterRegionCost;
@@ -102,6 +109,7 @@ class RouterStatusBestRoute {
   /// Creates a new [RouterStatusBestRoute].
   /// [asPaths] Required.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
   /// [description] An optional description of this resource. Provide this property
   /// [destRange] The destination range of outgoing packets that this route applies to.
   /// [name] The name of the router.
@@ -110,7 +118,7 @@ class RouterStatusBestRoute {
   /// [nextHopHub] The hub network that should handle matching packets, which should conform to RFC1035.
   /// [nextHopIlb] The IP address or URL to a forwarding rule of type
   /// [nextHopInstance] URL to an instance that should handle matching packets.
-  /// [nextHopInstanceZone] The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL.
+  /// [nextHopInstanceZone] The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
   /// [nextHopInterRegionCost] Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
   /// [nextHopIp] Network IP address of an instance that should handle matching packets.
   /// [nextHopMed] Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
@@ -129,6 +137,7 @@ class RouterStatusBestRoute {
   const RouterStatusBestRoute({
     required this.asPaths,
     required this.creationTimestamp,
+    required this.deletionPolicy,
     required this.description,
     required this.destRange,
     required this.name,
@@ -159,6 +168,7 @@ class RouterStatusBestRoute {
     return <String, dynamic>{
       'asPaths': pulumi.Input.mapInputValue<List<RouterStatusBestRouteAsPath>, List<Map<String, dynamic>>>(asPaths, (value) => pulumi.Input.encodeList<RouterStatusBestRouteAsPath, Map<String, dynamic>>(value, (value) => value.toMap())),
       'creationTimestamp': creationTimestamp,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'destRange': destRange,
       'name': name,
@@ -190,6 +200,7 @@ class RouterStatusBestRoute {
     return RouterStatusBestRoute(
       asPaths: pulumi.Input.fromValue(pulumi.Input.decodeList<RouterStatusBestRouteAsPath>(map['asPaths']!, (value) => RouterStatusBestRouteAsPath.fromMap((value as Map).cast<String, dynamic>()))),
       creationTimestamp: pulumi.Input.fromValue(map['creationTimestamp'] as String),
+      deletionPolicy: pulumi.Input.fromValue(map['deletionPolicy'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       destRange: pulumi.Input.fromValue(map['destRange'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
@@ -217,4 +228,3 @@ class RouterStatusBestRoute {
     );
   }
 }
-

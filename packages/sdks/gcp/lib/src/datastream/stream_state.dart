@@ -18,6 +18,13 @@ class StreamState {
   /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
   /// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
   final pulumi.Input<String>? customerManagedEncryptionKey;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
   /// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
   /// the stream from a `RUNNING` state.
@@ -32,7 +39,7 @@ class StreamState {
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The name of the location this stream is located in.
   final pulumi.Input<String>? location;
@@ -60,6 +67,7 @@ class StreamState {
   /// [backfillNone] Backfill strategy to disable automatic backfill for the Stream's objects.
   /// [createWithoutValidation] Create the stream without validating it.
   /// [customerManagedEncryptionKey] A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [desiredState] Desired state of the Stream. Set this field to `RUNNING` to start the stream,
   /// [destinationConfig] Destination connection profile configuration.
   /// [displayName] Display name.
@@ -78,6 +86,7 @@ class StreamState {
     this.backfillNone,
     this.createWithoutValidation,
     this.customerManagedEncryptionKey,
+    this.deletionPolicy,
     this.desiredState,
     this.destinationConfig,
     this.displayName,
@@ -99,6 +108,7 @@ class StreamState {
       'backfillNone': ?backfillNone,
       'createWithoutValidation': ?createWithoutValidation,
       'customerManagedEncryptionKey': ?customerManagedEncryptionKey,
+      'deletionPolicy': ?deletionPolicy,
       'desiredState': ?desiredState,
       'destinationConfig': ?pulumi.Input.mapOptionalInputValue<StreamDestinationConfig, Map<String, dynamic>>(destinationConfig, (value) => value.toMap()),
       'displayName': ?displayName,
@@ -121,6 +131,7 @@ class StreamState {
       backfillNone: (() { final guardedValue = map['backfillNone']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       createWithoutValidation: (() { final guardedValue = map['createWithoutValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       customerManagedEncryptionKey: (() { final guardedValue = map['customerManagedEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       desiredState: (() { final guardedValue = map['desiredState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationConfig: (() { final guardedValue = map['destinationConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -137,4 +148,3 @@ class StreamState {
     );
   }
 }
-

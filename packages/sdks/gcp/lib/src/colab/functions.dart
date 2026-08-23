@@ -65,6 +65,21 @@ import 'get_runtime_template_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_colab_getruntimetemplateiampolicy" "policy" {
+///   project          = runtime-template.project
+///   location         = runtime-template.location
+///   runtime_template = runtime-template.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'get_runtime_template_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.colab.ColabFunctions;
 /// import com.pulumi.gcp.colab.inputs.GetRuntimeTemplateIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -87,9 +102,9 @@ import 'get_runtime_template_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = ColabFunctions.getRuntimeTemplateIamPolicy(GetRuntimeTemplateIamPolicyArgs.builder()
-///             .project(runtime_template.project())
-///             .location(runtime_template.location())
-///             .runtimeTemplate(runtime_template.name())
+///             .project(runtime_template.get("project"))
+///             .location(runtime_template.get("location"))
+///             .runtimeTemplate(runtime_template.get("name"))
 ///             .build());
 ///
 ///     }

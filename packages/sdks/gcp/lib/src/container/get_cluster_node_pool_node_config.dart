@@ -16,12 +16,14 @@ import 'get_cluster_node_pool_node_config_host_maintenance_policy.dart';
 import 'get_cluster_node_pool_node_config_kubelet_config.dart';
 import 'get_cluster_node_pool_node_config_linux_node_config.dart';
 import 'get_cluster_node_pool_node_config_local_nvme_ssd_block_config.dart';
+import 'get_cluster_node_pool_node_config_node_image_config.dart';
 import 'get_cluster_node_pool_node_config_reservation_affinity.dart';
 import 'get_cluster_node_pool_node_config_sandbox_config.dart';
 import 'get_cluster_node_pool_node_config_secondary_boot_disk.dart';
 import 'get_cluster_node_pool_node_config_shielded_instance_config.dart';
 import 'get_cluster_node_pool_node_config_sole_tenant_config.dart';
 import 'get_cluster_node_pool_node_config_taint.dart';
+import 'get_cluster_node_pool_node_config_taint_config.dart';
 import 'get_cluster_node_pool_node_config_windows_node_config.dart';
 import 'get_cluster_node_pool_node_config_workload_metadata_config.dart';
 
@@ -54,6 +56,8 @@ class GetClusterNodePoolNodeConfig {
   final pulumi.Input<bool> flexStart;
   /// GCFS configuration for this node.
   final pulumi.Input<List<GetClusterNodePoolNodeConfigGcfsConfig>> gcfsConfigs;
+  /// The type of GPUDirect strategy to enable on the node.
+  final pulumi.Input<String> gpudirectStrategy;
   /// List of the type and count of accelerator cards attached to the instance.
   final pulumi.Input<List<GetClusterNodePoolNodeConfigGuestAccelerator>> guestAccelerators;
   /// Enable or disable gvnic in the node pool.
@@ -86,6 +90,8 @@ class GetClusterNodePoolNodeConfig {
   final pulumi.Input<String> minCpuPlatform;
   /// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
   final pulumi.Input<String> nodeGroup;
+  /// The node image configuration to use for this node pool.
+  final pulumi.Input<List<GetClusterNodePoolNodeConfigNodeImageConfig>> nodeImageConfigs;
   /// The set of Google API scopes to be made available on all of the node VMs.
   final pulumi.Input<List<String>> oauthScopes;
   /// Whether the nodes are created as preemptible VM instances.
@@ -112,6 +118,8 @@ class GetClusterNodePoolNodeConfig {
   final pulumi.Input<List<String>> storagePools;
   /// The list of instance tags applied to all nodes.
   final pulumi.Input<List<String>> tags;
+  /// Taint configuration for this node.
+  final pulumi.Input<List<GetClusterNodePoolNodeConfigTaintConfig>> taintConfigs;
   /// List of Kubernetes taints to be applied to each node.
   final pulumi.Input<List<GetClusterNodePoolNodeConfigTaint>> taints;
   /// Parameters that can be configured on Windows nodes.
@@ -134,6 +142,7 @@ class GetClusterNodePoolNodeConfig {
   /// [fastSockets] Enable or disable NCCL Fast Socket in the node pool.
   /// [flexStart] Enables Flex Start provisioning model for the node pool
   /// [gcfsConfigs] GCFS configuration for this node.
+  /// [gpudirectStrategy] The type of GPUDirect strategy to enable on the node.
   /// [guestAccelerators] List of the type and count of accelerator cards attached to the instance.
   /// [gvnics] Enable or disable gvnic in the node pool.
   /// [hostMaintenancePolicies] The maintenance policy for the hosts on which the GKE VMs run on.
@@ -150,6 +159,7 @@ class GetClusterNodePoolNodeConfig {
   /// [metadata] The metadata key/value pairs assigned to instances in the cluster.
   /// [minCpuPlatform] Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
   /// [nodeGroup] Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+  /// [nodeImageConfigs] The node image configuration to use for this node pool.
   /// [oauthScopes] The set of Google API scopes to be made available on all of the node VMs.
   /// [preemptible] Whether the nodes are created as preemptible VM instances.
   /// [reservationAffinities] The reservation affinity configuration for the node pool.
@@ -163,6 +173,7 @@ class GetClusterNodePoolNodeConfig {
   /// [spot] Whether the nodes are created as spot VM instances.
   /// [storagePools] The list of Storage Pools where boot disks are provisioned.
   /// [tags] The list of instance tags applied to all nodes.
+  /// [taintConfigs] Taint configuration for this node.
   /// [taints] List of Kubernetes taints to be applied to each node.
   /// [windowsNodeConfigs] Parameters that can be configured on Windows nodes.
   /// [workloadMetadataConfigs] The workload metadata configuration for this node.
@@ -181,6 +192,7 @@ class GetClusterNodePoolNodeConfig {
     required this.fastSockets,
     required this.flexStart,
     required this.gcfsConfigs,
+    required this.gpudirectStrategy,
     required this.guestAccelerators,
     required this.gvnics,
     required this.hostMaintenancePolicies,
@@ -197,6 +209,7 @@ class GetClusterNodePoolNodeConfig {
     required this.metadata,
     required this.minCpuPlatform,
     required this.nodeGroup,
+    required this.nodeImageConfigs,
     required this.oauthScopes,
     required this.preemptible,
     required this.reservationAffinities,
@@ -210,6 +223,7 @@ class GetClusterNodePoolNodeConfig {
     required this.spot,
     required this.storagePools,
     required this.tags,
+    required this.taintConfigs,
     required this.taints,
     required this.windowsNodeConfigs,
     required this.workloadMetadataConfigs,
@@ -231,6 +245,7 @@ class GetClusterNodePoolNodeConfig {
       'fastSockets': pulumi.Input.mapInputValue<List<GetClusterNodePoolNodeConfigFastSocket>, List<Map<String, dynamic>>>(fastSockets, (value) => pulumi.Input.encodeList<GetClusterNodePoolNodeConfigFastSocket, Map<String, dynamic>>(value, (value) => value.toMap())),
       'flexStart': flexStart,
       'gcfsConfigs': pulumi.Input.mapInputValue<List<GetClusterNodePoolNodeConfigGcfsConfig>, List<Map<String, dynamic>>>(gcfsConfigs, (value) => pulumi.Input.encodeList<GetClusterNodePoolNodeConfigGcfsConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'gpudirectStrategy': gpudirectStrategy,
       'guestAccelerators': pulumi.Input.mapInputValue<List<GetClusterNodePoolNodeConfigGuestAccelerator>, List<Map<String, dynamic>>>(guestAccelerators, (value) => pulumi.Input.encodeList<GetClusterNodePoolNodeConfigGuestAccelerator, Map<String, dynamic>>(value, (value) => value.toMap())),
       'gvnics': pulumi.Input.mapInputValue<List<GetClusterNodePoolNodeConfigGvnic>, List<Map<String, dynamic>>>(gvnics, (value) => pulumi.Input.encodeList<GetClusterNodePoolNodeConfigGvnic, Map<String, dynamic>>(value, (value) => value.toMap())),
       'hostMaintenancePolicies': pulumi.Input.mapInputValue<List<GetClusterNodePoolNodeConfigHostMaintenancePolicy>, List<Map<String, dynamic>>>(hostMaintenancePolicies, (value) => pulumi.Input.encodeList<GetClusterNodePoolNodeConfigHostMaintenancePolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -247,6 +262,7 @@ class GetClusterNodePoolNodeConfig {
       'metadata': metadata,
       'minCpuPlatform': minCpuPlatform,
       'nodeGroup': nodeGroup,
+      'nodeImageConfigs': pulumi.Input.mapInputValue<List<GetClusterNodePoolNodeConfigNodeImageConfig>, List<Map<String, dynamic>>>(nodeImageConfigs, (value) => pulumi.Input.encodeList<GetClusterNodePoolNodeConfigNodeImageConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'oauthScopes': oauthScopes,
       'preemptible': preemptible,
       'reservationAffinities': pulumi.Input.mapInputValue<List<GetClusterNodePoolNodeConfigReservationAffinity>, List<Map<String, dynamic>>>(reservationAffinities, (value) => pulumi.Input.encodeList<GetClusterNodePoolNodeConfigReservationAffinity, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -260,6 +276,7 @@ class GetClusterNodePoolNodeConfig {
       'spot': spot,
       'storagePools': storagePools,
       'tags': tags,
+      'taintConfigs': pulumi.Input.mapInputValue<List<GetClusterNodePoolNodeConfigTaintConfig>, List<Map<String, dynamic>>>(taintConfigs, (value) => pulumi.Input.encodeList<GetClusterNodePoolNodeConfigTaintConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'taints': pulumi.Input.mapInputValue<List<GetClusterNodePoolNodeConfigTaint>, List<Map<String, dynamic>>>(taints, (value) => pulumi.Input.encodeList<GetClusterNodePoolNodeConfigTaint, Map<String, dynamic>>(value, (value) => value.toMap())),
       'windowsNodeConfigs': pulumi.Input.mapInputValue<List<GetClusterNodePoolNodeConfigWindowsNodeConfig>, List<Map<String, dynamic>>>(windowsNodeConfigs, (value) => pulumi.Input.encodeList<GetClusterNodePoolNodeConfigWindowsNodeConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'workloadMetadataConfigs': pulumi.Input.mapInputValue<List<GetClusterNodePoolNodeConfigWorkloadMetadataConfig>, List<Map<String, dynamic>>>(workloadMetadataConfigs, (value) => pulumi.Input.encodeList<GetClusterNodePoolNodeConfigWorkloadMetadataConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -282,6 +299,7 @@ class GetClusterNodePoolNodeConfig {
       fastSockets: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigFastSocket>(map['fastSockets']!, (value) => GetClusterNodePoolNodeConfigFastSocket.fromMap((value as Map).cast<String, dynamic>()))),
       flexStart: pulumi.Input.fromValue(map['flexStart'] as bool),
       gcfsConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigGcfsConfig>(map['gcfsConfigs']!, (value) => GetClusterNodePoolNodeConfigGcfsConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      gpudirectStrategy: pulumi.Input.fromValue(map['gpudirectStrategy'] as String),
       guestAccelerators: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigGuestAccelerator>(map['guestAccelerators']!, (value) => GetClusterNodePoolNodeConfigGuestAccelerator.fromMap((value as Map).cast<String, dynamic>()))),
       gvnics: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigGvnic>(map['gvnics']!, (value) => GetClusterNodePoolNodeConfigGvnic.fromMap((value as Map).cast<String, dynamic>()))),
       hostMaintenancePolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigHostMaintenancePolicy>(map['hostMaintenancePolicies']!, (value) => GetClusterNodePoolNodeConfigHostMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>()))),
@@ -298,6 +316,7 @@ class GetClusterNodePoolNodeConfig {
       metadata: pulumi.Input.fromValue((map['metadata'] as Map).cast<String, String>()),
       minCpuPlatform: pulumi.Input.fromValue(map['minCpuPlatform'] as String),
       nodeGroup: pulumi.Input.fromValue(map['nodeGroup'] as String),
+      nodeImageConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigNodeImageConfig>(map['nodeImageConfigs']!, (value) => GetClusterNodePoolNodeConfigNodeImageConfig.fromMap((value as Map).cast<String, dynamic>()))),
       oauthScopes: pulumi.Input.fromValue((map['oauthScopes'] as List).cast<String>()),
       preemptible: pulumi.Input.fromValue(map['preemptible'] as bool),
       reservationAffinities: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigReservationAffinity>(map['reservationAffinities']!, (value) => GetClusterNodePoolNodeConfigReservationAffinity.fromMap((value as Map).cast<String, dynamic>()))),
@@ -311,10 +330,10 @@ class GetClusterNodePoolNodeConfig {
       spot: pulumi.Input.fromValue(map['spot'] as bool),
       storagePools: pulumi.Input.fromValue((map['storagePools'] as List).cast<String>()),
       tags: pulumi.Input.fromValue((map['tags'] as List).cast<String>()),
+      taintConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigTaintConfig>(map['taintConfigs']!, (value) => GetClusterNodePoolNodeConfigTaintConfig.fromMap((value as Map).cast<String, dynamic>()))),
       taints: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigTaint>(map['taints']!, (value) => GetClusterNodePoolNodeConfigTaint.fromMap((value as Map).cast<String, dynamic>()))),
       windowsNodeConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigWindowsNodeConfig>(map['windowsNodeConfigs']!, (value) => GetClusterNodePoolNodeConfigWindowsNodeConfig.fromMap((value as Map).cast<String, dynamic>()))),
       workloadMetadataConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodePoolNodeConfigWorkloadMetadataConfig>(map['workloadMetadataConfigs']!, (value) => GetClusterNodePoolNodeConfigWorkloadMetadataConfig.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
-

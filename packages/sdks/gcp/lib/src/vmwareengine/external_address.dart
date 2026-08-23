@@ -181,7 +181,7 @@ import 'external_address_state.dart';
 /// 			Description: pulumi.String("Sample test PC."),
 /// 			NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 /// 				ManagementCidr:      pulumi.String("192.168.50.0/24"),
-/// 				VmwareEngineNetwork: external_address_nw.ID(),
+/// 				VmwareEngineNetwork: external_address_nw.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 /// 				ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -200,14 +200,14 @@ import 'external_address_state.dart';
 /// 			Location:            pulumi.String("us-west1"),
 /// 			Name:                pulumi.String("sample-np"),
 /// 			EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
-/// 			VmwareEngineNetwork: external_address_nw.ID(),
+/// 			VmwareEngineNetwork: external_address_nw.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = vmwareengine.NewExternalAddress(ctx, "vmw-engine-external-address", &vmwareengine.ExternalAddressArgs{
 /// 			Name:        pulumi.String("sample-external-address"),
-/// 			Parent:      external_address_pc.ID(),
+/// 			Parent:      external_address_pc.ID().ToIDOutput().ToStringOutput(),
 /// 			InternalIp:  pulumi.String("192.168.0.66"),
 /// 			Description: pulumi.String("Sample description."),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -218,6 +218,51 @@ import 'external_address_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vmwareengine_network" "external-address-nw" {
+///   name        = "pc-nw"
+///   location    = "global"
+///   type        = "STANDARD"
+///   description = "PC network description."
+/// }
+/// resource "gcp_vmwareengine_privatecloud" "external-address-pc" {
+///   location    = "us-west1-a"
+///   name        = "sample-pc"
+///   description = "Sample test PC."
+///   network_config = {
+///     management_cidr       = "192.168.50.0/24"
+///     vmware_engine_network = gcp_vmwareengine_network.external-address-nw.id
+///   }
+///   management_cluster = {
+///     cluster_id = "sample-mgmt-cluster"
+///     node_type_configs = [{
+///       "nodeTypeId" = "standard-72"
+///       "nodeCount"  = 3
+///     }]
+///   }
+/// }
+/// resource "gcp_vmwareengine_networkpolicy" "external-address-np" {
+///   location              = "us-west1"
+///   name                  = "sample-np"
+///   edge_services_cidr    = "192.168.30.0/26"
+///   vmware_engine_network = gcp_vmwareengine_network.external-address-nw.id
+/// }
+/// resource "gcp_vmwareengine_externaladdress" "vmw-engine-external-address" {
+///   depends_on  = [gcp_vmwareengine_networkpolicy.external-address-np]
+///   name        = "sample-external-address"
+///   parent      = gcp_vmwareengine_privatecloud.external-address-pc.id
+///   internal_ip = "192.168.0.66"
+///   description = "Sample description."
 /// }
 /// ```
 /// ```java
@@ -232,13 +277,14 @@ import 'external_address_state.dart';
 /// import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
 /// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
+/// import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterNodeTypeConfigArgs;
 /// import com.pulumi.gcp.vmwareengine.NetworkPolicy;
 /// import com.pulumi.gcp.vmwareengine.NetworkPolicyArgs;
 /// import com.pulumi.gcp.vmwareengine.ExternalAddress;
 /// import com.pulumi.gcp.vmwareengine.ExternalAddressArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -342,6 +388,7 @@ import 'external_address_state.dart';
 ///
 /// * `{{parent}}/externalAddresses/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, ExternalAddress can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -352,6 +399,13 @@ class ExternalAddress extends pulumi.CustomResource {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// User-provided description for this resource.
   late final pulumi.Output<String?> description;
   /// The external IP address of a workload VM.
@@ -388,6 +442,7 @@ class ExternalAddress extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     externalIp = registerOutput<String>('externalIp');
     internalIp = registerOutput<String>('internalIp');
@@ -422,6 +477,7 @@ class ExternalAddress extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     externalIp = registerOutput<String>('externalIp');
     internalIp = registerOutput<String>('internalIp');

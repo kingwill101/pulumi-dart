@@ -46,4 +46,3 @@ class Hl7StoreParserConfig {
     );
   }
 }
-

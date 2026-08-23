@@ -11,6 +11,12 @@ class AndroidAppState {
   /// The globally unique, Firebase-assigned identifier of the AndroidApp.
   /// This identifier should be treated as an opaque token, as the data format is not specified.
   final pulumi.Input<String>? appId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
   final pulumi.Input<String>? deletionPolicy;
   /// The user-assigned display name of the AndroidApp.
   final pulumi.Input<String>? displayName;
@@ -34,7 +40,7 @@ class AndroidAppState {
   /// Creates a new [AndroidAppState].
   /// [apiKeyId] The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
   /// [appId] The globally unique, Firebase-assigned identifier of the AndroidApp.
-  /// [deletionPolicy] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The user-assigned display name of the AndroidApp.
   /// [etag] This checksum is computed by the server based on the value of other fields, and it may be sent
   /// [name] The fully qualified resource name of the AndroidApp, for example:
@@ -85,4 +91,3 @@ class AndroidAppState {
     );
   }
 }
-

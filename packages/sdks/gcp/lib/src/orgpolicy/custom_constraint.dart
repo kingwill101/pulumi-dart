@@ -106,6 +106,24 @@ import 'custom_constraint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_orgpolicy_customconstraint" "constraint" {
+///   name           = "custom.disableGkeAutoUpgrade"
+///   parent         = "organizations/123456789"
+///   action_type    = "ALLOW"
+///   condition      = "resource.management.autoUpgrade == false"
+///   method_types   = ["CREATE", "UPDATE"]
+///   resource_types = ["container.googleapis.com/NodePool"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +132,8 @@ import 'custom_constraint_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.orgpolicy.CustomConstraint;
 /// import com.pulumi.gcp.orgpolicy.CustomConstraintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -308,6 +326,35 @@ import 'custom_constraint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_orgpolicy_customconstraint" "constraint" {
+///   name           = "custom.disableGkeAutoUpgrade"
+///   parent         = "organizations/123456789"
+///   display_name   = "Disable GKE auto upgrade"
+///   description    = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."
+///   action_type    = "ALLOW"
+///   condition      = "resource.management.autoUpgrade == false"
+///   method_types   = ["CREATE", "UPDATE"]
+///   resource_types = ["container.googleapis.com/NodePool"]
+/// }
+/// resource "gcp_orgpolicy_policy" "bool" {
+///   name   ="organizations/123456789/policies/${gcp_orgpolicy_customconstraint.constraint.name}"
+///   parent = "organizations/123456789"
+///   spec = {
+///     rules = [{
+///       "enforce" = "TRUE"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -319,8 +366,9 @@ import 'custom_constraint_state.dart';
 /// import com.pulumi.gcp.orgpolicy.Policy;
 /// import com.pulumi.gcp.orgpolicy.PolicyArgs;
 /// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -391,6 +439,7 @@ import 'custom_constraint_state.dart';
 ///
 /// * `{{parent}}/customConstraints/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, CustomConstraint can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -402,6 +451,13 @@ class CustomConstraint extends pulumi.CustomResource {
   late final pulumi.Output<String> actionType;
   /// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
   late final pulumi.Output<String> condition;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human-friendly description of the constraint to display as an error message when the policy is violated.
   late final pulumi.Output<String?> description;
   /// A human-friendly name for the constraint.
@@ -433,6 +489,7 @@ class CustomConstraint extends pulumi.CustomResource {
         ) {
     actionType = registerOutput<String>('actionType');
     condition = registerOutput<String>('condition');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     methodTypes = registerOutput<List<String>>('methodTypes');
@@ -467,6 +524,7 @@ class CustomConstraint extends pulumi.CustomResource {
         ) {
     actionType = registerOutput<String>('actionType');
     condition = registerOutput<String>('condition');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     methodTypes = registerOutput<List<String>>('methodTypes');

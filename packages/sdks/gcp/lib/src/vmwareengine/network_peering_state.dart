@@ -8,6 +8,13 @@ class NetworkPeeringState {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-provided description for this network peering.
   final pulumi.Input<String>? description;
   /// True if custom routes are exported to the peered network; false otherwise.
@@ -51,6 +58,7 @@ class NetworkPeeringState {
 
   /// Creates a new [NetworkPeeringState].
   /// [createTime] Creation time of this resource.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User-provided description for this network peering.
   /// [exportCustomRoutes] True if custom routes are exported to the peered network; false otherwise.
   /// [exportCustomRoutesWithPublicIp] True if all subnet routes with a public IP address range are exported; false otherwise.
@@ -68,6 +76,7 @@ class NetworkPeeringState {
   /// [vmwareEngineNetworkCanonical] The canonical name of the VMware Engine network in the form:
   const NetworkPeeringState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.exportCustomRoutes,
     this.exportCustomRoutesWithPublicIp,
@@ -88,6 +97,7 @@ class NetworkPeeringState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'exportCustomRoutes': ?exportCustomRoutes,
       'exportCustomRoutesWithPublicIp': ?exportCustomRoutesWithPublicIp,
@@ -109,6 +119,7 @@ class NetworkPeeringState {
   factory NetworkPeeringState.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exportCustomRoutes: (() { final guardedValue = map['exportCustomRoutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       exportCustomRoutesWithPublicIp: (() { final guardedValue = map['exportCustomRoutesWithPublicIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -127,4 +138,3 @@ class NetworkPeeringState {
     );
   }
 }
-

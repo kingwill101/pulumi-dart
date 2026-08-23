@@ -80,6 +80,21 @@ import 'bucket_object_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketobject" "picture" {
+///   name   = "butterfly01"
+///   source = fileAsset("/images/nature/garden-tiger-moth.jpg")
+///   bucket = "image-store"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +104,8 @@ import 'bucket_object_state.dart';
 /// import com.pulumi.gcp.storage.BucketObject;
 /// import com.pulumi.gcp.storage.BucketObjectArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -118,7 +133,7 @@ import 'bucket_object_state.dart';
 ///     properties:
 ///       name: butterfly01
 ///       source:
-///         fn::FileAsset: /images/nature/garden-tiger-moth.jpg
+///         fn::fileAsset: /images/nature/garden-tiger-moth.jpg
 ///       bucket: image-store
 /// ```
 ///
@@ -184,6 +199,21 @@ import 'bucket_object_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketobject" "empty_folder" {
+///   name    = "empty_folder/"
+///   content = " "
+///   bucket  = "image-store"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -192,8 +222,8 @@ import 'bucket_object_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.BucketObject;
 /// import com.pulumi.gcp.storage.BucketObjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -339,6 +369,30 @@ import 'bucket_object_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucketobject" "bucket_object" {
+///   bucket  = "test-bucket"
+///   name    = "test-object"
+///   content = "test-content"
+///   contexts = {
+///     customs = [{
+///       "key"   = "testKey"
+///       "value" = "test"
+///       }, {
+///       "key"   = "testKeyTwo"
+///       "value" = "test"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -348,8 +402,9 @@ import 'bucket_object_state.dart';
 /// import com.pulumi.gcp.storage.BucketObject;
 /// import com.pulumi.gcp.storage.BucketObjectArgs;
 /// import com.pulumi.gcp.storage.inputs.BucketObjectContextsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.storage.inputs.BucketObjectContextsCustomArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -425,7 +480,16 @@ class BucketObject extends pulumi.CustomResource {
   /// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
   /// Structure is documented below.
   late final pulumi.Output<BucketObjectCustomerEncryption?> customerEncryption;
-  late final pulumi.Output<String?> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
+  ///
+  /// &gt; **Warning:** For dynamically populated files or objects, `detectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `sourceMd5hash` instead.
   late final pulumi.Output<String?> detectMd5hash;
   /// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
   late final pulumi.Output<bool?> eventBasedHold;
@@ -445,7 +509,7 @@ class BucketObject extends pulumi.CustomResource {
   ///
   /// One of the following is required:
   late final pulumi.Output<Map<String, String>?> metadata;
-  /// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
+  /// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
   late final pulumi.Output<String> name;
   /// (Computed) The name of the object. Use this field in interpolations with `gcp.storage.ObjectACL` to recreate
   /// `gcp.storage.ObjectACL` resources when your `gcp.storage.BucketObject` is recreated.
@@ -492,7 +556,7 @@ class BucketObject extends pulumi.CustomResource {
     contexts = registerOutput<BucketObjectContexts?>('contexts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectContexts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     crc32c = registerOutput<String>('crc32c');
     customerEncryption = registerOutput<BucketObjectCustomerEncryption?>('customerEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectCustomerEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     detectMd5hash = registerOutput<String?>('detectMd5hash');
     eventBasedHold = registerOutput<bool?>('eventBasedHold');
     forceEmptyContentType = registerOutput<bool?>('forceEmptyContentType');
@@ -545,7 +609,7 @@ class BucketObject extends pulumi.CustomResource {
     contexts = registerOutput<BucketObjectContexts?>('contexts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectContexts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     crc32c = registerOutput<String>('crc32c');
     customerEncryption = registerOutput<BucketObjectCustomerEncryption?>('customerEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectCustomerEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     detectMd5hash = registerOutput<String?>('detectMd5hash');
     eventBasedHold = registerOutput<bool?>('eventBasedHold');
     forceEmptyContentType = registerOutput<bool?>('forceEmptyContentType');

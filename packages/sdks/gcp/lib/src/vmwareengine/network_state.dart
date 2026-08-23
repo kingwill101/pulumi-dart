@@ -9,6 +9,13 @@ class NetworkState {
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-provided description for this VMware Engine network.
   final pulumi.Input<String>? description;
   /// Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
@@ -39,6 +46,7 @@ class NetworkState {
 
   /// Creates a new [NetworkState].
   /// [createTime] Creation time of this resource.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User-provided description for this VMware Engine network.
   /// [etag] Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
   /// [location] The location where the VMwareEngineNetwork should reside.
@@ -51,6 +59,7 @@ class NetworkState {
   /// [vpcNetworks] VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
   const NetworkState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.etag,
     this.location,
@@ -66,6 +75,7 @@ class NetworkState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'etag': ?etag,
       'location': ?location,
@@ -82,6 +92,7 @@ class NetworkState {
   factory NetworkState.fromMap(Map<String, dynamic> map) {
     return NetworkState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -95,4 +106,3 @@ class NetworkState {
     );
   }
 }
-

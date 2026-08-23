@@ -10,8 +10,20 @@ class GetSecretsSecret {
   final pulumi.Input<Map<String, String>> annotations;
   /// The time at which the Secret was created.
   final pulumi.Input<String> createTime;
+  /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the secret. Defaults to false.
+  /// When the field is set to true in Terraform state, a 'terraform apply'
+  /// or 'terraform destroy' that would delete the secret will fail.
   final pulumi.Input<bool> deletionProtection;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>> effectiveAnnotations;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>> effectiveLabels;
   /// Timestamp in UTC when the Secret is scheduled to expire.
   final pulumi.Input<String> expireTime;
@@ -51,9 +63,10 @@ class GetSecretsSecret {
   /// Creates a new [GetSecretsSecret].
   /// [annotations] Custom metadata about the secret.
   /// [createTime] The time at which the Secret was created.
-  /// [deletionProtection] Required.
-  /// [effectiveAnnotations] Required.
-  /// [effectiveLabels] Required.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the secret. Defaults to false.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
+  /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
   /// [expireTime] Timestamp in UTC when the Secret is scheduled to expire.
   /// [labels] The labels assigned to this Secret.
   /// [name] The resource name of the Pub/Sub topic that will be published to.
@@ -70,6 +83,7 @@ class GetSecretsSecret {
   const GetSecretsSecret({
     required this.annotations,
     required this.createTime,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.effectiveAnnotations,
     required this.effectiveLabels,
@@ -92,6 +106,7 @@ class GetSecretsSecret {
     return <String, dynamic>{
       'annotations': annotations,
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'effectiveAnnotations': effectiveAnnotations,
       'effectiveLabels': effectiveLabels,
@@ -115,6 +130,7 @@ class GetSecretsSecret {
     return GetSecretsSecret(
       annotations: pulumi.Input.fromValue((map['annotations'] as Map).cast<String, String>()),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
+      deletionPolicy: pulumi.Input.fromValue(map['deletionPolicy'] as String),
       deletionProtection: pulumi.Input.fromValue(map['deletionProtection'] as bool),
       effectiveAnnotations: pulumi.Input.fromValue((map['effectiveAnnotations'] as Map).cast<String, String>()),
       effectiveLabels: pulumi.Input.fromValue((map['effectiveLabels'] as Map).cast<String, String>()),
@@ -134,4 +150,3 @@ class GetSecretsSecret {
     );
   }
 }
-

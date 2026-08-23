@@ -3,10 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionDiskSourceSnapshotEncryptionKey {
+  /// (Optional, Beta)
   /// The name of the encryption key that is stored in Google Cloud KMS.
   final pulumi.Input<String>? kmsKeyName;
   /// Specifies a 256-bit customer-supplied encryption key, encoded in
   /// RFC 4648 base64 to either encrypt or decrypt this resource.
+  /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? rawKey;
   /// (Output)
   /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
@@ -14,7 +16,7 @@ class RegionDiskSourceSnapshotEncryptionKey {
   final pulumi.Input<String>? sha256;
 
   /// Creates a new [RegionDiskSourceSnapshotEncryptionKey].
-  /// [kmsKeyName] The name of the encryption key that is stored in Google Cloud KMS.
+  /// [kmsKeyName] (Optional, Beta)
   /// [rawKey] Specifies a 256-bit customer-supplied encryption key, encoded in
   /// [sha256] (Output)
   const RegionDiskSourceSnapshotEncryptionKey({
@@ -39,4 +41,3 @@ class RegionDiskSourceSnapshotEncryptionKey {
     );
   }
 }
-

@@ -9,6 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkforcePoolProviderScimTenantArgs {
   /// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
   final pulumi.Input<Map<String, String>>? claimMapping;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A user-specified description of the provider. Cannot exceed 256 characters.
   final pulumi.Input<String>? description;
   /// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
@@ -26,6 +33,7 @@ class WorkforcePoolProviderScimTenantArgs {
 
   /// Creates a new [WorkforcePoolProviderScimTenantArgs].
   /// [claimMapping] Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A user-specified description of the provider. Cannot exceed 256 characters.
   /// [displayName] A user-specified display name for the scim tenant. Cannot exceed 32 characters.
   /// [hardDelete] Deletes the SCIM tenant immediately. This operation cannot be undone.
@@ -35,6 +43,7 @@ class WorkforcePoolProviderScimTenantArgs {
   /// [workforcePoolId] The ID of the workforce pool.
   const WorkforcePoolProviderScimTenantArgs({
     this.claimMapping,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.hardDelete,
@@ -47,6 +56,7 @@ class WorkforcePoolProviderScimTenantArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'claimMapping': ?claimMapping,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'hardDelete': ?hardDelete,
@@ -60,6 +70,7 @@ class WorkforcePoolProviderScimTenantArgs {
   factory WorkforcePoolProviderScimTenantArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderScimTenantArgs(
       claimMapping: (() { final guardedValue = map['claimMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hardDelete: (() { final guardedValue = map['hardDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -70,4 +81,3 @@ class WorkforcePoolProviderScimTenantArgs {
     );
   }
 }
-

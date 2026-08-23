@@ -12,11 +12,18 @@ class ClientTlsPolicyArgs {
   /// Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
   /// Structure is documented below.
   final pulumi.Input<ClientTlsPolicyClientCertificate>? clientCertificate;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
   /// Set of label tags associated with the ClientTlsPolicy resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location of the client tls policy.
   /// The default value is `global`.
@@ -34,6 +41,7 @@ class ClientTlsPolicyArgs {
 
   /// Creates a new [ClientTlsPolicyArgs].
   /// [clientCertificate] Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A free-text description of the resource. Max length 1024 characters.
   /// [labels] Set of label tags associated with the ClientTlsPolicy resource.
   /// [location] The location of the client tls policy.
@@ -43,6 +51,7 @@ class ClientTlsPolicyArgs {
   /// [sni] Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
   const ClientTlsPolicyArgs({
     this.clientCertificate,
+    this.deletionPolicy,
     this.description,
     this.labels,
     this.location,
@@ -55,6 +64,7 @@ class ClientTlsPolicyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientCertificate': ?pulumi.Input.mapOptionalInputValue<ClientTlsPolicyClientCertificate, Map<String, dynamic>>(clientCertificate, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'labels': ?labels,
       'location': ?location,
@@ -68,6 +78,7 @@ class ClientTlsPolicyArgs {
   factory ClientTlsPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ClientTlsPolicyArgs(
       clientCertificate: (() { final guardedValue = map['clientCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClientTlsPolicyClientCertificate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -78,4 +89,3 @@ class ClientTlsPolicyArgs {
     );
   }
 }
-

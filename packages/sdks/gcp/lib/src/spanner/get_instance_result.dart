@@ -8,6 +8,7 @@ class GetInstanceResult {
   final List<GetInstanceAutoscalingConfig> autoscalingConfigs;
   final String? config;
   final String defaultBackupScheduleType;
+  final String deletionPolicy;
   final String? displayName;
   final String edition;
   final Map<String, String> effectiveLabels;
@@ -27,6 +28,7 @@ class GetInstanceResult {
   /// [autoscalingConfigs] Required.
   /// [config] Optional.
   /// [defaultBackupScheduleType] Required.
+  /// [deletionPolicy] Required.
   /// [displayName] Optional.
   /// [edition] Required.
   /// [effectiveLabels] Required.
@@ -44,6 +46,7 @@ class GetInstanceResult {
     required this.autoscalingConfigs,
     this.config,
     required this.defaultBackupScheduleType,
+    required this.deletionPolicy,
     this.displayName,
     required this.edition,
     required this.effectiveLabels,
@@ -64,6 +67,7 @@ class GetInstanceResult {
       'autoscalingConfigs': pulumi.Input.encodeList<GetInstanceAutoscalingConfig, Map<String, dynamic>>(autoscalingConfigs, (value) => value.toMap()),
       'config': ?config,
       'defaultBackupScheduleType': defaultBackupScheduleType,
+      'deletionPolicy': deletionPolicy,
       'displayName': ?displayName,
       'edition': edition,
       'effectiveLabels': effectiveLabels,
@@ -85,6 +89,7 @@ class GetInstanceResult {
       autoscalingConfigs: pulumi.Input.decodeList<GetInstanceAutoscalingConfig>(map['autoscalingConfigs']!, (value) => GetInstanceAutoscalingConfig.fromMap((value as Map).cast<String, dynamic>())),
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return guardedValue as String; })(),
       defaultBackupScheduleType: map['defaultBackupScheduleType'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       edition: map['edition'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -101,4 +106,3 @@ class GetInstanceResult {
     );
   }
 }
-

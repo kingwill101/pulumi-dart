@@ -65,6 +65,21 @@ import 'get_instance_iam_policy_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_datafusion_getinstanceiampolicy" "policy" {
+///   project = basicInstance.project
+///   region  = basicInstance.region
+///   name    = basicInstance.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'get_instance_iam_policy_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.datafusion.DatafusionFunctions;
 /// import com.pulumi.gcp.datafusion.inputs.GetInstanceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -87,9 +102,9 @@ import 'get_instance_iam_policy_result.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var policy = DatafusionFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-///             .project(basicInstance.project())
-///             .region(basicInstance.region())
-///             .name(basicInstance.name())
+///             .project(basicInstance.get("project"))
+///             .region(basicInstance.get("region"))
+///             .name(basicInstance.get("name"))
 ///             .build());
 ///
 ///     }

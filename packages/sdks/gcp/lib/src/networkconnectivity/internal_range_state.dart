@@ -9,6 +9,13 @@ class InternalRangeState {
   /// Options for automatically allocating a free range with a size given by prefixLength.
   /// Structure is documented below.
   final pulumi.Input<InternalRangeAllocationOptions>? allocationOptions;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -25,7 +32,7 @@ class InternalRangeState {
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Specification for migration with source and target resource names.
   /// Structure is documented below.
@@ -42,7 +49,7 @@ class InternalRangeState {
   final pulumi.Input<String>? peering;
   /// An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
   /// If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
-  /// NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+  /// NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
   /// a redundant parameter.
   final pulumi.Input<int>? prefixLength;
   /// The ID of the project in which the resource belongs.
@@ -64,6 +71,7 @@ class InternalRangeState {
 
   /// Creates a new [InternalRangeState].
   /// [allocationOptions] Options for automatically allocating a free range with a size given by prefixLength.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [excludeCidrRanges] Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
@@ -83,6 +91,7 @@ class InternalRangeState {
   /// [users] Output only. The list of resources that refer to this internal range.
   const InternalRangeState({
     this.allocationOptions,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.excludeCidrRanges,
@@ -105,6 +114,7 @@ class InternalRangeState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocationOptions': ?pulumi.Input.mapOptionalInputValue<InternalRangeAllocationOptions, Map<String, dynamic>>(allocationOptions, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'excludeCidrRanges': ?excludeCidrRanges,
@@ -128,6 +138,7 @@ class InternalRangeState {
   factory InternalRangeState.fromMap(Map<String, dynamic> map) {
     return InternalRangeState(
       allocationOptions: (() { final guardedValue = map['allocationOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InternalRangeAllocationOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       excludeCidrRanges: (() { final guardedValue = map['excludeCidrRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -148,4 +159,3 @@ class InternalRangeState {
     );
   }
 }
-

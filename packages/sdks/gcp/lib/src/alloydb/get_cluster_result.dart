@@ -3,8 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_cluster_automated_backup_policy.dart';
 import 'get_cluster_backup_source.dart';
+import 'get_cluster_backupdr_backup_source.dart';
 import 'get_cluster_continuous_backup_config.dart';
 import 'get_cluster_continuous_backup_info.dart';
+import 'get_cluster_dataplex_config.dart';
 import 'get_cluster_encryption_config.dart';
 import 'get_cluster_encryption_info.dart';
 import 'get_cluster_initial_user.dart';
@@ -13,6 +15,8 @@ import 'get_cluster_migration_source.dart';
 import 'get_cluster_network_config.dart';
 import 'get_cluster_psc_config.dart';
 import 'get_cluster_restore_backup_source.dart';
+import 'get_cluster_restore_backupdr_backup_source.dart';
+import 'get_cluster_restore_backupdr_pitr_source.dart';
 import 'get_cluster_restore_continuous_backup_source.dart';
 import 'get_cluster_secondary_config.dart';
 import 'get_cluster_trial_metadata.dart';
@@ -22,11 +26,13 @@ class GetClusterResult {
   final Map<String, String> annotations;
   final List<GetClusterAutomatedBackupPolicy> automatedBackupPolicies;
   final List<GetClusterBackupSource> backupSources;
+  final List<GetClusterBackupdrBackupSource> backupdrBackupSources;
   final String clusterId;
   final String clusterType;
   final List<GetClusterContinuousBackupConfig> continuousBackupConfigs;
   final List<GetClusterContinuousBackupInfo> continuousBackupInfos;
   final String databaseVersion;
+  final List<GetClusterDataplexConfig> dataplexConfigs;
   final String deletionPolicy;
   final bool deletionProtection;
   final String displayName;
@@ -49,6 +55,8 @@ class GetClusterResult {
   final Map<String, String> pulumiLabels;
   final bool reconciling;
   final List<GetClusterRestoreBackupSource> restoreBackupSources;
+  final List<GetClusterRestoreBackupdrBackupSource> restoreBackupdrBackupSources;
+  final List<GetClusterRestoreBackupdrPitrSource> restoreBackupdrPitrSources;
   final List<GetClusterRestoreContinuousBackupSource> restoreContinuousBackupSources;
   final List<GetClusterSecondaryConfig> secondaryConfigs;
   final bool skipAwaitMajorVersionUpgrade;
@@ -61,11 +69,13 @@ class GetClusterResult {
   /// [annotations] Required.
   /// [automatedBackupPolicies] Required.
   /// [backupSources] Required.
+  /// [backupdrBackupSources] Required.
   /// [clusterId] Required.
   /// [clusterType] Required.
   /// [continuousBackupConfigs] Required.
   /// [continuousBackupInfos] Required.
   /// [databaseVersion] Required.
+  /// [dataplexConfigs] Required.
   /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [displayName] Required.
@@ -87,6 +97,8 @@ class GetClusterResult {
   /// [pulumiLabels] Required.
   /// [reconciling] Required.
   /// [restoreBackupSources] Required.
+  /// [restoreBackupdrBackupSources] Required.
+  /// [restoreBackupdrPitrSources] Required.
   /// [restoreContinuousBackupSources] Required.
   /// [secondaryConfigs] Required.
   /// [skipAwaitMajorVersionUpgrade] Required.
@@ -98,11 +110,13 @@ class GetClusterResult {
     required this.annotations,
     required this.automatedBackupPolicies,
     required this.backupSources,
+    required this.backupdrBackupSources,
     required this.clusterId,
     required this.clusterType,
     required this.continuousBackupConfigs,
     required this.continuousBackupInfos,
     required this.databaseVersion,
+    required this.dataplexConfigs,
     required this.deletionPolicy,
     required this.deletionProtection,
     required this.displayName,
@@ -124,6 +138,8 @@ class GetClusterResult {
     required this.pulumiLabels,
     required this.reconciling,
     required this.restoreBackupSources,
+    required this.restoreBackupdrBackupSources,
+    required this.restoreBackupdrPitrSources,
     required this.restoreContinuousBackupSources,
     required this.secondaryConfigs,
     required this.skipAwaitMajorVersionUpgrade,
@@ -138,11 +154,13 @@ class GetClusterResult {
       'annotations': annotations,
       'automatedBackupPolicies': pulumi.Input.encodeList<GetClusterAutomatedBackupPolicy, Map<String, dynamic>>(automatedBackupPolicies, (value) => value.toMap()),
       'backupSources': pulumi.Input.encodeList<GetClusterBackupSource, Map<String, dynamic>>(backupSources, (value) => value.toMap()),
+      'backupdrBackupSources': pulumi.Input.encodeList<GetClusterBackupdrBackupSource, Map<String, dynamic>>(backupdrBackupSources, (value) => value.toMap()),
       'clusterId': clusterId,
       'clusterType': clusterType,
       'continuousBackupConfigs': pulumi.Input.encodeList<GetClusterContinuousBackupConfig, Map<String, dynamic>>(continuousBackupConfigs, (value) => value.toMap()),
       'continuousBackupInfos': pulumi.Input.encodeList<GetClusterContinuousBackupInfo, Map<String, dynamic>>(continuousBackupInfos, (value) => value.toMap()),
       'databaseVersion': databaseVersion,
+      'dataplexConfigs': pulumi.Input.encodeList<GetClusterDataplexConfig, Map<String, dynamic>>(dataplexConfigs, (value) => value.toMap()),
       'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'displayName': displayName,
@@ -164,6 +182,8 @@ class GetClusterResult {
       'pulumiLabels': pulumiLabels,
       'reconciling': reconciling,
       'restoreBackupSources': pulumi.Input.encodeList<GetClusterRestoreBackupSource, Map<String, dynamic>>(restoreBackupSources, (value) => value.toMap()),
+      'restoreBackupdrBackupSources': pulumi.Input.encodeList<GetClusterRestoreBackupdrBackupSource, Map<String, dynamic>>(restoreBackupdrBackupSources, (value) => value.toMap()),
+      'restoreBackupdrPitrSources': pulumi.Input.encodeList<GetClusterRestoreBackupdrPitrSource, Map<String, dynamic>>(restoreBackupdrPitrSources, (value) => value.toMap()),
       'restoreContinuousBackupSources': pulumi.Input.encodeList<GetClusterRestoreContinuousBackupSource, Map<String, dynamic>>(restoreContinuousBackupSources, (value) => value.toMap()),
       'secondaryConfigs': pulumi.Input.encodeList<GetClusterSecondaryConfig, Map<String, dynamic>>(secondaryConfigs, (value) => value.toMap()),
       'skipAwaitMajorVersionUpgrade': skipAwaitMajorVersionUpgrade,
@@ -179,11 +199,13 @@ class GetClusterResult {
       annotations: (map['annotations'] as Map).cast<String, String>(),
       automatedBackupPolicies: pulumi.Input.decodeList<GetClusterAutomatedBackupPolicy>(map['automatedBackupPolicies']!, (value) => GetClusterAutomatedBackupPolicy.fromMap((value as Map).cast<String, dynamic>())),
       backupSources: pulumi.Input.decodeList<GetClusterBackupSource>(map['backupSources']!, (value) => GetClusterBackupSource.fromMap((value as Map).cast<String, dynamic>())),
+      backupdrBackupSources: pulumi.Input.decodeList<GetClusterBackupdrBackupSource>(map['backupdrBackupSources']!, (value) => GetClusterBackupdrBackupSource.fromMap((value as Map).cast<String, dynamic>())),
       clusterId: map['clusterId'] as String,
       clusterType: map['clusterType'] as String,
       continuousBackupConfigs: pulumi.Input.decodeList<GetClusterContinuousBackupConfig>(map['continuousBackupConfigs']!, (value) => GetClusterContinuousBackupConfig.fromMap((value as Map).cast<String, dynamic>())),
       continuousBackupInfos: pulumi.Input.decodeList<GetClusterContinuousBackupInfo>(map['continuousBackupInfos']!, (value) => GetClusterContinuousBackupInfo.fromMap((value as Map).cast<String, dynamic>())),
       databaseVersion: map['databaseVersion'] as String,
+      dataplexConfigs: pulumi.Input.decodeList<GetClusterDataplexConfig>(map['dataplexConfigs']!, (value) => GetClusterDataplexConfig.fromMap((value as Map).cast<String, dynamic>())),
       deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       displayName: map['displayName'] as String,
@@ -205,6 +227,8 @@ class GetClusterResult {
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       reconciling: map['reconciling'] as bool,
       restoreBackupSources: pulumi.Input.decodeList<GetClusterRestoreBackupSource>(map['restoreBackupSources']!, (value) => GetClusterRestoreBackupSource.fromMap((value as Map).cast<String, dynamic>())),
+      restoreBackupdrBackupSources: pulumi.Input.decodeList<GetClusterRestoreBackupdrBackupSource>(map['restoreBackupdrBackupSources']!, (value) => GetClusterRestoreBackupdrBackupSource.fromMap((value as Map).cast<String, dynamic>())),
+      restoreBackupdrPitrSources: pulumi.Input.decodeList<GetClusterRestoreBackupdrPitrSource>(map['restoreBackupdrPitrSources']!, (value) => GetClusterRestoreBackupdrPitrSource.fromMap((value as Map).cast<String, dynamic>())),
       restoreContinuousBackupSources: pulumi.Input.decodeList<GetClusterRestoreContinuousBackupSource>(map['restoreContinuousBackupSources']!, (value) => GetClusterRestoreContinuousBackupSource.fromMap((value as Map).cast<String, dynamic>())),
       secondaryConfigs: pulumi.Input.decodeList<GetClusterSecondaryConfig>(map['secondaryConfigs']!, (value) => GetClusterSecondaryConfig.fromMap((value as Map).cast<String, dynamic>())),
       skipAwaitMajorVersionUpgrade: map['skipAwaitMajorVersionUpgrade'] as bool,
@@ -215,4 +239,3 @@ class GetClusterResult {
     );
   }
 }
-

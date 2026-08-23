@@ -268,6 +268,49 @@ import 'table_view.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_dataset" "default" {
+///   dataset_id                  = "foo"
+///   friendly_name               = "test"
+///   description                 = "This is a test description"
+///   location                    = "EU"
+///   default_table_expiration_ms = 3600000
+///   labels = {
+///     "env" = "default"
+///   }
+/// }
+/// resource "gcp_bigquery_table" "default" {
+///   dataset_id = gcp_bigquery_dataset.default.dataset_id
+///   table_id   = "bar"
+///   time_partitioning = {
+///     type = "DAY"
+///   }
+///   labels = {
+///     "env" = "default"
+///   }
+///   schema = "[\n  {\n    \\\"name\\\": \\\"permalink\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"description\\\": \\\"The Permalink\\\"\n  },\n  {\n    \\\"name\\\": \\\"state\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"description\\\": \\\"State where the head office is located\\\"\n  }\n]\n"
+/// }
+/// resource "gcp_bigquery_table" "sheet" {
+///   dataset_id = gcp_bigquery_dataset.default.dataset_id
+///   table_id   = "sheet"
+///   external_data_configuration = {
+///     autodetect    = true
+///     source_format = "GOOGLE_SHEETS"
+///     google_sheets_options = {
+///       skip_leading_rows = 1
+///     }
+///     source_uris = ["https://docs.google.com/spreadsheets/d/123456789012345"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -281,8 +324,8 @@ import 'table_view.dart';
 /// import com.pulumi.gcp.bigquery.inputs.TableTimePartitioningArgs;
 /// import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationArgs;
 /// import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationGoogleSheetsOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -394,31 +437,6 @@ import 'table_view.dart';
 ///         sourceUris:
 ///           - https://docs.google.com/spreadsheets/d/123456789012345
 /// ```
-///
-///
-/// ## Import
-///
-/// BigQuery tables can be imported using any of these accepted formats:
-///
-/// * `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}`
-///
-/// * `{{project}}/{{dataset_id}}/{{table_id}}`
-///
-/// * `{{dataset_id}}/{{table_id}}`
-///
-/// When using the `pulumi import` command, BigQuery tables can be imported using one of the formats above. For example:
-///
-/// ```sh
-/// $ pulumi import gcp:bigquery/table:Table default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:bigquery/table:Table default {{project}}/{{dataset_id}}/{{table_id}}
-/// ```
-///
-/// ```sh
-/// $ pulumi import gcp:bigquery/table:Table default {{dataset_id}}/{{table_id}}
-/// ```
 class Table extends pulumi.CustomResource {
   /// Specifies the configuration of a BigLake managed table. Structure is documented below
   late final pulumi.Output<TableBiglakeConfiguration?> biglakeConfiguration;
@@ -431,12 +449,12 @@ class Table extends pulumi.CustomResource {
   /// The dataset ID to create the table in.
   /// Changing this forces a new resource to be created.
   late final pulumi.Output<String> datasetId;
-  /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-  /// in state, a `=destroy` or `=update` that would delete the instance will fail.
-  late final pulumi.Output<bool?> deletionProtection;
-  /// The field description.
-  late final pulumi.Output<String?> description;
-  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// * &lt;a name="schema"&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
   ///
@@ -448,11 +466,18 @@ class Table extends pulumi.CustomResource {
   /// the recurring diff this causes. As a workaround, we recommend using the
   /// schema as returned by the API.
   ///
-  /// ~&gt;**NOTE:**  If you use `external_data_configuration`
+  /// ~&gt;**NOTE:**  If you use `externalDataConfiguration`
   /// documented below and do **not** set
   /// `external_data_configuration.connection_id`, schemas must be specified
   /// with `external_data_configuration.schema`. Otherwise, schemas must be
   /// specified with this top-level field.
+  late final pulumi.Output<String> deletionPolicy;
+  /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+  /// in state, a `=destroy` or `=update` that would delete the instance will fail.
+  late final pulumi.Output<bool?> deletionProtection;
+  /// The field description.
+  late final pulumi.Output<String?> description;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Specifies how the table should be encrypted.
   /// If left blank, the table will be encrypted with a Google-managed key; that process
@@ -477,8 +502,13 @@ class Table extends pulumi.CustomResource {
   late final pulumi.Output<String?> friendlyName;
   /// (Output-only) A list of autogenerated schema fields.
   late final pulumi.Output<String> generatedSchemaColumns;
+  /// If true, Terraform will prevent columns added by the server(e.g. hive partitioned columns) in schema from showing diff.
   late final pulumi.Output<bool?> ignoreAutoGeneratedSchema;
-  /// Mention which fields in schema are to be ignored
+  /// A list of fields which would act non-authoritative for each column in schema.
+  /// **NOTE:** Right now only `dataPolicies` field is supported(others might be supported in the future). It means that any `dataPolicies` updated outside terraform will be ignored if this option is used.
+  /// If there is no policy in config for a column but there are in live state, the policy will persist.
+  /// If the policy in config is updated, it will override the policy in the live state. Other fields
+  /// like `description` for a column will keep behaving as they are(authoritatively).
   late final pulumi.Output<List<String>?> ignoreSchemaChanges;
   /// A mapping of labels to assign to the resource.
   ///
@@ -539,7 +569,7 @@ class Table extends pulumi.CustomResource {
   late final pulumi.Output<String?> tableMetadataView;
   /// Replication info of a table created
   /// using "AS REPLICA" DDL like:
-  /// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
+  /// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF srcMv`.
   /// Structure is documented below.
   late final pulumi.Output<TableTableReplicationInfo?> tableReplicationInfo;
   /// If specified, configures time-based
@@ -569,6 +599,7 @@ class Table extends pulumi.CustomResource {
     clusterings = registerOutput<List<String>?>('clusterings');
     creationTime = registerOutput<int>('creationTime');
     datasetId = registerOutput<String>('datasetId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -633,6 +664,7 @@ class Table extends pulumi.CustomResource {
     clusterings = registerOutput<List<String>?>('clusterings');
     creationTime = registerOutput<int>('creationTime');
     datasetId = registerOutput<String>('datasetId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

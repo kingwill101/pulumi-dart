@@ -9,11 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeystoresAliasesPkcs12Args {
   /// Alias Name
   final pulumi.Input<String> alias;
+  /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// - - -
+  final pulumi.Input<String>? deletionPolicy;
   /// Environment associated with the alias
   final pulumi.Input<String> environment;
   /// PKCS12 file content
-  ///
-  /// - - -
   final pulumi.Input<String> file;
   /// Hash of the pkcs file
   final pulumi.Input<String> filehash;
@@ -26,6 +33,7 @@ class KeystoresAliasesPkcs12Args {
 
   /// Creates a new [KeystoresAliasesPkcs12Args].
   /// [alias] Alias Name
+  /// [deletionPolicy] (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [environment] Environment associated with the alias
   /// [file] PKCS12 file content
   /// [filehash] Hash of the pkcs file
@@ -34,6 +42,7 @@ class KeystoresAliasesPkcs12Args {
   /// [password] Password for the PKCS12 file if it's encrypted
   const KeystoresAliasesPkcs12Args({
     required this.alias,
+    this.deletionPolicy,
     required this.environment,
     required this.file,
     required this.filehash,
@@ -45,6 +54,7 @@ class KeystoresAliasesPkcs12Args {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alias': alias,
+      'deletionPolicy': ?deletionPolicy,
       'environment': environment,
       'file': file,
       'filehash': filehash,
@@ -57,6 +67,7 @@ class KeystoresAliasesPkcs12Args {
   factory KeystoresAliasesPkcs12Args.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesPkcs12Args(
       alias: pulumi.Input.fromValue(map['alias'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environment: pulumi.Input.fromValue(map['environment'] as String),
       file: pulumi.Input.fromValue(map['file'] as String),
       filehash: pulumi.Input.fromValue(map['filehash'] as String),
@@ -66,4 +77,3 @@ class KeystoresAliasesPkcs12Args {
     );
   }
 }
-

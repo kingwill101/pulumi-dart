@@ -16,6 +16,13 @@ class InterconnectAttachmentGroupArgs {
   /// The size of this map is limited by an "Attachments per group" quota.
   /// Structure is documented below.
   final pulumi.Input<List<InterconnectAttachmentGroupAttachment>>? attachments;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
   /// The user's intent for this group. This is the only required field besides
@@ -38,6 +45,7 @@ class InterconnectAttachmentGroupArgs {
 
   /// Creates a new [InterconnectAttachmentGroupArgs].
   /// [attachments] Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you create the resource.
   /// [intent] The user's intent for this group. This is the only required field besides
   /// [interconnectGroup] The URL of an InterconnectGroup that groups these Attachments'
@@ -45,6 +53,7 @@ class InterconnectAttachmentGroupArgs {
   /// [project] The ID of the project in which the resource belongs.
   const InterconnectAttachmentGroupArgs({
     this.attachments,
+    this.deletionPolicy,
     this.description,
     required this.intent,
     this.interconnectGroup,
@@ -55,6 +64,7 @@ class InterconnectAttachmentGroupArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attachments': ?pulumi.Input.mapOptionalInputValue<List<InterconnectAttachmentGroupAttachment>, List<Map<String, dynamic>>>(attachments, (value) => pulumi.Input.encodeList<InterconnectAttachmentGroupAttachment, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'intent': pulumi.Input.mapInputValue<InterconnectAttachmentGroupIntent, Map<String, dynamic>>(intent, (value) => value.toMap()),
       'interconnectGroup': ?interconnectGroup,
@@ -66,6 +76,7 @@ class InterconnectAttachmentGroupArgs {
   factory InterconnectAttachmentGroupArgs.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupArgs(
       attachments: (() { final guardedValue = map['attachments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InterconnectAttachmentGroupAttachment>(guardedValue, (value) => InterconnectAttachmentGroupAttachment.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       intent: pulumi.Input.fromValue(InterconnectAttachmentGroupIntent.fromMap((map['intent']! as Map).cast<String, dynamic>())),
       interconnectGroup: (() { final guardedValue = map['interconnectGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -74,4 +85,3 @@ class InterconnectAttachmentGroupArgs {
     );
   }
 }
-

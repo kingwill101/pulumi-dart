@@ -125,6 +125,28 @@ import 'access_approval_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_folder" "my_folder" {
+///   display_name        = "folder-faaf"
+///   parent              = "organizations/123456789"
+///   deletion_protection = false
+/// }
+/// resource "gcp_folder_accessapprovalsettings" "folder_access_approval" {
+///   folder_id           = gcp_organizations_folder.my_folder.folder_id
+///   notification_emails = ["testuser@example.com", "example.user@example.com"]
+///   enrolled_services {
+///     cloud_product = "all"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,8 +158,8 @@ import 'access_approval_settings_state.dart';
 /// import com.pulumi.gcp.folder.AccessApprovalSettings;
 /// import com.pulumi.gcp.folder.AccessApprovalSettingsArgs;
 /// import com.pulumi.gcp.folder.inputs.AccessApprovalSettingsEnrolledServiceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -227,14 +249,14 @@ import 'access_approval_settings_state.dart';
 /// const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
 ///     cryptoKeyId: cryptoKey.id,
 ///     role: "roles/cloudkms.signerVerifier",
-///     member: serviceAccount.apply(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
+///     member: pulumi.interpolate`serviceAccount:${serviceAccount.accountEmail}`,
 /// });
 /// const cryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersionOutput({
 ///     cryptoKey: cryptoKey.id,
 /// });
 /// const folderAccessApproval = new gcp.folder.AccessApprovalSettings("folder_access_approval", {
 ///     folderId: myFolder.folderId,
-///     activeKeyVersion: cryptoKeyVersion.apply(cryptoKeyVersion => cryptoKeyVersion.name),
+///     activeKeyVersion: cryptoKeyVersion.name,
 ///     enrolledServices: [{
 ///         cloudProduct: "all",
 ///     }],
@@ -401,7 +423,7 @@ import 'access_approval_settings_state.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("crypto-key"),
-/// 			KeyRing: keyRing.ID(),
+/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 /// 			VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 /// 				Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
@@ -414,7 +436,7 @@ import 'access_approval_settings_state.dart';
 /// 			FolderId: myFolder.FolderId,
 /// 		}, nil)
 /// 		iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
-/// 			CryptoKeyId: cryptoKey.ID(),
+/// 			CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 /// 			Member: serviceAccount.ApplyT(func(serviceAccount accessapproval.GetFolderServiceAccountResult) (string, error) {
 /// 				return fmt.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail), nil
@@ -424,13 +446,11 @@ import 'access_approval_settings_state.dart';
 /// 			return err
 /// 		}
 /// 		cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-/// 			CryptoKey: cryptoKey.ID(),
+/// 			CryptoKey: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
 /// 		_, err = folder.NewAccessApprovalSettings(ctx, "folder_access_approval", &folder.AccessApprovalSettingsArgs{
-/// 			FolderId: myFolder.FolderId,
-/// 			ActiveKeyVersion: pulumi.String(cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (*string, error) {
-/// 				return &cryptoKeyVersion.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			FolderId:         myFolder.FolderId,
+/// 			ActiveKeyVersion: cryptoKeyVersion.Name(),
 /// 			EnrolledServices: folder.AccessApprovalSettingsEnrolledServiceArray{
 /// 				&folder.AccessApprovalSettingsEnrolledServiceArgs{
 /// 					CloudProduct: pulumi.String("all"),
@@ -444,6 +464,60 @@ import 'access_approval_settings_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_accessapproval_getfolderserviceaccount" "serviceAccount" {
+///   folder_id = gcp_organizations_folder.my_folder.folder_id
+/// }
+/// data "gcp_kms_getkmscryptokeyversion" "cryptoKeyVersion" {
+///   crypto_key = gcp_kms_cryptokey.crypto_key.id
+/// }
+///
+/// resource "gcp_organizations_folder" "my_folder" {
+///   display_name        = "folder-faak"
+///   parent              = "organizations/123456789"
+///   deletion_protection = false
+/// }
+/// resource "gcp_organizations_project" "my_project" {
+///   name            = "My Project"
+///   project_id      = "your-project-id"
+///   folder_id       = gcp_organizations_folder.my_folder.name
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_kms_keyring" "key_ring" {
+///   name     = "key-ring"
+///   location = "global"
+///   project  = gcp_organizations_project.my_project.project_id
+/// }
+/// resource "gcp_kms_cryptokey" "crypto_key" {
+///   name     = "crypto-key"
+///   key_ring = gcp_kms_keyring.key_ring.id
+///   purpose  = "ASYMMETRIC_SIGN"
+///   version_template = {
+///     algorithm = "EC_SIGN_P384_SHA384"
+///   }
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "iam" {
+///   crypto_key_id = gcp_kms_cryptokey.crypto_key.id
+///   role          = "roles/cloudkms.signerVerifier"
+///   member        ="serviceAccount:${data.gcp_accessapproval_getfolderserviceaccount.serviceAccount.account_email}"
+/// }
+/// resource "gcp_folder_accessapprovalsettings" "folder_access_approval" {
+///   depends_on         = [gcp_kms_cryptokeyiammember.iam]
+///   folder_id          = gcp_organizations_folder.my_folder.folder_id
+///   active_key_version = data.gcp_kms_getkmscryptokeyversion.cryptoKeyVersion.name
+///   enrolled_services {
+///     cloud_product = "all"
+///   }
 /// }
 /// ```
 /// ```java
@@ -471,8 +545,8 @@ import 'access_approval_settings_state.dart';
 /// import com.pulumi.gcp.folder.AccessApprovalSettingsArgs;
 /// import com.pulumi.gcp.folder.inputs.AccessApprovalSettingsEnrolledServiceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -608,25 +682,29 @@ import 'access_approval_settings_state.dart';
 /// FolderSettings can be imported using any of these accepted formats:
 ///
 /// * `folders/{{folder_id}}/accessApprovalSettings`
-///
 /// * `{{folder_id}}`
+///
 ///
 /// When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default folders/{{folder_id}}/accessApprovalSettings
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default {{folder_id}}
 /// ```
 class AccessApprovalSettings extends pulumi.CustomResource {
   /// The asymmetric crypto key version to use for signing approval requests.
-  /// Empty active_key_version indicates that a Google-managed key should be used for signing.
+  /// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
   /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
   late final pulumi.Output<String?> activeKeyVersion;
   /// If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
   late final pulumi.Output<bool> ancestorHasActiveKeyVersion;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
   late final pulumi.Output<bool> enrolledAncestor;
   /// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
@@ -637,7 +715,7 @@ class AccessApprovalSettings extends pulumi.CustomResource {
   late final pulumi.Output<List<Map<String, dynamic>>> enrolledServices;
   /// ID of the folder of the access approval settings.
   late final pulumi.Output<String> folderId;
-  /// If the field is true, that indicates that there is some configuration issue with the active_key_version
+  /// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
   /// configured on this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the
   /// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
   /// as key versions are inherited top-down.
@@ -665,6 +743,7 @@ class AccessApprovalSettings extends pulumi.CustomResource {
         ) {
     activeKeyVersion = registerOutput<String?>('activeKeyVersion');
     ancestorHasActiveKeyVersion = registerOutput<bool>('ancestorHasActiveKeyVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     enrolledAncestor = registerOutput<bool>('enrolledAncestor');
     enrolledServices = registerOutput<List<Map<String, dynamic>>>('enrolledServices');
     folderId = registerOutput<String>('folderId');
@@ -698,6 +777,7 @@ class AccessApprovalSettings extends pulumi.CustomResource {
         ) {
     activeKeyVersion = registerOutput<String?>('activeKeyVersion');
     ancestorHasActiveKeyVersion = registerOutput<bool>('ancestorHasActiveKeyVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     enrolledAncestor = registerOutput<bool>('enrolledAncestor');
     enrolledServices = registerOutput<List<Map<String, dynamic>>>('enrolledServices');
     folderId = registerOutput<String>('folderId');

@@ -83,7 +83,7 @@ import 'agent_state.dart';
 ///     displayName: "child agent",
 ///     instruction: "You are a helpful assistant for this example.",
 ///     modelSettings: {
-///         model: "gemini-1.5-flash",
+///         model: "gemini-3.0-flash-001",
 ///         temperature: 0.5,
 ///     },
 ///     llmAgent: {},
@@ -118,44 +118,38 @@ import 'agent_state.dart';
 ///     description: "test agent",
 ///     instruction: "You are a helpful assistant for this example.",
 ///     modelSettings: {
-///         model: "gemini-1.5-flash",
+///         model: "gemini-3.0-flash-001",
 ///         temperature: 0.5,
 ///     },
+///     beforeAgentCallbacks: [{
+///         description: "Example callback",
+///         disabled: true,
+///         pythonCode: "def before_agent_callback(callback_context): return None",
+///     }],
 ///     afterAgentCallbacks: [{
 ///         description: "Example callback",
 ///         disabled: true,
-///         pythonCode: `def callback(context):
-///     return {'override': False}`,
-///     }],
-///     beforeAgentCallbacks: [{
-///         description: "Example callback",
-///         disabled: false,
-///         pythonCode: `def callback(context):
-///     return {'override': False}`,
-///     }],
-///     afterModelCallbacks: [{
-///         description: "Example callback",
-///         disabled: true,
-///         pythonCode: `def callback(context):
-///     return {'override': False}`,
+///         pythonCode: "def after_agent_callback(callback_context): return None",
 ///     }],
 ///     beforeModelCallbacks: [{
 ///         description: "Example callback",
 ///         disabled: true,
-///         pythonCode: `def callback(context):
-///     return {'override': False}`,
+///         pythonCode: "def before_model_callback(callback_context, llm_request): return None",
 ///     }],
-///     afterToolCallbacks: [{
+///     afterModelCallbacks: [{
 ///         description: "Example callback",
 ///         disabled: true,
-///         pythonCode: `def callback(context):
-///     return {'override': False}`,
+///         pythonCode: "def after_model_callback(callback_context, llm_response): return None",
 ///     }],
 ///     beforeToolCallbacks: [{
 ///         description: "Example callback",
 ///         disabled: true,
-///         pythonCode: `def callback(context):
-///     return {'override': False}`,
+///         pythonCode: "def before_tool_callback(tool, input, callback_context): return None",
+///     }],
+///     afterToolCallbacks: [{
+///         description: "Example callback",
+///         disabled: true,
+///         pythonCode: "def after_tool_callback(tool, input, callback_context, tool_response): return None",
 ///     }],
 ///     tools: [cesToolForAgent.id],
 ///     guardrails: [cesGuardrailForAgent.id],
@@ -163,7 +157,7 @@ import 'agent_state.dart';
 ///         toolset: cesToolsetForAgent.id,
 ///         toolIds: ["testtoolid"],
 ///     }],
-///     childAgents: [pulumi.all([cesAppForAgent.project, cesAppForAgent.appId, cesChildAgent.agentId]).apply(([project, appId, agentId]) => `projects/${project}/locations/us/apps/${appId}/agents/${agentId}`)],
+///     childAgents: [pulumi.interpolate`projects/${cesAppForAgent.project}/locations/us/apps/${cesAppForAgent.appId}/agents/${cesChildAgent.agentId}`],
 ///     llmAgent: {},
 /// });
 /// ```
@@ -233,7 +227,7 @@ import 'agent_state.dart';
 ///     display_name="child agent",
 ///     instruction="You are a helpful assistant for this example.",
 ///     model_settings={
-///         "model": "gemini-1.5-flash",
+///         "model": "gemini-3.0-flash-001",
 ///         "temperature": 0.5,
 ///     },
 ///     llm_agent={})
@@ -266,44 +260,38 @@ import 'agent_state.dart';
 ///     description="test agent",
 ///     instruction="You are a helpful assistant for this example.",
 ///     model_settings={
-///         "model": "gemini-1.5-flash",
+///         "model": "gemini-3.0-flash-001",
 ///         "temperature": 0.5,
 ///     },
+///     before_agent_callbacks=[{
+///         "description": "Example callback",
+///         "disabled": True,
+///         "python_code": "def before_agent_callback(callback_context): return None",
+///     }],
 ///     after_agent_callbacks=[{
 ///         "description": "Example callback",
 ///         "disabled": True,
-///         "python_code": """def callback(context):
-///     return {'override': False}""",
-///     }],
-///     before_agent_callbacks=[{
-///         "description": "Example callback",
-///         "disabled": False,
-///         "python_code": """def callback(context):
-///     return {'override': False}""",
-///     }],
-///     after_model_callbacks=[{
-///         "description": "Example callback",
-///         "disabled": True,
-///         "python_code": """def callback(context):
-///     return {'override': False}""",
+///         "python_code": "def after_agent_callback(callback_context): return None",
 ///     }],
 ///     before_model_callbacks=[{
 ///         "description": "Example callback",
 ///         "disabled": True,
-///         "python_code": """def callback(context):
-///     return {'override': False}""",
+///         "python_code": "def before_model_callback(callback_context, llm_request): return None",
 ///     }],
-///     after_tool_callbacks=[{
+///     after_model_callbacks=[{
 ///         "description": "Example callback",
 ///         "disabled": True,
-///         "python_code": """def callback(context):
-///     return {'override': False}""",
+///         "python_code": "def after_model_callback(callback_context, llm_response): return None",
 ///     }],
 ///     before_tool_callbacks=[{
 ///         "description": "Example callback",
 ///         "disabled": True,
-///         "python_code": """def callback(context):
-///     return {'override': False}""",
+///         "python_code": "def before_tool_callback(tool, input, callback_context): return None",
+///     }],
+///     after_tool_callbacks=[{
+///         "description": "Example callback",
+///         "disabled": True,
+///         "python_code": "def after_tool_callback(tool, input, callback_context, tool_response): return None",
 ///     }],
 ///     tools=[ces_tool_for_agent.id],
 ///     guardrails=[ces_guardrail_for_agent.id],
@@ -412,7 +400,7 @@ import 'agent_state.dart';
 ///         Instruction = "You are a helpful assistant for this example.",
 ///         ModelSettings = new Gcp.Ces.Inputs.AgentModelSettingsArgs
 ///         {
-///             Model = "gemini-1.5-flash",
+///             Model = "gemini-3.0-flash-001",
 ///             Temperature = 0.5,
 ///         },
 ///         LlmAgent = null,
@@ -463,8 +451,17 @@ import 'agent_state.dart';
 ///         Instruction = "You are a helpful assistant for this example.",
 ///         ModelSettings = new Gcp.Ces.Inputs.AgentModelSettingsArgs
 ///         {
-///             Model = "gemini-1.5-flash",
+///             Model = "gemini-3.0-flash-001",
 ///             Temperature = 0.5,
+///         },
+///         BeforeAgentCallbacks = new[]
+///         {
+///             new Gcp.Ces.Inputs.AgentBeforeAgentCallbackArgs
+///             {
+///                 Description = "Example callback",
+///                 Disabled = true,
+///                 PythonCode = "def before_agent_callback(callback_context): return None",
+///             },
 ///         },
 ///         AfterAgentCallbacks = new[]
 ///         {
@@ -472,28 +469,7 @@ import 'agent_state.dart';
 ///             {
 ///                 Description = "Example callback",
 ///                 Disabled = true,
-///                 PythonCode = @"def callback(context):
-///     return {'override': False}",
-///             },
-///         },
-///         BeforeAgentCallbacks = new[]
-///         {
-///             new Gcp.Ces.Inputs.AgentBeforeAgentCallbackArgs
-///             {
-///                 Description = "Example callback",
-///                 Disabled = false,
-///                 PythonCode = @"def callback(context):
-///     return {'override': False}",
-///             },
-///         },
-///         AfterModelCallbacks = new[]
-///         {
-///             new Gcp.Ces.Inputs.AgentAfterModelCallbackArgs
-///             {
-///                 Description = "Example callback",
-///                 Disabled = true,
-///                 PythonCode = @"def callback(context):
-///     return {'override': False}",
+///                 PythonCode = "def after_agent_callback(callback_context): return None",
 ///             },
 ///         },
 ///         BeforeModelCallbacks = new[]
@@ -502,18 +478,16 @@ import 'agent_state.dart';
 ///             {
 ///                 Description = "Example callback",
 ///                 Disabled = true,
-///                 PythonCode = @"def callback(context):
-///     return {'override': False}",
+///                 PythonCode = "def before_model_callback(callback_context, llm_request): return None",
 ///             },
 ///         },
-///         AfterToolCallbacks = new[]
+///         AfterModelCallbacks = new[]
 ///         {
-///             new Gcp.Ces.Inputs.AgentAfterToolCallbackArgs
+///             new Gcp.Ces.Inputs.AgentAfterModelCallbackArgs
 ///             {
 ///                 Description = "Example callback",
 ///                 Disabled = true,
-///                 PythonCode = @"def callback(context):
-///     return {'override': False}",
+///                 PythonCode = "def after_model_callback(callback_context, llm_response): return None",
 ///             },
 ///         },
 ///         BeforeToolCallbacks = new[]
@@ -522,8 +496,16 @@ import 'agent_state.dart';
 ///             {
 ///                 Description = "Example callback",
 ///                 Disabled = true,
-///                 PythonCode = @"def callback(context):
-///     return {'override': False}",
+///                 PythonCode = "def before_tool_callback(tool, input, callback_context): return None",
+///             },
+///         },
+///         AfterToolCallbacks = new[]
+///         {
+///             new Gcp.Ces.Inputs.AgentAfterToolCallbackArgs
+///             {
+///                 Description = "Example callback",
+///                 Disabled = true,
+///                 PythonCode = "def after_tool_callback(tool, input, callback_context, tool_response): return None",
 ///             },
 ///         },
 ///         Tools = new[]
@@ -648,7 +630,7 @@ import 'agent_state.dart';
 /// 			DisplayName: pulumi.String("child agent"),
 /// 			Instruction: pulumi.String("You are a helpful assistant for this example."),
 /// 			ModelSettings: &ces.AgentModelSettingsArgs{
-/// 				Model:       pulumi.String("gemini-1.5-flash"),
+/// 				Model:       pulumi.String("gemini-3.0-flash-001"),
 /// 				Temperature: pulumi.Float64(0.5),
 /// 			},
 /// 			LlmAgent: &ces.AgentLlmAgentArgs{},
@@ -693,60 +675,60 @@ import 'agent_state.dart';
 /// 			Description: pulumi.String("test agent"),
 /// 			Instruction: pulumi.String("You are a helpful assistant for this example."),
 /// 			ModelSettings: &ces.AgentModelSettingsArgs{
-/// 				Model:       pulumi.String("gemini-1.5-flash"),
+/// 				Model:       pulumi.String("gemini-3.0-flash-001"),
 /// 				Temperature: pulumi.Float64(0.5),
+/// 			},
+/// 			BeforeAgentCallbacks: ces.AgentBeforeAgentCallbackArray{
+/// 				&ces.AgentBeforeAgentCallbackArgs{
+/// 					Description: pulumi.String("Example callback"),
+/// 					Disabled:    pulumi.Bool(true),
+/// 					PythonCode:  pulumi.String("def before_agent_callback(callback_context): return None"),
+/// 				},
 /// 			},
 /// 			AfterAgentCallbacks: ces.AgentAfterAgentCallbackArray{
 /// 				&ces.AgentAfterAgentCallbackArgs{
 /// 					Description: pulumi.String("Example callback"),
 /// 					Disabled:    pulumi.Bool(true),
-/// 					PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
-/// 				},
-/// 			},
-/// 			BeforeAgentCallbacks: ces.AgentBeforeAgentCallbackArray{
-/// 				&ces.AgentBeforeAgentCallbackArgs{
-/// 					Description: pulumi.String("Example callback"),
-/// 					Disabled:    pulumi.Bool(false),
-/// 					PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
-/// 				},
-/// 			},
-/// 			AfterModelCallbacks: ces.AgentAfterModelCallbackArray{
-/// 				&ces.AgentAfterModelCallbackArgs{
-/// 					Description: pulumi.String("Example callback"),
-/// 					Disabled:    pulumi.Bool(true),
-/// 					PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
+/// 					PythonCode:  pulumi.String("def after_agent_callback(callback_context): return None"),
 /// 				},
 /// 			},
 /// 			BeforeModelCallbacks: ces.AgentBeforeModelCallbackArray{
 /// 				&ces.AgentBeforeModelCallbackArgs{
 /// 					Description: pulumi.String("Example callback"),
 /// 					Disabled:    pulumi.Bool(true),
-/// 					PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
+/// 					PythonCode:  pulumi.String("def before_model_callback(callback_context, llm_request): return None"),
 /// 				},
 /// 			},
-/// 			AfterToolCallbacks: ces.AgentAfterToolCallbackArray{
-/// 				&ces.AgentAfterToolCallbackArgs{
+/// 			AfterModelCallbacks: ces.AgentAfterModelCallbackArray{
+/// 				&ces.AgentAfterModelCallbackArgs{
 /// 					Description: pulumi.String("Example callback"),
 /// 					Disabled:    pulumi.Bool(true),
-/// 					PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
+/// 					PythonCode:  pulumi.String("def after_model_callback(callback_context, llm_response): return None"),
 /// 				},
 /// 			},
 /// 			BeforeToolCallbacks: ces.AgentBeforeToolCallbackArray{
 /// 				&ces.AgentBeforeToolCallbackArgs{
 /// 					Description: pulumi.String("Example callback"),
 /// 					Disabled:    pulumi.Bool(true),
-/// 					PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
+/// 					PythonCode:  pulumi.String("def before_tool_callback(tool, input, callback_context): return None"),
+/// 				},
+/// 			},
+/// 			AfterToolCallbacks: ces.AgentAfterToolCallbackArray{
+/// 				&ces.AgentAfterToolCallbackArgs{
+/// 					Description: pulumi.String("Example callback"),
+/// 					Disabled:    pulumi.Bool(true),
+/// 					PythonCode:  pulumi.String("def after_tool_callback(tool, input, callback_context, tool_response): return None"),
 /// 				},
 /// 			},
 /// 			Tools: pulumi.StringArray{
-/// 				cesToolForAgent.ID(),
+/// 				cesToolForAgent.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Guardrails: pulumi.StringArray{
-/// 				cesGuardrailForAgent.ID(),
+/// 				cesGuardrailForAgent.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Toolsets: ces.AgentToolsetArray{
 /// 				&ces.AgentToolsetArgs{
-/// 					Toolset: cesToolsetForAgent.ID(),
+/// 					Toolset: cesToolsetForAgent.ID().ToIDOutput().ToStringOutput(),
 /// 					ToolIds: pulumi.StringArray{
 /// 						pulumi.String("testtoolid"),
 /// 					},
@@ -769,6 +751,147 @@ import 'agent_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ces_app" "ces_app_for_agent" {
+///   app_id       = "app-id"
+///   location     = "us"
+///   description  = "App used as parent for CES Agent example"
+///   display_name = "my-app"
+///   language_settings = {
+///     default_language_code       = "en-US"
+///     supported_language_codes    = ["es-ES", "fr-FR"]
+///     enable_multilingual_support = true
+///     fallback_action             = "escalate"
+///   }
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// resource "gcp_ces_tool" "ces_tool_for_agent" {
+///   location       = "us"
+///   app            = gcp_ces_app.ces_app_for_agent.app_id
+///   tool_id        = "tool-1"
+///   execution_type = "SYNCHRONOUS"
+///   python_function = {
+///     name        = "example_function"
+///     python_code = "def example_function() -> int: return 0"
+///   }
+/// }
+/// resource "gcp_ces_toolset" "ces_toolset_for_agent" {
+///   toolset_id   = "toolset-id"
+///   location     = "us"
+///   app          = gcp_ces_app.ces_app_for_agent.app_id
+///   display_name = "Basic toolset display name"
+///   open_api_toolset = {
+///     open_api_schema       = "openapi: 3.0.0\ninfo:\n  title: My Sample API\n  version: 1.0.0\n  description: A simple API example\nservers:\n  - url: https://api.example.com/v1\npaths: {}\n"
+///     ignore_unknown_fields = false
+///     tls_config = {
+///       ca_certs = [{
+///         "displayName" = "example"
+///         "cert"        = "ZXhhbXBsZQ=="
+///       }]
+///     }
+///     service_directory_config = {
+///       service = "projects/example/locations/us/namespaces/namespace/services/service"
+///     }
+///     api_authentication = {
+///       service_agent_id_token_auth_config = {}
+///     }
+///   }
+/// }
+/// resource "gcp_ces_agent" "ces_child_agent" {
+///   agent_id     = "child-agent-id"
+///   location     = "us"
+///   app          = gcp_ces_app.ces_app_for_agent.app_id
+///   display_name = "child agent"
+///   instruction  = "You are a helpful assistant for this example."
+///   model_settings = {
+///     model       = "gemini-3.0-flash-001"
+///     temperature = 0.5
+///   }
+///   llm_agent = {}
+/// }
+/// resource "gcp_ces_guardrail" "ces_guardrail_for_agent" {
+///   guardrail_id = "guardrail-id"
+///   location     = gcp_ces_app.ces_app_for_agent.location
+///   app          = gcp_ces_app.ces_app_for_agent.app_id
+///   display_name = "Example guardrail"
+///   description  = "Guardrail description"
+///   action = {
+///     respond_immediately = {
+///       responses = [{
+///         "text"     = "Text"
+///         "disabled" = false
+///       }]
+///     }
+///   }
+///   enabled = true
+///   model_safety = {
+///     safety_settings = [{
+///       "category"  = "HARM_CATEGORY_HATE_SPEECH"
+///       "threshold" = "BLOCK_NONE"
+///     }]
+///   }
+/// }
+/// resource "gcp_ces_agent" "ces_agent_basic" {
+///   agent_id     = "agent-id"
+///   location     = "us"
+///   app          = gcp_ces_app.ces_app_for_agent.app_id
+///   display_name = "my-agent"
+///   description  = "test agent"
+///   instruction  = "You are a helpful assistant for this example."
+///   model_settings = {
+///     model       = "gemini-3.0-flash-001"
+///     temperature = 0.5
+///   }
+///   before_agent_callbacks {
+///     description = "Example callback"
+///     disabled    = true
+///     python_code = "def before_agent_callback(callback_context): return None"
+///   }
+///   after_agent_callbacks {
+///     description = "Example callback"
+///     disabled    = true
+///     python_code = "def after_agent_callback(callback_context): return None"
+///   }
+///   before_model_callbacks {
+///     description = "Example callback"
+///     disabled    = true
+///     python_code = "def before_model_callback(callback_context, llm_request): return None"
+///   }
+///   after_model_callbacks {
+///     description = "Example callback"
+///     disabled    = true
+///     python_code = "def after_model_callback(callback_context, llm_response): return None"
+///   }
+///   before_tool_callbacks {
+///     description = "Example callback"
+///     disabled    = true
+///     python_code = "def before_tool_callback(tool, input, callback_context): return None"
+///   }
+///   after_tool_callbacks {
+///     description = "Example callback"
+///     disabled    = true
+///     python_code = "def after_tool_callback(tool, input, callback_context, tool_response): return None"
+///   }
+///   tools      = [gcp_ces_tool.ces_tool_for_agent.id]
+///   guardrails = [gcp_ces_guardrail.ces_guardrail_for_agent.id]
+///   toolsets {
+///     toolset  = gcp_ces_toolset.ces_toolset_for_agent.id
+///     tool_ids = ["testtoolid"]
+///   }
+///   child_agents = ["projects/${gcp_ces_app.ces_app_for_agent.project}/locations/us/apps/${gcp_ces_app.ces_app_for_agent.app_id}/agents/${gcp_ces_agent.ces_child_agent.agent_id}"]
+///   llm_agent    = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -786,6 +909,7 @@ import 'agent_state.dart';
 /// import com.pulumi.gcp.ces.ToolsetArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigCaCertArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetServiceDirectoryConfigArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs;
@@ -797,16 +921,18 @@ import 'agent_state.dart';
 /// import com.pulumi.gcp.ces.GuardrailArgs;
 /// import com.pulumi.gcp.ces.inputs.GuardrailActionArgs;
 /// import com.pulumi.gcp.ces.inputs.GuardrailActionRespondImmediatelyArgs;
+/// import com.pulumi.gcp.ces.inputs.GuardrailActionRespondImmediatelyResponseArgs;
 /// import com.pulumi.gcp.ces.inputs.GuardrailModelSafetyArgs;
-/// import com.pulumi.gcp.ces.inputs.AgentAfterAgentCallbackArgs;
+/// import com.pulumi.gcp.ces.inputs.GuardrailModelSafetySafetySettingArgs;
 /// import com.pulumi.gcp.ces.inputs.AgentBeforeAgentCallbackArgs;
-/// import com.pulumi.gcp.ces.inputs.AgentAfterModelCallbackArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentAfterAgentCallbackArgs;
 /// import com.pulumi.gcp.ces.inputs.AgentBeforeModelCallbackArgs;
-/// import com.pulumi.gcp.ces.inputs.AgentAfterToolCallbackArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentAfterModelCallbackArgs;
 /// import com.pulumi.gcp.ces.inputs.AgentBeforeToolCallbackArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentAfterToolCallbackArgs;
 /// import com.pulumi.gcp.ces.inputs.AgentToolsetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -887,7 +1013,7 @@ import 'agent_state.dart';
 ///             .displayName("child agent")
 ///             .instruction("You are a helpful assistant for this example.")
 ///             .modelSettings(AgentModelSettingsArgs.builder()
-///                 .model("gemini-1.5-flash")
+///                 .model("gemini-3.0-flash-001")
 ///                 .temperature(0.5)
 ///                 .build())
 ///             .llmAgent(AgentLlmAgentArgs.builder()
@@ -925,50 +1051,38 @@ import 'agent_state.dart';
 ///             .description("test agent")
 ///             .instruction("You are a helpful assistant for this example.")
 ///             .modelSettings(AgentModelSettingsArgs.builder()
-///                 .model("gemini-1.5-flash")
+///                 .model("gemini-3.0-flash-001")
 ///                 .temperature(0.5)
+///                 .build())
+///             .beforeAgentCallbacks(AgentBeforeAgentCallbackArgs.builder()
+///                 .description("Example callback")
+///                 .disabled(true)
+///                 .pythonCode("def before_agent_callback(callback_context): return None")
 ///                 .build())
 ///             .afterAgentCallbacks(AgentAfterAgentCallbackArgs.builder()
 ///                 .description("Example callback")
 ///                 .disabled(true)
-///                 .pythonCode("""
-/// def callback(context):
-///     return {'override': False}                """)
-///                 .build())
-///             .beforeAgentCallbacks(AgentBeforeAgentCallbackArgs.builder()
-///                 .description("Example callback")
-///                 .disabled(false)
-///                 .pythonCode("""
-/// def callback(context):
-///     return {'override': False}                """)
-///                 .build())
-///             .afterModelCallbacks(AgentAfterModelCallbackArgs.builder()
-///                 .description("Example callback")
-///                 .disabled(true)
-///                 .pythonCode("""
-/// def callback(context):
-///     return {'override': False}                """)
+///                 .pythonCode("def after_agent_callback(callback_context): return None")
 ///                 .build())
 ///             .beforeModelCallbacks(AgentBeforeModelCallbackArgs.builder()
 ///                 .description("Example callback")
 ///                 .disabled(true)
-///                 .pythonCode("""
-/// def callback(context):
-///     return {'override': False}                """)
+///                 .pythonCode("def before_model_callback(callback_context, llm_request): return None")
 ///                 .build())
-///             .afterToolCallbacks(AgentAfterToolCallbackArgs.builder()
+///             .afterModelCallbacks(AgentAfterModelCallbackArgs.builder()
 ///                 .description("Example callback")
 ///                 .disabled(true)
-///                 .pythonCode("""
-/// def callback(context):
-///     return {'override': False}                """)
+///                 .pythonCode("def after_model_callback(callback_context, llm_response): return None")
 ///                 .build())
 ///             .beforeToolCallbacks(AgentBeforeToolCallbackArgs.builder()
 ///                 .description("Example callback")
 ///                 .disabled(true)
-///                 .pythonCode("""
-/// def callback(context):
-///     return {'override': False}                """)
+///                 .pythonCode("def before_tool_callback(tool, input, callback_context): return None")
+///                 .build())
+///             .afterToolCallbacks(AgentAfterToolCallbackArgs.builder()
+///                 .description("Example callback")
+///                 .disabled(true)
+///                 .pythonCode("def after_tool_callback(tool, input, callback_context, tool_response): return None")
 ///                 .build())
 ///             .tools(cesToolForAgent.id())
 ///             .guardrails(cesGuardrailForAgent.id())
@@ -1056,7 +1170,7 @@ import 'agent_state.dart';
 ///       displayName: child agent
 ///       instruction: You are a helpful assistant for this example.
 ///       modelSettings:
-///         model: gemini-1.5-flash
+///         model: gemini-3.0-flash-001
 ///         temperature: 0.5
 ///       llmAgent: {}
 ///   cesGuardrailForAgent:
@@ -1089,44 +1203,32 @@ import 'agent_state.dart';
 ///       description: test agent
 ///       instruction: You are a helpful assistant for this example.
 ///       modelSettings:
-///         model: gemini-1.5-flash
+///         model: gemini-3.0-flash-001
 ///         temperature: 0.5
+///       beforeAgentCallbacks:
+///         - description: Example callback
+///           disabled: true
+///           pythonCode: 'def before_agent_callback(callback_context): return None'
 ///       afterAgentCallbacks:
 ///         - description: Example callback
 ///           disabled: true
-///           pythonCode: |-
-///             def callback(context):
-///                 return {'override': False}
-///       beforeAgentCallbacks:
-///         - description: Example callback
-///           disabled: false
-///           pythonCode: |-
-///             def callback(context):
-///                 return {'override': False}
-///       afterModelCallbacks:
-///         - description: Example callback
-///           disabled: true
-///           pythonCode: |-
-///             def callback(context):
-///                 return {'override': False}
+///           pythonCode: 'def after_agent_callback(callback_context): return None'
 ///       beforeModelCallbacks:
 ///         - description: Example callback
 ///           disabled: true
-///           pythonCode: |-
-///             def callback(context):
-///                 return {'override': False}
-///       afterToolCallbacks:
+///           pythonCode: 'def before_model_callback(callback_context, llm_request): return None'
+///       afterModelCallbacks:
 ///         - description: Example callback
 ///           disabled: true
-///           pythonCode: |-
-///             def callback(context):
-///                 return {'override': False}
+///           pythonCode: 'def after_model_callback(callback_context, llm_response): return None'
 ///       beforeToolCallbacks:
 ///         - description: Example callback
 ///           disabled: true
-///           pythonCode: |-
-///             def callback(context):
-///                 return {'override': False}
+///           pythonCode: 'def before_tool_callback(tool, input, callback_context): return None'
+///       afterToolCallbacks:
+///         - description: Example callback
+///           disabled: true
+///           pythonCode: 'def after_tool_callback(tool, input, callback_context, tool_response): return None'
 ///       tools:
 ///         - ${cesToolForAgent.id}
 ///       guardrails:
@@ -1172,7 +1274,7 @@ import 'agent_state.dart';
 ///     app: cesAppForAgent.appId,
 ///     displayName: "my-agent",
 ///     modelSettings: {
-///         model: "gemini-1.5-flash",
+///         model: "gemini-3.0-flash-001",
 ///         temperature: 0.5,
 ///     },
 ///     remoteDialogflowAgent: {
@@ -1215,7 +1317,7 @@ import 'agent_state.dart';
 ///     app=ces_app_for_agent.app_id,
 ///     display_name="my-agent",
 ///     model_settings={
-///         "model": "gemini-1.5-flash",
+///         "model": "gemini-3.0-flash-001",
 ///         "temperature": 0.5,
 ///     },
 ///     remote_dialogflow_agent={
@@ -1269,7 +1371,7 @@ import 'agent_state.dart';
 ///         DisplayName = "my-agent",
 ///         ModelSettings = new Gcp.Ces.Inputs.AgentModelSettingsArgs
 ///         {
-///             Model = "gemini-1.5-flash",
+///             Model = "gemini-3.0-flash-001",
 ///             Temperature = 0.5,
 ///         },
 ///         RemoteDialogflowAgent = new Gcp.Ces.Inputs.AgentRemoteDialogflowAgentArgs
@@ -1327,7 +1429,7 @@ import 'agent_state.dart';
 /// 			App:         cesAppForAgent.AppId,
 /// 			DisplayName: pulumi.String("my-agent"),
 /// 			ModelSettings: &ces.AgentModelSettingsArgs{
-/// 				Model:       pulumi.String("gemini-1.5-flash"),
+/// 				Model:       pulumi.String("gemini-3.0-flash-001"),
 /// 				Temperature: pulumi.Float64(0.5),
 /// 			},
 /// 			RemoteDialogflowAgent: &ces.AgentRemoteDialogflowAgentArgs{
@@ -1349,6 +1451,52 @@ import 'agent_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ces_app" "ces_app_for_agent" {
+///   app_id       = "app-id"
+///   location     = "us"
+///   description  = "App used as parent for CES Agent example"
+///   display_name = "my-app"
+///   language_settings = {
+///     default_language_code       = "en-US"
+///     supported_language_codes    = ["es-ES", "fr-FR"]
+///     enable_multilingual_support = true
+///     fallback_action             = "escalate"
+///   }
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// resource "gcp_ces_agent" "ces_agent_remote_dialogflow_agent" {
+///   agent_id     = "agent-id"
+///   location     = "us"
+///   app          = gcp_ces_app.ces_app_for_agent.app_id
+///   display_name = "my-agent"
+///   model_settings = {
+///     model       = "gemini-3.0-flash-001"
+///     temperature = 0.5
+///   }
+///   remote_dialogflow_agent = {
+///     agent          = "projects/example/locations/us/agents/fake-agent"
+///     flow_id        = "fake-flow"
+///     environment_id = "fake-env"
+///     input_variable_mapping = {
+///       "example" = 1
+///     }
+///     output_variable_mapping = {
+///       "example" = 1
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1363,8 +1511,8 @@ import 'agent_state.dart';
 /// import com.pulumi.gcp.ces.AgentArgs;
 /// import com.pulumi.gcp.ces.inputs.AgentModelSettingsArgs;
 /// import com.pulumi.gcp.ces.inputs.AgentRemoteDialogflowAgentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1400,7 +1548,7 @@ import 'agent_state.dart';
 ///             .app(cesAppForAgent.appId())
 ///             .displayName("my-agent")
 ///             .modelSettings(AgentModelSettingsArgs.builder()
-///                 .model("gemini-1.5-flash")
+///                 .model("gemini-3.0-flash-001")
 ///                 .temperature(0.5)
 ///                 .build())
 ///             .remoteDialogflowAgent(AgentRemoteDialogflowAgentArgs.builder()
@@ -1443,12 +1591,380 @@ import 'agent_state.dart';
 ///       app: ${cesAppForAgent.appId}
 ///       displayName: my-agent
 ///       modelSettings:
-///         model: gemini-1.5-flash
+///         model: gemini-3.0-flash-001
 ///         temperature: 0.5
 ///       remoteDialogflowAgent:
 ///         agent: projects/example/locations/us/agents/fake-agent
 ///         flowId: fake-flow
 ///         environmentId: fake-env
+///         inputVariableMapping:
+///           example: 1
+///         outputVariableMapping:
+///           example: 1
+/// ```
+///
+/// ### Ces Agent Remote Dialogflow Agent Interruption
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const cesAppForAgent = new gcp.ces.App("ces_app_for_agent", {
+///     appId: "app-id",
+///     location: "us",
+///     description: "App used as parent for CES Agent example",
+///     displayName: "my-app",
+///     languageSettings: {
+///         defaultLanguageCode: "en-US",
+///         supportedLanguageCodes: [
+///             "es-ES",
+///             "fr-FR",
+///         ],
+///         enableMultilingualSupport: true,
+///         fallbackAction: "escalate",
+///     },
+///     timeZoneSettings: {
+///         timeZone: "America/Los_Angeles",
+///     },
+/// });
+/// const cesAgentRemoteDialogflowAgentInterruption = new gcp.ces.Agent("ces_agent_remote_dialogflow_agent_interruption", {
+///     agentId: "agent-id",
+///     location: "us",
+///     app: cesAppForAgent.appId,
+///     displayName: "my-agent",
+///     modelSettings: {
+///         model: "gemini-3.0-flash-001",
+///         temperature: 0.5,
+///     },
+///     remoteDialogflowAgent: {
+///         agent: "projects/example/locations/us/agents/fake-agent",
+///         flowId: "fake-flow",
+///         environmentId: "fake-env",
+///         respectResponseInterruptionSettings: true,
+///         inputVariableMapping: {
+///             example: "1",
+///         },
+///         outputVariableMapping: {
+///             example: "1",
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// ces_app_for_agent = gcp.ces.App("ces_app_for_agent",
+///     app_id="app-id",
+///     location="us",
+///     description="App used as parent for CES Agent example",
+///     display_name="my-app",
+///     language_settings={
+///         "default_language_code": "en-US",
+///         "supported_language_codes": [
+///             "es-ES",
+///             "fr-FR",
+///         ],
+///         "enable_multilingual_support": True,
+///         "fallback_action": "escalate",
+///     },
+///     time_zone_settings={
+///         "time_zone": "America/Los_Angeles",
+///     })
+/// ces_agent_remote_dialogflow_agent_interruption = gcp.ces.Agent("ces_agent_remote_dialogflow_agent_interruption",
+///     agent_id="agent-id",
+///     location="us",
+///     app=ces_app_for_agent.app_id,
+///     display_name="my-agent",
+///     model_settings={
+///         "model": "gemini-3.0-flash-001",
+///         "temperature": 0.5,
+///     },
+///     remote_dialogflow_agent={
+///         "agent": "projects/example/locations/us/agents/fake-agent",
+///         "flow_id": "fake-flow",
+///         "environment_id": "fake-env",
+///         "respect_response_interruption_settings": True,
+///         "input_variable_mapping": {
+///             "example": "1",
+///         },
+///         "output_variable_mapping": {
+///             "example": "1",
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var cesAppForAgent = new Gcp.Ces.App("ces_app_for_agent", new()
+///     {
+///         AppId = "app-id",
+///         Location = "us",
+///         Description = "App used as parent for CES Agent example",
+///         DisplayName = "my-app",
+///         LanguageSettings = new Gcp.Ces.Inputs.AppLanguageSettingsArgs
+///         {
+///             DefaultLanguageCode = "en-US",
+///             SupportedLanguageCodes = new[]
+///             {
+///                 "es-ES",
+///                 "fr-FR",
+///             },
+///             EnableMultilingualSupport = true,
+///             FallbackAction = "escalate",
+///         },
+///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+///         {
+///             TimeZone = "America/Los_Angeles",
+///         },
+///     });
+///
+///     var cesAgentRemoteDialogflowAgentInterruption = new Gcp.Ces.Agent("ces_agent_remote_dialogflow_agent_interruption", new()
+///     {
+///         AgentId = "agent-id",
+///         Location = "us",
+///         App = cesAppForAgent.AppId,
+///         DisplayName = "my-agent",
+///         ModelSettings = new Gcp.Ces.Inputs.AgentModelSettingsArgs
+///         {
+///             Model = "gemini-3.0-flash-001",
+///             Temperature = 0.5,
+///         },
+///         RemoteDialogflowAgent = new Gcp.Ces.Inputs.AgentRemoteDialogflowAgentArgs
+///         {
+///             Agent = "projects/example/locations/us/agents/fake-agent",
+///             FlowId = "fake-flow",
+///             EnvironmentId = "fake-env",
+///             RespectResponseInterruptionSettings = true,
+///             InputVariableMapping =
+///             {
+///                 { "example", "1" },
+///             },
+///             OutputVariableMapping =
+///             {
+///                 { "example", "1" },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		cesAppForAgent, err := ces.NewApp(ctx, "ces_app_for_agent", &ces.AppArgs{
+/// 			AppId:       pulumi.String("app-id"),
+/// 			Location:    pulumi.String("us"),
+/// 			Description: pulumi.String("App used as parent for CES Agent example"),
+/// 			DisplayName: pulumi.String("my-app"),
+/// 			LanguageSettings: &ces.AppLanguageSettingsArgs{
+/// 				DefaultLanguageCode: pulumi.String("en-US"),
+/// 				SupportedLanguageCodes: pulumi.StringArray{
+/// 					pulumi.String("es-ES"),
+/// 					pulumi.String("fr-FR"),
+/// 				},
+/// 				EnableMultilingualSupport: pulumi.Bool(true),
+/// 				FallbackAction:            pulumi.String("escalate"),
+/// 			},
+/// 			TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+/// 				TimeZone: pulumi.String("America/Los_Angeles"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = ces.NewAgent(ctx, "ces_agent_remote_dialogflow_agent_interruption", &ces.AgentArgs{
+/// 			AgentId:     pulumi.String("agent-id"),
+/// 			Location:    pulumi.String("us"),
+/// 			App:         cesAppForAgent.AppId,
+/// 			DisplayName: pulumi.String("my-agent"),
+/// 			ModelSettings: &ces.AgentModelSettingsArgs{
+/// 				Model:       pulumi.String("gemini-3.0-flash-001"),
+/// 				Temperature: pulumi.Float64(0.5),
+/// 			},
+/// 			RemoteDialogflowAgent: &ces.AgentRemoteDialogflowAgentArgs{
+/// 				Agent:                               pulumi.String("projects/example/locations/us/agents/fake-agent"),
+/// 				FlowId:                              pulumi.String("fake-flow"),
+/// 				EnvironmentId:                       pulumi.String("fake-env"),
+/// 				RespectResponseInterruptionSettings: pulumi.Bool(true),
+/// 				InputVariableMapping: pulumi.StringMap{
+/// 					"example": pulumi.String("1"),
+/// 				},
+/// 				OutputVariableMapping: pulumi.StringMap{
+/// 					"example": pulumi.String("1"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ces_app" "ces_app_for_agent" {
+///   app_id       = "app-id"
+///   location     = "us"
+///   description  = "App used as parent for CES Agent example"
+///   display_name = "my-app"
+///   language_settings = {
+///     default_language_code       = "en-US"
+///     supported_language_codes    = ["es-ES", "fr-FR"]
+///     enable_multilingual_support = true
+///     fallback_action             = "escalate"
+///   }
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// resource "gcp_ces_agent" "ces_agent_remote_dialogflow_agent_interruption" {
+///   agent_id     = "agent-id"
+///   location     = "us"
+///   app          = gcp_ces_app.ces_app_for_agent.app_id
+///   display_name = "my-agent"
+///   model_settings = {
+///     model       = "gemini-3.0-flash-001"
+///     temperature = 0.5
+///   }
+///   remote_dialogflow_agent = {
+///     agent                                  = "projects/example/locations/us/agents/fake-agent"
+///     flow_id                                = "fake-flow"
+///     environment_id                         = "fake-env"
+///     respect_response_interruption_settings = true
+///     input_variable_mapping = {
+///       "example" = 1
+///     }
+///     output_variable_mapping = {
+///       "example" = 1
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.ces.App;
+/// import com.pulumi.gcp.ces.AppArgs;
+/// import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
+/// import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+/// import com.pulumi.gcp.ces.Agent;
+/// import com.pulumi.gcp.ces.AgentArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentModelSettingsArgs;
+/// import com.pulumi.gcp.ces.inputs.AgentRemoteDialogflowAgentArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var cesAppForAgent = new App("cesAppForAgent", AppArgs.builder()
+///             .appId("app-id")
+///             .location("us")
+///             .description("App used as parent for CES Agent example")
+///             .displayName("my-app")
+///             .languageSettings(AppLanguageSettingsArgs.builder()
+///                 .defaultLanguageCode("en-US")
+///                 .supportedLanguageCodes(
+///                     "es-ES",
+///                     "fr-FR")
+///                 .enableMultilingualSupport(true)
+///                 .fallbackAction("escalate")
+///                 .build())
+///             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+///                 .timeZone("America/Los_Angeles")
+///                 .build())
+///             .build());
+///
+///         var cesAgentRemoteDialogflowAgentInterruption = new Agent("cesAgentRemoteDialogflowAgentInterruption", AgentArgs.builder()
+///             .agentId("agent-id")
+///             .location("us")
+///             .app(cesAppForAgent.appId())
+///             .displayName("my-agent")
+///             .modelSettings(AgentModelSettingsArgs.builder()
+///                 .model("gemini-3.0-flash-001")
+///                 .temperature(0.5)
+///                 .build())
+///             .remoteDialogflowAgent(AgentRemoteDialogflowAgentArgs.builder()
+///                 .agent("projects/example/locations/us/agents/fake-agent")
+///                 .flowId("fake-flow")
+///                 .environmentId("fake-env")
+///                 .respectResponseInterruptionSettings(true)
+///                 .inputVariableMapping(Map.of("example", "1"))
+///                 .outputVariableMapping(Map.of("example", "1"))
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   cesAppForAgent:
+///     type: gcp:ces:App
+///     name: ces_app_for_agent
+///     properties:
+///       appId: app-id
+///       location: us
+///       description: App used as parent for CES Agent example
+///       displayName: my-app
+///       languageSettings:
+///         defaultLanguageCode: en-US
+///         supportedLanguageCodes:
+///           - es-ES
+///           - fr-FR
+///         enableMultilingualSupport: true
+///         fallbackAction: escalate
+///       timeZoneSettings:
+///         timeZone: America/Los_Angeles
+///   cesAgentRemoteDialogflowAgentInterruption:
+///     type: gcp:ces:Agent
+///     name: ces_agent_remote_dialogflow_agent_interruption
+///     properties:
+///       agentId: agent-id
+///       location: us
+///       app: ${cesAppForAgent.appId}
+///       displayName: my-agent
+///       modelSettings:
+///         model: gemini-3.0-flash-001
+///         temperature: 0.5
+///       remoteDialogflowAgent:
+///         agent: projects/example/locations/us/agents/fake-agent
+///         flowId: fake-flow
+///         environmentId: fake-env
+///         respectResponseInterruptionSettings: true
 ///         inputVariableMapping:
 ///           example: 1
 ///         outputVariableMapping:
@@ -1461,22 +1977,15 @@ import 'agent_state.dart';
 /// Agent can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/apps/{{app}}/agents/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{app}}/{{name}}`
-///
 /// * `{{location}}/{{app}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Agent can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:ces/agent:Agent default projects/{{project}}/locations/{{location}}/apps/{{app}}/agents/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:ces/agent:Agent default {{project}}/{{location}}/{{app}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:ces/agent:Agent default {{location}}/{{app}}/{{name}}
 /// ```
 class Agent extends pulumi.CustomResource {
@@ -1531,6 +2040,13 @@ class Agent extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> childAgents;
   /// Timestamp when the agent was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Human-readable description of the agent.
   late final pulumi.Output<String?> description;
   /// Display name of the agent.
@@ -1602,6 +2118,7 @@ class Agent extends pulumi.CustomResource {
     beforeToolCallbacks = registerOutput<List<Map<String, dynamic>>?>('beforeToolCallbacks');
     childAgents = registerOutput<List<String>?>('childAgents');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
@@ -1652,6 +2169,7 @@ class Agent extends pulumi.CustomResource {
     beforeToolCallbacks = registerOutput<List<Map<String, dynamic>>?>('beforeToolCallbacks');
     childAgents = registerOutput<List<String>?>('childAgents');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');

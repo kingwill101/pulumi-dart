@@ -111,6 +111,30 @@ import 'enterprise_key_web_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_recaptcha_enterprisekey" "primary" {
+///   display_name = "display-name-one"
+///   android_settings = {
+///     allow_all_package_names = true
+///     allowed_package_names   = []
+///   }
+///   project = "my-project-name"
+///   testing_options = {
+///     testing_score = 0.8
+///   }
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -121,8 +145,8 @@ import 'enterprise_key_web_settings.dart';
 /// import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
 /// import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyAndroidSettingsArgs;
 /// import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyTestingOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,7 +224,7 @@ import 'enterprise_key_web_settings.dart';
 ///     },
 ///     project="my-project-name",
 ///     testing_options={
-///         "testing_score": 1,
+///         "testing_score": float(1),
 ///     },
 ///     labels={
 ///         "label-one": "value-one",
@@ -225,7 +249,7 @@ import 'enterprise_key_web_settings.dart';
 ///         Project = "my-project-name",
 ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
 ///         {
-///             TestingScore = 1,
+///             TestingScore = 1.0,
 ///         },
 ///         Labels =
 ///         {
@@ -266,6 +290,30 @@ import 'enterprise_key_web_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_recaptcha_enterprisekey" "primary" {
+///   display_name = "display-name-one"
+///   ios_settings = {
+///     allow_all_bundle_ids = true
+///     allowed_bundle_ids   = []
+///   }
+///   project = "my-project-name"
+///   testing_options = {
+///     testing_score = 1
+///   }
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -276,8 +324,8 @@ import 'enterprise_key_web_settings.dart';
 /// import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
 /// import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyIosSettingsArgs;
 /// import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyTestingOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -399,6 +447,25 @@ import 'enterprise_key_web_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_recaptcha_enterprisekey" "primary" {
+///   display_name = "display-name-one"
+///   project      = "my-project-name"
+///   web_settings = {
+///     integration_type  = "SCORE"
+///     allow_all_domains = true
+///   }
+///   labels = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -408,8 +475,8 @@ import 'enterprise_key_web_settings.dart';
 /// import com.pulumi.gcp.recaptcha.EnterpriseKey;
 /// import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
 /// import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWebSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -577,6 +644,37 @@ import 'enterprise_key_web_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_recaptcha_enterprisekey" "primary" {
+///   display_name = "display-name-one"
+///   project      = "my-project-name"
+///   testing_options = {
+///     testing_challenge = "NOCAPTCHA"
+///     testing_score     = 0.5
+///   }
+///   waf_settings = {
+///     waf_feature = "CHALLENGE_PAGE"
+///     waf_service = "CA"
+///   }
+///   web_settings = {
+///     integration_type              = "INVISIBLE"
+///     allow_all_domains             = true
+///     allowed_domains               = []
+///     challenge_security_preference = "USABILITY"
+///   }
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -588,8 +686,8 @@ import 'enterprise_key_web_settings.dart';
 /// import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyTestingOptionsArgs;
 /// import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWafSettingsArgs;
 /// import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWebSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -758,6 +856,33 @@ import 'enterprise_key_web_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_recaptcha_enterprisekey" "primary" {
+///   display_name = "display-name-one"
+///   project      = "my-project-name"
+///   testing_options = {
+///     testing_challenge = "NOCAPTCHA"
+///     testing_score     = 0.5
+///   }
+///   web_settings = {
+///     integration_type              = "CHECKBOX"
+///     allow_all_domains             = true
+///     allowed_domains               = []
+///     challenge_security_preference = "USABILITY"
+///   }
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -768,8 +893,8 @@ import 'enterprise_key_web_settings.dart';
 /// import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
 /// import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyTestingOptionsArgs;
 /// import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWebSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -927,6 +1052,32 @@ import 'enterprise_key_web_settings.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_recaptcha_enterprisekey" "primary" {
+///   display_name = "display-name-one"
+///   project      = "my-project-name"
+///   testing_options = {
+///     testing_score = 0.5
+///   }
+///   web_settings = {
+///     integration_type  = "SCORE"
+///     allow_all_domains = true
+///     allow_amp_traffic = false
+///     allowed_domains   = []
+///   }
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -937,8 +1088,8 @@ import 'enterprise_key_web_settings.dart';
 /// import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
 /// import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyTestingOptionsArgs;
 /// import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWebSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -990,24 +1141,16 @@ import 'enterprise_key_web_settings.dart';
 /// ## Import
 ///
 /// Key can be imported using any of these accepted formats:
-///
 /// * `projects/{{project}}/keys/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default projects/{{project}}/keys/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{name}}
 /// ```
 class EnterpriseKey extends pulumi.CustomResource {
@@ -1015,6 +1158,13 @@ class EnterpriseKey extends pulumi.CustomResource {
   late final pulumi.Output<EnterpriseKeyAndroidSettings?> androidSettings;
   /// The timestamp corresponding to the creation of this Key.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Human-readable display name of this key. Modifiable by user.
   ///
   ///
@@ -1028,7 +1178,7 @@ class EnterpriseKey extends pulumi.CustomResource {
   /// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The resource id for the Key, which is the same as the Site Key itself.
   late final pulumi.Output<String> name;
@@ -1059,6 +1209,7 @@ class EnterpriseKey extends pulumi.CustomResource {
         ) {
     androidSettings = registerOutput<EnterpriseKeyAndroidSettings?>('androidSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyAndroidSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     iosSettings = registerOutput<EnterpriseKeyIosSettings?>('iosSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyIosSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1096,6 +1247,7 @@ class EnterpriseKey extends pulumi.CustomResource {
         ) {
     androidSettings = registerOutput<EnterpriseKeyAndroidSettings?>('androidSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyAndroidSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     iosSettings = registerOutput<EnterpriseKeyIosSettings?>('iosSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyIosSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

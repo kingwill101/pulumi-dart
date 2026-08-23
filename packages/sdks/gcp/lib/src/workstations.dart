@@ -38,6 +38,7 @@ export 'workstations/workstation_config_iam_policy.dart';
 export 'workstations/workstation_config_iam_policy_args.dart';
 export 'workstations/workstation_config_iam_policy_state.dart';
 export 'workstations/workstation_config_persistent_directory.dart';
+export 'workstations/workstation_config_persistent_directory_gce_hd.dart';
 export 'workstations/workstation_config_persistent_directory_gce_pd.dart';
 export 'workstations/workstation_config_readiness_check.dart';
 export 'workstations/workstation_config_state.dart';

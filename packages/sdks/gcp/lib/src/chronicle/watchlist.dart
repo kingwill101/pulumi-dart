@@ -48,7 +48,7 @@ import 'watchlist_watchlist_user_preferences.dart';
 ///     watchlist_id="watchlist-id",
 ///     description="watchlist-description",
 ///     display_name="watchlist_name",
-///     multiplying_factor=1,
+///     multiplying_factor=float(1),
 ///     entity_population_mechanism={
 ///         "manual": {},
 ///     },
@@ -71,7 +71,7 @@ import 'watchlist_watchlist_user_preferences.dart';
 ///         WatchlistId = "watchlist-id",
 ///         Description = "watchlist-description",
 ///         DisplayName = "watchlist_name",
-///         MultiplyingFactor = 1,
+///         MultiplyingFactor = 1.0,
 ///         EntityPopulationMechanism = new Gcp.Chronicle.Inputs.WatchlistEntityPopulationMechanismArgs
 ///         {
 ///             Manual = null,
@@ -115,6 +115,30 @@ import 'watchlist_watchlist_user_preferences.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_watchlist" "example" {
+///   location           = "us"
+///   instance           = "00000000-0000-0000-0000-000000000000"
+///   watchlist_id       = "watchlist-id"
+///   description        = "watchlist-description"
+///   display_name       = "watchlist_name"
+///   multiplying_factor = 1
+///   entity_population_mechanism = {
+///     manual = {}
+///   }
+///   watchlist_user_preferences = {
+///     pinned = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +150,8 @@ import 'watchlist_watchlist_user_preferences.dart';
 /// import com.pulumi.gcp.chronicle.inputs.WatchlistEntityPopulationMechanismArgs;
 /// import com.pulumi.gcp.chronicle.inputs.WatchlistEntityPopulationMechanismManualArgs;
 /// import com.pulumi.gcp.chronicle.inputs.WatchlistWatchlistUserPreferencesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -206,7 +230,7 @@ import 'watchlist_watchlist_user_preferences.dart';
 ///     instance="00000000-0000-0000-0000-000000000000",
 ///     description="watchlist-description",
 ///     display_name="watchlist-name",
-///     multiplying_factor=1,
+///     multiplying_factor=float(1),
 ///     entity_population_mechanism={
 ///         "manual": {},
 ///     },
@@ -228,7 +252,7 @@ import 'watchlist_watchlist_user_preferences.dart';
 ///         Instance = "00000000-0000-0000-0000-000000000000",
 ///         Description = "watchlist-description",
 ///         DisplayName = "watchlist-name",
-///         MultiplyingFactor = 1,
+///         MultiplyingFactor = 1.0,
 ///         EntityPopulationMechanism = new Gcp.Chronicle.Inputs.WatchlistEntityPopulationMechanismArgs
 ///         {
 ///             Manual = null,
@@ -271,6 +295,29 @@ import 'watchlist_watchlist_user_preferences.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_chronicle_watchlist" "example" {
+///   location           = "us"
+///   instance           = "00000000-0000-0000-0000-000000000000"
+///   description        = "watchlist-description"
+///   display_name       = "watchlist-name"
+///   multiplying_factor = 1
+///   entity_population_mechanism = {
+///     manual = {}
+///   }
+///   watchlist_user_preferences = {
+///     pinned = true
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -282,8 +329,8 @@ import 'watchlist_watchlist_user_preferences.dart';
 /// import com.pulumi.gcp.chronicle.inputs.WatchlistEntityPopulationMechanismArgs;
 /// import com.pulumi.gcp.chronicle.inputs.WatchlistEntityPopulationMechanismManualArgs;
 /// import com.pulumi.gcp.chronicle.inputs.WatchlistWatchlistUserPreferencesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -335,27 +382,27 @@ import 'watchlist_watchlist_user_preferences.dart';
 /// Watchlist can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{instance}}/watchlists/{{watchlist_id}}`
-///
 /// * `{{project}}/{{location}}/{{instance}}/{{watchlist_id}}`
-///
 /// * `{{location}}/{{instance}}/{{watchlist_id}}`
+///
 ///
 /// When using the `pulumi import` command, Watchlist can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:chronicle/watchlist:Watchlist default projects/{{project}}/locations/{{location}}/instances/{{instance}}/watchlists/{{watchlist_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:chronicle/watchlist:Watchlist default {{project}}/{{location}}/{{instance}}/{{watchlist_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:chronicle/watchlist:Watchlist default {{location}}/{{instance}}/{{watchlist_id}}
 /// ```
 class Watchlist extends pulumi.CustomResource {
   /// Output only. Time the watchlist was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. Description of the watchlist.
   late final pulumi.Output<String?> description;
   /// Required. Display name of the watchlist.
@@ -409,6 +456,7 @@ class Watchlist extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     entityCounts = registerOutput<List<Map<String, dynamic>>>('entityCounts');
@@ -447,6 +495,7 @@ class Watchlist extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     entityCounts = registerOutput<List<Map<String, dynamic>>>('entityCounts');

@@ -123,6 +123,31 @@ import 'internal_range_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_internalrange" "default" {
+///   name          = "basic"
+///   description   = "Test internal range"
+///   network       = gcp_compute_network.default.self_link
+///   usage         = "FOR_VPC"
+///   peering       = "FOR_SELF"
+///   ip_cidr_range = "10.0.0.0/24"
+///   labels = {
+///     "label-a" = "b"
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "internal-ranges"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -133,8 +158,8 @@ import 'internal_range_state.dart';
 /// import com.pulumi.gcp.compute.NetworkArgs;
 /// import com.pulumi.gcp.networkconnectivity.InternalRange;
 /// import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -270,7 +295,7 @@ import 'internal_range_state.dart';
 /// 		}
 /// 		_, err = networkconnectivity.NewInternalRange(ctx, "default", &networkconnectivity.InternalRangeArgs{
 /// 			Name:         pulumi.String("automatic-reservation"),
-/// 			Network:      defaultNetwork.ID(),
+/// 			Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Usage:        pulumi.String("FOR_VPC"),
 /// 			Peering:      pulumi.String("FOR_SELF"),
 /// 			PrefixLength: pulumi.Int(24),
@@ -285,6 +310,28 @@ import 'internal_range_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_internalrange" "default" {
+///   name               = "automatic-reservation"
+///   network            = gcp_compute_network.default.id
+///   usage              = "FOR_VPC"
+///   peering            = "FOR_SELF"
+///   prefix_length      = 24
+///   target_cidr_ranges = ["192.16.0.0/16"]
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "internal-ranges"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -295,8 +342,8 @@ import 'internal_range_state.dart';
 /// import com.pulumi.gcp.compute.NetworkArgs;
 /// import com.pulumi.gcp.networkconnectivity.InternalRange;
 /// import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -434,7 +481,7 @@ import 'internal_range_state.dart';
 /// 		}
 /// 		_, err = networkconnectivity.NewInternalRange(ctx, "default", &networkconnectivity.InternalRangeArgs{
 /// 			Name:        pulumi.String("external-ranges"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Usage:       pulumi.String("EXTERNAL_TO_VPC"),
 /// 			Peering:     pulumi.String("FOR_SELF"),
 /// 			IpCidrRange: pulumi.String("172.16.0.0/24"),
@@ -449,6 +496,30 @@ import 'internal_range_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_internalrange" "default" {
+///   name          = "external-ranges"
+///   network       = gcp_compute_network.default.id
+///   usage         = "EXTERNAL_TO_VPC"
+///   peering       = "FOR_SELF"
+///   ip_cidr_range = "172.16.0.0/24"
+///   labels = {
+///     "external-reserved-range" = "on-premises"
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "internal-ranges"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -459,8 +530,8 @@ import 'internal_range_state.dart';
 /// import com.pulumi.gcp.compute.NetworkArgs;
 /// import com.pulumi.gcp.networkconnectivity.InternalRange;
 /// import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -627,7 +698,7 @@ import 'internal_range_state.dart';
 /// 			Name:        pulumi.String("overlapping-subnet"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -635,7 +706,7 @@ import 'internal_range_state.dart';
 /// 		_, err = networkconnectivity.NewInternalRange(ctx, "default", &networkconnectivity.InternalRangeArgs{
 /// 			Name:        pulumi.String("overlap-range"),
 /// 			Description: pulumi.String("Test internal range"),
-/// 			Network:     defaultNetwork.ID(),
+/// 			Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Usage:       pulumi.String("FOR_VPC"),
 /// 			Peering:     pulumi.String("FOR_SELF"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/30"),
@@ -652,6 +723,36 @@ import 'internal_range_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_internalrange" "default" {
+///   depends_on    = [gcp_compute_subnetwork.default]
+///   name          = "overlap-range"
+///   description   = "Test internal range"
+///   network       = gcp_compute_network.default.id
+///   usage         = "FOR_VPC"
+///   peering       = "FOR_SELF"
+///   ip_cidr_range = "10.0.0.0/30"
+///   overlaps      = ["OVERLAP_EXISTING_SUBNET_RANGE"]
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "internal-ranges"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "default" {
+///   name          = "overlapping-subnet"
+///   ip_cidr_range = "10.0.0.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -665,8 +766,8 @@ import 'internal_range_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.InternalRange;
 /// import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -839,8 +940,6 @@ import 'internal_range_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -888,6 +987,41 @@ import 'internal_range_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "targetProject" {
+/// }
+///
+/// resource "gcp_networkconnectivity_internalrange" "default" {
+///   name          = "migration"
+///   description   = "Test internal range"
+///   network       = gcp_compute_network.default.self_link
+///   usage         = "FOR_MIGRATION"
+///   peering       = "FOR_SELF"
+///   ip_cidr_range = "10.1.0.0/16"
+///   migration = {
+///     source = gcp_compute_subnetwork.source.self_link
+///     target ="projects/${data.gcp_organizations_getproject.targetProject.project_id}/regions/us-central1/subnetworks/target-subnet"
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "internal-ranges"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "source" {
+///   name          = "source-subnet"
+///   ip_cidr_range = "10.1.0.0/16"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.default.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -903,8 +1037,8 @@ import 'internal_range_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.InternalRange;
 /// import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.InternalRangeMigrationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1076,7 +1210,7 @@ import 'internal_range_state.dart';
 /// 		}
 /// 		_, err = networkconnectivity.NewInternalRange(ctx, "default", &networkconnectivity.InternalRangeArgs{
 /// 			Name:         pulumi.String("allocation-algorithms"),
-/// 			Network:      defaultNetwork.ID(),
+/// 			Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Usage:        pulumi.String("FOR_VPC"),
 /// 			Peering:      pulumi.String("FOR_SELF"),
 /// 			PrefixLength: pulumi.Int(24),
@@ -1094,6 +1228,31 @@ import 'internal_range_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_internalrange" "default" {
+///   name               = "allocation-algorithms"
+///   network            = gcp_compute_network.default.id
+///   usage              = "FOR_VPC"
+///   peering            = "FOR_SELF"
+///   prefix_length      = 24
+///   target_cidr_ranges = ["192.16.0.0/16"]
+///   allocation_options = {
+///     allocation_strategy = "FIRST_SMALLEST_FITTING"
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "internal-ranges"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1105,8 +1264,8 @@ import 'internal_range_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.InternalRange;
 /// import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.InternalRangeAllocationOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1258,7 +1417,7 @@ import 'internal_range_state.dart';
 /// 		}
 /// 		_, err = networkconnectivity.NewInternalRange(ctx, "default", &networkconnectivity.InternalRangeArgs{
 /// 			Name:         pulumi.String("allocation-algorithms-random-first-n"),
-/// 			Network:      defaultNetwork.ID(),
+/// 			Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Usage:        pulumi.String("FOR_VPC"),
 /// 			Peering:      pulumi.String("FOR_SELF"),
 /// 			PrefixLength: pulumi.Int(24),
@@ -1277,6 +1436,32 @@ import 'internal_range_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkconnectivity_internalrange" "default" {
+///   name               = "allocation-algorithms-random-first-n"
+///   network            = gcp_compute_network.default.id
+///   usage              = "FOR_VPC"
+///   peering            = "FOR_SELF"
+///   prefix_length      = 24
+///   target_cidr_ranges = ["192.16.0.0/16"]
+///   allocation_options = {
+///     allocation_strategy                = "RANDOM_FIRST_N_AVAILABLE"
+///     first_available_ranges_lookup_size = 20
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name                    = "internal-ranges"
+///   auto_create_subnetworks = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1288,8 +1473,8 @@ import 'internal_range_state.dart';
 /// import com.pulumi.gcp.networkconnectivity.InternalRange;
 /// import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
 /// import com.pulumi.gcp.networkconnectivity.inputs.InternalRangeAllocationOptionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1351,28 +1536,28 @@ import 'internal_range_state.dart';
 /// InternalRange can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/internalRanges/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, InternalRange can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default projects/{{project}}/locations/global/internalRanges/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkconnectivity/internalRange:InternalRange default {{name}}
 /// ```
 class InternalRange extends pulumi.CustomResource {
   /// Options for automatically allocating a free range with a size given by prefixLength.
   /// Structure is documented below.
   late final pulumi.Output<InternalRangeAllocationOptions?> allocationOptions;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1389,7 +1574,7 @@ class InternalRange extends pulumi.CustomResource {
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Specification for migration with source and target resource names.
   /// Structure is documented below.
@@ -1406,7 +1591,7 @@ class InternalRange extends pulumi.CustomResource {
   late final pulumi.Output<String> peering;
   /// An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
   /// If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
-  /// NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
+  /// NOTE: For IPv6 this field only works if ipCidrRange is set as well, and both fields must match. In other words, with IPv6 this field only works as
   /// a redundant parameter.
   late final pulumi.Output<int?> prefixLength;
   /// The ID of the project in which the resource belongs.
@@ -1441,6 +1626,7 @@ class InternalRange extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     allocationOptions = registerOutput<InternalRangeAllocationOptions?>('allocationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternalRangeAllocationOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     excludeCidrRanges = registerOutput<List<String>?>('excludeCidrRanges');
@@ -1484,6 +1670,7 @@ class InternalRange extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     allocationOptions = registerOutput<InternalRangeAllocationOptions?>('allocationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternalRangeAllocationOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     excludeCidrRanges = registerOutput<List<String>?>('excludeCidrRanges');

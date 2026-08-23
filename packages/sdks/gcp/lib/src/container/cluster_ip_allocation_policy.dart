@@ -25,11 +25,11 @@ class ClusterIpAllocationPolicy {
   final pulumi.Input<String>? clusterIpv4CidrBlock;
   /// The name of the existing secondary
   /// range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
-  /// `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
+  /// `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
   final pulumi.Input<String>? clusterSecondaryRangeName;
   /// Contains network tier information. Structure is documented below
   ///
-  /// &lt;a name="nested_auto_ipam_config"&gt;&lt;/a&gt;The auto ipam config supports:
+  /// &lt;a name="nestedAutoIpamConfig"&gt;&lt;/a&gt;The auto ipam config supports:
   final pulumi.Input<ClusterIpAllocationPolicyNetworkTierConfig>? networkTierConfig;
   /// Configuration for cluster level pod cidr overprovision. Default is disabled=false.
   final pulumi.Input<ClusterIpAllocationPolicyPodCidrOverprovisionConfig>? podCidrOverprovisionConfig;
@@ -41,7 +41,7 @@ class ClusterIpAllocationPolicy {
   final pulumi.Input<String>? servicesIpv4CidrBlock;
   /// The name of the existing
   /// secondary range in the cluster's subnetwork to use for service `ClusterIP`s.
-  /// Alternatively, `services_ipv4_cidr_block` can be used to automatically create a
+  /// Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
   /// GKE-managed one.
   final pulumi.Input<String>? servicesSecondaryRangeName;
   /// The IP Stack Type of the cluster.
@@ -103,4 +103,3 @@ class ClusterIpAllocationPolicy {
     );
   }
 }
-

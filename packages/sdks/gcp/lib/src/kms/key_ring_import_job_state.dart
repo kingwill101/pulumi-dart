@@ -11,6 +11,13 @@ class KeyRingImportJobState {
   /// Only present if the chosen ImportMethod is one with a protection level of HSM.
   /// Structure is documented below.
   final pulumi.Input<List<KeyRingImportJobAttestation>>? attestations;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The time at which this resource is scheduled for expiration and can no longer be used.
   /// This is in RFC3339 text format.
   final pulumi.Input<String>? expireTime;
@@ -36,6 +43,7 @@ class KeyRingImportJobState {
 
   /// Creates a new [KeyRingImportJobState].
   /// [attestations] Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [expireTime] The time at which this resource is scheduled for expiration and can no longer be used.
   /// [importJobId] It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
   /// [importMethod] The wrapping method to be used for incoming key material.
@@ -46,6 +54,7 @@ class KeyRingImportJobState {
   /// [state] The current state of the ImportJob, indicating if it can be used.
   const KeyRingImportJobState({
     this.attestations,
+    this.deletionPolicy,
     this.expireTime,
     this.importJobId,
     this.importMethod,
@@ -59,6 +68,7 @@ class KeyRingImportJobState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attestations': ?pulumi.Input.mapOptionalInputValue<List<KeyRingImportJobAttestation>, List<Map<String, dynamic>>>(attestations, (value) => pulumi.Input.encodeList<KeyRingImportJobAttestation, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': ?deletionPolicy,
       'expireTime': ?expireTime,
       'importJobId': ?importJobId,
       'importMethod': ?importMethod,
@@ -73,6 +83,7 @@ class KeyRingImportJobState {
   factory KeyRingImportJobState.fromMap(Map<String, dynamic> map) {
     return KeyRingImportJobState(
       attestations: (() { final guardedValue = map['attestations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KeyRingImportJobAttestation>(guardedValue, (value) => KeyRingImportJobAttestation.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       importJobId: (() { final guardedValue = map['importJobId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       importMethod: (() { final guardedValue = map['importMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -84,4 +95,3 @@ class KeyRingImportJobState {
     );
   }
 }
-

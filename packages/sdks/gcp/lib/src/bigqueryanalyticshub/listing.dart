@@ -148,7 +148,7 @@ import 'listing_state.dart';
 /// 			DisplayName:    pulumi.String("my_listing"),
 /// 			Description:    pulumi.String("example data exchange"),
 /// 			BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-/// 				Dataset: listingDataset.ID(),
+/// 				Dataset: listingDataset.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -156,6 +156,38 @@ import 'listing_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing" {
+///   location         = "US"
+///   data_exchange_id = "my_data_exchange"
+///   display_name     = "my_data_exchange"
+///   description      = "example data exchange"
+/// }
+/// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   location         = "US"
+///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.listing.data_exchange_id
+///   listing_id       = "my_listing"
+///   display_name     = "my_listing"
+///   description      = "example data exchange"
+///   bigquery_dataset = {
+///     dataset = gcp_bigquery_dataset.listing.id
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "listing" {
+///   dataset_id    = "my_listing"
+///   friendly_name = "my_listing"
+///   description   = "example data exchange"
+///   location      = "US"
 /// }
 /// ```
 /// ```java
@@ -171,8 +203,8 @@ import 'listing_state.dart';
 /// import com.pulumi.gcp.bigqueryanalyticshub.Listing;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -385,7 +417,7 @@ import 'listing_state.dart';
 /// 			DisplayName:    pulumi.String("my_listing"),
 /// 			Description:    pulumi.String("example data exchange"),
 /// 			BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-/// 				Dataset: listingDataset.ID(),
+/// 				Dataset: listingDataset.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			RestrictedExportConfig: &bigqueryanalyticshub.ListingRestrictedExportConfigArgs{
 /// 				Enabled:             pulumi.Bool(true),
@@ -397,6 +429,42 @@ import 'listing_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing" {
+///   location         = "US"
+///   data_exchange_id = "my_data_exchange"
+///   display_name     = "my_data_exchange"
+///   description      = "example data exchange"
+/// }
+/// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   location         = "US"
+///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.listing.data_exchange_id
+///   listing_id       = "my_listing"
+///   display_name     = "my_listing"
+///   description      = "example data exchange"
+///   bigquery_dataset = {
+///     dataset = gcp_bigquery_dataset.listing.id
+///   }
+///   restricted_export_config = {
+///     enabled               = true
+///     restrict_query_result = true
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "listing" {
+///   dataset_id    = "my_listing"
+///   friendly_name = "my_listing"
+///   description   = "example data exchange"
+///   location      = "US"
 /// }
 /// ```
 /// ```java
@@ -413,8 +481,8 @@ import 'listing_state.dart';
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingRestrictedExportConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -753,10 +821,10 @@ import 'listing_state.dart';
 /// 			DisplayName:    pulumi.String("dcr_listing"),
 /// 			Description:    pulumi.String("example dcr data exchange"),
 /// 			BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-/// 				Dataset: listingDataset.ID(),
+/// 				Dataset: listingDataset.ID().ToIDOutput().ToStringOutput(),
 /// 				SelectedResources: bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArray{
 /// 					&bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArgs{
-/// 						Table: listingTable.ID(),
+/// 						Table: listingTable.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -769,6 +837,53 @@ import 'listing_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing" {
+///   location         = "US"
+///   data_exchange_id = "dcr_data_exchange"
+///   display_name     = "dcr_data_exchange"
+///   description      = "example dcr data exchange"
+///   sharing_environment_config = {
+///     dcr_exchange_config = {}
+///   }
+/// }
+/// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   location         = "US"
+///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.listing.data_exchange_id
+///   listing_id       = "dcr_listing"
+///   display_name     = "dcr_listing"
+///   description      = "example dcr data exchange"
+///   bigquery_dataset = {
+///     dataset = gcp_bigquery_dataset.listing.id
+///     selected_resources = [{
+///       "table" = gcp_bigquery_table.listing.id
+///     }]
+///   }
+///   restricted_export_config = {
+///     enabled = true
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "listing" {
+///   dataset_id    = "dcr_listing"
+///   friendly_name = "dcr_listing"
+///   description   = "example dcr data exchange"
+///   location      = "US"
+/// }
+/// resource "gcp_bigquery_table" "listing" {
+///   deletion_protection = false
+///   table_id            = "dcr_listing"
+///   dataset_id          = gcp_bigquery_dataset.listing.dataset_id
+///   schema              = "[\n  {\n    \\\"name\\\": \\\"name\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"post_abbr\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"date\\\",\n    \\\"type\\\": \\\"DATE\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  }\n]\n"
 /// }
 /// ```
 /// ```java
@@ -788,9 +903,10 @@ import 'listing_state.dart';
 /// import com.pulumi.gcp.bigqueryanalyticshub.Listing;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
+/// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetSelectedResourceArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingRestrictedExportConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1060,7 +1176,7 @@ import 'listing_state.dart';
 /// 			Description:                    pulumi.String("Example for log email test"),
 /// 			LogLinkedDatasetQueryUserEmail: pulumi.Bool(true),
 /// 			BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-/// 				Dataset: listingLogEmailDataset.ID(),
+/// 				Dataset: listingLogEmailDataset.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1068,6 +1184,39 @@ import 'listing_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing_log_email" {
+///   location         = "US"
+///   data_exchange_id = "tf_test_log_email_de"
+///   display_name     = "tf_test_log_email_de"
+///   description      = "Example for log email test"
+/// }
+/// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   location                            = "US"
+///   data_exchange_id                    = gcp_bigqueryanalyticshub_dataexchange.listing_log_email.data_exchange_id
+///   listing_id                          = "tf_test_log_email_listing"
+///   display_name                        = "tf_test_log_email_listing"
+///   description                         = "Example for log email test"
+///   log_linked_dataset_query_user_email = true
+///   bigquery_dataset = {
+///     dataset = gcp_bigquery_dataset.listing_log_email.id
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "listing_log_email" {
+///   dataset_id    = "tf_test_log_email_ds"
+///   friendly_name = "tf_test_log_email_ds"
+///   description   = "Example for log email test"
+///   location      = "US"
 /// }
 /// ```
 /// ```java
@@ -1083,8 +1232,8 @@ import 'listing_state.dart';
 /// import com.pulumi.gcp.bigqueryanalyticshub.Listing;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1284,7 +1433,7 @@ import 'listing_state.dart';
 /// 			DisplayName:    pulumi.String("tf_test_pubsub_listing"),
 /// 			Description:    pulumi.String("Example for pubsub topic source"),
 /// 			PubsubTopic: &bigqueryanalyticshub.ListingPubsubTopicArgs{
-/// 				Topic: tfTestPubsubTopic.ID(),
+/// 				Topic: tfTestPubsubTopic.ID().ToIDOutput().ToStringOutput(),
 /// 				DataAffinityRegions: pulumi.StringArray{
 /// 					pulumi.String("us-central1"),
 /// 					pulumi.String("europe-west1"),
@@ -1296,6 +1445,36 @@ import 'listing_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing" {
+///   location         = "US"
+///   data_exchange_id = "tf_test_pubsub_data_exchange"
+///   display_name     = "tf_test_pubsub_data_exchange"
+///   description      = "Example for pubsub topic source"
+/// }
+/// resource "gcp_pubsub_topic" "tf_test_pubsub_topic" {
+///   name = "test_pubsub"
+/// }
+/// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   location         = "US"
+///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.listing.data_exchange_id
+///   listing_id       = "tf_test_pubsub_listing"
+///   display_name     = "tf_test_pubsub_listing"
+///   description      = "Example for pubsub topic source"
+///   pubsub_topic = {
+///     topic                 = gcp_pubsub_topic.tf_test_pubsub_topic.id
+///     data_affinity_regions = ["us-central1", "europe-west1"]
+///   }
 /// }
 /// ```
 /// ```java
@@ -1311,8 +1490,8 @@ import 'listing_state.dart';
 /// import com.pulumi.gcp.bigqueryanalyticshub.Listing;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingPubsubTopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1627,18 +1806,18 @@ import 'listing_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"typeKind": "INT64",
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		json0 := string(tmpJSON0)
-/// 		tmpJSON1, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON1, err := json.Marshal(map[string][]map[string]interface{}{
 /// 			"columns": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"name": "value",
-/// 					"type": map[string]interface{}{
+/// 					"type": map[string]string{
 /// 						"typeKind": "INT64",
 /// 					},
 /// 				},
@@ -1674,10 +1853,10 @@ import 'listing_state.dart';
 /// 			DisplayName:    pulumi.String("tf_test_listing_routine"),
 /// 			Description:    pulumi.String("Example for listing with routine"),
 /// 			BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-/// 				Dataset: listing.ID(),
+/// 				Dataset: listing.ID().ToIDOutput().ToStringOutput(),
 /// 				SelectedResources: bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArray{
 /// 					&bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArgs{
-/// 						Routine: listingRoutine.ID(),
+/// 						Routine: listingRoutine.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -1690,6 +1869,70 @@ import 'listing_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "dcr_data_exchange_example" {
+///   location         = "us"
+///   data_exchange_id = "tf_test_data_exchange"
+///   display_name     = "tf_test_data_exchange"
+///   description      = "Example for listing with routine"
+///   sharing_environment_config = {
+///     dcr_exchange_config = {}
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "listing" {
+///   dataset_id    = "tf_test_dataset"
+///   friendly_name = "tf_test_dataset"
+///   description   = "Example for listing with routine"
+///   location      = "us"
+/// }
+/// resource "gcp_bigquery_routine" "listing" {
+///   dataset_id      = gcp_bigquery_dataset.listing.dataset_id
+///   routine_id      = "tf_test_routine"
+///   routine_type    = "TABLE_VALUED_FUNCTION"
+///   language        = "SQL"
+///   description     = "A DCR routine example."
+///   definition_body = "SELECT 1 + value AS value\n"
+///   arguments {
+///     name          = "value"
+///     argument_kind = "FIXED_TYPE"
+///     data_type = jsonencode({
+///       "typeKind" = "INT64"
+///     })
+///   }
+///   return_table_type = jsonencode({
+///     "columns" = [{
+///       "name" = "value"
+///       "type" = {
+///         "typeKind" = "INT64"
+///       }
+///     }]
+///   })
+/// }
+/// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   location         = "US"
+///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.dcr_data_exchange_example.data_exchange_id
+///   listing_id       = "tf_test_listing_routine"
+///   display_name     = "tf_test_listing_routine"
+///   description      = "Example for listing with routine"
+///   bigquery_dataset = {
+///     dataset = gcp_bigquery_dataset.listing.id
+///     selected_resources = [{
+///       "routine" = gcp_bigquery_routine.listing.id
+///     }]
+///   }
+///   restricted_export_config = {
+///     enabled = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -1710,10 +1953,11 @@ import 'listing_state.dart';
 /// import com.pulumi.gcp.bigqueryanalyticshub.Listing;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
+/// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetSelectedResourceArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingRestrictedExportConfigArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1992,7 +2236,7 @@ import 'listing_state.dart';
 /// 			DiscoveryType:            pulumi.String("DISCOVERY_TYPE_PUBLIC"),
 /// 			AllowOnlyMetadataSharing: pulumi.Bool(false),
 /// 			BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-/// 				Dataset: listingDataset.ID(),
+/// 				Dataset: listingDataset.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -2000,6 +2244,41 @@ import 'listing_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing" {
+///   location         = "US"
+///   data_exchange_id = "my_data_exchange"
+///   display_name     = "my_data_exchange"
+///   description      = "example public listing"
+///   discovery_type   = "DISCOVERY_TYPE_PUBLIC"
+/// }
+/// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   location                    = "US"
+///   data_exchange_id            = gcp_bigqueryanalyticshub_dataexchange.listing.data_exchange_id
+///   listing_id                  = "my_listing"
+///   display_name                = "my_listing"
+///   description                 = "example public listing"
+///   discovery_type              = "DISCOVERY_TYPE_PUBLIC"
+///   allow_only_metadata_sharing = false
+///   bigquery_dataset = {
+///     dataset = gcp_bigquery_dataset.listing.id
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "listing" {
+///   dataset_id    = "my_listing"
+///   friendly_name = "my_listing"
+///   description   = "example public listing"
+///   location      = "US"
 /// }
 /// ```
 /// ```java
@@ -2015,8 +2294,8 @@ import 'listing_state.dart';
 /// import com.pulumi.gcp.bigqueryanalyticshub.Listing;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2226,7 +2505,7 @@ import 'listing_state.dart';
 /// 			Description:      pulumi.String("example data exchange"),
 /// 			DeleteCommercial: pulumi.Bool(true),
 /// 			BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-/// 				Dataset: listingDataset.ID(),
+/// 				Dataset: listingDataset.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -2234,6 +2513,39 @@ import 'listing_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing" {
+///   location         = "US"
+///   data_exchange_id = "my_data_exchange"
+///   display_name     = "my_data_exchange"
+///   description      = "example data exchange"
+/// }
+/// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   location          = "US"
+///   data_exchange_id  = gcp_bigqueryanalyticshub_dataexchange.listing.data_exchange_id
+///   listing_id        = "my_listing"
+///   display_name      = "my_listing"
+///   description       = "example data exchange"
+///   delete_commercial = true
+///   bigquery_dataset = {
+///     dataset = gcp_bigquery_dataset.listing.id
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "listing" {
+///   dataset_id    = "my_listing"
+///   friendly_name = "my_listing"
+///   description   = "example data exchange"
+///   location      = "US"
 /// }
 /// ```
 /// ```java
@@ -2249,8 +2561,8 @@ import 'listing_state.dart';
 /// import com.pulumi.gcp.bigqueryanalyticshub.Listing;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2434,6 +2746,31 @@ import 'listing_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing" {
+///   location         = "us"
+///   data_exchange_id = "my_data_exchange"
+///   display_name     = "my_data_exchange"
+/// }
+/// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   location         = "us"
+///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.listing.data_exchange_id
+///   listing_id       = "my_listing"
+///   display_name     = "my_listing"
+///   bigquery_dataset = {
+///     dataset           = "projects/project_id/datasets/my_listing_example2"
+///     replica_locations = ["eu"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2445,8 +2782,8 @@ import 'listing_state.dart';
 /// import com.pulumi.gcp.bigqueryanalyticshub.Listing;
 /// import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
 /// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2506,22 +2843,15 @@ import 'listing_state.dart';
 /// Listing can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}`
-///
 /// * `{{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}`
-///
 /// * `{{location}}/{{data_exchange_id}}/{{listing_id}}`
+///
 ///
 /// When using the `pulumi import` command, Listing can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}/listings/{{listing_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default {{project}}/{{location}}/{{data_exchange_id}}/{{listing_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigqueryanalyticshub/listing:Listing default {{location}}/{{data_exchange_id}}/{{listing_id}}
 /// ```
 class Listing extends pulumi.CustomResource {
@@ -2542,6 +2872,13 @@ class Listing extends pulumi.CustomResource {
   late final pulumi.Output<ListingDataProvider?> dataProvider;
   /// If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
   late final pulumi.Output<bool?> deleteCommercial;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
   late final pulumi.Output<String?> description;
   /// Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission.
@@ -2601,6 +2938,7 @@ class Listing extends pulumi.CustomResource {
     dataExchangeId = registerOutput<String>('dataExchangeId');
     dataProvider = registerOutput<ListingDataProvider?>('dataProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingDataProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteCommercial = registerOutput<bool?>('deleteCommercial');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoveryType = registerOutput<String>('discoveryType');
     displayName = registerOutput<String>('displayName');
@@ -2649,6 +2987,7 @@ class Listing extends pulumi.CustomResource {
     dataExchangeId = registerOutput<String>('dataExchangeId');
     dataProvider = registerOutput<ListingDataProvider?>('dataProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingDataProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteCommercial = registerOutput<bool?>('deleteCommercial');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoveryType = registerOutput<String>('discoveryType');
     displayName = registerOutput<String>('displayName');

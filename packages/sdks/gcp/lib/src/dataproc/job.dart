@@ -15,7 +15,7 @@ import 'job_state.dart';
 /// Manages a job resource within a Dataproc cluster within GCE. For more information see
 /// [the official dataproc documentation](https://cloud.google.com/dataproc/).
 ///
-/// !&gt; **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
+/// &gt; **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
 ///
 /// ## Example Usage
 ///
@@ -63,8 +63,8 @@ import 'job_state.dart';
 ///         },
 ///     },
 /// });
-/// export const sparkStatus = spark.statuses.apply(statuses => statuses[0].state);
-/// export const pysparkStatus = pyspark.statuses.apply(statuses => statuses[0].state);
+/// export const sparkStatus = spark.statuses[0].state;
+/// export const pysparkStatus = pyspark.statuses[0].state;
 /// ```
 /// ```python
 /// import pulumi
@@ -246,13 +246,69 @@ import 'job_state.dart';
 /// 			return err
 /// 		}
 /// 		ctx.Export("sparkStatus", spark.Statuses.ApplyT(func(statuses []dataproc.JobStatus) (*string, error) {
-/// 			return &statuses[0].State, nil
+/// 			return statuses[0].State, nil
 /// 		}).(pulumi.StringPtrOutput))
 /// 		ctx.Export("pysparkStatus", pyspark.Statuses.ApplyT(func(statuses []dataproc.JobStatus) (*string, error) {
-/// 			return &statuses[0].State, nil
+/// 			return statuses[0].State, nil
 /// 		}).(pulumi.StringPtrOutput))
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataproc_cluster" "mycluster" {
+///   name   = "dproc-cluster-unique-name"
+///   region = "us-central1"
+/// }
+/// # Submit an example spark job to a dataproc cluster
+/// resource "gcp_dataproc_job" "spark" {
+///   region       = gcp_dataproc_cluster.mycluster.region
+///   force_delete = true
+///   placement = {
+///     cluster_name = gcp_dataproc_cluster.mycluster.name
+///   }
+///   spark_config = {
+///     main_class    = "org.apache.spark.examples.SparkPi"
+///     jar_file_uris = ["file:///usr/lib/spark/examples/jars/spark-examples.jar"]
+///     args          = ["1000"]
+///     properties = {
+///       "spark.logConf" = "true"
+///     }
+///     logging_config = {
+///       driver_log_levels = {
+///         "root" = "INFO"
+///       }
+///     }
+///   }
+/// }
+/// # Submit an example pyspark job to a dataproc cluster
+/// resource "gcp_dataproc_job" "pyspark" {
+///   region       = gcp_dataproc_cluster.mycluster.region
+///   force_delete = true
+///   placement = {
+///     cluster_name = gcp_dataproc_cluster.mycluster.name
+///   }
+///   pyspark_config = {
+///     main_python_file_uri = "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py"
+///     properties = {
+///       "spark.logConf" = "true"
+///     }
+///   }
+/// }
+/// # Check out current state of the jobs
+/// output "sparkStatus" {
+///   value = gcp_dataproc_job.spark.statuses[0].state
+/// }
+/// output "pysparkStatus" {
+///   value = gcp_dataproc_job.pyspark.statuses[0].state
 /// }
 /// ```
 /// ```java
@@ -269,8 +325,8 @@ import 'job_state.dart';
 /// import com.pulumi.gcp.dataproc.inputs.JobSparkConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.JobSparkConfigLoggingConfigArgs;
 /// import com.pulumi.gcp.dataproc.inputs.JobPysparkConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -318,8 +374,8 @@ import 'job_state.dart';
 ///                 .build())
 ///             .build());
 ///
-///         ctx.export("sparkStatus", spark.statuses().applyValue(_statuses -> _statuses[0].state()));
-///         ctx.export("pysparkStatus", pyspark.statuses().applyValue(_statuses -> _statuses[0].state()));
+///         ctx.export("sparkStatus", spark.statuses().applyValue(_statuses -> _statuses.get(0).state()));
+///         ctx.export("pysparkStatus", pyspark.statuses().applyValue(_statuses -> _statuses.get(0).state()));
 ///     }
 /// }
 /// ```
@@ -372,6 +428,13 @@ import 'job_state.dart';
 ///
 /// This resource does not support import.
 class Job extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
   late final pulumi.Output<String> driverControlsFilesUri;
   /// A URI pointing to the location of the stdout of the job's driver program.
@@ -420,6 +483,8 @@ class Job extends pulumi.CustomResource {
   late final pulumi.Output<JobSparksqlConfig?> sparksqlConfig;
   /// The status of the job.
   late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  /// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
+  late final pulumi.Output<bool?> waitForCompletion;
 
   /// Creates a new [Job].
   /// [name] The Pulumi resource name.
@@ -435,6 +500,7 @@ class Job extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     driverControlsFilesUri = registerOutput<String>('driverControlsFilesUri');
     driverOutputResourceUri = registerOutput<String>('driverOutputResourceUri');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -454,6 +520,7 @@ class Job extends pulumi.CustomResource {
     sparkConfig = registerOutput<JobSparkConfig?>('sparkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSparkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sparksqlConfig = registerOutput<JobSparksqlConfig?>('sparksqlConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSparksqlConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    waitForCompletion = registerOutput<bool?>('waitForCompletion');
   }
 
   /// Gets an existing [Job] resource's state with the given [name] and [id].
@@ -479,6 +546,7 @@ class Job extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     driverControlsFilesUri = registerOutput<String>('driverControlsFilesUri');
     driverOutputResourceUri = registerOutput<String>('driverOutputResourceUri');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -498,5 +566,6 @@ class Job extends pulumi.CustomResource {
     sparkConfig = registerOutput<JobSparkConfig?>('sparkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSparkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sparksqlConfig = registerOutput<JobSparksqlConfig?>('sparksqlConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSparksqlConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    waitForCompletion = registerOutput<bool?>('waitForCompletion');
   }
 }

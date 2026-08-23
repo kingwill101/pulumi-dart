@@ -7,7 +7,7 @@ import 'listing_bigquery_dataset_selected_resource.dart';
 class ListingBigqueryDataset {
   /// Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
   final pulumi.Input<String> dataset;
-  /// (Output, Beta)
+  /// (Output)
   /// Server owned effective state of replicas. Contains both primary and secondary replicas.
   /// Each replica includes a system-computed (output-only) state and primary designation.
   /// Structure is documented below.
@@ -20,7 +20,7 @@ class ListingBigqueryDataset {
 
   /// Creates a new [ListingBigqueryDataset].
   /// [dataset] Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-  /// [effectiveReplicas] (Output, Beta)
+  /// [effectiveReplicas] (Output)
   /// [replicaLocations] A list of regions where the publisher has created shared dataset replicas.
   /// [selectedResources] Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
   const ListingBigqueryDataset({
@@ -48,4 +48,3 @@ class ListingBigqueryDataset {
     );
   }
 }
-

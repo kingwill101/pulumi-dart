@@ -11,6 +11,13 @@ class TaxonomyArgs {
   /// defaults to an empty list.
   /// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
   final pulumi.Input<List<String>>? activatedPolicyTypes;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of this taxonomy. It must: contain only unicode characters,
   /// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
   /// long when encoded in UTF-8. If not set, defaults to an empty description.
@@ -29,12 +36,14 @@ class TaxonomyArgs {
 
   /// Creates a new [TaxonomyArgs].
   /// [activatedPolicyTypes] A list of policy types that are activated for this taxonomy. If not set,
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of this taxonomy. It must: contain only unicode characters,
   /// [displayName] User defined name of this taxonomy.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Taxonomy location region.
   const TaxonomyArgs({
     this.activatedPolicyTypes,
+    this.deletionPolicy,
     this.description,
     required this.displayName,
     this.project,
@@ -44,6 +53,7 @@ class TaxonomyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'activatedPolicyTypes': ?activatedPolicyTypes,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': displayName,
       'project': ?project,
@@ -54,6 +64,7 @@ class TaxonomyArgs {
   factory TaxonomyArgs.fromMap(Map<String, dynamic> map) {
     return TaxonomyArgs(
       activatedPolicyTypes: (() { final guardedValue = map['activatedPolicyTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -61,4 +72,3 @@ class TaxonomyArgs {
     );
   }
 }
-

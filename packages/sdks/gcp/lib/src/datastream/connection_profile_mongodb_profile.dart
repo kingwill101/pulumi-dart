@@ -6,6 +6,10 @@ import 'connection_profile_mongodb_profile_ssl_config.dart';
 import 'connection_profile_mongodb_profile_standard_connection_format.dart';
 
 class ConnectionProfileMongodbProfile {
+  /// A map of additional options for the MongoDB connection.
+  /// Keys are case-sensitive and should match the official
+  /// MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/
+  final pulumi.Input<Map<String, String>>? additionalOptions;
   /// List of host addresses for a MongoDB cluster.
   /// Structure is documented below.
   final pulumi.Input<List<ConnectionProfileMongodbProfileHostAddress>> hostAddresses;
@@ -32,6 +36,7 @@ class ConnectionProfileMongodbProfile {
   final pulumi.Input<String> username;
 
   /// Creates a new [ConnectionProfileMongodbProfile].
+  /// [additionalOptions] A map of additional options for the MongoDB connection.
   /// [hostAddresses] List of host addresses for a MongoDB cluster.
   /// [password] Password for the MongoDB connection. Mutually exclusive with
   /// [replicaSet] Name of the replica set.
@@ -41,6 +46,7 @@ class ConnectionProfileMongodbProfile {
   /// [standardConnectionFormat] Standard connection format. Mutually exclusive with
   /// [username] Username for the MongoDB connection.
   const ConnectionProfileMongodbProfile({
+    this.additionalOptions,
     required this.hostAddresses,
     this.password,
     this.replicaSet,
@@ -53,6 +59,7 @@ class ConnectionProfileMongodbProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'additionalOptions': ?additionalOptions,
       'hostAddresses': pulumi.Input.mapInputValue<List<ConnectionProfileMongodbProfileHostAddress>, List<Map<String, dynamic>>>(hostAddresses, (value) => pulumi.Input.encodeList<ConnectionProfileMongodbProfileHostAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'password': ?password,
       'replicaSet': ?replicaSet,
@@ -66,6 +73,7 @@ class ConnectionProfileMongodbProfile {
 
   factory ConnectionProfileMongodbProfile.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileMongodbProfile(
+      additionalOptions: (() { final guardedValue = map['additionalOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       hostAddresses: pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionProfileMongodbProfileHostAddress>(map['hostAddresses']!, (value) => ConnectionProfileMongodbProfileHostAddress.fromMap((value as Map).cast<String, dynamic>()))),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       replicaSet: (() { final guardedValue = map['replicaSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -77,4 +85,3 @@ class ConnectionProfileMongodbProfile {
     );
   }
 }
-

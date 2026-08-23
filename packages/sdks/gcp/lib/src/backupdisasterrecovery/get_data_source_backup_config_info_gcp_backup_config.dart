@@ -9,14 +9,14 @@ class GetDataSourceBackupConfigInfoGcpBackupConfig {
   final pulumi.Input<String> backupPlanAssociation;
   /// The description of the backup plan.
   final pulumi.Input<String> backupPlanDescription;
-  /// The names of the backup plan rules which point to this backupvault
+  /// The rules of the backup plan.
   final pulumi.Input<List<String>> backupPlanRules;
 
   /// Creates a new [GetDataSourceBackupConfigInfoGcpBackupConfig].
   /// [backupPlan] The name of the backup plan.
   /// [backupPlanAssociation] The name of the backup plan association.
   /// [backupPlanDescription] The description of the backup plan.
-  /// [backupPlanRules] The names of the backup plan rules which point to this backupvault
+  /// [backupPlanRules] The rules of the backup plan.
   const GetDataSourceBackupConfigInfoGcpBackupConfig({
     required this.backupPlan,
     required this.backupPlanAssociation,
@@ -42,4 +42,3 @@ class GetDataSourceBackupConfigInfoGcpBackupConfig {
     );
   }
 }
-

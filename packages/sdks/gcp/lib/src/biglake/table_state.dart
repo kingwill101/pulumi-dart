@@ -17,6 +17,13 @@ class TableState {
   /// nanosecond resolution and up to nine fractional digits. Examples:
   /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final pulumi.Input<String>? deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The checksum of a table object computed by the server based on the value
   /// of other fields. It may be sent on update requests to ensure the client
   /// has an up-to-date value before proceeding. It is only checked for update
@@ -46,6 +53,7 @@ class TableState {
   /// [createTime] Output only. The creation time of the table. A timestamp in RFC3339 UTC
   /// [database] The id of the parent database.
   /// [deleteTime] Output only. The deletion time of the table. Only set after the
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [etag] The checksum of a table object computed by the server based on the value
   /// [expireTime] Output only. The time when this table is considered expired. Only set
   /// [hiveOptions] Options of a Hive table.
@@ -56,6 +64,7 @@ class TableState {
     this.createTime,
     this.database,
     this.deleteTime,
+    this.deletionPolicy,
     this.etag,
     this.expireTime,
     this.hiveOptions,
@@ -69,6 +78,7 @@ class TableState {
       'createTime': ?createTime,
       'database': ?database,
       'deleteTime': ?deleteTime,
+      'deletionPolicy': ?deletionPolicy,
       'etag': ?etag,
       'expireTime': ?expireTime,
       'hiveOptions': ?pulumi.Input.mapOptionalInputValue<TableHiveOptions, Map<String, dynamic>>(hiveOptions, (value) => value.toMap()),
@@ -83,6 +93,7 @@ class TableState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       database: (() { final guardedValue = map['database']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hiveOptions: (() { final guardedValue = map['hiveOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableHiveOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -92,4 +103,3 @@ class TableState {
     );
   }
 }
-

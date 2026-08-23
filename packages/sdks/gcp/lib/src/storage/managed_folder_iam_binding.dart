@@ -120,6 +120,28 @@ import 'managed_folder_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/storage.admin"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_storage_managedfolderiampolicy" "policy" {
+///   bucket         = folder.bucket
+///   managed_folder = folder.name
+///   policy_data    = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,10 +150,11 @@ import 'managed_folder_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.storage.ManagedFolderIamPolicy;
 /// import com.pulumi.gcp.storage.ManagedFolderIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -151,8 +174,8 @@ import 'managed_folder_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new ManagedFolderIamPolicy("policy", ManagedFolderIamPolicyArgs.builder()
-///             .bucket(folder.bucket())
-///             .managedFolder(folder.name())
+///             .bucket(folder.get("bucket"))
+///             .managedFolder(folder.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -300,6 +323,33 @@ import 'managed_folder_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/storage.admin"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_managedfolderiampolicy" "policy" {
+///   bucket         = folder.bucket
+///   managed_folder = folder.name
+///   policy_data    = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -308,10 +358,12 @@ import 'managed_folder_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.storage.ManagedFolderIamPolicy;
 /// import com.pulumi.gcp.storage.ManagedFolderIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,8 +388,8 @@ import 'managed_folder_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new ManagedFolderIamPolicy("policy", ManagedFolderIamPolicyArgs.builder()
-///             .bucket(folder.bucket())
-///             .managedFolder(folder.name())
+///             .bucket(folder.get("bucket"))
+///             .managedFolder(folder.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -437,6 +489,22 @@ import 'managed_folder_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_managedfolderiambinding" "binding" {
+///   bucket         = folder.bucket
+///   managed_folder = folder.name
+///   role           = "roles/storage.admin"
+///   members        = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -445,8 +513,8 @@ import 'managed_folder_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.ManagedFolderIamBinding;
 /// import com.pulumi.gcp.storage.ManagedFolderIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -459,8 +527,8 @@ import 'managed_folder_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ManagedFolderIamBinding("binding", ManagedFolderIamBindingArgs.builder()
-///             .bucket(folder.bucket())
-///             .managedFolder(folder.name())
+///             .bucket(folder.get("bucket"))
+///             .managedFolder(folder.get("name"))
 ///             .role("roles/storage.admin")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -572,6 +640,27 @@ import 'managed_folder_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_managedfolderiambinding" "binding" {
+///   bucket         = folder.bucket
+///   managed_folder = folder.name
+///   role           = "roles/storage.admin"
+///   members        = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -581,8 +670,8 @@ import 'managed_folder_iam_binding_state.dart';
 /// import com.pulumi.gcp.storage.ManagedFolderIamBinding;
 /// import com.pulumi.gcp.storage.ManagedFolderIamBindingArgs;
 /// import com.pulumi.gcp.storage.inputs.ManagedFolderIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -595,8 +684,8 @@ import 'managed_folder_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ManagedFolderIamBinding("binding", ManagedFolderIamBindingArgs.builder()
-///             .bucket(folder.bucket())
-///             .managedFolder(folder.name())
+///             .bucket(folder.get("bucket"))
+///             .managedFolder(folder.get("name"))
 ///             .role("roles/storage.admin")
 ///             .members("user:jane@example.com")
 ///             .condition(ManagedFolderIamBindingConditionArgs.builder()
@@ -690,6 +779,22 @@ import 'managed_folder_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_managedfolderiammember" "member" {
+///   bucket         = folder.bucket
+///   managed_folder = folder.name
+///   role           = "roles/storage.admin"
+///   member         = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -698,8 +803,8 @@ import 'managed_folder_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.ManagedFolderIamMember;
 /// import com.pulumi.gcp.storage.ManagedFolderIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -712,8 +817,8 @@ import 'managed_folder_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ManagedFolderIamMember("member", ManagedFolderIamMemberArgs.builder()
-///             .bucket(folder.bucket())
-///             .managedFolder(folder.name())
+///             .bucket(folder.get("bucket"))
+///             .managedFolder(folder.get("name"))
 ///             .role("roles/storage.admin")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -819,6 +924,27 @@ import 'managed_folder_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_managedfolderiammember" "member" {
+///   bucket         = folder.bucket
+///   managed_folder = folder.name
+///   role           = "roles/storage.admin"
+///   member         = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -828,8 +954,8 @@ import 'managed_folder_iam_binding_state.dart';
 /// import com.pulumi.gcp.storage.ManagedFolderIamMember;
 /// import com.pulumi.gcp.storage.ManagedFolderIamMemberArgs;
 /// import com.pulumi.gcp.storage.inputs.ManagedFolderIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -842,8 +968,8 @@ import 'managed_folder_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ManagedFolderIamMember("member", ManagedFolderIamMemberArgs.builder()
-///             .bucket(folder.bucket())
-///             .managedFolder(folder.name())
+///             .bucket(folder.get("bucket"))
+///             .managedFolder(folder.get("name"))
 ///             .role("roles/storage.admin")
 ///             .member("user:jane@example.com")
 ///             .condition(ManagedFolderIamMemberConditionArgs.builder()
@@ -995,6 +1121,28 @@ import 'managed_folder_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/storage.admin"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_storage_managedfolderiampolicy" "policy" {
+///   bucket         = folder.bucket
+///   managed_folder = folder.name
+///   policy_data    = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1003,10 +1151,11 @@ import 'managed_folder_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.storage.ManagedFolderIamPolicy;
 /// import com.pulumi.gcp.storage.ManagedFolderIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1026,8 +1175,8 @@ import 'managed_folder_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new ManagedFolderIamPolicy("policy", ManagedFolderIamPolicyArgs.builder()
-///             .bucket(folder.bucket())
-///             .managedFolder(folder.name())
+///             .bucket(folder.get("bucket"))
+///             .managedFolder(folder.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1175,6 +1324,33 @@ import 'managed_folder_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/storage.admin"
+///     members = ["user:jane@example.com"]
+///     condition = {
+///       title       = "expires_after_2019_12_31"
+///       description = "Expiring at midnight of 2019-12-31"
+///       expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_managedfolderiampolicy" "policy" {
+///   bucket         = folder.bucket
+///   managed_folder = folder.name
+///   policy_data    = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1183,10 +1359,12 @@ import 'managed_folder_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
 /// import com.pulumi.gcp.storage.ManagedFolderIamPolicy;
 /// import com.pulumi.gcp.storage.ManagedFolderIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1211,8 +1389,8 @@ import 'managed_folder_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new ManagedFolderIamPolicy("policy", ManagedFolderIamPolicyArgs.builder()
-///             .bucket(folder.bucket())
-///             .managedFolder(folder.name())
+///             .bucket(folder.get("bucket"))
+///             .managedFolder(folder.get("name"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -1312,6 +1490,22 @@ import 'managed_folder_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_managedfolderiambinding" "binding" {
+///   bucket         = folder.bucket
+///   managed_folder = folder.name
+///   role           = "roles/storage.admin"
+///   members        = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1320,8 +1514,8 @@ import 'managed_folder_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.ManagedFolderIamBinding;
 /// import com.pulumi.gcp.storage.ManagedFolderIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1334,8 +1528,8 @@ import 'managed_folder_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ManagedFolderIamBinding("binding", ManagedFolderIamBindingArgs.builder()
-///             .bucket(folder.bucket())
-///             .managedFolder(folder.name())
+///             .bucket(folder.get("bucket"))
+///             .managedFolder(folder.get("name"))
 ///             .role("roles/storage.admin")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -1447,6 +1641,27 @@ import 'managed_folder_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_managedfolderiambinding" "binding" {
+///   bucket         = folder.bucket
+///   managed_folder = folder.name
+///   role           = "roles/storage.admin"
+///   members        = ["user:jane@example.com"]
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1456,8 +1671,8 @@ import 'managed_folder_iam_binding_state.dart';
 /// import com.pulumi.gcp.storage.ManagedFolderIamBinding;
 /// import com.pulumi.gcp.storage.ManagedFolderIamBindingArgs;
 /// import com.pulumi.gcp.storage.inputs.ManagedFolderIamBindingConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1470,8 +1685,8 @@ import 'managed_folder_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new ManagedFolderIamBinding("binding", ManagedFolderIamBindingArgs.builder()
-///             .bucket(folder.bucket())
-///             .managedFolder(folder.name())
+///             .bucket(folder.get("bucket"))
+///             .managedFolder(folder.get("name"))
 ///             .role("roles/storage.admin")
 ///             .members("user:jane@example.com")
 ///             .condition(ManagedFolderIamBindingConditionArgs.builder()
@@ -1565,6 +1780,22 @@ import 'managed_folder_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_managedfolderiammember" "member" {
+///   bucket         = folder.bucket
+///   managed_folder = folder.name
+///   role           = "roles/storage.admin"
+///   member         = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1573,8 +1804,8 @@ import 'managed_folder_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.storage.ManagedFolderIamMember;
 /// import com.pulumi.gcp.storage.ManagedFolderIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1587,8 +1818,8 @@ import 'managed_folder_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ManagedFolderIamMember("member", ManagedFolderIamMemberArgs.builder()
-///             .bucket(folder.bucket())
-///             .managedFolder(folder.name())
+///             .bucket(folder.get("bucket"))
+///             .managedFolder(folder.get("name"))
 ///             .role("roles/storage.admin")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -1694,6 +1925,27 @@ import 'managed_folder_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_managedfolderiammember" "member" {
+///   bucket         = folder.bucket
+///   managed_folder = folder.name
+///   role           = "roles/storage.admin"
+///   member         = "user:jane@example.com"
+///   condition = {
+///     title       = "expires_after_2019_12_31"
+///     description = "Expiring at midnight of 2019-12-31"
+///     expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1703,8 +1955,8 @@ import 'managed_folder_iam_binding_state.dart';
 /// import com.pulumi.gcp.storage.ManagedFolderIamMember;
 /// import com.pulumi.gcp.storage.ManagedFolderIamMemberArgs;
 /// import com.pulumi.gcp.storage.inputs.ManagedFolderIamMemberConditionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1717,8 +1969,8 @@ import 'managed_folder_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new ManagedFolderIamMember("member", ManagedFolderIamMemberArgs.builder()
-///             .bucket(folder.bucket())
-///             .managedFolder(folder.name())
+///             .bucket(folder.get("bucket"))
+///             .managedFolder(folder.get("name"))
 ///             .role("roles/storage.admin")
 ///             .member("user:jane@example.com")
 ///             .condition(ManagedFolderIamMemberConditionArgs.builder()
@@ -1752,7 +2004,6 @@ import 'managed_folder_iam_binding_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * b/{{bucket}}/managedFolders/{{managed_folder}}
-///
 /// * {{bucket}}/{{managed_folder}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -1760,25 +2011,21 @@ import 'managed_folder_iam_binding_state.dart';
 /// Cloud Storage managedfolder IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:storage/managedFolderIamBinding:ManagedFolderIamBinding editor "b/{{bucket}}/managedFolders/{{managed_folder}} roles/storage.objectViewer user:jane@example.com"
+/// $ terraform import google_storage_managed_folder_iam_member.editor "b/{{bucket}}/managedFolders/{{managed_folder}} roles/storage.objectViewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:storage/managedFolderIamBinding:ManagedFolderIamBinding editor "b/{{bucket}}/managedFolders/{{managed_folder}} roles/storage.objectViewer"
+/// $ terraform import google_storage_managed_folder_iam_binding.editor "b/{{bucket}}/managedFolders/{{managed_folder}} roles/storage.objectViewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:storage/managedFolderIamBinding:ManagedFolderIamBinding editor b/{{bucket}}/managedFolders/{{managed_folder}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class ManagedFolderIamBinding extends pulumi.CustomResource {
   /// The name of the bucket that contains the managed folder. Used to find the parent resource to bind the IAM policy to
@@ -1801,6 +2048,7 @@ class ManagedFolderIamBinding extends pulumi.CustomResource {
   /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+  /// * **principalSet://iam.googleapis.com/{poolResourceName}/attribute.{key}/{value}**: An external identity set from a Workload Identity Pool, optionally constrained by an attribute (e.g. GitHub Actions branch via attribute.repository). Example: "principalSet://iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/github-pool/attribute.repository/your-org/your-repo"
   late final pulumi.Output<List<String>> members;
   /// The role that should be applied. Only one
   /// `gcp.storage.ManagedFolderIamBinding` can be used per role. Note that custom roles must be of the format

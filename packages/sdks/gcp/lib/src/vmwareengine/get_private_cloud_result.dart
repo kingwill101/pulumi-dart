@@ -12,6 +12,7 @@ class GetPrivateCloudResult {
   final String createTime;
   final String deleteTime;
   final int deletionDelayHours;
+  final String deletionPolicy;
   final String description;
   final String expireTime;
   final List<GetPrivateCloudHcx> hcxes;
@@ -34,6 +35,7 @@ class GetPrivateCloudResult {
   /// [createTime] Required.
   /// [deleteTime] Required.
   /// [deletionDelayHours] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [expireTime] Required.
   /// [hcxes] Required.
@@ -54,6 +56,7 @@ class GetPrivateCloudResult {
     required this.createTime,
     required this.deleteTime,
     required this.deletionDelayHours,
+    required this.deletionPolicy,
     required this.description,
     required this.expireTime,
     required this.hcxes,
@@ -77,6 +80,7 @@ class GetPrivateCloudResult {
       'createTime': createTime,
       'deleteTime': deleteTime,
       'deletionDelayHours': deletionDelayHours,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'expireTime': expireTime,
       'hcxes': pulumi.Input.encodeList<GetPrivateCloudHcx, Map<String, dynamic>>(hcxes, (value) => value.toMap()),
@@ -101,6 +105,7 @@ class GetPrivateCloudResult {
       createTime: map['createTime'] as String,
       deleteTime: map['deleteTime'] as String,
       deletionDelayHours: map['deletionDelayHours'] as int,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       expireTime: map['expireTime'] as String,
       hcxes: pulumi.Input.decodeList<GetPrivateCloudHcx>(map['hcxes']!, (value) => GetPrivateCloudHcx.fromMap((value as Map).cast<String, dynamic>())),
@@ -120,4 +125,3 @@ class GetPrivateCloudResult {
     );
   }
 }
-

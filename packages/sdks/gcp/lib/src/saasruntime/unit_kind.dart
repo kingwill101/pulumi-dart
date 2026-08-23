@@ -4,6 +4,9 @@ import 'unit_kind_state.dart';
 
 /// A UnitKind serves as a template or type definition for a group of Units. Units that belong to the same UnitKind are managed together, follow the same release model, and are typically updated together through rollouts.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 ///
 /// ## Example Usage
 ///
@@ -159,7 +162,7 @@ import 'unit_kind_state.dart';
 /// 		clusterUnitKind, err := saasruntime.NewUnitKind(ctx, "cluster_unit_kind", &saasruntime.UnitKindArgs{
 /// 			Location:       pulumi.String("us-east1"),
 /// 			UnitKindId:     pulumi.String("cluster-unitkind"),
-/// 			Saas:           exampleSaas.ID(),
+/// 			Saas:           exampleSaas.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultRelease: pulumi.String("projects/my-project-name/locations/us-east1/releases/example-release"),
 /// 		})
 /// 		if err != nil {
@@ -168,10 +171,10 @@ import 'unit_kind_state.dart';
 /// 		_, err = saasruntime.NewUnitKind(ctx, "example", &saasruntime.UnitKindArgs{
 /// 			Location:   pulumi.String("us-east1"),
 /// 			UnitKindId: pulumi.String("app-unitkind"),
-/// 			Saas:       exampleSaas.ID(),
+/// 			Saas:       exampleSaas.ID().ToIDOutput().ToStringOutput(),
 /// 			Dependencies: saasruntime.UnitKindDependencyArray{
 /// 				&saasruntime.UnitKindDependencyArgs{
-/// 					UnitKind: clusterUnitKind.ID(),
+/// 					UnitKind: clusterUnitKind.ID().ToIDOutput().ToStringOutput(),
 /// 					Alias:    pulumi.String("cluster"),
 /// 				},
 /// 			},
@@ -182,7 +185,7 @@ import 'unit_kind_state.dart';
 /// 		_, err = saasruntime.NewRelease(ctx, "example_release", &saasruntime.ReleaseArgs{
 /// 			Location:  pulumi.String("us-east1"),
 /// 			ReleaseId: pulumi.String("example-release"),
-/// 			UnitKind:  clusterUnitKind.ID(),
+/// 			UnitKind:  clusterUnitKind.ID().ToIDOutput().ToStringOutput(),
 /// 			Blueprint: &saasruntime.ReleaseBlueprintArgs{
 /// 				Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"),
 /// 			},
@@ -192,6 +195,46 @@ import 'unit_kind_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_saasruntime_saas" "example_saas" {
+///   saas_id  = "example-saas"
+///   location = "us-east1"
+///   locations {
+///     name = "us-east1"
+///   }
+/// }
+/// resource "gcp_saasruntime_unitkind" "cluster_unit_kind" {
+///   location        = "us-east1"
+///   unit_kind_id    = "cluster-unitkind"
+///   saas            = gcp_saasruntime_saas.example_saas.id
+///   default_release = "projects/my-project-name/locations/us-east1/releases/example-release"
+/// }
+/// resource "gcp_saasruntime_unitkind" "example" {
+///   location     = "us-east1"
+///   unit_kind_id = "app-unitkind"
+///   saas         = gcp_saasruntime_saas.example_saas.id
+///   dependencies {
+///     unit_kind = gcp_saasruntime_unitkind.cluster_unit_kind.id
+///     alias     = "cluster"
+///   }
+/// }
+/// resource "gcp_saasruntime_release" "example_release" {
+///   location   = "us-east1"
+///   release_id = "example-release"
+///   unit_kind  = gcp_saasruntime_unitkind.cluster_unit_kind.id
+///   blueprint = {
+///     package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"
+///   }
 /// }
 /// ```
 /// ```java
@@ -209,8 +252,8 @@ import 'unit_kind_state.dart';
 /// import com.pulumi.gcp.saasruntime.Release;
 /// import com.pulumi.gcp.saasruntime.ReleaseArgs;
 /// import com.pulumi.gcp.saasruntime.inputs.ReleaseBlueprintArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -303,22 +346,15 @@ import 'unit_kind_state.dart';
 /// UnitKind can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/unitKinds/{{unit_kind_id}}`
-///
 /// * `{{project}}/{{location}}/{{unit_kind_id}}`
-///
 /// * `{{location}}/{{unit_kind_id}}`
+///
 ///
 /// When using the `pulumi import` command, UnitKind can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:saasruntime/unitKind:UnitKind default projects/{{project}}/locations/{{location}}/unitKinds/{{unit_kind_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:saasruntime/unitKind:UnitKind default {{project}}/{{location}}/{{unit_kind_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:saasruntime/unitKind:UnitKind default {{location}}/{{unit_kind_id}}
 /// ```
 class UnitKind extends pulumi.CustomResource {
@@ -327,7 +363,7 @@ class UnitKind extends pulumi.CustomResource {
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
@@ -336,10 +372,18 @@ class UnitKind extends pulumi.CustomResource {
   /// If not specified, a new unit must explicitly reference which release to use
   /// for its creation.
   late final pulumi.Output<String?> defaultRelease;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// List of other unit kinds that this release will depend on. Dependencies
   /// will be automatically provisioned if not found. Maximum 10.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> dependencies;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -355,7 +399,7 @@ class UnitKind extends pulumi.CustomResource {
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
@@ -374,7 +418,7 @@ class UnitKind extends pulumi.CustomResource {
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// A reference to the Saas that defines the product (managed service) that
-  /// the producer wants to manage with SaaS Runtime. Part of the SaaS Runtime
+  /// the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager
   /// common data model. Immutable once set.
   late final pulumi.Output<String> saas;
   /// The unique identifier of the resource. UID is unique in the time
@@ -407,6 +451,7 @@ class UnitKind extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     defaultRelease = registerOutput<String?>('defaultRelease');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dependencies = registerOutput<List<Map<String, dynamic>>?>('dependencies');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -450,6 +495,7 @@ class UnitKind extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     createTime = registerOutput<String>('createTime');
     defaultRelease = registerOutput<String?>('defaultRelease');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     dependencies = registerOutput<List<Map<String, dynamic>>?>('dependencies');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

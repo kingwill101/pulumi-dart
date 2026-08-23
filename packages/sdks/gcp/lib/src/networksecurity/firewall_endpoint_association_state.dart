@@ -6,6 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallEndpointAssociationState {
   /// Time the firewall endpoint was created in UTC.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Whether the association is disabled. True indicates that traffic will not be intercepted.
   /// &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
   /// otherwise on an update the association can be disabled.
@@ -17,7 +24,7 @@ class FirewallEndpointAssociationState {
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location (zone) of the firewall endpoint association.
   final pulumi.Input<String>? location;
@@ -44,6 +51,7 @@ class FirewallEndpointAssociationState {
 
   /// Creates a new [FirewallEndpointAssociationState].
   /// [createTime] Time the firewall endpoint was created in UTC.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disabled] Whether the association is disabled. True indicates that traffic will not be intercepted.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [firewallEndpoint] The URL of the firewall endpoint that is being associated.
@@ -60,6 +68,7 @@ class FirewallEndpointAssociationState {
   /// [updateTime] Time the firewall endpoint was updated in UTC.
   const FirewallEndpointAssociationState({
     this.createTime,
+    this.deletionPolicy,
     this.disabled,
     this.effectiveLabels,
     this.firewallEndpoint,
@@ -79,6 +88,7 @@ class FirewallEndpointAssociationState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'disabled': ?disabled,
       'effectiveLabels': ?effectiveLabels,
       'firewallEndpoint': ?firewallEndpoint,
@@ -99,6 +109,7 @@ class FirewallEndpointAssociationState {
   factory FirewallEndpointAssociationState.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointAssociationState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       firewallEndpoint: (() { final guardedValue = map['firewallEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -116,4 +127,3 @@ class FirewallEndpointAssociationState {
     );
   }
 }
-

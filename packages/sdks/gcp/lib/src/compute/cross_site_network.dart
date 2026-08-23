@@ -80,6 +80,23 @@ import 'cross_site_network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_compute_crosssitenetwork" "example-cross-site-network" {
+///   name        = "test-cross-site-network"
+///   description = "Example cross site network"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -90,8 +107,8 @@ import 'cross_site_network_state.dart';
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 /// import com.pulumi.gcp.compute.CrossSiteNetwork;
 /// import com.pulumi.gcp.compute.CrossSiteNetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -134,25 +151,25 @@ import 'cross_site_network_state.dart';
 /// CrossSiteNetwork can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/crossSiteNetworks/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, CrossSiteNetwork can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default projects/{{project}}/global/crossSiteNetworks/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/crossSiteNetwork:CrossSiteNetwork default {{name}}
 /// ```
 class CrossSiteNetwork extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Name of the resource. Provided by the client when the resource is created. The name must be
@@ -179,6 +196,7 @@ class CrossSiteNetwork extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -207,6 +225,7 @@ class CrossSiteNetwork extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

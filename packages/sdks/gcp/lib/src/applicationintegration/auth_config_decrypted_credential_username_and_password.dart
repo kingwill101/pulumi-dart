@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthConfigDecryptedCredentialUsernameAndPassword {
   /// Password to be used.
   ///
-  /// &lt;a name="nested_decrypted_credential_oauth2_authorization_code"&gt;&lt;/a&gt;The `oauth2_authorization_code` block supports:
+  /// &lt;a name="nestedDecryptedCredentialOauth2AuthorizationCode"&gt;&lt;/a&gt;The `oauth2AuthorizationCode` block supports:
   final pulumi.Input<String>? password;
   /// Username to be used.
   final pulumi.Input<String>? username;
@@ -32,4 +32,3 @@ class AuthConfigDecryptedCredentialUsernameAndPassword {
     );
   }
 }
-

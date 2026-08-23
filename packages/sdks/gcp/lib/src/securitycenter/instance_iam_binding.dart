@@ -76,6 +76,21 @@ import 'instance_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datafusion_instance" "basic_instance" {
+///   name   = "my-instance"
+///   region = "us-central1"
+///   type   = "BASIC"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -84,8 +99,8 @@ import 'instance_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.datafusion.Instance;
 /// import com.pulumi.gcp.datafusion.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -285,7 +300,7 @@ import 'instance_iam_binding_state.dart';
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			PrefixLength: pulumi.Int(22),
-/// 			Network:      network.ID(),
+/// 			Network:      network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -325,6 +340,51 @@ import 'instance_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_appengine_getdefaultserviceaccount" "default" {
+/// }
+///
+/// resource "gcp_datafusion_instance" "extended_instance" {
+///   name                          = "my-instance"
+///   description                   = "My Data Fusion instance"
+///   display_name                  = "My Data Fusion instance"
+///   region                        = "us-central1"
+///   type                          = "BASIC"
+///   enable_stackdriver_logging    = true
+///   enable_stackdriver_monitoring = true
+///   private_instance              = true
+///   dataproc_service_account      = data.gcp_appengine_getdefaultserviceaccount.default.email
+///   labels = {
+///     "example_key" = "example_value"
+///   }
+///   network_config = {
+///     network       = "default"
+///     ip_allocation ="${gcp_compute_globaladdress.private_ip_alloc.address}/${gcp_compute_globaladdress.private_ip_alloc.prefix_length}"
+///   }
+///   accelerators {
+///     accelerator_type = "CDC"
+///     state            = "ENABLED"
+///   }
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name = "datafusion-full-network"
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "datafusion-ip-alloc"
+///   address_type  = "INTERNAL"
+///   purpose       = "VPC_PEERING"
+///   prefix_length = 22
+///   network       = gcp_compute_network.network.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -341,8 +401,8 @@ import 'instance_iam_binding_state.dart';
 /// import com.pulumi.gcp.datafusion.InstanceArgs;
 /// import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
 /// import com.pulumi.gcp.datafusion.inputs.InstanceAcceleratorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -581,7 +641,7 @@ import 'instance_iam_binding_state.dart';
 /// 		pscSubnetwork, err := compute.NewSubnetwork(ctx, "psc", &compute.SubnetworkArgs{
 /// 			Name:        pulumi.String("datafusion-psc-subnet"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     psc.ID(),
+/// 			Network:     psc.ID().ToIDOutput().ToStringOutput(),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
 /// 		})
 /// 		if err != nil {
@@ -606,7 +666,7 @@ import 'instance_iam_binding_state.dart';
 /// 			NetworkConfig: &datafusion.InstanceNetworkConfigArgs{
 /// 				ConnectionType: pulumi.String("PRIVATE_SERVICE_CONNECT_INTERFACES"),
 /// 				PrivateServiceConnectConfig: &datafusion.InstanceNetworkConfigPrivateServiceConnectConfigArgs{
-/// 					NetworkAttachment:    pscNetworkAttachment.ID(),
+/// 					NetworkAttachment:    pscNetworkAttachment.ID().ToIDOutput().ToStringOutput(),
 /// 					UnreachableCidrBlock: pulumi.String("192.168.0.0/25"),
 /// 				},
 /// 			},
@@ -616,6 +676,45 @@ import 'instance_iam_binding_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datafusion_instance" "psc_instance" {
+///   name             = "psc-instance"
+///   region           = "us-central1"
+///   type             = "BASIC"
+///   private_instance = true
+///   network_config = {
+///     connection_type = "PRIVATE_SERVICE_CONNECT_INTERFACES"
+///     private_service_connect_config = {
+///       network_attachment     = gcp_compute_networkattachment.psc.id
+///       unreachable_cidr_block = "192.168.0.0/25"
+///     }
+///   }
+/// }
+/// resource "gcp_compute_network" "psc" {
+///   name                    = "datafusion-psc-network"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "psc" {
+///   name          = "datafusion-psc-subnet"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.psc.id
+///   ip_cidr_range = "10.0.0.0/16"
+/// }
+/// resource "gcp_compute_networkattachment" "psc" {
+///   name                  = "datafusion-psc-attachment"
+///   region                = "us-central1"
+///   connection_preference = "ACCEPT_AUTOMATIC"
+///   subnetworks           = [gcp_compute_subnetwork.psc.self_link]
 /// }
 /// ```
 /// ```java
@@ -634,8 +733,8 @@ import 'instance_iam_binding_state.dart';
 /// import com.pulumi.gcp.datafusion.InstanceArgs;
 /// import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
 /// import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigPrivateServiceConnectConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -856,8 +955,6 @@ import 'instance_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
@@ -875,7 +972,7 @@ import 'instance_iam_binding_state.dart';
 /// 		}
 /// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("my-instance"),
-/// 			KeyRing: keyRing.ID(),
+/// 			KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -885,7 +982,7 @@ import 'instance_iam_binding_state.dart';
 /// 			return err
 /// 		}
 /// 		cryptoKeyMemberCdfSa, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_member_cdf_sa", &kms.CryptoKeyIAMMemberArgs{
-/// 			CryptoKeyId: cryptoKey.ID(),
+/// 			CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 /// 			Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-datafusion.iam.gserviceaccount.com", project.Number),
 /// 		})
@@ -893,7 +990,7 @@ import 'instance_iam_binding_state.dart';
 /// 			return err
 /// 		}
 /// 		cryptoKeyMemberGcsSa, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_member_gcs_sa", &kms.CryptoKeyIAMMemberArgs{
-/// 			CryptoKeyId: cryptoKey.ID(),
+/// 			CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 /// 			Member:      pulumi.Sprintf("serviceAccount:service-%v@gs-project-accounts.iam.gserviceaccount.com", project.Number),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -907,7 +1004,7 @@ import 'instance_iam_binding_state.dart';
 /// 			Region: pulumi.String("us-central1"),
 /// 			Type:   pulumi.String("BASIC"),
 /// 			CryptoKeyConfig: &datafusion.InstanceCryptoKeyConfigArgs{
-/// 				KeyReference: cryptoKey.ID(),
+/// 				KeyReference: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			cryptoKeyMemberGcsSa,
@@ -917,6 +1014,47 @@ import 'instance_iam_binding_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_datafusion_instance" "cmek" {
+///   depends_on = [gcp_kms_cryptokeyiammember.crypto_key_member_gcs_sa]
+///   name       = "my-instance"
+///   region     = "us-central1"
+///   type       = "BASIC"
+///   crypto_key_config = {
+///     key_reference = gcp_kms_cryptokey.crypto_key.id
+///   }
+/// }
+/// resource "gcp_kms_cryptokey" "crypto_key" {
+///   name     = "my-instance"
+///   key_ring = gcp_kms_keyring.key_ring.id
+/// }
+/// resource "gcp_kms_keyring" "key_ring" {
+///   name     = "my-instance"
+///   location = "us-central1"
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "crypto_key_member_cdf_sa" {
+///   crypto_key_id = gcp_kms_cryptokey.crypto_key.id
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "crypto_key_member_gcs_sa" {
+///   depends_on    = [gcp_kms_cryptokeyiammember.crypto_key_member_cdf_sa]
+///   crypto_key_id = gcp_kms_cryptokey.crypto_key.id
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gs-project-accounts.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -937,8 +1075,8 @@ import 'instance_iam_binding_state.dart';
 /// import com.pulumi.gcp.datafusion.InstanceArgs;
 /// import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1106,6 +1244,22 @@ import 'instance_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datafusion_instance" "enterprise_instance" {
+///   name        = "my-instance"
+///   region      = "us-central1"
+///   type        = "ENTERPRISE"
+///   enable_rbac = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1114,8 +1268,8 @@ import 'instance_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.datafusion.Instance;
 /// import com.pulumi.gcp.datafusion.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1232,7 +1386,7 @@ import 'instance_iam_binding_state.dart';
 /// 			Type:   pulumi.String("BASIC"),
 /// 			EventPublishConfig: &datafusion.InstanceEventPublishConfigArgs{
 /// 				Enabled: pulumi.Bool(true),
-/// 				Topic:   eventTopic.ID(),
+/// 				Topic:   eventTopic.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1240,6 +1394,28 @@ import 'instance_iam_binding_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datafusion_instance" "event" {
+///   name   = "my-instance"
+///   region = "us-central1"
+///   type   = "BASIC"
+///   event_publish_config = {
+///     enabled = true
+///     topic   = gcp_pubsub_topic.event.id
+///   }
+/// }
+/// resource "gcp_pubsub_topic" "event" {
+///   name = "my-instance"
 /// }
 /// ```
 /// ```java
@@ -1253,8 +1429,8 @@ import 'instance_iam_binding_state.dart';
 /// import com.pulumi.gcp.datafusion.Instance;
 /// import com.pulumi.gcp.datafusion.InstanceArgs;
 /// import com.pulumi.gcp.datafusion.inputs.InstanceEventPublishConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1367,6 +1543,22 @@ import 'instance_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datafusion_instance" "zone" {
+///   name   = "my-instance"
+///   region = "us-central1"
+///   zone   = "us-central1-a"
+///   type   = "DEVELOPER"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1375,8 +1567,8 @@ import 'instance_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.datafusion.Instance;
 /// import com.pulumi.gcp.datafusion.InstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1409,34 +1601,155 @@ import 'instance_iam_binding_state.dart';
 ///       type: DEVELOPER
 /// ```
 ///
+/// ### Data Fusion Instance Patch Revision
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const dataFusionInstancePatchRevision = new gcp.datafusion.Instance("data_fusion_instance_patch_revision", {
+///     name: "my-instance",
+///     region: "us-central1",
+///     type: "BASIC",
+///     version: "6.10.1",
+///     patchRevision: "6.10.1.5",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// data_fusion_instance_patch_revision = gcp.datafusion.Instance("data_fusion_instance_patch_revision",
+///     name="my-instance",
+///     region="us-central1",
+///     type="BASIC",
+///     version="6.10.1",
+///     patch_revision="6.10.1.5")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var dataFusionInstancePatchRevision = new Gcp.DataFusion.Instance("data_fusion_instance_patch_revision", new()
+///     {
+///         Name = "my-instance",
+///         Region = "us-central1",
+///         Type = "BASIC",
+///         Version = "6.10.1",
+///         PatchRevision = "6.10.1.5",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := datafusion.NewInstance(ctx, "data_fusion_instance_patch_revision", &datafusion.InstanceArgs{
+/// 			Name:          pulumi.String("my-instance"),
+/// 			Region:        pulumi.String("us-central1"),
+/// 			Type:          pulumi.String("BASIC"),
+/// 			Version:       pulumi.String("6.10.1"),
+/// 			PatchRevision: pulumi.String("6.10.1.5"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datafusion_instance" "data_fusion_instance_patch_revision" {
+///   name           = "my-instance"
+///   region         = "us-central1"
+///   type           = "BASIC"
+///   version        = "6.10.1"
+///   patch_revision = "6.10.1.5"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.datafusion.Instance;
+/// import com.pulumi.gcp.datafusion.InstanceArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var dataFusionInstancePatchRevision = new Instance("dataFusionInstancePatchRevision", InstanceArgs.builder()
+///             .name("my-instance")
+///             .region("us-central1")
+///             .type("BASIC")
+///             .version("6.10.1")
+///             .patchRevision("6.10.1.5")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   dataFusionInstancePatchRevision:
+///     type: gcp:datafusion:Instance
+///     name: data_fusion_instance_patch_revision
+///     properties:
+///       name: my-instance
+///       region: us-central1
+///       type: BASIC
+///       version: 6.10.1
+///       patchRevision: 6.10.1.5
+/// ```
+///
 ///
 /// ## Import
 ///
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default projects/{{project}}/locations/{{region}}/instances/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{name}}
 /// ```
 class InstanceIamBinding extends pulumi.CustomResource {

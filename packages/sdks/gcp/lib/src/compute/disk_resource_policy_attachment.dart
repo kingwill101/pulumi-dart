@@ -178,6 +178,45 @@ import 'disk_resource_policy_attachment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_diskresourcepolicyattachment" "attachment" {
+///   name = gcp_compute_resourcepolicy.policy.name
+///   disk = gcp_compute_disk.ssd.name
+///   zone = "us-central1-a"
+/// }
+/// resource "gcp_compute_disk" "ssd" {
+///   name  = "my-disk"
+///   image = data.gcp_compute_getimage.myImage.self_link
+///   size  = 50
+///   type  = "pd-ssd"
+///   zone  = "us-central1-a"
+/// }
+/// resource "gcp_compute_resourcepolicy" "policy" {
+///   name   = "my-resource-policy"
+///   region = "us-central1"
+///   snapshot_schedule_policy = {
+///     schedule = {
+///       daily_schedule = {
+///         days_in_cycle = 1
+///         start_time    = "04:00"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -195,8 +234,8 @@ import 'disk_resource_policy_attachment_state.dart';
 /// import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs;
 /// import com.pulumi.gcp.compute.DiskResourcePolicyAttachment;
 /// import com.pulumi.gcp.compute.DiskResourcePolicyAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -284,31 +323,27 @@ import 'disk_resource_policy_attachment_state.dart';
 /// DiskResourcePolicyAttachment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{disk}}/{{name}}`
-///
 /// * `{{zone}}/{{disk}}/{{name}}`
-///
 /// * `{{disk}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, DiskResourcePolicyAttachment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{project}}/{{zone}}/{{disk}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{zone}}/{{disk}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{disk}}/{{name}}
 /// ```
 class DiskResourcePolicyAttachment extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name of the disk in which the resource policies are attached to.
   late final pulumi.Output<String> disk;
   /// The resource policy to be attached to the disk for scheduling snapshot
@@ -334,6 +369,7 @@ class DiskResourcePolicyAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disk = registerOutput<String>('disk');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -363,6 +399,7 @@ class DiskResourcePolicyAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disk = registerOutput<String>('disk');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

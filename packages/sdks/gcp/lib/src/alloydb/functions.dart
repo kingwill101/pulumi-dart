@@ -55,6 +55,18 @@ import 'get_supported_database_flags_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_alloydb_getcluster" "qa" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -63,8 +75,8 @@ import 'get_supported_database_flags_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.alloydb.AlloydbFunctions;
 /// import com.pulumi.gcp.alloydb.inputs.GetClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -151,6 +163,18 @@ Future<GetClusterResult> getCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_alloydb_getinstance" "qa" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +183,8 @@ Future<GetClusterResult> getCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.alloydb.AlloydbFunctions;
 /// import com.pulumi.gcp.alloydb.inputs.GetInstanceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -247,6 +271,18 @@ Future<GetInstanceResult> getInstance(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_alloydb_getlocations" "qa" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -255,8 +291,8 @@ Future<GetInstanceResult> getInstance(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.alloydb.AlloydbFunctions;
 /// import com.pulumi.gcp.alloydb.inputs.GetLocationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -350,6 +386,19 @@ Future<GetLocationsResult> getLocations(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_alloydb_getsupporteddatabaseflags" "qa" {
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -358,8 +407,8 @@ Future<GetLocationsResult> getLocations(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.alloydb.AlloydbFunctions;
 /// import com.pulumi.gcp.alloydb.inputs.GetSupportedDatabaseFlagsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -383,7 +383,7 @@ import 'target_grpc_proxy_state.dart';
 /// 			PortName:            pulumi.String("grpc"),
 /// 			Protocol:            pulumi.String("GRPC"),
 /// 			TimeoutSec:          pulumi.Int(10),
-/// 			HealthChecks:        defaultHealthCheck.ID(),
+/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 /// 		})
 /// 		if err != nil {
@@ -392,7 +392,7 @@ import 'target_grpc_proxy_state.dart';
 /// 		urlmap, err := compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
 /// 			Name:           pulumi.String("urlmap"),
 /// 			Description:    pulumi.String("a description"),
-/// 			DefaultService: home.ID(),
+/// 			DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.URLMapHostRuleArray{
 /// 				&compute.URLMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -404,7 +404,7 @@ import 'target_grpc_proxy_state.dart';
 /// 			PathMatchers: compute.URLMapPathMatcherArray{
 /// 				&compute.URLMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: home.ID(),
+/// 					DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 /// 					RouteRules: compute.URLMapPathMatcherRouteRuleArray{
 /// 						&compute.URLMapPathMatcherRouteRuleArgs{
 /// 							Priority: pulumi.Int(1),
@@ -473,7 +473,7 @@ import 'target_grpc_proxy_state.dart';
 /// 			},
 /// 			Tests: compute.URLMapTestArray{
 /// 				&compute.URLMapTestArgs{
-/// 					Service: home.ID(),
+/// 					Service: home.ID().ToIDOutput().ToStringOutput(),
 /// 					Host:    pulumi.String("hi.com"),
 /// 					Path:    pulumi.String("/home"),
 /// 				},
@@ -484,7 +484,7 @@ import 'target_grpc_proxy_state.dart';
 /// 		}
 /// 		_, err = compute.NewTargetGrpcProxy(ctx, "default", &compute.TargetGrpcProxyArgs{
 /// 			Name:                 pulumi.String("proxy"),
-/// 			UrlMap:               urlmap.ID(),
+/// 			UrlMap:               urlmap.ID().ToIDOutput().ToStringOutput(),
 /// 			ValidateForProxyless: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -492,6 +492,101 @@ import 'target_grpc_proxy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_targetgrpcproxy" "default" {
+///   name                   = "proxy"
+///   url_map                = gcp_compute_urlmap.urlmap.id
+///   validate_for_proxyless = true
+/// }
+/// resource "gcp_compute_urlmap" "urlmap" {
+///   name            = "urlmap"
+///   description     = "a description"
+///   default_service = gcp_compute_backendservice.home.id
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_backendservice.home.id
+///     route_rules {
+///       priority = 1
+///       header_action = {
+///         request_headers_to_removes = ["RemoveMe2"]
+///         request_headers_to_adds = [{
+///           "headerName"  = "AddSomethingElse"
+///           "headerValue" = "MyOtherValue"
+///           "replace"     = true
+///         }]
+///         response_headers_to_removes = ["RemoveMe3"]
+///         response_headers_to_adds = [{
+///           "headerName"  = "AddMe"
+///           "headerValue" = "MyValue"
+///           "replace"     = false
+///         }]
+///       }
+///       match_rules {
+///         full_path_match = "a full path"
+///         header_matches {
+///           header_name  = "someheader"
+///           exact_match  = "match this exactly"
+///           invert_match = true
+///         }
+///         ignore_case = true
+///         metadata_filters {
+///           filter_match_criteria = "MATCH_ANY"
+///           filter_labels {
+///             name  = "PLANET"
+///             value = "MARS"
+///           }
+///         }
+///         query_parameter_matches {
+///           name          = "a query parameter"
+///           present_match = true
+///         }
+///       }
+///       url_redirect = {
+///         host_redirect          = "A host"
+///         https_redirect         = false
+///         path_redirect          = "some/path"
+///         redirect_response_code = "TEMPORARY_REDIRECT"
+///         strip_query            = true
+///       }
+///     }
+///   }
+///   tests {
+///     service = gcp_compute_backendservice.home.id
+///     host    = "hi.com"
+///     path    = "/home"
+///   }
+/// }
+/// resource "gcp_compute_backendservice" "home" {
+///   name                  = "backend"
+///   port_name             = "grpc"
+///   protocol              = "GRPC"
+///   timeout_sec           = 10
+///   health_checks         = gcp_compute_healthcheck.default.id
+///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name               = "healthcheck"
+///   timeout_sec        = 1
+///   check_interval_sec = 1
+///   grpc_health_check = {
+///     port_name          = "health-check-port"
+///     port_specification = "USE_NAMED_PORT"
+///     grpc_service_name  = "testservice"
+///   }
 /// }
 /// ```
 /// ```java
@@ -509,11 +604,21 @@ import 'target_grpc_proxy_state.dart';
 /// import com.pulumi.gcp.compute.URLMapArgs;
 /// import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleHeaderActionArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleMatchRuleArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleUrlRedirectArgs;
 /// import com.pulumi.gcp.compute.inputs.URLMapTestArgs;
 /// import com.pulumi.gcp.compute.TargetGrpcProxy;
 /// import com.pulumi.gcp.compute.TargetGrpcProxyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -706,27 +811,27 @@ import 'target_grpc_proxy_state.dart';
 /// TargetGrpcProxy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/targetGrpcProxies/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, TargetGrpcProxy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default projects/{{project}}/global/targetGrpcProxies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{name}}
 /// ```
 class TargetGrpcProxy extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Fingerprint of this resource. A hash of the contents stored in
@@ -783,6 +888,7 @@ class TargetGrpcProxy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
@@ -817,6 +923,7 @@ class TargetGrpcProxy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');

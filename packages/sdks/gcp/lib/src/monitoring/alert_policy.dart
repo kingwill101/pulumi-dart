@@ -149,6 +149,35 @@ import 'alert_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_alertpolicy" "alert_policy" {
+///   display_name = "My Alert Policy"
+///   combiner     = "OR"
+///   conditions {
+///     display_name = "test condition"
+///     condition_threshold = {
+///       filter     = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""
+///       duration   = "60s"
+///       comparison = "COMPARISON_GT"
+///       aggregations = [{
+///         "alignmentPeriod"  = "60s"
+///         "perSeriesAligner" = "ALIGN_RATE"
+///       }]
+///     }
+///   }
+///   user_labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -159,8 +188,9 @@ import 'alert_policy_state.dart';
 /// import com.pulumi.gcp.monitoring.AlertPolicyArgs;
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdAggregationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -350,6 +380,36 @@ import 'alert_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_alertpolicy" "alert_policy" {
+///   display_name = "My Alert Policy"
+///   combiner     = "OR"
+///   conditions {
+///     display_name = "test condition"
+///     condition_threshold = {
+///       filter     = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""
+///       duration   = "60s"
+///       comparison = "COMPARISON_GT"
+///       aggregations = [{
+///         "alignmentPeriod"  = "60s"
+///         "perSeriesAligner" = "ALIGN_RATE"
+///       }]
+///       evaluation_missing_data = "EVALUATION_MISSING_DATA_INACTIVE"
+///     }
+///   }
+///   user_labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -360,8 +420,9 @@ import 'alert_policy_state.dart';
 /// import com.pulumi.gcp.monitoring.AlertPolicyArgs;
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdAggregationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -562,6 +623,38 @@ import 'alert_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_alertpolicy" "alert_policy" {
+///   display_name = "My Alert Policy"
+///   combiner     = "OR"
+///   conditions {
+///     display_name = "test condition"
+///     condition_threshold = {
+///       filter   = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""
+///       duration = "60s"
+///       forecast_options = {
+///         forecast_horizon = "3600s"
+///       }
+///       comparison = "COMPARISON_GT"
+///       aggregations = [{
+///         "alignmentPeriod"  = "60s"
+///         "perSeriesAligner" = "ALIGN_RATE"
+///       }]
+///     }
+///   }
+///   user_labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -573,8 +666,9 @@ import 'alert_policy_state.dart';
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdForecastOptionsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdAggregationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -751,6 +845,33 @@ import 'alert_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_alertpolicy" "alert_policy" {
+///   display_name = "My Alert Policy"
+///   combiner     = "OR"
+///   conditions {
+///     display_name = "test condition"
+///     condition_prometheus_query_language = {
+///       query               = "compute_googleapis_com:instance_cpu_usage_time > 0"
+///       duration            = "60s"
+///       evaluation_interval = "60s"
+///       alert_rule          = "AlwaysOn"
+///       rule_group          = "a test"
+///     }
+///   }
+///   alert_strategy = {
+///     auto_close = "1800s"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -762,8 +883,8 @@ import 'alert_policy_state.dart';
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionPrometheusQueryLanguageArgs;
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyAlertStrategyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -935,6 +1056,33 @@ import 'alert_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_monitoring_alertpolicy" "alert_policy" {
+///   display_name = "My Alert Policy"
+///   combiner     = "OR"
+///   conditions {
+///     display_name = "minutes row count"
+///     condition_sql = {
+///       query = "SELECT severity, resource FROM my_project.global._Default._AllLogs WHERE severity IS NOT NULL"
+///       minutes = {
+///         periodicity = 600
+///       }
+///       row_count_test = {
+///         comparison = "COMPARISON_GT"
+///         threshold  = "0"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -947,8 +1095,8 @@ import 'alert_policy_state.dart';
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionSqlArgs;
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionSqlMinutesArgs;
 /// import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionSqlRowCountTestArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1006,22 +1154,15 @@ import 'alert_policy_state.dart';
 /// AlertPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/alertPolicies/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default projects/{{project}}/alertPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
 /// ```
 class AlertPolicy extends pulumi.CustomResource {
@@ -1043,6 +1184,13 @@ class AlertPolicy extends pulumi.CustomResource {
   /// be ignored.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> creationRecords;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A short name or phrase used to identify the policy in
   /// dashboards, notifications, and incidents. To avoid confusion, don't use
   /// the same display name for multiple policies in the same project. The
@@ -1101,6 +1249,7 @@ class AlertPolicy extends pulumi.CustomResource {
     combiner = registerOutput<String>('combiner');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
     creationRecords = registerOutput<List<Map<String, dynamic>>>('creationRecords');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     documentation = registerOutput<AlertPolicyDocumentation?>('documentation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertPolicyDocumentation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool?>('enabled');
@@ -1138,6 +1287,7 @@ class AlertPolicy extends pulumi.CustomResource {
     combiner = registerOutput<String>('combiner');
     conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
     creationRecords = registerOutput<List<Map<String, dynamic>>>('creationRecords');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     documentation = registerOutput<AlertPolicyDocumentation?>('documentation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertPolicyDocumentation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool?>('enabled');

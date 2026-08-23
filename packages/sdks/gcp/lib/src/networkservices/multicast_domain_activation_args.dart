@@ -8,6 +8,13 @@ import 'multicast_domain_activation_traffic_spec.dart';
 /// {@endtemplate}
 /// {@macro pulumi_networkservices_multicast_domain_activation_multicast_domain_activation_args_doc}
 class MulticastDomainActivationArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional text description of the multicast domain activation.
   final pulumi.Input<String>? description;
   /// Option to allow disabling placement policy for multicast infrastructure.
@@ -16,7 +23,7 @@ class MulticastDomainActivationArgs {
   final pulumi.Input<bool>? disablePlacementPolicy;
   /// Labels as key-value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
@@ -38,6 +45,7 @@ class MulticastDomainActivationArgs {
   final pulumi.Input<MulticastDomainActivationTrafficSpec>? trafficSpec;
 
   /// Creates a new [MulticastDomainActivationArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional text description of the multicast domain activation.
   /// [disablePlacementPolicy] Option to allow disabling placement policy for multicast infrastructure.
   /// [labels] Labels as key-value pairs
@@ -47,6 +55,7 @@ class MulticastDomainActivationArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [trafficSpec] Specifies the traffic volume and multicast group scale parameters that are
   const MulticastDomainActivationArgs({
+    this.deletionPolicy,
     this.description,
     this.disablePlacementPolicy,
     this.labels,
@@ -59,6 +68,7 @@ class MulticastDomainActivationArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'disablePlacementPolicy': ?disablePlacementPolicy,
       'labels': ?labels,
@@ -72,6 +82,7 @@ class MulticastDomainActivationArgs {
 
   factory MulticastDomainActivationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastDomainActivationArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disablePlacementPolicy: (() { final guardedValue = map['disablePlacementPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -83,4 +94,3 @@ class MulticastDomainActivationArgs {
     );
   }
 }
-

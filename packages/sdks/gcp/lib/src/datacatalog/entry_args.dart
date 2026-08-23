@@ -8,6 +8,13 @@ import 'entry_gcs_fileset_spec.dart';
 /// {@endtemplate}
 /// {@macro pulumi_datacatalog_entry_entry_args_doc}
 class EntryArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
   final pulumi.Input<String>? description;
   /// Display information such as title and description. A short name to identify the entry,
@@ -42,12 +49,13 @@ class EntryArgs {
   final pulumi.Input<String>? userSpecifiedSystem;
   /// Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
   /// When creating an entry, users should check the enum values first, if nothing matches the entry
-  /// to be created, then provide a custom value, for example "my_special_type".
+  /// to be created, then provide a custom value, for example "mySpecialType".
   /// userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
   /// numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
   final pulumi.Input<String>? userSpecifiedType;
 
   /// Creates a new [EntryArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Entry description, which can consist of several sentences or paragraphs that describe entry contents.
   /// [displayName] Display information such as title and description. A short name to identify the entry,
   /// [entryGroup] The name of the entry group this entry is in.
@@ -59,6 +67,7 @@ class EntryArgs {
   /// [userSpecifiedSystem] This field indicates the entry's source system that Data Catalog does not integrate with.
   /// [userSpecifiedType] Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
   const EntryArgs({
+    this.deletionPolicy,
     this.description,
     this.displayName,
     required this.entryGroup,
@@ -73,6 +82,7 @@ class EntryArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'entryGroup': entryGroup,
@@ -88,6 +98,7 @@ class EntryArgs {
 
   factory EntryArgs.fromMap(Map<String, dynamic> map) {
     return EntryArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entryGroup: pulumi.Input.fromValue(map['entryGroup'] as String),
@@ -101,4 +112,3 @@ class EntryArgs {
     );
   }
 }
-

@@ -2,11 +2,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_instance_args.dart';
 import 'get_instance_result.dart';
 
-/// Use this data source to get information about a Lustre instance. For more information see the [API docs](https://cloud.google.com/filestore/docs/lustre/reference/rest/v1/projects.locations.instances).
+/// Use this data source to get information about a Lustre instance. For more information see the [API docs](https://docs.cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances).
 ///
 /// ## Example Usage
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_lustre_getinstance" "instance" {
+///   name = "my-instance"
+///   zone = "us-central1-a"
+/// }
+/// ```
 /// ```yaml
 /// variables:
 ///   instance:

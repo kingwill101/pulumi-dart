@@ -81,6 +81,22 @@ import 'app_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_appgateway" "app_gateway" {
+///   name      = "my-app-gateway"
+///   type      = "TCP_PROXY"
+///   region    = "us-central1"
+///   host_type = "GCP_REGIONAL_MIG"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -89,8 +105,8 @@ import 'app_gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.beyondcorp.AppGateway;
 /// import com.pulumi.gcp.beyondcorp.AppGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -211,6 +227,27 @@ import 'app_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_beyondcorp_appgateway" "app_gateway" {
+///   name         = "my-app-gateway"
+///   type         = "TCP_PROXY"
+///   region       = "us-central1"
+///   display_name = "some display name"
+///   labels = {
+///     "foo" = "bar"
+///     "bar" = "baz"
+///   }
+///   host_type = "GCP_REGIONAL_MIG"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -219,8 +256,8 @@ import 'app_gateway_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.beyondcorp.AppGateway;
 /// import com.pulumi.gcp.beyondcorp.AppGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -269,34 +306,30 @@ import 'app_gateway_state.dart';
 /// AppGateway can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/appGateways/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, AppGateway can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:beyondcorp/appGateway:AppGateway default projects/{{project}}/locations/{{region}}/appGateways/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:beyondcorp/appGateway:AppGateway default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:beyondcorp/appGateway:AppGateway default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:beyondcorp/appGateway:AppGateway default {{name}}
 /// ```
 class AppGateway extends pulumi.CustomResource {
   /// A list of connections allocated for the Gateway.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> allocatedConnections;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An arbitrary user-provided name for the AppGateway.
   late final pulumi.Output<String?> displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -308,7 +341,7 @@ class AppGateway extends pulumi.CustomResource {
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// ID of the AppGateway.
   late final pulumi.Output<String> name;
@@ -344,6 +377,7 @@ class AppGateway extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     allocatedConnections = registerOutput<List<Map<String, dynamic>>>('allocatedConnections');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     hostType = registerOutput<String?>('hostType');
@@ -381,6 +415,7 @@ class AppGateway extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     allocatedConnections = registerOutput<List<Map<String, dynamic>>>('allocatedConnections');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     hostType = registerOutput<String?>('hostType');

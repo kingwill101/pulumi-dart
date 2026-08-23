@@ -6,7 +6,6 @@ import 'crypto_key_version_template.dart';
 
 /// A `CryptoKey` represents a logical key that can be used for cryptographic operations.
 ///
-///
 /// &gt; **Note:** CryptoKeys cannot be deleted from Google Cloud Platform.
 /// Destroying a provider-managed CryptoKey will remove it from state
 /// and delete all CryptoKeyVersions, rendering the key unusable, but *will
@@ -95,7 +94,7 @@ import 'crypto_key_version_template.dart';
 /// 		}
 /// 		_, err = kms.NewCryptoKey(ctx, "example-key", &kms.CryptoKeyArgs{
 /// 			Name:           pulumi.String("crypto-key-example"),
-/// 			KeyRing:        keyring.ID(),
+/// 			KeyRing:        keyring.ID().ToIDOutput().ToStringOutput(),
 /// 			RotationPeriod: pulumi.String("7776000s"),
 /// 		})
 /// 		if err != nil {
@@ -103,6 +102,25 @@ import 'crypto_key_version_template.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyring" "keyring" {
+///   name     = "keyring-example"
+///   location = "global"
+/// }
+/// resource "gcp_kms_cryptokey" "example-key" {
+///   name            = "crypto-key-example"
+///   key_ring        = gcp_kms_keyring.keyring.id
+///   rotation_period = "7776000s"
 /// }
 /// ```
 /// ```java
@@ -115,8 +133,8 @@ import 'crypto_key_version_template.dart';
 /// import com.pulumi.gcp.kms.KeyRingArgs;
 /// import com.pulumi.gcp.kms.CryptoKey;
 /// import com.pulumi.gcp.kms.CryptoKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -239,7 +257,7 @@ import 'crypto_key_version_template.dart';
 /// 		}
 /// 		_, err = kms.NewCryptoKey(ctx, "example-asymmetric-sign-key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("crypto-key-example"),
-/// 			KeyRing: keyring.ID(),
+/// 			KeyRing: keyring.ID().ToIDOutput().ToStringOutput(),
 /// 			Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 /// 			VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 /// 				Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
@@ -250,6 +268,28 @@ import 'crypto_key_version_template.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_kms_keyring" "keyring" {
+///   name     = "keyring-example"
+///   location = "global"
+/// }
+/// resource "gcp_kms_cryptokey" "example-asymmetric-sign-key" {
+///   name     = "crypto-key-example"
+///   key_ring = gcp_kms_keyring.keyring.id
+///   purpose  = "ASYMMETRIC_SIGN"
+///   version_template = {
+///     algorithm = "EC_SIGN_P384_SHA384"
+///   }
 /// }
 /// ```
 /// ```java
@@ -263,8 +303,8 @@ import 'crypto_key_version_template.dart';
 /// import com.pulumi.gcp.kms.CryptoKey;
 /// import com.pulumi.gcp.kms.CryptoKeyArgs;
 /// import com.pulumi.gcp.kms.inputs.CryptoKeyVersionTemplateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -316,22 +356,26 @@ import 'crypto_key_version_template.dart';
 /// CryptoKey can be imported using any of these accepted formats:
 ///
 /// * `{{key_ring}}/cryptoKeys/{{name}}`
-///
 /// * `{{key_ring}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/{{name}}
 /// ```
 class CryptoKey extends pulumi.CustomResource {
   /// The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
   /// The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
   late final pulumi.Output<String> cryptoKeyBackend;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
   /// If not specified at creation time, the default duration is 30 days.
   late final pulumi.Output<String> destroyScheduledDuration;
@@ -339,6 +383,7 @@ class CryptoKey extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Whether this key may contain imported versions only.
   late final pulumi.Output<bool> importOnly;
+  /// (Optional, Beta)
   /// The policy used for Key Access Justifications Policy Enforcement. If this
   /// field is present and this key is enrolled in Key Access Justifications
   /// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -355,7 +400,7 @@ class CryptoKey extends pulumi.CustomResource {
   /// Labels with user-defined metadata to apply to this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The resource name for the CryptoKey.
   late final pulumi.Output<String> name;
@@ -400,6 +445,7 @@ class CryptoKey extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cryptoKeyBackend = registerOutput<String>('cryptoKeyBackend');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destroyScheduledDuration = registerOutput<String>('destroyScheduledDuration');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     importOnly = registerOutput<bool>('importOnly');
@@ -439,6 +485,7 @@ class CryptoKey extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cryptoKeyBackend = registerOutput<String>('cryptoKeyBackend');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     destroyScheduledDuration = registerOutput<String>('destroyScheduledDuration');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     importOnly = registerOutput<bool>('importOnly');

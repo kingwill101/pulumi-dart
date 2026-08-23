@@ -8,6 +8,13 @@ import 'region_per_instance_config_preserved_state.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_region_per_instance_config_region_per_instance_config_args_doc}
 class RegionPerInstanceConfigArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The minimal action to perform on the instance during an update.
   /// Default is `NONE`. Possible values are:
   /// * REPLACE
@@ -43,6 +50,7 @@ class RegionPerInstanceConfigArgs {
   final pulumi.Input<bool>? removeInstanceStateOnDestroy;
 
   /// Creates a new [RegionPerInstanceConfigArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [minimalAction] The minimal action to perform on the instance during an update.
   /// [mostDisruptiveAllowedAction] The most disruptive action to perform on the instance during an update.
   /// [name] The name for this per-instance config and its corresponding instance.
@@ -53,6 +61,7 @@ class RegionPerInstanceConfigArgs {
   /// [removeInstanceOnDestroy] When true, deleting this config will immediately remove the underlying instance.
   /// [removeInstanceStateOnDestroy] When true, deleting this config will immediately remove any specified state from the underlying instance.
   const RegionPerInstanceConfigArgs({
+    this.deletionPolicy,
     this.minimalAction,
     this.mostDisruptiveAllowedAction,
     this.name,
@@ -66,6 +75,7 @@ class RegionPerInstanceConfigArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'minimalAction': ?minimalAction,
       'mostDisruptiveAllowedAction': ?mostDisruptiveAllowedAction,
       'name': ?name,
@@ -80,6 +90,7 @@ class RegionPerInstanceConfigArgs {
 
   factory RegionPerInstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return RegionPerInstanceConfigArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minimalAction: (() { final guardedValue = map['minimalAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mostDisruptiveAllowedAction: (() { final guardedValue = map['mostDisruptiveAllowedAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -92,4 +103,3 @@ class RegionPerInstanceConfigArgs {
     );
   }
 }
-

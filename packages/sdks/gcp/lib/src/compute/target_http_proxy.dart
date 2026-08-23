@@ -183,14 +183,14 @@ import 'target_http_proxy_state.dart';
 /// 			PortName:     pulumi.String("http"),
 /// 			Protocol:     pulumi.String("HTTP"),
 /// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID(),
+/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
 /// 			Name:           pulumi.String("url-map"),
-/// 			DefaultService: defaultBackendService.ID(),
+/// 			DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.URLMapHostRuleArray{
 /// 				&compute.URLMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -202,13 +202,13 @@ import 'target_http_proxy_state.dart';
 /// 			PathMatchers: compute.URLMapPathMatcherArray{
 /// 				&compute.URLMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: defaultBackendService.ID(),
+/// 					DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 					PathRules: compute.URLMapPathMatcherPathRuleArray{
 /// 						&compute.URLMapPathMatcherPathRuleArgs{
 /// 							Paths: pulumi.StringArray{
 /// 								pulumi.String("/*"),
 /// 							},
-/// 							Service: defaultBackendService.ID(),
+/// 							Service: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
@@ -219,13 +219,56 @@ import 'target_http_proxy_state.dart';
 /// 		}
 /// 		_, err = compute.NewTargetHttpProxy(ctx, "default", &compute.TargetHttpProxyArgs{
 /// 			Name:   pulumi.String("test-proxy"),
-/// 			UrlMap: defaultURLMap.ID(),
+/// 			UrlMap: defaultURLMap.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_targethttpproxy" "default" {
+///   name    = "test-proxy"
+///   url_map = gcp_compute_urlmap.default.id
+/// }
+/// resource "gcp_compute_urlmap" "default" {
+///   name            = "url-map"
+///   default_service = gcp_compute_backendservice.default.id
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_backendservice.default.id
+///     path_rules {
+///       paths   = ["/*"]
+///       service = gcp_compute_backendservice.default.id
+///     }
+///   }
+/// }
+/// resource "gcp_compute_backendservice" "default" {
+///   name          = "backend-service"
+///   port_name     = "http"
+///   protocol      = "HTTP"
+///   timeout_sec   = 10
+///   health_checks = gcp_compute_httphealthcheck.default.id
+/// }
+/// resource "gcp_compute_httphealthcheck" "default" {
+///   name               = "http-health-check"
+///   request_path       = "/"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
 /// }
 /// ```
 /// ```java
@@ -242,10 +285,11 @@ import 'target_http_proxy_state.dart';
 /// import com.pulumi.gcp.compute.URLMapArgs;
 /// import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleArgs;
 /// import com.pulumi.gcp.compute.TargetHttpProxy;
 /// import com.pulumi.gcp.compute.TargetHttpProxyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -516,14 +560,14 @@ import 'target_http_proxy_state.dart';
 /// 			Protocol:            pulumi.String("HTTP"),
 /// 			TimeoutSec:          pulumi.Int(10),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-/// 			HealthChecks:        defaultHttpHealthCheck.ID(),
+/// 			HealthChecks:        defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
 /// 			Name:           pulumi.String("url-map"),
-/// 			DefaultService: defaultBackendService.ID(),
+/// 			DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.URLMapHostRuleArray{
 /// 				&compute.URLMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -535,13 +579,13 @@ import 'target_http_proxy_state.dart';
 /// 			PathMatchers: compute.URLMapPathMatcherArray{
 /// 				&compute.URLMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: defaultBackendService.ID(),
+/// 					DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 					PathRules: compute.URLMapPathMatcherPathRuleArray{
 /// 						&compute.URLMapPathMatcherPathRuleArgs{
 /// 							Paths: pulumi.StringArray{
 /// 								pulumi.String("/*"),
 /// 							},
-/// 							Service: defaultBackendService.ID(),
+/// 							Service: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
@@ -553,13 +597,58 @@ import 'target_http_proxy_state.dart';
 /// 		_, err = compute.NewTargetHttpProxy(ctx, "default", &compute.TargetHttpProxyArgs{
 /// 			Name:                    pulumi.String("test-http-keep-alive-timeout-proxy"),
 /// 			HttpKeepAliveTimeoutSec: pulumi.Int(610),
-/// 			UrlMap:                  defaultURLMap.ID(),
+/// 			UrlMap:                  defaultURLMap.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_targethttpproxy" "default" {
+///   name                        = "test-http-keep-alive-timeout-proxy"
+///   http_keep_alive_timeout_sec = 610
+///   url_map                     = gcp_compute_urlmap.default.id
+/// }
+/// resource "gcp_compute_urlmap" "default" {
+///   name            = "url-map"
+///   default_service = gcp_compute_backendservice.default.id
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_backendservice.default.id
+///     path_rules {
+///       paths   = ["/*"]
+///       service = gcp_compute_backendservice.default.id
+///     }
+///   }
+/// }
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "backend-service"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   health_checks         = gcp_compute_httphealthcheck.default.id
+/// }
+/// resource "gcp_compute_httphealthcheck" "default" {
+///   name               = "http-health-check"
+///   request_path       = "/"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
 /// }
 /// ```
 /// ```java
@@ -576,10 +665,11 @@ import 'target_http_proxy_state.dart';
 /// import com.pulumi.gcp.compute.URLMapArgs;
 /// import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleArgs;
 /// import com.pulumi.gcp.compute.TargetHttpProxy;
 /// import com.pulumi.gcp.compute.TargetHttpProxyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -760,13 +850,34 @@ import 'target_http_proxy_state.dart';
 /// 		}
 /// 		_, err = compute.NewTargetHttpProxy(ctx, "default", &compute.TargetHttpProxyArgs{
 /// 			Name:   pulumi.String("test-https-redirect-proxy"),
-/// 			UrlMap: defaultURLMap.ID(),
+/// 			UrlMap: defaultURLMap.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_targethttpproxy" "default" {
+///   name    = "test-https-redirect-proxy"
+///   url_map = gcp_compute_urlmap.default.id
+/// }
+/// resource "gcp_compute_urlmap" "default" {
+///   name = "url-map"
+///   default_url_redirect = {
+///     https_redirect = true
+///     strip_query    = false
+///   }
 /// }
 /// ```
 /// ```java
@@ -780,8 +891,8 @@ import 'target_http_proxy_state.dart';
 /// import com.pulumi.gcp.compute.inputs.URLMapDefaultUrlRedirectArgs;
 /// import com.pulumi.gcp.compute.TargetHttpProxy;
 /// import com.pulumi.gcp.compute.TargetHttpProxyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1001,14 +1112,14 @@ import 'target_http_proxy_state.dart';
 /// 			PortName:     pulumi.String("http"),
 /// 			Protocol:     pulumi.String("HTTP"),
 /// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID(),
+/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
 /// 			Name:           pulumi.String("url-map"),
-/// 			DefaultService: defaultBackendService.ID(),
+/// 			DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 			HostRules: compute.URLMapHostRuleArray{
 /// 				&compute.URLMapHostRuleArgs{
 /// 					Hosts: pulumi.StringArray{
@@ -1020,13 +1131,13 @@ import 'target_http_proxy_state.dart';
 /// 			PathMatchers: compute.URLMapPathMatcherArray{
 /// 				&compute.URLMapPathMatcherArgs{
 /// 					Name:           pulumi.String("allpaths"),
-/// 					DefaultService: defaultBackendService.ID(),
+/// 					DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 					PathRules: compute.URLMapPathMatcherPathRuleArray{
 /// 						&compute.URLMapPathMatcherPathRuleArgs{
 /// 							Paths: pulumi.StringArray{
 /// 								pulumi.String("/*"),
 /// 							},
-/// 							Service: defaultBackendService.ID(),
+/// 							Service: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
@@ -1037,7 +1148,7 @@ import 'target_http_proxy_state.dart';
 /// 		}
 /// 		_default, err := compute.NewTargetHttpProxy(ctx, "default", &compute.TargetHttpProxyArgs{
 /// 			Name:   pulumi.String("test-fingerprint-proxy"),
-/// 			UrlMap: defaultURLMap.ID(),
+/// 			UrlMap: defaultURLMap.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1045,6 +1156,52 @@ import 'target_http_proxy_state.dart';
 /// 		ctx.Export("targetHttpProxyFingerprint", _default.Fingerprint)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_targethttpproxy" "default" {
+///   name    = "test-fingerprint-proxy"
+///   url_map = gcp_compute_urlmap.default.id
+/// }
+/// resource "gcp_compute_urlmap" "default" {
+///   name            = "url-map"
+///   default_service = gcp_compute_backendservice.default.id
+///   host_rules {
+///     hosts        = ["mysite.com"]
+///     path_matcher = "allpaths"
+///   }
+///   path_matchers {
+///     name            = "allpaths"
+///     default_service = gcp_compute_backendservice.default.id
+///     path_rules {
+///       paths   = ["/*"]
+///       service = gcp_compute_backendservice.default.id
+///     }
+///   }
+/// }
+/// resource "gcp_compute_backendservice" "default" {
+///   name          = "backend-service"
+///   port_name     = "http"
+///   protocol      = "HTTP"
+///   timeout_sec   = 10
+///   health_checks = gcp_compute_httphealthcheck.default.id
+/// }
+/// resource "gcp_compute_httphealthcheck" "default" {
+///   name               = "http-health-check"
+///   request_path       = "/"
+///   check_interval_sec = 1
+///   timeout_sec        = 1
+/// }
+/// output "targetHttpProxyFingerprint" {
+///   value = gcp_compute_targethttpproxy.default.fingerprint
 /// }
 /// ```
 /// ```java
@@ -1061,10 +1218,11 @@ import 'target_http_proxy_state.dart';
 /// import com.pulumi.gcp.compute.URLMapArgs;
 /// import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
 /// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+/// import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleArgs;
 /// import com.pulumi.gcp.compute.TargetHttpProxy;
 /// import com.pulumi.gcp.compute.TargetHttpProxyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1168,27 +1326,27 @@ import 'target_http_proxy_state.dart';
 /// TargetHttpProxy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/targetHttpProxies/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, TargetHttpProxy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default projects/{{project}}/global/targetHttpProxies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{name}}
 /// ```
 class TargetHttpProxy extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
@@ -1244,6 +1402,7 @@ class TargetHttpProxy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     httpKeepAliveTimeoutSec = registerOutput<int?>('httpKeepAliveTimeoutSec');
@@ -1279,6 +1438,7 @@ class TargetHttpProxy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     httpKeepAliveTimeoutSec = registerOutput<int?>('httpKeepAliveTimeoutSec');

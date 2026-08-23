@@ -14,6 +14,13 @@ class RecommendationEngineArgs {
   final pulumi.Input<RecommendationEngineCommonConfig>? commonConfig;
   /// The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
   final pulumi.Input<List<String>> dataStoreIds;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
   final pulumi.Input<String> displayName;
   /// Unique ID to use for Recommendation Engine.
@@ -36,6 +43,7 @@ class RecommendationEngineArgs {
   /// Creates a new [RecommendationEngineArgs].
   /// [commonConfig] Common config spec that specifies the metadata of the engine.
   /// [dataStoreIds] The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
   /// [engineId] Unique ID to use for Recommendation Engine.
   /// [industryVertical] The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
@@ -45,6 +53,7 @@ class RecommendationEngineArgs {
   const RecommendationEngineArgs({
     this.commonConfig,
     required this.dataStoreIds,
+    this.deletionPolicy,
     required this.displayName,
     required this.engineId,
     this.industryVertical,
@@ -57,6 +66,7 @@ class RecommendationEngineArgs {
     return <String, dynamic>{
       'commonConfig': ?pulumi.Input.mapOptionalInputValue<RecommendationEngineCommonConfig, Map<String, dynamic>>(commonConfig, (value) => value.toMap()),
       'dataStoreIds': dataStoreIds,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': displayName,
       'engineId': engineId,
       'industryVertical': ?industryVertical,
@@ -70,6 +80,7 @@ class RecommendationEngineArgs {
     return RecommendationEngineArgs(
       commonConfig: (() { final guardedValue = map['commonConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecommendationEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataStoreIds: pulumi.Input.fromValue((map['dataStoreIds'] as List).cast<String>()),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       engineId: pulumi.Input.fromValue(map['engineId'] as String),
       industryVertical: (() { final guardedValue = map['industryVertical']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -79,4 +90,3 @@ class RecommendationEngineArgs {
     );
   }
 }
-

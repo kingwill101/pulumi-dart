@@ -7,15 +7,15 @@ import 'prevention_deidentify_template_deidentify_config_record_transformations_
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket {
   /// Upper bound of the range, exclusive; type must match min.
-  /// The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+  /// The `max` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
   /// Structure is documented below.
   final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax>? max;
   /// Lower bound of the range, inclusive. Type should be the same as max if used.
-  /// The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
+  /// The `min` block must only contain one argument. See the `bucketingConfig` block description for more information about choosing a data type.
   /// Structure is documented below.
   final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin>? min;
   /// Replacement value for this bucket.
-  /// The `replacement_value` block must only contain one argument.
+  /// The `replacementValue` block must only contain one argument.
   /// Structure is documented below.
   final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue> replacementValue;
 
@@ -45,4 +45,3 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     );
   }
 }
-

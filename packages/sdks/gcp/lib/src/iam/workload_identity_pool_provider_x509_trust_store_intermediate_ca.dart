@@ -25,4 +25,3 @@ class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa {
     );
   }
 }
-

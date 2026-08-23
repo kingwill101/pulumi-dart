@@ -9,6 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CodeRepositoryIndexArgs {
   /// Required. Id of the Code Repository Index.
   final pulumi.Input<String> codeRepositoryIndexId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
   final pulumi.Input<bool>? forceDestroy;
   /// Optional. Immutable. Customer-managed encryption key name, in the format
@@ -16,7 +23,7 @@ class CodeRepositoryIndexArgs {
   final pulumi.Input<String>? kmsKey;
   /// Optional. Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location of the Code Repository Index, for example `us-central1`.
   final pulumi.Input<String> location;
@@ -26,6 +33,7 @@ class CodeRepositoryIndexArgs {
 
   /// Creates a new [CodeRepositoryIndexArgs].
   /// [codeRepositoryIndexId] Required. Id of the Code Repository Index.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [forceDestroy] If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
   /// [kmsKey] Optional. Immutable. Customer-managed encryption key name, in the format
   /// [labels] Optional. Labels as key value pairs.
@@ -33,6 +41,7 @@ class CodeRepositoryIndexArgs {
   /// [project] The ID of the project in which the resource belongs.
   const CodeRepositoryIndexArgs({
     required this.codeRepositoryIndexId,
+    this.deletionPolicy,
     this.forceDestroy,
     this.kmsKey,
     this.labels,
@@ -43,6 +52,7 @@ class CodeRepositoryIndexArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'codeRepositoryIndexId': codeRepositoryIndexId,
+      'deletionPolicy': ?deletionPolicy,
       'forceDestroy': ?forceDestroy,
       'kmsKey': ?kmsKey,
       'labels': ?labels,
@@ -54,6 +64,7 @@ class CodeRepositoryIndexArgs {
   factory CodeRepositoryIndexArgs.fromMap(Map<String, dynamic> map) {
     return CodeRepositoryIndexArgs(
       codeRepositoryIndexId: pulumi.Input.fromValue(map['codeRepositoryIndexId'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       forceDestroy: (() { final guardedValue = map['forceDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -62,4 +73,3 @@ class CodeRepositoryIndexArgs {
     );
   }
 }
-

@@ -6,12 +6,12 @@ import 'cluster_secret_manager_config_rotation_config.dart';
 class ClusterSecretManagerConfig {
   /// Enable the Secret Manager add-on for this cluster.
   final pulumi.Input<bool> enabled;
-  /// config for secret manager auto rotation. Structure is docuemented below
+  /// config for secret manager auto rotation. Structure is documented below
   final pulumi.Input<ClusterSecretManagerConfigRotationConfig>? rotationConfig;
 
   /// Creates a new [ClusterSecretManagerConfig].
   /// [enabled] Enable the Secret Manager add-on for this cluster.
-  /// [rotationConfig] config for secret manager auto rotation. Structure is docuemented below
+  /// [rotationConfig] config for secret manager auto rotation. Structure is documented below
   const ClusterSecretManagerConfig({
     required this.enabled,
     this.rotationConfig,
@@ -31,4 +31,3 @@ class ClusterSecretManagerConfig {
     );
   }
 }
-

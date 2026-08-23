@@ -4,6 +4,15 @@ import 'projects_policy_binding_condition.dart';
 import 'projects_policy_binding_state.dart';
 import 'projects_policy_binding_target.dart';
 
+/// A policy binding to a project. This is a Terraform resource, and maps to a policy binding resource in GCP.
+///
+///
+/// To get more information about ProjectsPolicyBinding, see:
+///
+/// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/projects.locations.policyBindings)
+/// * How-to Guides
+/// * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
+///
 /// ## Example Usage
 ///
 /// ### Iam Projects Policy Binding
@@ -173,6 +182,44 @@ import 'projects_policy_binding_target.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_iam_principalaccessboundarypolicy" "pab_policy" {
+///   organization                        = "123456789"
+///   location                            = "global"
+///   display_name                        = "binding for all principals in the project"
+///   principal_access_boundary_policy_id = "my-pab-policy"
+/// }
+/// resource "time_sleep" "wait_60_seconds" {
+///   depends_on      = [gcp_iam_principalaccessboundarypolicy.pab_policy]
+///   create_duration = "60s"
+/// }
+/// resource "gcp_iam_projectspolicybinding" "binding-for-all-project-principals" {
+///   depends_on        = [time_sleep.wait_60_seconds]
+///   project           = data.gcp_organizations_getproject.project.project_id
+///   location          = "global"
+///   display_name      = "binding for all principals in the project"
+///   policy_kind       = "PRINCIPAL_ACCESS_BOUNDARY"
+///   policy_binding_id = "binding-for-all-project-principals"
+///   policy            ="organizations/123456789/locations/global/principalAccessBoundaryPolicies/${gcp_iam_principalaccessboundarypolicy.pab_policy.principal_access_boundary_policy_id}"
+///   target = {
+///     principal_set ="//cloudresourcemanager.googleapis.com/projects/${data.gcp_organizations_getproject.project.project_id}"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -189,8 +236,8 @@ import 'projects_policy_binding_target.dart';
 /// import com.pulumi.gcp.iam.ProjectsPolicyBindingArgs;
 /// import com.pulumi.gcp.iam.inputs.ProjectsPolicyBindingTargetArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,29 +327,22 @@ import 'projects_policy_binding_target.dart';
 /// ProjectsPolicyBinding can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/policyBindings/{{policy_binding_id}}`
-///
 /// * `{{project}}/{{location}}/{{policy_binding_id}}`
-///
 /// * `{{location}}/{{policy_binding_id}}`
+///
 ///
 /// When using the `pulumi import` command, ProjectsPolicyBinding can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default projects/{{project}}/locations/{{location}}/policyBindings/{{policy_binding_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default {{project}}/{{location}}/{{policy_binding_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding default {{location}}/{{policy_binding_id}}
 /// ```
 class ProjectsPolicyBinding extends pulumi.CustomResource {
   /// Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Represents a textual expression in the Common Expression Language
   /// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
@@ -331,8 +371,16 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
   late final pulumi.Output<ProjectsPolicyBindingCondition?> condition;
   /// Output only. The time when the policy binding was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
   late final pulumi.Output<String> etag;
@@ -378,6 +426,7 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     condition = registerOutput<ProjectsPolicyBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectsPolicyBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');
@@ -419,6 +468,7 @@ class ProjectsPolicyBinding extends pulumi.CustomResource {
     annotations = registerOutput<Map<String, String>?>('annotations');
     condition = registerOutput<ProjectsPolicyBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectsPolicyBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     etag = registerOutput<String>('etag');

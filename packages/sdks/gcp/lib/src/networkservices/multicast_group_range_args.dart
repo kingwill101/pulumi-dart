@@ -12,10 +12,17 @@ class MulticastGroupRangeArgs {
   /// IP addresses within the range defined by this MulticastGroupRange. The
   /// project can be specified using its project ID or project number. If left
   /// empty, then all consumer projects are allowed (unless
-  /// require_explicit_accept is set to true) once they have VPC networks
+  /// requireExplicitAccept is set to true) once they have VPC networks
   /// associated to the multicast domain. The current max length of the accept
   /// list is 100.
   final pulumi.Input<List<String>>? consumerAcceptLists;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional text description of the multicast group range.
   final pulumi.Input<String>? description;
   /// Multicast group range's distribution scope. Intra-zone or intra-region
@@ -27,7 +34,7 @@ class MulticastGroupRangeArgs {
   final pulumi.Input<String>? distributionScope;
   /// Labels as key-value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
@@ -47,7 +54,7 @@ class MulticastGroupRangeArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-  /// Whether an empty consumer_accept_list will deny all consumer projects.
+  /// Whether an empty consumerAcceptList will deny all consumer projects.
   final pulumi.Input<bool>? requireExplicitAccept;
   /// The resource name of the internal range reserved for this
   /// multicast group range.
@@ -59,6 +66,7 @@ class MulticastGroupRangeArgs {
 
   /// Creates a new [MulticastGroupRangeArgs].
   /// [consumerAcceptLists] A list of consumer projects that are allowed to subscribe to the multicast
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional text description of the multicast group range.
   /// [distributionScope] Multicast group range's distribution scope. Intra-zone or intra-region
   /// [labels] Labels as key-value pairs.
@@ -67,10 +75,11 @@ class MulticastGroupRangeArgs {
   /// [multicastDomain] The resource name of the multicast domain in which to create this
   /// [multicastGroupRangeId] A unique name for the multicast group range.
   /// [project] The ID of the project in which the resource belongs.
-  /// [requireExplicitAccept] Whether an empty consumer_accept_list will deny all consumer projects.
+  /// [requireExplicitAccept] Whether an empty consumerAcceptList will deny all consumer projects.
   /// [reservedInternalRange] The resource name of the internal range reserved for this
   const MulticastGroupRangeArgs({
     this.consumerAcceptLists,
+    this.deletionPolicy,
     this.description,
     this.distributionScope,
     this.labels,
@@ -86,6 +95,7 @@ class MulticastGroupRangeArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'consumerAcceptLists': ?consumerAcceptLists,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'distributionScope': ?distributionScope,
       'labels': ?labels,
@@ -102,6 +112,7 @@ class MulticastGroupRangeArgs {
   factory MulticastGroupRangeArgs.fromMap(Map<String, dynamic> map) {
     return MulticastGroupRangeArgs(
       consumerAcceptLists: (() { final guardedValue = map['consumerAcceptLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       distributionScope: (() { final guardedValue = map['distributionScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -115,4 +126,3 @@ class MulticastGroupRangeArgs {
     );
   }
 }
-

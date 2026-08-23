@@ -6,8 +6,8 @@ import 'task_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Dataplex Task. Each of these resources serves a different use case:
 ///
 /// * `gcp.dataplex.TaskIamPolicy`: Authoritative. Sets the IAM policy for the task and replaces any existing policy already attached.
-/// * `gcp.dataplex.TaskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the task are preserved.
-/// * `gcp.dataplex.TaskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the task are preserved.
+/// * `gcp.dataplex.TaskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the task are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.dataplex.TaskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the task are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -16,7 +16,6 @@ import 'task_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.dataplex.TaskIamPolicy` **cannot** be used in conjunction with `gcp.dataplex.TaskIamBinding` and `gcp.dataplex.TaskIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.dataplex.TaskIamBinding` resources **can be** used in conjunction with `gcp.dataplex.TaskIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.dataplex.TaskIamPolicy
@@ -127,6 +126,30 @@ import 'task_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_dataplex_taskiampolicy" "policy" {
+///   project     = example.project
+///   location    = example.location
+///   lake        = example.lake
+///   task_id     = example.taskId
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -135,10 +158,11 @@ import 'task_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.dataplex.TaskIamPolicy;
 /// import com.pulumi.gcp.dataplex.TaskIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -158,10 +182,10 @@ import 'task_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new TaskIamPolicy("policy", TaskIamPolicyArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.lake())
-///             .taskId(example.taskId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("lake"))
+///             .taskId(example.get("taskId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -268,6 +292,24 @@ import 'task_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_taskiambinding" "binding" {
+///   project  = example.project
+///   location = example.location
+///   lake     = example.lake
+///   task_id  = example.taskId
+///   role     = "roles/viewer"
+///   members  = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -276,8 +318,8 @@ import 'task_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.TaskIamBinding;
 /// import com.pulumi.gcp.dataplex.TaskIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -290,10 +332,10 @@ import 'task_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new TaskIamBinding("binding", TaskIamBindingArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.lake())
-///             .taskId(example.taskId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("lake"))
+///             .taskId(example.get("taskId"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -389,6 +431,24 @@ import 'task_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_taskiammember" "member" {
+///   project  = example.project
+///   location = example.location
+///   lake     = example.lake
+///   task_id  = example.taskId
+///   role     = "roles/viewer"
+///   member   = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -397,8 +457,8 @@ import 'task_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.TaskIamMember;
 /// import com.pulumi.gcp.dataplex.TaskIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -411,10 +471,10 @@ import 'task_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new TaskIamMember("member", TaskIamMemberArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.lake())
-///             .taskId(example.taskId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("lake"))
+///             .taskId(example.get("taskId"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -446,8 +506,8 @@ import 'task_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Dataplex Task. Each of these resources serves a different use case:
 ///
 /// * `gcp.dataplex.TaskIamPolicy`: Authoritative. Sets the IAM policy for the task and replaces any existing policy already attached.
-/// * `gcp.dataplex.TaskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the task are preserved.
-/// * `gcp.dataplex.TaskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the task are preserved.
+/// * `gcp.dataplex.TaskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the task are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.dataplex.TaskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the task are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -456,7 +516,6 @@ import 'task_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.dataplex.TaskIamPolicy` **cannot** be used in conjunction with `gcp.dataplex.TaskIamBinding` and `gcp.dataplex.TaskIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.dataplex.TaskIamBinding` resources **can be** used in conjunction with `gcp.dataplex.TaskIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.dataplex.TaskIamPolicy
@@ -567,6 +626,30 @@ import 'task_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_dataplex_taskiampolicy" "policy" {
+///   project     = example.project
+///   location    = example.location
+///   lake        = example.lake
+///   task_id     = example.taskId
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -575,10 +658,11 @@ import 'task_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.dataplex.TaskIamPolicy;
 /// import com.pulumi.gcp.dataplex.TaskIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -598,10 +682,10 @@ import 'task_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new TaskIamPolicy("policy", TaskIamPolicyArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.lake())
-///             .taskId(example.taskId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("lake"))
+///             .taskId(example.get("taskId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -708,6 +792,24 @@ import 'task_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_taskiambinding" "binding" {
+///   project  = example.project
+///   location = example.location
+///   lake     = example.lake
+///   task_id  = example.taskId
+///   role     = "roles/viewer"
+///   members  = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -716,8 +818,8 @@ import 'task_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.TaskIamBinding;
 /// import com.pulumi.gcp.dataplex.TaskIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -730,10 +832,10 @@ import 'task_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new TaskIamBinding("binding", TaskIamBindingArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.lake())
-///             .taskId(example.taskId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("lake"))
+///             .taskId(example.get("taskId"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -829,6 +931,24 @@ import 'task_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_taskiammember" "member" {
+///   project  = example.project
+///   location = example.location
+///   lake     = example.lake
+///   task_id  = example.taskId
+///   role     = "roles/viewer"
+///   member   = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -837,8 +957,8 @@ import 'task_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.TaskIamMember;
 /// import com.pulumi.gcp.dataplex.TaskIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -851,10 +971,10 @@ import 'task_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new TaskIamMember("member", TaskIamMemberArgs.builder()
-///             .project(example.project())
-///             .location(example.location())
-///             .lake(example.lake())
-///             .taskId(example.taskId())
+///             .project(example.get("project"))
+///             .location(example.get("location"))
+///             .lake(example.get("lake"))
+///             .taskId(example.get("taskId"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -881,11 +1001,8 @@ import 'task_iam_binding_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
-///
 /// * {{project}}/{{location}}/{{lake}}/{{task_id}}
-///
 /// * {{location}}/{{lake}}/{{task_id}}
-///
 /// * {{task_id}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -893,25 +1010,21 @@ import 'task_iam_binding_state.dart';
 /// Dataplex task IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:dataplex/taskIamBinding:TaskIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} roles/viewer user:jane@example.com"
+/// $ terraform import google_dataplex_task_iam_member.editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:dataplex/taskIamBinding:TaskIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} roles/viewer"
+/// $ terraform import google_dataplex_task_iam_binding.editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:dataplex/taskIamBinding:TaskIamBinding editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class TaskIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<TaskIamBindingCondition?> condition;

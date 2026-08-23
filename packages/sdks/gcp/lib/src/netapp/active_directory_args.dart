@@ -13,6 +13,13 @@ class ActiveDirectoryArgs {
   final pulumi.Input<bool>? aesEncryption;
   /// Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
   final pulumi.Input<List<String>>? backupOperators;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// Comma separated list of DNS server IP addresses for the Active Directory domain.
@@ -28,7 +35,7 @@ class ActiveDirectoryArgs {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Specifies whether or not the LDAP traffic needs to be signed.
   final pulumi.Input<bool>? ldapSigning;
@@ -46,6 +53,8 @@ class ActiveDirectoryArgs {
   /// Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
   /// Defaults to `CN=Computers` if left empty.
   final pulumi.Input<String>? organizationalUnit;
+  /// Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
+  /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String> password;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
@@ -62,6 +71,7 @@ class ActiveDirectoryArgs {
   /// [administrators] Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
   /// [aesEncryption] Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
   /// [backupOperators] Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [dns] Comma separated list of DNS server IP addresses for the Active Directory domain.
   /// [domain] Fully qualified domain name for the Active Directory domain.
@@ -75,7 +85,7 @@ class ActiveDirectoryArgs {
   /// [netBiosPrefix] NetBIOS name prefix of the server to be created.
   /// [nfsUsersWithLdap] Local UNIX users on clients without valid user information in Active Directory are blocked from access to LDAP enabled volumes.
   /// [organizationalUnit] Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
-  /// [password] Required.
+  /// [password] Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
   /// [project] The ID of the project in which the resource belongs.
   /// [securityOperators] Domain accounts that require elevated privileges such as `SeSecurityPrivilege` to manage security logs. Comma-separated list.
   /// [site] Specifies an Active Directory site to manage domain controller selection.
@@ -84,6 +94,7 @@ class ActiveDirectoryArgs {
     this.administrators,
     this.aesEncryption,
     this.backupOperators,
+    this.deletionPolicy,
     this.description,
     required this.dns,
     required this.domain,
@@ -109,6 +120,7 @@ class ActiveDirectoryArgs {
       'administrators': ?administrators,
       'aesEncryption': ?aesEncryption,
       'backupOperators': ?backupOperators,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'dns': dns,
       'domain': domain,
@@ -135,6 +147,7 @@ class ActiveDirectoryArgs {
       administrators: (() { final guardedValue = map['administrators']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       aesEncryption: (() { final guardedValue = map['aesEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       backupOperators: (() { final guardedValue = map['backupOperators']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dns: pulumi.Input.fromValue(map['dns'] as String),
       domain: pulumi.Input.fromValue(map['domain'] as String),
@@ -156,4 +169,3 @@ class ActiveDirectoryArgs {
     );
   }
 }
-

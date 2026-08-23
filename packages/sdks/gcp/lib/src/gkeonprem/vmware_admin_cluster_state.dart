@@ -30,7 +30,7 @@ class VmwareAdminClusterState {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// AAGConfig specifies whether to spread VMware Admin Cluster nodes across at
   /// least three physical hosts in the datacenter.
@@ -51,6 +51,7 @@ class VmwareAdminClusterState {
   final pulumi.Input<String>? createTime;
   /// A human readable description of this VMware admin cluster.
   final pulumi.Input<String>? description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// If set, the advanced cluster feature is enabled.
   final pulumi.Input<bool>? enableAdvancedCluster;
@@ -128,7 +129,7 @@ class VmwareAdminClusterState {
   /// [controlPlaneNode] The VMware admin cluster control plane node configuration.
   /// [createTime] The time the cluster was created, in RFC3339 text format.
   /// [description] A human readable description of this VMware admin cluster.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [enableAdvancedCluster] If set, the advanced cluster feature is enabled.
   /// [endpoint] The DNS name of VMware admin cluster's API server.
   /// [etag] This checksum is computed by the server based on the value of other
@@ -256,4 +257,3 @@ class VmwareAdminClusterState {
     );
   }
 }
-

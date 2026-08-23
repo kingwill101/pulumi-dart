@@ -9,11 +9,18 @@ import 'certificate_self_managed.dart';
 /// {@endtemplate}
 /// {@macro pulumi_certificatemanager_certificate_certificate_args_doc}
 class CertificateArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A human-readable description of the resource.
   final pulumi.Input<String>? description;
   /// Set of label tags associated with the Certificate resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The Certificate Manager location. If not specified, "global" is used.
   final pulumi.Input<String>? location;
@@ -42,10 +49,14 @@ class CertificateArgs {
   /// Certificate data for a SelfManaged Certificate.
   /// SelfManaged Certificates are uploaded by the user. Updating such
   /// certificates before they expire remains the user's responsibility.
+  /// The certificate data can be updated in place; changes to `pemCertificate`
+  /// and `pemPrivateKey` are applied via the API's PATCH method instead of
+  /// forcing recreation of the certificate.
   /// Structure is documented below.
   final pulumi.Input<CertificateSelfManaged>? selfManaged;
 
   /// Creates a new [CertificateArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A human-readable description of the resource.
   /// [labels] Set of label tags associated with the Certificate resource.
   /// [location] The Certificate Manager location. If not specified, "global" is used.
@@ -55,6 +66,7 @@ class CertificateArgs {
   /// [scope] The scope of the certificate.
   /// [selfManaged] Certificate data for a SelfManaged Certificate.
   const CertificateArgs({
+    this.deletionPolicy,
     this.description,
     this.labels,
     this.location,
@@ -67,6 +79,7 @@ class CertificateArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'labels': ?labels,
       'location': ?location,
@@ -80,6 +93,7 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -91,4 +105,3 @@ class CertificateArgs {
     );
   }
 }
-

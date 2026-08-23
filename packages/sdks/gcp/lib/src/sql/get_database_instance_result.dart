@@ -18,14 +18,17 @@ class GetDatabaseInstanceResult {
   final List<GetDatabaseInstanceClone> clones;
   final String connectionName;
   final String databaseVersion;
+  final String deletionPolicy;
   final bool deletionProtection;
   final String dnsName;
   final List<GetDatabaseInstanceDnsName> dnsNames;
   final String encryptionKeyName;
+  final bool enforceNewSqlNetworkArchitecture;
   final String finalBackupDescription;
   final String firstIpAddress;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+  final bool includeReplicasForMajorVersionUpgrade;
   final String instanceType;
   final List<GetDatabaseInstanceIpAddress> ipAddresses;
   final String maintenanceVersion;
@@ -49,6 +52,7 @@ class GetDatabaseInstanceResult {
   final List<GetDatabaseInstanceServerCaCert> serverCaCerts;
   final String serviceAccountEmailAddress;
   final List<GetDatabaseInstanceSetting> settings;
+  final bool switchTransactionLogsToCloudStorageEnabled;
 
   /// Creates a new [GetDatabaseInstanceResult].
   /// [availableMaintenanceVersions] Required.
@@ -56,13 +60,16 @@ class GetDatabaseInstanceResult {
   /// [clones] Required.
   /// [connectionName] Required.
   /// [databaseVersion] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [dnsName] Required.
   /// [dnsNames] Required.
   /// [encryptionKeyName] Required.
+  /// [enforceNewSqlNetworkArchitecture] Required.
   /// [finalBackupDescription] Required.
   /// [firstIpAddress] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
+  /// [includeReplicasForMajorVersionUpgrade] Required.
   /// [instanceType] Required.
   /// [ipAddresses] Required.
   /// [maintenanceVersion] Required.
@@ -86,19 +93,23 @@ class GetDatabaseInstanceResult {
   /// [serverCaCerts] Required.
   /// [serviceAccountEmailAddress] Required.
   /// [settings] Required.
+  /// [switchTransactionLogsToCloudStorageEnabled] Required.
   const GetDatabaseInstanceResult({
     required this.availableMaintenanceVersions,
     required this.backupdrBackup,
     required this.clones,
     required this.connectionName,
     required this.databaseVersion,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.dnsName,
     required this.dnsNames,
     required this.encryptionKeyName,
+    required this.enforceNewSqlNetworkArchitecture,
     required this.finalBackupDescription,
     required this.firstIpAddress,
     required this.id,
+    required this.includeReplicasForMajorVersionUpgrade,
     required this.instanceType,
     required this.ipAddresses,
     required this.maintenanceVersion,
@@ -122,6 +133,7 @@ class GetDatabaseInstanceResult {
     required this.serverCaCerts,
     required this.serviceAccountEmailAddress,
     required this.settings,
+    required this.switchTransactionLogsToCloudStorageEnabled,
   });
 
   Map<String, dynamic> toMap() {
@@ -131,13 +143,16 @@ class GetDatabaseInstanceResult {
       'clones': pulumi.Input.encodeList<GetDatabaseInstanceClone, Map<String, dynamic>>(clones, (value) => value.toMap()),
       'connectionName': connectionName,
       'databaseVersion': databaseVersion,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'dnsName': dnsName,
       'dnsNames': pulumi.Input.encodeList<GetDatabaseInstanceDnsName, Map<String, dynamic>>(dnsNames, (value) => value.toMap()),
       'encryptionKeyName': encryptionKeyName,
+      'enforceNewSqlNetworkArchitecture': enforceNewSqlNetworkArchitecture,
       'finalBackupDescription': finalBackupDescription,
       'firstIpAddress': firstIpAddress,
       'id': id,
+      'includeReplicasForMajorVersionUpgrade': includeReplicasForMajorVersionUpgrade,
       'instanceType': instanceType,
       'ipAddresses': pulumi.Input.encodeList<GetDatabaseInstanceIpAddress, Map<String, dynamic>>(ipAddresses, (value) => value.toMap()),
       'maintenanceVersion': maintenanceVersion,
@@ -161,6 +176,7 @@ class GetDatabaseInstanceResult {
       'serverCaCerts': pulumi.Input.encodeList<GetDatabaseInstanceServerCaCert, Map<String, dynamic>>(serverCaCerts, (value) => value.toMap()),
       'serviceAccountEmailAddress': serviceAccountEmailAddress,
       'settings': pulumi.Input.encodeList<GetDatabaseInstanceSetting, Map<String, dynamic>>(settings, (value) => value.toMap()),
+      'switchTransactionLogsToCloudStorageEnabled': switchTransactionLogsToCloudStorageEnabled,
     };
   }
 
@@ -171,13 +187,16 @@ class GetDatabaseInstanceResult {
       clones: pulumi.Input.decodeList<GetDatabaseInstanceClone>(map['clones']!, (value) => GetDatabaseInstanceClone.fromMap((value as Map).cast<String, dynamic>())),
       connectionName: map['connectionName'] as String,
       databaseVersion: map['databaseVersion'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       dnsName: map['dnsName'] as String,
       dnsNames: pulumi.Input.decodeList<GetDatabaseInstanceDnsName>(map['dnsNames']!, (value) => GetDatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())),
       encryptionKeyName: map['encryptionKeyName'] as String,
+      enforceNewSqlNetworkArchitecture: map['enforceNewSqlNetworkArchitecture'] as bool,
       finalBackupDescription: map['finalBackupDescription'] as String,
       firstIpAddress: map['firstIpAddress'] as String,
       id: map['id'] as String,
+      includeReplicasForMajorVersionUpgrade: map['includeReplicasForMajorVersionUpgrade'] as bool,
       instanceType: map['instanceType'] as String,
       ipAddresses: pulumi.Input.decodeList<GetDatabaseInstanceIpAddress>(map['ipAddresses']!, (value) => GetDatabaseInstanceIpAddress.fromMap((value as Map).cast<String, dynamic>())),
       maintenanceVersion: map['maintenanceVersion'] as String,
@@ -201,7 +220,7 @@ class GetDatabaseInstanceResult {
       serverCaCerts: pulumi.Input.decodeList<GetDatabaseInstanceServerCaCert>(map['serverCaCerts']!, (value) => GetDatabaseInstanceServerCaCert.fromMap((value as Map).cast<String, dynamic>())),
       serviceAccountEmailAddress: map['serviceAccountEmailAddress'] as String,
       settings: pulumi.Input.decodeList<GetDatabaseInstanceSetting>(map['settings']!, (value) => GetDatabaseInstanceSetting.fromMap((value as Map).cast<String, dynamic>())),
+      switchTransactionLogsToCloudStorageEnabled: map['switchTransactionLogsToCloudStorageEnabled'] as bool,
     );
   }
 }
-

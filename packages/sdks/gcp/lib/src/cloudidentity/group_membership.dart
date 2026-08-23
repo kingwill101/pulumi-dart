@@ -14,10 +14,10 @@ import 'group_membership_state.dart';
 /// * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
 ///
 /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-/// you must specify a `billing_project` and set `user_project_override` to true
+/// you must specify a `billingProject` and set `userProjectOverride` to true
 /// in the provider configuration. Otherwise the Cloud Identity API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
-/// `billing_project` you defined.
+/// `billingProject` you defined.
 ///
 /// ## Example Usage
 ///
@@ -52,7 +52,7 @@ import 'group_membership_state.dart';
 /// const cloudIdentityGroupMembershipBasic = new gcp.cloudidentity.GroupMembership("cloud_identity_group_membership_basic", {
 ///     group: group.id,
 ///     preferredMemberKey: {
-///         id: child_group.groupKey.apply(groupKey => groupKey.id),
+///         id: child_group.groupKey.id,
 ///     },
 ///     roles: [{
 ///         name: "MEMBER",
@@ -181,11 +181,9 @@ import 'group_membership_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloudidentity.NewGroupMembership(ctx, "cloud_identity_group_membership_basic", &cloudidentity.GroupMembershipArgs{
-/// 			Group: group.ID(),
+/// 			Group: group.ID().ToIDOutput().ToStringOutput(),
 /// 			PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
-/// 				Id: child_group.GroupKey.ApplyT(func(groupKey cloudidentity.GroupGroupKey) (*string, error) {
-/// 					return &groupKey.Id, nil
-/// 				}).(pulumi.StringPtrOutput),
+/// 				Id: child_group.GroupKey.Id(),
 /// 			},
 /// 			Roles: cloudidentity.GroupMembershipRoleArray{
 /// 				&cloudidentity.GroupMembershipRoleArgs{
@@ -198,6 +196,45 @@ import 'group_membership_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudidentity_group" "group" {
+///   display_name = "my-identity-group"
+///   parent       = "customers/A01b123xz"
+///   group_key = {
+///     id = "my-identity-group@example.com"
+///   }
+///   labels = {
+///     "cloudidentity.googleapis.com/groups.discussion_forum" = ""
+///   }
+/// }
+/// resource "gcp_cloudidentity_group" "child-group" {
+///   display_name = "my-identity-group-child"
+///   parent       = "customers/A01b123xz"
+///   group_key = {
+///     id = "my-identity-group-child@example.com"
+///   }
+///   labels = {
+///     "cloudidentity.googleapis.com/groups.discussion_forum" = ""
+///   }
+/// }
+/// resource "gcp_cloudidentity_groupmembership" "cloud_identity_group_membership_basic" {
+///   group = gcp_cloudidentity_group.group.id
+///   preferred_member_key = {
+///     id = gcp_cloudidentity_group.child-group.group_key.id
+///   }
+///   roles {
+///     name = "MEMBER"
+///   }
 /// }
 /// ```
 /// ```java
@@ -213,8 +250,8 @@ import 'group_membership_state.dart';
 /// import com.pulumi.gcp.cloudidentity.GroupMembershipArgs;
 /// import com.pulumi.gcp.cloudidentity.inputs.GroupMembershipPreferredMemberKeyArgs;
 /// import com.pulumi.gcp.cloudidentity.inputs.GroupMembershipRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -416,7 +453,7 @@ import 'group_membership_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cloudidentity.NewGroupMembership(ctx, "cloud_identity_group_membership_basic", &cloudidentity.GroupMembershipArgs{
-/// 			Group: group.ID(),
+/// 			Group: group.ID().ToIDOutput().ToStringOutput(),
 /// 			PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
 /// 				Id: pulumi.String("cloud_identity_user@example.com"),
 /// 			},
@@ -436,6 +473,38 @@ import 'group_membership_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudidentity_group" "group" {
+///   display_name = "my-identity-group"
+///   parent       = "customers/A01b123xz"
+///   group_key = {
+///     id = "my-identity-group@example.com"
+///   }
+///   labels = {
+///     "cloudidentity.googleapis.com/groups.discussion_forum" = ""
+///   }
+/// }
+/// resource "gcp_cloudidentity_groupmembership" "cloud_identity_group_membership_basic" {
+///   group = gcp_cloudidentity_group.group.id
+///   preferred_member_key = {
+///     id = "cloud_identity_user@example.com"
+///   }
+///   roles {
+///     name = "MEMBER"
+///   }
+///   roles {
+///     name = "MANAGER"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -449,8 +518,8 @@ import 'group_membership_state.dart';
 /// import com.pulumi.gcp.cloudidentity.GroupMembershipArgs;
 /// import com.pulumi.gcp.cloudidentity.inputs.GroupMembershipPreferredMemberKeyArgs;
 /// import com.pulumi.gcp.cloudidentity.inputs.GroupMembershipRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -518,6 +587,7 @@ import 'group_membership_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, GroupMembership can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -528,8 +598,16 @@ class GroupMembership extends pulumi.CustomResource {
   late final pulumi.Output<bool?> createIgnoreAlreadyExists;
   /// The time when the Membership was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name of the Group to create this membership in.
   late final pulumi.Output<String> group;
+  /// (Optional, Beta)
   /// EntityKey of the member.
   /// Structure is documented below.
   late final pulumi.Output<GroupMembershipMemberKey> memberKey;
@@ -563,6 +641,7 @@ class GroupMembership extends pulumi.CustomResource {
         ) {
     createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     group = registerOutput<String>('group');
     memberKey = registerOutput<GroupMembershipMemberKey>('memberKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupMembershipMemberKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -597,6 +676,7 @@ class GroupMembership extends pulumi.CustomResource {
         ) {
     createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     group = registerOutput<String>('group');
     memberKey = registerOutput<GroupMembershipMemberKey>('memberKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupMembershipMemberKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

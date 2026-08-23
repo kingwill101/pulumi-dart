@@ -227,6 +227,49 @@ import 'agent_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "agent_project" {
+///   project_id      = "my-project"
+///   name            = "my-project"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_projects_service" "agent_project" {
+///   project                    = gcp_organizations_project.agent_project.project_id
+///   service                    = "dialogflow.googleapis.com"
+///   disable_dependent_services = false
+/// }
+/// resource "gcp_serviceaccount_account" "dialogflow_service_account" {
+///   account_id = "my-account"
+/// }
+/// resource "gcp_projects_iammember" "agent_create" {
+///   project = gcp_projects_service.agent_project.project
+///   role    = "roles/dialogflow.admin"
+///   member  ="serviceAccount:${gcp_serviceaccount_account.dialogflow_service_account.email}"
+/// }
+/// resource "gcp_diagflow_agent" "full_agent" {
+///   project                  = gcp_organizations_project.agent_project.project_id
+///   display_name             = "dialogflow-agent"
+///   default_language_code    = "en"
+///   supported_language_codes = ["fr", "de", "es"]
+///   time_zone                = "America/New_York"
+///   description              = "Example description."
+///   avatar_uri               = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"
+///   enable_logging           = true
+///   match_mode               = "MATCH_MODE_ML_ONLY"
+///   classification_threshold = 0.3
+///   api_version              = "API_VERSION_V2_BETA_1"
+///   tier                     = "TIER_STANDARD"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -243,8 +286,8 @@ import 'agent_state.dart';
 /// import com.pulumi.gcp.projects.IAMMemberArgs;
 /// import com.pulumi.gcp.diagflow.Agent;
 /// import com.pulumi.gcp.diagflow.AgentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -357,6 +400,7 @@ import 'agent_state.dart';
 ///
 /// * `{{project}}`
 ///
+///
 /// When using the `pulumi import` command, Agent can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -387,6 +431,13 @@ class Agent extends pulumi.CustomResource {
   /// The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
   /// for a list of the currently supported language codes. This field cannot be updated after creation.
   late final pulumi.Output<String> defaultLanguageCode;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
   late final pulumi.Output<String?> description;
   /// The name of this agent.
@@ -435,6 +486,7 @@ class Agent extends pulumi.CustomResource {
     avatarUriBackend = registerOutput<String>('avatarUriBackend');
     classificationThreshold = registerOutput<double?>('classificationThreshold');
     defaultLanguageCode = registerOutput<String>('defaultLanguageCode');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enableLogging = registerOutput<bool?>('enableLogging');
@@ -473,6 +525,7 @@ class Agent extends pulumi.CustomResource {
     avatarUriBackend = registerOutput<String>('avatarUriBackend');
     classificationThreshold = registerOutput<double?>('classificationThreshold');
     defaultLanguageCode = registerOutput<String>('defaultLanguageCode');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enableLogging = registerOutput<bool?>('enableLogging');

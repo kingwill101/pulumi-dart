@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_cluster_addons_config.dart';
 import 'get_cluster_anonymous_authentication_config.dart';
 import 'get_cluster_authenticator_groups_config.dart';
+import 'get_cluster_autopilot_cluster_policy_config.dart';
 import 'get_cluster_binary_authorization.dart';
 import 'get_cluster_cluster_autoscaling.dart';
 import 'get_cluster_cluster_telemetry.dart';
@@ -22,6 +23,7 @@ import 'get_cluster_identity_service_config.dart';
 import 'get_cluster_ip_allocation_policy.dart';
 import 'get_cluster_logging_config.dart';
 import 'get_cluster_maintenance_policy.dart';
+import 'get_cluster_managed_machine_learning_diagnostics_config.dart';
 import 'get_cluster_managed_opentelemetry_config.dart';
 import 'get_cluster_master_auth.dart';
 import 'get_cluster_master_authorized_networks_config.dart';
@@ -30,6 +32,7 @@ import 'get_cluster_monitoring_config.dart';
 import 'get_cluster_network_performance_config.dart';
 import 'get_cluster_network_policy.dart';
 import 'get_cluster_node_config.dart';
+import 'get_cluster_node_creation_config.dart';
 import 'get_cluster_node_pool.dart';
 import 'get_cluster_node_pool_auto_config.dart';
 import 'get_cluster_node_pool_default.dart';
@@ -41,6 +44,7 @@ import 'get_cluster_protect_config.dart';
 import 'get_cluster_rbac_binding_config.dart';
 import 'get_cluster_release_channel.dart';
 import 'get_cluster_resource_usage_export_config.dart';
+import 'get_cluster_rollback_safe_upgrade.dart';
 import 'get_cluster_secret_manager_config.dart';
 import 'get_cluster_secret_sync_config.dart';
 import 'get_cluster_security_posture_config.dart';
@@ -57,6 +61,8 @@ class GetClusterResult {
   final bool allowNetAdmin;
   final List<GetClusterAnonymousAuthenticationConfig> anonymousAuthenticationConfigs;
   final List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
+  final List<GetClusterAutopilotClusterPolicyConfig> autopilotClusterPolicyConfigs;
+  final List<String> autopilotPrivilegedAdmissions;
   final List<GetClusterBinaryAuthorization> binaryAuthorizations;
   final List<GetClusterClusterAutoscaling> clusterAutoscalings;
   final String clusterIpv4Cidr;
@@ -66,13 +72,17 @@ class GetClusterResult {
   final List<GetClusterCostManagementConfig> costManagementConfigs;
   final List<GetClusterDatabaseEncryption> databaseEncryptions;
   final String datapathProvider;
+  final String dataplaneOptimizationMode;
   final int defaultMaxPodsPerNode;
   final List<GetClusterDefaultSnatStatus> defaultSnatStatuses;
+  final String deletionPolicy;
   final bool deletionProtection;
   final String description;
+  final String desiredEmulatedVersion;
   final bool disableL4LbFirewallReconciliation;
   final List<GetClusterDnsConfig> dnsConfigs;
   final Map<String, String> effectiveLabels;
+  final String emulatedVersion;
   final bool enableAutopilot;
   final bool enableCiliumClusterwideNetworkPolicy;
   final bool enableFqdnNetworkPolicy;
@@ -92,6 +102,7 @@ class GetClusterResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetClusterIdentityServiceConfig> identityServiceConfigs;
+  final bool ignoreNodeCountChanges;
   final String inTransitEncryptionConfig;
   final int initialNodeCount;
   final List<GetClusterIpAllocationPolicy> ipAllocationPolicies;
@@ -100,6 +111,7 @@ class GetClusterResult {
   final List<GetClusterLoggingConfig> loggingConfigs;
   final String loggingService;
   final List<GetClusterMaintenancePolicy> maintenancePolicies;
+  final List<GetClusterManagedMachineLearningDiagnosticsConfig> managedMachineLearningDiagnosticsConfigs;
   final List<GetClusterManagedOpentelemetryConfig> managedOpentelemetryConfigs;
   final List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs;
   final List<GetClusterMasterAuth> masterAuths;
@@ -114,6 +126,7 @@ class GetClusterResult {
   final List<GetClusterNetworkPolicy> networkPolicies;
   final String networkingMode;
   final List<GetClusterNodeConfig> nodeConfigs;
+  final List<GetClusterNodeCreationConfig> nodeCreationConfigs;
   final List<String> nodeLocations;
   final List<GetClusterNodePoolAutoConfig> nodePoolAutoConfigs;
   final List<GetClusterNodePoolDefault> nodePoolDefaults;
@@ -133,12 +146,14 @@ class GetClusterResult {
   final bool removeDefaultNodePool;
   final Map<String, String> resourceLabels;
   final List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs;
+  final List<GetClusterRollbackSafeUpgrade> rollbackSafeUpgrades;
   final List<GetClusterSecretManagerConfig> secretManagerConfigs;
   final List<GetClusterSecretSyncConfig> secretSyncConfigs;
   final List<GetClusterSecurityPostureConfig> securityPostureConfigs;
   final String selfLink;
   final List<GetClusterServiceExternalIpsConfig> serviceExternalIpsConfigs;
   final String servicesIpv4Cidr;
+  final bool skipNodePoolRefresh;
   final String subnetwork;
   final List<GetClusterTpuConfig> tpuConfigs;
   final String tpuIpv4CidrBlock;
@@ -152,6 +167,8 @@ class GetClusterResult {
   /// [allowNetAdmin] Required.
   /// [anonymousAuthenticationConfigs] Required.
   /// [authenticatorGroupsConfigs] Required.
+  /// [autopilotClusterPolicyConfigs] Required.
+  /// [autopilotPrivilegedAdmissions] Required.
   /// [binaryAuthorizations] Required.
   /// [clusterAutoscalings] Required.
   /// [clusterIpv4Cidr] Required.
@@ -161,13 +178,17 @@ class GetClusterResult {
   /// [costManagementConfigs] Required.
   /// [databaseEncryptions] Required.
   /// [datapathProvider] Required.
+  /// [dataplaneOptimizationMode] Required.
   /// [defaultMaxPodsPerNode] Required.
   /// [defaultSnatStatuses] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [description] Required.
+  /// [desiredEmulatedVersion] Required.
   /// [disableL4LbFirewallReconciliation] Required.
   /// [dnsConfigs] Required.
   /// [effectiveLabels] Required.
+  /// [emulatedVersion] Required.
   /// [enableAutopilot] Required.
   /// [enableCiliumClusterwideNetworkPolicy] Required.
   /// [enableFqdnNetworkPolicy] Required.
@@ -186,6 +207,7 @@ class GetClusterResult {
   /// [gkeAutoUpgradeConfigs] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identityServiceConfigs] Required.
+  /// [ignoreNodeCountChanges] Required.
   /// [inTransitEncryptionConfig] Required.
   /// [initialNodeCount] Required.
   /// [ipAllocationPolicies] Required.
@@ -194,6 +216,7 @@ class GetClusterResult {
   /// [loggingConfigs] Required.
   /// [loggingService] Required.
   /// [maintenancePolicies] Required.
+  /// [managedMachineLearningDiagnosticsConfigs] Required.
   /// [managedOpentelemetryConfigs] Required.
   /// [masterAuthorizedNetworksConfigs] Required.
   /// [masterAuths] Required.
@@ -208,6 +231,7 @@ class GetClusterResult {
   /// [networkPolicies] Required.
   /// [networkingMode] Required.
   /// [nodeConfigs] Required.
+  /// [nodeCreationConfigs] Required.
   /// [nodeLocations] Required.
   /// [nodePoolAutoConfigs] Required.
   /// [nodePoolDefaults] Required.
@@ -227,12 +251,14 @@ class GetClusterResult {
   /// [removeDefaultNodePool] Required.
   /// [resourceLabels] Required.
   /// [resourceUsageExportConfigs] Required.
+  /// [rollbackSafeUpgrades] Required.
   /// [secretManagerConfigs] Required.
   /// [secretSyncConfigs] Required.
   /// [securityPostureConfigs] Required.
   /// [selfLink] Required.
   /// [serviceExternalIpsConfigs] Required.
   /// [servicesIpv4Cidr] Required.
+  /// [skipNodePoolRefresh] Required.
   /// [subnetwork] Required.
   /// [tpuConfigs] Required.
   /// [tpuIpv4CidrBlock] Required.
@@ -245,6 +271,8 @@ class GetClusterResult {
     required this.allowNetAdmin,
     required this.anonymousAuthenticationConfigs,
     required this.authenticatorGroupsConfigs,
+    required this.autopilotClusterPolicyConfigs,
+    required this.autopilotPrivilegedAdmissions,
     required this.binaryAuthorizations,
     required this.clusterAutoscalings,
     required this.clusterIpv4Cidr,
@@ -254,13 +282,17 @@ class GetClusterResult {
     required this.costManagementConfigs,
     required this.databaseEncryptions,
     required this.datapathProvider,
+    required this.dataplaneOptimizationMode,
     required this.defaultMaxPodsPerNode,
     required this.defaultSnatStatuses,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.description,
+    required this.desiredEmulatedVersion,
     required this.disableL4LbFirewallReconciliation,
     required this.dnsConfigs,
     required this.effectiveLabels,
+    required this.emulatedVersion,
     required this.enableAutopilot,
     required this.enableCiliumClusterwideNetworkPolicy,
     required this.enableFqdnNetworkPolicy,
@@ -279,6 +311,7 @@ class GetClusterResult {
     required this.gkeAutoUpgradeConfigs,
     required this.id,
     required this.identityServiceConfigs,
+    required this.ignoreNodeCountChanges,
     required this.inTransitEncryptionConfig,
     required this.initialNodeCount,
     required this.ipAllocationPolicies,
@@ -287,6 +320,7 @@ class GetClusterResult {
     required this.loggingConfigs,
     required this.loggingService,
     required this.maintenancePolicies,
+    required this.managedMachineLearningDiagnosticsConfigs,
     required this.managedOpentelemetryConfigs,
     required this.masterAuthorizedNetworksConfigs,
     required this.masterAuths,
@@ -301,6 +335,7 @@ class GetClusterResult {
     required this.networkPolicies,
     required this.networkingMode,
     required this.nodeConfigs,
+    required this.nodeCreationConfigs,
     required this.nodeLocations,
     required this.nodePoolAutoConfigs,
     required this.nodePoolDefaults,
@@ -320,12 +355,14 @@ class GetClusterResult {
     required this.removeDefaultNodePool,
     required this.resourceLabels,
     required this.resourceUsageExportConfigs,
+    required this.rollbackSafeUpgrades,
     required this.secretManagerConfigs,
     required this.secretSyncConfigs,
     required this.securityPostureConfigs,
     required this.selfLink,
     required this.serviceExternalIpsConfigs,
     required this.servicesIpv4Cidr,
+    required this.skipNodePoolRefresh,
     required this.subnetwork,
     required this.tpuConfigs,
     required this.tpuIpv4CidrBlock,
@@ -341,6 +378,8 @@ class GetClusterResult {
       'allowNetAdmin': allowNetAdmin,
       'anonymousAuthenticationConfigs': pulumi.Input.encodeList<GetClusterAnonymousAuthenticationConfig, Map<String, dynamic>>(anonymousAuthenticationConfigs, (value) => value.toMap()),
       'authenticatorGroupsConfigs': pulumi.Input.encodeList<GetClusterAuthenticatorGroupsConfig, Map<String, dynamic>>(authenticatorGroupsConfigs, (value) => value.toMap()),
+      'autopilotClusterPolicyConfigs': pulumi.Input.encodeList<GetClusterAutopilotClusterPolicyConfig, Map<String, dynamic>>(autopilotClusterPolicyConfigs, (value) => value.toMap()),
+      'autopilotPrivilegedAdmissions': autopilotPrivilegedAdmissions,
       'binaryAuthorizations': pulumi.Input.encodeList<GetClusterBinaryAuthorization, Map<String, dynamic>>(binaryAuthorizations, (value) => value.toMap()),
       'clusterAutoscalings': pulumi.Input.encodeList<GetClusterClusterAutoscaling, Map<String, dynamic>>(clusterAutoscalings, (value) => value.toMap()),
       'clusterIpv4Cidr': clusterIpv4Cidr,
@@ -350,13 +389,17 @@ class GetClusterResult {
       'costManagementConfigs': pulumi.Input.encodeList<GetClusterCostManagementConfig, Map<String, dynamic>>(costManagementConfigs, (value) => value.toMap()),
       'databaseEncryptions': pulumi.Input.encodeList<GetClusterDatabaseEncryption, Map<String, dynamic>>(databaseEncryptions, (value) => value.toMap()),
       'datapathProvider': datapathProvider,
+      'dataplaneOptimizationMode': dataplaneOptimizationMode,
       'defaultMaxPodsPerNode': defaultMaxPodsPerNode,
       'defaultSnatStatuses': pulumi.Input.encodeList<GetClusterDefaultSnatStatus, Map<String, dynamic>>(defaultSnatStatuses, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'description': description,
+      'desiredEmulatedVersion': desiredEmulatedVersion,
       'disableL4LbFirewallReconciliation': disableL4LbFirewallReconciliation,
       'dnsConfigs': pulumi.Input.encodeList<GetClusterDnsConfig, Map<String, dynamic>>(dnsConfigs, (value) => value.toMap()),
       'effectiveLabels': effectiveLabels,
+      'emulatedVersion': emulatedVersion,
       'enableAutopilot': enableAutopilot,
       'enableCiliumClusterwideNetworkPolicy': enableCiliumClusterwideNetworkPolicy,
       'enableFqdnNetworkPolicy': enableFqdnNetworkPolicy,
@@ -375,6 +418,7 @@ class GetClusterResult {
       'gkeAutoUpgradeConfigs': pulumi.Input.encodeList<GetClusterGkeAutoUpgradeConfig, Map<String, dynamic>>(gkeAutoUpgradeConfigs, (value) => value.toMap()),
       'id': id,
       'identityServiceConfigs': pulumi.Input.encodeList<GetClusterIdentityServiceConfig, Map<String, dynamic>>(identityServiceConfigs, (value) => value.toMap()),
+      'ignoreNodeCountChanges': ignoreNodeCountChanges,
       'inTransitEncryptionConfig': inTransitEncryptionConfig,
       'initialNodeCount': initialNodeCount,
       'ipAllocationPolicies': pulumi.Input.encodeList<GetClusterIpAllocationPolicy, Map<String, dynamic>>(ipAllocationPolicies, (value) => value.toMap()),
@@ -383,6 +427,7 @@ class GetClusterResult {
       'loggingConfigs': pulumi.Input.encodeList<GetClusterLoggingConfig, Map<String, dynamic>>(loggingConfigs, (value) => value.toMap()),
       'loggingService': loggingService,
       'maintenancePolicies': pulumi.Input.encodeList<GetClusterMaintenancePolicy, Map<String, dynamic>>(maintenancePolicies, (value) => value.toMap()),
+      'managedMachineLearningDiagnosticsConfigs': pulumi.Input.encodeList<GetClusterManagedMachineLearningDiagnosticsConfig, Map<String, dynamic>>(managedMachineLearningDiagnosticsConfigs, (value) => value.toMap()),
       'managedOpentelemetryConfigs': pulumi.Input.encodeList<GetClusterManagedOpentelemetryConfig, Map<String, dynamic>>(managedOpentelemetryConfigs, (value) => value.toMap()),
       'masterAuthorizedNetworksConfigs': pulumi.Input.encodeList<GetClusterMasterAuthorizedNetworksConfig, Map<String, dynamic>>(masterAuthorizedNetworksConfigs, (value) => value.toMap()),
       'masterAuths': pulumi.Input.encodeList<GetClusterMasterAuth, Map<String, dynamic>>(masterAuths, (value) => value.toMap()),
@@ -397,6 +442,7 @@ class GetClusterResult {
       'networkPolicies': pulumi.Input.encodeList<GetClusterNetworkPolicy, Map<String, dynamic>>(networkPolicies, (value) => value.toMap()),
       'networkingMode': networkingMode,
       'nodeConfigs': pulumi.Input.encodeList<GetClusterNodeConfig, Map<String, dynamic>>(nodeConfigs, (value) => value.toMap()),
+      'nodeCreationConfigs': pulumi.Input.encodeList<GetClusterNodeCreationConfig, Map<String, dynamic>>(nodeCreationConfigs, (value) => value.toMap()),
       'nodeLocations': nodeLocations,
       'nodePoolAutoConfigs': pulumi.Input.encodeList<GetClusterNodePoolAutoConfig, Map<String, dynamic>>(nodePoolAutoConfigs, (value) => value.toMap()),
       'nodePoolDefaults': pulumi.Input.encodeList<GetClusterNodePoolDefault, Map<String, dynamic>>(nodePoolDefaults, (value) => value.toMap()),
@@ -416,12 +462,14 @@ class GetClusterResult {
       'removeDefaultNodePool': removeDefaultNodePool,
       'resourceLabels': resourceLabels,
       'resourceUsageExportConfigs': pulumi.Input.encodeList<GetClusterResourceUsageExportConfig, Map<String, dynamic>>(resourceUsageExportConfigs, (value) => value.toMap()),
+      'rollbackSafeUpgrades': pulumi.Input.encodeList<GetClusterRollbackSafeUpgrade, Map<String, dynamic>>(rollbackSafeUpgrades, (value) => value.toMap()),
       'secretManagerConfigs': pulumi.Input.encodeList<GetClusterSecretManagerConfig, Map<String, dynamic>>(secretManagerConfigs, (value) => value.toMap()),
       'secretSyncConfigs': pulumi.Input.encodeList<GetClusterSecretSyncConfig, Map<String, dynamic>>(secretSyncConfigs, (value) => value.toMap()),
       'securityPostureConfigs': pulumi.Input.encodeList<GetClusterSecurityPostureConfig, Map<String, dynamic>>(securityPostureConfigs, (value) => value.toMap()),
       'selfLink': selfLink,
       'serviceExternalIpsConfigs': pulumi.Input.encodeList<GetClusterServiceExternalIpsConfig, Map<String, dynamic>>(serviceExternalIpsConfigs, (value) => value.toMap()),
       'servicesIpv4Cidr': servicesIpv4Cidr,
+      'skipNodePoolRefresh': skipNodePoolRefresh,
       'subnetwork': subnetwork,
       'tpuConfigs': pulumi.Input.encodeList<GetClusterTpuConfig, Map<String, dynamic>>(tpuConfigs, (value) => value.toMap()),
       'tpuIpv4CidrBlock': tpuIpv4CidrBlock,
@@ -438,6 +486,8 @@ class GetClusterResult {
       allowNetAdmin: map['allowNetAdmin'] as bool,
       anonymousAuthenticationConfigs: pulumi.Input.decodeList<GetClusterAnonymousAuthenticationConfig>(map['anonymousAuthenticationConfigs']!, (value) => GetClusterAnonymousAuthenticationConfig.fromMap((value as Map).cast<String, dynamic>())),
       authenticatorGroupsConfigs: pulumi.Input.decodeList<GetClusterAuthenticatorGroupsConfig>(map['authenticatorGroupsConfigs']!, (value) => GetClusterAuthenticatorGroupsConfig.fromMap((value as Map).cast<String, dynamic>())),
+      autopilotClusterPolicyConfigs: pulumi.Input.decodeList<GetClusterAutopilotClusterPolicyConfig>(map['autopilotClusterPolicyConfigs']!, (value) => GetClusterAutopilotClusterPolicyConfig.fromMap((value as Map).cast<String, dynamic>())),
+      autopilotPrivilegedAdmissions: (map['autopilotPrivilegedAdmissions'] as List).cast<String>(),
       binaryAuthorizations: pulumi.Input.decodeList<GetClusterBinaryAuthorization>(map['binaryAuthorizations']!, (value) => GetClusterBinaryAuthorization.fromMap((value as Map).cast<String, dynamic>())),
       clusterAutoscalings: pulumi.Input.decodeList<GetClusterClusterAutoscaling>(map['clusterAutoscalings']!, (value) => GetClusterClusterAutoscaling.fromMap((value as Map).cast<String, dynamic>())),
       clusterIpv4Cidr: map['clusterIpv4Cidr'] as String,
@@ -447,13 +497,17 @@ class GetClusterResult {
       costManagementConfigs: pulumi.Input.decodeList<GetClusterCostManagementConfig>(map['costManagementConfigs']!, (value) => GetClusterCostManagementConfig.fromMap((value as Map).cast<String, dynamic>())),
       databaseEncryptions: pulumi.Input.decodeList<GetClusterDatabaseEncryption>(map['databaseEncryptions']!, (value) => GetClusterDatabaseEncryption.fromMap((value as Map).cast<String, dynamic>())),
       datapathProvider: map['datapathProvider'] as String,
+      dataplaneOptimizationMode: map['dataplaneOptimizationMode'] as String,
       defaultMaxPodsPerNode: map['defaultMaxPodsPerNode'] as int,
       defaultSnatStatuses: pulumi.Input.decodeList<GetClusterDefaultSnatStatus>(map['defaultSnatStatuses']!, (value) => GetClusterDefaultSnatStatus.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       description: map['description'] as String,
+      desiredEmulatedVersion: map['desiredEmulatedVersion'] as String,
       disableL4LbFirewallReconciliation: map['disableL4LbFirewallReconciliation'] as bool,
       dnsConfigs: pulumi.Input.decodeList<GetClusterDnsConfig>(map['dnsConfigs']!, (value) => GetClusterDnsConfig.fromMap((value as Map).cast<String, dynamic>())),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
+      emulatedVersion: map['emulatedVersion'] as String,
       enableAutopilot: map['enableAutopilot'] as bool,
       enableCiliumClusterwideNetworkPolicy: map['enableCiliumClusterwideNetworkPolicy'] as bool,
       enableFqdnNetworkPolicy: map['enableFqdnNetworkPolicy'] as bool,
@@ -472,6 +526,7 @@ class GetClusterResult {
       gkeAutoUpgradeConfigs: pulumi.Input.decodeList<GetClusterGkeAutoUpgradeConfig>(map['gkeAutoUpgradeConfigs']!, (value) => GetClusterGkeAutoUpgradeConfig.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       identityServiceConfigs: pulumi.Input.decodeList<GetClusterIdentityServiceConfig>(map['identityServiceConfigs']!, (value) => GetClusterIdentityServiceConfig.fromMap((value as Map).cast<String, dynamic>())),
+      ignoreNodeCountChanges: map['ignoreNodeCountChanges'] as bool,
       inTransitEncryptionConfig: map['inTransitEncryptionConfig'] as String,
       initialNodeCount: map['initialNodeCount'] as int,
       ipAllocationPolicies: pulumi.Input.decodeList<GetClusterIpAllocationPolicy>(map['ipAllocationPolicies']!, (value) => GetClusterIpAllocationPolicy.fromMap((value as Map).cast<String, dynamic>())),
@@ -480,6 +535,7 @@ class GetClusterResult {
       loggingConfigs: pulumi.Input.decodeList<GetClusterLoggingConfig>(map['loggingConfigs']!, (value) => GetClusterLoggingConfig.fromMap((value as Map).cast<String, dynamic>())),
       loggingService: map['loggingService'] as String,
       maintenancePolicies: pulumi.Input.decodeList<GetClusterMaintenancePolicy>(map['maintenancePolicies']!, (value) => GetClusterMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())),
+      managedMachineLearningDiagnosticsConfigs: pulumi.Input.decodeList<GetClusterManagedMachineLearningDiagnosticsConfig>(map['managedMachineLearningDiagnosticsConfigs']!, (value) => GetClusterManagedMachineLearningDiagnosticsConfig.fromMap((value as Map).cast<String, dynamic>())),
       managedOpentelemetryConfigs: pulumi.Input.decodeList<GetClusterManagedOpentelemetryConfig>(map['managedOpentelemetryConfigs']!, (value) => GetClusterManagedOpentelemetryConfig.fromMap((value as Map).cast<String, dynamic>())),
       masterAuthorizedNetworksConfigs: pulumi.Input.decodeList<GetClusterMasterAuthorizedNetworksConfig>(map['masterAuthorizedNetworksConfigs']!, (value) => GetClusterMasterAuthorizedNetworksConfig.fromMap((value as Map).cast<String, dynamic>())),
       masterAuths: pulumi.Input.decodeList<GetClusterMasterAuth>(map['masterAuths']!, (value) => GetClusterMasterAuth.fromMap((value as Map).cast<String, dynamic>())),
@@ -494,6 +550,7 @@ class GetClusterResult {
       networkPolicies: pulumi.Input.decodeList<GetClusterNetworkPolicy>(map['networkPolicies']!, (value) => GetClusterNetworkPolicy.fromMap((value as Map).cast<String, dynamic>())),
       networkingMode: map['networkingMode'] as String,
       nodeConfigs: pulumi.Input.decodeList<GetClusterNodeConfig>(map['nodeConfigs']!, (value) => GetClusterNodeConfig.fromMap((value as Map).cast<String, dynamic>())),
+      nodeCreationConfigs: pulumi.Input.decodeList<GetClusterNodeCreationConfig>(map['nodeCreationConfigs']!, (value) => GetClusterNodeCreationConfig.fromMap((value as Map).cast<String, dynamic>())),
       nodeLocations: (map['nodeLocations'] as List).cast<String>(),
       nodePoolAutoConfigs: pulumi.Input.decodeList<GetClusterNodePoolAutoConfig>(map['nodePoolAutoConfigs']!, (value) => GetClusterNodePoolAutoConfig.fromMap((value as Map).cast<String, dynamic>())),
       nodePoolDefaults: pulumi.Input.decodeList<GetClusterNodePoolDefault>(map['nodePoolDefaults']!, (value) => GetClusterNodePoolDefault.fromMap((value as Map).cast<String, dynamic>())),
@@ -513,12 +570,14 @@ class GetClusterResult {
       removeDefaultNodePool: map['removeDefaultNodePool'] as bool,
       resourceLabels: (map['resourceLabels'] as Map).cast<String, String>(),
       resourceUsageExportConfigs: pulumi.Input.decodeList<GetClusterResourceUsageExportConfig>(map['resourceUsageExportConfigs']!, (value) => GetClusterResourceUsageExportConfig.fromMap((value as Map).cast<String, dynamic>())),
+      rollbackSafeUpgrades: pulumi.Input.decodeList<GetClusterRollbackSafeUpgrade>(map['rollbackSafeUpgrades']!, (value) => GetClusterRollbackSafeUpgrade.fromMap((value as Map).cast<String, dynamic>())),
       secretManagerConfigs: pulumi.Input.decodeList<GetClusterSecretManagerConfig>(map['secretManagerConfigs']!, (value) => GetClusterSecretManagerConfig.fromMap((value as Map).cast<String, dynamic>())),
       secretSyncConfigs: pulumi.Input.decodeList<GetClusterSecretSyncConfig>(map['secretSyncConfigs']!, (value) => GetClusterSecretSyncConfig.fromMap((value as Map).cast<String, dynamic>())),
       securityPostureConfigs: pulumi.Input.decodeList<GetClusterSecurityPostureConfig>(map['securityPostureConfigs']!, (value) => GetClusterSecurityPostureConfig.fromMap((value as Map).cast<String, dynamic>())),
       selfLink: map['selfLink'] as String,
       serviceExternalIpsConfigs: pulumi.Input.decodeList<GetClusterServiceExternalIpsConfig>(map['serviceExternalIpsConfigs']!, (value) => GetClusterServiceExternalIpsConfig.fromMap((value as Map).cast<String, dynamic>())),
       servicesIpv4Cidr: map['servicesIpv4Cidr'] as String,
+      skipNodePoolRefresh: map['skipNodePoolRefresh'] as bool,
       subnetwork: map['subnetwork'] as String,
       tpuConfigs: pulumi.Input.decodeList<GetClusterTpuConfig>(map['tpuConfigs']!, (value) => GetClusterTpuConfig.fromMap((value as Map).cast<String, dynamic>())),
       tpuIpv4CidrBlock: map['tpuIpv4CidrBlock'] as String,
@@ -529,4 +588,3 @@ class GetClusterResult {
     );
   }
 }
-

@@ -3,20 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterDnsConfig {
-  /// This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = "CLOUD_DNS"` and `cluster_dns_scope = "CLUSTER_SCOPE"` must both be set as well.
+  /// This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `clusterDns = "CLOUD_DNS"` and `clusterDnsScope = "CLUSTER_SCOPE"` must both be set as well.
   final pulumi.Input<String>? additiveVpcScopeDnsDomain;
   /// Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS` or `KUBE_DNS`.
   final pulumi.Input<String>? clusterDns;
   /// The suffix used for all cluster service records.
   final pulumi.Input<String>? clusterDnsDomain;
-  /// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
+  /// The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `clusterDns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
   final pulumi.Input<String>? clusterDnsScope;
 
   /// Creates a new [ClusterDnsConfig].
-  /// [additiveVpcScopeDnsDomain] This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `cluster_dns = "CLOUD_DNS"` and `cluster_dns_scope = "CLUSTER_SCOPE"` must both be set as well.
+  /// [additiveVpcScopeDnsDomain] This will enable Cloud DNS additive VPC scope. Must provide a domain name that is unique within the VPC. For this to work `clusterDns = "CLOUD_DNS"` and `clusterDnsScope = "CLUSTER_SCOPE"` must both be set as well.
   /// [clusterDns] Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS` or `KUBE_DNS`.
   /// [clusterDnsDomain] The suffix used for all cluster service records.
-  /// [clusterDnsScope] The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
+  /// [clusterDnsScope] The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `clusterDns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
   const ClusterDnsConfig({
     this.additiveVpcScopeDnsDomain,
     this.clusterDns,
@@ -42,4 +42,3 @@ class ClusterDnsConfig {
     );
   }
 }
-

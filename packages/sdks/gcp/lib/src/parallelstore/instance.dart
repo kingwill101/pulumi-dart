@@ -171,14 +171,14 @@ import 'instance_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(24),
-/// 			Network:      network.ID(),
+/// 			Network:      network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Create a private connection
 /// 		_default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-/// 			Network: network.ID(),
+/// 			Network: network.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -209,6 +209,49 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parallelstore_instance" "instance" {
+///   depends_on             = [gcp_servicenetworking_connection.default]
+///   instance_id            = "instance"
+///   location               = "us-central1-a"
+///   description            = "test instance"
+///   capacity_gib           = 12000
+///   network                = gcp_compute_network.network.name
+///   file_stripe_level      = "FILE_STRIPE_LEVEL_MIN"
+///   directory_stripe_level = "DIRECTORY_STRIPE_LEVEL_MIN"
+///   deployment_type        = "SCRATCH"
+///   labels = {
+///     "test" = "value"
+///   }
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "network"
+///   auto_create_subnetworks = true
+///   mtu                     = 8896
+/// }
+/// # Create an IP address
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "address"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 24
+///   network       = gcp_compute_network.network.id
+/// }
+/// # Create a private connection
+/// resource "gcp_servicenetworking_connection" "default" {
+///   network                 = gcp_compute_network.network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -224,8 +267,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.parallelstore.Instance;
 /// import com.pulumi.gcp.parallelstore.InstanceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -483,14 +526,14 @@ import 'instance_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(24),
-/// 			Network:      network.ID(),
+/// 			Network:      network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		// Create a private connection
 /// 		_default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-/// 			Network: network.ID(),
+/// 			Network: network.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				privateIpAlloc.Name,
@@ -521,6 +564,49 @@ import 'instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parallelstore_instance" "instance" {
+///   depends_on             = [gcp_servicenetworking_connection.default]
+///   instance_id            = "instance"
+///   location               = "us-central1-a"
+///   description            = "test instance"
+///   capacity_gib           = 12000
+///   network                = gcp_compute_network.network.name
+///   file_stripe_level      = "FILE_STRIPE_LEVEL_MIN"
+///   directory_stripe_level = "DIRECTORY_STRIPE_LEVEL_MIN"
+///   deployment_type        = "SCRATCH"
+///   labels = {
+///     "test" = "value"
+///   }
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "network"
+///   auto_create_subnetworks = true
+///   mtu                     = 8896
+/// }
+/// # Create an IP address
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "address"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 24
+///   network       = gcp_compute_network.network.id
+/// }
+/// # Create a private connection
+/// resource "gcp_servicenetworking_connection" "default" {
+///   network                 = gcp_compute_network.network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -536,8 +622,8 @@ import 'instance_state.dart';
 /// import com.pulumi.gcp.parallelstore.Instance;
 /// import com.pulumi.gcp.parallelstore.InstanceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -638,22 +724,15 @@ import 'instance_state.dart';
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}`
-///
 /// * `{{project}}/{{location}}/{{instance_id}}`
-///
 /// * `{{location}}/{{instance_id}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:parallelstore/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:parallelstore/instance:Instance default {{project}}/{{location}}/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:parallelstore/instance:Instance default {{location}}/{{instance_id}}
 /// ```
 class Instance extends pulumi.CustomResource {
@@ -666,6 +745,13 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// The version of DAOS software running in the instance.
   late final pulumi.Output<String> daosVersion;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Parallelstore Instance deployment type.
   /// Possible values:
   /// DEPLOYMENT_TYPE_UNSPECIFIED
@@ -726,7 +812,7 @@ class Instance extends pulumi.CustomResource {
   /// allow `"_"` in a future release. "
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Part of `parent`. See documentation of `projectsId`.
   late final pulumi.Output<String> location;
@@ -777,6 +863,7 @@ class Instance extends pulumi.CustomResource {
     capacityGib = registerOutput<String>('capacityGib');
     createTime = registerOutput<String>('createTime');
     daosVersion = registerOutput<String>('daosVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deploymentType = registerOutput<String?>('deploymentType');
     description = registerOutput<String?>('description');
     directoryStripeLevel = registerOutput<String?>('directoryStripeLevel');
@@ -822,6 +909,7 @@ class Instance extends pulumi.CustomResource {
     capacityGib = registerOutput<String>('capacityGib');
     createTime = registerOutput<String>('createTime');
     daosVersion = registerOutput<String>('daosVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deploymentType = registerOutput<String?>('deploymentType');
     description = registerOutput<String?>('description');
     directoryStripeLevel = registerOutput<String?>('directoryStripeLevel');

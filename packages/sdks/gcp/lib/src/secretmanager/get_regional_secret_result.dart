@@ -10,6 +10,7 @@ class GetRegionalSecretResult {
   final Map<String, String> annotations;
   final String createTime;
   final List<GetRegionalSecretCustomerManagedEncryption> customerManagedEncryptions;
+  final String deletionPolicy;
   final bool deletionProtection;
   final Map<String, String> effectiveAnnotations;
   final Map<String, String> effectiveLabels;
@@ -33,6 +34,7 @@ class GetRegionalSecretResult {
   /// [annotations] Required.
   /// [createTime] Required.
   /// [customerManagedEncryptions] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [effectiveAnnotations] Required.
   /// [effectiveLabels] Required.
@@ -54,6 +56,7 @@ class GetRegionalSecretResult {
     required this.annotations,
     required this.createTime,
     required this.customerManagedEncryptions,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.effectiveAnnotations,
     required this.effectiveLabels,
@@ -78,6 +81,7 @@ class GetRegionalSecretResult {
       'annotations': annotations,
       'createTime': createTime,
       'customerManagedEncryptions': pulumi.Input.encodeList<GetRegionalSecretCustomerManagedEncryption, Map<String, dynamic>>(customerManagedEncryptions, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'effectiveAnnotations': effectiveAnnotations,
       'effectiveLabels': effectiveLabels,
@@ -103,6 +107,7 @@ class GetRegionalSecretResult {
       annotations: (map['annotations'] as Map).cast<String, String>(),
       createTime: map['createTime'] as String,
       customerManagedEncryptions: pulumi.Input.decodeList<GetRegionalSecretCustomerManagedEncryption>(map['customerManagedEncryptions']!, (value) => GetRegionalSecretCustomerManagedEncryption.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       effectiveAnnotations: (map['effectiveAnnotations'] as Map).cast<String, String>(),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -123,4 +128,3 @@ class GetRegionalSecretResult {
     );
   }
 }
-

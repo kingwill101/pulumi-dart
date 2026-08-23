@@ -120,7 +120,7 @@ import 'v2_folder_notification_config_streaming_config.dart';
 /// 			Folder:      folder.FolderId,
 /// 			Location:    pulumi.String("global"),
 /// 			Description: pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
-/// 			PubsubTopic: sccV2FolderNotificationConfig.ID(),
+/// 			PubsubTopic: sccV2FolderNotificationConfig.ID().ToIDOutput().ToStringOutput(),
 /// 			StreamingConfig: &securitycenter.V2FolderNotificationConfigStreamingConfigArgs{
 /// 				Filter: pulumi.String("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""),
 /// 			},
@@ -130,6 +130,33 @@ import 'v2_folder_notification_config_streaming_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_folder" "folder" {
+///   parent       = "organizations/123456789"
+///   display_name = "folder-name"
+/// }
+/// resource "gcp_pubsub_topic" "scc_v2_folder_notification_config" {
+///   name = "my-topic"
+/// }
+/// resource "gcp_securitycenter_v2foldernotificationconfig" "custom_notification_config" {
+///   config_id    = "my-config"
+///   folder       = gcp_organizations_folder.folder.folder_id
+///   location     = "global"
+///   description  = "My custom Cloud Security Command Center Finding Notification Configuration"
+///   pubsub_topic = gcp_pubsub_topic.scc_v2_folder_notification_config.id
+///   streaming_config = {
+///     filter = "category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""
+///   }
 /// }
 /// ```
 /// ```java
@@ -145,8 +172,8 @@ import 'v2_folder_notification_config_streaming_config.dart';
 /// import com.pulumi.gcp.securitycenter.V2FolderNotificationConfig;
 /// import com.pulumi.gcp.securitycenter.V2FolderNotificationConfigArgs;
 /// import com.pulumi.gcp.securitycenter.inputs.V2FolderNotificationConfigStreamingConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -212,21 +239,25 @@ import 'v2_folder_notification_config_streaming_config.dart';
 /// FolderNotificationConfig can be imported using any of these accepted formats:
 ///
 /// * `folders/{{folder}}/locations/{{location}}/notificationConfigs/{{config_id}}`
-///
 /// * `{{folder}}/{{location}}/{{config_id}}`
+///
 ///
 /// When using the `pulumi import` command, FolderNotificationConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig default folders/{{folder}}/locations/{{location}}/notificationConfigs/{{config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig default {{folder}}/{{location}}/{{config_id}}
 /// ```
 class V2FolderNotificationConfig extends pulumi.CustomResource {
   /// This must be unique within the organization.
   late final pulumi.Output<String> configId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the notification config (max of 1024 characters).
   late final pulumi.Output<String?> description;
   /// Numerical ID of the parent folder.
@@ -237,7 +268,7 @@ class V2FolderNotificationConfig extends pulumi.CustomResource {
   /// `folders/{{folder}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
   late final pulumi.Output<String> name;
   /// The Pub/Sub topic to send notifications to. Its format is
-  /// "projects/[project_id]/topics/[topic]".
+  /// "projects/[projectId]/topics/[topic]".
   late final pulumi.Output<String> pubsubTopic;
   /// The service account that needs "pubsub.topics.publish" permission to
   /// publish to the Pub/Sub topic.
@@ -261,6 +292,7 @@ class V2FolderNotificationConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configId = registerOutput<String>('configId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     folder = registerOutput<String>('folder');
     location = registerOutput<String?>('location');
@@ -294,6 +326,7 @@ class V2FolderNotificationConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     configId = registerOutput<String>('configId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     folder = registerOutput<String>('folder');
     location = registerOutput<String?>('location');

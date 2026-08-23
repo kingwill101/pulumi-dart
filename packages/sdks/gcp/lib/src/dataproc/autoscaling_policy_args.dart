@@ -13,6 +13,13 @@ class AutoscalingPolicyArgs {
   /// Basic algorithm for autoscaling.
   /// Structure is documented below.
   final pulumi.Input<AutoscalingPolicyBasicAlgorithm>? basicAlgorithm;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The  location where the autoscaling policy should reside.
   /// The default value is `global`.
   final pulumi.Input<String>? location;
@@ -32,6 +39,7 @@ class AutoscalingPolicyArgs {
 
   /// Creates a new [AutoscalingPolicyArgs].
   /// [basicAlgorithm] Basic algorithm for autoscaling.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [location] The  location where the autoscaling policy should reside.
   /// [policyId] The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
   /// [project] The ID of the project in which the resource belongs.
@@ -39,6 +47,7 @@ class AutoscalingPolicyArgs {
   /// [workerConfig] Describes how the autoscaler will operate for primary workers.
   const AutoscalingPolicyArgs({
     this.basicAlgorithm,
+    this.deletionPolicy,
     this.location,
     required this.policyId,
     this.project,
@@ -49,6 +58,7 @@ class AutoscalingPolicyArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'basicAlgorithm': ?pulumi.Input.mapOptionalInputValue<AutoscalingPolicyBasicAlgorithm, Map<String, dynamic>>(basicAlgorithm, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'location': ?location,
       'policyId': policyId,
       'project': ?project,
@@ -60,6 +70,7 @@ class AutoscalingPolicyArgs {
   factory AutoscalingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyArgs(
       basicAlgorithm: (() { final guardedValue = map['basicAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscalingPolicyBasicAlgorithm.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyId: pulumi.Input.fromValue(map['policyId'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -68,4 +79,3 @@ class AutoscalingPolicyArgs {
     );
   }
 }
-

@@ -84,6 +84,12 @@ class GetCloudVmClusterProperty {
   /// FAILED
   /// MAINTENANCE_IN_PROGRESS
   final pulumi.Input<String> state;
+  /// The storage management type of the VM Cluster.
+  /// Possible values:
+  /// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+  /// ASM
+  /// EXASCALE
+  final pulumi.Input<String> storageManagementType;
   /// The storage allocation for the disk group, in gigabytes (GB).
   final pulumi.Input<int> storageSizeGb;
   /// Operating system version of the image.
@@ -122,6 +128,7 @@ class GetCloudVmClusterProperty {
   /// [sparseDiskgroupEnabled] Use exadata sparse snapshots.
   /// [sshPublicKeys] SSH public keys to be stored with cluster.
   /// [state] State of the cluster.
+  /// [storageManagementType] The storage management type of the VM Cluster.
   /// [storageSizeGb] The storage allocation for the disk group, in gigabytes (GB).
   /// [systemVersion] Operating system version of the image.
   /// [timeZones] Represents a time zone from the
@@ -155,6 +162,7 @@ class GetCloudVmClusterProperty {
     required this.sparseDiskgroupEnabled,
     required this.sshPublicKeys,
     required this.state,
+    required this.storageManagementType,
     required this.storageSizeGb,
     required this.systemVersion,
     required this.timeZones,
@@ -191,6 +199,7 @@ class GetCloudVmClusterProperty {
       'sparseDiskgroupEnabled': sparseDiskgroupEnabled,
       'sshPublicKeys': sshPublicKeys,
       'state': state,
+      'storageManagementType': storageManagementType,
       'storageSizeGb': storageSizeGb,
       'systemVersion': systemVersion,
       'timeZones': pulumi.Input.mapInputValue<List<GetCloudVmClusterPropertyTimeZone>, List<Map<String, dynamic>>>(timeZones, (value) => pulumi.Input.encodeList<GetCloudVmClusterPropertyTimeZone, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -228,10 +237,10 @@ class GetCloudVmClusterProperty {
       sparseDiskgroupEnabled: pulumi.Input.fromValue(map['sparseDiskgroupEnabled'] as bool),
       sshPublicKeys: pulumi.Input.fromValue((map['sshPublicKeys'] as List).cast<String>()),
       state: pulumi.Input.fromValue(map['state'] as String),
+      storageManagementType: pulumi.Input.fromValue(map['storageManagementType'] as String),
       storageSizeGb: pulumi.Input.fromValue(map['storageSizeGb'] as int),
       systemVersion: pulumi.Input.fromValue(map['systemVersion'] as String),
       timeZones: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCloudVmClusterPropertyTimeZone>(map['timeZones']!, (value) => GetCloudVmClusterPropertyTimeZone.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }
 }
-

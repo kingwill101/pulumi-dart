@@ -131,6 +131,33 @@ import 'ai_deployment_resource_pool_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aideploymentresourcepool" "deployment_resource_pool" {
+///   region = "us-central1"
+///   name   = "example-deployment-resource-pool"
+///   dedicated_resources = {
+///     machine_spec = {
+///       machine_type      = "n1-standard-4"
+///       accelerator_type  = "NVIDIA_TESLA_P4"
+///       accelerator_count = 1
+///     }
+///     min_replica_count = 1
+///     max_replica_count = 2
+///     autoscaling_metric_specs = [{
+///       "metricName" = "aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle"
+///       "target"     = 60
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +168,9 @@ import 'ai_deployment_resource_pool_state.dart';
 /// import com.pulumi.gcp.vertex.AiDeploymentResourcePoolArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiDeploymentResourcePoolDedicatedResourcesArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.vertex.inputs.AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -201,28 +229,17 @@ import 'ai_deployment_resource_pool_state.dart';
 /// DeploymentResourcePool can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/deploymentResourcePools/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, DeploymentResourcePool can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool default projects/{{project}}/locations/{{region}}/deploymentResourcePools/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool default {{name}}
 /// ```
 class AiDeploymentResourcePool extends pulumi.CustomResource {
@@ -231,6 +248,13 @@ class AiDeploymentResourcePool extends pulumi.CustomResource {
   /// The underlying dedicated resources that the deployment resource pool uses.
   /// Structure is documented below.
   late final pulumi.Output<AiDeploymentResourcePoolDedicatedResources?> dedicatedResources;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
   late final pulumi.Output<String> name;
   /// The ID of the project in which the resource belongs.
@@ -255,6 +279,7 @@ class AiDeploymentResourcePool extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     dedicatedResources = registerOutput<AiDeploymentResourcePoolDedicatedResources?>('dedicatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiDeploymentResourcePoolDedicatedResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
@@ -285,6 +310,7 @@ class AiDeploymentResourcePool extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     dedicatedResources = registerOutput<AiDeploymentResourcePoolDedicatedResources?>('dedicatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiDeploymentResourcePoolDedicatedResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');

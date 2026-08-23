@@ -17,7 +17,7 @@ class PreventionJobTriggerInspectJobAction {
   /// (Optional, Deprecated)
   /// Publish findings of a DlpJob to Data Catalog.
   ///
-  /// &gt; **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
+  /// &gt; **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
   final pulumi.Input<Map<String, dynamic>>? publishFindingsToCloudDataCatalog;
   /// Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
   final pulumi.Input<Map<String, dynamic>>? publishFindingsToDataplexCatalog;
@@ -75,4 +75,3 @@ class PreventionJobTriggerInspectJobAction {
     );
   }
 }
-

@@ -47,4 +47,3 @@ class GetAuthorityConfigX509ConfigCaOption {
     );
   }
 }
-

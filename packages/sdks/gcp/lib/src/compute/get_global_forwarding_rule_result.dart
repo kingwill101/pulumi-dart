@@ -8,6 +8,7 @@ import 'get_global_forwarding_rule_service_directory_registration.dart';
 class GetGlobalForwardingRuleResult {
   final bool allowPscGlobalAccess;
   final String baseForwardingRule;
+  final String deletionPolicy;
   final String description;
   final Map<String, String> effectiveLabels;
   final String externalManagedBackendBucketMigrationState;
@@ -40,6 +41,7 @@ class GetGlobalForwardingRuleResult {
   /// Creates a new [GetGlobalForwardingRuleResult].
   /// [allowPscGlobalAccess] Required.
   /// [baseForwardingRule] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [effectiveLabels] Required.
   /// [externalManagedBackendBucketMigrationState] Required.
@@ -70,6 +72,7 @@ class GetGlobalForwardingRuleResult {
   const GetGlobalForwardingRuleResult({
     required this.allowPscGlobalAccess,
     required this.baseForwardingRule,
+    required this.deletionPolicy,
     required this.description,
     required this.effectiveLabels,
     required this.externalManagedBackendBucketMigrationState,
@@ -103,6 +106,7 @@ class GetGlobalForwardingRuleResult {
     return <String, dynamic>{
       'allowPscGlobalAccess': allowPscGlobalAccess,
       'baseForwardingRule': baseForwardingRule,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'effectiveLabels': effectiveLabels,
       'externalManagedBackendBucketMigrationState': externalManagedBackendBucketMigrationState,
@@ -137,6 +141,7 @@ class GetGlobalForwardingRuleResult {
     return GetGlobalForwardingRuleResult(
       allowPscGlobalAccess: map['allowPscGlobalAccess'] as bool,
       baseForwardingRule: map['baseForwardingRule'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       externalManagedBackendBucketMigrationState: map['externalManagedBackendBucketMigrationState'] as String,
@@ -167,4 +172,3 @@ class GetGlobalForwardingRuleResult {
     );
   }
 }
-

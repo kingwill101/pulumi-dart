@@ -3,6 +3,15 @@ import 'control_organization_intelligence_config_args.dart';
 import 'control_organization_intelligence_config_filter.dart';
 import 'control_organization_intelligence_config_state.dart';
 
+/// The Organization Storage Intelligence Config resource represents GCS Storage Intelligence operating on individual GCP organization. Storage Intelligence Config is a singleton resource and individual instance exists on each GCP organization.
+///
+/// Storage Intelligence is for Storage Admins to manage GCP storage assets at scale for performance, cost, security & compliance.
+///
+///
+///
+/// &gt; **Warning:** Storage Intelligence is a singleton resource which cannot be created or deleted. A single instance of Storage Intelligence exist for each GCP Organization. Terraform does not create or destroy this resource.
+/// Terraform resource creation for this resource is simply an update operation on existing resource with specified properties, absence of any optional field in the create operation will result in clearance of that field. Terraform deletion won't have any effect on this resource rather it will only remove it from the state file.
+///
 /// ## Example Usage
 ///
 /// ### Storage Control Organization Intelligence Config Basic
@@ -124,6 +133,28 @@ import 'control_organization_intelligence_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_controlorganizationintelligenceconfig" "example" {
+///   name           = "12345678"
+///   edition_config = "STANDARD"
+///   filter = {
+///     excluded_cloud_storage_buckets = {
+///       bucket_id_regexes = ["test-id-1*", "test-id-2*"]
+///     }
+///     included_cloud_storage_locations = {
+///       locations = ["test-location-1*", "test-locations-2*"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -135,8 +166,8 @@ import 'control_organization_intelligence_config_state.dart';
 /// import com.pulumi.gcp.storage.inputs.ControlOrganizationIntelligenceConfigFilterArgs;
 /// import com.pulumi.gcp.storage.inputs.ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs;
 /// import com.pulumi.gcp.storage.inputs.ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -192,16 +223,13 @@ import 'control_organization_intelligence_config_state.dart';
 /// OrganizationIntelligenceConfig can be imported using any of these accepted formats:
 ///
 /// * `organizations/{{name}}/locations/global/intelligenceConfig`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, OrganizationIntelligenceConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:storage/controlOrganizationIntelligenceConfig:ControlOrganizationIntelligenceConfig default organizations/{{name}}/locations/global/intelligenceConfig
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:storage/controlOrganizationIntelligenceConfig:ControlOrganizationIntelligenceConfig default {{name}}
 /// ```
 class ControlOrganizationIntelligenceConfig extends pulumi.CustomResource {

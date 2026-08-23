@@ -9,6 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceArgs {
   /// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
   final pulumi.Input<String> capacityGib;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Parallelstore Instance deployment type.
   /// Possible values:
   /// DEPLOYMENT_TYPE_UNSPECIFIED
@@ -62,7 +69,7 @@ class InstanceArgs {
   /// allow `"_"` in a future release. "
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Part of `parent`. See documentation of `projectsId`.
   final pulumi.Input<String> location;
@@ -80,6 +87,7 @@ class InstanceArgs {
 
   /// Creates a new [InstanceArgs].
   /// [capacityGib] Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deploymentType] Parallelstore Instance deployment type.
   /// [description] The description of the instance. 2048 characters or less.
   /// [directoryStripeLevel] Stripe level for directories.
@@ -92,6 +100,7 @@ class InstanceArgs {
   /// [reservedIpRange] Immutable. Contains the id of the allocated IP address range
   const InstanceArgs({
     required this.capacityGib,
+    this.deletionPolicy,
     this.deploymentType,
     this.description,
     this.directoryStripeLevel,
@@ -107,6 +116,7 @@ class InstanceArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capacityGib': capacityGib,
+      'deletionPolicy': ?deletionPolicy,
       'deploymentType': ?deploymentType,
       'description': ?description,
       'directoryStripeLevel': ?directoryStripeLevel,
@@ -123,6 +133,7 @@ class InstanceArgs {
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
       capacityGib: pulumi.Input.fromValue(map['capacityGib'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deploymentType: (() { final guardedValue = map['deploymentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       directoryStripeLevel: (() { final guardedValue = map['directoryStripeLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -136,4 +147,3 @@ class InstanceArgs {
     );
   }
 }
-

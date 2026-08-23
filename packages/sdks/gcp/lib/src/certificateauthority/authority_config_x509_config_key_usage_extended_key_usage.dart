@@ -54,4 +54,3 @@ class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
     );
   }
 }
-

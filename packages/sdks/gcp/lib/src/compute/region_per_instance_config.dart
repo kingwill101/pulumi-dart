@@ -358,7 +358,7 @@ import 'region_per_instance_config_state.dart';
 /// 				Disks: compute.RegionPerInstanceConfigPreservedStateDiskArray{
 /// 					&compute.RegionPerInstanceConfigPreservedStateDiskArgs{
 /// 						DeviceName: pulumi.String("my-stateful-disk"),
-/// 						Source:     _default.ID(),
+/// 						Source:     _default.ID().ToIDOutput().ToStringOutput(),
 /// 						Mode:       pulumi.String("READ_ONLY"),
 /// 					},
 /// 				},
@@ -369,6 +369,77 @@ import 'region_per_instance_config_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_instancetemplate" "igm-basic" {
+///   name           = "my-template"
+///   machine_type   = "e2-medium"
+///   can_ip_forward = false
+///   tags           = ["foo", "bar"]
+///   disks {
+///     source_image = data.gcp_compute_getimage.myImage.self_link
+///     auto_delete  = true
+///     boot         = true
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
+///   service_account = {
+///     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
+///   }
+/// }
+/// resource "gcp_compute_regioninstancegroupmanager" "rigm" {
+///   description = "Demo test instance group manager"
+///   name        = "my-rigm"
+///   versions {
+///     name              = "prod"
+///     instance_template = gcp_compute_instancetemplate.igm-basic.self_link
+///   }
+///   update_policy = {
+///     type                         = "OPPORTUNISTIC"
+///     instance_redistribution_type = "NONE"
+///     minimal_action               = "RESTART"
+///   }
+///   base_instance_name = "rigm"
+///   region             = "us-central1"
+///   target_size        = 2
+/// }
+/// resource "gcp_compute_disk" "default" {
+///   name                      = "my-disk-name"
+///   type                      = "pd-ssd"
+///   zone                      = "us-central1-a"
+///   image                     = "debian-11-bullseye-v20220719"
+///   physical_block_size_bytes = 4096
+/// }
+/// resource "gcp_compute_regionperinstanceconfig" "with_disk" {
+///   region                        = igm.region
+///   region_instance_group_manager = gcp_compute_regioninstancegroupmanager.rigm.name
+///   name                          = "instance-1"
+///   preserved_state = {
+///     metadata = {
+///       "foo"               = "bar"
+///       "instance_template" = gcp_compute_instancetemplate.igm-basic.self_link
+///     }
+///     disks = [{
+///       "deviceName" = "my-stateful-disk"
+///       "source"     = gcp_compute_disk.default.id
+///       "mode"       = "READ_ONLY"
+///     }]
+///   }
 /// }
 /// ```
 /// ```java
@@ -393,8 +464,9 @@ import 'region_per_instance_config_state.dart';
 /// import com.pulumi.gcp.compute.RegionPerInstanceConfig;
 /// import com.pulumi.gcp.compute.RegionPerInstanceConfigArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionPerInstanceConfigPreservedStateArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.RegionPerInstanceConfigPreservedStateDiskArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -460,7 +532,7 @@ import 'region_per_instance_config_state.dart';
 ///             .build());
 ///
 ///         var withDisk = new RegionPerInstanceConfig("withDisk", RegionPerInstanceConfigArgs.builder()
-///             .region(igm.region())
+///             .region(igm.get("region"))
 ///             .regionInstanceGroupManager(rigm.name())
 ///             .name("instance-1")
 ///             .preservedState(RegionPerInstanceConfigPreservedStateArgs.builder()
@@ -554,31 +626,27 @@ import 'region_per_instance_config_state.dart';
 /// RegionPerInstanceConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}`
-///
 /// * `{{region}}/{{region_instance_group_manager}}/{{name}}`
-///
 /// * `{{region_instance_group_manager}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionPerInstanceConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region}}/{{region_instance_group_manager}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region_instance_group_manager}}/{{name}}
 /// ```
 class RegionPerInstanceConfig extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The minimal action to perform on the instance during an update.
   /// Default is `NONE`. Possible values are:
   /// * REPLACE
@@ -627,6 +695,7 @@ class RegionPerInstanceConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     minimalAction = registerOutput<String?>('minimalAction');
     mostDisruptiveAllowedAction = registerOutput<String?>('mostDisruptiveAllowedAction');
     this.name = registerOutput<String>('name');
@@ -661,6 +730,7 @@ class RegionPerInstanceConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     minimalAction = registerOutput<String?>('minimalAction');
     mostDisruptiveAllowedAction = registerOutput<String?>('mostDisruptiveAllowedAction');
     this.name = registerOutput<String>('name');

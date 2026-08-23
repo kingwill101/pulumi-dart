@@ -6,7 +6,7 @@ class ConnectionAuthConfigSshPublicKeySshClientCertPass {
   /// The resource name of the secret version in the format,
   /// format as: projects/*/secrets/*/versions/*.
   ///
-  /// &lt;a name="nested_auth_config_oauth2_auth_code_flow"&gt;&lt;/a&gt;The `oauth2_auth_code_flow` block supports:
+  /// &lt;a name="nestedAuthConfigOauth2AuthCodeFlow"&gt;&lt;/a&gt;The `oauth2AuthCodeFlow` block supports:
   final pulumi.Input<String> secretVersion;
 
   /// Creates a new [ConnectionAuthConfigSshPublicKeySshClientCertPass].
@@ -27,4 +27,3 @@ class ConnectionAuthConfigSshPublicKeySshClientCertPass {
     );
   }
 }
-

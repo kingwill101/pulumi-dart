@@ -4,6 +4,7 @@ import 'workload_identity_pool_managed_identity_state.dart';
 
 /// Represents a managed identity for a workload identity pool namespace.
 ///
+///
 /// To get more information about WorkloadIdentityPoolManagedIdentity, see:
 ///
 /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.namespaces.managedIdentities)
@@ -115,6 +116,29 @@ import 'workload_identity_pool_managed_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "pool" {
+///   workload_identity_pool_id = "example-pool"
+///   mode                      = "TRUST_DOMAIN"
+/// }
+/// resource "gcp_iam_workloadidentitypoolnamespace" "ns" {
+///   workload_identity_pool_id           = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_namespace_id = "example-namespace"
+/// }
+/// resource "gcp_iam_workloadidentitypoolmanagedidentity" "example" {
+///   workload_identity_pool_id                  = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_namespace_id        = gcp_iam_workloadidentitypoolnamespace.ns.workload_identity_pool_namespace_id
+///   workload_identity_pool_managed_identity_id = "example-managed-identity"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +151,8 @@ import 'workload_identity_pool_managed_identity_state.dart';
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolNamespaceArgs;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolManagedIdentity;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolManagedIdentityArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -324,6 +348,37 @@ import 'workload_identity_pool_managed_identity_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_iam_workloadidentitypool" "pool" {
+///   workload_identity_pool_id = "example-pool"
+///   mode                      = "TRUST_DOMAIN"
+/// }
+/// resource "gcp_iam_workloadidentitypoolnamespace" "ns" {
+///   workload_identity_pool_id           = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_namespace_id = "example-namespace"
+/// }
+/// resource "gcp_iam_workloadidentitypoolmanagedidentity" "example" {
+///   workload_identity_pool_id                  = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+///   workload_identity_pool_namespace_id        = gcp_iam_workloadidentitypoolnamespace.ns.workload_identity_pool_namespace_id
+///   workload_identity_pool_managed_identity_id = "example-managed-identity"
+///   description                                = "Example Managed Identity in a Workload Identity Pool Namespace"
+///   disabled                                   = true
+///   attestation_rules {
+///     google_cloud_resource = "//compute.googleapis.com/projects/1111111111111/uid/zones/us-central1-a/instances/12345678"
+///   }
+///   attestation_rules {
+///     google_cloud_resource = "//run.googleapis.com/projects/1111111111111/name/locations/us-east1/services/my-service"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -337,8 +392,8 @@ import 'workload_identity_pool_managed_identity_state.dart';
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolManagedIdentity;
 /// import com.pulumi.gcp.iam.WorkloadIdentityPoolManagedIdentityArgs;
 /// import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolManagedIdentityAttestationRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -409,22 +464,15 @@ import 'workload_identity_pool_managed_identity_state.dart';
 /// WorkloadIdentityPoolManagedIdentity can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/namespaces/{{workload_identity_pool_namespace_id}}/managedIdentities/{{workload_identity_pool_managed_identity_id}}`
-///
 /// * `{{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}/{{workload_identity_pool_managed_identity_id}}`
-///
 /// * `{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}/{{workload_identity_pool_managed_identity_id}}`
+///
 ///
 /// When using the `pulumi import` command, WorkloadIdentityPoolManagedIdentity can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/namespaces/{{workload_identity_pool_namespace_id}}/managedIdentities/{{workload_identity_pool_managed_identity_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}/{{workload_identity_pool_managed_identity_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity default {{workload_identity_pool_id}}/{{workload_identity_pool_namespace_id}}/{{workload_identity_pool_managed_identity_id}}
 /// ```
 class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
@@ -433,6 +481,13 @@ class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
   /// 50 AttestationRules can be set.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> attestationRules;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A description of the managed identity. Cannot exceed 256 characters.
   late final pulumi.Output<String?> description;
   /// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
@@ -460,7 +515,6 @@ class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
   /// * contain only lowercase alphanumeric characters or `-`
   /// * start with an alphanumeric character
   /// * end with an alphanumeric character
-  ///
   /// The prefix `gcp-` will be reserved for future uses.
   late final pulumi.Output<String> workloadIdentityPoolManagedIdentityId;
   /// The ID to use for the namespace. This value must:
@@ -468,7 +522,6 @@ class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
   /// * contain only lowercase alphanumeric characters or `-`
   /// * start with an alphanumeric character
   /// * end with an alphanumeric character
-  ///
   /// The prefix `gcp-` will be reserved for future uses.
   late final pulumi.Output<String> workloadIdentityPoolNamespaceId;
 
@@ -487,6 +540,7 @@ class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     attestationRules = registerOutput<List<Map<String, dynamic>>?>('attestationRules');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');
@@ -521,6 +575,7 @@ class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     attestationRules = registerOutput<List<Map<String, dynamic>>?>('attestationRules');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');

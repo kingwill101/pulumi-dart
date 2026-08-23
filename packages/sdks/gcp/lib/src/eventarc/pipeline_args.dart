@@ -14,13 +14,20 @@ import 'pipeline_retry_policy.dart';
 class PipelineArgs {
   /// User-defined annotations. See https://google.aip.dev/128#annotations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Resource name of a KMS crypto key (managed by the user) used to
   /// encrypt/decrypt the event data. If not set, an internal Google-owned key
   /// will be used to encrypt messages. It must match the pattern
   /// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
   final pulumi.Input<String>? cryptoKeyName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// List of destinations to which messages will be forwarded. Currently,
   /// exactly one destination is supported per Pipeline.
   /// Structure is documented below.
@@ -34,7 +41,7 @@ class PipelineArgs {
   /// resources. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1.3kg", "count": "3" }.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
@@ -58,7 +65,7 @@ class PipelineArgs {
   /// The backoff starts with a 5 second delay and doubles the
   /// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
   /// The delay is capped at 60 seconds by default.
-  /// Please note that if you set the min_retry_delay and max_retry_delay fields
+  /// Please note that if you set the minRetryDelay and maxRetryDelay fields
   /// to the same value this will make the duration between retries constant.
   /// Structure is documented below.
   final pulumi.Input<PipelineRetryPolicy>? retryPolicy;
@@ -66,6 +73,7 @@ class PipelineArgs {
   /// Creates a new [PipelineArgs].
   /// [annotations] User-defined annotations. See https://google.aip.dev/128#annotations.
   /// [cryptoKeyName] Resource name of a KMS crypto key (managed by the user) used to
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [destinations] List of destinations to which messages will be forwarded. Currently,
   /// [displayName] Display name of resource.
   /// [inputPayloadFormat] Represents the format of message data.
@@ -79,6 +87,7 @@ class PipelineArgs {
   const PipelineArgs({
     this.annotations,
     this.cryptoKeyName,
+    this.deletionPolicy,
     required this.destinations,
     this.displayName,
     this.inputPayloadFormat,
@@ -95,6 +104,7 @@ class PipelineArgs {
     return <String, dynamic>{
       'annotations': ?annotations,
       'cryptoKeyName': ?cryptoKeyName,
+      'deletionPolicy': ?deletionPolicy,
       'destinations': pulumi.Input.mapInputValue<List<PipelineDestination>, List<Map<String, dynamic>>>(destinations, (value) => pulumi.Input.encodeList<PipelineDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
       'displayName': ?displayName,
       'inputPayloadFormat': ?pulumi.Input.mapOptionalInputValue<PipelineInputPayloadFormat, Map<String, dynamic>>(inputPayloadFormat, (value) => value.toMap()),
@@ -112,6 +122,7 @@ class PipelineArgs {
     return PipelineArgs(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       cryptoKeyName: (() { final guardedValue = map['cryptoKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinations: pulumi.Input.fromValue(pulumi.Input.decodeList<PipelineDestination>(map['destinations']!, (value) => PipelineDestination.fromMap((value as Map).cast<String, dynamic>()))),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inputPayloadFormat: (() { final guardedValue = map['inputPayloadFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineInputPayloadFormat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -125,4 +136,3 @@ class PipelineArgs {
     );
   }
 }
-

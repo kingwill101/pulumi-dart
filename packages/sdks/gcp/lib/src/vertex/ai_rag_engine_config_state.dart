@@ -5,6 +5,13 @@ import 'ai_rag_engine_config_rag_managed_db_config.dart';
 
 /// Input properties used for looking up and filtering AiRagEngineConfig resources.
 class AiRagEngineConfigState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The resource name of the Dataset. This value is set by Google.
   final pulumi.Input<String>? name;
   /// The ID of the project in which the resource belongs.
@@ -17,11 +24,13 @@ class AiRagEngineConfigState {
   final pulumi.Input<String>? region;
 
   /// Creates a new [AiRagEngineConfigState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [name] The resource name of the Dataset. This value is set by Google.
   /// [project] The ID of the project in which the resource belongs.
   /// [ragManagedDbConfig] Required. The config of the RagManagedDb used by RagEngine.
   /// [region] The region of the RagEngineConfig. eg us-central1
   const AiRagEngineConfigState({
+    this.deletionPolicy,
     this.name,
     this.project,
     this.ragManagedDbConfig,
@@ -30,6 +39,7 @@ class AiRagEngineConfigState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'name': ?name,
       'project': ?project,
       'ragManagedDbConfig': ?pulumi.Input.mapOptionalInputValue<AiRagEngineConfigRagManagedDbConfig, Map<String, dynamic>>(ragManagedDbConfig, (value) => value.toMap()),
@@ -39,6 +49,7 @@ class AiRagEngineConfigState {
 
   factory AiRagEngineConfigState.fromMap(Map<String, dynamic> map) {
     return AiRagEngineConfigState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ragManagedDbConfig: (() { final guardedValue = map['ragManagedDbConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiRagEngineConfigRagManagedDbConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -46,4 +57,3 @@ class AiRagEngineConfigState {
     );
   }
 }
-

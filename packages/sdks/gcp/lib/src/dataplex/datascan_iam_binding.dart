@@ -6,8 +6,8 @@ import 'datascan_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Dataplex Datascan. Each of these resources serves a different use case:
 ///
 /// * `gcp.dataplex.DatascanIamPolicy`: Authoritative. Sets the IAM policy for the datascan and replaces any existing policy already attached.
-/// * `gcp.dataplex.DatascanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the datascan are preserved.
-/// * `gcp.dataplex.DatascanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the datascan are preserved.
+/// * `gcp.dataplex.DatascanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the datascan are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.dataplex.DatascanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the datascan are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -16,7 +16,6 @@ import 'datascan_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.dataplex.DatascanIamPolicy` **cannot** be used in conjunction with `gcp.dataplex.DatascanIamBinding` and `gcp.dataplex.DatascanIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.dataplex.DatascanIamBinding` resources **can be** used in conjunction with `gcp.dataplex.DatascanIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.dataplex.DatascanIamPolicy
@@ -123,6 +122,29 @@ import 'datascan_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_dataplex_datascaniampolicy" "policy" {
+///   project      = basicProfile.project
+///   location     = basicProfile.location
+///   data_scan_id = basicProfile.dataScanId
+///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -131,10 +153,11 @@ import 'datascan_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.dataplex.DatascanIamPolicy;
 /// import com.pulumi.gcp.dataplex.DatascanIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -154,9 +177,9 @@ import 'datascan_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new DatascanIamPolicy("policy", DatascanIamPolicyArgs.builder()
-///             .project(basicProfile.project())
-///             .location(basicProfile.location())
-///             .dataScanId(basicProfile.dataScanId())
+///             .project(basicProfile.get("project"))
+///             .location(basicProfile.get("location"))
+///             .dataScanId(basicProfile.get("dataScanId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -258,6 +281,23 @@ import 'datascan_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_datascaniambinding" "binding" {
+///   project      = basicProfile.project
+///   location     = basicProfile.location
+///   data_scan_id = basicProfile.dataScanId
+///   role         = "roles/viewer"
+///   members      = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -266,8 +306,8 @@ import 'datascan_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.DatascanIamBinding;
 /// import com.pulumi.gcp.dataplex.DatascanIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,9 +320,9 @@ import 'datascan_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new DatascanIamBinding("binding", DatascanIamBindingArgs.builder()
-///             .project(basicProfile.project())
-///             .location(basicProfile.location())
-///             .dataScanId(basicProfile.dataScanId())
+///             .project(basicProfile.get("project"))
+///             .location(basicProfile.get("location"))
+///             .dataScanId(basicProfile.get("dataScanId"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -373,6 +413,23 @@ import 'datascan_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_datascaniammember" "member" {
+///   project      = basicProfile.project
+///   location     = basicProfile.location
+///   data_scan_id = basicProfile.dataScanId
+///   role         = "roles/viewer"
+///   member       = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -381,8 +438,8 @@ import 'datascan_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.DatascanIamMember;
 /// import com.pulumi.gcp.dataplex.DatascanIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -395,9 +452,9 @@ import 'datascan_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new DatascanIamMember("member", DatascanIamMemberArgs.builder()
-///             .project(basicProfile.project())
-///             .location(basicProfile.location())
-///             .dataScanId(basicProfile.dataScanId())
+///             .project(basicProfile.get("project"))
+///             .location(basicProfile.get("location"))
+///             .dataScanId(basicProfile.get("dataScanId"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -428,8 +485,8 @@ import 'datascan_iam_binding_state.dart';
 /// Three different resources help you manage your IAM policy for Dataplex Datascan. Each of these resources serves a different use case:
 ///
 /// * `gcp.dataplex.DatascanIamPolicy`: Authoritative. Sets the IAM policy for the datascan and replaces any existing policy already attached.
-/// * `gcp.dataplex.DatascanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the datascan are preserved.
-/// * `gcp.dataplex.DatascanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the datascan are preserved.
+/// * `gcp.dataplex.DatascanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the datascan are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.dataplex.DatascanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the datascan are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -438,7 +495,6 @@ import 'datascan_iam_binding_state.dart';
 /// &gt; **Note:** `gcp.dataplex.DatascanIamPolicy` **cannot** be used in conjunction with `gcp.dataplex.DatascanIamBinding` and `gcp.dataplex.DatascanIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.dataplex.DatascanIamBinding` resources **can be** used in conjunction with `gcp.dataplex.DatascanIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.dataplex.DatascanIamPolicy
@@ -545,6 +601,29 @@ import 'datascan_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_dataplex_datascaniampolicy" "policy" {
+///   project      = basicProfile.project
+///   location     = basicProfile.location
+///   data_scan_id = basicProfile.dataScanId
+///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -553,10 +632,11 @@ import 'datascan_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.dataplex.DatascanIamPolicy;
 /// import com.pulumi.gcp.dataplex.DatascanIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -576,9 +656,9 @@ import 'datascan_iam_binding_state.dart';
 ///             .build());
 ///
 ///         var policy = new DatascanIamPolicy("policy", DatascanIamPolicyArgs.builder()
-///             .project(basicProfile.project())
-///             .location(basicProfile.location())
-///             .dataScanId(basicProfile.dataScanId())
+///             .project(basicProfile.get("project"))
+///             .location(basicProfile.get("location"))
+///             .dataScanId(basicProfile.get("dataScanId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -680,6 +760,23 @@ import 'datascan_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_datascaniambinding" "binding" {
+///   project      = basicProfile.project
+///   location     = basicProfile.location
+///   data_scan_id = basicProfile.dataScanId
+///   role         = "roles/viewer"
+///   members      = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -688,8 +785,8 @@ import 'datascan_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.DatascanIamBinding;
 /// import com.pulumi.gcp.dataplex.DatascanIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -702,9 +799,9 @@ import 'datascan_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new DatascanIamBinding("binding", DatascanIamBindingArgs.builder()
-///             .project(basicProfile.project())
-///             .location(basicProfile.location())
-///             .dataScanId(basicProfile.dataScanId())
+///             .project(basicProfile.get("project"))
+///             .location(basicProfile.get("location"))
+///             .dataScanId(basicProfile.get("dataScanId"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -795,6 +892,23 @@ import 'datascan_iam_binding_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_dataplex_datascaniammember" "member" {
+///   project      = basicProfile.project
+///   location     = basicProfile.location
+///   data_scan_id = basicProfile.dataScanId
+///   role         = "roles/viewer"
+///   member       = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -803,8 +917,8 @@ import 'datascan_iam_binding_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.dataplex.DatascanIamMember;
 /// import com.pulumi.gcp.dataplex.DatascanIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -817,9 +931,9 @@ import 'datascan_iam_binding_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new DatascanIamMember("member", DatascanIamMemberArgs.builder()
-///             .project(basicProfile.project())
-///             .location(basicProfile.location())
-///             .dataScanId(basicProfile.dataScanId())
+///             .project(basicProfile.get("project"))
+///             .location(basicProfile.get("location"))
+///             .dataScanId(basicProfile.get("dataScanId"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -845,11 +959,8 @@ import 'datascan_iam_binding_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}
-///
 /// * {{project}}/{{location}}/{{data_scan_id}}
-///
 /// * {{location}}/{{data_scan_id}}
-///
 /// * {{data_scan_id}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -857,25 +968,21 @@ import 'datascan_iam_binding_state.dart';
 /// Dataplex datascan IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:dataplex/datascanIamBinding:DatascanIamBinding editor "projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}} roles/viewer user:jane@example.com"
+/// $ terraform import google_dataplex_datascan_iam_member.editor "projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:dataplex/datascanIamBinding:DatascanIamBinding editor "projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}} roles/viewer"
+/// $ terraform import google_dataplex_datascan_iam_binding.editor "projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:dataplex/datascanIamBinding:DatascanIamBinding editor projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class DatascanIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<DatascanIamBindingCondition?> condition;

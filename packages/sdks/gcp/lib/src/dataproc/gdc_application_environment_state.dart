@@ -7,20 +7,28 @@ import 'gdc_application_environment_spark_application_environment_config.dart';
 class GdcApplicationEnvironmentState {
   /// The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// The id of the application environment
   final pulumi.Input<String>? applicationEnvironmentId;
   /// The timestamp when the resource was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-provided human-readable name to be used in user interfaces.
   final pulumi.Input<String>? displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location of the application environment
   final pulumi.Input<String>? location;
@@ -48,8 +56,9 @@ class GdcApplicationEnvironmentState {
   /// [annotations] The annotations to associate with this application environment. Annotations may be used to store client information, but are not used by the server.
   /// [applicationEnvironmentId] The id of the application environment
   /// [createTime] The timestamp when the resource was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] User-provided human-readable name to be used in user interfaces.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [labels] The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
   /// [location] The location of the application environment
@@ -65,6 +74,7 @@ class GdcApplicationEnvironmentState {
     this.annotations,
     this.applicationEnvironmentId,
     this.createTime,
+    this.deletionPolicy,
     this.displayName,
     this.effectiveAnnotations,
     this.effectiveLabels,
@@ -85,6 +95,7 @@ class GdcApplicationEnvironmentState {
       'annotations': ?annotations,
       'applicationEnvironmentId': ?applicationEnvironmentId,
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'effectiveAnnotations': ?effectiveAnnotations,
       'effectiveLabels': ?effectiveLabels,
@@ -106,6 +117,7 @@ class GdcApplicationEnvironmentState {
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       applicationEnvironmentId: (() { final guardedValue = map['applicationEnvironmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -122,4 +134,3 @@ class GdcApplicationEnvironmentState {
     );
   }
 }
-

@@ -133,6 +133,36 @@ import 'backup_vault_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_backupdisasterrecovery_backupvault" "backup-vault-test" {
+///   location                                   = "us-central1"
+///   backup_vault_id                            = "backup-vault-test"
+///   description                                = "This is a second backup vault built by Terraform."
+///   backup_minimum_enforced_retention_duration = "100000s"
+///   annotations = {
+///     "annotations1" = "bar1"
+///     "annotations2" = "baz1"
+///   }
+///   labels = {
+///     "foo" = "bar1"
+///     "bar" = "baz1"
+///   }
+///   force_update                  = "true"
+///   access_restriction            = "WITHIN_ORGANIZATION"
+///   backup_retention_inheritance  = "INHERIT_VAULT_RETENTION"
+///   ignore_inactive_datasources   = "true"
+///   ignore_backup_plan_references = "true"
+///   allow_missing                 = "true"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -141,8 +171,8 @@ import 'backup_vault_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.backupdisasterrecovery.BackupVault;
 /// import com.pulumi.gcp.backupdisasterrecovery.BackupVaultArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -354,6 +384,43 @@ import 'backup_vault_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "testProject" {
+///   project_id = "my-project-name"
+/// }
+///
+/// resource "gcp_backupdisasterrecovery_backupvault" "backup-vault-cmek" {
+///   location                                   = "us-central1"
+///   backup_vault_id                            = "backup-vault-cmek"
+///   description                                = "This is a second backup vault built by Terraform."
+///   backup_minimum_enforced_retention_duration = "100000s"
+///   annotations = {
+///     "annotations1" = "bar1"
+///     "annotations2" = "baz1"
+///   }
+///   labels = {
+///     "foo" = "bar1"
+///     "bar" = "baz1"
+///   }
+///   encryption_config = {
+///     kms_key_name = "bkpvault-key"
+///   }
+///   force_update                  = "true"
+///   access_restriction            = "WITHIN_ORGANIZATION"
+///   backup_retention_inheritance  = "INHERIT_VAULT_RETENTION"
+///   ignore_inactive_datasources   = "true"
+///   ignore_backup_plan_references = "true"
+///   allow_missing                 = "true"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -365,8 +432,8 @@ import 'backup_vault_state.dart';
 /// import com.pulumi.gcp.backupdisasterrecovery.BackupVault;
 /// import com.pulumi.gcp.backupdisasterrecovery.BackupVaultArgs;
 /// import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupVaultEncryptionConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -446,22 +513,15 @@ import 'backup_vault_state.dart';
 /// BackupVault can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/backupVaults/{{backup_vault_id}}`
-///
 /// * `{{project}}/{{location}}/{{backup_vault_id}}`
-///
 /// * `{{location}}/{{backup_vault_id}}`
+///
 ///
 /// When using the `pulumi import` command, BackupVault can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default projects/{{project}}/locations/{{location}}/backupVaults/{{backup_vault_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{project}}/{{location}}/{{backup_vault_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:backupdisasterrecovery/backupVault:BackupVault default {{location}}/{{backup_vault_id}}
 /// ```
 class BackupVault extends pulumi.CustomResource {
@@ -474,7 +534,7 @@ class BackupVault extends pulumi.CustomResource {
   /// Optional. User annotations. See https://google.aip.dev/128#annotations
   /// Stores small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Output only. The number of backups in this backup vault.
   late final pulumi.Output<String> backupCount;
@@ -489,8 +549,16 @@ class BackupVault extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Output only. Set to true when there are no backups nested under this resource.
   late final pulumi.Output<bool> deletable;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. The description of the BackupVault instance (2048 characters or less).
   late final pulumi.Output<String?> description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -506,13 +574,15 @@ class BackupVault extends pulumi.CustomResource {
   /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
   /// * deletion of a backup vault instance that is being referenced by an active backup plan.
   ///
-  /// &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+  /// &gt; **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
   late final pulumi.Output<bool?> forceDelete;
   /// If set, allow update to extend the minimum enforced retention for backup vault. This overrides
   /// the restriction against conflicting retention periods. This conflict may occur when the
   /// expiration schedule defined by the associated backup plan is shorter than the minimum
   /// retention set by the backup vault.
   late final pulumi.Output<bool?> forceUpdate;
+  /// If set to true, we will force update access restriction even if some non compliant data sources are present.
+  late final pulumi.Output<bool?> forceUpdateAccessRestriction;
   /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
   /// * deletion of a backup vault instance that is being referenced by an active backup plan.
   late final pulumi.Output<bool?> ignoreBackupPlanReferences;
@@ -521,7 +591,7 @@ class BackupVault extends pulumi.CustomResource {
   late final pulumi.Output<bool?> ignoreInactiveDatasources;
   /// Optional. Resource labels to represent user provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The GCP location for the backup vault.
   late final pulumi.Output<String> location;
@@ -542,6 +612,7 @@ class BackupVault extends pulumi.CustomResource {
   /// ACTIVE
   /// DELETING
   /// ERROR
+  /// UPDATING
   late final pulumi.Output<String> state;
   /// Output only. Total size of the storage used by all backup resources.
   late final pulumi.Output<String> totalStoredBytes;
@@ -573,6 +644,7 @@ class BackupVault extends pulumi.CustomResource {
     backupVaultId = registerOutput<String>('backupVaultId');
     createTime = registerOutput<String>('createTime');
     deletable = registerOutput<bool>('deletable');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -581,6 +653,7 @@ class BackupVault extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     forceDelete = registerOutput<bool?>('forceDelete');
     forceUpdate = registerOutput<bool?>('forceUpdate');
+    forceUpdateAccessRestriction = registerOutput<bool?>('forceUpdateAccessRestriction');
     ignoreBackupPlanReferences = registerOutput<bool?>('ignoreBackupPlanReferences');
     ignoreInactiveDatasources = registerOutput<bool?>('ignoreInactiveDatasources');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -627,6 +700,7 @@ class BackupVault extends pulumi.CustomResource {
     backupVaultId = registerOutput<String>('backupVaultId');
     createTime = registerOutput<String>('createTime');
     deletable = registerOutput<bool>('deletable');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -635,6 +709,7 @@ class BackupVault extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     forceDelete = registerOutput<bool?>('forceDelete');
     forceUpdate = registerOutput<bool?>('forceUpdate');
+    forceUpdateAccessRestriction = registerOutput<bool?>('forceUpdateAccessRestriction');
     ignoreBackupPlanReferences = registerOutput<bool?>('ignoreBackupPlanReferences');
     ignoreInactiveDatasources = registerOutput<bool?>('ignoreInactiveDatasources');
     labels = registerOutput<Map<String, String>?>('labels');

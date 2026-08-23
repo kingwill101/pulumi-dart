@@ -227,6 +227,50 @@ import 'chat_engine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_datastore" "test_data_store" {
+///   location          = "global"
+///   data_store_id     = "data-store"
+///   display_name      = "Structured datastore"
+///   industry_vertical = "GENERIC"
+///   content_config    = "NO_CONTENT"
+///   solution_types    = ["SOLUTION_TYPE_CHAT"]
+/// }
+/// resource "gcp_discoveryengine_datastore" "test_data_store_2" {
+///   location          = gcp_discoveryengine_datastore.test_data_store.location
+///   data_store_id     = "data-store-2"
+///   display_name      = "Structured datastore 2"
+///   industry_vertical = "GENERIC"
+///   content_config    = "NO_CONTENT"
+///   solution_types    = ["SOLUTION_TYPE_CHAT"]
+/// }
+/// resource "gcp_discoveryengine_chatengine" "primary" {
+///   engine_id         = "chat-engine-id"
+///   collection_id     = "default_collection"
+///   location          = gcp_discoveryengine_datastore.test_data_store.location
+///   display_name      = "Chat engine"
+///   industry_vertical = "GENERIC"
+///   data_store_ids    = [gcp_discoveryengine_datastore.test_data_store.data_store_id, gcp_discoveryengine_datastore.test_data_store_2.data_store_id]
+///   common_config = {
+///     company_name = "test-company"
+///   }
+///   chat_engine_config = {
+///     agent_creation_config = {
+///       business              = "test business name"
+///       default_language_code = "en"
+///       time_zone             = "America/Los_Angeles"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -240,8 +284,8 @@ import 'chat_engine_state.dart';
 /// import com.pulumi.gcp.discoveryengine.inputs.ChatEngineCommonConfigArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.ChatEngineChatEngineConfigArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.ChatEngineChatEngineConfigAgentCreationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -507,7 +551,7 @@ import 'chat_engine_state.dart';
 /// 				CompanyName: pulumi.String("test-company"),
 /// 			},
 /// 			ChatEngineConfig: &discoveryengine.ChatEngineChatEngineConfigArgs{
-/// 				DialogflowAgentToLink: agent.ID(),
+/// 				DialogflowAgentToLink: agent.ID().ToIDOutput().ToStringOutput(),
 /// 				AllowCrossRegion:      pulumi.Bool(true),
 /// 			},
 /// 		})
@@ -516,6 +560,45 @@ import 'chat_engine_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_datastore" "test_data_store" {
+///   location          = "eu"
+///   data_store_id     = "data-store"
+///   display_name      = "Structured datastore"
+///   industry_vertical = "GENERIC"
+///   content_config    = "NO_CONTENT"
+///   solution_types    = ["SOLUTION_TYPE_CHAT"]
+/// }
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name          = "dialogflowcx-agent"
+///   location              = "europe-west3"
+///   default_language_code = "en"
+///   time_zone             = "America/Los_Angeles"
+/// }
+/// resource "gcp_discoveryengine_chatengine" "primary" {
+///   engine_id         = "chat-engine-id"
+///   collection_id     = "default_collection"
+///   location          = gcp_discoveryengine_datastore.test_data_store.location
+///   display_name      = "Chat engine"
+///   industry_vertical = "GENERIC"
+///   data_store_ids    = [gcp_discoveryengine_datastore.test_data_store.data_store_id]
+///   common_config = {
+///     company_name = "test-company"
+///   }
+///   chat_engine_config = {
+///     dialogflow_agent_to_link = gcp_diagflow_cxagent.agent.id
+///     allow_cross_region       = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -532,8 +615,8 @@ import 'chat_engine_state.dart';
 /// import com.pulumi.gcp.discoveryengine.ChatEngineArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.ChatEngineCommonConfigArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.ChatEngineChatEngineConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -623,22 +706,15 @@ import 'chat_engine_state.dart';
 /// ChatEngine can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}`
-///
 /// * `{{project}}/{{location}}/{{collection_id}}/{{engine_id}}`
-///
 /// * `{{location}}/{{collection_id}}/{{engine_id}}`
+///
 ///
 /// When using the `pulumi import` command, ChatEngine can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default projects/{{project}}/locations/{{location}}/collections/{{collection_id}}/engines/{{engine_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default {{project}}/{{location}}/{{collection_id}}/{{engine_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/chatEngine:ChatEngine default {{location}}/{{collection_id}}/{{engine_id}}
 /// ```
 class ChatEngine extends pulumi.CustomResource {
@@ -657,6 +733,13 @@ class ChatEngine extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
   late final pulumi.Output<List<String>> dataStoreIds;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
   late final pulumi.Output<String> displayName;
   /// The ID to use for chat engine.
@@ -698,6 +781,7 @@ class ChatEngine extends pulumi.CustomResource {
     commonConfig = registerOutput<ChatEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChatEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
     industryVertical = registerOutput<String?>('industryVertical');
@@ -736,6 +820,7 @@ class ChatEngine extends pulumi.CustomResource {
     commonConfig = registerOutput<ChatEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChatEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
     industryVertical = registerOutput<String?>('industryVertical');

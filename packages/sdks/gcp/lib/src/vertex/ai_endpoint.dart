@@ -258,13 +258,13 @@ import 'ai_endpoint_state.dart';
 /// 			Purpose:      pulumi.String("VPC_PEERING"),
 /// 			AddressType:  pulumi.String("INTERNAL"),
 /// 			PrefixLength: pulumi.Int(24),
-/// 			Network:      vertexNetwork.ID(),
+/// 			Network:      vertexNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		vertexVpcConnection, err := servicenetworking.NewConnection(ctx, "vertex_vpc_connection", &servicenetworking.ConnectionArgs{
-/// 			Network: vertexNetwork.ID(),
+/// 			Network: vertexNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Service: pulumi.String("servicenetworking.googleapis.com"),
 /// 			ReservedPeeringRanges: pulumi.StringArray{
 /// 				vertexRange.Name,
@@ -287,7 +287,7 @@ import 'ai_endpoint_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]int{
 /// 			"12345": 100,
 /// 		})
 /// 		if err != nil {
@@ -337,6 +337,71 @@ import 'ai_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aiendpoint" "endpoint" {
+///   depends_on   = [gcp_servicenetworking_connection.vertex_vpc_connection]
+///   name         = "endpoint-name"
+///   display_name = "sample-endpoint"
+///   description  = "A sample vertex endpoint"
+///   location     = "us-central1"
+///   region       = "us-central1"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   network ="projects/${data.gcp_organizations_getproject.project.number}/global/networks/${gcp_compute_network.vertex_network.name}"
+///   encryption_spec = {
+///     kms_key_name = "kms-name"
+///   }
+///   predict_request_response_logging_config = {
+///     bigquery_destination = {
+///       output_uri ="bq://${data.gcp_organizations_getproject.project.project_id}.${gcp_bigquery_dataset.bq_dataset.dataset_id}.request_response_logging"
+///     }
+///     enabled       = true
+///     sampling_rate = 0.1
+///   }
+///   traffic_split = jsonencode({
+///     "12345" = 100
+///   })
+/// }
+/// resource "gcp_servicenetworking_connection" "vertex_vpc_connection" {
+///   network                 = gcp_compute_network.vertex_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.vertex_range.name]
+/// }
+/// resource "gcp_compute_globaladdress" "vertex_range" {
+///   name          = "address-name"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 24
+///   network       = gcp_compute_network.vertex_network.id
+/// }
+/// resource "gcp_compute_network" "vertex_network" {
+///   name = "network-name"
+/// }
+/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+///   crypto_key_id = "kms-name"
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com"
+/// }
+/// resource "gcp_bigquery_dataset" "bq_dataset" {
+///   dataset_id                 = "some_dataset"
+///   friendly_name              = "logging dataset"
+///   description                = "This is a dataset that requests are logged to"
+///   location                   = "US"
+///   delete_contents_on_destroy = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -362,8 +427,8 @@ import 'ai_endpoint_state.dart';
 /// import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -518,10 +583,10 @@ import 'ai_endpoint_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const _default = new gcp.compute.Network("default", {name: "psc-network-_9723"});
+/// const _default = new gcp.compute.Network("default", {name: "psc-network-_13786"});
 /// const project = gcp.organizations.getProject({});
 /// const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
-///     name: "endpoint-name_22061",
+///     name: "endpoint-name_29040",
 ///     displayName: "sample-endpoint",
 ///     description: "A sample vertex endpoint",
 ///     location: "us-central1",
@@ -543,10 +608,10 @@ import 'ai_endpoint_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default = gcp.compute.Network("default", name="psc-network-_9723")
+/// default = gcp.compute.Network("default", name="psc-network-_13786")
 /// project = gcp.organizations.get_project()
 /// endpoint = gcp.vertex.AiEndpoint("endpoint",
-///     name="endpoint-name_22061",
+///     name="endpoint-name_29040",
 ///     display_name="sample-endpoint",
 ///     description="A sample vertex endpoint",
 ///     location="us-central1",
@@ -573,14 +638,14 @@ import 'ai_endpoint_state.dart';
 /// {
 ///     var @default = new Gcp.Compute.Network("default", new()
 ///     {
-///         Name = "psc-network-_9723",
+///         Name = "psc-network-_13786",
 ///     });
 ///
 ///     var project = Gcp.Organizations.GetProject.Invoke();
 ///
 ///     var endpoint = new Gcp.Vertex.AiEndpoint("endpoint", new()
 ///     {
-///         Name = "endpoint-name_22061",
+///         Name = "endpoint-name_29040",
 ///         DisplayName = "sample-endpoint",
 ///         Description = "A sample vertex endpoint",
 ///         Location = "us-central1",
@@ -622,7 +687,7 @@ import 'ai_endpoint_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-/// 			Name: pulumi.String("psc-network-_9723"),
+/// 			Name: pulumi.String("psc-network-_13786"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -632,7 +697,7 @@ import 'ai_endpoint_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-/// 			Name:        pulumi.String("endpoint-name_22061"),
+/// 			Name:        pulumi.String("endpoint-name_29040"),
 /// 			DisplayName: pulumi.String("sample-endpoint"),
 /// 			Description: pulumi.String("A sample vertex endpoint"),
 /// 			Location:    pulumi.String("us-central1"),
@@ -648,7 +713,7 @@ import 'ai_endpoint_state.dart';
 /// 				PscAutomationConfigs: vertex.AiEndpointPrivateServiceConnectConfigPscAutomationConfigArray{
 /// 					&vertex.AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs{
 /// 						ProjectId: pulumi.String(project.ProjectId),
-/// 						Network:   _default.ID(),
+/// 						Network:   _default.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -658,6 +723,40 @@ import 'ai_endpoint_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_compute_network" "default" {
+///   name = "psc-network-_13786"
+/// }
+/// resource "gcp_vertex_aiendpoint" "endpoint" {
+///   name         = "endpoint-name_29040"
+///   display_name = "sample-endpoint"
+///   description  = "A sample vertex endpoint"
+///   location     = "us-central1"
+///   region       = "us-central1"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   private_service_connect_config = {
+///     enable_private_service_connect = true
+///     project_allowlists             = [data.gcp_organizations_getproject.project.project_id]
+///     psc_automation_configs = [{
+///       "projectId" = data.gcp_organizations_getproject.project.project_id
+///       "network"   = gcp_compute_network.default.id
+///     }]
+///   }
 /// }
 /// ```
 /// ```java
@@ -673,8 +772,9 @@ import 'ai_endpoint_state.dart';
 /// import com.pulumi.gcp.vertex.AiEndpoint;
 /// import com.pulumi.gcp.vertex.AiEndpointArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiEndpointPrivateServiceConnectConfigArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.vertex.inputs.AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -687,14 +787,14 @@ import 'ai_endpoint_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var default_ = new Network("default", NetworkArgs.builder()
-///             .name("psc-network-_9723")
+///             .name("psc-network-_13786")
 ///             .build());
 ///
 ///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
 ///             .build());
 ///
 ///         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
-///             .name("endpoint-name_22061")
+///             .name("endpoint-name_29040")
 ///             .displayName("sample-endpoint")
 ///             .description("A sample vertex endpoint")
 ///             .location("us-central1")
@@ -718,11 +818,11 @@ import 'ai_endpoint_state.dart';
 ///   default:
 ///     type: gcp:compute:Network
 ///     properties:
-///       name: psc-network-_9723
+///       name: psc-network-_13786
 ///   endpoint:
 ///     type: gcp:vertex:AiEndpoint
 ///     properties:
-///       name: endpoint-name_22061
+///       name: endpoint-name_29040
 ///       displayName: sample-endpoint
 ///       description: A sample vertex endpoint
 ///       location: us-central1
@@ -752,7 +852,7 @@ import 'ai_endpoint_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
-///     name: "endpoint-name_60461",
+///     name: "endpoint-name_78181",
 ///     displayName: "sample-endpoint",
 ///     description: "A sample vertex endpoint",
 ///     location: "us-central1",
@@ -769,7 +869,7 @@ import 'ai_endpoint_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// endpoint = gcp.vertex.AiEndpoint("endpoint",
-///     name="endpoint-name_60461",
+///     name="endpoint-name_78181",
 ///     display_name="sample-endpoint",
 ///     description="A sample vertex endpoint",
 ///     location="us-central1",
@@ -790,7 +890,7 @@ import 'ai_endpoint_state.dart';
 /// {
 ///     var endpoint = new Gcp.Vertex.AiEndpoint("endpoint", new()
 ///     {
-///         Name = "endpoint-name_60461",
+///         Name = "endpoint-name_78181",
 ///         DisplayName = "sample-endpoint",
 ///         Description = "A sample vertex endpoint",
 ///         Location = "us-central1",
@@ -818,7 +918,7 @@ import 'ai_endpoint_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-/// 			Name:        pulumi.String("endpoint-name_60461"),
+/// 			Name:        pulumi.String("endpoint-name_78181"),
 /// 			DisplayName: pulumi.String("sample-endpoint"),
 /// 			Description: pulumi.String("A sample vertex endpoint"),
 /// 			Location:    pulumi.String("us-central1"),
@@ -839,6 +939,30 @@ import 'ai_endpoint_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getproject" "project" {
+/// }
+///
+/// resource "gcp_vertex_aiendpoint" "endpoint" {
+///   name         = "endpoint-name_78181"
+///   display_name = "sample-endpoint"
+///   description  = "A sample vertex endpoint"
+///   location     = "us-central1"
+///   region       = "us-central1"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   dedicated_endpoint_enabled = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -849,8 +973,8 @@ import 'ai_endpoint_state.dart';
 /// import com.pulumi.gcp.vertex.AiEndpointArgs;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -863,7 +987,7 @@ import 'ai_endpoint_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
-///             .name("endpoint-name_60461")
+///             .name("endpoint-name_78181")
 ///             .displayName("sample-endpoint")
 ///             .description("A sample vertex endpoint")
 ///             .location("us-central1")
@@ -883,7 +1007,7 @@ import 'ai_endpoint_state.dart';
 ///   endpoint:
 ///     type: gcp:vertex:AiEndpoint
 ///     properties:
-///       name: endpoint-name_60461
+///       name: endpoint-name_78181
 ///       displayName: sample-endpoint
 ///       description: A sample vertex endpoint
 ///       location: us-central1
@@ -904,22 +1028,15 @@ import 'ai_endpoint_state.dart';
 /// Endpoint can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiEndpoint:AiEndpoint default {{location}}/{{name}}
 /// ```
 class AiEndpoint extends pulumi.CustomResource {
@@ -930,6 +1047,13 @@ class AiEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> dedicatedEndpointDns;
   /// If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
   late final pulumi.Output<bool?> dedicatedEndpointEnabled;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>> deployedModels;
@@ -946,7 +1070,7 @@ class AiEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> etag;
   /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location for the resource
   late final pulumi.Output<String> location;
@@ -997,6 +1121,7 @@ class AiEndpoint extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     dedicatedEndpointDns = registerOutput<String>('dedicatedEndpointDns');
     dedicatedEndpointEnabled = registerOutput<bool?>('dedicatedEndpointEnabled');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deployedModels = registerOutput<List<Map<String, dynamic>>>('deployedModels');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -1043,6 +1168,7 @@ class AiEndpoint extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     dedicatedEndpointDns = registerOutput<String>('dedicatedEndpointDns');
     dedicatedEndpointEnabled = registerOutput<bool?>('dedicatedEndpointEnabled');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     deployedModels = registerOutput<List<Map<String, dynamic>>>('deployedModels');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

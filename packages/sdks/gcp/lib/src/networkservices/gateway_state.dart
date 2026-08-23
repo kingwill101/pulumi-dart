@@ -9,6 +9,15 @@ class GatewayState {
   /// This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
   /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
   final pulumi.Input<List<String>>? addresses;
+  /// Configures this gateway to ​listen on all ports.
+  /// By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
+  /// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+  /// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+  final pulumi.Input<bool>? allPorts;
+  /// Optional. If true, the gateway will allow traffic from clients outside
+  /// of the region where the gateway is located.
+  /// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+  final pulumi.Input<bool>? allowGlobalAccess;
   /// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
   /// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
   final pulumi.Input<List<String>>? certificateUrls;
@@ -17,6 +26,13 @@ class GatewayState {
   /// When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
   /// If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
   final pulumi.Input<bool>? deleteSwgAutogenRouterOnDestroy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -36,7 +52,7 @@ class GatewayState {
   /// Set of label tags associated with the Gateway resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location of the gateway.
   /// The default value is `global`.
@@ -48,7 +64,7 @@ class GatewayState {
   /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
   final pulumi.Input<String>? network;
   /// One or more port numbers (1-65535), on which the Gateway will receive traffic.
-  /// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port.
+  /// The proxy binds to the specified ports.
   /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
   final pulumi.Input<List<int>>? ports;
   /// The ID of the project in which the resource belongs.
@@ -80,9 +96,12 @@ class GatewayState {
 
   /// Creates a new [GatewayState].
   /// [addresses] Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
+  /// [allPorts] Configures this gateway to ​listen on all ports.
+  /// [allowGlobalAccess] Optional. If true, the gateway will allow traffic from clients outside
   /// [certificateUrls] A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
   /// [createTime] The timestamp when the resource was created.
   /// [deleteSwgAutogenRouterOnDestroy] When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A free-text description of the resource. Max length 1024 characters.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [envoyHeaders] Determines if envoy will insert internal debug headers into upstream requests.
@@ -104,9 +123,12 @@ class GatewayState {
   /// [updateTime] The timestamp when the resource was updated.
   const GatewayState({
     this.addresses,
+    this.allPorts,
+    this.allowGlobalAccess,
     this.certificateUrls,
     this.createTime,
     this.deleteSwgAutogenRouterOnDestroy,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.envoyHeaders,
@@ -131,9 +153,12 @@ class GatewayState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addresses': ?addresses,
+      'allPorts': ?allPorts,
+      'allowGlobalAccess': ?allowGlobalAccess,
       'certificateUrls': ?certificateUrls,
       'createTime': ?createTime,
       'deleteSwgAutogenRouterOnDestroy': ?deleteSwgAutogenRouterOnDestroy,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'envoyHeaders': ?envoyHeaders,
@@ -159,9 +184,12 @@ class GatewayState {
   factory GatewayState.fromMap(Map<String, dynamic> map) {
     return GatewayState(
       addresses: (() { final guardedValue = map['addresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      allPorts: (() { final guardedValue = map['allPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      allowGlobalAccess: (() { final guardedValue = map['allowGlobalAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       certificateUrls: (() { final guardedValue = map['certificateUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteSwgAutogenRouterOnDestroy: (() { final guardedValue = map['deleteSwgAutogenRouterOnDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       envoyHeaders: (() { final guardedValue = map['envoyHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -184,4 +212,3 @@ class GatewayState {
     );
   }
 }
-

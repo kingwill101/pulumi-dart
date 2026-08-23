@@ -7,6 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_vmwareengine_network_peering_network_peering_args_doc}
 class NetworkPeeringArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// User-provided description for this network peering.
   final pulumi.Input<String>? description;
   /// True if custom routes are exported to the peered network; false otherwise.
@@ -34,6 +41,7 @@ class NetworkPeeringArgs {
   final pulumi.Input<String> vmwareEngineNetwork;
 
   /// Creates a new [NetworkPeeringArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] User-provided description for this network peering.
   /// [exportCustomRoutes] True if custom routes are exported to the peered network; false otherwise.
   /// [exportCustomRoutesWithPublicIp] True if all subnet routes with a public IP address range are exported; false otherwise.
@@ -45,6 +53,7 @@ class NetworkPeeringArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [vmwareEngineNetwork] The relative resource name of the VMware Engine network. Specify the name in the following form:
   const NetworkPeeringArgs({
+    this.deletionPolicy,
     this.description,
     this.exportCustomRoutes,
     this.exportCustomRoutesWithPublicIp,
@@ -59,6 +68,7 @@ class NetworkPeeringArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'exportCustomRoutes': ?exportCustomRoutes,
       'exportCustomRoutesWithPublicIp': ?exportCustomRoutesWithPublicIp,
@@ -74,6 +84,7 @@ class NetworkPeeringArgs {
 
   factory NetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exportCustomRoutes: (() { final guardedValue = map['exportCustomRoutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       exportCustomRoutesWithPublicIp: (() { final guardedValue = map['exportCustomRoutesWithPublicIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -87,4 +98,3 @@ class NetworkPeeringArgs {
     );
   }
 }
-

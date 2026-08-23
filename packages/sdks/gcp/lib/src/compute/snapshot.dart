@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'snapshot_args.dart';
+import 'snapshot_params.dart';
 import 'snapshot_snapshot_encryption_key.dart';
 import 'snapshot_source_disk_encryption_key.dart';
 import 'snapshot_state.dart';
@@ -24,8 +25,7 @@ import 'snapshot_state.dart';
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
 ///
-/// &gt; **Warning:** All arguments including the following potentially sensitive
-/// values will be stored in the raw state as plain text: `snapshot_encryption_key.raw_key`, `snapshot_encryption_key.rsa_encrypted_key`, `source_disk_encryption_key.raw_key`, `source_disk_encryption_key.rsa_encrypted_key`.
+///
 ///
 /// ## Example Usage
 ///
@@ -148,7 +148,7 @@ import 'snapshot_state.dart';
 /// 		}
 /// 		_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
 /// 			Name:       pulumi.String("my-snapshot"),
-/// 			SourceDisk: persistent.ID(),
+/// 			SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
 /// 			Zone:       pulumi.String("us-central1-a"),
 /// 			Labels: pulumi.StringMap{
 /// 				"my_label": pulumi.String("value"),
@@ -164,6 +164,37 @@ import 'snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "debian" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_snapshot" "snapshot" {
+///   name        = "my-snapshot"
+///   source_disk = gcp_compute_disk.persistent.id
+///   zone        = "us-central1-a"
+///   labels = {
+///     "my_label" = "value"
+///   }
+///   storage_locations = ["us-central1"]
+/// }
+/// resource "gcp_compute_disk" "persistent" {
+///   name  = "debian-disk"
+///   image = data.gcp_compute_getimage.debian.self_link
+///   size  = 10
+///   type  = "pd-ssd"
+///   zone  = "us-central1-a"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -176,8 +207,8 @@ import 'snapshot_state.dart';
 /// import com.pulumi.gcp.compute.DiskArgs;
 /// import com.pulumi.gcp.compute.Snapshot;
 /// import com.pulumi.gcp.compute.SnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -364,7 +395,7 @@ import 'snapshot_state.dart';
 /// 		}
 /// 		_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
 /// 			Name:       pulumi.String("my-snapshot"),
-/// 			SourceDisk: persistent.ID(),
+/// 			SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
 /// 			Zone:       pulumi.String("us-central1-a"),
 /// 			Labels: pulumi.StringMap{
 /// 				"my_label": pulumi.String("value"),
@@ -381,6 +412,38 @@ import 'snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "debian" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_snapshot" "snapshot" {
+///   name        = "my-snapshot"
+///   source_disk = gcp_compute_disk.persistent.id
+///   zone        = "us-central1-a"
+///   labels = {
+///     "my_label" = "value"
+///   }
+///   storage_locations = ["us-central1"]
+///   guest_flush       = true
+/// }
+/// resource "gcp_compute_disk" "persistent" {
+///   name  = "debian-disk"
+///   image = data.gcp_compute_getimage.debian.self_link
+///   size  = 10
+///   type  = "pd-ssd"
+///   zone  = "us-central1-a"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -393,8 +456,8 @@ import 'snapshot_state.dart';
 /// import com.pulumi.gcp.compute.DiskArgs;
 /// import com.pulumi.gcp.compute.Snapshot;
 /// import com.pulumi.gcp.compute.SnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -606,13 +669,49 @@ import 'snapshot_state.dart';
 /// 		_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
 /// 			Name:                  pulumi.String("my-snapshot"),
 /// 			Zone:                  pulumi.String("us-central1-a"),
-/// 			SourceInstantSnapshot: instantSnapshot.ID(),
+/// 			SourceInstantSnapshot: instantSnapshot.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "debian" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_snapshot" "snapshot" {
+///   name                    = "my-snapshot"
+///   zone                    = "us-central1-a"
+///   source_instant_snapshot = gcp_compute_instantsnapshot.instant_snapshot.id
+/// }
+/// resource "gcp_compute_instantsnapshot" "instant_snapshot" {
+///   name        = "my-instant-snapshot"
+///   source_disk = gcp_compute_disk.persistent.self_link
+///   zone        = gcp_compute_disk.persistent.zone
+///   description = "A test snapshot"
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_compute_disk" "persistent" {
+///   name  = "debian-disk"
+///   image = data.gcp_compute_getimage.debian.self_link
+///   size  = 10
+///   type  = "pd-ssd"
+///   zone  = "us-central1-a"
 /// }
 /// ```
 /// ```java
@@ -629,8 +728,8 @@ import 'snapshot_state.dart';
 /// import com.pulumi.gcp.compute.InstantSnapshotArgs;
 /// import com.pulumi.gcp.compute.Snapshot;
 /// import com.pulumi.gcp.compute.SnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -829,7 +928,7 @@ import 'snapshot_state.dart';
 /// 		}
 /// 		_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
 /// 			Name:       pulumi.String("my-snapshot"),
-/// 			SourceDisk: persistent.ID(),
+/// 			SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
 /// 			Zone:       pulumi.String("us-central1-a"),
 /// 			ChainName:  pulumi.String("snapshot-chain"),
 /// 			Labels: pulumi.StringMap{
@@ -846,6 +945,38 @@ import 'snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "debian" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_snapshot" "snapshot" {
+///   name        = "my-snapshot"
+///   source_disk = gcp_compute_disk.persistent.id
+///   zone        = "us-central1-a"
+///   chain_name  = "snapshot-chain"
+///   labels = {
+///     "my_label" = "value"
+///   }
+///   storage_locations = ["us-central1"]
+/// }
+/// resource "gcp_compute_disk" "persistent" {
+///   name  = "debian-disk"
+///   image = data.gcp_compute_getimage.debian.self_link
+///   size  = 10
+///   type  = "pd-ssd"
+///   zone  = "us-central1-a"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -858,8 +989,8 @@ import 'snapshot_state.dart';
 /// import com.pulumi.gcp.compute.DiskArgs;
 /// import com.pulumi.gcp.compute.Snapshot;
 /// import com.pulumi.gcp.compute.SnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -932,22 +1063,15 @@ import 'snapshot_state.dart';
 /// Snapshot can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/snapshots/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/snapshot:Snapshot default projects/{{project}}/global/snapshots/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/snapshot:Snapshot default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/snapshot:Snapshot default {{name}}
 /// ```
 class Snapshot extends pulumi.CustomResource {
@@ -960,12 +1084,20 @@ class Snapshot extends pulumi.CustomResource {
   late final pulumi.Output<String?> chainName;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// Size of the snapshot, specified in GB.
   late final pulumi.Output<int> diskSizeGb;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// (Optional, Beta)
   /// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
   late final pulumi.Output<bool?> guestFlush;
   /// The fingerprint used for optimistic locking of this resource. Used
@@ -973,7 +1105,7 @@ class Snapshot extends pulumi.CustomResource {
   late final pulumi.Output<String> labelFingerprint;
   /// Labels to apply to this Snapshot.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// A list of public visible licenses that apply to this snapshot. This
   /// can be because the original image had licenses attached (such as a
@@ -988,6 +1120,9 @@ class Snapshot extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  late final pulumi.Output<SnapshotParams?> params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -1047,6 +1182,7 @@ class Snapshot extends pulumi.CustomResource {
         ) {
     chainName = registerOutput<String?>('chainName');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskSizeGb = registerOutput<int>('diskSizeGb');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1055,6 +1191,7 @@ class Snapshot extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     licenses = registerOutput<List<String>>('licenses');
     this.name = registerOutput<String>('name');
+    params = registerOutput<SnapshotParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     selfLink = registerOutput<String>('selfLink');
@@ -1094,6 +1231,7 @@ class Snapshot extends pulumi.CustomResource {
         ) {
     chainName = registerOutput<String?>('chainName');
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskSizeGb = registerOutput<int>('diskSizeGb');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1102,6 +1240,7 @@ class Snapshot extends pulumi.CustomResource {
     labels = registerOutput<Map<String, String>?>('labels');
     licenses = registerOutput<List<String>>('licenses');
     this.name = registerOutput<String>('name');
+    params = registerOutput<SnapshotParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     selfLink = registerOutput<String>('selfLink');

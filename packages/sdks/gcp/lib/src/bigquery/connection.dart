@@ -5,6 +5,7 @@ import 'connection_azure.dart';
 import 'connection_cloud_resource.dart';
 import 'connection_cloud_spanner.dart';
 import 'connection_cloud_sql.dart';
+import 'connection_configuration.dart';
 import 'connection_spark.dart';
 import 'connection_state.dart';
 
@@ -91,6 +92,23 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_connection" "connection" {
+///   connection_id  = "my-connection"
+///   location       = "US"
+///   friendly_name  = "👋"
+///   description    = "a riveting description"
+///   cloud_resource = {}
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -100,8 +118,8 @@ import 'connection_state.dart';
 /// import com.pulumi.gcp.bigquery.Connection;
 /// import com.pulumi.gcp.bigquery.ConnectionArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ConnectionCloudResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -199,7 +217,7 @@ import 'connection_state.dart';
 /// db = gcp.sql.Database("db",
 ///     instance=instance.name,
 ///     name="db")
-/// pwd = random.index.Password("pwd",
+/// pwd = random.Password("pwd",
 ///     length=16,
 ///     special=False)
 /// user = gcp.sql.User("user",
@@ -247,7 +265,7 @@ import 'connection_state.dart';
 ///         Name = "db",
 ///     });
 ///
-///     var pwd = new Random.Index.Password("pwd", new()
+///     var pwd = new Random.Password("pwd", new()
 ///     {
 ///         Length = 16,
 ///         Special = false,
@@ -347,6 +365,55 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "my-database-instance"
+///   database_version = "POSTGRES_11"
+///   region           = "us-central1"
+///   settings = {
+///     tier = "db-f1-micro"
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_sql_database" "db" {
+///   instance = gcp_sql_databaseinstance.instance.name
+///   name     = "db"
+/// }
+/// resource "random_password" "pwd" {
+///   length  = 16
+///   special = false
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   password = random_password.pwd.result
+/// }
+/// resource "gcp_bigquery_connection" "connection" {
+///   friendly_name = "👋"
+///   description   = "a riveting description"
+///   location      = "US"
+///   cloud_sql = {
+///     instance_id = gcp_sql_databaseinstance.instance.connection_name
+///     database    = gcp_sql_database.db.name
+///     type        = "POSTGRES"
+///     credential = {
+///       username = gcp_sql_user.user.name
+///       password = gcp_sql_user.user.password
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -366,8 +433,8 @@ import 'connection_state.dart';
 /// import com.pulumi.gcp.bigquery.ConnectionArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -402,7 +469,7 @@ import 'connection_state.dart';
 ///         var user = new User("user", UserArgs.builder()
 ///             .name("user")
 ///             .instance(instance.name())
-///             .password(pwd.result())
+///             .password(pwd.get("result"))
 ///             .build());
 ///
 ///         var connection = new Connection("connection", ConnectionArgs.builder()
@@ -528,7 +595,7 @@ import 'connection_state.dart';
 /// db = gcp.sql.Database("db",
 ///     instance=instance.name,
 ///     name="db")
-/// pwd = random.index.Password("pwd",
+/// pwd = random.Password("pwd",
 ///     length=16,
 ///     special=False)
 /// user = gcp.sql.User("user",
@@ -577,7 +644,7 @@ import 'connection_state.dart';
 ///         Name = "db",
 ///     });
 ///
-///     var pwd = new Random.Index.Password("pwd", new()
+///     var pwd = new Random.Password("pwd", new()
 ///     {
 ///         Length = 16,
 ///         Special = false,
@@ -679,6 +746,56 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "my-database-instance"
+///   database_version = "POSTGRES_11"
+///   region           = "us-central1"
+///   settings = {
+///     tier = "db-f1-micro"
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_sql_database" "db" {
+///   instance = gcp_sql_databaseinstance.instance.name
+///   name     = "db"
+/// }
+/// resource "random_password" "pwd" {
+///   length  = 16
+///   special = false
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   password = random_password.pwd.result
+/// }
+/// resource "gcp_bigquery_connection" "connection" {
+///   connection_id = "my-connection"
+///   location      = "US"
+///   friendly_name = "👋"
+///   description   = "a riveting description"
+///   cloud_sql = {
+///     instance_id = gcp_sql_databaseinstance.instance.connection_name
+///     database    = gcp_sql_database.db.name
+///     type        = "POSTGRES"
+///     credential = {
+///       username = gcp_sql_user.user.name
+///       password = gcp_sql_user.user.password
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -698,8 +815,8 @@ import 'connection_state.dart';
 /// import com.pulumi.gcp.bigquery.ConnectionArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -734,7 +851,7 @@ import 'connection_state.dart';
 ///         var user = new User("user", UserArgs.builder()
 ///             .name("user")
 ///             .instance(instance.name())
-///             .password(pwd.result())
+///             .password(pwd.get("result"))
 ///             .build());
 ///
 ///         var connection = new Connection("connection", ConnectionArgs.builder()
@@ -887,6 +1004,27 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_connection" "connection" {
+///   connection_id = "my-connection"
+///   location      = "aws-us-east-1"
+///   friendly_name = "👋"
+///   description   = "a riveting description"
+///   aws = {
+///     access_role = {
+///       iam_role_id = "arn:aws:iam::999999999999:role/omnirole"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -897,8 +1035,8 @@ import 'connection_state.dart';
 /// import com.pulumi.gcp.bigquery.ConnectionArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ConnectionAwsArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ConnectionAwsAccessRoleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1022,6 +1160,26 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_connection" "connection" {
+///   connection_id = "my-connection"
+///   location      = "azure-eastus2"
+///   friendly_name = "👋"
+///   description   = "a riveting description"
+///   azure = {
+///     customer_tenant_id              = "customer-tenant-id"
+///     federated_application_client_id = "b43eeeee-eeee-eeee-eeee-a480155501ce"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1031,8 +1189,8 @@ import 'connection_state.dart';
 /// import com.pulumi.gcp.bigquery.Connection;
 /// import com.pulumi.gcp.bigquery.ConnectionArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ConnectionAzureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1155,6 +1313,26 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_connection" "connection" {
+///   connection_id = "my-connection"
+///   location      = "US"
+///   friendly_name = "👋"
+///   description   = "a riveting description"
+///   cloud_spanner = {
+///     database      = "projects/project/instances/instance/databases/database"
+///     database_role = "database_role"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1164,8 +1342,8 @@ import 'connection_state.dart';
 /// import com.pulumi.gcp.bigquery.Connection;
 /// import com.pulumi.gcp.bigquery.ConnectionArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSpannerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1296,6 +1474,28 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_connection" "connection" {
+///   connection_id = "my-connection"
+///   location      = "US"
+///   friendly_name = "👋"
+///   description   = "a riveting description"
+///   cloud_spanner = {
+///     database        = "projects/project/instances/instance/databases/database"
+///     use_parallelism = true
+///     use_data_boost  = true
+///     max_parallelism = 100
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1305,8 +1505,8 @@ import 'connection_state.dart';
 /// import com.pulumi.gcp.bigquery.Connection;
 /// import com.pulumi.gcp.bigquery.ConnectionArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSpannerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1509,7 +1709,7 @@ import 'connection_state.dart';
 /// 			Description:  pulumi.String("a riveting description"),
 /// 			Spark: &bigquery.ConnectionSparkArgs{
 /// 				SparkHistoryServerConfig: &bigquery.ConnectionSparkSparkHistoryServerConfigArgs{
-/// 					DataprocCluster: basic.ID(),
+/// 					DataprocCluster: basic.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -1518,6 +1718,45 @@ import 'connection_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigquery_connection" "connection" {
+///   connection_id = "my-connection"
+///   location      = "US"
+///   friendly_name = "👋"
+///   description   = "a riveting description"
+///   spark = {
+///     spark_history_server_config = {
+///       dataproc_cluster = gcp_dataproc_cluster.basic.id
+///     }
+///   }
+/// }
+/// resource "gcp_dataproc_cluster" "basic" {
+///   name   = "my-connection"
+///   region = "us-central1"
+///   cluster_config = {
+///     software_config = {
+///       override_properties = {
+///         "dataproc:dataproc.allow.zero.workers" = "true"
+///       }
+///     }
+///     master_config = {
+///       num_instances = 1
+///       machine_type  = "e2-standard-2"
+///       disk_config = {
+///         boot_disk_size_gb = 35
+///       }
+///     }
+///   }
 /// }
 /// ```
 /// ```java
@@ -1536,8 +1775,8 @@ import 'connection_state.dart';
 /// import com.pulumi.gcp.bigquery.ConnectionArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ConnectionSparkArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ConnectionSparkSparkHistoryServerConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1633,7 +1872,7 @@ import 'connection_state.dart';
 /// const user = new gcp.sql.User("user", {
 ///     name: "user",
 ///     instance: instance.name,
-///     password: "tf-test-my-password_15222",
+///     password: "tf-test-my-password_85840",
 /// });
 /// const bq_connection_cmek = new gcp.bigquery.Connection("bq-connection-cmek", {
 ///     friendlyName: "👋",
@@ -1669,7 +1908,7 @@ import 'connection_state.dart';
 /// user = gcp.sql.User("user",
 ///     name="user",
 ///     instance=instance.name,
-///     password="tf-test-my-password_15222")
+///     password="tf-test-my-password_85840")
 /// bq_connection_cmek = gcp.bigquery.Connection("bq-connection-cmek",
 ///     friendly_name="👋",
 ///     description="a riveting description",
@@ -1715,7 +1954,7 @@ import 'connection_state.dart';
 ///     {
 ///         Name = "user",
 ///         Instance = instance.Name,
-///         Password = "tf-test-my-password_15222",
+///         Password = "tf-test-my-password_85840",
 ///     });
 ///
 ///     var bq_connection_cmek = new Gcp.BigQuery.Connection("bq-connection-cmek", new()
@@ -1772,7 +2011,7 @@ import 'connection_state.dart';
 /// 		user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
 /// 			Name:     pulumi.String("user"),
 /// 			Instance: instance.Name,
-/// 			Password: pulumi.String("tf-test-my-password_15222"),
+/// 			Password: pulumi.String("tf-test-my-password_85840"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1799,6 +2038,49 @@ import 'connection_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_sql_databaseinstance" "instance" {
+///   name             = "my-database-instance"
+///   region           = "us-central1"
+///   database_version = "POSTGRES_11"
+///   settings = {
+///     tier = "db-f1-micro"
+///   }
+///   deletion_protection = true
+/// }
+/// resource "gcp_sql_database" "db" {
+///   instance = gcp_sql_databaseinstance.instance.name
+///   name     = "db"
+/// }
+/// resource "gcp_sql_user" "user" {
+///   name     = "user"
+///   instance = gcp_sql_databaseinstance.instance.name
+///   password = "tf-test-my-password_85840"
+/// }
+/// resource "gcp_bigquery_connection" "bq-connection-cmek" {
+///   friendly_name = "👋"
+///   description   = "a riveting description"
+///   location      = "US"
+///   kms_key_name  = "projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key"
+///   cloud_sql = {
+///     instance_id = gcp_sql_databaseinstance.instance.connection_name
+///     database    = gcp_sql_database.db.name
+///     type        = "POSTGRES"
+///     credential = {
+///       username = gcp_sql_user.user.name
+///       password = gcp_sql_user.user.password
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1816,8 +2098,8 @@ import 'connection_state.dart';
 /// import com.pulumi.gcp.bigquery.ConnectionArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlArgs;
 /// import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlCredentialArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1847,7 +2129,7 @@ import 'connection_state.dart';
 ///         var user = new User("user", UserArgs.builder()
 ///             .name("user")
 ///             .instance(instance.name())
-///             .password("tf-test-my-password_15222")
+///             .password("tf-test-my-password_85840")
 ///             .build());
 ///
 ///         var bq_connection_cmek = new Connection("bq-connection-cmek", ConnectionArgs.builder()
@@ -1890,7 +2172,7 @@ import 'connection_state.dart';
 ///     properties:
 ///       name: user
 ///       instance: ${instance.name}
-///       password: tf-test-my-password_15222
+///       password: tf-test-my-password_85840
 ///   bq-connection-cmek:
 ///     type: gcp:bigquery:Connection
 ///     properties:
@@ -1907,28 +2189,576 @@ import 'connection_state.dart';
 ///           password: ${user.password}
 /// ```
 ///
+/// ### Bigquery Connection Connector Configuration
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const nameSuffix = "my-connection";
+/// const defaultNetwork = new gcp.compute.Network("default", {name: `alloydb-network-${nameSuffix}`});
+/// const _default = new gcp.alloydb.Cluster("default", {
+///     clusterId: `alloydb-cluster-${nameSuffix}`,
+///     location: "us-central1",
+///     networkConfig: {
+///         network: defaultNetwork.id,
+///     },
+///     initialUser: {
+///         password: "alloydb-cluster-password",
+///     },
+///     deletionProtection: false,
+/// });
+/// const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+///     name: `alloydb-ip-${nameSuffix}`,
+///     addressType: "INTERNAL",
+///     purpose: "VPC_PEERING",
+///     prefixLength: 16,
+///     network: defaultNetwork.id,
+/// });
+/// const vpcConnection = new gcp.servicenetworking.Connection("vpc_connection", {
+///     network: defaultNetwork.id,
+///     service: "servicenetworking.googleapis.com",
+///     reservedPeeringRanges: [privateIpAlloc.name],
+/// });
+/// const defaultInstance = new gcp.alloydb.Instance("default", {
+///     cluster: _default.name,
+///     instanceId: `alloydb-instance-${nameSuffix}`,
+///     instanceType: "PRIMARY",
+///     machineConfig: {
+///         cpuCount: 2,
+///     },
+/// }, {
+///     dependsOn: [vpcConnection],
+/// });
+/// const connection = new gcp.bigquery.Connection("connection", {
+///     connectionId: "my-connection",
+///     location: "us-central1",
+///     friendlyName: "alloydb connection",
+///     description: "AlloyDB connection using connector configuration",
+///     configuration: {
+///         connectorId: "google-alloydb",
+///         asset: {
+///             database: "postgres",
+///             googleCloudResource: pulumi.interpolate`//alloydb.googleapis.com/${defaultInstance.id}`,
+///         },
+///         authentication: {
+///             usernamePassword: {
+///                 username: "user",
+///                 password: {
+///                     plaintext: "password",
+///                 },
+///             },
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// name_suffix = "my-connection"
+/// default_network = gcp.compute.Network("default", name=f"alloydb-network-{name_suffix}")
+/// default = gcp.alloydb.Cluster("default",
+///     cluster_id=f"alloydb-cluster-{name_suffix}",
+///     location="us-central1",
+///     network_config={
+///         "network": default_network.id,
+///     },
+///     initial_user={
+///         "password": "alloydb-cluster-password",
+///     },
+///     deletion_protection=False)
+/// private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+///     name=f"alloydb-ip-{name_suffix}",
+///     address_type="INTERNAL",
+///     purpose="VPC_PEERING",
+///     prefix_length=16,
+///     network=default_network.id)
+/// vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+///     network=default_network.id,
+///     service="servicenetworking.googleapis.com",
+///     reserved_peering_ranges=[private_ip_alloc.name])
+/// default_instance = gcp.alloydb.Instance("default",
+///     cluster=default.name,
+///     instance_id=f"alloydb-instance-{name_suffix}",
+///     instance_type="PRIMARY",
+///     machine_config={
+///         "cpu_count": 2,
+///     },
+///     opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+/// connection = gcp.bigquery.Connection("connection",
+///     connection_id="my-connection",
+///     location="us-central1",
+///     friendly_name="alloydb connection",
+///     description="AlloyDB connection using connector configuration",
+///     configuration={
+///         "connector_id": "google-alloydb",
+///         "asset": {
+///             "database": "postgres",
+///             "google_cloud_resource": default_instance.id.apply(lambda id: f"//alloydb.googleapis.com/{id}"),
+///         },
+///         "authentication": {
+///             "username_password": {
+///                 "username": "user",
+///                 "password": {
+///                     "plaintext": "password",
+///                 },
+///             },
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var nameSuffix = "my-connection";
+///
+///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+///     {
+///         Name = $"alloydb-network-{nameSuffix}",
+///     });
+///
+///     var @default = new Gcp.Alloydb.Cluster("default", new()
+///     {
+///         ClusterId = $"alloydb-cluster-{nameSuffix}",
+///         Location = "us-central1",
+///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+///         {
+///             Network = defaultNetwork.Id,
+///         },
+///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
+///         {
+///             Password = "alloydb-cluster-password",
+///         },
+///         DeletionProtection = false,
+///     });
+///
+///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
+///     {
+///         Name = $"alloydb-ip-{nameSuffix}",
+///         AddressType = "INTERNAL",
+///         Purpose = "VPC_PEERING",
+///         PrefixLength = 16,
+///         Network = defaultNetwork.Id,
+///     });
+///
+///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpc_connection", new()
+///     {
+///         Network = defaultNetwork.Id,
+///         Service = "servicenetworking.googleapis.com",
+///         ReservedPeeringRanges = new[]
+///         {
+///             privateIpAlloc.Name,
+///         },
+///     });
+///
+///     var defaultInstance = new Gcp.Alloydb.Instance("default", new()
+///     {
+///         Cluster = @default.Name,
+///         InstanceId = $"alloydb-instance-{nameSuffix}",
+///         InstanceType = "PRIMARY",
+///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
+///         {
+///             CpuCount = 2,
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             vpcConnection,
+///         },
+///     });
+///
+///     var connection = new Gcp.BigQuery.Connection("connection", new()
+///     {
+///         ConnectionId = "my-connection",
+///         Location = "us-central1",
+///         FriendlyName = "alloydb connection",
+///         Description = "AlloyDB connection using connector configuration",
+///         Configuration = new Gcp.BigQuery.Inputs.ConnectionConfigurationArgs
+///         {
+///             ConnectorId = "google-alloydb",
+///             Asset = new Gcp.BigQuery.Inputs.ConnectionConfigurationAssetArgs
+///             {
+///                 Database = "postgres",
+///                 GoogleCloudResource = defaultInstance.Id.Apply(id => $"//alloydb.googleapis.com/{id}"),
+///             },
+///             Authentication = new Gcp.BigQuery.Inputs.ConnectionConfigurationAuthenticationArgs
+///             {
+///                 UsernamePassword = new Gcp.BigQuery.Inputs.ConnectionConfigurationAuthenticationUsernamePasswordArgs
+///                 {
+///                     Username = "user",
+///                     Password = new Gcp.BigQuery.Inputs.ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs
+///                     {
+///                         Plaintext = "password",
+///                     },
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		nameSuffix := "my-connection"
+/// 		defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+/// 			Name: pulumi.Sprintf("alloydb-network-%v", nameSuffix),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_default, err := alloydb.NewCluster(ctx, "default", &alloydb.ClusterArgs{
+/// 			ClusterId: pulumi.Sprintf("alloydb-cluster-%v", nameSuffix),
+/// 			Location:  pulumi.String("us-central1"),
+/// 			NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
+/// 				Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			},
+/// 			InitialUser: &alloydb.ClusterInitialUserArgs{
+/// 				Password: pulumi.String("alloydb-cluster-password"),
+/// 			},
+/// 			DeletionProtection: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
+/// 			Name:         pulumi.Sprintf("alloydb-ip-%v", nameSuffix),
+/// 			AddressType:  pulumi.String("INTERNAL"),
+/// 			Purpose:      pulumi.String("VPC_PEERING"),
+/// 			PrefixLength: pulumi.Int(16),
+/// 			Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
+/// 			Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+/// 			ReservedPeeringRanges: pulumi.StringArray{
+/// 				privateIpAlloc.Name,
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		defaultInstance, err := alloydb.NewInstance(ctx, "default", &alloydb.InstanceArgs{
+/// 			Cluster:      _default.Name,
+/// 			InstanceId:   pulumi.Sprintf("alloydb-instance-%v", nameSuffix),
+/// 			InstanceType: pulumi.String("PRIMARY"),
+/// 			MachineConfig: &alloydb.InstanceMachineConfigArgs{
+/// 				CpuCount: pulumi.Int(2),
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			vpcConnection,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+/// 			ConnectionId: pulumi.String("my-connection"),
+/// 			Location:     pulumi.String("us-central1"),
+/// 			FriendlyName: pulumi.String("alloydb connection"),
+/// 			Description:  pulumi.String("AlloyDB connection using connector configuration"),
+/// 			Configuration: &bigquery.ConnectionConfigurationArgs{
+/// 				ConnectorId: pulumi.String("google-alloydb"),
+/// 				Asset: &bigquery.ConnectionConfigurationAssetArgs{
+/// 					Database: pulumi.String("postgres"),
+/// 					GoogleCloudResource: defaultInstance.ID().ApplyT(func(id pulumi.ID) (string, error) {
+/// 						return fmt.Sprintf("//alloydb.googleapis.com/%v", id), nil
+/// 					}).(pulumi.StringOutput),
+/// 				},
+/// 				Authentication: &bigquery.ConnectionConfigurationAuthenticationArgs{
+/// 					UsernamePassword: &bigquery.ConnectionConfigurationAuthenticationUsernamePasswordArgs{
+/// 						Username: pulumi.String("user"),
+/// 						Password: &bigquery.ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs{
+/// 							Plaintext: pulumi.String("password"),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_alloydb_cluster" "default" {
+///   cluster_id ="alloydb-cluster-${local.nameSuffix}"
+///   location   = "us-central1"
+///   network_config = {
+///     network = gcp_compute_network.default.id
+///   }
+///   initial_user = {
+///     password = "alloydb-cluster-password"
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_alloydb_instance" "default" {
+///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   cluster       = gcp_alloydb_cluster.default.name
+///   instance_id   ="alloydb-instance-${local.nameSuffix}"
+///   instance_type = "PRIMARY"
+///   machine_config = {
+///     cpu_count = 2
+///   }
+/// }
+/// resource "gcp_compute_network" "default" {
+///   name ="alloydb-network-${local.nameSuffix}"
+/// }
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          ="alloydb-ip-${local.nameSuffix}"
+///   address_type  = "INTERNAL"
+///   purpose       = "VPC_PEERING"
+///   prefix_length = 16
+///   network       = gcp_compute_network.default.id
+/// }
+/// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   network                 = gcp_compute_network.default.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+/// }
+/// resource "gcp_bigquery_connection" "connection" {
+///   connection_id = "my-connection"
+///   location      = "us-central1"
+///   friendly_name = "alloydb connection"
+///   description   = "AlloyDB connection using connector configuration"
+///   configuration = {
+///     connector_id = "google-alloydb"
+///     asset = {
+///       database              = "postgres"
+///       google_cloud_resource ="//alloydb.googleapis.com/${gcp_alloydb_instance.default.id}"
+///     }
+///     authentication = {
+///       username_password = {
+///         username = "user"
+///         password = {
+///           plaintext = "password"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// locals {
+///   nameSuffix = "my-connection"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.Network;
+/// import com.pulumi.gcp.compute.NetworkArgs;
+/// import com.pulumi.gcp.alloydb.Cluster;
+/// import com.pulumi.gcp.alloydb.ClusterArgs;
+/// import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
+/// import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
+/// import com.pulumi.gcp.compute.GlobalAddress;
+/// import com.pulumi.gcp.compute.GlobalAddressArgs;
+/// import com.pulumi.gcp.alloydb.Instance;
+/// import com.pulumi.gcp.alloydb.InstanceArgs;
+/// import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
+/// import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationArgs;
+/// import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationAssetArgs;
+/// import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationAuthenticationArgs;
+/// import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationAuthenticationUsernamePasswordArgs;
+/// import com.pulumi.gcp.bigquery.inputs.ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var nameSuffix = "my-connection";
+///
+///         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+///             .name(String.format("alloydb-network-%s", nameSuffix))
+///             .build());
+///
+///         var default_ = new Cluster("default", ClusterArgs.builder()
+///             .clusterId(String.format("alloydb-cluster-%s", nameSuffix))
+///             .location("us-central1")
+///             .networkConfig(ClusterNetworkConfigArgs.builder()
+///                 .network(defaultNetwork.id())
+///                 .build())
+///             .initialUser(ClusterInitialUserArgs.builder()
+///                 .password("alloydb-cluster-password")
+///                 .build())
+///             .deletionProtection(false)
+///             .build());
+///
+///         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
+///             .name(String.format("alloydb-ip-%s", nameSuffix))
+///             .addressType("INTERNAL")
+///             .purpose("VPC_PEERING")
+///             .prefixLength(16)
+///             .network(defaultNetwork.id())
+///             .build());
+///
+///         var vpcConnection = new com.pulumi.gcp.servicenetworking.Connection("vpcConnection", com.pulumi.gcp.servicenetworking.ConnectionArgs.builder()
+///             .network(defaultNetwork.id())
+///             .service("servicenetworking.googleapis.com")
+///             .reservedPeeringRanges(privateIpAlloc.name())
+///             .build());
+///
+///         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+///             .cluster(default_.name())
+///             .instanceId(String.format("alloydb-instance-%s", nameSuffix))
+///             .instanceType("PRIMARY")
+///             .machineConfig(InstanceMachineConfigArgs.builder()
+///                 .cpuCount(2)
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(vpcConnection)
+///                 .build());
+///
+///         var connection = new com.pulumi.gcp.bigquery.Connection("connection", com.pulumi.gcp.bigquery.ConnectionArgs.builder()
+///             .connectionId("my-connection")
+///             .location("us-central1")
+///             .friendlyName("alloydb connection")
+///             .description("AlloyDB connection using connector configuration")
+///             .configuration(ConnectionConfigurationArgs.builder()
+///                 .connectorId("google-alloydb")
+///                 .asset(ConnectionConfigurationAssetArgs.builder()
+///                     .database("postgres")
+///                     .googleCloudResource(defaultInstance.id().applyValue(_id -> String.format("//alloydb.googleapis.com/%s", _id)))
+///                     .build())
+///                 .authentication(ConnectionConfigurationAuthenticationArgs.builder()
+///                     .usernamePassword(ConnectionConfigurationAuthenticationUsernamePasswordArgs.builder()
+///                         .username("user")
+///                         .password(ConnectionConfigurationAuthenticationUsernamePasswordPasswordArgs.builder()
+///                             .plaintext("password")
+///                             .build())
+///                         .build())
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:alloydb:Cluster
+///     properties:
+///       clusterId: alloydb-cluster-${nameSuffix}
+///       location: us-central1
+///       networkConfig:
+///         network: ${defaultNetwork.id}
+///       initialUser:
+///         password: alloydb-cluster-password
+///       deletionProtection: false
+///   defaultInstance:
+///     type: gcp:alloydb:Instance
+///     name: default
+///     properties:
+///       cluster: ${default.name}
+///       instanceId: alloydb-instance-${nameSuffix}
+///       instanceType: PRIMARY
+///       machineConfig:
+///         cpuCount: 2
+///     options:
+///       dependsOn:
+///         - ${vpcConnection}
+///   defaultNetwork:
+///     type: gcp:compute:Network
+///     name: default
+///     properties:
+///       name: alloydb-network-${nameSuffix}
+///   privateIpAlloc:
+///     type: gcp:compute:GlobalAddress
+///     name: private_ip_alloc
+///     properties:
+///       name: alloydb-ip-${nameSuffix}
+///       addressType: INTERNAL
+///       purpose: VPC_PEERING
+///       prefixLength: 16
+///       network: ${defaultNetwork.id}
+///   vpcConnection:
+///     type: gcp:servicenetworking:Connection
+///     name: vpc_connection
+///     properties:
+///       network: ${defaultNetwork.id}
+///       service: servicenetworking.googleapis.com
+///       reservedPeeringRanges:
+///         - ${privateIpAlloc.name}
+///   connection:
+///     type: gcp:bigquery:Connection
+///     properties:
+///       connectionId: my-connection
+///       location: us-central1
+///       friendlyName: alloydb connection
+///       description: AlloyDB connection using connector configuration
+///       configuration:
+///         connectorId: google-alloydb
+///         asset:
+///           database: postgres
+///           googleCloudResource: //alloydb.googleapis.com/${defaultInstance.id}
+///         authentication:
+///           usernamePassword:
+///             username: user
+///             password:
+///               plaintext: password
+/// variables:
+///   nameSuffix: my-connection
+/// ```
+///
 ///
 /// ## Import
 ///
 /// Connection can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`
-///
 /// * `{{project}}/{{location}}/{{connection_id}}`
-///
 /// * `{{location}}/{{connection_id}}`
+///
 ///
 /// When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigquery/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/connection:Connection default {{project}}/{{location}}/{{connection_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigquery/connection:Connection default {{location}}/{{connection_id}}
 /// ```
 class Connection extends pulumi.CustomResource {
@@ -1947,8 +2777,20 @@ class Connection extends pulumi.CustomResource {
   /// Connection properties specific to the Cloud SQL.
   /// Structure is documented below.
   late final pulumi.Output<ConnectionCloudSql?> cloudSql;
+  /// Connector configuration. This is a generic configuration that is used to connect to
+  /// external data sources such as AlloyDB, MySQL, and PostgreSQL using the BigQuery
+  /// Connector framework.
+  /// Structure is documented below.
+  late final pulumi.Output<ConnectionConfiguration?> configuration;
   /// Optional connection id that should be assigned to the created connection.
   late final pulumi.Output<String> connectionId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A descriptive description for the connection
   late final pulumi.Output<String?> description;
   /// A descriptive name for the connection
@@ -1956,7 +2798,7 @@ class Connection extends pulumi.CustomResource {
   /// True if the connection has credential assigned.
   late final pulumi.Output<bool> hasCredential;
   /// Optional. The Cloud KMS key that is used for encryption.
-  /// Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+  /// Example: projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
   late final pulumi.Output<String?> kmsKeyName;
   /// The geographic location where the connection should reside.
   /// Cloud SQL instance must be in the same location as the connection
@@ -1995,7 +2837,9 @@ class Connection extends pulumi.CustomResource {
     cloudResource = registerOutput<ConnectionCloudResource?>('cloudResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudSpanner = registerOutput<ConnectionCloudSpanner?>('cloudSpanner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudSpanner.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudSql = registerOutput<ConnectionCloudSql?>('cloudSql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudSql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configuration = registerOutput<ConnectionConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionId = registerOutput<String>('connectionId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     friendlyName = registerOutput<String?>('friendlyName');
     hasCredential = registerOutput<bool>('hasCredential');
@@ -2034,7 +2878,9 @@ class Connection extends pulumi.CustomResource {
     cloudResource = registerOutput<ConnectionCloudResource?>('cloudResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudSpanner = registerOutput<ConnectionCloudSpanner?>('cloudSpanner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudSpanner.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudSql = registerOutput<ConnectionCloudSql?>('cloudSql', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionCloudSql.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configuration = registerOutput<ConnectionConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionId = registerOutput<String>('connectionId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     friendlyName = registerOutput<String?>('friendlyName');
     hasCredential = registerOutput<bool>('hasCredential');

@@ -17,9 +17,11 @@ class InstanceFromMachineImageBootDiskInitializeParams {
   final pulumi.Input<int>? provisionedIops;
   /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
   final pulumi.Input<int>? provisionedThroughput;
+  /// A list of short names or selfLinks of zones in which to create a regional disk.
+  final pulumi.Input<List<String>>? replicaZones;
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
   final pulumi.Input<Map<String, String>>? resourceManagerTags;
-  /// A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+  /// A list of selfLinks of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
   final pulumi.Input<String>? resourcePolicies;
   /// The size of the image in gigabytes.
   final pulumi.Input<int>? size;
@@ -41,8 +43,9 @@ class InstanceFromMachineImageBootDiskInitializeParams {
   /// [labels] A set of key/value label pairs assigned to the disk.
   /// [provisionedIops] Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
   /// [provisionedThroughput] Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+  /// [replicaZones] A list of short names or selfLinks of zones in which to create a regional disk.
   /// [resourceManagerTags] A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-  /// [resourcePolicies] A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+  /// [resourcePolicies] A list of selfLinks of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
   /// [size] The size of the image in gigabytes.
   /// [snapshot] The snapshot from which this disk was initialised.
   /// [sourceImageEncryptionKey] The encryption key used to decrypt the source image.
@@ -56,6 +59,7 @@ class InstanceFromMachineImageBootDiskInitializeParams {
     this.labels,
     this.provisionedIops,
     this.provisionedThroughput,
+    this.replicaZones,
     this.resourceManagerTags,
     this.resourcePolicies,
     this.size,
@@ -74,6 +78,7 @@ class InstanceFromMachineImageBootDiskInitializeParams {
       'labels': ?labels,
       'provisionedIops': ?provisionedIops,
       'provisionedThroughput': ?provisionedThroughput,
+      'replicaZones': ?replicaZones,
       'resourceManagerTags': ?resourceManagerTags,
       'resourcePolicies': ?resourcePolicies,
       'size': ?size,
@@ -93,6 +98,7 @@ class InstanceFromMachineImageBootDiskInitializeParams {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       provisionedIops: (() { final guardedValue = map['provisionedIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       provisionedThroughput: (() { final guardedValue = map['provisionedThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicaZones: (() { final guardedValue = map['replicaZones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       resourceManagerTags: (() { final guardedValue = map['resourceManagerTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       resourcePolicies: (() { final guardedValue = map['resourcePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
@@ -104,4 +110,3 @@ class InstanceFromMachineImageBootDiskInitializeParams {
     );
   }
 }
-

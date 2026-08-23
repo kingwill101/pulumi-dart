@@ -6,6 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointState {
   /// Creation timestamp in RFC 3339 text format.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of the endpoint.
   final pulumi.Input<String>? description;
   /// URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
@@ -31,6 +38,7 @@ class EndpointState {
 
   /// Creates a new [EndpointState].
   /// [createTime] Creation timestamp in RFC 3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of the endpoint.
   /// [endpointForwardingRule] URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
   /// [endpointIp] Internal IP address of the endpoint's network entry point.
@@ -43,6 +51,7 @@ class EndpointState {
   /// [updateTime] Last update timestamp in RFC 3339 text format.
   const EndpointState({
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.endpointForwardingRule,
     this.endpointIp,
@@ -58,6 +67,7 @@ class EndpointState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'endpointForwardingRule': ?endpointForwardingRule,
       'endpointIp': ?endpointIp,
@@ -74,6 +84,7 @@ class EndpointState {
   factory EndpointState.fromMap(Map<String, dynamic> map) {
     return EndpointState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointForwardingRule: (() { final guardedValue = map['endpointForwardingRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointIp: (() { final guardedValue = map['endpointIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -87,4 +98,3 @@ class EndpointState {
     );
   }
 }
-

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_commitment_args.dart';
 import 'region_commitment_license_resource.dart';
+import 'region_commitment_params.dart';
 import 'region_commitment_state.dart';
 
 /// Represents a regional Commitment resource.
@@ -119,6 +120,28 @@ import 'region_commitment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regioncommitment" "foobar" {
+///   name = "my-region-commitment"
+///   plan = "THIRTY_SIX_MONTH"
+///   resources {
+///     type   = "VCPU"
+///     amount = "4"
+///   }
+///   resources {
+///     type   = "MEMORY"
+///     amount = "9"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -128,8 +151,8 @@ import 'region_commitment_state.dart';
 /// import com.pulumi.gcp.compute.RegionCommitment;
 /// import com.pulumi.gcp.compute.RegionCommitmentArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionCommitmentResourceArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -180,6 +203,14 @@ import 'region_commitment_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
+/// const tagKey = new gcp.tags.TagKey("tag_key", {
+///     parent: "organizations/ORG_ID",
+///     shortName: "tagkey",
+/// });
+/// const tagValue = new gcp.tags.TagValue("tag_value", {
+///     parent: tagKey.id,
+///     shortName: "tagvalue",
+/// });
 /// const foobar = new gcp.compute.RegionCommitment("foobar", {
 ///     name: "my-full-commitment",
 ///     description: "some description",
@@ -197,12 +228,23 @@ import 'region_commitment_state.dart';
 ///             amount: "9",
 ///         },
 ///     ],
+///     params: {
+///         resourceManagerTags: pulumi.all([tagKey.id, tagValue.id]).apply(([tagKeyId, tagValueId]) => {
+///             [tagKeyId]: tagValueId,
+///         }),
+///     },
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
+/// tag_key = gcp.tags.TagKey("tag_key",
+///     parent="organizations/ORG_ID",
+///     short_name="tagkey")
+/// tag_value = gcp.tags.TagValue("tag_value",
+///     parent=tag_key.id,
+///     short_name="tagvalue")
 /// foobar = gcp.compute.RegionCommitment("foobar",
 ///     name="my-full-commitment",
 ///     description="some description",
@@ -219,7 +261,16 @@ import 'region_commitment_state.dart';
 ///             "type": "MEMORY",
 ///             "amount": "9",
 ///         },
-///     ])
+///     ],
+///     params={
+///         "resource_manager_tags": pulumi.Output.all(
+///             tagKeyId=tag_key.id,
+///             tagValueId=tag_value.id
+/// ).apply(lambda resolved_outputs: {
+///             str(resolved_outputs['tagKeyId']): resolved_outputs['tagValueId'],
+///         })
+/// ,
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -229,6 +280,18 @@ import 'region_commitment_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
+///     var tagKey = new Gcp.Tags.TagKey("tag_key", new()
+///     {
+///         Parent = "organizations/ORG_ID",
+///         ShortName = "tagkey",
+///     });
+///
+///     var tagValue = new Gcp.Tags.TagValue("tag_value", new()
+///     {
+///         Parent = tagKey.Id,
+///         ShortName = "tagvalue",
+///     });
+///
 ///     var foobar = new Gcp.Compute.RegionCommitment("foobar", new()
 ///     {
 ///         Name = "my-full-commitment",
@@ -250,6 +313,18 @@ import 'region_commitment_state.dart';
 ///                 Amount = "9",
 ///             },
 ///         },
+///         Params = new Gcp.Compute.Inputs.RegionCommitmentParamsArgs
+///         {
+///             ResourceManagerTags = Output.Tuple(tagKey.Id, tagValue.Id).Apply(values =>
+///             {
+///                 var tagKeyId = values.Item1;
+///                 var tagValueId = values.Item2;
+///                 return
+///                 {
+///                     { tagKeyId, tagValueId },
+///                 };
+///             }),
+///         },
 ///     });
 ///
 /// });
@@ -259,12 +334,27 @@ import 'region_commitment_state.dart';
 ///
 /// import (
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := compute.NewRegionCommitment(ctx, "foobar", &compute.RegionCommitmentArgs{
+/// 		tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
+/// 			Parent:    pulumi.String("organizations/ORG_ID"),
+/// 			ShortName: pulumi.String("tagkey"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
+/// 			Parent:    tagKey.ID().ToIDOutput().ToStringOutput(),
+/// 			ShortName: pulumi.String("tagvalue"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = compute.NewRegionCommitment(ctx, "foobar", &compute.RegionCommitmentArgs{
 /// 			Name:        pulumi.String("my-full-commitment"),
 /// 			Description: pulumi.String("some description"),
 /// 			Plan:        pulumi.String("THIRTY_SIX_MONTH"),
@@ -281,6 +371,17 @@ import 'region_commitment_state.dart';
 /// 					Amount: pulumi.String("9"),
 /// 				},
 /// 			},
+/// 			Params: &compute.RegionCommitmentParamsArgs{
+/// 				ResourceManagerTags: pulumi.StringMap(pulumi.All(tagKey.ID(), tagValue.ID()).ApplyT(func(_args []interface{}) (map[string]pulumi.ID, error) {
+/// 					tagKeyId := _args[0].(pulumi.ID)
+/// 					tagValueId := _args[1].(pulumi.ID)
+/// 					return map[string]pulumi.ID(pulumi.String(tagKeyId).ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
+/// 						return map[string]pulumi.ID{
+/// 							__convert: tagValueId,
+/// 						}, nil
+/// 					}).(pulumi.IDMapOutput)), nil
+/// 				}).(pulumi.IDMapOutput)),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -289,17 +390,61 @@ import 'region_commitment_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regioncommitment" "foobar" {
+///   name        = "my-full-commitment"
+///   description = "some description"
+///   plan        = "THIRTY_SIX_MONTH"
+///   type        = "MEMORY_OPTIMIZED"
+///   category    = "MACHINE"
+///   auto_renew  = true
+///   resources {
+///     type   = "VCPU"
+///     amount = "4"
+///   }
+///   resources {
+///     type   = "MEMORY"
+///     amount = "9"
+///   }
+///   params = {
+///     resource_manager_tags = {
+///       gcp_tags_tagkey.tag_key.id = gcp_tags_tagvalue.tag_value.id
+///     }
+///   }
+/// }
+/// resource "gcp_tags_tagkey" "tag_key" {
+///   parent     = "organizations/ORG_ID"
+///   short_name = "tagkey"
+/// }
+/// resource "gcp_tags_tagvalue" "tag_value" {
+///   parent     = gcp_tags_tagkey.tag_key.id
+///   short_name = "tagvalue"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
 /// import com.pulumi.Context;
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.tags.TagKey;
+/// import com.pulumi.gcp.tags.TagKeyArgs;
+/// import com.pulumi.gcp.tags.TagValue;
+/// import com.pulumi.gcp.tags.TagValueArgs;
 /// import com.pulumi.gcp.compute.RegionCommitment;
 /// import com.pulumi.gcp.compute.RegionCommitmentArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionCommitmentResourceArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.RegionCommitmentParamsArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -311,6 +456,16 @@ import 'region_commitment_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
+///         var tagKey = new TagKey("tagKey", TagKeyArgs.builder()
+///             .parent("organizations/ORG_ID")
+///             .shortName("tagkey")
+///             .build());
+///
+///         var tagValue = new TagValue("tagValue", TagValueArgs.builder()
+///             .parent(tagKey.id())
+///             .shortName("tagvalue")
+///             .build());
+///
 ///         var foobar = new RegionCommitment("foobar", RegionCommitmentArgs.builder()
 ///             .name("my-full-commitment")
 ///             .description("some description")
@@ -327,6 +482,13 @@ import 'region_commitment_state.dart';
 ///                     .type("MEMORY")
 ///                     .amount("9")
 ///                     .build())
+///             .params(RegionCommitmentParamsArgs.builder()
+///                 .resourceManagerTags(Output.tuple(tagKey.id(), tagValue.id()).applyValue(values -> {
+///                     var tagKeyId = values.t1;
+///                     var tagValueId = values.t2;
+///                     return tagKeyId.applyValue(___convert -> Map.of(___convert, tagValueId));
+///                 }))
+///                 .build())
 ///             .build());
 ///
 ///     }
@@ -348,6 +510,21 @@ import 'region_commitment_state.dart';
 ///           amount: '4'
 ///         - type: MEMORY
 ///           amount: '9'
+///       params:
+///         resourceManagerTags:
+///           ${tagKey.id}: ${tagValue.id}
+///   tagKey:
+///     type: gcp:tags:TagKey
+///     name: tag_key
+///     properties:
+///       parent: organizations/ORG_ID
+///       shortName: tagkey
+///   tagValue:
+///     type: gcp:tags:TagValue
+///     name: tag_value
+///     properties:
+///       parent: ${tagKey.id}
+///       shortName: tagvalue
 /// ```
 ///
 ///
@@ -356,28 +533,17 @@ import 'region_commitment_state.dart';
 /// RegionCommitment can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/commitments/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionCommitment can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionCommitment:RegionCommitment default projects/{{project}}/regions/{{region}}/commitments/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionCommitment:RegionCommitment default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionCommitment:RegionCommitment default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionCommitment:RegionCommitment default {{name}}
 /// ```
 class RegionCommitment extends pulumi.CustomResource {
@@ -400,8 +566,10 @@ class RegionCommitment extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// Commitment end time in RFC3339 text format.
   late final pulumi.Output<String> endTimestamp;
-  /// Specifies the already existing reservations to attach to the Commitment.
-  late final pulumi.Output<String> existingReservations;
+  /// Specifies the already existing reservations to attach to the Commitment. This field will suppress
+  /// diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+  /// change another field at the same time.
+  late final pulumi.Output<String?> existingReservations;
   /// The license specification required as part of a license commitment.
   /// Structure is documented below.
   late final pulumi.Output<RegionCommitmentLicenseResource?> licenseResource;
@@ -411,6 +579,9 @@ class RegionCommitment extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  late final pulumi.Output<RegionCommitmentParams?> params;
   /// The plan for this commitment, which determines duration and discount rate.
   /// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
   /// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
@@ -460,9 +631,10 @@ class RegionCommitment extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
     endTimestamp = registerOutput<String>('endTimestamp');
-    existingReservations = registerOutput<String>('existingReservations');
+    existingReservations = registerOutput<String?>('existingReservations');
     licenseResource = registerOutput<RegionCommitmentLicenseResource?>('licenseResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionCommitmentLicenseResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    params = registerOutput<RegionCommitmentParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionCommitmentParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     plan = registerOutput<String>('plan');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
@@ -503,9 +675,10 @@ class RegionCommitment extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String?>('description');
     endTimestamp = registerOutput<String>('endTimestamp');
-    existingReservations = registerOutput<String>('existingReservations');
+    existingReservations = registerOutput<String?>('existingReservations');
     licenseResource = registerOutput<RegionCommitmentLicenseResource?>('licenseResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionCommitmentLicenseResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
+    params = registerOutput<RegionCommitmentParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionCommitmentParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     plan = registerOutput<String>('plan');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');

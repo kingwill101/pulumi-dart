@@ -20,6 +20,13 @@ class GuestPoliciesArgs {
   /// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
   /// Structure is documented below.
   final pulumi.Input<GuestPoliciesAssignment> assignment;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description of the guest policy. Length of the description is limited to 1024 characters.
   final pulumi.Input<String>? description;
   /// The etag for this guest policy. If this is provided on update, it must match the server's etag.
@@ -48,6 +55,7 @@ class GuestPoliciesArgs {
 
   /// Creates a new [GuestPoliciesArgs].
   /// [assignment] Specifies the VM instances that are assigned to this policy. This allows you to target sets
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description of the guest policy. Length of the description is limited to 1024 characters.
   /// [etag] The etag for this guest policy. If this is provided on update, it must match the server's etag.
   /// [guestPolicyId] The logical name of the guest policy in the project with the following restrictions:
@@ -57,6 +65,7 @@ class GuestPoliciesArgs {
   /// [recipes] A list of Recipes to install on the VM instance.
   const GuestPoliciesArgs({
     required this.assignment,
+    this.deletionPolicy,
     this.description,
     this.etag,
     required this.guestPolicyId,
@@ -69,6 +78,7 @@ class GuestPoliciesArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'assignment': pulumi.Input.mapInputValue<GuestPoliciesAssignment, Map<String, dynamic>>(assignment, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'etag': ?etag,
       'guestPolicyId': guestPolicyId,
@@ -82,6 +92,7 @@ class GuestPoliciesArgs {
   factory GuestPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesArgs(
       assignment: pulumi.Input.fromValue(GuestPoliciesAssignment.fromMap((map['assignment']! as Map).cast<String, dynamic>())),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       guestPolicyId: pulumi.Input.fromValue(map['guestPolicyId'] as String),
@@ -92,4 +103,3 @@ class GuestPoliciesArgs {
     );
   }
 }
-

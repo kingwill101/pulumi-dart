@@ -7,15 +7,17 @@ class ResourcePolicyGroupPlacementPolicy {
   /// availability domain, they will not be put in the same low latency network
   final pulumi.Input<int>? availabilityDomainCount;
   /// Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
-  /// Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
-  /// with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
+  /// Specify `COLLOCATED` to enable collocation. Can only be specified with `vmCount`. If compute instances are created
+  /// with a COLLOCATED policy, then exactly `vmCount` instances must be created at the same time with the resource policy
   /// attached.
   /// Possible values are: `COLLOCATED`.
   final pulumi.Input<String>? collocation;
   /// Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
   final pulumi.Input<String>? gpuTopology;
+  /// (Optional, Beta)
   /// Specifies the number of max logical switches.
   final pulumi.Input<int>? maxDistance;
+  /// (Optional, Beta)
   /// Specifies the shape of the TPU slice.
   final pulumi.Input<String>? tpuTopology;
   /// Number of VMs in this placement group. Google does not recommend that you use this field
@@ -27,8 +29,8 @@ class ResourcePolicyGroupPlacementPolicy {
   /// [availabilityDomainCount] The number of availability domains instances will be spread across. If two instances are in different
   /// [collocation] Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
   /// [gpuTopology] Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
-  /// [maxDistance] Specifies the number of max logical switches.
-  /// [tpuTopology] Specifies the shape of the TPU slice.
+  /// [maxDistance] (Optional, Beta)
+  /// [tpuTopology] (Optional, Beta)
   /// [vmCount] Number of VMs in this placement group. Google does not recommend that you use this field
   const ResourcePolicyGroupPlacementPolicy({
     this.availabilityDomainCount,
@@ -61,4 +63,3 @@ class ResourcePolicyGroupPlacementPolicy {
     );
   }
 }
-

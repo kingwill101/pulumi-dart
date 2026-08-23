@@ -150,6 +150,36 @@ import 'endpoint_policy_traffic_port_selector.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_endpointpolicy" "default" {
+///   name = "my-endpoint-policy"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   type        = "SIDECAR_PROXY"
+///   traffic_port_selector = {
+///     ports = ["8081"]
+///   }
+///   endpoint_matcher = {
+///     metadata_label_matcher = {
+///       metadata_label_match_criteria = "MATCH_ANY"
+///       metadata_labels = [{
+///         "labelName"  = "foo"
+///         "labelValue" = "bar"
+///       }]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -161,8 +191,9 @@ import 'endpoint_policy_traffic_port_selector.dart';
 /// import com.pulumi.gcp.networkservices.inputs.EndpointPolicyTrafficPortSelectorArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -332,6 +363,32 @@ import 'endpoint_policy_traffic_port_selector.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networkservices_endpointpolicy" "default" {
+///   name = "my-endpoint-policy"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description = "my description"
+///   type        = "SIDECAR_PROXY"
+///   traffic_port_selector = {
+///     ports = ["8081"]
+///   }
+///   endpoint_matcher = {
+///     metadata_label_matcher = {
+///       metadata_label_match_criteria = "MATCH_ANY"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -343,8 +400,8 @@ import 'endpoint_policy_traffic_port_selector.dart';
 /// import com.pulumi.gcp.networkservices.inputs.EndpointPolicyTrafficPortSelectorArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherArgs;
 /// import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -398,22 +455,15 @@ import 'endpoint_policy_traffic_port_selector.dart';
 /// EndpointPolicy can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/global/endpointPolicies/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, EndpointPolicy can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default projects/{{project}}/locations/global/endpointPolicies/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/endpointPolicy:EndpointPolicy default {{name}}
 /// ```
 class EndpointPolicy extends pulumi.CustomResource {
@@ -423,6 +473,13 @@ class EndpointPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String?> clientTlsPolicy;
   /// Time the TcpRoute was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -432,7 +489,7 @@ class EndpointPolicy extends pulumi.CustomResource {
   late final pulumi.Output<EndpointPolicyEndpointMatcher> endpointMatcher;
   /// Set of label tags associated with the TcpRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Name of the EndpointPolicy resource.
   late final pulumi.Output<String> name;
@@ -470,6 +527,7 @@ class EndpointPolicy extends pulumi.CustomResource {
     authorizationPolicy = registerOutput<String?>('authorizationPolicy');
     clientTlsPolicy = registerOutput<String?>('clientTlsPolicy');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpointMatcher = registerOutput<EndpointPolicyEndpointMatcher>('endpointMatcher', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPolicyEndpointMatcher.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -509,6 +567,7 @@ class EndpointPolicy extends pulumi.CustomResource {
     authorizationPolicy = registerOutput<String?>('authorizationPolicy');
     clientTlsPolicy = registerOutput<String?>('clientTlsPolicy');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     endpointMatcher = registerOutput<EndpointPolicyEndpointMatcher>('endpointMatcher', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPolicyEndpointMatcher.fromMap((guardedValue as Map).cast<String, dynamic>()); });

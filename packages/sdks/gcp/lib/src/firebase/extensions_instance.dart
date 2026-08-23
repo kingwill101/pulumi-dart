@@ -5,6 +5,9 @@ import 'extensions_instance_state.dart';
 
 /// An Instance is an installation of an Extension into a user's project.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about Instance, see:
 /// * How-to Guides
 /// * [Official Documentation](https://firebase.google.com/products/extensions)
@@ -210,6 +213,53 @@ import 'extensions_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "images" {
+///   project                     = "my-project-name"
+///   name                        = "bucket-id"
+///   location                    = "US"
+///   uniform_bucket_level_access = true
+///   # Delete all objects when the bucket is deleted
+///   force_destroy = true
+/// }
+/// resource "gcp_firebase_extensionsinstance" "resize_image" {
+///   project     = "my-project-name"
+///   instance_id = "storage-resize-images"
+///   config = {
+///     extension_ref     = "firebase/storage-resize-images"
+///     extension_version = "0.2.10"
+///     params = {
+///       "DELETE_ORIGINAL_FILE" = false
+///       "MAKE_PUBLIC"          = false
+///       "IMAGE_TYPE"           = false
+///       "IS_ANIMATED"          = true
+///       "FUNCTION_MEMORY"      = 1024
+///       "DO_BACKFILL"          = false
+///       "IMG_SIZES"            = "200x200"
+///       "IMG_BUCKET"           = gcp_storage_bucket.images.name
+///       "BACKFILL_BATCH_SIZE"  = 3
+///       "CONTENT_FILTER_LEVEL" = "OFF"
+///       "REGENERATE_TOKEN"     = "true"
+///     }
+///     system_params = {
+///       "firebaseextensions.v1beta.function/location"                   = "us-central1"
+///       "firebaseextensions.v1beta.function/maxInstances"               = 3000
+///       "firebaseextensions.v1beta.function/minInstances"               = 0
+///       "firebaseextensions.v1beta.function/vpcConnectorEgressSettings" = "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"
+///     }
+///     allowed_event_types = ["firebase.extensions.storage-resize-images.v1.onCompletion"]
+///     eventarc_channel    = "projects/my-project-name/locations/us-central1/channels/firebase"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -221,8 +271,8 @@ import 'extensions_instance_state.dart';
 /// import com.pulumi.gcp.firebase.ExtensionsInstance;
 /// import com.pulumi.gcp.firebase.ExtensionsInstanceArgs;
 /// import com.pulumi.gcp.firebase.inputs.ExtensionsInstanceConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -322,22 +372,15 @@ import 'extensions_instance_state.dart';
 /// Instance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/instances/{{instance_id}}`
-///
 /// * `{{project}}/{{instance_id}}`
-///
 /// * `{{instance_id}}`
+///
 ///
 /// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default projects/{{project}}/instances/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default {{project}}/{{instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default {{instance_id}}
 /// ```
 class ExtensionsInstance extends pulumi.CustomResource {
@@ -346,6 +389,13 @@ class ExtensionsInstance extends pulumi.CustomResource {
   late final pulumi.Output<ExtensionsInstanceConfig> config;
   /// The time at which the Extension Instance was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// If this Instance has `state: ERRORED`, the error messages
   /// will be found here.
   /// Structure is documented below.
@@ -394,6 +444,7 @@ class ExtensionsInstance extends pulumi.CustomResource {
         ) {
     config = registerOutput<ExtensionsInstanceConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionsInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     errorStatuses = registerOutput<List<Map<String, dynamic>>>('errorStatuses');
     etag = registerOutput<String>('etag');
     instanceId = registerOutput<String>('instanceId');
@@ -432,6 +483,7 @@ class ExtensionsInstance extends pulumi.CustomResource {
         ) {
     config = registerOutput<ExtensionsInstanceConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionsInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     errorStatuses = registerOutput<List<Map<String, dynamic>>>('errorStatuses');
     etag = registerOutput<String>('etag');
     instanceId = registerOutput<String>('instanceId');

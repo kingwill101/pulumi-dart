@@ -18,12 +18,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   /// Structure is documented below.
   final pulumi.Input<List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField>> fields;
   /// Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
-  /// Only one of `primitive_transformation` or `info_type_transformations` must be specified.
+  /// Only one of `primitiveTransformation` or `infoTypeTransformations` must be specified.
   /// Structure is documented below.
   final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations>? infoTypeTransformations;
   /// Apply the transformation to the entire field.
-  /// The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
-  /// Only one of `primitive_transformation` or `info_type_transformations` must be specified.
+  /// The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
+  /// Only one of `primitiveTransformation` or `infoTypeTransformations` must be specified.
   /// Structure is documented below.
   final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation>? primitiveTransformation;
 
@@ -57,4 +57,3 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     );
   }
 }
-

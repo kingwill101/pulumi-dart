@@ -12,7 +12,7 @@ class GetCryptoKeyLatestVersionResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
-  /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protection_level reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
+  /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protectionLevel reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
   final String protectionLevel;
   /// If the enclosing CryptoKey has purpose `ASYMMETRIC_SIGN` or `ASYMMETRIC_DECRYPT`, this block contains details about the public key associated to this CryptoKeyVersion. Structure is documented below.
   final List<GetCryptoKeyLatestVersionPublicKey> publicKeys;
@@ -26,7 +26,7 @@ class GetCryptoKeyLatestVersionResult {
   /// [filter] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
-  /// [protectionLevel] The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protection_level reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
+  /// [protectionLevel] The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protectionLevel reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
   /// [publicKeys] If the enclosing CryptoKey has purpose `ASYMMETRIC_SIGN` or `ASYMMETRIC_DECRYPT`, this block contains details about the public key associated to this CryptoKeyVersion. Structure is documented below.
   /// [state] The current state of the latest CryptoKeyVersion. See the [state reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions#CryptoKeyVersion.CryptoKeyVersionState) for possible outputs.
   /// [version] Required.
@@ -70,4 +70,3 @@ class GetCryptoKeyLatestVersionResult {
     );
   }
 }
-

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'external_vpn_gateway_args.dart';
+import 'external_vpn_gateway_params.dart';
 import 'external_vpn_gateway_state.dart';
 
 /// Represents a VPN gateway managed outside of GCP.
@@ -345,7 +346,7 @@ import 'external_vpn_gateway_state.dart';
 /// 		haGateway, err := compute.NewHaVpnGateway(ctx, "ha_gateway", &compute.HaVpnGatewayArgs{
 /// 			Region:  pulumi.String("us-central1"),
 /// 			Name:    pulumi.String("ha-vpn"),
-/// 			Network: network.ID(),
+/// 			Network: network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -368,7 +369,7 @@ import 'external_vpn_gateway_state.dart';
 /// 			Name:        pulumi.String("ha-vpn-subnet-1"),
 /// 			IpCidrRange: pulumi.String("10.0.1.0/24"),
 /// 			Region:      pulumi.String("us-central1"),
-/// 			Network:     network.ID(),
+/// 			Network:     network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -377,7 +378,7 @@ import 'external_vpn_gateway_state.dart';
 /// 			Name:        pulumi.String("ha-vpn-subnet-2"),
 /// 			IpCidrRange: pulumi.String("10.0.2.0/24"),
 /// 			Region:      pulumi.String("us-west1"),
-/// 			Network:     network.ID(),
+/// 			Network:     network.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -395,11 +396,11 @@ import 'external_vpn_gateway_state.dart';
 /// 		tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
 /// 			Name:                         pulumi.String("ha-vpn-tunnel1"),
 /// 			Region:                       pulumi.String("us-central1"),
-/// 			VpnGateway:                   haGateway.ID(),
-/// 			PeerExternalGateway:          externalGateway.ID(),
+/// 			VpnGateway:                   haGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerExternalGateway:          externalGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			PeerExternalGatewayInterface: pulumi.Int(0),
 /// 			SharedSecret:                 pulumi.String("a secret message"),
-/// 			Router:                       router1.ID(),
+/// 			Router:                       router1.ID().ToIDOutput().ToStringOutput(),
 /// 			VpnGatewayInterface:          pulumi.Int(0),
 /// 		})
 /// 		if err != nil {
@@ -408,11 +409,11 @@ import 'external_vpn_gateway_state.dart';
 /// 		tunnel2, err := compute.NewVPNTunnel(ctx, "tunnel2", &compute.VPNTunnelArgs{
 /// 			Name:                         pulumi.String("ha-vpn-tunnel2"),
 /// 			Region:                       pulumi.String("us-central1"),
-/// 			VpnGateway:                   haGateway.ID(),
-/// 			PeerExternalGateway:          externalGateway.ID(),
+/// 			VpnGateway:                   haGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			PeerExternalGateway:          externalGateway.ID().ToIDOutput().ToStringOutput(),
 /// 			PeerExternalGatewayInterface: pulumi.Int(0),
 /// 			SharedSecret:                 pulumi.String("a secret message"),
-/// 			Router: router1.ID().ApplyT(func(id string) (string, error) {
+/// 			Router: router1.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf(" %v", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 			VpnGatewayInterface: pulumi.Int(1),
@@ -468,6 +469,106 @@ import 'external_vpn_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_havpngateway" "ha_gateway" {
+///   region  = "us-central1"
+///   name    = "ha-vpn"
+///   network = gcp_compute_network.network.id
+/// }
+/// resource "gcp_compute_externalvpngateway" "external_gateway" {
+///   name            = "external-gateway"
+///   redundancy_type = "SINGLE_IP_INTERNALLY_REDUNDANT"
+///   description     = "An externally managed VPN gateway"
+///   interfaces {
+///     id         = 0
+///     ip_address = "8.8.8.8"
+///   }
+/// }
+/// resource "gcp_compute_network" "network" {
+///   name                    = "network-1"
+///   routing_mode            = "GLOBAL"
+///   auto_create_subnetworks = false
+/// }
+/// resource "gcp_compute_subnetwork" "network_subnet1" {
+///   name          = "ha-vpn-subnet-1"
+///   ip_cidr_range = "10.0.1.0/24"
+///   region        = "us-central1"
+///   network       = gcp_compute_network.network.id
+/// }
+/// resource "gcp_compute_subnetwork" "network_subnet2" {
+///   name          = "ha-vpn-subnet-2"
+///   ip_cidr_range = "10.0.2.0/24"
+///   region        = "us-west1"
+///   network       = gcp_compute_network.network.id
+/// }
+/// resource "gcp_compute_router" "router1" {
+///   name    = "ha-vpn-router1"
+///   network = gcp_compute_network.network.name
+///   bgp = {
+///     asn = 64514
+///   }
+/// }
+/// resource "gcp_compute_vpntunnel" "tunnel1" {
+///   name                            = "ha-vpn-tunnel1"
+///   region                          = "us-central1"
+///   vpn_gateway                     = gcp_compute_havpngateway.ha_gateway.id
+///   peer_external_gateway           = gcp_compute_externalvpngateway.external_gateway.id
+///   peer_external_gateway_interface = 0
+///   shared_secret                   = "a secret message"
+///   router                          = gcp_compute_router.router1.id
+///   vpn_gateway_interface           = 0
+/// }
+/// resource "gcp_compute_vpntunnel" "tunnel2" {
+///   name                            = "ha-vpn-tunnel2"
+///   region                          = "us-central1"
+///   vpn_gateway                     = gcp_compute_havpngateway.ha_gateway.id
+///   peer_external_gateway           = gcp_compute_externalvpngateway.external_gateway.id
+///   peer_external_gateway_interface = 0
+///   shared_secret                   = "a secret message"
+///   router                          =" ${gcp_compute_router.router1.id}"
+///   vpn_gateway_interface           = 1
+/// }
+/// resource "gcp_compute_routerinterface" "router1_interface1" {
+///   name       = "router1-interface1"
+///   router     = gcp_compute_router.router1.name
+///   region     = "us-central1"
+///   ip_range   = "169.254.0.1/30"
+///   vpn_tunnel = gcp_compute_vpntunnel.tunnel1.name
+/// }
+/// resource "gcp_compute_routerpeer" "router1_peer1" {
+///   name                      = "router1-peer1"
+///   router                    = gcp_compute_router.router1.name
+///   region                    = "us-central1"
+///   peer_ip_address           = "169.254.0.2"
+///   peer_asn                  = 64515
+///   advertised_route_priority = 100
+///   interface                 = gcp_compute_routerinterface.router1_interface1.name
+/// }
+/// resource "gcp_compute_routerinterface" "router1_interface2" {
+///   name       = "router1-interface2"
+///   router     = gcp_compute_router.router1.name
+///   region     = "us-central1"
+///   ip_range   = "169.254.1.1/30"
+///   vpn_tunnel = gcp_compute_vpntunnel.tunnel2.name
+/// }
+/// resource "gcp_compute_routerpeer" "router1_peer2" {
+///   name                      = "router1-peer2"
+///   router                    = gcp_compute_router.router1.name
+///   region                    = "us-central1"
+///   peer_ip_address           = "169.254.1.2"
+///   peer_asn                  = 64515
+///   advertised_route_priority = 100
+///   interface                 = gcp_compute_routerinterface.router1_interface2.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -492,8 +593,8 @@ import 'external_vpn_gateway_state.dart';
 /// import com.pulumi.gcp.compute.RouterInterfaceArgs;
 /// import com.pulumi.gcp.compute.RouterPeer;
 /// import com.pulumi.gcp.compute.RouterPeerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -728,25 +829,25 @@ import 'external_vpn_gateway_state.dart';
 /// ExternalVpnGateway can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/externalVpnGateways/{{name}}`
-///
 /// * `{{project}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, ExternalVpnGateway can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default projects/{{project}}/global/externalVpnGateways/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{project}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{name}}
 /// ```
 class ExternalVpnGateway extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -759,7 +860,7 @@ class ExternalVpnGateway extends pulumi.CustomResource {
   late final pulumi.Output<String> labelFingerprint;
   /// Labels for the external VPN gateway resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -769,6 +870,9 @@ class ExternalVpnGateway extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  late final pulumi.Output<ExternalVpnGatewayParams?> params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -795,12 +899,14 @@ class ExternalVpnGateway extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     interfaces = registerOutput<List<Map<String, dynamic>>?>('interfaces');
     labelFingerprint = registerOutput<String>('labelFingerprint');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
+    params = registerOutput<ExternalVpnGatewayParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExternalVpnGatewayParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     redundancyType = registerOutput<String?>('redundancyType');
@@ -830,12 +936,14 @@ class ExternalVpnGateway extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     interfaces = registerOutput<List<Map<String, dynamic>>?>('interfaces');
     labelFingerprint = registerOutput<String>('labelFingerprint');
     labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
+    params = registerOutput<ExternalVpnGatewayParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExternalVpnGatewayParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     redundancyType = registerOutput<String?>('redundancyType');

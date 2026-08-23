@@ -7,11 +7,13 @@ import 'get_region_instance_group_manager_instance_flexibility_policy.dart';
 import 'get_region_instance_group_manager_instance_lifecycle_policy.dart';
 import 'get_region_instance_group_manager_named_port.dart';
 import 'get_region_instance_group_manager_param.dart';
+import 'get_region_instance_group_manager_resource_policy.dart';
 import 'get_region_instance_group_manager_standby_policy.dart';
 import 'get_region_instance_group_manager_stateful_disk.dart';
 import 'get_region_instance_group_manager_stateful_external_ip.dart';
 import 'get_region_instance_group_manager_stateful_internal_ip.dart';
 import 'get_region_instance_group_manager_status.dart';
+import 'get_region_instance_group_manager_target_size_policy.dart';
 import 'get_region_instance_group_manager_update_policy.dart';
 import 'get_region_instance_group_manager_version.dart';
 
@@ -21,6 +23,7 @@ class GetRegionInstanceGroupManagerResult {
   final List<GetRegionInstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
   final String baseInstanceName;
   final String creationTimestamp;
+  final String deletionPolicy;
   final String description;
   final String distributionPolicyTargetShape;
   final List<String> distributionPolicyZones;
@@ -37,6 +40,7 @@ class GetRegionInstanceGroupManagerResult {
   final List<GetRegionInstanceGroupManagerParam> params;
   final String? project;
   final String? region;
+  final List<GetRegionInstanceGroupManagerResourcePolicy> resourcePolicies;
   final String? selfLink;
   final List<GetRegionInstanceGroupManagerStandbyPolicy> standbyPolicies;
   final List<GetRegionInstanceGroupManagerStatefulDisk> statefulDisks;
@@ -45,6 +49,7 @@ class GetRegionInstanceGroupManagerResult {
   final List<GetRegionInstanceGroupManagerStatus> statuses;
   final List<String> targetPools;
   final int targetSize;
+  final List<GetRegionInstanceGroupManagerTargetSizePolicy> targetSizePolicies;
   final int targetStoppedSize;
   final int targetSuspendedSize;
   final List<GetRegionInstanceGroupManagerUpdatePolicy> updatePolicies;
@@ -57,6 +62,7 @@ class GetRegionInstanceGroupManagerResult {
   /// [autoHealingPolicies] Required.
   /// [baseInstanceName] Required.
   /// [creationTimestamp] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [distributionPolicyTargetShape] Required.
   /// [distributionPolicyZones] Required.
@@ -72,6 +78,7 @@ class GetRegionInstanceGroupManagerResult {
   /// [params] Required.
   /// [project] Optional.
   /// [region] Optional.
+  /// [resourcePolicies] Required.
   /// [selfLink] Optional.
   /// [standbyPolicies] Required.
   /// [statefulDisks] Required.
@@ -80,6 +87,7 @@ class GetRegionInstanceGroupManagerResult {
   /// [statuses] Required.
   /// [targetPools] Required.
   /// [targetSize] Required.
+  /// [targetSizePolicies] Required.
   /// [targetStoppedSize] Required.
   /// [targetSuspendedSize] Required.
   /// [updatePolicies] Required.
@@ -91,6 +99,7 @@ class GetRegionInstanceGroupManagerResult {
     required this.autoHealingPolicies,
     required this.baseInstanceName,
     required this.creationTimestamp,
+    required this.deletionPolicy,
     required this.description,
     required this.distributionPolicyTargetShape,
     required this.distributionPolicyZones,
@@ -106,6 +115,7 @@ class GetRegionInstanceGroupManagerResult {
     required this.params,
     this.project,
     this.region,
+    required this.resourcePolicies,
     this.selfLink,
     required this.standbyPolicies,
     required this.statefulDisks,
@@ -114,6 +124,7 @@ class GetRegionInstanceGroupManagerResult {
     required this.statuses,
     required this.targetPools,
     required this.targetSize,
+    required this.targetSizePolicies,
     required this.targetStoppedSize,
     required this.targetSuspendedSize,
     required this.updatePolicies,
@@ -128,6 +139,7 @@ class GetRegionInstanceGroupManagerResult {
       'autoHealingPolicies': pulumi.Input.encodeList<GetRegionInstanceGroupManagerAutoHealingPolicy, Map<String, dynamic>>(autoHealingPolicies, (value) => value.toMap()),
       'baseInstanceName': baseInstanceName,
       'creationTimestamp': creationTimestamp,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'distributionPolicyTargetShape': distributionPolicyTargetShape,
       'distributionPolicyZones': distributionPolicyZones,
@@ -143,6 +155,7 @@ class GetRegionInstanceGroupManagerResult {
       'params': pulumi.Input.encodeList<GetRegionInstanceGroupManagerParam, Map<String, dynamic>>(params, (value) => value.toMap()),
       'project': ?project,
       'region': ?region,
+      'resourcePolicies': pulumi.Input.encodeList<GetRegionInstanceGroupManagerResourcePolicy, Map<String, dynamic>>(resourcePolicies, (value) => value.toMap()),
       'selfLink': ?selfLink,
       'standbyPolicies': pulumi.Input.encodeList<GetRegionInstanceGroupManagerStandbyPolicy, Map<String, dynamic>>(standbyPolicies, (value) => value.toMap()),
       'statefulDisks': pulumi.Input.encodeList<GetRegionInstanceGroupManagerStatefulDisk, Map<String, dynamic>>(statefulDisks, (value) => value.toMap()),
@@ -151,6 +164,7 @@ class GetRegionInstanceGroupManagerResult {
       'statuses': pulumi.Input.encodeList<GetRegionInstanceGroupManagerStatus, Map<String, dynamic>>(statuses, (value) => value.toMap()),
       'targetPools': targetPools,
       'targetSize': targetSize,
+      'targetSizePolicies': pulumi.Input.encodeList<GetRegionInstanceGroupManagerTargetSizePolicy, Map<String, dynamic>>(targetSizePolicies, (value) => value.toMap()),
       'targetStoppedSize': targetStoppedSize,
       'targetSuspendedSize': targetSuspendedSize,
       'updatePolicies': pulumi.Input.encodeList<GetRegionInstanceGroupManagerUpdatePolicy, Map<String, dynamic>>(updatePolicies, (value) => value.toMap()),
@@ -166,6 +180,7 @@ class GetRegionInstanceGroupManagerResult {
       autoHealingPolicies: pulumi.Input.decodeList<GetRegionInstanceGroupManagerAutoHealingPolicy>(map['autoHealingPolicies']!, (value) => GetRegionInstanceGroupManagerAutoHealingPolicy.fromMap((value as Map).cast<String, dynamic>())),
       baseInstanceName: map['baseInstanceName'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       distributionPolicyTargetShape: map['distributionPolicyTargetShape'] as String,
       distributionPolicyZones: (map['distributionPolicyZones'] as List).cast<String>(),
@@ -181,6 +196,7 @@ class GetRegionInstanceGroupManagerResult {
       params: pulumi.Input.decodeList<GetRegionInstanceGroupManagerParam>(map['params']!, (value) => GetRegionInstanceGroupManagerParam.fromMap((value as Map).cast<String, dynamic>())),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourcePolicies: pulumi.Input.decodeList<GetRegionInstanceGroupManagerResourcePolicy>(map['resourcePolicies']!, (value) => GetRegionInstanceGroupManagerResourcePolicy.fromMap((value as Map).cast<String, dynamic>())),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
       standbyPolicies: pulumi.Input.decodeList<GetRegionInstanceGroupManagerStandbyPolicy>(map['standbyPolicies']!, (value) => GetRegionInstanceGroupManagerStandbyPolicy.fromMap((value as Map).cast<String, dynamic>())),
       statefulDisks: pulumi.Input.decodeList<GetRegionInstanceGroupManagerStatefulDisk>(map['statefulDisks']!, (value) => GetRegionInstanceGroupManagerStatefulDisk.fromMap((value as Map).cast<String, dynamic>())),
@@ -189,6 +205,7 @@ class GetRegionInstanceGroupManagerResult {
       statuses: pulumi.Input.decodeList<GetRegionInstanceGroupManagerStatus>(map['statuses']!, (value) => GetRegionInstanceGroupManagerStatus.fromMap((value as Map).cast<String, dynamic>())),
       targetPools: (map['targetPools'] as List).cast<String>(),
       targetSize: map['targetSize'] as int,
+      targetSizePolicies: pulumi.Input.decodeList<GetRegionInstanceGroupManagerTargetSizePolicy>(map['targetSizePolicies']!, (value) => GetRegionInstanceGroupManagerTargetSizePolicy.fromMap((value as Map).cast<String, dynamic>())),
       targetStoppedSize: map['targetStoppedSize'] as int,
       targetSuspendedSize: map['targetSuspendedSize'] as int,
       updatePolicies: pulumi.Input.decodeList<GetRegionInstanceGroupManagerUpdatePolicy>(map['updatePolicies']!, (value) => GetRegionInstanceGroupManagerUpdatePolicy.fromMap((value as Map).cast<String, dynamic>())),
@@ -198,4 +215,3 @@ class GetRegionInstanceGroupManagerResult {
     );
   }
 }
-

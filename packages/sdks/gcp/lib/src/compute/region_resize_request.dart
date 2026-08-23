@@ -9,9 +9,10 @@ import 'region_resize_request_state.dart';
 ///
 /// With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred region. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
 ///
+///
 /// To get more information about RegionResizeRequest, see:
 ///
-/// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagerResizeRequests)
+/// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagerResizeRequests)
 /// * How-to Guides
 /// * [About resize requests in a MIG](https://cloud.google.com/compute/docs/instance-groups/about-resize-requests-mig)
 ///
@@ -33,8 +34,14 @@ import 'region_resize_request_state.dart';
 ///     machineType: "a3-highgpu-8g",
 ///     canIpForward: false,
 ///     scheduling: {
+///         provisioningModel: "FLEX_START",
 ///         automaticRestart: false,
 ///         onHostMaintenance: "TERMINATE",
+///         instanceTerminationAction: "DELETE",
+///         maxRunDuration: {
+///             seconds: 7200,
+///             nanos: 0,
+///         },
 ///     },
 ///     disks: [{
 ///         sourceImage: "cos-cloud/cos-121-lts",
@@ -109,8 +116,14 @@ import 'region_resize_request_state.dart';
 ///     machine_type="a3-highgpu-8g",
 ///     can_ip_forward=False,
 ///     scheduling={
+///         "provisioning_model": "FLEX_START",
 ///         "automatic_restart": False,
 ///         "on_host_maintenance": "TERMINATE",
+///         "instance_termination_action": "DELETE",
+///         "max_run_duration": {
+///             "seconds": 7200,
+///             "nanos": 0,
+///         },
 ///     },
 ///     disks=[{
 ///         "source_image": "cos-cloud/cos-121-lts",
@@ -188,8 +201,15 @@ import 'region_resize_request_state.dart';
 ///         CanIpForward = false,
 ///         Scheduling = new Gcp.Compute.Inputs.RegionInstanceTemplateSchedulingArgs
 ///         {
+///             ProvisioningModel = "FLEX_START",
 ///             AutomaticRestart = false,
 ///             OnHostMaintenance = "TERMINATE",
+///             InstanceTerminationAction = "DELETE",
+///             MaxRunDuration = new Gcp.Compute.Inputs.RegionInstanceTemplateSchedulingMaxRunDurationArgs
+///             {
+///                 Seconds = 7200,
+///                 Nanos = 0,
+///             },
 ///         },
 ///         Disks = new[]
 ///         {
@@ -298,8 +318,14 @@ import 'region_resize_request_state.dart';
 /// 			MachineType:         pulumi.String("a3-highgpu-8g"),
 /// 			CanIpForward:        pulumi.Bool(false),
 /// 			Scheduling: &compute.RegionInstanceTemplateSchedulingArgs{
-/// 				AutomaticRestart:  pulumi.Bool(false),
-/// 				OnHostMaintenance: pulumi.String("TERMINATE"),
+/// 				ProvisioningModel:         pulumi.String("FLEX_START"),
+/// 				AutomaticRestart:          pulumi.Bool(false),
+/// 				OnHostMaintenance:         pulumi.String("TERMINATE"),
+/// 				InstanceTerminationAction: pulumi.String("DELETE"),
+/// 				MaxRunDuration: &compute.RegionInstanceTemplateSchedulingMaxRunDurationArgs{
+/// 					Seconds: pulumi.Int(7200),
+/// 					Nanos:   pulumi.Int(0),
+/// 				},
 /// 			},
 /// 			Disks: compute.RegionInstanceTemplateDiskArray{
 /// 				&compute.RegionInstanceTemplateDiskArgs{
@@ -382,6 +408,88 @@ import 'region_resize_request_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_regioninstancetemplate" "a3_dws" {
+///   name                 = "a3-dws"
+///   region               = "us-central1"
+///   description          = "This template is used to create a mig instance that is compatible with DWS resize requests."
+///   instance_description = "A3 GPU"
+///   machine_type         = "a3-highgpu-8g"
+///   can_ip_forward       = false
+///   scheduling = {
+///     provisioning_model          = "FLEX_START"
+///     automatic_restart           = false
+///     on_host_maintenance         = "TERMINATE"
+///     instance_termination_action = "DELETE"
+///     max_run_duration = {
+///       seconds = 7200
+///       nanos   = 0
+///     }
+///   }
+///   disks {
+///     source_image = "cos-cloud/cos-121-lts"
+///     auto_delete  = true
+///     boot         = true
+///     disk_type    = "pd-ssd"
+///     disk_size_gb = "960"
+///     mode         = "READ_WRITE"
+///   }
+///   guest_accelerators {
+///     type  = "nvidia-h100-80gb"
+///     count = 8
+///   }
+///   reservation_affinity = {
+///     type = "NO_RESERVATION"
+///   }
+///   shielded_instance_config = {
+///     enable_vtpm                 = true
+///     enable_integrity_monitoring = true
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
+/// }
+/// resource "gcp_compute_regioninstancegroupmanager" "a3_dws" {
+///   name               = "a3-dws"
+///   base_instance_name = "a3-dws"
+///   region             = "us-central1"
+///   versions {
+///     instance_template = gcp_compute_regioninstancetemplate.a3_dws.self_link
+///   }
+///   instance_lifecycle_policy = {
+///     default_action_on_failure = "DO_NOTHING"
+///   }
+///   distribution_policy_target_shape = "ANY_SINGLE_ZONE"
+///   distribution_policy_zones        = ["us-central1-a", "us-central1-b", "us-central1-c", "us-central1-f"]
+///   update_policy = {
+///     instance_redistribution_type = "NONE"
+///     type                         = "OPPORTUNISTIC"
+///     minimal_action               = "REPLACE"
+///     max_surge_fixed              = 0
+///     max_unavailable_fixed        = 6
+///   }
+///   wait_for_instances = false
+/// }
+/// resource "gcp_compute_regionresizerequest" "a3_resize_request" {
+///   name                   = "a3-dws"
+///   instance_group_manager = gcp_compute_regioninstancegroupmanager.a3_dws.name
+///   region                 = "us-central1"
+///   description            = "Test resize request resource"
+///   resize_by              = 2
+///   requested_run_duration = {
+///     seconds = 14400
+///     nanos   = 0
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -391,6 +499,7 @@ import 'region_resize_request_state.dart';
 /// import com.pulumi.gcp.compute.RegionInstanceTemplate;
 /// import com.pulumi.gcp.compute.RegionInstanceTemplateArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingArgs;
+/// import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingMaxRunDurationArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateDiskArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateGuestAcceleratorArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateReservationAffinityArgs;
@@ -404,8 +513,8 @@ import 'region_resize_request_state.dart';
 /// import com.pulumi.gcp.compute.RegionResizeRequest;
 /// import com.pulumi.gcp.compute.RegionResizeRequestArgs;
 /// import com.pulumi.gcp.compute.inputs.RegionResizeRequestRequestedRunDurationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -425,8 +534,14 @@ import 'region_resize_request_state.dart';
 ///             .machineType("a3-highgpu-8g")
 ///             .canIpForward(false)
 ///             .scheduling(RegionInstanceTemplateSchedulingArgs.builder()
+///                 .provisioningModel("FLEX_START")
 ///                 .automaticRestart(false)
 ///                 .onHostMaintenance("TERMINATE")
+///                 .instanceTerminationAction("DELETE")
+///                 .maxRunDuration(RegionInstanceTemplateSchedulingMaxRunDurationArgs.builder()
+///                     .seconds(7200)
+///                     .nanos(0)
+///                     .build())
 ///                 .build())
 ///             .disks(RegionInstanceTemplateDiskArgs.builder()
 ///                 .sourceImage("cos-cloud/cos-121-lts")
@@ -506,8 +621,13 @@ import 'region_resize_request_state.dart';
 ///       machineType: a3-highgpu-8g
 ///       canIpForward: false
 ///       scheduling:
+///         provisioningModel: FLEX_START
 ///         automaticRestart: false
 ///         onHostMaintenance: TERMINATE
+///         instanceTerminationAction: DELETE
+///         maxRunDuration:
+///           seconds: 7200
+///           nanos: 0
 ///       disks:
 ///         - sourceImage: cos-cloud/cos-121-lts
 ///           autoDelete: true
@@ -569,33 +689,29 @@ import 'region_resize_request_state.dart';
 /// RegionResizeRequest can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{instance_group_manager}}/resizeRequests/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{instance_group_manager}}/{{name}}`
-///
 /// * `{{region}}/{{instance_group_manager}}/{{name}}`
-///
 /// * `{{instance_group_manager}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, RegionResizeRequest can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{instance_group_manager}}/resizeRequests/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{project}}/{{region}}/{{instance_group_manager}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{region}}/{{instance_group_manager}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/regionResizeRequest:RegionResizeRequest default {{instance_group_manager}}/{{name}}
 /// ```
 class RegionResizeRequest extends pulumi.CustomResource {
   /// The creation timestamp for this resize request in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional description of this resize-request.
   late final pulumi.Output<String?> description;
   /// The reference of the regional instance group manager this ResizeRequest is a part of.
@@ -633,6 +749,7 @@ class RegionResizeRequest extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     instanceGroupManager = registerOutput<String>('instanceGroupManager');
     this.name = registerOutput<String>('name');
@@ -668,6 +785,7 @@ class RegionResizeRequest extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     instanceGroupManager = registerOutput<String>('instanceGroupManager');
     this.name = registerOutput<String>('name');

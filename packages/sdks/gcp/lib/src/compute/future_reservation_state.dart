@@ -4,6 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'future_reservation_aggregate_reservation.dart';
 import 'future_reservation_auto_created_reservations_duration.dart';
 import 'future_reservation_commitment_info.dart';
+import 'future_reservation_params.dart';
 import 'future_reservation_share_settings.dart';
 import 'future_reservation_specific_sku_properties.dart';
 import 'future_reservation_status.dart';
@@ -26,6 +27,13 @@ class FutureReservationState {
   final pulumi.Input<FutureReservationCommitmentInfo>? commitmentInfo;
   /// The creation timestamp for this future reservation in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Type of the deployment requested as part of future reservation.
   /// Possible values are: `DENSE`, `FLEXIBLE`.
   final pulumi.Input<String>? deploymentType;
@@ -36,11 +44,14 @@ class FutureReservationState {
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
   /// the regular expression `a-z?` which means the
   /// first character must be a lowercase letter, and all following
-  /// characters must be a dash, lowercase letter, or digit, except the las
+  /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   final pulumi.Input<String>? name;
   /// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
   final pulumi.Input<String>? namePrefix;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  final pulumi.Input<FutureReservationParams>? params;
   /// Planning state before being submitted for evaluation
   /// Possible values are: `DRAFT`, `SUBMITTED`.
   final pulumi.Input<String>? planningStatus;
@@ -73,7 +84,7 @@ class FutureReservationState {
   /// Time window for this Future Reservation.
   /// Structure is documented below.
   final pulumi.Input<FutureReservationTimeWindow>? timeWindow;
-  /// URL of the Zone where this future reservation resides.
+  /// The zone where the future reservation is located.
   final pulumi.Input<String>? zone;
 
   /// Creates a new [FutureReservationState].
@@ -83,10 +94,12 @@ class FutureReservationState {
   /// [autoDeleteAutoCreatedReservations] Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
   /// [commitmentInfo] If not present, then FR will not deliver a new commitment or update an existing commitment.
   /// [creationTimestamp] The creation timestamp for this future reservation in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deploymentType] Type of the deployment requested as part of future reservation.
   /// [description] An optional description of this resource.
   /// [name] Name of the resource. Provided by the client when the resource is
   /// [namePrefix] Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
+  /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [planningStatus] Planning state before being submitted for evaluation
   /// [project] The ID of the project in which the resource belongs.
   /// [reservationMode] The reservation mode which determines reservation-termination behavior and expected pricing.
@@ -99,7 +112,7 @@ class FutureReservationState {
   /// [specificSkuProperties] Future Reservation configuration to indicate instance properties and total count.
   /// [statuses] [Output only] Status of the Future Reservation
   /// [timeWindow] Time window for this Future Reservation.
-  /// [zone] URL of the Zone where this future reservation resides.
+  /// [zone] The zone where the future reservation is located.
   const FutureReservationState({
     this.aggregateReservation,
     this.autoCreatedReservationsDeleteTime,
@@ -107,10 +120,12 @@ class FutureReservationState {
     this.autoDeleteAutoCreatedReservations,
     this.commitmentInfo,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.deploymentType,
     this.description,
     this.name,
     this.namePrefix,
+    this.params,
     this.planningStatus,
     this.project,
     this.reservationMode,
@@ -134,10 +149,12 @@ class FutureReservationState {
       'autoDeleteAutoCreatedReservations': ?autoDeleteAutoCreatedReservations,
       'commitmentInfo': ?pulumi.Input.mapOptionalInputValue<FutureReservationCommitmentInfo, Map<String, dynamic>>(commitmentInfo, (value) => value.toMap()),
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'deploymentType': ?deploymentType,
       'description': ?description,
       'name': ?name,
       'namePrefix': ?namePrefix,
+      'params': ?pulumi.Input.mapOptionalInputValue<FutureReservationParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'planningStatus': ?planningStatus,
       'project': ?project,
       'reservationMode': ?reservationMode,
@@ -162,10 +179,12 @@ class FutureReservationState {
       autoDeleteAutoCreatedReservations: (() { final guardedValue = map['autoDeleteAutoCreatedReservations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       commitmentInfo: (() { final guardedValue = map['commitmentInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FutureReservationCommitmentInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deploymentType: (() { final guardedValue = map['deploymentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FutureReservationParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       planningStatus: (() { final guardedValue = map['planningStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reservationMode: (() { final guardedValue = map['reservationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -182,4 +201,3 @@ class FutureReservationState {
     );
   }
 }
-

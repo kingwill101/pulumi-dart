@@ -144,7 +144,7 @@ import 'fhir_store_validation_config.dart';
 /// 		}
 /// 		_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
 /// 			Name:                            pulumi.String("example-fhir-store"),
-/// 			Dataset:                         dataset.ID(),
+/// 			Dataset:                         dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			Version:                         pulumi.String("R4"),
 /// 			ComplexDataTypeReferenceParsing: pulumi.String("DISABLED"),
 /// 			EnableUpdateCreate:              pulumi.Bool(false),
@@ -154,7 +154,7 @@ import 'fhir_store_validation_config.dart';
 /// 			DefaultSearchHandlingStrict:     pulumi.Bool(false),
 /// 			NotificationConfigs: healthcare.FhirStoreNotificationConfigArray{
 /// 				&healthcare.FhirStoreNotificationConfigArgs{
-/// 					PubsubTopic: topic.ID(),
+/// 					PubsubTopic: topic.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Labels: pulumi.StringMap{
@@ -166,6 +166,40 @@ import 'fhir_store_validation_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_fhirstore" "default" {
+///   name                                = "example-fhir-store"
+///   dataset                             = gcp_healthcare_dataset.dataset.id
+///   version                             = "R4"
+///   complex_data_type_reference_parsing = "DISABLED"
+///   enable_update_create                = false
+///   disable_referential_integrity       = false
+///   disable_resource_versioning         = false
+///   enable_history_import               = false
+///   default_search_handling_strict      = false
+///   notification_configs {
+///     pubsub_topic = gcp_pubsub_topic.topic.id
+///   }
+///   labels = {
+///     "label1" = "labelvalue1"
+///   }
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "fhir-notifications"
+/// }
+/// resource "gcp_healthcare_dataset" "dataset" {
+///   name     = "example-dataset"
+///   location = "us-central1"
 /// }
 /// ```
 /// ```java
@@ -181,8 +215,8 @@ import 'fhir_store_validation_config.dart';
 /// import com.pulumi.gcp.healthcare.FhirStore;
 /// import com.pulumi.gcp.healthcare.FhirStoreArgs;
 /// import com.pulumi.gcp.healthcare.inputs.FhirStoreNotificationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -446,7 +480,7 @@ import 'fhir_store_validation_config.dart';
 /// 		}
 /// 		_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
 /// 			Name:                        pulumi.String("example-fhir-store"),
-/// 			Dataset:                     dataset.ID(),
+/// 			Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			Version:                     pulumi.String("R4"),
 /// 			EnableUpdateCreate:          pulumi.Bool(false),
 /// 			DisableReferentialIntegrity: pulumi.Bool(false),
@@ -490,6 +524,55 @@ import 'fhir_store_validation_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_fhirstore" "default" {
+///   name                          = "example-fhir-store"
+///   dataset                       = gcp_healthcare_dataset.dataset.id
+///   version                       = "R4"
+///   enable_update_create          = false
+///   disable_referential_integrity = false
+///   disable_resource_versioning   = false
+///   enable_history_import         = false
+///   labels = {
+///     "label1" = "labelvalue1"
+///   }
+///   stream_configs {
+///     resource_types = ["Observation"]
+///     bigquery_destination = {
+///       dataset_uri ="bq://${gcp_bigquery_dataset.bq_dataset.project}.${gcp_bigquery_dataset.bq_dataset.dataset_id}"
+///       schema_config = {
+///         recursive_structure_depth = 3
+///         last_updated_partition_config = {
+///           type          = "HOUR"
+///           expiration_ms = 1000000
+///         }
+///       }
+///     }
+///   }
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "fhir-notifications"
+/// }
+/// resource "gcp_healthcare_dataset" "dataset" {
+///   name     = "example-dataset"
+///   location = "us-central1"
+/// }
+/// resource "gcp_bigquery_dataset" "bq_dataset" {
+///   dataset_id                 = "bq_example_dataset"
+///   friendly_name              = "test"
+///   description                = "This is a test description"
+///   location                   = "US"
+///   delete_contents_on_destroy = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -504,8 +587,8 @@ import 'fhir_store_validation_config.dart';
 /// import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs;
 /// import com.pulumi.gcp.pubsub.Topic;
 /// import com.pulumi.gcp.pubsub.TopicArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -736,7 +819,7 @@ import 'fhir_store_validation_config.dart';
 /// 		}
 /// 		_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
 /// 			Name:                        pulumi.String("example-fhir-store"),
-/// 			Dataset:                     dataset.ID(),
+/// 			Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			Version:                     pulumi.String("R4"),
 /// 			EnableUpdateCreate:          pulumi.Bool(false),
 /// 			DisableReferentialIntegrity: pulumi.Bool(false),
@@ -747,7 +830,7 @@ import 'fhir_store_validation_config.dart';
 /// 			},
 /// 			NotificationConfigs: healthcare.FhirStoreNotificationConfigArray{
 /// 				&healthcare.FhirStoreNotificationConfigArgs{
-/// 					PubsubTopic:                  topic.ID(),
+/// 					PubsubTopic:                  topic.ID().ToIDOutput().ToStringOutput(),
 /// 					SendFullResource:             pulumi.Bool(true),
 /// 					SendPreviousResourceOnDelete: pulumi.Bool(true),
 /// 				},
@@ -758,6 +841,40 @@ import 'fhir_store_validation_config.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_fhirstore" "default" {
+///   name                          = "example-fhir-store"
+///   dataset                       = gcp_healthcare_dataset.dataset.id
+///   version                       = "R4"
+///   enable_update_create          = false
+///   disable_referential_integrity = false
+///   disable_resource_versioning   = false
+///   enable_history_import         = false
+///   labels = {
+///     "label1" = "labelvalue1"
+///   }
+///   notification_configs {
+///     pubsub_topic                     = gcp_pubsub_topic.topic.id
+///     send_full_resource               = true
+///     send_previous_resource_on_delete = true
+///   }
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "fhir-notifications"
+/// }
+/// resource "gcp_healthcare_dataset" "dataset" {
+///   name     = "example-dataset"
+///   location = "us-central1"
 /// }
 /// ```
 /// ```java
@@ -773,8 +890,8 @@ import 'fhir_store_validation_config.dart';
 /// import com.pulumi.gcp.healthcare.FhirStore;
 /// import com.pulumi.gcp.healthcare.FhirStoreArgs;
 /// import com.pulumi.gcp.healthcare.inputs.FhirStoreNotificationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1003,7 +1120,7 @@ import 'fhir_store_validation_config.dart';
 /// 		}
 /// 		_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
 /// 			Name:                            pulumi.String("example-fhir-store"),
-/// 			Dataset:                         dataset.ID(),
+/// 			Dataset:                         dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			Version:                         pulumi.String("R4"),
 /// 			ComplexDataTypeReferenceParsing: pulumi.String("DISABLED"),
 /// 			EnableUpdateCreate:              pulumi.Bool(false),
@@ -1013,7 +1130,7 @@ import 'fhir_store_validation_config.dart';
 /// 			DefaultSearchHandlingStrict:     pulumi.Bool(false),
 /// 			NotificationConfigs: healthcare.FhirStoreNotificationConfigArray{
 /// 				&healthcare.FhirStoreNotificationConfigArgs{
-/// 					PubsubTopic: topic.ID(),
+/// 					PubsubTopic: topic.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Labels: pulumi.StringMap{
@@ -1037,6 +1154,50 @@ import 'fhir_store_validation_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_fhirstore" "default" {
+///   name                                = "example-fhir-store"
+///   dataset                             = gcp_healthcare_dataset.dataset.id
+///   version                             = "R4"
+///   complex_data_type_reference_parsing = "DISABLED"
+///   enable_update_create                = false
+///   disable_referential_integrity       = false
+///   disable_resource_versioning         = false
+///   enable_history_import               = false
+///   default_search_handling_strict      = false
+///   notification_configs {
+///     pubsub_topic = gcp_pubsub_topic.topic.id
+///   }
+///   labels = {
+///     "label1" = "labelvalue1"
+///   }
+///   consent_config = {
+///     version         = "V1"
+///     access_enforced = true
+///     consent_header_handling = {
+///       profile = "REQUIRED_ON_READ"
+///     }
+///     access_determination_log_config = {
+///       log_level = "VERBOSE"
+///     }
+///   }
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "fhir-notifications"
+/// }
+/// resource "gcp_healthcare_dataset" "dataset" {
+///   name     = "example-dataset"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1053,8 +1214,8 @@ import 'fhir_store_validation_config.dart';
 /// import com.pulumi.gcp.healthcare.inputs.FhirStoreConsentConfigArgs;
 /// import com.pulumi.gcp.healthcare.inputs.FhirStoreConsentConfigConsentHeaderHandlingArgs;
 /// import com.pulumi.gcp.healthcare.inputs.FhirStoreConsentConfigAccessDeterminationLogConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1289,7 +1450,7 @@ import 'fhir_store_validation_config.dart';
 /// 		}
 /// 		_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
 /// 			Name:                            pulumi.String("example-fhir-store"),
-/// 			Dataset:                         dataset.ID(),
+/// 			Dataset:                         dataset.ID().ToIDOutput().ToStringOutput(),
 /// 			Version:                         pulumi.String("R4"),
 /// 			ComplexDataTypeReferenceParsing: pulumi.String("DISABLED"),
 /// 			EnableUpdateCreate:              pulumi.Bool(false),
@@ -1299,7 +1460,7 @@ import 'fhir_store_validation_config.dart';
 /// 			DefaultSearchHandlingStrict:     pulumi.Bool(false),
 /// 			NotificationConfigs: healthcare.FhirStoreNotificationConfigArray{
 /// 				&healthcare.FhirStoreNotificationConfigArgs{
-/// 					PubsubTopic: topic.ID(),
+/// 					PubsubTopic: topic.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Labels: pulumi.StringMap{
@@ -1320,6 +1481,47 @@ import 'fhir_store_validation_config.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_healthcare_fhirstore" "default" {
+///   name                                = "example-fhir-store"
+///   dataset                             = gcp_healthcare_dataset.dataset.id
+///   version                             = "R4"
+///   complex_data_type_reference_parsing = "DISABLED"
+///   enable_update_create                = false
+///   disable_referential_integrity       = false
+///   disable_resource_versioning         = false
+///   enable_history_import               = false
+///   default_search_handling_strict      = false
+///   notification_configs {
+///     pubsub_topic = gcp_pubsub_topic.topic.id
+///   }
+///   labels = {
+///     "label1" = "labelvalue1"
+///   }
+///   validation_config = {
+///     disable_profile_validation        = true
+///     enabled_implementation_guides     = []
+///     disable_required_field_validation = true
+///     disable_reference_type_validation = true
+///     disable_fhirpath_validation       = true
+///   }
+/// }
+/// resource "gcp_pubsub_topic" "topic" {
+///   name = "fhir-notifications"
+/// }
+/// resource "gcp_healthcare_dataset" "dataset" {
+///   name     = "example-dataset"
+///   location = "us-central1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1334,8 +1536,8 @@ import 'fhir_store_validation_config.dart';
 /// import com.pulumi.gcp.healthcare.FhirStoreArgs;
 /// import com.pulumi.gcp.healthcare.inputs.FhirStoreNotificationConfigArgs;
 /// import com.pulumi.gcp.healthcare.inputs.FhirStoreValidationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1423,22 +1625,20 @@ import 'fhir_store_validation_config.dart';
 /// FhirStore can be imported using any of these accepted formats:
 ///
 /// * `{{dataset}}/fhirStores/{{name}}`
-///
 /// * `{{dataset}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/{{name}}
 /// ```
 class FhirStore extends pulumi.CustomResource {
   /// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
   /// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
   late final pulumi.Output<String> complexDataTypeReferenceParsing;
+  /// (Optional, Beta)
   /// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
   /// Structure is documented below.
   late final pulumi.Output<FhirStoreConsentConfig?> consentConfig;
@@ -1449,6 +1649,13 @@ class FhirStore extends pulumi.CustomResource {
   /// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
   /// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
   late final pulumi.Output<bool?> defaultSearchHandlingStrict;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
   /// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
   /// requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -1472,6 +1679,7 @@ class FhirStore extends pulumi.CustomResource {
   /// ** Changing this property may recreate the FHIR store (removing all data) **
   /// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
   late final pulumi.Output<bool?> enableHistoryImport;
+  /// (Optional, Beta)
   /// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
   /// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
   late final pulumi.Output<bool?> enableHistoryModifications;
@@ -1492,7 +1700,7 @@ class FhirStore extends pulumi.CustomResource {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The resource name for the FhirStore.
   /// ** Changing this property may recreate the FHIR store (removing all data) **
@@ -1501,7 +1709,7 @@ class FhirStore extends pulumi.CustomResource {
   /// A nested object resource.
   /// Structure is documented below.
   ///
-  /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+  /// &gt; **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
   late final pulumi.Output<FhirStoreNotificationConfig?> notificationConfig;
   /// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
   /// Structure is documented below.
@@ -1545,6 +1753,7 @@ class FhirStore extends pulumi.CustomResource {
     consentConfig = registerOutput<FhirStoreConsentConfig?>('consentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FhirStoreConsentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataset = registerOutput<String>('dataset');
     defaultSearchHandlingStrict = registerOutput<bool?>('defaultSearchHandlingStrict');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disableReferentialIntegrity = registerOutput<bool?>('disableReferentialIntegrity');
     disableResourceVersioning = registerOutput<bool?>('disableResourceVersioning');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
@@ -1589,6 +1798,7 @@ class FhirStore extends pulumi.CustomResource {
     consentConfig = registerOutput<FhirStoreConsentConfig?>('consentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FhirStoreConsentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataset = registerOutput<String>('dataset');
     defaultSearchHandlingStrict = registerOutput<bool?>('defaultSearchHandlingStrict');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disableReferentialIntegrity = registerOutput<bool?>('disableReferentialIntegrity');
     disableResourceVersioning = registerOutput<bool?>('disableResourceVersioning');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');

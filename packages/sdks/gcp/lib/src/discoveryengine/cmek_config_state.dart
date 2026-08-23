@@ -7,6 +7,13 @@ import 'cmek_config_single_region_key.dart';
 class CmekConfigState {
   /// The unique id of the cmek config.
   final pulumi.Input<String>? cmekConfigId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The default CmekConfig for the Customer.
   final pulumi.Input<bool>? isDefault;
   /// KMS key resource name which will be used to encrypt resources
@@ -41,6 +48,7 @@ class CmekConfigState {
 
   /// Creates a new [CmekConfigState].
   /// [cmekConfigId] The unique id of the cmek config.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [isDefault] The default CmekConfig for the Customer.
   /// [kmsKey] KMS key resource name which will be used to encrypt resources
   /// [kmsKeyVersion] KMS key version resource name which will be used to encrypt resources
@@ -54,6 +62,7 @@ class CmekConfigState {
   /// [state] The state of the CmekConfig.
   const CmekConfigState({
     this.cmekConfigId,
+    this.deletionPolicy,
     this.isDefault,
     this.kmsKey,
     this.kmsKeyVersion,
@@ -70,6 +79,7 @@ class CmekConfigState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cmekConfigId': ?cmekConfigId,
+      'deletionPolicy': ?deletionPolicy,
       'isDefault': ?isDefault,
       'kmsKey': ?kmsKey,
       'kmsKeyVersion': ?kmsKeyVersion,
@@ -87,6 +97,7 @@ class CmekConfigState {
   factory CmekConfigState.fromMap(Map<String, dynamic> map) {
     return CmekConfigState(
       cmekConfigId: (() { final guardedValue = map['cmekConfigId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kmsKeyVersion: (() { final guardedValue = map['kmsKeyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -101,4 +112,3 @@ class CmekConfigState {
     );
   }
 }
-

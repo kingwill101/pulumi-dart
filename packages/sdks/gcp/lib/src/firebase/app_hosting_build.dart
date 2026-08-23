@@ -225,6 +225,52 @@ import 'app_hosting_build_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_apphostingbuild" "example" {
+///   project  = gcp_firebase_apphostingbackend.example.project
+///   location = gcp_firebase_apphostingbackend.example.location
+///   backend  = gcp_firebase_apphostingbackend.example.backend_id
+///   build_id = "mini-build"
+///   source = {
+///     container = {
+///       image = "us-docker.pkg.dev/cloudrun/container/hello"
+///     }
+///   }
+/// }
+/// resource "gcp_firebase_apphostingbackend" "example" {
+///   depends_on       = [gcp_projects_service.fah]
+///   project          = "my-project-name"
+///   location         = "us-central1"
+///   backend_id       = "mini"
+///   app_id           = "1:0000000000:web:674cde32020e16fbce9dbd"
+///   serving_locality = "GLOBAL_ACCESS"
+///   service_account  = gcp_serviceaccount_account.service_account.email
+/// }
+/// ### Include these blocks only once per project if you are starting from scratch ###
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   project                      = "my-project-name"
+///   account_id                   = "firebase-app-hosting-compute"
+///   display_name                 = "Firebase App Hosting compute service account"
+///   create_ignore_already_exists = true
+/// }
+/// resource "gcp_projects_iammember" "app_hosting_sa_runner" {
+///   project = "my-project-name"
+///   role    = "roles/firebaseapphosting.computeRunner"
+///   member  = gcp_serviceaccount_account.service_account.member
+/// }
+/// resource "gcp_projects_service" "fah" {
+///   project = "my-project-name"
+///   service = "firebaseapphosting.googleapis.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -244,8 +290,8 @@ import 'app_hosting_build_state.dart';
 /// import com.pulumi.gcp.projects.IAMMember;
 /// import com.pulumi.gcp.projects.IAMMemberArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -593,6 +639,59 @@ import 'app_hosting_build_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_apphostingbuild" "example" {
+///   project      = gcp_firebase_apphostingbackend.example.project
+///   location     = gcp_firebase_apphostingbackend.example.location
+///   backend      = gcp_firebase_apphostingbackend.example.backend_id
+///   build_id     = "full-build"
+///   display_name = "My Build"
+///   annotations = {
+///     "key" = "value"
+///   }
+///   labels = {
+///     "key" = "value"
+///   }
+///   source = {
+///     container = {
+///       image = "us-docker.pkg.dev/cloudrun/container/hello"
+///     }
+///   }
+/// }
+/// resource "gcp_firebase_apphostingbackend" "example" {
+///   depends_on       = [gcp_projects_service.fah]
+///   project          = "my-project-name"
+///   location         = "us-central1"
+///   backend_id       = "full"
+///   app_id           = "1:0000000000:web:674cde32020e16fbce9dbd"
+///   serving_locality = "GLOBAL_ACCESS"
+///   service_account  = gcp_serviceaccount_account.service_account.email
+/// }
+/// ### Include these blocks only once per project if you are starting from scratch ###
+/// resource "gcp_serviceaccount_account" "service_account" {
+///   project                      = "my-project-name"
+///   account_id                   = "firebase-app-hosting-compute"
+///   display_name                 = "Firebase App Hosting compute service account"
+///   create_ignore_already_exists = true
+/// }
+/// resource "gcp_projects_iammember" "app_hosting_sa_runner" {
+///   project = "my-project-name"
+///   role    = "roles/firebaseapphosting.computeRunner"
+///   member  = gcp_serviceaccount_account.service_account.member
+/// }
+/// resource "gcp_projects_service" "fah" {
+///   project = "my-project-name"
+///   service = "firebaseapphosting.googleapis.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -612,8 +711,8 @@ import 'app_hosting_build_state.dart';
 /// import com.pulumi.gcp.projects.IAMMember;
 /// import com.pulumi.gcp.projects.IAMMemberArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1013,6 +1112,71 @@ import 'app_hosting_build_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_apphostingbuild" "example" {
+///   project  = gcp_firebase_apphostingbackend.example.project
+///   location = gcp_firebase_apphostingbackend.example.location
+///   backend  = gcp_firebase_apphostingbackend.example.backend_id
+///   build_id = "gh-build"
+///   source = {
+///     codebase = {
+///       branch = "main"
+///     }
+///   }
+/// }
+/// resource "gcp_firebase_apphostingbackend" "example" {
+///   project          = "my-project-name"
+///   location         = "us-central1"
+///   backend_id       = "mini"
+///   app_id           = "1:0000000000:web:674cde32020e16fbce9dbd"
+///   display_name     = "My Backend"
+///   serving_locality = "GLOBAL_ACCESS"
+///   service_account  = "firebase-app-hosting-compute@my-project-name.iam.gserviceaccount.com"
+///   environment      = "prod"
+///   annotations = {
+///     "key" = "value"
+///   }
+///   labels = {
+///     "key" = "value"
+///   }
+///   codebase = {
+///     repository     = gcp_developerconnect_gitrepositorylink.my-repository.name
+///     root_directory = "/"
+///   }
+/// }
+/// resource "gcp_developerconnect_gitrepositorylink" "my-repository" {
+///   project  = "my-project-name"
+///   location = "us-central1"
+///   service  = "developerconnect.googleapis.com"
+/// }
+/// resource "gcp_projects_iammember" "devconnect-secret" {
+///   project = "my-project-name"
+///   role    = "roles/secretmanager.admin"
+///   member  = devconnect-p4sa.member
+/// }
+/// ###
+/// ### Include these blocks only once per Github account ###
+/// resource "gcp_developerconnect_connection" "my-connection" {
+///   depends_on    = [gcp_projects_iammember.devconnect-secret]
+///   project       = "my-project-name"
+///   location      = "us-central1"
+///   connection_id = "tf-test-connection-new"
+///   github_config = {
+///     github_app = "FIREBASE"
+///   }
+/// }
+/// output "nextSteps" {
+///   value = gcp_developerconnect_connection.my-connection.installation_states
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1034,8 +1198,8 @@ import 'app_hosting_build_state.dart';
 /// import com.pulumi.gcp.developerconnect.ConnectionArgs;
 /// import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1085,7 +1249,7 @@ import 'app_hosting_build_state.dart';
 ///         var devconnect_secret = new IAMMember("devconnect-secret", IAMMemberArgs.builder()
 ///             .project("my-project-name")
 ///             .role("roles/secretmanager.admin")
-///             .member(devconnect_p4sa.member())
+///             .member(devconnect_p4sa.get("member"))
 ///             .build());
 ///
 ///         //##
@@ -1170,22 +1334,15 @@ import 'app_hosting_build_state.dart';
 /// Build can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/backends/{{backend}}/builds/{{build_id}}`
-///
 /// * `{{project}}/{{location}}/{{backend}}/{{build_id}}`
-///
 /// * `{{location}}/{{backend}}/{{build_id}}`
+///
 ///
 /// When using the `pulumi import` command, Build can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default projects/{{project}}/locations/{{location}}/backends/{{backend}}/builds/{{build_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{project}}/{{location}}/{{backend}}/{{build_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appHostingBuild:AppHostingBuild default {{location}}/{{backend}}/{{build_id}}
 /// ```
 class AppHostingBuild extends pulumi.CustomResource {
@@ -1193,7 +1350,7 @@ class AppHostingBuild extends pulumi.CustomResource {
   /// store and arbitrary metadata. They are not queryable and should be
   /// preserved when modifying objects.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// The ID of the Backend that this Build applies to
   late final pulumi.Output<String> backend;
@@ -1207,6 +1364,7 @@ class AppHostingBuild extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// Human-readable name. 63 character limit.
   late final pulumi.Output<String?> displayName;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
@@ -1238,7 +1396,7 @@ class AppHostingBuild extends pulumi.CustomResource {
   /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the Backend that this Build applies to
   late final pulumi.Output<String> location;

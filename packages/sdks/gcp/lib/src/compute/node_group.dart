@@ -32,12 +32,12 @@ import 'node_group_state.dart';
 /// const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
 ///     name: "soletenant-tmpl",
 ///     region: "us-central1",
-///     nodeType: "n1-node-96-624",
+///     nodeType: "c2-node-60-240",
 /// });
 /// const nodes = new gcp.compute.NodeGroup("nodes", {
 ///     name: "soletenant-group",
-///     zone: "us-central1-a",
-///     description: "example google_compute_node_group for the Google Provider",
+///     zone: "us-central1-c",
+///     description: "example google_compute_node_group for Terraform Google Provider",
 ///     initialSize: 1,
 ///     nodeTemplate: soletenant_tmpl.id,
 /// });
@@ -49,11 +49,11 @@ import 'node_group_state.dart';
 /// soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
 ///     name="soletenant-tmpl",
 ///     region="us-central1",
-///     node_type="n1-node-96-624")
+///     node_type="c2-node-60-240")
 /// nodes = gcp.compute.NodeGroup("nodes",
 ///     name="soletenant-group",
-///     zone="us-central1-a",
-///     description="example google_compute_node_group for the Google Provider",
+///     zone="us-central1-c",
+///     description="example google_compute_node_group for Terraform Google Provider",
 ///     initial_size=1,
 ///     node_template=soletenant_tmpl.id)
 /// ```
@@ -69,14 +69,14 @@ import 'node_group_state.dart';
 ///     {
 ///         Name = "soletenant-tmpl",
 ///         Region = "us-central1",
-///         NodeType = "n1-node-96-624",
+///         NodeType = "c2-node-60-240",
 ///     });
 ///
 ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
 ///     {
 ///         Name = "soletenant-group",
-///         Zone = "us-central1-a",
-///         Description = "example google_compute_node_group for the Google Provider",
+///         Zone = "us-central1-c",
+///         Description = "example google_compute_node_group for Terraform Google Provider",
 ///         InitialSize = 1,
 ///         NodeTemplate = soletenant_tmpl.Id,
 ///     });
@@ -96,23 +96,45 @@ import 'node_group_state.dart';
 /// 		soletenant_tmpl, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
 /// 			Name:     pulumi.String("soletenant-tmpl"),
 /// 			Region:   pulumi.String("us-central1"),
-/// 			NodeType: pulumi.String("n1-node-96-624"),
+/// 			NodeType: pulumi.String("c2-node-60-240"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
 /// 			Name:         pulumi.String("soletenant-group"),
-/// 			Zone:         pulumi.String("us-central1-a"),
-/// 			Description:  pulumi.String("example google_compute_node_group for the Google Provider"),
+/// 			Zone:         pulumi.String("us-central1-c"),
+/// 			Description:  pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 /// 			InitialSize:  pulumi.Int(1),
-/// 			NodeTemplate: soletenant_tmpl.ID(),
+/// 			NodeTemplate: soletenant_tmpl.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_nodetemplate" "soletenant-tmpl" {
+///   name      = "soletenant-tmpl"
+///   region    = "us-central1"
+///   node_type = "c2-node-60-240"
+/// }
+/// resource "gcp_compute_nodegroup" "nodes" {
+///   name          = "soletenant-group"
+///   zone          = "us-central1-c"
+///   description   = "example google_compute_node_group for Terraform Google Provider"
+///   initial_size  = 1
+///   node_template = gcp_compute_nodetemplate.soletenant-tmpl.id
 /// }
 /// ```
 /// ```java
@@ -125,8 +147,8 @@ import 'node_group_state.dart';
 /// import com.pulumi.gcp.compute.NodeTemplateArgs;
 /// import com.pulumi.gcp.compute.NodeGroup;
 /// import com.pulumi.gcp.compute.NodeGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -141,13 +163,13 @@ import 'node_group_state.dart';
 ///         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()
 ///             .name("soletenant-tmpl")
 ///             .region("us-central1")
-///             .nodeType("n1-node-96-624")
+///             .nodeType("c2-node-60-240")
 ///             .build());
 ///
 ///         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()
 ///             .name("soletenant-group")
-///             .zone("us-central1-a")
-///             .description("example google_compute_node_group for the Google Provider")
+///             .zone("us-central1-c")
+///             .description("example google_compute_node_group for Terraform Google Provider")
 ///             .initialSize(1)
 ///             .nodeTemplate(soletenant_tmpl.id())
 ///             .build());
@@ -162,16 +184,21 @@ import 'node_group_state.dart';
 ///     properties:
 ///       name: soletenant-tmpl
 ///       region: us-central1
-///       nodeType: n1-node-96-624
+///       nodeType: c2-node-60-240
 ///   nodes:
 ///     type: gcp:compute:NodeGroup
 ///     properties:
 ///       name: soletenant-group
-///       zone: us-central1-a
-///       description: example google_compute_node_group for the Google Provider
+///       zone: us-central1-c
+///       description: example google_compute_node_group for Terraform Google Provider
 ///       initialSize: 1
 ///       nodeTemplate: ${["soletenant-tmpl"].id}
 /// ```
+///
+/// &gt; **Warning:** Due to limitations of the API, this provider cannot update the
+/// number of nodes in a node group and changes to node group size either
+/// through provider config or through external changes will cause
+/// the provider to delete and recreate the node group.
 ///
 /// ### Node Group Maintenance Interval
 ///
@@ -188,7 +215,7 @@ import 'node_group_state.dart';
 /// });
 /// const nodes = new gcp.compute.NodeGroup("nodes", {
 ///     name: "soletenant-group",
-///     zone: "us-central1-a",
+///     zone: "us-central1-c",
 ///     description: "example google_compute_node_group for Terraform Google Provider",
 ///     initialSize: 1,
 ///     nodeTemplate: soletenant_tmpl.id,
@@ -205,7 +232,7 @@ import 'node_group_state.dart';
 ///     node_type="c2-node-60-240")
 /// nodes = gcp.compute.NodeGroup("nodes",
 ///     name="soletenant-group",
-///     zone="us-central1-a",
+///     zone="us-central1-c",
 ///     description="example google_compute_node_group for Terraform Google Provider",
 ///     initial_size=1,
 ///     node_template=soletenant_tmpl.id,
@@ -229,7 +256,7 @@ import 'node_group_state.dart';
 ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
 ///     {
 ///         Name = "soletenant-group",
-///         Zone = "us-central1-a",
+///         Zone = "us-central1-c",
 ///         Description = "example google_compute_node_group for Terraform Google Provider",
 ///         InitialSize = 1,
 ///         NodeTemplate = soletenant_tmpl.Id,
@@ -258,10 +285,10 @@ import 'node_group_state.dart';
 /// 		}
 /// 		_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
 /// 			Name:                pulumi.String("soletenant-group"),
-/// 			Zone:                pulumi.String("us-central1-a"),
+/// 			Zone:                pulumi.String("us-central1-c"),
 /// 			Description:         pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 /// 			InitialSize:         pulumi.Int(1),
-/// 			NodeTemplate:        soletenant_tmpl.ID(),
+/// 			NodeTemplate:        soletenant_tmpl.ID().ToIDOutput().ToStringOutput(),
 /// 			MaintenanceInterval: pulumi.String("RECURRENT"),
 /// 		})
 /// 		if err != nil {
@@ -269,6 +296,29 @@ import 'node_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_nodetemplate" "soletenant-tmpl" {
+///   name      = "soletenant-tmpl"
+///   region    = "us-central1"
+///   node_type = "c2-node-60-240"
+/// }
+/// resource "gcp_compute_nodegroup" "nodes" {
+///   name                 = "soletenant-group"
+///   zone                 = "us-central1-c"
+///   description          = "example google_compute_node_group for Terraform Google Provider"
+///   initial_size         = 1
+///   node_template        = gcp_compute_nodetemplate.soletenant-tmpl.id
+///   maintenance_interval = "RECURRENT"
 /// }
 /// ```
 /// ```java
@@ -281,8 +331,8 @@ import 'node_group_state.dart';
 /// import com.pulumi.gcp.compute.NodeTemplateArgs;
 /// import com.pulumi.gcp.compute.NodeGroup;
 /// import com.pulumi.gcp.compute.NodeGroupArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -302,7 +352,7 @@ import 'node_group_state.dart';
 ///
 ///         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()
 ///             .name("soletenant-group")
-///             .zone("us-central1-a")
+///             .zone("us-central1-c")
 ///             .description("example google_compute_node_group for Terraform Google Provider")
 ///             .initialSize(1)
 ///             .nodeTemplate(soletenant_tmpl.id())
@@ -324,12 +374,17 @@ import 'node_group_state.dart';
 ///     type: gcp:compute:NodeGroup
 ///     properties:
 ///       name: soletenant-group
-///       zone: us-central1-a
+///       zone: us-central1-c
 ///       description: example google_compute_node_group for Terraform Google Provider
 ///       initialSize: 1
 ///       nodeTemplate: ${["soletenant-tmpl"].id}
 ///       maintenanceInterval: RECURRENT
 /// ```
+///
+/// &gt; **Warning:** Due to limitations of the API, this provider cannot update the
+/// number of nodes in a node group and changes to node group size either
+/// through provider config or through external changes will cause
+/// the provider to delete and recreate the node group.
 ///
 /// ### Node Group Autoscaling Policy
 ///
@@ -342,7 +397,7 @@ import 'node_group_state.dart';
 /// const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
 ///     name: "soletenant-tmpl",
 ///     region: "us-central1",
-///     nodeType: "n1-node-96-624",
+///     nodeType: "c2-node-60-240",
 /// });
 /// const nodes = new gcp.compute.NodeGroup("nodes", {
 ///     name: "soletenant-group",
@@ -368,7 +423,7 @@ import 'node_group_state.dart';
 /// soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
 ///     name="soletenant-tmpl",
 ///     region="us-central1",
-///     node_type="n1-node-96-624")
+///     node_type="c2-node-60-240")
 /// nodes = gcp.compute.NodeGroup("nodes",
 ///     name="soletenant-group",
 ///     zone="us-central1-a",
@@ -397,7 +452,7 @@ import 'node_group_state.dart';
 ///     {
 ///         Name = "soletenant-tmpl",
 ///         Region = "us-central1",
-///         NodeType = "n1-node-96-624",
+///         NodeType = "c2-node-60-240",
 ///     });
 ///
 ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
@@ -435,7 +490,7 @@ import 'node_group_state.dart';
 /// 		soletenant_tmpl, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
 /// 			Name:     pulumi.String("soletenant-tmpl"),
 /// 			Region:   pulumi.String("us-central1"),
-/// 			NodeType: pulumi.String("n1-node-96-624"),
+/// 			NodeType: pulumi.String("c2-node-60-240"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -449,7 +504,7 @@ import 'node_group_state.dart';
 /// 				StartTime: pulumi.String("08:00"),
 /// 			},
 /// 			InitialSize:  pulumi.Int(1),
-/// 			NodeTemplate: soletenant_tmpl.ID(),
+/// 			NodeTemplate: soletenant_tmpl.ID().ToIDOutput().ToStringOutput(),
 /// 			AutoscalingPolicy: &compute.NodeGroupAutoscalingPolicyArgs{
 /// 				Mode:     pulumi.String("ONLY_SCALE_OUT"),
 /// 				MinNodes: pulumi.Int(1),
@@ -461,6 +516,37 @@ import 'node_group_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_nodetemplate" "soletenant-tmpl" {
+///   name      = "soletenant-tmpl"
+///   region    = "us-central1"
+///   node_type = "c2-node-60-240"
+/// }
+/// resource "gcp_compute_nodegroup" "nodes" {
+///   name               = "soletenant-group"
+///   zone               = "us-central1-a"
+///   description        = "example google_compute_node_group for Google Provider"
+///   maintenance_policy = "RESTART_IN_PLACE"
+///   maintenance_window = {
+///     start_time = "08:00"
+///   }
+///   initial_size  = 1
+///   node_template = gcp_compute_nodetemplate.soletenant-tmpl.id
+///   autoscaling_policy = {
+///     mode      = "ONLY_SCALE_OUT"
+///     min_nodes = 1
+///     max_nodes = 10
+///   }
 /// }
 /// ```
 /// ```java
@@ -475,8 +561,8 @@ import 'node_group_state.dart';
 /// import com.pulumi.gcp.compute.NodeGroupArgs;
 /// import com.pulumi.gcp.compute.inputs.NodeGroupMaintenanceWindowArgs;
 /// import com.pulumi.gcp.compute.inputs.NodeGroupAutoscalingPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -491,7 +577,7 @@ import 'node_group_state.dart';
 ///         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()
 ///             .name("soletenant-tmpl")
 ///             .region("us-central1")
-///             .nodeType("n1-node-96-624")
+///             .nodeType("c2-node-60-240")
 ///             .build());
 ///
 ///         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()
@@ -521,7 +607,7 @@ import 'node_group_state.dart';
 ///     properties:
 ///       name: soletenant-tmpl
 ///       region: us-central1
-///       nodeType: n1-node-96-624
+///       nodeType: c2-node-60-240
 ///   nodes:
 ///     type: gcp:compute:NodeGroup
 ///     properties:
@@ -556,12 +642,12 @@ import 'node_group_state.dart';
 /// const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
 ///     name: "soletenant-tmpl",
 ///     region: "us-central1",
-///     nodeType: "n1-node-96-624",
+///     nodeType: "c2-node-60-240",
 /// });
 /// const nodes = new gcp.compute.NodeGroup("nodes", {
 ///     name: "soletenant-group",
-///     zone: "us-central1-f",
-///     description: "example google_compute_node_group for Terraform Google Provider",
+///     zone: "us-central1-a",
+///     description: "example google_compute_node_group for Google Provider",
 ///     initialSize: 1,
 ///     nodeTemplate: soletenant_tmpl.id,
 ///     shareSettings: {
@@ -585,11 +671,11 @@ import 'node_group_state.dart';
 /// soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
 ///     name="soletenant-tmpl",
 ///     region="us-central1",
-///     node_type="n1-node-96-624")
+///     node_type="c2-node-60-240")
 /// nodes = gcp.compute.NodeGroup("nodes",
 ///     name="soletenant-group",
-///     zone="us-central1-f",
-///     description="example google_compute_node_group for Terraform Google Provider",
+///     zone="us-central1-a",
+///     description="example google_compute_node_group for Google Provider",
 ///     initial_size=1,
 ///     node_template=soletenant_tmpl.id,
 ///     share_settings={
@@ -620,14 +706,14 @@ import 'node_group_state.dart';
 ///     {
 ///         Name = "soletenant-tmpl",
 ///         Region = "us-central1",
-///         NodeType = "n1-node-96-624",
+///         NodeType = "c2-node-60-240",
 ///     });
 ///
 ///     var nodes = new Gcp.Compute.NodeGroup("nodes", new()
 ///     {
 ///         Name = "soletenant-group",
-///         Zone = "us-central1-f",
-///         Description = "example google_compute_node_group for Terraform Google Provider",
+///         Zone = "us-central1-a",
+///         Description = "example google_compute_node_group for Google Provider",
 ///         InitialSize = 1,
 ///         NodeTemplate = soletenant_tmpl.Id,
 ///         ShareSettings = new Gcp.Compute.Inputs.NodeGroupShareSettingsArgs
@@ -669,17 +755,17 @@ import 'node_group_state.dart';
 /// 		soletenant_tmpl, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
 /// 			Name:     pulumi.String("soletenant-tmpl"),
 /// 			Region:   pulumi.String("us-central1"),
-/// 			NodeType: pulumi.String("n1-node-96-624"),
+/// 			NodeType: pulumi.String("c2-node-60-240"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewNodeGroup(ctx, "nodes", &compute.NodeGroupArgs{
 /// 			Name:         pulumi.String("soletenant-group"),
-/// 			Zone:         pulumi.String("us-central1-f"),
-/// 			Description:  pulumi.String("example google_compute_node_group for Terraform Google Provider"),
+/// 			Zone:         pulumi.String("us-central1-a"),
+/// 			Description:  pulumi.String("example google_compute_node_group for Google Provider"),
 /// 			InitialSize:  pulumi.Int(1),
-/// 			NodeTemplate: soletenant_tmpl.ID(),
+/// 			NodeTemplate: soletenant_tmpl.ID().ToIDOutput().ToStringOutput(),
 /// 			ShareSettings: &compute.NodeGroupShareSettingsArgs{
 /// 				ShareType: pulumi.String("SPECIFIC_PROJECTS"),
 /// 				ProjectMaps: compute.NodeGroupShareSettingsProjectMapArray{
@@ -697,6 +783,41 @@ import 'node_group_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_organizations_project" "guest_project" {
+///   project_id      = "project-id"
+///   name            = "project-name"
+///   org_id          = "123456789"
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_compute_nodetemplate" "soletenant-tmpl" {
+///   name      = "soletenant-tmpl"
+///   region    = "us-central1"
+///   node_type = "c2-node-60-240"
+/// }
+/// resource "gcp_compute_nodegroup" "nodes" {
+///   name          = "soletenant-group"
+///   zone          = "us-central1-a"
+///   description   = "example google_compute_node_group for Google Provider"
+///   initial_size  = 1
+///   node_template = gcp_compute_nodetemplate.soletenant-tmpl.id
+///   share_settings = {
+///     share_type = "SPECIFIC_PROJECTS"
+///     project_maps = [{
+///       "id"        = gcp_organizations_project.guest_project.project_id
+///       "projectId" = gcp_organizations_project.guest_project.project_id
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -710,8 +831,9 @@ import 'node_group_state.dart';
 /// import com.pulumi.gcp.compute.NodeGroup;
 /// import com.pulumi.gcp.compute.NodeGroupArgs;
 /// import com.pulumi.gcp.compute.inputs.NodeGroupShareSettingsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.NodeGroupShareSettingsProjectMapArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -733,13 +855,13 @@ import 'node_group_state.dart';
 ///         var soletenant_tmpl = new NodeTemplate("soletenant-tmpl", NodeTemplateArgs.builder()
 ///             .name("soletenant-tmpl")
 ///             .region("us-central1")
-///             .nodeType("n1-node-96-624")
+///             .nodeType("c2-node-60-240")
 ///             .build());
 ///
 ///         var nodes = new NodeGroup("nodes", NodeGroupArgs.builder()
 ///             .name("soletenant-group")
-///             .zone("us-central1-f")
-///             .description("example google_compute_node_group for Terraform Google Provider")
+///             .zone("us-central1-a")
+///             .description("example google_compute_node_group for Google Provider")
 ///             .initialSize(1)
 ///             .nodeTemplate(soletenant_tmpl.id())
 ///             .shareSettings(NodeGroupShareSettingsArgs.builder()
@@ -769,13 +891,13 @@ import 'node_group_state.dart';
 ///     properties:
 ///       name: soletenant-tmpl
 ///       region: us-central1
-///       nodeType: n1-node-96-624
+///       nodeType: c2-node-60-240
 ///   nodes:
 ///     type: gcp:compute:NodeGroup
 ///     properties:
 ///       name: soletenant-group
-///       zone: us-central1-f
-///       description: example google_compute_node_group for Terraform Google Provider
+///       zone: us-central1-a
+///       description: example google_compute_node_group for Google Provider
 ///       initialSize: 1
 ///       nodeTemplate: ${["soletenant-tmpl"].id}
 ///       shareSettings:
@@ -791,42 +913,39 @@ import 'node_group_state.dart';
 /// NodeGroup can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}`
-///
 /// * `{{project}}/{{zone}}/{{name}}`
-///
 /// * `{{zone}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, NodeGroup can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{project}}/{{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{zone}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{name}}
 /// ```
 class NodeGroup extends pulumi.CustomResource {
   /// If you use sole-tenant nodes for your workloads, you can use the node
   /// group autoscaler to automatically manage the sizes of your node groups.
-  /// One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+  /// One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
   /// Structure is documented below.
   late final pulumi.Output<NodeGroupAutoscalingPolicy> autoscalingPolicy;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// An optional textual description of the resource.
   late final pulumi.Output<String?> description;
-  /// The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
+  /// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
   late final pulumi.Output<int?> initialSize;
+  /// (Optional, Beta)
   /// Specifies the frequency of planned maintenance events. Set to one of the following:
   /// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
   /// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
@@ -870,6 +989,7 @@ class NodeGroup extends pulumi.CustomResource {
         ) {
     autoscalingPolicy = registerOutput<NodeGroupAutoscalingPolicy>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupAutoscalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     initialSize = registerOutput<int?>('initialSize');
     maintenanceInterval = registerOutput<String>('maintenanceInterval');
@@ -909,6 +1029,7 @@ class NodeGroup extends pulumi.CustomResource {
         ) {
     autoscalingPolicy = registerOutput<NodeGroupAutoscalingPolicy>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupAutoscalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     initialSize = registerOutput<int?>('initialSize');
     maintenanceInterval = registerOutput<String>('maintenanceInterval');

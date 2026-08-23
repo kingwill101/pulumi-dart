@@ -11,6 +11,7 @@ class GetForwardingRuleResult {
   final String backendService;
   final String baseForwardingRule;
   final String creationTimestamp;
+  final String deletionPolicy;
   final String description;
   final Map<String, String> effectiveLabels;
   final int forwardingRuleId;
@@ -51,6 +52,7 @@ class GetForwardingRuleResult {
   /// [backendService] Required.
   /// [baseForwardingRule] Required.
   /// [creationTimestamp] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [effectiveLabels] Required.
   /// [forwardingRuleId] Required.
@@ -89,6 +91,7 @@ class GetForwardingRuleResult {
     required this.backendService,
     required this.baseForwardingRule,
     required this.creationTimestamp,
+    required this.deletionPolicy,
     required this.description,
     required this.effectiveLabels,
     required this.forwardingRuleId,
@@ -130,6 +133,7 @@ class GetForwardingRuleResult {
       'backendService': backendService,
       'baseForwardingRule': baseForwardingRule,
       'creationTimestamp': creationTimestamp,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'effectiveLabels': effectiveLabels,
       'forwardingRuleId': forwardingRuleId,
@@ -172,6 +176,7 @@ class GetForwardingRuleResult {
       backendService: map['backendService'] as String,
       baseForwardingRule: map['baseForwardingRule'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       forwardingRuleId: map['forwardingRuleId'] as int,
@@ -206,4 +211,3 @@ class GetForwardingRuleResult {
     );
   }
 }
-

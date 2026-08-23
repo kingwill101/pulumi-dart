@@ -12,6 +12,13 @@ class RouterState {
   final pulumi.Input<RouterBgp>? bgp;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// Indicates if a router is dedicated for use with encrypted VLAN
@@ -45,6 +52,7 @@ class RouterState {
   /// Creates a new [RouterState].
   /// [bgp] BGP information specific to this router.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [encryptedInterconnectRouter] Indicates if a router is dedicated for use with encrypted VLAN
   /// [md5AuthenticationKeys] Keys used for MD5 authentication.
@@ -58,6 +66,7 @@ class RouterState {
   const RouterState({
     this.bgp,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.encryptedInterconnectRouter,
     this.md5AuthenticationKeys,
@@ -74,6 +83,7 @@ class RouterState {
     return <String, dynamic>{
       'bgp': ?pulumi.Input.mapOptionalInputValue<RouterBgp, Map<String, dynamic>>(bgp, (value) => value.toMap()),
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'encryptedInterconnectRouter': ?encryptedInterconnectRouter,
       'md5AuthenticationKeys': ?pulumi.Input.mapOptionalInputValue<RouterMd5AuthenticationKeys, Map<String, dynamic>>(md5AuthenticationKeys, (value) => value.toMap()),
@@ -91,6 +101,7 @@ class RouterState {
     return RouterState(
       bgp: (() { final guardedValue = map['bgp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouterBgp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptedInterconnectRouter: (() { final guardedValue = map['encryptedInterconnectRouter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       md5AuthenticationKeys: (() { final guardedValue = map['md5AuthenticationKeys']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouterMd5AuthenticationKeys.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -104,4 +115,3 @@ class RouterState {
     );
   }
 }
-

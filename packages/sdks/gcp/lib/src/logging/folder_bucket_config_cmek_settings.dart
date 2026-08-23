@@ -15,7 +15,7 @@ class FolderBucketConfigCmekSettings {
   /// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
   /// For example:
   /// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
-  /// This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+  /// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
   final pulumi.Input<String>? kmsKeyVersionName;
   /// The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
   final pulumi.Input<String>? name;
@@ -54,4 +54,3 @@ class FolderBucketConfigCmekSettings {
     );
   }
 }
-

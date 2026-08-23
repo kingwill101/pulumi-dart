@@ -190,6 +190,44 @@ import 'schema_bundle_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instance" "instance" {
+///   name = "bt-instance"
+///   clusters {
+///     cluster_id   = "cluster-1"
+///     zone         = "us-east1-b"
+///     num_nodes    = 1
+///     storage_type = "HDD"
+///   }
+///   deletion_protection = false
+/// }
+/// resource "gcp_bigtable_table" "table" {
+///   name          = "bt-table"
+///   instance_name = gcp_bigtable_instance.instance.name
+///   column_families {
+///     family = "CF"
+///   }
+/// }
+/// resource "gcp_bigtable_schemabundle" "schema_bundle" {
+///   schema_bundle_id = "bt-schema-bundle"
+///   instance         = gcp_bigtable_instance.instance.name
+///   table            = gcp_bigtable_table.table.name
+///   proto_schema = {
+///     proto_descriptors = filebase64("test-fixtures/proto_schema_bundle.pb")
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -207,8 +245,8 @@ import 'schema_bundle_state.dart';
 /// import com.pulumi.gcp.bigtable.inputs.SchemaBundleProtoSchemaArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.Filebase64Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -294,25 +332,25 @@ import 'schema_bundle_state.dart';
 /// SchemaBundle can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/instances/{{instance}}/tables/{{table}}/schemaBundles/{{schema_bundle_id}}`
-///
 /// * `{{project}}/{{instance}}/{{table}}/{{schema_bundle_id}}`
-///
 /// * `{{instance}}/{{table}}/{{schema_bundle_id}}`
+///
 ///
 /// When using the `pulumi import` command, SchemaBundle can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:bigtable/schemaBundle:SchemaBundle default projects/{{project}}/instances/{{instance}}/tables/{{table}}/schemaBundles/{{schema_bundle_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigtable/schemaBundle:SchemaBundle default {{project}}/{{instance}}/{{table}}/{{schema_bundle_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:bigtable/schemaBundle:SchemaBundle default {{instance}}/{{table}}/{{schema_bundle_id}}
 /// ```
 class SchemaBundle extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// etag is used for optimistic concurrency control as a way to help prevent simultaneous
   /// updates of a schema bundle from overwriting each other. This may be sent on update and delete
   /// requests to ensure the client has an update-to-date value before proceeding. The server returns
@@ -351,6 +389,7 @@ class SchemaBundle extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
     instance = registerOutput<String?>('instance');
@@ -384,6 +423,7 @@ class SchemaBundle extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
     instance = registerOutput<String?>('instance');

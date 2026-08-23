@@ -190,7 +190,7 @@ import 'cx_generative_settings_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = diagflow.NewCxGenerativeSettings(ctx, "full_generative_settings", &diagflow.CxGenerativeSettingsArgs{
-/// 			Parent: agent.ID(),
+/// 			Parent: agent.ID().ToIDOutput().ToStringOutput(),
 /// 			FallbackSettings: &diagflow.CxGenerativeSettingsFallbackSettingsArgs{
 /// 				SelectedPrompt: pulumi.String("example prompt"),
 /// 				PromptTemplates: diagflow.CxGenerativeSettingsFallbackSettingsPromptTemplateArray{
@@ -231,6 +231,54 @@ import 'cx_generative_settings_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_diagflow_cxagent" "agent" {
+///   display_name          = "dialogflowcx-agent"
+///   location              = "global"
+///   default_language_code = "en"
+///   time_zone             = "America/New_York"
+///   description           = "Example description."
+/// }
+/// resource "gcp_diagflow_cxgenerativesettings" "full_generative_settings" {
+///   parent = gcp_diagflow_cxagent.agent.id
+///   fallback_settings = {
+///     selected_prompt = "example prompt"
+///     prompt_templates = [{
+///       "displayName" = "example prompt"
+///       "promptText"  = "example prompt text"
+///       "frozen"      = false
+///     }]
+///   }
+///   generative_safety_settings = {
+///     default_banned_phrase_match_strategy = "PARTIAL_MATCH"
+///     banned_phrases = [{
+///       "text"         = "example text"
+///       "languageCode" = "en"
+///     }]
+///   }
+///   knowledge_connector_settings = {
+///     business                    = "example business"
+///     agent                       = "example agent"
+///     agent_identity              = "virtual agent"
+///     business_description        = "a family company selling freshly roasted coffee beans"
+///     agent_scope                 = "Example company website"
+///     disable_data_store_fallback = false
+///   }
+///   language_code = "en"
+///   llm_model_settings = {
+///     model       = "gemini-2.0-flash-001"
+///     prompt_text = "example prompt text"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -242,11 +290,13 @@ import 'cx_generative_settings_state.dart';
 /// import com.pulumi.gcp.diagflow.CxGenerativeSettings;
 /// import com.pulumi.gcp.diagflow.CxGenerativeSettingsArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxGenerativeSettingsFallbackSettingsArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxGenerativeSettingsFallbackSettingsPromptTemplateArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxGenerativeSettingsGenerativeSafetySettingsArgs;
+/// import com.pulumi.gcp.diagflow.inputs.CxGenerativeSettingsGenerativeSafetySettingsBannedPhraseArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxGenerativeSettingsKnowledgeConnectorSettingsArgs;
 /// import com.pulumi.gcp.diagflow.inputs.CxGenerativeSettingsLlmModelSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -346,16 +396,13 @@ import 'cx_generative_settings_state.dart';
 /// GenerativeSettings can be imported using any of these accepted formats:
 ///
 /// * `{{parent}}/generativeSettings`
-///
 /// * `{{parent}}`
+///
 ///
 /// When using the `pulumi import` command, GenerativeSettings can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings default {{parent}}/generativeSettings
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:diagflow/cxGenerativeSettings:CxGenerativeSettings default {{parent}}
 /// ```
 class CxGenerativeSettings extends pulumi.CustomResource {

@@ -13,6 +13,13 @@ class AssistantState {
   /// Customer policy for the assistant.
   /// Structure is documented below.
   final pulumi.Input<AssistantCustomerPolicy>? customerPolicy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Description for additional information. Expected to be shown on the
   /// configuration UI, not to the users of the assistant.
   final pulumi.Input<String>? description;
@@ -43,6 +50,7 @@ class AssistantState {
   /// [assistantId] The unique id of the assistant.
   /// [collectionId] The unique id of the collection.
   /// [customerPolicy] Customer policy for the assistant.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Description for additional information. Expected to be shown on the
   /// [displayName] The assistant display name.
   /// [engineId] The unique id of the engine.
@@ -55,6 +63,7 @@ class AssistantState {
     this.assistantId,
     this.collectionId,
     this.customerPolicy,
+    this.deletionPolicy,
     this.description,
     this.displayName,
     this.engineId,
@@ -70,6 +79,7 @@ class AssistantState {
       'assistantId': ?assistantId,
       'collectionId': ?collectionId,
       'customerPolicy': ?pulumi.Input.mapOptionalInputValue<AssistantCustomerPolicy, Map<String, dynamic>>(customerPolicy, (value) => value.toMap()),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': ?displayName,
       'engineId': ?engineId,
@@ -86,6 +96,7 @@ class AssistantState {
       assistantId: (() { final guardedValue = map['assistantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       collectionId: (() { final guardedValue = map['collectionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customerPolicy: (() { final guardedValue = map['customerPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssistantCustomerPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       engineId: (() { final guardedValue = map['engineId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -97,4 +108,3 @@ class AssistantState {
     );
   }
 }
-

@@ -7,6 +7,13 @@ import 'lite_topic_retention_config.dart';
 
 /// Input properties used for looking up and filtering LiteTopic resources.
 class LiteTopicState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Name of the topic.
   final pulumi.Input<String>? name;
   /// The settings for this topic's partitions.
@@ -27,6 +34,7 @@ class LiteTopicState {
   final pulumi.Input<String>? zone;
 
   /// Creates a new [LiteTopicState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [name] Name of the topic.
   /// [partitionConfig] The settings for this topic's partitions.
   /// [project] The ID of the project in which the resource belongs.
@@ -35,6 +43,7 @@ class LiteTopicState {
   /// [retentionConfig] The settings for a topic's message retention.
   /// [zone] The zone of the pubsub lite topic.
   const LiteTopicState({
+    this.deletionPolicy,
     this.name,
     this.partitionConfig,
     this.project,
@@ -46,6 +55,7 @@ class LiteTopicState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'name': ?name,
       'partitionConfig': ?pulumi.Input.mapOptionalInputValue<LiteTopicPartitionConfig, Map<String, dynamic>>(partitionConfig, (value) => value.toMap()),
       'project': ?project,
@@ -58,6 +68,7 @@ class LiteTopicState {
 
   factory LiteTopicState.fromMap(Map<String, dynamic> map) {
     return LiteTopicState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       partitionConfig: (() { final guardedValue = map['partitionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LiteTopicPartitionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -68,4 +79,3 @@ class LiteTopicState {
     );
   }
 }
-

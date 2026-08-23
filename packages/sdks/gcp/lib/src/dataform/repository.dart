@@ -6,9 +6,10 @@ import 'repository_workspace_compilation_overrides.dart';
 
 /// A resource represents a Dataform Git repository
 ///
+///
 /// To get more information about Repository, see:
 ///
-/// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories)
+/// * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories)
 /// * How-to Guides
 /// * [Official Documentation](https://cloud.google.com/dataform/docs/)
 ///
@@ -193,8 +194,6 @@ import 'repository_workspace_compilation_overrides.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
@@ -213,7 +212,7 @@ import 'repository_workspace_compilation_overrides.dart';
 /// 			return err
 /// 		}
 /// 		secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-/// 			Secret:     secret.ID(),
+/// 			Secret:     secret.ID().ToIDOutput().ToStringOutput(),
 /// 			SecretData: pulumi.String("secret-data"),
 /// 		})
 /// 		if err != nil {
@@ -228,13 +227,13 @@ import 'repository_workspace_compilation_overrides.dart';
 /// 		}
 /// 		exampleKey, err := kms.NewCryptoKey(ctx, "example_key", &kms.CryptoKeyArgs{
 /// 			Name:    pulumi.String("example-crypto-key-name"),
-/// 			KeyRing: keyring.ID(),
+/// 			KeyRing: keyring.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		cryptoKeyBinding, err := kms.NewCryptoKeyIAMBinding(ctx, "crypto_key_binding", &kms.CryptoKeyIAMBindingArgs{
-/// 			CryptoKeyId: exampleKey.ID(),
+/// 			CryptoKeyId: exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 /// 			Members: pulumi.StringArray{
 /// 				pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-dataform.iam.gserviceaccount.com", project.Number),
@@ -246,8 +245,8 @@ import 'repository_workspace_compilation_overrides.dart';
 /// 		_, err = dataform.NewRepository(ctx, "dataform_repository", &dataform.RepositoryArgs{
 /// 			Name:                                   pulumi.String("dataform_repository"),
 /// 			DisplayName:                            pulumi.String("dataform_repository"),
-/// 			NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID(),
-/// 			KmsKeyName:                             exampleKey.ID(),
+/// 			NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
+/// 			KmsKeyName:                             exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 			DeletionPolicy:                         pulumi.String("FORCE"),
 /// 			Labels: pulumi.StringMap{
 /// 				"label_foo1": pulumi.String("label-bar1"),
@@ -255,7 +254,7 @@ import 'repository_workspace_compilation_overrides.dart';
 /// 			GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
 /// 				Url:                              pulumi.String("https://github.com/OWNER/REPOSITORY.git"),
 /// 				DefaultBranch:                    pulumi.String("main"),
-/// 				AuthenticationTokenSecretVersion: secretVersion.ID(),
+/// 				AuthenticationTokenSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
 /// 				DefaultDatabase: pulumi.String("database"),
@@ -270,6 +269,60 @@ import 'repository_workspace_compilation_overrides.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_secretmanager_secret" "secret" {
+///   secret_id = "my-secret"
+///   replication = {
+///     auto = {}
+///   }
+/// }
+/// resource "gcp_secretmanager_secretversion" "secret_version" {
+///   secret      = gcp_secretmanager_secret.secret.id
+///   secret_data = "secret-data"
+/// }
+/// resource "gcp_kms_keyring" "keyring" {
+///   name     = "example-key-ring"
+///   location = "us-central1"
+/// }
+/// resource "gcp_kms_cryptokey" "example_key" {
+///   name     = "example-crypto-key-name"
+///   key_ring = gcp_kms_keyring.keyring.id
+/// }
+/// resource "gcp_kms_cryptokeyiambinding" "crypto_key_binding" {
+///   crypto_key_id = gcp_kms_cryptokey.example_key.id
+///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+///   members       = ["serviceAccount:service-${project.number}@gcp-sa-dataform.iam.gserviceaccount.com"]
+/// }
+/// resource "gcp_dataform_repository" "dataform_repository" {
+///   depends_on                                 = [gcp_kms_cryptokeyiambinding.crypto_key_binding]
+///   name                                       = "dataform_repository"
+///   display_name                               = "dataform_repository"
+///   npmrc_environment_variables_secret_version = gcp_secretmanager_secretversion.secret_version.id
+///   kms_key_name                               = gcp_kms_cryptokey.example_key.id
+///   deletion_policy                            = "FORCE"
+///   labels = {
+///     "label_foo1" = "label-bar1"
+///   }
+///   git_remote_settings = {
+///     url                                 = "https://github.com/OWNER/REPOSITORY.git"
+///     default_branch                      = "main"
+///     authentication_token_secret_version = gcp_secretmanager_secretversion.secret_version.id
+///   }
+///   workspace_compilation_overrides = {
+///     default_database = "database"
+///     schema_suffix    = "_suffix"
+///     table_prefix     = "prefix_"
+///   }
 /// }
 /// ```
 /// ```java
@@ -295,8 +348,8 @@ import 'repository_workspace_compilation_overrides.dart';
 /// import com.pulumi.gcp.dataform.inputs.RepositoryGitRemoteSettingsArgs;
 /// import com.pulumi.gcp.dataform.inputs.RepositoryWorkspaceCompilationOverridesArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -334,7 +387,7 @@ import 'repository_workspace_compilation_overrides.dart';
 ///         var cryptoKeyBinding = new CryptoKeyIAMBinding("cryptoKeyBinding", CryptoKeyIAMBindingArgs.builder()
 ///             .cryptoKeyId(exampleKey.id())
 ///             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
-///             .members(String.format("serviceAccount:service-%s@gcp-sa-dataform.iam.gserviceaccount.com", project.number()))
+///             .members(String.format("serviceAccount:service-%s@gcp-sa-dataform.iam.gserviceaccount.com", project.get("number")))
 ///             .build());
 ///
 ///         var dataformRepository = new Repository("dataformRepository", RepositoryArgs.builder()
@@ -424,33 +477,30 @@ import 'repository_workspace_compilation_overrides.dart';
 /// Repository can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/repositories/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{name}}`
-///
 /// * `{{region}}/{{name}}`
-///
 /// * `{{name}}`
+///
 ///
 /// When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:dataform/repository:Repository default projects/{{project}}/locations/{{region}}/repositories/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataform/repository:Repository default {{project}}/{{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataform/repository:Repository default {{region}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:dataform/repository:Repository default {{name}}
 /// ```
 class Repository extends pulumi.CustomResource {
-  /// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
-  late final pulumi.Output<String?> deletionPolicy;
+  /// Policy to control how the repository and its child resources are deleted.
+  /// When set to `FORCE`, any child resources of this repository will also be deleted.
+  ///
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  ///
+  /// Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
+  late final pulumi.Output<String> deletionPolicy;
   /// Optional. The repository's user-friendly name.
   late final pulumi.Output<String?> displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -459,13 +509,13 @@ class Repository extends pulumi.CustomResource {
   /// Structure is documented below.
   late final pulumi.Output<RepositoryGitRemoteSettings?> gitRemoteSettings;
   /// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
-  /// It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
+  /// It is not possible to add or update the encryption key after the repository is created. Example projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
   late final pulumi.Output<String?> kmsKeyName;
   /// Optional. Repository user labels.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The repository's name.
   late final pulumi.Output<String> name;
@@ -499,7 +549,7 @@ class Repository extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gitRemoteSettings = registerOutput<RepositoryGitRemoteSettings?>('gitRemoteSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryGitRemoteSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -537,7 +587,7 @@ class Repository extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     gitRemoteSettings = registerOutput<RepositoryGitRemoteSettings?>('gitRemoteSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryGitRemoteSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

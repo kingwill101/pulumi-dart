@@ -6,6 +6,13 @@ import 'domain_mapping_ssl_settings.dart';
 
 /// Input properties used for looking up and filtering DomainMapping resources.
 class DomainMappingState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Relative name of the domain serving the application. Example: example.com.
   final pulumi.Input<String>? domainName;
   /// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
@@ -27,6 +34,7 @@ class DomainMappingState {
   final pulumi.Input<DomainMappingSslSettings>? sslSettings;
 
   /// Creates a new [DomainMappingState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [domainName] Relative name of the domain serving the application. Example: example.com.
   /// [name] Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
   /// [overrideStrategy] Whether the domain creation should override any existing mappings for this domain.
@@ -34,6 +42,7 @@ class DomainMappingState {
   /// [resourceRecords] The resource records required to configure this domain mapping. These records must be added to the domain's DNS
   /// [sslSettings] SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
   const DomainMappingState({
+    this.deletionPolicy,
     this.domainName,
     this.name,
     this.overrideStrategy,
@@ -44,6 +53,7 @@ class DomainMappingState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'domainName': ?domainName,
       'name': ?name,
       'overrideStrategy': ?overrideStrategy,
@@ -55,6 +65,7 @@ class DomainMappingState {
 
   factory DomainMappingState.fromMap(Map<String, dynamic> map) {
     return DomainMappingState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       overrideStrategy: (() { final guardedValue = map['overrideStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -64,4 +75,3 @@ class DomainMappingState {
     );
   }
 }
-

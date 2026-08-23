@@ -18,7 +18,7 @@ class ServiceState {
   /// All system annotations in v1 now have a corresponding field in v2 Service.
   /// This field follows Kubernetes annotations' namespacing, limits, and rules.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Settings for the Binary Authorization feature.
   /// Structure is documented below.
@@ -44,9 +44,23 @@ class ServiceState {
   final pulumi.Input<bool>? defaultUriDisabled;
   /// The deletion time.
   final pulumi.Input<String>? deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the service. Defaults to true.
+  /// When a`terraform destroy` or `pulumi up` would delete the service,
+  /// the command will fail if this field is not set to false in Terraform state.
+  /// When the field is set to true or unset in Terraform state, a `pulumi up`
+  /// or `terraform destroy` that would delete the service will fail.
+  /// When the field is set to false, deleting the service is allowed.
   final pulumi.Input<bool>? deletionProtection;
   /// User-provided description of the Service. This field currently has a 512-character limit.
   final pulumi.Input<String>? description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
@@ -56,7 +70,7 @@ class ServiceState {
   final pulumi.Input<String>? expireTime;
   /// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
   final pulumi.Input<String>? generation;
-  /// Used to enable/disable IAP for the service.
+  /// Used to enable/disable IAP for the cloud-run service.
   final pulumi.Input<bool>? iapEnabled;
   /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
   /// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -68,7 +82,7 @@ class ServiceState {
   /// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
   /// All system labels in v1 now have a corresponding field in v2 Service.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Email address of the last authenticated modifier.
   final pulumi.Input<String>? lastModifier;
@@ -104,6 +118,10 @@ class ServiceState {
   /// Scaling settings that apply to the whole service
   /// Structure is documented below.
   final pulumi.Input<ServiceScaling>? scaling;
+  /// A map of resource manager tags.
+  /// Resource manager tag keys and values have the same definition as resource manager tags.
+  /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+  final pulumi.Input<Map<String, String>>? tags;
   /// The template used to create revisions for this Service.
   /// Structure is documented below.
   final pulumi.Input<ServiceTemplate>? template;
@@ -138,14 +156,15 @@ class ServiceState {
   /// [customAudiences] One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
   /// [defaultUriDisabled] Disables public resolution of the default URI of this service.
   /// [deleteTime] The deletion time.
-  /// [deletionProtection] Optional.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// [deletionProtection] Whether Terraform will be prevented from destroying the service. Defaults to true.
   /// [description] User-provided description of the Service. This field currently has a 512-character limit.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
   /// [expireTime] For a deleted resource, the time after which it will be permanently deleted.
   /// [generation] A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
-  /// [iapEnabled] Used to enable/disable IAP for the service.
+  /// [iapEnabled] Used to enable/disable IAP for the cloud-run service.
   /// [ingress] Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
   /// [invokerIamDisabled] Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
   /// [labels] Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
@@ -161,6 +180,7 @@ class ServiceState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [reconciling] Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
   /// [scaling] Scaling settings that apply to the whole service
+  /// [tags] A map of resource manager tags.
   /// [template] The template used to create revisions for this Service.
   /// [terminalConditions] The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
   /// [trafficStatuses] Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -181,6 +201,7 @@ class ServiceState {
     this.customAudiences,
     this.defaultUriDisabled,
     this.deleteTime,
+    this.deletionPolicy,
     this.deletionProtection,
     this.description,
     this.effectiveAnnotations,
@@ -204,6 +225,7 @@ class ServiceState {
     this.pulumiLabels,
     this.reconciling,
     this.scaling,
+    this.tags,
     this.template,
     this.terminalConditions,
     this.trafficStatuses,
@@ -227,6 +249,7 @@ class ServiceState {
       'customAudiences': ?customAudiences,
       'defaultUriDisabled': ?defaultUriDisabled,
       'deleteTime': ?deleteTime,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'description': ?description,
       'effectiveAnnotations': ?effectiveAnnotations,
@@ -250,6 +273,7 @@ class ServiceState {
       'pulumiLabels': ?pulumiLabels,
       'reconciling': ?reconciling,
       'scaling': ?pulumi.Input.mapOptionalInputValue<ServiceScaling, Map<String, dynamic>>(scaling, (value) => value.toMap()),
+      'tags': ?tags,
       'template': ?pulumi.Input.mapOptionalInputValue<ServiceTemplate, Map<String, dynamic>>(template, (value) => value.toMap()),
       'terminalConditions': ?pulumi.Input.mapOptionalInputValue<List<ServiceTerminalCondition>, List<Map<String, dynamic>>>(terminalConditions, (value) => pulumi.Input.encodeList<ServiceTerminalCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
       'trafficStatuses': ?pulumi.Input.mapOptionalInputValue<List<ServiceTrafficStatus>, List<Map<String, dynamic>>>(trafficStatuses, (value) => pulumi.Input.encodeList<ServiceTrafficStatus, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -274,6 +298,7 @@ class ServiceState {
       customAudiences: (() { final guardedValue = map['customAudiences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       defaultUriDisabled: (() { final guardedValue = map['defaultUriDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -297,6 +322,7 @@ class ServiceState {
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       scaling: (() { final guardedValue = map['scaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceScaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       template: (() { final guardedValue = map['template']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       terminalConditions: (() { final guardedValue = map['terminalConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTerminalCondition>(guardedValue, (value) => ServiceTerminalCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       trafficStatuses: (() { final guardedValue = map['trafficStatuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceTrafficStatus>(guardedValue, (value) => ServiceTrafficStatus.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -308,4 +334,3 @@ class ServiceState {
     );
   }
 }
-

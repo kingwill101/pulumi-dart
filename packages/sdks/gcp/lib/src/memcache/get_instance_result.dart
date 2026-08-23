@@ -11,6 +11,7 @@ import 'get_instance_node_config.dart';
 class GetInstanceResult {
   final String authorizedNetwork;
   final String createTime;
+  final String deletionPolicy;
   final bool deletionProtection;
   final String discoveryEndpoint;
   final String displayName;
@@ -36,6 +37,7 @@ class GetInstanceResult {
   /// Creates a new [GetInstanceResult].
   /// [authorizedNetwork] Required.
   /// [createTime] Required.
+  /// [deletionPolicy] Required.
   /// [deletionProtection] Required.
   /// [discoveryEndpoint] Required.
   /// [displayName] Required.
@@ -59,6 +61,7 @@ class GetInstanceResult {
   const GetInstanceResult({
     required this.authorizedNetwork,
     required this.createTime,
+    required this.deletionPolicy,
     required this.deletionProtection,
     required this.discoveryEndpoint,
     required this.displayName,
@@ -85,6 +88,7 @@ class GetInstanceResult {
     return <String, dynamic>{
       'authorizedNetwork': authorizedNetwork,
       'createTime': createTime,
+      'deletionPolicy': deletionPolicy,
       'deletionProtection': deletionProtection,
       'discoveryEndpoint': discoveryEndpoint,
       'displayName': displayName,
@@ -112,6 +116,7 @@ class GetInstanceResult {
     return GetInstanceResult(
       authorizedNetwork: map['authorizedNetwork'] as String,
       createTime: map['createTime'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       discoveryEndpoint: map['discoveryEndpoint'] as String,
       displayName: map['displayName'] as String,
@@ -135,4 +140,3 @@ class GetInstanceResult {
     );
   }
 }
-

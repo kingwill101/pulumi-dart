@@ -16,10 +16,10 @@ import 'firewall_endpoint_association_state.dart';
 /// * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
 ///
 /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-/// you must specify a `billing_project_id` and set `user_project_override` to true
+/// you must specify a `billingProjectId` and set `userProjectOverride` to true
 /// in the provider configuration. Otherwise the ACM API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
-/// `billing_project_id` you defined.
+/// `billingProjectId` you defined.
 ///
 /// ## Example Usage
 ///
@@ -29,6 +29,7 @@ import 'firewall_endpoint_association_state.dart';
 ///
 /// * `{{parent}}/locations/{{location}}/firewallEndpointAssociations/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, FirewallEndpointAssociation can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -37,6 +38,13 @@ import 'firewall_endpoint_association_state.dart';
 class FirewallEndpointAssociation extends pulumi.CustomResource {
   /// Time the firewall endpoint was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Whether the association is disabled. True indicates that traffic will not be intercepted.
   /// &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
   /// otherwise on an update the association can be disabled.
@@ -48,7 +56,7 @@ class FirewallEndpointAssociation extends pulumi.CustomResource {
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location (zone) of the firewall endpoint association.
   late final pulumi.Output<String> location;
@@ -88,6 +96,7 @@ class FirewallEndpointAssociation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     firewallEndpoint = registerOutput<String>('firewallEndpoint');
@@ -128,6 +137,7 @@ class FirewallEndpointAssociation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     firewallEndpoint = registerOutput<String>('firewallEndpoint');

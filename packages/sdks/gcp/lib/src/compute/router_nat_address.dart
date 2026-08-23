@@ -5,8 +5,8 @@ import 'router_nat_address_state.dart';
 /// A resource used to set the list of IP addresses to be used in a NAT service and manage the draining of destroyed IPs.
 ///
 /// &gt; **Note:** This resource is to be used alongside a `gcp.compute.RouterNat` resource,
-/// the router nat resource must have no defined `nat_ips` or `drain_nat_ips` parameters,
-/// instead using the `initial_nat_ips` parameter to set at least one IP for the creation of the resource.
+/// the router nat resource must have no defined `natIps` or `drainNatIps` parameters,
+/// instead using the `initialNatIps` parameter to set at least one IP for the creation of the resource.
 ///
 ///
 /// To get more information about RouterNatAddress, see:
@@ -22,31 +22,27 @@ import 'router_nat_address_state.dart';
 /// RouterNatAddress can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{router_nat}}`
-///
 /// * `{{project}}/{{region}}/{{router}}/{{router_nat}}`
-///
 /// * `{{region}}/{{router}}/{{router_nat}}`
-///
 /// * `{{router}}/{{router_nat}}`
+///
 ///
 /// When using the `pulumi import` command, RouterNatAddress can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{router_nat}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default {{project}}/{{region}}/{{router}}/{{router_nat}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default {{region}}/{{router}}/{{router_nat}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/routerNatAddress:RouterNatAddress default {{router}}/{{router_nat}}
 /// ```
 class RouterNatAddress extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A list of URLs of the IP resources to be drained. These IPs must be
   /// valid static external IPs that have been assigned to the NAT.
   late final pulumi.Output<List<String>?> drainNatIps;
@@ -77,6 +73,7 @@ class RouterNatAddress extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     drainNatIps = registerOutput<List<String>?>('drainNatIps');
     natIps = registerOutput<List<String>>('natIps');
     project = registerOutput<String>('project');
@@ -108,6 +105,7 @@ class RouterNatAddress extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     drainNatIps = registerOutput<List<String>?>('drainNatIps');
     natIps = registerOutput<List<String>>('natIps');
     project = registerOutput<String>('project');

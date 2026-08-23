@@ -14,9 +14,9 @@ class PipelineDestinationHttpEndpoint {
   /// headers with a prefix of `ce-`.
   /// To construct the HTTP request payload and the value of the content-type
   /// HTTP header, the payload format is defined as follows:
-  /// 1) Use the output_payload_format_type on the Pipeline.Destination if it
+  /// 1) Use the outputPayloadFormatType on the Pipeline.Destination if it
   /// is set, else:
-  /// 2) Use the input_payload_format_type on the Pipeline if it is set,
+  /// 2) Use the inputPayloadFormatType on the Pipeline if it is set,
   /// else:
   /// 3) Treat the payload as opaque binary data.
   /// The `data` field of the message is converted to the payload format or
@@ -59,7 +59,7 @@ class PipelineDestinationHttpEndpoint {
   /// definition, as follows:
   /// - The `data` field of the incoming CloudEvent message can be accessed
   /// using the `message.data` value. Subfields of `message.data` may also be
-  /// accessed if an input_payload_format has been specified on the Pipeline.
+  /// accessed if an inputPayloadFormat has been specified on the Pipeline.
   /// - Each attribute of the incoming CloudEvent message can be accessed
   /// using the `message.` value, where  is replaced with the
   /// name of the attribute.
@@ -80,8 +80,8 @@ class PipelineDestinationHttpEndpoint {
   /// ```
   /// - The default binding for the message payload can be accessed using the
   /// `body` variable. It conatins a string representation of the message
-  /// payload in the format specified by the `output_payload_format` field.
-  /// If the `input_payload_format` field is not set, the `body`
+  /// payload in the format specified by the `outputPayloadFormat` field.
+  /// If the `inputPayloadFormat` field is not set, the `body`
   /// variable contains the same message payload bytes that were published.
   /// Additionally, the following CEL extension functions are provided for
   /// use in this CEL expression:
@@ -144,12 +144,12 @@ class PipelineDestinationHttpEndpoint {
   /// - Converts a message to the corresponding structure of JSON
   /// format for CloudEvents.
   /// - It converts `data` to destination payload format
-  /// specified in `output_payload_format`. If `output_payload_format` is
+  /// specified in `outputPayloadFormat`. If `outputPayloadFormat` is
   /// not set, the data will remain unchanged.
   /// - It also sets the corresponding datacontenttype of
   /// the CloudEvent, as indicated by
-  /// `output_payload_format`. If no
-  /// `output_payload_format` is set it will use the value of the
+  /// `outputPayloadFormat`. If no
+  /// `outputPayloadFormat` is set it will use the value of the
   /// "datacontenttype" attribute on the CloudEvent if present, else
   /// remove "datacontenttype" attribute.
   /// - This function expects that the content of the message will
@@ -190,4 +190,3 @@ class PipelineDestinationHttpEndpoint {
     );
   }
 }
-

@@ -3,13 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiReasoningEngineSpecSourceCodeSpecInlineSource {
-  /// Required. Input only.
-  /// The application source code archive, provided as a compressed
-  /// tarball (.tar.gz) file. A base64-encoded string.
+  /// Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
   final pulumi.Input<String>? sourceArchive;
 
   /// Creates a new [AiReasoningEngineSpecSourceCodeSpecInlineSource].
-  /// [sourceArchive] Required. Input only.
+  /// [sourceArchive] Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
   const AiReasoningEngineSpecSourceCodeSpecInlineSource({
     this.sourceArchive,
   });
@@ -26,4 +24,3 @@ class AiReasoningEngineSpecSourceCodeSpecInlineSource {
     );
   }
 }
-

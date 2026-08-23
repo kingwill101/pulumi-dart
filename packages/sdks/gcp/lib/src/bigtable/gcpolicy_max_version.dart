@@ -6,7 +6,7 @@ class GCPolicyMaxVersion {
   /// Number of version before applying the GC policy.
   ///
   /// -----
-  /// `gc_rules` include 2 fields:
+  /// `gcRules` include 2 fields:
   final pulumi.Input<int> number;
 
   /// Creates a new [GCPolicyMaxVersion].
@@ -27,4 +27,3 @@ class GCPolicyMaxVersion {
     );
   }
 }
-

@@ -1,10 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'ha_vpn_gateway_params.dart';
 import 'ha_vpn_gateway_vpn_interface.dart';
 
 /// Input properties used for looking up and filtering HaVpnGateway resources.
 class HaVpnGatewayState {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -23,7 +31,7 @@ class HaVpnGatewayState {
   /// Each label key/value pair must comply with RFC1035. Label values may be empty.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
@@ -35,6 +43,9 @@ class HaVpnGatewayState {
   final pulumi.Input<String>? name;
   /// The network this VPN gateway is accepting traffic for.
   final pulumi.Input<String>? network;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  final pulumi.Input<HaVpnGatewayParams>? params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -55,6 +66,7 @@ class HaVpnGatewayState {
   final pulumi.Input<List<HaVpnGatewayVpnInterface>>? vpnInterfaces;
 
   /// Creates a new [HaVpnGatewayState].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [gatewayIpVersion] The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
@@ -62,6 +74,7 @@ class HaVpnGatewayState {
   /// [labels] Labels for this resource. These can only be added or modified by the setLabels method.
   /// [name] Name of the resource. Provided by the client when the resource is
   /// [network] The network this VPN gateway is accepting traffic for.
+  /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [region] The region this gateway should sit in.
@@ -69,6 +82,7 @@ class HaVpnGatewayState {
   /// [stackType] The stack type for this VPN gateway to identify the IP protocols that are enabled.
   /// [vpnInterfaces] A list of interfaces on this VPN gateway.
   const HaVpnGatewayState({
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.gatewayIpVersion,
@@ -76,6 +90,7 @@ class HaVpnGatewayState {
     this.labels,
     this.name,
     this.network,
+    this.params,
     this.project,
     this.pulumiLabels,
     this.region,
@@ -86,6 +101,7 @@ class HaVpnGatewayState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'gatewayIpVersion': ?gatewayIpVersion,
@@ -93,6 +109,7 @@ class HaVpnGatewayState {
       'labels': ?labels,
       'name': ?name,
       'network': ?network,
+      'params': ?pulumi.Input.mapOptionalInputValue<HaVpnGatewayParams, Map<String, dynamic>>(params, (value) => value.toMap()),
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
       'region': ?region,
@@ -104,6 +121,7 @@ class HaVpnGatewayState {
 
   factory HaVpnGatewayState.fromMap(Map<String, dynamic> map) {
     return HaVpnGatewayState(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       gatewayIpVersion: (() { final guardedValue = map['gatewayIpVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -111,6 +129,7 @@ class HaVpnGatewayState {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HaVpnGatewayParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -120,4 +139,3 @@ class HaVpnGatewayState {
     );
   }
 }
-

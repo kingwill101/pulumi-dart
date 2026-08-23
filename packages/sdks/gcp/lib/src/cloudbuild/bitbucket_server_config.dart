@@ -105,6 +105,28 @@ import 'bitbucket_server_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudbuild_bitbucketserverconfig" "bbs-config" {
+///   config_id = "bbs-config"
+///   location  = "us-central1"
+///   host_uri  = "https://bbs.com"
+///   secrets = {
+///     admin_access_token_version_name = "projects/myProject/secrets/mybbspat/versions/1"
+///     read_access_token_version_name  = "projects/myProject/secrets/mybbspat/versions/1"
+///     webhook_secret_version_name     = "projects/myProject/secrets/mybbspat/versions/1"
+///   }
+///   username = "test"
+///   api_key  = "<api-key>"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -114,8 +136,8 @@ import 'bitbucket_server_config_state.dart';
 /// import com.pulumi.gcp.cloudbuild.BitbucketServerConfig;
 /// import com.pulumi.gcp.cloudbuild.BitbucketServerConfigArgs;
 /// import com.pulumi.gcp.cloudbuild.inputs.BitbucketServerConfigSecretsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -293,6 +315,36 @@ import 'bitbucket_server_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_cloudbuild_bitbucketserverconfig" "bbs-config-with-repos" {
+///   config_id = "bbs-config"
+///   location  = "us-central1"
+///   host_uri  = "https://bbs.com"
+///   secrets = {
+///     admin_access_token_version_name = "projects/myProject/secrets/mybbspat/versions/1"
+///     read_access_token_version_name  = "projects/myProject/secrets/mybbspat/versions/1"
+///     webhook_secret_version_name     = "projects/myProject/secrets/mybbspat/versions/1"
+///   }
+///   username = "test"
+///   api_key  = "<api-key>"
+///   connected_repositories {
+///     project_key = "DEV"
+///     repo_slug   = "repo1"
+///   }
+///   connected_repositories {
+///     project_key = "PROD"
+///     repo_slug   = "repo1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -303,8 +355,8 @@ import 'bitbucket_server_config_state.dart';
 /// import com.pulumi.gcp.cloudbuild.BitbucketServerConfigArgs;
 /// import com.pulumi.gcp.cloudbuild.inputs.BitbucketServerConfigSecretsArgs;
 /// import com.pulumi.gcp.cloudbuild.inputs.BitbucketServerConfigConnectedRepositoryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -401,11 +453,11 @@ import 'bitbucket_server_config_state.dart';
 ///     },
 ///     username: "test",
 ///     apiKey: "<api-key>",
-///     peeredNetwork: pulumi.all([vpcNetwork.id, project, project]).apply(([id, project, project1]) => std.replaceOutput({
-///         text: id,
-///         search: project.name,
-///         replace: project1.number,
-///     })).apply(invoke => invoke.result),
+///     peeredNetwork: std.replaceOutput({
+///         text: vpcNetwork.id,
+///         search: project.then(project => project.name),
+///         replace: project.then(project => project.number),
+///     }).result,
 ///     sslCa: `-----BEGIN CERTIFICATE-----
 /// -----END CERTIFICATE-----
 /// -----BEGIN CERTIFICATE-----
@@ -446,9 +498,9 @@ import 'bitbucket_server_config_state.dart';
 ///     },
 ///     username="test",
 ///     api_key="<api-key>",
-///     peered_network=vpc_network.id.apply(lambda id: std.replace(text=id,
+///     peered_network=std.replace_output(text=vpc_network.id,
 ///         search=project.name,
-///         replace=project.number)).apply(lambda invoke: invoke.result),
+///         replace=project.number).result,
 ///     ssl_ca="""-----BEGIN CERTIFICATE-----
 /// -----END CERTIFICATE-----
 /// -----BEGIN CERTIFICATE-----
@@ -521,17 +573,11 @@ import 'bitbucket_server_config_state.dart';
 ///         },
 ///         Username = "test",
 ///         ApiKey = "<api-key>",
-///         PeeredNetwork = Output.Tuple(vpcNetwork.Id, project, project).Apply(values =>
+///         PeeredNetwork = Std.Replace.Invoke(new()
 ///         {
-///             var id = values.Item1;
-///             var project = values.Item2;
-///             var project1 = values.Item3;
-///             return Std.Replace.Invoke(new()
-///             {
-///                 Text = id,
-///                 Search = project.Apply(getProjectResult => getProjectResult.Name),
-///                 Replace = project1.Number,
-///             });
+///             Text = vpcNetwork.Id,
+///             Search = project.Apply(getProjectResult => getProjectResult.Name),
+///             Replace = project.Apply(getProjectResult => getProjectResult.Number),
 ///         }).Apply(invoke => invoke.Result),
 ///         SslCa = @"-----BEGIN CERTIFICATE-----
 /// -----END CERTIFICATE-----
@@ -560,81 +606,125 @@ import 'bitbucket_server_config_state.dart';
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-/// }, nil);
-/// if err != nil {
-/// return err
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		servicenetworking2, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
+/// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		vpcNetwork, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
+/// 			Name: pulumi.String("vpc-network"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			servicenetworking2,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
+/// 			Name:         pulumi.String("private-ip-alloc"),
+/// 			Purpose:      pulumi.String("VPC_PEERING"),
+/// 			AddressType:  pulumi.String("INTERNAL"),
+/// 			PrefixLength: pulumi.Int(16),
+/// 			Network:      vpcNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
+/// 			Network: vpcNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+/// 			ReservedPeeringRanges: pulumi.StringArray{
+/// 				privateIpAlloc.Name,
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			servicenetworking2,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = cloudbuild.NewBitbucketServerConfig(ctx, "bbs-config-with-peered-network", &cloudbuild.BitbucketServerConfigArgs{
+/// 			ConfigId: pulumi.String("bbs-config"),
+/// 			Location: pulumi.String("us-central1"),
+/// 			HostUri:  pulumi.String("https://bbs.com"),
+/// 			Secrets: &cloudbuild.BitbucketServerConfigSecretsArgs{
+/// 				AdminAccessTokenVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
+/// 				ReadAccessTokenVersionName:  pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
+/// 				WebhookSecretVersionName:    pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
+/// 			},
+/// 			Username: pulumi.String("test"),
+/// 			ApiKey:   pulumi.String("<api-key>"),
+/// 			PeeredNetwork: std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
+/// 				Text:    vpcNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 				Search:  pulumi.String(project.Name),
+/// 				Replace: pulumi.String(project.Number),
+/// 			}, nil).Result(),
+/// 			SslCa: pulumi.String("-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n"),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			_default,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
-/// servicenetworking, err := projects.NewService(ctx, "servicenetworking", &projects.ServiceArgs{
-/// Service: pulumi.String("servicenetworking.googleapis.com"),
-/// })
-/// if err != nil {
-/// return err
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
 /// }
-/// vpcNetwork, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
-/// Name: pulumi.String("vpc-network"),
-/// }, pulumi.DependsOn([]pulumi.Resource{
-/// servicenetworking,
-/// }))
-/// if err != nil {
-/// return err
+///
+/// data "gcp_organizations_getproject" "project" {
 /// }
-/// privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
-/// Name: pulumi.String("private-ip-alloc"),
-/// Purpose: pulumi.String("VPC_PEERING"),
-/// AddressType: pulumi.String("INTERNAL"),
-/// PrefixLength: pulumi.Int(16),
-/// Network: vpcNetwork.ID(),
-/// })
-/// if err != nil {
-/// return err
+///
+/// resource "gcp_projects_service" "servicenetworking" {
+///   service = "servicenetworking.googleapis.com"
 /// }
-/// _default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-/// Network: vpcNetwork.ID(),
-/// Service: pulumi.String("servicenetworking.googleapis.com"),
-/// ReservedPeeringRanges: pulumi.StringArray{
-/// privateIpAlloc.Name,
-/// },
-/// }, pulumi.DependsOn([]pulumi.Resource{
-/// servicenetworking,
-/// }))
-/// if err != nil {
-/// return err
+/// resource "gcp_compute_network" "vpc_network" {
+///   depends_on = [gcp_projects_service.servicenetworking]
+///   name       = "vpc-network"
 /// }
-/// invokeReplace, err := std.Replace(ctx, &std.ReplaceArgs{
-/// Text: id,
-/// Search: project.Name,
-/// Replace: project.Number,
-/// }, nil)
-/// if err != nil {
-/// return err
+/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+///   name          = "private-ip-alloc"
+///   purpose       = "VPC_PEERING"
+///   address_type  = "INTERNAL"
+///   prefix_length = 16
+///   network       = gcp_compute_network.vpc_network.id
 /// }
-/// _, err = cloudbuild.NewBitbucketServerConfig(ctx, "bbs-config-with-peered-network", &cloudbuild.BitbucketServerConfigArgs{
-/// ConfigId: pulumi.String("bbs-config"),
-/// Location: pulumi.String("us-central1"),
-/// HostUri: pulumi.String("https://bbs.com"),
-/// Secrets: &cloudbuild.BitbucketServerConfigSecretsArgs{
-/// AdminAccessTokenVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
-/// ReadAccessTokenVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
-/// WebhookSecretVersionName: pulumi.String("projects/myProject/secrets/mybbspat/versions/1"),
-/// },
-/// Username: pulumi.String("test"),
-/// ApiKey: pulumi.String("<api-key>"),
-/// PeeredNetwork: pulumi.String(vpcNetwork.ID().ApplyT(func(id string) (std.ReplaceResult, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.ReplaceResultOutput).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
-/// return invoke.Result, nil
-/// }).(pulumi.StringPtrOutput)),
-/// SslCa: pulumi.String("-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n"),
-/// }, pulumi.DependsOn([]pulumi.Resource{
-/// _default,
-/// }))
-/// if err != nil {
-/// return err
+/// resource "gcp_servicenetworking_connection" "default" {
+///   depends_on              = [gcp_projects_service.servicenetworking]
+///   network                 = gcp_compute_network.vpc_network.id
+///   service                 = "servicenetworking.googleapis.com"
+///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
 /// }
-/// return nil
-/// })
+/// resource "gcp_cloudbuild_bitbucketserverconfig" "bbs-config-with-peered-network" {
+///   depends_on = [gcp_servicenetworking_connection.default]
+///   config_id  = "bbs-config"
+///   location   = "us-central1"
+///   host_uri   = "https://bbs.com"
+///   secrets = {
+///     admin_access_token_version_name = "projects/myProject/secrets/mybbspat/versions/1"
+///     read_access_token_version_name  = "projects/myProject/secrets/mybbspat/versions/1"
+///     webhook_secret_version_name     = "projects/myProject/secrets/mybbspat/versions/1"
+///   }
+///   username       = "test"
+///   api_key        = "<api-key>"
+///   peered_network = replace(gcp_compute_network.vpc_network.id, data.gcp_organizations_getproject.project.name, data.gcp_organizations_getproject.project.number)
+///   ssl_ca         = "-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n"
 /// }
 /// ```
 /// ```java
@@ -659,8 +749,8 @@ import 'bitbucket_server_config_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.ReplaceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -712,11 +802,11 @@ import 'bitbucket_server_config_state.dart';
 ///                 .build())
 ///             .username("test")
 ///             .apiKey("<api-key>")
-///             .peeredNetwork(vpcNetwork.id().applyValue(_id -> StdFunctions.replace(ReplaceArgs.builder()
-///                 .text(_id)
+///             .peeredNetwork(StdFunctions.replace(ReplaceArgs.builder()
+///                 .text(vpcNetwork.id())
 ///                 .search(project.name())
 ///                 .replace(project.number())
-///                 .build())).applyValue(_invoke -> _invoke.result()))
+///                 .build()).applyValue(_invoke -> _invoke.result()))
 ///             .sslCa("""
 /// -----BEGIN CERTIFICATE-----
 /// -----END CERTIFICATE-----
@@ -804,22 +894,15 @@ import 'bitbucket_server_config_state.dart';
 /// BitbucketServerConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}`
-///
 /// * `{{project}}/{{location}}/{{config_id}}`
-///
 /// * `{{location}}/{{config_id}}`
+///
 ///
 /// When using the `pulumi import` command, BitbucketServerConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default {{project}}/{{location}}/{{config_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default {{location}}/{{config_id}}
 /// ```
 class BitbucketServerConfig extends pulumi.CustomResource {
@@ -831,6 +914,13 @@ class BitbucketServerConfig extends pulumi.CustomResource {
   /// Connected Bitbucket Server repositories for this config.
   /// Structure is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> connectedRepositories;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
   /// If you need to change it, please create another BitbucketServerConfig.
   late final pulumi.Output<String> hostUri;
@@ -873,6 +963,7 @@ class BitbucketServerConfig extends pulumi.CustomResource {
     apiKey = registerOutput<String>('apiKey');
     configId = registerOutput<String>('configId');
     connectedRepositories = registerOutput<List<Map<String, dynamic>>?>('connectedRepositories');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     hostUri = registerOutput<String>('hostUri');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -910,6 +1001,7 @@ class BitbucketServerConfig extends pulumi.CustomResource {
     apiKey = registerOutput<String>('apiKey');
     configId = registerOutput<String>('configId');
     connectedRepositories = registerOutput<List<Map<String, dynamic>>?>('connectedRepositories');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     hostUri = registerOutput<String>('hostUri');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

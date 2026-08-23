@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'node_pool_node_config_kubelet_config_crash_loop_back_off.dart';
 import 'node_pool_node_config_kubelet_config_eviction_minimum_reclaim.dart';
 import 'node_pool_node_config_kubelet_config_eviction_soft.dart';
 import 'node_pool_node_config_kubelet_config_eviction_soft_grace_period.dart';
@@ -20,6 +21,8 @@ class NodePoolNodeConfigKubeletConfig {
   final pulumi.Input<String>? cpuCfsQuotaPeriod;
   /// Control the CPU management policy on the node.
   final pulumi.Input<String>? cpuManagerPolicy;
+  /// Contains configuration options to modify node-level parameters for container restart behavior.
+  final pulumi.Input<NodePoolNodeConfigKubeletConfigCrashLoopBackOff>? crashLoopBackOff;
   /// Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
   final pulumi.Input<int>? evictionMaxPodGracePeriodSeconds;
   /// Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
@@ -44,6 +47,10 @@ class NodePoolNodeConfigKubeletConfig {
   final pulumi.Input<NodePoolNodeConfigKubeletConfigMemoryManager>? memoryManager;
   /// Controls the maximum number of processes allowed to run in a pod.
   final pulumi.Input<int>? podPidsLimit;
+  /// Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+  final pulumi.Input<int>? shutdownGracePeriodCriticalPodsSeconds;
+  /// Controls the total duration of time (in seconds) the node delays shutdown.
+  final pulumi.Input<int>? shutdownGracePeriodSeconds;
   /// Defines whether to enable single process OOM killer.
   final pulumi.Input<bool>? singleProcessOomKill;
   /// Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
@@ -56,6 +63,7 @@ class NodePoolNodeConfigKubeletConfig {
   /// [cpuCfsQuota] Enable CPU CFS quota enforcement for containers that specify CPU limits.
   /// [cpuCfsQuotaPeriod] Set the CPU CFS quota period value 'cpu.cfs_period_us'.
   /// [cpuManagerPolicy] Control the CPU management policy on the node.
+  /// [crashLoopBackOff] Contains configuration options to modify node-level parameters for container restart behavior.
   /// [evictionMaxPodGracePeriodSeconds] Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
   /// [evictionMinimumReclaim] Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
   /// [evictionSoft] Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
@@ -68,6 +76,8 @@ class NodePoolNodeConfigKubeletConfig {
   /// [maxParallelImagePulls] Set the maximum number of image pulls in parallel.
   /// [memoryManager] Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
   /// [podPidsLimit] Controls the maximum number of processes allowed to run in a pod.
+  /// [shutdownGracePeriodCriticalPodsSeconds] Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+  /// [shutdownGracePeriodSeconds] Controls the total duration of time (in seconds) the node delays shutdown.
   /// [singleProcessOomKill] Defines whether to enable single process OOM killer.
   /// [topologyManager] Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
   const NodePoolNodeConfigKubeletConfig({
@@ -77,6 +87,7 @@ class NodePoolNodeConfigKubeletConfig {
     this.cpuCfsQuota,
     this.cpuCfsQuotaPeriod,
     this.cpuManagerPolicy,
+    this.crashLoopBackOff,
     this.evictionMaxPodGracePeriodSeconds,
     this.evictionMinimumReclaim,
     this.evictionSoft,
@@ -89,6 +100,8 @@ class NodePoolNodeConfigKubeletConfig {
     this.maxParallelImagePulls,
     this.memoryManager,
     this.podPidsLimit,
+    this.shutdownGracePeriodCriticalPodsSeconds,
+    this.shutdownGracePeriodSeconds,
     this.singleProcessOomKill,
     this.topologyManager,
   });
@@ -101,6 +114,7 @@ class NodePoolNodeConfigKubeletConfig {
       'cpuCfsQuota': ?cpuCfsQuota,
       'cpuCfsQuotaPeriod': ?cpuCfsQuotaPeriod,
       'cpuManagerPolicy': ?cpuManagerPolicy,
+      'crashLoopBackOff': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigKubeletConfigCrashLoopBackOff, Map<String, dynamic>>(crashLoopBackOff, (value) => value.toMap()),
       'evictionMaxPodGracePeriodSeconds': ?evictionMaxPodGracePeriodSeconds,
       'evictionMinimumReclaim': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim, Map<String, dynamic>>(evictionMinimumReclaim, (value) => value.toMap()),
       'evictionSoft': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigKubeletConfigEvictionSoft, Map<String, dynamic>>(evictionSoft, (value) => value.toMap()),
@@ -113,6 +127,8 @@ class NodePoolNodeConfigKubeletConfig {
       'maxParallelImagePulls': ?maxParallelImagePulls,
       'memoryManager': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigKubeletConfigMemoryManager, Map<String, dynamic>>(memoryManager, (value) => value.toMap()),
       'podPidsLimit': ?podPidsLimit,
+      'shutdownGracePeriodCriticalPodsSeconds': ?shutdownGracePeriodCriticalPodsSeconds,
+      'shutdownGracePeriodSeconds': ?shutdownGracePeriodSeconds,
       'singleProcessOomKill': ?singleProcessOomKill,
       'topologyManager': ?pulumi.Input.mapOptionalInputValue<NodePoolNodeConfigKubeletConfigTopologyManager, Map<String, dynamic>>(topologyManager, (value) => value.toMap()),
     };
@@ -126,6 +142,7 @@ class NodePoolNodeConfigKubeletConfig {
       cpuCfsQuota: (() { final guardedValue = map['cpuCfsQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       cpuCfsQuotaPeriod: (() { final guardedValue = map['cpuCfsQuotaPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cpuManagerPolicy: (() { final guardedValue = map['cpuManagerPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      crashLoopBackOff: (() { final guardedValue = map['crashLoopBackOff']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigKubeletConfigCrashLoopBackOff.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       evictionMaxPodGracePeriodSeconds: (() { final guardedValue = map['evictionMaxPodGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       evictionMinimumReclaim: (() { final guardedValue = map['evictionMinimumReclaim']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       evictionSoft: (() { final guardedValue = map['evictionSoft']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigKubeletConfigEvictionSoft.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -138,9 +155,10 @@ class NodePoolNodeConfigKubeletConfig {
       maxParallelImagePulls: (() { final guardedValue = map['maxParallelImagePulls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       memoryManager: (() { final guardedValue = map['memoryManager']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigKubeletConfigMemoryManager.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       podPidsLimit: (() { final guardedValue = map['podPidsLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      shutdownGracePeriodCriticalPodsSeconds: (() { final guardedValue = map['shutdownGracePeriodCriticalPodsSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      shutdownGracePeriodSeconds: (() { final guardedValue = map['shutdownGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       singleProcessOomKill: (() { final guardedValue = map['singleProcessOomKill']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       topologyManager: (() { final guardedValue = map['topologyManager']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigKubeletConfigTopologyManager.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }
-

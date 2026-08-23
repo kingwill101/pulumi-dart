@@ -15,12 +15,13 @@ import 'instance_scheduling.dart';
 import 'instance_scratch_disk.dart';
 import 'instance_service_account.dart';
 import 'instance_shielded_instance_config.dart';
+import 'instance_workload_identity_config.dart';
 
 /// Input properties used for looking up and filtering Instance resources.
 class InstanceState {
   /// Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
   final pulumi.Input<InstanceAdvancedMachineFeatures>? advancedMachineFeatures;
-  /// If true, allows this prvider to stop the instance to update its properties.
+  /// If true, allows this provider to stop the instance to update its properties.
   /// If you try to update a property that requires stopping the instance without setting this field, the update will fail.
   final pulumi.Input<bool>? allowStoppingForUpdate;
   /// Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
@@ -40,6 +41,13 @@ class InstanceState {
   final pulumi.Input<String>? creationTimestamp;
   /// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
   final pulumi.Input<String>? currentStatus;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Enable deletion protection on this instance. Defaults to false.
   /// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
   final pulumi.Input<bool>? deletionProtection;
@@ -51,10 +59,12 @@ class InstanceState {
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
   /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-  /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+  /// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
   final pulumi.Input<bool>? enableDisplay;
+  /// Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
+  final pulumi.Input<bool>? eraseWindowsVssSignature;
   /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
-  /// **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
+  /// **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
   final pulumi.Input<List<InstanceGuestAccelerator>>? guestAccelerators;
   /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
   /// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
@@ -74,11 +84,11 @@ class InstanceState {
   final pulumi.Input<Map<String, String>>? labels;
   /// The machine type to create.
   ///
-  /// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
+  /// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
   ///
   /// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
   /// Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
-  /// `lifecycle.ignore_changes` on `machine_type` in these cases.
+  /// `lifecycle.ignore_changes` on `machineType` in these cases.
   ///
   /// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
   final pulumi.Input<String>? machineType;
@@ -94,7 +104,7 @@ class InstanceState {
   /// support this key.  Windows instances require other keys depending on the format
   /// of the script and the time you would like it to run - see [this table](https://cloud.google.com/compute/docs/startupscript#providing_a_startup_script_for_windows_instances).
   /// For the convenience of the users of `metadata.startup-script`,
-  /// we provide a special attribute, `metadata_startup_script`, which is documented below.
+  /// we provide a special attribute, `metadataStartupScript`, which is documented below.
   final pulumi.Input<Map<String, String>>? metadata;
   /// The unique fingerprint of the metadata.
   final pulumi.Input<String>? metadataFingerprint;
@@ -104,14 +114,14 @@ class InstanceState {
   /// metadata key on the created instance and thus the two mechanisms are not
   /// allowed to be used simultaneously.  Users are free to use either mechanism - the
   /// only distinction is that this separate attribute will cause a recreate on
-  /// modification.  On import, `metadata_startup_script` will not be set - if you
+  /// modification.  On import, `metadataStartupScript` will not be set - if you
   /// choose to specify it you will see a diff immediately after import causing a
   /// destroy/recreate operation. If importing an instance and specifying this value
   /// is desired, you will need to modify your state file.
   final pulumi.Input<String>? metadataStartupScript;
   /// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
   /// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
-  /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+  /// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
   final pulumi.Input<String>? minCpuPlatform;
   /// A unique name for the resource, required by GCE.
   /// Changing this forces a new resource to be created.
@@ -121,9 +131,8 @@ class InstanceState {
   ///
   /// - - -
   final pulumi.Input<List<InstanceNetworkInterface>>? networkInterfaces;
-  /// (Optional, Beta
   /// Configures network performance settings for the instance. Structure is
-  /// documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
+  /// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
   /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
   /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
   /// in order for this setting to take effect.
@@ -141,7 +150,7 @@ class InstanceState {
   /// Specifies the reservations that this instance can consume from.
   /// Structure is documented below.
   final pulumi.Input<InstanceReservationAffinity>? reservationAffinity;
-  /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+  /// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
   final pulumi.Input<String>? resourcePolicies;
   /// The scheduling strategy to use. More details about
   /// this configuration option are detailed below.
@@ -153,22 +162,25 @@ class InstanceState {
   final pulumi.Input<String>? selfLink;
   /// Service account to attach to the instance.
   /// Structure is documented below.
-  /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+  /// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
   final pulumi.Input<InstanceServiceAccount>? serviceAccount;
   /// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-  /// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
-  /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+  /// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+  /// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
   final pulumi.Input<InstanceShieldedInstanceConfig>? shieldedInstanceConfig;
   /// A list of network tags to attach to the instance.
   final pulumi.Input<List<String>>? tags;
   /// The unique fingerprint of the tags.
   final pulumi.Input<String>? tagsFingerprint;
+  /// Workload Identity Config. More details about
+  /// this configuration option are detailed below.
+  final pulumi.Input<InstanceWorkloadIdentityConfig>? workloadIdentityConfig;
   /// The zone that the machine should be created in. If it is not provided, the provider zone is used.
   final pulumi.Input<String>? zone;
 
   /// Creates a new [InstanceState].
   /// [advancedMachineFeatures] Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
-  /// [allowStoppingForUpdate] If true, allows this prvider to stop the instance to update its properties.
+  /// [allowStoppingForUpdate] If true, allows this provider to stop the instance to update its properties.
   /// [attachedDisks] Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
   /// [bootDisk] The boot disk for the instance.
   /// [canIpForward] Whether to allow sending and receiving of
@@ -176,11 +188,13 @@ class InstanceState {
   /// [cpuPlatform] The CPU platform used by this instance.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
   /// [currentStatus] The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [deletionProtection] Enable deletion protection on this instance. Defaults to false.
   /// [description] A brief description of this resource.
   /// [desiredStatus] Desired status of the instance. Either
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [enableDisplay] Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+  /// [eraseWindowsVssSignature] Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
   /// [guestAccelerators] List of the type and count of accelerator cards attached to the instance. Structure documented below.
   /// [hostname] A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
   /// [instanceEncryptionKey] Configuration for data encryption on the instance with encryption keys. Structure is documented below.
@@ -195,13 +209,13 @@ class InstanceState {
   /// [minCpuPlatform] Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
   /// [name] A unique name for the resource, required by GCE.
   /// [networkInterfaces] Networks to attach to the instance. This can
-  /// [networkPerformanceConfig] (Optional, Beta
+  /// [networkPerformanceConfig] Configures network performance settings for the instance. Structure is
   /// [params] Additional instance parameters.
   /// [partnerMetadata] Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
   /// [project] The ID of the project in which the resource belongs. If it
   /// [pulumiLabels] The combination of labels configured directly on the resource and default labels configured on the provider.
   /// [reservationAffinity] Specifies the reservations that this instance can consume from.
-  /// [resourcePolicies] - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+  /// [resourcePolicies] - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
   /// [scheduling] The scheduling strategy to use. More details about
   /// [scratchDisks] Scratch disks to attach to the instance. This can be
   /// [selfLink] The URI of the created resource.
@@ -209,6 +223,7 @@ class InstanceState {
   /// [shieldedInstanceConfig] Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
   /// [tags] A list of network tags to attach to the instance.
   /// [tagsFingerprint] The unique fingerprint of the tags.
+  /// [workloadIdentityConfig] Workload Identity Config. More details about
   /// [zone] The zone that the machine should be created in. If it is not provided, the provider zone is used.
   const InstanceState({
     this.advancedMachineFeatures,
@@ -220,11 +235,13 @@ class InstanceState {
     this.cpuPlatform,
     this.creationTimestamp,
     this.currentStatus,
+    this.deletionPolicy,
     this.deletionProtection,
     this.description,
     this.desiredStatus,
     this.effectiveLabels,
     this.enableDisplay,
+    this.eraseWindowsVssSignature,
     this.guestAccelerators,
     this.hostname,
     this.instanceEncryptionKey,
@@ -253,6 +270,7 @@ class InstanceState {
     this.shieldedInstanceConfig,
     this.tags,
     this.tagsFingerprint,
+    this.workloadIdentityConfig,
     this.zone,
   });
 
@@ -267,11 +285,13 @@ class InstanceState {
       'cpuPlatform': ?cpuPlatform,
       'creationTimestamp': ?creationTimestamp,
       'currentStatus': ?currentStatus,
+      'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'description': ?description,
       'desiredStatus': ?desiredStatus,
       'effectiveLabels': ?effectiveLabels,
       'enableDisplay': ?enableDisplay,
+      'eraseWindowsVssSignature': ?eraseWindowsVssSignature,
       'guestAccelerators': ?pulumi.Input.mapOptionalInputValue<List<InstanceGuestAccelerator>, List<Map<String, dynamic>>>(guestAccelerators, (value) => pulumi.Input.encodeList<InstanceGuestAccelerator, Map<String, dynamic>>(value, (value) => value.toMap())),
       'hostname': ?hostname,
       'instanceEncryptionKey': ?pulumi.Input.mapOptionalInputValue<InstanceInstanceEncryptionKey, Map<String, dynamic>>(instanceEncryptionKey, (value) => value.toMap()),
@@ -300,6 +320,7 @@ class InstanceState {
       'shieldedInstanceConfig': ?pulumi.Input.mapOptionalInputValue<InstanceShieldedInstanceConfig, Map<String, dynamic>>(shieldedInstanceConfig, (value) => value.toMap()),
       'tags': ?tags,
       'tagsFingerprint': ?tagsFingerprint,
+      'workloadIdentityConfig': ?pulumi.Input.mapOptionalInputValue<InstanceWorkloadIdentityConfig, Map<String, dynamic>>(workloadIdentityConfig, (value) => value.toMap()),
       'zone': ?zone,
     };
   }
@@ -315,11 +336,13 @@ class InstanceState {
       cpuPlatform: (() { final guardedValue = map['cpuPlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       currentStatus: (() { final guardedValue = map['currentStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       desiredStatus: (() { final guardedValue = map['desiredStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       enableDisplay: (() { final guardedValue = map['enableDisplay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      eraseWindowsVssSignature: (() { final guardedValue = map['eraseWindowsVssSignature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       guestAccelerators: (() { final guardedValue = map['guestAccelerators']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGuestAccelerator>(guardedValue, (value) => InstanceGuestAccelerator.fromMap((value as Map).cast<String, dynamic>()))); })(),
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceEncryptionKey: (() { final guardedValue = map['instanceEncryptionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceInstanceEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -348,8 +371,8 @@ class InstanceState {
       shieldedInstanceConfig: (() { final guardedValue = map['shieldedInstanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceShieldedInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tagsFingerprint: (() { final guardedValue = map['tagsFingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workloadIdentityConfig: (() { final guardedValue = map['workloadIdentityConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceWorkloadIdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

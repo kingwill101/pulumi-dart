@@ -97,6 +97,26 @@ import 'plugin_instance_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_apihub_plugininstance" "apihub_plugin_instance_basic" {
+///   location           = "us-central1"
+///   plugin             = "existing-plugin-id"
+///   plugin_instance_id = "test"
+///   display_name       = "Sample Plugin Instance Display Name"
+///   disable            = false
+///   actions {
+///     action_id = "existing-action-id"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -106,8 +126,8 @@ import 'plugin_instance_state.dart';
 /// import com.pulumi.gcp.apihub.PluginInstance;
 /// import com.pulumi.gcp.apihub.PluginInstanceArgs;
 /// import com.pulumi.gcp.apihub.inputs.PluginInstanceActionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -154,22 +174,15 @@ import 'plugin_instance_state.dart';
 /// PluginInstance can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/plugins/{{plugin}}/instances/{{plugin_instance_id}}`
-///
 /// * `{{project}}/{{location}}/{{plugin}}/{{plugin_instance_id}}`
-///
 /// * `{{location}}/{{plugin}}/{{plugin_instance_id}}`
+///
 ///
 /// When using the `pulumi import` command, PluginInstance can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:apihub/pluginInstance:PluginInstance default projects/{{project}}/locations/{{location}}/plugins/{{plugin}}/instances/{{plugin_instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apihub/pluginInstance:PluginInstance default {{project}}/{{location}}/{{plugin}}/{{plugin_instance_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:apihub/pluginInstance:PluginInstance default {{location}}/{{plugin}}/{{plugin_instance_id}}
 /// ```
 class PluginInstance extends pulumi.CustomResource {
@@ -181,6 +194,13 @@ class PluginInstance extends pulumi.CustomResource {
   late final pulumi.Output<PluginInstanceAuthConfig?> authConfig;
   /// Timestamp indicating when the plugin instance was created.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The display name for this plugin instance. Max length is 255 characters.
   late final pulumi.Output<bool?> disable;
   /// The display name for this plugin instance. Max length is 255 characters.
@@ -209,6 +229,8 @@ class PluginInstance extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+  late final pulumi.Output<String?> sourceProjectId;
   /// The current state of the plugin instance (e.g., enabled, disabled,
   /// provisioning).
   /// Possible values:
@@ -240,6 +262,7 @@ class PluginInstance extends pulumi.CustomResource {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
     authConfig = registerOutput<PluginInstanceAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginInstanceAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disable = registerOutput<bool?>('disable');
     displayName = registerOutput<String>('displayName');
     errorMessage = registerOutput<String>('errorMessage');
@@ -248,6 +271,7 @@ class PluginInstance extends pulumi.CustomResource {
     plugin = registerOutput<String>('plugin');
     pluginInstanceId = registerOutput<String>('pluginInstanceId');
     project = registerOutput<String>('project');
+    sourceProjectId = registerOutput<String?>('sourceProjectId');
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -278,6 +302,7 @@ class PluginInstance extends pulumi.CustomResource {
     actions = registerOutput<List<Map<String, dynamic>>>('actions');
     authConfig = registerOutput<PluginInstanceAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginInstanceAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     disable = registerOutput<bool?>('disable');
     displayName = registerOutput<String>('displayName');
     errorMessage = registerOutput<String>('errorMessage');
@@ -286,6 +311,7 @@ class PluginInstance extends pulumi.CustomResource {
     plugin = registerOutput<String>('plugin');
     pluginInstanceId = registerOutput<String>('pluginInstanceId');
     project = registerOutput<String>('project');
+    sourceProjectId = registerOutput<String?>('sourceProjectId');
     this.state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }

@@ -8,6 +8,13 @@ import 'grpc_route_rule.dart';
 /// {@endtemplate}
 /// {@macro pulumi_networkservices_grpc_route_grpc_route_args_doc}
 class GrpcRouteArgs {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   final pulumi.Input<String>? description;
   /// List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
@@ -16,7 +23,7 @@ class GrpcRouteArgs {
   final pulumi.Input<List<String>> hostnames;
   /// Set of label tags associated with the GrpcRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Location (region) of the GRPCRoute resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
   final pulumi.Input<String>? location;
@@ -32,6 +39,7 @@ class GrpcRouteArgs {
   final pulumi.Input<List<GrpcRouteRule>> rules;
 
   /// Creates a new [GrpcRouteArgs].
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A free-text description of the resource. Max length 1024 characters.
   /// [gateways] List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
   /// [hostnames] Required. Service hostnames with an optional port for which this route describes traffic.
@@ -42,6 +50,7 @@ class GrpcRouteArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [rules] Rules that define how traffic is routed and handled.
   const GrpcRouteArgs({
+    this.deletionPolicy,
     this.description,
     this.gateways,
     required this.hostnames,
@@ -55,6 +64,7 @@ class GrpcRouteArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'gateways': ?gateways,
       'hostnames': hostnames,
@@ -69,6 +79,7 @@ class GrpcRouteArgs {
 
   factory GrpcRouteArgs.fromMap(Map<String, dynamic> map) {
     return GrpcRouteArgs(
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gateways: (() { final guardedValue = map['gateways']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       hostnames: pulumi.Input.fromValue((map['hostnames'] as List).cast<String>()),
@@ -81,4 +92,3 @@ class GrpcRouteArgs {
     );
   }
 }
-

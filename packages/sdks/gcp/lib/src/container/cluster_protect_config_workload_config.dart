@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterProtectConfigWorkloadConfig {
-  /// Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+  /// ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
   final pulumi.Input<String> auditMode;
 
   /// Creates a new [ClusterProtectConfigWorkloadConfig].
-  /// [auditMode] Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+  /// [auditMode] ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
   const ClusterProtectConfigWorkloadConfig({
     required this.auditMode,
   });
@@ -24,4 +24,3 @@ class ClusterProtectConfigWorkloadConfig {
     );
   }
 }
-

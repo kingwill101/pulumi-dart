@@ -33,6 +33,7 @@ class GetBackendServiceResult {
   final List<GetBackendServiceCustomMetric> customMetrics;
   final List<String> customRequestHeaders;
   final List<String> customResponseHeaders;
+  final String deletionPolicy;
   /// Textual description for the Backend Service.
   final String description;
   final List<GetBackendServiceDynamicForwarding> dynamicForwardings;
@@ -89,6 +90,7 @@ class GetBackendServiceResult {
   /// [customMetrics] Required.
   /// [customRequestHeaders] Required.
   /// [customResponseHeaders] Required.
+  /// [deletionPolicy] Required.
   /// [description] Textual description for the Backend Service.
   /// [dynamicForwardings] Required.
   /// [edgeSecurityPolicy] Required.
@@ -133,6 +135,7 @@ class GetBackendServiceResult {
     required this.customMetrics,
     required this.customRequestHeaders,
     required this.customResponseHeaders,
+    required this.deletionPolicy,
     required this.description,
     required this.dynamicForwardings,
     required this.edgeSecurityPolicy,
@@ -180,6 +183,7 @@ class GetBackendServiceResult {
       'customMetrics': pulumi.Input.encodeList<GetBackendServiceCustomMetric, Map<String, dynamic>>(customMetrics, (value) => value.toMap()),
       'customRequestHeaders': customRequestHeaders,
       'customResponseHeaders': customResponseHeaders,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'dynamicForwardings': pulumi.Input.encodeList<GetBackendServiceDynamicForwarding, Map<String, dynamic>>(dynamicForwardings, (value) => value.toMap()),
       'edgeSecurityPolicy': edgeSecurityPolicy,
@@ -228,6 +232,7 @@ class GetBackendServiceResult {
       customMetrics: pulumi.Input.decodeList<GetBackendServiceCustomMetric>(map['customMetrics']!, (value) => GetBackendServiceCustomMetric.fromMap((value as Map).cast<String, dynamic>())),
       customRequestHeaders: (map['customRequestHeaders'] as List).cast<String>(),
       customResponseHeaders: (map['customResponseHeaders'] as List).cast<String>(),
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       dynamicForwardings: pulumi.Input.decodeList<GetBackendServiceDynamicForwarding>(map['dynamicForwardings']!, (value) => GetBackendServiceDynamicForwarding.fromMap((value as Map).cast<String, dynamic>())),
       edgeSecurityPolicy: map['edgeSecurityPolicy'] as String,
@@ -263,4 +268,3 @@ class GetBackendServiceResult {
     );
   }
 }
-

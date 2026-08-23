@@ -19,23 +19,35 @@ class RestoreWorkloadState {
   /// Optional. Compute Engine instance properties to be overridden during restore.
   /// Structure is documented below.
   final pulumi.Input<RestoreWorkloadComputeInstanceRestoreProperties>? computeInstanceRestoreProperties;
-  /// Optional. The destination environment for GCE VM restoration.
+  /// The destination environment for GCE VM restoration.
   /// Structure is documented below.
   final pulumi.Input<RestoreWorkloadComputeInstanceTargetEnvironment>? computeInstanceTargetEnvironment;
   /// Required. The ID of the data source.
   final pulumi.Input<String>? dataSourceId;
+  /// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+  /// If false, only the restore record is removed from the state, leaving the resource active.
   final pulumi.Input<bool>? deleteRestoredInstance;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. Disk properties to be overridden during restore.
   /// Structure is documented below.
   final pulumi.Input<RestoreWorkloadDiskRestoreProperties>? diskRestoreProperties;
-  /// Optional. The destination environment for zonal disk restoration.
+  /// The destination environment for zonal disk restoration.
   /// Structure is documented below.
   final pulumi.Input<RestoreWorkloadDiskTargetEnvironment>? diskTargetEnvironment;
   /// Required. The location for the backup vault.
   final pulumi.Input<String>? location;
-  /// Required. The resource name of the backup instance.
+  /// (Optional, Deprecated)
+  /// The resource name of the backup instance.
+  ///
+  /// &gt; **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
   final pulumi.Input<String>? name;
-  /// Optional. The destination environment for regional disk restoration.
+  /// The destination environment for regional disk restoration.
   /// Structure is documented below.
   final pulumi.Input<RestoreWorkloadRegionDiskTargetEnvironment>? regionDiskTargetEnvironment;
   /// Optional. An optional request ID to identify requests. Specify a unique request ID
@@ -51,14 +63,15 @@ class RestoreWorkloadState {
   /// [backupVaultId] Required. The ID of the backup vault.
   /// [clearOverridesFieldMask] Optional. A field mask used to clear server-side default values during restore.
   /// [computeInstanceRestoreProperties] Optional. Compute Engine instance properties to be overridden during restore.
-  /// [computeInstanceTargetEnvironment] Optional. The destination environment for GCE VM restoration.
+  /// [computeInstanceTargetEnvironment] The destination environment for GCE VM restoration.
   /// [dataSourceId] Required. The ID of the data source.
-  /// [deleteRestoredInstance] Optional.
+  /// [deleteRestoredInstance] Optional. If true (default), running terraform destroy will delete the live resource in GCP.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [diskRestoreProperties] Optional. Disk properties to be overridden during restore.
-  /// [diskTargetEnvironment] Optional. The destination environment for zonal disk restoration.
+  /// [diskTargetEnvironment] The destination environment for zonal disk restoration.
   /// [location] Required. The location for the backup vault.
-  /// [name] Required. The resource name of the backup instance.
-  /// [regionDiskTargetEnvironment] Optional. The destination environment for regional disk restoration.
+  /// [name] (Optional, Deprecated)
+  /// [regionDiskTargetEnvironment] The destination environment for regional disk restoration.
   /// [requestId] Optional. An optional request ID to identify requests. Specify a unique request ID
   /// [targetResources] Output only. Details of the target resource created/modified as part of restore.
   const RestoreWorkloadState({
@@ -69,6 +82,7 @@ class RestoreWorkloadState {
     this.computeInstanceTargetEnvironment,
     this.dataSourceId,
     this.deleteRestoredInstance,
+    this.deletionPolicy,
     this.diskRestoreProperties,
     this.diskTargetEnvironment,
     this.location,
@@ -87,6 +101,7 @@ class RestoreWorkloadState {
       'computeInstanceTargetEnvironment': ?pulumi.Input.mapOptionalInputValue<RestoreWorkloadComputeInstanceTargetEnvironment, Map<String, dynamic>>(computeInstanceTargetEnvironment, (value) => value.toMap()),
       'dataSourceId': ?dataSourceId,
       'deleteRestoredInstance': ?deleteRestoredInstance,
+      'deletionPolicy': ?deletionPolicy,
       'diskRestoreProperties': ?pulumi.Input.mapOptionalInputValue<RestoreWorkloadDiskRestoreProperties, Map<String, dynamic>>(diskRestoreProperties, (value) => value.toMap()),
       'diskTargetEnvironment': ?pulumi.Input.mapOptionalInputValue<RestoreWorkloadDiskTargetEnvironment, Map<String, dynamic>>(diskTargetEnvironment, (value) => value.toMap()),
       'location': ?location,
@@ -106,6 +121,7 @@ class RestoreWorkloadState {
       computeInstanceTargetEnvironment: (() { final guardedValue = map['computeInstanceTargetEnvironment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RestoreWorkloadComputeInstanceTargetEnvironment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataSourceId: (() { final guardedValue = map['dataSourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteRestoredInstance: (() { final guardedValue = map['deleteRestoredInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskRestoreProperties: (() { final guardedValue = map['diskRestoreProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RestoreWorkloadDiskRestoreProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       diskTargetEnvironment: (() { final guardedValue = map['diskTargetEnvironment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RestoreWorkloadDiskTargetEnvironment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -116,4 +132,3 @@ class RestoreWorkloadState {
     );
   }
 }
-

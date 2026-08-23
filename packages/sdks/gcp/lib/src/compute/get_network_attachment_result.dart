@@ -8,6 +8,7 @@ class GetNetworkAttachmentResult {
   final List<GetNetworkAttachmentConnectionEndpoint> connectionEndpoints;
   final String connectionPreference;
   final String creationTimestamp;
+  final String deletionPolicy;
   final String description;
   final String fingerprint;
   final String id;
@@ -26,6 +27,7 @@ class GetNetworkAttachmentResult {
   /// [connectionEndpoints] Required.
   /// [connectionPreference] Required.
   /// [creationTimestamp] Required.
+  /// [deletionPolicy] Required.
   /// [description] Required.
   /// [fingerprint] Required.
   /// [id] Required.
@@ -43,6 +45,7 @@ class GetNetworkAttachmentResult {
     required this.connectionEndpoints,
     required this.connectionPreference,
     required this.creationTimestamp,
+    required this.deletionPolicy,
     required this.description,
     required this.fingerprint,
     required this.id,
@@ -63,6 +66,7 @@ class GetNetworkAttachmentResult {
       'connectionEndpoints': pulumi.Input.encodeList<GetNetworkAttachmentConnectionEndpoint, Map<String, dynamic>>(connectionEndpoints, (value) => value.toMap()),
       'connectionPreference': connectionPreference,
       'creationTimestamp': creationTimestamp,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'fingerprint': fingerprint,
       'id': id,
@@ -84,6 +88,7 @@ class GetNetworkAttachmentResult {
       connectionEndpoints: pulumi.Input.decodeList<GetNetworkAttachmentConnectionEndpoint>(map['connectionEndpoints']!, (value) => GetNetworkAttachmentConnectionEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       connectionPreference: map['connectionPreference'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       fingerprint: map['fingerprint'] as String,
       id: map['id'] as String,
@@ -100,4 +105,3 @@ class GetNetworkAttachmentResult {
     );
   }
 }
-

@@ -7,6 +7,9 @@ import 'guest_policies_state.dart';
 /// the desired state for VM instance guest environments including packages to install or remove,
 /// package repository configurations, and software to install.
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about GuestPolicies, see:
 ///
 /// * [API documentation](https://cloud.google.com/compute/docs/osconfig/rest)
@@ -210,7 +213,7 @@ import 'guest_policies_state.dart';
 /// 			GuestPolicyId: pulumi.String("guest-policy"),
 /// 			Assignment: &osconfig.GuestPoliciesAssignmentArgs{
 /// 				Instances: pulumi.StringArray{
-/// 					foobar.ID(),
+/// 					foobar.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Packages: osconfig.GuestPoliciesPackageArray{
@@ -225,6 +228,49 @@ import 'guest_policies_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_compute_getimage" "myImage" {
+///   family  = "debian-11"
+///   project = "debian-cloud"
+/// }
+///
+/// resource "gcp_compute_instance" "foobar" {
+///   name           = "guest-policy-inst"
+///   machine_type   = "e2-medium"
+///   zone           = "us-central1-a"
+///   can_ip_forward = false
+///   tags           = ["foo", "bar"]
+///   boot_disk = {
+///     initialize_params = {
+///       image = data.gcp_compute_getimage.myImage.self_link
+///     }
+///   }
+///   network_interfaces {
+///     network = "default"
+///   }
+///   metadata = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_osconfig_guestpolicies" "guest_policies" {
+///   guest_policy_id = "guest-policy"
+///   assignment = {
+///     instances = [gcp_compute_instance.foobar.id]
+///   }
+///   packages {
+///     name          = "my-package"
+///     desired_state = "UPDATED"
+///   }
 /// }
 /// ```
 /// ```java
@@ -244,8 +290,8 @@ import 'guest_policies_state.dart';
 /// import com.pulumi.gcp.osconfig.GuestPoliciesArgs;
 /// import com.pulumi.gcp.osconfig.inputs.GuestPoliciesAssignmentArgs;
 /// import com.pulumi.gcp.osconfig.inputs.GuestPoliciesPackageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -617,6 +663,61 @@ import 'guest_policies_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_osconfig_guestpolicies" "guest_policies" {
+///   guest_policy_id = "guest-policy"
+///   assignment = {
+///     group_labels = [{
+///       "labels" = {
+///         "color" = "red"
+///         "env"   = "test"
+///       }
+///       }, {
+///       "labels" = {
+///         "color" = "blue"
+///         "env"   = "test"
+///       }
+///     }]
+///   }
+///   packages {
+///     name          = "my-package"
+///     desired_state = "INSTALLED"
+///   }
+///   packages {
+///     name          = "bad-package-1"
+///     desired_state = "REMOVED"
+///   }
+///   packages {
+///     name          = "bad-package-2"
+///     desired_state = "REMOVED"
+///     manager       = "APT"
+///   }
+///   package_repositories {
+///     apt = {
+///       uri          = "https://packages.cloud.google.com/apt"
+///       archive_type = "DEB"
+///       distribution = "cloud-sdk-stretch"
+///       components   = ["main"]
+///     }
+///   }
+///   package_repositories {
+///     yum = {
+///       id           = "google-cloud-sdk"
+///       display_name = "Google Cloud SDK"
+///       base_url     = "https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64"
+///       gpg_keys     = ["https://packages.cloud.google.com/yum/doc/yum-key.gpg", "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -626,12 +727,13 @@ import 'guest_policies_state.dart';
 /// import com.pulumi.gcp.osconfig.GuestPolicies;
 /// import com.pulumi.gcp.osconfig.GuestPoliciesArgs;
 /// import com.pulumi.gcp.osconfig.inputs.GuestPoliciesAssignmentArgs;
+/// import com.pulumi.gcp.osconfig.inputs.GuestPoliciesAssignmentGroupLabelArgs;
 /// import com.pulumi.gcp.osconfig.inputs.GuestPoliciesPackageArgs;
 /// import com.pulumi.gcp.osconfig.inputs.GuestPoliciesPackageRepositoryArgs;
 /// import com.pulumi.gcp.osconfig.inputs.GuestPoliciesPackageRepositoryAptArgs;
 /// import com.pulumi.gcp.osconfig.inputs.GuestPoliciesPackageRepositoryYumArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -792,7 +894,7 @@ import 'guest_policies_state.dart';
 ///             "gcs": {
 ///                 "bucket": "my-bucket",
 ///                 "object": "executable.msi",
-///                 "generation": 1546030865175603,
+///                 "generation": int(1546030865175603),
 ///             },
 ///         }],
 ///         "install_steps": [{
@@ -836,7 +938,7 @@ import 'guest_policies_state.dart';
 ///                         {
 ///                             Bucket = "my-bucket",
 ///                             Object = "executable.msi",
-///                             Generation = 1546030865175603,
+///                             Generation = (int)1546030865175603,
 ///                         },
 ///                     },
 ///                 },
@@ -905,6 +1007,39 @@ import 'guest_policies_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_osconfig_guestpolicies" "guest_policies" {
+///   guest_policy_id = "guest-policy"
+///   assignment = {
+///     zones = ["us-east1-b", "us-east1-d"]
+///   }
+///   recipes {
+///     name          = "guest-policy-recipe"
+///     desired_state = "INSTALLED"
+///     artifacts {
+///       id = "guest-policy-artifact-id"
+///       gcs = {
+///         bucket     = "my-bucket"
+///         object     = "executable.msi"
+///         generation = 1546030865175603
+///       }
+///     }
+///     install_steps {
+///       msi_installation = {
+///         artifact_id = "guest-policy-artifact-id"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -915,8 +1050,12 @@ import 'guest_policies_state.dart';
 /// import com.pulumi.gcp.osconfig.GuestPoliciesArgs;
 /// import com.pulumi.gcp.osconfig.inputs.GuestPoliciesAssignmentArgs;
 /// import com.pulumi.gcp.osconfig.inputs.GuestPoliciesRecipeArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.osconfig.inputs.GuestPoliciesRecipeArtifactArgs;
+/// import com.pulumi.gcp.osconfig.inputs.GuestPoliciesRecipeArtifactGcsArgs;
+/// import com.pulumi.gcp.osconfig.inputs.GuestPoliciesRecipeInstallStepArgs;
+/// import com.pulumi.gcp.osconfig.inputs.GuestPoliciesRecipeInstallStepMsiInstallationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -988,22 +1127,15 @@ import 'guest_policies_state.dart';
 /// GuestPolicies can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/guestPolicies/{{guest_policy_id}}`
-///
 /// * `{{project}}/{{guest_policy_id}}`
-///
 /// * `{{guest_policy_id}}`
+///
 ///
 /// When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{guest_policy_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{project}}/{{guest_policy_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{guest_policy_id}}
 /// ```
 class GuestPolicies extends pulumi.CustomResource {
@@ -1019,6 +1151,13 @@ class GuestPolicies extends pulumi.CustomResource {
   /// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
   /// Example: "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of the guest policy. Length of the description is limited to 1024 characters.
   late final pulumi.Output<String?> description;
   /// The etag for this guest policy. If this is provided on update, it must match the server's etag.
@@ -1066,6 +1205,7 @@ class GuestPolicies extends pulumi.CustomResource {
         ) {
     assignment = registerOutput<GuestPoliciesAssignment>('assignment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuestPoliciesAssignment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     guestPolicyId = registerOutput<String>('guestPolicyId');
@@ -1102,6 +1242,7 @@ class GuestPolicies extends pulumi.CustomResource {
         ) {
     assignment = registerOutput<GuestPoliciesAssignment>('assignment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuestPoliciesAssignment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     etag = registerOutput<String>('etag');
     guestPolicyId = registerOutput<String>('guestPolicyId');

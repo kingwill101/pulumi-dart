@@ -14,7 +14,7 @@ class AwsClusterState {
   /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
   /// Configuration related to the cluster RBAC settings.
   final pulumi.Input<AwsClusterAuthorization>? authorization;
@@ -26,8 +26,16 @@ class AwsClusterState {
   final pulumi.Input<AwsClusterControlPlane>? controlPlane;
   /// Output only. The time at which this cluster was created.
   final pulumi.Input<String>? createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
   final pulumi.Input<String>? description;
+  /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveAnnotations;
   /// Output only. The endpoint of the cluster's API server.
   final pulumi.Input<String>? endpoint;
@@ -63,8 +71,9 @@ class AwsClusterState {
   /// [binaryAuthorization] Configuration options for the Binary Authorization feature.
   /// [controlPlane] Configuration related to the cluster control plane.
   /// [createTime] Output only. The time at which this cluster was created.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [description] Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-  /// [effectiveAnnotations] Optional.
+  /// [effectiveAnnotations] All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
   /// [endpoint] Output only. The endpoint of the cluster's API server.
   /// [etag] Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   /// [fleet] Fleet configuration.
@@ -85,6 +94,7 @@ class AwsClusterState {
     this.binaryAuthorization,
     this.controlPlane,
     this.createTime,
+    this.deletionPolicy,
     this.description,
     this.effectiveAnnotations,
     this.endpoint,
@@ -110,6 +120,7 @@ class AwsClusterState {
       'binaryAuthorization': ?pulumi.Input.mapOptionalInputValue<AwsClusterBinaryAuthorization, Map<String, dynamic>>(binaryAuthorization, (value) => value.toMap()),
       'controlPlane': ?pulumi.Input.mapOptionalInputValue<AwsClusterControlPlane, Map<String, dynamic>>(controlPlane, (value) => value.toMap()),
       'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveAnnotations': ?effectiveAnnotations,
       'endpoint': ?endpoint,
@@ -136,6 +147,7 @@ class AwsClusterState {
       binaryAuthorization: (() { final guardedValue = map['binaryAuthorization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       controlPlane: (() { final guardedValue = map['controlPlane']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AwsClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveAnnotations: (() { final guardedValue = map['effectiveAnnotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -154,4 +166,3 @@ class AwsClusterState {
     );
   }
 }
-

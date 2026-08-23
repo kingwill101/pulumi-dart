@@ -152,6 +152,36 @@ import 'recommendation_engine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_datastore" "generic" {
+///   location                     = "global"
+///   data_store_id                = "recommendation-datastore-id"
+///   display_name                 = "tf-test-structured-datastore"
+///   industry_vertical            = "GENERIC"
+///   content_config               = "NO_CONTENT"
+///   solution_types               = ["SOLUTION_TYPE_RECOMMENDATION"]
+///   create_advanced_site_search  = false
+///   skip_default_schema_creation = false
+/// }
+/// resource "gcp_discoveryengine_recommendationengine" "generic" {
+///   engine_id         = "recommendation-engine-id"
+///   location          = gcp_discoveryengine_datastore.generic.location
+///   display_name      = "Example Recommendation Engine"
+///   data_store_ids    = [gcp_discoveryengine_datastore.generic.data_store_id]
+///   industry_vertical = "GENERIC"
+///   common_config = {
+///     company_name = "test-company"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -163,8 +193,8 @@ import 'recommendation_engine_state.dart';
 /// import com.pulumi.gcp.discoveryengine.RecommendationEngine;
 /// import com.pulumi.gcp.discoveryengine.RecommendationEngineArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.RecommendationEngineCommonConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -409,6 +439,46 @@ import 'recommendation_engine_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_datastore" "media" {
+///   location                     = "global"
+///   data_store_id                = "recommendation-datastore-id"
+///   display_name                 = "tf-test-structured-datastore"
+///   industry_vertical            = "MEDIA"
+///   content_config               = "NO_CONTENT"
+///   solution_types               = ["SOLUTION_TYPE_RECOMMENDATION"]
+///   create_advanced_site_search  = false
+///   skip_default_schema_creation = false
+/// }
+/// resource "gcp_discoveryengine_recommendationengine" "media" {
+///   engine_id         = "recommendation-engine-id"
+///   location          = gcp_discoveryengine_datastore.media.location
+///   display_name      = "Example Media Recommendation Engine"
+///   data_store_ids    = [gcp_discoveryengine_datastore.media.data_store_id]
+///   industry_vertical = "MEDIA"
+///   media_recommendation_engine_config = {
+///     type                   = "recommended-for-you"
+///     optimization_objective = "ctr"
+///     training_state         = "PAUSED"
+///     engine_features_config = {
+///       recommended_for_you_config = {
+///         context_event_type = "generic"
+///       }
+///     }
+///   }
+///   common_config = {
+///     company_name = "test-company"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -423,8 +493,8 @@ import 'recommendation_engine_state.dart';
 /// import com.pulumi.gcp.discoveryengine.inputs.RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs;
 /// import com.pulumi.gcp.discoveryengine.inputs.RecommendationEngineCommonConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -512,22 +582,15 @@ import 'recommendation_engine_state.dart';
 /// RecommendationEngine can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/collections/default_collection/engines/{{engine_id}}`
-///
 /// * `{{project}}/{{location}}/{{engine_id}}`
-///
 /// * `{{location}}/{{engine_id}}`
+///
 ///
 /// When using the `pulumi import` command, RecommendationEngine can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:discoveryengine/recommendationEngine:RecommendationEngine default projects/{{project}}/locations/{{location}}/collections/default_collection/engines/{{engine_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/recommendationEngine:RecommendationEngine default {{project}}/{{location}}/{{engine_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:discoveryengine/recommendationEngine:RecommendationEngine default {{location}}/{{engine_id}}
 /// ```
 class RecommendationEngine extends pulumi.CustomResource {
@@ -538,6 +601,13 @@ class RecommendationEngine extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
   late final pulumi.Output<List<String>> dataStoreIds;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
   late final pulumi.Output<String> displayName;
   /// Unique ID to use for Recommendation Engine.
@@ -580,6 +650,7 @@ class RecommendationEngine extends pulumi.CustomResource {
     commonConfig = registerOutput<RecommendationEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendationEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
     industryVertical = registerOutput<String?>('industryVertical');
@@ -616,6 +687,7 @@ class RecommendationEngine extends pulumi.CustomResource {
     commonConfig = registerOutput<RecommendationEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecommendationEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
     industryVertical = registerOutput<String?>('industryVertical');

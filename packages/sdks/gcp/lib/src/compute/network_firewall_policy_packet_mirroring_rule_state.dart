@@ -6,10 +6,17 @@ import 'network_firewall_policy_packet_mirroring_rule_target_secure_tag.dart';
 
 /// Input properties used for looking up and filtering NetworkFirewallPolicyPacketMirroringRule resources.
 class NetworkFirewallPolicyPacketMirroringRuleState {
-  /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
+  /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "doNotMirror", "gotoNext".
   final pulumi.Input<String>? action;
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description for this resource.
   final pulumi.Input<String>? description;
   /// The direction in which this rule applies.
@@ -51,8 +58,9 @@ class NetworkFirewallPolicyPacketMirroringRuleState {
   final pulumi.Input<bool>? tlsInspect;
 
   /// Creates a new [NetworkFirewallPolicyPacketMirroringRuleState].
-  /// [action] The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
+  /// [action] The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "doNotMirror", "gotoNext".
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description for this resource.
   /// [direction] The direction in which this rule applies.
   /// [disabled] Denotes whether the firewall policy rule is disabled.
@@ -69,6 +77,7 @@ class NetworkFirewallPolicyPacketMirroringRuleState {
   const NetworkFirewallPolicyPacketMirroringRuleState({
     this.action,
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.direction,
     this.disabled,
@@ -88,6 +97,7 @@ class NetworkFirewallPolicyPacketMirroringRuleState {
     return <String, dynamic>{
       'action': ?action,
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'direction': ?direction,
       'disabled': ?disabled,
@@ -108,6 +118,7 @@ class NetworkFirewallPolicyPacketMirroringRuleState {
     return NetworkFirewallPolicyPacketMirroringRuleState(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -124,4 +135,3 @@ class NetworkFirewallPolicyPacketMirroringRuleState {
     );
   }
 }
-

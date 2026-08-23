@@ -23,6 +23,13 @@ class ConnectionProfileArgs {
   final pulumi.Input<String> connectionProfileId;
   /// Create the connection profile without validating it.
   final pulumi.Input<bool>? createWithoutValidation;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Display name.
   final pulumi.Input<String> displayName;
   /// Forward SSH tunnel connectivity.
@@ -33,7 +40,7 @@ class ConnectionProfileArgs {
   final pulumi.Input<ConnectionProfileGcsProfile>? gcsProfile;
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The name of the location this connection profile is located in.
   final pulumi.Input<String> location;
@@ -55,9 +62,11 @@ class ConnectionProfileArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+  /// (Optional, Beta)
   /// Salesforce profile.
   /// Structure is documented below.
   final pulumi.Input<ConnectionProfileSalesforceProfile>? salesforceProfile;
+  /// (Optional, Beta)
   /// Spanner profile.
   /// Structure is documented below.
   final pulumi.Input<ConnectionProfileSpannerProfile>? spannerProfile;
@@ -69,6 +78,7 @@ class ConnectionProfileArgs {
   /// [bigqueryProfile] BigQuery warehouse profile.
   /// [connectionProfileId] The connection profile identifier.
   /// [createWithoutValidation] Create the connection profile without validating it.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] Display name.
   /// [forwardSshConnectivity] Forward SSH tunnel connectivity.
   /// [gcsProfile] Cloud Storage bucket profile.
@@ -80,13 +90,14 @@ class ConnectionProfileArgs {
   /// [postgresqlProfile] PostgreSQL database profile.
   /// [privateConnectivity] Private connectivity.
   /// [project] The ID of the project in which the resource belongs.
-  /// [salesforceProfile] Salesforce profile.
-  /// [spannerProfile] Spanner profile.
+  /// [salesforceProfile] (Optional, Beta)
+  /// [spannerProfile] (Optional, Beta)
   /// [sqlServerProfile] SQL Server database profile.
   const ConnectionProfileArgs({
     this.bigqueryProfile,
     required this.connectionProfileId,
     this.createWithoutValidation,
+    this.deletionPolicy,
     required this.displayName,
     this.forwardSshConnectivity,
     this.gcsProfile,
@@ -108,6 +119,7 @@ class ConnectionProfileArgs {
       'bigqueryProfile': ?bigqueryProfile,
       'connectionProfileId': connectionProfileId,
       'createWithoutValidation': ?createWithoutValidation,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': displayName,
       'forwardSshConnectivity': ?pulumi.Input.mapOptionalInputValue<ConnectionProfileForwardSshConnectivity, Map<String, dynamic>>(forwardSshConnectivity, (value) => value.toMap()),
       'gcsProfile': ?pulumi.Input.mapOptionalInputValue<ConnectionProfileGcsProfile, Map<String, dynamic>>(gcsProfile, (value) => value.toMap()),
@@ -130,6 +142,7 @@ class ConnectionProfileArgs {
       bigqueryProfile: (() { final guardedValue = map['bigqueryProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       connectionProfileId: pulumi.Input.fromValue(map['connectionProfileId'] as String),
       createWithoutValidation: (() { final guardedValue = map['createWithoutValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       forwardSshConnectivity: (() { final guardedValue = map['forwardSshConnectivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionProfileForwardSshConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       gcsProfile: (() { final guardedValue = map['gcsProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionProfileGcsProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -147,4 +160,3 @@ class ConnectionProfileArgs {
     );
   }
 }
-

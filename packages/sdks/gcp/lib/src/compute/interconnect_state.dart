@@ -9,12 +9,14 @@ import 'interconnect_params.dart';
 
 /// Input properties used for looking up and filtering Interconnect resources.
 class InterconnectState {
+  /// (Optional, Beta)
   /// Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
   final pulumi.Input<bool>? aaiEnabled;
   /// Administrative status of the interconnect. When this is set to true, the Interconnect is
   /// functional and can carry traffic. When set to false, no packets can be carried over the
   /// interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
   final pulumi.Input<bool>? adminEnabled;
+  /// (Optional, Beta)
   /// Configuration that enables Media Access Control security (MACsec) on the Cloud
   /// Interconnect connection between Google and your on-premises router.
   /// Structure is documented below.
@@ -35,10 +37,20 @@ class InterconnectState {
   /// crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
   /// for cross-cloud interconnect.
   final pulumi.Input<String>? customerName;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>>? effectiveLabels;
+  /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+  /// Specifies the location inside Google's Networks.
+  final pulumi.Input<String>? effectiveLocation;
   /// A list of outages expected for this Interconnect.
   /// Structure is documented below.
   final pulumi.Input<List<InterconnectExpectedOutage>>? expectedOutages;
@@ -69,7 +81,7 @@ class InterconnectState {
   /// method. Each label key/value pair must comply with RFC1035. Label values may be empty.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Type of link requested. Note that this field indicates the speed of each of the links in the
   /// bundle, not the speed of the entire bundle. Can take one of the following values:
@@ -78,7 +90,7 @@ class InterconnectState {
   /// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
   /// Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
   final pulumi.Input<String>? linkType;
-  /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+  /// URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
   /// Specifies the location inside Google's Networks.
   final pulumi.Input<String>? location;
   /// Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -151,15 +163,17 @@ class InterconnectState {
   final pulumi.Input<List<String>>? wireGroups;
 
   /// Creates a new [InterconnectState].
-  /// [aaiEnabled] Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+  /// [aaiEnabled] (Optional, Beta)
   /// [adminEnabled] Administrative status of the interconnect. When this is set to true, the Interconnect is
-  /// [applicationAwareInterconnect] Configuration that enables Media Access Control security (MACsec) on the Cloud
+  /// [applicationAwareInterconnect] (Optional, Beta)
   /// [availableFeatures] [Output Only] List of features that are available on this Interconnect connection based on the provisioned hardware and configuration.
   /// [circuitInfos] A list of CircuitInfo objects, that describe the individual circuits in this LAG.
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
   /// [customerName] Customer name, to put in the Letter of Authorization as the party authorized to request a
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource. Provide this property when you create the resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  /// [effectiveLocation] URL of the InterconnectLocation object that represents where this connection is to be provisioned.
   /// [expectedOutages] A list of outages expected for this Interconnect.
   /// [googleIpAddress] IP address configured on the Google side of the Interconnect link.
   /// [googleReferenceId] Google reference ID to be used when raising support tickets with Google or otherwise to debug
@@ -169,7 +183,7 @@ class InterconnectState {
   /// [labelFingerprint] A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
   /// [labels] Labels for this resource. These can only be added or modified by the setLabels
   /// [linkType] Type of link requested. Note that this field indicates the speed of each of the links in the
-  /// [location] URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+  /// [location] URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
   /// [macsec] Configuration that enables Media Access Control security (MACsec) on the Cloud
   /// [macsecEnabled] Enable or disable MACsec on this Interconnect connection.
   /// [name] Name of the resource. Provided by the client when the resource is created. The name must be
@@ -194,8 +208,10 @@ class InterconnectState {
     this.circuitInfos,
     this.creationTimestamp,
     this.customerName,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
+    this.effectiveLocation,
     this.expectedOutages,
     this.googleIpAddress,
     this.googleReferenceId,
@@ -233,8 +249,10 @@ class InterconnectState {
       'circuitInfos': ?pulumi.Input.mapOptionalInputValue<List<InterconnectCircuitInfo>, List<Map<String, dynamic>>>(circuitInfos, (value) => pulumi.Input.encodeList<InterconnectCircuitInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
       'creationTimestamp': ?creationTimestamp,
       'customerName': ?customerName,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
+      'effectiveLocation': ?effectiveLocation,
       'expectedOutages': ?pulumi.Input.mapOptionalInputValue<List<InterconnectExpectedOutage>, List<Map<String, dynamic>>>(expectedOutages, (value) => pulumi.Input.encodeList<InterconnectExpectedOutage, Map<String, dynamic>>(value, (value) => value.toMap())),
       'googleIpAddress': ?googleIpAddress,
       'googleReferenceId': ?googleReferenceId,
@@ -273,8 +291,10 @@ class InterconnectState {
       circuitInfos: (() { final guardedValue = map['circuitInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InterconnectCircuitInfo>(guardedValue, (value) => InterconnectCircuitInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customerName: (() { final guardedValue = map['customerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      effectiveLocation: (() { final guardedValue = map['effectiveLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expectedOutages: (() { final guardedValue = map['expectedOutages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InterconnectExpectedOutage>(guardedValue, (value) => InterconnectExpectedOutage.fromMap((value as Map).cast<String, dynamic>()))); })(),
       googleIpAddress: (() { final guardedValue = map['googleIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       googleReferenceId: (() { final guardedValue = map['googleReferenceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -304,4 +324,3 @@ class InterconnectState {
     );
   }
 }
-

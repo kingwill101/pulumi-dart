@@ -303,6 +303,51 @@ import 'ai_feature_group_feature_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_vertex_aifeaturegroupfeature" "feature_group_feature" {
+///   name          = "example_feature"
+///   region        = "us-central1"
+///   feature_group = gcp_vertex_aifeaturegroup.sample_feature_group.name
+///   description   = "A sample feature"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+/// }
+/// resource "gcp_vertex_aifeaturegroup" "sample_feature_group" {
+///   name        = "example_feature_group"
+///   description = "A sample feature group"
+///   region      = "us-central1"
+///   labels = {
+///     "label-one" = "value-one"
+///   }
+///   big_query = {
+///     big_query_source = {
+///       input_uri ="bq://${gcp_bigquery_table.sample_table.project}.${gcp_bigquery_table.sample_table.dataset_id}.${gcp_bigquery_table.sample_table.table_id}"
+///     }
+///     entity_id_columns = ["feature_id"]
+///   }
+/// }
+/// resource "gcp_bigquery_dataset" "sample_dataset" {
+///   dataset_id    = "job_load_dataset"
+///   friendly_name = "test"
+///   description   = "This is a test description"
+///   location      = "US"
+/// }
+/// resource "gcp_bigquery_table" "sample_table" {
+///   deletion_protection = false
+///   dataset_id          = gcp_bigquery_dataset.sample_dataset.dataset_id
+///   table_id            = "job_load_table"
+///   schema              = "[\n    {\n        \\\"name\\\": \\\"feature_id\\\",\n        \\\"type\\\": \\\"STRING\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    },\n    {\n        \\\"name\\\": \\\"example_feature\\\",\n        \\\"type\\\": \\\"STRING\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    },\n    {\n        \\\"name\\\": \\\"feature_timestamp\\\",\n        \\\"type\\\": \\\"TIMESTAMP\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    }\n]\n"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -319,8 +364,8 @@ import 'ai_feature_group_feature_state.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiFeatureGroupBigQueryBigQuerySourceArgs;
 /// import com.pulumi.gcp.vertex.AiFeatureGroupFeature;
 /// import com.pulumi.gcp.vertex.AiFeatureGroupFeatureArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -460,33 +505,29 @@ import 'ai_feature_group_feature_state.dart';
 /// FeatureGroupFeature can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}`
-///
 /// * `{{project}}/{{region}}/{{feature_group}}/{{name}}`
-///
 /// * `{{region}}/{{feature_group}}/{{name}}`
-///
 /// * `{{feature_group}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, FeatureGroupFeature can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{project}}/{{region}}/{{feature_group}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{region}}/{{feature_group}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default {{feature_group}}/{{name}}
 /// ```
 class AiFeatureGroupFeature extends pulumi.CustomResource {
   /// The timestamp of when the FeatureGroup was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The description of the FeatureGroup.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -495,7 +536,7 @@ class AiFeatureGroupFeature extends pulumi.CustomResource {
   late final pulumi.Output<String> featureGroup;
   /// The labels with user-defined metadata to organize your FeatureGroup.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The resource name of the Feature Group Feature.
   late final pulumi.Output<String> name;
@@ -527,6 +568,7 @@ class AiFeatureGroupFeature extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     featureGroup = registerOutput<String>('featureGroup');
@@ -563,6 +605,7 @@ class AiFeatureGroupFeature extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     featureGroup = registerOutput<String>('featureGroup');

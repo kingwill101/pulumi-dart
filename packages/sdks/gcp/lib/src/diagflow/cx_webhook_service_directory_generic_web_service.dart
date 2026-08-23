@@ -41,9 +41,9 @@ class CxWebhookServiceDirectoryGenericWebService {
   final pulumi.Input<String>? secretVersionForUsernamePassword;
   /// The HTTP request headers to send together with webhook requests. Header
   /// values are stored in SecretManager secret versions.
-  /// When the same header name is specified in both `request_headers` and
-  /// `secret_versions_for_request_headers`, the value in
-  /// `secret_versions_for_request_headers` will be used.
+  /// When the same header name is specified in both `requestHeaders` and
+  /// `secretVersionsForRequestHeaders`, the value in
+  /// `secretVersionsForRequestHeaders` will be used.
   /// Structure is documented below.
   final pulumi.Input<List<CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader>>? secretVersionsForRequestHeaders;
   /// Configuration for authentication using a service account.
@@ -122,4 +122,3 @@ class CxWebhookServiceDirectoryGenericWebService {
     );
   }
 }
-

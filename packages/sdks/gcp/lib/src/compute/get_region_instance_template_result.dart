@@ -11,6 +11,7 @@ import 'get_region_instance_template_reservation_affinity.dart';
 import 'get_region_instance_template_scheduling.dart';
 import 'get_region_instance_template_service_account.dart';
 import 'get_region_instance_template_shielded_instance_config.dart';
+import 'get_region_instance_template_workload_identity_config.dart';
 
 /// Result data returned by getRegionInstanceTemplate.
 class GetRegionInstanceTemplateResult {
@@ -22,6 +23,7 @@ class GetRegionInstanceTemplateResult {
   final List<GetRegionInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfigs;
   /// Creation timestamp in RFC3339 text format.
   final String creationTimestamp;
+  final String deletionPolicy;
   /// A brief description of this resource.
   final String description;
   /// Disks to attach to instances created from this template.
@@ -30,7 +32,7 @@ class GetRegionInstanceTemplateResult {
   final List<GetRegionInstanceTemplateDisk> disks;
   final Map<String, String> effectiveLabels;
   /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-  /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
+  /// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
   final bool enableDisplay;
   final String? filter;
   /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -53,7 +55,7 @@ class GetRegionInstanceTemplateResult {
   /// The unique fingerprint of the metadata.
   final String metadataFingerprint;
   /// An alternative to using the
-  /// startup-script metadata key, mostly to match the compute_instance resource.
+  /// startup-script metadata key, mostly to match the computeInstance resource.
   /// This replaces the startup-script metadata key on the created instance and
   /// thus the two mechanisms are not allowed to be used simultaneously.
   final String metadataStartupScript;
@@ -61,6 +63,8 @@ class GetRegionInstanceTemplateResult {
   /// `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
   final String minCpuPlatform;
   final bool? mostRecent;
+  /// The name of the instance template. If you leave
+  /// this blank, Terraform will auto-generate a unique name.
   final String? name;
   /// Creates a unique name beginning with the specified
   /// prefix. Conflicts with `name`.
@@ -91,18 +95,20 @@ class GetRegionInstanceTemplateResult {
   /// Service account to attach to the instance. Structure is documented below.
   final List<GetRegionInstanceTemplateServiceAccount> serviceAccounts;
   /// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-  /// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+  /// **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
   final List<GetRegionInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs;
   /// Tags to attach to the instance.
   final List<String> tags;
   /// The unique fingerprint of the tags.
   final String tagsFingerprint;
+  final List<GetRegionInstanceTemplateWorkloadIdentityConfig> workloadIdentityConfigs;
 
   /// Creates a new [GetRegionInstanceTemplateResult].
   /// [advancedMachineFeatures] Required.
   /// [canIpForward] Whether to allow sending and receiving of
   /// [confidentialInstanceConfigs] Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Required.
   /// [description] A brief description of this resource.
   /// [disks] Disks to attach to instances created from this template.
   /// [effectiveLabels] Required.
@@ -119,7 +125,7 @@ class GetRegionInstanceTemplateResult {
   /// [metadataStartupScript] An alternative to using the
   /// [minCpuPlatform] Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
   /// [mostRecent] Optional.
-  /// [name] Optional.
+  /// [name] The name of the instance template. If you leave
   /// [namePrefix] Creates a unique name beginning with the specified
   /// [networkInterfaces] Networks to attach to instances created from
   /// [networkPerformanceConfigs] The network performance configuration setting
@@ -137,11 +143,13 @@ class GetRegionInstanceTemplateResult {
   /// [shieldedInstanceConfigs] Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
   /// [tags] Tags to attach to the instance.
   /// [tagsFingerprint] The unique fingerprint of the tags.
+  /// [workloadIdentityConfigs] Required.
   const GetRegionInstanceTemplateResult({
     required this.advancedMachineFeatures,
     required this.canIpForward,
     required this.confidentialInstanceConfigs,
     required this.creationTimestamp,
+    required this.deletionPolicy,
     required this.description,
     required this.disks,
     required this.effectiveLabels,
@@ -176,6 +184,7 @@ class GetRegionInstanceTemplateResult {
     required this.shieldedInstanceConfigs,
     required this.tags,
     required this.tagsFingerprint,
+    required this.workloadIdentityConfigs,
   });
 
   Map<String, dynamic> toMap() {
@@ -184,6 +193,7 @@ class GetRegionInstanceTemplateResult {
       'canIpForward': canIpForward,
       'confidentialInstanceConfigs': pulumi.Input.encodeList<GetRegionInstanceTemplateConfidentialInstanceConfig, Map<String, dynamic>>(confidentialInstanceConfigs, (value) => value.toMap()),
       'creationTimestamp': creationTimestamp,
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'disks': pulumi.Input.encodeList<GetRegionInstanceTemplateDisk, Map<String, dynamic>>(disks, (value) => value.toMap()),
       'effectiveLabels': effectiveLabels,
@@ -218,6 +228,7 @@ class GetRegionInstanceTemplateResult {
       'shieldedInstanceConfigs': pulumi.Input.encodeList<GetRegionInstanceTemplateShieldedInstanceConfig, Map<String, dynamic>>(shieldedInstanceConfigs, (value) => value.toMap()),
       'tags': tags,
       'tagsFingerprint': tagsFingerprint,
+      'workloadIdentityConfigs': pulumi.Input.encodeList<GetRegionInstanceTemplateWorkloadIdentityConfig, Map<String, dynamic>>(workloadIdentityConfigs, (value) => value.toMap()),
     };
   }
 
@@ -227,6 +238,7 @@ class GetRegionInstanceTemplateResult {
       canIpForward: map['canIpForward'] as bool,
       confidentialInstanceConfigs: pulumi.Input.decodeList<GetRegionInstanceTemplateConfidentialInstanceConfig>(map['confidentialInstanceConfigs']!, (value) => GetRegionInstanceTemplateConfidentialInstanceConfig.fromMap((value as Map).cast<String, dynamic>())),
       creationTimestamp: map['creationTimestamp'] as String,
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       disks: pulumi.Input.decodeList<GetRegionInstanceTemplateDisk>(map['disks']!, (value) => GetRegionInstanceTemplateDisk.fromMap((value as Map).cast<String, dynamic>())),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
@@ -261,7 +273,7 @@ class GetRegionInstanceTemplateResult {
       shieldedInstanceConfigs: pulumi.Input.decodeList<GetRegionInstanceTemplateShieldedInstanceConfig>(map['shieldedInstanceConfigs']!, (value) => GetRegionInstanceTemplateShieldedInstanceConfig.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as List).cast<String>(),
       tagsFingerprint: map['tagsFingerprint'] as String,
+      workloadIdentityConfigs: pulumi.Input.decodeList<GetRegionInstanceTemplateWorkloadIdentityConfig>(map['workloadIdentityConfigs']!, (value) => GetRegionInstanceTemplateWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }
-

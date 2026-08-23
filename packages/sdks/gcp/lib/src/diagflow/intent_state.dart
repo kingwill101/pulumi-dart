@@ -12,6 +12,13 @@ class IntentState {
   /// (i.e. default platform).
   /// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
   final pulumi.Input<List<String>>? defaultResponsePlatforms;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The name of this intent to be displayed on the console.
   final pulumi.Input<String>? displayName;
   /// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
@@ -61,6 +68,7 @@ class IntentState {
   /// Creates a new [IntentState].
   /// [action] The name of the action associated with the intent.
   /// [defaultResponsePlatforms] The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The name of this intent to be displayed on the console.
   /// [events] The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
   /// [followupIntentInfos] Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
@@ -77,6 +85,7 @@ class IntentState {
   const IntentState({
     this.action,
     this.defaultResponsePlatforms,
+    this.deletionPolicy,
     this.displayName,
     this.events,
     this.followupIntentInfos,
@@ -96,6 +105,7 @@ class IntentState {
     return <String, dynamic>{
       'action': ?action,
       'defaultResponsePlatforms': ?defaultResponsePlatforms,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'events': ?events,
       'followupIntentInfos': ?pulumi.Input.mapOptionalInputValue<List<IntentFollowupIntentInfo>, List<Map<String, dynamic>>>(followupIntentInfos, (value) => pulumi.Input.encodeList<IntentFollowupIntentInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -116,6 +126,7 @@ class IntentState {
     return IntentState(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultResponsePlatforms: (() { final guardedValue = map['defaultResponsePlatforms']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       events: (() { final guardedValue = map['events']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       followupIntentInfos: (() { final guardedValue = map['followupIntentInfos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IntentFollowupIntentInfo>(guardedValue, (value) => IntentFollowupIntentInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -132,4 +143,3 @@ class IntentState {
     );
   }
 }
-

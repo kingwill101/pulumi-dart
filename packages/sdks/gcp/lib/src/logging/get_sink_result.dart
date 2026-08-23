@@ -8,6 +8,7 @@ import 'get_sink_exclusion.dart';
 class GetSinkResult {
   /// Options that affect sinks exporting data to BigQuery. Structure is documented below.
   final List<GetSinkBigqueryOption> bigqueryOptions;
+  final String deletionPolicy;
   /// A description of this exclusion.
   final String description;
   /// The destination of the sink (or, in other words, where logs are written to).
@@ -26,6 +27,7 @@ class GetSinkResult {
 
   /// Creates a new [GetSinkResult].
   /// [bigqueryOptions] Options that affect sinks exporting data to BigQuery. Structure is documented below.
+  /// [deletionPolicy] Required.
   /// [description] A description of this exclusion.
   /// [destination] The destination of the sink (or, in other words, where logs are written to).
   /// [disabled] Whether this exclusion is disabled and it does not exclude any log entries.
@@ -36,6 +38,7 @@ class GetSinkResult {
   /// [writerIdentity] The identity associated with this sink. This identity must be granted write access to the configured `destination`.
   const GetSinkResult({
     required this.bigqueryOptions,
+    required this.deletionPolicy,
     required this.description,
     required this.destination,
     required this.disabled,
@@ -49,6 +52,7 @@ class GetSinkResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bigqueryOptions': pulumi.Input.encodeList<GetSinkBigqueryOption, Map<String, dynamic>>(bigqueryOptions, (value) => value.toMap()),
+      'deletionPolicy': deletionPolicy,
       'description': description,
       'destination': destination,
       'disabled': disabled,
@@ -63,6 +67,7 @@ class GetSinkResult {
   factory GetSinkResult.fromMap(Map<String, dynamic> map) {
     return GetSinkResult(
       bigqueryOptions: pulumi.Input.decodeList<GetSinkBigqueryOption>(map['bigqueryOptions']!, (value) => GetSinkBigqueryOption.fromMap((value as Map).cast<String, dynamic>())),
+      deletionPolicy: map['deletionPolicy'] as String,
       description: map['description'] as String,
       destination: map['destination'] as String,
       disabled: map['disabled'] as bool,
@@ -74,4 +79,3 @@ class GetSinkResult {
     );
   }
 }
-

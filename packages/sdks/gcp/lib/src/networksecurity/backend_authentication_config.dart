@@ -86,6 +86,24 @@ import 'backend_authentication_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_networksecurity_backendauthenticationconfig" "default" {
+///   name = "my-backend-authentication-config"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   description      = "my description"
+///   well_known_roots = "PUBLIC_ROOTS"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -94,8 +112,8 @@ import 'backend_authentication_config_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.networksecurity.BackendAuthenticationConfig;
 /// import com.pulumi.gcp.networksecurity.BackendAuthenticationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -396,14 +414,66 @@ import 'backend_authentication_config_state.dart';
 /// 			Location:          pulumi.String("global"),
 /// 			Description:       pulumi.String("my description"),
 /// 			WellKnownRoots:    pulumi.String("PUBLIC_ROOTS"),
-/// 			ClientCertificate: certificate.ID(),
-/// 			TrustConfig:       trustConfig.ID(),
+/// 			ClientCertificate: certificate.ID().ToIDOutput().ToStringOutput(),
+/// 			TrustConfig:       trustConfig.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificate" "certificate" {
+///   name = "my-certificate"
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   location = "global"
+///   self_managed = {
+///     pem_certificate = file("test-fixtures/cert.pem")
+///     pem_private_key = file("test-fixtures/key.pem")
+///   }
+///   scope = "CLIENT_AUTH"
+/// }
+/// resource "gcp_certificatemanager_trustconfig" "trust_config" {
+///   name        = "my-trust-config"
+///   description = "sample description for the trust config"
+///   location    = "global"
+///   trust_stores {
+///     trust_anchors {
+///       pem_certificate = file("test-fixtures/cert.pem")
+///     }
+///     intermediate_cas {
+///       pem_certificate = file("test-fixtures/cert.pem")
+///     }
+///   }
+///   labels = {
+///     "foo" = "bar"
+///   }
+/// }
+/// resource "gcp_networksecurity_backendauthenticationconfig" "default" {
+///   name = "my-backend-authentication-config"
+///   labels = {
+///     "bar" = "foo"
+///   }
+///   location           = "global"
+///   description        = "my description"
+///   well_known_roots   = "PUBLIC_ROOTS"
+///   client_certificate = gcp_certificatemanager_certificate.certificate.id
+///   trust_config       = gcp_certificatemanager_trustconfig.trust_config.id
 /// }
 /// ```
 /// ```java
@@ -420,10 +490,12 @@ import 'backend_authentication_config_state.dart';
 /// import com.pulumi.gcp.certificatemanager.TrustConfig;
 /// import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
 /// import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
+/// import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreTrustAnchorArgs;
+/// import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreIntermediateCaArgs;
 /// import com.pulumi.gcp.networksecurity.BackendAuthenticationConfig;
 /// import com.pulumi.gcp.networksecurity.BackendAuthenticationConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -689,7 +761,7 @@ import 'backend_authentication_config_state.dart';
 /// 		}
 /// 		_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 /// 			Name:                pulumi.String("backend-service"),
-/// 			HealthChecks:        defaultHealthCheck.ID(),
+/// 			HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 			LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 /// 			Protocol:            pulumi.String("HTTPS"),
 /// 			TlsSettings: &compute.BackendServiceTlsSettingsArgs{
@@ -702,7 +774,7 @@ import 'backend_authentication_config_state.dart';
 /// 						UniformResourceIdentifier: pulumi.String("https://example.com"),
 /// 					},
 /// 				},
-/// 				AuthenticationConfig: defaultBackendAuthenticationConfig.ID().ApplyT(func(id string) (string, error) {
+/// 				AuthenticationConfig: defaultBackendAuthenticationConfig.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 					return fmt.Sprintf("//networksecurity.googleapis.com/%v", id), nil
 /// 				}).(pulumi.StringOutput),
 /// 			},
@@ -712,6 +784,41 @@ import 'backend_authentication_config_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_backendservice" "default" {
+///   name                  = "backend-service"
+///   health_checks         = gcp_compute_healthcheck.default.id
+///   load_balancing_scheme = "EXTERNAL_MANAGED"
+///   protocol              = "HTTPS"
+///   tls_settings = {
+///     sni = "example.com"
+///     subject_alt_names = [{
+///       "dnsName" = "example.com"
+///       }, {
+///       "uniformResourceIdentifier" = "https://example.com"
+///     }]
+///     authentication_config ="//networksecurity.googleapis.com/${gcp_networksecurity_backendauthenticationconfig.default.id}"
+///   }
+/// }
+/// resource "gcp_compute_healthcheck" "default" {
+///   name = "health-check"
+///   http_health_check = {
+///     port = 80
+///   }
+/// }
+/// resource "gcp_networksecurity_backendauthenticationconfig" "default" {
+///   name             = "authentication"
+///   well_known_roots = "PUBLIC_ROOTS"
 /// }
 /// ```
 /// ```java
@@ -728,8 +835,9 @@ import 'backend_authentication_config_state.dart';
 /// import com.pulumi.gcp.compute.BackendService;
 /// import com.pulumi.gcp.compute.BackendServiceArgs;
 /// import com.pulumi.gcp.compute.inputs.BackendServiceTlsSettingsArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.BackendServiceTlsSettingsSubjectAltNameArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -810,22 +918,15 @@ import 'backend_authentication_config_state.dart';
 /// BackendAuthenticationConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/backendAuthenticationConfigs/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, BackendAuthenticationConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig default projects/{{project}}/locations/{{location}}/backendAuthenticationConfigs/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networksecurity/backendAuthenticationConfig:BackendAuthenticationConfig default {{location}}/{{name}}
 /// ```
 class BackendAuthenticationConfig extends pulumi.CustomResource {
@@ -834,13 +935,20 @@ class BackendAuthenticationConfig extends pulumi.CustomResource {
   late final pulumi.Output<String?> clientCertificate;
   /// Time the BackendAuthenticationConfig was created in UTC.
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Set of label tags associated with the BackendAuthenticationConfig resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// The location of the backend authentication config.
   /// The default value is `global`.
@@ -880,6 +988,7 @@ class BackendAuthenticationConfig extends pulumi.CustomResource {
         ) {
     clientCertificate = registerOutput<String?>('clientCertificate');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');
@@ -917,6 +1026,7 @@ class BackendAuthenticationConfig extends pulumi.CustomResource {
         ) {
     clientCertificate = registerOutput<String?>('clientCertificate');
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     labels = registerOutput<Map<String, String>?>('labels');

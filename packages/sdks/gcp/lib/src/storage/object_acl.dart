@@ -134,6 +134,30 @@ import 'object_aclstate.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_storage_bucket" "image-store" {
+///   name     = "image-store-bucket"
+///   location = "EU"
+/// }
+/// resource "gcp_storage_bucketobject" "image" {
+///   name   = "image1"
+///   bucket = gcp_storage_bucket.image-store.name
+///   source = fileAsset("image1.jpg")
+/// }
+/// resource "gcp_storage_objectacl" "image-store-acl" {
+///   bucket        = gcp_storage_bucket.image-store.name
+///   object        = gcp_storage_bucketobject.image.output_name
+///   role_entities = ["OWNER:user-my.email@gmail.com", "READER:group-mygroup"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -147,8 +171,8 @@ import 'object_aclstate.dart';
 /// import com.pulumi.gcp.storage.ObjectACL;
 /// import com.pulumi.gcp.storage.ObjectACLArgs;
 /// import com.pulumi.asset.FileAsset;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,7 +219,7 @@ import 'object_aclstate.dart';
 ///       name: image1
 ///       bucket: ${["image-store"].name}
 ///       source:
-///         fn::FileAsset: image1.jpg
+///         fn::fileAsset: image1.jpg
 ///   image-store-acl:
 ///     type: gcp:storage:ObjectACL
 ///     properties:
@@ -213,14 +237,25 @@ import 'object_aclstate.dart';
 class ObjectACL extends pulumi.CustomResource {
   /// The name of the bucket the object is stored in.
   late final pulumi.Output<String> bucket;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The name of the object to apply the acl to.
   ///
   /// - - -
   late final pulumi.Output<String> object_;
-  /// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
+  /// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
   late final pulumi.Output<String?> predefinedAcl;
   /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-  /// Must be set if `predefined_acl` is not.
+  /// Must be set if `predefinedAcl` is not.
+  ///
+  /// &gt; The object's creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+  /// adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+  /// `Create` time, where the object role/entity pair is omitted if not explicitly set.
   late final pulumi.Output<List<String>> roleEntities;
 
   /// Creates a new [ObjectACL].
@@ -238,6 +273,7 @@ class ObjectACL extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucket = registerOutput<String>('bucket');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     object_ = registerOutput<String>('object');
     predefinedAcl = registerOutput<String?>('predefinedAcl');
     roleEntities = registerOutput<List<String>>('roleEntities');
@@ -267,6 +303,7 @@ class ObjectACL extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucket = registerOutput<String>('bucket');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     object_ = registerOutput<String>('object');
     predefinedAcl = registerOutput<String?>('predefinedAcl');
     roleEntities = registerOutput<List<String>>('roleEntities');

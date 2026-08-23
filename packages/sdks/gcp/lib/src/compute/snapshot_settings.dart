@@ -96,6 +96,25 @@ import 'snapshot_settings_storage_location.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_snapshotsettings" "tf-test-snapshot-settings" {
+///   storage_location = {
+///     policy = "SPECIFIC_LOCATIONS"
+///     locations = [{
+///       "name"     = "us-central1"
+///       "location" = "us-central1"
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +124,9 @@ import 'snapshot_settings_storage_location.dart';
 /// import com.pulumi.gcp.compute.SnapshotSettings;
 /// import com.pulumi.gcp.compute.SnapshotSettingsArgs;
 /// import com.pulumi.gcp.compute.inputs.SnapshotSettingsStorageLocationArgs;
-/// import java.util.List;
+/// import com.pulumi.gcp.compute.inputs.SnapshotSettingsStorageLocationLocationArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -149,16 +169,13 @@ import 'snapshot_settings_storage_location.dart';
 /// SnapshotSettings can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/global/snapshotSettings/`
-///
 /// * `{{project}}`
+///
 ///
 /// When using the `pulumi import` command, SnapshotSettings can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:compute/snapshotSettings:SnapshotSettings default projects/{{project}}/global/snapshotSettings/
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:compute/snapshotSettings:SnapshotSettings default {{project}}
 /// ```
 class SnapshotSettings extends pulumi.CustomResource {

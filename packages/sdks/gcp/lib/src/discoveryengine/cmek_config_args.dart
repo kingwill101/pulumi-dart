@@ -10,6 +10,13 @@ import 'cmek_config_single_region_key.dart';
 class CmekConfigArgs {
   /// The unique id of the cmek config.
   final pulumi.Input<String> cmekConfigId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// KMS key resource name which will be used to encrypt resources
   /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
   final pulumi.Input<String> kmsKey;
@@ -28,6 +35,7 @@ class CmekConfigArgs {
 
   /// Creates a new [CmekConfigArgs].
   /// [cmekConfigId] The unique id of the cmek config.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [kmsKey] KMS key resource name which will be used to encrypt resources
   /// [location] The geographic location where the CMEK config should reside. The value can
   /// [project] The ID of the project in which the resource belongs.
@@ -35,6 +43,7 @@ class CmekConfigArgs {
   /// [singleRegionKeys] Single-regional CMEKs that are required for some VAIS features.
   const CmekConfigArgs({
     required this.cmekConfigId,
+    this.deletionPolicy,
     required this.kmsKey,
     required this.location,
     this.project,
@@ -45,6 +54,7 @@ class CmekConfigArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cmekConfigId': cmekConfigId,
+      'deletionPolicy': ?deletionPolicy,
       'kmsKey': kmsKey,
       'location': location,
       'project': ?project,
@@ -56,6 +66,7 @@ class CmekConfigArgs {
   factory CmekConfigArgs.fromMap(Map<String, dynamic> map) {
     return CmekConfigArgs(
       cmekConfigId: pulumi.Input.fromValue(map['cmekConfigId'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kmsKey: pulumi.Input.fromValue(map['kmsKey'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -64,4 +75,3 @@ class CmekConfigArgs {
     );
   }
 }
-

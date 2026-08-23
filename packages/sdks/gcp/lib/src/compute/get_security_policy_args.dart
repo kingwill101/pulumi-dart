@@ -7,17 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_get_security_policy_get_security_policy_args_doc}
 class GetSecurityPolicyArgs {
-  /// The name of the security policy. Provide either this or a `self_link`.
+  /// The name of the security policy. Provide either this or a `selfLink`.
   final pulumi.Input<String>? name;
   /// The project in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
-  /// The self_link of the security policy. Provide either this or a `name`
+  /// The selfLink of the security policy. Provide either this or a `name`
   final pulumi.Input<String>? selfLink;
 
   /// Creates a new [GetSecurityPolicyArgs].
-  /// [name] The name of the security policy. Provide either this or a `self_link`.
+  /// [name] The name of the security policy. Provide either this or a `selfLink`.
   /// [project] The project in which the resource belongs. If it is not provided, the provider project is used.
-  /// [selfLink] The self_link of the security policy. Provide either this or a `name`
+  /// [selfLink] The selfLink of the security policy. Provide either this or a `name`
   const GetSecurityPolicyArgs({
     this.name,
     this.project,
@@ -40,4 +40,3 @@ class GetSecurityPolicyArgs {
     );
   }
 }
-

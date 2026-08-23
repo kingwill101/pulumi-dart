@@ -61,4 +61,3 @@ class AppCheckRecaptchaV3ConfigState {
     );
   }
 }
-

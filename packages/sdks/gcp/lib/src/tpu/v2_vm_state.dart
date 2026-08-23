@@ -12,12 +12,12 @@ import 'v2_vm_symptom.dart';
 
 /// Input properties used for looking up and filtering V2Vm resources.
 class V2VmState {
-  /// The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
-  /// as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
+  /// The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time
+  /// as `acceleratorType`. If neither is specified, `acceleratorType` defaults to 'v2-8'.
   /// Structure is documented below.
   final pulumi.Input<V2VmAcceleratorConfig>? acceleratorConfig;
-  /// TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
-  /// `accelerator_config`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
+  /// TPU accelerator type for the TPU. `acceleratorType` cannot be used at the same time as
+  /// `acceleratorConfig`. If neither is specified, `acceleratorType` defaults to 'v2-8'.
   final pulumi.Input<String>? acceleratorType;
   /// The API version that created this Node.
   final pulumi.Input<String>? apiVersion;
@@ -31,6 +31,13 @@ class V2VmState {
   /// The additional data disks for the Node.
   /// Structure is documented below.
   final pulumi.Input<List<V2VmDataDisk>>? dataDisks;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Text description of the TPU.
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -41,7 +48,7 @@ class V2VmState {
   final pulumi.Input<String>? healthDescription;
   /// Resource labels to represent user-provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
   final pulumi.Input<Map<String, String>>? metadata;
@@ -91,11 +98,12 @@ class V2VmState {
   final pulumi.Input<String>? zone;
 
   /// Creates a new [V2VmState].
-  /// [acceleratorConfig] The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
-  /// [acceleratorType] TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
+  /// [acceleratorConfig] The AccleratorConfig for the TPU Node. `acceleratorConfig` cannot be used at the same time
+  /// [acceleratorType] TPU accelerator type for the TPU. `acceleratorType` cannot be used at the same time as
   /// [apiVersion] The API version that created this Node.
   /// [cidrBlock] The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
   /// [dataDisks] The additional data disks for the Node.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Text description of the TPU.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [health] The health status of the TPU node.
@@ -124,6 +132,7 @@ class V2VmState {
     this.apiVersion,
     this.cidrBlock,
     this.dataDisks,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.health,
@@ -155,6 +164,7 @@ class V2VmState {
       'apiVersion': ?apiVersion,
       'cidrBlock': ?cidrBlock,
       'dataDisks': ?pulumi.Input.mapOptionalInputValue<List<V2VmDataDisk>, List<Map<String, dynamic>>>(dataDisks, (value) => pulumi.Input.encodeList<V2VmDataDisk, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'health': ?health,
@@ -187,6 +197,7 @@ class V2VmState {
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cidrBlock: (() { final guardedValue = map['cidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataDisks: (() { final guardedValue = map['dataDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2VmDataDisk>(guardedValue, (value) => V2VmDataDisk.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       health: (() { final guardedValue = map['health']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -212,4 +223,3 @@ class V2VmState {
     );
   }
 }
-

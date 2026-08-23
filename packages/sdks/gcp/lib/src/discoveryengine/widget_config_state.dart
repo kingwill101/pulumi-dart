@@ -13,6 +13,8 @@ class WidgetConfigState {
   final pulumi.Input<WidgetConfigAccessSettings>? accessSettings;
   /// The collection ID.
   final pulumi.Input<String>? collectionId;
+  /// Output only. Unique obfuscated identifier of a WidgetConfig.
+  final pulumi.Input<String>? configId;
   /// The engine ID.
   final pulumi.Input<String>? engineId;
   /// Describes the homepage setting of the widget. It includes all homepage related settings
@@ -35,12 +37,13 @@ class WidgetConfigState {
   /// Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
   /// Structure is documented below.
   final pulumi.Input<WidgetConfigUiSettings>? uiSettings;
-  /// The unique ID to use for the WidgetConfig. Currently only accepts "default_search_widget_config".
+  /// The unique ID to use for the WidgetConfig. Currently only accepts "defaultSearchWidgetConfig".
   final pulumi.Input<String>? widgetConfigId;
 
   /// Creates a new [WidgetConfigState].
   /// [accessSettings] Describes widget access settings.
   /// [collectionId] The collection ID.
+  /// [configId] Output only. Unique obfuscated identifier of a WidgetConfig.
   /// [engineId] The engine ID.
   /// [homepageSetting] Describes the homepage setting of the widget. It includes all homepage related settings
   /// [location] The geographic location where the data store should reside. The value can
@@ -48,10 +51,11 @@ class WidgetConfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [uiBranding] Describes search widget UI branding settings, such as the widget title, logo,
   /// [uiSettings] Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
-  /// [widgetConfigId] The unique ID to use for the WidgetConfig. Currently only accepts "default_search_widget_config".
+  /// [widgetConfigId] The unique ID to use for the WidgetConfig. Currently only accepts "defaultSearchWidgetConfig".
   const WidgetConfigState({
     this.accessSettings,
     this.collectionId,
+    this.configId,
     this.engineId,
     this.homepageSetting,
     this.location,
@@ -66,6 +70,7 @@ class WidgetConfigState {
     return <String, dynamic>{
       'accessSettings': ?pulumi.Input.mapOptionalInputValue<WidgetConfigAccessSettings, Map<String, dynamic>>(accessSettings, (value) => value.toMap()),
       'collectionId': ?collectionId,
+      'configId': ?configId,
       'engineId': ?engineId,
       'homepageSetting': ?pulumi.Input.mapOptionalInputValue<WidgetConfigHomepageSetting, Map<String, dynamic>>(homepageSetting, (value) => value.toMap()),
       'location': ?location,
@@ -81,6 +86,7 @@ class WidgetConfigState {
     return WidgetConfigState(
       accessSettings: (() { final guardedValue = map['accessSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WidgetConfigAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       collectionId: (() { final guardedValue = map['collectionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      configId: (() { final guardedValue = map['configId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       engineId: (() { final guardedValue = map['engineId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       homepageSetting: (() { final guardedValue = map['homepageSetting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WidgetConfigHomepageSetting.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -92,4 +98,3 @@ class WidgetConfigState {
     );
   }
 }
-

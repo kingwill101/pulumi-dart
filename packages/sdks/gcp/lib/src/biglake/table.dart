@@ -276,7 +276,7 @@ import 'table_state.dart';
 /// 		}
 /// 		database, err := biglake.NewDatabase(ctx, "database", &biglake.DatabaseArgs{
 /// 			Name:    pulumi.String("my_database"),
-/// 			Catalog: catalog.ID(),
+/// 			Catalog: catalog.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:    pulumi.String("HIVE"),
 /// 			HiveOptions: &biglake.DatabaseHiveOptionsArgs{
 /// 				LocationUri: pulumi.All(bucket.Name, metadataFolder.Name).ApplyT(func(_args []interface{}) (string, error) {
@@ -294,7 +294,7 @@ import 'table_state.dart';
 /// 		}
 /// 		_, err = biglake.NewTable(ctx, "table", &biglake.TableArgs{
 /// 			Name:     pulumi.String("my_table"),
-/// 			Database: database.ID(),
+/// 			Database: database.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:     pulumi.String("HIVE"),
 /// 			HiveOptions: &biglake.TableHiveOptionsArgs{
 /// 				TableType: pulumi.String("MANAGED_TABLE"),
@@ -326,6 +326,70 @@ import 'table_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_biglake_catalog" "catalog" {
+///   name     = "my_catalog"
+///   location = "US"
+/// }
+/// resource "gcp_storage_bucket" "bucket" {
+///   name                        = "my_bucket"
+///   location                    = "US"
+///   force_destroy               = true
+///   uniform_bucket_level_access = true
+/// }
+/// resource "gcp_storage_bucketobject" "metadata_folder" {
+///   name    = "metadata/"
+///   content = " "
+///   bucket  = gcp_storage_bucket.bucket.name
+/// }
+/// resource "gcp_storage_bucketobject" "data_folder" {
+///   name    = "data/"
+///   content = " "
+///   bucket  = gcp_storage_bucket.bucket.name
+/// }
+/// resource "gcp_biglake_database" "database" {
+///   name    = "my_database"
+///   catalog = gcp_biglake_catalog.catalog.id
+///   type    = "HIVE"
+///   hive_options = {
+///     location_uri ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.metadata_folder.name}"
+///     parameters = {
+///       "owner" = "Alex"
+///     }
+///   }
+/// }
+/// resource "gcp_biglake_table" "table" {
+///   name     = "my_table"
+///   database = gcp_biglake_database.database.id
+///   type     = "HIVE"
+///   hive_options = {
+///     table_type = "MANAGED_TABLE"
+///     storage_descriptor = {
+///       location_uri  ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.data_folder.name}"
+///       input_format  = "org.apache.hadoop.mapred.SequenceFileInputFormat"
+///       output_format = "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat"
+///     }
+///     parameters = {
+///       "spark.sql.create.version"          = "3.1.3"
+///       "spark.sql.sources.schema.numParts" = "1"
+///       "transient_lastDdlTime"             = "1680894197"
+///       "spark.sql.partitionProvider"       = "catalog"
+///       "owner"                             = "John Doe"
+///       "spark.sql.sources.schema.part.0"   = "{\"type\":\"struct\",\"fields\":[{\"name\":\"id\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"name\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"age\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}]}"
+///       "spark.sql.sources.provider"        = "iceberg"
+///       "provider"                          = "iceberg"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -345,8 +409,8 @@ import 'table_state.dart';
 /// import com.pulumi.gcp.biglake.TableArgs;
 /// import com.pulumi.gcp.biglake.inputs.TableHiveOptionsArgs;
 /// import com.pulumi.gcp.biglake.inputs.TableHiveOptionsStorageDescriptorArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -495,6 +559,7 @@ import 'table_state.dart';
 ///
 /// * `{{database}}/tables/{{name}}`
 ///
+///
 /// When using the `pulumi import` command, Table can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -513,6 +578,13 @@ class Table extends pulumi.CustomResource {
   /// nanosecond resolution and up to nine fractional digits. Examples:
   /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> deleteTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The checksum of a table object computed by the server based on the value
   /// of other fields. It may be sent on update requests to ensure the client
   /// has an up-to-date value before proceeding. It is only checked for update
@@ -555,6 +627,7 @@ class Table extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String?>('database');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
     hiveOptions = registerOutput<TableHiveOptions?>('hiveOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableHiveOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -589,6 +662,7 @@ class Table extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     database = registerOutput<String?>('database');
     deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
     hiveOptions = registerOutput<TableHiveOptions?>('hiveOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableHiveOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

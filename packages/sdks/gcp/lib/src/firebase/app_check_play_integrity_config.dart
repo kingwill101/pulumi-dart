@@ -3,7 +3,7 @@ import 'app_check_play_integrity_config_args.dart';
 import 'app_check_play_integrity_config_state.dart';
 
 /// An app's Play Integrity configuration object. Note that your registered SHA-256 certificate fingerprints are used to validate tokens issued by the Play Integrity API.
-/// Make sure your `gcp.firebase.AndroidApp` has at least one `sha256_hashes` present.
+/// Make sure your `gcp.firebase.AndroidApp` has at least one `sha256Hashes` present.
 ///
 ///
 /// To get more information about PlayIntegrityConfig, see:
@@ -186,6 +186,42 @@ import 'app_check_play_integrity_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// # Enables the Play Integrity API
+/// resource "gcp_projects_service" "play_integrity" {
+///   project = "my-project-name"
+///   service = "playintegrity.googleapis.com"
+/// }
+/// resource "gcp_firebase_androidapp" "default" {
+///   project       = "my-project-name"
+///   display_name  = "Play Integrity app"
+///   package_name  = "package.name.playintegrity"
+///   sha1_hashes   = ["2145bdf698b8715039bd0e83f2069bed435ac21c"]
+///   sha256_hashes = ["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"]
+/// }
+/// # It takes a while for App Check to recognize the new app
+/// # If your app already exists, you don't have to wait 30 seconds.
+/// resource "time_sleep" "wait_30s" {
+///   depends_on      = [gcp_firebase_androidapp.default]
+///   create_duration = "30s"
+/// }
+/// resource "gcp_firebase_appcheckplayintegrityconfig" "default" {
+///   depends_on = [time_sleep.wait_30s]
+///   project    = "my-project-name"
+///   app_id     = gcp_firebase_androidapp.default.app_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -201,8 +237,8 @@ import 'app_check_play_integrity_config_state.dart';
 /// import com.pulumi.gcp.firebase.AppCheckPlayIntegrityConfig;
 /// import com.pulumi.gcp.firebase.AppCheckPlayIntegrityConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -462,6 +498,43 @@ import 'app_check_play_integrity_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// # Enables the Play Integrity API
+/// resource "gcp_projects_service" "play_integrity" {
+///   project = "my-project-name"
+///   service = "playintegrity.googleapis.com"
+/// }
+/// resource "gcp_firebase_androidapp" "default" {
+///   project       = "my-project-name"
+///   display_name  = "Play Integrity app"
+///   package_name  = "package.name.playintegrity"
+///   sha1_hashes   = ["2145bdf698b8715039bd0e83f2069bed435ac21c"]
+///   sha256_hashes = ["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"]
+/// }
+/// # It takes a while for App Check to recognize the new app
+/// # If your app already exists, you don't have to wait 30 seconds.
+/// resource "time_sleep" "wait_30s" {
+///   depends_on      = [gcp_firebase_androidapp.default]
+///   create_duration = "30s"
+/// }
+/// resource "gcp_firebase_appcheckplayintegrityconfig" "default" {
+///   depends_on = [time_sleep.wait_30s]
+///   project    = "my-project-name"
+///   app_id     = gcp_firebase_androidapp.default.app_id
+///   token_ttl  = "7200s"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -477,8 +550,8 @@ import 'app_check_play_integrity_config_state.dart';
 /// import com.pulumi.gcp.firebase.AppCheckPlayIntegrityConfig;
 /// import com.pulumi.gcp.firebase.AppCheckPlayIntegrityConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -570,22 +643,15 @@ import 'app_check_play_integrity_config_state.dart';
 /// PlayIntegrityConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/apps/{{app_id}}/playIntegrityConfig`
-///
 /// * `{{project}}/{{app_id}}`
-///
 /// * `{{app_id}}`
+///
 ///
 /// When using the `pulumi import` command, PlayIntegrityConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig default projects/{{project}}/apps/{{app_id}}/playIntegrityConfig
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig default {{project}}/{{app_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig default {{app_id}}
 /// ```
 class AppCheckPlayIntegrityConfig extends pulumi.CustomResource {

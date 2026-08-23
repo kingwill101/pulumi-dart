@@ -18,25 +18,25 @@ import 'lb_traffic_extension_state.dart';
 /// LbTrafficExtension can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/lbTrafficExtensions/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, LbTrafficExtension can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:networkservices/lbTrafficExtension:LbTrafficExtension default projects/{{project}}/locations/{{location}}/lbTrafficExtensions/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/lbTrafficExtension:LbTrafficExtension default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:networkservices/lbTrafficExtension:LbTrafficExtension default {{location}}/{{name}}
 /// ```
 class LbTrafficExtension extends pulumi.CustomResource {
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// A human-readable description of the resource.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -53,7 +53,7 @@ class LbTrafficExtension extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> forwardingRules;
   /// Set of labels associated with the LbTrafficExtension resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
   /// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
@@ -85,6 +85,7 @@ class LbTrafficExtension extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     extensionChains = registerOutput<List<Map<String, dynamic>>>('extensionChains');
@@ -120,6 +121,7 @@ class LbTrafficExtension extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     extensionChains = registerOutput<List<Map<String, dynamic>>>('extensionChains');

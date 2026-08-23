@@ -66,6 +66,21 @@ import 'get_squota_infos_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudquota_getsquotainfo" "myQuotaInfo" {
+///   parent   = "projects/my-project"
+///   service  = "compute.googleapis.com"
+///   quota_id = "CPUS-per-project-region"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +89,8 @@ import 'get_squota_infos_result.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudquota.CloudquotaFunctions;
 /// import com.pulumi.gcp.cloudquota.inputs.GetSQuotaInfoArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -179,6 +194,20 @@ Future<GetSQuotaInfoResult> getSQuotaInfo(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_cloudquota_getsquotainfos" "myQuotaInfos" {
+///   parent  = "projects/my-project"
+///   service = "compute.googleapis.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +216,8 @@ Future<GetSQuotaInfoResult> getSQuotaInfo(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.cloudquota.CloudquotaFunctions;
 /// import com.pulumi.gcp.cloudquota.inputs.GetSQuotaInfosArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

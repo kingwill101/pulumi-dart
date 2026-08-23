@@ -93,7 +93,7 @@ import 'policy_tag_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datacatalog.NewPolicyTag(ctx, "basic_policy_tag", &datacatalog.PolicyTagArgs{
-/// 			Taxonomy:    myTaxonomy.ID(),
+/// 			Taxonomy:    myTaxonomy.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("Low security"),
 /// 			Description: pulumi.String("A policy tag normally associated with low security items"),
 /// 		})
@@ -102,6 +102,26 @@ import 'policy_tag_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_policytag" "basic_policy_tag" {
+///   taxonomy     = gcp_datacatalog_taxonomy.my_taxonomy.id
+///   display_name = "Low security"
+///   description  = "A policy tag normally associated with low security items"
+/// }
+/// resource "gcp_datacatalog_taxonomy" "my_taxonomy" {
+///   display_name           = "taxonomy_display_name"
+///   description            = "A collection of policy tags"
+///   activated_policy_types = ["FINE_GRAINED_ACCESS_CONTROL"]
 /// }
 /// ```
 /// ```java
@@ -114,8 +134,8 @@ import 'policy_tag_state.dart';
 /// import com.pulumi.gcp.datacatalog.TaxonomyArgs;
 /// import com.pulumi.gcp.datacatalog.PolicyTag;
 /// import com.pulumi.gcp.datacatalog.PolicyTagArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -288,7 +308,7 @@ import 'policy_tag_state.dart';
 /// 			return err
 /// 		}
 /// 		parentPolicy, err := datacatalog.NewPolicyTag(ctx, "parent_policy", &datacatalog.PolicyTagArgs{
-/// 			Taxonomy:    myTaxonomy.ID(),
+/// 			Taxonomy:    myTaxonomy.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("High"),
 /// 			Description: pulumi.String("A policy tag category used for high security access"),
 /// 		})
@@ -296,19 +316,19 @@ import 'policy_tag_state.dart';
 /// 			return err
 /// 		}
 /// 		childPolicy, err := datacatalog.NewPolicyTag(ctx, "child_policy", &datacatalog.PolicyTagArgs{
-/// 			Taxonomy:        myTaxonomy.ID(),
+/// 			Taxonomy:        myTaxonomy.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:     pulumi.String("ssn"),
 /// 			Description:     pulumi.String("A hash of the users ssn"),
-/// 			ParentPolicyTag: parentPolicy.ID(),
+/// 			ParentPolicyTag: parentPolicy.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = datacatalog.NewPolicyTag(ctx, "child_policy2", &datacatalog.PolicyTagArgs{
-/// 			Taxonomy:        myTaxonomy.ID(),
+/// 			Taxonomy:        myTaxonomy.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:     pulumi.String("dob"),
 /// 			Description:     pulumi.String("The users date of birth"),
-/// 			ParentPolicyTag: parentPolicy.ID(),
+/// 			ParentPolicyTag: parentPolicy.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			childPolicy,
 /// 		}))
@@ -317,6 +337,39 @@ import 'policy_tag_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_policytag" "parent_policy" {
+///   taxonomy     = gcp_datacatalog_taxonomy.my_taxonomy.id
+///   display_name = "High"
+///   description  = "A policy tag category used for high security access"
+/// }
+/// resource "gcp_datacatalog_policytag" "child_policy" {
+///   taxonomy          = gcp_datacatalog_taxonomy.my_taxonomy.id
+///   display_name      = "ssn"
+///   description       = "A hash of the users ssn"
+///   parent_policy_tag = gcp_datacatalog_policytag.parent_policy.id
+/// }
+/// resource "gcp_datacatalog_policytag" "child_policy2" {
+///   depends_on        = [gcp_datacatalog_policytag.child_policy]
+///   taxonomy          = gcp_datacatalog_taxonomy.my_taxonomy.id
+///   display_name      = "dob"
+///   description       = "The users date of birth"
+///   parent_policy_tag = gcp_datacatalog_policytag.parent_policy.id
+/// }
+/// resource "gcp_datacatalog_taxonomy" "my_taxonomy" {
+///   display_name           = "taxonomy_display_name"
+///   description            = "A collection of policy tags"
+///   activated_policy_types = ["FINE_GRAINED_ACCESS_CONTROL"]
 /// }
 /// ```
 /// ```java
@@ -330,8 +383,8 @@ import 'policy_tag_state.dart';
 /// import com.pulumi.gcp.datacatalog.PolicyTag;
 /// import com.pulumi.gcp.datacatalog.PolicyTagArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -419,6 +472,7 @@ import 'policy_tag_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, PolicyTag can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -427,6 +481,13 @@ import 'policy_tag_state.dart';
 class PolicyTag extends pulumi.CustomResource {
   /// Resource names of child policy tags of this policy tag.
   late final pulumi.Output<List<String>> childPolicyTags;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of this policy tag. It must: contain only unicode characters, tabs,
   /// newlines, carriage returns and page breaks; and be at most 2000 bytes long when
   /// encoded in UTF-8. If not set, defaults to an empty description.
@@ -461,6 +522,7 @@ class PolicyTag extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     childPolicyTags = registerOutput<List<String>>('childPolicyTags');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
@@ -492,6 +554,7 @@ class PolicyTag extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     childPolicyTags = registerOutput<List<String>>('childPolicyTags');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

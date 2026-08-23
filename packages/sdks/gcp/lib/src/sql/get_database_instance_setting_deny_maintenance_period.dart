@@ -7,13 +7,13 @@ class GetDatabaseInstanceSettingDenyMaintenancePeriod {
   final pulumi.Input<String> endDate;
   /// Start date after which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
   final pulumi.Input<String> startDate;
-  /// Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+  /// Time in UTC when the "deny maintenance period" starts on startDate and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
   final pulumi.Input<String> time;
 
   /// Creates a new [GetDatabaseInstanceSettingDenyMaintenancePeriod].
   /// [endDate] End date before which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
   /// [startDate] Start date after which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
-  /// [time] Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+  /// [time] Time in UTC when the "deny maintenance period" starts on startDate and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
   const GetDatabaseInstanceSettingDenyMaintenancePeriod({
     required this.endDate,
     required this.startDate,
@@ -36,4 +36,3 @@ class GetDatabaseInstanceSettingDenyMaintenancePeriod {
     );
   }
 }
-

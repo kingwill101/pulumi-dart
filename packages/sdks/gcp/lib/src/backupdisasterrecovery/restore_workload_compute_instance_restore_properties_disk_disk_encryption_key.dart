@@ -7,16 +7,16 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey {
   final pulumi.Input<String>? kmsKeyName;
   /// (Optional)
   final pulumi.Input<String>? kmsKeyServiceAccount;
-  /// (Optional)
+  /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? rawKey;
-  /// (Optional)
+  /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? rsaEncryptedKey;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey].
   /// [kmsKeyName] (Optional)
   /// [kmsKeyServiceAccount] (Optional)
-  /// [rawKey] (Optional)
-  /// [rsaEncryptedKey] (Optional)
+  /// [rawKey] **Note**: This property is sensitive and will not be displayed in the plan.
+  /// [rsaEncryptedKey] **Note**: This property is sensitive and will not be displayed in the plan.
   const RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey({
     this.kmsKeyName,
     this.kmsKeyServiceAccount,
@@ -42,4 +42,3 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey {
     );
   }
 }
-

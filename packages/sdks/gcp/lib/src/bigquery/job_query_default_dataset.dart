@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobQueryDefaultDataset {
-  /// The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+  /// The dataset. Can be specified `{{dataset_id}}` if `projectId` is also set,
   /// or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
   final pulumi.Input<String> datasetId;
   /// The ID of the project containing this table.
   final pulumi.Input<String>? projectId;
 
   /// Creates a new [JobQueryDefaultDataset].
-  /// [datasetId] The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+  /// [datasetId] The dataset. Can be specified `{{dataset_id}}` if `projectId` is also set,
   /// [projectId] The ID of the project containing this table.
   const JobQueryDefaultDataset({
     required this.datasetId,
@@ -31,4 +31,3 @@ class JobQueryDefaultDataset {
     );
   }
 }
-

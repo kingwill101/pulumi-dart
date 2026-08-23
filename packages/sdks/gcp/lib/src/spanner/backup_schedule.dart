@@ -200,6 +200,49 @@ import 'backup_schedule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_spanner_instance" "main" {
+///   name         = "instance-id"
+///   config       = "regional-europe-west1"
+///   display_name = "main-instance"
+///   num_nodes    = 1
+/// }
+/// resource "gcp_spanner_database" "database" {
+///   instance                 = gcp_spanner_instance.main.name
+///   name                     = "database-id"
+///   version_retention_period = "3d"
+///   ddls                     = ["CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)", "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)"]
+///   deletion_protection      = true
+/// }
+/// resource "gcp_spanner_backupschedule" "full-backup" {
+///   instance           = gcp_spanner_instance.main.name
+///   database           = gcp_spanner_database.database.name
+///   name               = "backup-schedule-id"
+///   retention_duration = "31620000s"
+///   spec = {
+///     cron_spec = {
+///       text = "0 12 * * *"
+///     }
+///   }
+///   //   0 2/12 * * * : every 12 hours at (2, 14) hours past midnight in UTC.
+///   //   0 2,14 * * * : every 12 hours at (2,14) hours past midnight in UTC.
+///   //   0 2 * * *    : once a day at 2 past midnight in UTC.
+///   //   0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
+///   //   0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
+///   full_backup_spec = {}
+///   encryption_config = {
+///     encryption_type = "USE_DATABASE_ENCRYPTION"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -216,8 +259,8 @@ import 'backup_schedule_state.dart';
 /// import com.pulumi.gcp.spanner.inputs.BackupScheduleSpecCronSpecArgs;
 /// import com.pulumi.gcp.spanner.inputs.BackupScheduleFullBackupSpecArgs;
 /// import com.pulumi.gcp.spanner.inputs.BackupScheduleEncryptionConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -482,6 +525,50 @@ import 'backup_schedule_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_spanner_instance" "main" {
+///   name         = "instance-id"
+///   config       = "regional-europe-west1"
+///   display_name = "main-instance"
+///   num_nodes    = 1
+///   edition      = "ENTERPRISE"
+/// }
+/// resource "gcp_spanner_database" "database" {
+///   instance                 = gcp_spanner_instance.main.name
+///   name                     = "database-id"
+///   version_retention_period = "3d"
+///   ddls                     = ["CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)", "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)"]
+///   deletion_protection      = true
+/// }
+/// resource "gcp_spanner_backupschedule" "incremental-backup" {
+///   instance           = gcp_spanner_instance.main.name
+///   database           = gcp_spanner_database.database.name
+///   name               = "backup-schedule-id"
+///   retention_duration = "31620000s"
+///   spec = {
+///     cron_spec = {
+///       text = "0 12 * * *"
+///     }
+///   }
+///   //   0 2/12 * * * : every 12 hours at (2, 14) hours past midnight in UTC.
+///   //   0 2,14 * * * : every 12 hours at (2,14) hours past midnight in UTC.
+///   //   0 2 * * *    : once a day at 2 past midnight in UTC.
+///   //   0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
+///   //   0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
+///   incremental_backup_spec = {}
+///   encryption_config = {
+///     encryption_type = "GOOGLE_DEFAULT_ENCRYPTION"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -498,8 +585,8 @@ import 'backup_schedule_state.dart';
 /// import com.pulumi.gcp.spanner.inputs.BackupScheduleSpecCronSpecArgs;
 /// import com.pulumi.gcp.spanner.inputs.BackupScheduleIncrementalBackupSpecArgs;
 /// import com.pulumi.gcp.spanner.inputs.BackupScheduleEncryptionConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -590,27 +677,27 @@ import 'backup_schedule_state.dart';
 /// BackupSchedule can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/instances/{{instance}}/databases/{{database}}/backupSchedules/{{name}}`
-///
 /// * `{{project}}/{{instance}}/{{database}}/{{name}}`
-///
 /// * `{{instance}}/{{database}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, BackupSchedule can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:spanner/backupSchedule:BackupSchedule default projects/{{project}}/instances/{{instance}}/databases/{{database}}/backupSchedules/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:spanner/backupSchedule:BackupSchedule default {{project}}/{{instance}}/{{database}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:spanner/backupSchedule:BackupSchedule default {{instance}}/{{database}}/{{name}}
 /// ```
 class BackupSchedule extends pulumi.CustomResource {
   /// The database to create the backup schedule on.
   late final pulumi.Output<String> database;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Configuration for the encryption of the backup schedule.
   /// Structure is documented below.
   late final pulumi.Output<BackupScheduleEncryptionConfig> encryptionConfig;
@@ -649,6 +736,7 @@ class BackupSchedule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     database = registerOutput<String>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     encryptionConfig = registerOutput<BackupScheduleEncryptionConfig>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupScheduleEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fullBackupSpec = registerOutput<Map<String, dynamic>?>('fullBackupSpec');
     incrementalBackupSpec = registerOutput<Map<String, dynamic>?>('incrementalBackupSpec');
@@ -683,6 +771,7 @@ class BackupSchedule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     database = registerOutput<String>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     encryptionConfig = registerOutput<BackupScheduleEncryptionConfig>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupScheduleEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fullBackupSpec = registerOutput<Map<String, dynamic>?>('fullBackupSpec');
     incrementalBackupSpec = registerOutput<Map<String, dynamic>?>('incrementalBackupSpec');

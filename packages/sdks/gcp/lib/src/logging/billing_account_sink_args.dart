@@ -13,6 +13,13 @@ class BillingAccountSinkArgs {
   final pulumi.Input<BillingAccountSinkBigqueryOptions>? bigqueryOptions;
   /// The billing account exported to the sink.
   final pulumi.Input<String> billingAccount;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A description of this sink. The maximum length of the description is 8000 characters.
   final pulumi.Input<String>? description;
   /// The destination of the sink (or, in other words, where logs are written to). Can be a
@@ -39,6 +46,7 @@ class BillingAccountSinkArgs {
   /// Creates a new [BillingAccountSinkArgs].
   /// [bigqueryOptions] Options that affect sinks exporting data to BigQuery. Structure documented below.
   /// [billingAccount] The billing account exported to the sink.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [description] A description of this sink. The maximum length of the description is 8000 characters.
   /// [destination] The destination of the sink (or, in other words, where logs are written to). Can be a
   /// [disabled] If set to True, then this sink is disabled and it does not export any log entries.
@@ -48,6 +56,7 @@ class BillingAccountSinkArgs {
   const BillingAccountSinkArgs({
     this.bigqueryOptions,
     required this.billingAccount,
+    this.deletionPolicy,
     this.description,
     required this.destination,
     this.disabled,
@@ -60,6 +69,7 @@ class BillingAccountSinkArgs {
     return <String, dynamic>{
       'bigqueryOptions': ?pulumi.Input.mapOptionalInputValue<BillingAccountSinkBigqueryOptions, Map<String, dynamic>>(bigqueryOptions, (value) => value.toMap()),
       'billingAccount': billingAccount,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'destination': destination,
       'disabled': ?disabled,
@@ -73,6 +83,7 @@ class BillingAccountSinkArgs {
     return BillingAccountSinkArgs(
       bigqueryOptions: (() { final guardedValue = map['bigqueryOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BillingAccountSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       billingAccount: pulumi.Input.fromValue(map['billingAccount'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destination: pulumi.Input.fromValue(map['destination'] as String),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -82,4 +93,3 @@ class BillingAccountSinkArgs {
     );
   }
 }
-

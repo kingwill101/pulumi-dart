@@ -6,6 +6,7 @@ import 'get_connector_subnet.dart';
 /// Result data returned by getConnector.
 class GetConnectorResult {
   final List<String> connectedProjects;
+  final String deletionPolicy;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipCidrRange;
@@ -24,6 +25,7 @@ class GetConnectorResult {
 
   /// Creates a new [GetConnectorResult].
   /// [connectedProjects] Required.
+  /// [deletionPolicy] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ipCidrRange] Required.
   /// [machineType] Required.
@@ -40,6 +42,7 @@ class GetConnectorResult {
   /// [subnets] Required.
   const GetConnectorResult({
     required this.connectedProjects,
+    required this.deletionPolicy,
     required this.id,
     required this.ipCidrRange,
     required this.machineType,
@@ -59,6 +62,7 @@ class GetConnectorResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'connectedProjects': connectedProjects,
+      'deletionPolicy': deletionPolicy,
       'id': id,
       'ipCidrRange': ipCidrRange,
       'machineType': machineType,
@@ -79,6 +83,7 @@ class GetConnectorResult {
   factory GetConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetConnectorResult(
       connectedProjects: (map['connectedProjects'] as List).cast<String>(),
+      deletionPolicy: map['deletionPolicy'] as String,
       id: map['id'] as String,
       ipCidrRange: map['ipCidrRange'] as String,
       machineType: map['machineType'] as String,
@@ -96,4 +101,3 @@ class GetConnectorResult {
     );
   }
 }
-

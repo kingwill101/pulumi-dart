@@ -5,6 +5,13 @@ import 'instance_autoscaling_config.dart';
 
 /// Input properties used for looking up and filtering Instance resources.
 class InstanceState {
+  /// The autoscaling configuration. Autoscaling is enabled if this field is set.
+  /// Exactly one of either num_nodes, processingUnits or autoscalingConfig must be
+  /// present in terraform except when instanceType = FREE_INSTANCE.
+  /// When autoscaling is enabled, numNodes and processingUnits are treated as,
+  /// OUTPUT_ONLY fields and reflect the current compute capacity allocated to
+  /// the instance.
+  /// Structure is documented below.
   final pulumi.Input<InstanceAutoscalingConfig>? autoscalingConfig;
   /// The name of the instance's configuration (similar but not
   /// quite the same as a region) which defines the geographic placement and
@@ -18,6 +25,13 @@ class InstanceState {
   /// if unset or NONE, no default backup schedule will be created for new databases within the instance.
   /// Possible values are: `NONE`, `AUTOMATIC`.
   final pulumi.Input<String>? defaultBackupScheduleType;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// The descriptive name for this instance as it appears in UIs. Must be
   /// unique per project and between 4 and 30 characters in length.
   final pulumi.Input<String>? displayName;
@@ -38,14 +52,18 @@ class InstanceState {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// A unique identifier for the instance, which cannot be changed after
   /// the instance is created. The name must be between 6 and 30 characters
   /// in length.
   /// If not provided, a random string starting with `tf-` will be selected.
   final pulumi.Input<String>? name;
+  /// The number of nodes allocated to this instance. Exactly one of either num_nodes, processingUnits or
+  /// autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
   final pulumi.Input<int>? numNodes;
+  /// The number of processing units allocated to this instance. Exactly one of either num_nodes,
+  /// processingUnits or autoscalingConfig must be present in terraform except when instanceType = FREE_INSTANCE.
   final pulumi.Input<int>? processingUnits;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
@@ -57,9 +75,10 @@ class InstanceState {
   final pulumi.Input<String>? state;
 
   /// Creates a new [InstanceState].
-  /// [autoscalingConfig] Optional.
+  /// [autoscalingConfig] The autoscaling configuration. Autoscaling is enabled if this field is set.
   /// [config] The name of the instance's configuration (similar but not
   /// [defaultBackupScheduleType] Controls the default backup behavior for new databases within the instance.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [displayName] The descriptive name for this instance as it appears in UIs. Must be
   /// [edition] The edition selected for this instance. Different editions provide different capabilities at different price points.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -67,8 +86,8 @@ class InstanceState {
   /// [instanceType] The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
   /// [labels] An object containing a list of "key": value pairs.
   /// [name] A unique identifier for the instance, which cannot be changed after
-  /// [numNodes] Optional.
-  /// [processingUnits] Optional.
+  /// [numNodes] The number of nodes allocated to this instance. Exactly one of either num_nodes, processingUnits or
+  /// [processingUnits] The number of processing units allocated to this instance. Exactly one of either num_nodes,
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [state] Instance status: `CREATING` or `READY`.
@@ -76,6 +95,7 @@ class InstanceState {
     this.autoscalingConfig,
     this.config,
     this.defaultBackupScheduleType,
+    this.deletionPolicy,
     this.displayName,
     this.edition,
     this.effectiveLabels,
@@ -95,6 +115,7 @@ class InstanceState {
       'autoscalingConfig': ?pulumi.Input.mapOptionalInputValue<InstanceAutoscalingConfig, Map<String, dynamic>>(autoscalingConfig, (value) => value.toMap()),
       'config': ?config,
       'defaultBackupScheduleType': ?defaultBackupScheduleType,
+      'deletionPolicy': ?deletionPolicy,
       'displayName': ?displayName,
       'edition': ?edition,
       'effectiveLabels': ?effectiveLabels,
@@ -115,6 +136,7 @@ class InstanceState {
       autoscalingConfig: (() { final guardedValue = map['autoscalingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceAutoscalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultBackupScheduleType: (() { final guardedValue = map['defaultBackupScheduleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
@@ -130,4 +152,3 @@ class InstanceState {
     );
   }
 }
-

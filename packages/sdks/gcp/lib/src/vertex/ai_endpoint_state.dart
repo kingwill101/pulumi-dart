@@ -15,6 +15,13 @@ class AiEndpointState {
   final pulumi.Input<String>? dedicatedEndpointDns;
   /// If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
   final pulumi.Input<bool>? dedicatedEndpointEnabled;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
   /// Structure is documented below.
   final pulumi.Input<List<AiEndpointDeployedModel>>? deployedModels;
@@ -31,7 +38,7 @@ class AiEndpointState {
   final pulumi.Input<String>? etag;
   /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The location for the resource
   final pulumi.Input<String>? location;
@@ -69,6 +76,7 @@ class AiEndpointState {
   /// [createTime] (Output)
   /// [dedicatedEndpointDns] Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
   /// [dedicatedEndpointEnabled] If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deployedModels] Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
   /// [description] The description of the Endpoint.
   /// [displayName] Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -91,6 +99,7 @@ class AiEndpointState {
     this.createTime,
     this.dedicatedEndpointDns,
     this.dedicatedEndpointEnabled,
+    this.deletionPolicy,
     this.deployedModels,
     this.description,
     this.displayName,
@@ -116,6 +125,7 @@ class AiEndpointState {
       'createTime': ?createTime,
       'dedicatedEndpointDns': ?dedicatedEndpointDns,
       'dedicatedEndpointEnabled': ?dedicatedEndpointEnabled,
+      'deletionPolicy': ?deletionPolicy,
       'deployedModels': ?pulumi.Input.mapOptionalInputValue<List<AiEndpointDeployedModel>, List<Map<String, dynamic>>>(deployedModels, (value) => pulumi.Input.encodeList<AiEndpointDeployedModel, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'displayName': ?displayName,
@@ -142,6 +152,7 @@ class AiEndpointState {
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dedicatedEndpointDns: (() { final guardedValue = map['dedicatedEndpointDns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dedicatedEndpointEnabled: (() { final guardedValue = map['dedicatedEndpointEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deployedModels: (() { final guardedValue = map['deployedModels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AiEndpointDeployedModel>(guardedValue, (value) => AiEndpointDeployedModel.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -163,4 +174,3 @@ class AiEndpointState {
     );
   }
 }
-

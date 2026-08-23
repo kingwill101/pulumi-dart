@@ -7,18 +7,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_organizations_project_project_args_doc}
 class ProjectArgs {
-  /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
+  /// Controls whether the 'default' network exists on the project. Defaults
+  /// to `true`, where it is created. If set to `false`, the default network will still be created by GCP but
+  /// will be deleted immediately by Terraform. Therefore, for quota purposes, you will still need to have 1
+  /// network slot available to create the project successfully, even if you set `autoCreateNetwork` to
+  /// `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
+  /// with the GCE API and currently leaves it enabled.
   final pulumi.Input<bool>? autoCreateNetwork;
   /// The alphanumeric ID of the billing account this project
   /// belongs to. The user or service account performing this operation with the provider
-  /// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+  /// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
   /// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
   /// for more details.
   final pulumi.Input<String>? billingAccount;
+  /// The deletion policy for the Project. Setting PREVENT will protect the project
+  /// against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
+  /// to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
+  /// the Google API. Possible values are: "PREVENT", "ABANDON", "DELETE". Default value is `PREVENT`.
   final pulumi.Input<String>? deletionPolicy;
   /// The numeric ID of the folder this project should be
-  /// created under. Only one of `org_id` or `folder_id` may be
-  /// specified. If the `folder_id` is specified, then the project is
+  /// created under. Only one of `orgId` or `folderId` may be
+  /// specified. If the `folderId` is specified, then the project is
   /// created under the specified folder. Changing this forces the
   /// project to be migrated to the newly specified folder.
   final pulumi.Input<String>? folderId;
@@ -30,7 +39,7 @@ class ProjectArgs {
   final pulumi.Input<String>? name;
   /// The numeric ID of the organization this project belongs to.
   /// Changing this forces a new project to be created.  Only one of
-  /// `org_id` or `folder_id` may be specified. If the `org_id` is
+  /// `orgId` or `folderId` may be specified. If the `orgId` is
   /// specified then the project is created at the top level. Changing
   /// this forces the project to be migrated to the newly specified
   /// organization.
@@ -41,9 +50,9 @@ class ProjectArgs {
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [ProjectArgs].
-  /// [autoCreateNetwork] Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
+  /// [autoCreateNetwork] Controls whether the 'default' network exists on the project. Defaults
   /// [billingAccount] The alphanumeric ID of the billing account this project
-  /// [deletionPolicy] Optional.
+  /// [deletionPolicy] The deletion policy for the Project. Setting PREVENT will protect the project
   /// [folderId] The numeric ID of the folder this project should be
   /// [labels] A set of key/value label pairs to assign to the project.
   /// [name] The display name of the project.
@@ -90,4 +99,3 @@ class ProjectArgs {
     );
   }
 }
-

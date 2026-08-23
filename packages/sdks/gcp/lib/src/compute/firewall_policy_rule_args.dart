@@ -9,8 +9,15 @@ import 'firewall_policy_rule_target_secure_tag.dart';
 /// {@endtemplate}
 /// {@macro pulumi_compute_firewall_policy_rule_firewall_policy_rule_args_doc}
 class FirewallPolicyRuleArgs {
-  /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
+  /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
   final pulumi.Input<String> action;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description for this resource.
   final pulumi.Input<String>? description;
   /// The direction in which this rule applies.
@@ -23,7 +30,7 @@ class FirewallPolicyRuleArgs {
   /// Denotes whether to enable logging for a particular rule.
   /// If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
   /// Logs may be exported to BigQuery or Pub/Sub.
-  /// Note: you cannot enable logging on "goto_next" rules.
+  /// Note: you cannot enable logging on "gotoNext" rules.
   final pulumi.Input<bool>? enableLogging;
   /// The firewall policy of the resource.
   final pulumi.Input<String> firewallPolicy;
@@ -54,7 +61,8 @@ class FirewallPolicyRuleArgs {
   final pulumi.Input<bool>? tlsInspect;
 
   /// Creates a new [FirewallPolicyRuleArgs].
-  /// [action] The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
+  /// [action] The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description for this resource.
   /// [direction] The direction in which this rule applies.
   /// [disabled] Denotes whether the firewall policy rule is disabled.
@@ -69,6 +77,7 @@ class FirewallPolicyRuleArgs {
   /// [tlsInspect] Boolean flag indicating if the traffic should be TLS decrypted.
   const FirewallPolicyRuleArgs({
     required this.action,
+    this.deletionPolicy,
     this.description,
     required this.direction,
     this.disabled,
@@ -86,6 +95,7 @@ class FirewallPolicyRuleArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'direction': direction,
       'disabled': ?disabled,
@@ -104,6 +114,7 @@ class FirewallPolicyRuleArgs {
   factory FirewallPolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleArgs(
       action: pulumi.Input.fromValue(map['action'] as String),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -119,4 +130,3 @@ class FirewallPolicyRuleArgs {
     );
   }
 }
-

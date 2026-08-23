@@ -8,6 +8,13 @@ import 'region_network_firewall_policy_with_rules_rule.dart';
 class RegionNetworkFirewallPolicyWithRulesState {
   /// Creation timestamp in RFC3339 text format.
   final pulumi.Input<String>? creationTimestamp;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
   /// Fingerprint of the resource. This field is used internally during updates of this resource.
@@ -24,7 +31,7 @@ class RegionNetworkFirewallPolicyWithRulesState {
   /// Policy type is used to determine which resources (networks) the policy can be associated with.
   /// A policy can be associated with a network only if the network has the matching policyType in its network profile.
   /// Different policy types may support some of the Firewall Rules features.
-  /// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`.
+  /// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
   final pulumi.Input<String>? policyType;
   /// A list of firewall policy pre-defined rules.
   /// Structure is documented below.
@@ -46,6 +53,7 @@ class RegionNetworkFirewallPolicyWithRulesState {
 
   /// Creates a new [RegionNetworkFirewallPolicyWithRulesState].
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] An optional description of this resource.
   /// [fingerprint] Fingerprint of the resource. This field is used internally during updates of this resource.
   /// [name] User-provided name of the Network firewall policy.
@@ -60,6 +68,7 @@ class RegionNetworkFirewallPolicyWithRulesState {
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   const RegionNetworkFirewallPolicyWithRulesState({
     this.creationTimestamp,
+    this.deletionPolicy,
     this.description,
     this.fingerprint,
     this.name,
@@ -77,6 +86,7 @@ class RegionNetworkFirewallPolicyWithRulesState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'fingerprint': ?fingerprint,
       'name': ?name,
@@ -95,6 +105,7 @@ class RegionNetworkFirewallPolicyWithRulesState {
   factory RegionNetworkFirewallPolicyWithRulesState.fromMap(Map<String, dynamic> map) {
     return RegionNetworkFirewallPolicyWithRulesState(
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -110,4 +121,3 @@ class RegionNetworkFirewallPolicyWithRulesState {
     );
   }
 }
-

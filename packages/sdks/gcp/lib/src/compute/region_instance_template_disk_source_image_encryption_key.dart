@@ -4,29 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionInstanceTemplateDiskSourceImageEncryptionKey {
   /// The self link of the encryption key that is
-  /// stored in Google Cloud KMS. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+  /// stored in Google Cloud KMS. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
   /// may be set.
   final pulumi.Input<String>? kmsKeySelfLink;
   /// The service account being used for the
   /// encryption request for the given KMS key. If absent, the Compute Engine
   /// default service account is used.
   final pulumi.Input<String>? kmsKeyServiceAccount;
-  /// A 256-bit [customer-supplied encryption key]
-  /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+  /// A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
   /// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-  /// to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+  /// to decrypt the given image. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
   /// may be set.
   final pulumi.Input<String>? rawKey;
-  /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-  /// (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given image. Only one of `kms_key_self_link`, `rsa_encrypted_key` and `raw_key`
+  /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given image. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
   /// may be set.
   final pulumi.Input<String>? rsaEncryptedKey;
 
   /// Creates a new [RegionInstanceTemplateDiskSourceImageEncryptionKey].
   /// [kmsKeySelfLink] The self link of the encryption key that is
   /// [kmsKeyServiceAccount] The service account being used for the
-  /// [rawKey] A 256-bit [customer-supplied encryption key]
-  /// [rsaEncryptedKey] Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
+  /// [rawKey] A 256-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
+  /// [rsaEncryptedKey] Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key](https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) to decrypt the given image. Only one of `kmsKeySelfLink`, `rsaEncryptedKey` and `rawKey`
   const RegionInstanceTemplateDiskSourceImageEncryptionKey({
     this.kmsKeySelfLink,
     this.kmsKeyServiceAccount,
@@ -52,4 +50,3 @@ class RegionInstanceTemplateDiskSourceImageEncryptionKey {
     );
   }
 }
-

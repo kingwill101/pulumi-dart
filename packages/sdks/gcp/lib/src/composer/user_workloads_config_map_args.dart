@@ -10,6 +10,13 @@ class UserWorkloadsConfigMapArgs {
   /// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
   /// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
   final pulumi.Input<Map<String, String>>? data;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// Environment where the Kubernetes ConfigMap will be stored and used.
   final pulumi.Input<String> environment;
   /// Name of the Kubernetes ConfigMap.
@@ -22,12 +29,14 @@ class UserWorkloadsConfigMapArgs {
 
   /// Creates a new [UserWorkloadsConfigMapArgs].
   /// [data] The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [environment] Environment where the Kubernetes ConfigMap will be stored and used.
   /// [name] Name of the Kubernetes ConfigMap.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The location or Compute Engine region for the environment.
   const UserWorkloadsConfigMapArgs({
     this.data,
+    this.deletionPolicy,
     required this.environment,
     this.name,
     this.project,
@@ -37,6 +46,7 @@ class UserWorkloadsConfigMapArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'data': ?data,
+      'deletionPolicy': ?deletionPolicy,
       'environment': environment,
       'name': ?name,
       'project': ?project,
@@ -47,6 +57,7 @@ class UserWorkloadsConfigMapArgs {
   factory UserWorkloadsConfigMapArgs.fromMap(Map<String, dynamic> map) {
     return UserWorkloadsConfigMapArgs(
       data: (() { final guardedValue = map['data']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environment: pulumi.Input.fromValue(map['environment'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -54,4 +65,3 @@ class UserWorkloadsConfigMapArgs {
     );
   }
 }
-

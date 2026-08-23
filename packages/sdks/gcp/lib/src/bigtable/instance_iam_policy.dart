@@ -112,6 +112,28 @@ import 'instance_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/bigtable.user"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instanceiampolicy" "editor" {
+///   project     = "your-project"
+///   instance    = "your-bigtable-instance"
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -120,10 +142,11 @@ import 'instance_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.bigtable.InstanceIamPolicy;
 /// import com.pulumi.gcp.bigtable.InstanceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -237,6 +260,21 @@ import 'instance_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instanceiambinding" "editor" {
+///   instance = "your-bigtable-instance"
+///   role     = "roles/bigtable.user"
+///   members  = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -245,8 +283,8 @@ import 'instance_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigtable.InstanceIamBinding;
 /// import com.pulumi.gcp.bigtable.InstanceIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -340,6 +378,21 @@ import 'instance_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instanceiammember" "editor" {
+///   instance = "your-bigtable-instance"
+///   role     = "roles/bigtable.user"
+///   member   = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -348,8 +401,8 @@ import 'instance_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigtable.InstanceIamMember;
 /// import com.pulumi.gcp.bigtable.InstanceIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -481,6 +534,28 @@ import 'instance_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/bigtable.user"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instanceiampolicy" "editor" {
+///   project     = "your-project"
+///   instance    = "your-bigtable-instance"
+///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -489,10 +564,11 @@ import 'instance_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.bigtable.InstanceIamPolicy;
 /// import com.pulumi.gcp.bigtable.InstanceIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -606,6 +682,21 @@ import 'instance_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instanceiambinding" "editor" {
+///   instance = "your-bigtable-instance"
+///   role     = "roles/bigtable.user"
+///   members  = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -614,8 +705,8 @@ import 'instance_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigtable.InstanceIamBinding;
 /// import com.pulumi.gcp.bigtable.InstanceIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -709,6 +800,21 @@ import 'instance_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigtable_instanceiammember" "editor" {
+///   instance = "your-bigtable-instance"
+///   role     = "roles/bigtable.user"
+///   member   = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -717,8 +823,8 @@ import 'instance_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.bigtable.InstanceIamMember;
 /// import com.pulumi.gcp.bigtable.InstanceIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -752,29 +858,8 @@ import 'instance_iam_policy_state.dart';
 ///
 /// ## Import
 ///
-/// ### Importing IAM policies
-///
-/// IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
-///
-/// * `"projects/{project}/instances/{instance}"`
-///
-/// An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
-///
-/// tf
-///
-/// import {
-///
-/// id = "projects/{project}/instances/{instance}"
-///
-/// to = google_bigtable_instance_iam_policy.default
-///
-/// }
-///
-/// The `pulumi import` command can also be used:
-///
-/// ```sh
-/// $ pulumi import gcp:bigtable/instanceIamPolicy:InstanceIamPolicy default projects/{project}/instances/{instance}
-/// ```
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
+/// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class InstanceIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the instances's IAM policy.
   late final pulumi.Output<String> etag;
@@ -783,6 +868,8 @@ class InstanceIamPolicy extends pulumi.CustomResource {
   /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
   late final pulumi.Output<String> instance;
   late final pulumi.Output<String> policyData;
+  /// The project in which the instance belongs. If it
+  /// is not provided, Terraform will use the provider default.
   late final pulumi.Output<String> project;
 
   /// Creates a new [InstanceIamPolicy].

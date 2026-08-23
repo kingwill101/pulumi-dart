@@ -80,6 +80,21 @@ import 'taxonomy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_datacatalog_taxonomy" "basic_taxonomy" {
+///   display_name           = "my_taxonomy"
+///   description            = "A collection of policy tags"
+///   activated_policy_types = ["FINE_GRAINED_ACCESS_CONTROL"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -88,8 +103,8 @@ import 'taxonomy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.datacatalog.Taxonomy;
 /// import com.pulumi.gcp.datacatalog.TaxonomyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -129,6 +144,7 @@ import 'taxonomy_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, Taxonomy can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -139,6 +155,13 @@ class Taxonomy extends pulumi.CustomResource {
   /// defaults to an empty list.
   /// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
   late final pulumi.Output<List<String>?> activatedPolicyTypes;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// Description of this taxonomy. It must: contain only unicode characters,
   /// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
   /// long when encoded in UTF-8. If not set, defaults to an empty description.
@@ -173,6 +196,7 @@ class Taxonomy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     activatedPolicyTypes = registerOutput<List<String>?>('activatedPolicyTypes');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
@@ -204,6 +228,7 @@ class Taxonomy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     activatedPolicyTypes = registerOutput<List<String>?>('activatedPolicyTypes');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

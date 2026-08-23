@@ -11,7 +11,10 @@ class GetServiceTemplateSpecVolume {
   final pulumi.Input<List<GetServiceTemplateSpecVolumeCsi>> csis;
   /// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
   final pulumi.Input<List<GetServiceTemplateSpecVolumeEmptyDir>> emptyDirs;
-  /// The name of the Cloud Run Service.
+  /// Name must be unique within a Google Cloud project and region.
+  /// Is required when creating resources. Name is primarily intended
+  /// for creation idempotence and configuration definition. Cannot be updated.
+  /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
   final pulumi.Input<String> name;
   /// A filesystem backed by a Network File System share. This filesystem requires the
   /// run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
@@ -24,7 +27,7 @@ class GetServiceTemplateSpecVolume {
   /// Creates a new [GetServiceTemplateSpecVolume].
   /// [csis] A filesystem specified by the Container Storage Interface (CSI).
   /// [emptyDirs] Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
-  /// [name] The name of the Cloud Run Service.
+  /// [name] Name must be unique within a Google Cloud project and region.
   /// [nfs] A filesystem backed by a Network File System share. This filesystem requires the
   /// [secrets] The secret's value will be presented as the content of a file whose
   const GetServiceTemplateSpecVolume({
@@ -55,4 +58,3 @@ class GetServiceTemplateSpecVolume {
     );
   }
 }
-

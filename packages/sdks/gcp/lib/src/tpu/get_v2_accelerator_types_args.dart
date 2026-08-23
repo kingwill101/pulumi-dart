@@ -36,4 +36,3 @@ class GetV2AcceleratorTypesArgs {
     );
   }
 }
-

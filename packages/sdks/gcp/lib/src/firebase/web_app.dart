@@ -4,6 +4,9 @@ import 'web_app_state.dart';
 
 /// A Google Cloud Firebase web application instance
 ///
+/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
+/// See Provider Versions for more details on beta resources.
+///
 /// To get more information about WebApp, see:
 ///
 /// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
@@ -37,28 +40,28 @@ import 'web_app_state.dart';
 ///     name: "firebase-config.json",
 ///     content: pulumi.jsonStringify({
 ///         appId: basicWebApp.appId,
-///         apiKey: basic.apply(basic => basic.apiKey),
-///         authDomain: basic.apply(basic => basic.authDomain),
+///         apiKey: basic.apiKey,
+///         authDomain: basic.authDomain,
 ///         databaseURL: std.lookupOutput({
 ///             map: basic,
 ///             key: "database_url",
 ///             "default": "",
-///         }).apply(invoke => invoke.result),
+///         }).result,
 ///         storageBucket: std.lookupOutput({
 ///             map: basic,
 ///             key: "storage_bucket",
 ///             "default": "",
-///         }).apply(invoke => invoke.result),
+///         }).result,
 ///         messagingSenderId: std.lookupOutput({
 ///             map: basic,
 ///             key: "messaging_sender_id",
 ///             "default": "",
-///         }).apply(invoke => invoke.result),
+///         }).result,
 ///         measurementId: std.lookupOutput({
 ///             map: basic,
 ///             key: "measurement_id",
 ///             "default": "",
-///         }).apply(invoke => invoke.result),
+///         }).result,
 ///     }),
 /// });
 /// ```
@@ -84,16 +87,16 @@ import 'web_app_state.dart';
 ///         "authDomain": basic.auth_domain,
 ///         "databaseURL": std.lookup_output(map=basic,
 ///             key="database_url",
-///             default="").apply(lambda invoke: invoke.result),
+///             default="").result,
 ///         "storageBucket": std.lookup_output(map=basic,
 ///             key="storage_bucket",
-///             default="").apply(lambda invoke: invoke.result),
+///             default="").result,
 ///         "messagingSenderId": std.lookup_output(map=basic,
 ///             key="messaging_sender_id",
-///             default="").apply(lambda invoke: invoke.result),
+///             default="").result,
 ///         "measurementId": std.lookup_output(map=basic,
 ///             key="measurement_id",
-///             default="").apply(lambda invoke: invoke.result),
+///             default="").result,
 ///     }))
 /// ```
 /// ```csharp
@@ -195,35 +198,34 @@ import 'web_app_state.dart';
 /// 		_, err = storage.NewBucketObject(ctx, "default", &storage.BucketObjectArgs{
 /// 			Bucket: _default.Name,
 /// 			Name:   pulumi.String("firebase-config.json"),
-/// 			Content: pulumi.All(basicWebApp.AppId, basic, basic, std.LookupOutput(ctx, std.LookupOutputArgs{
-/// 				Map:     firebase.GetWebAppConfigResult(basic),
+/// 			Content: pulumi.All(basicWebApp.AppId, basic, std.LookupOutput(ctx, std.LookupOutputArgs{
+/// 				Map:     basic,
 /// 				Key:     pulumi.String("database_url"),
 /// 				Default: pulumi.Any(""),
 /// 			}, nil), std.LookupOutput(ctx, std.LookupOutputArgs{
-/// 				Map:     firebase.GetWebAppConfigResult(basic),
+/// 				Map:     basic,
 /// 				Key:     pulumi.String("storage_bucket"),
 /// 				Default: pulumi.Any(""),
 /// 			}, nil), std.LookupOutput(ctx, std.LookupOutputArgs{
-/// 				Map:     firebase.GetWebAppConfigResult(basic),
+/// 				Map:     basic,
 /// 				Key:     pulumi.String("messaging_sender_id"),
 /// 				Default: pulumi.Any(""),
 /// 			}, nil), std.LookupOutput(ctx, std.LookupOutputArgs{
-/// 				Map:     firebase.GetWebAppConfigResult(basic),
+/// 				Map:     basic,
 /// 				Key:     pulumi.String("measurement_id"),
 /// 				Default: pulumi.Any(""),
 /// 			}, nil)).ApplyT(func(_args []interface{}) (string, error) {
 /// 				appId := _args[0].(string)
 /// 				basic := _args[1].(firebase.GetWebAppConfigResult)
-/// 				basic1 := _args[2].(firebase.GetWebAppConfigResult)
-/// 				invoke := _args[3].(std.LookupResult)
-/// 				invoke1 := _args[4].(std.LookupResult)
-/// 				invoke2 := _args[5].(std.LookupResult)
-/// 				invoke3 := _args[6].(std.LookupResult)
+/// 				invoke := _args[2].(std.LookupResult)
+/// 				invoke1 := _args[3].(std.LookupResult)
+/// 				invoke2 := _args[4].(std.LookupResult)
+/// 				invoke3 := _args[5].(std.LookupResult)
 /// 				var _zero string
 /// 				tmpJSON0, err := json.Marshal(map[string]interface{}{
 /// 					"appId":             appId,
 /// 					"apiKey":            basic.ApiKey,
-/// 					"authDomain":        basic1.AuthDomain,
+/// 					"authDomain":        basic.AuthDomain,
 /// 					"databaseURL":       invoke.Result,
 /// 					"storageBucket":     invoke1.Result,
 /// 					"messagingSenderId": invoke2.Result,
@@ -243,6 +245,44 @@ import 'web_app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "gcp_firebase_getwebappconfig" "basic" {
+///   web_app_id = gcp_firebase_webapp.basic.app_id
+/// }
+///
+/// resource "gcp_firebase_webapp" "basic" {
+///   project      = "my-project-name"
+///   display_name = "Display Name Basic"
+/// }
+/// resource "gcp_storage_bucket" "default" {
+///   name     = "fb-webapp-"
+///   location = "US"
+/// }
+/// resource "gcp_storage_bucketobject" "default" {
+///   bucket = gcp_storage_bucket.default.name
+///   name   = "firebase-config.json"
+///   content = jsonencode({
+///     "appId"             = gcp_firebase_webapp.basic.app_id
+///     "apiKey"            = data.gcp_firebase_getwebappconfig.basic.api_key
+///     "authDomain"        = data.gcp_firebase_getwebappconfig.basic.auth_domain
+///     "databaseURL"       = lookup(data.gcp_firebase_getwebappconfig.basic, "database_url", "")
+///     "storageBucket"     = lookup(data.gcp_firebase_getwebappconfig.basic, "storage_bucket", "")
+///     "messagingSenderId" = lookup(data.gcp_firebase_getwebappconfig.basic, "messaging_sender_id", "")
+///     "measurementId"     = lookup(data.gcp_firebase_getwebappconfig.basic, "measurement_id", "")
+///   })
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -260,8 +300,8 @@ import 'web_app_state.dart';
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.LookupArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -290,7 +330,7 @@ import 'web_app_state.dart';
 ///         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
 ///             .bucket(default_.name())
 ///             .name("firebase-config.json")
-///             .content(Output.tuple(basicWebApp.appId(), basic, basic, StdFunctions.lookup(LookupArgs.builder()
+///             .content(Output.tuple(basicWebApp.appId(), basic, StdFunctions.lookup(LookupArgs.builder()
 ///                 .map(basic)
 ///                 .key("database_url")
 ///                 .default_("")
@@ -309,16 +349,15 @@ import 'web_app_state.dart';
 ///                 .build())).applyValue(values -> {
 ///                 var appId = values.t1;
 ///                 var basic = values.t2;
-///                 var basic1 = values.t3;
-///                 var invoke = values.t4;
-///                 var invoke1 = values.t5;
-///                 var invoke2 = values.t6;
-///                 var invoke3 = values.t7;
+///                 var invoke = values.t3;
+///                 var invoke1 = values.t4;
+///                 var invoke2 = values.t5;
+///                 var invoke3 = values.t6;
 ///                 return serializeJson(
 ///                     jsonObject(
 ///                         jsonProperty("appId", appId),
 ///                         jsonProperty("apiKey", basic.apiKey()),
-///                         jsonProperty("authDomain", basic1.authDomain()),
+///                         jsonProperty("authDomain", basic.authDomain()),
 ///                         jsonProperty("databaseURL", invoke.result()),
 ///                         jsonProperty("storageBucket", invoke1.result()),
 ///                         jsonProperty("messagingSenderId", invoke2.result()),
@@ -512,6 +551,32 @@ import 'web_app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_firebase_webapp" "default" {
+///   project         = "my-project-name"
+///   display_name    = "Display Name"
+///   api_key_id      = gcp_projects_apikey.web.uid
+///   deletion_policy = "DELETE"
+/// }
+/// resource "gcp_projects_apikey" "web" {
+///   project      = "my-project-name"
+///   name         = "api-key"
+///   display_name = "Display Name"
+///   restrictions = {
+///     browser_key_restrictions = {
+///       allowed_referrers = ["*"]
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -524,8 +589,8 @@ import 'web_app_state.dart';
 /// import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsBrowserKeyRestrictionsArgs;
 /// import com.pulumi.gcp.firebase.WebApp;
 /// import com.pulumi.gcp.firebase.WebAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -585,34 +650,19 @@ import 'web_app_state.dart';
 /// WebApp can be imported using any of these accepted formats:
 ///
 /// * `{{project}} projects/{{project}}/webApps/{{app_id}}`
-///
 /// * `projects/{{project}}/webApps/{{app_id}}`
-///
 /// * `{{project}}/{{project}}/{{app_id}}`
-///
 /// * `webApps/{{app_id}}`
-///
 /// * `{{app_id}}`
+///
 ///
 /// When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
 ///
 /// ```sh
-/// $ pulumi import gcp:firebase/webApp:WebApp default "{{project}} projects/{{project}}/webApps/{{app_id}}"
-/// ```
-///
-/// ```sh
+/// $ terraform import google_firebase_web_app.default "{{project}} projects/{{project}}/webApps/{{app_id}}"
 /// $ pulumi import gcp:firebase/webApp:WebApp default projects/{{project}}/webApps/{{app_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{project}}/{{app_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/webApp:WebApp default webApps/{{app_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/webApp:WebApp default {{app_id}}
 /// ```
 class WebApp extends pulumi.CustomResource {
@@ -625,7 +675,13 @@ class WebApp extends pulumi.CustomResource {
   late final pulumi.Output<String> appId;
   /// The URLs where the `WebApp` is hosted.
   late final pulumi.Output<List<String>> appUrls;
-  late final pulumi.Output<String?> deletionPolicy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The user-assigned display name of the App.
   late final pulumi.Output<String> displayName;
   /// The fully qualified resource name of the App, for example:
@@ -652,7 +708,7 @@ class WebApp extends pulumi.CustomResource {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');
     appUrls = registerOutput<List<String>>('appUrls');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -684,7 +740,7 @@ class WebApp extends pulumi.CustomResource {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');
     appUrls = registerOutput<List<String>>('appUrls');
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

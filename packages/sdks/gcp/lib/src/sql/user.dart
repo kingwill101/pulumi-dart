@@ -6,6 +6,10 @@ import 'user_state.dart';
 /// Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
 ///
 ///
+/// Read more about sensitive data in state. Passwords will not be retrieved when running
+/// "terraform import".
+///
+/// &gt; **Note:** Write-Only argument `passwordWo` is available to use in place of `password`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
 ///
 /// ## Example Usage
 ///
@@ -37,7 +41,7 @@ import 'user_state.dart';
 /// import pulumi_gcp as gcp
 /// import pulumi_random as random
 ///
-/// db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+/// db_name_suffix = random.Id("db_name_suffix", byte_length=4)
 /// main = gcp.sql.DatabaseInstance("main",
 ///     name=f"main-instance-{db_name_suffix['hex']}",
 ///     database_version="MYSQL_5_7",
@@ -59,7 +63,7 @@ import 'user_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
 ///     {
 ///         ByteLength = 4,
 ///     });
@@ -88,8 +92,6 @@ import 'user_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -126,6 +128,35 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_id" "db_name_suffix" {
+///   byte_length = 4
+/// }
+/// resource "gcp_sql_databaseinstance" "main" {
+///   name             ="main-instance-${random_id.db_name_suffix.hex}"
+///   database_version = "MYSQL_5_7"
+///   settings = {
+///     tier = "db-f1-micro"
+///   }
+/// }
+/// resource "gcp_sql_user" "users" {
+///   name     = "me"
+///   instance = gcp_sql_databaseinstance.main.name
+///   host     = "me.com"
+///   password = "changeme"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -139,8 +170,8 @@ import 'user_state.dart';
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 /// import com.pulumi.gcp.sql.User;
 /// import com.pulumi.gcp.sql.UserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -157,7 +188,7 @@ import 'user_state.dart';
 ///             .build());
 ///
 ///         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-///             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+///             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
 ///             .databaseVersion("MYSQL_5_7")
 ///             .settings(DatabaseInstanceSettingsArgs.builder()
 ///                 .tier("db-f1-micro")
@@ -195,6 +226,236 @@ import 'user_state.dart';
 ///       instance: ${main.name}
 ///       host: me.com
 ///       password: changeme
+/// ```
+///
+///
+/// Example creating a SQL User with database roles(applicable for Postgres/MySQL
+/// only).
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+/// import * as random from "@pulumi/random";
+///
+/// const dbNameSuffix = new random.index.Id("db_name_suffix", {byteLength: 4});
+/// const main = new gcp.sql.DatabaseInstance("main", {
+///     name: `main-instance-${dbNameSuffix.hex}`,
+///     databaseVersion: "POSTGRES_15",
+///     settings: {
+///         tier: "db-f1-micro",
+///     },
+/// });
+/// const users = new gcp.sql.User("users", {
+///     name: "me",
+///     instance: main.name,
+///     host: "me.com",
+///     password: "changeme",
+///     databaseRoles: ["cloudsqlsuperuser"],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+/// import pulumi_random as random
+///
+/// db_name_suffix = random.Id("db_name_suffix", byte_length=4)
+/// main = gcp.sql.DatabaseInstance("main",
+///     name=f"main-instance-{db_name_suffix['hex']}",
+///     database_version="POSTGRES_15",
+///     settings={
+///         "tier": "db-f1-micro",
+///     })
+/// users = gcp.sql.User("users",
+///     name="me",
+///     instance=main.name,
+///     host="me.com",
+///     password="changeme",
+///     database_roles=["cloudsqlsuperuser"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+/// using Random = Pulumi.Random;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
+///     {
+///         ByteLength = 4,
+///     });
+///
+///     var main = new Gcp.Sql.DatabaseInstance("main", new()
+///     {
+///         Name = $"main-instance-{dbNameSuffix.Hex}",
+///         DatabaseVersion = "POSTGRES_15",
+///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+///         {
+///             Tier = "db-f1-micro",
+///         },
+///     });
+///
+///     var users = new Gcp.Sql.User("users", new()
+///     {
+///         Name = "me",
+///         Instance = main.Name,
+///         Host = "me.com",
+///         Password = "changeme",
+///         DatabaseRoles = new[]
+///         {
+///             "cloudsqlsuperuser",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		dbNameSuffix, err := random.NewId(ctx, "db_name_suffix", &random.IdArgs{
+/// 			ByteLength: 4,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
+/// 			Name:            pulumi.Sprintf("main-instance-%v", dbNameSuffix.Hex),
+/// 			DatabaseVersion: pulumi.String("POSTGRES_15"),
+/// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+/// 				Tier: pulumi.String("db-f1-micro"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = sql.NewUser(ctx, "users", &sql.UserArgs{
+/// 			Name:     pulumi.String("me"),
+/// 			Instance: main.Name,
+/// 			Host:     pulumi.String("me.com"),
+/// 			Password: pulumi.String("changeme"),
+/// 			DatabaseRoles: pulumi.StringArray{
+/// 				pulumi.String("cloudsqlsuperuser"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_id" "db_name_suffix" {
+///   byte_length = 4
+/// }
+/// resource "gcp_sql_databaseinstance" "main" {
+///   name             ="main-instance-${random_id.db_name_suffix.hex}"
+///   database_version = "POSTGRES_15"
+///   settings = {
+///     tier = "db-f1-micro"
+///   }
+/// }
+/// resource "gcp_sql_user" "users" {
+///   name           = "me"
+///   instance       = gcp_sql_databaseinstance.main.name
+///   host           = "me.com"
+///   password       = "changeme"
+///   database_roles = ["cloudsqlsuperuser"]
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.random.Id;
+/// import com.pulumi.random.IdArgs;
+/// import com.pulumi.gcp.sql.DatabaseInstance;
+/// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+/// import com.pulumi.gcp.sql.User;
+/// import com.pulumi.gcp.sql.UserArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var dbNameSuffix = new Id("dbNameSuffix", IdArgs.builder()
+///             .byteLength(4)
+///             .build());
+///
+///         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
+///             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
+///             .databaseVersion("POSTGRES_15")
+///             .settings(DatabaseInstanceSettingsArgs.builder()
+///                 .tier("db-f1-micro")
+///                 .build())
+///             .build());
+///
+///         var users = new User("users", UserArgs.builder()
+///             .name("me")
+///             .instance(main.name())
+///             .host("me.com")
+///             .password("changeme")
+///             .databaseRoles("cloudsqlsuperuser")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   dbNameSuffix:
+///     type: random:Id
+///     name: db_name_suffix
+///     properties:
+///       byteLength: 4
+///   main:
+///     type: gcp:sql:DatabaseInstance
+///     properties:
+///       name: main-instance-${dbNameSuffix.hex}
+///       databaseVersion: POSTGRES_15
+///       settings:
+///         tier: db-f1-micro
+///   users:
+///     type: gcp:sql:User
+///     properties:
+///       name: me
+///       instance: ${main.name}
+///       host: me.com
+///       password: changeme
+///       databaseRoles:
+///         - cloudsqlsuperuser
 /// ```
 ///
 ///
@@ -239,7 +500,7 @@ import 'user_state.dart';
 /// import pulumi_random as random
 /// import pulumi_std as std
 ///
-/// db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+/// db_name_suffix = random.Id("db_name_suffix", byte_length=4)
 /// main = gcp.sql.DatabaseInstance("main",
 ///     name=f"main-instance-{db_name_suffix['hex']}",
 ///     database_version="POSTGRES_15",
@@ -270,7 +531,7 @@ import 'user_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
 ///     {
 ///         ByteLength = 4,
 ///     });
@@ -317,8 +578,6 @@ import 'user_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
@@ -376,6 +635,46 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "random_id" "db_name_suffix" {
+///   byte_length = 4
+/// }
+/// resource "gcp_sql_databaseinstance" "main" {
+///   name             ="main-instance-${random_id.db_name_suffix.hex}"
+///   database_version = "POSTGRES_15"
+///   settings = {
+///     tier = "db-f1-micro"
+///     database_flags = [{
+///       "name"  = "cloudsql.iam_authentication"
+///       "value" = "on"
+///     }]
+///   }
+/// }
+/// resource "gcp_sql_user" "iam_user" {
+///   name     = "me@example.com"
+///   instance = gcp_sql_databaseinstance.main.name
+///   type     = "CLOUD_IAM_USER"
+/// }
+/// resource "gcp_sql_user" "iam_service_account_user" {
+///   name     = trimsuffix(serviceAccount.email, ".gserviceaccount.com")
+///   instance = gcp_sql_databaseinstance.main.name
+///   type     = "CLOUD_IAM_SERVICE_ACCOUNT"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -387,12 +686,13 @@ import 'user_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstance;
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDatabaseFlagArgs;
 /// import com.pulumi.gcp.sql.User;
 /// import com.pulumi.gcp.sql.UserArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.TrimsuffixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -409,7 +709,7 @@ import 'user_state.dart';
 ///             .build());
 ///
 ///         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-///             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+///             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
 ///             .databaseVersion("POSTGRES_15")
 ///             .settings(DatabaseInstanceSettingsArgs.builder()
 ///                 .tier("db-f1-micro")
@@ -428,7 +728,7 @@ import 'user_state.dart';
 ///
 ///         var iamServiceAccountUser = new User("iamServiceAccountUser", UserArgs.builder()
 ///             .name(StdFunctions.trimsuffix(TrimsuffixArgs.builder()
-///                 .input(serviceAccount.email())
+///                 .input(serviceAccount.get("email"))
 ///                 .suffix(".gserviceaccount.com")
 ///                 .build()).result())
 ///             .instance(main.name())
@@ -509,7 +809,7 @@ import 'user_state.dart';
 /// import pulumi_gcp as gcp
 /// import pulumi_random as random
 ///
-/// db_name_suffix = random.index.Id("db_name_suffix", byte_length=4)
+/// db_name_suffix = random.Id("db_name_suffix", byte_length=4)
 /// main = gcp.sql.DatabaseInstance("main",
 ///     name=f"main-instance-{db_name_suffix['hex']}",
 ///     database_version="MYSQL_8_0",
@@ -534,7 +834,7 @@ import 'user_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
 ///     {
 ///         ByteLength = 4,
 ///     });
@@ -570,8 +870,6 @@ import 'user_state.dart';
 /// package main
 ///
 /// import (
-/// 	"fmt"
-///
 /// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -613,6 +911,38 @@ import 'user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     random = {
+///       source = "pulumi/random"
+///     }
+///   }
+/// }
+///
+/// resource "random_id" "db_name_suffix" {
+///   byte_length = 4
+/// }
+/// resource "gcp_sql_databaseinstance" "main" {
+///   name             ="main-instance-${random_id.db_name_suffix.hex}"
+///   database_version = "MYSQL_8_0"
+///   settings = {
+///     tier = "db-f1-micro"
+///     database_flags = [{
+///       "name"  = "cloudsql_iam_authentication"
+///       "value" = "on"
+///     }]
+///   }
+/// }
+/// resource "gcp_sql_user" "iam_group_user" {
+///   name     = "iam_group@example.com"
+///   instance = gcp_sql_databaseinstance.main.name
+///   type     = "CLOUD_IAM_GROUP"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -624,10 +954,11 @@ import 'user_state.dart';
 /// import com.pulumi.gcp.sql.DatabaseInstance;
 /// import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 /// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+/// import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDatabaseFlagArgs;
 /// import com.pulumi.gcp.sql.User;
 /// import com.pulumi.gcp.sql.UserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -644,7 +975,7 @@ import 'user_state.dart';
 ///             .build());
 ///
 ///         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-///             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+///             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
 ///             .databaseVersion("MYSQL_8_0")
 ///             .settings(DatabaseInstanceSettingsArgs.builder()
 ///                 .tier("db-f1-micro")
@@ -691,16 +1022,6 @@ import 'user_state.dart';
 /// ```
 ///
 ///
-/// ## Ephemeral Attributes Reference
-///
-/// The following write-only attributes are supported:
-///
-/// * `password_wo` - (Optional) The password for the user. Can be updated. For Postgres
-/// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
-/// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
-/// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
-/// **Note**: This property is write-only and will not be read from the API.
-///
 /// ## Import
 ///
 /// SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -710,6 +1031,7 @@ import 'user_state.dart';
 /// SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
 ///
 /// * `{{project_id}}/{{instance}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
 ///
@@ -725,16 +1047,32 @@ import 'user_state.dart';
 /// $ pulumi import gcp:sql/user:User default {{project_id}}/{{instance}}/{{name}}
 /// ```
 class User extends pulumi.CustomResource {
-  /// The deletion policy for the user.
-  /// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+  /// A list of database roles to be assigned to the user.
+  /// This option is only available for MySQL 8+ and PostgreSQL instances. You
+  /// can include predefined Cloud SQL roles, like cloudsqlsuperuser, or your
+  /// own custom roles. Custom roles must be created in the database before
+  /// you can assign them. You can create roles using the CREATE ROLE
+  /// statement for both MySQL and PostgreSQL.
+  /// **Note**: This property is write-only and will not be read from the API.
+  /// **Caution**: Existing database roles will be overwriten with new values from this field.
+  late final pulumi.Output<List<String>?> databaseRoles;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API. This is useful
   /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
   ///
-  /// Possible values are: `ABANDON`.
-  late final pulumi.Output<String?> deletionPolicy;
+  /// When set to "DELETE", deleting the resource is allowed.
+  ///
+  /// - - -
+  late final pulumi.Output<String> deletionPolicy;
   /// The host the user can connect from. This is only supported
   /// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
   /// Can be an IP address. Changing this forces a new resource to be created.
   late final pulumi.Output<String> host;
+  /// IAM email address for MySQL IAM database users.
+  late final pulumi.Output<String> iamEmail;
   /// The name of the Cloud SQL instance. Changing this
   /// forces a new resource to be created.
   late final pulumi.Output<String> instance;
@@ -748,12 +1086,14 @@ class User extends pulumi.CustomResource {
   late final pulumi.Output<String?> password;
   late final pulumi.Output<UserPasswordPolicy?> passwordPolicy;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
-  /// either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
-  late final pulumi.Output<String?> passwordWo;
-  /// The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
+  /// The password for the user. Can be updated. For Postgres
+  /// instances this is a Required field, unless type is set to either CLOUD_IAM_USER
+  /// or CLOUD_IAM_SERVICE_ACCOUNT. Don't set this field for CLOUD_IAM_USER
+  /// and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
   ///
-  /// - - -
+  /// * &gt; **Note:** One of `value` or `valueWo` can only be set.
+  late final pulumi.Output<String?> passwordWo;
+  /// An integer value used to trigger an update for `passwordWo`. This property should be incremented when updating `passwordWo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
   late final pulumi.Output<int?> passwordWoVersion;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
@@ -781,8 +1121,10 @@ class User extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    databaseRoles = registerOutput<List<String>?>('databaseRoles');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     host = registerOutput<String>('host');
+    iamEmail = registerOutput<String>('iamEmail');
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
     password = registerOutput<String?>('password');
@@ -817,8 +1159,10 @@ class User extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    deletionPolicy = registerOutput<String?>('deletionPolicy');
+    databaseRoles = registerOutput<List<String>?>('databaseRoles');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     host = registerOutput<String>('host');
+    iamEmail = registerOutput<String>('iamEmail');
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
     password = registerOutput<String?>('password');

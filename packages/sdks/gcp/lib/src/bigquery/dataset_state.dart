@@ -63,6 +63,13 @@ class DatasetState {
   /// dataset when destroying the resource; otherwise,
   /// destroying the resource will fail if tables are present.
   final pulumi.Input<bool>? deleteContentsOnDestroy;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  final pulumi.Input<String>? deletionPolicy;
   /// A user-friendly description of the dataset
   final pulumi.Input<String>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -86,7 +93,7 @@ class DatasetState {
   /// organize and group your datasets.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
   /// The date when this dataset or any of its tables was last modified, in
   /// milliseconds since the epoch.
@@ -131,6 +138,7 @@ class DatasetState {
   /// [defaultPartitionExpirationMs] The default partition expiration for all partitioned tables in
   /// [defaultTableExpirationMs] The default lifetime of all tables in the dataset, in milliseconds.
   /// [deleteContentsOnDestroy] If set to `true`, delete all the tables in the
+  /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A user-friendly description of the dataset
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [etag] A hash of the resource.
@@ -156,6 +164,7 @@ class DatasetState {
     this.defaultPartitionExpirationMs,
     this.defaultTableExpirationMs,
     this.deleteContentsOnDestroy,
+    this.deletionPolicy,
     this.description,
     this.effectiveLabels,
     this.etag,
@@ -184,6 +193,7 @@ class DatasetState {
       'defaultPartitionExpirationMs': ?defaultPartitionExpirationMs,
       'defaultTableExpirationMs': ?defaultTableExpirationMs,
       'deleteContentsOnDestroy': ?deleteContentsOnDestroy,
+      'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'etag': ?etag,
@@ -213,6 +223,7 @@ class DatasetState {
       defaultPartitionExpirationMs: (() { final guardedValue = map['defaultPartitionExpirationMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       defaultTableExpirationMs: (() { final guardedValue = map['defaultTableExpirationMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       deleteContentsOnDestroy: (() { final guardedValue = map['deleteContentsOnDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -232,4 +243,3 @@ class DatasetState {
     );
   }
 }
-

@@ -302,7 +302,7 @@ import 'certificate_issuance_config_state.dart';
 /// 			Description: pulumi.String("sample description for the certificate issuanceConfigs"),
 /// 			CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
 /// 				CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
-/// 					CaPool: pool.ID(),
+/// 					CaPool: pool.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Lifetime:                 pulumi.String("1814400s"),
@@ -320,6 +320,74 @@ import 'certificate_issuance_config_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_certificatemanager_certificateissuanceconfig" "default" {
+///   depends_on  = [gcp_certificateauthority_authority.ca_authority]
+///   name        = "issuance-config"
+///   description = "sample description for the certificate issuanceConfigs"
+///   certificate_authority_config = {
+///     certificate_authority_service_config = {
+///       ca_pool = gcp_certificateauthority_capool.pool.id
+///     }
+///   }
+///   lifetime                   = "1814400s"
+///   rotation_window_percentage = 34
+///   key_algorithm              = "ECDSA_P256"
+///   labels = {
+///     "name"  = "wrench"
+///     "count" = "3"
+///   }
+/// }
+/// resource "gcp_certificateauthority_capool" "pool" {
+///   name     = "ca-pool"
+///   location = "us-central1"
+///   tier     = "ENTERPRISE"
+/// }
+/// resource "gcp_certificateauthority_authority" "ca_authority" {
+///   location                 = "us-central1"
+///   pool                     = gcp_certificateauthority_capool.pool.name
+///   certificate_authority_id = "ca-authority"
+///   config = {
+///     subject_config = {
+///       subject = {
+///         organization = "HashiCorp"
+///         common_name  = "my-certificate-authority"
+///       }
+///       subject_alt_name = {
+///         dns_names = ["hashicorp.com"]
+///       }
+///     }
+///     x509_config = {
+///       ca_options = {
+///         is_ca = true
+///       }
+///       key_usage = {
+///         base_key_usage = {
+///           cert_sign = true
+///           crl_sign  = true
+///         }
+///         extended_key_usage = {
+///           server_auth = true
+///         }
+///       }
+///     }
+///   }
+///   key_spec = {
+///     algorithm = "RSA_PKCS1_4096_SHA256"
+///   }
+///   deletion_protection                    = false
+///   skip_grace_period                      = true
+///   ignore_active_certificates_on_deletion = true
 /// }
 /// ```
 /// ```java
@@ -347,8 +415,8 @@ import 'certificate_issuance_config_state.dart';
 /// import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs;
 /// import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -487,22 +555,15 @@ import 'certificate_issuance_config_state.dart';
 /// CertificateIssuanceConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}`
-///
 /// * `{{project}}/{{location}}/{{name}}`
-///
 /// * `{{location}}/{{name}}`
+///
 ///
 /// When using the `pulumi import` command, CertificateIssuanceConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default {{project}}/{{location}}/{{name}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig default {{location}}/{{name}}
 /// ```
 class CertificateIssuanceConfig extends pulumi.CustomResource {
@@ -513,6 +574,13 @@ class CertificateIssuanceConfig extends pulumi.CustomResource {
   /// accurate to nanoseconds with up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// One or more paragraphs of text description of a CertificateIssuanceConfig.
   late final pulumi.Output<String?> description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -524,7 +592,7 @@ class CertificateIssuanceConfig extends pulumi.CustomResource {
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
   /// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
   /// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -566,6 +634,7 @@ class CertificateIssuanceConfig extends pulumi.CustomResource {
         ) {
     certificateAuthorityConfig = registerOutput<CertificateIssuanceConfigCertificateAuthorityConfig>('certificateAuthorityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateIssuanceConfigCertificateAuthorityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
@@ -604,6 +673,7 @@ class CertificateIssuanceConfig extends pulumi.CustomResource {
         ) {
     certificateAuthorityConfig = registerOutput<CertificateIssuanceConfigCertificateAuthorityConfig>('certificateAuthorityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateIssuanceConfigCertificateAuthorityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
     keyAlgorithm = registerOutput<String>('keyAlgorithm');

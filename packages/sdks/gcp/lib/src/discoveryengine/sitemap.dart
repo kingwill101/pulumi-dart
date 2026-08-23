@@ -123,6 +123,31 @@ import 'sitemap_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_discoveryengine_sitemap" "basic" {
+///   location      = gcp_discoveryengine_datastore.advanced.location
+///   data_store_id = gcp_discoveryengine_datastore.advanced.data_store_id
+///   uri           = "https://www.test.com/sitemap.xml"
+/// }
+/// resource "gcp_discoveryengine_datastore" "advanced" {
+///   location                     = "global"
+///   data_store_id                = "data-store-id"
+///   display_name                 = "tf-test-advanced-site-search-datastore"
+///   industry_vertical            = "GENERIC"
+///   content_config               = "PUBLIC_WEBSITE"
+///   solution_types               = ["SOLUTION_TYPE_SEARCH"]
+///   create_advanced_site_search  = true
+///   skip_default_schema_creation = false
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -133,8 +158,8 @@ import 'sitemap_state.dart';
 /// import com.pulumi.gcp.discoveryengine.DataStoreArgs;
 /// import com.pulumi.gcp.discoveryengine.Sitemap;
 /// import com.pulumi.gcp.discoveryengine.SitemapArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -195,6 +220,7 @@ import 'sitemap_state.dart';
 ///
 /// * `{{name}}`
 ///
+///
 /// When using the `pulumi import` command, Sitemap can be imported using one of the formats above. For example:
 ///
 /// ```sh
@@ -205,6 +231,13 @@ class Sitemap extends pulumi.CustomResource {
   late final pulumi.Output<String> createTime;
   /// The unique id of the data store.
   late final pulumi.Output<String> dataStoreId;
+  /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+  /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+  /// the command will fail if this field is set to "PREVENT" in Terraform state.
+  /// When set to "ABANDON", the command will remove the resource from Terraform
+  /// management without updating or deleting the resource in the API.
+  /// When set to "DELETE", deleting the resource is allowed.
+  late final pulumi.Output<String> deletionPolicy;
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   late final pulumi.Output<String> location;
@@ -237,6 +270,7 @@ class Sitemap extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     dataStoreId = registerOutput<String>('dataStoreId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -269,6 +303,7 @@ class Sitemap extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     dataStoreId = registerOutput<String>('dataStoreId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -171,6 +171,41 @@ import 'app_check_recaptcha_enterprise_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///     time = {
+///       source = "pulumi/time"
+///     }
+///   }
+/// }
+///
+/// # Enables the reCAPTCHA Enterprise API
+/// resource "gcp_projects_service" "recaptcha_enterprise" {
+///   project = "my-project-name"
+///   service = "recaptchaenterprise.googleapis.com"
+/// }
+/// resource "gcp_firebase_webapp" "default" {
+///   project      = "my-project-name"
+///   display_name = "Web App for reCAPTCHA Enterprise"
+/// }
+/// # It takes a while for App Check to recognize the new app
+/// # If your app already exists, you don't have to wait 30 seconds.
+/// resource "time_sleep" "wait_30s" {
+///   depends_on      = [gcp_firebase_webapp.default]
+///   create_duration = "30s"
+/// }
+/// resource "gcp_firebase_appcheckrecaptchaenterpriseconfig" "default" {
+///   depends_on = [time_sleep.wait_30s]
+///   project    = "my-project-name"
+///   app_id     = gcp_firebase_webapp.default.app_id
+///   site_key   = "6LdpMXIpAAAAANkwWQPgEdjEhal7ugkH9RK9ytuw"
+///   token_ttl  = "7200s"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -186,8 +221,8 @@ import 'app_check_recaptcha_enterprise_config_state.dart';
 /// import com.pulumi.gcp.firebase.AppCheckRecaptchaEnterpriseConfig;
 /// import com.pulumi.gcp.firebase.AppCheckRecaptchaEnterpriseConfigArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -273,22 +308,15 @@ import 'app_check_recaptcha_enterprise_config_state.dart';
 /// RecaptchaEnterpriseConfig can be imported using any of these accepted formats:
 ///
 /// * `projects/{{project}}/apps/{{app_id}}/recaptchaEnterpriseConfig`
-///
 /// * `{{project}}/{{app_id}}`
-///
 /// * `{{app_id}}`
+///
 ///
 /// When using the `pulumi import` command, RecaptchaEnterpriseConfig can be imported using one of the formats above. For example:
 ///
 /// ```sh
 /// $ pulumi import gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig default projects/{{project}}/apps/{{app_id}}/recaptchaEnterpriseConfig
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig default {{project}}/{{app_id}}
-/// ```
-///
-/// ```sh
 /// $ pulumi import gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig default {{app_id}}
 /// ```
 class AppCheckRecaptchaEnterpriseConfig extends pulumi.CustomResource {

@@ -5,8 +5,8 @@ import 'membership_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for GKEHub Membership. Each of these resources serves a different use case:
 ///
 /// * `gcp.gkehub.MembershipIamPolicy`: Authoritative. Sets the IAM policy for the membership and replaces any existing policy already attached.
-/// * `gcp.gkehub.MembershipIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the membership are preserved.
-/// * `gcp.gkehub.MembershipIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the membership are preserved.
+/// * `gcp.gkehub.MembershipIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the membership are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.gkehub.MembershipIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the membership are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -15,7 +15,6 @@ import 'membership_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.gkehub.MembershipIamPolicy` **cannot** be used in conjunction with `gcp.gkehub.MembershipIamBinding` and `gcp.gkehub.MembershipIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.gkehub.MembershipIamBinding` resources **can be** used in conjunction with `gcp.gkehub.MembershipIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.gkehub.MembershipIamPolicy
@@ -122,6 +121,29 @@ import 'membership_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_gkehub_membershipiampolicy" "policy" {
+///   project       = membership.project
+///   location      = membership.location
+///   membership_id = membership.membershipId
+///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,10 +152,11 @@ import 'membership_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.gkehub.MembershipIamPolicy;
 /// import com.pulumi.gcp.gkehub.MembershipIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,9 +176,9 @@ import 'membership_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new MembershipIamPolicy("policy", MembershipIamPolicyArgs.builder()
-///             .project(membership.project())
-///             .location(membership.location())
-///             .membershipId(membership.membershipId())
+///             .project(membership.get("project"))
+///             .location(membership.get("location"))
+///             .membershipId(membership.get("membershipId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -257,6 +280,23 @@ import 'membership_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkehub_membershipiambinding" "binding" {
+///   project       = membership.project
+///   location      = membership.location
+///   membership_id = membership.membershipId
+///   role          = "roles/viewer"
+///   members       = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -265,8 +305,8 @@ import 'membership_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkehub.MembershipIamBinding;
 /// import com.pulumi.gcp.gkehub.MembershipIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -279,9 +319,9 @@ import 'membership_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new MembershipIamBinding("binding", MembershipIamBindingArgs.builder()
-///             .project(membership.project())
-///             .location(membership.location())
-///             .membershipId(membership.membershipId())
+///             .project(membership.get("project"))
+///             .location(membership.get("location"))
+///             .membershipId(membership.get("membershipId"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -372,6 +412,23 @@ import 'membership_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkehub_membershipiammember" "member" {
+///   project       = membership.project
+///   location      = membership.location
+///   membership_id = membership.membershipId
+///   role          = "roles/viewer"
+///   member        = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -380,8 +437,8 @@ import 'membership_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkehub.MembershipIamMember;
 /// import com.pulumi.gcp.gkehub.MembershipIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -394,9 +451,9 @@ import 'membership_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new MembershipIamMember("member", MembershipIamMemberArgs.builder()
-///             .project(membership.project())
-///             .location(membership.location())
-///             .membershipId(membership.membershipId())
+///             .project(membership.get("project"))
+///             .location(membership.get("location"))
+///             .membershipId(membership.get("membershipId"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -427,8 +484,8 @@ import 'membership_iam_policy_state.dart';
 /// Three different resources help you manage your IAM policy for GKEHub Membership. Each of these resources serves a different use case:
 ///
 /// * `gcp.gkehub.MembershipIamPolicy`: Authoritative. Sets the IAM policy for the membership and replaces any existing policy already attached.
-/// * `gcp.gkehub.MembershipIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the membership are preserved.
-/// * `gcp.gkehub.MembershipIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the membership are preserved.
+/// * `gcp.gkehub.MembershipIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the membership are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+/// * `gcp.gkehub.MembershipIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the membership are preserved. Members added outside of Terraform will **not** be detected as drift.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
@@ -437,7 +494,6 @@ import 'membership_iam_policy_state.dart';
 /// &gt; **Note:** `gcp.gkehub.MembershipIamPolicy` **cannot** be used in conjunction with `gcp.gkehub.MembershipIamBinding` and `gcp.gkehub.MembershipIamMember` or they will fight over what your policy should be.
 ///
 /// &gt; **Note:** `gcp.gkehub.MembershipIamBinding` resources **can be** used in conjunction with `gcp.gkehub.MembershipIamMember` resources **only if** they do not grant privilege to the same role.
-///
 ///
 ///
 /// ## gcp.gkehub.MembershipIamPolicy
@@ -544,6 +600,29 @@ import 'membership_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_getiampolicy" "admin" {
+///   bindings {
+///     role    = "roles/viewer"
+///     members = ["user:jane@example.com"]
+///   }
+/// }
+///
+/// resource "gcp_gkehub_membershipiampolicy" "policy" {
+///   project       = membership.project
+///   location      = membership.location
+///   membership_id = membership.membershipId
+///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -552,10 +631,11 @@ import 'membership_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.organizations.OrganizationsFunctions;
 /// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+/// import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
 /// import com.pulumi.gcp.gkehub.MembershipIamPolicy;
 /// import com.pulumi.gcp.gkehub.MembershipIamPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -575,9 +655,9 @@ import 'membership_iam_policy_state.dart';
 ///             .build());
 ///
 ///         var policy = new MembershipIamPolicy("policy", MembershipIamPolicyArgs.builder()
-///             .project(membership.project())
-///             .location(membership.location())
-///             .membershipId(membership.membershipId())
+///             .project(membership.get("project"))
+///             .location(membership.get("location"))
+///             .membershipId(membership.get("membershipId"))
 ///             .policyData(admin.policyData())
 ///             .build());
 ///
@@ -679,6 +759,23 @@ import 'membership_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkehub_membershipiambinding" "binding" {
+///   project       = membership.project
+///   location      = membership.location
+///   membership_id = membership.membershipId
+///   role          = "roles/viewer"
+///   members       = ["user:jane@example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -687,8 +784,8 @@ import 'membership_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkehub.MembershipIamBinding;
 /// import com.pulumi.gcp.gkehub.MembershipIamBindingArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -701,9 +798,9 @@ import 'membership_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var binding = new MembershipIamBinding("binding", MembershipIamBindingArgs.builder()
-///             .project(membership.project())
-///             .location(membership.location())
-///             .membershipId(membership.membershipId())
+///             .project(membership.get("project"))
+///             .location(membership.get("location"))
+///             .membershipId(membership.get("membershipId"))
 ///             .role("roles/viewer")
 ///             .members("user:jane@example.com")
 ///             .build());
@@ -794,6 +891,23 @@ import 'membership_iam_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_gkehub_membershipiammember" "member" {
+///   project       = membership.project
+///   location      = membership.location
+///   membership_id = membership.membershipId
+///   role          = "roles/viewer"
+///   member        = "user:jane@example.com"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -802,8 +916,8 @@ import 'membership_iam_policy_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.gkehub.MembershipIamMember;
 /// import com.pulumi.gcp.gkehub.MembershipIamMemberArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -816,9 +930,9 @@ import 'membership_iam_policy_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var member = new MembershipIamMember("member", MembershipIamMemberArgs.builder()
-///             .project(membership.project())
-///             .location(membership.location())
-///             .membershipId(membership.membershipId())
+///             .project(membership.get("project"))
+///             .location(membership.get("location"))
+///             .membershipId(membership.get("membershipId"))
 ///             .role("roles/viewer")
 ///             .member("user:jane@example.com")
 ///             .build());
@@ -844,11 +958,8 @@ import 'membership_iam_policy_state.dart';
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
 ///
 /// * projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
-///
 /// * {{project}}/{{location}}/{{membership_id}}
-///
 /// * {{location}}/{{membership_id}}
-///
 /// * {{membership_id}}
 ///
 /// Any variables not passed in the import command will be taken from the provider configuration.
@@ -856,25 +967,21 @@ import 'membership_iam_policy_state.dart';
 /// GKEHub membership IAM resources can be imported using the resource identifiers, role, and member.
 ///
 /// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:gkehub/membershipIamPolicy:MembershipIamPolicy editor "projects/{{project}}/locations/{{location}}/memberships/{{membership_id}} roles/viewer user:jane@example.com"
+/// $ terraform import google_gke_hub_membership_iam_member.editor "projects/{{project}}/locations/{{location}}/memberships/{{membership_id}} roles/viewer user:jane@example.com"
 /// ```
 ///
 /// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-///
 /// ```sh
-/// $ pulumi import gcp:gkehub/membershipIamPolicy:MembershipIamPolicy editor "projects/{{project}}/locations/{{location}}/memberships/{{membership_id}} roles/viewer"
+/// $ terraform import google_gke_hub_membership_iam_binding.editor "projects/{{project}}/locations/{{location}}/memberships/{{membership_id}} roles/viewer"
 /// ```
 ///
 /// IAM policy imports use the identifier of the resource in question, e.g.
-///
 /// ```sh
 /// $ pulumi import gcp:gkehub/membershipIamPolicy:MembershipIamPolicy editor projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
 /// ```
 ///
-/// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-///
+/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class MembershipIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the IAM policy.

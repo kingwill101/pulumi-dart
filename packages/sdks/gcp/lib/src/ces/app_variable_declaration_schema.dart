@@ -11,8 +11,8 @@ class AppVariableDeclarationSchema {
   final pulumi.Input<String>? anyOf;
   /// Optional. Default value of the data. Represents a dynamically typed value
   /// which can be either null, a number, a string, a boolean, a struct,
-  /// or a list of values. The provided default value must be compatible
-  /// with the defined 'type' and other schema constraints.
+  /// or a list of values. The provided default value must be encoded as a JSON string.
+  /// Use `jsonencode` in Terraform HCL to encode the default value.
   final pulumi.Input<String>? default_;
   /// A map of definitions for use by ref. Only allowed at the root of the schema.
   final pulumi.Input<String>? defs;
@@ -142,4 +142,3 @@ class AppVariableDeclarationSchema {
     );
   }
 }
-
