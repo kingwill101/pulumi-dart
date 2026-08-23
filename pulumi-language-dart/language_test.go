@@ -178,6 +178,8 @@ var passingConformanceTests = []string{
 	"l3-range-map-ref",
 	"l3-range-parent-scope",
 	"l3-range-resource-output-traversal",
+	"l3-resource-keyword-overlap",
+	"l3-rewrite-conversions",
 	"l3-splat",
 	"l2-resource-name-type",
 	"l2-engine-update-options",

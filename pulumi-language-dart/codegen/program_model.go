@@ -41,8 +41,8 @@ type dartProgramComponent struct {
 }
 
 type dartProgramComponentArg struct {
-	Name, DartType, Default string
-	Required                bool
+	Name, WireName, DartType, Default string
+	Required                          bool
 }
 
 type dartProgramComponentInstance struct {

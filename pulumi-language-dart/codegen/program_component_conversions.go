@@ -39,13 +39,10 @@ func componentInputConversion(source, target model.Type, value string) string {
 	switch typed := target.(type) {
 	case *model.ListType:
 		element := dartComponentInputType(typed.ElementType)
-		conversion = "(value as List).cast<" + element + ">()"
-		if element == "double" {
-			conversion = "(value as List).map<double>((item) => (item as num).toDouble()).toList()"
-		}
+		conversion = componentListValueConversion(typed.ElementType, element)
 	case *model.MapType:
 		element := dartComponentInputType(typed.ElementType)
-		conversion = "(value as Map).cast<String, " + element + ">()"
+		conversion = componentMapValueConversion(typed.ElementType, element)
 	default:
 		conversion = componentPrimitiveValueConversion(source, target, "value")
 	}

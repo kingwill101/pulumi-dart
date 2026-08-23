@@ -28,6 +28,7 @@ func lowerComponents(program *pcl.Program) ([]dartProgramComponent, error) {
 		for _, variable := range component.Program.ConfigVariables() {
 			args = append(args, dartProgramComponentArg{
 				Name:     propertyFieldName(variable.Name(), map[string]int{}),
+				WireName: variable.Name(),
 				DartType: dartComponentInputType(variable.Type()),
 				Required: variable.DefaultValue == nil,
 			})

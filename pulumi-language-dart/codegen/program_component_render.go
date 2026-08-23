@@ -21,7 +21,11 @@ func renderDartComponent(component dartProgramComponent) string {
 		}
 		body.WriteString("});\n\n  Map<String, dynamic> toMap() => {")
 		for _, arg := range component.Args {
-			fmt.Fprintf(&body, "%s: %s, ", dartStringLiteral(arg.Name), arg.Name)
+			wireName := arg.WireName
+			if wireName == "" {
+				wireName = arg.Name
+			}
+			fmt.Fprintf(&body, "%s: %s, ", dartStringLiteral(wireName), arg.Name)
 		}
 		body.WriteString("};\n}\n\n")
 	}

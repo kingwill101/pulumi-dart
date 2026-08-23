@@ -47,3 +47,14 @@ func TestTypedInvokeInputUsesGeneratedArgumentType(t *testing.T) {
 		typedInvokeInput("value", "Map<String, int>?"),
 	)
 }
+
+func TestRenderDartComponentUsesWireArgumentName(t *testing.T) {
+	t.Parallel()
+
+	rendered := renderDartComponent(dartProgramComponent{
+		Name: "Reserved",
+		Args: []dartProgramComponentArg{{Name: "string_", WireName: "string", DartType: "String"}},
+	})
+
+	assert.Contains(t, rendered, "{'string': string_, }")
+}
