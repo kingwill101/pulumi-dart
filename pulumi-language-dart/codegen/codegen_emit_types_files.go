@@ -6,7 +6,6 @@ import (
 
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/dartir"
 	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/lower"
-	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/render"
 )
 
 func generatedObjectClassFile(
@@ -46,30 +45,11 @@ func generatedObjectClassFile(
 		imports = append(imports, dartir.Import{URI: path, Prefix: externalImports[path]})
 	}
 
-	properties := make([]dartir.ObjectProperty, len(objectClass.Properties))
-	for index, property := range objectClass.Properties {
-		properties[index] = dartir.ObjectProperty{
-			NameLiteral:       dartStringLiteral(property.Name),
-			FieldName:         property.FieldName,
-			Docs:              property.Comment,
-			FieldType:         objectClassPropertyDartType(objectClass, property),
-			ConstructorDocs:   constructorParameterDoc(property),
-			Required:          property.Required,
-			ToMapExpression:   objectClassToMapExpression(objectClass, property),
-			FromMapExpression: objectClassFromMapExpression(objectClass, property),
-		}
-	}
 	docsMacro := ""
 	if strings.HasSuffix(objectClass.ClassName, "Args") {
 		docsMacro = argsClassDocMacroName(objectClass.ModulePath, objectClass.ClassName)
 	}
-	return render.ObjectClass(dartir.ObjectClass{
-		Name:       objectClass.ClassName,
-		Docs:       objectClass.Comment,
-		DocsMacro:  docsMacro,
-		Imports:    imports,
-		Properties: properties,
-	})
+	return lower.ObjectClass(objectClass, imports, docsMacro)
 }
 
 func generatedEnumFile(enumSpec packageEnumSpec) []byte {
