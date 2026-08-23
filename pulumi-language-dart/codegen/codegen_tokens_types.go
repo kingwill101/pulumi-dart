@@ -114,7 +114,7 @@ func tokenModulePath(token string) string {
 	if module == "" {
 		return "index"
 	}
-	return rewriteModulePath(module)
+	return rewriteModulePath(canonicalProviderName(token[:first]), module)
 }
 
 // tokenProviderName extracts the provider/package portion of a Pulumi token.

@@ -41,3 +41,14 @@ func TestToDartPackageName(t *testing.T) {
 		})
 	}
 }
+
+func TestTokenModulePathAppliesProviderScopedLayout(t *testing.T) {
+	t.Parallel()
+
+	if got := tokenModulePath("aws:s3control/bucket:Bucket"); got != "s3/control/bucket" {
+		t.Fatalf("AWS module path = %q, want %q", got, "s3/control/bucket")
+	}
+	if got := tokenModulePath("sample:s3control/bucket:Bucket"); got != "s3control/bucket" {
+		t.Fatalf("unrelated provider module path = %q, want %q", got, "s3control/bucket")
+	}
+}

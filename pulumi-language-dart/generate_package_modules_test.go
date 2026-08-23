@@ -18,15 +18,15 @@ func TestGeneratePackageGroupsS3AndRoute53SubmodulesUnderParents(t *testing.T) {
 	host := &dartLanguageHost{}
 	targetDir := t.TempDir()
 	schema := `{
-		"name": "sample",
+		"name": "aws",
 		"version": "1.2.3",
 		"resources": {
-			"sample:s3control/bucket:Bucket": {},
-			"sample:s3outposts/endpoint:Endpoint": {},
-			"sample:s3tables/table:Table": {},
-			"sample:route53domains/domain:Domain": {},
-			"sample:route53recoverycontrol/cluster:Cluster": {},
-			"sample:route53recoveryreadiness/resourceSet:ResourceSet": {}
+			"aws:s3control/bucket:Bucket": {},
+			"aws:s3outposts/endpoint:Endpoint": {},
+			"aws:s3tables/table:Table": {},
+			"aws:route53domains/domain:Domain": {},
+			"aws:route53recoverycontrol/cluster:Cluster": {},
+			"aws:route53recoveryreadiness/resourceSet:ResourceSet": {}
 		}
 	}`
 
@@ -36,7 +36,7 @@ func TestGeneratePackageGroupsS3AndRoute53SubmodulesUnderParents(t *testing.T) {
 	})
 	require.NoError(t, err)
 
-	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
+	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_aws")
 	assert.Contains(t, content, "// FILE: s3.dart")
 	assert.Contains(t, content, "export 's3/bucket.dart';")
 	assert.Contains(t, content, "export 's3/endpoint.dart';")
