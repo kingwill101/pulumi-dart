@@ -20,4 +20,3 @@ enum Method {
     throw ArgumentError('Unknown Method value: $value');
   }
 }
-
