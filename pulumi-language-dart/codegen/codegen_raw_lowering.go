@@ -28,77 +28,8 @@ func dartTypeSpecFromRawPropertyType(
 	useReferenceTypes bool,
 	externalRefs *externalRefResolver,
 ) packageTypeSpec {
-	if token := rawRefToken(typ.Ref); token != "" {
-		if namedType, ok := namedTypeRefs[token]; ok {
-			if namedType.Kind == "object" && !namedType.UseReferenceType {
-				return makePackageTypeSpec("object", "Map<String, dynamic>")
-			}
-			if useReferenceTypes {
-				kind := namedType.Kind
-				if kind == "" {
-					kind = "dynamic"
-				}
-				return packageTypeSpec{
-					Kind:              kind,
-					DartType:          namedType.Name,
-					ReferenceType:     namedType.Name,
-					ReferenceWireType: namedType.UnderlyingType,
-				}
-			}
-			if namedType.Kind == "enum" {
-				return makePackageTypeSpec("scalar", namedType.UnderlyingType)
-			}
-			if namedType.Kind == "resource" {
-				return makePackageTypeSpec("dynamic", "dynamic")
-			}
-			return makePackageTypeSpec("object", "Map<String, dynamic>")
-		}
-
-		if externalRef, typeInfo, ok := externalRefs.resolve(typ.Ref); ok {
-			switch typeInfo.Kind {
-			case "resource":
-				return packageTypeSpec{
-					Kind:           "resource",
-					DartType:       externalRef.QualifiedType,
-					IsExternalRef:  true,
-					ExternalImport: externalRef.ImportPath,
-					ExternalAlias:  externalRef.ImportAlias,
-				}
-			case "enum":
-				wireType := typeInfo.WireType
-				if wireType == "" {
-					wireType = "String"
-				}
-				return packageTypeSpec{
-					Kind:              "enum",
-					DartType:          externalRef.QualifiedType,
-					ReferenceType:     externalRef.QualifiedType,
-					ReferenceWireType: wireType,
-					IsExternalRef:     true,
-					ExternalImport:    externalRef.ImportPath,
-					ExternalAlias:     externalRef.ImportAlias,
-				}
-			case "object":
-				if !typeInfo.UseReferenceType {
-					return makePackageTypeSpec("object", "Map<String, dynamic>")
-				}
-				return packageTypeSpec{
-					Kind:              "object",
-					DartType:          externalRef.QualifiedType,
-					ReferenceType:     externalRef.QualifiedType,
-					ReferenceWireType: "Map<String, dynamic>",
-					IsExternalRef:     true,
-					ExternalImport:    externalRef.ImportPath,
-					ExternalAlias:     externalRef.ImportAlias,
-				}
-			case "scalar":
-				if typeInfo.DartType != "" {
-					return makePackageTypeSpec("scalar", typeInfo.DartType)
-				}
-			}
-		}
-
-		return makePackageTypeSpec("dynamic", "dynamic")
+	if typ.Ref != "" {
+		return rawReferenceTypeSpec(typ.Ref, namedTypeRefs, useReferenceTypes, externalRefs)
 	}
 
 	switch typ.Type {
@@ -132,22 +63,20 @@ func dartTypeSpecFromRawPropertyType(
 		return makePackageTypeSpec("object", "Map<String, dynamic>")
 	}
 
-	if len(typ.OneOf) > 0 {
-		for _, candidate := range typ.OneOf {
-			typeSpec := dartTypeSpecFromRawPropertyType(candidate, namedTypeRefs, useReferenceTypes, externalRefs)
-			if typeSpec.DartType != "dynamic" {
-				return typeSpec
-			}
-		}
-	}
-
-	if len(typ.AnyOf) > 0 {
-		for _, candidate := range typ.AnyOf {
-			typeSpec := dartTypeSpecFromRawPropertyType(candidate, namedTypeRefs, useReferenceTypes, externalRefs)
-			if typeSpec.DartType != "dynamic" {
-				return typeSpec
-			}
+	for _, candidates := range [][]rawPropertyTypeSpec{typ.OneOf, typ.AnyOf} {
+		if resolved, ok := firstConcreteRawType(candidates, namedTypeRefs, useReferenceTypes, externalRefs); ok {
+			return resolved
 		}
 	}
 	return makePackageTypeSpec("dynamic", "dynamic")
+}
+
+func firstConcreteRawType(candidates []rawPropertyTypeSpec, named map[string]packageNamedTypeRef, useRefs bool, external *externalRefResolver) (packageTypeSpec, bool) {
+	for _, candidate := range candidates {
+		resolved := dartTypeSpecFromRawPropertyType(candidate, named, useRefs, external)
+		if resolved.DartType != "dynamic" {
+			return resolved, true
+		}
+	}
+	return packageTypeSpec{}, false
 }
