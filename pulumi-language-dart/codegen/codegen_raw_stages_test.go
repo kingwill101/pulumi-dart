@@ -54,6 +54,20 @@ func TestDartTypeSpecFromRawPropertyTypeLowersNestedCollections(t *testing.T) {
 	require.Equal(t, "map", typeSpec.ElementType.Kind)
 }
 
+func TestBuildExternalSchemaIndexClassifiesTypes(t *testing.T) {
+	t.Parallel()
+
+	index := buildExternalSchemaIndex(rawPackageSchema{Types: map[string]rawTypeSpec{
+		"sample:index:Mode":   {Type: "string", Enum: []rawEnumValueSpec{{Value: "on"}}},
+		"sample:index:Config": {Type: "object", Properties: map[string]rawPropertyTypeSpec{"name": {Type: "string"}}},
+		"sample:index:Count":  {Type: "integer"},
+	}})
+
+	require.Equal(t, externalSchemaTypeInfo{Kind: "enum", WireType: "String", UseReferenceType: true}, index.TypeInfoByToken["sample:index:Mode"])
+	require.Equal(t, externalSchemaTypeInfo{Kind: "object", WireType: "Map<String, dynamic>", UseReferenceType: true}, index.TypeInfoByToken["sample:index:Config"])
+	require.Equal(t, externalSchemaTypeInfo{Kind: "scalar", DartType: "int"}, index.TypeInfoByToken["sample:index:Count"])
+}
+
 func TestDartStringLiteralEscapesDartInterpolation(t *testing.T) {
 	t.Parallel()
 
