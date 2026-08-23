@@ -6,10 +6,10 @@ class GeneratedStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GeneratedStack() {
-    final defaultRes = pulumi_call_index.Custom('defaultRes', args: pulumi_call_index.CustomArgs(value: ('defaultValue').input(), ));
+    final defaultRes = pulumi_call_index.Custom('defaultRes', args: pulumi_call_index.CustomArgs(value: pulumi.Input.asInput('defaultValue'), ));
 
     _outputProperties = [
-      pulumi.OutputProperty('defaultProviderValue', pulumi.output(pulumi.output(defaultRes.providerValue()).apply((value) => value.result)).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('defaultProviderValue', pulumi.output(pulumi.output(defaultRes.providerValue()).apply<dynamic>((value) => value.result)).apply<Object?>((value) => value)),
     ];
   }
 

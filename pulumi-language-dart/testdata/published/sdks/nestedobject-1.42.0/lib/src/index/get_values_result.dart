@@ -3,23 +3,23 @@
 
 /// Result data returned by getValues.
 class GetValuesResult {
-  final List<String> results;
+  final List<String>? results;
 
   /// Creates a new [GetValuesResult].
-  /// [results] Required.
+  /// [results] Optional.
   const GetValuesResult({
-    required this.results,
+    this.results,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'results': results,
+      'results': ?results,
     };
   }
 
   factory GetValuesResult.fromMap(Map<String, dynamic> map) {
     return GetValuesResult(
-      results: (map['results'] as List).cast<String>(),
+      results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

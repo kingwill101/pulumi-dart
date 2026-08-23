@@ -38,4 +38,12 @@ func TestTypedInvokeInputUsesGeneratedArgumentType(t *testing.T) {
 		typedInvokeInput("value", "String"),
 	)
 	assert.Equal(t, "value", typedInvokeInput("value", "dynamic"))
+	assert.Equal(t,
+		"pulumi.output(value).apply<List<String>>((value) => (value as List).cast<String>())",
+		typedInvokeInput("value", "List<String>"),
+	)
+	assert.Equal(t,
+		"pulumi.output(value).apply<Map<String, int>?>((value) => value == null ? null : (value as Map).cast<String, int>())",
+		typedInvokeInput("value", "Map<String, int>?"),
+	)
 }
