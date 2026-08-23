@@ -94,7 +94,9 @@ class _TypedOutputCompletionSource<T> implements IOutputCompletionSource {
     _completer.complete(
       OutputData<T>(
         value: null,
-        isKnown: isKnown,
+        // An omitted non-nullable provider output cannot represent a known
+        // Dart value. This occurs for resources skipped by targeted updates.
+        isKnown: isKnown && null is T,
         isSecret: _isSecret,
         resources: {_resource},
       ),

@@ -129,6 +129,8 @@ var passingConformanceTests = []string{
 	"l2-destroy",
 	"l2-resource-name-type",
 	"l2-engine-update-options",
+	"l2-resource-elide-unknowns",
+	"l2-target-up-skipped-create-output",
 	"l2-union",
 	"l2-discriminated-union",
 	"l2-discriminated-union-many",

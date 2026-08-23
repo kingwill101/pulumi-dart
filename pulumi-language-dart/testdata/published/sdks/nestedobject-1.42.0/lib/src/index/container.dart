@@ -1,8 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_args.dart';
+import 'detail.dart';
 
 class Container extends pulumi.CustomResource {
-  late final pulumi.Output<List<Map<String, dynamic>>> details;
+  late final pulumi.Output<List<Detail>> details;
   late final pulumi.Output<List<String>> inputs;
 
   /// Creates a new [Container].
@@ -19,7 +20,7 @@ class Container extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
-    details = registerOutput<List<Map<String, dynamic>>>('details');
-    inputs = registerOutput<List<String>>('inputs');
+    details = registerOutput<List<Detail>>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Detail>(guardedValue, (value) => Detail.fromMap((value as Map).cast<String, dynamic>())); });
+    inputs = registerOutput<List<String>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

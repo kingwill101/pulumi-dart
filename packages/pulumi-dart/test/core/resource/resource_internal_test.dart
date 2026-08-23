@@ -103,6 +103,17 @@ void main() {
       },
     );
 
+    test('missing non-nullable output property remains unknown', () async {
+      final resource = _LateOutputResource('late');
+      final output = resource.createOutput<String>('missing');
+
+      resource.resolveOutputs(Struct());
+
+      final data = await output.getData();
+      expect(data.isKnown, isFalse);
+      expect(data.value, isNull);
+    });
+
     test(
       'missing output property resolves to unknown during preview',
       () async {

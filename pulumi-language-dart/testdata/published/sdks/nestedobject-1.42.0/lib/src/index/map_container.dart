@@ -18,6 +18,6 @@ class MapContainer extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
-    tags = registerOutput<Map<String, String>>('tags');
+    tags = registerOutput<Map<String, String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }
