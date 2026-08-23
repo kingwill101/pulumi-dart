@@ -100,9 +100,20 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 			return "", fmt.Errorf("getOutput expects two arguments")
 		}
 		return arguments[0] + ".getOutput((" + arguments[1] + ").input())", nil
+	case "pulumiResourceName":
+		return resourceMetadataBuiltin(expression.Name, arguments, "getResourceName")
+	case "pulumiResourceType":
+		return resourceMetadataBuiltin(expression.Name, arguments, "getResourceType")
 	case "min", "max":
 		return lowerMinMaxBuiltin(expression.Name, arguments, expression.ExpandFinal)
 	default:
 		return "", fmt.Errorf("unsupported function %q", expression.Name)
 	}
+}
+
+func resourceMetadataBuiltin(name string, arguments []string, getter string) (string, error) {
+	if len(arguments) != 1 {
+		return "", fmt.Errorf("%s expects one resource argument", name)
+	}
+	return arguments[0] + "." + getter + "()", nil
 }
