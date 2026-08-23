@@ -29,19 +29,19 @@ Checksum drift catches cases where schema content changes without a version bump
 Check all providers:
 
 ```bash
-dart run tool/check_schema_drift.dart --pretty
+dart run repodoc schema:check
 ```
 
 Check one provider:
 
 ```bash
-dart run tool/check_schema_drift.dart --provider aws --pretty
+dart run repodoc schema:check --provider aws
 ```
 
 Fail non-zero if any drift is detected:
 
 ```bash
-dart run tool/check_schema_drift.dart --fail-on-drift
+dart run repodoc schema:check --fail-on-drift
 ```
 
 ## CI pipeline

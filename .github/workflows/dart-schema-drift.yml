@@ -7,7 +7,7 @@ on:
   pull_request:
     paths:
       - .github/workflows/dart-schema-drift.yml
-      - tool/check_schema_drift.dart
+      - repodoc/lib/src/commands/schema/**
       - packages/sdks/schema_sources.json
       - packages/sdks/schemas/*.schema.json
 
@@ -48,13 +48,15 @@ jobs:
         run: |
           set -euo pipefail
           REPORT_PATH="schema-drift-${{ matrix.provider }}.json"
-          dart run tool/check_schema_drift.dart --provider "${{ matrix.provider }}" --pretty > "${REPORT_PATH}"
+          dart run repodoc schema:check --provider "${{ matrix.provider }}" --json --pretty > "${REPORT_PATH}"
           cat "${REPORT_PATH}"
 
           echo "report_path=${REPORT_PATH}" >> "$GITHUB_OUTPUT"
           echo "drift=$(jq -r '.drift' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
           echo "local_schema_version=$(jq -r '.local_schema_version' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
-          echo "upstream_schema_version=$(jq -r '.upstream_schema_version' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
+          echo "upstream_version=$(jq -r '.upstream_version' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
+          echo "upstream_version_source=$(jq -r '.upstream_version_source' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
+          echo "schema_source=$(jq -r '.schema_source' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
           echo "package_version=$(jq -r '.package_version' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
           echo "upstream_version_changed=$(jq -r '.upstream_version_changed' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
           echo "upstream_checksum_changed=$(jq -r '.upstream_checksum_changed' "${REPORT_PATH}")" >> "$GITHUB_OUTPUT"
@@ -68,7 +70,9 @@ jobs:
             echo "| Field | Value |"
             echo "|---|---|"
             echo "| Local schema version | \`${{ steps.drift.outputs.local_schema_version }}\` |"
-            echo "| Upstream schema version | \`${{ steps.drift.outputs.upstream_schema_version }}\` |"
+            echo "| Upstream version | \`${{ steps.drift.outputs.upstream_version }}\` |"
+            echo "| Upstream version source | \`${{ steps.drift.outputs.upstream_version_source }}\` |"
+            echo "| Schema content source | \`${{ steps.drift.outputs.schema_source }}\` |"
             echo "| Generated package version | \`${{ steps.drift.outputs.package_version }}\` |"
             echo "| Upstream version changed | \`${{ steps.drift.outputs.upstream_version_changed }}\` |"
             echo "| Upstream checksum changed | \`${{ steps.drift.outputs.upstream_checksum_changed }}\` |"

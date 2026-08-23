@@ -148,32 +148,32 @@ tasks:
   parity:audit:
     desc: Compare Dart integration test surface against upstream Go/Node/Python tests
     cmds:
-      - dart run tool/parity_audit.dart
+      - dart run repodoc parity:integration
 
   parity:audit:sdk:
     desc: Compare Dart core test surface against upstream NodeJS/Python SDK test topics
     cmds:
-      - dart run tool/sdk_parity_audit.dart
+      - dart run repodoc parity:sdk
 
   check:workspace:
     desc: Validate workspace pubspec conventions
     cmds:
-      - dart run tool/check_packages_workspace.dart
+      - dart run repodoc packages:check-workspace
 
   check:schema-drift:
     desc: Check upstream provider schema drift
     cmds:
-      - dart run tool/check_schema_drift.dart --pretty
+      - dart run repodoc schema:check
 
   generate:packages:
     desc: Regenerate provider packages from packages/sdks/schema_sources.json
     cmds:
-      - dart run tool/generate_packages.dart --all
+      - dart run repodoc packages:generate
 
   check-tools:
     desc: Verify required tooling for SDK generation
     cmds:
-      - dart run tool/check_tools.dart
+      - dart run repodoc tools:check
 
   setup:
     desc: Prepare directories and build pulumi-language-dart
@@ -269,7 +269,7 @@ tasks:
       vars:
         - PACKAGE
     cmds:
-      - dart run tool/generate_packages.dart --provider "{{.PACKAGE}}"
+      - dart run repodoc packages:generate --provider "{{.PACKAGE}}"
 
   generate:provider:
     desc: Generate Dart SDK for a provider package from Pulumi Registry
@@ -326,12 +326,12 @@ tasks:
   generate:all:
     desc: Generate all configured provider SDKs for Dart
     cmds:
-      - dart run tool/generate_packages.dart --all
+      - dart run repodoc packages:generate
 
   generate:day1:
     desc: Generate Day 1 Google provider SDKs for Dart
     cmds:
-      - dart run tool/generate_packages.dart --provider "gcp,google-native"
+      - dart run repodoc packages:generate --provider "gcp,google-native"
 
   analyze-package:
     internal: true

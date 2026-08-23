@@ -15,7 +15,7 @@ final class ProviderSchema {
   final String packagePubspecPath;
 }
 
-void main(List<String> args) async {
+Future<void> main(List<String> args) async {
   final parsed = _parseArgs(args);
   final repoRoot = _findRepoRoot(parsed.workingDirectory);
   final schemaSourcePath = _findSchemaSourcesPath(repoRoot.path);
@@ -85,7 +85,13 @@ void main(List<String> args) async {
 
     final outputDir = Directory(outputPath);
     if (outputDir.existsSync()) {
-      outputDir.deleteSync(recursive: true);
+      _discardDirectory(outputDir);
+      if (outputDir.existsSync()) {
+        throw FileSystemException(
+          'Could not clear generated provider staging directory',
+          outputDir.path,
+        );
+      }
     }
 
     stdout.writeln('[${i + 1}/${selectedProviders.length}] ${provider.name}');
@@ -127,19 +133,15 @@ void main(List<String> args) async {
       _resolveGeneratedPackageDir(repoRoot.path, provider),
     );
 
-    // Remove the lib/ directory so stale generated source files are cleaned
-    // up, but preserve manually maintained root-level files such as LICENSE.
-    final libDir = Directory(_joinPath([destinationDir.path, 'lib']));
-    if (libDir.existsSync()) {
-      libDir.deleteSync(recursive: true);
-    }
-
+    // Replace generated sources as a directory so stale files are cleaned up
+    // without leaving the package half-deleted if replacement fails.
+    _replaceGeneratedLib(generatedDartDir, destinationDir);
     _mergeDirectory(generatedDartDir, destinationDir);
   }
 
   if (!parsed.keepSdks) {
     if (generatedSdksRoot.existsSync()) {
-      generatedSdksRoot.deleteSync(recursive: true);
+      _discardDirectory(generatedSdksRoot);
     }
   }
 
@@ -431,6 +433,69 @@ void _mergeDirectory(Directory source, Directory destination) {
   }
 }
 
+void _replaceGeneratedLib(Directory generatedPackage, Directory destination) {
+  final generatedLib = Directory(_joinPath([generatedPackage.path, 'lib']));
+  if (!generatedLib.existsSync()) {
+    throw FileSystemException(
+      'Generated package does not contain a lib directory',
+      generatedPackage.path,
+    );
+  }
+
+  if (!destination.existsSync()) {
+    destination.createSync(recursive: true);
+  }
+
+  final destinationLib = Directory(_joinPath([destination.path, 'lib']));
+  final backupLib = Directory(
+    _joinPath([
+      generatedPackage.parent.path,
+      '.lib-replaced-$pid-${DateTime.now().microsecondsSinceEpoch}',
+    ]),
+  );
+
+  var movedExistingLib = false;
+  try {
+    if (destinationLib.existsSync()) {
+      destinationLib.renameSync(backupLib.path);
+      movedExistingLib = true;
+    }
+    generatedLib.renameSync(destinationLib.path);
+  } catch (_) {
+    if (!destinationLib.existsSync() && movedExistingLib) {
+      backupLib.renameSync(destinationLib.path);
+    }
+    rethrow;
+  }
+
+  if (movedExistingLib) {
+    _discardDirectory(backupLib);
+  }
+}
+
+void _discardDirectory(Directory directory) {
+  if (!directory.existsSync()) return;
+  Directory? trash;
+  try {
+    trash = Directory.systemTemp.createTempSync('repodoc-generated-trash-');
+    final moved = directory.renameSync(_joinPath([trash.path, 'contents']));
+    try {
+      moved.deleteSync(recursive: true);
+      trash.deleteSync();
+    } on FileSystemException {
+      // The generated replacement is already committed. Finder and filesystem
+      // watchers may recreate metadata while trash is being removed, so stale
+      // temporary cleanup must not invalidate a successful atomic swap.
+    }
+  } on FileSystemException {
+    try {
+      directory.deleteSync(recursive: true);
+    } on FileSystemException {
+      // Best-effort cleanup only; the path is ignored generated state.
+    }
+  }
+}
+
 String _joinPath(List<String> segments) {
   final normalized = segments.where((segment) => segment.isNotEmpty).toList();
   if (normalized.isEmpty) {
@@ -518,7 +583,7 @@ void _printUsage() {
 Regenerate Dart provider SDK packages.
 
 Usage:
-  dart run tool/generate_packages.dart [options]
+  repodoc packages:generate [options]
 
 Options:
   --all                       Generate all providers in packages/sdks/schema_sources.json (default)

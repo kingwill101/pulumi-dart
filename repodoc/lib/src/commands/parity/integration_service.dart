@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'src/task_tooling.dart';
+import '../../infrastructure/task_tooling.dart';
 
 void main() {
   final root = findRepoRoot().path;

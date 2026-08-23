@@ -4,7 +4,7 @@ Directory findRepoRoot({
   Directory? start,
   List<String> markers = const [
     'pubspec.yaml',
-    'tool',
+    'repodoc',
     'pulumi-language-dart',
   ],
 }) {

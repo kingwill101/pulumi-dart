@@ -1,22 +1,5 @@
-import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
-
-final class _Args {
-  _Args({
-    required this.provider,
-    required this.manifestPath,
-    required this.pretty,
-    required this.failOnDrift,
-    required this.workingDirectory,
-  });
-
-  final String? provider;
-  final String manifestPath;
-  final bool pretty;
-  final bool failOnDrift;
-  final String workingDirectory;
-}
 
 final class _ProviderEntry {
   _ProviderEntry({
@@ -32,107 +15,65 @@ final class _ProviderEntry {
   final String packagePubspecPath;
 }
 
-Future<void> main(List<String> args) async {
-  final parsed = _parseArgs(args);
-  final repoRoot = _findRepoRoot(parsed.workingDirectory);
-  final manifestPath = _resolveManifestPath(repoRoot.path, parsed.manifestPath);
+final class _GitHubRelease {
+  const _GitHubRelease({required this.version, this.schemaUrl});
 
-  final providers = _loadProviders(manifestPath);
-  final selected = parsed.provider == null
+  final String version;
+  final String? schemaUrl;
+}
+
+typedef SchemaReportLoader = Future<Map<String, dynamic>> Function();
+typedef SchemaReportRunner =
+    Future<Map<String, dynamic>> Function(
+      String provider,
+      int index,
+      int total,
+      SchemaReportLoader load,
+    );
+
+final class SchemaCheckResult {
+  const SchemaCheckResult(this.reports);
+
+  final List<Map<String, dynamic>> reports;
+
+  bool get hasDrift => reports.any((report) => report['drift'] == true);
+
+  Object output({required bool singleProvider}) =>
+      singleProvider ? reports.single : reports;
+}
+
+Future<SchemaCheckResult> checkSchemas({
+  String? provider,
+  String manifestPath = 'packages/sdks/schema_sources.json',
+  String? workingDirectory,
+  SchemaReportRunner? runReport,
+}) async {
+  final repoRoot = _findRepoRoot(workingDirectory ?? Directory.current.path);
+  final resolvedManifest = _resolveManifestPath(repoRoot.path, manifestPath);
+  final providers = _loadProviders(resolvedManifest);
+  final selected = provider == null
       ? providers
-      : providers.where((entry) => entry.name == parsed.provider).toList();
+      : providers.where((entry) => entry.name == provider).toList();
 
   if (selected.isEmpty) {
-    stderr.writeln('Provider not found in manifest: ${parsed.provider}');
-    exitCode = 64;
-    return;
+    throw ArgumentError.value(provider, 'provider', 'Not found in manifest');
   }
 
   final reports = <Map<String, dynamic>>[];
-  for (final entry in selected) {
-    reports.add(await _reportForProvider(repoRoot.path, entry));
+  for (var index = 0; index < selected.length; index++) {
+    final entry = selected[index];
+    Future<Map<String, dynamic>> load() =>
+        _reportForProvider(repoRoot.path, entry);
+    reports.add(
+      runReport == null
+          ? await load()
+          : await runReport(entry.name, index + 1, selected.length, load),
+    );
   }
-
-  final outputObject = parsed.provider == null ? reports : reports.single;
-  final outputText = parsed.pretty
-      ? const JsonEncoder.withIndent('  ').convert(outputObject)
-      : jsonEncode(outputObject);
-  stdout.writeln(outputText);
-
-  final driftFound = reports.any((report) => report['drift'] == true);
-  if (parsed.failOnDrift && driftFound) {
-    exitCode = 2;
-  }
+  return SchemaCheckResult(reports);
 }
 
-_Args _parseArgs(List<String> args) {
-  String? provider;
-  var manifestPath = 'packages/sdks/schema_sources.json';
-  var pretty = false;
-  var failOnDrift = false;
-
-  for (var i = 0; i < args.length; i++) {
-    final arg = args[i];
-    if (arg == '-h' || arg == '--help') {
-      _printUsage();
-      exit(0);
-    }
-    if (arg == '--provider') {
-      if (i + 1 >= args.length) {
-        stderr.writeln('Missing value for --provider');
-        _printUsage();
-        exit(64);
-      }
-      provider = args[++i].trim();
-      continue;
-    }
-    if (arg == '--manifest') {
-      if (i + 1 >= args.length) {
-        stderr.writeln('Missing value for --manifest');
-        _printUsage();
-        exit(64);
-      }
-      manifestPath = args[++i].trim();
-      continue;
-    }
-    if (arg == '--pretty') {
-      pretty = true;
-      continue;
-    }
-    if (arg == '--fail-on-drift') {
-      failOnDrift = true;
-      continue;
-    }
-
-    stderr.writeln('Unknown argument: $arg');
-    _printUsage();
-    exit(64);
-  }
-
-  return _Args(
-    provider: provider,
-    manifestPath: manifestPath,
-    pretty: pretty,
-    failOnDrift: failOnDrift,
-    workingDirectory: Directory.current.path,
-  );
-}
-
-void _printUsage() {
-  stdout.writeln('''
-Check upstream Pulumi schema drift for generated Dart provider packages.
-
-Usage:
-  dart run tool/check_schema_drift.dart [--provider <name>] [--manifest <path>] [--pretty] [--fail-on-drift]
-
-Options:
-  --provider <name>    Check a single provider from the manifest.
-  --manifest <path>    Manifest path (default: packages/sdks/schema_sources.json).
-  --pretty             Pretty-print JSON output.
-  --fail-on-drift      Exit non-zero when upstream drift is detected.
-  -h, --help           Show this help.
-''');
-}
+Future<List<int>> downloadSchema(String url) => _fetchBytes(url);
 
 Directory _findRepoRoot(String start) {
   var current = Directory(start).absolute;
@@ -251,10 +192,27 @@ Future<Map<String, dynamic>> _reportForProvider(
   }
 
   final localSchemaBytes = localSchemaFile.readAsBytesSync();
-  final upstreamSchemaBytes = await _fetchBytes(provider.schemaUrl);
-
   final localVersion = _schemaVersion(localSchemaBytes);
-  final upstreamVersion = _schemaVersion(upstreamSchemaBytes);
+  final localRepository = _schemaRepository(localSchemaBytes);
+  final release = await _latestGitHubRelease(localRepository);
+  final resolvedSchemaUrl = release?.schemaUrl ?? provider.schemaUrl;
+  final upstreamSchemaBytes = await _fetchBytes(resolvedSchemaUrl);
+  final upstreamSchemaVersion = _schemaVersion(upstreamSchemaBytes);
+  final upstreamRepository = _schemaRepository(upstreamSchemaBytes);
+  final repository = upstreamRepository.isNotEmpty
+      ? upstreamRepository
+      : localRepository;
+  final upstreamReleaseVersion = upstreamSchemaVersion.isEmpty
+      ? release?.version ?? ''
+      : '';
+  final upstreamVersion = upstreamSchemaVersion.isNotEmpty
+      ? upstreamSchemaVersion
+      : upstreamReleaseVersion;
+  final upstreamVersionSource = upstreamSchemaVersion.isNotEmpty
+      ? 'schema'
+      : upstreamReleaseVersion.isNotEmpty
+      ? 'github_release'
+      : 'unknown';
   final packagePubspecAbs = _resolvePackagePubspecPath(
     repoRoot: repoRoot,
     providerName: provider.name,
@@ -271,7 +229,8 @@ Future<Map<String, dynamic>> _reportForProvider(
     _canonicalJsonBytes(upstreamSchemaBytes),
   );
 
-  final upstreamVersionChanged = localVersion != upstreamVersion;
+  final upstreamVersionChanged =
+      upstreamVersion.isNotEmpty && localVersion != upstreamVersion;
   final upstreamChecksumChanged = localCanonicalSha != upstreamCanonicalSha;
 
   String packageVersionMatchesLocalSchema;
@@ -287,11 +246,19 @@ Future<Map<String, dynamic>> _reportForProvider(
 
   return <String, dynamic>{
     'provider': provider.name,
-    'schema_url': provider.schemaUrl,
+    'schema_url': resolvedSchemaUrl,
+    'configured_schema_url': provider.schemaUrl,
+    'schema_source': release?.schemaUrl == null
+        ? 'pulumi_registry'
+        : 'github_release_asset',
     'local_schema_path': provider.localSchemaPath,
     'package_pubspec_path': provider.packagePubspecPath,
     'local_schema_version': localVersion,
-    'upstream_schema_version': upstreamVersion,
+    'upstream_schema_version': upstreamSchemaVersion,
+    'upstream_release_version': upstreamReleaseVersion,
+    'upstream_version': upstreamVersion,
+    'upstream_version_source': upstreamVersionSource,
+    'upstream_repository': repository,
     'package_version': packageVersion,
     'local_schema_raw_sha256': localRawSha,
     'upstream_schema_raw_sha256': upstreamRawSha,
@@ -334,17 +301,24 @@ String _resolvePackagePubspecPath({
 Future<List<int>> _fetchBytes(String url) async {
   Object? lastError;
   for (var attempt = 1; attempt <= 3; attempt++) {
-    final client = HttpClient();
+    final client = HttpClient()
+      ..connectionTimeout = const Duration(seconds: 15);
     try {
-      final request = await client.getUrl(Uri.parse(url));
-      final response = await request.close();
+      final request = await client
+          .getUrl(Uri.parse(url))
+          .timeout(const Duration(seconds: 20));
+      final response = await request.close().timeout(
+        const Duration(seconds: 20),
+      );
       if (response.statusCode < 200 || response.statusCode > 299) {
         stderr.writeln(
           'Failed to fetch schema URL ($url): HTTP ${response.statusCode}',
         );
         exit(1);
       }
-      return await consolidateHttpClientResponseBytes(response);
+      return await consolidateHttpClientResponseBytes(
+        response,
+      ).timeout(const Duration(seconds: 30));
     } catch (error) {
       lastError = error;
       if (attempt < 3) {
@@ -369,6 +343,68 @@ String _schemaVersion(List<int> bytes) {
     return version.toString();
   }
   return '';
+}
+
+String _schemaRepository(List<int> bytes) {
+  final decoded = jsonDecode(utf8.decode(bytes));
+  if (decoded is Map<String, dynamic>) {
+    return decoded['repository']?.toString().trim() ?? '';
+  }
+  return '';
+}
+
+Future<_GitHubRelease?> _latestGitHubRelease(String repository) async {
+  final repositoryUri = Uri.tryParse(repository);
+  if (repositoryUri == null || repositoryUri.host != 'github.com') return null;
+  final segments = repositoryUri.pathSegments
+      .where((segment) => segment.isNotEmpty)
+      .toList();
+  if (segments.length < 2) return null;
+
+  final owner = segments[0];
+  final repo = segments[1].replaceFirst(RegExp(r'\.git$'), '');
+  final client = HttpClient()..connectionTimeout = const Duration(seconds: 10);
+  try {
+    final request = await client
+        .getUrl(
+          Uri.https('api.github.com', '/repos/$owner/$repo/releases/latest'),
+        )
+        .timeout(const Duration(seconds: 15));
+    request.headers
+      ..set(HttpHeaders.acceptHeader, 'application/vnd.github+json')
+      ..set(HttpHeaders.userAgentHeader, 'pulumi-dart-repodoc');
+    final token = Platform.environment['GITHUB_TOKEN'];
+    if (token != null && token.isNotEmpty) {
+      request.headers.set(HttpHeaders.authorizationHeader, 'Bearer $token');
+    }
+    final response = await request.close().timeout(const Duration(seconds: 15));
+    if (response.statusCode != HttpStatus.ok) return null;
+    final bytes = await consolidateHttpClientResponseBytes(
+      response,
+    ).timeout(const Duration(seconds: 15));
+    final decoded = jsonDecode(utf8.decode(bytes));
+    if (decoded is! Map<String, dynamic>) return null;
+    final tag = decoded['tag_name']?.toString().trim() ?? '';
+    final version = tag.replaceFirst(RegExp(r'^[vV]'), '');
+    if (version.isEmpty) return null;
+
+    String? schemaUrl;
+    final assets = decoded['assets'];
+    if (assets is List) {
+      for (final asset in assets.whereType<Map<String, dynamic>>()) {
+        if (asset['name'] == 'schema-embed.json') {
+          final candidate = asset['browser_download_url']?.toString();
+          if (candidate != null && candidate.isNotEmpty) schemaUrl = candidate;
+          break;
+        }
+      }
+    }
+    return _GitHubRelease(version: version, schemaUrl: schemaUrl);
+  } catch (_) {
+    return null;
+  } finally {
+    client.close(force: true);
+  }
 }
 
 String _pubspecVersion(String path) {
@@ -399,7 +435,7 @@ dynamic _canonicalizeJson(dynamic value) {
       for (final entry in value.entries) entry.key.toString(): entry.value,
     };
     final keys = entriesByKey.keys.toList()..sort();
-    final sorted = LinkedHashMap<String, dynamic>();
+    final sorted = <String, dynamic>{};
     for (final key in keys) {
       sorted[key] = _canonicalizeJson(entriesByKey[key]);
     }

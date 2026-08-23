@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'src/task_tooling.dart';
+import '../../infrastructure/task_tooling.dart';
 
 void main() {
   final repoRoot = findRepoRoot();
@@ -19,7 +19,10 @@ void main() {
     exit(1);
   }
 
-  final workspaceMembers = _parseWorkspaceMembers(rootLines);
+  final workspaceMembers = _expandWorkspaceMembers(
+    repoRoot,
+    _parseWorkspaceMembers(rootLines),
+  );
   if (workspaceMembers.isEmpty) {
     stderr.writeln('No workspace members found in pubspec.yaml');
     exit(1);
@@ -69,6 +72,35 @@ void main() {
   stdout.writeln(
     'Workspace pubspec checks passed for ${workspaceMembers.length} members.',
   );
+}
+
+List<String> _expandWorkspaceMembers(Directory repoRoot, List<String> entries) {
+  final members = <String>[];
+  for (final entry in entries) {
+    if (!entry.endsWith('/**')) {
+      members.add(entry);
+      continue;
+    }
+
+    final searchRoot = Directory(
+      joinPath([repoRoot.path, entry.substring(0, entry.length - 3)]),
+    );
+    if (!searchRoot.existsSync()) {
+      members.add(entry);
+      continue;
+    }
+
+    final discovered =
+        searchRoot
+            .listSync(recursive: true, followLinks: false)
+            .whereType<File>()
+            .where((file) => file.path.endsWith('/pubspec.yaml'))
+            .map((file) => relativePath(repoRoot.path, file.parent.path))
+            .toList()
+          ..sort();
+    members.addAll(discovered);
+  }
+  return members;
 }
 
 List<String> _parseWorkspaceMembers(List<String> lines) {

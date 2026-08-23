@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:test/test.dart';
 
-import '../tool/src/integration_prewarm_impl.dart';
+import 'package:repodoc/src/commands/integration/integration_prewarm_impl.dart';
 
 void main() {
   late Directory root;

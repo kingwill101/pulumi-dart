@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math' as math;
 
-import 'src/integration_prewarm.dart';
+import 'integration_prewarm.dart';
 
 const _isolatedIntegrationTests = <String>{
   // This test intentionally verifies shutdown behavior and relies on a fresh
@@ -37,9 +37,9 @@ class PulumiDartTool {
 Pulumi Dart repository tooling
 
 Usage:
-  pulumi-dart-tool integration matrix [options]
-  pulumi-dart-tool integration run [options]
-  pulumi-dart-tool integration prewarm [options]
+  repodoc integration:matrix [options]
+  repodoc integration:run [options]
+  repodoc integration:prewarm [options]
 
 Integration matrix options:
   --package-dir <path>   Go integration package directory.
