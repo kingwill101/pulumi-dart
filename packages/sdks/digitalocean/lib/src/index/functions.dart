@@ -23,6 +23,16 @@ import 'get_database_replica_args.dart';
 import 'get_database_replica_result.dart';
 import 'get_database_user_args.dart';
 import 'get_database_user_result.dart';
+import 'get_dedicated_inference_accelerators_args.dart';
+import 'get_dedicated_inference_accelerators_result.dart';
+import 'get_dedicated_inference_args.dart';
+import 'get_dedicated_inference_gpu_model_config_result.dart';
+import 'get_dedicated_inference_result.dart';
+import 'get_dedicated_inference_sizes_result.dart';
+import 'get_dedicated_inference_tokens_args.dart';
+import 'get_dedicated_inference_tokens_result.dart';
+import 'get_dedicated_inferences_args.dart';
+import 'get_dedicated_inferences_result.dart';
 import 'get_domain_args.dart';
 import 'get_domain_result.dart';
 import 'get_domains_args.dart';
@@ -75,6 +85,10 @@ import 'get_gradientai_agents_args.dart';
 import 'get_gradientai_agents_by_openai_api_key_args.dart';
 import 'get_gradientai_agents_by_openai_api_key_result.dart';
 import 'get_gradientai_agents_result.dart';
+import 'get_gradientai_custom_model_args.dart';
+import 'get_gradientai_custom_model_result.dart';
+import 'get_gradientai_custom_models_args.dart';
+import 'get_gradientai_custom_models_result.dart';
 import 'get_gradientai_indexing_job_args.dart';
 import 'get_gradientai_indexing_job_data_sources_args.dart';
 import 'get_gradientai_indexing_job_data_sources_result.dart';
@@ -105,6 +119,8 @@ import 'get_kubernetes_versions_args.dart';
 import 'get_kubernetes_versions_result.dart';
 import 'get_load_balancer_args.dart';
 import 'get_load_balancer_result.dart';
+import 'get_nfs_access_point_args.dart';
+import 'get_nfs_access_point_result.dart';
 import 'get_nfs_args.dart';
 import 'get_nfs_result.dart';
 import 'get_nfs_snapshot_args.dart';
@@ -149,6 +165,8 @@ import 'get_tag_args.dart';
 import 'get_tag_result.dart';
 import 'get_tags_args.dart';
 import 'get_tags_result.dart';
+import 'get_vector_database_args.dart';
+import 'get_vector_database_result.dart';
 import 'get_volume_args.dart';
 import 'get_volume_result.dart';
 import 'get_volume_snapshot_args.dart';
@@ -209,6 +227,18 @@ import 'get_vpc_result.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getaccount" "example" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -216,8 +246,8 @@ import 'get_vpc_result.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -307,7 +337,7 @@ Future<GetAccountResult> getAccount(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupApp(ctx, &digitalocean.LookupAppArgs{
+/// 		example, err := digitalocean.GetApp(ctx, &digitalocean.LookupAppArgs{
 /// 			AppId: "e665d18d-7b56-44a9-92ce-31979174d544",
 /// 		}, nil)
 /// 		if err != nil {
@@ -318,6 +348,23 @@ Future<GetAccountResult> getAccount(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getapp" "example" {
+///   app_id = "e665d18d-7b56-44a9-92ce-31979174d544"
+/// }
+///
+/// output "defaultIngress" {
+///   value = data.digitalocean_getapp.example.default_ingress
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -326,8 +373,8 @@ Future<GetAccountResult> getAccount(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetAppArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -424,7 +471,7 @@ Future<GetAppResult> getApp(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupByoipPrefix(ctx, &digitalocean.LookupByoipPrefixArgs{
+/// 		_, err := digitalocean.GetByoipPrefix(ctx, &digitalocean.LookupByoipPrefixArgs{
 /// 			Uuid: "506f78a4-e098-11e5-ad9f-000f53306ae1",
 /// 		}, nil)
 /// 		if err != nil {
@@ -432,6 +479,19 @@ Future<GetAppResult> getApp(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getbyoipprefix" "example" {
+///   uuid = "506f78a4-e098-11e5-ad9f-000f53306ae1"
 /// }
 /// ```
 /// ```java
@@ -442,8 +502,8 @@ Future<GetAppResult> getApp(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -530,7 +590,7 @@ Future<GetAppResult> getApp(
 ///             { "prefix", example.Apply(getByoipPrefixResult => getByoipPrefixResult.Prefix) },
 ///             { "region", example.Apply(getByoipPrefixResult => getByoipPrefixResult.Region) },
 ///             { "status", example.Apply(getByoipPrefixResult => getByoipPrefixResult.Status) },
-///             { "assignedCount", exampleGetByoipPrefixResources.Apply(getByoipPrefixResourcesResult => getByoipPrefixResourcesResult.Addresses).Length },
+///             { "assignedCount", exampleGetByoipPrefixResources.Apply(getByoipPrefixResourcesResult => getByoipPrefixResourcesResult.Addresses).Length() },
 ///         },
 ///     };
 /// });
@@ -545,7 +605,7 @@ Future<GetAppResult> getApp(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupByoipPrefix(ctx, &digitalocean.LookupByoipPrefixArgs{
+/// 		example, err := digitalocean.GetByoipPrefix(ctx, &digitalocean.LookupByoipPrefixArgs{
 /// 			Uuid: "506f78a4-e098-11e5-ad9f-000f53306ae1",
 /// 		}, nil)
 /// 		if err != nil {
@@ -567,6 +627,32 @@ Future<GetAppResult> getApp(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getbyoipprefix" "example" {
+///   uuid = "506f78a4-e098-11e5-ad9f-000f53306ae1"
+/// }
+/// data "digitalocean_getbyoipprefixresources" "exampleGetByoipPrefixResources" {
+///   byoip_prefix_uuid = data.digitalocean_getbyoipprefix.example.uuid
+/// }
+///
+/// # Output information about the BYOIP prefix and its assigned IPs
+/// output "byoipInfo" {
+///   value = {
+///     "prefix"        = data.digitalocean_getbyoipprefix.example.prefix
+///     "region"        = data.digitalocean_getbyoipprefix.example.region
+///     "status"        = data.digitalocean_getbyoipprefix.example.status
+///     "assignedCount" = length(data.digitalocean_getbyoipprefixresources.exampleGetByoipPrefixResources.addresses)
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -576,8 +662,8 @@ Future<GetAppResult> getApp(
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
 /// import com.pulumi.digitalocean.inputs.GetByoipPrefixResourcesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -601,10 +687,31 @@ Future<GetAppResult> getApp(
 ///             Map.entry("prefix", example.prefix()),
 ///             Map.entry("region", example.region()),
 ///             Map.entry("status", example.status()),
-///             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().length())
+///             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().size())
 ///         ));
 ///     }
 /// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: digitalocean:getByoipPrefix
+///       arguments:
+///         uuid: 506f78a4-e098-11e5-ad9f-000f53306ae1
+///   exampleGetByoipPrefixResources:
+///     fn::invoke:
+///       function: digitalocean:getByoipPrefixResources
+///       arguments:
+///         byoipPrefixUuid: ${example.uuid}
+/// outputs:
+///   # Output information about the BYOIP prefix and its assigned IPs
+///   byoipInfo:
+///     prefix: ${example.prefix}
+///     region: ${example.region}
+///     status: ${example.status}
+///     assignedCount:
+///       fn::length: ${exampleGetByoipPrefixResources.addresses}
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_byoip_prefix_get_byoip_prefix_args_doc}
 /// [options] Invoke options controlling this call.
@@ -693,6 +800,31 @@ Future<GetByoipPrefixResult> getByoipPrefix(
 ///     };
 /// });
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getbyoipprefix" "example" {
+///   uuid = "506f78a4-e098-11e5-ad9f-000f53306ae1"
+/// }
+/// data "digitalocean_getbyoipprefixresources" "exampleGetByoipPrefixResources" {
+///   byoip_prefix_uuid = data.digitalocean_getbyoipprefix.example.uuid
+/// }
+///
+/// # Output the assigned IPs
+/// output "assignedByoipIps" {
+///   value = [for addr in data.digitalocean_getbyoipprefixresources.exampleGetByoipPrefixResources.addresses : {
+///     "ip"       = addr.ipAddress
+///     "region"   = addr.region
+///     "assigned" = addr.assignedAt
+///   } ]
+/// }
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_byoip_prefix_resources_get_byoip_prefix_resources_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetByoipPrefixResourcesResult> getByoipPrefixResources(
@@ -759,7 +891,7 @@ Future<GetByoipPrefixResourcesResult> getByoipPrefixResources(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupCertificate(ctx, &digitalocean.LookupCertificateArgs{
+/// 		_, err := digitalocean.GetCertificate(ctx, &digitalocean.LookupCertificateArgs{
 /// 			Name: "example",
 /// 		}, nil)
 /// 		if err != nil {
@@ -767,6 +899,19 @@ Future<GetByoipPrefixResourcesResult> getByoipPrefixResources(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getcertificate" "example" {
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -777,8 +922,8 @@ Future<GetByoipPrefixResourcesResult> getByoipPrefixResources(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetCertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -888,7 +1033,7 @@ Future<GetContainerRegistriesResult> getContainerRegistries(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupContainerRegistry(ctx, &digitalocean.LookupContainerRegistryArgs{
+/// 		_, err := digitalocean.GetContainerRegistry(ctx, &digitalocean.LookupContainerRegistryArgs{
 /// 			Name: "example",
 /// 		}, nil)
 /// 		if err != nil {
@@ -896,6 +1041,19 @@ Future<GetContainerRegistriesResult> getContainerRegistries(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getcontainerregistry" "example" {
+///   name = "example"
 /// }
 /// ```
 /// ```java
@@ -906,8 +1064,8 @@ Future<GetContainerRegistriesResult> getContainerRegistries(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetContainerRegistryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1010,6 +1168,23 @@ Future<GetContainerRegistryResult> getContainerRegistry(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdatabaseca" "ca" {
+///   cluster_id = "aaa-bbb-ccc-ddd"
+/// }
+///
+/// output "caOutput" {
+///   value = data.digitalocean_getdatabaseca.ca.certificate
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1018,8 +1193,8 @@ Future<GetContainerRegistryResult> getContainerRegistry(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDatabaseCaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1114,7 +1289,7 @@ Future<GetDatabaseCaResult> getDatabaseCa(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
+/// 		example, err := digitalocean.GetDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
 /// 			Name: "example-cluster",
 /// 		}, nil)
 /// 		if err != nil {
@@ -1125,6 +1300,23 @@ Future<GetDatabaseCaResult> getDatabaseCa(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdatabasecluster" "example" {
+///   name = "example-cluster"
+/// }
+///
+/// output "databaseOutput" {
+///   value = data.digitalocean_getdatabasecluster.example.uri
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1133,8 +1325,8 @@ Future<GetDatabaseCaResult> getDatabaseCa(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1241,13 +1433,13 @@ Future<GetDatabaseClusterResult> getDatabaseCluster(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
+/// 		example, err := digitalocean.GetDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
 /// 			Name: "example-cluster",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		read_only, err := digitalocean.LookupDatabaseConnectionPool(ctx, &digitalocean.LookupDatabaseConnectionPoolArgs{
+/// 		read_only, err := digitalocean.GetDatabaseConnectionPool(ctx, &digitalocean.LookupDatabaseConnectionPoolArgs{
 /// 			ClusterId: example.Id,
 /// 			Name:      "pool-01",
 /// 		}, nil)
@@ -1259,6 +1451,27 @@ Future<GetDatabaseClusterResult> getDatabaseCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdatabasecluster" "example" {
+///   name = "example-cluster"
+/// }
+/// data "digitalocean_getdatabaseconnectionpool" "read-only" {
+///   cluster_id = data.digitalocean_getdatabasecluster.example.id
+///   name       = "pool-01"
+/// }
+///
+/// output "connectionPoolUriOutput" {
+///   value = data.digitalocean_getdatabaseconnectionpool.read-only.uri
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1268,8 +1481,8 @@ Future<GetDatabaseClusterResult> getDatabaseCluster(
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
 /// import com.pulumi.digitalocean.inputs.GetDatabaseConnectionPoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1383,6 +1596,25 @@ Future<GetDatabaseConnectionPoolResult> getDatabaseConnectionPool(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdatabasemetricscredentials" "example" {
+/// }
+///
+/// output "metricsUsername" {
+///   value = data.digitalocean_getdatabasemetricscredentials.example.username
+/// }
+/// output "metricsPassword" {
+///   value = data.digitalocean_getdatabasemetricscredentials.example.password
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1390,8 +1622,8 @@ Future<GetDatabaseConnectionPoolResult> getDatabaseConnectionPool(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1496,13 +1728,13 @@ Future<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentials(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
+/// 		example, err := digitalocean.GetDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
 /// 			Name: "example-cluster",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		read_only, err := digitalocean.LookupDatabaseReplica(ctx, &digitalocean.LookupDatabaseReplicaArgs{
+/// 		read_only, err := digitalocean.GetDatabaseReplica(ctx, &digitalocean.LookupDatabaseReplicaArgs{
 /// 			ClusterId: example.Id,
 /// 			Name:      "terra-test-ro",
 /// 		}, nil)
@@ -1514,6 +1746,27 @@ Future<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentials(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdatabasecluster" "example" {
+///   name = "example-cluster"
+/// }
+/// data "digitalocean_getdatabasereplica" "read-only" {
+///   cluster_id = data.digitalocean_getdatabasecluster.example.id
+///   name       = "terra-test-ro"
+/// }
+///
+/// output "replicaOutput" {
+///   value = data.digitalocean_getdatabasereplica.read-only.uri
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1523,8 +1776,8 @@ Future<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentials(
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
 /// import com.pulumi.digitalocean.inputs.GetDatabaseReplicaArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1642,13 +1895,13 @@ Future<GetDatabaseReplicaResult> getDatabaseReplica(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		main, err := digitalocean.LookupDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
+/// 		main, err := digitalocean.GetDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
 /// 			Name: "main-cluster",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		example, err := digitalocean.LookupDatabaseUser(ctx, &digitalocean.LookupDatabaseUserArgs{
+/// 		example, err := digitalocean.GetDatabaseUser(ctx, &digitalocean.LookupDatabaseUserArgs{
 /// 			ClusterId: main.Id,
 /// 			Name:      "example-user",
 /// 		}, nil)
@@ -1660,6 +1913,27 @@ Future<GetDatabaseReplicaResult> getDatabaseReplica(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdatabasecluster" "main" {
+///   name = "main-cluster"
+/// }
+/// data "digitalocean_getdatabaseuser" "example" {
+///   cluster_id = data.digitalocean_getdatabasecluster.main.id
+///   name       = "example-user"
+/// }
+///
+/// output "databaseUserPassword" {
+///   value = data.digitalocean_getdatabaseuser.example.password
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1669,8 +1943,8 @@ Future<GetDatabaseReplicaResult> getDatabaseReplica(
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
 /// import com.pulumi.digitalocean.inputs.GetDatabaseUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1724,6 +1998,1375 @@ Future<GetDatabaseUserResult> getDatabaseUser(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseUserResult.fromMap(result);
+}
+
+/// Get information on a dedicated inference endpoint for use in other resources. This
+/// data source provides all of the endpoint's properties as configured on your
+/// DigitalOcean account.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const example = digitalocean.getDedicatedInference({
+///     id: "endpoint-id",
+/// });
+/// export const endpointStatus = example.then(example => example.status);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// example = digitalocean.get_dedicated_inference(id="endpoint-id")
+/// pulumi.export("endpointStatus", example.status)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = DigitalOcean.GetDedicatedInference.Invoke(new()
+///     {
+///         Id = "endpoint-id",
+///     });
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["endpointStatus"] = example.Apply(getDedicatedInferenceResult => getDedicatedInferenceResult.Status),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := digitalocean.GetDedicatedInference(ctx, &digitalocean.LookupDedicatedInferenceArgs{
+/// 			Id: "endpoint-id",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("endpointStatus", example.Status)
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdedicatedinference" "example" {
+///   id = "endpoint-id"
+/// }
+///
+/// output "endpointStatus" {
+///   value = data.digitalocean_getdedicatedinference.example.status
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetDedicatedInferenceArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = DigitaloceanFunctions.getDedicatedInference(GetDedicatedInferenceArgs.builder()
+///             .id("endpoint-id")
+///             .build());
+///
+///         ctx.export("endpointStatus", example.status());
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: digitalocean:getDedicatedInference
+///       arguments:
+///         id: endpoint-id
+/// outputs:
+///   endpointStatus: ${example.status}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_dedicated_inference_get_dedicated_inference_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetDedicatedInferenceResult> getDedicatedInference(
+  GetDedicatedInferenceArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getDedicatedInference:getDedicatedInference',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDedicatedInferenceResult.fromMap(result);
+}
+
+/// Returns a list of accelerators (GPUs) attached to a dedicated inference endpoint,
+/// with the ability to filter and sort the results.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const example = digitalocean.getDedicatedInferenceAccelerators({
+///     dedicatedInferenceId: exampleDigitaloceanDedicatedInference.id,
+/// });
+/// export const accelerators = example.then(example => example.accelerators);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// example = digitalocean.get_dedicated_inference_accelerators(dedicated_inference_id=example_digitalocean_dedicated_inference["id"])
+/// pulumi.export("accelerators", example.accelerators)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = DigitalOcean.GetDedicatedInferenceAccelerators.Invoke(new()
+///     {
+///         DedicatedInferenceId = exampleDigitaloceanDedicatedInference.Id,
+///     });
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["accelerators"] = example.Apply(getDedicatedInferenceAcceleratorsResult => getDedicatedInferenceAcceleratorsResult.Accelerators),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := digitalocean.GetDedicatedInferenceAccelerators(ctx, &digitalocean.GetDedicatedInferenceAcceleratorsArgs{
+/// 			DedicatedInferenceId: exampleDigitaloceanDedicatedInference.Id,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("accelerators", example.Accelerators)
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdedicatedinferenceaccelerators" "example" {
+///   dedicated_inference_id = exampleDigitaloceanDedicatedInference.id
+/// }
+///
+/// output "accelerators" {
+///   value = data.digitalocean_getdedicatedinferenceaccelerators.example.accelerators
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
+///             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+///             .build());
+///
+///         ctx.export("accelerators", example.accelerators());
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: digitalocean:getDedicatedInferenceAccelerators
+///       arguments:
+///         dedicatedInferenceId: ${exampleDigitaloceanDedicatedInference.id}
+/// outputs:
+///   accelerators: ${example.accelerators}
+/// ```
+///
+///
+/// ### Filter by slug
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const filtered = digitalocean.getDedicatedInferenceAccelerators({
+///     dedicatedInferenceId: example.id,
+///     filters: [{
+///         key: "slug",
+///         values: ["gpu-h100x1-80gb"],
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// filtered = digitalocean.get_dedicated_inference_accelerators(dedicated_inference_id=example["id"],
+///     filters=[{
+///         "key": "slug",
+///         "values": ["gpu-h100x1-80gb"],
+///     }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var filtered = DigitalOcean.GetDedicatedInferenceAccelerators.Invoke(new()
+///     {
+///         DedicatedInferenceId = example.Id,
+///         Filters = new[]
+///         {
+///             new DigitalOcean.Inputs.GetDedicatedInferenceAcceleratorsFilterInputArgs
+///             {
+///                 Key = "slug",
+///                 Values = new[]
+///                 {
+///                     "gpu-h100x1-80gb",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := digitalocean.GetDedicatedInferenceAccelerators(ctx, &digitalocean.GetDedicatedInferenceAcceleratorsArgs{
+/// 			DedicatedInferenceId: example.Id,
+/// 			Filters: []digitalocean.GetDedicatedInferenceAcceleratorsFilter{
+/// 				{
+/// 					Key: "slug",
+/// 					Values: []string{
+/// 						"gpu-h100x1-80gb",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdedicatedinferenceaccelerators" "filtered" {
+///   dedicated_inference_id = example.id
+///   filters {
+///     key    = "slug"
+///     values = ["gpu-h100x1-80gb"]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+/// import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsFilterArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var filtered = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
+///             .dedicatedInferenceId(example.id())
+///             .filters(GetDedicatedInferenceAcceleratorsFilterArgs.builder()
+///                 .key("slug")
+///                 .values("gpu-h100x1-80gb")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   filtered:
+///     fn::invoke:
+///       function: digitalocean:getDedicatedInferenceAccelerators
+///       arguments:
+///         dedicatedInferenceId: ${example.id}
+///         filters:
+///           - key: slug
+///             values:
+///               - gpu-h100x1-80gb
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_dedicated_inference_accelerators_get_dedicated_inference_accelerators_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetDedicatedInferenceAcceleratorsResult> getDedicatedInferenceAccelerators(
+  GetDedicatedInferenceAcceleratorsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getDedicatedInferenceAccelerators:getDedicatedInferenceAccelerators',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDedicatedInferenceAcceleratorsResult.fromMap(result);
+}
+
+/// Returns the supported GPU and model compatibility matrix for dedicated inference
+/// endpoints. Use this data source to discover which models can be deployed on which
+/// GPU types.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const available = digitalocean.getDedicatedInferenceGpuModelConfig({});
+/// export const gpuModelConfigs = available.then(available => available.gpuModelConfigs);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// available = digitalocean.get_dedicated_inference_gpu_model_config()
+/// pulumi.export("gpuModelConfigs", available.gpu_model_configs)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var available = DigitalOcean.GetDedicatedInferenceGpuModelConfig.Invoke();
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["gpuModelConfigs"] = available.Apply(getDedicatedInferenceGpuModelConfigResult => getDedicatedInferenceGpuModelConfigResult.GpuModelConfigs),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		available, err := digitalocean.GetDedicatedInferenceGpuModelConfig(ctx, map[string]interface{}{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("gpuModelConfigs", available.GpuModelConfigs)
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdedicatedinferencegpumodelconfig" "available" {
+/// }
+///
+/// output "gpuModelConfigs" {
+///   value = data.digitalocean_getdedicatedinferencegpumodelconfig.available.gpu_model_configs
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var available = DigitaloceanFunctions.getDedicatedInferenceGpuModelConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+///
+///         ctx.export("gpuModelConfigs", available.gpuModelConfigs());
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   available:
+///     fn::invoke:
+///       function: digitalocean:getDedicatedInferenceGpuModelConfig
+///       arguments: {}
+/// outputs:
+///   gpuModelConfigs: ${available.gpuModelConfigs}
+/// ```
+/// [options] Invoke options controlling this call.
+Future<GetDedicatedInferenceGpuModelConfigResult> getDedicatedInferenceGpuModelConfig(
+  {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getDedicatedInferenceGpuModelConfig:getDedicatedInferenceGpuModelConfig',
+    const <String, dynamic>{},
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDedicatedInferenceGpuModelConfigResult.fromMap(result);
+}
+
+/// Returns the available GPU sizes and their configurations for dedicated inference
+/// endpoints, including pricing, hardware specifications, and region availability.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const available = digitalocean.getDedicatedInferenceSizes({});
+/// export const enabledRegions = available.then(available => available.enabledRegions);
+/// export const sizes = available.then(available => available.sizes);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// available = digitalocean.get_dedicated_inference_sizes()
+/// pulumi.export("enabledRegions", available.enabled_regions)
+/// pulumi.export("sizes", available.sizes)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var available = DigitalOcean.GetDedicatedInferenceSizes.Invoke();
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["enabledRegions"] = available.Apply(getDedicatedInferenceSizesResult => getDedicatedInferenceSizesResult.EnabledRegions),
+///         ["sizes"] = available.Apply(getDedicatedInferenceSizesResult => getDedicatedInferenceSizesResult.Sizes),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		available, err := digitalocean.GetDedicatedInferenceSizes(ctx, map[string]interface{}{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("enabledRegions", available.EnabledRegions)
+/// 		ctx.Export("sizes", available.Sizes)
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdedicatedinferencesizes" "available" {
+/// }
+///
+/// output "enabledRegions" {
+///   value = data.digitalocean_getdedicatedinferencesizes.available.enabled_regions
+/// }
+/// output "sizes" {
+///   value = data.digitalocean_getdedicatedinferencesizes.available.sizes
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var available = DigitaloceanFunctions.getDedicatedInferenceSizes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+///
+///         ctx.export("enabledRegions", available.enabledRegions());
+///         ctx.export("sizes", available.sizes());
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   available:
+///     fn::invoke:
+///       function: digitalocean:getDedicatedInferenceSizes
+///       arguments: {}
+/// outputs:
+///   enabledRegions: ${available.enabledRegions}
+///   sizes: ${available.sizes}
+/// ```
+/// [options] Invoke options controlling this call.
+Future<GetDedicatedInferenceSizesResult> getDedicatedInferenceSizes(
+  {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getDedicatedInferenceSizes:getDedicatedInferenceSizes',
+    const <String, dynamic>{},
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDedicatedInferenceSizesResult.fromMap(result);
+}
+
+/// Returns a list of API tokens for a dedicated inference endpoint, with the ability
+/// to filter and sort the results.
+///
+/// &gt; **Note:** Token values (secrets) are not returned by this data source. Only
+/// token metadata (ID, name, creation time) is available.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const example = digitalocean.getDedicatedInferenceTokens({
+///     dedicatedInferenceId: exampleDigitaloceanDedicatedInference.id,
+/// });
+/// export const tokens = example.then(example => example.tokens);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// example = digitalocean.get_dedicated_inference_tokens(dedicated_inference_id=example_digitalocean_dedicated_inference["id"])
+/// pulumi.export("tokens", example.tokens)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = DigitalOcean.GetDedicatedInferenceTokens.Invoke(new()
+///     {
+///         DedicatedInferenceId = exampleDigitaloceanDedicatedInference.Id,
+///     });
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["tokens"] = example.Apply(getDedicatedInferenceTokensResult => getDedicatedInferenceTokensResult.Tokens),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := digitalocean.GetDedicatedInferenceTokens(ctx, &digitalocean.GetDedicatedInferenceTokensArgs{
+/// 			DedicatedInferenceId: exampleDigitaloceanDedicatedInference.Id,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("tokens", example.Tokens)
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdedicatedinferencetokens" "example" {
+///   dedicated_inference_id = exampleDigitaloceanDedicatedInference.id
+/// }
+///
+/// output "tokens" {
+///   value = data.digitalocean_getdedicatedinferencetokens.example.tokens
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
+///             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+///             .build());
+///
+///         ctx.export("tokens", example.tokens());
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: digitalocean:getDedicatedInferenceTokens
+///       arguments:
+///         dedicatedInferenceId: ${exampleDigitaloceanDedicatedInference.id}
+/// outputs:
+///   tokens: ${example.tokens}
+/// ```
+///
+///
+/// ### Filter by name
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const filtered = digitalocean.getDedicatedInferenceTokens({
+///     dedicatedInferenceId: example.id,
+///     filters: [{
+///         key: "name",
+///         values: ["my-token"],
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// filtered = digitalocean.get_dedicated_inference_tokens(dedicated_inference_id=example["id"],
+///     filters=[{
+///         "key": "name",
+///         "values": ["my-token"],
+///     }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var filtered = DigitalOcean.GetDedicatedInferenceTokens.Invoke(new()
+///     {
+///         DedicatedInferenceId = example.Id,
+///         Filters = new[]
+///         {
+///             new DigitalOcean.Inputs.GetDedicatedInferenceTokensFilterInputArgs
+///             {
+///                 Key = "name",
+///                 Values = new[]
+///                 {
+///                     "my-token",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := digitalocean.GetDedicatedInferenceTokens(ctx, &digitalocean.GetDedicatedInferenceTokensArgs{
+/// 			DedicatedInferenceId: example.Id,
+/// 			Filters: []digitalocean.GetDedicatedInferenceTokensFilter{
+/// 				{
+/// 					Key: "name",
+/// 					Values: []string{
+/// 						"my-token",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdedicatedinferencetokens" "filtered" {
+///   dedicated_inference_id = example.id
+///   filters {
+///     key    = "name"
+///     values = ["my-token"]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+/// import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensFilterArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var filtered = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
+///             .dedicatedInferenceId(example.id())
+///             .filters(GetDedicatedInferenceTokensFilterArgs.builder()
+///                 .key("name")
+///                 .values("my-token")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   filtered:
+///     fn::invoke:
+///       function: digitalocean:getDedicatedInferenceTokens
+///       arguments:
+///         dedicatedInferenceId: ${example.id}
+///         filters:
+///           - key: name
+///             values:
+///               - my-token
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_dedicated_inference_tokens_get_dedicated_inference_tokens_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetDedicatedInferenceTokensResult> getDedicatedInferenceTokens(
+  GetDedicatedInferenceTokensArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getDedicatedInferenceTokens:getDedicatedInferenceTokens',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDedicatedInferenceTokensResult.fromMap(result);
+}
+
+/// Returns a list of dedicated inference endpoints in your DigitalOcean account,
+/// with the ability to filter and sort the results. If no filters are specified, all
+/// endpoints will be returned.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const all = digitalocean.getDedicatedInferences({});
+/// export const allEndpoints = all.then(all => all.dedicatedInferences);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// all = digitalocean.get_dedicated_inferences()
+/// pulumi.export("allEndpoints", all.dedicated_inferences)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var all = DigitalOcean.GetDedicatedInferences.Invoke();
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["allEndpoints"] = all.Apply(getDedicatedInferencesResult => getDedicatedInferencesResult.DedicatedInferences),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		all, err := digitalocean.GetDedicatedInferences(ctx, &digitalocean.GetDedicatedInferencesArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("allEndpoints", all.DedicatedInferences)
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdedicatedinferences" "all" {
+/// }
+///
+/// output "allEndpoints" {
+///   value = data.digitalocean_getdedicatedinferences.all.dedicated_inferences
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var all = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+///             .build());
+///
+///         ctx.export("allEndpoints", all.dedicatedInferences());
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   all:
+///     fn::invoke:
+///       function: digitalocean:getDedicatedInferences
+///       arguments: {}
+/// outputs:
+///   allEndpoints: ${all.dedicatedInferences}
+/// ```
+///
+///
+/// ### Filter by name
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const filtered = digitalocean.getDedicatedInferences({
+///     filters: [{
+///         key: "name",
+///         values: ["my-inference"],
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// filtered = digitalocean.get_dedicated_inferences(filters=[{
+///     "key": "name",
+///     "values": ["my-inference"],
+/// }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var filtered = DigitalOcean.GetDedicatedInferences.Invoke(new()
+///     {
+///         Filters = new[]
+///         {
+///             new DigitalOcean.Inputs.GetDedicatedInferencesFilterInputArgs
+///             {
+///                 Key = "name",
+///                 Values = new[]
+///                 {
+///                     "my-inference",
+///                 },
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := digitalocean.GetDedicatedInferences(ctx, &digitalocean.GetDedicatedInferencesArgs{
+/// 			Filters: []digitalocean.GetDedicatedInferencesFilter{
+/// 				{
+/// 					Key: "name",
+/// 					Values: []string{
+/// 						"my-inference",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdedicatedinferences" "filtered" {
+///   filters {
+///     key    = "name"
+///     values = ["my-inference"]
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+/// import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var filtered = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+///             .filters(GetDedicatedInferencesFilterArgs.builder()
+///                 .key("name")
+///                 .values("my-inference")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   filtered:
+///     fn::invoke:
+///       function: digitalocean:getDedicatedInferences
+///       arguments:
+///         filters:
+///           - key: name
+///             values:
+///               - my-inference
+/// ```
+///
+///
+/// ### Filter by region
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const byRegion = digitalocean.getDedicatedInferences({
+///     filters: [{
+///         key: "region",
+///         values: ["tor1"],
+///     }],
+///     sorts: [{
+///         key: "name",
+///         direction: "asc",
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// by_region = digitalocean.get_dedicated_inferences(filters=[{
+///         "key": "region",
+///         "values": ["tor1"],
+///     }],
+///     sorts=[{
+///         "key": "name",
+///         "direction": "asc",
+///     }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var byRegion = DigitalOcean.GetDedicatedInferences.Invoke(new()
+///     {
+///         Filters = new[]
+///         {
+///             new DigitalOcean.Inputs.GetDedicatedInferencesFilterInputArgs
+///             {
+///                 Key = "region",
+///                 Values = new[]
+///                 {
+///                     "tor1",
+///                 },
+///             },
+///         },
+///         Sorts = new[]
+///         {
+///             new DigitalOcean.Inputs.GetDedicatedInferencesSortInputArgs
+///             {
+///                 Key = "name",
+///                 Direction = "asc",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := digitalocean.GetDedicatedInferences(ctx, &digitalocean.GetDedicatedInferencesArgs{
+/// 			Filters: []digitalocean.GetDedicatedInferencesFilter{
+/// 				{
+/// 					Key: "region",
+/// 					Values: []string{
+/// 						"tor1",
+/// 					},
+/// 				},
+/// 			},
+/// 			Sorts: []digitalocean.GetDedicatedInferencesSort{
+/// 				{
+/// 					Key:       "name",
+/// 					Direction: pulumi.StringRef("asc"),
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdedicatedinferences" "byRegion" {
+///   filters {
+///     key    = "region"
+///     values = ["tor1"]
+///   }
+///   sorts {
+///     key       = "name"
+///     direction = "asc"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+/// import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
+/// import com.pulumi.digitalocean.inputs.GetDedicatedInferencesSortArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var byRegion = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+///             .filters(GetDedicatedInferencesFilterArgs.builder()
+///                 .key("region")
+///                 .values("tor1")
+///                 .build())
+///             .sorts(GetDedicatedInferencesSortArgs.builder()
+///                 .key("name")
+///                 .direction("asc")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   byRegion:
+///     fn::invoke:
+///       function: digitalocean:getDedicatedInferences
+///       arguments:
+///         filters:
+///           - key: region
+///             values:
+///               - tor1
+///         sorts:
+///           - key: name
+///             direction: asc
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_dedicated_inferences_get_dedicated_inferences_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetDedicatedInferencesResult> getDedicatedInferences(
+  GetDedicatedInferencesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getDedicatedInferences:getDedicatedInferences',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetDedicatedInferencesResult.fromMap(result);
 }
 
 /// Get information on a domain. This data source provides the name, TTL, and zone
@@ -1784,7 +3427,7 @@ Future<GetDatabaseUserResult> getDatabaseUser(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupDomain(ctx, &digitalocean.LookupDomainArgs{
+/// 		example, err := digitalocean.GetDomain(ctx, &digitalocean.LookupDomainArgs{
 /// 			Name: "example.com",
 /// 		}, nil)
 /// 		if err != nil {
@@ -1795,6 +3438,23 @@ Future<GetDatabaseUserResult> getDatabaseUser(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdomain" "example" {
+///   name = "example.com"
+/// }
+///
+/// output "domainOutput" {
+///   value = data.digitalocean_getdomain.example.zone_file
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1803,8 +3463,8 @@ Future<GetDatabaseUserResult> getDatabaseUser(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -1882,7 +3542,7 @@ Future<GetDomainResult> getDomain(
 /// ## Example Usage
 ///
 /// Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-/// also uses the regular expression `match_by` mode in order to match domains by suffix.)
+/// also uses the regular expression `matchBy` mode in order to match domains by suffix.)
 ///
 ///
 /// ```typescript
@@ -1961,6 +3621,23 @@ Future<GetDomainResult> getDomain(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdomains" "examples" {
+///   filters {
+///     key      = "name"
+///     values   = ["example\\.com$"]
+///     match_by = "re"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -1969,8 +3646,9 @@ Future<GetDomainResult> getDomain(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDomainsArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetDomainsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2078,7 +3756,7 @@ Future<GetDomainsResult> getDomains(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupDroplet(ctx, &digitalocean.LookupDropletArgs{
+/// 		example, err := digitalocean.GetDroplet(ctx, &digitalocean.LookupDropletArgs{
 /// 			Name: pulumi.StringRef("web"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -2089,6 +3767,23 @@ Future<GetDomainsResult> getDomains(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdroplet" "example" {
+///   name = "web"
+/// }
+///
+/// output "dropletOutput" {
+///   value = data.digitalocean_getdroplet.example.ipv4_address
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2097,8 +3792,8 @@ Future<GetDomainsResult> getDomains(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2172,7 +3867,7 @@ Future<GetDomainsResult> getDomains(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupDroplet(ctx, &digitalocean.LookupDropletArgs{
+/// 		_, err := digitalocean.GetDroplet(ctx, &digitalocean.LookupDropletArgs{
 /// 			Tag: pulumi.StringRef("web"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -2180,6 +3875,19 @@ Future<GetDomainsResult> getDomains(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdroplet" "example" {
+///   tag = "web"
 /// }
 /// ```
 /// ```java
@@ -2190,8 +3898,8 @@ Future<GetDomainsResult> getDomains(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2228,14 +3936,14 @@ Future<GetDomainsResult> getDomains(
 /// import * as digitalocean from "@pulumi/digitalocean";
 ///
 /// const example = digitalocean.getDroplet({
-///     id: exampleDigitaloceanKubernetesCluster.nodePool[0].nodes[0].dropletId,
+///     id: Number(exampleDigitaloceanKubernetesCluster.nodePool[0].nodes[0].dropletId),
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_digitalocean as digitalocean
 ///
-/// example = digitalocean.get_droplet(id=example_digitalocean_kubernetes_cluster["nodePool"][0]["nodes"][0]["dropletId"])
+/// example = digitalocean.get_droplet(id=int(example_digitalocean_kubernetes_cluster["nodePool"][0]["nodes"][0]["dropletId"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -2262,7 +3970,7 @@ Future<GetDomainsResult> getDomains(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupDroplet(ctx, &digitalocean.LookupDropletArgs{
+/// 		_, err := digitalocean.GetDroplet(ctx, &digitalocean.LookupDropletArgs{
 /// 			Id: pulumi.IntRef(exampleDigitaloceanKubernetesCluster.NodePool[0].Nodes[0].DropletId),
 /// 		}, nil)
 /// 		if err != nil {
@@ -2270,6 +3978,19 @@ Future<GetDomainsResult> getDomains(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdroplet" "example" {
+///   id = exampleDigitaloceanKubernetesCluster.nodePool[0].nodes[0].dropletId
 /// }
 /// ```
 /// ```java
@@ -2280,8 +4001,8 @@ Future<GetDomainsResult> getDomains(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2372,7 +4093,7 @@ Future<GetDropletResult> getDroplet(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupDropletAutoscale(ctx, &digitalocean.LookupDropletAutoscaleArgs{
+/// 		_, err := digitalocean.GetDropletAutoscale(ctx, &digitalocean.LookupDropletAutoscaleArgs{
 /// 			Name: pulumi.StringRef(my_existing_autoscale_pool.Name),
 /// 		}, nil)
 /// 		if err != nil {
@@ -2380,6 +4101,19 @@ Future<GetDropletResult> getDroplet(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdropletautoscale" "my-imported-autoscale-pool" {
+///   name = my-existing-autoscale-pool.name
 /// }
 /// ```
 /// ```java
@@ -2390,8 +4124,8 @@ Future<GetDropletResult> getDroplet(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2462,7 +4196,7 @@ Future<GetDropletResult> getDroplet(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupDropletAutoscale(ctx, &digitalocean.LookupDropletAutoscaleArgs{
+/// 		_, err := digitalocean.GetDropletAutoscale(ctx, &digitalocean.LookupDropletAutoscaleArgs{
 /// 			Id: pulumi.StringRef(my_existing_autoscale_pool.Id),
 /// 		}, nil)
 /// 		if err != nil {
@@ -2470,6 +4204,19 @@ Future<GetDropletResult> getDroplet(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdropletautoscale" "my-imported-autoscale-pool" {
+///   id = my-existing-autoscale-pool.id
 /// }
 /// ```
 /// ```java
@@ -2480,8 +4227,8 @@ Future<GetDropletResult> getDroplet(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2577,7 +4324,7 @@ Future<GetDropletAutoscaleResult> getDropletAutoscale(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupDropletSnapshot(ctx, &digitalocean.LookupDropletSnapshotArgs{
+/// 		_, err := digitalocean.GetDropletSnapshot(ctx, &digitalocean.LookupDropletSnapshotArgs{
 /// 			NameRegex:  pulumi.StringRef("^web"),
 /// 			Region:     pulumi.StringRef("nyc3"),
 /// 			MostRecent: pulumi.BoolRef(true),
@@ -2589,6 +4336,21 @@ Future<GetDropletAutoscaleResult> getDropletAutoscale(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdropletsnapshot" "web-snapshot" {
+///   name_regex  = "^web"
+///   region      = "nyc3"
+///   most_recent = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2597,8 +4359,8 @@ Future<GetDropletAutoscaleResult> getDropletAutoscale(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2698,7 +4460,7 @@ Future<GetDropletAutoscaleResult> getDropletAutoscale(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		web_snapshot, err := digitalocean.LookupDropletSnapshot(ctx, &digitalocean.LookupDropletSnapshotArgs{
+/// 		web_snapshot, err := digitalocean.GetDropletSnapshot(ctx, &digitalocean.LookupDropletSnapshotArgs{
 /// 			NameRegex:  pulumi.StringRef("^web"),
 /// 			Region:     pulumi.StringRef("nyc3"),
 /// 			MostRecent: pulumi.BoolRef(true),
@@ -2719,6 +4481,28 @@ Future<GetDropletAutoscaleResult> getDropletAutoscale(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdropletsnapshot" "web-snapshot" {
+///   name_regex  = "^web"
+///   region      = "nyc3"
+///   most_recent = true
+/// }
+///
+/// resource "digitalocean_droplet" "from-snapshot" {
+///   image  = data.digitalocean_getdropletsnapshot.web-snapshot.id
+///   name   = "web-02"
+///   region = "nyc3"
+///   size   = "s-2vcpu-4gb"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2729,8 +4513,8 @@ Future<GetDropletAutoscaleResult> getDropletAutoscale(
 /// import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -2882,6 +4666,22 @@ Future<GetDropletSnapshotResult> getDropletSnapshot(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdroplets" "small" {
+///   filters {
+///     key    = "size"
+///     values = ["s-1vcpu-1gb"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -2890,8 +4690,9 @@ Future<GetDropletSnapshotResult> getDropletSnapshot(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3049,6 +4850,30 @@ Future<GetDropletSnapshotResult> getDropletSnapshot(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getdroplets" "small-with-backups" {
+///   filters {
+///     key    = "size"
+///     values = ["s-1vcpu-1gb"]
+///   }
+///   filters {
+///     key    = "backups"
+///     values = ["true"]
+///   }
+///   sorts {
+///     key       = "created_at"
+///     direction = "desc"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3057,8 +4882,10 @@ Future<GetDropletSnapshotResult> getDropletSnapshot(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
+/// import com.pulumi.digitalocean.inputs.GetDropletsSortArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3173,7 +5000,7 @@ Future<GetDropletsResult> getDroplets(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupFirewall(ctx, &digitalocean.LookupFirewallArgs{
+/// 		example, err := digitalocean.GetFirewall(ctx, &digitalocean.LookupFirewallArgs{
 /// 			FirewallId: "1df48973-6eef-4214-854f-fa7726e7e583",
 /// 		}, nil)
 /// 		if err != nil {
@@ -3184,6 +5011,23 @@ Future<GetDropletsResult> getDroplets(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getfirewall" "example" {
+///   firewall_id = "1df48973-6eef-4214-854f-fa7726e7e583"
+/// }
+///
+/// output "exampleFirewallName" {
+///   value = data.digitalocean_getfirewall.example.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3192,8 +5036,8 @@ Future<GetDropletsResult> getDroplets(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetFirewallArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3305,8 +5149,9 @@ Future<GetFirewallResult> getFirewall(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		publicIp := cfg.RequireObject("publicIp")
-/// 		example, err := digitalocean.LookupFloatingIp(ctx, &digitalocean.LookupFloatingIpArgs{
+/// 		var publicIp interface{}
+/// 		cfg.RequireObject("publicIp", &publicIp)
+/// 		example, err := digitalocean.GetFloatingIp(ctx, &digitalocean.LookupFloatingIpArgs{
 /// 			IpAddress: publicIp,
 /// 		}, nil)
 /// 		if err != nil {
@@ -3317,6 +5162,25 @@ Future<GetFirewallResult> getFirewall(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getfloatingip" "example" {
+///   ip_address = var.publicIp
+/// }
+///
+/// variable "publicIp" {
+/// }
+/// output "fipOutput" {
+///   value = data.digitalocean_getfloatingip.example.droplet_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3325,8 +5189,8 @@ Future<GetFirewallResult> getFirewall(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetFloatingIpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3351,7 +5215,7 @@ Future<GetFirewallResult> getFirewall(
 /// ```yaml
 /// configuration:
 ///   publicIp:
-///     type: dynamic
+///     type: object
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -3646,6 +5510,36 @@ Future<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKe
   return GetGradientaiAgentsByOpenaiApiKeyResult.fromMap(result);
 }
 
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_custom_model_get_gradientai_custom_model_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetGradientaiCustomModelResult> getGradientaiCustomModel(
+  GetGradientaiCustomModelArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiCustomModel:getGradientaiCustomModel',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetGradientaiCustomModelResult.fromMap(result);
+}
+
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_custom_models_get_gradientai_custom_models_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetGradientaiCustomModelsResult> getGradientaiCustomModels(
+  GetGradientaiCustomModelsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getGradientaiCustomModels:getGradientaiCustomModels',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetGradientaiCustomModelsResult.fromMap(result);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_gradientai_indexing_job_get_gradientai_indexing_job_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetGradientaiIndexingJobResult> getGradientaiIndexingJob(
@@ -3857,6 +5751,19 @@ Future<GetGradientaiRegionsResult> getGradientaiRegions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getimage" "example1" {
+///   name = "example-1.0.0"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3865,8 +5772,8 @@ Future<GetGradientaiRegionsResult> getGradientaiRegions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -3906,7 +5813,7 @@ Future<GetGradientaiRegionsResult> getGradientaiRegions(
 ///     name: "example-1.0.0",
 /// });
 /// const exampleDroplet = new digitalocean.Droplet("example", {
-///     image: example.then(example => example.id),
+///     image: output(example.then(example => example.id)).apply(x =>String(x)),
 ///     name: "example-1",
 ///     region: digitalocean.Region.NYC2,
 ///     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
@@ -3918,7 +5825,7 @@ Future<GetGradientaiRegionsResult> getGradientaiRegions(
 ///
 /// example = digitalocean.get_image(name="example-1.0.0")
 /// example_droplet = digitalocean.Droplet("example",
-///     image=example.id,
+///     image=output(example.id).apply(lambda x: str(x)),
 ///     name="example-1",
 ///     region=digitalocean.Region.NYC2,
 ///     size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB)
@@ -3975,6 +5882,26 @@ Future<GetGradientaiRegionsResult> getGradientaiRegions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getimage" "example" {
+///   name = "example-1.0.0"
+/// }
+///
+/// resource "digitalocean_droplet" "example" {
+///   image  = data.digitalocean_getimage.example.id
+///   name   = "example-1"
+///   region = "nyc2"
+///   size   = "s-1vcpu-1gb"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -3985,8 +5912,8 @@ Future<GetGradientaiRegionsResult> getGradientaiRegions(
 /// import com.pulumi.digitalocean.inputs.GetImageArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4083,6 +6010,19 @@ Future<GetGradientaiRegionsResult> getGradientaiRegions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getimage" "example2" {
+///   slug = "ubuntu-18-04-x64"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4091,8 +6031,8 @@ Future<GetGradientaiRegionsResult> getGradientaiRegions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetImageArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4223,6 +6163,22 @@ Future<GetImageResult> getImage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getimages" "ubuntu" {
+///   filters {
+///     key    = "distribution"
+///     values = ["Ubuntu"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4231,8 +6187,9 @@ Future<GetImageResult> getImage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetImagesArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4390,6 +6347,30 @@ Future<GetImageResult> getImage(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getimages" "available" {
+///   filters {
+///     key    = "distribution"
+///     values = ["Ubuntu"]
+///   }
+///   filters {
+///     key    = "regions"
+///     values = ["nyc3"]
+///   }
+///   sorts {
+///     key       = "created"
+///     direction = "desc"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4398,8 +6379,10 @@ Future<GetImageResult> getImage(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetImagesArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
+/// import com.pulumi.digitalocean.inputs.GetImagesSortArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4506,7 +6489,7 @@ Future<GetImagesResult> getImages(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupKubernetesCluster(ctx, &digitalocean.LookupKubernetesClusterArgs{
+/// 		_, err := digitalocean.GetKubernetesCluster(ctx, &digitalocean.LookupKubernetesClusterArgs{
 /// 			Name: "prod-cluster-01",
 /// 		}, nil)
 /// 		if err != nil {
@@ -4514,6 +6497,19 @@ Future<GetImagesResult> getImages(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getkubernetescluster" "example" {
+///   name = "prod-cluster-01"
 /// }
 /// ```
 /// ```java
@@ -4524,8 +6520,8 @@ Future<GetImagesResult> getImages(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4627,6 +6623,22 @@ Future<GetKubernetesClusterResult> getKubernetesCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getkubernetesversions" "example" {
+/// }
+///
+/// output "k8s-versions" {
+///   value = data.digitalocean_getkubernetesversions.example.valid_versions
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4635,8 +6647,8 @@ Future<GetKubernetesClusterResult> getKubernetesCluster(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4756,6 +6768,29 @@ Future<GetKubernetesClusterResult> getKubernetesCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getkubernetesversions" "example" {
+/// }
+///
+/// resource "digitalocean_kubernetescluster" "example-cluster" {
+///   name    = "example-cluster"
+///   region  = "lon1"
+///   version = data.digitalocean_getkubernetesversions.example.latest_version
+///   node_pool = {
+///     name       = "default"
+///     size       = "s-1vcpu-2gb"
+///     node_count = 3
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4767,8 +6802,8 @@ Future<GetKubernetesClusterResult> getKubernetesCluster(
 /// import com.pulumi.digitalocean.KubernetesCluster;
 /// import com.pulumi.digitalocean.KubernetesClusterArgs;
 /// import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -4914,6 +6949,30 @@ Future<GetKubernetesClusterResult> getKubernetesCluster(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getkubernetesversions" "example" {
+///   version_prefix = "1.22."
+/// }
+///
+/// resource "digitalocean_kubernetescluster" "example-cluster" {
+///   name    = "example-cluster"
+///   region  = "lon1"
+///   version = data.digitalocean_getkubernetesversions.example.latest_version
+///   node_pool = {
+///     name       = "default"
+///     size       = "s-1vcpu-2gb"
+///     node_count = 3
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -4925,8 +6984,8 @@ Future<GetKubernetesClusterResult> getKubernetesCluster(
 /// import com.pulumi.digitalocean.KubernetesCluster;
 /// import com.pulumi.digitalocean.KubernetesClusterArgs;
 /// import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5047,7 +7106,7 @@ Future<GetKubernetesVersionsResult> getKubernetesVersions(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupLoadBalancer(ctx, &digitalocean.LookupLoadBalancerArgs{
+/// 		example, err := digitalocean.GetLoadBalancer(ctx, &digitalocean.LookupLoadBalancerArgs{
 /// 			Name: pulumi.StringRef("app"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -5058,6 +7117,23 @@ Future<GetKubernetesVersionsResult> getKubernetesVersions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getloadbalancer" "example" {
+///   name = "app"
+/// }
+///
+/// output "lbOutput" {
+///   value = data.digitalocean_getloadbalancer.example.ip
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5066,8 +7142,8 @@ Future<GetKubernetesVersionsResult> getKubernetesVersions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5141,7 +7217,7 @@ Future<GetKubernetesVersionsResult> getKubernetesVersions(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupLoadBalancer(ctx, &digitalocean.LookupLoadBalancerArgs{
+/// 		_, err := digitalocean.GetLoadBalancer(ctx, &digitalocean.LookupLoadBalancerArgs{
 /// 			Id: pulumi.StringRef("loadbalancer_id"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -5149,6 +7225,19 @@ Future<GetKubernetesVersionsResult> getKubernetesVersions(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getloadbalancer" "example" {
+///   id = "loadbalancer_id"
 /// }
 /// ```
 /// ```java
@@ -5159,8 +7248,8 @@ Future<GetKubernetesVersionsResult> getKubernetesVersions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5251,7 +7340,7 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupNfs(ctx, &digitalocean.LookupNfsArgs{
+/// 		_, err := digitalocean.GetNfs(ctx, &digitalocean.LookupNfsArgs{
 /// 			Name:   "example-nfs",
 /// 			Region: pulumi.StringRef("nyc1"),
 /// 		}, nil)
@@ -5262,6 +7351,20 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getnfs" "example" {
+///   name   = "example-nfs"
+///   region = "nyc1"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5270,8 +7373,8 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetNfsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5315,6 +7418,243 @@ Future<GetNfsResult> getNfs(
   return GetNfsResult.fromMap(result);
 }
 
+/// Get information about a DigitalOcean NFS access point.
+///
+/// ## Example Usage
+///
+/// Get the NFS access point by ID:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const example = digitalocean.getNfsAccessPoint({
+///     id: "506f78a4-e098-11e5-ad9f-000f53306ae1",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// example = digitalocean.get_nfs_access_point(id="506f78a4-e098-11e5-ad9f-000f53306ae1")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = DigitalOcean.GetNfsAccessPoint.Invoke(new()
+///     {
+///         Id = "506f78a4-e098-11e5-ad9f-000f53306ae1",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := digitalocean.GetNfsAccessPoint(ctx, &digitalocean.LookupNfsAccessPointArgs{
+/// 			Id: pulumi.StringRef("506f78a4-e098-11e5-ad9f-000f53306ae1"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getnfsaccesspoint" "example" {
+///   id = "506f78a4-e098-11e5-ad9f-000f53306ae1"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+///             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: digitalocean:getNfsAccessPoint
+///       arguments:
+///         id: 506f78a4-e098-11e5-ad9f-000f53306ae1
+/// ```
+///
+///
+/// Get the NFS access point by name and share ID:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const example = digitalocean.getNfsAccessPoint({
+///     name: "example-access-point",
+///     shareId: foobar.id,
+///     vpcId: foobarDigitaloceanVpc.id,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// example = digitalocean.get_nfs_access_point(name="example-access-point",
+///     share_id=foobar["id"],
+///     vpc_id=foobar_digitalocean_vpc["id"])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = DigitalOcean.GetNfsAccessPoint.Invoke(new()
+///     {
+///         Name = "example-access-point",
+///         ShareId = foobar.Id,
+///         VpcId = foobarDigitaloceanVpc.Id,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := digitalocean.GetNfsAccessPoint(ctx, &digitalocean.LookupNfsAccessPointArgs{
+/// 			Name:    pulumi.StringRef("example-access-point"),
+/// 			ShareId: pulumi.StringRef(foobar.Id),
+/// 			VpcId:   pulumi.StringRef(foobarDigitaloceanVpc.Id),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getnfsaccesspoint" "example" {
+///   name     = "example-access-point"
+///   share_id = foobar.id
+///   vpc_id   = foobarDigitaloceanVpc.id
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+///             .name("example-access-point")
+///             .shareId(foobar.id())
+///             .vpcId(foobarDigitaloceanVpc.id())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: digitalocean:getNfsAccessPoint
+///       arguments:
+///         name: example-access-point
+///         shareId: ${foobar.id}
+///         vpcId: ${foobarDigitaloceanVpc.id}
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_nfs_access_point_get_nfs_access_point_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetNfsAccessPointResult> getNfsAccessPoint(
+  GetNfsAccessPointArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getNfsAccessPoint:getNfsAccessPoint',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetNfsAccessPointResult.fromMap(result);
+}
+
 /// Get information about a DigitalOcean NFS snapshot.
 ///
 /// ## Example Usage
@@ -5322,6 +7662,19 @@ Future<GetNfsResult> getNfs(
 /// Get the NFS snapshot by ID:
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getnfssnapshot" "example" {
+///   id = "506f78a4-e098-11e5-ad9f-000f53306ae1"
+/// }
+/// ```
 /// ```yaml
 /// variables:
 ///   example:
@@ -5424,11 +7777,11 @@ Future<GetPartnerAttachmentServiceKeyResult> getPartnerAttachmentServiceKey(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{}, nil)
+/// 		_, err := digitalocean.GetProject(ctx, &digitalocean.LookupProjectArgs{}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_, err = digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{
+/// 		_, err = digitalocean.GetProject(ctx, &digitalocean.LookupProjectArgs{
 /// 			Name: pulumi.StringRef("My Staging Project"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -5436,6 +7789,21 @@ Future<GetPartnerAttachmentServiceKeyResult> getPartnerAttachmentServiceKey(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getproject" "default" {
+/// }
+/// data "digitalocean_getproject" "staging" {
+///   name = "My Staging Project"
 /// }
 /// ```
 /// ```java
@@ -5446,8 +7814,8 @@ Future<GetPartnerAttachmentServiceKeyResult> getPartnerAttachmentServiceKey(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetProjectArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5583,6 +7951,22 @@ Future<GetProjectResult> getProject(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getprojects" "staging" {
+///   filters {
+///     key    = "environment"
+///     values = ["Staging"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5591,8 +7975,9 @@ Future<GetProjectResult> getProject(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5750,6 +8135,30 @@ Future<GetProjectResult> getProject(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getprojects" "non-default-production" {
+///   filters {
+///     key    = "environment"
+///     values = ["Production"]
+///   }
+///   filters {
+///     key    = "is_default"
+///     values = ["false"]
+///   }
+///   sorts {
+///     key       = "name"
+///     direction = "asc"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5758,8 +8167,10 @@ Future<GetProjectResult> getProject(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
+/// import com.pulumi.digitalocean.inputs.GetProjectsSortArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -5898,6 +8309,27 @@ Future<GetProjectsResult> getProjects(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getrecord" "example" {
+///   domain = "example.com"
+///   name   = "test"
+/// }
+///
+/// output "recordType" {
+///   value = data.digitalocean_getrecord.example.type
+/// }
+/// output "recordTtl" {
+///   value = data.digitalocean_getrecord.example.ttl
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -5906,8 +8338,8 @@ Future<GetProjectsResult> getProjects(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6075,6 +8507,30 @@ Future<GetRecordResult> getRecord(
 /// })
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getrecords" "example" {
+///   domain = "example.com"
+///   filters {
+///     key    = "type"
+///     values = ["MX"]
+///   }
+/// }
+///
+/// output "mailServers" {
+///   value = join(",", data.digitalocean_getrecords.example.records[*].value)
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6083,10 +8539,11 @@ Future<GetRecordResult> getRecord(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+/// import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.JoinArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6190,6 +8647,23 @@ Future<GetRecordsResult> getRecords(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getregion" "sfo2" {
+///   slug = "sfo2"
+/// }
+///
+/// output "regionName" {
+///   value = data.digitalocean_getregion.sfo2.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6198,8 +8672,8 @@ Future<GetRecordsResult> getRecords(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetRegionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6329,6 +8803,22 @@ Future<GetRegionResult> getRegion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getregions" "available" {
+///   filters {
+///     key    = "available"
+///     values = ["true"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6337,8 +8827,9 @@ Future<GetRegionResult> getRegion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6496,6 +8987,30 @@ Future<GetRegionResult> getRegion(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getregions" "available" {
+///   filters {
+///     key    = "available"
+///     values = ["true"]
+///   }
+///   filters {
+///     key    = "features"
+///     values = ["private_networking"]
+///   }
+///   sorts {
+///     key       = "name"
+///     direction = "desc"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6504,8 +9019,10 @@ Future<GetRegionResult> getRegion(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
+/// import com.pulumi.digitalocean.inputs.GetRegionsSortArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6633,8 +9150,9 @@ Future<GetRegionsResult> getRegions(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		cfg := config.New(ctx, "")
-/// 		publicIp := cfg.RequireObject("publicIp")
-/// 		example, err := digitalocean.LookupReservedIp(ctx, &digitalocean.LookupReservedIpArgs{
+/// 		var publicIp interface{}
+/// 		cfg.RequireObject("publicIp", &publicIp)
+/// 		example, err := digitalocean.GetReservedIp(ctx, &digitalocean.LookupReservedIpArgs{
 /// 			IpAddress: publicIp,
 /// 		}, nil)
 /// 		if err != nil {
@@ -6645,6 +9163,25 @@ Future<GetRegionsResult> getRegions(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getreservedip" "example" {
+///   ip_address = var.publicIp
+/// }
+///
+/// variable "publicIp" {
+/// }
+/// output "fipOutput" {
+///   value = data.digitalocean_getreservedip.example.droplet_id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6653,8 +9190,8 @@ Future<GetRegionsResult> getRegions(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetReservedIpArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6679,7 +9216,7 @@ Future<GetRegionsResult> getRegions(
 /// ```yaml
 /// configuration:
 ///   publicIp:
-///     type: dynamic
+///     type: object
 /// variables:
 ///   example:
 ///     fn::invoke:
@@ -6704,7 +9241,7 @@ Future<GetReservedIpResult> getReservedIp(
   return GetReservedIpResult.fromMap(result);
 }
 
-/// Get information on a reserved IPv6. This data source provides the region_slug and droplet id as configured on your DigitalOcean account. This is useful if the reserved IPv6 in question is not managed by Terraform or you need to find the Droplet the IP is
+/// Get information on a reserved IPv6. This data source provides the regionSlug and droplet id as configured on your DigitalOcean account. This is useful if the reserved IPv6 in question is not managed by Terraform or you need to find the Droplet the IP is
 /// attached to.
 ///
 /// An error is triggered if the provided reserved IPv6 does not exist.
@@ -6766,11 +9303,28 @@ Future<GetReservedIpResult> getReservedIp(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		_ = digitalocean.LookupReservedIpv6Output(ctx, digitalocean.GetReservedIpv6OutputArgs{
+/// 		_ = digitalocean.GetReservedIpv6Output(ctx, digitalocean.GetReservedIpv6OutputArgs{
 /// 			Ip: foo.Ip,
 /// 		}, nil)
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getreservedipv6" "foobar" {
+///   ip = digitalocean_reservedipv6.foo.ip
+/// }
+///
+/// resource "digitalocean_reservedipv6" "foo" {
+///   region_slug = "nyc3"
 /// }
 /// ```
 /// ```java
@@ -6783,8 +9337,8 @@ Future<GetReservedIpResult> getReservedIp(
 /// import com.pulumi.digitalocean.ReservedIpv6Args;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetReservedIpv6Args;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -6908,6 +9462,65 @@ Future<GetReservedIpv6Result> getReservedIpv6(
 ///
 /// });
 /// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		main, err := digitalocean.GetSizes(ctx, &digitalocean.GetSizesArgs{
+/// 			Filters: []digitalocean.GetSizesFilter{
+/// 				{
+/// 					Key: "slug",
+/// 					Values: []string{
+/// 						"s-1vcpu-1gb",
+/// 					},
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+/// 			Image:  pulumi.String("ubuntu-18-04-x64"),
+/// 			Name:   pulumi.String("web-1"),
+/// 			Region: pulumi.String(digitalocean.RegionSGP1),
+/// 			Size:   digitalocean.DropletSlug(main.Sizes[0].Slug),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getsizes" "main" {
+///   filters {
+///     key    = "slug"
+///     values = ["s-1vcpu-1gb"]
+///   }
+/// }
+///
+/// resource "digitalocean_droplet" "web" {
+///   image  = "ubuntu-18-04-x64"
+///   name   = "web-1"
+///   region = "sgp1"
+///   size   = element(data.digitalocean_getsizes.main.sizes, 0).slug
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -6916,10 +9529,11 @@ Future<GetReservedIpv6Result> getReservedIpv6(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetSizesArgs;
+/// import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7060,6 +9674,86 @@ Future<GetReservedIpv6Result> getReservedIpv6(
 ///
 /// });
 /// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		main, err := digitalocean.GetSizes(ctx, &digitalocean.GetSizesArgs{
+/// 			Filters: []digitalocean.GetSizesFilter{
+/// 				{
+/// 					Key: "vcpus",
+/// 					Values: []string{
+/// 						"1",
+/// 						"2",
+/// 					},
+/// 				},
+/// 				{
+/// 					Key: "regions",
+/// 					Values: []string{
+/// 						"sgp1",
+/// 					},
+/// 				},
+/// 			},
+/// 			Sorts: []digitalocean.GetSizesSort{
+/// 				{
+/// 					Key:       "price_monthly",
+/// 					Direction: pulumi.StringRef("asc"),
+/// 				},
+/// 			},
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+/// 			Image:  pulumi.String("ubuntu-18-04-x64"),
+/// 			Name:   pulumi.String("web-1"),
+/// 			Region: pulumi.String(digitalocean.RegionSGP1),
+/// 			Size:   digitalocean.DropletSlug(main.Sizes[0].Slug),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getsizes" "main" {
+///   filters {
+///     key    = "vcpus"
+///     values = [1, 2]
+///   }
+///   filters {
+///     key    = "regions"
+///     values = ["sgp1"]
+///   }
+///   sorts {
+///     key       = "price_monthly"
+///     direction = "asc"
+///   }
+/// }
+///
+/// resource "digitalocean_droplet" "web" {
+///   image  = "ubuntu-18-04-x64"
+///   name   = "web-1"
+///   region = "sgp1"
+///   size   = element(data.digitalocean_getsizes.main.sizes, 0).slug
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7068,10 +9762,12 @@ Future<GetReservedIpv6Result> getReservedIpv6(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetSizesArgs;
+/// import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
+/// import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7204,6 +9900,26 @@ Future<GetReservedIpv6Result> getReservedIpv6(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getsizes" "main" {
+///   sorts {
+///     key       = "memory"
+///     direction = "asc"
+///   }
+///   sorts {
+///     key       = "disk"
+///     direction = "desc"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7212,8 +9928,9 @@ Future<GetReservedIpv6Result> getReservedIpv6(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetSizesArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7323,7 +10040,7 @@ Future<GetSizesResult> getSizes(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupSpacesBucket(ctx, &digitalocean.LookupSpacesBucketArgs{
+/// 		example, err := digitalocean.GetSpacesBucket(ctx, &digitalocean.LookupSpacesBucketArgs{
 /// 			Name:   "my-spaces-bucket",
 /// 			Region: "nyc3",
 /// 		}, nil)
@@ -7335,6 +10052,24 @@ Future<GetSizesResult> getSizes(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getspacesbucket" "example" {
+///   name   = "my-spaces-bucket"
+///   region = "nyc3"
+/// }
+///
+/// output "bucketDomainName" {
+///   value = data.digitalocean_getspacesbucket.example.bucket_domain_name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7343,8 +10078,8 @@ Future<GetSizesResult> getSizes(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetSpacesBucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7401,7 +10136,7 @@ Future<GetSpacesBucketResult> getSpacesBucket(
 /// ## Example Usage
 ///
 /// The following example retrieves a text object (which must have a `Content-Type`
-/// value starting with `text/`) and uses it as the `user_data` for a Droplet:
+/// value starting with `text/`) and uses it as the `userData` for a Droplet:
 ///
 ///
 /// ```typescript
@@ -7471,7 +10206,7 @@ Future<GetSpacesBucketResult> getSpacesBucket(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		bootstrapScript, err := digitalocean.LookupSpacesBucketObject(ctx, &digitalocean.LookupSpacesBucketObjectArgs{
+/// 		bootstrapScript, err := digitalocean.GetSpacesBucketObject(ctx, &digitalocean.LookupSpacesBucketObjectArgs{
 /// 			Bucket: "ourcorp-deploy-config",
 /// 			Region: "nyc3",
 /// 			Key:    "droplet-bootstrap-script.sh",
@@ -7493,6 +10228,29 @@ Future<GetSpacesBucketResult> getSpacesBucket(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getspacesbucketobject" "bootstrapScript" {
+///   bucket = "ourcorp-deploy-config"
+///   region = "nyc3"
+///   key    = "droplet-bootstrap-script.sh"
+/// }
+///
+/// resource "digitalocean_droplet" "web" {
+///   image     = "ubuntu-18-04-x64"
+///   name      = "web-1"
+///   region    = "nyc2"
+///   size      = "s-1vcpu-1gb"
+///   user_data = data.digitalocean_getspacesbucketobject.bootstrapScript.body
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7503,8 +10261,8 @@ Future<GetSpacesBucketResult> getSpacesBucket(
 /// import com.pulumi.digitalocean.inputs.GetSpacesBucketObjectArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7567,7 +10325,7 @@ Future<GetSpacesBucketObjectResult> getSpacesBucketObject(
   return GetSpacesBucketObjectResult.fromMap(result);
 }
 
-/// &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect Terraform's performance.
+/// &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect Terraform's performance.
 ///
 /// The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_spaces_bucket_objects_get_spaces_bucket_objects_args_doc}
@@ -7670,6 +10428,22 @@ Future<GetSpacesBucketObjectsResult> getSpacesBucketObjects(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getspacesbuckets" "nyc3" {
+///   filters {
+///     key    = "region"
+///     values = ["nyc3"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7678,8 +10452,9 @@ Future<GetSpacesBucketObjectsResult> getSpacesBucketObjects(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7810,6 +10585,26 @@ Future<GetSpacesBucketObjectsResult> getSpacesBucketObjects(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getspacesbuckets" "nyc3" {
+///   filters {
+///     key    = "region"
+///     values = ["nyc3"]
+///   }
+///   sorts {
+///     key       = "name"
+///     direction = "desc"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7818,8 +10613,10 @@ Future<GetSpacesBucketObjectsResult> getSpacesBucketObjects(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
+/// import com.pulumi.digitalocean.inputs.GetSpacesBucketsSortArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -7927,7 +10724,7 @@ Future<GetSpacesBucketsResult> getSpacesBuckets(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupSpacesKey(ctx, &digitalocean.LookupSpacesKeyArgs{
+/// 		example, err := digitalocean.GetSpacesKey(ctx, &digitalocean.LookupSpacesKeyArgs{
 /// 			AccessKey: "ACCESS_KEY_ID",
 /// 		}, nil)
 /// 		if err != nil {
@@ -7938,6 +10735,23 @@ Future<GetSpacesBucketsResult> getSpacesBuckets(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getspaceskey" "example" {
+///   access_key = "ACCESS_KEY_ID"
+/// }
+///
+/// output "keyGrants" {
+///   value = data.digitalocean_getspaceskey.example.grants
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -7946,8 +10760,8 @@ Future<GetSpacesBucketsResult> getSpacesBuckets(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetSpacesKeyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8016,7 +10830,7 @@ Future<GetSpacesKeyResult> getSpacesKey(
 ///     name: "example-1",
 ///     region: digitalocean.Region.NYC2,
 ///     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
-///     sshKeys: [example.then(example => example.id)],
+///     sshKeys: [output(example.then(example => example.id)).apply(x =>String(x))],
 /// });
 /// ```
 /// ```python
@@ -8029,7 +10843,7 @@ Future<GetSpacesKeyResult> getSpacesKey(
 ///     name="example-1",
 ///     region=digitalocean.Region.NYC2,
 ///     size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
-///     ssh_keys=[example.id])
+///     ssh_keys=[output(example.id).apply(lambda x: str(x))])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -8068,7 +10882,7 @@ Future<GetSpacesKeyResult> getSpacesKey(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupSshKey(ctx, &digitalocean.LookupSshKeyArgs{
+/// 		example, err := digitalocean.GetSshKey(ctx, &digitalocean.LookupSshKeyArgs{
 /// 			Name: "example",
 /// 		}, nil)
 /// 		if err != nil {
@@ -8090,6 +10904,27 @@ Future<GetSpacesKeyResult> getSpacesKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getsshkey" "example" {
+///   name = "example"
+/// }
+///
+/// resource "digitalocean_droplet" "example" {
+///   image    = "ubuntu-18-04-x64"
+///   name     = "example-1"
+///   region   = "nyc2"
+///   size     = "s-1vcpu-1gb"
+///   ssh_keys = [data.digitalocean_getsshkey.example.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8100,8 +10935,8 @@ Future<GetSpacesKeyResult> getSpacesKey(
 /// import com.pulumi.digitalocean.inputs.GetSshKeyArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8242,6 +11077,22 @@ Future<GetSshKeyResult> getSshKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getsshkeys" "keys" {
+///   sorts {
+///     key       = "name"
+///     direction = "asc"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8250,8 +11101,9 @@ Future<GetSshKeyResult> getSshKey(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetSshKeysSortArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8368,6 +11220,22 @@ Future<GetSshKeyResult> getSshKey(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getsshkeys" "keys" {
+///   filters {
+///     key    = "name"
+///     values = ["laptop", "desktop"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8376,8 +11244,9 @@ Future<GetSshKeyResult> getSshKey(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetSshKeysFilterArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8503,7 +11372,7 @@ Future<GetSshKeysResult> getSshKeys(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupTag(ctx, &digitalocean.LookupTagArgs{
+/// 		example, err := digitalocean.GetTag(ctx, &digitalocean.LookupTagArgs{
 /// 			Name: "example",
 /// 		}, nil)
 /// 		if err != nil {
@@ -8525,6 +11394,27 @@ Future<GetSshKeysResult> getSshKeys(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_gettag" "example" {
+///   name = "example"
+/// }
+///
+/// resource "digitalocean_droplet" "example" {
+///   image  = "ubuntu-18-04-x64"
+///   name   = "example-1"
+///   region = "nyc2"
+///   size   = "s-1vcpu-1gb"
+///   tags   = [data.digitalocean_gettag.example.name]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8535,8 +11425,8 @@ Future<GetSshKeysResult> getSshKeys(
 /// import com.pulumi.digitalocean.inputs.GetTagArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8678,6 +11568,26 @@ Future<GetTagResult> getTag(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_gettags" "list" {
+///   sorts {
+///     key       = "total_resource_count"
+///     direction = "asc"
+///   }
+/// }
+///
+/// output "sortedTags" {
+///   value = data.digitalocean_gettags.list.tags
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8686,8 +11596,9 @@ Future<GetTagResult> getTag(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetTagsArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.GetTagsSortArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8735,6 +11646,241 @@ Future<GetTagsResult> getTags(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTagsResult.fromMap(result);
+}
+
+/// Provides information on a DigitalOcean vector database resource.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const example = digitalocean.getVectorDatabase({
+///     name: "example-vector-db",
+/// });
+/// export const vectorDbHttpEndpoint = example.then(example => example.endpoints?.[0]?.http);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// example = digitalocean.get_vector_database(name="example-vector-db")
+/// pulumi.export("vectorDbHttpEndpoint", example.endpoints[0].http)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = DigitalOcean.GetVectorDatabase.Invoke(new()
+///     {
+///         Name = "example-vector-db",
+///     });
+///
+///     return new Dictionary<string, object?>
+///     {
+///         ["vectorDbHttpEndpoint"] = example.Apply(getVectorDatabaseResult => getVectorDatabaseResult.Endpoints[0]?.Http),
+///     };
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := digitalocean.GetVectorDatabase(ctx, &digitalocean.LookupVectorDatabaseArgs{
+/// 			Name: pulumi.StringRef("example-vector-db"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		ctx.Export("vectorDbHttpEndpoint", example.Endpoints[0].Http)
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvectordatabase" "example" {
+///   name = "example-vector-db"
+/// }
+///
+/// output "vectorDbHttpEndpoint" {
+///   value = data.digitalocean_getvectordatabase.example.endpoints[0].http
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+///             .name("example-vector-db")
+///             .build());
+///
+///         ctx.export("vectorDbHttpEndpoint", example.endpoints()[0].http());
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: digitalocean:getVectorDatabase
+///       arguments:
+///         name: example-vector-db
+/// outputs:
+///   vectorDbHttpEndpoint: ${example.endpoints[0].http}
+/// ```
+///
+///
+/// A vector database may also be looked up by its `id`:
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as digitalocean from "@pulumi/digitalocean";
+///
+/// const example = digitalocean.getVectorDatabase({
+///     id: "245bcfd0-7f31-4ce6-a2bc-475a116cca97",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_digitalocean as digitalocean
+///
+/// example = digitalocean.get_vector_database(id="245bcfd0-7f31-4ce6-a2bc-475a116cca97")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using DigitalOcean = Pulumi.DigitalOcean;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = DigitalOcean.GetVectorDatabase.Invoke(new()
+///     {
+///         Id = "245bcfd0-7f31-4ce6-a2bc-475a116cca97",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := digitalocean.GetVectorDatabase(ctx, &digitalocean.LookupVectorDatabaseArgs{
+/// 			Id: pulumi.StringRef("245bcfd0-7f31-4ce6-a2bc-475a116cca97"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvectordatabase" "example" {
+///   id = "245bcfd0-7f31-4ce6-a2bc-475a116cca97"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.digitalocean.DigitaloceanFunctions;
+/// import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+///             .id("245bcfd0-7f31-4ce6-a2bc-475a116cca97")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   example:
+///     fn::invoke:
+///       function: digitalocean:getVectorDatabase
+///       arguments:
+///         id: 245bcfd0-7f31-4ce6-a2bc-475a116cca97
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_vector_database_get_vector_database_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetVectorDatabaseResult> getVectorDatabase(
+  GetVectorDatabaseArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'digitalocean:index/getVectorDatabase:getVectorDatabase',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetVectorDatabaseResult.fromMap(result);
 }
 
 /// Get information on a volume for use in other resources. This data source provides
@@ -8791,7 +11937,7 @@ Future<GetTagsResult> getTags(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupVolume(ctx, &digitalocean.LookupVolumeArgs{
+/// 		_, err := digitalocean.GetVolume(ctx, &digitalocean.LookupVolumeArgs{
 /// 			Name:   "app-data",
 /// 			Region: pulumi.StringRef("nyc3"),
 /// 		}, nil)
@@ -8802,6 +11948,20 @@ Future<GetTagsResult> getTags(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvolume" "example" {
+///   name   = "app-data"
+///   region = "nyc3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -8810,8 +11970,8 @@ Future<GetTagsResult> getTags(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetVolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -8860,7 +12020,7 @@ Future<GetTagsResult> getTags(
 ///     region: digitalocean.Region.NYC3,
 /// });
 /// const foobar = new digitalocean.VolumeAttachment("foobar", {
-///     dropletId: exampleDroplet.id,
+///     dropletId: exampleDroplet.id.apply(x =>Number(x)),
 ///     volumeId: example.then(example => example.id),
 /// });
 /// ```
@@ -8876,7 +12036,7 @@ Future<GetTagsResult> getTags(
 ///     image="ubuntu-18-04-x64",
 ///     region=digitalocean.Region.NYC3)
 /// foobar = digitalocean.VolumeAttachment("foobar",
-///     droplet_id=example_droplet.id,
+///     droplet_id=example_droplet.id.apply(lambda x: int(x)),
 ///     volume_id=example.id)
 /// ```
 /// ```csharp
@@ -8913,13 +12073,15 @@ Future<GetTagsResult> getTags(
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupVolume(ctx, &digitalocean.LookupVolumeArgs{
+/// 		example, err := digitalocean.GetVolume(ctx, &digitalocean.LookupVolumeArgs{
 /// 			Name:   "app-data",
 /// 			Region: pulumi.StringRef("nyc3"),
 /// 		}, nil)
@@ -8936,7 +12098,7 @@ Future<GetTagsResult> getTags(
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewVolumeAttachment(ctx, "foobar", &digitalocean.VolumeAttachmentArgs{
-/// 			DropletId: exampleDroplet.ID(),
+/// 			DropletId: exampleDroplet.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			VolumeId:  pulumi.String(example.Id),
 /// 		})
 /// 		if err != nil {
@@ -8944,6 +12106,31 @@ Future<GetTagsResult> getTags(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvolume" "example" {
+///   name   = "app-data"
+///   region = "nyc3"
+/// }
+///
+/// resource "digitalocean_droplet" "example" {
+///   name   = "foo"
+///   size   = "s-1vcpu-1gb"
+///   image  = "ubuntu-18-04-x64"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_volumeattachment" "foobar" {
+///   droplet_id = digitalocean_droplet.example.id
+///   volume_id  = data.digitalocean_getvolume.example.id
 /// }
 /// ```
 /// ```java
@@ -8958,8 +12145,8 @@ Future<GetTagsResult> getTags(
 /// import com.pulumi.digitalocean.DropletArgs;
 /// import com.pulumi.digitalocean.VolumeAttachment;
 /// import com.pulumi.digitalocean.VolumeAttachmentArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9083,7 +12270,7 @@ Future<GetVolumeResult> getVolume(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
+/// 		_, err := digitalocean.GetVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
 /// 			NameRegex:  pulumi.StringRef("^web"),
 /// 			Region:     pulumi.StringRef("nyc3"),
 /// 			MostRecent: pulumi.BoolRef(true),
@@ -9095,6 +12282,21 @@ Future<GetVolumeResult> getVolume(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvolumesnapshot" "snapshot" {
+///   name_regex  = "^web"
+///   region      = "nyc3"
+///   most_recent = true
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9103,8 +12305,8 @@ Future<GetVolumeResult> getVolume(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9204,7 +12406,7 @@ Future<GetVolumeResult> getVolume(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		snapshot, err := digitalocean.LookupVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
+/// 		snapshot, err := digitalocean.GetVolumeSnapshot(ctx, &digitalocean.LookupVolumeSnapshotArgs{
 /// 			NameRegex:  pulumi.StringRef("^web"),
 /// 			Region:     pulumi.StringRef("nyc3"),
 /// 			MostRecent: pulumi.BoolRef(true),
@@ -9225,6 +12427,28 @@ Future<GetVolumeResult> getVolume(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvolumesnapshot" "snapshot" {
+///   name_regex  = "^web"
+///   region      = "nyc3"
+///   most_recent = true
+/// }
+///
+/// resource "digitalocean_volume" "foobar" {
+///   region      = "nyc3"
+///   name        = "baz"
+///   size        = 100
+///   snapshot_id = data.digitalocean_getvolumesnapshot.snapshot.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9235,8 +12459,8 @@ Future<GetVolumeResult> getVolume(
 /// import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
 /// import com.pulumi.digitalocean.Volume;
 /// import com.pulumi.digitalocean.VolumeArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9350,7 +12574,7 @@ Future<GetVolumeSnapshotResult> getVolumeSnapshot(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupVpc(ctx, &digitalocean.LookupVpcArgs{
+/// 		_, err := digitalocean.GetVpc(ctx, &digitalocean.LookupVpcArgs{
 /// 			Name: pulumi.StringRef("example-network"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -9358,6 +12582,19 @@ Future<GetVolumeSnapshotResult> getVolumeSnapshot(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvpc" "example" {
+///   name = "example-network"
 /// }
 /// ```
 /// ```java
@@ -9368,8 +12605,8 @@ Future<GetVolumeSnapshotResult> getVolumeSnapshot(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetVpcArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9462,7 +12699,7 @@ Future<GetVolumeSnapshotResult> getVolumeSnapshot(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupVpc(ctx, &digitalocean.LookupVpcArgs{
+/// 		example, err := digitalocean.GetVpc(ctx, &digitalocean.LookupVpcArgs{
 /// 			Name: pulumi.StringRef("example-network"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -9482,6 +12719,27 @@ Future<GetVolumeSnapshotResult> getVolumeSnapshot(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvpc" "example" {
+///   name = "example-network"
+/// }
+///
+/// resource "digitalocean_droplet" "example" {
+///   name     = "example-01"
+///   size     = "s-1vcpu-1gb"
+///   image    = "ubuntu-18-04-x64"
+///   region   = "nyc3"
+///   vpc_uuid = data.digitalocean_getvpc.example.id
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9492,8 +12750,8 @@ Future<GetVolumeSnapshotResult> getVolumeSnapshot(
 /// import com.pulumi.digitalocean.inputs.GetVpcArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9603,7 +12861,7 @@ Future<GetVpcResult> getVpc(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupVpcNatGateway(ctx, &digitalocean.LookupVpcNatGatewayArgs{
+/// 		_, err := digitalocean.GetVpcNatGateway(ctx, &digitalocean.LookupVpcNatGatewayArgs{
 /// 			Name: pulumi.StringRef(my_existing_vpc_nat_gateway.Name),
 /// 		}, nil)
 /// 		if err != nil {
@@ -9611,6 +12869,19 @@ Future<GetVpcResult> getVpc(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvpcnatgateway" "my-imported-vpc-nat-gateway" {
+///   name = my-existing-vpc-nat-gateway.name
 /// }
 /// ```
 /// ```java
@@ -9621,8 +12892,8 @@ Future<GetVpcResult> getVpc(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9693,7 +12964,7 @@ Future<GetVpcResult> getVpc(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupVpcNatGateway(ctx, &digitalocean.LookupVpcNatGatewayArgs{
+/// 		_, err := digitalocean.GetVpcNatGateway(ctx, &digitalocean.LookupVpcNatGatewayArgs{
 /// 			Id: pulumi.StringRef(my_existing_vpc_nat_gateway.Id),
 /// 		}, nil)
 /// 		if err != nil {
@@ -9701,6 +12972,19 @@ Future<GetVpcResult> getVpc(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvpcnatgateway" "my-imported-vpc-nat-gateway" {
+///   id = my-existing-vpc-nat-gateway.id
 /// }
 /// ```
 /// ```java
@@ -9711,8 +12995,8 @@ Future<GetVpcResult> getVpc(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9806,7 +13090,7 @@ Future<GetVpcNatGatewayResult> getVpcNatGateway(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
+/// 		_, err := digitalocean.GetVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
 /// 			Id: pulumi.StringRef("example-id"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -9814,6 +13098,19 @@ Future<GetVpcNatGatewayResult> getVpcNatGateway(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvpcpeering" "example" {
+///   id = "example-id"
 /// }
 /// ```
 /// ```java
@@ -9824,8 +13121,8 @@ Future<GetVpcNatGatewayResult> getVpcNatGateway(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -9918,7 +13215,7 @@ Future<GetVpcNatGatewayResult> getVpcNatGateway(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
+/// 		example, err := digitalocean.GetVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
 /// 			Id: pulumi.StringRef("example-id"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -9938,6 +13235,27 @@ Future<GetVpcNatGatewayResult> getVpcNatGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvpcpeering" "example" {
+///   id = "example-id"
+/// }
+///
+/// resource "digitalocean_droplet" "example" {
+///   name     = "example-01"
+///   size     = "s-1vcpu-1gb"
+///   image    = "ubuntu-18-04-x64"
+///   region   = "nyc3"
+///   vpc_uuid = data.digitalocean_getvpcpeering.example.vpc_ids[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -9948,8 +13266,8 @@ Future<GetVpcNatGatewayResult> getVpcNatGateway(
 /// import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -10038,7 +13356,7 @@ Future<GetVpcNatGatewayResult> getVpcNatGateway(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := digitalocean.LookupVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
+/// 		_, err := digitalocean.GetVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
 /// 			Name: pulumi.StringRef("example-peering"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -10046,6 +13364,19 @@ Future<GetVpcNatGatewayResult> getVpcNatGateway(
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvpcpeering" "example" {
+///   name = "example-peering"
 /// }
 /// ```
 /// ```java
@@ -10056,8 +13387,8 @@ Future<GetVpcNatGatewayResult> getVpcNatGateway(
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DigitaloceanFunctions;
 /// import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -10150,7 +13481,7 @@ Future<GetVpcNatGatewayResult> getVpcNatGateway(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := digitalocean.LookupVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
+/// 		example, err := digitalocean.GetVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
 /// 			Name: pulumi.StringRef("example-peering"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -10170,6 +13501,27 @@ Future<GetVpcNatGatewayResult> getVpcNatGateway(
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getvpcpeering" "example" {
+///   name = "example-peering"
+/// }
+///
+/// resource "digitalocean_droplet" "example" {
+///   name     = "example-01"
+///   size     = "s-1vcpu-1gb"
+///   image    = "ubuntu-18-04-x64"
+///   region   = "nyc3"
+///   vpc_uuid = data.digitalocean_getvpcpeering.example.vpc_ids[0]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -10180,8 +13532,8 @@ Future<GetVpcNatGatewayResult> getVpcNatGateway(
 /// import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

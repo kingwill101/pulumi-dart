@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   pulumi: 3.0.0
-  pulumi_digitalocean: 4.60.0
+  pulumi_digitalocean: 4.79.0
   pulumi_kubernetes: 4.26.0
 
 dev_dependencies:

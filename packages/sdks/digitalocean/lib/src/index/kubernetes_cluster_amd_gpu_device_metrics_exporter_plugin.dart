@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
-  /// Boolean flag whether the component is enabled or not.
+  /// Boolean flag whether the component should be enabled or not.
   final pulumi.Input<bool> enabled;
 
   /// Creates a new [KubernetesClusterAmdGpuDeviceMetricsExporterPlugin].
-  /// [enabled] Boolean flag whether the component is enabled or not.
+  /// [enabled] Boolean flag whether the component should be enabled or not.
   const KubernetesClusterAmdGpuDeviceMetricsExporterPlugin({
     required this.enabled,
   });
@@ -24,4 +24,3 @@ class KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
     );
   }
 }
-

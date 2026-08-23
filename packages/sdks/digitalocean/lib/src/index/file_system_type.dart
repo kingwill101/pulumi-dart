@@ -14,4 +14,3 @@ enum FileSystemType {
     throw ArgumentError('Unknown FileSystemType value: $value');
   }
 }
-

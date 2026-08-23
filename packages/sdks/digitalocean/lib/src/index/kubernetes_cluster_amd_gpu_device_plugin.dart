@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterAmdGpuDevicePlugin {
   /// Boolean flag whether the component should be enabled or not.
-  /// `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
   final pulumi.Input<bool> enabled;
 
   /// Creates a new [KubernetesClusterAmdGpuDevicePlugin].
@@ -25,4 +24,3 @@ class KubernetesClusterAmdGpuDevicePlugin {
     );
   }
 }
-

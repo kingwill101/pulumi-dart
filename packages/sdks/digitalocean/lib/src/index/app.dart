@@ -115,6 +115,31 @@ import 'app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_app" "golang-sample" {
+///   spec = {
+///     name   = "golang-sample"
+///     region = "ams"
+///     services = [{
+///       "name"             = "go-service"
+///       "instanceCount"    = 1
+///       "instanceSizeSlug" = "apps-s-1vcpu-1gb"
+///       "git" = {
+///         "repoCloneUrl" = "https://github.com/digitalocean/sample-golang.git"
+///         "branch"       = "main"
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -124,8 +149,10 @@ import 'app_state.dart';
 /// import com.pulumi.digitalocean.App;
 /// import com.pulumi.digitalocean.AppArgs;
 /// import com.pulumi.digitalocean.inputs.AppSpecArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.AppSpecServiceArgs;
+/// import com.pulumi.digitalocean.inputs.AppSpecServiceGitArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,6 +307,31 @@ import 'app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_app" "static-site-example" {
+///   spec = {
+///     name   = "static-site-example"
+///     region = "ams"
+///     static_sites = [{
+///       "name"         = "sample-jekyll"
+///       "buildCommand" = "bundle exec jekyll build -d ./public"
+///       "outputDir"    = "/public"
+///       "git" = {
+///         "repoCloneUrl" = "https://github.com/digitalocean/sample-jekyll.git"
+///         "branch"       = "main"
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -289,8 +341,10 @@ import 'app_state.dart';
 /// import com.pulumi.digitalocean.App;
 /// import com.pulumi.digitalocean.AppArgs;
 /// import com.pulumi.digitalocean.inputs.AppSpecArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.AppSpecStaticSiteArgs;
+/// import com.pulumi.digitalocean.inputs.AppSpecStaticSiteGitArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -342,6 +396,105 @@ import 'app_state.dart';
 /// ### Multiple Components Example
 ///
 ///
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_app" "mono-repo-example" {
+///   spec = {
+///     name   = "mono-repo-example"
+///     region = "ams"
+///     domains = [{
+///       "name" = "foo.example.com"
+///     }]
+///     alerts = [{
+///       "rule" = "DEPLOYMENT_FAILED"
+///       "destinations" = {
+///         "emails" = ["team.member1@org.com", "team.member2@org.com"]
+///         "slackWebhooks" = [{
+///           "channel" = "@user1"
+///           "url"     = "https://hooks.slack.com/slack-url"
+///         }]
+///       }
+///     }]
+///     services = [{
+///       "name"             = "go-api"
+///       "instanceCount"    = 2
+///       "instanceSizeSlug" = "apps-s-1vcpu-1gb"
+///       "github" = {
+///         "branch"       = "main"
+///         "deployOnPush" = true
+///         "repo"         = "username/repo"
+///       }
+///       "sourceDir" = "api/"
+///       "httpPort"  = 3000
+///       "alerts" = [{
+///         "value"    = 75
+///         "operator" = "GREATER_THAN"
+///         "window"   = "TEN_MINUTES"
+///         "rule"     = "CPU_UTILIZATION"
+///         "destinations" = {
+///           "emails" = ["team.member1@org.com", "team.member2@org.com"]
+///           "slackWebhooks" = [{
+///             "channel" = "@user1"
+///             "url"     = "https://hooks.slack.com/slack-url"
+///           }]
+///         }
+///       }]
+///       "logDestinations" = [{
+///         "name" = "MyLogs"
+///         "papertrail" = {
+///           "endpoint" = "syslog+tls://example.com:12345"
+///         }
+///       }]
+///       "runCommand" = "bin/api"
+///     }]
+///     static_sites = [{
+///       "name"         = "web"
+///       "buildCommand" = "npm run build"
+///       "bitbucket" = {
+///         "branch"       = "main"
+///         "deployOnPush" = true
+///         "repo"         = "username/repo"
+///       }
+///     }]
+///     databases = [{
+///       "name"       = "starter-db"
+///       "engine"     = "PG"
+///       "production" = false
+///     }]
+///     ingress = {
+///       rules = [{
+///         "component" = {
+///           "name" = "api"
+///         }
+///         "match" = {
+///           "path" = {
+///             "prefix" = "/api"
+///           }
+///         }
+///         }, {
+///         "component" = {
+///           "name" = "web"
+///         }
+///         "match" = {
+///           "path" = {
+///             "prefix" = "/"
+///           }
+///         }
+///       }]
+///     }
+///     vpcs = [{
+///       "id" = "c22d8f48-4bc4-49f5-8ca0-58e7164427ac"
+///     }]
+///   }
+/// }
+/// ```
 /// ```yaml
 /// resources:
 ///   mono-repo-example:
@@ -570,6 +723,41 @@ import 'app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_app" "golang-sample" {
+///   spec = {
+///     name   = "golang-sample"
+///     region = "ams"
+///     services = [{
+///       "name"             = "go-service"
+///       "instanceCount"    = 1
+///       "instanceSizeSlug" = "apps-s-1vcpu-1gb"
+///       "git" = {
+///         "repoCloneUrl" = "https://github.com/digitalocean/sample-golang.git"
+///         "branch"       = "main"
+///       }
+///       "logDestinations" = [{
+///         "name" = "MyLogs"
+///         "openSearch" = {
+///           "endpoint" = "https://something:1234"
+///           "basicAuth" = {
+///             "user"     = "user"
+///             "password" = "hi"
+///           }
+///         }
+///       }]
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -579,8 +767,13 @@ import 'app_state.dart';
 /// import com.pulumi.digitalocean.App;
 /// import com.pulumi.digitalocean.AppArgs;
 /// import com.pulumi.digitalocean.inputs.AppSpecArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.AppSpecServiceArgs;
+/// import com.pulumi.digitalocean.inputs.AppSpecServiceGitArgs;
+/// import com.pulumi.digitalocean.inputs.AppSpecServiceLogDestinationArgs;
+/// import com.pulumi.digitalocean.inputs.AppSpecServiceLogDestinationOpenSearchArgs;
+/// import com.pulumi.digitalocean.inputs.AppSpecServiceLogDestinationOpenSearchBasicAuthArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -764,6 +957,34 @@ import 'app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_app" "golang-sample" {
+///   spec = {
+///     name                            = "golang-sample"
+///     region                          = "ams"
+///     disable_edge_cache              = true
+///     disable_email_obfuscation       = false
+///     enhanced_threat_control_enabled = true
+///     services = [{
+///       "name"             = "go-service"
+///       "instanceCount"    = 1
+///       "instanceSizeSlug" = "apps-s-1vcpu-1gb"
+///       "git" = {
+///         "repoCloneUrl" = "https://github.com/digitalocean/sample-golang.git"
+///         "branch"       = "main"
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -773,8 +994,10 @@ import 'app_state.dart';
 /// import com.pulumi.digitalocean.App;
 /// import com.pulumi.digitalocean.AppArgs;
 /// import com.pulumi.digitalocean.inputs.AppSpecArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.AppSpecServiceArgs;
+/// import com.pulumi.digitalocean.inputs.AppSpecServiceGitArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -952,6 +1175,35 @@ import 'app_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_app" "maintenance-example" {
+///   spec = {
+///     name   = "maintenance-example"
+///     region = "ams"
+///     maintenance = {
+///       enabled          = true
+///       offline_page_url = "https://example.com/maintenance.html"
+///     }
+///     services = [{
+///       "name"             = "go-service"
+///       "instanceCount"    = 1
+///       "instanceSizeSlug" = "apps-s-1vcpu-1gb"
+///       "git" = {
+///         "repoCloneUrl" = "https://github.com/digitalocean/sample-golang.git"
+///         "branch"       = "main"
+///       }
+///     }]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -962,8 +1214,10 @@ import 'app_state.dart';
 /// import com.pulumi.digitalocean.AppArgs;
 /// import com.pulumi.digitalocean.inputs.AppSpecArgs;
 /// import com.pulumi.digitalocean.inputs.AppSpecMaintenanceArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.AppSpecServiceArgs;
+/// import com.pulumi.digitalocean.inputs.AppSpecServiceGitArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

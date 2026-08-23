@@ -4,16 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering NfsAttachment resources.
 class NfsAttachmentState {
+  /// The region of the NFS share.
   final pulumi.Input<String>? region;
   /// The ID of the NFS share to attach.
   final pulumi.Input<String>? shareId;
-  /// The ID of the vpc to attach the NFS share to.
+  /// The ID of the VPC to attach the NFS share to.
   final pulumi.Input<String>? vpcId;
 
   /// Creates a new [NfsAttachmentState].
-  /// [region] Optional.
+  /// [region] The region of the NFS share.
   /// [shareId] The ID of the NFS share to attach.
-  /// [vpcId] The ID of the vpc to attach the NFS share to.
+  /// [vpcId] The ID of the VPC to attach the NFS share to.
   const NfsAttachmentState({
     this.region,
     this.shareId,
@@ -36,4 +37,3 @@ class NfsAttachmentState {
     );
   }
 }
-

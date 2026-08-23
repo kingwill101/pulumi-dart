@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_cluster_args.dart';
 import 'database_cluster_backup_restore.dart';
 import 'database_cluster_state.dart';
+import 'database_cluster_storage_autoscale.dart';
 
 /// Provides a DigitalOcean database cluster resource.
 ///
@@ -79,6 +80,24 @@ import 'database_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasecluster" "postgres-example" {
+///   name       = "example-postgres-cluster"
+///   engine     = "pg"
+///   version    = "15"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -87,8 +106,8 @@ import 'database_cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DatabaseCluster;
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -198,6 +217,24 @@ import 'database_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasecluster" "mysql-example" {
+///   name       = "example-mysql-cluster"
+///   engine     = "mysql"
+///   version    = "8"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -206,8 +243,8 @@ import 'database_cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DatabaseCluster;
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -317,6 +354,24 @@ import 'database_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasecluster" "valkey-example" {
+///   name       = "example-valkey-cluster"
+///   engine     = "valkey"
+///   version    = "8"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -325,8 +380,8 @@ import 'database_cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DatabaseCluster;
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -436,6 +491,24 @@ import 'database_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasecluster" "kafka-example" {
+///   name       = "example-kafka-cluster"
+///   engine     = "kafka"
+///   version    = "3.5"
+///   size       = "db-s-2vcpu-2gb"
+///   region     = "nyc1"
+///   node_count = 3
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -444,8 +517,8 @@ import 'database_cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DatabaseCluster;
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -555,6 +628,24 @@ import 'database_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasecluster" "mongodb-example" {
+///   name       = "example-mongo-cluster"
+///   engine     = "mongodb"
+///   version    = "6"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc3"
+///   node_count = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -563,8 +654,8 @@ import 'database_cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DatabaseCluster;
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -674,6 +765,24 @@ import 'database_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasecluster" "opensearch-example" {
+///   name       = "example-opensearch-cluster"
+///   engine     = "opensearch"
+///   version    = "2"
+///   size       = "db-s-1vcpu-2gb"
+///   region     = "nyc3"
+///   node_count = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -682,8 +791,8 @@ import 'database_cluster_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DatabaseCluster;
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -872,6 +981,38 @@ import 'database_cluster_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasecluster" "doby" {
+///   name       = "dobydb"
+///   engine     = "pg"
+///   version    = "15"
+///   size       = "db-s-1vcpu-2gb"
+///   region     = "nyc1"
+///   node_count = 1
+///   tags       = ["production"]
+/// }
+/// resource "digitalocean_databasecluster" "doby_backup" {
+///   depends_on = [digitalocean_databasecluster.doby]
+///   name       = "dobydupe"
+///   engine     = "pg"
+///   version    = "15"
+///   size       = "db-s-1vcpu-2gb"
+///   region     = "nyc1"
+///   node_count = 1
+///   tags       = ["production"]
+///   backup_restore = {
+///     database_name = "dobydb"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -882,8 +1023,8 @@ import 'database_cluster_state.dart';
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
 /// import com.pulumi.digitalocean.inputs.DatabaseClusterBackupRestoreArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -971,7 +1112,7 @@ class DatabaseCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> database;
   /// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
   late final pulumi.Output<String> engine;
-  /// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+  /// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
   late final pulumi.Output<String?> evictionPolicy;
   /// Database cluster's hostname.
   late final pulumi.Output<String> host;
@@ -1001,6 +1142,8 @@ class DatabaseCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> size;
   /// A comma separated string specifying the  SQL modes for a MySQL cluster.
   late final pulumi.Output<String?> sqlMode;
+  /// Storage autoscaling configuration for the database cluster.
+  late final pulumi.Output<DatabaseClusterStorageAutoscale?> storageAutoscale;
   /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
   late final pulumi.Output<String> storageSizeMib;
   /// A list of tag names to be applied to the database cluster.
@@ -1058,6 +1201,7 @@ class DatabaseCluster extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     size = registerOutput<String>('size');
     sqlMode = registerOutput<String?>('sqlMode');
+    storageAutoscale = registerOutput<DatabaseClusterStorageAutoscale?>('storageAutoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseClusterStorageAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageSizeMib = registerOutput<String>('storageSizeMib');
     tags = registerOutput<List<String>?>('tags');
     uiDatabase = registerOutput<String>('uiDatabase');
@@ -1113,6 +1257,7 @@ class DatabaseCluster extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     size = registerOutput<String>('size');
     sqlMode = registerOutput<String?>('sqlMode');
+    storageAutoscale = registerOutput<DatabaseClusterStorageAutoscale?>('storageAutoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseClusterStorageAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageSizeMib = registerOutput<String>('storageSizeMib');
     tags = registerOutput<List<String>?>('tags');
     uiDatabase = registerOutput<String>('uiDatabase');

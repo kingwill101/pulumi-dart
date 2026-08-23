@@ -7,7 +7,7 @@ class GetSpacesBucketsFilter {
   /// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
   /// that all of the `values` are present in the list or set.
   final pulumi.Input<bool>? all;
-  /// Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+  /// Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
   final pulumi.Input<String> key;
   /// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
@@ -19,7 +19,7 @@ class GetSpacesBucketsFilter {
 
   /// Creates a new [GetSpacesBucketsFilter].
   /// [all] Set to `true` to require that a field match all of the `values` instead of just one or more of
-  /// [key] Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+  /// [key] Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
   /// [matchBy] One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// [values] A list of values to match against the `key` field. Only retrieves Spaces buckets
   const GetSpacesBucketsFilter({
@@ -47,4 +47,3 @@ class GetSpacesBucketsFilter {
     );
   }
 }
-

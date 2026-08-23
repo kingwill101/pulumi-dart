@@ -9,6 +9,7 @@ import 'app_spec_worker_git.dart';
 import 'app_spec_worker_github.dart';
 import 'app_spec_worker_gitlab.dart';
 import 'app_spec_worker_image.dart';
+import 'app_spec_worker_liveness_health_check.dart';
 import 'app_spec_worker_log_destination.dart';
 import 'app_spec_worker_termination.dart';
 
@@ -39,6 +40,8 @@ class AppSpecWorker {
   final pulumi.Input<int>? instanceCount;
   /// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
   final pulumi.Input<String>? instanceSizeSlug;
+  /// A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+  final pulumi.Input<AppSpecWorkerLivenessHealthCheck>? livenessHealthCheck;
   /// Describes a log forwarding destination.
   final pulumi.Input<List<AppSpecWorkerLogDestination>>? logDestinations;
   /// The name of the component.
@@ -64,6 +67,7 @@ class AppSpecWorker {
   /// [image] An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
   /// [instanceCount] The amount of instances that this component should be scaled to.
   /// [instanceSizeSlug] The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+  /// [livenessHealthCheck] A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
   /// [logDestinations] Describes a log forwarding destination.
   /// [name] The name of the component.
   /// [runCommand] An optional run command to override the component's default.
@@ -83,6 +87,7 @@ class AppSpecWorker {
     this.image,
     this.instanceCount,
     this.instanceSizeSlug,
+    this.livenessHealthCheck,
     this.logDestinations,
     required this.name,
     this.runCommand,
@@ -105,6 +110,7 @@ class AppSpecWorker {
       'image': ?pulumi.Input.mapOptionalInputValue<AppSpecWorkerImage, Map<String, dynamic>>(image, (value) => value.toMap()),
       'instanceCount': ?instanceCount,
       'instanceSizeSlug': ?instanceSizeSlug,
+      'livenessHealthCheck': ?pulumi.Input.mapOptionalInputValue<AppSpecWorkerLivenessHealthCheck, Map<String, dynamic>>(livenessHealthCheck, (value) => value.toMap()),
       'logDestinations': ?pulumi.Input.mapOptionalInputValue<List<AppSpecWorkerLogDestination>, List<Map<String, dynamic>>>(logDestinations, (value) => pulumi.Input.encodeList<AppSpecWorkerLogDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
       'name': name,
       'runCommand': ?runCommand,
@@ -128,6 +134,7 @@ class AppSpecWorker {
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSpecWorkerImage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       instanceSizeSlug: (() { final guardedValue = map['instanceSizeSlug']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      livenessHealthCheck: (() { final guardedValue = map['livenessHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppSpecWorkerLivenessHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logDestinations: (() { final guardedValue = map['logDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppSpecWorkerLogDestination>(guardedValue, (value) => AppSpecWorkerLogDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       runCommand: (() { final guardedValue = map['runCommand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -136,4 +143,3 @@ class AppSpecWorker {
     );
   }
 }
-

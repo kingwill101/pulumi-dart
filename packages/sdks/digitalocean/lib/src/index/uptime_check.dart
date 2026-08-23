@@ -17,7 +17,7 @@ class UptimeCheck extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enabled;
   /// A human-friendly display name for the check.
   late final pulumi.Output<String> name;
-  /// An array containing the selected regions to perform healthchecks from: "us_east", "us_west", "eu_west", "se_asia"
+  /// An array containing the selected regions to perform healthchecks from: "usEast", "usWest", "euWest", "seAsia"
   late final pulumi.Output<List<String>?> regions;
   /// The endpoint to perform healthchecks on.
   late final pulumi.Output<String> target;

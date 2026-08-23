@@ -179,4 +179,3 @@ enum DropletSlug {
     throw ArgumentError('Unknown DropletSlug value: $value');
   }
 }
-

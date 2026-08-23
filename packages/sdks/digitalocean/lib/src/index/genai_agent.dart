@@ -81,6 +81,8 @@ class GenaiAgent extends pulumi.CustomResource {
   late final pulumi.Output<String?> url;
   /// User ID linked with the Agent
   late final pulumi.Output<String?> userId;
+  /// Identifier for the workspace
+  late final pulumi.Output<String?> workspaceUuid;
 
   /// Creates a new [GenaiAgent].
   /// [name] The Pulumi resource name.
@@ -135,6 +137,7 @@ class GenaiAgent extends pulumi.CustomResource {
     updatedAt = registerOutput<String>('updatedAt');
     url = registerOutput<String?>('url');
     userId = registerOutput<String?>('userId');
+    workspaceUuid = registerOutput<String?>('workspaceUuid');
   }
 
   /// Gets an existing [GenaiAgent] resource's state with the given [name] and [id].
@@ -199,5 +202,6 @@ class GenaiAgent extends pulumi.CustomResource {
     updatedAt = registerOutput<String>('updatedAt');
     url = registerOutput<String?>('url');
     userId = registerOutput<String?>('userId');
+    workspaceUuid = registerOutput<String?>('workspaceUuid');
   }
 }

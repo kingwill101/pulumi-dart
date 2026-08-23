@@ -99,4 +99,3 @@ class DigitaloceanConfig {
 }
 
 const config = DigitaloceanConfig();
-

@@ -16,7 +16,7 @@ import 'uptime_alert_state.dart';
 class UptimeAlert extends pulumi.CustomResource {
   /// A unique identifier for a check
   late final pulumi.Output<String> checkId;
-  /// The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
+  /// The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
   late final pulumi.Output<String?> comparison;
   /// A human-friendly display name.
   late final pulumi.Output<String> name;
@@ -26,7 +26,7 @@ class UptimeAlert extends pulumi.CustomResource {
   late final pulumi.Output<String?> period;
   /// The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
   late final pulumi.Output<int?> threshold;
-  /// The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
+  /// The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
   late final pulumi.Output<String> type;
 
   /// Creates a new [UptimeAlert].

@@ -108,7 +108,7 @@ import 'vpc_nat_gateway_state.dart';
 /// 			Size:   pulumi.Int(1),
 /// 			Vpcs: digitalocean.VpcNatGatewayVpcArray{
 /// 				&digitalocean.VpcNatGatewayVpcArgs{
-/// 					VpcUuid: my_vpc.ID(),
+/// 					VpcUuid: my_vpc.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			UdpTimeoutSeconds:  pulumi.Int(30),
@@ -122,6 +122,32 @@ import 'vpc_nat_gateway_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_vpc" "my-vpc" {
+///   name   = "terraform-example"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_vpcnatgateway" "my-vpc-nat-gateway" {
+///   name   = "terraform-example"
+///   type   = "PUBLIC"
+///   region = "nyc3"
+///   size   = "1"
+///   vpcs {
+///     vpc_uuid = digitalocean_vpc.my-vpc.id
+///   }
+///   udp_timeout_seconds  = 30
+///   icmp_timeout_seconds = 30
+///   tcp_timeout_seconds  = 30
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -133,8 +159,8 @@ import 'vpc_nat_gateway_state.dart';
 /// import com.pulumi.digitalocean.VpcNatGateway;
 /// import com.pulumi.digitalocean.VpcNatGatewayArgs;
 /// import com.pulumi.digitalocean.inputs.VpcNatGatewayVpcArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -200,7 +226,7 @@ class VpcNatGateway extends pulumi.CustomResource {
   /// Created at timestamp for the VPC NAT Gateway.
   late final pulumi.Output<String> createdAt;
   /// Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
-  /// `public_gateways` embedding the reserved `ipv4` addresses.
+  /// `publicGateways` embedding the reserved `ipv4` addresses.
   late final pulumi.Output<List<Map<String, dynamic>>> egresses;
   /// The egress timeout value for ICMP connections of the VPC NAT Gateway.
   late final pulumi.Output<int> icmpTimeoutSeconds;

@@ -16,7 +16,7 @@ class SpacesBucketLifecycleRule {
   final pulumi.Input<String>? id;
   /// Specifies when non-current object versions expire (documented below).
   ///
-  /// At least one of `expiration` or `noncurrent_version_expiration` must be specified.
+  /// At least one of `expiration` or `noncurrentVersionExpiration` must be specified.
   final pulumi.Input<SpacesBucketLifecycleRuleNoncurrentVersionExpiration>? noncurrentVersionExpiration;
   /// Object key prefix identifying one or more objects to which the rule applies.
   final pulumi.Input<String>? prefix;
@@ -59,4 +59,3 @@ class SpacesBucketLifecycleRule {
     );
   }
 }
-

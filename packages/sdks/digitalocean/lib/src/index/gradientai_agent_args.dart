@@ -95,6 +95,8 @@ class GradientaiAgentArgs {
   final pulumi.Input<String>? url;
   /// User ID linked with the Agent
   final pulumi.Input<String>? userId;
+  /// Identifier for the workspace
+  final pulumi.Input<String>? workspaceUuid;
 
   /// Creates a new [GradientaiAgentArgs].
   /// [agentGuardrails] AgentGuardrail represents a Guardrail attached to Gen AI Agent
@@ -134,6 +136,7 @@ class GradientaiAgentArgs {
   /// [topP] Top P sampling parameter
   /// [url] URL for the Agent
   /// [userId] User ID linked with the Agent
+  /// [workspaceUuid] Identifier for the workspace
   const GradientaiAgentArgs({
     this.agentGuardrails,
     this.anthropicApiKeys,
@@ -172,6 +175,7 @@ class GradientaiAgentArgs {
     this.topP,
     this.url,
     this.userId,
+    this.workspaceUuid,
   });
 
   Map<String, dynamic> toMap() {
@@ -213,6 +217,7 @@ class GradientaiAgentArgs {
       'topP': ?topP,
       'url': ?url,
       'userId': ?userId,
+      'workspaceUuid': ?workspaceUuid,
     };
   }
 
@@ -255,7 +260,7 @@ class GradientaiAgentArgs {
       topP: (() { final guardedValue = map['topP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workspaceUuid: (() { final guardedValue = map['workspaceUuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

@@ -95,6 +95,30 @@ import 'cdn_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// # Create a new Spaces Bucket
+/// resource "digitalocean_spacesbucket" "mybucket" {
+///   name   = "example"
+///   region = "sfo2"
+///   acl    = "public-read"
+/// }
+/// # Add a CDN endpoint to the Spaces Bucket
+/// resource "digitalocean_cdn" "mycdn" {
+///   origin = digitalocean_spacesbucket.mybucket.bucket_domain_name
+/// }
+/// # Output the endpoint for the CDN resource
+/// output "fqdn" {
+///   value = digitalocean_cdn.mycdn.endpoint
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -105,8 +129,8 @@ import 'cdn_state.dart';
 /// import com.pulumi.digitalocean.SpacesBucketArgs;
 /// import com.pulumi.digitalocean.Cdn;
 /// import com.pulumi.digitalocean.CdnArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -280,6 +304,34 @@ import 'cdn_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// # Create a new Spaces Bucket
+/// resource "digitalocean_spacesbucket" "mybucket" {
+///   name   = "example"
+///   region = "sfo2"
+///   acl    = "public-read"
+/// }
+/// # Create a DigitalOcean managed Let's Encrypt Certificate
+/// resource "digitalocean_certificate" "cert" {
+///   name    = "cdn-cert"
+///   type    = "lets_encrypt"
+///   domains = ["static.example.com"]
+/// }
+/// # Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
+/// resource "digitalocean_cdn" "mycdn" {
+///   origin           = digitalocean_spacesbucket.mybucket.bucket_domain_name
+///   custom_domain    = "static.example.com"
+///   certificate_name = digitalocean_certificate.cert.name
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -292,8 +344,8 @@ import 'cdn_state.dart';
 /// import com.pulumi.digitalocean.CertificateArgs;
 /// import com.pulumi.digitalocean.Cdn;
 /// import com.pulumi.digitalocean.CdnArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

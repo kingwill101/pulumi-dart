@@ -11,7 +11,7 @@ class GetDropletSnapshotArgs {
   ///
   /// &gt; **NOTE:** If more or less than a single match is returned by the search,
   /// Terraform will fail. Ensure that your search is specific enough to return
-  /// a single Droplet snapshot ID only, or use `most_recent` to choose the most recent one.
+  /// a single Droplet snapshot ID only, or use `mostRecent` to choose the most recent one.
   final pulumi.Input<bool>? mostRecent;
   /// The name of the Droplet snapshot.
   final pulumi.Input<String>? name;
@@ -50,4 +50,3 @@ class GetDropletSnapshotArgs {
     );
   }
 }
-

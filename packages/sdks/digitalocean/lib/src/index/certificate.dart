@@ -117,6 +117,26 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_certificate" "cert" {
+///   name              = "custom-terraform-example"
+///   type              = "custom"
+///   private_key       = file("/Users/terraform/certs/privkey.pem")
+///   leaf_certificate  = file("/Users/terraform/certs/cert.pem")
+///   certificate_chain = file("/Users/terraform/certs/fullchain.pem")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +147,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.digitalocean.CertificateArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -251,6 +271,21 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_certificate" "cert" {
+///   name    = "le-terraform-example"
+///   type    = "lets_encrypt"
+///   domains = ["example.com"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -259,8 +294,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.Certificate;
 /// import com.pulumi.digitalocean.CertificateArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -424,6 +459,34 @@ import 'certificate_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_certificate" "cert" {
+///   name    = "le-terraform-example"
+///   type    = "lets_encrypt"
+///   domains = ["example.com"]
+/// }
+/// # Create a new Load Balancer with TLS termination
+/// resource "digitalocean_loadbalancer" "public" {
+///   name        = "secure-loadbalancer-1"
+///   region      = "nyc3"
+///   droplet_tag = "backend"
+///   forwarding_rules {
+///     entry_port       = 443
+///     entry_protocol   = "https"
+///     target_port      = 80
+///     target_protocol  = "http"
+///     certificate_name = digitalocean_certificate.cert.name
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -435,8 +498,8 @@ import 'certificate_state.dart';
 /// import com.pulumi.digitalocean.LoadBalancer;
 /// import com.pulumi.digitalocean.LoadBalancerArgs;
 /// import com.pulumi.digitalocean.inputs.LoadBalancerForwardingRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -510,7 +573,7 @@ class Certificate extends pulumi.CustomResource {
   late final pulumi.Output<String?> certificateChain;
   /// List of fully qualified domain names (FQDNs) for
   /// which the certificate will be issued. The domains must be managed using
-  /// DigitalOcean's DNS. Only valid when type is `lets_encrypt`.
+  /// DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
   late final pulumi.Output<List<String>?> domains;
   /// The contents of a PEM-formatted public
   /// TLS certificate. Only valid when type is `custom`.
@@ -526,7 +589,7 @@ class Certificate extends pulumi.CustomResource {
   late final pulumi.Output<String> sha1Fingerprint;
   late final pulumi.Output<String> state;
   /// The type of certificate to provision. Can be either
-  /// `custom` or `lets_encrypt`. Defaults to `custom`.
+  /// `custom` or `letsEncrypt`. Defaults to `custom`.
   late final pulumi.Output<String?> type;
   /// The UUID of the certificate
   late final pulumi.Output<String> uuid;

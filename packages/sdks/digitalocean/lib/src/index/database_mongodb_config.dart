@@ -102,7 +102,7 @@ import 'database_mongodb_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDatabaseMongodbConfig(ctx, "example", &digitalocean.DatabaseMongodbConfigArgs{
-/// 			ClusterId:                       exampleDatabaseCluster.ID(),
+/// 			ClusterId:                       exampleDatabaseCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			DefaultReadConcern:              pulumi.String("majority"),
 /// 			DefaultWriteConcern:             pulumi.String("majority"),
 /// 			TransactionLifetimeLimitSeconds: pulumi.Int(100),
@@ -116,6 +116,32 @@ import 'database_mongodb_config_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasemongodbconfig" "example" {
+///   cluster_id                         = digitalocean_databasecluster.example.id
+///   default_read_concern               = "majority"
+///   default_write_concern              = "majority"
+///   transaction_lifetime_limit_seconds = 100
+///   slow_op_threshold_ms               = 100
+///   verbosity                          = 3
+/// }
+/// resource "digitalocean_databasecluster" "example" {
+///   name       = "example-mongodb-cluster"
+///   engine     = "mongodb"
+///   version    = "7"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc3"
+///   node_count = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -126,8 +152,8 @@ import 'database_mongodb_config_state.dart';
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
 /// import com.pulumi.digitalocean.DatabaseMongodbConfig;
 /// import com.pulumi.digitalocean.DatabaseMongodbConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

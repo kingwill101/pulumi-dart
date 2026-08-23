@@ -107,7 +107,7 @@ import 'database_logsink_rsyslog_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDatabaseLogsinkRsyslog(ctx, "example", &digitalocean.DatabaseLogsinkRsyslogArgs{
-/// 			ClusterId: postgres_example.ID(),
+/// 			ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:      pulumi.String("rsyslog-prod"),
 /// 			Server:    pulumi.String("192.0.2.10"),
 /// 			Port:      pulumi.Int(514),
@@ -120,6 +120,31 @@ import 'database_logsink_rsyslog_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databaselogsinkrsyslog" "example" {
+///   cluster_id = digitalocean_databasecluster.postgres-example.id
+///   name       = "rsyslog-prod"
+///   server     = "192.0.2.10"
+///   port       = 514
+///   format     = "rfc5424"
+/// }
+/// resource "digitalocean_databasecluster" "postgres-example" {
+///   name       = "example-postgres-cluster"
+///   engine     = "pg"
+///   version    = "15"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -130,8 +155,8 @@ import 'database_logsink_rsyslog_state.dart';
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
 /// import com.pulumi.digitalocean.DatabaseLogsinkRsyslog;
 /// import com.pulumi.digitalocean.DatabaseLogsinkRsyslogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -277,6 +302,28 @@ import 'database_logsink_rsyslog_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databaselogsinkrsyslog" "example-tls" {
+///   cluster_id = postgres-example.id
+///   name       = "rsyslog-secure"
+///   server     = "logs.example.com"
+///   port       = 6514
+///   tls        = true
+///   format     = "rfc5424"
+///   ca_cert    = file("/path/to/ca.pem")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -287,8 +334,8 @@ import 'database_logsink_rsyslog_state.dart';
 /// import com.pulumi.digitalocean.DatabaseLogsinkRsyslogArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -457,6 +504,30 @@ import 'database_logsink_rsyslog_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databaselogsinkrsyslog" "example-mtls" {
+///   cluster_id  = postgres-example.id
+///   name        = "rsyslog-mtls"
+///   server      = "secure-logs.example.com"
+///   port        = 6514
+///   tls         = true
+///   format      = "rfc5424"
+///   ca_cert     = file("/path/to/ca.pem")
+///   client_cert = file("/path/to/client.crt")
+///   client_key  = file("/path/to/client.key")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -467,8 +538,8 @@ import 'database_logsink_rsyslog_state.dart';
 /// import com.pulumi.digitalocean.DatabaseLogsinkRsyslogArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -610,6 +681,25 @@ import 'database_logsink_rsyslog_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databaselogsinkrsyslog" "example-custom" {
+///   cluster_id      = postgres-example.id
+///   name            = "rsyslog-custom"
+///   server          = "192.0.2.10"
+///   port            = 514
+///   format          = "custom"
+///   logline         = "<%pri%>%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%"
+///   structured_data = "[example@41058 iut=\"3\"]"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -618,8 +708,8 @@ import 'database_logsink_rsyslog_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.DatabaseLogsinkRsyslog;
 /// import com.pulumi.digitalocean.DatabaseLogsinkRsyslogArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

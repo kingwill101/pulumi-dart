@@ -6,6 +6,8 @@ class LoadBalancerDomain {
   /// **Deprecated** The certificate ID to be used for TLS handshaking.
   final pulumi.Input<String>? certificateId;
   /// The certificate name to be used for TLS handshaking.
+  ///
+  /// After create and after update when `domains` changes, the provider polls the load balancer (for up to 15 minutes) until each non-managed domain’s `certificateName` reported by the API matches the configuration. That reduces race conditions when replacing `digitalocean.Certificate` resources that use `createBeforeDestroy`.
   final pulumi.Input<String>? certificateName;
   /// Control flag to specify whether the domain is managed by DigitalOcean.
   final pulumi.Input<bool>? isManaged;
@@ -54,4 +56,3 @@ class LoadBalancerDomain {
     );
   }
 }
-

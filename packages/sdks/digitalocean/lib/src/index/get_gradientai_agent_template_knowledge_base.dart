@@ -97,4 +97,3 @@ class GetGradientaiAgentTemplateKnowledgeBase {
     );
   }
 }
-

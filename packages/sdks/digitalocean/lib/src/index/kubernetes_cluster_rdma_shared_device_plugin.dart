@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterRdmaSharedDevicePlugin {
-  /// Boolean flag whether the component is enabled or not.
+  /// Boolean flag whether the component should be enabled or not.
   final pulumi.Input<bool> enabled;
 
   /// Creates a new [KubernetesClusterRdmaSharedDevicePlugin].
-  /// [enabled] Boolean flag whether the component is enabled or not.
+  /// [enabled] Boolean flag whether the component should be enabled or not.
   const KubernetesClusterRdmaSharedDevicePlugin({
     required this.enabled,
   });
@@ -24,4 +24,3 @@ class KubernetesClusterRdmaSharedDevicePlugin {
     );
   }
 }
-

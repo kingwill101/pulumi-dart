@@ -88,7 +88,7 @@ import 'database_db_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDatabaseDb(ctx, "database-example", &digitalocean.DatabaseDbArgs{
-/// 			ClusterId: postgres_example.ID(),
+/// 			ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:      pulumi.String("foobar"),
 /// 		})
 /// 		if err != nil {
@@ -96,6 +96,28 @@ import 'database_db_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasedb" "database-example" {
+///   cluster_id = digitalocean_databasecluster.postgres-example.id
+///   name       = "foobar"
+/// }
+/// resource "digitalocean_databasecluster" "postgres-example" {
+///   name       = "example-postgres-cluster"
+///   engine     = "pg"
+///   version    = "15"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
 /// }
 /// ```
 /// ```java
@@ -108,8 +130,8 @@ import 'database_db_state.dart';
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
 /// import com.pulumi.digitalocean.DatabaseDb;
 /// import com.pulumi.digitalocean.DatabaseDbArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

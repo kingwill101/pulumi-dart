@@ -68,6 +68,21 @@ import 'vpc_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_vpc" "example" {
+///   name     = "example-project-network"
+///   region   = "nyc3"
+///   ip_range = "10.10.10.0/24"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -76,8 +91,8 @@ import 'vpc_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.Vpc;
 /// import com.pulumi.digitalocean.VpcArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -112,7 +127,7 @@ import 'vpc_state.dart';
 /// ### Resource Assignment
 ///
 /// `digitalocean.Droplet`, `digitalocean.KubernetesCluster`,
-/// `digitalocean_load_balancer`, and `digitalocean.DatabaseCluster` resources
+/// `digitaloceanLoadBalancer`, and `digitalocean.DatabaseCluster` resources
 /// may be assigned to a VPC by referencing its `id`. For example:
 ///
 ///
@@ -193,13 +208,34 @@ import 'vpc_state.dart';
 /// 			Size:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 /// 			Image:   pulumi.String("ubuntu-18-04-x64"),
 /// 			Region:  pulumi.String(digitalocean.RegionNYC3),
-/// 			VpcUuid: example.ID(),
+/// 			VpcUuid: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_vpc" "example" {
+///   name   = "example-project-network"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_droplet" "example" {
+///   name     = "example-01"
+///   size     = "s-1vcpu-1gb"
+///   image    = "ubuntu-18-04-x64"
+///   region   = "nyc3"
+///   vpc_uuid = digitalocean_vpc.example.id
 /// }
 /// ```
 /// ```java
@@ -212,8 +248,8 @@ import 'vpc_state.dart';
 /// import com.pulumi.digitalocean.VpcArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

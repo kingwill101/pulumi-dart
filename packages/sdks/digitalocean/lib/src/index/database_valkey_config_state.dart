@@ -8,7 +8,7 @@ class DatabaseValkeyConfigState {
   final pulumi.Input<String>? aclChannelsDefault;
   /// The ID of the target Valkey cluster.
   final pulumi.Input<String>? clusterId;
-  /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
+  /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
   final pulumi.Input<bool>? frequentSnapshots;
   /// The Valkey IO thread count.
   final pulumi.Input<int>? ioThreads;
@@ -36,7 +36,7 @@ class DatabaseValkeyConfigState {
   /// Creates a new [DatabaseValkeyConfigState].
   /// [aclChannelsDefault] Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
   /// [clusterId] The ID of the target Valkey cluster.
-  /// [frequentSnapshots] Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
+  /// [frequentSnapshots] Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
   /// [ioThreads] The Valkey IO thread count.
   /// [lfuDecayTime] The LFU maxmemory policy counter decay time in minutes.
   /// [lfuLogFactor] The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
@@ -103,4 +103,3 @@ class DatabaseValkeyConfigState {
     );
   }
 }
-

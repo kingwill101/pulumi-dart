@@ -7,10 +7,10 @@ class GetDropletsFilter {
   /// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
   /// that all of the `values` are present in the list or set.
   final pulumi.Input<bool>? all;
-  /// Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-  /// `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-  /// `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-  /// `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
+  /// Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+  /// `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+  /// `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+  /// `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`.
   final pulumi.Input<String> key;
   /// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
@@ -22,7 +22,7 @@ class GetDropletsFilter {
 
   /// Creates a new [GetDropletsFilter].
   /// [all] Set to `true` to require that a field match all of the `values` instead of just one or more of
-  /// [key] Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
+  /// [key] Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
   /// [matchBy] One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// [values] A list of values to match against the `key` field. Only retrieves Droplets
   const GetDropletsFilter({
@@ -50,4 +50,3 @@ class GetDropletsFilter {
     );
   }
 }
-

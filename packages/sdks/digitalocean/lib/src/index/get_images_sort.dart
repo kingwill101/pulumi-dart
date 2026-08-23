@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetImagesSort {
   /// The sort direction. This may be either `asc` or `desc`.
   final pulumi.Input<String>? direction;
-  /// Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-  /// `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
+  /// Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+  /// `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
   final pulumi.Input<String> key;
 
   /// Creates a new [GetImagesSort].
   /// [direction] The sort direction. This may be either `asc` or `desc`.
-  /// [key] Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
+  /// [key] Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
   const GetImagesSort({
     this.direction,
     required this.key,
@@ -31,4 +31,3 @@ class GetImagesSort {
     );
   }
 }
-

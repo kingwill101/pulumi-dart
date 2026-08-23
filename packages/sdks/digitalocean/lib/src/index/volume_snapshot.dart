@@ -80,13 +80,33 @@ import 'volume_snapshot_state.dart';
 /// 		}
 /// 		_, err = digitalocean.NewVolumeSnapshot(ctx, "foobar", &digitalocean.VolumeSnapshotArgs{
 /// 			Name:     pulumi.String("foo"),
-/// 			VolumeId: foobar.ID(),
+/// 			VolumeId: foobar.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_volume" "foobar" {
+///   region      = "nyc1"
+///   name        = "baz"
+///   size        = 100
+///   description = "an example volume"
+/// }
+/// resource "digitalocean_volumesnapshot" "foobar" {
+///   name      = "foo"
+///   volume_id = digitalocean_volume.foobar.id
 /// }
 /// ```
 /// ```java
@@ -99,8 +119,8 @@ import 'volume_snapshot_state.dart';
 /// import com.pulumi.digitalocean.VolumeArgs;
 /// import com.pulumi.digitalocean.VolumeSnapshot;
 /// import com.pulumi.digitalocean.VolumeSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

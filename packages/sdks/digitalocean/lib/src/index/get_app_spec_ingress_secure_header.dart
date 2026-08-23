@@ -4,30 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAppSpecIngressSecureHeader {
   /// The name of the environment variable.
-  final pulumi.Input<String> key;
+  final pulumi.Input<String>? key;
   /// The threshold for the type of the warning.
-  final pulumi.Input<String> value;
+  final pulumi.Input<String>? value;
 
   /// Creates a new [GetAppSpecIngressSecureHeader].
   /// [key] The name of the environment variable.
   /// [value] The threshold for the type of the warning.
   const GetAppSpecIngressSecureHeader({
-    required this.key,
-    required this.value,
+    this.key,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'key': key,
-      'value': value,
+      'key': ?key,
+      'value': ?value,
     };
   }
 
   factory GetAppSpecIngressSecureHeader.fromMap(Map<String, dynamic> map) {
     return GetAppSpecIngressSecureHeader(
-      key: pulumi.Input.fromValue(map['key'] as String),
-      value: pulumi.Input.fromValue(map['value'] as String),
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }
-

@@ -101,6 +101,29 @@ import 'droplet_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// # Create a new Web Droplet in the nyc2 region
+/// resource "digitalocean_droplet" "web" {
+///   image   = "ubuntu-20-04-x64"
+///   name    = "web-1"
+///   region  = "nyc2"
+///   size    = "s-1vcpu-1gb"
+///   backups = true
+///   backup_policy = {
+///     plan    = "weekly"
+///     weekday = "TUE"
+///     hour    = 8
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -110,8 +133,8 @@ import 'droplet_state.dart';
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
 /// import com.pulumi.digitalocean.inputs.DropletBackupPolicyArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -183,10 +206,19 @@ class Droplet extends pulumi.CustomResource {
   late final pulumi.Output<bool?> dropletAgent;
   /// The uniform resource name of the Droplet
   late final pulumi.Output<String> dropletUrn;
+  /// The partition mode for a GPU Droplet. Omit to
+  /// create a full GPU (equivalent to `PARTITION_MODE_SPX_NPS1`). Valid values are
+  /// `PARTITION_MODE_SPX_NPS1` and `PARTITION_MODE_DPX_NPS2`. Only supported on GPU
+  /// sizes that advertise the mode in their `supportedPartitionModes` (see the
+  /// `digitalocean.getSizes` data source). Changing this forces a new resource to be
+  /// created.
+  ///
+  /// &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+  ///
+  /// &gt; **NOTE:** Read-back of `gpuPartitionMode` on an existing Droplet is not yet available from the DigitalOcean API. The value is only returned when the Droplet is created, so this provider preserves the configured value rather than refreshing it.
+  late final pulumi.Output<String?> gpuPartitionMode;
   /// A boolean indicating whether the droplet
   /// should be gracefully shut down before it is deleted.
-  ///
-  /// &gt; **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
   late final pulumi.Output<bool?> gracefulShutdown;
   /// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
   late final pulumi.Output<String> image;
@@ -215,8 +247,12 @@ class Droplet extends pulumi.CustomResource {
   /// Droplet monthly price
   late final pulumi.Output<double> priceMonthly;
   /// **Deprecated** Boolean controlling if private networking
-  /// is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+  /// is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
   late final pulumi.Output<bool> privateNetworking;
+  /// A boolean indicating whether to enables public networking for the Droplet or not.
+  /// By default, this is always enabled on new droplets.
+  /// But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+  late final pulumi.Output<bool> publicNetworking;
   /// The region where the Droplet will be created.
   late final pulumi.Output<String> region;
   /// Boolean controlling whether to increase the disk
@@ -266,6 +302,7 @@ class Droplet extends pulumi.CustomResource {
     disk = registerOutput<int>('disk');
     dropletAgent = registerOutput<bool?>('dropletAgent');
     dropletUrn = registerOutput<String>('dropletUrn');
+    gpuPartitionMode = registerOutput<String?>('gpuPartitionMode');
     gracefulShutdown = registerOutput<bool?>('gracefulShutdown');
     image = registerOutput<String>('image');
     ipv4Address = registerOutput<String>('ipv4Address');
@@ -279,6 +316,7 @@ class Droplet extends pulumi.CustomResource {
     priceHourly = registerOutput<double>('priceHourly');
     priceMonthly = registerOutput<double>('priceMonthly');
     privateNetworking = registerOutput<bool>('privateNetworking');
+    publicNetworking = registerOutput<bool>('publicNetworking');
     region = registerOutput<String>('region');
     resizeDisk = registerOutput<bool?>('resizeDisk');
     size = registerOutput<String>('size');
@@ -320,6 +358,7 @@ class Droplet extends pulumi.CustomResource {
     disk = registerOutput<int>('disk');
     dropletAgent = registerOutput<bool?>('dropletAgent');
     dropletUrn = registerOutput<String>('dropletUrn');
+    gpuPartitionMode = registerOutput<String?>('gpuPartitionMode');
     gracefulShutdown = registerOutput<bool?>('gracefulShutdown');
     image = registerOutput<String>('image');
     ipv4Address = registerOutput<String>('ipv4Address');
@@ -333,6 +372,7 @@ class Droplet extends pulumi.CustomResource {
     priceHourly = registerOutput<double>('priceHourly');
     priceMonthly = registerOutput<double>('priceMonthly');
     privateNetworking = registerOutput<bool>('privateNetworking');
+    publicNetworking = registerOutput<bool>('publicNetworking');
     region = registerOutput<String>('region');
     resizeDisk = registerOutput<bool?>('resizeDisk');
     size = registerOutput<String>('size');

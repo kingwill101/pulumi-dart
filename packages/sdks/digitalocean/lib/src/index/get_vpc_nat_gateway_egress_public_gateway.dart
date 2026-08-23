@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcNatGatewayEgressPublicGateway {
-  /// IPv4 address
+  /// IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
   final pulumi.Input<String> ipv4;
 
   /// Creates a new [GetVpcNatGatewayEgressPublicGateway].
-  /// [ipv4] IPv4 address
+  /// [ipv4] IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
   const GetVpcNatGatewayEgressPublicGateway({
     required this.ipv4,
   });
@@ -24,4 +24,3 @@ class GetVpcNatGatewayEgressPublicGateway {
     );
   }
 }
-

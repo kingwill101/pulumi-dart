@@ -8,7 +8,7 @@ class GetProjectsFilter {
   /// that all of the `values` are present in the list or set.
   final pulumi.Input<bool>? all;
   /// Filter the projects by this key. This may be one of `name`,
-  /// `purpose`, `description`, `environment`, or `is_default`.
+  /// `purpose`, `description`, `environment`, or `isDefault`.
   final pulumi.Input<String> key;
   /// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
@@ -48,4 +48,3 @@ class GetProjectsFilter {
     );
   }
 }
-

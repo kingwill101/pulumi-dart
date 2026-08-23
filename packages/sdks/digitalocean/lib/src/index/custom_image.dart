@@ -102,7 +102,7 @@ import 'custom_image_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
-/// 			Image:  flatcar.ID(),
+/// 			Image:  flatcar.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("example-01"),
 /// 			Region: pulumi.String(digitalocean.RegionNYC3),
 /// 			Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
@@ -117,6 +117,28 @@ import 'custom_image_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_customimage" "flatcar" {
+///   name    = "flatcar"
+///   url     = "https://stable.release.flatcar-linux.net/amd64-usr/2605.7.0/flatcar_production_digitalocean_image.bin.bz2"
+///   regions = ["nyc3"]
+/// }
+/// resource "digitalocean_droplet" "example" {
+///   image    = digitalocean_customimage.flatcar.id
+///   name     = "example-01"
+///   region   = "nyc3"
+///   size     = "s-1vcpu-1gb"
+///   ssh_keys = [12345]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -127,8 +149,8 @@ import 'custom_image_state.dart';
 /// import com.pulumi.digitalocean.CustomImageArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

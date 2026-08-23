@@ -7,16 +7,20 @@ class GetVpcNatGatewayVpc {
   final pulumi.Input<bool> defaultGateway;
   /// Gateway IP of the VPC NAT Gateway
   final pulumi.Input<String> gatewayIp;
+  /// ID of the ingress subnet in the VPC
+  final pulumi.Input<String> subnetUuid;
   /// ID of the ingress VPC
   final pulumi.Input<String> vpcUuid;
 
   /// Creates a new [GetVpcNatGatewayVpc].
   /// [defaultGateway] Indicates if this is the default VPC NAT Gateway in the VPC
   /// [gatewayIp] Gateway IP of the VPC NAT Gateway
+  /// [subnetUuid] ID of the ingress subnet in the VPC
   /// [vpcUuid] ID of the ingress VPC
   const GetVpcNatGatewayVpc({
     required this.defaultGateway,
     required this.gatewayIp,
+    required this.subnetUuid,
     required this.vpcUuid,
   });
 
@@ -24,6 +28,7 @@ class GetVpcNatGatewayVpc {
     return <String, dynamic>{
       'defaultGateway': defaultGateway,
       'gatewayIp': gatewayIp,
+      'subnetUuid': subnetUuid,
       'vpcUuid': vpcUuid,
     };
   }
@@ -32,8 +37,8 @@ class GetVpcNatGatewayVpc {
     return GetVpcNatGatewayVpc(
       defaultGateway: pulumi.Input.fromValue(map['defaultGateway'] as bool),
       gatewayIp: pulumi.Input.fromValue(map['gatewayIp'] as String),
+      subnetUuid: pulumi.Input.fromValue(map['subnetUuid'] as String),
       vpcUuid: pulumi.Input.fromValue(map['vpcUuid'] as String),
     );
   }
 }
-

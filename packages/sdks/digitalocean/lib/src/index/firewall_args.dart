@@ -14,12 +14,12 @@ class FirewallArgs {
   /// Firewall, add Tags to them and use the `tags` argument below.
   final pulumi.Input<List<int>>? dropletIds;
   /// The inbound access rule block for the Firewall.
-  /// The `inbound_rule` block is documented below.
+  /// The `inboundRule` block is documented below.
   final pulumi.Input<List<FirewallInboundRule>>? inboundRules;
   /// The Firewall name
   final pulumi.Input<String>? name;
   /// The outbound access rule block for the Firewall.
-  /// The `outbound_rule` block is documented below.
+  /// The `outboundRule` block is documented below.
   final pulumi.Input<List<FirewallOutboundRule>>? outboundRules;
   /// The names of the Tags assigned to the Firewall (max. 5).
   final pulumi.Input<List<String>>? tags;
@@ -58,4 +58,3 @@ class FirewallArgs {
     );
   }
 }
-

@@ -19,4 +19,3 @@ enum DatabaseSlug {
     throw ArgumentError('Unknown DatabaseSlug value: $value');
   }
 }
-

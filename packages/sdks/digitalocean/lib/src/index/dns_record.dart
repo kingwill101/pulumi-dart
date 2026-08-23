@@ -108,7 +108,7 @@ import 'dns_record_state.dart';
 /// 		}
 /// 		// Add an A record to the domain for www.example.com.
 /// 		www, err := digitalocean.NewDnsRecord(ctx, "www", &digitalocean.DnsRecordArgs{
-/// 			Domain: _default.ID(),
+/// 			Domain: _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:   pulumi.String(digitalocean.RecordTypeA),
 /// 			Name:   pulumi.String("www"),
 /// 			Value:  pulumi.String("192.168.0.11"),
@@ -118,7 +118,7 @@ import 'dns_record_state.dart';
 /// 		}
 /// 		// Add a MX record for the example.com domain itself.
 /// 		mx, err := digitalocean.NewDnsRecord(ctx, "mx", &digitalocean.DnsRecordArgs{
-/// 			Domain:   _default.ID(),
+/// 			Domain:   _default.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:     pulumi.String(digitalocean.RecordTypeMX),
 /// 			Name:     pulumi.String("@"),
 /// 			Priority: pulumi.Int(10),
@@ -133,6 +133,42 @@ import 'dns_record_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_domain" "default" {
+///   name = "example.com"
+/// }
+/// # Add an A record to the domain for www.example.com.
+/// resource "digitalocean_dnsrecord" "www" {
+///   domain = digitalocean_domain.default.id
+///   type   = "A"
+///   name   = "www"
+///   value  = "192.168.0.11"
+/// }
+/// # Add a MX record for the example.com domain itself.
+/// resource "digitalocean_dnsrecord" "mx" {
+///   domain   = digitalocean_domain.default.id
+///   type     = "MX"
+///   name     = "@"
+///   priority = 10
+///   value    = "mail.example.com."
+/// }
+/// # Output the FQDN for the www A record.
+/// output "wwwFqdn" {
+///   value = digitalocean_dnsrecord.www.fqdn
+/// }
+/// # Output the FQDN for the MX record.
+/// output "mxFqdn" {
+///   value = digitalocean_dnsrecord.mx.fqdn
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -143,8 +179,8 @@ import 'dns_record_state.dart';
 /// import com.pulumi.digitalocean.DomainArgs;
 /// import com.pulumi.digitalocean.DnsRecord;
 /// import com.pulumi.digitalocean.DnsRecordArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

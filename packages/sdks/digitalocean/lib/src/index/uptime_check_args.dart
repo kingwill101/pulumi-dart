@@ -11,7 +11,7 @@ class UptimeCheckArgs {
   final pulumi.Input<bool>? enabled;
   /// A human-friendly display name for the check.
   final pulumi.Input<String>? name;
-  /// An array containing the selected regions to perform healthchecks from: "us_east", "us_west", "eu_west", "se_asia"
+  /// An array containing the selected regions to perform healthchecks from: "usEast", "usWest", "euWest", "seAsia"
   final pulumi.Input<List<String>>? regions;
   /// The endpoint to perform healthchecks on.
   final pulumi.Input<String> target;
@@ -21,7 +21,7 @@ class UptimeCheckArgs {
   /// Creates a new [UptimeCheckArgs].
   /// [enabled] A boolean value indicating whether the check is enabled/disabled.
   /// [name] A human-friendly display name for the check.
-  /// [regions] An array containing the selected regions to perform healthchecks from: "us_east", "us_west", "eu_west", "se_asia"
+  /// [regions] An array containing the selected regions to perform healthchecks from: "usEast", "usWest", "euWest", "seAsia"
   /// [target] The endpoint to perform healthchecks on.
   /// [type] The type of health check to perform: 'ping' 'http' 'https'.
   const UptimeCheckArgs({
@@ -52,4 +52,3 @@ class UptimeCheckArgs {
     );
   }
 }
-

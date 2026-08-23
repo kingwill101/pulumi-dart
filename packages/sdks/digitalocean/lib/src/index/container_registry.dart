@@ -66,6 +66,21 @@ import 'container_registry_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// # Create a new container registry
+/// resource "digitalocean_containerregistry" "foobar" {
+///   name                   = "foobar"
+///   subscription_tier_slug = "starter"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -74,8 +89,8 @@ import 'container_registry_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.ContainerRegistry;
 /// import com.pulumi.digitalocean.ContainerRegistryArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

@@ -98,14 +98,14 @@ import 'droplet_snapshot_state.dart';
 /// 			return err
 /// 		}
 /// 		web_snapshot, err := digitalocean.NewDropletSnapshot(ctx, "web-snapshot", &digitalocean.DropletSnapshotArgs{
-/// 			DropletId: web.ID(),
+/// 			DropletId: web.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:      pulumi.String("web-snapshot-01"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDroplet(ctx, "from-snapshot", &digitalocean.DropletArgs{
-/// 			Image:  web_snapshot.ID(),
+/// 			Image:  web_snapshot.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:   pulumi.String("web-02"),
 /// 			Region: pulumi.String(digitalocean.RegionNYC3),
 /// 			Size:   pulumi.String(digitalocean.DropletSlugDropletS2VCPU4GB),
@@ -115,6 +115,32 @@ import 'droplet_snapshot_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_droplet" "web" {
+///   name   = "web-01"
+///   size   = "s-1vcpu-1gb"
+///   image  = "ubuntu-22-04-x64"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_dropletsnapshot" "web-snapshot" {
+///   droplet_id = digitalocean_droplet.web.id
+///   name       = "web-snapshot-01"
+/// }
+/// resource "digitalocean_droplet" "from-snapshot" {
+///   image  = digitalocean_dropletsnapshot.web-snapshot.id
+///   name   = "web-02"
+///   region = "nyc3"
+///   size   = "s-2vcpu-4gb"
 /// }
 /// ```
 /// ```java
@@ -127,8 +153,8 @@ import 'droplet_snapshot_state.dart';
 /// import com.pulumi.digitalocean.DropletArgs;
 /// import com.pulumi.digitalocean.DropletSnapshot;
 /// import com.pulumi.digitalocean.DropletSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

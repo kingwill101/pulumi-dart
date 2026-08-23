@@ -9,6 +9,7 @@ class GetKubernetesClusterNodePool {
   final pulumi.Input<int> actualNodeCount;
   /// A boolean indicating whether auto-scaling is enabled on the node pool.
   final pulumi.Input<bool> autoScale;
+  final pulumi.Input<String> gpuPartitionMode;
   /// A unique ID that can be used to identify and reference the node.
   final pulumi.Input<String> id;
   /// A map of key/value pairs applied to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
@@ -33,6 +34,7 @@ class GetKubernetesClusterNodePool {
   /// Creates a new [GetKubernetesClusterNodePool].
   /// [actualNodeCount] The actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
   /// [autoScale] A boolean indicating whether auto-scaling is enabled on the node pool.
+  /// [gpuPartitionMode] Required.
   /// [id] A unique ID that can be used to identify and reference the node.
   /// [labels] A map of key/value pairs applied to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
   /// [maxNodes] If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
@@ -46,6 +48,7 @@ class GetKubernetesClusterNodePool {
   const GetKubernetesClusterNodePool({
     required this.actualNodeCount,
     required this.autoScale,
+    required this.gpuPartitionMode,
     required this.id,
     required this.labels,
     required this.maxNodes,
@@ -62,6 +65,7 @@ class GetKubernetesClusterNodePool {
     return <String, dynamic>{
       'actualNodeCount': actualNodeCount,
       'autoScale': autoScale,
+      'gpuPartitionMode': gpuPartitionMode,
       'id': id,
       'labels': labels,
       'maxNodes': maxNodes,
@@ -79,6 +83,7 @@ class GetKubernetesClusterNodePool {
     return GetKubernetesClusterNodePool(
       actualNodeCount: pulumi.Input.fromValue(map['actualNodeCount'] as int),
       autoScale: pulumi.Input.fromValue(map['autoScale'] as bool),
+      gpuPartitionMode: pulumi.Input.fromValue(map['gpuPartitionMode'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       maxNodes: pulumi.Input.fromValue(map['maxNodes'] as int),
@@ -92,4 +97,3 @@ class GetKubernetesClusterNodePool {
     );
   }
 }
-

@@ -65,6 +65,21 @@ import 'domain_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// # Create a new domain
+/// resource "digitalocean_domain" "default" {
+///   name       = "example.com"
+///   ip_address = foo.ipv4Address
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -73,8 +88,8 @@ import 'domain_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.Domain;
 /// import com.pulumi.digitalocean.DomainArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

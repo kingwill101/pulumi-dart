@@ -35,7 +35,7 @@ import 'load_balancer_sticky_sessions.dart';
 ///         port: 22,
 ///         protocol: "tcp",
 ///     },
-///     dropletIds: [web.id],
+///     dropletIds: [web.id.apply(x =>Number(x))],
 /// });
 /// ```
 /// ```python
@@ -60,7 +60,7 @@ import 'load_balancer_sticky_sessions.dart';
 ///         "port": 22,
 ///         "protocol": "tcp",
 ///     },
-///     droplet_ids=[web.id])
+///     droplet_ids=[web.id.apply(lambda x: int(x))])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -109,6 +109,8 @@ import 'load_balancer_sticky_sessions.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -140,7 +142,7 @@ import 'load_balancer_sticky_sessions.dart';
 /// 				Protocol: pulumi.String("tcp"),
 /// 			},
 /// 			DropletIds: pulumi.IntArray{
-/// 				web.ID(),
+/// 				web.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -148,6 +150,37 @@ import 'load_balancer_sticky_sessions.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_droplet" "web" {
+///   name   = "web-1"
+///   size   = "s-1vcpu-1gb"
+///   image  = "ubuntu-18-04-x64"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_loadbalancer" "public" {
+///   name   = "loadbalancer-1"
+///   region = "nyc3"
+///   forwarding_rules {
+///     entry_port      = 80
+///     entry_protocol  = "http"
+///     target_port     = 80
+///     target_protocol = "http"
+///   }
+///   healthcheck = {
+///     port     = 22
+///     protocol = "tcp"
+///   }
+///   droplet_ids = [digitalocean_droplet.web.id]
 /// }
 /// ```
 /// ```java
@@ -162,8 +195,8 @@ import 'load_balancer_sticky_sessions.dart';
 /// import com.pulumi.digitalocean.LoadBalancerArgs;
 /// import com.pulumi.digitalocean.inputs.LoadBalancerForwardingRuleArgs;
 /// import com.pulumi.digitalocean.inputs.LoadBalancerHealthcheckArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -228,7 +261,7 @@ import 'load_balancer_sticky_sessions.dart';
 /// ```
 ///
 ///
-/// When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
+/// When managing certificates attached to the load balancer, make sure to add the `createBeforeDestroy`
 /// lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
 /// operations will then be: `Create new certificate` &gt; `Update loadbalancer with new certificate` -&gt;
 /// `Delete old certificate`. When doing so, you must also change the name of the certificate,
@@ -243,7 +276,7 @@ import 'load_balancer_sticky_sessions.dart';
 /// ```
 class LoadBalancer extends pulumi.CustomResource {
   /// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
-  /// or `least_connections`. The default value is `round_robin`.
+  /// or `leastConnections`. The default value is `roundRobin`.
   late final pulumi.Output<String?> algorithm;
   /// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
   late final pulumi.Output<bool?> disableLetsEncryptDnsRecords;
@@ -261,10 +294,10 @@ class LoadBalancer extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enableProxyProtocol;
   /// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
   late final pulumi.Output<LoadBalancerFirewall> firewall;
-  /// A list of `forwarding_rule` to be assigned to the
-  /// Load Balancer. The `forwarding_rule` block is documented below.
+  /// A list of `forwardingRule` to be assigned to the
+  /// Load Balancer. The `forwardingRule` block is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> forwardingRules;
-  /// A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+  /// A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
   late final pulumi.Output<LoadBalancerGlbSettings> glbSettings;
   /// A `healthcheck` block to be assigned to the
   /// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -290,14 +323,16 @@ class LoadBalancer extends pulumi.CustomResource {
   late final pulumi.Output<bool?> redirectHttpToHttps;
   /// The region to start in
   late final pulumi.Output<String?> region;
-  /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
+  /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
   late final pulumi.Output<String?> size;
-  /// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+  /// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
   late final pulumi.Output<int> sizeUnit;
   late final pulumi.Output<String> status;
-  /// A `sticky_sessions` block to be assigned to the
-  /// Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+  /// A `stickySessions` block to be assigned to the
+  /// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
   late final pulumi.Output<LoadBalancerStickySessions> stickySessions;
+  /// The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+  late final pulumi.Output<String> subnetUuid;
   /// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
   late final pulumi.Output<List<String>> targetLoadBalancerIds;
   /// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
@@ -346,6 +381,7 @@ class LoadBalancer extends pulumi.CustomResource {
     sizeUnit = registerOutput<int>('sizeUnit');
     status = registerOutput<String>('status');
     stickySessions = registerOutput<LoadBalancerStickySessions>('stickySessions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerStickySessions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnetUuid = registerOutput<String>('subnetUuid');
     targetLoadBalancerIds = registerOutput<List<String>>('targetLoadBalancerIds');
     tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
     type = registerOutput<String>('type');
@@ -400,6 +436,7 @@ class LoadBalancer extends pulumi.CustomResource {
     sizeUnit = registerOutput<int>('sizeUnit');
     status = registerOutput<String>('status');
     stickySessions = registerOutput<LoadBalancerStickySessions>('stickySessions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerStickySessions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnetUuid = registerOutput<String>('subnetUuid');
     targetLoadBalancerIds = registerOutput<List<String>>('targetLoadBalancerIds');
     tlsCipherPolicy = registerOutput<String?>('tlsCipherPolicy');
     type = registerOutput<String>('type');

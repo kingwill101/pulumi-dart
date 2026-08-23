@@ -9,6 +9,8 @@ class GetDropletAutoscaleDropletTemplate {
   final pulumi.Input<bool> ipv6;
   /// Droplet project ID
   final pulumi.Input<String> projectId;
+  /// Enables public networking for the Droplet. By default, this is always enabled on new Droplets, but by explicitly setting it to false, you can create a Droplet with public networking entirely disabled.
+  final pulumi.Input<bool> publicNetworking;
   /// Droplet region
   final pulumi.Input<String> region;
   /// Droplet size
@@ -28,6 +30,7 @@ class GetDropletAutoscaleDropletTemplate {
   /// [image] Droplet image
   /// [ipv6] Enable droplet IPv6
   /// [projectId] Droplet project ID
+  /// [publicNetworking] Enables public networking for the Droplet. By default, this is always enabled on new Droplets, but by explicitly setting it to false, you can create a Droplet with public networking entirely disabled.
   /// [region] Droplet region
   /// [size] Droplet size
   /// [sshKeys] Droplet SSH keys
@@ -39,6 +42,7 @@ class GetDropletAutoscaleDropletTemplate {
     required this.image,
     required this.ipv6,
     required this.projectId,
+    required this.publicNetworking,
     required this.region,
     required this.size,
     required this.sshKeys,
@@ -53,6 +57,7 @@ class GetDropletAutoscaleDropletTemplate {
       'image': image,
       'ipv6': ipv6,
       'projectId': projectId,
+      'publicNetworking': publicNetworking,
       'region': region,
       'size': size,
       'sshKeys': sshKeys,
@@ -68,6 +73,7 @@ class GetDropletAutoscaleDropletTemplate {
       image: pulumi.Input.fromValue(map['image'] as String),
       ipv6: pulumi.Input.fromValue(map['ipv6'] as bool),
       projectId: pulumi.Input.fromValue(map['projectId'] as String),
+      publicNetworking: pulumi.Input.fromValue(map['publicNetworking'] as bool),
       region: pulumi.Input.fromValue(map['region'] as String),
       size: pulumi.Input.fromValue(map['size'] as String),
       sshKeys: pulumi.Input.fromValue((map['sshKeys'] as List).cast<String>()),
@@ -78,4 +84,3 @@ class GetDropletAutoscaleDropletTemplate {
     );
   }
 }
-

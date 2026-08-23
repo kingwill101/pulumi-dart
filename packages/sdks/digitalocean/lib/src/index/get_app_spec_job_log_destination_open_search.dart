@@ -6,7 +6,7 @@ import 'get_app_spec_job_log_destination_open_search_basic_auth.dart';
 class GetAppSpecJobLogDestinationOpenSearch {
   /// OpenSearch basic auth
   final pulumi.Input<GetAppSpecJobLogDestinationOpenSearchBasicAuth> basicAuth;
-  /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+  /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
   final pulumi.Input<String>? clusterName;
   /// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
   final pulumi.Input<String>? endpoint;
@@ -15,7 +15,7 @@ class GetAppSpecJobLogDestinationOpenSearch {
 
   /// Creates a new [GetAppSpecJobLogDestinationOpenSearch].
   /// [basicAuth] OpenSearch basic auth
-  /// [clusterName] The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+  /// [clusterName] The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
   /// [endpoint] OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
   /// [indexName] The index name to use for the logs. If not set, the default index name is `logs`.
   const GetAppSpecJobLogDestinationOpenSearch({
@@ -43,4 +43,3 @@ class GetAppSpecJobLogDestinationOpenSearch {
     );
   }
 }
-

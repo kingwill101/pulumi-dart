@@ -20,7 +20,7 @@ import 'firewall_state.dart';
 /// });
 /// const webFirewall = new digitalocean.Firewall("web", {
 ///     name: "only-22-80-and-443",
-///     dropletIds: [web.id],
+///     dropletIds: [web.id.apply(x =>Number(x))],
 ///     inboundRules: [
 ///         {
 ///             protocol: "tcp",
@@ -92,7 +92,7 @@ import 'firewall_state.dart';
 ///     region=digitalocean.Region.NYC3)
 /// web_firewall = digitalocean.Firewall("web",
 ///     name="only-22-80-and-443",
-///     droplet_ids=[web.id],
+///     droplet_ids=[web.id.apply(lambda x: int(x))],
 ///     inbound_rules=[
 ///         {
 ///             "protocol": "tcp",
@@ -257,6 +257,8 @@ import 'firewall_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -275,7 +277,7 @@ import 'firewall_state.dart';
 /// 		_, err = digitalocean.NewFirewall(ctx, "web", &digitalocean.FirewallArgs{
 /// 			Name: pulumi.String("only-22-80-and-443"),
 /// 			DropletIds: pulumi.IntArray{
-/// 				web.ID(),
+/// 				web.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			},
 /// 			InboundRules: digitalocean.FirewallInboundRuleArray{
 /// 				&digitalocean.FirewallInboundRuleArgs{
@@ -343,6 +345,59 @@ import 'firewall_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_droplet" "web" {
+///   name   = "web-1"
+///   size   = "s-1vcpu-1gb"
+///   image  = "ubuntu-18-04-x64"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_firewall" "web" {
+///   name        = "only-22-80-and-443"
+///   droplet_ids = [digitalocean_droplet.web.id]
+///   inbound_rules {
+///     protocol         = "tcp"
+///     port_range       = "22"
+///     source_addresses = ["192.168.1.0/24", "2002:1:2::/48"]
+///   }
+///   inbound_rules {
+///     protocol         = "tcp"
+///     port_range       = "80"
+///     source_addresses = ["0.0.0.0/0", "::/0"]
+///   }
+///   inbound_rules {
+///     protocol         = "tcp"
+///     port_range       = "443"
+///     source_addresses = ["0.0.0.0/0", "::/0"]
+///   }
+///   inbound_rules {
+///     protocol         = "icmp"
+///     source_addresses = ["0.0.0.0/0", "::/0"]
+///   }
+///   outbound_rules {
+///     protocol              = "tcp"
+///     port_range            = "53"
+///     destination_addresses = ["0.0.0.0/0", "::/0"]
+///   }
+///   outbound_rules {
+///     protocol              = "udp"
+///     port_range            = "53"
+///     destination_addresses = ["0.0.0.0/0", "::/0"]
+///   }
+///   outbound_rules {
+///     protocol              = "icmp"
+///     destination_addresses = ["0.0.0.0/0", "::/0"]
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -355,8 +410,8 @@ import 'firewall_state.dart';
 /// import com.pulumi.digitalocean.FirewallArgs;
 /// import com.pulumi.digitalocean.inputs.FirewallInboundRuleArgs;
 /// import com.pulumi.digitalocean.inputs.FirewallOutboundRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -502,14 +557,14 @@ class Firewall extends pulumi.CustomResource {
   /// Firewall, add Tags to them and use the `tags` argument below.
   late final pulumi.Output<List<int>?> dropletIds;
   /// The inbound access rule block for the Firewall.
-  /// The `inbound_rule` block is documented below.
+  /// The `inboundRule` block is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> inboundRules;
   /// The Firewall name
   late final pulumi.Output<String> name;
   /// The outbound access rule block for the Firewall.
-  /// The `outbound_rule` block is documented below.
+  /// The `outboundRule` block is documented below.
   late final pulumi.Output<List<Map<String, dynamic>>?> outboundRules;
-  /// An list of object containing the fields, "droplet_id",
+  /// An list of object containing the fields, "dropletId",
   /// "removing", and "status".  It is provided to detail exactly which Droplets
   /// are having their security policies updated.  When empty, all changes
   /// have been successfully applied.

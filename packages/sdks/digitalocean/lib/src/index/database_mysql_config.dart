@@ -93,7 +93,7 @@ import 'database_mysql_config_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDatabaseMysqlConfig(ctx, "example", &digitalocean.DatabaseMysqlConfigArgs{
-/// 			ClusterId:       exampleDatabaseCluster.ID(),
+/// 			ClusterId:       exampleDatabaseCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectTimeout:  pulumi.Int(10),
 /// 			DefaultTimeZone: pulumi.String("UTC"),
 /// 		})
@@ -102,6 +102,29 @@ import 'database_mysql_config_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasemysqlconfig" "example" {
+///   cluster_id        = digitalocean_databasecluster.example.id
+///   connect_timeout   = 10
+///   default_time_zone = "UTC"
+/// }
+/// resource "digitalocean_databasecluster" "example" {
+///   name       = "example-mysql-cluster"
+///   engine     = "mysql"
+///   version    = "8"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
 /// }
 /// ```
 /// ```java
@@ -114,8 +137,8 @@ import 'database_mysql_config_state.dart';
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
 /// import com.pulumi.digitalocean.DatabaseMysqlConfig;
 /// import com.pulumi.digitalocean.DatabaseMysqlConfigArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -208,11 +231,11 @@ class DatabaseMysqlConfig extends pulumi.CustomResource {
   late final pulumi.Output<int> interactiveTimeout;
   /// The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
   late final pulumi.Output<String> internalTmpMemStorageEngine;
-  /// The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+  /// The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
   late final pulumi.Output<double> longQueryTime;
   /// The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
   late final pulumi.Output<int> maxAllowedPacket;
-  /// The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
+  /// The maximum size, in bytes, of internal in-memory tables. Also set `tmpTableSize`. Default is `16777216` (16M)
   late final pulumi.Output<int> maxHeapTableSize;
   /// The time, in seconds, to wait for more data from an existing connection. aborting the read.
   late final pulumi.Output<int> netReadTimeout;
@@ -226,7 +249,7 @@ class DatabaseMysqlConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> sqlMode;
   /// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
   late final pulumi.Output<bool> sqlRequirePrimaryKey;
-  /// The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
+  /// The maximum size, in bytes, of internal in-memory tables. Also set `maxHeapTableSize`. Default is `16777216` (16M).
   late final pulumi.Output<int> tmpTableSize;
   /// The number of seconds the server waits for activity on a noninteractive connection before closing it.
   late final pulumi.Output<int> waitTimeout;

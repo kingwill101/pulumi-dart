@@ -198,14 +198,14 @@ import 'database_online_migration_state.dart';
 /// 			return err
 /// 		}
 /// 		sourceDb, err := digitalocean.NewDatabaseDb(ctx, "source_db", &digitalocean.DatabaseDbArgs{
-/// 			ClusterId: source.ID(),
+/// 			ClusterId: source.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:      pulumi.String("terraform-db-om-source"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDatabaseOnlineMigration(ctx, "foobar", &digitalocean.DatabaseOnlineMigrationArgs{
-/// 			ClusterId: destination.ID(),
+/// 			ClusterId: destination.ID().ToIDOutput().ToStringOutput(),
 /// 			Source: &digitalocean.DatabaseOnlineMigrationSourceArgs{
 /// 				Host:     source.Host,
 /// 				DbName:   sourceDb.Name,
@@ -225,6 +225,49 @@ import 'database_online_migration_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasecluster" "source" {
+///   name       = "st01"
+///   engine     = "mysql"
+///   version    = "8"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
+///   tags       = ["production"]
+/// }
+/// resource "digitalocean_databasecluster" "destination" {
+///   name       = "dt01"
+///   engine     = "mysql"
+///   version    = "8"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
+///   tags       = ["production"]
+/// }
+/// resource "digitalocean_databasedb" "source_db" {
+///   cluster_id = digitalocean_databasecluster.source.id
+///   name       = "terraform-db-om-source"
+/// }
+/// resource "digitalocean_databaseonlinemigration" "foobar" {
+///   depends_on = [digitalocean_databasecluster.destination, digitalocean_databasecluster.source, digitalocean_databasedb.source_db]
+///   cluster_id = digitalocean_databasecluster.destination.id
+///   source = {
+///     host     = digitalocean_databasecluster.source.host
+///     db_name  = digitalocean_databasedb.source_db.name
+///     port     = digitalocean_databasecluster.source.port
+///     username = digitalocean_databasecluster.source.user
+///     password = digitalocean_databasecluster.source.password
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -239,8 +282,8 @@ import 'database_online_migration_state.dart';
 /// import com.pulumi.digitalocean.DatabaseOnlineMigrationArgs;
 /// import com.pulumi.digitalocean.inputs.DatabaseOnlineMigrationSourceArgs;
 /// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -346,7 +389,7 @@ import 'database_online_migration_state.dart';
 ///
 /// ## Import
 ///
-/// A MySQL database cluster's online_migration can be imported using the `id` the parent cluster, e.g.
+/// A MySQL database cluster's onlineMigration can be imported using the `id` the parent cluster, e.g.
 ///
 /// ```sh
 /// $ pulumi import digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration example 4b62829a-9c42-465b-aaa3-84051048e712

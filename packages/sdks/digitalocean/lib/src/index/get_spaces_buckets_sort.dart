@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSpacesBucketsSort {
   /// The sort direction. This may be either `asc` or `desc`.
   final pulumi.Input<String>? direction;
-  /// Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+  /// Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
   final pulumi.Input<String> key;
 
   /// Creates a new [GetSpacesBucketsSort].
   /// [direction] The sort direction. This may be either `asc` or `desc`.
-  /// [key] Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+  /// [key] Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
   const GetSpacesBucketsSort({
     this.direction,
     required this.key,
@@ -30,4 +30,3 @@ class GetSpacesBucketsSort {
     );
   }
 }
-

@@ -38,4 +38,3 @@ class ReservedIpv6Args {
     );
   }
 }
-

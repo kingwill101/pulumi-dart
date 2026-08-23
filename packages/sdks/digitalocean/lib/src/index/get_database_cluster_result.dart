@@ -2,6 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_database_cluster_maintenance_window.dart';
+import 'get_database_cluster_storage_autoscale.dart';
 
 /// Result data returned by getDatabaseCluster.
 class GetDatabaseClusterResult {
@@ -36,6 +37,9 @@ class GetDatabaseClusterResult {
   final String region;
   /// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
   final String size;
+  /// Storage autoscaling configuration for the database cluster.
+  final List<GetDatabaseClusterStorageAutoscale> storageAutoscales;
+  /// The disk size, in MiB, allocated to the cluster.
   final String storageSizeMib;
   final List<String>? tags;
   /// Name of the OpenSearch dashboard db.
@@ -76,7 +80,8 @@ class GetDatabaseClusterResult {
   /// [projectId] The ID of the project that the database cluster is assigned to.
   /// [region] DigitalOcean region where the cluster will reside.
   /// [size] Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
-  /// [storageSizeMib] Required.
+  /// [storageAutoscales] Storage autoscaling configuration for the database cluster.
+  /// [storageSizeMib] The disk size, in MiB, allocated to the cluster.
   /// [tags] Optional.
   /// [uiDatabase] Name of the OpenSearch dashboard db.
   /// [uiHost] Hostname for the OpenSearch dashboard.
@@ -105,6 +110,7 @@ class GetDatabaseClusterResult {
     required this.projectId,
     required this.region,
     required this.size,
+    required this.storageAutoscales,
     required this.storageSizeMib,
     this.tags,
     required this.uiDatabase,
@@ -137,6 +143,7 @@ class GetDatabaseClusterResult {
       'projectId': projectId,
       'region': region,
       'size': size,
+      'storageAutoscales': pulumi.Input.encodeList<GetDatabaseClusterStorageAutoscale, Map<String, dynamic>>(storageAutoscales, (value) => value.toMap()),
       'storageSizeMib': storageSizeMib,
       'tags': ?tags,
       'uiDatabase': uiDatabase,
@@ -170,6 +177,7 @@ class GetDatabaseClusterResult {
       projectId: map['projectId'] as String,
       region: map['region'] as String,
       size: map['size'] as String,
+      storageAutoscales: pulumi.Input.decodeList<GetDatabaseClusterStorageAutoscale>(map['storageAutoscales']!, (value) => GetDatabaseClusterStorageAutoscale.fromMap((value as Map).cast<String, dynamic>())),
       storageSizeMib: map['storageSizeMib'] as String,
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       uiDatabase: map['uiDatabase'] as String,
@@ -185,4 +193,3 @@ class GetDatabaseClusterResult {
     );
   }
 }
-

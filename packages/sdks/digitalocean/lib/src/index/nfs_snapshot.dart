@@ -20,6 +20,7 @@ import 'nfs_snapshot_state.dart';
 ///     name: "example-nfs",
 ///     size: 50,
 ///     vpcId: foobar.id,
+///     performanceTier: "high",
 /// });
 /// const foobarNfsSnapshot = new digitalocean.NfsSnapshot("foobar", {
 ///     name: "example-snapshot",
@@ -38,7 +39,8 @@ import 'nfs_snapshot_state.dart';
 ///     region="nyc1",
 ///     name="example-nfs",
 ///     size=50,
-///     vpc_id=foobar.id)
+///     vpc_id=foobar.id,
+///     performance_tier="high")
 /// foobar_nfs_snapshot = digitalocean.NfsSnapshot("foobar",
 ///     name="example-snapshot",
 ///     share_id=foobar_nfs.id,
@@ -64,6 +66,7 @@ import 'nfs_snapshot_state.dart';
 ///         Name = "example-nfs",
 ///         Size = 50,
 ///         VpcId = foobar.Id,
+///         PerformanceTier = "high",
 ///     });
 ///
 ///     var foobarNfsSnapshot = new DigitalOcean.NfsSnapshot("foobar", new()
@@ -93,17 +96,18 @@ import 'nfs_snapshot_state.dart';
 /// 			return err
 /// 		}
 /// 		foobarNfs, err := digitalocean.NewNfs(ctx, "foobar", &digitalocean.NfsArgs{
-/// 			Region: pulumi.String("nyc1"),
-/// 			Name:   pulumi.String("example-nfs"),
-/// 			Size:   pulumi.Int(50),
-/// 			VpcId:  foobar.ID(),
+/// 			Region:          pulumi.String("nyc1"),
+/// 			Name:            pulumi.String("example-nfs"),
+/// 			Size:            pulumi.Int(50),
+/// 			VpcId:           foobar.ID().ToIDOutput().ToStringOutput(),
+/// 			PerformanceTier: pulumi.String("high"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewNfsSnapshot(ctx, "foobar", &digitalocean.NfsSnapshotArgs{
 /// 			Name:    pulumi.String("example-snapshot"),
-/// 			ShareId: foobarNfs.ID(),
+/// 			ShareId: foobarNfs.ID().ToIDOutput().ToStringOutput(),
 /// 			Region:  pulumi.String("nyc1"),
 /// 		})
 /// 		if err != nil {
@@ -111,6 +115,32 @@ import 'nfs_snapshot_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_vpc" "foobar" {
+///   name   = "example-vpc"
+///   region = "nyc1"
+/// }
+/// resource "digitalocean_nfs" "foobar" {
+///   region           = "nyc1"
+///   name             = "example-nfs"
+///   size             = 50
+///   vpc_id           = digitalocean_vpc.foobar.id
+///   performance_tier = "high"
+/// }
+/// resource "digitalocean_nfssnapshot" "foobar" {
+///   name     = "example-snapshot"
+///   share_id = digitalocean_nfs.foobar.id
+///   region   = "nyc1"
 /// }
 /// ```
 /// ```java
@@ -125,8 +155,8 @@ import 'nfs_snapshot_state.dart';
 /// import com.pulumi.digitalocean.NfsArgs;
 /// import com.pulumi.digitalocean.NfsSnapshot;
 /// import com.pulumi.digitalocean.NfsSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -148,6 +178,7 @@ import 'nfs_snapshot_state.dart';
 ///             .name("example-nfs")
 ///             .size(50)
 ///             .vpcId(foobar.id())
+///             .performanceTier("high")
 ///             .build());
 ///
 ///         var foobarNfsSnapshot = new NfsSnapshot("foobarNfsSnapshot", NfsSnapshotArgs.builder()
@@ -174,6 +205,7 @@ import 'nfs_snapshot_state.dart';
 ///       name: example-nfs
 ///       size: 50
 ///       vpcId: ${foobar.id}
+///       performanceTier: high
 ///   foobarNfsSnapshot:
 ///     type: digitalocean:NfsSnapshot
 ///     name: foobar

@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'vpc_nat_gateway_egress.dart';
 import 'vpc_nat_gateway_vpc.dart';
 
 /// {@template pulumi_index_vpc_nat_gateway_vpc_nat_gateway_args_doc}
@@ -8,6 +9,9 @@ import 'vpc_nat_gateway_vpc.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_vpc_nat_gateway_vpc_nat_gateway_args_doc}
 class VpcNatGatewayArgs {
+  /// Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
+  /// `publicGateways` embedding the reserved `ipv4` addresses.
+  final pulumi.Input<List<VpcNatGatewayEgress>>? egresses;
   /// The egress timeout value for ICMP connections of the VPC NAT Gateway.
   final pulumi.Input<int>? icmpTimeoutSeconds;
   /// The name of the VPC NAT Gateway.
@@ -29,6 +33,7 @@ class VpcNatGatewayArgs {
   final pulumi.Input<List<VpcNatGatewayVpc>> vpcs;
 
   /// Creates a new [VpcNatGatewayArgs].
+  /// [egresses] Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
   /// [icmpTimeoutSeconds] The egress timeout value for ICMP connections of the VPC NAT Gateway.
   /// [name] The name of the VPC NAT Gateway.
   /// [projectId] ID of the project to which the VPC NAT Gateway will be assigned.
@@ -39,6 +44,7 @@ class VpcNatGatewayArgs {
   /// [udpTimeoutSeconds] The egress timeout value for UDP connections of the VPC NAT Gateway.
   /// [vpcs] The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
   const VpcNatGatewayArgs({
+    this.egresses,
     this.icmpTimeoutSeconds,
     this.name,
     this.projectId,
@@ -52,6 +58,7 @@ class VpcNatGatewayArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'egresses': ?pulumi.Input.mapOptionalInputValue<List<VpcNatGatewayEgress>, List<Map<String, dynamic>>>(egresses, (value) => pulumi.Input.encodeList<VpcNatGatewayEgress, Map<String, dynamic>>(value, (value) => value.toMap())),
       'icmpTimeoutSeconds': ?icmpTimeoutSeconds,
       'name': ?name,
       'projectId': ?projectId,
@@ -66,6 +73,7 @@ class VpcNatGatewayArgs {
 
   factory VpcNatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return VpcNatGatewayArgs(
+      egresses: (() { final guardedValue = map['egresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VpcNatGatewayEgress>(guardedValue, (value) => VpcNatGatewayEgress.fromMap((value as Map).cast<String, dynamic>()))); })(),
       icmpTimeoutSeconds: (() { final guardedValue = map['icmpTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -78,4 +86,3 @@ class VpcNatGatewayArgs {
     );
   }
 }
-

@@ -90,7 +90,7 @@ import 'database_user_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDatabaseUser(ctx, "user-example", &digitalocean.DatabaseUserArgs{
-/// 			ClusterId: postgres_example.ID(),
+/// 			ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:      pulumi.String("foobar"),
 /// 		})
 /// 		if err != nil {
@@ -98,6 +98,28 @@ import 'database_user_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databaseuser" "user-example" {
+///   cluster_id = digitalocean_databasecluster.postgres-example.id
+///   name       = "foobar"
+/// }
+/// resource "digitalocean_databasecluster" "postgres-example" {
+///   name       = "example-postgres-cluster"
+///   engine     = "pg"
+///   version    = "15"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
 /// }
 /// ```
 /// ```java
@@ -110,8 +132,8 @@ import 'database_user_state.dart';
 /// import com.pulumi.digitalocean.DatabaseClusterArgs;
 /// import com.pulumi.digitalocean.DatabaseUser;
 /// import com.pulumi.digitalocean.DatabaseUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -260,7 +282,7 @@ import 'database_user_state.dart';
 /// 			return err
 /// 		}
 /// 		replica_example, err := digitalocean.NewDatabaseReplica(ctx, "replica-example", &digitalocean.DatabaseReplicaArgs{
-/// 			ClusterId: postgres_example.ID(),
+/// 			ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:      pulumi.String("replica-example"),
 /// 			Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 /// 			Region:    pulumi.String(digitalocean.RegionNYC1),
@@ -279,6 +301,34 @@ import 'database_user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasecluster" "postgres-example" {
+///   name       = "example-postgres-cluster"
+///   engine     = "pg"
+///   version    = "15"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
+/// }
+/// resource "digitalocean_databasereplica" "replica-example" {
+///   cluster_id = digitalocean_databasecluster.postgres-example.id
+///   name       = "replica-example"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+/// }
+/// resource "digitalocean_databaseuser" "user-example" {
+///   cluster_id = digitalocean_databasereplica.replica-example.uuid
+///   name       = "foobar"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -291,8 +341,8 @@ import 'database_user_state.dart';
 /// import com.pulumi.digitalocean.DatabaseReplicaArgs;
 /// import com.pulumi.digitalocean.DatabaseUser;
 /// import com.pulumi.digitalocean.DatabaseUserArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -540,6 +590,46 @@ import 'database_user_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasecluster" "kafka-example" {
+///   name       = "example-kafka-cluster"
+///   engine     = "kafka"
+///   version    = "3.5"
+///   size       = "db-s-2vcpu-2gb"
+///   region     = "nyc1"
+///   node_count = 3
+/// }
+/// resource "digitalocean_databasekafkatopic" "foobar_topic" {
+///   cluster_id = foobar.id
+///   name       = "topic-1"
+/// }
+/// resource "digitalocean_databaseuser" "foobar_user" {
+///   cluster_id = foobar.id
+///   name       = "example-user"
+///   settings {
+///     acls {
+///       topic      = "topic-1"
+///       permission = "produce"
+///     }
+///     acls {
+///       topic      = "topic-2"
+///       permission = "produceconsume"
+///     }
+///     acls {
+///       topic      = "topic-*"
+///       permission = "consume"
+///     }
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -553,8 +643,9 @@ import 'database_user_state.dart';
 /// import com.pulumi.digitalocean.DatabaseUser;
 /// import com.pulumi.digitalocean.DatabaseUserArgs;
 /// import com.pulumi.digitalocean.inputs.DatabaseUserSettingArgs;
-/// import java.util.List;
+/// import com.pulumi.digitalocean.inputs.DatabaseUserSettingAclArgs;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -654,7 +745,7 @@ class DatabaseUser extends pulumi.CustomResource {
   late final pulumi.Output<String> accessKey;
   /// The ID of the original source database cluster.
   late final pulumi.Output<String> clusterId;
-  /// The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+  /// The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
   late final pulumi.Output<String?> mysqlAuthPlugin;
   /// The name for the database user.
   late final pulumi.Output<String> name;

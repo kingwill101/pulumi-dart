@@ -14,7 +14,7 @@ import 'spaces_bucket_policy_state.dart';
 ///
 /// The authentication requirement can be met by either setting the
 /// `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
-/// the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+/// the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
 /// access ID and secret you generate via the DigitalOcean control panel. For
 /// example:
 ///
@@ -61,6 +61,18 @@ import 'spaces_bucket_policy_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_spacesbucket" "static-assets" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -68,8 +80,8 @@ import 'spaces_bucket_policy_state.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.SpacesBucket;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -233,10 +245,8 @@ import 'spaces_bucket_policy_state.dart';
 /// 		_, err = digitalocean.NewSpacesBucketPolicy(ctx, "foobar", &digitalocean.SpacesBucketPolicyArgs{
 /// 			Region: foobar.Region,
 /// 			Bucket: foobar.Name,
-/// 			Policy: pulumi.All(foobar.Name, foobar.Name).ApplyT(func(_args []interface{}) (string, error) {
-/// 				foobarName := _args[0].(string)
-/// 				foobarName1 := _args[1].(string)
-/// 				var _zero string
+/// 			Policy: foobar.Name.ApplyT(func(name string) (pulumi.String, error) {
+/// 				var _zero pulumi.String
 /// 				tmpJSON0, err := json.Marshal(map[string]interface{}{
 /// 					"Version": "2012-10-17",
 /// 					"Statement": []map[string]interface{}{
@@ -246,11 +256,11 @@ import 'spaces_bucket_policy_state.dart';
 /// 							"Principal": "*",
 /// 							"Action":    "s3:*",
 /// 							"Resource": []string{
-/// 								fmt.Sprintf("arn:aws:s3:::%v", foobarName),
-/// 								fmt.Sprintf("arn:aws:s3:::%v/*", foobarName1),
+/// 								fmt.Sprintf("arn:aws:s3:::%v", name),
+/// 								fmt.Sprintf("arn:aws:s3:::%v/*", name),
 /// 							},
-/// 							"Condition": map[string]interface{}{
-/// 								"NotIpAddress": map[string]interface{}{
+/// 							"Condition": map[string]map[string]string{
+/// 								"NotIpAddress": map[string]string{
 /// 									"aws:SourceIp": "54.240.143.0/24",
 /// 								},
 /// 							},
@@ -261,7 +271,7 @@ import 'spaces_bucket_policy_state.dart';
 /// 					return _zero, err
 /// 				}
 /// 				json0 := string(tmpJSON0)
-/// 				return json0, nil
+/// 				return pulumi.String(json0), nil
 /// 			}).(pulumi.StringOutput),
 /// 		})
 /// 		if err != nil {
@@ -269,6 +279,39 @@ import 'spaces_bucket_policy_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_spacesbucket" "foobar" {
+///   name   = "foobar"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_spacesbucketpolicy" "foobar" {
+///   region = digitalocean_spacesbucket.foobar.region
+///   bucket = digitalocean_spacesbucket.foobar.name
+///   policy = jsonencode({
+///     "Version" = "2012-10-17"
+///     "Statement" = [{
+///       "Sid"       = "IPAllow"
+///       "Effect"    = "Deny"
+///       "Principal" = "*"
+///       "Action"    = "s3:*"
+///       "Resource"  = ["arn:aws:s3:::${digitalocean_spacesbucket.foobar.name}", "arn:aws:s3:::${digitalocean_spacesbucket.foobar.name}/*"]
+///       "Condition" = {
+///         "NotIpAddress" = {
+///           "aws:SourceIp" = "54.240.143.0/24"
+///         }
+///       }
+///     }]
+///   })
 /// }
 /// ```
 /// ```java
@@ -282,8 +325,8 @@ import 'spaces_bucket_policy_state.dart';
 /// import com.pulumi.digitalocean.SpacesBucketPolicy;
 /// import com.pulumi.digitalocean.SpacesBucketPolicyArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -303,29 +346,25 @@ import 'spaces_bucket_policy_state.dart';
 ///         var foobarSpacesBucketPolicy = new SpacesBucketPolicy("foobarSpacesBucketPolicy", SpacesBucketPolicyArgs.builder()
 ///             .region(foobar.region())
 ///             .bucket(foobar.name())
-///             .policy(Output.tuple(foobar.name(), foobar.name()).applyValue(values -> {
-///                 var foobarName = values.t1;
-///                 var foobarName1 = values.t2;
-///                 return serializeJson(
-///                     jsonObject(
-///                         jsonProperty("Version", "2012-10-17"),
-///                         jsonProperty("Statement", jsonArray(jsonObject(
-///                             jsonProperty("Sid", "IPAllow"),
-///                             jsonProperty("Effect", "Deny"),
-///                             jsonProperty("Principal", "*"),
-///                             jsonProperty("Action", "s3:*"),
-///                             jsonProperty("Resource", jsonArray(
-///                                 String.format("arn:aws:s3:::%s", foobarName),
-///                                 String.format("arn:aws:s3:::%s/*", foobarName1)
-///                             )),
-///                             jsonProperty("Condition", jsonObject(
-///                                 jsonProperty("NotIpAddress", jsonObject(
-///                                     jsonProperty("aws:SourceIp", "54.240.143.0/24")
-///                                 ))
+///             .policy(foobar.name().applyValue(_name -> serializeJson(
+///                 jsonObject(
+///                     jsonProperty("Version", "2012-10-17"),
+///                     jsonProperty("Statement", jsonArray(jsonObject(
+///                         jsonProperty("Sid", "IPAllow"),
+///                         jsonProperty("Effect", "Deny"),
+///                         jsonProperty("Principal", "*"),
+///                         jsonProperty("Action", "s3:*"),
+///                         jsonProperty("Resource", jsonArray(
+///                             String.format("arn:aws:s3:::%s", _name),
+///                             String.format("arn:aws:s3:::%s/*", _name)
+///                         )),
+///                         jsonProperty("Condition", jsonObject(
+///                             jsonProperty("NotIpAddress", jsonObject(
+///                                 jsonProperty("aws:SourceIp", "54.240.143.0/24")
 ///                             ))
-///                         )))
-///                     ));
-///             }))
+///                         ))
+///                     )))
+///                 ))))
 ///             .build());
 ///
 ///     }
@@ -361,7 +400,7 @@ import 'spaces_bucket_policy_state.dart';
 /// ```
 ///
 ///
-/// !&gt; **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
+/// &gt; **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
 ///
 /// ## Import
 ///

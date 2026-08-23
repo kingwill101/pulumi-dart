@@ -77,6 +77,20 @@ import 'vpc_peering_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_vpcpeering" "example" {
+///   name    = "example-peering"
+///   vpc_ids = [vpc1.id, vpc2.id]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -85,8 +99,8 @@ import 'vpc_peering_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.VpcPeering;
 /// import com.pulumi.digitalocean.VpcPeeringArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -266,8 +280,8 @@ import 'vpc_peering_state.dart';
 /// 		_, err = digitalocean.NewVpcPeering(ctx, "example", &digitalocean.VpcPeeringArgs{
 /// 			Name: pulumi.String("example-peering"),
 /// 			VpcIds: pulumi.StringArray{
-/// 				vpc1.ID(),
-/// 				vpc2.ID(),
+/// 				vpc1.ID().ToIDOutput().ToStringOutput(),
+/// 				vpc2.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -278,7 +292,7 @@ import 'vpc_peering_state.dart';
 /// 			Size:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 /// 			Image:   pulumi.String("ubuntu-18-04-x64"),
 /// 			Region:  pulumi.String(digitalocean.RegionNYC3),
-/// 			VpcUuid: vpc1.ID(),
+/// 			VpcUuid: vpc1.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -288,13 +302,49 @@ import 'vpc_peering_state.dart';
 /// 			Size:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 /// 			Image:   pulumi.String("ubuntu-18-04-x64"),
 /// 			Region:  pulumi.String(digitalocean.RegionNYC3),
-/// 			VpcUuid: vpc2.ID(),
+/// 			VpcUuid: vpc2.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_vpc" "vpc1" {
+///   name   = "vpc1"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_vpc" "vpc2" {
+///   name   = "vpc2"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_vpcpeering" "example" {
+///   name    = "example-peering"
+///   vpc_ids = [digitalocean_vpc.vpc1.id, digitalocean_vpc.vpc2.id]
+/// }
+/// resource "digitalocean_droplet" "example1" {
+///   name     = "example1"
+///   size     = "s-1vcpu-1gb"
+///   image    = "ubuntu-18-04-x64"
+///   region   = "nyc3"
+///   vpc_uuid = digitalocean_vpc.vpc1.id
+/// }
+/// resource "digitalocean_droplet" "example2" {
+///   name     = "example2"
+///   size     = "s-1vcpu-1gb"
+///   image    = "ubuntu-18-04-x64"
+///   region   = "nyc3"
+///   vpc_uuid = digitalocean_vpc.vpc2.id
 /// }
 /// ```
 /// ```java
@@ -309,8 +359,8 @@ import 'vpc_peering_state.dart';
 /// import com.pulumi.digitalocean.VpcPeeringArgs;
 /// import com.pulumi.digitalocean.Droplet;
 /// import com.pulumi.digitalocean.DropletArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

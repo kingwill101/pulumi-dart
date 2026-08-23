@@ -1,0 +1,30 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+class GetGradientaiCustomModelsSort {
+  final pulumi.Input<String>? direction;
+  final pulumi.Input<String> key;
+
+  /// Creates a new [GetGradientaiCustomModelsSort].
+  /// [direction] Optional.
+  /// [key] Required.
+  const GetGradientaiCustomModelsSort({
+    this.direction,
+    required this.key,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'direction': ?direction,
+      'key': key,
+    };
+  }
+
+  factory GetGradientaiCustomModelsSort.fromMap(Map<String, dynamic> map) {
+    return GetGradientaiCustomModelsSort(
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      key: pulumi.Input.fromValue(map['key'] as String),
+    );
+  }
+}

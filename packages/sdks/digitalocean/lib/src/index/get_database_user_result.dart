@@ -12,7 +12,7 @@ class GetDatabaseUserResult {
   final String clusterId;
   /// The provider-assigned unique ID for this managed resource.
   final String id;
-  /// The authentication method of the MySQL user. The value will be `mysql_native_password` or `caching_sha2_password`.
+  /// The authentication method of the MySQL user. The value will be `mysqlNativePassword` or `cachingSha2Password`.
   final String mysqlAuthPlugin;
   final String name;
   /// The password of the database user. This will not be set for MongoDB users.
@@ -26,7 +26,7 @@ class GetDatabaseUserResult {
   /// [accessKey] Access key for TLS client authentication. (Kafka only)
   /// [clusterId] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [mysqlAuthPlugin] The authentication method of the MySQL user. The value will be `mysql_native_password` or `caching_sha2_password`.
+  /// [mysqlAuthPlugin] The authentication method of the MySQL user. The value will be `mysqlNativePassword` or `cachingSha2Password`.
   /// [name] Required.
   /// [password] The password of the database user. This will not be set for MongoDB users.
   /// [role] The role of the database user. The value will be either `primary` or `normal`.
@@ -71,4 +71,3 @@ class GetDatabaseUserResult {
     );
   }
 }
-

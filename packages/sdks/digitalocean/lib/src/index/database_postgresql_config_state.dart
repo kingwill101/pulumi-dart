@@ -6,7 +6,7 @@ import 'database_postgresql_config_timescaledb.dart';
 
 /// Input properties used for looking up and filtering DatabasePostgresqlConfig resources.
 class DatabasePostgresqlConfigState {
-  /// Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+  /// Specifies a fraction, in a decimal value, of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
   final pulumi.Input<double>? autovacuumAnalyzeScaleFactor;
   /// Specifies the minimum number of inserted, updated, or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
   final pulumi.Input<int>? autovacuumAnalyzeThreshold;
@@ -16,11 +16,11 @@ class DatabasePostgresqlConfigState {
   final pulumi.Input<int>? autovacuumMaxWorkers;
   /// Specifies the minimum delay, in seconds, between autovacuum runs on any given database. The default is one minute.
   final pulumi.Input<int>? autovacuumNaptime;
-  /// Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuum_cost_delay value, which is 20 milliseconds.
+  /// Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuumCostDelay value, which is 20 milliseconds.
   final pulumi.Input<int>? autovacuumVacuumCostDelay;
-  /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+  /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
   final pulumi.Input<int>? autovacuumVacuumCostLimit;
-  /// Specifies a fraction, in a decimal value, of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+  /// Specifies a fraction, in a decimal value, of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
   final pulumi.Input<double>? autovacuumVacuumScaleFactor;
   /// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
   final pulumi.Input<int>? autovacuumVacuumThreshold;
@@ -34,7 +34,7 @@ class DatabasePostgresqlConfigState {
   final pulumi.Input<int>? bgwriterFlushAfter;
   /// The maximum number of buffers that the background writer can write. Setting this to zero disables background writing. Default is 100.
   final pulumi.Input<int>? bgwriterLruMaxpages;
-  /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+  /// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
   final pulumi.Input<double>? bgwriterLruMultiplier;
   /// The ID of the target PostgreSQL cluster.
   final pulumi.Input<String>? clusterId;
@@ -88,7 +88,7 @@ class DatabasePostgresqlConfigState {
   final pulumi.Input<String>? pgStatStatementsTrack;
   /// PGBouncer connection pooling settings
   final pulumi.Input<List<DatabasePostgresqlConfigPgbouncer>>? pgbouncers;
-  /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+  /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
   final pulumi.Input<double>? sharedBuffersPercentage;
   /// PostgreSQL temporary file limit in KiB. If -1, sets to unlimited.
   final pulumi.Input<int>? tempFileLimit;
@@ -112,21 +112,21 @@ class DatabasePostgresqlConfigState {
   final pulumi.Input<int>? workMem;
 
   /// Creates a new [DatabasePostgresqlConfigState].
-  /// [autovacuumAnalyzeScaleFactor] Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+  /// [autovacuumAnalyzeScaleFactor] Specifies a fraction, in a decimal value, of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
   /// [autovacuumAnalyzeThreshold] Specifies the minimum number of inserted, updated, or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
   /// [autovacuumFreezeMaxAge] Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
   /// [autovacuumMaxWorkers] Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
   /// [autovacuumNaptime] Specifies the minimum delay, in seconds, between autovacuum runs on any given database. The default is one minute.
-  /// [autovacuumVacuumCostDelay] Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuum_cost_delay value, which is 20 milliseconds.
-  /// [autovacuumVacuumCostLimit] Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
-  /// [autovacuumVacuumScaleFactor] Specifies a fraction, in a decimal value, of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+  /// [autovacuumVacuumCostDelay] Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuumCostDelay value, which is 20 milliseconds.
+  /// [autovacuumVacuumCostLimit] Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+  /// [autovacuumVacuumScaleFactor] Specifies a fraction, in a decimal value, of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
   /// [autovacuumVacuumThreshold] Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
   /// [backupHour] The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
   /// [backupMinute] The minute of the backup hour when backup for the service starts. New backup is only started if previous backup has already completed.
   /// [bgwriterDelay] Specifies the delay, in milliseconds, between activity rounds for the background writer. Default is 200 ms.
   /// [bgwriterFlushAfter] The amount of kilobytes that need to be written by the background writer before attempting to force the OS to issue these writes to underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
   /// [bgwriterLruMaxpages] The maximum number of buffers that the background writer can write. Setting this to zero disables background writing. Default is 100.
-  /// [bgwriterLruMultiplier] The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+  /// [bgwriterLruMultiplier] The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
   /// [clusterId] The ID of the target PostgreSQL cluster.
   /// [deadlockTimeout] The amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
   /// [defaultToastCompression] Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Supported values are: `lz4`, `pglz`.
@@ -153,7 +153,7 @@ class DatabasePostgresqlConfigState {
   /// [pgPartmanBgwRole] Controls which role to use for pg_partman's scheduled background tasks. Must consist of alpha-numeric characters, dots, underscores, or dashes. May not start with dash or dot. Maximum of 64 characters.
   /// [pgStatStatementsTrack] Controls which statements are counted. Specify 'top' to track top-level statements (those issued directly by clients), 'all' to also track nested statements (such as statements invoked within functions), or 'none' to disable statement statistics collection. The default value is top. Supported values are: `all`, `top`, `none`.
   /// [pgbouncers] PGBouncer connection pooling settings
-  /// [sharedBuffersPercentage] Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+  /// [sharedBuffersPercentage] Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
   /// [tempFileLimit] PostgreSQL temporary file limit in KiB. If -1, sets to unlimited.
   /// [timescaledbs] TimescaleDB extension configuration values
   /// [timezone] PostgreSQL service timezone
@@ -333,4 +333,3 @@ class DatabasePostgresqlConfigState {
     );
   }
 }
-

@@ -96,7 +96,7 @@ import 'project_resources_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		playground, err := digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{
+/// 		playground, err := digitalocean.GetProject(ctx, &digitalocean.LookupProjectArgs{
 /// 			Name: pulumi.StringRef("playground"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -124,6 +124,30 @@ import 'project_resources_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// data "digitalocean_getproject" "playground" {
+///   name = "playground"
+/// }
+///
+/// resource "digitalocean_droplet" "foobar" {
+///   name   = "example"
+///   size   = "s-1vcpu-1gb"
+///   image  = "ubuntu-22-04-x64"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_projectresources" "barfoo" {
+///   project   = data.digitalocean_getproject.playground.id
+///   resources = [digitalocean_droplet.foobar.droplet_urn]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -136,8 +160,8 @@ import 'project_resources_state.dart';
 /// import com.pulumi.digitalocean.DropletArgs;
 /// import com.pulumi.digitalocean.ProjectResources;
 /// import com.pulumi.digitalocean.ProjectResourcesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

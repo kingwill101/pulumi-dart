@@ -4,7 +4,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterNvidiaGpuDevicePlugin {
   /// Boolean flag whether the component should be enabled or not.
-  /// `rdma_shared_device_plugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
   final pulumi.Input<bool> enabled;
 
   /// Creates a new [KubernetesClusterNvidiaGpuDevicePlugin].
@@ -25,4 +24,3 @@ class KubernetesClusterNvidiaGpuDevicePlugin {
     );
   }
 }
-

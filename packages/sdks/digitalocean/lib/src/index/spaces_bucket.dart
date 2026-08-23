@@ -13,7 +13,7 @@ import 'spaces_bucket_versioning.dart';
 ///
 /// The authentication requirement can be met by either setting the
 /// `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
-/// the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+/// the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
 /// access ID and secret you generate via the DigitalOcean control panel. For
 /// example:
 ///
@@ -60,6 +60,18 @@ import 'spaces_bucket_versioning.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_spacesbucket" "static-assets" {
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -67,8 +79,8 @@ import 'spaces_bucket_versioning.dart';
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.SpacesBucket;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -153,6 +165,20 @@ import 'spaces_bucket_versioning.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_spacesbucket" "foobar" {
+///   name   = "foobar"
+///   region = "nyc3"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -161,8 +187,8 @@ import 'spaces_bucket_versioning.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.digitalocean.SpacesBucket;
 /// import com.pulumi.digitalocean.SpacesBucketArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -350,6 +376,32 @@ import 'spaces_bucket_versioning.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_spacesbucket" "foobar" {
+///   name   = "foobar"
+///   region = "nyc3"
+///   cors_rules {
+///     allowed_headers = ["*"]
+///     allowed_methods = ["GET"]
+///     allowed_origins = ["*"]
+///     max_age_seconds = 3000
+///   }
+///   cors_rules {
+///     allowed_headers = ["*"]
+///     allowed_methods = ["PUT", "POST", "DELETE"]
+///     allowed_origins = ["https://www.example.com"]
+///     max_age_seconds = 3000
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -359,8 +411,8 @@ import 'spaces_bucket_versioning.dart';
 /// import com.pulumi.digitalocean.SpacesBucket;
 /// import com.pulumi.digitalocean.SpacesBucketArgs;
 /// import com.pulumi.digitalocean.inputs.SpacesBucketCorsRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

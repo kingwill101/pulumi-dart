@@ -121,7 +121,7 @@ import 'database_firewall_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
-/// 			ClusterId: postgres_example.ID(),
+/// 			ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
 /// 			Rules: digitalocean.DatabaseFirewallRuleArray{
 /// 				&digitalocean.DatabaseFirewallRuleArgs{
 /// 					Type:  pulumi.String("ip_addr"),
@@ -140,6 +140,35 @@ import 'database_firewall_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasefirewall" "example-fw" {
+///   cluster_id = digitalocean_databasecluster.postgres-example.id
+///   rules {
+///     type  = "ip_addr"
+///     value = "192.168.1.1"
+///   }
+///   rules {
+///     type  = "ip_addr"
+///     value = "192.0.2.0"
+///   }
+/// }
+/// resource "digitalocean_databasecluster" "postgres-example" {
+///   name       = "example-postgres-cluster"
+///   engine     = "pg"
+///   version    = "15"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -151,8 +180,8 @@ import 'database_firewall_state.dart';
 /// import com.pulumi.digitalocean.DatabaseFirewall;
 /// import com.pulumi.digitalocean.DatabaseFirewallArgs;
 /// import com.pulumi.digitalocean.inputs.DatabaseFirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -336,11 +365,11 @@ import 'database_firewall_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
-/// 			ClusterId: postgres_example.ID(),
+/// 			ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
 /// 			Rules: digitalocean.DatabaseFirewallRuleArray{
 /// 				&digitalocean.DatabaseFirewallRuleArgs{
 /// 					Type:  pulumi.String("droplet"),
-/// 					Value: web.ID(),
+/// 					Value: web.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -349,6 +378,37 @@ import 'database_firewall_state.dart';
 /// 		}
 /// 		return nil
 /// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasefirewall" "example-fw" {
+///   cluster_id = digitalocean_databasecluster.postgres-example.id
+///   rules {
+///     type  = "droplet"
+///     value = digitalocean_droplet.web.id
+///   }
+/// }
+/// resource "digitalocean_droplet" "web" {
+///   name   = "web-01"
+///   size   = "s-1vcpu-1gb"
+///   image  = "ubuntu-22-04-x64"
+///   region = "nyc3"
+/// }
+/// resource "digitalocean_databasecluster" "postgres-example" {
+///   name       = "example-postgres-cluster"
+///   engine     = "pg"
+///   version    = "15"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
 /// }
 /// ```
 /// ```java
@@ -364,8 +424,8 @@ import 'database_firewall_state.dart';
 /// import com.pulumi.digitalocean.DatabaseFirewall;
 /// import com.pulumi.digitalocean.DatabaseFirewallArgs;
 /// import com.pulumi.digitalocean.inputs.DatabaseFirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -550,7 +610,7 @@ import 'database_firewall_state.dart';
 /// 			return err
 /// 		}
 /// 		replica_example, err := digitalocean.NewDatabaseReplica(ctx, "replica-example", &digitalocean.DatabaseReplicaArgs{
-/// 			ClusterId: postgres_example.ID(),
+/// 			ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:      pulumi.String("replica-example"),
 /// 			Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 /// 			Region:    pulumi.String(digitalocean.RegionNYC1),
@@ -575,6 +635,38 @@ import 'database_firewall_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     digitalocean = {
+///       source = "pulumi/digitalocean"
+///     }
+///   }
+/// }
+///
+/// resource "digitalocean_databasecluster" "postgres-example" {
+///   name       = "example-postgres-cluster"
+///   engine     = "pg"
+///   version    = "15"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+///   node_count = 1
+/// }
+/// resource "digitalocean_databasereplica" "replica-example" {
+///   cluster_id = digitalocean_databasecluster.postgres-example.id
+///   name       = "replica-example"
+///   size       = "db-s-1vcpu-1gb"
+///   region     = "nyc1"
+/// }
+/// # Create firewall rule for database replica
+/// resource "digitalocean_databasefirewall" "example-fw" {
+///   cluster_id = digitalocean_databasereplica.replica-example.uuid
+///   rules {
+///     type  = "ip_addr"
+///     value = "192.168.1.1"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -588,8 +680,8 @@ import 'database_firewall_state.dart';
 /// import com.pulumi.digitalocean.DatabaseFirewall;
 /// import com.pulumi.digitalocean.DatabaseFirewallArgs;
 /// import com.pulumi.digitalocean.inputs.DatabaseFirewallRuleArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
