@@ -21,4 +21,16 @@ class SomeResource extends pulumi.CustomResource {
         ) {
     theOutput = registerOutput<Map<String, List<OutputItem>>>('the_output', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<OutputItem>>(guardedValue, (value) => pulumi.Input.decodeList<OutputItem>(value, (value) => OutputItem.fromMap((value as Map).cast<String, dynamic>()))); });
   }
+
+  /// Creates a typed reference to an existing [SomeResource] resource.
+  SomeResource.reference(String urn)
+    : super(
+        'snake_names:cool_module:some_resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    theOutput = registerOutput<Map<String, List<OutputItem>>>('the_output', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<OutputItem>>(guardedValue, (value) => pulumi.Input.decodeList<OutputItem>(value, (value) => OutputItem.fromMap((value as Map).cast<String, dynamic>()))); });
+  }
 }

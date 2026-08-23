@@ -35,4 +35,16 @@ class ResourceIndexMine extends pulumi.CustomResource {
     );
     return ResourceCallIndexMineResult.fromMap(result);
   }
+
+  /// Creates a typed reference to an existing [ResourceIndexMine] resource.
+  ResourceIndexMine.reference(String urn)
+    : super(
+        'index-mod:indexMine:Resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    text = registerOutput<String>('text');
+  }
 }

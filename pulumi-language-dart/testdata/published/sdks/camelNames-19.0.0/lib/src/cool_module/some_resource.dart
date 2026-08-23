@@ -22,4 +22,17 @@ class SomeResource extends pulumi.CustomResource {
     resourceName = registerOutput<String?>('resourceName');
     theOutput = registerOutput<bool>('theOutput');
   }
+
+  /// Creates a typed reference to an existing [SomeResource] resource.
+  SomeResource.reference(String urn)
+    : super(
+        'camelNames:CoolModule:SomeResource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    resourceName = registerOutput<String?>('resourceName');
+    theOutput = registerOutput<bool>('theOutput');
+  }
 }

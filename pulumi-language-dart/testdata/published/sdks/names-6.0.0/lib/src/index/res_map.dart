@@ -20,4 +20,16 @@ class ResMap extends pulumi.CustomResource {
         ) {
     value = registerOutput<bool>('value');
   }
+
+  /// Creates a typed reference to an existing [ResMap] resource.
+  ResMap.reference(String urn)
+    : super(
+        'names:index:ResMap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    value = registerOutput<bool>('value');
+  }
 }

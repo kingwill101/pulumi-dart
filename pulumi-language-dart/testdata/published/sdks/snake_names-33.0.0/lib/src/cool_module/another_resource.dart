@@ -20,4 +20,16 @@ class AnotherResource extends pulumi.CustomResource {
         ) {
     theInput = registerOutput<String>('the_input');
   }
+
+  /// Creates a typed reference to an existing [AnotherResource] resource.
+  AnotherResource.reference(String urn)
+    : super(
+        'snake_names:cool_module:another_resource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    theInput = registerOutput<String>('the_input');
+  }
 }

@@ -21,6 +21,7 @@ func programMethods(packages []*schema.Package) map[string]programMethod {
 	result := map[string]programMethod{}
 	for _, pkg := range packages {
 		spec := packageSchemaFromPackage(pkg)
+		dartPackage := dartPackageNameForReference(pkg.Name, pkg.Reference())
 		tokens := make([]string, 0, len(spec.Resources))
 		for token := range spec.Resources {
 			tokens = append(tokens, token)
@@ -35,7 +36,7 @@ func programMethods(packages []*schema.Package) map[string]programMethod {
 				}
 				function, _ := pkg.GetFunction(methodToken)
 				result[methodToken] = programMethod{
-					Package: pkg.Name, Module: module, Name: method.Name,
+					Package: dartPackage, Module: module, Name: method.Name,
 					ArgsClass: method.Method.ArgsClass, ResultClass: method.Method.ResultClass,
 					ReturnType:  method.Method.ReturnType.DartType,
 					ReturnPlain: method.Method.ReturnPlain, Schema: function,

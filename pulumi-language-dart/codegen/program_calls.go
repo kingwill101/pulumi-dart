@@ -21,6 +21,10 @@ func (lowerer programLowerer) callExpression(expression *model.FunctionCallExpre
 	if !ok {
 		return "", fmt.Errorf("unknown resource method %q", methodSchema.Token)
 	}
+	lowerer.imports[method.Package+"\x00"+method.Module] = dartProgramImport{
+		Package: method.Package,
+		Module:  method.Module,
+	}
 	receiver, err := lowerer.expression(expression.Args[0])
 	if err != nil {
 		return "", fmt.Errorf("call receiver: %w", err)
