@@ -28,4 +28,11 @@ class Engine {
       // You might want to handle this error more gracefully
     }
   }
+
+  /// Requires the connected Pulumi CLI to satisfy [versionRange].
+  Future<void> requirePulumiVersion(String versionRange) async {
+    await _client.requirePulumiVersion(
+      pb.RequirePulumiVersionRequest(pulumiVersionRange: versionRange),
+    );
+  }
 }

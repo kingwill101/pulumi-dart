@@ -12,7 +12,7 @@ class GeneratedStack extends pulumi.Stack {
       pulumi.OutputProperty('entriesOutput', pulumi.output(pulumi.mapEntries(aMap)).apply<Object?>((value) => value)),
       pulumi.OutputProperty('lookupOutput', pulumi.output(pulumi.mapLookup(aMap, 'keyPresent', 'default')).apply<Object?>((value) => value)),
       pulumi.OutputProperty('lookupOutputDefault', pulumi.output(pulumi.mapLookup(aMap, 'keyMissing', 'default')).apply<Object?>((value) => value)),
-      pulumi.OutputProperty('names', pulumi.output([for (final entry in pulumi.mapEntries(alternativeNames)) entry['value']]).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('names', pulumi.output([for (final entry in pulumi.mapEntries(alternativeNames)) pulumi.indexValue(entry, 'value')]).apply<Object?>((value) => value)),
     ];
   }
 

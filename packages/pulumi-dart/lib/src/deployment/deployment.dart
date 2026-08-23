@@ -115,6 +115,11 @@ abstract class Deployment {
   /// Deployment logger.
   EngineLogger get logger;
 
+  /// Registers a requirement on the Pulumi CLI version used for this run.
+  void requirePulumiVersion(String versionRange) {
+    throw UnimplementedError('requirePulumiVersion is not implemented');
+  }
+
   /// Active root stack resource.
   Stack get stack;
 
@@ -321,6 +326,11 @@ class DeploymentImpl extends Deployment
 
   @override
   EngineLogger get logger => _logger;
+
+  @override
+  void requirePulumiVersion(String versionRange) {
+    registerResourceOperation(engine.requirePulumiVersion(versionRange));
+  }
 
   @override
   Stack get stack => _stack ?? (throw StateError('Stack not set'));

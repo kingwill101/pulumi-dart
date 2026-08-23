@@ -51,6 +51,24 @@ void main() {
       expect(mapLookup(value, 'missing', 'fallback'), equals('fallback'));
     });
 
+    test('can and try catch synchronous and output failures', () async {
+      expect(
+        await canValue(() => indexValue({'a': 1}, 'a')).getValue(),
+        isTrue,
+      );
+      expect(
+        await canValue(() => indexValue({'a': 1}, 'b')).getValue(),
+        isFalse,
+      );
+      expect(
+        await tryValue(
+          () => Output<int>(Future.error(StateError('nope'))),
+          () => 42,
+        ).getValue(),
+        equals(42),
+      );
+    });
+
     test('output unwraps nested map/list input values', () async {
       final value = output({
         Input.fromValue('hello'): Output.create('world'),

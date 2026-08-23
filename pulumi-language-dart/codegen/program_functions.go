@@ -89,20 +89,23 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 			return "", fmt.Errorf("lookup expects three arguments")
 		}
 		return "pulumi.mapLookup(" + strings.Join(arguments, ", ") + ")", nil
+	case "can":
+		if len(arguments) != 1 {
+			return "", fmt.Errorf("can expects one argument")
+		}
+		return "pulumi.canValue(() => " + arguments[0] + ")", nil
+	case "try":
+		if len(arguments) != 2 {
+			return "", fmt.Errorf("try expects two arguments")
+		}
+		return "pulumi.tryValue(() => " + arguments[0] + ", () => " + arguments[1] + ")", nil
+	case "getOutput":
+		if len(arguments) != 2 {
+			return "", fmt.Errorf("getOutput expects two arguments")
+		}
+		return arguments[0] + ".getOutput((" + arguments[1] + ").input())", nil
 	case "min", "max":
-		if len(arguments) == 0 {
-			return "", fmt.Errorf("%s expects at least one argument", expression.Name)
-		}
-		comparison := "<"
-		if expression.Name == "max" {
-			comparison = ">"
-		}
-		values := "[" + strings.Join(arguments, ", ") + "]"
-		if expression.ExpandFinal && len(arguments) == 1 {
-			values = "(" + arguments[0] + ")"
-		}
-		return values + ".reduce(" +
-			"(left, right) => left " + comparison + " right ? left : right)", nil
+		return lowerMinMaxBuiltin(expression.Name, arguments, expression.ExpandFinal)
 	default:
 		return "", fmt.Errorf("unsupported function %q", expression.Name)
 	}

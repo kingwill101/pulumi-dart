@@ -18,10 +18,22 @@ func renderDartProgram(program dartProgram) []byte {
 		}
 		body.WriteString("\n")
 	}
+	for _, version := range program.RequiredPulumiVersions {
+		fmt.Fprintf(&body, "    pulumi.Deployment.instance.requirePulumiVersion(%s);\n", version)
+	}
+	if len(program.RequiredPulumiVersions) > 0 {
+		body.WriteString("\n")
+	}
 	for _, local := range program.Locals {
 		fmt.Fprintf(&body, "    final %s = %s;\n", local.Name, local.Expression)
 	}
 	if len(program.Locals) > 0 {
+		body.WriteString("\n")
+	}
+	for _, resource := range program.Resources {
+		body.WriteString(renderDartProgramResource(resource))
+	}
+	if len(program.Resources) > 0 {
 		body.WriteString("\n")
 	}
 	body.WriteString("    _outputProperties = [\n")

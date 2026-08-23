@@ -78,7 +78,7 @@ func TestLowerDartProgramIndexExpression(t *testing.T) {
 	}
 	result, err := lowerDartProgramExpression(expression)
 	require.NoError(t, err)
-	assert.Equal(t, "({'answer': 42})['answer']", result)
+	assert.Equal(t, "pulumi.indexValue({'answer': 42}, 'answer')", result)
 }
 
 func TestLowerDartProgramConditionalExpression(t *testing.T) {

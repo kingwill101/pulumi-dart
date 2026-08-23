@@ -153,3 +153,4 @@ export 'src/resource/provider_resource.dart';
 export 'src/resource/dependency_resource.dart';
 export 'src/resource/resource_transformation.dart';
 export 'src/stack_reference.dart';
+export 'src/stash.dart';

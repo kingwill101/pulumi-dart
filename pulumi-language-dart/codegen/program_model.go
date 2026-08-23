@@ -1,9 +1,18 @@
 package codegen
 
 type dartProgram struct {
-	Configs []dartProgramConfig
-	Locals  []dartProgramLocal
-	Outputs []dartProgramOutput
+	Configs                []dartProgramConfig
+	RequiredPulumiVersions []string
+	Locals                 []dartProgramLocal
+	Resources              []dartProgramResource
+	Outputs                []dartProgramOutput
+}
+
+type dartProgramResource struct {
+	Name        string
+	LogicalName string
+	Type        string
+	Input       string
 }
 
 type dartProgramConfig struct {

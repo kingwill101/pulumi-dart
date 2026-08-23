@@ -22,6 +22,14 @@ func lowerDartProgram(program *pcl.Program) (dartProgram, error) {
 				return dartProgram{}, fmt.Errorf("config %q: %w", node.LogicalName(), err)
 			}
 			result.Configs = append(result.Configs, config)
+		case *pcl.PulumiBlock:
+			if node.RequiredVersion != nil {
+				requiredVersion, err := lowerer.expression(node.RequiredVersion)
+				if err != nil {
+					return dartProgram{}, fmt.Errorf("required Pulumi version: %w", err)
+				}
+				result.RequiredPulumiVersions = append(result.RequiredPulumiVersions, requiredVersion)
+			}
 		case *pcl.LocalVariable:
 			name := propertyFieldName(node.Name(), lowerer.usedNames)
 			lowerer.names[node.Name()] = name
@@ -30,6 +38,12 @@ func lowerDartProgram(program *pcl.Program) (dartProgram, error) {
 				return dartProgram{}, fmt.Errorf("local %q: %w", node.Name(), err)
 			}
 			result.Locals = append(result.Locals, dartProgramLocal{Name: name, Expression: expression})
+		case *pcl.Resource:
+			resource, err := lowerer.resource(node)
+			if err != nil {
+				return dartProgram{}, fmt.Errorf("resource %q: %w", node.LogicalName(), err)
+			}
+			result.Resources = append(result.Resources, resource)
 		case *pcl.OutputVariable:
 			expression, err := lowerer.expression(node.Value)
 			if err != nil {
@@ -98,11 +112,7 @@ func (lowerer programLowerer) expression(expression model.Expression) (string, e
 	case *model.ForExpression:
 		return lowerer.forExpression(expression)
 	case *model.ScopeTraversalExpression:
-		name, ok := lowerer.names[expression.RootName]
-		if !ok {
-			return "", fmt.Errorf("unknown variable %q", expression.RootName)
-		}
-		return lowerDartTraversal(name, expression.Traversal[1:], false)
+		return lowerer.scopeTraversalExpression(expression)
 	default:
 		return "", fmt.Errorf("unsupported expression %T", expression)
 	}

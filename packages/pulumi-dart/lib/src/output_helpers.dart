@@ -88,6 +88,37 @@ List<Map<String, dynamic>> mapEntries(Map<dynamic, dynamic> value) => value
 dynamic mapLookup(Map<dynamic, dynamic> value, dynamic key, dynamic fallback) =>
     value.containsKey(key) ? value[key] : fallback;
 
+/// Indexes a PCL collection and throws when a map key is absent.
+dynamic indexValue(dynamic value, dynamic key) {
+  if (value is Map && !value.containsKey(key)) {
+    throw StateError("key '$key' was not found");
+  }
+  return value[key];
+}
+
+/// Evaluates [value] and returns whether it completed without failure.
+Output<bool> canValue(dynamic Function() value) {
+  try {
+    return output(
+      value(),
+    ).apply<bool>((_) => true).recover((_, _) => input(false));
+  } catch (_) {
+    return Output.create(false);
+  }
+}
+
+/// Evaluates [value], returning [fallback] when evaluation fails.
+Output<dynamic> tryValue(
+  dynamic Function() value,
+  dynamic Function() fallback,
+) {
+  try {
+    return output(value()).recover((_, _) => input<dynamic>(fallback()));
+  } catch (_) {
+    return output(fallback());
+  }
+}
+
 /// Returns the item at [index], wrapping the index to the list's length.
 T listElement<T>(List<T> values, int index) {
   if (values.isEmpty) {

@@ -14,9 +14,9 @@ class GeneratedStack extends pulumi.Stack {
     final optionalObject = config.getObject<dynamic>('optionalObject') ?? null;
 
     _outputProperties = [
-      pulumi.OutputProperty('theMap', pulumi.output({'a': (aMap['a'] + 1), 'b': (aMap['b'] + 1)}).apply<Object?>((value) => value)),
-      pulumi.OutputProperty('theObject', pulumi.output(anObject['prop'][0]).apply<Object?>((value) => value)),
-      pulumi.OutputProperty('theThing', pulumi.output((anyObject['a'] + anyObject['b'])).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('theMap', pulumi.output({'a': (pulumi.indexValue(aMap, 'a') + 1), 'b': (pulumi.indexValue(aMap, 'b') + 1)}).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('theObject', pulumi.output(pulumi.indexValue(pulumi.indexValue(anObject, 'prop'), 0)).apply<Object?>((value) => value)),
+      pulumi.OutputProperty('theThing', pulumi.output((pulumi.indexValue(anyObject, 'a') + pulumi.indexValue(anyObject, 'b'))).apply<Object?>((value) => value)),
       pulumi.OutputProperty('defaultUntypedObject', pulumi.output(optionalUntypedObject).apply<Object?>((value) => value)),
       pulumi.OutputProperty('optionalList', pulumi.output(((optionalList == null) ? 'null' : pulumi.jsonStringify(optionalList))).apply<Object?>((value) => value)),
       pulumi.OutputProperty('optionalMap', pulumi.output(((optionalMap == null) ? 'null' : pulumi.jsonStringify(optionalMap))).apply<Object?>((value) => value)),
