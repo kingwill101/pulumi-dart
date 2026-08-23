@@ -1,6 +1,7 @@
 import 'package:artisanal/args.dart';
 
 import 'commands/packages/generate_command.dart';
+import 'commands/packages/remove_command.dart';
 import 'commands/packages/update_command.dart';
 import 'commands/packages/check_workspace_command.dart';
 import 'commands/integration/matrix_command.dart';
@@ -18,6 +19,7 @@ CommandRunner<int> createRepodocRunner() {
     )
     ..addCommand(SchemaCheckCommand())
     ..addCommand(PackagesGenerateCommand())
+    ..addCommand(PackagesRemoveCommand())
     ..addCommand(PackagesUpdateCommand())
     ..addCommand(PackagesCheckWorkspaceCommand())
     ..addCommand(ParityIntegrationCommand())

@@ -1,8 +1,12 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:test/test.dart';
 
 import 'package:repodoc/repodoc.dart';
 import 'package:repodoc/src/commands/schema/check_service.dart';
 import 'package:repodoc/src/commands/packages/update_service.dart';
+import 'package:repodoc/src/commands/packages/remove_service.dart';
 
 void main() {
   test('registers commands by subsystem namespace', () {
@@ -13,6 +17,7 @@ void main() {
       containsAll(<String>[
         'schema:check',
         'packages:generate',
+        'packages:remove',
         'packages:update',
         'packages:check-workspace',
         'parity:integration',
@@ -37,6 +42,62 @@ void main() {
 
     expect(await runner.run(['packages:update']), 64);
   });
+
+  test('package removal requires one provider', () async {
+    final runner = createRepodocRunner();
+
+    expect(await runner.run(['packages:remove']), 64);
+  });
+
+  test(
+    'package remover updates tracking and deletes provider artifacts',
+    () async {
+      final root = Directory.systemTemp.createTempSync('repodoc-remove-');
+      addTearDown(() => root.deleteSync(recursive: true));
+      final package = Directory('${root.path}/packages/sdks/sample')
+        ..createSync(recursive: true);
+      File(
+        '${package.path}/pubspec.yaml',
+      ).writeAsStringSync('name: pulumi_sample\n');
+      final schema =
+          File('${root.path}/packages/sdks/schemas/sample.schema.json')
+            ..createSync(recursive: true)
+            ..writeAsStringSync('{}');
+      final examples = Directory('${root.path}/examples/sample')
+        ..createSync(recursive: true);
+      File('${examples.path}/README.md').writeAsStringSync('sample');
+      final manifest = File('${root.path}/packages/sdks/schema_sources.json')
+        ..writeAsStringSync(
+          jsonEncode({
+            'providers': [
+              {
+                'name': 'sample',
+                'local_schema_path': 'packages/sdks/schemas/sample.schema.json',
+                'package_pubspec_path': 'packages/sdks/sample/pubspec.yaml',
+              },
+              {
+                'name': 'kept',
+                'local_schema_path': 'packages/sdks/schemas/kept.schema.json',
+                'package_pubspec_path': 'packages/sdks/kept/pubspec.yaml',
+              },
+            ],
+          }),
+        );
+      final remover = PackageRemover(repositoryRoot: root);
+
+      final plan = remover.plan('sample');
+      await remover.apply(plan, requireClean: false, refreshWorkspace: false);
+
+      expect(package.existsSync(), isFalse);
+      expect(schema.existsSync(), isFalse);
+      expect(examples.existsSync(), isFalse);
+      final decoded =
+          jsonDecode(manifest.readAsStringSync()) as Map<String, dynamic>;
+      expect((decoded['providers'] as List).map((entry) => entry['name']), [
+        'kept',
+      ]);
+    },
+  );
 
   test('schema result reports drift across providers', () {
     final result = SchemaCheckResult([

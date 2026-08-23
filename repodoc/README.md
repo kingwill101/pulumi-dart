@@ -11,6 +11,7 @@ dart run repodoc/bin/repodoc.dart --help
 repodoc schema:check --provider aws
 dart run repodoc/bin/repodoc.dart packages:generate --provider aws
 repodoc packages:update --provider aws
+repodoc packages:remove --provider alicloud,f5bigip --yes
 dart run repodoc/bin/repodoc.dart packages:check-workspace
 dart run repodoc/bin/repodoc.dart parity:integration
 dart run repodoc/bin/repodoc.dart parity:sdk
