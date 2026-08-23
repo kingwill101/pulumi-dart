@@ -25,7 +25,7 @@ func parsePackageSchema(schemaJSON, outputDir string) (*packageSchema, error) {
 		Functions: map[string]packageFunctionSpec{}, Enums: []packageEnumSpec{}, ObjectClasses: []packageObjectClassSpec{},
 	}
 	discovery := discoverRawSchema(raw)
-	external := newExternalRefResolver(raw.Name, outputDir)
+	external := newExternalRefResolver(raw.Name, filesystemExternalSchemaIndexLoader(outputDir))
 	lowerRawTypeDeclarationsAndConfig(spec, raw, discovery, external)
 	lowerRawResources(spec, raw, discovery, external)
 	lowerRawFunctions(spec, raw, discovery, external)

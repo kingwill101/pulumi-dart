@@ -1,12 +1,5 @@
 package codegen
 
-import (
-	"encoding/json"
-	"os"
-	"path/filepath"
-	"strings"
-)
-
 func (r *externalRefResolver) indexForProvider(providerName string) *externalSchemaIndex {
 	providerName = canonicalProviderName(providerName)
 	if providerName == "" {
@@ -15,19 +8,13 @@ func (r *externalRefResolver) indexForProvider(providerName string) *externalSch
 	if index, exists := r.indexByProvider[providerName]; exists {
 		return index
 	}
-	schemaPath := resolveExternalSchemaPath(providerName, r.searchRoots)
-	if schemaPath == "" {
+	if r.loadIndex == nil {
 		return r.cacheMissingProvider(providerName)
 	}
-	schemaBytes, err := os.ReadFile(schemaPath)
-	if err != nil {
+	index := r.loadIndex(providerName)
+	if index == nil {
 		return r.cacheMissingProvider(providerName)
 	}
-	var rawSpec rawPackageSchema
-	if err := json.Unmarshal(schemaBytes, &rawSpec); err != nil {
-		return r.cacheMissingProvider(providerName)
-	}
-	index := buildExternalSchemaIndex(rawSpec)
 	r.indexByProvider[providerName] = index
 	return index
 }
@@ -54,34 +41,4 @@ func buildExternalSchemaIndex(rawSpec rawPackageSchema) *externalSchemaIndex {
 		index.TypeInfoByToken[token] = info
 	}
 	return index
-}
-
-func resolveExternalSchemaPath(providerName string, roots []string) string {
-	providerName = canonicalProviderName(providerName)
-	if providerName == "" {
-		return ""
-	}
-	if envDir := strings.TrimSpace(os.Getenv("PULUMI_DART_SCHEMAS_DIR")); envDir != "" {
-		if candidate := existingSchemaFile(filepath.Join(envDir, providerName+".schema.json")); candidate != "" {
-			return candidate
-		}
-	}
-	for _, root := range roots {
-		for dir := root; ; dir = filepath.Dir(dir) {
-			if candidate := existingSchemaFile(filepath.Join(dir, "packages", "schemas", providerName+".schema.json")); candidate != "" {
-				return candidate
-			}
-			if filepath.Dir(dir) == dir {
-				break
-			}
-		}
-	}
-	return ""
-}
-
-func existingSchemaFile(path string) string {
-	if info, err := os.Stat(path); err == nil && !info.IsDir() {
-		return path
-	}
-	return ""
 }

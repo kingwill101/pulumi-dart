@@ -1,14 +1,10 @@
 package codegen
 
-import (
-	"os"
-	"path/filepath"
-	"strings"
-)
+type externalSchemaIndexLoader func(providerName string) *externalSchemaIndex
 
 type externalRefResolver struct {
 	currentProvider string
-	searchRoots     []string
+	loadIndex       externalSchemaIndexLoader
 	indexByProvider map[string]*externalSchemaIndex
 }
 
@@ -17,35 +13,10 @@ type externalRefResolver struct {
 // These helpers keep cross-provider type/resource refs strongly typed by
 // mapping refs like /aws/v7.15.0/schema.json#/resources/aws:ecr/repository:Repository
 // to generated Dart symbols from package:pulumi_aws/<module>.dart.
-func newExternalRefResolver(currentProvider, outputDir string) *externalRefResolver {
-	roots := make([]string, 0, 3)
-	if strings.TrimSpace(outputDir) != "" {
-		roots = append(roots, outputDir)
-	}
-	if cwd, err := os.Getwd(); err == nil && cwd != "" {
-		roots = append(roots, cwd)
-	}
-
-	dedup := map[string]struct{}{}
-	uniqueRoots := make([]string, 0, len(roots))
-	for _, root := range roots {
-		if root == "" {
-			continue
-		}
-		abs, err := filepath.Abs(root)
-		if err != nil {
-			continue
-		}
-		if _, exists := dedup[abs]; exists {
-			continue
-		}
-		dedup[abs] = struct{}{}
-		uniqueRoots = append(uniqueRoots, abs)
-	}
-
+func newExternalRefResolver(currentProvider string, loadIndex externalSchemaIndexLoader) *externalRefResolver {
 	return &externalRefResolver{
 		currentProvider: canonicalProviderName(currentProvider),
-		searchRoots:     uniqueRoots,
+		loadIndex:       loadIndex,
 		indexByProvider: map[string]*externalSchemaIndex{},
 	}
 }
