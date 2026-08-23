@@ -12,7 +12,7 @@ class GeneratedStack extends pulumi.Stack {
     final stringEnumUnionListExample = union_index.Example('stringEnumUnionListExample', args: union_index.ExampleArgs(stringEnumUnionListProperty: (<dynamic>['Listen', 'Send', 'NotAnEnumValue']).input(), ));
     final safeEnumExample = union_index.Example('safeEnumExample', args: union_index.ExampleArgs(typedEnumProperty: ('Block').input(), ));
     final enumOutputExample = union_index.EnumOutput('enumOutputExample', args: union_index.EnumOutputArgs(name: ('example').input(), ));
-    final outputEnumExample = union_index.Example('outputEnumExample', args: union_index.ExampleArgs(typedEnumProperty: (pulumi.output(enumOutputExample.type).apply<String>((value) => value as String)).input(), ));
+    final outputEnumExample = union_index.Example('outputEnumExample', args: union_index.ExampleArgs(typedEnumProperty: (pulumi.output(enumOutputExample.type).apply<String>((value) => (value).toString())).input(), ));
 
     _outputProperties = [
       pulumi.OutputProperty('mapMapUnionOutput', pulumi.output(mapMapUnionExample.mapMapUnionProperty).apply<Object?>((value) => value)),
