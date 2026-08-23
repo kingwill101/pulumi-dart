@@ -71,6 +71,21 @@ import 'subscription_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// resource "postgresql_subscription" "subscription" {
+///   name         = "subscription"
+///   conninfo     = "host=localhost port=5432 dbname=mydb user=postgres password=postgres"
+///   publications = ["publication"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -79,8 +94,8 @@ import 'subscription_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.postgresql.Subscription;
 /// import com.pulumi.postgresql.SubscriptionArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

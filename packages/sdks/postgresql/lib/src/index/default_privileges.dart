@@ -84,6 +84,24 @@ import 'default_privileges_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// resource "postgresql_defaultprivileges" "read_only_tables" {
+///   role        = "test_role"
+///   database    = "test_db"
+///   schema      = "public"
+///   owner       = "db_owner"
+///   object_type = "table"
+///   privileges  = ["SELECT"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -92,8 +110,8 @@ import 'default_privileges_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.postgresql.DefaultPrivileges;
 /// import com.pulumi.postgresql.DefaultPrivilegesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -135,7 +153,7 @@ import 'default_privileges_state.dart';
 ///
 /// ## Examples
 ///
-/// ### Grant default privileges for tables to "current_role" role:
+/// ### Grant default privileges for tables to "currentRole" role:
 ///
 ///
 /// ```typescript
@@ -225,6 +243,24 @@ import 'default_privileges_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// resource "postgresql_defaultprivileges" "grant_table_privileges" {
+///   database    = exampleDb.name
+///   role        = "current_role"
+///   owner       = "owner_role"
+///   schema      = "public"
+///   object_type = "table"
+///   privileges  = ["SELECT", "INSERT", "UPDATE"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -233,8 +269,8 @@ import 'default_privileges_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.postgresql.DefaultPrivileges;
 /// import com.pulumi.postgresql.DefaultPrivilegesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -278,7 +314,7 @@ import 'default_privileges_state.dart';
 ///         - UPDATE
 /// ```
 ///
-/// Whenever the `owner_role` creates a new table in the `public` schema, the `current_role` is automatically granted SELECT, INSERT, and UPDATE privileges on that table.
+/// Whenever the `ownerRole` creates a new table in the `public` schema, the `currentRole` is automatically granted SELECT, INSERT, and UPDATE privileges on that table.
 ///
 /// ### Revoke default privileges for functions for "public" role:
 ///
@@ -349,6 +385,23 @@ import 'default_privileges_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// resource "postgresql_defaultprivileges" "revoke_public" {
+///   database    = exampleDb.name
+///   role        = "public"
+///   owner       = "object_owner"
+///   object_type = "function"
+///   privileges  = []
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -357,8 +410,8 @@ import 'default_privileges_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.postgresql.DefaultPrivileges;
 /// import com.pulumi.postgresql.DefaultPrivilegesArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

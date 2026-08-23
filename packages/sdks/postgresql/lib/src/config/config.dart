@@ -18,7 +18,7 @@ class PostgresqlConfig {
     return deployment.isConfigSecret(key);
   }
 
-  /// Use rds_iam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+  /// Use rdsIam instead of password authentication (see: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
   bool? get awsRdsIamAuth {
     final raw = _raw('awsRdsIamAuth');
     return (raw).toBool();
@@ -58,6 +58,7 @@ class PostgresqlConfig {
 
   bool get azureIdentityAuthIsSecret => _isSecret('azureIdentityAuth');
 
+  /// MS Azure tenant ID (see: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
   String? get azureTenantId {
     final raw = _raw('azureTenantId');
     return raw;
@@ -194,4 +195,3 @@ class PostgresqlConfig {
 }
 
 const config = PostgresqlConfig();
-

@@ -25,7 +25,7 @@ class RoleState {
   /// encrypted in the system catalogs.  Default value is `true`.  NOTE: this value
   /// is always set (to the conservative and safe value), but may interfere with the
   /// behavior of
-  /// [PostgreSQL's `password_encryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
+  /// [PostgreSQL's `passwordEncryption` setting](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION).
   final pulumi.Input<bool>? encryptedPassword;
   /// Terminate any session with an open transaction that has been idle for longer than the specified duration in milliseconds
   final pulumi.Input<int>? idleInTransactionSessionTimeout;
@@ -44,12 +44,12 @@ class RoleState {
   final pulumi.Input<String>? password;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Sets the role's password without storing it in the state file.
-  /// This is useful for managing passwords securely. Must be used together with `password_wo_version`.
+  /// This is useful for managing passwords securely. Must be used together with `passwordWoVersion`.
   /// Conflicts with `password`.
   final pulumi.Input<String>? passwordWo;
   /// Prevents applies from updating the role password on every
   /// apply unless the value changes. This version string should be updated whenever you want to
-  /// change the password specified in `password_wo`. Must be used together with `password_wo`.
+  /// change the password specified in `passwordWo`. Must be used together with `passwordWo`.
   /// Conflicts with `password`.
   final pulumi.Input<String>? passwordWoVersion;
   /// Defines whether a role is allowed to initiate
@@ -79,16 +79,16 @@ class RoleState {
   /// an implicit
   /// [`DROP OWNED`](https://www.postgresql.org/docs/current/static/sql-drop-owned.html)).
   final pulumi.Input<bool>? skipReassignOwned;
-  /// Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+  /// Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
   final pulumi.Input<int>? statementTimeout;
   /// Defines whether the role is a "superuser", and
   /// therefore can override all access restrictions within the database.  Default
   /// value is `false`.
   final pulumi.Input<bool>? superuser;
   /// Defines the date and time after which the role's
-  /// password is no longer valid.  Established connections past this `valid_time`
+  /// password is no longer valid.  Established connections past this `validTime`
   /// will have to be manually terminated.  This value corresponds to a PostgreSQL
-  /// datetime. If omitted or the magic value `NULL` is used, `valid_until` will be
+  /// datetime. If omitted or the magic value `NULL` is used, `validUntil` will be
   /// set to `infinity`.  Default is `NULL`, therefore `infinity`.
   final pulumi.Input<String>? validUntil;
 
@@ -112,7 +112,7 @@ class RoleState {
   /// [searchPaths] Alters the search path of this new role. Note that
   /// [skipDropRole] When a PostgreSQL ROLE exists in multiple
   /// [skipReassignOwned] When a PostgreSQL ROLE exists in multiple
-  /// [statementTimeout] Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
+  /// [statementTimeout] Defines [`statementTimeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
   /// [superuser] Defines whether the role is a "superuser", and
   /// [validUntil] Defines the date and time after which the role's
   const RoleState({
@@ -194,4 +194,3 @@ class RoleState {
     );
   }
 }
-

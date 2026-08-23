@@ -1,6 +1,6 @@
 name: pulumi_postgresql
 description: A Pulumi package for creating and managing postgresql cloud resources.
-version: 3.16.2
+version: 3.18.0
 license: Apache-2.0
 homepage: https://www.pulumi.com
 repository: https://github.com/pulumi/pulumi-postgresql

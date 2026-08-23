@@ -13,6 +13,7 @@ class ProviderProvider extends pulumi.ProviderResource {
   late final pulumi.Output<String?> awsRdsIamProviderRoleArn;
   /// AWS region to use for IAM auth
   late final pulumi.Output<String?> awsRdsIamRegion;
+  /// MS Azure tenant ID (see: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config.html)
   late final pulumi.Output<String?> azureTenantId;
   /// The name of the database to connect to in order to connect to (defaults to `postgres`).
   late final pulumi.Output<String?> database;

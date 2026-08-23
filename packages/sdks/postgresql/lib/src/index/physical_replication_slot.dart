@@ -57,6 +57,19 @@ import 'physical_replication_slot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// resource "postgresql_physicalreplicationslot" "my_slot" {
+///   name = "my_slot"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -65,8 +78,8 @@ import 'physical_replication_slot_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.postgresql.PhysicalReplicationSlot;
 /// import com.pulumi.postgresql.PhysicalReplicationSlotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

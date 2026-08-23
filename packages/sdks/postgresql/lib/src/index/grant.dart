@@ -179,6 +179,35 @@ import 'grant_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// # Grant SELECT privileges on 2 tables
+/// resource "postgresql_grant" "readonly_tables" {
+///   database    = "test_db"
+///   role        = "test_role"
+///   schema      = "public"
+///   object_type = "table"
+///   objects     = ["table1", "table2"]
+///   privileges  = ["SELECT"]
+/// }
+/// # Grant SELECT & INSERT privileges on 2 columns in 1 table
+/// resource "postgresql_grant" "read_insert_column" {
+///   database    = "test_db"
+///   role        = "test_role"
+///   schema      = "public"
+///   object_type = "column"
+///   objects     = ["table1"]
+///   columns     = ["col1", "col2"]
+///   privileges  = ["UPDATE", "INSERT"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -187,8 +216,8 @@ import 'grant_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.postgresql.Grant;
 /// import com.pulumi.postgresql.GrantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -337,6 +366,23 @@ import 'grant_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// resource "postgresql_grant" "revoke_public" {
+///   database    = "test_db"
+///   role        = "public"
+///   schema      = "public"
+///   object_type = "schema"
+///   privileges  = []
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -345,8 +391,8 @@ import 'grant_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.postgresql.Grant;
 /// import com.pulumi.postgresql.GrantArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -382,19 +428,19 @@ import 'grant_state.dart';
 ///       privileges: []
 /// ```
 class Grant extends pulumi.CustomResource {
-  /// The columns upon which to grant the privileges. Required when `object_type` is `column`. You cannot specify this option if the `object_type` is not `column`.
+  /// The columns upon which to grant the privileges. Required when `objectType` is `column`. You cannot specify this option if the `objectType` is not `column`.
   late final pulumi.Output<List<String>?> columns;
   /// The database to grant privileges on for this role.
   late final pulumi.Output<String> database;
   /// The PostgreSQL object type to grant the privileges on (one of: database, schema, table, sequence, function, procedure, routine, foreign_data_wrapper, foreign_server, column).
   late final pulumi.Output<String> objectType;
-  /// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `object_type` is `database` or `schema`. When `object_type` is `column`, only one value is allowed.
+  /// The objects upon which to grant the privileges. An empty list (the default) means to grant permissions on *all* objects of the specified type. You cannot specify this option if the `objectType` is `database` or `schema`. When `objectType` is `column`, only one value is allowed.
   late final pulumi.Output<List<String>?> objects;
   /// The list of privileges to grant. There are different kinds of privileges: SELECT, INSERT, UPDATE, DELETE, TRUNCATE, REFERENCES, TRIGGER, CREATE, CONNECT, TEMPORARY, EXECUTE, and USAGE. An empty list could be provided to revoke all privileges for this role.
   late final pulumi.Output<List<String>> privileges;
   /// The name of the role to grant privileges on, Set it to "public" for all roles.
   late final pulumi.Output<String> role;
-  /// The database schema to grant privileges on for this role (Required except if object_type is "database")
+  /// The database schema to grant privileges on for this role (Required except if objectType is "database")
   late final pulumi.Output<String?> schema;
   /// Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
   late final pulumi.Output<bool?> withGrantOption;

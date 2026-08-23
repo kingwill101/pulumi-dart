@@ -75,6 +75,20 @@ import 'publication_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     postgresql = {
+///       source = "pulumi/postgresql"
+///     }
+///   }
+/// }
+///
+/// resource "postgresql_publication" "publication" {
+///   name   = "publication"
+///   tables = ["public.test", "another_schema.test"]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -83,8 +97,8 @@ import 'publication_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.postgresql.Publication;
 /// import com.pulumi.postgresql.PublicationArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
