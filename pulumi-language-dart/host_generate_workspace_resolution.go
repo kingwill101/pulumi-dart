@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -20,17 +21,20 @@ func applyWorkspacePulumiDependencyVersion(pubspec *codegen.PubSpec, outputDir s
 	if pubspec == nil {
 		return false
 	}
-	pulumiVersion := inferWorkspacePulumiPackageVersion(outputDir)
-	if strings.TrimSpace(pulumiVersion) == "" {
+	constraint := strings.TrimSpace(os.Getenv("PULUMI_DART_PULUMI_DEPENDENCY_CONSTRAINT"))
+	if constraint == "" {
+		constraint = compatiblePulumiConstraint(inferWorkspacePulumiPackageVersion(outputDir))
+	}
+	if constraint == "" {
 		return false
 	}
 	if pubspec.Dependencies == nil {
 		pubspec.Dependencies = map[string]interface{}{}
 	}
-	if current, ok := pubspec.Dependencies["pulumi"].(string); ok && strings.TrimSpace(current) == pulumiVersion {
+	if current, ok := pubspec.Dependencies["pulumi"].(string); ok && strings.TrimSpace(current) == constraint {
 		return false
 	}
-	pubspec.Dependencies["pulumi"] = pulumiVersion
+	pubspec.Dependencies["pulumi"] = constraint
 	if pubspec.DependencyOverrides != nil {
 		delete(pubspec.DependencyOverrides, "pulumi")
 		if len(pubspec.DependencyOverrides) == 0 {
@@ -38,6 +42,14 @@ func applyWorkspacePulumiDependencyVersion(pubspec *codegen.PubSpec, outputDir s
 		}
 	}
 	return true
+}
+
+func compatiblePulumiConstraint(version string) string {
+	version = strings.TrimSpace(strings.TrimPrefix(strings.TrimSpace(version), "v"))
+	if version == "" {
+		return ""
+	}
+	return "^" + version
 }
 
 func inferWorkspacePulumiPackageVersion(outputDir string) string {

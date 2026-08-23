@@ -17,6 +17,10 @@ final class PackagesGenerateCommand extends Command<int> {
         'sdk-version',
         help: 'Override the generated package version.',
       )
+      ..addOption(
+        'pulumi-constraint',
+        help: 'Override the generated package dependency on pulumi.',
+      )
       ..addFlag('keep-sdks', help: 'Keep temporary output under .gen/sdk-gen.');
   }
 
@@ -32,6 +36,10 @@ final class PackagesGenerateCommand extends Command<int> {
       if ((option('sdk-version') as String?) case final version?) ...[
         '--sdk-version',
         version,
+      ],
+      if ((option('pulumi-constraint') as String?) case final constraint?) ...[
+        '--pulumi-constraint',
+        constraint,
       ],
       if (option('keep-sdks') as bool) '--keep-sdks',
     ];

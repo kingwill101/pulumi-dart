@@ -31,6 +31,9 @@ Future<void> main(List<String> args) async {
     return;
   }
   final pulumiVersion = _readPulumiPackageVersion(repoRoot.path);
+  final pulumiConstraint = parsed.pulumiConstraint.isNotEmpty
+      ? parsed.pulumiConstraint
+      : '^$pulumiVersion';
   final allProviders = _loadProviders(schemaSourcePath);
 
   final selectedProviders = _selectProviders(
@@ -63,7 +66,8 @@ Future<void> main(List<String> args) async {
     ...Platform.environment,
     'PULUMI_DART_WORKSPACE_RESOLUTION': 'true',
     'PULUMI_DART_PULUMI_DEPENDENCY_PATH': '',
-    'PULUMI_DART_PULUMI_DEPENDENCY_VERSION': pulumiVersion,
+    'PULUMI_DART_PULUMI_DEPENDENCY_CONSTRAINT': pulumiConstraint,
+    'PULUMI_DART_PULUMI_DEPENDENCY_VERSION': '',
     'PATH': _mergePathPrefix(
       languageHostPath,
       Platform.environment['PATH'] ?? '',
@@ -537,12 +541,14 @@ final class _ParsedArgs {
     required this.providers,
     required this.keepSdks,
     required this.sdkVersion,
+    required this.pulumiConstraint,
     required this.workingDirectory,
   });
 
   final Set<String> providers;
   final bool keepSdks;
   final String sdkVersion;
+  final String pulumiConstraint;
   final String workingDirectory;
 }
 
@@ -550,6 +556,7 @@ _ParsedArgs _parseArgs(List<String> args) {
   final providers = <String>{};
   var keepSdks = false;
   var sdkVersion = '';
+  var pulumiConstraint = '';
 
   void addProvidersCsv(String value) {
     for (final raw in value.split(',')) {
@@ -586,6 +593,19 @@ _ParsedArgs _parseArgs(List<String> args) {
       sdkVersion = arg.substring('--sdk-version='.length).trim();
       continue;
     }
+    if (arg == '--pulumi-constraint') {
+      if (i + 1 >= args.length) {
+        stderr.writeln('Missing value for --pulumi-constraint');
+        _printUsage();
+        exit(64);
+      }
+      pulumiConstraint = args[++i].trim();
+      continue;
+    }
+    if (arg.startsWith('--pulumi-constraint=')) {
+      pulumiConstraint = arg.substring('--pulumi-constraint='.length).trim();
+      continue;
+    }
     if (arg == '--provider') {
       if (i + 1 >= args.length) {
         stderr.writeln('Missing value for --provider');
@@ -610,6 +630,7 @@ _ParsedArgs _parseArgs(List<String> args) {
     providers: providers,
     keepSdks: keepSdks,
     sdkVersion: sdkVersion,
+    pulumiConstraint: pulumiConstraint,
     workingDirectory: Directory.current.path,
   );
 }
@@ -625,6 +646,7 @@ Options:
   --all                       Generate all providers in packages/sdks/schema_sources.json (default)
   --provider <name[,name...]> Generate only selected providers (repeatable)
   --sdk-version <version>     Override the generated package version
+  --pulumi-constraint <range> Override the generated pulumi dependency constraint
   --keep-sdks                 Keep temporary generation output under .gen/sdk-gen
   -h, --help                  Show this help
 ''');
