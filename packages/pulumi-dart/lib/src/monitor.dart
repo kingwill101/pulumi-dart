@@ -19,6 +19,9 @@ class Monitor {
 
   Monitor(ClientChannel channel) : _client = ResourceMonitorClient(channel);
 
+  /// Wraps an existing monitor client.
+  Monitor.fromClient(ResourceMonitorClient client) : _client = client;
+
   /// Underlying gRPC monitor client.
   ResourceMonitorClient get client => _client;
 

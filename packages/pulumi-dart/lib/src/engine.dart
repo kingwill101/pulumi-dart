@@ -16,6 +16,9 @@ class Engine {
 
   Engine(ClientChannel channel) : _client = pb.EngineClient(channel);
 
+  /// Wraps an existing engine client.
+  Engine.fromClient(pb.EngineClient client) : _client = client;
+
   /// Sends a log request to the engine.
   ///
   /// Errors are swallowed and printed to avoid failing the user program when

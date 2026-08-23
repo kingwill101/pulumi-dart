@@ -1,0 +1,24 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+import 'package:pulumi_conformance_component/index.dart' as pulumi_conformance_component_index;
+import 'package:pulumi_simple/index.dart' as pulumi_simple_index;
+
+class GeneratedStack extends pulumi.Stack {
+  late final List<pulumi.OutputProperty> _outputProperties;
+
+  GeneratedStack() {
+    final parent = pulumi_simple_index.ResourceType('parent', args: pulumi_simple_index.ResourceArgs(value: (true).input(), ));
+    final res = pulumi_conformance_component_index.Simple('res', args: pulumi_conformance_component_index.SimpleArgs(value: (true).input(), ), options: pulumi.ComponentResourceOptions(parent: parent, aliases: [pulumi.Alias(noParent: true)], ));
+    final simpleResource = pulumi_simple_index.ResourceType('simpleResource', args: pulumi_simple_index.ResourceArgs(value: (false).input(), ));
+
+    _outputProperties = [
+    ];
+  }
+
+  @override
+  List<pulumi.OutputProperty> getOutputProperties() => _outputProperties;
+}
+
+Future<void> main() async {
+  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
+}

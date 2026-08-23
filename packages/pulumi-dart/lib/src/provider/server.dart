@@ -12,7 +12,10 @@ import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 import '../alias.dart';
 import '../constants.dart';
 import '../deserializer.dart';
+import '../deployment/deployment.dart';
 import '../input.dart';
+import '../engine.dart';
+import '../monitor.dart';
 import '../output.dart';
 import '../resource/component_resource.dart';
 import '../resource/custom_resource.dart';
@@ -139,7 +142,9 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
   Future<void> _serial = Future<void>.value();
 
   Future<T> _withSerializedRuntime<T>(Future<T> Function() action) {
-    final next = _serial.then((_) => action());
+    final next = _serial
+        .then((_) => action())
+        .whenComplete(DeploymentImpl.clearMockInstance);
     _serial = next.then<void>((_) {}).catchError((_) {});
     return next;
   }
@@ -369,6 +374,7 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
         } on UnsupportedProviderOperationError catch (error) {
           throw GrpcError.unimplemented(error.toString());
         }
+        await DeploymentImpl.current?.registerOutputs();
 
         final serialized = await _serializeInputMap(
           'call(${request.tok})',
@@ -588,6 +594,7 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
         } on UnsupportedProviderOperationError catch (error) {
           throw GrpcError.unimplemented(error.toString());
         }
+        await DeploymentImpl.current?.registerOutputs();
 
         final response = providerpb.ConstructResponse();
         response.urn = await result.urn.toOutput().getValue();
@@ -763,6 +770,19 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
     );
 
     await runtime.awaitFeatureSupport();
+    final monitorClient = runtime.getMonitor();
+    final engineClient = runtime.getEngine();
+    if (monitorClient == null || engineClient == null) {
+      throw StateError('provider runtime endpoints were not configured');
+    }
+    DeploymentImpl.initializeForProvider(
+      organizationName: organization.isEmpty ? 'organization' : organization,
+      projectName: project,
+      stackName: stack,
+      isDryRun: dryRun,
+      monitor: Monitor.fromClient(monitorClient),
+      engine: Engine.fromClient(engineClient),
+    );
     setAllConfig(config, configSecretKeys);
   }
 

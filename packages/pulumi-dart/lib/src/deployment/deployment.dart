@@ -244,6 +244,9 @@ class DeploymentImpl extends Deployment
     return _instance!;
   }
 
+  /// Active deployment, or `null` when no program/provider operation created one.
+  static Deployment? get current => _instance;
+
   /// Overrides the active deployment instance for tests.
   @visibleForTesting
   static void setInstance(Deployment deployment) {
@@ -271,6 +274,25 @@ class DeploymentImpl extends Deployment
     required Engine engine,
   }) {
     return DeploymentImpl._(
+      organizationName: organizationName,
+      projectName: projectName,
+      stackName: stackName,
+      isDryRun: isDryRun,
+      monitor: monitor,
+      engine: engine,
+    );
+  }
+
+  /// Installs a deployment used while a provider handles Construct/Call RPCs.
+  static void initializeForProvider({
+    required String organizationName,
+    required String projectName,
+    required String stackName,
+    required bool isDryRun,
+    required monitorpkg.Monitor monitor,
+    required Engine engine,
+  }) {
+    _instance = DeploymentImpl._(
       organizationName: organizationName,
       projectName: projectName,
       stackName: stackName,
@@ -1102,7 +1124,7 @@ class DeploymentImpl extends Deployment
   Future<void> registerOutputs() async {
     _stack?.registerPropertyOutputs();
 
-    if (_resourceOperations.isNotEmpty) {
+    while (_resourceOperations.isNotEmpty) {
       // IMPORTANT:
       // We intentionally use `eagerError: true` here.
       //
@@ -1124,8 +1146,9 @@ class DeploymentImpl extends Deployment
       // observed. Those siblings may still complete in the background, but we do
       // not block shutdown on them. This matches the desired behavior for a
       // failed deployment: prioritize surfacing the primary failure deterministically.
-      await Future.wait(_resourceOperations, eagerError: true);
+      final operations = List<Future<void>>.from(_resourceOperations);
       _resourceOperations.clear();
+      await Future.wait(operations, eagerError: true);
     }
 
     if (_stack == null) {
@@ -1155,7 +1178,9 @@ class DeploymentImpl extends Deployment
           continue;
         }
       }
-      var serializedValue = await _stack!.serializeOutputValue(outputData);
+      final serializedValue = _stack == null
+          ? await serializeOutputData(outputData)
+          : await _stack!.serializeOutputValue(outputData);
       serializedOutputs[entry.key] = serializedValue;
     }
 

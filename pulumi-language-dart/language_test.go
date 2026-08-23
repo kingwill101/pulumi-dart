@@ -49,6 +49,11 @@ var passingConformanceTests = []string{
 	"policy-simple",
 	"policy-stack-config",
 	"policy-stack-tags",
+	"provider-alias-component",
+	"provider-builtin-info-component",
+	"provider-ignore-changes-component",
+	"provider-replacement-trigger-component",
+	"provider-resource-component",
 	"l1-empty",
 	"l1-config-types-primitive",
 	"l1-config-types-optional",
@@ -302,6 +307,7 @@ func TestLanguageConformance(t *testing.T) {
 		CoreSdkDirectory:     "../packages/pulumi-dart",
 		CoreSdkVersion:       "3.0.0",
 		PolicyPackDirectory:  policyPackDirectory,
+		ProvidersDirectory:   "testdata/providers",
 		SnapshotEdits: []*testingrpc.PrepareLanguageTestsRequest_Replacement{
 			{
 				Path:        "pubspec\\.yaml",
