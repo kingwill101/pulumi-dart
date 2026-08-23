@@ -68,6 +68,28 @@ func TestBuildExternalSchemaIndexClassifiesTypes(t *testing.T) {
 	require.Equal(t, externalSchemaTypeInfo{Kind: "scalar", DartType: "int"}, index.TypeInfoByToken["sample:index:Count"])
 }
 
+func TestExternalRefResolverUsesInjectedSchemaLoader(t *testing.T) {
+	loadCount := 0
+	resolver := newExternalRefResolver("sample", func(providerName string) ([]byte, error) {
+		loadCount++
+		require.Equal(t, "aws", providerName)
+		return []byte(`{
+  "name": "aws",
+  "types": {"aws:index:Count": {"type": "integer"}}
+}`), nil
+	})
+
+	ref := "/aws/v1.0.0/schema.json#/types/aws:index:Count"
+	_, first, ok := resolver.resolve(ref)
+	require.True(t, ok)
+	require.Equal(t, externalSchemaTypeInfo{Kind: "scalar", DartType: "int"}, first)
+
+	_, second, ok := resolver.resolve(ref)
+	require.True(t, ok)
+	require.Equal(t, first, second)
+	require.Equal(t, 1, loadCount, "provider schema should be cached")
+}
+
 func TestDartStringLiteralEscapesDartInterpolation(t *testing.T) {
 	t.Parallel()
 

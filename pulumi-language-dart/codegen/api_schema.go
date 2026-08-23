@@ -5,12 +5,13 @@ import "github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 type PackageSchema = packageSchema
 type RawPackageSchema = rawPackageSchema
 type PackageTypeSpec = packageTypeSpec
+type ExternalSchemaLoader func(providerName string) ([]byte, error)
 
 func NormalizeDeprecatedProviderReferences(rawSchema string) string {
 	return normalizeDeprecatedProviderReferences(rawSchema)
 }
-func ParsePackageSchema(schemaJSON, outputDir string) (*PackageSchema, error) {
-	return parsePackageSchema(schemaJSON, outputDir)
+func ParsePackageSchema(schemaJSON string, loadExternalSchema ExternalSchemaLoader) (*PackageSchema, error) {
+	return parsePackageSchema(schemaJSON, loadExternalSchema)
 }
 func PackageSchemaFromPackage(pkg *schema.Package) *PackageSchema {
 	return packageSchemaFromPackage(pkg)

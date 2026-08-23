@@ -9,7 +9,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-func parsePackageSchema(schemaJSON, outputDir string) (*packageSchema, error) {
+func parsePackageSchema(schemaJSON string, loadExternalSchema ExternalSchemaLoader) (*packageSchema, error) {
 	var raw rawPackageSchema
 	if err := json.Unmarshal([]byte(schemaJSON), &raw); err != nil {
 		return nil, fmt.Errorf("failed to parse package schema: %w", err)
@@ -25,7 +25,7 @@ func parsePackageSchema(schemaJSON, outputDir string) (*packageSchema, error) {
 		Functions: map[string]packageFunctionSpec{}, Enums: []packageEnumSpec{}, ObjectClasses: []packageObjectClassSpec{},
 	}
 	discovery := discoverRawSchema(raw)
-	external := newExternalRefResolver(raw.Name, filesystemExternalSchemaIndexLoader(outputDir))
+	external := newExternalRefResolver(raw.Name, loadExternalSchema)
 	lowerRawTypeDeclarationsAndConfig(spec, raw, discovery, external)
 	lowerRawResources(spec, raw, discovery, external)
 	lowerRawFunctions(spec, raw, discovery, external)

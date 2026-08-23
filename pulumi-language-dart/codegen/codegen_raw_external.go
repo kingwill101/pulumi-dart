@@ -1,10 +1,8 @@
 package codegen
 
-type externalSchemaIndexLoader func(providerName string) *externalSchemaIndex
-
 type externalRefResolver struct {
 	currentProvider string
-	loadIndex       externalSchemaIndexLoader
+	loadSchema      ExternalSchemaLoader
 	indexByProvider map[string]*externalSchemaIndex
 }
 
@@ -13,10 +11,10 @@ type externalRefResolver struct {
 // These helpers keep cross-provider type/resource refs strongly typed by
 // mapping refs like /aws/v7.15.0/schema.json#/resources/aws:ecr/repository:Repository
 // to generated Dart symbols from package:pulumi_aws/<module>.dart.
-func newExternalRefResolver(currentProvider string, loadIndex externalSchemaIndexLoader) *externalRefResolver {
+func newExternalRefResolver(currentProvider string, loadSchema ExternalSchemaLoader) *externalRefResolver {
 	return &externalRefResolver{
 		currentProvider: canonicalProviderName(currentProvider),
-		loadIndex:       loadIndex,
+		loadSchema:      loadSchema,
 		indexByProvider: map[string]*externalSchemaIndex{},
 	}
 }

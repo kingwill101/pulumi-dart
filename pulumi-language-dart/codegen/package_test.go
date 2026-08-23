@@ -22,7 +22,7 @@ func TestGeneratePackageReturnsDeterministicallyOrderedFiles(t *testing.T) {
     "sample:index:Bucket": {"inputProperties": {}, "properties": {}}
   }
 }`
-	spec, err := ParsePackageSchema(schemaJSON, t.TempDir())
+	spec, err := ParsePackageSchema(schemaJSON, nil)
 	require.NoError(t, err)
 
 	result, err := GeneratePackage(PackageInput{

@@ -39,6 +39,7 @@ func (host *dartLanguageHost) GeneratePackage(
 		rpcDiagnostics []*codegenrpc.Diagnostic
 	)
 	normalizedSchema := codegen.NormalizeDeprecatedProviderReferences(req.GetSchema())
+	loadExternalSchema := filesystemExternalSchemaLoader(req.GetDirectory())
 	generatedOutputPaths := map[string]struct{}{}
 	recordGeneratedOutput := func(path string) {
 		generatedOutputPaths[filepath.Clean(path)] = struct{}{}
@@ -72,7 +73,7 @@ func (host *dartLanguageHost) GeneratePackage(
 			// available and the schema includes external refs. BindSpec does not
 			// preserve enough shape information for cross-package typed refs.
 			if loader == nil && schemaContainsExternalReferences(normalizedSchema) {
-				spec, err = codegen.ParsePackageSchema(normalizedSchema, req.GetDirectory())
+				spec, err = codegen.ParsePackageSchema(normalizedSchema, loadExternalSchema)
 				if err != nil {
 					return nil, err
 				}
@@ -80,7 +81,7 @@ func (host *dartLanguageHost) GeneratePackage(
 			} else if diags.HasErrors() {
 				// Preserve previous parse-only behavior when no loader target is provided.
 				if loader == nil {
-					spec, err = codegen.ParsePackageSchema(normalizedSchema, req.GetDirectory())
+					spec, err = codegen.ParsePackageSchema(normalizedSchema, loadExternalSchema)
 					if err != nil {
 						return nil, err
 					}
@@ -96,7 +97,7 @@ func (host *dartLanguageHost) GeneratePackage(
 		} else if loader == nil {
 			// Parse-only fallback is intentionally permissive when we do not have
 			// a schema loader and cannot resolve external references.
-			spec, err = codegen.ParsePackageSchema(normalizedSchema, req.GetDirectory())
+			spec, err = codegen.ParsePackageSchema(normalizedSchema, loadExternalSchema)
 			if err != nil {
 				return nil, err
 			}
@@ -106,7 +107,10 @@ func (host *dartLanguageHost) GeneratePackage(
 	}
 	if spec == nil {
 		var err error
-		spec, err = codegen.ParsePackageSchema(normalizedSchema, req.GetDirectory())
+		spec, err = codegen.ParsePackageSchema(
+			normalizedSchema,
+			loadExternalSchema,
+		)
 		if err != nil {
 			return nil, err
 		}

@@ -1,5 +1,7 @@
 package codegen
 
+import "encoding/json"
+
 func (r *externalRefResolver) indexForProvider(providerName string) *externalSchemaIndex {
 	providerName = canonicalProviderName(providerName)
 	if providerName == "" {
@@ -8,13 +10,18 @@ func (r *externalRefResolver) indexForProvider(providerName string) *externalSch
 	if index, exists := r.indexByProvider[providerName]; exists {
 		return index
 	}
-	if r.loadIndex == nil {
+	if r.loadSchema == nil {
 		return r.cacheMissingProvider(providerName)
 	}
-	index := r.loadIndex(providerName)
-	if index == nil {
+	schemaBytes, err := r.loadSchema(providerName)
+	if err != nil || len(schemaBytes) == 0 {
 		return r.cacheMissingProvider(providerName)
 	}
+	var rawSpec rawPackageSchema
+	if err := json.Unmarshal(schemaBytes, &rawSpec); err != nil {
+		return r.cacheMissingProvider(providerName)
+	}
+	index := buildExternalSchemaIndex(rawSpec)
 	r.indexByProvider[providerName] = index
 	return index
 }
