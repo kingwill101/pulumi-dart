@@ -37,4 +37,3 @@ class GetBackendBucketIamPolicyComputeV1Args {
     );
   }
 }
-

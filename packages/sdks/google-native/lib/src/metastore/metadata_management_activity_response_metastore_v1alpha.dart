@@ -33,4 +33,3 @@ class MetadataManagementActivityResponseMetastoreV1alpha {
     );
   }
 }
-

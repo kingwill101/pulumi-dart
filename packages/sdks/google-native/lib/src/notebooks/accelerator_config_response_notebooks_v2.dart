@@ -31,4 +31,3 @@ class AcceleratorConfigResponseNotebooksV2 {
     );
   }
 }
-

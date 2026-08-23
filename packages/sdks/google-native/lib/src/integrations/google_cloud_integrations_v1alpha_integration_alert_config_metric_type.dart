@@ -24,4 +24,3 @@ enum GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType value: $value');
   }
 }
-

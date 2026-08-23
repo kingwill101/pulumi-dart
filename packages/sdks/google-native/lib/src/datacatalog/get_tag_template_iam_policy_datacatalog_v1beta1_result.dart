@@ -38,4 +38,3 @@ class GetTagTemplateIamPolicyDatacatalogV1beta1Result {
     );
   }
 }
-

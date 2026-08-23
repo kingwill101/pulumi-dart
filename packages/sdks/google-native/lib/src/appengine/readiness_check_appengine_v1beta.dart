@@ -61,4 +61,3 @@ class ReadinessCheckAppengineV1beta {
     );
   }
 }
-

@@ -40,4 +40,3 @@ class GooglePrivacyDlpV2HotwordRule {
     );
   }
 }
-

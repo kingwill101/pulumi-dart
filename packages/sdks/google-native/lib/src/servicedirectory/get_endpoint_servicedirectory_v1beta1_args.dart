@@ -47,4 +47,3 @@ class GetEndpointServicedirectoryV1beta1Args {
     );
   }
 }
-

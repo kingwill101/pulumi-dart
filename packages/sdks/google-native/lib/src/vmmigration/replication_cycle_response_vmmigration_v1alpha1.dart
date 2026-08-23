@@ -88,4 +88,3 @@ class ReplicationCycleResponseVmmigrationV1alpha1 {
     );
   }
 }
-

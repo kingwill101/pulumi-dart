@@ -38,4 +38,3 @@ class GoogleCloudDialogflowCxV3beta1RolloutConfigResponse {
     );
   }
 }
-

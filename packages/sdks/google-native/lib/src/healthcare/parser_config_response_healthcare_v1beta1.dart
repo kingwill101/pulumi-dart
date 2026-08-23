@@ -44,4 +44,3 @@ class ParserConfigResponseHealthcareV1beta1 {
     );
   }
 }
-

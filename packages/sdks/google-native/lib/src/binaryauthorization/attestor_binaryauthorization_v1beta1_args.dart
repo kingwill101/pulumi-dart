@@ -58,4 +58,3 @@ class AttestorBinaryauthorizationV1beta1Args {
     );
   }
 }
-

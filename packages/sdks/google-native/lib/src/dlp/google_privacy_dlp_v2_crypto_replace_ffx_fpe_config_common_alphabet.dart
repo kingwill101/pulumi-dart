@@ -18,4 +18,3 @@ enum GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet {
     throw ArgumentError('Unknown GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum ServiceConfigVpcConnectorEgressSettingsCloudfunctionsV2alpha {
     throw ArgumentError('Unknown ServiceConfigVpcConnectorEgressSettingsCloudfunctionsV2alpha value: $value');
   }
 }
-

@@ -31,4 +31,3 @@ class GoogleFirestoreAdminV1beta1IndexFieldResponse {
     );
   }
 }
-

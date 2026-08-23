@@ -100,4 +100,3 @@ class GoogleCloudAiplatformV1beta1CustomJobSpec {
     );
   }
 }
-

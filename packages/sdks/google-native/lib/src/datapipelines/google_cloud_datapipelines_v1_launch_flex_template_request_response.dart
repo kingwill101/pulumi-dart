@@ -44,4 +44,3 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse {
     );
   }
 }
-

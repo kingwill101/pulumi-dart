@@ -39,4 +39,3 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse {
     );
   }
 }
-

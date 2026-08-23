@@ -25,4 +25,3 @@ class MembershipRoleRestrictionEvaluationResponseCloudidentityV1beta1 {
     );
   }
 }
-

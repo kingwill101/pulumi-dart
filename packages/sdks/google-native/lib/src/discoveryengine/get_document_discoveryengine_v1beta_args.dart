@@ -52,4 +52,3 @@ class GetDocumentDiscoveryengineV1betaArgs {
     );
   }
 }
-

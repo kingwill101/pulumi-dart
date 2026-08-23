@@ -55,4 +55,3 @@ class CommandContaineranalysisV1alpha1 {
     );
   }
 }
-

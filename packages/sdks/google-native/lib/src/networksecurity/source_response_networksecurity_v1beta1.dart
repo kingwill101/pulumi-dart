@@ -31,4 +31,3 @@ class SourceResponseNetworksecurityV1beta1 {
     );
   }
 }
-

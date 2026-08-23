@@ -32,4 +32,3 @@ class GoogleCloudDatacatalogLineageV1EventLink {
     );
   }
 }
-

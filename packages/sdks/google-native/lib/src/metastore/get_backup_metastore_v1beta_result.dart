@@ -61,4 +61,3 @@ class GetBackupMetastoreV1betaResult {
     );
   }
 }
-

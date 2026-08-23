@@ -25,4 +25,3 @@ enum FileNoteFileTypeContaineranalysisV1beta1 {
     throw ArgumentError('Unknown FileNoteFileTypeContaineranalysisV1beta1 value: $value');
   }
 }
-

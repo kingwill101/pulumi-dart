@@ -16,4 +16,3 @@ enum NetworkConfigEgressOption {
     throw ArgumentError('Unknown NetworkConfigEgressOption value: $value');
   }
 }
-

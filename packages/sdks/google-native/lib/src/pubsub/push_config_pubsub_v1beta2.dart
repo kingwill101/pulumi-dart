@@ -38,4 +38,3 @@ class PushConfigPubsubV1beta2 {
     );
   }
 }
-

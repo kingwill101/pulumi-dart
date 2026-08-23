@@ -31,4 +31,3 @@ class ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1 {
     );
   }
 }
-

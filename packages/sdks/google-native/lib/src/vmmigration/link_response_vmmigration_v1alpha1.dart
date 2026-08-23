@@ -31,4 +31,3 @@ class LinkResponseVmmigrationV1alpha1 {
     );
   }
 }
-

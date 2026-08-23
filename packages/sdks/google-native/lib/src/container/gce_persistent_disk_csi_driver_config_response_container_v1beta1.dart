@@ -25,4 +25,3 @@ class GcePersistentDiskCsiDriverConfigResponseContainerV1beta1 {
     );
   }
 }
-

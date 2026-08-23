@@ -40,4 +40,3 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfi
     );
   }
 }
-

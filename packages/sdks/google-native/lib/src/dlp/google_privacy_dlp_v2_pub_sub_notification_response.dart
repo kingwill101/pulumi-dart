@@ -44,4 +44,3 @@ class GooglePrivacyDlpV2PubSubNotificationResponse {
     );
   }
 }
-

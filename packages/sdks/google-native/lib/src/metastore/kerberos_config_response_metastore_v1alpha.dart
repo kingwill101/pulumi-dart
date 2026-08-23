@@ -38,4 +38,3 @@ class KerberosConfigResponseMetastoreV1alpha {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class AuditConfigGameservicesV1beta {
     );
   }
 }
-

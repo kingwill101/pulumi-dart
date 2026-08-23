@@ -35,4 +35,3 @@ class ManagedZonePeeringConfigTargetNetworkDnsV1beta2 {
     );
   }
 }
-

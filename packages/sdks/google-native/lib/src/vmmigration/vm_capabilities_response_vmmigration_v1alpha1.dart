@@ -31,4 +31,3 @@ class VmCapabilitiesResponseVmmigrationV1alpha1 {
     );
   }
 }
-

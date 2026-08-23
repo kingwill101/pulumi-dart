@@ -49,4 +49,3 @@ class QueueStatsResponseCloudtasksV2beta3 {
     );
   }
 }
-

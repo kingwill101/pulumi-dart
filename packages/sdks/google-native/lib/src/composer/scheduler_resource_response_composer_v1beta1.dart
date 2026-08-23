@@ -43,4 +43,3 @@ class SchedulerResourceResponseComposerV1beta1 {
     );
   }
 }
-

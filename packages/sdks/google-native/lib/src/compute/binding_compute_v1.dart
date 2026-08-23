@@ -44,4 +44,3 @@ class BindingComputeV1 {
     );
   }
 }
-

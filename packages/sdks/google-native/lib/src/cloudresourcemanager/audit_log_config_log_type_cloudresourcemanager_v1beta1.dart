@@ -17,4 +17,3 @@ enum AuditLogConfigLogTypeCloudresourcemanagerV1beta1 {
     throw ArgumentError('Unknown AuditLogConfigLogTypeCloudresourcemanagerV1beta1 value: $value');
   }
 }
-

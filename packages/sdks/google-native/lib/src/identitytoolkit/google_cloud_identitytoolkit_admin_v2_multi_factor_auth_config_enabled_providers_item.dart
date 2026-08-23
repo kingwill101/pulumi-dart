@@ -14,4 +14,3 @@ enum GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem 
     throw ArgumentError('Unknown GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem value: $value');
   }
 }
-

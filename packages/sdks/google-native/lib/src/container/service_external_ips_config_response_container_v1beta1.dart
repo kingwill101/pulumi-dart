@@ -25,4 +25,3 @@ class ServiceExternalIPsConfigResponseContainerV1beta1 {
     );
   }
 }
-

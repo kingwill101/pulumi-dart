@@ -52,4 +52,3 @@ class OrganizationPartnerTenantBrowserDlpRuleIamMemberBeyondcorpV1alphaArgs {
     );
   }
 }
-

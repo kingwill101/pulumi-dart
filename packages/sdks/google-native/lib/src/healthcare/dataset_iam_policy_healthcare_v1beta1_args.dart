@@ -69,4 +69,3 @@ class DatasetIamPolicyHealthcareV1beta1Args {
     );
   }
 }
-

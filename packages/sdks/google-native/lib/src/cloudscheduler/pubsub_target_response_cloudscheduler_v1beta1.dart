@@ -37,4 +37,3 @@ class PubsubTargetResponseCloudschedulerV1beta1 {
     );
   }
 }
-

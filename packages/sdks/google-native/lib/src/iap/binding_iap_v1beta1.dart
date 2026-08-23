@@ -38,4 +38,3 @@ class BindingIapV1beta1 {
     );
   }
 }
-

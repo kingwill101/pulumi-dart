@@ -93,4 +93,3 @@ class FirewallPolicyRuleMatcherResponseComputeV1 {
     );
   }
 }
-

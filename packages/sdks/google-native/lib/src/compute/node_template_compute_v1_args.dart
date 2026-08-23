@@ -95,4 +95,3 @@ class NodeTemplateComputeV1Args {
     );
   }
 }
-

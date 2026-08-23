@@ -62,4 +62,3 @@ class GooglePrivacyDlpV2BigQueryOptionsResponse {
     );
   }
 }
-

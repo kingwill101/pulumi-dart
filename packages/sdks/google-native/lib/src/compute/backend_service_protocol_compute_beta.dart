@@ -21,4 +21,3 @@ enum BackendServiceProtocolComputeBeta {
     throw ArgumentError('Unknown BackendServiceProtocolComputeBeta value: $value');
   }
 }
-

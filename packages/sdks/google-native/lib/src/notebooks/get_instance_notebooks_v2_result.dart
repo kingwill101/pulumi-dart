@@ -99,4 +99,3 @@ class GetInstanceNotebooksV2Result {
     );
   }
 }
-

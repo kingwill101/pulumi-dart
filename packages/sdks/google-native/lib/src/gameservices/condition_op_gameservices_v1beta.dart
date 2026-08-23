@@ -19,4 +19,3 @@ enum ConditionOpGameservicesV1beta {
     throw ArgumentError('Unknown ConditionOpGameservicesV1beta value: $value');
   }
 }
-

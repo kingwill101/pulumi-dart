@@ -16,4 +16,3 @@ enum InstancePropertiesKeyRevocationActionTypeComputeV1 {
     throw ArgumentError('Unknown InstancePropertiesKeyRevocationActionTypeComputeV1 value: $value');
   }
 }
-

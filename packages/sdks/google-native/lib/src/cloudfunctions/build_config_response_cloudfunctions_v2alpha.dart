@@ -81,4 +81,3 @@ class BuildConfigResponseCloudfunctionsV2alpha {
     );
   }
 }
-

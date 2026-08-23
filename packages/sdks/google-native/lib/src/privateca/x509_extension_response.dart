@@ -38,4 +38,3 @@ class X509ExtensionResponse {
     );
   }
 }
-

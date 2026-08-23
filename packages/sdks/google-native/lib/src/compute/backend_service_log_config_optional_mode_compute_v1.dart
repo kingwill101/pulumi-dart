@@ -16,4 +16,3 @@ enum BackendServiceLogConfigOptionalModeComputeV1 {
     throw ArgumentError('Unknown BackendServiceLogConfigOptionalModeComputeV1 value: $value');
   }
 }
-

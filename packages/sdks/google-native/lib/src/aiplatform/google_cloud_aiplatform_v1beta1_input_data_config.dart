@@ -98,4 +98,3 @@ class GoogleCloudAiplatformV1beta1InputDataConfig {
     );
   }
 }
-

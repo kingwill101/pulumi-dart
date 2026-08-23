@@ -60,4 +60,3 @@ class GoogleCloudDialogflowCxV3QueryInputResponse {
     );
   }
 }
-

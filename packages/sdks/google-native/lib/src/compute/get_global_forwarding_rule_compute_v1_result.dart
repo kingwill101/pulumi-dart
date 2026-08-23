@@ -218,4 +218,3 @@ class GetGlobalForwardingRuleComputeV1Result {
     );
   }
 }
-

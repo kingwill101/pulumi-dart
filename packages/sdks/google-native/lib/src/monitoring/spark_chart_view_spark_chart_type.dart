@@ -16,4 +16,3 @@ enum SparkChartViewSparkChartType {
     throw ArgumentError('Unknown SparkChartViewSparkChartType value: $value');
   }
 }
-

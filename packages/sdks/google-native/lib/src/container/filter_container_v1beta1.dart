@@ -26,4 +26,3 @@ class FilterContainerV1beta1 {
     );
   }
 }
-

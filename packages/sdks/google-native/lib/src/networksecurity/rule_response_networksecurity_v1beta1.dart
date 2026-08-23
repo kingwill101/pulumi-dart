@@ -33,4 +33,3 @@ class RuleResponseNetworksecurityV1beta1 {
     );
   }
 }
-

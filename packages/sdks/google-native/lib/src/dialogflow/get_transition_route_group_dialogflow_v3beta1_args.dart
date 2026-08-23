@@ -52,4 +52,3 @@ class GetTransitionRouteGroupDialogflowV3beta1Args {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterva
     throw ArgumentError('Unknown AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval value: $value');
   }
 }
-

@@ -38,4 +38,3 @@ class WindowsUpdateSettingsOsconfigV1beta {
     );
   }
 }
-

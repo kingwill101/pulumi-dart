@@ -114,4 +114,3 @@ class ReportSummaryGroupPreferenceSetFindingResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

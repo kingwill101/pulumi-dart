@@ -52,4 +52,3 @@ class RegionAutoscalingPolicyIamBindingDataprocV1beta2Args {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum SoleTenancyPreferencesHostMaintenancePolicyMigrationcenterV1alpha1 {
     throw ArgumentError('Unknown SoleTenancyPreferencesHostMaintenancePolicyMigrationcenterV1alpha1 value: $value');
   }
 }
-

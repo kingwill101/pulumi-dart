@@ -25,4 +25,3 @@ class ILBSubsettingConfigContainerV1beta1 {
     );
   }
 }
-

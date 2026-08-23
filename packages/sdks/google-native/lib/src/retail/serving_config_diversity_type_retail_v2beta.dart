@@ -16,4 +16,3 @@ enum ServingConfigDiversityTypeRetailV2beta {
     throw ArgumentError('Unknown ServingConfigDiversityTypeRetailV2beta value: $value');
   }
 }
-

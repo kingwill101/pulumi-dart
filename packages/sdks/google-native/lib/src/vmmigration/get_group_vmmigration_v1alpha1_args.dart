@@ -37,4 +37,3 @@ class GetGroupVmmigrationV1alpha1Args {
     );
   }
 }
-

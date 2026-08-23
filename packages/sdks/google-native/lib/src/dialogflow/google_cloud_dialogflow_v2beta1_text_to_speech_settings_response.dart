@@ -43,4 +43,3 @@ class GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse {
     );
   }
 }
-

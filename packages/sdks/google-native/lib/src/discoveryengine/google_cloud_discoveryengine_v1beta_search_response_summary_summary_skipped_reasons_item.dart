@@ -18,4 +18,3 @@ enum GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsI
     throw ArgumentError('Unknown GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem value: $value');
   }
 }
-

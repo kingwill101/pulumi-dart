@@ -18,4 +18,3 @@ enum UrlMapRedirectHttpResponseCode {
     throw ArgumentError('Unknown UrlMapRedirectHttpResponseCode value: $value');
   }
 }
-

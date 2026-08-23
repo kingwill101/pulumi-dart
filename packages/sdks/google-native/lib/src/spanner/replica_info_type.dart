@@ -17,4 +17,3 @@ enum ReplicaInfoType {
     throw ArgumentError('Unknown ReplicaInfoType value: $value');
   }
 }
-

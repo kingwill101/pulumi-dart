@@ -62,4 +62,3 @@ class GoogleCloudRetailV2alphaPriceInfoResponse {
     );
   }
 }
-

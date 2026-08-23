@@ -31,4 +31,3 @@ class JobReferenceDataprocV1beta2 {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class NodeManagementContainerV1beta1 {
     );
   }
 }
-

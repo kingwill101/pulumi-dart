@@ -94,4 +94,3 @@ class GceInstanceResponseWorkstationsV1beta {
     );
   }
 }
-

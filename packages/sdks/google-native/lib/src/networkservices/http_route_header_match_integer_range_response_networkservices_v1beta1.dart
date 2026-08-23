@@ -31,4 +31,3 @@ class HttpRouteHeaderMatchIntegerRangeResponseNetworkservicesV1beta1 {
     );
   }
 }
-

@@ -69,4 +69,3 @@ class AppGatewayIamPolicyBeyondcorpV1alphaArgs {
     );
   }
 }
-

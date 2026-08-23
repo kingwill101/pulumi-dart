@@ -52,4 +52,3 @@ class NotebookRuntimeTemplateIamMemberAiplatformV1beta1Args {
     );
   }
 }
-

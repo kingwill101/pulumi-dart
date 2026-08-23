@@ -52,4 +52,3 @@ class IamMemberIapV1beta1Args {
     );
   }
 }
-

@@ -47,4 +47,3 @@ class GooglePrivacyDlpV2DeidentifyConfigResponse {
     );
   }
 }
-

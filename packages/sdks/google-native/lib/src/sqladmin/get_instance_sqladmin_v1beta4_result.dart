@@ -275,4 +275,3 @@ class GetInstanceSqladminV1beta4Result {
     );
   }
 }
-

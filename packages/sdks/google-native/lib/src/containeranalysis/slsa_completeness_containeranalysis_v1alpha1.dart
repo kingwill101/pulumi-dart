@@ -37,4 +37,3 @@ class SlsaCompletenessContaineranalysisV1alpha1 {
     );
   }
 }
-

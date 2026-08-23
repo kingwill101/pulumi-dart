@@ -16,4 +16,3 @@ enum NetworkingConfigConnectionTypeComposerV1beta1 {
     throw ArgumentError('Unknown NetworkingConfigConnectionTypeComposerV1beta1 value: $value');
   }
 }
-

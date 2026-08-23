@@ -74,4 +74,3 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse {
     );
   }
 }
-

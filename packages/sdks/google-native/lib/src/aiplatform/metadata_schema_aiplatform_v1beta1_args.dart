@@ -68,4 +68,3 @@ class MetadataSchemaAiplatformV1beta1Args {
     );
   }
 }
-

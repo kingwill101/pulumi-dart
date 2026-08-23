@@ -29,4 +29,3 @@ class GrafeasV1beta1IntotoArtifact {
     );
   }
 }
-

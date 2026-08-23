@@ -45,4 +45,3 @@ class ReachabilityDetailsResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

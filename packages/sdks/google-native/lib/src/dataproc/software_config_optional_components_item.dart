@@ -27,4 +27,3 @@ enum SoftwareConfigOptionalComponentsItem {
     throw ArgumentError('Unknown SoftwareConfigOptionalComponentsItem value: $value');
   }
 }
-

@@ -48,4 +48,3 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseDnsV1beta2 {
     );
   }
 }
-

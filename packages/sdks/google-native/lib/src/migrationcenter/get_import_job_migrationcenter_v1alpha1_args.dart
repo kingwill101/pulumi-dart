@@ -42,4 +42,3 @@ class GetImportJobMigrationcenterV1alpha1Args {
     );
   }
 }
-

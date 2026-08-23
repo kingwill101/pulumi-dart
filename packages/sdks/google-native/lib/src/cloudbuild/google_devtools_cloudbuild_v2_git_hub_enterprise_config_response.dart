@@ -80,4 +80,3 @@ class GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfigResponse {
     );
   }
 }
-

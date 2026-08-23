@@ -50,4 +50,3 @@ class GoogleCloudDatapipelinesV1LaunchTemplateParameters {
     );
   }
 }
-

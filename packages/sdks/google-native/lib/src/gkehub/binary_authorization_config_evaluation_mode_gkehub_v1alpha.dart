@@ -16,4 +16,3 @@ enum BinaryAuthorizationConfigEvaluationModeGkehubV1alpha {
     throw ArgumentError('Unknown BinaryAuthorizationConfigEvaluationModeGkehubV1alpha value: $value');
   }
 }
-

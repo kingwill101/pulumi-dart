@@ -62,4 +62,3 @@ class SoftwareConfigResponseComposerV1beta1 {
     );
   }
 }
-

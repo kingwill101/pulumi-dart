@@ -37,4 +37,3 @@ class GetCapacityCommitmentBigqueryreservationV1beta1Args {
     );
   }
 }
-

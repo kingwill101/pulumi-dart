@@ -38,4 +38,3 @@ class ReportSummarySoleTenantNodeAllocationResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

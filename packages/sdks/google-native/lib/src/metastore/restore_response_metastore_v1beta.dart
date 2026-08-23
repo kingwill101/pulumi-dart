@@ -61,4 +61,3 @@ class RestoreResponseMetastoreV1beta {
     );
   }
 }
-

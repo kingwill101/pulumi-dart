@@ -17,4 +17,3 @@ enum DNSConfigClusterDnsContainerV1beta1 {
     throw ArgumentError('Unknown DNSConfigClusterDnsContainerV1beta1 value: $value');
   }
 }
-

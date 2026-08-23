@@ -25,4 +25,3 @@ class EnterpriseConfigResponseContainerV1beta1 {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class OSPolicyAssignmentLabelSetOsconfigV1alpha {
     );
   }
 }
-

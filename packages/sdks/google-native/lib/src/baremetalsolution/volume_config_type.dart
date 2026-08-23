@@ -16,4 +16,3 @@ enum VolumeConfigType {
     throw ArgumentError('Unknown VolumeConfigType value: $value');
   }
 }
-

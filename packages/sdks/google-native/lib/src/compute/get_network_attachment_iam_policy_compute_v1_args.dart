@@ -42,4 +42,3 @@ class GetNetworkAttachmentIamPolicyComputeV1Args {
     );
   }
 }
-

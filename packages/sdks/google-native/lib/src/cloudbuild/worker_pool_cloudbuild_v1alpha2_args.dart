@@ -53,4 +53,3 @@ class WorkerPoolCloudbuildV1alpha2Args {
     );
   }
 }
-

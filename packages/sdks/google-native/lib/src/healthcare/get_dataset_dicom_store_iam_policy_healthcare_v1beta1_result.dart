@@ -45,4 +45,3 @@ class GetDatasetDicomStoreIamPolicyHealthcareV1beta1Result {
     );
   }
 }
-

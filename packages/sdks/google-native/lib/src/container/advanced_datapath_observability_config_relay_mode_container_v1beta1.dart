@@ -17,4 +17,3 @@ enum AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1 {
     throw ArgumentError('Unknown AdvancedDatapathObservabilityConfigRelayModeContainerV1beta1 value: $value');
   }
 }
-

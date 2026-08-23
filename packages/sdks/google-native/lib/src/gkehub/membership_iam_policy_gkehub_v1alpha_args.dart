@@ -69,4 +69,3 @@ class MembershipIamPolicyGkehubV1alphaArgs {
     );
   }
 }
-

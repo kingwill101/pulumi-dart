@@ -32,4 +32,3 @@ class GetImageComputeV1Args {
     );
   }
 }
-

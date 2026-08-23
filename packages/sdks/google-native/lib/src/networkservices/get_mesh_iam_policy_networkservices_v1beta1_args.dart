@@ -42,4 +42,3 @@ class GetMeshIamPolicyNetworkservicesV1beta1Args {
     );
   }
 }
-

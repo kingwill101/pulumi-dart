@@ -52,4 +52,3 @@ class NetworkFirewallPolicyIamBindingComputeV1Args {
     );
   }
 }
-

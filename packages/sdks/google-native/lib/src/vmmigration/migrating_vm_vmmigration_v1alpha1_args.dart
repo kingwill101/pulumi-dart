@@ -107,4 +107,3 @@ class MigratingVmVmmigrationV1alpha1Args {
     );
   }
 }
-

@@ -60,4 +60,3 @@ class CommonFeatureStateResponseGkehubV1alpha {
     );
   }
 }
-

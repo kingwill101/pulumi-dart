@@ -115,4 +115,3 @@ class VmUtilizationMetricsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

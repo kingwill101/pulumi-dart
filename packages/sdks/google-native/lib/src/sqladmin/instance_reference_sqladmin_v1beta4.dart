@@ -37,4 +37,3 @@ class InstanceReferenceSqladminV1beta4 {
     );
   }
 }
-

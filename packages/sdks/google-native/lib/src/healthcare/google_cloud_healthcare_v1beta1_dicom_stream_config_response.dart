@@ -26,4 +26,3 @@ class GoogleCloudHealthcareV1beta1DicomStreamConfigResponse {
     );
   }
 }
-

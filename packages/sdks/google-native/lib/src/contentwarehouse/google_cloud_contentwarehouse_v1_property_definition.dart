@@ -125,4 +125,3 @@ class GoogleCloudContentwarehouseV1PropertyDefinition {
     );
   }
 }
-

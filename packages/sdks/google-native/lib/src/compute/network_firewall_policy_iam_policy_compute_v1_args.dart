@@ -65,4 +65,3 @@ class NetworkFirewallPolicyIamPolicyComputeV1Args {
     );
   }
 }
-

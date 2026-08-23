@@ -39,4 +39,3 @@ class BuildDefinitionContaineranalysisV1alpha1 {
     );
   }
 }
-

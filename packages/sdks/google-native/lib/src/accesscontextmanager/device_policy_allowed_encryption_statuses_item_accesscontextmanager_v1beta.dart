@@ -16,4 +16,3 @@ enum DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta {
     throw ArgumentError('Unknown DevicePolicyAllowedEncryptionStatusesItemAccesscontextmanagerV1beta value: $value');
   }
 }
-

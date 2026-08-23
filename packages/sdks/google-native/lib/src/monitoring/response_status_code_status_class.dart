@@ -20,4 +20,3 @@ enum ResponseStatusCodeStatusClass {
     throw ArgumentError('Unknown ResponseStatusCodeStatusClass value: $value');
   }
 }
-

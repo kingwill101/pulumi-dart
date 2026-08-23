@@ -69,4 +69,3 @@ class GetClientTlsPolicyNetworksecurityV1beta1Result {
     );
   }
 }
-

@@ -42,4 +42,3 @@ class PolicyAlternativeNameServerConfigTargetNameServerDnsV1beta2 {
     );
   }
 }
-

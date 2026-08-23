@@ -31,4 +31,3 @@ class RangeInfoResponseContainerV1beta1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum GoogleCloudMlV1HyperparameterSpecAlgorithm {
     throw ArgumentError('Unknown GoogleCloudMlV1HyperparameterSpecAlgorithm value: $value');
   }
 }
-

@@ -42,4 +42,3 @@ class GetFeatureViewAiplatformV1beta1Args {
     );
   }
 }
-

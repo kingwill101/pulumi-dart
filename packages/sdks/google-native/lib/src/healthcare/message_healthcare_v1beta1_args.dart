@@ -92,4 +92,3 @@ class MessageHealthcareV1beta1Args {
     );
   }
 }
-

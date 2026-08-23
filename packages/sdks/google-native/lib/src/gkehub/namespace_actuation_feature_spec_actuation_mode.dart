@@ -16,4 +16,3 @@ enum NamespaceActuationFeatureSpecActuationMode {
     throw ArgumentError('Unknown NamespaceActuationFeatureSpecActuationMode value: $value');
   }
 }
-

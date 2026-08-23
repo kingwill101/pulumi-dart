@@ -31,4 +31,3 @@ class SubnetVpcaccessV1beta1 {
     );
   }
 }
-

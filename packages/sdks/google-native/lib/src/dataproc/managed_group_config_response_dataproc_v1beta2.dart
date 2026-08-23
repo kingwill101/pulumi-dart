@@ -31,4 +31,3 @@ class ManagedGroupConfigResponseDataprocV1beta2 {
     );
   }
 }
-

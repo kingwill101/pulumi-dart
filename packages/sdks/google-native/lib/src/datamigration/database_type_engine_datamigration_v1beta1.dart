@@ -15,4 +15,3 @@ enum DatabaseTypeEngineDatamigrationV1beta1 {
     throw ArgumentError('Unknown DatabaseTypeEngineDatamigrationV1beta1 value: $value');
   }
 }
-

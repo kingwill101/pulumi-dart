@@ -25,4 +25,3 @@ class GoogleFirestoreAdminV1WeeklyRecurrenceResponse {
     );
   }
 }
-

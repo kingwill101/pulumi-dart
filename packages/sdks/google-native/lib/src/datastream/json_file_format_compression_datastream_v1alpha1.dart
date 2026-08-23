@@ -16,4 +16,3 @@ enum JsonFileFormatCompressionDatastreamV1alpha1 {
     throw ArgumentError('Unknown JsonFileFormatCompressionDatastreamV1alpha1 value: $value');
   }
 }
-

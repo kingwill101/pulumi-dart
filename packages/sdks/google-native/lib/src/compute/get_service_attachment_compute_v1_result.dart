@@ -130,4 +130,3 @@ class GetServiceAttachmentComputeV1Result {
     );
   }
 }
-

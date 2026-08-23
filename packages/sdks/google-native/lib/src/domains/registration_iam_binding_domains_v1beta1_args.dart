@@ -52,4 +52,3 @@ class RegistrationIamBindingDomainsV1beta1Args {
     );
   }
 }
-

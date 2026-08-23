@@ -16,4 +16,3 @@ enum GoogleCloudRunV2RevisionTemplateExecutionEnvironment {
     throw ArgumentError('Unknown GoogleCloudRunV2RevisionTemplateExecutionEnvironment value: $value');
   }
 }
-

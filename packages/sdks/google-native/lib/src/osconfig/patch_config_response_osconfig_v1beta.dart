@@ -78,4 +78,3 @@ class PatchConfigResponseOsconfigV1beta {
     );
   }
 }
-

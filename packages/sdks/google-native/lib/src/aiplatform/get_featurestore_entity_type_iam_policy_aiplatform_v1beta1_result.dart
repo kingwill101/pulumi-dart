@@ -38,4 +38,3 @@ class GetFeaturestoreEntityTypeIamPolicyAiplatformV1beta1Result {
     );
   }
 }
-

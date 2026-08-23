@@ -31,4 +31,3 @@ class PublisherAnalyticshubV1beta1 {
     );
   }
 }
-

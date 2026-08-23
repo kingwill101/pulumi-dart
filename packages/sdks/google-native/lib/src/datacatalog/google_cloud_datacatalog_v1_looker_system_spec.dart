@@ -55,4 +55,3 @@ class GoogleCloudDatacatalogV1LookerSystemSpec {
     );
   }
 }
-

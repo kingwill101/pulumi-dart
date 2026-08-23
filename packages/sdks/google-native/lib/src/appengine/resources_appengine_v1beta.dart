@@ -50,4 +50,3 @@ class ResourcesAppengineV1beta {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class OSPolicyResourcePackageResourceMSIOsconfigV1alpha {
     );
   }
 }
-

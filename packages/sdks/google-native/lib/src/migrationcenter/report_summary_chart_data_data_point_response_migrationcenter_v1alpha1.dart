@@ -31,4 +31,3 @@ class ReportSummaryChartDataDataPointResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

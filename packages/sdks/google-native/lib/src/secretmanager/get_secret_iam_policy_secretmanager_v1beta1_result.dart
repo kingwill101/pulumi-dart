@@ -45,4 +45,3 @@ class GetSecretIamPolicySecretmanagerV1beta1Result {
     );
   }
 }
-

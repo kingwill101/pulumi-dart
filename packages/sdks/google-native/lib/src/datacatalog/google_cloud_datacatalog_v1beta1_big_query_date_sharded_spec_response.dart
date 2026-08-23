@@ -37,4 +37,3 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class LayerContaineranalysisV1alpha1 {
     );
   }
 }
-

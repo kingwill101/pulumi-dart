@@ -14,4 +14,3 @@ enum ImageSourceTypeComputeBeta {
     throw ArgumentError('Unknown ImageSourceTypeComputeBeta value: $value');
   }
 }
-

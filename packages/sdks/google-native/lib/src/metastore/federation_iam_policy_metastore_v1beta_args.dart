@@ -69,4 +69,3 @@ class FederationIamPolicyMetastoreV1betaArgs {
     );
   }
 }
-

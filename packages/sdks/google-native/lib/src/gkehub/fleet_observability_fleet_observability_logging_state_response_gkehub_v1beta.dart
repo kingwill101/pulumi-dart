@@ -32,4 +32,3 @@ class FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1beta {
     );
   }
 }
-

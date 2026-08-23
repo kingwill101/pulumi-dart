@@ -31,4 +31,3 @@ class HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1 {
     );
   }
 }
-

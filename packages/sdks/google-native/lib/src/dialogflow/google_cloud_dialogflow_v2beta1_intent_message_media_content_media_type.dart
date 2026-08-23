@@ -15,4 +15,3 @@ enum GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType {
     throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType value: $value');
   }
 }
-

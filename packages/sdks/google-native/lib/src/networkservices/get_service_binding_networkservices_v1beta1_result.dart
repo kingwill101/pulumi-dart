@@ -60,4 +60,3 @@ class GetServiceBindingNetworkservicesV1beta1Result {
     );
   }
 }
-

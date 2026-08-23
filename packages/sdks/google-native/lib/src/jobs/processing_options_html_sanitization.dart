@@ -16,4 +16,3 @@ enum ProcessingOptionsHtmlSanitization {
     throw ArgumentError('Unknown ProcessingOptionsHtmlSanitization value: $value');
   }
 }
-

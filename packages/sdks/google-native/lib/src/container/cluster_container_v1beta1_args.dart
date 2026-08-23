@@ -453,4 +453,3 @@ class ClusterContainerV1beta1Args {
     );
   }
 }
-

@@ -18,4 +18,3 @@ enum GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption value: $value');
   }
 }
-

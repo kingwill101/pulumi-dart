@@ -45,4 +45,3 @@ class GetAuthorizationPolicyIamPolicyNetworksecurityV1beta1Result {
     );
   }
 }
-

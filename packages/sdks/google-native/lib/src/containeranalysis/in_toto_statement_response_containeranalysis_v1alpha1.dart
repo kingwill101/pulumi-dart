@@ -59,4 +59,3 @@ class InTotoStatementResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

@@ -33,4 +33,3 @@ class DynamicGroupMetadataResponseCloudidentityV1beta1 {
     );
   }
 }
-

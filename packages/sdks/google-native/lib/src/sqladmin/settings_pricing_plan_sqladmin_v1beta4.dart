@@ -16,4 +16,3 @@ enum SettingsPricingPlanSqladminV1beta4 {
     throw ArgumentError('Unknown SettingsPricingPlanSqladminV1beta4 value: $value');
   }
 }
-

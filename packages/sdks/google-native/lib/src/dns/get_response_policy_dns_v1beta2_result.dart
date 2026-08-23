@@ -56,4 +56,3 @@ class GetResponsePolicyDnsV1beta2Result {
     );
   }
 }
-

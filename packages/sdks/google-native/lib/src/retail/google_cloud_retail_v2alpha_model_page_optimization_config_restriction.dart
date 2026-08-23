@@ -18,4 +18,3 @@ enum GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction {
     throw ArgumentError('Unknown GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction value: $value');
   }
 }
-

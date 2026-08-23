@@ -37,4 +37,3 @@ class GetPacketMirroringComputeV1Args {
     );
   }
 }
-

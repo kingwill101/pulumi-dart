@@ -59,4 +59,3 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
     );
   }
 }
-

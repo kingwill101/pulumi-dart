@@ -56,4 +56,3 @@ enum ScanConfigErrorCode {
     throw ArgumentError('Unknown ScanConfigErrorCode value: $value');
   }
 }
-

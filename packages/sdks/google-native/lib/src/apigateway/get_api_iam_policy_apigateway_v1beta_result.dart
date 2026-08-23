@@ -45,4 +45,3 @@ class GetApiIamPolicyApigatewayV1betaResult {
     );
   }
 }
-

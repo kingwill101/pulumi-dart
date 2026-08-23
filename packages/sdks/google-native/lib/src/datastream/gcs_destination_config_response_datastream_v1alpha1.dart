@@ -56,4 +56,3 @@ class GcsDestinationConfigResponseDatastreamV1alpha1 {
     );
   }
 }
-

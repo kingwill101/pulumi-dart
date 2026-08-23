@@ -17,4 +17,3 @@ enum AccessDeterminationLogConfigLogLevel {
     throw ArgumentError('Unknown AccessDeterminationLogConfigLogLevel value: $value');
   }
 }
-

@@ -25,4 +25,3 @@ class NetworkingConfigResponseComposerV1beta1 {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class HttpRouteDestinationNetworkservicesV1beta1 {
     );
   }
 }
-

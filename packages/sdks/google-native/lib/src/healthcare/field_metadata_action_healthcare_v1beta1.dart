@@ -17,4 +17,3 @@ enum FieldMetadataActionHealthcareV1beta1 {
     throw ArgumentError('Unknown FieldMetadataActionHealthcareV1beta1 value: $value');
   }
 }
-

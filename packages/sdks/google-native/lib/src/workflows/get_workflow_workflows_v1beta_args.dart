@@ -37,4 +37,3 @@ class GetWorkflowWorkflowsV1betaArgs {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum RouterBgpPeerBfdSessionInitializationModeComputeV1 {
     throw ArgumentError('Unknown RouterBgpPeerBfdSessionInitializationModeComputeV1 value: $value');
   }
 }
-

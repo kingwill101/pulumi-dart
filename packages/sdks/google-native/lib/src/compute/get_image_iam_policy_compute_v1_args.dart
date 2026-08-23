@@ -37,4 +37,3 @@ class GetImageIamPolicyComputeV1Args {
     );
   }
 }
-

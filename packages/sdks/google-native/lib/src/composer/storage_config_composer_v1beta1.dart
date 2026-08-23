@@ -25,4 +25,3 @@ class StorageConfigComposerV1beta1 {
     );
   }
 }
-

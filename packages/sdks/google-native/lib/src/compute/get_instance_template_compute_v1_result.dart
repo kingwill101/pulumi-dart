@@ -74,4 +74,3 @@ class GetInstanceTemplateComputeV1Result {
     );
   }
 }
-

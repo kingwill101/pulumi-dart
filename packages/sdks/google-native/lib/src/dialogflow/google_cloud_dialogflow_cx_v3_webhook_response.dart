@@ -57,4 +57,3 @@ class GoogleCloudDialogflowCxV3WebhookResponse {
     );
   }
 }
-

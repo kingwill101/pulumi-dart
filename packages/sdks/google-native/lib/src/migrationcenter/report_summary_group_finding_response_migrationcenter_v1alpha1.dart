@@ -51,4 +51,3 @@ class ReportSummaryGroupFindingResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

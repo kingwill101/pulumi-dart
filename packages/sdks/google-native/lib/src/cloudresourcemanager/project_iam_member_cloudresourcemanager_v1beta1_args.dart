@@ -52,4 +52,3 @@ class ProjectIamMemberCloudresourcemanagerV1beta1Args {
     );
   }
 }
-

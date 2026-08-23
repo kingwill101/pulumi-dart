@@ -16,4 +16,3 @@ enum RuntimeEnvironmentIpConfiguration {
     throw ArgumentError('Unknown RuntimeEnvironmentIpConfiguration value: $value');
   }
 }
-

@@ -42,4 +42,3 @@ class GetClusterAlloydbV1betaArgs {
     );
   }
 }
-

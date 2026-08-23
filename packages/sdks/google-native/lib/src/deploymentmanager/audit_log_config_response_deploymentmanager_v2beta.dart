@@ -31,4 +31,3 @@ class AuditLogConfigResponseDeploymentmanagerV2beta {
     );
   }
 }
-

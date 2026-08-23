@@ -164,4 +164,3 @@ class GoogleCloudDialogflowV2beta1IntentMessageResponse {
     );
   }
 }
-

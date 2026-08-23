@@ -18,4 +18,3 @@ enum GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType {
     throw ArgumentError('Unknown GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType value: $value');
   }
 }
-

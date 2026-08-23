@@ -43,4 +43,3 @@ class YarnApplicationResponseDataprocV1beta2 {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class AuditLogConfigNetworkmanagementV1beta1 {
     );
   }
 }
-

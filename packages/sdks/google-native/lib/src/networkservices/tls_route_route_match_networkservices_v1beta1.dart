@@ -31,4 +31,3 @@ class TlsRouteRouteMatchNetworkservicesV1beta1 {
     );
   }
 }
-

@@ -101,4 +101,3 @@ class GetFunctionCloudfunctionsV2Result {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class DatasetIamBindingHealthcareV1beta1Args {
     );
   }
 }
-

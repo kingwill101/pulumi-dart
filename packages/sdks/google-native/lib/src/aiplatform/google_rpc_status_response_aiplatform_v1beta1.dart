@@ -37,4 +37,3 @@ class GoogleRpcStatusResponseAiplatformV1beta1 {
     );
   }
 }
-

@@ -89,4 +89,3 @@ class ScanRunWebsecurityscannerV1beta {
     );
   }
 }
-

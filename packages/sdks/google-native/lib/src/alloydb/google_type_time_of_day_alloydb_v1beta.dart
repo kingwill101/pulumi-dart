@@ -43,4 +43,3 @@ class GoogleTypeTimeOfDayAlloydbV1beta {
     );
   }
 }
-

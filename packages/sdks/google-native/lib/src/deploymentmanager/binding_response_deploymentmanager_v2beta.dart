@@ -38,4 +38,3 @@ class BindingResponseDeploymentmanagerV2beta {
     );
   }
 }
-

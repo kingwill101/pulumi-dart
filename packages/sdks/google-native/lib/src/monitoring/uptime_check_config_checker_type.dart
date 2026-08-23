@@ -16,4 +16,3 @@ enum UptimeCheckConfigCheckerType {
     throw ArgumentError('Unknown UptimeCheckConfigCheckerType value: $value');
   }
 }
-

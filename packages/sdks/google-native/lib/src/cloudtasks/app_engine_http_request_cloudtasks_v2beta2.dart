@@ -51,4 +51,3 @@ class AppEngineHttpRequestCloudtasksV2beta2 {
     );
   }
 }
-

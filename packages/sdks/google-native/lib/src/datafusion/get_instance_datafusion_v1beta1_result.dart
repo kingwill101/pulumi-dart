@@ -222,4 +222,3 @@ class GetInstanceDatafusionV1beta1Result {
     );
   }
 }
-

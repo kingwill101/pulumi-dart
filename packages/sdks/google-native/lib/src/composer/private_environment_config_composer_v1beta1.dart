@@ -69,4 +69,3 @@ class PrivateEnvironmentConfigComposerV1beta1 {
     );
   }
 }
-

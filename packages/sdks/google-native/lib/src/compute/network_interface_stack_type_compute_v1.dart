@@ -15,4 +15,3 @@ enum NetworkInterfaceStackTypeComputeV1 {
     throw ArgumentError('Unknown NetworkInterfaceStackTypeComputeV1 value: $value');
   }
 }
-

@@ -32,4 +32,3 @@ class GetOrganizationSourceIamPolicySecuritycenterV1beta1Args {
     );
   }
 }
-

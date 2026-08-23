@@ -62,4 +62,3 @@ class FileOccurrenceResponseContaineranalysisV1beta1 {
     );
   }
 }
-

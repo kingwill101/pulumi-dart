@@ -37,4 +37,3 @@ class StatusResponseDatamigrationV1beta1 {
     );
   }
 }
-

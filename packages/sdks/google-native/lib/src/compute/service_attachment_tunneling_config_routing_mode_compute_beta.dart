@@ -16,4 +16,3 @@ enum ServiceAttachmentTunnelingConfigRoutingModeComputeBeta {
     throw ArgumentError('Unknown ServiceAttachmentTunnelingConfigRoutingModeComputeBeta value: $value');
   }
 }
-

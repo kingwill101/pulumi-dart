@@ -226,4 +226,3 @@ class GetProductRetailV2alphaResult {
     );
   }
 }
-

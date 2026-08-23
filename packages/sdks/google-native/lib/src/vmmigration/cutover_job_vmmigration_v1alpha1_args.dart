@@ -54,4 +54,3 @@ class CutoverJobVmmigrationV1alpha1Args {
     );
   }
 }
-

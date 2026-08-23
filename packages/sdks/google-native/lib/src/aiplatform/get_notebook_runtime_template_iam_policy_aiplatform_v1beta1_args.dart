@@ -42,4 +42,3 @@ class GetNotebookRuntimeTemplateIamPolicyAiplatformV1beta1Args {
     );
   }
 }
-

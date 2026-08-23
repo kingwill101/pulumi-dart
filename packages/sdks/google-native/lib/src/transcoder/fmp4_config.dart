@@ -25,4 +25,3 @@ class Fmp4Config {
     );
   }
 }
-

@@ -45,4 +45,3 @@ class GetProjectIamPolicyCloudresourcemanagerV3Result {
     );
   }
 }
-

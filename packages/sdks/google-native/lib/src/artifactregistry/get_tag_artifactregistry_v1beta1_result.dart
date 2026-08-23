@@ -30,4 +30,3 @@ class GetTagArtifactregistryV1beta1Result {
     );
   }
 }
-

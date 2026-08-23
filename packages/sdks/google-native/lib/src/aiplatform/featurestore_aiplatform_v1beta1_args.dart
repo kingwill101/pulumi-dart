@@ -70,4 +70,3 @@ class FeaturestoreAiplatformV1beta1Args {
     );
   }
 }
-

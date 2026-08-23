@@ -16,4 +16,3 @@ enum GoogleCloudDialogflowCxV3beta1NluSettingsModelType {
     throw ArgumentError('Unknown GoogleCloudDialogflowCxV3beta1NluSettingsModelType value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum InstanceSqlNetworkArchitectureSqladminV1beta4 {
     throw ArgumentError('Unknown InstanceSqlNetworkArchitectureSqladminV1beta4 value: $value');
   }
 }
-

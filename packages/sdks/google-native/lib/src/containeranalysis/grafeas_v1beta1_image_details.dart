@@ -26,4 +26,3 @@ class GrafeasV1beta1ImageDetails {
     );
   }
 }
-

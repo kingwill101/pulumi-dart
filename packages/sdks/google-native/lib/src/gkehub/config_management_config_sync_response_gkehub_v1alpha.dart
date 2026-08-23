@@ -63,4 +63,3 @@ class ConfigManagementConfigSyncResponseGkehubV1alpha {
     );
   }
 }
-

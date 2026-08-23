@@ -14,4 +14,3 @@ enum GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem {
     throw ArgumentError('Unknown GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem value: $value');
   }
 }
-

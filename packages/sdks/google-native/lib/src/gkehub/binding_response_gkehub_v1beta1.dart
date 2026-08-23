@@ -38,4 +38,3 @@ class BindingResponseGkehubV1beta1 {
     );
   }
 }
-

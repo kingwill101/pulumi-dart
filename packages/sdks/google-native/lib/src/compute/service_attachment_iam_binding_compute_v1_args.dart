@@ -52,4 +52,3 @@ class ServiceAttachmentIamBindingComputeV1Args {
     );
   }
 }
-

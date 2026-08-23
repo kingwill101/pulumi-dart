@@ -31,4 +31,3 @@ class DiagnosticDeploymentmanagerV2beta {
     );
   }
 }
-

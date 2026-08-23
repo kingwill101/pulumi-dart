@@ -31,4 +31,3 @@ class SandboxConfigResponseContainerV1beta1 {
     );
   }
 }
-

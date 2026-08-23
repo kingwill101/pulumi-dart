@@ -17,4 +17,3 @@ enum ComputeEnginePreferencesPersistentDiskType {
     throw ArgumentError('Unknown ComputeEnginePreferencesPersistentDiskType value: $value');
   }
 }
-

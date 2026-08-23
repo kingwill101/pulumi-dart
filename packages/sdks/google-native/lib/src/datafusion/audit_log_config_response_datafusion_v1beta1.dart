@@ -31,4 +31,3 @@ class AuditLogConfigResponseDatafusionV1beta1 {
     );
   }
 }
-

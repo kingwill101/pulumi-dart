@@ -52,4 +52,3 @@ class OrganizationSourceIamMemberSecuritycenterV1beta1Args {
     );
   }
 }
-

@@ -24,4 +24,3 @@ class AnalysisCompletedContaineranalysisV1beta1 {
     );
   }
 }
-

@@ -78,4 +78,3 @@ class GetWorkflowWorkflowsV1betaResult {
     );
   }
 }
-

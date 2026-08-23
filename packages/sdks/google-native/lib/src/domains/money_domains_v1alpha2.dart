@@ -37,4 +37,3 @@ class MoneyDomainsV1alpha2 {
     );
   }
 }
-

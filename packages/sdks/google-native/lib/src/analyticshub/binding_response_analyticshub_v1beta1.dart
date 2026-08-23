@@ -38,4 +38,3 @@ class BindingResponseAnalyticshubV1beta1 {
     );
   }
 }
-

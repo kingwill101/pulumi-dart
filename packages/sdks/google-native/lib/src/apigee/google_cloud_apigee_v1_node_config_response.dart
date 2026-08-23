@@ -37,4 +37,3 @@ class GoogleCloudApigeeV1NodeConfigResponse {
     );
   }
 }
-

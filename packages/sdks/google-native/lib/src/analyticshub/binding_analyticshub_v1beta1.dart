@@ -38,4 +38,3 @@ class BindingAnalyticshubV1beta1 {
     );
   }
 }
-

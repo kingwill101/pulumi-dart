@@ -25,4 +25,3 @@ class LoggingComponentConfigResponseContainerV1beta1 {
     );
   }
 }
-

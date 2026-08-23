@@ -38,4 +38,3 @@ class GoogleCloudRunV2EnvVarResponse {
     );
   }
 }
-

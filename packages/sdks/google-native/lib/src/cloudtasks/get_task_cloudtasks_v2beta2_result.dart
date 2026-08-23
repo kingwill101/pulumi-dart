@@ -70,4 +70,3 @@ class GetTaskCloudtasksV2beta2Result {
     );
   }
 }
-

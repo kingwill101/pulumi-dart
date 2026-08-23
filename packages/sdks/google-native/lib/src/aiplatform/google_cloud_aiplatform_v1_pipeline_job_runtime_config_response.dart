@@ -49,4 +49,3 @@ class GoogleCloudAiplatformV1PipelineJobRuntimeConfigResponse {
     );
   }
 }
-

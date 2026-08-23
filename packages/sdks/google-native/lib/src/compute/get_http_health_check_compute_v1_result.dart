@@ -90,4 +90,3 @@ class GetHttpHealthCheckComputeV1Result {
     );
   }
 }
-

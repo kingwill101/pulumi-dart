@@ -60,4 +60,3 @@ class GoogleCloudChannelV1RepricingConfig {
     );
   }
 }
-

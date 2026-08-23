@@ -67,4 +67,3 @@ class HttpRouteCorsPolicyNetworkservicesV1beta1 {
     );
   }
 }
-

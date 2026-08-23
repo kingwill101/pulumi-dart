@@ -109,4 +109,3 @@ class KerberosConfigDataprocV1beta2 {
     );
   }
 }
-

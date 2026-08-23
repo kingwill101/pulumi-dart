@@ -147,4 +147,3 @@ class IPAllocationPolicyResponseContainerV1beta1 {
     );
   }
 }
-

@@ -38,4 +38,3 @@ class GoogleCloudHealthcareV1beta1DicomBigQueryDestination {
     );
   }
 }
-

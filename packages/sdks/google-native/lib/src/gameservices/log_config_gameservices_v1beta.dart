@@ -40,4 +40,3 @@ class LogConfigGameservicesV1beta {
     );
   }
 }
-

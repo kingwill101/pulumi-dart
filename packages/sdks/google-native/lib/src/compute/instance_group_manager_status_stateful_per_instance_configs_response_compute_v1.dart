@@ -24,4 +24,3 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseComputeV1 {
     );
   }
 }
-

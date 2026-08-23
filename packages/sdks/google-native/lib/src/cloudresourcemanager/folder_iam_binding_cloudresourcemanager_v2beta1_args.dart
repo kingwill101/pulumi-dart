@@ -52,4 +52,3 @@ class FolderIamBindingCloudresourcemanagerV2beta1Args {
     );
   }
 }
-

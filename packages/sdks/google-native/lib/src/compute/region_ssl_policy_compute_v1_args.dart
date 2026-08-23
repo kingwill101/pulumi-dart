@@ -70,4 +70,3 @@ class RegionSslPolicyComputeV1Args {
     );
   }
 }
-

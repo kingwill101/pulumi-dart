@@ -16,4 +16,3 @@ enum GlobalAddressAddressTypeComputeBeta {
     throw ArgumentError('Unknown GlobalAddressAddressTypeComputeBeta value: $value');
   }
 }
-

@@ -100,4 +100,3 @@ class GetOsPolicyAssignmentOsconfigV1alphaResult {
     );
   }
 }
-

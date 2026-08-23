@@ -38,4 +38,3 @@ class FileNoteContaineranalysisV1beta1 {
     );
   }
 }
-

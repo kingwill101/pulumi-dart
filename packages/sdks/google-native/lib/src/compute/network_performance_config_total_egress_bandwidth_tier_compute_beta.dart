@@ -14,4 +14,3 @@ enum NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta {
     throw ArgumentError('Unknown NetworkPerformanceConfigTotalEgressBandwidthTierComputeBeta value: $value');
   }
 }
-

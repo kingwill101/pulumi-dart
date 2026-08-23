@@ -61,4 +61,3 @@ class GetProjectCloudresourcemanagerV1beta1Result {
     );
   }
 }
-

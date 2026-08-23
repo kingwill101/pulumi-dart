@@ -43,4 +43,3 @@ class SamlIdpConfigCloudidentityV1beta1 {
     );
   }
 }
-

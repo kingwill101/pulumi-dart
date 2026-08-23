@@ -31,4 +31,3 @@ class PatientIdResponseHealthcareV1beta1 {
     );
   }
 }
-

@@ -38,4 +38,3 @@ class GoogleCloudAiplatformV1beta1SmoothGradConfigResponse {
     );
   }
 }
-

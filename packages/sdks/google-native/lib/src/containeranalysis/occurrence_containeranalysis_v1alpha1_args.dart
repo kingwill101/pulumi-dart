@@ -170,4 +170,3 @@ class OccurrenceContaineranalysisV1alpha1Args {
     );
   }
 }
-

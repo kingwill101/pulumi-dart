@@ -17,4 +17,3 @@ enum ConfidentialInstanceConfigConfidentialInstanceType {
     throw ArgumentError('Unknown ConfidentialInstanceConfigConfidentialInstanceType value: $value');
   }
 }
-

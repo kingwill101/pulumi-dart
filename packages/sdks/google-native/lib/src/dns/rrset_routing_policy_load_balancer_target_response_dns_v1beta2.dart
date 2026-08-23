@@ -66,4 +66,3 @@ class RRSetRoutingPolicyLoadBalancerTargetResponseDnsV1beta2 {
     );
   }
 }
-

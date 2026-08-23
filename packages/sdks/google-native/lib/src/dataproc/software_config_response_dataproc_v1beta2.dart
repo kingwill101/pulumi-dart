@@ -37,4 +37,3 @@ class SoftwareConfigResponseDataprocV1beta2 {
     );
   }
 }
-

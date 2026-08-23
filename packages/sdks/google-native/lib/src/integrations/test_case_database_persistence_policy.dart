@@ -16,4 +16,3 @@ enum TestCaseDatabasePersistencePolicy {
     throw ArgumentError('Unknown TestCaseDatabasePersistencePolicy value: $value');
   }
 }
-

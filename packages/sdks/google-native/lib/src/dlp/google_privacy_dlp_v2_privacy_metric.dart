@@ -61,4 +61,3 @@ class GooglePrivacyDlpV2PrivacyMetric {
     );
   }
 }
-

@@ -38,4 +38,3 @@ class ManagedClusterResponseDataprocV1beta2 {
     );
   }
 }
-

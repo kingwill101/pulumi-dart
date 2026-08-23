@@ -43,4 +43,3 @@ class ExprDatafusionV1beta1 {
     );
   }
 }
-

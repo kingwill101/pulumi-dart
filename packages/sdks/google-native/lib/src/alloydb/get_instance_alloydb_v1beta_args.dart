@@ -47,4 +47,3 @@ class GetInstanceAlloydbV1betaArgs {
     );
   }
 }
-

@@ -70,4 +70,3 @@ class GetBudgetBillingbudgetsV1beta1Result {
     );
   }
 }
-

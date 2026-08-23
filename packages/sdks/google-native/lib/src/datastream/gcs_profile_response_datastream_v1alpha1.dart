@@ -31,4 +31,3 @@ class GcsProfileResponseDatastreamV1alpha1 {
     );
   }
 }
-

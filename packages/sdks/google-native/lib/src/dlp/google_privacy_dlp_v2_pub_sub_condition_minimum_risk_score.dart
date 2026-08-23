@@ -16,4 +16,3 @@ enum GooglePrivacyDlpV2PubSubConditionMinimumRiskScore {
     throw ArgumentError('Unknown GooglePrivacyDlpV2PubSubConditionMinimumRiskScore value: $value');
   }
 }
-

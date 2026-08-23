@@ -37,4 +37,3 @@ class TrialAiplatformV1beta1Args {
     );
   }
 }
-

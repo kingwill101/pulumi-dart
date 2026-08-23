@@ -38,4 +38,3 @@ class BindingArtifactregistryV1beta2 {
     );
   }
 }
-

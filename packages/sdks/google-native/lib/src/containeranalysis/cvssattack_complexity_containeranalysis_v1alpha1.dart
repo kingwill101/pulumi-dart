@@ -17,4 +17,3 @@ enum CVSSAttackComplexityContaineranalysisV1alpha1 {
     throw ArgumentError('Unknown CVSSAttackComplexityContaineranalysisV1alpha1 value: $value');
   }
 }
-

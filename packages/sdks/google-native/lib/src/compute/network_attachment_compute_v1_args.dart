@@ -74,4 +74,3 @@ class NetworkAttachmentComputeV1Args {
     );
   }
 }
-

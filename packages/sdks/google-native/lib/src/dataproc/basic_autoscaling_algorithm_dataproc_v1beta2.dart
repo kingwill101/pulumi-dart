@@ -32,4 +32,3 @@ class BasicAutoscalingAlgorithmDataprocV1beta2 {
     );
   }
 }
-

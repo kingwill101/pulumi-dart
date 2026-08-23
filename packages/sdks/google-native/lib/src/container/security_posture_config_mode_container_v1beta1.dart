@@ -16,4 +16,3 @@ enum SecurityPostureConfigModeContainerV1beta1 {
     throw ArgumentError('Unknown SecurityPostureConfigModeContainerV1beta1 value: $value');
   }
 }
-

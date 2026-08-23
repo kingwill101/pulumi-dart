@@ -16,4 +16,3 @@ enum StoragePoolPerformanceProvisioningType {
     throw ArgumentError('Unknown StoragePoolPerformanceProvisioningType value: $value');
   }
 }
-

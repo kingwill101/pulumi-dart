@@ -136,4 +136,3 @@ class GetMigrationJobDatamigrationV1beta1Result {
     );
   }
 }
-

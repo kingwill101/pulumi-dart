@@ -17,4 +17,3 @@ enum AuditLogConfigLogTypeDomainsV1beta1 {
     throw ArgumentError('Unknown AuditLogConfigLogTypeDomainsV1beta1 value: $value');
   }
 }
-

@@ -31,4 +31,3 @@ class GoogleFirestoreAdminV1VectorConfigResponse {
     );
   }
 }
-

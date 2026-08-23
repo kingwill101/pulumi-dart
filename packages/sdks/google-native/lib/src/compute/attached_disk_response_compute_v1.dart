@@ -131,4 +131,3 @@ class AttachedDiskResponseComputeV1 {
     );
   }
 }
-

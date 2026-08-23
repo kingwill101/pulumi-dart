@@ -37,4 +37,3 @@ class GetVersionDialogflowV2beta1Args {
     );
   }
 }
-

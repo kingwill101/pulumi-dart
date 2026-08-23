@@ -31,4 +31,3 @@ class TcpRouteRouteDestinationResponseNetworkservicesV1beta1 {
     );
   }
 }
-

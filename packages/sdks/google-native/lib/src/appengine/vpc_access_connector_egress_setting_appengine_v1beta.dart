@@ -16,4 +16,3 @@ enum VpcAccessConnectorEgressSettingAppengineV1beta {
     throw ArgumentError('Unknown VpcAccessConnectorEgressSettingAppengineV1beta value: $value');
   }
 }
-

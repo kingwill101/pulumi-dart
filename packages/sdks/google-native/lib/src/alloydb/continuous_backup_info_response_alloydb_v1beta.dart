@@ -44,4 +44,3 @@ class ContinuousBackupInfoResponseAlloydbV1beta {
     );
   }
 }
-

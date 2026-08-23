@@ -15,4 +15,3 @@ enum BackupRetentionSettingsRetentionUnitSqladminV1beta4 {
     throw ArgumentError('Unknown BackupRetentionSettingsRetentionUnitSqladminV1beta4 value: $value');
   }
 }
-

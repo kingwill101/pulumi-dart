@@ -25,4 +25,3 @@ class VirtualNICResponseContainerV1beta1 {
     );
   }
 }
-

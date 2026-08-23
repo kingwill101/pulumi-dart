@@ -117,4 +117,3 @@ class SavedAttachedDiskResponseComputeV1 {
     );
   }
 }
-

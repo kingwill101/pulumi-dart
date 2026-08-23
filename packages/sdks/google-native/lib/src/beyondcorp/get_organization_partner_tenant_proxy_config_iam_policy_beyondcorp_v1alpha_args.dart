@@ -42,4 +42,3 @@ class GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs {
     );
   }
 }
-

@@ -32,4 +32,3 @@ enum AggregationPerSeriesAlignerMonitoringV3 {
     throw ArgumentError('Unknown AggregationPerSeriesAlignerMonitoringV3 value: $value');
   }
 }
-

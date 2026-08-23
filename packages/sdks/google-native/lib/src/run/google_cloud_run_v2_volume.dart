@@ -46,4 +46,3 @@ class GoogleCloudRunV2Volume {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetNetworkFirewallPolicyIamPolicyComputeV1Args {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class CostManagementConfigResponseContainerV1beta1 {
     );
   }
 }
-

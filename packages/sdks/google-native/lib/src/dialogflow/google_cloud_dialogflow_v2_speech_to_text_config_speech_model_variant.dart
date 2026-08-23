@@ -17,4 +17,3 @@ enum GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant {
     throw ArgumentError('Unknown GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant value: $value');
   }
 }
-

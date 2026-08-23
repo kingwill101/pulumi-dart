@@ -52,4 +52,3 @@ class ReservationIamBindingComputeV1Args {
     );
   }
 }
-

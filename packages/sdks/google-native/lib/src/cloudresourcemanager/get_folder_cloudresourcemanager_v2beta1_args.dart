@@ -27,4 +27,3 @@ class GetFolderCloudresourcemanagerV2beta1Args {
     );
   }
 }
-

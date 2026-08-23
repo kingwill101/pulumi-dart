@@ -16,4 +16,3 @@ enum GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection {
     throw ArgumentError('Unknown GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection value: $value');
   }
 }
-

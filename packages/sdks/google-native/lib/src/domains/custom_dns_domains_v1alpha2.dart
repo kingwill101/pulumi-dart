@@ -32,4 +32,3 @@ class CustomDnsDomainsV1alpha2 {
     );
   }
 }
-

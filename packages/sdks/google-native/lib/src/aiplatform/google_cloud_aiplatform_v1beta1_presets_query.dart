@@ -15,4 +15,3 @@ enum GoogleCloudAiplatformV1beta1PresetsQuery {
     throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1PresetsQuery value: $value');
   }
 }
-

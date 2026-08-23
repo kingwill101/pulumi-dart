@@ -42,4 +42,3 @@ class GetScopeRbacRoleBindingGkehubV1betaArgs {
     );
   }
 }
-

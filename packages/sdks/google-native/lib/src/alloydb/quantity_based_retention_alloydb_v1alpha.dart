@@ -25,4 +25,3 @@ class QuantityBasedRetentionAlloydbV1alpha {
     );
   }
 }
-

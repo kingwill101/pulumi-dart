@@ -33,4 +33,3 @@ class PrivatePoolV1Config {
     );
   }
 }
-

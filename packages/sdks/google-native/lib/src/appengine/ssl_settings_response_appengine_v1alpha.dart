@@ -31,4 +31,3 @@ class SslSettingsResponseAppengineV1alpha {
     );
   }
 }
-

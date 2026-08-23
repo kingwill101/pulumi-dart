@@ -52,4 +52,3 @@ class ApiConfigIamBindingApigatewayV1betaArgs {
     );
   }
 }
-

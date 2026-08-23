@@ -90,4 +90,3 @@ class MembershipGkehubV1beta1Args {
     );
   }
 }
-

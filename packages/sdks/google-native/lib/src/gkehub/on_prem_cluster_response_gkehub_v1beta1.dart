@@ -43,4 +43,3 @@ class OnPremClusterResponseGkehubV1beta1 {
     );
   }
 }
-

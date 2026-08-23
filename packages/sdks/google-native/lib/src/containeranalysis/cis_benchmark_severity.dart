@@ -18,4 +18,3 @@ enum CisBenchmarkSeverity {
     throw ArgumentError('Unknown CisBenchmarkSeverity value: $value');
   }
 }
-

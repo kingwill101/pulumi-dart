@@ -47,4 +47,3 @@ class GetVersionAppengineV1betaArgs {
     );
   }
 }
-

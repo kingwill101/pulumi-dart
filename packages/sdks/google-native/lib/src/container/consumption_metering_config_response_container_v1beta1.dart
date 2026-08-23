@@ -25,4 +25,3 @@ class ConsumptionMeteringConfigResponseContainerV1beta1 {
     );
   }
 }
-

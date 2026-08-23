@@ -37,4 +37,3 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse {
     );
   }
 }
-

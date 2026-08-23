@@ -16,4 +16,3 @@ enum CloudSqlSettingsActivationPolicyDatamigrationV1beta1 {
     throw ArgumentError('Unknown CloudSqlSettingsActivationPolicyDatamigrationV1beta1 value: $value');
   }
 }
-

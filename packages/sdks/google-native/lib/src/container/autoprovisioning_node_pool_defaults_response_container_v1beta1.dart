@@ -88,4 +88,3 @@ class AutoprovisioningNodePoolDefaultsResponseContainerV1beta1 {
     );
   }
 }
-

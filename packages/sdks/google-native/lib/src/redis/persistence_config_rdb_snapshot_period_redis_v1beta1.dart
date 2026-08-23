@@ -18,4 +18,3 @@ enum PersistenceConfigRdbSnapshotPeriodRedisV1beta1 {
     throw ArgumentError('Unknown PersistenceConfigRdbSnapshotPeriodRedisV1beta1 value: $value');
   }
 }
-

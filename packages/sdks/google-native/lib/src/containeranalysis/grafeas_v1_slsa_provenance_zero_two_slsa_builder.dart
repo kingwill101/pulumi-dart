@@ -24,4 +24,3 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder {
     );
   }
 }
-

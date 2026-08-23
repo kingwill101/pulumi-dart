@@ -20,4 +20,3 @@ enum GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance {
     throw ArgumentError('Unknown GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance value: $value');
   }
 }
-

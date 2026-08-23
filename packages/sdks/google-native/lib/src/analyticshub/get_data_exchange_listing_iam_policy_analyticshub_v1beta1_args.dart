@@ -42,4 +42,3 @@ class GetDataExchangeListingIamPolicyAnalyticshubV1beta1Args {
     );
   }
 }
-

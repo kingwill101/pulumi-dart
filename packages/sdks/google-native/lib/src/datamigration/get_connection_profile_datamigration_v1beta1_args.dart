@@ -37,4 +37,3 @@ class GetConnectionProfileDatamigrationV1beta1Args {
     );
   }
 }
-

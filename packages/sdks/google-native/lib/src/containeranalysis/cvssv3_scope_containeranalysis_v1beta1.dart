@@ -15,4 +15,3 @@ enum CVSSv3ScopeContaineranalysisV1beta1 {
     throw ArgumentError('Unknown CVSSv3ScopeContaineranalysisV1beta1 value: $value');
   }
 }
-

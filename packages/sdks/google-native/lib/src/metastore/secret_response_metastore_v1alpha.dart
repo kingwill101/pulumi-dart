@@ -25,4 +25,3 @@ class SecretResponseMetastoreV1alpha {
     );
   }
 }
-

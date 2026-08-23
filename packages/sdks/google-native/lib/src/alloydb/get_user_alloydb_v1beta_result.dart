@@ -42,4 +42,3 @@ class GetUserAlloydbV1betaResult {
     );
   }
 }
-

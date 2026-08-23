@@ -86,4 +86,3 @@ class GetAppConnectionBeyondcorpV1alphaResult {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class AttachedDiskResponseTpuV2alpha1 {
     );
   }
 }
-

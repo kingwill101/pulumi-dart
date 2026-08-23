@@ -39,4 +39,3 @@ class CredentialResponseDeploymentmanagerV2beta {
     );
   }
 }
-

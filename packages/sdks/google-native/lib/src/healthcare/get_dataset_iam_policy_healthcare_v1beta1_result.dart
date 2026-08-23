@@ -45,4 +45,3 @@ class GetDatasetIamPolicyHealthcareV1beta1Result {
     );
   }
 }
-

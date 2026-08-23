@@ -16,4 +16,3 @@ enum NotificationConfigPayloadFormat {
     throw ArgumentError('Unknown NotificationConfigPayloadFormat value: $value');
   }
 }
-

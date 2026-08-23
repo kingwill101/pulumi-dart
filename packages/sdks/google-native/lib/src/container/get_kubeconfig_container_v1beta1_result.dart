@@ -23,4 +23,3 @@ class GetKubeconfigContainerV1beta1Result {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum PolicyControllerTemplateLibraryConfigInstallationGkehubV1alpha {
     throw ArgumentError('Unknown PolicyControllerTemplateLibraryConfigInstallationGkehubV1alpha value: $value');
   }
 }
-

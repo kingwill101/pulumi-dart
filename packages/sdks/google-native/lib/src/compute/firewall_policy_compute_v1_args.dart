@@ -72,4 +72,3 @@ class FirewallPolicyComputeV1Args {
     );
   }
 }
-

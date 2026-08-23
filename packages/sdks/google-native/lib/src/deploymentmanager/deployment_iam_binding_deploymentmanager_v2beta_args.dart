@@ -52,4 +52,3 @@ class DeploymentIamBindingDeploymentmanagerV2betaArgs {
     );
   }
 }
-

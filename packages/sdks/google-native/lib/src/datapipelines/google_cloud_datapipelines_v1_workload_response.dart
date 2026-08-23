@@ -33,4 +33,3 @@ class GoogleCloudDatapipelinesV1WorkloadResponse {
     );
   }
 }
-

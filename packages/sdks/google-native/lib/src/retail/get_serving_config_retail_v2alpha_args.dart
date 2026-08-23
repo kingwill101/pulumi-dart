@@ -42,4 +42,3 @@ class GetServingConfigRetailV2alphaArgs {
     );
   }
 }
-

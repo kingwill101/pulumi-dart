@@ -69,4 +69,3 @@ class RegistrationIamPolicyDomainsV1beta1Args {
     );
   }
 }
-

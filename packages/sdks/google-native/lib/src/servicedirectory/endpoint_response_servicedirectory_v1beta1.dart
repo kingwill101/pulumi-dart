@@ -67,4 +67,3 @@ class EndpointResponseServicedirectoryV1beta1 {
     );
   }
 }
-

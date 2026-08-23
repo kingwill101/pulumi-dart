@@ -49,4 +49,3 @@ class FieldHealthcareV1beta1 {
     );
   }
 }
-

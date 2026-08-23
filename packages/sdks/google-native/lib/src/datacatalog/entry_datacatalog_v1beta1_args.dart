@@ -107,4 +107,3 @@ class EntryDatacatalogV1beta1Args {
     );
   }
 }
-

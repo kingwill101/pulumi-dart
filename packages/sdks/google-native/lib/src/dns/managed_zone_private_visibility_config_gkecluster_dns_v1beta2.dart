@@ -29,4 +29,3 @@ class ManagedZonePrivateVisibilityConfigGKEClusterDnsV1beta2 {
     );
   }
 }
-

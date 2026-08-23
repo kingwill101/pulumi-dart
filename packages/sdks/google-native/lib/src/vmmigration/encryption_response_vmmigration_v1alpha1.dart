@@ -25,4 +25,3 @@ class EncryptionResponseVmmigrationV1alpha1 {
     );
   }
 }
-

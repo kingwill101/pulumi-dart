@@ -31,4 +31,3 @@ class ForwardInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetBackupFileV1beta1Args {
     );
   }
 }
-

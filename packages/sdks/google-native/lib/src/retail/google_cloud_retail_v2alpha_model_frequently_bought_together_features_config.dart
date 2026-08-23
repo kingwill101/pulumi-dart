@@ -26,4 +26,3 @@ class GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig {
     );
   }
 }
-

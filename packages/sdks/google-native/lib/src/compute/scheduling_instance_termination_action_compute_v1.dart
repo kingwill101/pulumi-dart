@@ -16,4 +16,3 @@ enum SchedulingInstanceTerminationActionComputeV1 {
     throw ArgumentError('Unknown SchedulingInstanceTerminationActionComputeV1 value: $value');
   }
 }
-

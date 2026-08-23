@@ -16,4 +16,3 @@ enum JsonFileFormatSchemaFileFormat {
     throw ArgumentError('Unknown JsonFileFormatSchemaFileFormat value: $value');
   }
 }
-

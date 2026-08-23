@@ -50,4 +50,3 @@ class AwsS3CompatibleDataResponse {
     );
   }
 }
-

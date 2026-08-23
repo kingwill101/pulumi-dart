@@ -16,4 +16,3 @@ enum SettingsConnectorEnforcement {
     throw ArgumentError('Unknown SettingsConnectorEnforcement value: $value');
   }
 }
-

@@ -63,4 +63,3 @@ class GoogleDevtoolsCloudbuildV2GitLabConfigResponse {
     );
   }
 }
-

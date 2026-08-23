@@ -129,4 +129,3 @@ class GetRegionNetworkEndpointGroupComputeV1Result {
     );
   }
 }
-

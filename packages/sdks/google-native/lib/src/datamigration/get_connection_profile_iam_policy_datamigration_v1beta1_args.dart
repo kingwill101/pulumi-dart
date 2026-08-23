@@ -42,4 +42,3 @@ class GetConnectionProfileIamPolicyDatamigrationV1beta1Args {
     );
   }
 }
-

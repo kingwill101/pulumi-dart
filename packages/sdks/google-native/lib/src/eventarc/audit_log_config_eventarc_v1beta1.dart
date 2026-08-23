@@ -32,4 +32,3 @@ class AuditLogConfigEventarcV1beta1 {
     );
   }
 }
-

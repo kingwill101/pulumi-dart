@@ -50,4 +50,3 @@ class DeprecationStatusComputeV1 {
     );
   }
 }
-

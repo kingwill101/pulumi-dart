@@ -249,4 +249,3 @@ class ProductRetailV2alphaArgs {
     );
   }
 }
-

@@ -87,4 +87,3 @@ class DetailContaineranalysisV1alpha1 {
     );
   }
 }
-

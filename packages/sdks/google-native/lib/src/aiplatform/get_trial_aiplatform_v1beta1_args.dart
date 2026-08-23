@@ -42,4 +42,3 @@ class GetTrialAiplatformV1beta1Args {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum SoftwareRecipeDesiredState {
     throw ArgumentError('Unknown SoftwareRecipeDesiredState value: $value');
   }
 }
-

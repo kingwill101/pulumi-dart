@@ -18,4 +18,3 @@ enum PolicyControllerHubConfigInstallSpecGkehubV1beta {
     throw ArgumentError('Unknown PolicyControllerHubConfigInstallSpecGkehubV1beta value: $value');
   }
 }
-

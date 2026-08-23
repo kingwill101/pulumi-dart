@@ -122,4 +122,3 @@ class ModelDeploymentMonitoringJobAiplatformV1beta1Args {
     );
   }
 }
-

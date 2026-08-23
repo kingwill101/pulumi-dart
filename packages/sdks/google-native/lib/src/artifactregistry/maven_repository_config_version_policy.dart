@@ -16,4 +16,3 @@ enum MavenRepositoryConfigVersionPolicy {
     throw ArgumentError('Unknown MavenRepositoryConfigVersionPolicy value: $value');
   }
 }
-

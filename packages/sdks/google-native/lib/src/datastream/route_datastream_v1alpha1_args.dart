@@ -73,4 +73,3 @@ class RouteDatastreamV1alpha1Args {
     );
   }
 }
-

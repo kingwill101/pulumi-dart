@@ -69,4 +69,3 @@ class InstanceIamPolicyDatafusionV1beta1Args {
     );
   }
 }
-

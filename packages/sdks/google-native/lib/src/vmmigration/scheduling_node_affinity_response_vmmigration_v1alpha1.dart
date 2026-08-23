@@ -37,4 +37,3 @@ class SchedulingNodeAffinityResponseVmmigrationV1alpha1 {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class CryptoKeyConfigDatafusionV1beta1 {
     );
   }
 }
-

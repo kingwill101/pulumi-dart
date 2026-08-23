@@ -69,4 +69,3 @@ class OrganizationPartnerTenantBrowserDlpRuleIamPolicyBeyondcorpV1alphaArgs {
     );
   }
 }
-

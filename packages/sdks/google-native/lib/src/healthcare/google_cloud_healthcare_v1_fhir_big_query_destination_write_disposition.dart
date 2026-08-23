@@ -17,4 +17,3 @@ enum GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition {
     throw ArgumentError('Unknown GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition value: $value');
   }
 }
-

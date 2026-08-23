@@ -45,4 +45,3 @@ class GetDicomStoreHealthcareV1beta1Result {
     );
   }
 }
-

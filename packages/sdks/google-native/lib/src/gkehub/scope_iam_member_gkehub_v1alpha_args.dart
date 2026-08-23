@@ -52,4 +52,3 @@ class ScopeIamMemberGkehubV1alphaArgs {
     );
   }
 }
-

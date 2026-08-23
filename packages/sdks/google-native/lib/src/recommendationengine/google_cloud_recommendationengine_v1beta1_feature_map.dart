@@ -31,4 +31,3 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
     );
   }
 }
-

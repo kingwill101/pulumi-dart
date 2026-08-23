@@ -32,4 +32,3 @@ class GoogleCloudDialogflowV2DocumentReloadStatusResponse {
     );
   }
 }
-

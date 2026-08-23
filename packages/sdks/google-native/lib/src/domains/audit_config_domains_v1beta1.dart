@@ -32,4 +32,3 @@ class AuditConfigDomainsV1beta1 {
     );
   }
 }
-

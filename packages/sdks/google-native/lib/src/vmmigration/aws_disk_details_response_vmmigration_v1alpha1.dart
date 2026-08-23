@@ -37,4 +37,3 @@ class AwsDiskDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

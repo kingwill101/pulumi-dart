@@ -25,4 +25,3 @@ class WorkloadPolicyConfigResponseContainerV1beta1 {
     );
   }
 }
-

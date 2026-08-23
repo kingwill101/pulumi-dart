@@ -106,4 +106,3 @@ class GetIndexEndpointAiplatformV1beta1Result {
     );
   }
 }
-

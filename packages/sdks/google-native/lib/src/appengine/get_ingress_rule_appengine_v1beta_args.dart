@@ -32,4 +32,3 @@ class GetIngressRuleAppengineV1betaArgs {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class ReplicationSyncResponseVmmigrationV1alpha1 {
     );
   }
 }
-

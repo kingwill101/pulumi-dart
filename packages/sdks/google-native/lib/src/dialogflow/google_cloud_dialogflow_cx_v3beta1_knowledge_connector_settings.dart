@@ -51,4 +51,3 @@ class GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings {
     );
   }
 }
-

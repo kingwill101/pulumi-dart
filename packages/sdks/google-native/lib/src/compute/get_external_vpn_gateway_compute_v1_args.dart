@@ -32,4 +32,3 @@ class GetExternalVpnGatewayComputeV1Args {
     );
   }
 }
-

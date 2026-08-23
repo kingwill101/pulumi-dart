@@ -92,4 +92,3 @@ class RegistrationDomainsV1alpha2Args {
     );
   }
 }
-

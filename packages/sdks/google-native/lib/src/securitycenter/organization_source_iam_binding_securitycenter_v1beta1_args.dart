@@ -52,4 +52,3 @@ class OrganizationSourceIamBindingSecuritycenterV1beta1Args {
     );
   }
 }
-

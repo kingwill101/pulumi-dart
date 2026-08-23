@@ -43,4 +43,3 @@ class ExprResponseGameservicesV1beta {
     );
   }
 }
-

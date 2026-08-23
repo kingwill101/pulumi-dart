@@ -45,4 +45,3 @@ class DerivedResponseContaineranalysisV1beta1 {
     );
   }
 }
-

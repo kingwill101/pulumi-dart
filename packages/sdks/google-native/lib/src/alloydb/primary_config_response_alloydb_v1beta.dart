@@ -25,4 +25,3 @@ class PrimaryConfigResponseAlloydbV1beta {
     );
   }
 }
-

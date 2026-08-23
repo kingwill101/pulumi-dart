@@ -31,4 +31,3 @@ class JsonFileFormatResponseDatastreamV1alpha1 {
     );
   }
 }
-

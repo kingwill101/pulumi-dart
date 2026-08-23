@@ -31,4 +31,3 @@ class RelatedUrlContaineranalysisV1alpha1 {
     );
   }
 }
-

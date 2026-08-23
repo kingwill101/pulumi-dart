@@ -18,4 +18,3 @@ enum DicomConfigFilterProfile {
     throw ArgumentError('Unknown DicomConfigFilterProfile value: $value');
   }
 }
-

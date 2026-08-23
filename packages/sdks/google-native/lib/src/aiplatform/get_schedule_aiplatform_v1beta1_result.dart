@@ -128,4 +128,3 @@ class GetScheduleAiplatformV1beta1Result {
     );
   }
 }
-

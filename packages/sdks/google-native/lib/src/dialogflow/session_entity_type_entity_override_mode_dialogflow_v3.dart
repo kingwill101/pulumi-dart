@@ -16,4 +16,3 @@ enum SessionEntityTypeEntityOverrideModeDialogflowV3 {
     throw ArgumentError('Unknown SessionEntityTypeEntityOverrideModeDialogflowV3 value: $value');
   }
 }
-

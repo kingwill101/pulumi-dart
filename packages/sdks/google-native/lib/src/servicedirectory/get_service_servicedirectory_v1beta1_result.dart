@@ -56,4 +56,3 @@ class GetServiceServicedirectoryV1beta1Result {
     );
   }
 }
-

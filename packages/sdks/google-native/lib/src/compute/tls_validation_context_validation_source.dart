@@ -16,4 +16,3 @@ enum TlsValidationContextValidationSource {
     throw ArgumentError('Unknown TlsValidationContextValidationSource value: $value');
   }
 }
-

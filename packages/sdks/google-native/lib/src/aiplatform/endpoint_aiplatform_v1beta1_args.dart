@@ -94,4 +94,3 @@ class EndpointAiplatformV1beta1Args {
     );
   }
 }
-

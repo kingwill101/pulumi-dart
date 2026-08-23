@@ -19,4 +19,3 @@ enum GooglePrivacyDlpV2OutputStorageConfigOutputSchema {
     throw ArgumentError('Unknown GooglePrivacyDlpV2OutputStorageConfigOutputSchema value: $value');
   }
 }
-

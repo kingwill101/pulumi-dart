@@ -25,4 +25,3 @@ class LoggingVariantConfigResponseContainerV1beta1 {
     );
   }
 }
-

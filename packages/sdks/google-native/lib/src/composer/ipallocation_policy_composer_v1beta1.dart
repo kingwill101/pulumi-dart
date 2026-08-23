@@ -49,4 +49,3 @@ class IPAllocationPolicyComposerV1beta1 {
     );
   }
 }
-

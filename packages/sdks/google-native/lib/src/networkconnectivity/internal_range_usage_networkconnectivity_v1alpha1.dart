@@ -16,4 +16,3 @@ enum InternalRangeUsageNetworkconnectivityV1alpha1 {
     throw ArgumentError('Unknown InternalRangeUsageNetworkconnectivityV1alpha1 value: $value');
   }
 }
-

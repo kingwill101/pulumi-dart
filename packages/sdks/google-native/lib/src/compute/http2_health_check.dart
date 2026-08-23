@@ -69,4 +69,3 @@ class HTTP2HealthCheck {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class GetConnectivityTestNetworkmanagementV1beta1Args {
     );
   }
 }
-

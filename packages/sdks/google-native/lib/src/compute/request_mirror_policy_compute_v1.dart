@@ -25,4 +25,3 @@ class RequestMirrorPolicyComputeV1 {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum GoogleIamV1AuditLogConfigLogType {
     throw ArgumentError('Unknown GoogleIamV1AuditLogConfigLogType value: $value');
   }
 }
-

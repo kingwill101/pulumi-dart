@@ -33,4 +33,3 @@ class ValidationReportResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

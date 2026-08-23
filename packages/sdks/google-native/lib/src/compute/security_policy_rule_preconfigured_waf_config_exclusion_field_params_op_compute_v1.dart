@@ -18,4 +18,3 @@ enum SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeV1 {
     throw ArgumentError('Unknown SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpComputeV1 value: $value');
   }
 }
-

@@ -29,4 +29,3 @@ class ProvenanceBuilderResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

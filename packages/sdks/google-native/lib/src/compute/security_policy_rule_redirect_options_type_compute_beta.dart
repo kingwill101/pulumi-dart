@@ -15,4 +15,3 @@ enum SecurityPolicyRuleRedirectOptionsTypeComputeBeta {
     throw ArgumentError('Unknown SecurityPolicyRuleRedirectOptionsTypeComputeBeta value: $value');
   }
 }
-

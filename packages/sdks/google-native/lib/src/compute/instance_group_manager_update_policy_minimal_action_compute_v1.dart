@@ -17,4 +17,3 @@ enum InstanceGroupManagerUpdatePolicyMinimalActionComputeV1 {
     throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyMinimalActionComputeV1 value: $value');
   }
 }
-

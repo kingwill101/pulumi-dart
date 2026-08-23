@@ -43,4 +43,3 @@ class PackageIssueContaineranalysisV1alpha1 {
     );
   }
 }
-

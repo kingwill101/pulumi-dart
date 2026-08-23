@@ -48,4 +48,3 @@ class JobStatistics3Response {
     );
   }
 }
-

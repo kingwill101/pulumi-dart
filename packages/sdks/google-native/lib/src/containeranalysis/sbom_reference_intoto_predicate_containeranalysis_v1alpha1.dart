@@ -43,4 +43,3 @@ class SbomReferenceIntotoPredicateContaineranalysisV1alpha1 {
     );
   }
 }
-

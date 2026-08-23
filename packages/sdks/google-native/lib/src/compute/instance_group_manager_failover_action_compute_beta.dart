@@ -15,4 +15,3 @@ enum InstanceGroupManagerFailoverActionComputeBeta {
     throw ArgumentError('Unknown InstanceGroupManagerFailoverActionComputeBeta value: $value');
   }
 }
-

@@ -43,4 +43,3 @@ class NetworkInterfaceResponseVmmigrationV1alpha1 {
     );
   }
 }
-

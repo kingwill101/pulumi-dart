@@ -37,4 +37,3 @@ class GetTagTemplateDatacatalogV1beta1Args {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class SchedulingConfigTpuV2 {
     );
   }
 }
-

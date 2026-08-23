@@ -60,4 +60,3 @@ class FirewallPolicyIamPolicyComputeV1Args {
     );
   }
 }
-

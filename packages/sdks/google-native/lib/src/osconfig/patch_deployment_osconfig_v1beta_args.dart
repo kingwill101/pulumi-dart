@@ -86,4 +86,3 @@ class PatchDeploymentOsconfigV1betaArgs {
     );
   }
 }
-

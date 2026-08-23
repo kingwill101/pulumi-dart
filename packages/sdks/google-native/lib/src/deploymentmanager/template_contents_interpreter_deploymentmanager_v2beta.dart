@@ -16,4 +16,3 @@ enum TemplateContentsInterpreterDeploymentmanagerV2beta {
     throw ArgumentError('Unknown TemplateContentsInterpreterDeploymentmanagerV2beta value: $value');
   }
 }
-

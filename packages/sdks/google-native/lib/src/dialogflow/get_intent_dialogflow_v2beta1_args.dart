@@ -47,4 +47,3 @@ class GetIntentDialogflowV2beta1Args {
     );
   }
 }
-

@@ -124,4 +124,3 @@ class GetTrainingPipelineAiplatformV1beta1Result {
     );
   }
 }
-

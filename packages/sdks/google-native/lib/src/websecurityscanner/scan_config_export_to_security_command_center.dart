@@ -16,4 +16,3 @@ enum ScanConfigExportToSecurityCommandCenter {
     throw ArgumentError('Unknown ScanConfigExportToSecurityCommandCenter value: $value');
   }
 }
-

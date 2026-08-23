@@ -31,4 +31,3 @@ class MetadataFilterLabelMatchComputeV1 {
     );
   }
 }
-

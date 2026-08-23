@@ -39,4 +39,3 @@ class ClusterUpgradeFleetSpecResponseGkehubV1alpha {
     );
   }
 }
-

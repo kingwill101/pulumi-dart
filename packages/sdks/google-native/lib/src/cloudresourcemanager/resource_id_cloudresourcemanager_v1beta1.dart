@@ -31,4 +31,3 @@ class ResourceIdCloudresourcemanagerV1beta1 {
     );
   }
 }
-

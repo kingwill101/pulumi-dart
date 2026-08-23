@@ -22,4 +22,3 @@ enum EnterpriseCrmEventbusProtoTaskMetadataCategory {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskMetadataCategory value: $value');
   }
 }
-

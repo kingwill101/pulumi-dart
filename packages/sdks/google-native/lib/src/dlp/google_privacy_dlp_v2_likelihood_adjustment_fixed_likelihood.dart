@@ -19,4 +19,3 @@ enum GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood {
     throw ArgumentError('Unknown GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood value: $value');
   }
 }
-

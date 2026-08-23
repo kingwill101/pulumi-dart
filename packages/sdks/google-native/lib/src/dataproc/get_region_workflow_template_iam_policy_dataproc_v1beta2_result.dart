@@ -38,4 +38,3 @@ class GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Result {
     );
   }
 }
-

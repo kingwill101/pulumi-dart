@@ -45,4 +45,3 @@ class GetServiceIamPolicyRunV2Result {
     );
   }
 }
-

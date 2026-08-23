@@ -31,4 +31,3 @@ class WorkforceIdentityBasedOAuth2ClientIDResponse {
     );
   }
 }
-

@@ -96,4 +96,3 @@ class JobCloudschedulerV1beta1Args {
     );
   }
 }
-

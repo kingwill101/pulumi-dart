@@ -37,4 +37,3 @@ class GetScheduleAiplatformV1beta1Args {
     );
   }
 }
-

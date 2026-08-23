@@ -32,4 +32,3 @@ class CloudFunctionV2TargetResponse {
     );
   }
 }
-

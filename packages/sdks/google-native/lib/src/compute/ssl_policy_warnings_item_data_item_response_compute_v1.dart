@@ -30,4 +30,3 @@ class SslPolicyWarningsItemDataItemResponseComputeV1 {
     );
   }
 }
-

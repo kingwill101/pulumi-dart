@@ -17,4 +17,3 @@ enum IpConfigurationSslModeSqladminV1beta4 {
     throw ArgumentError('Unknown IpConfigurationSslModeSqladminV1beta4 value: $value');
   }
 }
-

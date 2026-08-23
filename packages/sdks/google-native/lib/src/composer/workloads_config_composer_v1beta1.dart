@@ -47,4 +47,3 @@ class WorkloadsConfigComposerV1beta1 {
     );
   }
 }
-

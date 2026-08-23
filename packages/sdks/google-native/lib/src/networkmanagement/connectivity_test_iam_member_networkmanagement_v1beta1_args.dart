@@ -52,4 +52,3 @@ class ConnectivityTestIamMemberNetworkmanagementV1beta1Args {
     );
   }
 }
-

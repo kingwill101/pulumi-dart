@@ -15,4 +15,3 @@ enum DockerRepositoryPublicRepository {
     throw ArgumentError('Unknown DockerRepositoryPublicRepository value: $value');
   }
 }
-

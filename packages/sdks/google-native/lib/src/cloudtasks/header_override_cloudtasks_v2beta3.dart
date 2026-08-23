@@ -26,4 +26,3 @@ class HeaderOverrideCloudtasksV2beta3 {
     );
   }
 }
-

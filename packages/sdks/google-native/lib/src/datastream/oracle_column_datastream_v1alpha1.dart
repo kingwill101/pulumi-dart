@@ -73,4 +73,3 @@ class OracleColumnDatastreamV1alpha1 {
     );
   }
 }
-

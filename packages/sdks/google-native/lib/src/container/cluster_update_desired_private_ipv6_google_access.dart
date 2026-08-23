@@ -17,4 +17,3 @@ enum ClusterUpdateDesiredPrivateIpv6GoogleAccess {
     throw ArgumentError('Unknown ClusterUpdateDesiredPrivateIpv6GoogleAccess value: $value');
   }
 }
-

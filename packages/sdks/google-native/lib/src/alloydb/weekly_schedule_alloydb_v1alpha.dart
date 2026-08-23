@@ -33,4 +33,3 @@ class WeeklyScheduleAlloydbV1alpha {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class TelemetryConfigResponseMetastoreV1beta {
     );
   }
 }
-

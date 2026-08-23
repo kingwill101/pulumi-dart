@@ -16,4 +16,3 @@ enum AlloyDbSettingsDatabaseVersion {
     throw ArgumentError('Unknown AlloyDbSettingsDatabaseVersion value: $value');
   }
 }
-

@@ -25,4 +25,3 @@ class TrafficPortSelectorResponseNetworkservicesV1beta1 {
     );
   }
 }
-

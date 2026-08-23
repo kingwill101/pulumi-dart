@@ -65,4 +65,3 @@ class MachineImageIamPolicyComputeV1Args {
     );
   }
 }
-

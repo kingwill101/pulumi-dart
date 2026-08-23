@@ -19,4 +19,3 @@ enum GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore {
     throw ArgumentError('Unknown GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore value: $value');
   }
 }
-

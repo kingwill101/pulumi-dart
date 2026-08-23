@@ -68,4 +68,3 @@ class PySparkJobResponseDataprocV1beta2 {
     );
   }
 }
-

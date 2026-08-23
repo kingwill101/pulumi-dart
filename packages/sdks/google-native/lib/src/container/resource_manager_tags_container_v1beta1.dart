@@ -25,4 +25,3 @@ class ResourceManagerTagsContainerV1beta1 {
     );
   }
 }
-

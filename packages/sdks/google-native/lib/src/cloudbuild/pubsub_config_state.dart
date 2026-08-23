@@ -18,4 +18,3 @@ enum PubsubConfigState {
     throw ArgumentError('Unknown PubsubConfigState value: $value');
   }
 }
-

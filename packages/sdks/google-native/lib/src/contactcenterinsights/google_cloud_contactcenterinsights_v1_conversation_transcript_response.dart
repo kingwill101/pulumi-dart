@@ -26,4 +26,3 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse {
     );
   }
 }
-

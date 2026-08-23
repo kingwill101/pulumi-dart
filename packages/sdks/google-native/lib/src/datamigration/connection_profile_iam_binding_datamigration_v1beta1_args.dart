@@ -52,4 +52,3 @@ class ConnectionProfileIamBindingDatamigrationV1beta1Args {
     );
   }
 }
-

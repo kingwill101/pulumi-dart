@@ -16,4 +16,3 @@ enum ModelFilteringOptionRetailV2beta {
     throw ArgumentError('Unknown ModelFilteringOptionRetailV2beta value: $value');
   }
 }
-

@@ -15,4 +15,3 @@ enum GcsDestinationConfigGcsFileFormat {
     throw ArgumentError('Unknown GcsDestinationConfigGcsFileFormat value: $value');
   }
 }
-

@@ -52,4 +52,3 @@ class MembershipIamBindingGkehubV1betaArgs {
     );
   }
 }
-

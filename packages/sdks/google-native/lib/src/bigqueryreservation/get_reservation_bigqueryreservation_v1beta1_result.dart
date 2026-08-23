@@ -60,4 +60,3 @@ class GetReservationBigqueryreservationV1beta1Result {
     );
   }
 }
-

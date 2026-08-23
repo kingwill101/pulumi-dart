@@ -45,4 +45,3 @@ class UpgradeSettingsContainerV1beta1 {
     );
   }
 }
-

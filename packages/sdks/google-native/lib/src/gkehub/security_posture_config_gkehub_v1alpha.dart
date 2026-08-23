@@ -33,4 +33,3 @@ class SecurityPostureConfigGkehubV1alpha {
     );
   }
 }
-

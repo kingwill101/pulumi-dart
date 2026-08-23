@@ -17,4 +17,3 @@ enum DiagnosticLevelDeploymentmanagerV2beta {
     throw ArgumentError('Unknown DiagnosticLevelDeploymentmanagerV2beta value: $value');
   }
 }
-

@@ -38,4 +38,3 @@ class BindingMetastoreV1beta {
     );
   }
 }
-

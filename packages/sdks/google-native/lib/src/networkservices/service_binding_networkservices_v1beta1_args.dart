@@ -62,4 +62,3 @@ class ServiceBindingNetworkservicesV1beta1Args {
     );
   }
 }
-

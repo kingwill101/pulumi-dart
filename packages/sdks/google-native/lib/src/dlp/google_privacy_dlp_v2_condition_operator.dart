@@ -21,4 +21,3 @@ enum GooglePrivacyDlpV2ConditionOperator {
     throw ArgumentError('Unknown GooglePrivacyDlpV2ConditionOperator value: $value');
   }
 }
-

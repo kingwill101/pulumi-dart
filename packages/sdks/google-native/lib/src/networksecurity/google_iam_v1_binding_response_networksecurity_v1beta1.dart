@@ -38,4 +38,3 @@ class GoogleIamV1BindingResponseNetworksecurityV1beta1 {
     );
   }
 }
-

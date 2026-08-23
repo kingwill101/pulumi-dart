@@ -31,4 +31,3 @@ class ManagedZoneServiceDirectoryConfigResponseDnsV1beta2 {
     );
   }
 }
-

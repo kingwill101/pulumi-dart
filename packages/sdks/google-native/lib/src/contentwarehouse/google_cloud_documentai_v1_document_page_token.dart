@@ -54,4 +54,3 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
     );
   }
 }
-

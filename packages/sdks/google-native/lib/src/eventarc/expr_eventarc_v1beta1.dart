@@ -43,4 +43,3 @@ class ExprEventarcV1beta1 {
     );
   }
 }
-

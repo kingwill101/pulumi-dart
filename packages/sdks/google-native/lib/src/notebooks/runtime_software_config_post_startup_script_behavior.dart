@@ -16,4 +16,3 @@ enum RuntimeSoftwareConfigPostStartupScriptBehavior {
     throw ArgumentError('Unknown RuntimeSoftwareConfigPostStartupScriptBehavior value: $value');
   }
 }
-

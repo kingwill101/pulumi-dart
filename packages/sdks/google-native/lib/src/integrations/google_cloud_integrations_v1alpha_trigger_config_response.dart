@@ -101,4 +101,3 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigResponse {
     );
   }
 }
-

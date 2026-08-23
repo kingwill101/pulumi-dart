@@ -32,4 +32,3 @@ class OSPolicyResourcePackageResourceDebOsconfigV1alpha {
     );
   }
 }
-

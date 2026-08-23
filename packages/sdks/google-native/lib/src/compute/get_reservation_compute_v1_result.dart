@@ -105,4 +105,3 @@ class GetReservationComputeV1Result {
     );
   }
 }
-

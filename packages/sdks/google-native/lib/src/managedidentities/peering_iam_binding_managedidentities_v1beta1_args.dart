@@ -52,4 +52,3 @@ class PeeringIamBindingManagedidentitiesV1beta1Args {
     );
   }
 }
-

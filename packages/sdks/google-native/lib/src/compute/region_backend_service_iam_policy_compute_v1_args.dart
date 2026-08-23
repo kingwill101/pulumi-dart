@@ -70,4 +70,3 @@ class RegionBackendServiceIamPolicyComputeV1Args {
     );
   }
 }
-

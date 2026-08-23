@@ -31,4 +31,3 @@ class InstanceFailoverReplicaResponseSqladminV1beta4 {
     );
   }
 }
-

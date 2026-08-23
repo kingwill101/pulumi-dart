@@ -19,4 +19,3 @@ enum RegionBackendServiceLoadBalancingSchemeComputeBeta {
     throw ArgumentError('Unknown RegionBackendServiceLoadBalancingSchemeComputeBeta value: $value');
   }
 }
-

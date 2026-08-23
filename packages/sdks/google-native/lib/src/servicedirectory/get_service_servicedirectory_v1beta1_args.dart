@@ -42,4 +42,3 @@ class GetServiceServicedirectoryV1beta1Args {
     );
   }
 }
-

@@ -41,4 +41,3 @@ class InTotoSlsaProvenanceV1ResponseContaineranalysisV1beta1 {
     );
   }
 }
-

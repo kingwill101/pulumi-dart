@@ -230,4 +230,3 @@ class SettingsSqladminV1beta4 {
     );
   }
 }
-

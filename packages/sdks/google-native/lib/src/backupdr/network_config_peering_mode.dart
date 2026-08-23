@@ -15,4 +15,3 @@ enum NetworkConfigPeeringMode {
     throw ArgumentError('Unknown NetworkConfigPeeringMode value: $value');
   }
 }
-

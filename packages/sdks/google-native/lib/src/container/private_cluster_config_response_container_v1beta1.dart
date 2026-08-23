@@ -68,4 +68,3 @@ class PrivateClusterConfigResponseContainerV1beta1 {
     );
   }
 }
-

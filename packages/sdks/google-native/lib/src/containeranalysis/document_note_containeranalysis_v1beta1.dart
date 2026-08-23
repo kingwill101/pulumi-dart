@@ -31,4 +31,3 @@ class DocumentNoteContaineranalysisV1beta1 {
     );
   }
 }
-

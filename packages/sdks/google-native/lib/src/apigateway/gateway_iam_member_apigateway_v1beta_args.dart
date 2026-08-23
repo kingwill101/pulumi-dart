@@ -52,4 +52,3 @@ class GatewayIamMemberApigatewayV1betaArgs {
     );
   }
 }
-

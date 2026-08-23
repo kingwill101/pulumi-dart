@@ -69,4 +69,3 @@ class AppConnectionIamPolicyBeyondcorpV1alphaArgs {
     );
   }
 }
-

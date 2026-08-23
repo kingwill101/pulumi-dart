@@ -26,4 +26,3 @@ class NetworkingConfigComposerV1beta1 {
     );
   }
 }
-

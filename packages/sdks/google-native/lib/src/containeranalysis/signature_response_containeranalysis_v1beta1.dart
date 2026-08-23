@@ -31,4 +31,3 @@ class SignatureResponseContaineranalysisV1beta1 {
     );
   }
 }
-

@@ -58,4 +58,3 @@ class CustomJobAiplatformV1beta1Args {
     );
   }
 }
-

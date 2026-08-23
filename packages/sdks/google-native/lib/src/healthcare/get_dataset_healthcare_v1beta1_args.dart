@@ -37,4 +37,3 @@ class GetDatasetHealthcareV1beta1Args {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum BackendBucketCompressionMode {
     throw ArgumentError('Unknown BackendBucketCompressionMode value: $value');
   }
 }
-

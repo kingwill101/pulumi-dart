@@ -32,4 +32,3 @@ enum PkixPublicKeySignatureAlgorithm {
     throw ArgumentError('Unknown PkixPublicKeySignatureAlgorithm value: $value');
   }
 }
-

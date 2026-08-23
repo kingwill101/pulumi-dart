@@ -38,4 +38,3 @@ class BindingResponseServicedirectoryV1beta1 {
     );
   }
 }
-

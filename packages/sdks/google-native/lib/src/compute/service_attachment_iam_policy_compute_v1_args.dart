@@ -70,4 +70,3 @@ class ServiceAttachmentIamPolicyComputeV1Args {
     );
   }
 }
-

@@ -132,4 +132,3 @@ class GetTargetHttpsProxyComputeBetaResult {
     );
   }
 }
-

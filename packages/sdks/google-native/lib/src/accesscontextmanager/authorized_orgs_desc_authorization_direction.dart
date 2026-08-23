@@ -16,4 +16,3 @@ enum AuthorizedOrgsDescAuthorizationDirection {
     throw ArgumentError('Unknown AuthorizedOrgsDescAuthorizationDirection value: $value');
   }
 }
-

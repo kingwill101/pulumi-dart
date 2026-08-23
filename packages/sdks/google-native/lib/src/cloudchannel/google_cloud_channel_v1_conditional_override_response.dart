@@ -39,4 +39,3 @@ class GoogleCloudChannelV1ConditionalOverrideResponse {
     );
   }
 }
-

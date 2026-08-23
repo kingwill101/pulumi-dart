@@ -30,4 +30,3 @@ class DynamicGroupQueryResponseCloudidentityV1beta1 {
     );
   }
 }
-

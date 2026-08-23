@@ -63,4 +63,3 @@ class ReportConfigMigrationcenterV1alpha1Args {
     );
   }
 }
-

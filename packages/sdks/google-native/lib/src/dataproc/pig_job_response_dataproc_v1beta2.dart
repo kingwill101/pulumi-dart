@@ -63,4 +63,3 @@ class PigJobResponseDataprocV1beta2 {
     );
   }
 }
-

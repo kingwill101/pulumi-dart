@@ -38,4 +38,3 @@ class BindingCloudtasksV2beta3 {
     );
   }
 }
-

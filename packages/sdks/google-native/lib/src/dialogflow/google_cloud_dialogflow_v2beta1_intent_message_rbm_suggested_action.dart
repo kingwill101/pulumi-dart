@@ -51,4 +51,3 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
     );
   }
 }
-

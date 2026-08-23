@@ -77,4 +77,3 @@ class AssessmentContaineranalysisV1beta1 {
     );
   }
 }
-

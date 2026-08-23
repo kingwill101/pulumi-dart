@@ -17,4 +17,3 @@ enum ScanConfigTargetPlatformsItemWebsecurityscannerV1beta {
     throw ArgumentError('Unknown ScanConfigTargetPlatformsItemWebsecurityscannerV1beta value: $value');
   }
 }
-

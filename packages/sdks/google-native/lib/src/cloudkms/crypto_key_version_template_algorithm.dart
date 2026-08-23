@@ -48,4 +48,3 @@ enum CryptoKeyVersionTemplateAlgorithm {
     throw ArgumentError('Unknown CryptoKeyVersionTemplateAlgorithm value: $value');
   }
 }
-

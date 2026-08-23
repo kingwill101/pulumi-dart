@@ -38,4 +38,3 @@ class TimeWindowContainerV1beta1 {
     );
   }
 }
-

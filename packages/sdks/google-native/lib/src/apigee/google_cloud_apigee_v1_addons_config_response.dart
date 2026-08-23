@@ -61,4 +61,3 @@ class GoogleCloudApigeeV1AddonsConfigResponse {
     );
   }
 }
-

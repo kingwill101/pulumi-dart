@@ -17,4 +17,3 @@ enum MaintenanceWindowUpdateTrackSqladminV1beta4 {
     throw ArgumentError('Unknown MaintenanceWindowUpdateTrackSqladminV1beta4 value: $value');
   }
 }
-

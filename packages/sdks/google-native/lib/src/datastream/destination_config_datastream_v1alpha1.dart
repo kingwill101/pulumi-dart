@@ -32,4 +32,3 @@ class DestinationConfigDatastreamV1alpha1 {
     );
   }
 }
-

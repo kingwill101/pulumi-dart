@@ -37,4 +37,3 @@ class GetPeeringIamPolicyManagedidentitiesV1beta1Args {
     );
   }
 }
-

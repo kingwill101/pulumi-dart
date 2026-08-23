@@ -127,4 +127,3 @@ class MigrationJobDatamigrationV1beta1Args {
     );
   }
 }
-

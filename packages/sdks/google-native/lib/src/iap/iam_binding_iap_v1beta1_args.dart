@@ -52,4 +52,3 @@ class IamBindingIapV1beta1Args {
     );
   }
 }
-

@@ -21,4 +21,3 @@ enum GlobalAddressPurpose {
     throw ArgumentError('Unknown GlobalAddressPurpose value: $value');
   }
 }
-

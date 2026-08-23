@@ -18,4 +18,3 @@ enum DeviceClientTypesItem {
     throw ArgumentError('Unknown DeviceClientTypesItem value: $value');
   }
 }
-

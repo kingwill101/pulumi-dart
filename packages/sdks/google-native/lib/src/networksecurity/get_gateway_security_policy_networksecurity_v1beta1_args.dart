@@ -37,4 +37,3 @@ class GetGatewaySecurityPolicyNetworksecurityV1beta1Args {
     );
   }
 }
-

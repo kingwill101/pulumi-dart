@@ -44,4 +44,3 @@ class OSPolicyResponseOsconfigV1alpha {
     );
   }
 }
-

@@ -33,4 +33,3 @@ class TcpRouteRouteRuleResponseNetworkservicesV1beta1 {
     );
   }
 }
-

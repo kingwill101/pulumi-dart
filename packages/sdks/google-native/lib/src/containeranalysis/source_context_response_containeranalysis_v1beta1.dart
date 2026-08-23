@@ -46,4 +46,3 @@ class SourceContextResponseContaineranalysisV1beta1 {
     );
   }
 }
-

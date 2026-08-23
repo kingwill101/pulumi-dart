@@ -43,4 +43,3 @@ class ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta {
     );
   }
 }
-

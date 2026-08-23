@@ -38,4 +38,3 @@ class GoogleCloudChannelV1ParameterResponse {
     );
   }
 }
-

@@ -78,4 +78,3 @@ class GetTlsInspectionPolicyNetworksecurityV1beta1Result {
     );
   }
 }
-

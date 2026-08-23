@@ -37,4 +37,3 @@ class DenyMaintenancePeriodResponseSqladminV1beta4 {
     );
   }
 }
-

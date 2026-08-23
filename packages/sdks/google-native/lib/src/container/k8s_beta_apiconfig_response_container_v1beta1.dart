@@ -25,4 +25,3 @@ class K8sBetaAPIConfigResponseContainerV1beta1 {
     );
   }
 }
-

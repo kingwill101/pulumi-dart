@@ -26,4 +26,3 @@ class DynamicGroupMetadataCloudidentityV1beta1 {
     );
   }
 }
-

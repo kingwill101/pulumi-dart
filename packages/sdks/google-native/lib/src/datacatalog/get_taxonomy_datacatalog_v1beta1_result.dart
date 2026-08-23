@@ -62,4 +62,3 @@ class GetTaxonomyDatacatalogV1beta1Result {
     );
   }
 }
-

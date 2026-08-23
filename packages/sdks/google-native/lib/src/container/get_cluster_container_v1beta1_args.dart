@@ -47,4 +47,3 @@ class GetClusterContainerV1beta1Args {
     );
   }
 }
-

@@ -46,4 +46,3 @@ class SlsaProvenanceResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

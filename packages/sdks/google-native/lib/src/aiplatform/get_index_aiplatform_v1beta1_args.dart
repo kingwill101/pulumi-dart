@@ -37,4 +37,3 @@ class GetIndexAiplatformV1beta1Args {
     );
   }
 }
-

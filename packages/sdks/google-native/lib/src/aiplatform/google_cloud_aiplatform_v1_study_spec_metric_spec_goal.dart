@@ -16,4 +16,3 @@ enum GoogleCloudAiplatformV1StudySpecMetricSpecGoal {
     throw ArgumentError('Unknown GoogleCloudAiplatformV1StudySpecMetricSpecGoal value: $value');
   }
 }
-

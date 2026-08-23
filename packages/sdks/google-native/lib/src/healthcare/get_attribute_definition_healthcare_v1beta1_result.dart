@@ -54,4 +54,3 @@ class GetAttributeDefinitionHealthcareV1beta1Result {
     );
   }
 }
-

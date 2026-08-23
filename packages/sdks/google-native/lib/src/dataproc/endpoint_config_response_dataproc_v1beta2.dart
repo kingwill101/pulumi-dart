@@ -31,4 +31,3 @@ class EndpointConfigResponseDataprocV1beta2 {
     );
   }
 }
-

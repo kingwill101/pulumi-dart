@@ -124,4 +124,3 @@ class ScanConfigWebsecurityscannerV1betaArgs {
     );
   }
 }
-

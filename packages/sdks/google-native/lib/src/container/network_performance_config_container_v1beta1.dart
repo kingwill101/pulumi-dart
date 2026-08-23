@@ -33,4 +33,3 @@ class NetworkPerformanceConfigContainerV1beta1 {
     );
   }
 }
-

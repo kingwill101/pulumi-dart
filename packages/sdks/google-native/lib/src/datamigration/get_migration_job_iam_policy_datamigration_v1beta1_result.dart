@@ -45,4 +45,3 @@ class GetMigrationJobIamPolicyDatamigrationV1beta1Result {
     );
   }
 }
-

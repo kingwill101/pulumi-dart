@@ -93,4 +93,3 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse {
     );
   }
 }
-

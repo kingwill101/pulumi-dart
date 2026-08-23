@@ -68,4 +68,3 @@ class HadoopJobResponseDataprocV1beta2 {
     );
   }
 }
-

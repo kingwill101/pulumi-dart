@@ -58,4 +58,3 @@ class GoogleCloudDataplexV1StorageFormatResponse {
     );
   }
 }
-

@@ -126,4 +126,3 @@ class ComputeEngineTargetDefaultsVmmigrationV1alpha1 {
     );
   }
 }
-

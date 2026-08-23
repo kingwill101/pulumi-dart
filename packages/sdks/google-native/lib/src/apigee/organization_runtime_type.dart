@@ -16,4 +16,3 @@ enum OrganizationRuntimeType {
     throw ArgumentError('Unknown OrganizationRuntimeType value: $value');
   }
 }
-

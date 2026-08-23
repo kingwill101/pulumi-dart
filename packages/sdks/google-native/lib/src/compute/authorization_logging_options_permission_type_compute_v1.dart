@@ -18,4 +18,3 @@ enum AuthorizationLoggingOptionsPermissionTypeComputeV1 {
     throw ArgumentError('Unknown AuthorizationLoggingOptionsPermissionTypeComputeV1 value: $value');
   }
 }
-

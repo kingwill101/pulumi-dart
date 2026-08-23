@@ -16,4 +16,3 @@ enum AndroidInstrumentationTestOrchestratorOption {
     throw ArgumentError('Unknown AndroidInstrumentationTestOrchestratorOption value: $value');
   }
 }
-

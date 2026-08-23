@@ -17,4 +17,3 @@ enum ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1 {
     throw ArgumentError('Unknown ComputeEngineTargetDefaultsDiskTypeVmmigrationV1alpha1 value: $value');
   }
 }
-

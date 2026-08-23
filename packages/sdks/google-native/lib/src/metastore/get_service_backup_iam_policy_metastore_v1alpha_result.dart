@@ -45,4 +45,3 @@ class GetServiceBackupIamPolicyMetastoreV1alphaResult {
     );
   }
 }
-

@@ -88,4 +88,3 @@ class GceInstanceWorkstationsV1beta {
     );
   }
 }
-

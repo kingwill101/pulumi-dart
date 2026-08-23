@@ -81,4 +81,3 @@ class TargetPoolComputeV1Args {
     );
   }
 }
-

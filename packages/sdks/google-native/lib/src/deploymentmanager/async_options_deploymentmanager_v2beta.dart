@@ -32,4 +32,3 @@ class AsyncOptionsDeploymentmanagerV2beta {
     );
   }
 }
-

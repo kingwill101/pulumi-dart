@@ -37,4 +37,3 @@ class OperationErrorResponseSqladminV1beta4 {
     );
   }
 }
-

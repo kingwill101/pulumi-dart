@@ -32,4 +32,3 @@ class GetCompositeTypeDeploymentmanagerV2betaArgs {
     );
   }
 }
-

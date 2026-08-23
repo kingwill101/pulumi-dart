@@ -32,4 +32,3 @@ class Oauth2ClientCredentialsResponse {
     );
   }
 }
-

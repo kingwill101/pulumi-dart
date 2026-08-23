@@ -71,4 +71,3 @@ class DiscoveredContaineranalysisV1beta1 {
     );
   }
 }
-

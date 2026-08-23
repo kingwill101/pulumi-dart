@@ -17,4 +17,3 @@ enum GoogleIamV1AuditLogConfigLogTypeDnsV1beta2 {
     throw ArgumentError('Unknown GoogleIamV1AuditLogConfigLogTypeDnsV1beta2 value: $value');
   }
 }
-

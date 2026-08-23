@@ -38,4 +38,3 @@ class ManagedClusterDataprocV1beta2 {
     );
   }
 }
-

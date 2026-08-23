@@ -38,4 +38,3 @@ class ConsistentHashLoadBalancerSettingsHttpCookieResponseComputeV1 {
     );
   }
 }
-

@@ -74,4 +74,3 @@ class MembershipEndpointResponseGkehubV1beta {
     );
   }
 }
-

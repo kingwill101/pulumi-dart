@@ -16,4 +16,3 @@ enum ConversationMedium {
     throw ArgumentError('Unknown ConversationMedium value: $value');
   }
 }
-

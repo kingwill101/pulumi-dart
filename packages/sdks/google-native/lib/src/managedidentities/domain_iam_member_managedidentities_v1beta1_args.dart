@@ -52,4 +52,3 @@ class DomainIamMemberManagedidentitiesV1beta1Args {
     );
   }
 }
-

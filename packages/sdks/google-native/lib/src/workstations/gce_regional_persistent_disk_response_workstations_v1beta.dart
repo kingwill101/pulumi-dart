@@ -49,4 +49,3 @@ class GceRegionalPersistentDiskResponseWorkstationsV1beta {
     );
   }
 }
-

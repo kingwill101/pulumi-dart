@@ -42,4 +42,3 @@ class GetDicomStoreHealthcareV1beta1Args {
     );
   }
 }
-

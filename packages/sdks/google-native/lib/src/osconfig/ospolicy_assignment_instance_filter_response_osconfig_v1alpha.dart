@@ -51,4 +51,3 @@ class OSPolicyAssignmentInstanceFilterResponseOsconfigV1alpha {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class SubnetworkIamMemberComputeV1Args {
     );
   }
 }
-

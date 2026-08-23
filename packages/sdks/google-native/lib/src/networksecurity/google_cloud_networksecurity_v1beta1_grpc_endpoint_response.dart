@@ -25,4 +25,3 @@ class GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse {
     );
   }
 }
-

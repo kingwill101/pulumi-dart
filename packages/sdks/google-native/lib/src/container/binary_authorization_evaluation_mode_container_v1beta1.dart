@@ -18,4 +18,3 @@ enum BinaryAuthorizationEvaluationModeContainerV1beta1 {
     throw ArgumentError('Unknown BinaryAuthorizationEvaluationModeContainerV1beta1 value: $value');
   }
 }
-

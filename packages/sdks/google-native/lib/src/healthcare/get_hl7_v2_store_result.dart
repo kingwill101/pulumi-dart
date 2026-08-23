@@ -51,4 +51,3 @@ class GetHl7V2StoreResult {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetGrpcRouteNetworkservicesV1beta1Args {
     );
   }
 }
-

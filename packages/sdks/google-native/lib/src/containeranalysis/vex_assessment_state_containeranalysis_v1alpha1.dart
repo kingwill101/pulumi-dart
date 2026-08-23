@@ -18,4 +18,3 @@ enum VexAssessmentStateContaineranalysisV1alpha1 {
     throw ArgumentError('Unknown VexAssessmentStateContaineranalysisV1alpha1 value: $value');
   }
 }
-

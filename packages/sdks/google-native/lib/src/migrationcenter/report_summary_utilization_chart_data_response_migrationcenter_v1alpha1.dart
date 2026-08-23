@@ -31,4 +31,3 @@ class ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

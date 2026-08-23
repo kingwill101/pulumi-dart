@@ -90,4 +90,3 @@ class CloneJobResponseVmmigrationV1alpha1 {
     );
   }
 }
-

@@ -42,4 +42,3 @@ class GetSpokeIamPolicyNetworkconnectivityV1alpha1Args {
     );
   }
 }
-

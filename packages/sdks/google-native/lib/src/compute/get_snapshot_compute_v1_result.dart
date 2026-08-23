@@ -201,4 +201,3 @@ class GetSnapshotComputeV1Result {
     );
   }
 }
-

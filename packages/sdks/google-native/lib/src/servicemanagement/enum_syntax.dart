@@ -16,4 +16,3 @@ enum EnumSyntax {
     throw ArgumentError('Unknown EnumSyntax value: $value');
   }
 }
-

@@ -27,4 +27,3 @@ class GetOrganizationIamPolicyCloudresourcemanagerV1beta1Args {
     );
   }
 }
-

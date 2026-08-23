@@ -69,4 +69,3 @@ class BuildConfigCloudfunctionsV2alpha {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class GoogleCloudAiplatformV1IndexPrivateEndpointsResponse {
     );
   }
 }
-

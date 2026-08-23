@@ -56,4 +56,3 @@ class EntryGroupIamPolicyDatacatalogV1beta1Args {
     );
   }
 }
-

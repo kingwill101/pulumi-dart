@@ -80,4 +80,3 @@ class EntityTypeAiplatformV1beta1Args {
     );
   }
 }
-

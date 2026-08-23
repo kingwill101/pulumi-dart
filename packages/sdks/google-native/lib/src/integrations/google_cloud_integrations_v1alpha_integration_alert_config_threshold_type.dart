@@ -16,4 +16,3 @@ enum GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType value: $value');
   }
 }
-

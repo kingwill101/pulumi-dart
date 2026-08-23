@@ -31,4 +31,3 @@ class LanguageCodePairTranslateV3beta1 {
     );
   }
 }
-

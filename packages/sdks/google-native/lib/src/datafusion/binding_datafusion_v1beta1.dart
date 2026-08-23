@@ -38,4 +38,3 @@ class BindingDatafusionV1beta1 {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class RegionWorkflowTemplateIamMemberDataprocV1beta2Args {
     );
   }
 }
-

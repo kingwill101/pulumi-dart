@@ -38,4 +38,3 @@ class GetDomainIamPolicyManagedidentitiesV1alpha1Result {
     );
   }
 }
-

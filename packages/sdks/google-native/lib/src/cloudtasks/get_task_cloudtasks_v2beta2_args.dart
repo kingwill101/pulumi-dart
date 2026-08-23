@@ -47,4 +47,3 @@ class GetTaskCloudtasksV2beta2Args {
     );
   }
 }
-

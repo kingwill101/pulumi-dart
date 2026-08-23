@@ -20,4 +20,3 @@ enum GoogleCloudDatacatalogLineageV1OriginSourceType {
     throw ArgumentError('Unknown GoogleCloudDatacatalogLineageV1OriginSourceType value: $value');
   }
 }
-

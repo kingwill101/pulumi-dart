@@ -16,4 +16,3 @@ enum OSPolicyResourceRepositoryResourceAptRepositoryArchiveType {
     throw ArgumentError('Unknown OSPolicyResourceRepositoryResourceAptRepositoryArchiveType value: $value');
   }
 }
-

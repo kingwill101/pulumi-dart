@@ -37,4 +37,3 @@ class GetRegionNetworkEndpointGroupComputeV1Args {
     );
   }
 }
-

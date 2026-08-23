@@ -107,4 +107,3 @@ class DisksMigrationVmTargetDefaultsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

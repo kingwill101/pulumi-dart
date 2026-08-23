@@ -52,4 +52,3 @@ class ServiceDatabaseIamMemberMetastoreV1betaArgs {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetFeaturestoreAiplatformV1beta1Args {
     );
   }
 }
-

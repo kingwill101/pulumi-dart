@@ -16,4 +16,3 @@ enum GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIte
     throw ArgumentError('Unknown GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint value: $value');
   }
 }
-

@@ -37,4 +37,3 @@ class GetRegionSslPolicyComputeV1Args {
     );
   }
 }
-

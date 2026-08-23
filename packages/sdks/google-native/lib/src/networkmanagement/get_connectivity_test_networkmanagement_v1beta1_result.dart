@@ -93,4 +93,3 @@ class GetConnectivityTestNetworkmanagementV1beta1Result {
     );
   }
 }
-

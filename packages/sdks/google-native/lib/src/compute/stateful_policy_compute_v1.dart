@@ -24,4 +24,3 @@ class StatefulPolicyComputeV1 {
     );
   }
 }
-

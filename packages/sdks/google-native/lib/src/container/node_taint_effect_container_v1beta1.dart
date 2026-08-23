@@ -17,4 +17,3 @@ enum NodeTaintEffectContainerV1beta1 {
     throw ArgumentError('Unknown NodeTaintEffectContainerV1beta1 value: $value');
   }
 }
-

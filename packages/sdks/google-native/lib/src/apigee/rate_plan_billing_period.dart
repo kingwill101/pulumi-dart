@@ -16,4 +16,3 @@ enum RatePlanBillingPeriod {
     throw ArgumentError('Unknown RatePlanBillingPeriod value: $value');
   }
 }
-

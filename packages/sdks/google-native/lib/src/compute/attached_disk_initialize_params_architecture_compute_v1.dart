@@ -16,4 +16,3 @@ enum AttachedDiskInitializeParamsArchitectureComputeV1 {
     throw ArgumentError('Unknown AttachedDiskInitializeParamsArchitectureComputeV1 value: $value');
   }
 }
-

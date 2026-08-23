@@ -37,4 +37,3 @@ class GetCompanyJobsV4Args {
     );
   }
 }
-

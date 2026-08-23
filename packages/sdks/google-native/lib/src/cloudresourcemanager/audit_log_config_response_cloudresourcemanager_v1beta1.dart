@@ -31,4 +31,3 @@ class AuditLogConfigResponseCloudresourcemanagerV1beta1 {
     );
   }
 }
-

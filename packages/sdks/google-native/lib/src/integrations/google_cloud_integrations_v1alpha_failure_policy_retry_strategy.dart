@@ -21,4 +21,3 @@ enum GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy value: $value');
   }
 }
-

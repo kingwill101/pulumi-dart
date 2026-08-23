@@ -17,4 +17,3 @@ enum ServiceMeshMembershipSpecDefaultChannel {
     throw ArgumentError('Unknown ServiceMeshMembershipSpecDefaultChannel value: $value');
   }
 }
-

@@ -38,4 +38,3 @@ class BinaryAuthorizationResponseContainerV1beta1 {
     );
   }
 }
-

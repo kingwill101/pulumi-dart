@@ -67,4 +67,3 @@ class GetEntityTypeAiplatformV1beta1Result {
     );
   }
 }
-

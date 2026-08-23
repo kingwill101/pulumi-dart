@@ -77,4 +77,3 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentR
     );
   }
 }
-

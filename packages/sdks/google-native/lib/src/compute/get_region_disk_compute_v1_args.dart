@@ -37,4 +37,3 @@ class GetRegionDiskComputeV1Args {
     );
   }
 }
-

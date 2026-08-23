@@ -15,4 +15,3 @@ enum SslConfigCaSourceAlloydbV1alpha {
     throw ArgumentError('Unknown SslConfigCaSourceAlloydbV1alpha value: $value');
   }
 }
-

@@ -25,4 +25,3 @@ class FleetContainerV1beta1 {
     );
   }
 }
-

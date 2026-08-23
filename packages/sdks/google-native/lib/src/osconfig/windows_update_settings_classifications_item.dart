@@ -22,4 +22,3 @@ enum WindowsUpdateSettingsClassificationsItem {
     throw ArgumentError('Unknown WindowsUpdateSettingsClassificationsItem value: $value');
   }
 }
-

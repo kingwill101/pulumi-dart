@@ -20,4 +20,3 @@ enum ExecutionStateAiplatformV1beta1 {
     throw ArgumentError('Unknown ExecutionStateAiplatformV1beta1 value: $value');
   }
 }
-

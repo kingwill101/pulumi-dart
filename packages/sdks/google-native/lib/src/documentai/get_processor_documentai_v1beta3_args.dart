@@ -37,4 +37,3 @@ class GetProcessorDocumentaiV1beta3Args {
     );
   }
 }
-

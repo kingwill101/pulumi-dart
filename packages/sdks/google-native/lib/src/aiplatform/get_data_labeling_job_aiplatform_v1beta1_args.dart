@@ -37,4 +37,3 @@ class GetDataLabelingJobAiplatformV1beta1Args {
     );
   }
 }
-

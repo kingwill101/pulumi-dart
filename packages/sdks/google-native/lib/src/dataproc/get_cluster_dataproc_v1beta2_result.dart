@@ -70,4 +70,3 @@ class GetClusterDataprocV1beta2Result {
     );
   }
 }
-

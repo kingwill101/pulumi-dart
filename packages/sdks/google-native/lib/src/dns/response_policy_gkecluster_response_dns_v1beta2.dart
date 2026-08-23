@@ -29,4 +29,3 @@ class ResponsePolicyGKEClusterResponseDnsV1beta2 {
     );
   }
 }
-

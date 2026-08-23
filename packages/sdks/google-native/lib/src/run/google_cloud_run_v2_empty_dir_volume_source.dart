@@ -32,4 +32,3 @@ class GoogleCloudRunV2EmptyDirVolumeSource {
     );
   }
 }
-

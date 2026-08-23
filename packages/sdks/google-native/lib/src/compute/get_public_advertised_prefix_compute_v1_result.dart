@@ -98,4 +98,3 @@ class GetPublicAdvertisedPrefixComputeV1Result {
     );
   }
 }
-

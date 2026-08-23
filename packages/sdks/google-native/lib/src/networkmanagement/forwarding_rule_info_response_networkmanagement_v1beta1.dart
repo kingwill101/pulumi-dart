@@ -61,4 +61,3 @@ class ForwardingRuleInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

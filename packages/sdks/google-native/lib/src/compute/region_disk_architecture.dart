@@ -16,4 +16,3 @@ enum RegionDiskArchitecture {
     throw ArgumentError('Unknown RegionDiskArchitecture value: $value');
   }
 }
-

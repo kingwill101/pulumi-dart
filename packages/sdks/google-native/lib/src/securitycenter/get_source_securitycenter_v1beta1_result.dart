@@ -36,4 +36,3 @@ class GetSourceSecuritycenterV1beta1Result {
     );
   }
 }
-

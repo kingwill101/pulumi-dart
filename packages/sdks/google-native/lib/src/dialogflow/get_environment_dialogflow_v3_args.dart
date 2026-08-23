@@ -42,4 +42,3 @@ class GetEnvironmentDialogflowV3Args {
     );
   }
 }
-

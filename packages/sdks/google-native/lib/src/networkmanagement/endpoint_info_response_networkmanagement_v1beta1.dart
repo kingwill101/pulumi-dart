@@ -67,4 +67,3 @@ class EndpointInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

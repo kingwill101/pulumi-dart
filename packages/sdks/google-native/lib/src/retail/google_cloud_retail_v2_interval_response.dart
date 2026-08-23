@@ -43,4 +43,3 @@ class GoogleCloudRetailV2IntervalResponse {
     );
   }
 }
-

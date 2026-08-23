@@ -31,4 +31,3 @@ class NodeInitializationActionDataprocV1beta2 {
     );
   }
 }
-

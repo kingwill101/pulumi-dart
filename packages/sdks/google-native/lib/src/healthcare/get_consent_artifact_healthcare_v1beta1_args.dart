@@ -47,4 +47,3 @@ class GetConsentArtifactHealthcareV1beta1Args {
     );
   }
 }
-

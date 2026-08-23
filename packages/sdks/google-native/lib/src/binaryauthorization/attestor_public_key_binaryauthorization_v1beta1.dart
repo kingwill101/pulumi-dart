@@ -44,4 +44,3 @@ class AttestorPublicKeyBinaryauthorizationV1beta1 {
     );
   }
 }
-

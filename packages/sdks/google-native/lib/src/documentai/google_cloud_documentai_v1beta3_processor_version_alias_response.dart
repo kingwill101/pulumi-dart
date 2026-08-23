@@ -31,4 +31,3 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse {
     );
   }
 }
-

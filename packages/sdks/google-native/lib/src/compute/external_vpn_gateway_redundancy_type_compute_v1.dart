@@ -16,4 +16,3 @@ enum ExternalVpnGatewayRedundancyTypeComputeV1 {
     throw ArgumentError('Unknown ExternalVpnGatewayRedundancyTypeComputeV1 value: $value');
   }
 }
-

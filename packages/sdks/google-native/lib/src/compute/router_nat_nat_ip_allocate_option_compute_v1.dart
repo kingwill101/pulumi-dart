@@ -15,4 +15,3 @@ enum RouterNatNatIpAllocateOptionComputeV1 {
     throw ArgumentError('Unknown RouterNatNatIpAllocateOptionComputeV1 value: $value');
   }
 }
-

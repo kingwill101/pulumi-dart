@@ -16,4 +16,3 @@ enum GrpcRouteMethodMatchTypeNetworkservicesV1beta1 {
     throw ArgumentError('Unknown GrpcRouteMethodMatchTypeNetworkservicesV1beta1 value: $value');
   }
 }
-

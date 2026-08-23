@@ -52,4 +52,3 @@ class TopicIamBindingPubsubV1beta2Args {
     );
   }
 }
-

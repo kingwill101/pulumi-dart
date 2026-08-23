@@ -16,4 +16,3 @@ enum SBOMStatusSbomStateContaineranalysisV1beta1 {
     throw ArgumentError('Unknown SBOMStatusSbomStateContaineranalysisV1beta1 value: $value');
   }
 }
-

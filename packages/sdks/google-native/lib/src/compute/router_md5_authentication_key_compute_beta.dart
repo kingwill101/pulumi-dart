@@ -30,4 +30,3 @@ class RouterMd5AuthenticationKeyComputeBeta {
     );
   }
 }
-

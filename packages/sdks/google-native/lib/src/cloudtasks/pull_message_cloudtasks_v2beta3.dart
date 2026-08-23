@@ -31,4 +31,3 @@ class PullMessageCloudtasksV2beta3 {
     );
   }
 }
-

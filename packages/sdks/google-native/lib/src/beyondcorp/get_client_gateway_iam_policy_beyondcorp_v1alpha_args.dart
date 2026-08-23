@@ -42,4 +42,3 @@ class GetClientGatewayIamPolicyBeyondcorpV1alphaArgs {
     );
   }
 }
-

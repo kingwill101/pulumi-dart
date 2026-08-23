@@ -16,4 +16,3 @@ enum GoogleCloudRunV2TrafficTargetType {
     throw ArgumentError('Unknown GoogleCloudRunV2TrafficTargetType value: $value');
   }
 }
-

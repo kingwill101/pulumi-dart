@@ -25,4 +25,3 @@ class HttpLoadBalancingResponseContainerV1beta1 {
     );
   }
 }
-

@@ -41,4 +41,3 @@ class InTotoSlsaProvenanceV1 {
     );
   }
 }
-

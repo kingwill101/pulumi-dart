@@ -16,4 +16,3 @@ enum GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy {
     throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy value: $value');
   }
 }
-

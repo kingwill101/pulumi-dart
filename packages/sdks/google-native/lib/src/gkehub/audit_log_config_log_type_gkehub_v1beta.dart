@@ -17,4 +17,3 @@ enum AuditLogConfigLogTypeGkehubV1beta {
     throw ArgumentError('Unknown AuditLogConfigLogTypeGkehubV1beta value: $value');
   }
 }
-

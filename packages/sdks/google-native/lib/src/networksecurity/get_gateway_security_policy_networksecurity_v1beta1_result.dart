@@ -48,4 +48,3 @@ class GetGatewaySecurityPolicyNetworksecurityV1beta1Result {
     );
   }
 }
-

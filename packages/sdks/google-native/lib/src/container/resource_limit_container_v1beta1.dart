@@ -37,4 +37,3 @@ class ResourceLimitContainerV1beta1 {
     );
   }
 }
-

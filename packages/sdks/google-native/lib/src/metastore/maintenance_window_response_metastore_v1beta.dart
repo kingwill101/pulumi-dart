@@ -31,4 +31,3 @@ class MaintenanceWindowResponseMetastoreV1beta {
     );
   }
 }
-

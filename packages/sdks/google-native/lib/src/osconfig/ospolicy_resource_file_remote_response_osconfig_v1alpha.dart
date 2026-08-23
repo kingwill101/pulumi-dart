@@ -31,4 +31,3 @@ class OSPolicyResourceFileRemoteResponseOsconfigV1alpha {
     );
   }
 }
-

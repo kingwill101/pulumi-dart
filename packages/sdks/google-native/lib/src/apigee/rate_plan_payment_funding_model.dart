@@ -16,4 +16,3 @@ enum RatePlanPaymentFundingModel {
     throw ArgumentError('Unknown RatePlanPaymentFundingModel value: $value');
   }
 }
-

@@ -43,4 +43,3 @@ class GoogleCloudAiplatformV1SavedQuery {
     );
   }
 }
-

@@ -26,4 +26,3 @@ class GkeClusterConfigDataprocV1beta2 {
     );
   }
 }
-

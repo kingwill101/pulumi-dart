@@ -17,4 +17,3 @@ enum ApiConfigHandlerLoginAppengineV1beta {
     throw ArgumentError('Unknown ApiConfigHandlerLoginAppengineV1beta value: $value');
   }
 }
-

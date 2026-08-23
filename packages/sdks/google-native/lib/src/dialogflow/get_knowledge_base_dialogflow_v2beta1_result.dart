@@ -36,4 +36,3 @@ class GetKnowledgeBaseDialogflowV2beta1Result {
     );
   }
 }
-

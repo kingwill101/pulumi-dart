@@ -17,4 +17,3 @@ enum AliasContextKindContaineranalysisV1beta1 {
     throw ArgumentError('Unknown AliasContextKindContaineranalysisV1beta1 value: $value');
   }
 }
-

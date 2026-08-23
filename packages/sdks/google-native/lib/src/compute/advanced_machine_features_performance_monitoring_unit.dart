@@ -17,4 +17,3 @@ enum AdvancedMachineFeaturesPerformanceMonitoringUnit {
     throw ArgumentError('Unknown AdvancedMachineFeaturesPerformanceMonitoringUnit value: $value');
   }
 }
-

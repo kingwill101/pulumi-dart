@@ -15,4 +15,3 @@ enum InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck {
     throw ArgumentError('Unknown InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck value: $value');
   }
 }
-

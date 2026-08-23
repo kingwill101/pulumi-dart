@@ -43,4 +43,3 @@ class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoResponse {
     );
   }
 }
-

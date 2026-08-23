@@ -32,4 +32,3 @@ class OracleSchemaResponseDatastreamV1alpha1 {
     );
   }
 }
-

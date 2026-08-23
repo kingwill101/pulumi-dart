@@ -42,4 +42,3 @@ class SqlScheduledMaintenanceSqladminV1beta4 {
     );
   }
 }
-

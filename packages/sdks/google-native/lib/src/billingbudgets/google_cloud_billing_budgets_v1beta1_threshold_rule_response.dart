@@ -31,4 +31,3 @@ class GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse {
     );
   }
 }
-

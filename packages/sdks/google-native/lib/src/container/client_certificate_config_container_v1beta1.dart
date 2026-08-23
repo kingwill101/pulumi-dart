@@ -25,4 +25,3 @@ class ClientCertificateConfigContainerV1beta1 {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class GrpcRouteDestinationResponseNetworkservicesV1beta1 {
     );
   }
 }
-

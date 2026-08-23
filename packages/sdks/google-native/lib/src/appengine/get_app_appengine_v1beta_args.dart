@@ -32,4 +32,3 @@ class GetAppAppengineV1betaArgs {
     );
   }
 }
-

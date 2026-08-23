@@ -52,4 +52,3 @@ class IdentityServiceAuthMethodResponseGkehubV1beta {
     );
   }
 }
-

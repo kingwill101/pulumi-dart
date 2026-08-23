@@ -45,4 +45,3 @@ class DatabaseDumpMetastoreV1beta {
     );
   }
 }
-

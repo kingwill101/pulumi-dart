@@ -55,4 +55,3 @@ class GetVersionDialogflowV3beta1Result {
     );
   }
 }
-

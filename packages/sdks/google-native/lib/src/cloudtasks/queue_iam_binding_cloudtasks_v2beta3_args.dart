@@ -52,4 +52,3 @@ class QueueIamBindingCloudtasksV2beta3Args {
     );
   }
 }
-

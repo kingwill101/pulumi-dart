@@ -16,4 +16,3 @@ enum SettingsReplicationTypeSqladminV1beta4 {
     throw ArgumentError('Unknown SettingsReplicationTypeSqladminV1beta4 value: $value');
   }
 }
-

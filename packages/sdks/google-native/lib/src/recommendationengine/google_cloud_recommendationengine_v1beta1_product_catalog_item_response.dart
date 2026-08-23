@@ -70,4 +70,3 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse {
     );
   }
 }
-

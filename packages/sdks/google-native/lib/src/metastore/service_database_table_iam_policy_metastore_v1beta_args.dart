@@ -79,4 +79,3 @@ class ServiceDatabaseTableIamPolicyMetastoreV1betaArgs {
     );
   }
 }
-

@@ -33,4 +33,3 @@ class GoogleCloudDialogflowCxV3ConversationTurnResponse {
     );
   }
 }
-

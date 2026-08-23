@@ -67,4 +67,3 @@ class NamespaceGkehubV1betaArgs {
     );
   }
 }
-

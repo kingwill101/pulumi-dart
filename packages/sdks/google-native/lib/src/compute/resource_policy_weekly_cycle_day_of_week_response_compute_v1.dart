@@ -36,4 +36,3 @@ class ResourcePolicyWeeklyCycleDayOfWeekResponseComputeV1 {
     );
   }
 }
-

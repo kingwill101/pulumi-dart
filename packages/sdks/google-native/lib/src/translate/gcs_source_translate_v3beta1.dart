@@ -25,4 +25,3 @@ class GcsSourceTranslateV3beta1 {
     );
   }
 }
-

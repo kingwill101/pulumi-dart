@@ -37,4 +37,3 @@ class GetVpnTunnelComputeV1Args {
     );
   }
 }
-

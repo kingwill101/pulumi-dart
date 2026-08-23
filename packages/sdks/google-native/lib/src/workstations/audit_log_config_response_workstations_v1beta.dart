@@ -31,4 +31,3 @@ class AuditLogConfigResponseWorkstationsV1beta {
     );
   }
 }
-

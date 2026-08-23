@@ -44,4 +44,3 @@ class WorkerConfigCloudbuildV1alpha1 {
     );
   }
 }
-

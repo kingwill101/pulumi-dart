@@ -38,4 +38,3 @@ class AutopilotContainerV1beta1 {
     );
   }
 }
-

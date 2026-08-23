@@ -21,4 +21,3 @@ enum AppEngineHttpTargetHttpMethodCloudschedulerV1beta1 {
     throw ArgumentError('Unknown AppEngineHttpTargetHttpMethodCloudschedulerV1beta1 value: $value');
   }
 }
-

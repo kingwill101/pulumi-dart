@@ -32,4 +32,3 @@ class MysqlSourceConfigResponseDatastreamV1alpha1 {
     );
   }
 }
-

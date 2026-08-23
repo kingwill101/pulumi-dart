@@ -37,4 +37,3 @@ class StatusResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

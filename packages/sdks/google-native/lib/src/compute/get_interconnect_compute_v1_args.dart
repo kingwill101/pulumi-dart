@@ -32,4 +32,3 @@ class GetInterconnectComputeV1Args {
     );
   }
 }
-

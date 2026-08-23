@@ -70,4 +70,3 @@ class IpConfigurationSqladminV1beta4 {
     );
   }
 }
-

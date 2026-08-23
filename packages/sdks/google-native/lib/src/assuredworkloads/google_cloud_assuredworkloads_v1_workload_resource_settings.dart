@@ -38,4 +38,3 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
     );
   }
 }
-

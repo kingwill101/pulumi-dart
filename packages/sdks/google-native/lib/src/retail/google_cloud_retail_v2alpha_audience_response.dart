@@ -31,4 +31,3 @@ class GoogleCloudRetailV2alphaAudienceResponse {
     );
   }
 }
-

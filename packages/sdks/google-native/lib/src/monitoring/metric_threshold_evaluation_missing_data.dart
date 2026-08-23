@@ -17,4 +17,3 @@ enum MetricThresholdEvaluationMissingData {
     throw ArgumentError('Unknown MetricThresholdEvaluationMissingData value: $value');
   }
 }
-

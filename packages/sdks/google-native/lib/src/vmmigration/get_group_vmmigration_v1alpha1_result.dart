@@ -54,4 +54,3 @@ class GetGroupVmmigrationV1alpha1Result {
     );
   }
 }
-

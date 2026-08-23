@@ -37,4 +37,3 @@ class GetTagTemplateIamPolicyDatacatalogV1beta1Args {
     );
   }
 }
-

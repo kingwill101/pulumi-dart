@@ -51,4 +51,3 @@ class AttestorIamPolicyBinaryauthorizationV1beta1Args {
     );
   }
 }
-

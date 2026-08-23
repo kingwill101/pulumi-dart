@@ -16,4 +16,3 @@ enum AttachedDiskInitializeParamsOnUpdateAction {
     throw ArgumentError('Unknown AttachedDiskInitializeParamsOnUpdateAction value: $value');
   }
 }
-

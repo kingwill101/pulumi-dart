@@ -26,4 +26,3 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse {
     );
   }
 }
-

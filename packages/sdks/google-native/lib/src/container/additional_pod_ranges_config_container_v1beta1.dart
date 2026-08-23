@@ -25,4 +25,3 @@ class AdditionalPodRangesConfigContainerV1beta1 {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class MeshCertificatesResponseContainerV1beta1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration {
     throw ArgumentError('Unknown GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration value: $value');
   }
 }
-

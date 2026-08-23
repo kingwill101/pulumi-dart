@@ -56,4 +56,3 @@ class RegionClusterIamPolicyDataprocV1beta2Args {
     );
   }
 }
-

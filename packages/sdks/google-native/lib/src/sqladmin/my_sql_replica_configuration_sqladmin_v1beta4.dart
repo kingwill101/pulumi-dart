@@ -85,4 +85,3 @@ class MySqlReplicaConfigurationSqladminV1beta4 {
     );
   }
 }
-

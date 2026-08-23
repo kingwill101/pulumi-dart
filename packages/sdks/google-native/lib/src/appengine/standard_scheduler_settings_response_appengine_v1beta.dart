@@ -43,4 +43,3 @@ class StandardSchedulerSettingsResponseAppengineV1beta {
     );
   }
 }
-

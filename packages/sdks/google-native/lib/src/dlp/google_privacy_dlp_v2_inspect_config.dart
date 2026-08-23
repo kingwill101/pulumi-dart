@@ -80,4 +80,3 @@ class GooglePrivacyDlpV2InspectConfig {
     );
   }
 }
-

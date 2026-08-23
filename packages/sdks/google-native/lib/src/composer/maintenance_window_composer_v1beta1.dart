@@ -37,4 +37,3 @@ class MaintenanceWindowComposerV1beta1 {
     );
   }
 }
-

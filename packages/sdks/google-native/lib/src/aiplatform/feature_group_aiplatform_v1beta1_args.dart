@@ -63,4 +63,3 @@ class FeatureGroupAiplatformV1beta1Args {
     );
   }
 }
-

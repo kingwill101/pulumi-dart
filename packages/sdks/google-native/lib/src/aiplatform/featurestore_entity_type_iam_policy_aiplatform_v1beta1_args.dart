@@ -61,4 +61,3 @@ class FeaturestoreEntityTypeIamPolicyAiplatformV1beta1Args {
     );
   }
 }
-

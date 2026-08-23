@@ -42,4 +42,3 @@ class GetAuthorizationPolicyIamPolicyNetworksecurityV1beta1Args {
     );
   }
 }
-

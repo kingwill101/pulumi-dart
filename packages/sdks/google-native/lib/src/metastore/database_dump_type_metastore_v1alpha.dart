@@ -16,4 +16,3 @@ enum DatabaseDumpTypeMetastoreV1alpha {
     throw ArgumentError('Unknown DatabaseDumpTypeMetastoreV1alpha value: $value');
   }
 }
-

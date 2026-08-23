@@ -25,4 +25,3 @@ class ShieldedNodesContainerV1beta1 {
     );
   }
 }
-

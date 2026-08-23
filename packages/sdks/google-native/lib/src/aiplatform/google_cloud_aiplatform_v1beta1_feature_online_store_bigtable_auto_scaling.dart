@@ -36,4 +36,3 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling {
     );
   }
 }
-

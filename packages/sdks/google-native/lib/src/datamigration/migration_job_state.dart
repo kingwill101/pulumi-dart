@@ -29,4 +29,3 @@ enum MigrationJobState {
     throw ArgumentError('Unknown MigrationJobState value: $value');
   }
 }
-

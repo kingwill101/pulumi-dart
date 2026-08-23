@@ -38,4 +38,3 @@ class GoogleCloudDocumentaiV1DocumentProvenanceResponse {
     );
   }
 }
-

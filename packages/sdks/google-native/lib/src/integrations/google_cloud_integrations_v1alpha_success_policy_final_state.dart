@@ -16,4 +16,3 @@ enum GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState value: $value');
   }
 }
-

@@ -43,4 +43,3 @@ class NetworkConfigResponseTpuV2alpha1 {
     );
   }
 }
-

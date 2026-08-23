@@ -29,4 +29,3 @@ enum MappingRuleRuleScope {
     throw ArgumentError('Unknown MappingRuleRuleScope value: $value');
   }
 }
-

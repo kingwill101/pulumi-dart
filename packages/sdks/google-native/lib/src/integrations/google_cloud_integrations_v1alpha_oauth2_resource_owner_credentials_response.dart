@@ -75,4 +75,3 @@ class GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsResponse {
     );
   }
 }
-

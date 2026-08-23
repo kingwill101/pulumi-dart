@@ -43,4 +43,3 @@ class NetworkUtilizationAppengineV1beta {
     );
   }
 }
-

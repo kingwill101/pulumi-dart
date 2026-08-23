@@ -69,4 +69,3 @@ class ClientGatewayIamPolicyBeyondcorpV1alphaArgs {
     );
   }
 }
-

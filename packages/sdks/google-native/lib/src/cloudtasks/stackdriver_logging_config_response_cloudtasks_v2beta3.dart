@@ -25,4 +25,3 @@ class StackdriverLoggingConfigResponseCloudtasksV2beta3 {
     );
   }
 }
-

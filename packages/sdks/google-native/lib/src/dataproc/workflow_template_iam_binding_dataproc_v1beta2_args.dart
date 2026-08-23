@@ -52,4 +52,3 @@ class WorkflowTemplateIamBindingDataprocV1beta2Args {
     );
   }
 }
-

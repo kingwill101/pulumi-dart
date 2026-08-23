@@ -90,4 +90,3 @@ class GetCloneJobVmmigrationV1alpha1Result {
     );
   }
 }
-

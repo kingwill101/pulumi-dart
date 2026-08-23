@@ -17,4 +17,3 @@ enum AuditLogConfigLogTypeSecretmanagerV1beta1 {
     throw ArgumentError('Unknown AuditLogConfigLogTypeSecretmanagerV1beta1 value: $value');
   }
 }
-

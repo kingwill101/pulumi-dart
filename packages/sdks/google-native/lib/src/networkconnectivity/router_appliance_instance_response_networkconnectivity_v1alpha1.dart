@@ -36,4 +36,3 @@ class RouterApplianceInstanceResponseNetworkconnectivityV1alpha1 {
     );
   }
 }
-

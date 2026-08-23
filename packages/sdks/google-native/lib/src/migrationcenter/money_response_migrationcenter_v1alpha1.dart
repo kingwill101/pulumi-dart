@@ -37,4 +37,3 @@ class MoneyResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

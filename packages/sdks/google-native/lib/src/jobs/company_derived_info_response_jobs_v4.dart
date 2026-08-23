@@ -26,4 +26,3 @@ class CompanyDerivedInfoResponseJobsV4 {
     );
   }
 }
-

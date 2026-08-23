@@ -37,4 +37,3 @@ class GoogleCloudRecommendationengineV1beta1ImageResponse {
     );
   }
 }
-

@@ -49,4 +49,3 @@ class VersionResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

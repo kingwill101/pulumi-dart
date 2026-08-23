@@ -37,4 +37,3 @@ class GetInstanceTemplateIamPolicyComputeV1Args {
     );
   }
 }
-

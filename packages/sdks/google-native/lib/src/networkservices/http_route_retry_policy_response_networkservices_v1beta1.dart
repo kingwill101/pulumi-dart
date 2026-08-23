@@ -37,4 +37,3 @@ class HttpRouteRetryPolicyResponseNetworkservicesV1beta1 {
     );
   }
 }
-

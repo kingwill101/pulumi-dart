@@ -61,4 +61,3 @@ class GoogleCloudHealthcareV1beta1DeidentifyFieldMetadataResponse {
     );
   }
 }
-

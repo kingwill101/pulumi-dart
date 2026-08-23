@@ -25,4 +25,3 @@ enum GoogleCloudIntegrationsV1alphaParameterMapValueType {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaParameterMapValueType value: $value');
   }
 }
-

@@ -74,4 +74,3 @@ class DatasetConsentStoreIamPolicyHealthcareV1beta1Args {
     );
   }
 }
-

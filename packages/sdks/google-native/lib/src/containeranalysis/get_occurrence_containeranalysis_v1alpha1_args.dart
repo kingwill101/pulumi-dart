@@ -32,4 +32,3 @@ class GetOccurrenceContaineranalysisV1alpha1Args {
     );
   }
 }
-

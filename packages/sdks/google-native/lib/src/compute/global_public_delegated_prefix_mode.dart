@@ -15,4 +15,3 @@ enum GlobalPublicDelegatedPrefixMode {
     throw ArgumentError('Unknown GlobalPublicDelegatedPrefixMode value: $value');
   }
 }
-

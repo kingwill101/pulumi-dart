@@ -108,4 +108,3 @@ class GetEntryDatacatalogV1beta1Result {
     );
   }
 }
-

@@ -38,4 +38,3 @@ class ApigatewayBindingResponseApigatewayV1beta {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class MaxPodsConstraintContainerV1beta1 {
     );
   }
 }
-

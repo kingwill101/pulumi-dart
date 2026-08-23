@@ -56,4 +56,3 @@ class WorkflowTemplateIamPolicyDataprocV1beta2Args {
     );
   }
 }
-

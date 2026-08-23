@@ -52,4 +52,3 @@ class AddressGroupIamBindingNetworksecurityV1beta1Args {
     );
   }
 }
-

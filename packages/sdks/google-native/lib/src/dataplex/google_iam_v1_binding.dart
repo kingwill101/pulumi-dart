@@ -38,4 +38,3 @@ class GoogleIamV1Binding {
     );
   }
 }
-

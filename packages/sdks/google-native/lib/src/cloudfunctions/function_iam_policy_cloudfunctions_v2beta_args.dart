@@ -69,4 +69,3 @@ class FunctionIamPolicyCloudfunctionsV2betaArgs {
     );
   }
 }
-

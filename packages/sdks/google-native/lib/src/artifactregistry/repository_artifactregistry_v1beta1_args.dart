@@ -69,4 +69,3 @@ class RepositoryArtifactregistryV1beta1Args {
     );
   }
 }
-

@@ -30,4 +30,3 @@ class SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchComputeV1 {
     );
   }
 }
-

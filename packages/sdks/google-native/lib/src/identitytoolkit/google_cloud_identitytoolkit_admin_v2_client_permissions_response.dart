@@ -31,4 +31,3 @@ class GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponse {
     );
   }
 }
-

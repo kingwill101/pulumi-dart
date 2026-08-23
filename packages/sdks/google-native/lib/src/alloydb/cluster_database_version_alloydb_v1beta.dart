@@ -17,4 +17,3 @@ enum ClusterDatabaseVersionAlloydbV1beta {
     throw ArgumentError('Unknown ClusterDatabaseVersionAlloydbV1beta value: $value');
   }
 }
-

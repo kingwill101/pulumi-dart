@@ -69,4 +69,3 @@ class MigrationJobIamPolicyDatamigrationV1beta1Args {
     );
   }
 }
-

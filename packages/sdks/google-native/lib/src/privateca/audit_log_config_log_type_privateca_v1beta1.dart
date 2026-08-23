@@ -17,4 +17,3 @@ enum AuditLogConfigLogTypePrivatecaV1beta1 {
     throw ArgumentError('Unknown AuditLogConfigLogTypePrivatecaV1beta1 value: $value');
   }
 }
-

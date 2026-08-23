@@ -42,4 +42,3 @@ class GetIndexFirestoreV1beta2Args {
     );
   }
 }
-

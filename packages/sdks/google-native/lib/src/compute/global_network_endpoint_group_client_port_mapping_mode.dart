@@ -15,4 +15,3 @@ enum GlobalNetworkEndpointGroupClientPortMappingMode {
     throw ArgumentError('Unknown GlobalNetworkEndpointGroupClientPortMappingMode value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum NetworkConfigInTransitEncryptionConfig {
     throw ArgumentError('Unknown NetworkConfigInTransitEncryptionConfig value: $value');
   }
 }
-

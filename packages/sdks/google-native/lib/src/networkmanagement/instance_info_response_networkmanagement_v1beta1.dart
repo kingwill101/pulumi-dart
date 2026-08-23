@@ -67,4 +67,3 @@ class InstanceInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

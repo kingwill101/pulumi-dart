@@ -25,4 +25,3 @@ class ConsumerMetastoreV1alpha {
     );
   }
 }
-

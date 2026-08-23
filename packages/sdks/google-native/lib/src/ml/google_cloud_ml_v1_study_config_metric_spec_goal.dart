@@ -16,4 +16,3 @@ enum GoogleCloudMlV1StudyConfigMetricSpecGoal {
     throw ArgumentError('Unknown GoogleCloudMlV1StudyConfigMetricSpecGoal value: $value');
   }
 }
-

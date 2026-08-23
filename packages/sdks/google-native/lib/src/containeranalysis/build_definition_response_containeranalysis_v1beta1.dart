@@ -39,4 +39,3 @@ class BuildDefinitionResponseContaineranalysisV1beta1 {
     );
   }
 }
-

@@ -42,4 +42,3 @@ class GetSshPublicKeyOsloginV1betaResult {
     );
   }
 }
-

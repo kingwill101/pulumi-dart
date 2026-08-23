@@ -70,4 +70,3 @@ class HttpRouteRuleMatchResponseComputeV1 {
     );
   }
 }
-

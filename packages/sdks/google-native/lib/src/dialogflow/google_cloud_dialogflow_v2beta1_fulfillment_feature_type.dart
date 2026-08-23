@@ -15,4 +15,3 @@ enum GoogleCloudDialogflowV2beta1FulfillmentFeatureType {
     throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1FulfillmentFeatureType value: $value');
   }
 }
-

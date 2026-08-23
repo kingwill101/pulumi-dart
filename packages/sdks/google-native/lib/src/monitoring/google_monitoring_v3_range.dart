@@ -31,4 +31,3 @@ class GoogleMonitoringV3Range {
     );
   }
 }
-

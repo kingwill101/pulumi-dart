@@ -16,4 +16,3 @@ enum NodeTemplateCpuOvercommitTypeComputeV1 {
     throw ArgumentError('Unknown NodeTemplateCpuOvercommitTypeComputeV1 value: $value');
   }
 }
-

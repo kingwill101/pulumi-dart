@@ -32,4 +32,3 @@ class RepoIdResponseContaineranalysisV1beta1 {
     );
   }
 }
-

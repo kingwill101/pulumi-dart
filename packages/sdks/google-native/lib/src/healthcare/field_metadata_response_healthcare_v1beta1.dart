@@ -31,4 +31,3 @@ class FieldMetadataResponseHealthcareV1beta1 {
     );
   }
 }
-

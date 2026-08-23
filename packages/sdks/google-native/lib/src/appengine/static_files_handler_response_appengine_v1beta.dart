@@ -61,4 +61,3 @@ class StaticFilesHandlerResponseAppengineV1beta {
     );
   }
 }
-

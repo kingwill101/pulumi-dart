@@ -16,4 +16,3 @@ enum MultiClusterIngressFeatureSpecBillingGkehubV1beta {
     throw ArgumentError('Unknown MultiClusterIngressFeatureSpecBillingGkehubV1beta value: $value');
   }
 }
-

@@ -77,4 +77,3 @@ class RecurringScheduleResponseOsconfigV1beta {
     );
   }
 }
-

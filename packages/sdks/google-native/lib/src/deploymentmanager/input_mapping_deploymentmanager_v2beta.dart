@@ -44,4 +44,3 @@ class InputMappingDeploymentmanagerV2beta {
     );
   }
 }
-

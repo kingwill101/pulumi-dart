@@ -16,4 +16,3 @@ enum DataDiskDiskEncryption {
     throw ArgumentError('Unknown DataDiskDiskEncryption value: $value');
   }
 }
-

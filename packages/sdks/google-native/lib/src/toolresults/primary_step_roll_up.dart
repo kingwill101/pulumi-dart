@@ -19,4 +19,3 @@ enum PrimaryStepRollUp {
     throw ArgumentError('Unknown PrimaryStepRollUp value: $value');
   }
 }
-

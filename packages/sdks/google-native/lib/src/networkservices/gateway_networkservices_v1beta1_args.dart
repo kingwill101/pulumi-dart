@@ -111,4 +111,3 @@ class GatewayNetworkservicesV1beta1Args {
     );
   }
 }
-

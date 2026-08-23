@@ -18,4 +18,3 @@ enum ProductAvailabilityRetailV2beta {
     throw ArgumentError('Unknown ProductAvailabilityRetailV2beta value: $value');
   }
 }
-

@@ -43,4 +43,3 @@ class ExprBinaryauthorizationV1beta1 {
     );
   }
 }
-

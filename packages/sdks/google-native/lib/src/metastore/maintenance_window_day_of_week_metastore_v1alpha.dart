@@ -21,4 +21,3 @@ enum MaintenanceWindowDayOfWeekMetastoreV1alpha {
     throw ArgumentError('Unknown MaintenanceWindowDayOfWeekMetastoreV1alpha value: $value');
   }
 }
-

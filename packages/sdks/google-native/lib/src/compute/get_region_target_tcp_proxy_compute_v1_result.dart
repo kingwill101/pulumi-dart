@@ -72,4 +72,3 @@ class GetRegionTargetTcpProxyComputeV1Result {
     );
   }
 }
-

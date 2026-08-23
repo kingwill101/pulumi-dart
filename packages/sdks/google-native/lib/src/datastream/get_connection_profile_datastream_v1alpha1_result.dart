@@ -95,4 +95,3 @@ class GetConnectionProfileDatastreamV1alpha1Result {
     );
   }
 }
-

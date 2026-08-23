@@ -17,4 +17,3 @@ enum BootDiskDefaultsDiskTypeVmmigrationV1alpha1 {
     throw ArgumentError('Unknown BootDiskDefaultsDiskTypeVmmigrationV1alpha1 value: $value');
   }
 }
-

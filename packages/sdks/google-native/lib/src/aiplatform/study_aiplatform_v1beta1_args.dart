@@ -45,4 +45,3 @@ class StudyAiplatformV1beta1Args {
     );
   }
 }
-

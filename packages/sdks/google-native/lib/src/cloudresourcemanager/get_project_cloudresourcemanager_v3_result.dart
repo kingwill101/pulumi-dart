@@ -78,4 +78,3 @@ class GetProjectCloudresourcemanagerV3Result {
     );
   }
 }
-

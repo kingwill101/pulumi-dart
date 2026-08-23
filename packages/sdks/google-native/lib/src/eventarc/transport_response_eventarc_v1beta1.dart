@@ -26,4 +26,3 @@ class TransportResponseEventarcV1beta1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum SecurityPostureConfigModeGkehubV1alpha {
     throw ArgumentError('Unknown SecurityPostureConfigModeGkehubV1alpha value: $value');
   }
 }
-

@@ -37,4 +37,3 @@ class GetDataExchangeIamPolicyAnalyticshubV1beta1Args {
     );
   }
 }
-

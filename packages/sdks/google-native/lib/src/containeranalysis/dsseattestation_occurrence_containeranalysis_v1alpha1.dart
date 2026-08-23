@@ -32,4 +32,3 @@ class DSSEAttestationOccurrenceContaineranalysisV1alpha1 {
     );
   }
 }
-

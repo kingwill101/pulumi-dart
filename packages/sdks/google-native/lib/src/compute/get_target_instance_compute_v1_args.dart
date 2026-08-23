@@ -37,4 +37,3 @@ class GetTargetInstanceComputeV1Args {
     );
   }
 }
-

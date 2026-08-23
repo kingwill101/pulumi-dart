@@ -16,4 +16,3 @@ enum GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta {
     throw ArgumentError('Unknown GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta value: $value');
   }
 }
-

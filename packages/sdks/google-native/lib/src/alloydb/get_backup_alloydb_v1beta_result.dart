@@ -147,4 +147,3 @@ class GetBackupAlloydbV1betaResult {
     );
   }
 }
-

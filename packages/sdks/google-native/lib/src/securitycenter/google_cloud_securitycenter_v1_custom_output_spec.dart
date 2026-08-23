@@ -26,4 +26,3 @@ class GoogleCloudSecuritycenterV1CustomOutputSpec {
     );
   }
 }
-

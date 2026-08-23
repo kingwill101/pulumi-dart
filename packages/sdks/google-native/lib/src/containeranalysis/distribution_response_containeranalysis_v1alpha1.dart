@@ -56,4 +56,3 @@ class DistributionResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

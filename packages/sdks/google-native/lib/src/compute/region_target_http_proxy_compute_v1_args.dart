@@ -68,4 +68,3 @@ class RegionTargetHttpProxyComputeV1Args {
     );
   }
 }
-

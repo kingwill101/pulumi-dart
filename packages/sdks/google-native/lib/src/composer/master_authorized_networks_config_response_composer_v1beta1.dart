@@ -32,4 +32,3 @@ class MasterAuthorizedNetworksConfigResponseComposerV1beta1 {
     );
   }
 }
-

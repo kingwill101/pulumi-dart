@@ -25,4 +25,3 @@ class ContainerInfoAppengineV1beta {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class CisBenchmarkResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

@@ -47,4 +47,3 @@ class GetServiceBackupIamPolicyMetastoreV1betaArgs {
     );
   }
 }
-

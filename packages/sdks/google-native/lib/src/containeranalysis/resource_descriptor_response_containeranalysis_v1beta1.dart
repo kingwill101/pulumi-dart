@@ -53,4 +53,3 @@ class ResourceDescriptorResponseContaineranalysisV1beta1 {
     );
   }
 }
-

@@ -22,4 +22,3 @@ enum SubnetworkPurpose {
     throw ArgumentError('Unknown SubnetworkPurpose value: $value');
   }
 }
-

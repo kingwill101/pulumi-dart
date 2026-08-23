@@ -52,4 +52,3 @@ class FolderIamBindingCloudresourcemanagerV3Args {
     );
   }
 }
-

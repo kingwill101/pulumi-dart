@@ -32,4 +32,3 @@ class AuditConfigResponseNetworkservicesV1beta1 {
     );
   }
 }
-

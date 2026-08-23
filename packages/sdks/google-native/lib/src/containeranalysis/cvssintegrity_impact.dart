@@ -18,4 +18,3 @@ enum CVSSIntegrityImpact {
     throw ArgumentError('Unknown CVSSIntegrityImpact value: $value');
   }
 }
-

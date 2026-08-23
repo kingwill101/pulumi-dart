@@ -52,4 +52,3 @@ class RegionBackendServiceIamBindingComputeV1Args {
     );
   }
 }
-

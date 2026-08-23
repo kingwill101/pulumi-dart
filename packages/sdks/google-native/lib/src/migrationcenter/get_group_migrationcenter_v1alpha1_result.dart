@@ -54,4 +54,3 @@ class GetGroupMigrationcenterV1alpha1Result {
     );
   }
 }
-

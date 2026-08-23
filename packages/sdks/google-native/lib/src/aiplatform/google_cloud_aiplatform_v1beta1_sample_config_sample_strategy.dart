@@ -15,4 +15,3 @@ enum GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy {
     throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy value: $value');
   }
 }
-

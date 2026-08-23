@@ -42,4 +42,3 @@ class GetConsentStoreHealthcareV1beta1Result {
     );
   }
 }
-

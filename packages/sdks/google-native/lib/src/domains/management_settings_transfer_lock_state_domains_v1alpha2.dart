@@ -16,4 +16,3 @@ enum ManagementSettingsTransferLockStateDomainsV1alpha2 {
     throw ArgumentError('Unknown ManagementSettingsTransferLockStateDomainsV1alpha2 value: $value');
   }
 }
-

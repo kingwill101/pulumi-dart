@@ -182,4 +182,3 @@ class GoogleCloudMlV1VersionResponse {
     );
   }
 }
-

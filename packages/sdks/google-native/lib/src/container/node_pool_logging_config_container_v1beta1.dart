@@ -26,4 +26,3 @@ class NodePoolLoggingConfigContainerV1beta1 {
     );
   }
 }
-

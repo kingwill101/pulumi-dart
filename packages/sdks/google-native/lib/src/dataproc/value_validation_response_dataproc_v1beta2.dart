@@ -25,4 +25,3 @@ class ValueValidationResponseDataprocV1beta2 {
     );
   }
 }
-

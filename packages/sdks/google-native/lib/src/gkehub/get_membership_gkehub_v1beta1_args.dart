@@ -37,4 +37,3 @@ class GetMembershipGkehubV1beta1Args {
     );
   }
 }
-

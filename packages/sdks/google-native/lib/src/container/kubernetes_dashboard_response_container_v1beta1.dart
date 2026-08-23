@@ -25,4 +25,3 @@ class KubernetesDashboardResponseContainerV1beta1 {
     );
   }
 }
-

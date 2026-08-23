@@ -69,4 +69,3 @@ class DicomStoreHealthcareV1beta1Args {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum LoggingConfigLogActionsItem {
     throw ArgumentError('Unknown LoggingConfigLogActionsItem value: $value');
   }
 }
-

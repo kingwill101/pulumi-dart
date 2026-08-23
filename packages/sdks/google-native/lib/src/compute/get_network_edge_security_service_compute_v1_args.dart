@@ -37,4 +37,3 @@ class GetNetworkEdgeSecurityServiceComputeV1Args {
     );
   }
 }
-

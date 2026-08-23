@@ -18,4 +18,3 @@ enum RolePredefinedRoleGkehubV1alpha {
     throw ArgumentError('Unknown RolePredefinedRoleGkehubV1alpha value: $value');
   }
 }
-

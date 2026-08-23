@@ -32,4 +32,3 @@ class AuditConfigPrivatecaV1beta1 {
     );
   }
 }
-

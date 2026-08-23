@@ -16,4 +16,3 @@ enum CVSSAuthentication {
     throw ArgumentError('Unknown CVSSAuthentication value: $value');
   }
 }
-

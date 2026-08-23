@@ -26,4 +26,3 @@ class GoogleCloudDataplexV1DataProfileResultPostScanActionsResultResponse {
     );
   }
 }
-

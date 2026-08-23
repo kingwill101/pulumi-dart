@@ -17,4 +17,3 @@ enum SoleTenancyPreferencesCommitmentPlan {
     throw ArgumentError('Unknown SoleTenancyPreferencesCommitmentPlan value: $value');
   }
 }
-

@@ -17,4 +17,3 @@ enum GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1 {
     throw ArgumentError('Unknown GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1 value: $value');
   }
 }
-

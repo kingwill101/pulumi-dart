@@ -45,4 +45,3 @@ class GetGatewayIamPolicyApigatewayV1betaResult {
     );
   }
 }
-

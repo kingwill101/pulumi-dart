@@ -44,4 +44,3 @@ class SignatureHealthcareV1beta1 {
     );
   }
 }
-

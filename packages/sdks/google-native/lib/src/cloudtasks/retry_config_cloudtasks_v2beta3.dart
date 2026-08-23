@@ -49,4 +49,3 @@ class RetryConfigCloudtasksV2beta3 {
     );
   }
 }
-

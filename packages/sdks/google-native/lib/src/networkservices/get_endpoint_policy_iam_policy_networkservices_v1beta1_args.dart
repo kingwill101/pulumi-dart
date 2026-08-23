@@ -42,4 +42,3 @@ class GetEndpointPolicyIamPolicyNetworkservicesV1beta1Args {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum GoogleCloudDatacatalogV1RoutineSpecRoutineType {
     throw ArgumentError('Unknown GoogleCloudDatacatalogV1RoutineSpecRoutineType value: $value');
   }
 }
-

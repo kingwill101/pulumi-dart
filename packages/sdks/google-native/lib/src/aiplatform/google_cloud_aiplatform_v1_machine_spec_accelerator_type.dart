@@ -25,4 +25,3 @@ enum GoogleCloudAiplatformV1MachineSpecAcceleratorType {
     throw ArgumentError('Unknown GoogleCloudAiplatformV1MachineSpecAcceleratorType value: $value');
   }
 }
-

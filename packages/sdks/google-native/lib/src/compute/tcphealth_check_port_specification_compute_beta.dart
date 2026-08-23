@@ -16,4 +16,3 @@ enum TCPHealthCheckPortSpecificationComputeBeta {
     throw ArgumentError('Unknown TCPHealthCheckPortSpecificationComputeBeta value: $value');
   }
 }
-

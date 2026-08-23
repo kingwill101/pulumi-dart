@@ -78,4 +78,3 @@ class SchedulingComputeV1 {
     );
   }
 }
-

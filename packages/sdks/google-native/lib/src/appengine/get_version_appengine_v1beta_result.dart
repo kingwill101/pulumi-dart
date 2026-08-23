@@ -282,4 +282,3 @@ class GetVersionAppengineV1betaResult {
     );
   }
 }
-

@@ -153,4 +153,3 @@ class GetBackupAlloydbV1alphaResult {
     );
   }
 }
-

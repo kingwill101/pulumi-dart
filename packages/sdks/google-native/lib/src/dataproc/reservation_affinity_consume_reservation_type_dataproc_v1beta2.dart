@@ -17,4 +17,3 @@ enum ReservationAffinityConsumeReservationTypeDataprocV1beta2 {
     throw ArgumentError('Unknown ReservationAffinityConsumeReservationTypeDataprocV1beta2 value: $value');
   }
 }
-

@@ -31,4 +31,3 @@ class HttpRouteURLRewriteNetworkservicesV1beta1 {
     );
   }
 }
-

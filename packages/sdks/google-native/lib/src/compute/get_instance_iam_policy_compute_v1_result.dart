@@ -52,4 +52,3 @@ class GetInstanceIamPolicyComputeV1Result {
     );
   }
 }
-

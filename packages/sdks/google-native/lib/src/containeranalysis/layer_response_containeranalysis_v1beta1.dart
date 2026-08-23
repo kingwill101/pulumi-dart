@@ -31,4 +31,3 @@ class LayerResponseContaineranalysisV1beta1 {
     );
   }
 }
-

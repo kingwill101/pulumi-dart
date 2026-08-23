@@ -26,4 +26,3 @@ class CustomLevelResponseAccesscontextmanagerV1beta {
     );
   }
 }
-

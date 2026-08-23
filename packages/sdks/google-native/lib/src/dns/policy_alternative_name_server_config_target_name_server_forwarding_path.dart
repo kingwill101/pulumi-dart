@@ -15,4 +15,3 @@ enum PolicyAlternativeNameServerConfigTargetNameServerForwardingPath {
     throw ArgumentError('Unknown PolicyAlternativeNameServerConfigTargetNameServerForwardingPath value: $value');
   }
 }
-

@@ -31,4 +31,3 @@ class AppliedLicenseResponseVmmigrationV1alpha1 {
     );
   }
 }
-

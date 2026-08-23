@@ -16,4 +16,3 @@ enum FutureReservationPlanningStatusComputeBeta {
     throw ArgumentError('Unknown FutureReservationPlanningStatusComputeBeta value: $value');
   }
 }
-

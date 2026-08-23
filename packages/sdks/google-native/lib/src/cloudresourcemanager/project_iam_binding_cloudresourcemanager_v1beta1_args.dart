@@ -52,4 +52,3 @@ class ProjectIamBindingCloudresourcemanagerV1beta1Args {
     );
   }
 }
-

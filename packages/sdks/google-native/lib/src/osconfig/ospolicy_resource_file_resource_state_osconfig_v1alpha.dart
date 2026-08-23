@@ -17,4 +17,3 @@ enum OSPolicyResourceFileResourceStateOsconfigV1alpha {
     throw ArgumentError('Unknown OSPolicyResourceFileResourceStateOsconfigV1alpha value: $value');
   }
 }
-

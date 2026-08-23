@@ -92,4 +92,3 @@ class ConsentArtifactHealthcareV1beta1Args {
     );
   }
 }
-

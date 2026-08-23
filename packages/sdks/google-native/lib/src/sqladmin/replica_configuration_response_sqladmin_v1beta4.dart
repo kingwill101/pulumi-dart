@@ -44,4 +44,3 @@ class ReplicaConfigurationResponseSqladminV1beta4 {
     );
   }
 }
-

@@ -80,4 +80,3 @@ class ResourceRecordSetDnsV1beta2Args {
     );
   }
 }
-

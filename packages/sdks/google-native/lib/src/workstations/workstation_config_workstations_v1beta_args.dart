@@ -145,4 +145,3 @@ class WorkstationConfigWorkstationsV1betaArgs {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class MaintenancePolicyRedisV1beta1 {
     );
   }
 }
-

@@ -92,4 +92,3 @@ class GoogleCloudDataplexV1JobResponse {
     );
   }
 }
-

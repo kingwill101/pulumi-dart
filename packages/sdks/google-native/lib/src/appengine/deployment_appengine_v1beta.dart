@@ -53,4 +53,3 @@ class DeploymentAppengineV1beta {
     );
   }
 }
-

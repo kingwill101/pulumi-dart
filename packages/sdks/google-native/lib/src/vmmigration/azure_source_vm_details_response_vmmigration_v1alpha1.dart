@@ -45,4 +45,3 @@ class AzureSourceVmDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

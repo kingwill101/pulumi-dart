@@ -16,4 +16,3 @@ enum ProcessingOptionsHtmlSanitizationJobsV4 {
     throw ArgumentError('Unknown ProcessingOptionsHtmlSanitizationJobsV4 value: $value');
   }
 }
-

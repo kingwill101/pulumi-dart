@@ -164,4 +164,3 @@ class GetWorkstationConfigWorkstationsV1betaResult {
     );
   }
 }
-

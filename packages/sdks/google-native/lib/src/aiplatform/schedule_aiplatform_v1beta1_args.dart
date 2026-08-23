@@ -87,4 +87,3 @@ class ScheduleAiplatformV1beta1Args {
     );
   }
 }
-

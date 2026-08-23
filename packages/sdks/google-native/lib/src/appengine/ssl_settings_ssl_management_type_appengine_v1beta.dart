@@ -15,4 +15,3 @@ enum SslSettingsSslManagementTypeAppengineV1beta {
     throw ArgumentError('Unknown SslSettingsSslManagementTypeAppengineV1beta value: $value');
   }
 }
-

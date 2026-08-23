@@ -49,4 +49,3 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse {
     );
   }
 }
-

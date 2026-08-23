@@ -19,4 +19,3 @@ enum SubnetworkLogConfigAggregationIntervalComputeV1 {
     throw ArgumentError('Unknown SubnetworkLogConfigAggregationIntervalComputeV1 value: $value');
   }
 }
-

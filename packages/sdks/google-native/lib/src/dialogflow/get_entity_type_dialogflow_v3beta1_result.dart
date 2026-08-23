@@ -69,4 +69,3 @@ class GetEntityTypeDialogflowV3beta1Result {
     );
   }
 }
-

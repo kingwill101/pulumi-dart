@@ -58,4 +58,3 @@ class SourceContaineranalysisV1alpha1 {
     );
   }
 }
-

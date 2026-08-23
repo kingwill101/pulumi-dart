@@ -31,4 +31,3 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicR
     );
   }
 }
-

@@ -26,4 +26,3 @@ class HostWorkstationsV1beta {
     );
   }
 }
-

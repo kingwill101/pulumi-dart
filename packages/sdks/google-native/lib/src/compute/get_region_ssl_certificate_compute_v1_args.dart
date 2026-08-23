@@ -37,4 +37,3 @@ class GetRegionSslCertificateComputeV1Args {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class FhirConfigHealthcareV1beta1 {
     );
   }
 }
-

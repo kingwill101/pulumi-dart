@@ -15,4 +15,3 @@ enum FirewallLogConfigMetadataComputeBeta {
     throw ArgumentError('Unknown FirewallLogConfigMetadataComputeBeta value: $value');
   }
 }
-

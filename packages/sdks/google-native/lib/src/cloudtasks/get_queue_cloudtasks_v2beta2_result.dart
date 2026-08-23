@@ -89,4 +89,3 @@ class GetQueueCloudtasksV2beta2Result {
     );
   }
 }
-

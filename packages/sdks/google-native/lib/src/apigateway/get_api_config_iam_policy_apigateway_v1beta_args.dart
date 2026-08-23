@@ -47,4 +47,3 @@ class GetApiConfigIamPolicyApigatewayV1betaArgs {
     );
   }
 }
-

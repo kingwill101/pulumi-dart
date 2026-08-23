@@ -31,4 +31,3 @@ class GoogleCloudDiscoveryengineV1betaConversationContext {
     );
   }
 }
-

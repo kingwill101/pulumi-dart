@@ -56,4 +56,3 @@ class TaxonomyIamPolicyDatacatalogV1beta1Args {
     );
   }
 }
-

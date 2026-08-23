@@ -17,4 +17,3 @@ enum SettingsActivationPolicy {
     throw ArgumentError('Unknown SettingsActivationPolicy value: $value');
   }
 }
-

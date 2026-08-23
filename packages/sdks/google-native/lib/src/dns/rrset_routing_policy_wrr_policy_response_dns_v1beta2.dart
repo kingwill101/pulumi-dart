@@ -30,4 +30,3 @@ class RRSetRoutingPolicyWrrPolicyResponseDnsV1beta2 {
     );
   }
 }
-

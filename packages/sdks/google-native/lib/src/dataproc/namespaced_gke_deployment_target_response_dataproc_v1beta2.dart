@@ -31,4 +31,3 @@ class NamespacedGkeDeploymentTargetResponseDataprocV1beta2 {
     );
   }
 }
-

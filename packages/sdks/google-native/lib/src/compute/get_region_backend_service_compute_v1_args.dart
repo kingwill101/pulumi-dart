@@ -37,4 +37,3 @@ class GetRegionBackendServiceComputeV1Args {
     );
   }
 }
-

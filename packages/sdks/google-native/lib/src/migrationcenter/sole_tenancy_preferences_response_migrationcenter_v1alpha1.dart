@@ -44,4 +44,3 @@ class SoleTenancyPreferencesResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

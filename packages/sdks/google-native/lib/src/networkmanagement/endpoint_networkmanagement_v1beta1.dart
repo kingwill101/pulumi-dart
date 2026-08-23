@@ -95,4 +95,3 @@ class EndpointNetworkmanagementV1beta1 {
     );
   }
 }
-

@@ -32,4 +32,3 @@ class MysqlTableResponseDatastreamV1alpha1 {
     );
   }
 }
-

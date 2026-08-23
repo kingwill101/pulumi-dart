@@ -56,4 +56,3 @@ class TagTemplateDatacatalogV1beta1Args {
     );
   }
 }
-

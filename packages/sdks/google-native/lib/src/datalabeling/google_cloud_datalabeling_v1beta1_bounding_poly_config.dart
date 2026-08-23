@@ -31,4 +31,3 @@ class GoogleCloudDatalabelingV1beta1BoundingPolyConfig {
     );
   }
 }
-

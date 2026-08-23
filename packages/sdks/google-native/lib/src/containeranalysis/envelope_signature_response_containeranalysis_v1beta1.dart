@@ -28,4 +28,3 @@ class EnvelopeSignatureResponseContaineranalysisV1beta1 {
     );
   }
 }
-

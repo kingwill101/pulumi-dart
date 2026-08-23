@@ -49,4 +49,3 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
     );
   }
 }
-

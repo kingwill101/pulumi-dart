@@ -37,4 +37,3 @@ class GetRepositoryArtifactregistryV1beta1Args {
     );
   }
 }
-

@@ -44,4 +44,3 @@ class UpgradeSettingsResponseContainerV1beta1 {
     );
   }
 }
-

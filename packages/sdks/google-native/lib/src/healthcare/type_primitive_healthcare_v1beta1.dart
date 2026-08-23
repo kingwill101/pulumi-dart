@@ -17,4 +17,3 @@ enum TypePrimitiveHealthcareV1beta1 {
     throw ArgumentError('Unknown TypePrimitiveHealthcareV1beta1 value: $value');
   }
 }
-

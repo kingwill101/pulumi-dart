@@ -16,4 +16,3 @@ enum ManagedZoneDnsSecConfigState {
     throw ArgumentError('Unknown ManagedZoneDnsSecConfigState value: $value');
   }
 }
-

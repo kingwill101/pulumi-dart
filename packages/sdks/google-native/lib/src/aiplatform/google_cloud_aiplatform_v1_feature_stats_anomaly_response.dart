@@ -61,4 +61,3 @@ class GoogleCloudAiplatformV1FeatureStatsAnomalyResponse {
     );
   }
 }
-

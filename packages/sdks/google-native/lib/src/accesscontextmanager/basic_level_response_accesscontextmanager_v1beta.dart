@@ -32,4 +32,3 @@ class BasicLevelResponseAccesscontextmanagerV1beta {
     );
   }
 }
-

@@ -38,4 +38,3 @@ class LocationContaineranalysisV1alpha1 {
     );
   }
 }
-

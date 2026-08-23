@@ -15,4 +15,3 @@ enum AccessConfigType {
     throw ArgumentError('Unknown AccessConfigType value: $value');
   }
 }
-

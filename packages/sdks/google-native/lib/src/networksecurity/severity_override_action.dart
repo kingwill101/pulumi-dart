@@ -18,4 +18,3 @@ enum SeverityOverrideAction {
     throw ArgumentError('Unknown SeverityOverrideAction value: $value');
   }
 }
-

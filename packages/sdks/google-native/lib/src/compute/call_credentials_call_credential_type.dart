@@ -16,4 +16,3 @@ enum CallCredentialsCallCredentialType {
     throw ArgumentError('Unknown CallCredentialsCallCredentialType value: $value');
   }
 }
-

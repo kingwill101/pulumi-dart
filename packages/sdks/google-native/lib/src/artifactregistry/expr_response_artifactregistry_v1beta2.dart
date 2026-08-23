@@ -43,4 +43,3 @@ class ExprResponseArtifactregistryV1beta2 {
     );
   }
 }
-

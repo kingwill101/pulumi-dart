@@ -42,4 +42,3 @@ class GetServiceIamPolicyMetastoreV1alphaArgs {
     );
   }
 }
-

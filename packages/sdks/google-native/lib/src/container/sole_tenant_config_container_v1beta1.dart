@@ -26,4 +26,3 @@ class SoleTenantConfigContainerV1beta1 {
     );
   }
 }
-

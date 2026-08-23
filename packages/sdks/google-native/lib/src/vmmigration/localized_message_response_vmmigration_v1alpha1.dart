@@ -31,4 +31,3 @@ class LocalizedMessageResponseVmmigrationV1alpha1 {
     );
   }
 }
-

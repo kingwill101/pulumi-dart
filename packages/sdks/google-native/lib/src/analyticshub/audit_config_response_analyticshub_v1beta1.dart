@@ -32,4 +32,3 @@ class AuditConfigResponseAnalyticshubV1beta1 {
     );
   }
 }
-

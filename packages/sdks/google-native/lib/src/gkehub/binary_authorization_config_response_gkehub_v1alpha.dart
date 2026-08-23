@@ -32,4 +32,3 @@ class BinaryAuthorizationConfigResponseGkehubV1alpha {
     );
   }
 }
-

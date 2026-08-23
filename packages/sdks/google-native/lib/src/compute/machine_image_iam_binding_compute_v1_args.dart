@@ -52,4 +52,3 @@ class MachineImageIamBindingComputeV1Args {
     );
   }
 }
-

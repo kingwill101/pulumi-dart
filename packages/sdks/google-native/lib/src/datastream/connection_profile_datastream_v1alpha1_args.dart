@@ -103,4 +103,3 @@ class ConnectionProfileDatastreamV1alpha1Args {
     );
   }
 }
-

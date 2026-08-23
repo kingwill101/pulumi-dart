@@ -111,4 +111,3 @@ class GetModelRetailV2betaResult {
     );
   }
 }
-

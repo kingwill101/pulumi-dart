@@ -37,4 +37,3 @@ class GetConnectivityTestIamPolicyNetworkmanagementV1beta1Args {
     );
   }
 }
-

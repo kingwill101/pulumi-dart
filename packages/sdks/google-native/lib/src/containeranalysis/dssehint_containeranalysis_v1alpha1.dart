@@ -25,4 +25,3 @@ class DSSEHintContaineranalysisV1alpha1 {
     );
   }
 }
-

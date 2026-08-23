@@ -42,4 +42,3 @@ class GetDatacenterConnectorVmmigrationV1alpha1Args {
     );
   }
 }
-

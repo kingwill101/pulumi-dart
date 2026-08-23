@@ -52,4 +52,3 @@ class BackendBucketIamBindingComputeV1Args {
     );
   }
 }
-

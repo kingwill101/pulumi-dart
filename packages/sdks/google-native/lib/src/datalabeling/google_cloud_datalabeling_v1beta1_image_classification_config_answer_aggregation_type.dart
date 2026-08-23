@@ -17,4 +17,3 @@ enum GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTyp
     throw ArgumentError('Unknown GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType value: $value');
   }
 }
-

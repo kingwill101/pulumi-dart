@@ -16,4 +16,3 @@ enum GroupMigrationTargetTypeVmmigrationV1alpha1 {
     throw ArgumentError('Unknown GroupMigrationTargetTypeVmmigrationV1alpha1 value: $value');
   }
 }
-

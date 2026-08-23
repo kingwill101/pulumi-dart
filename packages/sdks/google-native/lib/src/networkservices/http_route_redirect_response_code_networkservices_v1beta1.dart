@@ -19,4 +19,3 @@ enum HttpRouteRedirectResponseCodeNetworkservicesV1beta1 {
     throw ArgumentError('Unknown HttpRouteRedirectResponseCodeNetworkservicesV1beta1 value: $value');
   }
 }
-

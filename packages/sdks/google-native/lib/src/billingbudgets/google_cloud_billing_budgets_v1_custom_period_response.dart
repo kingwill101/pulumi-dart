@@ -32,4 +32,3 @@ class GoogleCloudBillingBudgetsV1CustomPeriodResponse {
     );
   }
 }
-

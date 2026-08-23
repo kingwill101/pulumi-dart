@@ -15,4 +15,3 @@ enum RegionHealthCheckServiceHealthStatusAggregationPolicy {
     throw ArgumentError('Unknown RegionHealthCheckServiceHealthStatusAggregationPolicy value: $value');
   }
 }
-

@@ -255,4 +255,3 @@ class GetInterconnectAttachmentComputeV1Result {
     );
   }
 }
-

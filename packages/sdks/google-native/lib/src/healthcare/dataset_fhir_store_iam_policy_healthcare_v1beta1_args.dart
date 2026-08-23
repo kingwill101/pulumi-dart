@@ -74,4 +74,3 @@ class DatasetFhirStoreIamPolicyHealthcareV1beta1Args {
     );
   }
 }
-

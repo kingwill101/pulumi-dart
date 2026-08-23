@@ -37,4 +37,3 @@ class GetWorkloadAssuredworkloadsV1beta1Args {
     );
   }
 }
-

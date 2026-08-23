@@ -17,4 +17,3 @@ enum GoogleFirestoreAdminV1beta1IndexFieldMode {
     throw ArgumentError('Unknown GoogleFirestoreAdminV1beta1IndexFieldMode value: $value');
   }
 }
-

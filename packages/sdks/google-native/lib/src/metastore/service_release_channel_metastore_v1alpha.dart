@@ -16,4 +16,3 @@ enum ServiceReleaseChannelMetastoreV1alpha {
     throw ArgumentError('Unknown ServiceReleaseChannelMetastoreV1alpha value: $value');
   }
 }
-

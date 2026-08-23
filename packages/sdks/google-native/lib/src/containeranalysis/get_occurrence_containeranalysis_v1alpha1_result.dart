@@ -179,4 +179,3 @@ class GetOccurrenceContaineranalysisV1alpha1Result {
     );
   }
 }
-

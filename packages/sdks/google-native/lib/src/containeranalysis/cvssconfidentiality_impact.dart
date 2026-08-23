@@ -18,4 +18,3 @@ enum CVSSConfidentialityImpact {
     throw ArgumentError('Unknown CVSSConfidentialityImpact value: $value');
   }
 }
-

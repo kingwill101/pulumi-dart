@@ -67,4 +67,3 @@ class GoogleCloudRunV2ConditionResponse {
     );
   }
 }
-

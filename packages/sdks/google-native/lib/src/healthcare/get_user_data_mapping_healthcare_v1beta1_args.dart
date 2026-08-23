@@ -47,4 +47,3 @@ class GetUserDataMappingHealthcareV1beta1Args {
     );
   }
 }
-

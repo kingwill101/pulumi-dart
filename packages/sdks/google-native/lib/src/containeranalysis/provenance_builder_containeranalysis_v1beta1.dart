@@ -34,4 +34,3 @@ class ProvenanceBuilderContaineranalysisV1beta1 {
     );
   }
 }
-

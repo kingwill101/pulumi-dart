@@ -180,4 +180,3 @@ class GetNoteContaineranalysisV1alpha1Result {
     );
   }
 }
-

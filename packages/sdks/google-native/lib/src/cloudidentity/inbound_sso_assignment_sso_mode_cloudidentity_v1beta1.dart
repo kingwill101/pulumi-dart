@@ -17,4 +17,3 @@ enum InboundSsoAssignmentSsoModeCloudidentityV1beta1 {
     throw ArgumentError('Unknown InboundSsoAssignmentSsoModeCloudidentityV1beta1 value: $value');
   }
 }
-

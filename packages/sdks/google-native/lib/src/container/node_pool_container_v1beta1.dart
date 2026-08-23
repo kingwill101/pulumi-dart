@@ -119,4 +119,3 @@ class NodePoolContainerV1beta1 {
     );
   }
 }
-

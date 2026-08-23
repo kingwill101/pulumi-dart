@@ -42,4 +42,3 @@ class GetFeatureIamPolicyGkehubV1alphaArgs {
     );
   }
 }
-

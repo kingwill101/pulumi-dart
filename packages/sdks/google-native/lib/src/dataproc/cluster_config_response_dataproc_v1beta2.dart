@@ -120,4 +120,3 @@ class ClusterConfigResponseDataprocV1beta2 {
     );
   }
 }
-

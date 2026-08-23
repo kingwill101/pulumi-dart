@@ -38,4 +38,3 @@ class GoogleIamV1BindingResponseDnsV1beta2 {
     );
   }
 }
-

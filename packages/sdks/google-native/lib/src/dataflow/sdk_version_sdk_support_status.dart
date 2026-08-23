@@ -18,4 +18,3 @@ enum SdkVersionSdkSupportStatus {
     throw ArgumentError('Unknown SdkVersionSdkSupportStatus value: $value');
   }
 }
-

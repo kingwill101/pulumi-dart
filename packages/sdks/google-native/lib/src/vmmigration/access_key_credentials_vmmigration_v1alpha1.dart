@@ -37,4 +37,3 @@ class AccessKeyCredentialsVmmigrationV1alpha1 {
     );
   }
 }
-

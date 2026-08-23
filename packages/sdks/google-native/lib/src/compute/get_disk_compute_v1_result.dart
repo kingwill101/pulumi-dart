@@ -282,4 +282,3 @@ class GetDiskComputeV1Result {
     );
   }
 }
-

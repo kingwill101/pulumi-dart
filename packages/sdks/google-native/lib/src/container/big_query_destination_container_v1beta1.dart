@@ -25,4 +25,3 @@ class BigQueryDestinationContainerV1beta1 {
     );
   }
 }
-

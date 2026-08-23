@@ -16,4 +16,3 @@ enum NotificationChannelVerificationStatus {
     throw ArgumentError('Unknown NotificationChannelVerificationStatus value: $value');
   }
 }
-

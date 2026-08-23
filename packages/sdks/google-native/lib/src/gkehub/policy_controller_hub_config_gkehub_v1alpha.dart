@@ -82,4 +82,3 @@ class PolicyControllerHubConfigGkehubV1alpha {
     );
   }
 }
-

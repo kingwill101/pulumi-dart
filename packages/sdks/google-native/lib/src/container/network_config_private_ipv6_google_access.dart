@@ -17,4 +17,3 @@ enum NetworkConfigPrivateIpv6GoogleAccess {
     throw ArgumentError('Unknown NetworkConfigPrivateIpv6GoogleAccess value: $value');
   }
 }
-

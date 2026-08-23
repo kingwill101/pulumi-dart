@@ -49,4 +49,3 @@ class GetAttestorBinaryauthorizationV1beta1Result {
     );
   }
 }
-

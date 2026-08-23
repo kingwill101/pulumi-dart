@@ -23,4 +23,3 @@ enum IntentDefaultResponsePlatformsItemDialogflowV2beta1 {
     throw ArgumentError('Unknown IntentDefaultResponsePlatformsItemDialogflowV2beta1 value: $value');
   }
 }
-

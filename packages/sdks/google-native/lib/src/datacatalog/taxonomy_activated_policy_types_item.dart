@@ -14,4 +14,3 @@ enum TaxonomyActivatedPolicyTypesItem {
     throw ArgumentError('Unknown TaxonomyActivatedPolicyTypesItem value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum NodeGroupStatusComputeV1 {
     throw ArgumentError('Unknown NodeGroupStatusComputeV1 value: $value');
   }
 }
-

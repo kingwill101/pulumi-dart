@@ -51,4 +51,3 @@ class TopicIamPolicyPubsubV1beta2Args {
     );
   }
 }
-

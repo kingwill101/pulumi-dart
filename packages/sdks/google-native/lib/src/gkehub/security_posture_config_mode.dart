@@ -16,4 +16,3 @@ enum SecurityPostureConfigMode {
     throw ArgumentError('Unknown SecurityPostureConfigMode value: $value');
   }
 }
-

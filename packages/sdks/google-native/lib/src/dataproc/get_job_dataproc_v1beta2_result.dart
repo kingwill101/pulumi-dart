@@ -152,4 +152,3 @@ class GetJobDataprocV1beta2Result {
     );
   }
 }
-

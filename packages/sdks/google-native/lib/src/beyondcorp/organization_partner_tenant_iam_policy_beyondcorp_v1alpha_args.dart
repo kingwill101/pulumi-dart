@@ -64,4 +64,3 @@ class OrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs {
     );
   }
 }
-

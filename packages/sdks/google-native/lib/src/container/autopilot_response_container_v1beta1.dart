@@ -39,4 +39,3 @@ class AutopilotResponseContainerV1beta1 {
     );
   }
 }
-

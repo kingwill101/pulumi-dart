@@ -31,4 +31,3 @@ class SchematizedDataResponseHealthcareV1beta1 {
     );
   }
 }
-

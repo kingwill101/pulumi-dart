@@ -16,4 +16,3 @@ enum NotificationConfigEventTypesItem {
     throw ArgumentError('Unknown NotificationConfigEventTypesItem value: $value');
   }
 }
-

@@ -38,4 +38,3 @@ class BindingResponseContaineranalysisV1beta1 {
     );
   }
 }
-

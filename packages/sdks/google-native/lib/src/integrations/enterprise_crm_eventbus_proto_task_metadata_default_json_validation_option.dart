@@ -18,4 +18,3 @@ enum EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption value: $value');
   }
 }
-

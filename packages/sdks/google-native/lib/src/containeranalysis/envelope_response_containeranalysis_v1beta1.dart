@@ -35,4 +35,3 @@ class EnvelopeResponseContaineranalysisV1beta1 {
     );
   }
 }
-

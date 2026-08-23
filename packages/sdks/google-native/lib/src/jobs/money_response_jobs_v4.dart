@@ -37,4 +37,3 @@ class MoneyResponseJobsV4 {
     );
   }
 }
-

@@ -22,4 +22,3 @@ enum SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta {
     throw ArgumentError('Unknown SecurityPolicyRuleRateLimitOptionsEnforceOnKeyComputeBeta value: $value');
   }
 }
-

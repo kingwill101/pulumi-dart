@@ -37,4 +37,3 @@ class GetDeploymentResourcePoolAiplatformV1beta1Args {
     );
   }
 }
-

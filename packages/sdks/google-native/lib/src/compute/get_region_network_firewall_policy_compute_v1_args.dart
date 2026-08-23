@@ -37,4 +37,3 @@ class GetRegionNetworkFirewallPolicyComputeV1Args {
     );
   }
 }
-

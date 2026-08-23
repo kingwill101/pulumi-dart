@@ -45,4 +45,3 @@ class GoogleCloudIntegrationsV1alphaTestTaskConfig {
     );
   }
 }
-

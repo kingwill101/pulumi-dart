@@ -32,4 +32,3 @@ class GetNoteContaineranalysisV1beta1Args {
     );
   }
 }
-

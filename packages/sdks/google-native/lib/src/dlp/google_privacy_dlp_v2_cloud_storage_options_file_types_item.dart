@@ -23,4 +23,3 @@ enum GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem {
     throw ArgumentError('Unknown GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem value: $value');
   }
 }
-

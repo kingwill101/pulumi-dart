@@ -55,4 +55,3 @@ class MysqlSslConfigResponseDatastreamV1alpha1 {
     );
   }
 }
-

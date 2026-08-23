@@ -16,4 +16,3 @@ enum SSLHealthCheckPortSpecificationComputeV1 {
     throw ArgumentError('Unknown SSLHealthCheckPortSpecificationComputeV1 value: $value');
   }
 }
-

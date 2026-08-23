@@ -31,4 +31,3 @@ class BasicScalingResponseAppengineV1beta {
     );
   }
 }
-

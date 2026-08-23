@@ -43,4 +43,3 @@ class YumSettingsOsconfigV1beta {
     );
   }
 }
-

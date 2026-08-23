@@ -52,4 +52,3 @@ class TagTemplateIamMemberDatacatalogV1beta1Args {
     );
   }
 }
-

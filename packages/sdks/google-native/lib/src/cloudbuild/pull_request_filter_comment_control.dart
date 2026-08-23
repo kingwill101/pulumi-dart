@@ -16,4 +16,3 @@ enum PullRequestFilterCommentControl {
     throw ArgumentError('Unknown PullRequestFilterCommentControl value: $value');
   }
 }
-

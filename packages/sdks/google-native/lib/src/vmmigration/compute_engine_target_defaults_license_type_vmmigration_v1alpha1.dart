@@ -16,4 +16,3 @@ enum ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1 {
     throw ArgumentError('Unknown ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1 value: $value');
   }
 }
-

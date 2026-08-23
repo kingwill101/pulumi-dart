@@ -55,4 +55,3 @@ class OracleProfileResponseDatastreamV1alpha1 {
     );
   }
 }
-

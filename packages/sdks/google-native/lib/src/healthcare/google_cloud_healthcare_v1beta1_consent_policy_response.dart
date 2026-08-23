@@ -33,4 +33,3 @@ class GoogleCloudHealthcareV1beta1ConsentPolicyResponse {
     );
   }
 }
-

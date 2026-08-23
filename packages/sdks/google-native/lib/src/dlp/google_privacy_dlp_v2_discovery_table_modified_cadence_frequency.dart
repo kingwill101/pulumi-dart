@@ -17,4 +17,3 @@ enum GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency {
     throw ArgumentError('Unknown GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequency value: $value');
   }
 }
-

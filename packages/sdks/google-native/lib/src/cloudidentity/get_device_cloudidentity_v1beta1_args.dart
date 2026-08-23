@@ -32,4 +32,3 @@ class GetDeviceCloudidentityV1beta1Args {
     );
   }
 }
-

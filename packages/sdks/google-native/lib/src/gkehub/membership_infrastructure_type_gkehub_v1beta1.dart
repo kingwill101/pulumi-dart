@@ -16,4 +16,3 @@ enum MembershipInfrastructureTypeGkehubV1beta1 {
     throw ArgumentError('Unknown MembershipInfrastructureTypeGkehubV1beta1 value: $value');
   }
 }
-

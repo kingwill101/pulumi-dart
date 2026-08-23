@@ -32,4 +32,3 @@ class AvailableUpdatesResponseVmmigrationV1alpha1 {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetQueueIamPolicyCloudtasksV2beta2Args {
     );
   }
 }
-

@@ -53,4 +53,3 @@ class CommonFeatureSpecResponseGkehubV1beta {
     );
   }
 }
-

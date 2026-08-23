@@ -76,4 +76,3 @@ class VpnGatewayComputeV1Args {
     );
   }
 }
-

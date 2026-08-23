@@ -64,4 +64,3 @@ class ManagedZoneIamPolicyDnsV1beta2Args {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class NodeResponseAlloydbV1beta {
     );
   }
 }
-

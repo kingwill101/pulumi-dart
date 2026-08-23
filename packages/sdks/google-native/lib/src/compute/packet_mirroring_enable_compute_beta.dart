@@ -15,4 +15,3 @@ enum PacketMirroringEnableComputeBeta {
     throw ArgumentError('Unknown PacketMirroringEnableComputeBeta value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum CloudSqlSettingsEdition {
     throw ArgumentError('Unknown CloudSqlSettingsEdition value: $value');
   }
 }
-

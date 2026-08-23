@@ -19,4 +19,3 @@ enum GoogleCloudMlV1TrainingInputScaleTier {
     throw ArgumentError('Unknown GoogleCloudMlV1TrainingInputScaleTier value: $value');
   }
 }
-

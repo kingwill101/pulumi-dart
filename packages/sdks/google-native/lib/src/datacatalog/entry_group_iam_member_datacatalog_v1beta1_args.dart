@@ -52,4 +52,3 @@ class EntryGroupIamMemberDatacatalogV1beta1Args {
     );
   }
 }
-

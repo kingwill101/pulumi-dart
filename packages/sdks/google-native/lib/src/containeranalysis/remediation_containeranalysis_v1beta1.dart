@@ -39,4 +39,3 @@ class RemediationContaineranalysisV1beta1 {
     );
   }
 }
-

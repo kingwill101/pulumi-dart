@@ -23,4 +23,3 @@ class ClusterGetKubeconfigContainerV1beta1Result {
     );
   }
 }
-

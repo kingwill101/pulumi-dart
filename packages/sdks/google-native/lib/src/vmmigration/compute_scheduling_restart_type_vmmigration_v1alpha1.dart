@@ -16,4 +16,3 @@ enum ComputeSchedulingRestartTypeVmmigrationV1alpha1 {
     throw ArgumentError('Unknown ComputeSchedulingRestartTypeVmmigrationV1alpha1 value: $value');
   }
 }
-

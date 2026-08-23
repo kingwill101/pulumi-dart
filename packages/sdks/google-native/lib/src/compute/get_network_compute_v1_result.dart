@@ -123,4 +123,3 @@ class GetNetworkComputeV1Result {
     );
   }
 }
-

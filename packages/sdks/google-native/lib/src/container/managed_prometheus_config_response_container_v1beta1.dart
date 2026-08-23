@@ -25,4 +25,3 @@ class ManagedPrometheusConfigResponseContainerV1beta1 {
     );
   }
 }
-

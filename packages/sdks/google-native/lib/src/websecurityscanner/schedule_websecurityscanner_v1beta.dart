@@ -31,4 +31,3 @@ class ScheduleWebsecurityscannerV1beta {
     );
   }
 }
-

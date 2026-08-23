@@ -52,4 +52,3 @@ class SecretIamBindingSecretmanagerV1beta1Args {
     );
   }
 }
-

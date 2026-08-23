@@ -38,4 +38,3 @@ class BindingResponseArtifactregistryV1beta2 {
     );
   }
 }
-

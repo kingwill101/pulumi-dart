@@ -56,4 +56,3 @@ class MySqlConnectionProfileDatamigrationV1beta1 {
     );
   }
 }
-

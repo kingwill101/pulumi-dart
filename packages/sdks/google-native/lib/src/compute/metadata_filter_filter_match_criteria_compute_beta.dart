@@ -16,4 +16,3 @@ enum MetadataFilterFilterMatchCriteriaComputeBeta {
     throw ArgumentError('Unknown MetadataFilterFilterMatchCriteriaComputeBeta value: $value');
   }
 }
-

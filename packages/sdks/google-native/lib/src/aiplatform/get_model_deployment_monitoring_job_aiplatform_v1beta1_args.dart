@@ -37,4 +37,3 @@ class GetModelDeploymentMonitoringJobAiplatformV1beta1Args {
     );
   }
 }
-

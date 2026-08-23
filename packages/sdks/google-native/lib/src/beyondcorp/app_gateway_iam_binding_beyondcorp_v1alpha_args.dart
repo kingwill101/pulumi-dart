@@ -52,4 +52,3 @@ class AppGatewayIamBindingBeyondcorpV1alphaArgs {
     );
   }
 }
-

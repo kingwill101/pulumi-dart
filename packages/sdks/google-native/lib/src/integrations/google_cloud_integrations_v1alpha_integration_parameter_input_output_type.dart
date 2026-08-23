@@ -17,4 +17,3 @@ enum GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType value: $value');
   }
 }
-

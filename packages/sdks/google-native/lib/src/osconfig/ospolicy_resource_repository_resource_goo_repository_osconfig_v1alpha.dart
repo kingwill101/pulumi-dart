@@ -31,4 +31,3 @@ class OSPolicyResourceRepositoryResourceGooRepositoryOsconfigV1alpha {
     );
   }
 }
-

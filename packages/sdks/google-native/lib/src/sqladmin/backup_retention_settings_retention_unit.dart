@@ -15,4 +15,3 @@ enum BackupRetentionSettingsRetentionUnit {
     throw ArgumentError('Unknown BackupRetentionSettingsRetentionUnit value: $value');
   }
 }
-

@@ -74,4 +74,3 @@ class GetEnvironmentComposerV1beta1Result {
     );
   }
 }
-

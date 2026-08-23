@@ -31,4 +31,3 @@ enum LayerDirectiveContaineranalysisV1beta1 {
     throw ArgumentError('Unknown LayerDirectiveContaineranalysisV1beta1 value: $value');
   }
 }
-

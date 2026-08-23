@@ -19,4 +19,3 @@ enum BackendServiceLoadBalancingScheme {
     throw ArgumentError('Unknown BackendServiceLoadBalancingScheme value: $value');
   }
 }
-

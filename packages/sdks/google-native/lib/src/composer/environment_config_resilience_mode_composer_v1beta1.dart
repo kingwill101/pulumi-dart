@@ -15,4 +15,3 @@ enum EnvironmentConfigResilienceModeComposerV1beta1 {
     throw ArgumentError('Unknown EnvironmentConfigResilienceModeComposerV1beta1 value: $value');
   }
 }
-

@@ -21,4 +21,3 @@ enum HealthCheckType {
     throw ArgumentError('Unknown HealthCheckType value: $value');
   }
 }
-

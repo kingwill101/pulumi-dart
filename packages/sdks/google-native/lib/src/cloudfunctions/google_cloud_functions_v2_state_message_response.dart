@@ -37,4 +37,3 @@ class GoogleCloudFunctionsV2StateMessageResponse {
     );
   }
 }
-

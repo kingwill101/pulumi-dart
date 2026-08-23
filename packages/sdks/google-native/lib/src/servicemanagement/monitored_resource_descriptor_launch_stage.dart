@@ -21,4 +21,3 @@ enum MonitoredResourceDescriptorLaunchStage {
     throw ArgumentError('Unknown MonitoredResourceDescriptorLaunchStage value: $value');
   }
 }
-

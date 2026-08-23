@@ -31,4 +31,3 @@ class AllowedIpRangeResponseComposerV1beta1 {
     );
   }
 }
-

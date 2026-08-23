@@ -16,4 +16,3 @@ enum GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType {
     throw ArgumentError('Unknown GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType value: $value');
   }
 }
-

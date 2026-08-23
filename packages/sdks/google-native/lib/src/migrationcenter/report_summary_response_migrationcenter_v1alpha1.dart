@@ -33,4 +33,3 @@ class ReportSummaryResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

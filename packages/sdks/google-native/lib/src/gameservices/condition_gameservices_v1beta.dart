@@ -52,4 +52,3 @@ class ConditionGameservicesV1beta {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class ManagedZoneIamMemberDnsV1beta2Args {
     );
   }
 }
-

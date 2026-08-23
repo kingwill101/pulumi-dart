@@ -63,4 +63,3 @@ class GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponse {
     );
   }
 }
-

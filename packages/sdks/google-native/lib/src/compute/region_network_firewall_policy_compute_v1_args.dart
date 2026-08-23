@@ -76,4 +76,3 @@ class RegionNetworkFirewallPolicyComputeV1Args {
     );
   }
 }
-

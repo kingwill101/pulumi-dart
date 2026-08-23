@@ -100,4 +100,3 @@ class BuildProvenanceContaineranalysisV1beta1 {
     );
   }
 }
-

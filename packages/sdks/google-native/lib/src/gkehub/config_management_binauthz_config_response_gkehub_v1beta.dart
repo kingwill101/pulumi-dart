@@ -25,4 +25,3 @@ class ConfigManagementBinauthzConfigResponseGkehubV1beta {
     );
   }
 }
-

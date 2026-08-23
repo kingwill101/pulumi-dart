@@ -26,4 +26,3 @@ class RecoveryConfigResponseComposerV1beta1 {
     );
   }
 }
-

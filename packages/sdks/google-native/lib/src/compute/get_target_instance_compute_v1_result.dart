@@ -78,4 +78,3 @@ class GetTargetInstanceComputeV1Result {
     );
   }
 }
-

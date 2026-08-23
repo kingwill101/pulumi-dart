@@ -17,4 +17,3 @@ enum BasicPerfSampleSeriesPerfMetricType {
     throw ArgumentError('Unknown BasicPerfSampleSeriesPerfMetricType value: $value');
   }
 }
-

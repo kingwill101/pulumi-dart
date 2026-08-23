@@ -14,4 +14,3 @@ enum EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType value: $value');
   }
 }
-

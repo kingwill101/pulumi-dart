@@ -180,4 +180,3 @@ class GetWorkloadAssuredworkloadsV1beta1Result {
     );
   }
 }
-

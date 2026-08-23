@@ -16,4 +16,3 @@ enum ServingConfigDiversityType {
     throw ArgumentError('Unknown ServingConfigDiversityType value: $value');
   }
 }
-

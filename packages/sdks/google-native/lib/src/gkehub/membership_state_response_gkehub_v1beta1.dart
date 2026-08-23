@@ -37,4 +37,3 @@ class MembershipStateResponseGkehubV1beta1 {
     );
   }
 }
-

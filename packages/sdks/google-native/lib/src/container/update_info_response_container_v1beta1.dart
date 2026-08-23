@@ -26,4 +26,3 @@ class UpdateInfoResponseContainerV1beta1 {
     );
   }
 }
-

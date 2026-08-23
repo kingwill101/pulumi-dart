@@ -25,4 +25,3 @@ class IdentityServiceGoogleConfigGkehubV1beta {
     );
   }
 }
-

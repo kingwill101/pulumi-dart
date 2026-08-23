@@ -32,4 +32,3 @@ class GetPeeringManagedidentitiesV1beta1Args {
     );
   }
 }
-

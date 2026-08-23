@@ -14,4 +14,3 @@ enum TargetInstanceNatPolicyComputeBeta {
     throw ArgumentError('Unknown TargetInstanceNatPolicyComputeBeta value: $value');
   }
 }
-

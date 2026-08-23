@@ -56,4 +56,3 @@ class DomainBackupIamPolicyManagedidentitiesV1alpha1Args {
     );
   }
 }
-

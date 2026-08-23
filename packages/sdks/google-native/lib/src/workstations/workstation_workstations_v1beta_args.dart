@@ -84,4 +84,3 @@ class WorkstationWorkstationsV1betaArgs {
     );
   }
 }
-

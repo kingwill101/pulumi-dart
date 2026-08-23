@@ -59,4 +59,3 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse {
     );
   }
 }
-

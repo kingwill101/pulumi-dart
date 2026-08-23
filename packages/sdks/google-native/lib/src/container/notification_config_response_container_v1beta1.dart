@@ -26,4 +26,3 @@ class NotificationConfigResponseContainerV1beta1 {
     );
   }
 }
-

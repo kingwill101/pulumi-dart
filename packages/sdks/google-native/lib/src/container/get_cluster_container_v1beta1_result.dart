@@ -518,4 +518,3 @@ class GetClusterContainerV1beta1Result {
     );
   }
 }
-

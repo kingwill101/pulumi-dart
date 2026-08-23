@@ -32,4 +32,3 @@ class GetHubNetworkconnectivityV1alpha1Args {
     );
   }
 }
-

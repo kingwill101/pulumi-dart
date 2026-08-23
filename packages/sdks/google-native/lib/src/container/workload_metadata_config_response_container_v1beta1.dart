@@ -31,4 +31,3 @@ class WorkloadMetadataConfigResponseContainerV1beta1 {
     );
   }
 }
-

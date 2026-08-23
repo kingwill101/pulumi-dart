@@ -57,4 +57,3 @@ class AcceleratorConfigContainerV1beta1 {
     );
   }
 }
-

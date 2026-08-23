@@ -38,4 +38,3 @@ class GetSubscriptionIamPolicyPubsubV1beta2Result {
     );
   }
 }
-

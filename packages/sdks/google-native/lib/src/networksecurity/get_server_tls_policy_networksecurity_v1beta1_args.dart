@@ -37,4 +37,3 @@ class GetServerTlsPolicyNetworksecurityV1beta1Args {
     );
   }
 }
-

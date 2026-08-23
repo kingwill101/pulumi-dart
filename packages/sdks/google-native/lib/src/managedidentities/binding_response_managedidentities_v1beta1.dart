@@ -38,4 +38,3 @@ class BindingResponseManagedidentitiesV1beta1 {
     );
   }
 }
-

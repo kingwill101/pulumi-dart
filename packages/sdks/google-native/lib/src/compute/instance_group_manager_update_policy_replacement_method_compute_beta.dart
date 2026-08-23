@@ -15,4 +15,3 @@ enum InstanceGroupManagerUpdatePolicyReplacementMethodComputeBeta {
     throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyReplacementMethodComputeBeta value: $value');
   }
 }
-

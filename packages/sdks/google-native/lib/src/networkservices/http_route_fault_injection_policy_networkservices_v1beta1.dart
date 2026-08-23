@@ -33,4 +33,3 @@ class HttpRouteFaultInjectionPolicyNetworkservicesV1beta1 {
     );
   }
 }
-

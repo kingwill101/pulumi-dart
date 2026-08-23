@@ -29,4 +29,3 @@ enum GoogleCloudDataplexV1SchemaPartitionFieldType {
     throw ArgumentError('Unknown GoogleCloudDataplexV1SchemaPartitionFieldType value: $value');
   }
 }
-

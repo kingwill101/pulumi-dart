@@ -52,4 +52,3 @@ class GatewayIamMemberNetworkservicesV1beta1Args {
     );
   }
 }
-

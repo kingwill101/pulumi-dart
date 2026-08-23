@@ -25,4 +25,3 @@ class GoogleCloudRetailV2alphaRuleTwowaySynonymsAction {
     );
   }
 }
-

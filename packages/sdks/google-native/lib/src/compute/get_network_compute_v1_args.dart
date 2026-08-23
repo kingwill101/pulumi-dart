@@ -32,4 +32,3 @@ class GetNetworkComputeV1Args {
     );
   }
 }
-

@@ -43,4 +43,3 @@ class PrivateClusterConfigResponseWorkstationsV1beta {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class SignInBehaviorResponseCloudidentityV1beta1 {
     );
   }
 }
-

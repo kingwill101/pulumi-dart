@@ -62,4 +62,3 @@ class ChangeDnsV1beta2Args {
     );
   }
 }
-

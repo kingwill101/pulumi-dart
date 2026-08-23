@@ -31,4 +31,3 @@ class GoogleCloudDatacatalogV1VertexModelSourceInfoResponse {
     );
   }
 }
-

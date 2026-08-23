@@ -31,4 +31,3 @@ class ValidationOptionsResponseDeploymentmanagerV2beta {
     );
   }
 }
-

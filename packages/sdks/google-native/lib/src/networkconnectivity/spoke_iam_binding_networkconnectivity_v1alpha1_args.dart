@@ -52,4 +52,3 @@ class SpokeIamBindingNetworkconnectivityV1alpha1Args {
     );
   }
 }
-

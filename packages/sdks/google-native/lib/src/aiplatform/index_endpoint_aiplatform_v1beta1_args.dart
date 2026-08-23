@@ -88,4 +88,3 @@ class IndexEndpointAiplatformV1beta1Args {
     );
   }
 }
-

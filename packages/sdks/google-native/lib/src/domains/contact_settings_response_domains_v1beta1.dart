@@ -44,4 +44,3 @@ class ContactSettingsResponseDomainsV1beta1 {
     );
   }
 }
-

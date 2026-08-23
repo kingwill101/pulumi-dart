@@ -16,4 +16,3 @@ enum GoogleDomainsDnsDsStateDomainsV1alpha2 {
     throw ArgumentError('Unknown GoogleDomainsDnsDsStateDomainsV1alpha2 value: $value');
   }
 }
-

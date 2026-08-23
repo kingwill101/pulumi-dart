@@ -32,4 +32,3 @@ class GetPublicAdvertisedPrefixComputeV1Args {
     );
   }
 }
-

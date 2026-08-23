@@ -16,4 +16,3 @@ enum RRSetRoutingPolicyLoadBalancerTargetIpProtocolDnsV1beta2 {
     throw ArgumentError('Unknown RRSetRoutingPolicyLoadBalancerTargetIpProtocolDnsV1beta2 value: $value');
   }
 }
-

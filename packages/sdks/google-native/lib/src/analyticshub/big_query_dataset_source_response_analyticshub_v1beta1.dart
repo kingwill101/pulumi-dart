@@ -25,4 +25,3 @@ class BigQueryDatasetSourceResponseAnalyticshubV1beta1 {
     );
   }
 }
-

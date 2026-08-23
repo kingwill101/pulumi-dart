@@ -19,4 +19,3 @@ enum VersionOrigin {
     throw ArgumentError('Unknown VersionOrigin value: $value');
   }
 }
-

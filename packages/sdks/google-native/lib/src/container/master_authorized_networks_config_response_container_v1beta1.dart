@@ -38,4 +38,3 @@ class MasterAuthorizedNetworksConfigResponseContainerV1beta1 {
     );
   }
 }
-

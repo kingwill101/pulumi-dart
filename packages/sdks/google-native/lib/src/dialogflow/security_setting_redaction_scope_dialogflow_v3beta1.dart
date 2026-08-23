@@ -15,4 +15,3 @@ enum SecuritySettingRedactionScopeDialogflowV3beta1 {
     throw ArgumentError('Unknown SecuritySettingRedactionScopeDialogflowV3beta1 value: $value');
   }
 }
-

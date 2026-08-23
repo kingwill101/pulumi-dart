@@ -31,4 +31,3 @@ class DeploymentUpdateLabelEntryResponseDeploymentmanagerV2 {
     );
   }
 }
-

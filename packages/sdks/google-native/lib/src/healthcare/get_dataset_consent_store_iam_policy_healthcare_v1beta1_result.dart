@@ -45,4 +45,3 @@ class GetDatasetConsentStoreIamPolicyHealthcareV1beta1Result {
     );
   }
 }
-

@@ -59,4 +59,3 @@ class GlossaryTranslateV3beta1Args {
     );
   }
 }
-

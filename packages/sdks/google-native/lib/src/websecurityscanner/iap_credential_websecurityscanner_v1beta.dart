@@ -26,4 +26,3 @@ class IapCredentialWebsecurityscannerV1beta {
     );
   }
 }
-

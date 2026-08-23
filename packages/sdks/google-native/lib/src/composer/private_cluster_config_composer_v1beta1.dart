@@ -31,4 +31,3 @@ class PrivateClusterConfigComposerV1beta1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria {
     throw ArgumentError('Unknown EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria value: $value');
   }
 }
-

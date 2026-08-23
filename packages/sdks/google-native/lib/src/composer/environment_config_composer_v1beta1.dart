@@ -116,4 +116,3 @@ class EnvironmentConfigComposerV1beta1 {
     );
   }
 }
-

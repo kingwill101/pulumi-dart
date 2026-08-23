@@ -52,4 +52,3 @@ class WorkstationClusterWorkstationConfigIamMemberWorkstationsV1betaArgs {
     );
   }
 }
-

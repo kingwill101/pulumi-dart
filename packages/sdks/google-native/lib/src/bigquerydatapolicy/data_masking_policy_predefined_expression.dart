@@ -21,4 +21,3 @@ enum DataMaskingPolicyPredefinedExpression {
     throw ArgumentError('Unknown DataMaskingPolicyPredefinedExpression value: $value');
   }
 }
-

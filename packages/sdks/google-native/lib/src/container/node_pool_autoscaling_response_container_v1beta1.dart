@@ -61,4 +61,3 @@ class NodePoolAutoscalingResponseContainerV1beta1 {
     );
   }
 }
-

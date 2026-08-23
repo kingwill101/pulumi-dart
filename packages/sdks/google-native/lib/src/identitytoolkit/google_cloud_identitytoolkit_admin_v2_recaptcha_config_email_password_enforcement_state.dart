@@ -17,4 +17,3 @@ enum GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementSta
     throw ArgumentError('Unknown GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState value: $value');
   }
 }
-

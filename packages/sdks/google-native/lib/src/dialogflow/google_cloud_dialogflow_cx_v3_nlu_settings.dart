@@ -39,4 +39,3 @@ class GoogleCloudDialogflowCxV3NluSettings {
     );
   }
 }
-

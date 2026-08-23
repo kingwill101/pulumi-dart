@@ -96,4 +96,3 @@ class GoogleCloudRunV2ContainerResponse {
     );
   }
 }
-

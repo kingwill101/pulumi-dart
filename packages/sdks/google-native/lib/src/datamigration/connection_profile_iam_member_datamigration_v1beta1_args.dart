@@ -52,4 +52,3 @@ class ConnectionProfileIamMemberDatamigrationV1beta1Args {
     );
   }
 }
-

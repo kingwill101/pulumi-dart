@@ -37,4 +37,3 @@ class WorkloadIdentityConfigContainerV1beta1 {
     );
   }
 }
-

@@ -38,4 +38,3 @@ class NodeTaintContainerV1beta1 {
     );
   }
 }
-

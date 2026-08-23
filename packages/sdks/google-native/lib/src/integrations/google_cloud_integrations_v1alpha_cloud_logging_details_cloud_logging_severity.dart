@@ -18,4 +18,3 @@ enum GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity value: $value');
   }
 }
-

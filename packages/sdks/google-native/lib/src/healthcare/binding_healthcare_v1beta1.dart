@@ -38,4 +38,3 @@ class BindingHealthcareV1beta1 {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class AzureDiskDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

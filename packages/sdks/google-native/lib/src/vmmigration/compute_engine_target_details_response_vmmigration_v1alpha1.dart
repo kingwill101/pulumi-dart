@@ -137,4 +137,3 @@ class ComputeEngineTargetDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

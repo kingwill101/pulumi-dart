@@ -52,4 +52,3 @@ class TopicIamMemberPubsubV1beta2Args {
     );
   }
 }
-

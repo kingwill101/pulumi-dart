@@ -32,4 +32,3 @@ class AcceleratorConfigTpuV2alpha1 {
     );
   }
 }
-

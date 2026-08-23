@@ -94,4 +94,3 @@ class GetFeatureGroupFeatureAiplatformV1beta1Result {
     );
   }
 }
-

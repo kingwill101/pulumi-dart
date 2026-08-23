@@ -37,4 +37,3 @@ class GetInstanceFileV1beta1Args {
     );
   }
 }
-

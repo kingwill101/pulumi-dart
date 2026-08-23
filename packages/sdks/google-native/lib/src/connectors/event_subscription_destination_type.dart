@@ -15,4 +15,3 @@ enum EventSubscriptionDestinationType {
     throw ArgumentError('Unknown EventSubscriptionDestinationType value: $value');
   }
 }
-

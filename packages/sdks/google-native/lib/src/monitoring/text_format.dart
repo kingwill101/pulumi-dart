@@ -16,4 +16,3 @@ enum TextFormat {
     throw ArgumentError('Unknown TextFormat value: $value');
   }
 }
-

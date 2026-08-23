@@ -25,4 +25,3 @@ class PodCIDROverprovisionConfigContainerV1beta1 {
     );
   }
 }
-

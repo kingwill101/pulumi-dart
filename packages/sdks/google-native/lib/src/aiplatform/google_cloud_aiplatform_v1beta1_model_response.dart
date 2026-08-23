@@ -195,4 +195,3 @@ class GoogleCloudAiplatformV1beta1ModelResponse {
     );
   }
 }
-

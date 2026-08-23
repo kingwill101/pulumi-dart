@@ -38,4 +38,3 @@ class GetNamespaceServiceIamPolicyServicedirectoryV1beta1Result {
     );
   }
 }
-

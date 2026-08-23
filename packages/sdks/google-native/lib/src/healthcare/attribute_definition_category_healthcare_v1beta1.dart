@@ -16,4 +16,3 @@ enum AttributeDefinitionCategoryHealthcareV1beta1 {
     throw ArgumentError('Unknown AttributeDefinitionCategoryHealthcareV1beta1 value: $value');
   }
 }
-

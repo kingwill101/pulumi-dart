@@ -58,4 +58,3 @@ class IndexFirestoreV1beta1Args {
     );
   }
 }
-

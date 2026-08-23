@@ -99,4 +99,3 @@ class GetRegionAutoscalerComputeV1Result {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum GooglePrivacyDlpV2PubSubNotificationDetailOfMessage {
     throw ArgumentError('Unknown GooglePrivacyDlpV2PubSubNotificationDetailOfMessage value: $value');
   }
 }
-

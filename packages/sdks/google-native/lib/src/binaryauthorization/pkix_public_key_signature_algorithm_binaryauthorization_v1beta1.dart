@@ -32,4 +32,3 @@ enum PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1 {
     throw ArgumentError('Unknown PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1 value: $value');
   }
 }
-

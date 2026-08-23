@@ -32,4 +32,3 @@ class ReplicationResponseSecretmanagerV1beta1 {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum TypePrimitive {
     throw ArgumentError('Unknown TypePrimitive value: $value');
   }
 }
-

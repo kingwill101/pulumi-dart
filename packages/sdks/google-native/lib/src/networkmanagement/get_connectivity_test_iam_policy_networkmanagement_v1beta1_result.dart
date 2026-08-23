@@ -45,4 +45,3 @@ class GetConnectivityTestIamPolicyNetworkmanagementV1beta1Result {
     );
   }
 }
-

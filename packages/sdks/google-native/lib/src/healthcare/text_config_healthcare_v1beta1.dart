@@ -45,4 +45,3 @@ class TextConfigHealthcareV1beta1 {
     );
   }
 }
-

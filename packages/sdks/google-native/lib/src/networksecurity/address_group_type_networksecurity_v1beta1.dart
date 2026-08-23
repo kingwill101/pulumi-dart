@@ -16,4 +16,3 @@ enum AddressGroupTypeNetworksecurityV1beta1 {
     throw ArgumentError('Unknown AddressGroupTypeNetworksecurityV1beta1 value: $value');
   }
 }
-

@@ -426,4 +426,3 @@ class ClusterUpdateContainerV1beta1 {
     );
   }
 }
-

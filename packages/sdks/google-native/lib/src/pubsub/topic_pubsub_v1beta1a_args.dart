@@ -28,4 +28,3 @@ class TopicPubsubV1beta1aArgs {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class SBOMReferenceNoteResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

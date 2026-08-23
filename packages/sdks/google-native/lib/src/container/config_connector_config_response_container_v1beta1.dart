@@ -25,4 +25,3 @@ class ConfigConnectorConfigResponseContainerV1beta1 {
     );
   }
 }
-

@@ -47,4 +47,3 @@ class GetDatasetHl7V2StoreIamPolicyHealthcareV1beta1Args {
     );
   }
 }
-

@@ -40,4 +40,3 @@ class GoogleCloudDocumentaiV1DocumentPageParagraphResponse {
     );
   }
 }
-

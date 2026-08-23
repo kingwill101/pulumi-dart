@@ -15,4 +15,3 @@ enum BackendServiceCompressionModeComputeV1 {
     throw ArgumentError('Unknown BackendServiceCompressionModeComputeV1 value: $value');
   }
 }
-

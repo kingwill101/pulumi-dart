@@ -26,4 +26,3 @@ class StatusResponseWorkflowexecutionsV1beta {
     );
   }
 }
-

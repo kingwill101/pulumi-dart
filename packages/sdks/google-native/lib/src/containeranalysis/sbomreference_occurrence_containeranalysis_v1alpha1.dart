@@ -39,4 +39,3 @@ class SBOMReferenceOccurrenceContaineranalysisV1alpha1 {
     );
   }
 }
-

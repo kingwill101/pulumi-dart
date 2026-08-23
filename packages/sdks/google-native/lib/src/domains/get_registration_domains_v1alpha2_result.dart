@@ -105,4 +105,3 @@ class GetRegistrationDomainsV1alpha2Result {
     );
   }
 }
-

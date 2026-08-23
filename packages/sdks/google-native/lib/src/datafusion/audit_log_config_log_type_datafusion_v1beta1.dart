@@ -17,4 +17,3 @@ enum AuditLogConfigLogTypeDatafusionV1beta1 {
     throw ArgumentError('Unknown AuditLogConfigLogTypeDatafusionV1beta1 value: $value');
   }
 }
-

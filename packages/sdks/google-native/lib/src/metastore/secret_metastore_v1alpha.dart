@@ -25,4 +25,3 @@ class SecretMetastoreV1alpha {
     );
   }
 }
-

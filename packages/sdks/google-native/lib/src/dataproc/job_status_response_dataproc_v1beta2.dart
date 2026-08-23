@@ -43,4 +43,3 @@ class JobStatusResponseDataprocV1beta2 {
     );
   }
 }
-

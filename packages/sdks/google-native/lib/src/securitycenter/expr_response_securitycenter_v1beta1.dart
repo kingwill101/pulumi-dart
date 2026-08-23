@@ -43,4 +43,3 @@ class ExprResponseSecuritycenterV1beta1 {
     );
   }
 }
-

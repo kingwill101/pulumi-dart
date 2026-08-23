@@ -74,4 +74,3 @@ class DatasetDicomStoreIamPolicyHealthcareV1beta1Args {
     );
   }
 }
-

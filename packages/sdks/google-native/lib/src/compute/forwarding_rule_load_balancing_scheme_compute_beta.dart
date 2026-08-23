@@ -19,4 +19,3 @@ enum ForwardingRuleLoadBalancingSchemeComputeBeta {
     throw ArgumentError('Unknown ForwardingRuleLoadBalancingSchemeComputeBeta value: $value');
   }
 }
-

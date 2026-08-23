@@ -38,4 +38,3 @@ class GetNoteIamPolicyContaineranalysisV1beta1Result {
     );
   }
 }
-

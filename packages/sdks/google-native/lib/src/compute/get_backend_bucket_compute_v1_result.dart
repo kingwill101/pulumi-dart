@@ -85,4 +85,3 @@ class GetBackendBucketComputeV1Result {
     );
   }
 }
-

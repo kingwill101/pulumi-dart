@@ -94,4 +94,3 @@ class GceClusterConfigResponseDataprocV1beta2 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum RetryBackoffMode {
     throw ArgumentError('Unknown RetryBackoffMode value: $value');
   }
 }
-

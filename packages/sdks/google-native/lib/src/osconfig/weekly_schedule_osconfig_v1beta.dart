@@ -26,4 +26,3 @@ class WeeklyScheduleOsconfigV1beta {
     );
   }
 }
-

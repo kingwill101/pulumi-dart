@@ -26,4 +26,3 @@ class MaintenanceExclusionOptionsContainerV1beta1 {
     );
   }
 }
-

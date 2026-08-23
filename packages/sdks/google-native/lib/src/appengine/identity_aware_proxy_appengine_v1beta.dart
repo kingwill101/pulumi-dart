@@ -37,4 +37,3 @@ class IdentityAwareProxyAppengineV1beta {
     );
   }
 }
-

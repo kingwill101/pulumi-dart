@@ -52,4 +52,3 @@ class GetDiskIamPolicyComputeV1Result {
     );
   }
 }
-

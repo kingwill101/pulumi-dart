@@ -32,4 +32,3 @@ class FirewallLogConfigComputeV1 {
     );
   }
 }
-

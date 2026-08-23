@@ -96,4 +96,3 @@ class GoogleCloudAiplatformV1beta1StudySpec {
     );
   }
 }
-

@@ -21,4 +21,3 @@ enum VersionInboundServicesItem {
     throw ArgumentError('Unknown VersionInboundServicesItem value: $value');
   }
 }
-

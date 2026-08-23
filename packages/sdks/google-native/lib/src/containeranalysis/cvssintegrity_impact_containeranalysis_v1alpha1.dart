@@ -19,4 +19,3 @@ enum CVSSIntegrityImpactContaineranalysisV1alpha1 {
     throw ArgumentError('Unknown CVSSIntegrityImpactContaineranalysisV1alpha1 value: $value');
   }
 }
-

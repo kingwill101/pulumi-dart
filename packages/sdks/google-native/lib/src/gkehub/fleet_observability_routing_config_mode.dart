@@ -16,4 +16,3 @@ enum FleetObservabilityRoutingConfigMode {
     throw ArgumentError('Unknown FleetObservabilityRoutingConfigMode value: $value');
   }
 }
-

@@ -52,4 +52,3 @@ class RegionWorkflowTemplateIamBindingDataprocV1beta2Args {
     );
   }
 }
-

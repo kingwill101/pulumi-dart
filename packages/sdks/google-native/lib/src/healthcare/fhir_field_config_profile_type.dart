@@ -17,4 +17,3 @@ enum FhirFieldConfigProfileType {
     throw ArgumentError('Unknown FhirFieldConfigProfileType value: $value');
   }
 }
-

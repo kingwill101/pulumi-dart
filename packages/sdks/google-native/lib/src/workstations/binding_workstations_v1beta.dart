@@ -38,4 +38,3 @@ class BindingWorkstationsV1beta {
     );
   }
 }
-

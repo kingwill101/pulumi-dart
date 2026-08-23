@@ -15,4 +15,3 @@ enum ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta {
     throw ArgumentError('Unknown ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta value: $value');
   }
 }
-

@@ -26,4 +26,3 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfo {
     );
   }
 }
-

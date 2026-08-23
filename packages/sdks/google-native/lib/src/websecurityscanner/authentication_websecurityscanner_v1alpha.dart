@@ -33,4 +33,3 @@ class AuthenticationWebsecurityscannerV1alpha {
     );
   }
 }
-

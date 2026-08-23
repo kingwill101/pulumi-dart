@@ -31,4 +31,3 @@ class GPUSharingConfigResponseContainerV1beta1 {
     );
   }
 }
-

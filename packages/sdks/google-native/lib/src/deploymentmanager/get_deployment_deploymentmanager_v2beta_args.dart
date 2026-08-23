@@ -32,4 +32,3 @@ class GetDeploymentDeploymentmanagerV2betaArgs {
     );
   }
 }
-

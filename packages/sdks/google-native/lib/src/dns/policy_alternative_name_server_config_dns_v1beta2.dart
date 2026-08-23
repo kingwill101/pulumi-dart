@@ -30,4 +30,3 @@ class PolicyAlternativeNameServerConfigDnsV1beta2 {
     );
   }
 }
-

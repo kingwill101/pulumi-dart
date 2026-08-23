@@ -105,4 +105,3 @@ class GetFirewallPolicyComputeV1Result {
     );
   }
 }
-

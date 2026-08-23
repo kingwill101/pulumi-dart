@@ -25,4 +25,3 @@ class ApplianceClusterGkehubV1alpha2 {
     );
   }
 }
-

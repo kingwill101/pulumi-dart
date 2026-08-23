@@ -16,4 +16,3 @@ enum DNSConfigClusterDnsScopeContainerV1beta1 {
     throw ArgumentError('Unknown DNSConfigClusterDnsScopeContainerV1beta1 value: $value');
   }
 }
-

@@ -33,4 +33,3 @@ class WeeklyMaintenanceWindowRedisV1beta1 {
     );
   }
 }
-

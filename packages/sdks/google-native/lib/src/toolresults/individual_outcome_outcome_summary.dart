@@ -18,4 +18,3 @@ enum IndividualOutcomeOutcomeSummary {
     throw ArgumentError('Unknown IndividualOutcomeOutcomeSummary value: $value');
   }
 }
-

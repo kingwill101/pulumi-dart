@@ -63,4 +63,3 @@ class PrestoJobResponseDataprocV1beta2 {
     );
   }
 }
-

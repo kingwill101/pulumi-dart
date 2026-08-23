@@ -15,4 +15,3 @@ enum BlockchainNodeBlockchainType {
     throw ArgumentError('Unknown BlockchainNodeBlockchainType value: $value');
   }
 }
-

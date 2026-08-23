@@ -16,4 +16,3 @@ enum GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration {
     throw ArgumentError('Unknown GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfiguration value: $value');
   }
 }
-

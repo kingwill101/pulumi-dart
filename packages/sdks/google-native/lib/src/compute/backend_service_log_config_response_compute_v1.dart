@@ -43,4 +43,3 @@ class BackendServiceLogConfigResponseComputeV1 {
     );
   }
 }
-

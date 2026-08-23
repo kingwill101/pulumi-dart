@@ -31,4 +31,3 @@ class DeploymentLabelEntryResponseDeploymentmanagerV2beta {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetGatewayNetworkservicesV1beta1Args {
     );
   }
 }
-

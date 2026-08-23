@@ -31,4 +31,3 @@ class TcpRouteRouteMatchResponseNetworkservicesV1beta1 {
     );
   }
 }
-

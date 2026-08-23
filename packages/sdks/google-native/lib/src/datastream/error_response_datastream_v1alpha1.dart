@@ -49,4 +49,3 @@ class ErrorResponseDatastreamV1alpha1 {
     );
   }
 }
-

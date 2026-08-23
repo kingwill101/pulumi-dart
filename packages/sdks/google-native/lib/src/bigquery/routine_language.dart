@@ -19,4 +19,3 @@ enum RoutineLanguage {
     throw ArgumentError('Unknown RoutineLanguage value: $value');
   }
 }
-

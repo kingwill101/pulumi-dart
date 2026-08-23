@@ -22,4 +22,3 @@ enum IntentDefaultResponsePlatformsItem {
     throw ArgumentError('Unknown IntentDefaultResponsePlatformsItem value: $value');
   }
 }
-

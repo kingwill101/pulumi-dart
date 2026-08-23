@@ -16,4 +16,3 @@ enum ServingConfigDiversityTypeRetailV2alpha {
     throw ArgumentError('Unknown ServingConfigDiversityTypeRetailV2alpha value: $value');
   }
 }
-

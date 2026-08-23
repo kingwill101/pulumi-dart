@@ -84,4 +84,3 @@ class SourceVmmigrationV1alpha1Args {
     );
   }
 }
-

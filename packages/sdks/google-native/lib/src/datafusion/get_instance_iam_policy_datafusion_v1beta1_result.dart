@@ -45,4 +45,3 @@ class GetInstanceIamPolicyDatafusionV1beta1Result {
     );
   }
 }
-

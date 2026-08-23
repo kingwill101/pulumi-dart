@@ -25,4 +25,3 @@ class PathOverrideCloudtasksV2beta2 {
     );
   }
 }
-

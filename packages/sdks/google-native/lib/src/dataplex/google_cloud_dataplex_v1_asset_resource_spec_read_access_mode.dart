@@ -16,4 +16,3 @@ enum GoogleCloudDataplexV1AssetResourceSpecReadAccessMode {
     throw ArgumentError('Unknown GoogleCloudDataplexV1AssetResourceSpecReadAccessMode value: $value');
   }
 }
-

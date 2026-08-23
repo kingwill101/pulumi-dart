@@ -80,4 +80,3 @@ class GetConsentHealthcareV1beta1Result {
     );
   }
 }
-

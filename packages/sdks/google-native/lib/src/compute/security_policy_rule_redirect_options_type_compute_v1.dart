@@ -15,4 +15,3 @@ enum SecurityPolicyRuleRedirectOptionsTypeComputeV1 {
     throw ArgumentError('Unknown SecurityPolicyRuleRedirectOptionsTypeComputeV1 value: $value');
   }
 }
-

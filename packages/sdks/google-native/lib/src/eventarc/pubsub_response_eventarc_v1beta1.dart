@@ -31,4 +31,3 @@ class PubsubResponseEventarcV1beta1 {
     );
   }
 }
-

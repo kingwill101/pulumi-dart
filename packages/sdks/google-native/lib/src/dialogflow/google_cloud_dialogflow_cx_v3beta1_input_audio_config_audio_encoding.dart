@@ -21,4 +21,3 @@ enum GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding {
     throw ArgumentError('Unknown GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding value: $value');
   }
 }
-

@@ -19,4 +19,3 @@ enum GoogleCloudChannelV1RenewalSettingsPaymentPlan {
     throw ArgumentError('Unknown GoogleCloudChannelV1RenewalSettingsPaymentPlan value: $value');
   }
 }
-

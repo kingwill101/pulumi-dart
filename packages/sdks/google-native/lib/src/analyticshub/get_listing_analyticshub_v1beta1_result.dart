@@ -100,4 +100,3 @@ class GetListingAnalyticshubV1beta1Result {
     );
   }
 }
-

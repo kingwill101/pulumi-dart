@@ -31,4 +31,3 @@ class DynamicGroupStatusResponseCloudidentityV1beta1 {
     );
   }
 }
-

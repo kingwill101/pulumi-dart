@@ -56,4 +56,3 @@ class GoogleCloudDataplexV1AssetDiscoveryStatusResponse {
     );
   }
 }
-

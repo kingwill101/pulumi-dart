@@ -82,4 +82,3 @@ class IndexAiplatformV1beta1Args {
     );
   }
 }
-

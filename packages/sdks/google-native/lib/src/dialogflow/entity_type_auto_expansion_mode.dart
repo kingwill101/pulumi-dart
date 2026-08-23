@@ -15,4 +15,3 @@ enum EntityTypeAutoExpansionMode {
     throw ArgumentError('Unknown EntityTypeAutoExpansionMode value: $value');
   }
 }
-

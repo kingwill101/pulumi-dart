@@ -31,4 +31,3 @@ class OidcTokenPubsubV1beta2 {
     );
   }
 }
-

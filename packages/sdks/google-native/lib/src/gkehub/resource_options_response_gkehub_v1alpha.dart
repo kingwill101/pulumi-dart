@@ -37,4 +37,3 @@ class ResourceOptionsResponseGkehubV1alpha {
     );
   }
 }
-

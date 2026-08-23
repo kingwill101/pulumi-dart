@@ -25,4 +25,3 @@ enum GoogleCloudIntegrationsV1alphaIntegrationParameterDataType {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaIntegrationParameterDataType value: $value');
   }
 }
-

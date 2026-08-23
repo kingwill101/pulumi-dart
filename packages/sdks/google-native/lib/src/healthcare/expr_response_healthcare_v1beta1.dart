@@ -43,4 +43,3 @@ class ExprResponseHealthcareV1beta1 {
     );
   }
 }
-

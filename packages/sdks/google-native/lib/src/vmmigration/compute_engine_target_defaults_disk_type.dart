@@ -17,4 +17,3 @@ enum ComputeEngineTargetDefaultsDiskType {
     throw ArgumentError('Unknown ComputeEngineTargetDefaultsDiskType value: $value');
   }
 }
-

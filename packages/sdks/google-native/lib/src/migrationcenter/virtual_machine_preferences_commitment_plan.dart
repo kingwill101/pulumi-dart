@@ -17,4 +17,3 @@ enum VirtualMachinePreferencesCommitmentPlan {
     throw ArgumentError('Unknown VirtualMachinePreferencesCommitmentPlan value: $value');
   }
 }
-

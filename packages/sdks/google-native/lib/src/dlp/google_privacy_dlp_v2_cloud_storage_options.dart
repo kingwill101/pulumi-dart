@@ -57,4 +57,3 @@ class GooglePrivacyDlpV2CloudStorageOptions {
     );
   }
 }
-

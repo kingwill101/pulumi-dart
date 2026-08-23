@@ -37,4 +37,3 @@ class GetEnvironmentComposerV1beta1Args {
     );
   }
 }
-

@@ -43,4 +43,3 @@ class TimeOfDayResponseOsconfigV1beta {
     );
   }
 }
-

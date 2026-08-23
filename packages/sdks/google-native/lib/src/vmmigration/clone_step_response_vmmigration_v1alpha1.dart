@@ -49,4 +49,3 @@ class CloneStepResponseVmmigrationV1alpha1 {
     );
   }
 }
-

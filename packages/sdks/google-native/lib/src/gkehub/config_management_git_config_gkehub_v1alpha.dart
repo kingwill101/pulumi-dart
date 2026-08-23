@@ -67,4 +67,3 @@ class ConfigManagementGitConfigGkehubV1alpha {
     );
   }
 }
-

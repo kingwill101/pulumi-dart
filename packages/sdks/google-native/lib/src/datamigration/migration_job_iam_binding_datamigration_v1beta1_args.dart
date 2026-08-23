@@ -52,4 +52,3 @@ class MigrationJobIamBindingDatamigrationV1beta1Args {
     );
   }
 }
-

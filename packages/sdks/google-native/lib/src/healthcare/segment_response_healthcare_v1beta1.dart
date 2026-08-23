@@ -37,4 +37,3 @@ class SegmentResponseHealthcareV1beta1 {
     );
   }
 }
-

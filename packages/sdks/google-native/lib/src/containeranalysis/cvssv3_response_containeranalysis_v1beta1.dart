@@ -76,4 +76,3 @@ class CVSSv3ResponseContaineranalysisV1beta1 {
     );
   }
 }
-

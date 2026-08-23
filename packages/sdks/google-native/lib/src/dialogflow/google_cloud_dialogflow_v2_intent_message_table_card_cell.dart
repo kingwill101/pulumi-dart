@@ -25,4 +25,3 @@ class GoogleCloudDialogflowV2IntentMessageTableCardCell {
     );
   }
 }
-

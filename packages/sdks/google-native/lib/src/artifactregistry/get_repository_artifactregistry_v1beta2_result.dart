@@ -79,4 +79,3 @@ class GetRepositoryArtifactregistryV1beta2Result {
     );
   }
 }
-

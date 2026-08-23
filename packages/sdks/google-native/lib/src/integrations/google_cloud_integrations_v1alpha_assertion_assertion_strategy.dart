@@ -21,4 +21,3 @@ enum GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy value: $value');
   }
 }
-

@@ -52,4 +52,3 @@ class GetBackendServiceIamPolicyComputeV1Result {
     );
   }
 }
-

@@ -69,4 +69,3 @@ class ServiceIamPolicyRunV2Args {
     );
   }
 }
-

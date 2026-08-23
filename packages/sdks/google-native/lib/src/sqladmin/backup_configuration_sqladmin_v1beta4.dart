@@ -74,4 +74,3 @@ class BackupConfigurationSqladminV1beta4 {
     );
   }
 }
-

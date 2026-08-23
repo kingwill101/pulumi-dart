@@ -32,4 +32,3 @@ class AuditConfigResponseDatamigrationV1beta1 {
     );
   }
 }
-

@@ -44,4 +44,3 @@ class ExternalRefContaineranalysisV1beta1 {
     );
   }
 }
-

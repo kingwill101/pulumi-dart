@@ -39,4 +39,3 @@ class GooglePrivacyDlpV2KMapEstimationConfigResponse {
     );
   }
 }
-

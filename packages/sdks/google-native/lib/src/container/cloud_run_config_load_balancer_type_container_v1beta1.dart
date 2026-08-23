@@ -16,4 +16,3 @@ enum CloudRunConfigLoadBalancerTypeContainerV1beta1 {
     throw ArgumentError('Unknown CloudRunConfigLoadBalancerTypeContainerV1beta1 value: $value');
   }
 }
-

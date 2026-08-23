@@ -19,4 +19,3 @@ enum JustificationJustificationTypeContaineranalysisV1alpha1 {
     throw ArgumentError('Unknown JustificationJustificationTypeContaineranalysisV1alpha1 value: $value');
   }
 }
-

@@ -32,4 +32,3 @@ class CryptoHashConfigResponseHealthcareV1beta1 {
     );
   }
 }
-

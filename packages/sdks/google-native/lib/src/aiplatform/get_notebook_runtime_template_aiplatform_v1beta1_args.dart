@@ -37,4 +37,3 @@ class GetNotebookRuntimeTemplateAiplatformV1beta1Args {
     );
   }
 }
-

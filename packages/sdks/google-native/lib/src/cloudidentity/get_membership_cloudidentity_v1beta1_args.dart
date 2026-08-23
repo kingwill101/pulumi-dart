@@ -32,4 +32,3 @@ class GetMembershipCloudidentityV1beta1Args {
     );
   }
 }
-

@@ -69,4 +69,3 @@ class GetCompositeTypeDeploymentmanagerV2betaResult {
     );
   }
 }
-

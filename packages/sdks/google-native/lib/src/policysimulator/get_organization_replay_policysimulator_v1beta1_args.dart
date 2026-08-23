@@ -37,4 +37,3 @@ class GetOrganizationReplayPolicysimulatorV1beta1Args {
     );
   }
 }
-

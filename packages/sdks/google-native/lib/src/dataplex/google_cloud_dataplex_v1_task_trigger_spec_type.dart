@@ -16,4 +16,3 @@ enum GoogleCloudDataplexV1TaskTriggerSpecType {
     throw ArgumentError('Unknown GoogleCloudDataplexV1TaskTriggerSpecType value: $value');
   }
 }
-

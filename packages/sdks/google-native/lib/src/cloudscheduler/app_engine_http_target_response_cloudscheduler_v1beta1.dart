@@ -50,4 +50,3 @@ class AppEngineHttpTargetResponseCloudschedulerV1beta1 {
     );
   }
 }
-

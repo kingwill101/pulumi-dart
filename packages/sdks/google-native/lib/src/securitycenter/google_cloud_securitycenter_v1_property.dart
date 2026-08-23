@@ -32,4 +32,3 @@ class GoogleCloudSecuritycenterV1Property {
     );
   }
 }
-

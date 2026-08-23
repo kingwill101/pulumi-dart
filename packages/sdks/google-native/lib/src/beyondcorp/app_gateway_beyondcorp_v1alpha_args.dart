@@ -76,4 +76,3 @@ class AppGatewayBeyondcorpV1alphaArgs {
     );
   }
 }
-

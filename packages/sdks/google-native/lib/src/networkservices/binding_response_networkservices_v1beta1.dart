@@ -38,4 +38,3 @@ class BindingResponseNetworkservicesV1beta1 {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class NetworkConfigAlloydbV1alpha {
     );
   }
 }
-

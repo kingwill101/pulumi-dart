@@ -51,4 +51,3 @@ class TaxonomyDatacatalogV1beta1Args {
     );
   }
 }
-

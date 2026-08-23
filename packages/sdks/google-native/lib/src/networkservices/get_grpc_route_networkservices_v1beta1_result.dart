@@ -80,4 +80,3 @@ class GetGrpcRouteNetworkservicesV1beta1Result {
     );
   }
 }
-

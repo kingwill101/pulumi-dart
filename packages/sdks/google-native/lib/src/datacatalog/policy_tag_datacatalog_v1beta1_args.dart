@@ -55,4 +55,3 @@ class PolicyTagDatacatalogV1beta1Args {
     );
   }
 }
-

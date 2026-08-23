@@ -33,4 +33,3 @@ enum EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId value: $value');
   }
 }
-

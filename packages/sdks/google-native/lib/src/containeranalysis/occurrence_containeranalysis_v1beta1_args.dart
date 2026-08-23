@@ -144,4 +144,3 @@ class OccurrenceContaineranalysisV1beta1Args {
     );
   }
 }
-

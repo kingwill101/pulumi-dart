@@ -56,4 +56,3 @@ class TagTemplateIamPolicyDatacatalogV1beta1Args {
     );
   }
 }
-

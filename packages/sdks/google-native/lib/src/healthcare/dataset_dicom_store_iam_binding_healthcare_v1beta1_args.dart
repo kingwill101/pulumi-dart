@@ -52,4 +52,3 @@ class DatasetDicomStoreIamBindingHealthcareV1beta1Args {
     );
   }
 }
-

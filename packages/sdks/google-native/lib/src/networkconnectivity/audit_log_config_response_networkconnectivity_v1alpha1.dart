@@ -31,4 +31,3 @@ class AuditLogConfigResponseNetworkconnectivityV1alpha1 {
     );
   }
 }
-

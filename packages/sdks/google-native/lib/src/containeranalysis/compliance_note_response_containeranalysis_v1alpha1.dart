@@ -63,4 +63,3 @@ class ComplianceNoteResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

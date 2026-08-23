@@ -15,4 +15,3 @@ enum InternalRangeOverlapsItem {
     throw ArgumentError('Unknown InternalRangeOverlapsItem value: $value');
   }
 }
-

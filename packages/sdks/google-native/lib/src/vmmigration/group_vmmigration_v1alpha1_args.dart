@@ -63,4 +63,3 @@ class GroupVmmigrationV1alpha1Args {
     );
   }
 }
-

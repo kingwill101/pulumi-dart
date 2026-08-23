@@ -25,4 +25,3 @@ class QueuedProvisioningResponseContainerV1beta1 {
     );
   }
 }
-

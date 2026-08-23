@@ -25,4 +25,3 @@ class SlsaBuilderContaineranalysisV1alpha1 {
     );
   }
 }
-

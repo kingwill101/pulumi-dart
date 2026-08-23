@@ -56,4 +56,3 @@ class GoogleCloudDocumentaiV1DocumentRevisionResponse {
     );
   }
 }
-

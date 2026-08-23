@@ -47,4 +47,3 @@ class GetSchemaDiscoveryengineV1betaArgs {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetTopicIamPolicyPubsubV1beta2Args {
     );
   }
 }
-

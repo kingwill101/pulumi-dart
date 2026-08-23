@@ -17,4 +17,3 @@ enum EnvironmentConfigEnvironmentSizeComposerV1beta1 {
     throw ArgumentError('Unknown EnvironmentConfigEnvironmentSizeComposerV1beta1 value: $value');
   }
 }
-

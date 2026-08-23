@@ -33,4 +33,3 @@ class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse {
     );
   }
 }
-

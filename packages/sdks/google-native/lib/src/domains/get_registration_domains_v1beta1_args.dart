@@ -37,4 +37,3 @@ class GetRegistrationDomainsV1beta1Args {
     );
   }
 }
-

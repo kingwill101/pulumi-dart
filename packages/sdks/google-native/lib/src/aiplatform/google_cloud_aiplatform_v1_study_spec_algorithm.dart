@@ -16,4 +16,3 @@ enum GoogleCloudAiplatformV1StudySpecAlgorithm {
     throw ArgumentError('Unknown GoogleCloudAiplatformV1StudySpecAlgorithm value: $value');
   }
 }
-

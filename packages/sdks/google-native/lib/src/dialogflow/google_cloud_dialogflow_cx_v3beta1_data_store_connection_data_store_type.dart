@@ -17,4 +17,3 @@ enum GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType {
     throw ArgumentError('Unknown GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType value: $value');
   }
 }
-

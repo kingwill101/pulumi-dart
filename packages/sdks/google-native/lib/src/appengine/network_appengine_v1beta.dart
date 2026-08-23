@@ -56,4 +56,3 @@ class NetworkAppengineV1beta {
     );
   }
 }
-

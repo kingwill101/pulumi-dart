@@ -32,4 +32,3 @@ class SqlOutOfDiskReportSqladminV1beta4 {
     );
   }
 }
-

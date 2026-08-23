@@ -21,4 +21,3 @@ enum RepositoryFormatArtifactregistryV1beta1 {
     throw ArgumentError('Unknown RepositoryFormatArtifactregistryV1beta1 value: $value');
   }
 }
-

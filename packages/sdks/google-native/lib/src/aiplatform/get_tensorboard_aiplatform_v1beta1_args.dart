@@ -37,4 +37,3 @@ class GetTensorboardAiplatformV1beta1Args {
     );
   }
 }
-

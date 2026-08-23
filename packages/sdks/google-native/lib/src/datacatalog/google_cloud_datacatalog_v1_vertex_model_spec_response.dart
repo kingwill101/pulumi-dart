@@ -50,4 +50,3 @@ class GoogleCloudDatacatalogV1VertexModelSpecResponse {
     );
   }
 }
-

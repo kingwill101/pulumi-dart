@@ -19,4 +19,3 @@ enum ReservationAffinityConsumeReservationTypeComputeBeta {
     throw ArgumentError('Unknown ReservationAffinityConsumeReservationTypeComputeBeta value: $value');
   }
 }
-

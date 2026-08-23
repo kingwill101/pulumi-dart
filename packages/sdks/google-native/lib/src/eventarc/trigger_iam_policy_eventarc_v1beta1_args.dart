@@ -69,4 +69,3 @@ class TriggerIamPolicyEventarcV1beta1Args {
     );
   }
 }
-

@@ -242,4 +242,3 @@ class InstanceSqladminV1beta4Args {
     );
   }
 }
-

@@ -82,4 +82,3 @@ class GoogleCloudIntegrationsV1alphaCredential {
     );
   }
 }
-

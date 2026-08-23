@@ -77,4 +77,3 @@ class OsPolicyAssignmentOsconfigV1alphaArgs {
     );
   }
 }
-

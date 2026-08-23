@@ -33,4 +33,3 @@ class MetadataIntegrationMetastoreV1alpha {
     );
   }
 }
-

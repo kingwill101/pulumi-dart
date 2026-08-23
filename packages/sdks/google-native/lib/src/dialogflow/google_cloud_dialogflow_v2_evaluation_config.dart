@@ -40,4 +40,3 @@ class GoogleCloudDialogflowV2EvaluationConfig {
     );
   }
 }
-

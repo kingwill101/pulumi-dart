@@ -16,4 +16,3 @@ enum EndpointNetworkTypeNetworkmanagementV1beta1 {
     throw ArgumentError('Unknown EndpointNetworkTypeNetworkmanagementV1beta1 value: $value');
   }
 }
-

@@ -70,4 +70,3 @@ class InstanceIamPolicyComputeV1Args {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class StandardRolloutPolicyResponseContainerV1beta1 {
     );
   }
 }
-

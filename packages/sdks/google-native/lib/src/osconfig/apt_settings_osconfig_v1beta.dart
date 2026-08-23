@@ -38,4 +38,3 @@ class AptSettingsOsconfigV1beta {
     );
   }
 }
-

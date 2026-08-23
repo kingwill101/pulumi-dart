@@ -31,4 +31,3 @@ class ProjectRepoIdResponseContaineranalysisV1beta1 {
     );
   }
 }
-

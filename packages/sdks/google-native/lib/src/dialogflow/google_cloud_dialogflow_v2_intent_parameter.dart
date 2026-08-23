@@ -67,4 +67,3 @@ class GoogleCloudDialogflowV2IntentParameter {
     );
   }
 }
-

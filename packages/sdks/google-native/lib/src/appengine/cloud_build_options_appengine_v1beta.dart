@@ -31,4 +31,3 @@ class CloudBuildOptionsAppengineV1beta {
     );
   }
 }
-

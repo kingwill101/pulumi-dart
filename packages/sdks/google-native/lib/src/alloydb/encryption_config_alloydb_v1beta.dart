@@ -25,4 +25,3 @@ class EncryptionConfigAlloydbV1beta {
     );
   }
 }
-

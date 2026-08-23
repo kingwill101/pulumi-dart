@@ -27,4 +27,3 @@ class GetSubscriptionPubsubV1beta1aArgs {
     );
   }
 }
-

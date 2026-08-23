@@ -37,4 +37,3 @@ class GoogleTypeDateBillingbudgetsV1beta1 {
     );
   }
 }
-

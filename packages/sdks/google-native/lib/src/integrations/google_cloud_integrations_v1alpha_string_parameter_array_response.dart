@@ -25,4 +25,3 @@ class GoogleCloudIntegrationsV1alphaStringParameterArrayResponse {
     );
   }
 }
-

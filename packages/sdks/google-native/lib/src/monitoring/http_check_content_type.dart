@@ -16,4 +16,3 @@ enum HttpCheckContentType {
     throw ArgumentError('Unknown HttpCheckContentType value: $value');
   }
 }
-

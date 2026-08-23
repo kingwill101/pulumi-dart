@@ -16,4 +16,3 @@ enum TemplateContentsInterpreter {
     throw ArgumentError('Unknown TemplateContentsInterpreter value: $value');
   }
 }
-

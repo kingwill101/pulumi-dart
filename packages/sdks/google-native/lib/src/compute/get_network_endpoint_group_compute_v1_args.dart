@@ -37,4 +37,3 @@ class GetNetworkEndpointGroupComputeV1Args {
     );
   }
 }
-

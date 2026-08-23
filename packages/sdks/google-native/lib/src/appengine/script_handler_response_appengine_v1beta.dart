@@ -25,4 +25,3 @@ class ScriptHandlerResponseAppengineV1beta {
     );
   }
 }
-

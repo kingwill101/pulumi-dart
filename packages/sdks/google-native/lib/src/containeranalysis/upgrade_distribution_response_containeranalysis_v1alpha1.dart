@@ -43,4 +43,3 @@ class UpgradeDistributionResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

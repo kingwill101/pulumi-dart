@@ -16,4 +16,3 @@ enum GethDetailsGarbageCollectionMode {
     throw ArgumentError('Unknown GethDetailsGarbageCollectionMode value: $value');
   }
 }
-

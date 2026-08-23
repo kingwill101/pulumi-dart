@@ -16,4 +16,3 @@ enum EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskAlertConfigThresholdType value: $value');
   }
 }
-

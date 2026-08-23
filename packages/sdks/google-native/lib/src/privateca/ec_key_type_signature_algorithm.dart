@@ -17,4 +17,3 @@ enum EcKeyTypeSignatureAlgorithm {
     throw ArgumentError('Unknown EcKeyTypeSignatureAlgorithm value: $value');
   }
 }
-

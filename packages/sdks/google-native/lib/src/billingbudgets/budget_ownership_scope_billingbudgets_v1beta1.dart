@@ -15,4 +15,3 @@ enum BudgetOwnershipScopeBillingbudgetsV1beta1 {
     throw ArgumentError('Unknown BudgetOwnershipScopeBillingbudgetsV1beta1 value: $value');
   }
 }
-

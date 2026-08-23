@@ -32,4 +32,3 @@ class ReportSummaryMachineSeriesAllocationResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

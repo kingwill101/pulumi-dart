@@ -37,4 +37,3 @@ class InstanceReferenceResponseDataprocV1beta2 {
     );
   }
 }
-

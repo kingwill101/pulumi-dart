@@ -16,4 +16,3 @@ enum GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal
     throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal value: $value');
   }
 }
-

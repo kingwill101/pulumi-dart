@@ -21,4 +21,3 @@ enum ResourcePolicyWeeklyCycleDayOfWeekDayComputeV1 {
     throw ArgumentError('Unknown ResourcePolicyWeeklyCycleDayOfWeekDayComputeV1 value: $value');
   }
 }
-

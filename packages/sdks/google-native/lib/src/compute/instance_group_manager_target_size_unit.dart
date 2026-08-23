@@ -15,4 +15,3 @@ enum InstanceGroupManagerTargetSizeUnit {
     throw ArgumentError('Unknown InstanceGroupManagerTargetSizeUnit value: $value');
   }
 }
-

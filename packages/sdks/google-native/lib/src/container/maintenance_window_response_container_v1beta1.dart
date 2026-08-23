@@ -39,4 +39,3 @@ class MaintenanceWindowResponseContainerV1beta1 {
     );
   }
 }
-

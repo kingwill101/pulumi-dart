@@ -37,4 +37,3 @@ class GetTaxonomyDatacatalogV1beta1Args {
     );
   }
 }
-

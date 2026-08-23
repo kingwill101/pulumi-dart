@@ -25,4 +25,3 @@ class AccessConfigResponseTpuV2alpha1 {
     );
   }
 }
-

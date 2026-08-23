@@ -51,4 +51,3 @@ class BootDiskDefaultsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

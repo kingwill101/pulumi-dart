@@ -46,4 +46,3 @@ class IamPolicyIapV1beta1Args {
     );
   }
 }
-

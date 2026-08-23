@@ -42,4 +42,3 @@ class GetResponsePolicyRuleDnsV1beta2Args {
     );
   }
 }
-

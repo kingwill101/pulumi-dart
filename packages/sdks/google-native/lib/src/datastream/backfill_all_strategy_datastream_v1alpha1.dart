@@ -33,4 +33,3 @@ class BackfillAllStrategyDatastreamV1alpha1 {
     );
   }
 }
-

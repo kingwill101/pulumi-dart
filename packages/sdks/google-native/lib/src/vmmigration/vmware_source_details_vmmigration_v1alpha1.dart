@@ -49,4 +49,3 @@ class VmwareSourceDetailsVmmigrationV1alpha1 {
     );
   }
 }
-

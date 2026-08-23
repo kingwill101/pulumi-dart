@@ -32,4 +32,3 @@ class VpcAccessConnectorAppengineV1beta {
     );
   }
 }
-

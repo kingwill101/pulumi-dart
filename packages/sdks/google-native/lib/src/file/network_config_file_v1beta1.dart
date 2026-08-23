@@ -45,4 +45,3 @@ class NetworkConfigFileV1beta1 {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GetTrainingPipelineAiplatformV1beta1Args {
     );
   }
 }
-

@@ -38,4 +38,3 @@ class GrafeasV1beta1BuildDetails {
     );
   }
 }
-

@@ -42,4 +42,3 @@ class GetNamespaceGkehubV1alphaArgs {
     );
   }
 }
-

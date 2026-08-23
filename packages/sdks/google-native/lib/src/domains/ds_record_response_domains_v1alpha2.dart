@@ -43,4 +43,3 @@ class DsRecordResponseDomainsV1alpha2 {
     );
   }
 }
-

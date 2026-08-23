@@ -70,4 +70,3 @@ class RegionNetworkFirewallPolicyIamPolicyComputeV1Args {
     );
   }
 }
-

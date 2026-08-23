@@ -30,4 +30,3 @@ enum StatusConditionCanonicalCodeContainerV1beta1 {
     throw ArgumentError('Unknown StatusConditionCanonicalCodeContainerV1beta1 value: $value');
   }
 }
-

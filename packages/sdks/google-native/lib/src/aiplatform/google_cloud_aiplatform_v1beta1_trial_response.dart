@@ -87,4 +87,3 @@ class GoogleCloudAiplatformV1beta1TrialResponse {
     );
   }
 }
-

@@ -39,4 +39,3 @@ class ReplayPolicysimulatorV1alphaArgs {
     );
   }
 }
-

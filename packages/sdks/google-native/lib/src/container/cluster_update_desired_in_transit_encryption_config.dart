@@ -16,4 +16,3 @@ enum ClusterUpdateDesiredInTransitEncryptionConfig {
     throw ArgumentError('Unknown ClusterUpdateDesiredInTransitEncryptionConfig value: $value');
   }
 }
-

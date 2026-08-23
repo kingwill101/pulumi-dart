@@ -60,4 +60,3 @@ class GetRunAiplatformV1beta1Result {
     );
   }
 }
-

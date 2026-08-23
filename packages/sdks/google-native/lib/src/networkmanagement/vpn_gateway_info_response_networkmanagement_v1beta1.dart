@@ -55,4 +55,3 @@ class VpnGatewayInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

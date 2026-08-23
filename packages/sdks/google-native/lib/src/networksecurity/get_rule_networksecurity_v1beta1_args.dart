@@ -42,4 +42,3 @@ class GetRuleNetworksecurityV1beta1Args {
     );
   }
 }
-

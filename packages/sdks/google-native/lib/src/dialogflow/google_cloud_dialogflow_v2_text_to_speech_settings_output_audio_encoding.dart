@@ -19,4 +19,3 @@ enum GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding {
     throw ArgumentError('Unknown GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding value: $value');
   }
 }
-

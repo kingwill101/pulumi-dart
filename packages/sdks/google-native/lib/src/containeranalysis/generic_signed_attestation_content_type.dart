@@ -15,4 +15,3 @@ enum GenericSignedAttestationContentType {
     throw ArgumentError('Unknown GenericSignedAttestationContentType value: $value');
   }
 }
-

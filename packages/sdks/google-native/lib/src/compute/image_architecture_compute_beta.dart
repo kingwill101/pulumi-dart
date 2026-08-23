@@ -16,4 +16,3 @@ enum ImageArchitectureComputeBeta {
     throw ArgumentError('Unknown ImageArchitectureComputeBeta value: $value');
   }
 }
-

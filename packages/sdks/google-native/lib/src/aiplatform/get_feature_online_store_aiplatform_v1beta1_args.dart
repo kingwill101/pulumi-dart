@@ -37,4 +37,3 @@ class GetFeatureOnlineStoreAiplatformV1beta1Args {
     );
   }
 }
-

@@ -29,4 +29,3 @@ class ManagedZonePrivateVisibilityConfigNetworkResponseDnsV1beta2 {
     );
   }
 }
-

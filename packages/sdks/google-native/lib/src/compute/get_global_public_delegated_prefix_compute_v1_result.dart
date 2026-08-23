@@ -98,4 +98,3 @@ class GetGlobalPublicDelegatedPrefixComputeV1Result {
     );
   }
 }
-

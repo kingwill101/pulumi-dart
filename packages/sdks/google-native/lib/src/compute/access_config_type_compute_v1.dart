@@ -15,4 +15,3 @@ enum AccessConfigTypeComputeV1 {
     throw ArgumentError('Unknown AccessConfigTypeComputeV1 value: $value');
   }
 }
-

@@ -25,4 +25,3 @@ class GcsFuseCsiDriverConfigContainerV1beta1 {
     );
   }
 }
-

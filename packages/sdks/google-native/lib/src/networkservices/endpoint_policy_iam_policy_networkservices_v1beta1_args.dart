@@ -69,4 +69,3 @@ class EndpointPolicyIamPolicyNetworkservicesV1beta1Args {
     );
   }
 }
-

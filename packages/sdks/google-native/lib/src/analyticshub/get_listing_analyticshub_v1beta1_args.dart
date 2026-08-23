@@ -42,4 +42,3 @@ class GetListingAnalyticshubV1beta1Args {
     );
   }
 }
-

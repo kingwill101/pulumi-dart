@@ -16,4 +16,3 @@ enum CloudSqlSettingsActivationPolicy {
     throw ArgumentError('Unknown CloudSqlSettingsActivationPolicy value: $value');
   }
 }
-

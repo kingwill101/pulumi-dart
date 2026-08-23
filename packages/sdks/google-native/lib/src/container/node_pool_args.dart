@@ -151,4 +151,3 @@ class NodePoolArgs {
     );
   }
 }
-

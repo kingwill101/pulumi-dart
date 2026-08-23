@@ -69,4 +69,3 @@ class ApiIamPolicyApigatewayV1betaArgs {
     );
   }
 }
-

@@ -44,4 +44,3 @@ class GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse {
     );
   }
 }
-

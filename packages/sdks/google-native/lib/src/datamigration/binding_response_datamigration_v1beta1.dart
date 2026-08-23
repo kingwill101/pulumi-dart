@@ -38,4 +38,3 @@ class BindingResponseDatamigrationV1beta1 {
     );
   }
 }
-

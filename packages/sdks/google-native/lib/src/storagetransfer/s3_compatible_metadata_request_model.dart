@@ -16,4 +16,3 @@ enum S3CompatibleMetadataRequestModel {
     throw ArgumentError('Unknown S3CompatibleMetadataRequestModel value: $value');
   }
 }
-

@@ -25,4 +25,3 @@ class GrafeasV1FileLocation {
     );
   }
 }
-

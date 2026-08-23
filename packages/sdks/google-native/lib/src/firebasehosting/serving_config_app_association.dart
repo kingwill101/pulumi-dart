@@ -15,4 +15,3 @@ enum ServingConfigAppAssociation {
     throw ArgumentError('Unknown ServingConfigAppAssociation value: $value');
   }
 }
-

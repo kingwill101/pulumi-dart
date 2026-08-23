@@ -202,4 +202,3 @@ class GetJobJobsV4Result {
     );
   }
 }
-

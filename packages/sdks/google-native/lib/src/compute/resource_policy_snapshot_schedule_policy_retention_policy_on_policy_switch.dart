@@ -15,4 +15,3 @@ enum ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch {
     throw ArgumentError('Unknown ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch value: $value');
   }
 }
-

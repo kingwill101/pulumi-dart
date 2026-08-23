@@ -31,4 +31,3 @@ class InstanceMessageMemcacheV1beta2 {
     );
   }
 }
-

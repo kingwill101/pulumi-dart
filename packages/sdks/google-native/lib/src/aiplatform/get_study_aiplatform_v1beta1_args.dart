@@ -37,4 +37,3 @@ class GetStudyAiplatformV1beta1Args {
     );
   }
 }
-

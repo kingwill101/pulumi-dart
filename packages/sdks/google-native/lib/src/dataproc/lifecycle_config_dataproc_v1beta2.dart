@@ -37,4 +37,3 @@ class LifecycleConfigDataprocV1beta2 {
     );
   }
 }
-

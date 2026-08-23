@@ -18,4 +18,3 @@ enum HttpRedirectActionRedirectResponseCode {
     throw ArgumentError('Unknown HttpRedirectActionRedirectResponseCode value: $value');
   }
 }
-

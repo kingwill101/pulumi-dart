@@ -69,4 +69,3 @@ class ConnectionProfileIamPolicyDatamigrationV1beta1Args {
     );
   }
 }
-

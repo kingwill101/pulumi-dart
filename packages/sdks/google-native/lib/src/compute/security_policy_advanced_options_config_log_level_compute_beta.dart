@@ -14,4 +14,3 @@ enum SecurityPolicyAdvancedOptionsConfigLogLevelComputeBeta {
     throw ArgumentError('Unknown SecurityPolicyAdvancedOptionsConfigLogLevelComputeBeta value: $value');
   }
 }
-

@@ -42,4 +42,3 @@ class GetMembershipRbacRoleBindingGkehubV1betaArgs {
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum InstanceGroupManagerStandbyPolicyModeComputeBeta {
     throw ArgumentError('Unknown InstanceGroupManagerStandbyPolicyModeComputeBeta value: $value');
   }
 }
-

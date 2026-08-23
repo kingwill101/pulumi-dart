@@ -43,4 +43,3 @@ class ExprDatamigrationV1beta1 {
     );
   }
 }
-

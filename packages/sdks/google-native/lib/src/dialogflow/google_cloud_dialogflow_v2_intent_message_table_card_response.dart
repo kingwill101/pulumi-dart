@@ -59,4 +59,3 @@ class GoogleCloudDialogflowV2IntentMessageTableCardResponse {
     );
   }
 }
-

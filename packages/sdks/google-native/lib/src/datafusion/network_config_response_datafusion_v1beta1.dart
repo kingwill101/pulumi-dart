@@ -44,4 +44,3 @@ class NetworkConfigResponseDatafusionV1beta1 {
     );
   }
 }
-

@@ -49,4 +49,3 @@ class PollingOptionsDeploymentmanagerV2beta {
     );
   }
 }
-

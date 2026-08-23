@@ -15,4 +15,3 @@ enum StatisticalTimeSeriesFilterRankingMethod {
     throw ArgumentError('Unknown StatisticalTimeSeriesFilterRankingMethod value: $value');
   }
 }
-

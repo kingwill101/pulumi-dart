@@ -15,4 +15,3 @@ enum BuildOptionsSubstitutionOption {
     throw ArgumentError('Unknown BuildOptionsSubstitutionOption value: $value');
   }
 }
-

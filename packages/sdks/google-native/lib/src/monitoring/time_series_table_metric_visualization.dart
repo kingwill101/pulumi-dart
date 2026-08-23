@@ -16,4 +16,3 @@ enum TimeSeriesTableMetricVisualization {
     throw ArgumentError('Unknown TimeSeriesTableMetricVisualization value: $value');
   }
 }
-

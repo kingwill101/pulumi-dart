@@ -17,4 +17,3 @@ enum GoogleCloudBillingBudgetsV1FilterCalendarPeriod {
     throw ArgumentError('Unknown GoogleCloudBillingBudgetsV1FilterCalendarPeriod value: $value');
   }
 }
-

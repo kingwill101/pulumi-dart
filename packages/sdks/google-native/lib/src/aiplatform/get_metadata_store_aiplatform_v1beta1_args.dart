@@ -37,4 +37,3 @@ class GetMetadataStoreAiplatformV1beta1Args {
     );
   }
 }
-

@@ -31,4 +31,3 @@ class GrafeasV1beta1IntotoDetails {
     );
   }
 }
-

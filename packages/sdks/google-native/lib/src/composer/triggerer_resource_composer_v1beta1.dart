@@ -37,4 +37,3 @@ class TriggererResourceComposerV1beta1 {
     );
   }
 }
-

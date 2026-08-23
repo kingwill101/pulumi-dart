@@ -16,4 +16,3 @@ enum EnterpriseCrmEventbusProtoLogSettingsSeedScope {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoLogSettingsSeedScope value: $value');
   }
 }
-

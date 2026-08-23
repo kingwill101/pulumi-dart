@@ -38,4 +38,3 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse {
     );
   }
 }
-

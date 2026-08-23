@@ -16,4 +16,3 @@ enum EnterpriseCrmEventbusProtoSuccessPolicyFinalState {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoSuccessPolicyFinalState value: $value');
   }
 }
-

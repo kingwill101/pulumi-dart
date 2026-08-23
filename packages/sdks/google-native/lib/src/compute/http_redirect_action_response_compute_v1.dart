@@ -55,4 +55,3 @@ class HttpRedirectActionResponseComputeV1 {
     );
   }
 }
-

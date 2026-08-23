@@ -32,4 +32,3 @@ class AuditConfigSecuritycenterV1beta1 {
     );
   }
 }
-

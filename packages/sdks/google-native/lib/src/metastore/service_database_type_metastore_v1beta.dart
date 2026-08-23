@@ -16,4 +16,3 @@ enum ServiceDatabaseTypeMetastoreV1beta {
     throw ArgumentError('Unknown ServiceDatabaseTypeMetastoreV1beta value: $value');
   }
 }
-

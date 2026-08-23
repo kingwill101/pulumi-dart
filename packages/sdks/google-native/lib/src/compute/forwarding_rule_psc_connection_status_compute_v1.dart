@@ -18,4 +18,3 @@ enum ForwardingRulePscConnectionStatusComputeV1 {
     throw ArgumentError('Unknown ForwardingRulePscConnectionStatusComputeV1 value: $value');
   }
 }
-

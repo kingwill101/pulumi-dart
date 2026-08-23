@@ -37,4 +37,3 @@ class GetConversationDialogflowV2beta1Args {
     );
   }
 }
-

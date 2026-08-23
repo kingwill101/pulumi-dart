@@ -26,4 +26,3 @@ class AuthorizationLoggingOptionsComputeV1 {
     );
   }
 }
-

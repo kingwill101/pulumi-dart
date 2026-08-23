@@ -17,4 +17,3 @@ enum SettingsDataDiskTypeSqladminV1beta4 {
     throw ArgumentError('Unknown SettingsDataDiskTypeSqladminV1beta4 value: $value');
   }
 }
-

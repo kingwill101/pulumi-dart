@@ -16,4 +16,3 @@ enum ScanConfigExportToSecurityCommandCenterWebsecurityscannerV1beta {
     throw ArgumentError('Unknown ScanConfigExportToSecurityCommandCenterWebsecurityscannerV1beta value: $value');
   }
 }
-

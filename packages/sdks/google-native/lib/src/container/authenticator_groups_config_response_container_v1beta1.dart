@@ -31,4 +31,3 @@ class AuthenticatorGroupsConfigResponseContainerV1beta1 {
     );
   }
 }
-

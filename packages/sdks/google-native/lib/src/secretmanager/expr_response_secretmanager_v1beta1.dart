@@ -43,4 +43,3 @@ class ExprResponseSecretmanagerV1beta1 {
     );
   }
 }
-

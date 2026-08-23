@@ -16,4 +16,3 @@ enum CloudRunConfigLoadBalancerType {
     throw ArgumentError('Unknown CloudRunConfigLoadBalancerType value: $value');
   }
 }
-

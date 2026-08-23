@@ -49,4 +49,3 @@ class WorkerResourceComposerV1beta1 {
     );
   }
 }
-

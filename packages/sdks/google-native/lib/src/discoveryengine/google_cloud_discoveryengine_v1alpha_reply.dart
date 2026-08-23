@@ -39,4 +39,3 @@ class GoogleCloudDiscoveryengineV1alphaReply {
     );
   }
 }
-

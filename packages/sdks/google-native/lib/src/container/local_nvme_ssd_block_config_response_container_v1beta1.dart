@@ -25,4 +25,3 @@ class LocalNvmeSsdBlockConfigResponseContainerV1beta1 {
     );
   }
 }
-

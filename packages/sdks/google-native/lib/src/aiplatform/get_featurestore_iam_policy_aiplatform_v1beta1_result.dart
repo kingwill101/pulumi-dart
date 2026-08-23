@@ -38,4 +38,3 @@ class GetFeaturestoreIamPolicyAiplatformV1beta1Result {
     );
   }
 }
-

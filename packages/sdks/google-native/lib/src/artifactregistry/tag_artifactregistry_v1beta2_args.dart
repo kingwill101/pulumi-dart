@@ -60,4 +60,3 @@ class TagArtifactregistryV1beta2Args {
     );
   }
 }
-

@@ -24,4 +24,3 @@ class GoogleCloudAiplatformV1beta1FeatureViewSyncConfig {
     );
   }
 }
-

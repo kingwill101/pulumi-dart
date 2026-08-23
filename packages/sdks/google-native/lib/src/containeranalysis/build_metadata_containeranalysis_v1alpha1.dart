@@ -33,4 +33,3 @@ class BuildMetadataContaineranalysisV1alpha1 {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class GoogleCloudHealthcareV1beta1DeidentifyOptions {
     );
   }
 }
-

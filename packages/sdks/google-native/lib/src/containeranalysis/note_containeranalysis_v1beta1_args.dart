@@ -162,4 +162,3 @@ class NoteContaineranalysisV1beta1Args {
     );
   }
 }
-

@@ -20,4 +20,3 @@ enum NetworkEndpointGroupNetworkEndpointType {
     throw ArgumentError('Unknown NetworkEndpointGroupNetworkEndpointType value: $value');
   }
 }
-

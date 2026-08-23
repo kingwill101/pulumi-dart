@@ -37,4 +37,3 @@ class FleetResponseContainerV1beta1 {
     );
   }
 }
-

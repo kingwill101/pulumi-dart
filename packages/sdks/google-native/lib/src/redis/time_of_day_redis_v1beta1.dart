@@ -43,4 +43,3 @@ class TimeOfDayRedisV1beta1 {
     );
   }
 }
-

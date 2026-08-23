@@ -17,4 +17,3 @@ enum GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind {
     throw ArgumentError('Unknown GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind value: $value');
   }
 }
-

@@ -50,4 +50,3 @@ class NamespaceServicedirectoryV1beta1Args {
     );
   }
 }
-

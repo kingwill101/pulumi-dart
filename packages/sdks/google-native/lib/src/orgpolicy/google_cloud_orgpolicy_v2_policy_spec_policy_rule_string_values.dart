@@ -31,4 +31,3 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
     );
   }
 }
-

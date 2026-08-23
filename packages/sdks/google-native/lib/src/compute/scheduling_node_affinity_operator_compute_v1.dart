@@ -16,4 +16,3 @@ enum SchedulingNodeAffinityOperatorComputeV1 {
     throw ArgumentError('Unknown SchedulingNodeAffinityOperatorComputeV1 value: $value');
   }
 }
-

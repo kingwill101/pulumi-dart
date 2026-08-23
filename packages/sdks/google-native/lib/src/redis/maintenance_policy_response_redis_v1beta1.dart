@@ -44,4 +44,3 @@ class MaintenancePolicyResponseRedisV1beta1 {
     );
   }
 }
-

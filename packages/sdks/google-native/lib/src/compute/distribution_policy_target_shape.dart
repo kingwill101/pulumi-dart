@@ -17,4 +17,3 @@ enum DistributionPolicyTargetShape {
     throw ArgumentError('Unknown DistributionPolicyTargetShape value: $value');
   }
 }
-

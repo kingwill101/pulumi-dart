@@ -45,4 +45,3 @@ class GetManagedZoneIamPolicyDnsV1beta2Result {
     );
   }
 }
-

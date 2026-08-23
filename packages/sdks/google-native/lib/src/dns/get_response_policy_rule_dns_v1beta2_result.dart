@@ -48,4 +48,3 @@ class GetResponsePolicyRuleDnsV1beta2Result {
     );
   }
 }
-

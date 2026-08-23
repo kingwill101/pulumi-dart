@@ -16,4 +16,3 @@ enum UpgradeSettingsStrategyContainerV1beta1 {
     throw ArgumentError('Unknown UpgradeSettingsStrategyContainerV1beta1 value: $value');
   }
 }
-

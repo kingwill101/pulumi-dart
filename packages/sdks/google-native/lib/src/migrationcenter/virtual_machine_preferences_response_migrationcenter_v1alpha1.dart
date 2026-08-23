@@ -79,4 +79,3 @@ class VirtualMachinePreferencesResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

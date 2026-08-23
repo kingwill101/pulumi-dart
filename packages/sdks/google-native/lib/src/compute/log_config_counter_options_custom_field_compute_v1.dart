@@ -31,4 +31,3 @@ class LogConfigCounterOptionsCustomFieldComputeV1 {
     );
   }
 }
-

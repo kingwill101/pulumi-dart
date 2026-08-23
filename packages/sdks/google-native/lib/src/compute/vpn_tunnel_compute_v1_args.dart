@@ -134,4 +134,3 @@ class VpnTunnelComputeV1Args {
     );
   }
 }
-

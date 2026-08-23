@@ -25,4 +25,3 @@ class PushConfigResponsePubsubV1beta1a {
     );
   }
 }
-

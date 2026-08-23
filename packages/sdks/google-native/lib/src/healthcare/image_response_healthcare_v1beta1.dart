@@ -31,4 +31,3 @@ class ImageResponseHealthcareV1beta1 {
     );
   }
 }
-

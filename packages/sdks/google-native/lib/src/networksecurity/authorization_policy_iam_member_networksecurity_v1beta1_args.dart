@@ -52,4 +52,3 @@ class AuthorizationPolicyIamMemberNetworksecurityV1beta1Args {
     );
   }
 }
-

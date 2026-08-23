@@ -16,4 +16,3 @@ enum GoogleCloudDialogflowCxV3TestCaseResultTestResult {
     throw ArgumentError('Unknown GoogleCloudDialogflowCxV3TestCaseResultTestResult value: $value');
   }
 }
-

@@ -61,4 +61,3 @@ class MembershipEndpointGkehubV1alpha2 {
     );
   }
 }
-

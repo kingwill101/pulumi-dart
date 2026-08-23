@@ -43,4 +43,3 @@ class ExprResponseManagedidentitiesV1alpha1 {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class MeshIamMemberNetworkservicesV1beta1Args {
     );
   }
 }
-

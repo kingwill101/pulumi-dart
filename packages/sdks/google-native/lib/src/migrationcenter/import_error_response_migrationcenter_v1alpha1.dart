@@ -31,4 +31,3 @@ class ImportErrorResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

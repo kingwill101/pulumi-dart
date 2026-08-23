@@ -35,4 +35,3 @@ class EnvelopeContaineranalysisV1beta1 {
     );
   }
 }
-

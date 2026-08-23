@@ -39,4 +39,3 @@ class BinaryAuthorizationContainerV1beta1 {
     );
   }
 }
-

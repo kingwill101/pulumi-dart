@@ -52,4 +52,3 @@ class AttestorIamBindingBinaryauthorizationV1beta1Args {
     );
   }
 }
-

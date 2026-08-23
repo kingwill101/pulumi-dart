@@ -52,4 +52,3 @@ class FeatureIamBindingGkehubV1alphaArgs {
     );
   }
 }
-

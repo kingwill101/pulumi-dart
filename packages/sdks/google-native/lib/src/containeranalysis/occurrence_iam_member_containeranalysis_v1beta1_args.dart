@@ -52,4 +52,3 @@ class OccurrenceIamMemberContaineranalysisV1beta1Args {
     );
   }
 }
-

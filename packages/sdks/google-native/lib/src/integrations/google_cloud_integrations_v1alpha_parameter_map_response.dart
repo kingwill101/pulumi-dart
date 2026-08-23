@@ -38,4 +38,3 @@ class GoogleCloudIntegrationsV1alphaParameterMapResponse {
     );
   }
 }
-

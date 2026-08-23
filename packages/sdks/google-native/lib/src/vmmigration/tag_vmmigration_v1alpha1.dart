@@ -31,4 +31,3 @@ class TagVmmigrationV1alpha1 {
     );
   }
 }
-

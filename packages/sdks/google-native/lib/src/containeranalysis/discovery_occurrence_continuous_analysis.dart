@@ -16,4 +16,3 @@ enum DiscoveryOccurrenceContinuousAnalysis {
     throw ArgumentError('Unknown DiscoveryOccurrenceContinuousAnalysis value: $value');
   }
 }
-

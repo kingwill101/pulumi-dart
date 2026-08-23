@@ -31,4 +31,3 @@ class SourceNetworksecurityV1beta1 {
     );
   }
 }
-

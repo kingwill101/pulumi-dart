@@ -93,4 +93,3 @@ class DetailResponseContaineranalysisV1beta1 {
     );
   }
 }
-

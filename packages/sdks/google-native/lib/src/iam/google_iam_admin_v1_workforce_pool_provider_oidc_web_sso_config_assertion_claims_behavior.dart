@@ -16,4 +16,3 @@ enum GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavio
     throw ArgumentError('Unknown GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior value: $value');
   }
 }
-

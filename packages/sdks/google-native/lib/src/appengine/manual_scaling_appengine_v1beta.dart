@@ -25,4 +25,3 @@ class ManualScalingAppengineV1beta {
     );
   }
 }
-

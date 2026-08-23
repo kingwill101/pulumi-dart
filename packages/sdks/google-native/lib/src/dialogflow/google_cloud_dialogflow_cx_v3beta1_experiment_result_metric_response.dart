@@ -50,4 +50,3 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse {
     );
   }
 }
-

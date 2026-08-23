@@ -76,4 +76,3 @@ class GetWorkflowTemplateDataprocV1beta2Result {
     );
   }
 }
-

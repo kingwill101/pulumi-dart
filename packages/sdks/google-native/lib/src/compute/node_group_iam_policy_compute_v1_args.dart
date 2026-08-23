@@ -70,4 +70,3 @@ class NodeGroupIamPolicyComputeV1Args {
     );
   }
 }
-

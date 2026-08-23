@@ -37,4 +37,3 @@ class GoogleTypeDateResponsePolicysimulatorV1beta1 {
     );
   }
 }
-

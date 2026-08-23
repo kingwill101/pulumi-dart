@@ -107,4 +107,3 @@ class GoogleCloudAiplatformV1beta1Model {
     );
   }
 }
-

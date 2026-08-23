@@ -56,4 +56,3 @@ class GatewaySecurityPolicyNetworksecurityV1beta1Args {
     );
   }
 }
-

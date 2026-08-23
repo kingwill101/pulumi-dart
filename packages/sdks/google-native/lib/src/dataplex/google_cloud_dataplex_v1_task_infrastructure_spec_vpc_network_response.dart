@@ -37,4 +37,3 @@ class GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkResponse {
     );
   }
 }
-

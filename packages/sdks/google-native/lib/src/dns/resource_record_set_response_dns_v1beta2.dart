@@ -61,4 +61,3 @@ class ResourceRecordSetResponseDnsV1beta2 {
     );
   }
 }
-

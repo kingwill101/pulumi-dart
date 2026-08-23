@@ -45,4 +45,3 @@ class GetScopeIamPolicyGkehubV1alphaResult {
     );
   }
 }
-

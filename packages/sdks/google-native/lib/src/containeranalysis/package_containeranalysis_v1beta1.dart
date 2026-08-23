@@ -90,4 +90,3 @@ class PackageContaineranalysisV1beta1 {
     );
   }
 }
-

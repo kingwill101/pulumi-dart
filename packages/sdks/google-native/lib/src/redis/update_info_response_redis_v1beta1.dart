@@ -31,4 +31,3 @@ class UpdateInfoResponseRedisV1beta1 {
     );
   }
 }
-

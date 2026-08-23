@@ -52,4 +52,3 @@ class RegionNetworkFirewallPolicyIamMemberComputeV1Args {
     );
   }
 }
-

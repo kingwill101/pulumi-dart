@@ -15,4 +15,3 @@ enum SecurityPolicyAdvancedOptionsConfigJsonParsingComputeV1 {
     throw ArgumentError('Unknown SecurityPolicyAdvancedOptionsConfigJsonParsingComputeV1 value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum WorkloadMetadataConfigModeContainerV1beta1 {
     throw ArgumentError('Unknown WorkloadMetadataConfigModeContainerV1beta1 value: $value');
   }
 }
-

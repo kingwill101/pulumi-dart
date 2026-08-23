@@ -38,4 +38,3 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse {
     );
   }
 }
-

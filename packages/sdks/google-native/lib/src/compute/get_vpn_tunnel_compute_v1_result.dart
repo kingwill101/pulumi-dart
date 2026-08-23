@@ -156,4 +156,3 @@ class GetVpnTunnelComputeV1Result {
     );
   }
 }
-

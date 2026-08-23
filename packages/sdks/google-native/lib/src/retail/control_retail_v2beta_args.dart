@@ -83,4 +83,3 @@ class ControlRetailV2betaArgs {
     );
   }
 }
-

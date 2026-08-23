@@ -15,4 +15,3 @@ enum InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairComputeV1 {
     throw ArgumentError('Unknown InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairComputeV1 value: $value');
   }
 }
-

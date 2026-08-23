@@ -25,4 +25,3 @@ class LegacyAbacResponseContainerV1beta1 {
     );
   }
 }
-

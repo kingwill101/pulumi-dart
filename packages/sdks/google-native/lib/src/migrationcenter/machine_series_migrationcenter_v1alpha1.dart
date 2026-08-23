@@ -25,4 +25,3 @@ class MachineSeriesMigrationcenterV1alpha1 {
     );
   }
 }
-

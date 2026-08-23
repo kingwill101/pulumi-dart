@@ -25,4 +25,3 @@ class MachineSeriesResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

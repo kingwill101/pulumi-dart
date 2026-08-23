@@ -42,4 +42,3 @@ class GetInstanceIamPolicyDatafusionV1beta1Args {
     );
   }
 }
-

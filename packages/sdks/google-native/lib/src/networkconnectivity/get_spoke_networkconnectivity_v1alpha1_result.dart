@@ -86,4 +86,3 @@ class GetSpokeNetworkconnectivityV1alpha1Result {
     );
   }
 }
-

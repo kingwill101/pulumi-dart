@@ -22,4 +22,3 @@ enum GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType value: $value');
   }
 }
-

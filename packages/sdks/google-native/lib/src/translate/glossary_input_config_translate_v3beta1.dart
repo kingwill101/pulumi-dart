@@ -26,4 +26,3 @@ class GlossaryInputConfigTranslateV3beta1 {
     );
   }
 }
-

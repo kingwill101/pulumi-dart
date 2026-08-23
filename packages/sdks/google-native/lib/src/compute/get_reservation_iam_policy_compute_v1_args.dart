@@ -42,4 +42,3 @@ class GetReservationIamPolicyComputeV1Args {
     );
   }
 }
-

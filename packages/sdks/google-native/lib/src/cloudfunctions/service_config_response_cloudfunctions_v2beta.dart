@@ -129,4 +129,3 @@ class ServiceConfigResponseCloudfunctionsV2beta {
     );
   }
 }
-

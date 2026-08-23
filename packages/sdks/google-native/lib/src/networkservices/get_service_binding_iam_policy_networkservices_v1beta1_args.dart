@@ -42,4 +42,3 @@ class GetServiceBindingIamPolicyNetworkservicesV1beta1Args {
     );
   }
 }
-

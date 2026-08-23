@@ -15,4 +15,3 @@ enum SchedulingProvisioningModelComputeV1 {
     throw ArgumentError('Unknown SchedulingProvisioningModelComputeV1 value: $value');
   }
 }
-

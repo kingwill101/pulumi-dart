@@ -17,4 +17,3 @@ enum GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisSt
     throw ArgumentError('Unknown GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisState value: $value');
   }
 }
-

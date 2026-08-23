@@ -31,4 +31,3 @@ class JobSchedulingDataprocV1beta2 {
     );
   }
 }
-

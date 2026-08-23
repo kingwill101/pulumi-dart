@@ -68,4 +68,3 @@ class GoogleCloudDialogflowCxV3InputAudioConfigResponse {
     );
   }
 }
-

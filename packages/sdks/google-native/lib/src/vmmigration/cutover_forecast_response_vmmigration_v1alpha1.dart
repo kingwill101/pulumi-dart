@@ -25,4 +25,3 @@ class CutoverForecastResponseVmmigrationV1alpha1 {
     );
   }
 }
-

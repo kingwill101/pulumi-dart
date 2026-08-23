@@ -42,4 +42,3 @@ class DnsKeySpecResponseDnsV1beta2 {
     );
   }
 }
-

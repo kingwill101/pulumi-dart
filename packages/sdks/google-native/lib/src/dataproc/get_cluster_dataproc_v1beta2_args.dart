@@ -37,4 +37,3 @@ class GetClusterDataprocV1beta2Args {
     );
   }
 }
-

@@ -26,4 +26,3 @@ class EndpointMatcherNetworkservicesV1beta1 {
     );
   }
 }
-

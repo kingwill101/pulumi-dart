@@ -15,4 +15,3 @@ enum RouterInterfaceIpVersion {
     throw ArgumentError('Unknown RouterInterfaceIpVersion value: $value');
   }
 }
-

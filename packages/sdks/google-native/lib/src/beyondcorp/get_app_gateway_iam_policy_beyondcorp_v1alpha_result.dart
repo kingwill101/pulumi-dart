@@ -45,4 +45,3 @@ class GetAppGatewayIamPolicyBeyondcorpV1alphaResult {
     );
   }
 }
-

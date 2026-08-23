@@ -45,4 +45,3 @@ class DsRecordDomainsV1beta1 {
     );
   }
 }
-

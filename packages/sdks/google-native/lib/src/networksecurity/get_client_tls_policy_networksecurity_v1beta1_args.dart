@@ -37,4 +37,3 @@ class GetClientTlsPolicyNetworksecurityV1beta1Args {
     );
   }
 }
-

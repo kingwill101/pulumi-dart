@@ -69,4 +69,3 @@ class GatewayIamPolicyNetworkservicesV1beta1Args {
     );
   }
 }
-

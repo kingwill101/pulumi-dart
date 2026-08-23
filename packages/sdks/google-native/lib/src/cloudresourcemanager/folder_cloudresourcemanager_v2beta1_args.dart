@@ -34,4 +34,3 @@ class FolderCloudresourcemanagerV2beta1Args {
     );
   }
 }
-

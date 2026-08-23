@@ -16,4 +16,3 @@ enum ClusterAutoscalingAutoscalingProfile {
     throw ArgumentError('Unknown ClusterAutoscalingAutoscalingProfile value: $value');
   }
 }
-

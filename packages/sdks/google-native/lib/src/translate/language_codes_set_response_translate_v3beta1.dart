@@ -25,4 +25,3 @@ class LanguageCodesSetResponseTranslateV3beta1 {
     );
   }
 }
-

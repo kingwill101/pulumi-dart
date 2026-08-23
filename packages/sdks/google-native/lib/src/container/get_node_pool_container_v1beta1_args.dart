@@ -52,4 +52,3 @@ class GetNodePoolContainerV1beta1Args {
     );
   }
 }
-

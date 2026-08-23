@@ -25,4 +25,3 @@ class NodeGroupAffinityDataprocV1beta2 {
     );
   }
 }
-

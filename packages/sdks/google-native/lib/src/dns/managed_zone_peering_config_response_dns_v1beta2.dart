@@ -30,4 +30,3 @@ class ManagedZonePeeringConfigResponseDnsV1beta2 {
     );
   }
 }
-

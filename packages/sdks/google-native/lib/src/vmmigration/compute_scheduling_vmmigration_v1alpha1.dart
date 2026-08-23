@@ -51,4 +51,3 @@ class ComputeSchedulingVmmigrationV1alpha1 {
     );
   }
 }
-

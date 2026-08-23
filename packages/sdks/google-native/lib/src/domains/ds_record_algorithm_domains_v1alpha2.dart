@@ -31,4 +31,3 @@ enum DsRecordAlgorithmDomainsV1alpha2 {
     throw ArgumentError('Unknown DsRecordAlgorithmDomainsV1alpha2 value: $value');
   }
 }
-

@@ -52,4 +52,3 @@ class RegistrationIamMemberDomainsV1beta1Args {
     );
   }
 }
-

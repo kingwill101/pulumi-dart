@@ -17,4 +17,3 @@ enum HashTypeContaineranalysisV1beta1 {
     throw ArgumentError('Unknown HashTypeContaineranalysisV1beta1 value: $value');
   }
 }
-

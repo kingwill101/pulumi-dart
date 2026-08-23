@@ -14,4 +14,3 @@ enum NetworkPerformanceConfigExternalIpEgressBandwidthTier {
     throw ArgumentError('Unknown NetworkPerformanceConfigExternalIpEgressBandwidthTier value: $value');
   }
 }
-

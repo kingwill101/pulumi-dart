@@ -50,4 +50,3 @@ class PackageIssueResponseContaineranalysisV1beta1 {
     );
   }
 }
-

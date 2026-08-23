@@ -16,4 +16,3 @@ enum BackupRunBackupKindSqladminV1beta4 {
     throw ArgumentError('Unknown BackupRunBackupKindSqladminV1beta4 value: $value');
   }
 }
-

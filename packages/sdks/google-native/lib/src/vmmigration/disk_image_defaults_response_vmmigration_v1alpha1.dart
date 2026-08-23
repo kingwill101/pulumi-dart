@@ -25,4 +25,3 @@ class DiskImageDefaultsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

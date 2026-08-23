@@ -25,4 +25,3 @@ class FleetObservabilityRoutingConfigResponseGkehubV1beta {
     );
   }
 }
-

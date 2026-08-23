@@ -43,4 +43,3 @@ class SymptomResponseTpuV1alpha1 {
     );
   }
 }
-

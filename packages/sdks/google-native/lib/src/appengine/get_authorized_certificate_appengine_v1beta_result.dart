@@ -68,4 +68,3 @@ class GetAuthorizedCertificateAppengineV1betaResult {
     );
   }
 }
-

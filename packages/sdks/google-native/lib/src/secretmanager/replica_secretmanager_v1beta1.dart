@@ -25,4 +25,3 @@ class ReplicaSecretmanagerV1beta1 {
     );
   }
 }
-

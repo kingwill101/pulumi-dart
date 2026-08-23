@@ -15,4 +15,3 @@ enum EntityTypeAutoExpansionModeDialogflowV2beta1 {
     throw ArgumentError('Unknown EntityTypeAutoExpansionModeDialogflowV2beta1 value: $value');
   }
 }
-

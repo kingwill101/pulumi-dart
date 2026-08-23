@@ -115,4 +115,3 @@ class InstanceFileV1beta1Args {
     );
   }
 }
-

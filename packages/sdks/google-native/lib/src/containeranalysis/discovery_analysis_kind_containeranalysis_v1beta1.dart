@@ -28,4 +28,3 @@ enum DiscoveryAnalysisKindContaineranalysisV1beta1 {
     throw ArgumentError('Unknown DiscoveryAnalysisKindContaineranalysisV1beta1 value: $value');
   }
 }
-

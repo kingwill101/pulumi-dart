@@ -18,4 +18,3 @@ enum ExecutionConfigUsagesItem {
     throw ArgumentError('Unknown ExecutionConfigUsagesItem value: $value');
   }
 }
-

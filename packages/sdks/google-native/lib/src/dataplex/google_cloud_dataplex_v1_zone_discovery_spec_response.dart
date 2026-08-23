@@ -57,4 +57,3 @@ class GoogleCloudDataplexV1ZoneDiscoverySpecResponse {
     );
   }
 }
-

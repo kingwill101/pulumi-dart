@@ -31,4 +31,3 @@ class GoogleCloudDatacatalogLineageV1OriginResponse {
     );
   }
 }
-

@@ -19,4 +19,3 @@ enum ScalingConfigInstanceSizeMetastoreV1beta {
     throw ArgumentError('Unknown ScalingConfigInstanceSizeMetastoreV1beta value: $value');
   }
 }
-

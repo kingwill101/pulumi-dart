@@ -92,4 +92,3 @@ class RuleNetworksecurityV1beta1Args {
     );
   }
 }
-

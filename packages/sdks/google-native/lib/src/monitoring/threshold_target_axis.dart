@@ -16,4 +16,3 @@ enum ThresholdTargetAxis {
     throw ArgumentError('Unknown ThresholdTargetAxis value: $value');
   }
 }
-

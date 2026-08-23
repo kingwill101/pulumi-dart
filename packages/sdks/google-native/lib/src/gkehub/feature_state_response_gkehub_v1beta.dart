@@ -37,4 +37,3 @@ class FeatureStateResponseGkehubV1beta {
     );
   }
 }
-

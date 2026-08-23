@@ -66,4 +66,3 @@ class GetExperimentAiplatformV1beta1Result {
     );
   }
 }
-

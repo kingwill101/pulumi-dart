@@ -17,4 +17,3 @@ enum GoogleCloudChannelV1PeriodPeriodType {
     throw ArgumentError('Unknown GoogleCloudChannelV1PeriodPeriodType value: $value');
   }
 }
-

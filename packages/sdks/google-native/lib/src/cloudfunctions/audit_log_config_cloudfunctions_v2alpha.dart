@@ -32,4 +32,3 @@ class AuditLogConfigCloudfunctionsV2alpha {
     );
   }
 }
-

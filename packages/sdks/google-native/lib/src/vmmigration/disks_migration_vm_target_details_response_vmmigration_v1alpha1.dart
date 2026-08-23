@@ -25,4 +25,3 @@ class DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

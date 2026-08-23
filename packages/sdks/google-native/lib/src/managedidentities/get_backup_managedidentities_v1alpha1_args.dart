@@ -37,4 +37,3 @@ class GetBackupManagedidentitiesV1alpha1Args {
     );
   }
 }
-

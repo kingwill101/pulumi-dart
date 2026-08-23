@@ -52,4 +52,3 @@ class GetServiceDatabaseTableIamPolicyMetastoreV1betaArgs {
     );
   }
 }
-

@@ -38,4 +38,3 @@ class GoogleCloudApigeeV1RateRangeResponse {
     );
   }
 }
-

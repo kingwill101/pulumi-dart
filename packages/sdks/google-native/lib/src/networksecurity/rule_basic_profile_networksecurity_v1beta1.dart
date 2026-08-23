@@ -16,4 +16,3 @@ enum RuleBasicProfileNetworksecurityV1beta1 {
     throw ArgumentError('Unknown RuleBasicProfileNetworksecurityV1beta1 value: $value');
   }
 }
-

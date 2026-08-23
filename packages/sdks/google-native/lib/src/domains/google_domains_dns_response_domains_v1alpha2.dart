@@ -38,4 +38,3 @@ class GoogleDomainsDnsResponseDomainsV1alpha2 {
     );
   }
 }
-

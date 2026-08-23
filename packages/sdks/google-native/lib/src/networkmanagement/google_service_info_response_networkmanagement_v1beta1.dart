@@ -31,4 +31,3 @@ class GoogleServiceInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

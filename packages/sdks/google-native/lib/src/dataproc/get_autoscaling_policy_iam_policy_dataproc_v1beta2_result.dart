@@ -38,4 +38,3 @@ class GetAutoscalingPolicyIamPolicyDataprocV1beta2Result {
     );
   }
 }
-

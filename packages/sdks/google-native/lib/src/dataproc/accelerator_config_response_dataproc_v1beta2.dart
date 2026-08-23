@@ -31,4 +31,3 @@ class AcceleratorConfigResponseDataprocV1beta2 {
     );
   }
 }
-

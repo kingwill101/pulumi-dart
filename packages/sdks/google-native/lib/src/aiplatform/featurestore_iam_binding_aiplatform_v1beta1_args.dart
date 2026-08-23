@@ -52,4 +52,3 @@ class FeaturestoreIamBindingAiplatformV1beta1Args {
     );
   }
 }
-

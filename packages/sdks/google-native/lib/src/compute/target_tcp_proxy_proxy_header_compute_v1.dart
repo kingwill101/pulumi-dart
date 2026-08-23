@@ -15,4 +15,3 @@ enum TargetTcpProxyProxyHeaderComputeV1 {
     throw ArgumentError('Unknown TargetTcpProxyProxyHeaderComputeV1 value: $value');
   }
 }
-

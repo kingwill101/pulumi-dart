@@ -16,4 +16,3 @@ enum SchedulingNodeAffinityOperatorComputeBeta {
     throw ArgumentError('Unknown SchedulingNodeAffinityOperatorComputeBeta value: $value');
   }
 }
-

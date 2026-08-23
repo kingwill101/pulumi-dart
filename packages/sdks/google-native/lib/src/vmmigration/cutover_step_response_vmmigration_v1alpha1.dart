@@ -62,4 +62,3 @@ class CutoverStepResponseVmmigrationV1alpha1 {
     );
   }
 }
-

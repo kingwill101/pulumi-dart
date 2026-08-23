@@ -27,4 +27,3 @@ enum EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType {
     throw ArgumentError('Unknown EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType value: $value');
   }
 }
-

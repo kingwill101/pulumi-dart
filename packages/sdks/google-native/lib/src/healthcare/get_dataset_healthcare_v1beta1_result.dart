@@ -30,4 +30,3 @@ class GetDatasetHealthcareV1beta1Result {
     );
   }
 }
-

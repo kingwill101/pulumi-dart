@@ -16,4 +16,3 @@ enum PackageArchitectureContaineranalysisV1beta1 {
     throw ArgumentError('Unknown PackageArchitectureContaineranalysisV1beta1 value: $value');
   }
 }
-

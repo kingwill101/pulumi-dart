@@ -16,4 +16,3 @@ enum ComputeEngineTargetDefaultsLicenseType {
     throw ArgumentError('Unknown ComputeEngineTargetDefaultsLicenseType value: $value');
   }
 }
-

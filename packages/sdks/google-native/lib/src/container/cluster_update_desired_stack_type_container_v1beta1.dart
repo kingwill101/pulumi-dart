@@ -16,4 +16,3 @@ enum ClusterUpdateDesiredStackTypeContainerV1beta1 {
     throw ArgumentError('Unknown ClusterUpdateDesiredStackTypeContainerV1beta1 value: $value');
   }
 }
-

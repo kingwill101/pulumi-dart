@@ -52,4 +52,3 @@ class ServiceBindingIamMemberNetworkservicesV1beta1Args {
     );
   }
 }
-

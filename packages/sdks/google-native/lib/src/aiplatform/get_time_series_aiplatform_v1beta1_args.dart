@@ -52,4 +52,3 @@ class GetTimeSeriesAiplatformV1beta1Args {
     );
   }
 }
-

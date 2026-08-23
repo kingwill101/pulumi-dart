@@ -66,4 +66,3 @@ class RecurringScheduleOsconfigV1beta {
     );
   }
 }
-

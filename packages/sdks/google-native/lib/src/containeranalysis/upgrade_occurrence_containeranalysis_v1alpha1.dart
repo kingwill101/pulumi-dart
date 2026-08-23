@@ -39,4 +39,3 @@ class UpgradeOccurrenceContaineranalysisV1alpha1 {
     );
   }
 }
-

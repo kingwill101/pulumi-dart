@@ -16,4 +16,3 @@ enum InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureComputeBet
     throw ArgumentError('Unknown InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureComputeBeta value: $value');
   }
 }
-

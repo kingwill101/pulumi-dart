@@ -17,4 +17,3 @@ enum AdvancedDatapathObservabilityConfigRelayMode {
     throw ArgumentError('Unknown AdvancedDatapathObservabilityConfigRelayMode value: $value');
   }
 }
-

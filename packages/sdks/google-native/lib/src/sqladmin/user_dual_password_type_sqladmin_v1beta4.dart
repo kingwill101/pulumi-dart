@@ -17,4 +17,3 @@ enum UserDualPasswordTypeSqladminV1beta4 {
     throw ArgumentError('Unknown UserDualPasswordTypeSqladminV1beta4 value: $value');
   }
 }
-

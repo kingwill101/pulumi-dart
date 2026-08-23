@@ -84,4 +84,3 @@ class CVSSv3ContaineranalysisV1beta1 {
     );
   }
 }
-

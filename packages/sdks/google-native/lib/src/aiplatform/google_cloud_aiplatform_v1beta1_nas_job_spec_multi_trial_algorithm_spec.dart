@@ -47,4 +47,3 @@ class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpec {
     );
   }
 }
-

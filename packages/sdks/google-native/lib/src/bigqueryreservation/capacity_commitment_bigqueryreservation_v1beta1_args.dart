@@ -70,4 +70,3 @@ class CapacityCommitmentBigqueryreservationV1beta1Args {
     );
   }
 }
-

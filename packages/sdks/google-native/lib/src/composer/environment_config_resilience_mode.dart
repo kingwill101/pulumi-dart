@@ -15,4 +15,3 @@ enum EnvironmentConfigResilienceMode {
     throw ArgumentError('Unknown EnvironmentConfigResilienceMode value: $value');
   }
 }
-

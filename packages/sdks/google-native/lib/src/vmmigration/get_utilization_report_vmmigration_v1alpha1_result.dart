@@ -87,4 +87,3 @@ class GetUtilizationReportVmmigrationV1alpha1Result {
     );
   }
 }
-

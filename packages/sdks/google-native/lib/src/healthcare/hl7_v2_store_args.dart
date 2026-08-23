@@ -75,4 +75,3 @@ class Hl7V2StoreArgs {
     );
   }
 }
-

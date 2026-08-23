@@ -43,4 +43,3 @@ class ExprResponseDomainsV1alpha2 {
     );
   }
 }
-

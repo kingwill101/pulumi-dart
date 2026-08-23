@@ -18,4 +18,3 @@ enum ExperimentState {
     throw ArgumentError('Unknown ExperimentState value: $value');
   }
 }
-

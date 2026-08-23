@@ -42,4 +42,3 @@ class GetDomainBackupIamPolicyManagedidentitiesV1alpha1Args {
     );
   }
 }
-

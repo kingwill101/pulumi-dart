@@ -47,4 +47,3 @@ class GetDatasetFhirStoreIamPolicyHealthcareV1beta1Args {
     );
   }
 }
-

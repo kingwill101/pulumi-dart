@@ -52,4 +52,3 @@ class ServiceAttachmentIamMemberComputeV1Args {
     );
   }
 }
-

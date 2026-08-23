@@ -144,4 +144,3 @@ class InstanceDatafusionV1beta1Args {
     );
   }
 }
-

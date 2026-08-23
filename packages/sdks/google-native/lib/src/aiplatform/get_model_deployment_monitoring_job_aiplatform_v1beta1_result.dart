@@ -166,4 +166,3 @@ class GetModelDeploymentMonitoringJobAiplatformV1beta1Result {
     );
   }
 }
-

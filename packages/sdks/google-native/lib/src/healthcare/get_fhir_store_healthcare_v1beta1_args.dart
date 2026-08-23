@@ -42,4 +42,3 @@ class GetFhirStoreHealthcareV1beta1Args {
     );
   }
 }
-

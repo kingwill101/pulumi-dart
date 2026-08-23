@@ -43,4 +43,3 @@ class ExprResponseWorkstationsV1beta {
     );
   }
 }
-

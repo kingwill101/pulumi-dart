@@ -33,4 +33,3 @@ class FleetObservabilityFeatureStateResponseGkehubV1beta {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum SchemaPackageSchematizedParsingType {
     throw ArgumentError('Unknown SchemaPackageSchematizedParsingType value: $value');
   }
 }
-

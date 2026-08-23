@@ -44,4 +44,3 @@ class DnsKeySpecDnsV1beta2 {
     );
   }
 }
-

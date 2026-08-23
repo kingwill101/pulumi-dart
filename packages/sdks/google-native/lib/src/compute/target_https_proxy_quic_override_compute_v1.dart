@@ -16,4 +16,3 @@ enum TargetHttpsProxyQuicOverrideComputeV1 {
     throw ArgumentError('Unknown TargetHttpsProxyQuicOverrideComputeV1 value: $value');
   }
 }
-

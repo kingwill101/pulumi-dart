@@ -52,4 +52,3 @@ class RegionClusterIamBindingDataprocV1beta2Args {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum BuildOptionsSourceProvenanceHashItem {
     throw ArgumentError('Unknown BuildOptionsSourceProvenanceHashItem value: $value');
   }
 }
-

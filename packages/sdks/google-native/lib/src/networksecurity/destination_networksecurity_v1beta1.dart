@@ -44,4 +44,3 @@ class DestinationNetworksecurityV1beta1 {
     );
   }
 }
-

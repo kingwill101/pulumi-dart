@@ -76,4 +76,3 @@ class PolicyDnsV1beta2Args {
     );
   }
 }
-

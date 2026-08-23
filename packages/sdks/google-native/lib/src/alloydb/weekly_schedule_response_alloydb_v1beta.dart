@@ -32,4 +32,3 @@ class WeeklyScheduleResponseAlloydbV1beta {
     );
   }
 }
-

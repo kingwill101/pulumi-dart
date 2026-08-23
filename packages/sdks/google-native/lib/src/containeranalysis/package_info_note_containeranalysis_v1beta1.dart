@@ -123,4 +123,3 @@ class PackageInfoNoteContaineranalysisV1beta1 {
     );
   }
 }
-

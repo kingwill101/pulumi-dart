@@ -37,4 +37,3 @@ class GetStreamDatastreamV1alpha1Args {
     );
   }
 }
-

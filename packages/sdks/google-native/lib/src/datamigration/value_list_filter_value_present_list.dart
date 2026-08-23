@@ -16,4 +16,3 @@ enum ValueListFilterValuePresentList {
     throw ArgumentError('Unknown ValueListFilterValuePresentList value: $value');
   }
 }
-

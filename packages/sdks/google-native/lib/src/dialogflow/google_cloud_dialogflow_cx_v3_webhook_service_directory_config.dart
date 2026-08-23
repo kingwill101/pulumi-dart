@@ -32,4 +32,3 @@ class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig {
     );
   }
 }
-

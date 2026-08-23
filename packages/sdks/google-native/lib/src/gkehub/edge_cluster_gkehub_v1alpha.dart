@@ -25,4 +25,3 @@ class EdgeClusterGkehubV1alpha {
     );
   }
 }
-

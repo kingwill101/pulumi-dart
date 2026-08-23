@@ -15,4 +15,3 @@ enum InstanceGroupManagerListManagedInstancesResults {
     throw ArgumentError('Unknown InstanceGroupManagerListManagedInstancesResults value: $value');
   }
 }
-

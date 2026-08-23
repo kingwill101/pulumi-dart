@@ -43,4 +43,3 @@ class AWSV4SignatureComputeV1 {
     );
   }
 }
-

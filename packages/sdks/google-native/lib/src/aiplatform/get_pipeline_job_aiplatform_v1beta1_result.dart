@@ -137,4 +137,3 @@ class GetPipelineJobAiplatformV1beta1Result {
     );
   }
 }
-

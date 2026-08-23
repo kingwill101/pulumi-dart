@@ -26,4 +26,3 @@ class ResourcePolicyWeeklyCycleResponseComputeV1 {
     );
   }
 }
-

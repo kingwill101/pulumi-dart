@@ -55,4 +55,3 @@ class GetChangeDnsV1beta2Result {
     );
   }
 }
-

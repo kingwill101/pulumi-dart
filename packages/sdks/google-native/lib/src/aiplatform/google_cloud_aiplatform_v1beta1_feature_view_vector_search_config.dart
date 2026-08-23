@@ -63,4 +63,3 @@ class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig {
     );
   }
 }
-

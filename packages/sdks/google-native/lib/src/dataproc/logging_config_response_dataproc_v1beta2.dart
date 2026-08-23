@@ -25,4 +25,3 @@ class LoggingConfigResponseDataprocV1beta2 {
     );
   }
 }
-

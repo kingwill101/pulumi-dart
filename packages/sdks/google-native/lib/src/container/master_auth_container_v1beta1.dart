@@ -43,4 +43,3 @@ class MasterAuthContainerV1beta1 {
     );
   }
 }
-

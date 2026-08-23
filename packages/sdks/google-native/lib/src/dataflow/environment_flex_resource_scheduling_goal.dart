@@ -16,4 +16,3 @@ enum EnvironmentFlexResourceSchedulingGoal {
     throw ArgumentError('Unknown EnvironmentFlexResourceSchedulingGoal value: $value');
   }
 }
-

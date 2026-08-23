@@ -33,4 +33,3 @@ class HttpRouteRouteRuleResponseNetworkservicesV1beta1 {
     );
   }
 }
-

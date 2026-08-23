@@ -16,4 +16,3 @@ enum GoogleCloudChannelV1RepricingConfigRebillingBasis {
     throw ArgumentError('Unknown GoogleCloudChannelV1RepricingConfigRebillingBasis value: $value');
   }
 }
-

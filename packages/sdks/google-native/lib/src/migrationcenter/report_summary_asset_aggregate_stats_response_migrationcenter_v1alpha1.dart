@@ -100,4 +100,3 @@ class ReportSummaryAssetAggregateStatsResponseMigrationcenterV1alpha1 {
     );
   }
 }
-

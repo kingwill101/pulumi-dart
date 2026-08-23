@@ -31,4 +31,3 @@ class NodeConfigMemcacheV1beta2 {
     );
   }
 }
-

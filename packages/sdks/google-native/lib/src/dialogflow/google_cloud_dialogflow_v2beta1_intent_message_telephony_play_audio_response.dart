@@ -25,4 +25,3 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioResponse {
     );
   }
 }
-

@@ -56,4 +56,3 @@ class NotebookRuntimeTemplateIamPolicyAiplatformV1beta1Args {
     );
   }
 }
-

@@ -52,4 +52,3 @@ class FeaturestoreEntityTypeIamMemberAiplatformV1beta1Args {
     );
   }
 }
-

@@ -44,4 +44,3 @@ class TemplateParameterResponseDataprocV1beta2 {
     );
   }
 }
-

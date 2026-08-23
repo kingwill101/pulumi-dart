@@ -18,4 +18,3 @@ enum AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta {
     throw ArgumentError('Unknown AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta value: $value');
   }
 }
-

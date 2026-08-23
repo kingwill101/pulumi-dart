@@ -110,4 +110,3 @@ class RegionCommitmentComputeV1Args {
     );
   }
 }
-

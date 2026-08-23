@@ -19,4 +19,3 @@ enum ForwardingRuleLoadBalancingSchemeComputeV1 {
     throw ArgumentError('Unknown ForwardingRuleLoadBalancingSchemeComputeV1 value: $value');
   }
 }
-

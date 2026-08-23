@@ -16,4 +16,3 @@ enum IndexIndexUpdateMethodAiplatformV1beta1 {
     throw ArgumentError('Unknown IndexIndexUpdateMethodAiplatformV1beta1 value: $value');
   }
 }
-

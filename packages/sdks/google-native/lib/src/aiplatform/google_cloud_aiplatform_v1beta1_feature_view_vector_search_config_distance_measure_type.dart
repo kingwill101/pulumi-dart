@@ -17,4 +17,3 @@ enum GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTyp
     throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType value: $value');
   }
 }
-

@@ -31,4 +31,3 @@ class LicenseResponseContaineranalysisV1beta1 {
     );
   }
 }
-

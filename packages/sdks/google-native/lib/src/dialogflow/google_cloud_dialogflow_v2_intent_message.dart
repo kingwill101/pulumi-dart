@@ -123,4 +123,3 @@ class GoogleCloudDialogflowV2IntentMessage {
     );
   }
 }
-

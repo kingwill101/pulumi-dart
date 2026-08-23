@@ -49,4 +49,3 @@ class GoogleCloudAiplatformV1beta1StudySpecConvexStopConfigResponse {
     );
   }
 }
-

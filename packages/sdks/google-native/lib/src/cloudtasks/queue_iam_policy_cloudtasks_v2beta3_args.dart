@@ -56,4 +56,3 @@ class QueueIamPolicyCloudtasksV2beta3Args {
     );
   }
 }
-

@@ -42,4 +42,3 @@ class GetEntityTypeAiplatformV1beta1Args {
     );
   }
 }
-

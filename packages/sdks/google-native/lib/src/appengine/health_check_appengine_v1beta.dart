@@ -61,4 +61,3 @@ class HealthCheckAppengineV1beta {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum UriOverrideUriOverrideEnforceModeCloudtasksV2beta2 {
     throw ArgumentError('Unknown UriOverrideUriOverrideEnforceModeCloudtasksV2beta2 value: $value');
   }
 }
-

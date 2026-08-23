@@ -37,4 +37,3 @@ class CompletenessContaineranalysisV1alpha1 {
     );
   }
 }
-

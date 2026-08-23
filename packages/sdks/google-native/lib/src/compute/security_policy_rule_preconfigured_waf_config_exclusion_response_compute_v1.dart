@@ -55,4 +55,3 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionResponseComputeV1 {
     );
   }
 }
-

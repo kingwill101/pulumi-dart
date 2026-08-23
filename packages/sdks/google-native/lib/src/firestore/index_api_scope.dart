@@ -15,4 +15,3 @@ enum IndexApiScope {
     throw ArgumentError('Unknown IndexApiScope value: $value');
   }
 }
-

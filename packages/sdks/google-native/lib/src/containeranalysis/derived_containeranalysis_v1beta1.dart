@@ -33,4 +33,3 @@ class DerivedContaineranalysisV1beta1 {
     );
   }
 }
-

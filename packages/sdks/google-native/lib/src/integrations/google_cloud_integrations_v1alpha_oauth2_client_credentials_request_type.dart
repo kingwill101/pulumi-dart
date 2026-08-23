@@ -17,4 +17,3 @@ enum GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType value: $value');
   }
 }
-

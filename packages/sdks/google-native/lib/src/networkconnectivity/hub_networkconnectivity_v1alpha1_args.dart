@@ -69,4 +69,3 @@ class HubNetworkconnectivityV1alpha1Args {
     );
   }
 }
-

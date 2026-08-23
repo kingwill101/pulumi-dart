@@ -94,4 +94,3 @@ class BuildProvenanceResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

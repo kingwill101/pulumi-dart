@@ -56,4 +56,3 @@ class AwsS3Data {
     );
   }
 }
-

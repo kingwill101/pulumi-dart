@@ -48,4 +48,3 @@ class GetTargetProjectVmmigrationV1alpha1Result {
     );
   }
 }
-

@@ -43,4 +43,3 @@ class ExprSecretmanagerV1beta1 {
     );
   }
 }
-

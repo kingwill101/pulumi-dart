@@ -15,4 +15,3 @@ enum ControlSearchSolutionUseCaseItem {
     throw ArgumentError('Unknown ControlSearchSolutionUseCaseItem value: $value');
   }
 }
-

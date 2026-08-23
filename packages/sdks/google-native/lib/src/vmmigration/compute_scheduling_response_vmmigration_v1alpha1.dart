@@ -49,4 +49,3 @@ class ComputeSchedulingResponseVmmigrationV1alpha1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum ManagementSettingsTransferLockState {
     throw ArgumentError('Unknown ManagementSettingsTransferLockState value: $value');
   }
 }
-

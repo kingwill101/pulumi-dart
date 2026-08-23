@@ -26,4 +26,3 @@ class MachinePreferencesMigrationcenterV1alpha1 {
     );
   }
 }
-

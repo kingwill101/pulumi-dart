@@ -59,4 +59,3 @@ class GoogleCloudSecuritycenterV1CustomConfig {
     );
   }
 }
-

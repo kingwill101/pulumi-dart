@@ -15,4 +15,3 @@ enum SnapshotSnapshotTypeComputeBeta {
     throw ArgumentError('Unknown SnapshotSnapshotTypeComputeBeta value: $value');
   }
 }
-

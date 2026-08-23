@@ -39,4 +39,3 @@ class StatusConditionContainerV1beta1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum GooglePrivacyDlpV2PubSubExpressionsLogicalOperator {
     throw ArgumentError('Unknown GooglePrivacyDlpV2PubSubExpressionsLogicalOperator value: $value');
   }
 }
-

@@ -37,4 +37,3 @@ class GetSpecialistPoolAiplatformV1beta1Args {
     );
   }
 }
-

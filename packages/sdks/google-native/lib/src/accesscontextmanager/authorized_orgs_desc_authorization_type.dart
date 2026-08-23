@@ -15,4 +15,3 @@ enum AuthorizedOrgsDescAuthorizationType {
     throw ArgumentError('Unknown AuthorizedOrgsDescAuthorizationType value: $value');
   }
 }
-

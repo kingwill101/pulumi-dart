@@ -67,4 +67,3 @@ class SessionEntityTypeDialogflowV2beta1Args {
     );
   }
 }
-

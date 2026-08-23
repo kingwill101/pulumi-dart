@@ -16,4 +16,3 @@ enum MetadataOptionsMode {
     throw ArgumentError('Unknown MetadataOptionsMode value: $value');
   }
 }
-

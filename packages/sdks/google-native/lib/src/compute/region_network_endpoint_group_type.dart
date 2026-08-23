@@ -14,4 +14,3 @@ enum RegionNetworkEndpointGroupType {
     throw ArgumentError('Unknown RegionNetworkEndpointGroupType value: $value');
   }
 }
-

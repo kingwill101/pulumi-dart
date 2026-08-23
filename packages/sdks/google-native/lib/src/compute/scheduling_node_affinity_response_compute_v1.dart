@@ -37,4 +37,3 @@ class SchedulingNodeAffinityResponseComputeV1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComput
     throw ArgumentError('Unknown ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteComputeV1 value: $value');
   }
 }
-

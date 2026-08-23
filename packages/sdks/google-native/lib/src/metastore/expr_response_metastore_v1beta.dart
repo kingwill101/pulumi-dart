@@ -43,4 +43,3 @@ class ExprResponseMetastoreV1beta {
     );
   }
 }
-

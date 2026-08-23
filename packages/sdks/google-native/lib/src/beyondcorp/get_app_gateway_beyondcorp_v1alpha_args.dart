@@ -37,4 +37,3 @@ class GetAppGatewayBeyondcorpV1alphaArgs {
     );
   }
 }
-

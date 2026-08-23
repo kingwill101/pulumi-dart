@@ -37,4 +37,3 @@ class GetEndpointAiplatformV1beta1Args {
     );
   }
 }
-

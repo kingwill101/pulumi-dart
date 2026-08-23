@@ -16,4 +16,3 @@ enum ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta {
     throw ArgumentError('Unknown ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta value: $value');
   }
 }
-

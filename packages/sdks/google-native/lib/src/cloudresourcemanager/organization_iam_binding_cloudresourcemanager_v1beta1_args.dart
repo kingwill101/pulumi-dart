@@ -52,4 +52,3 @@ class OrganizationIamBindingCloudresourcemanagerV1beta1Args {
     );
   }
 }
-

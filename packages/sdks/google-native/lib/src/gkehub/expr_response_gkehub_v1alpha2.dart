@@ -43,4 +43,3 @@ class ExprResponseGkehubV1alpha2 {
     );
   }
 }
-

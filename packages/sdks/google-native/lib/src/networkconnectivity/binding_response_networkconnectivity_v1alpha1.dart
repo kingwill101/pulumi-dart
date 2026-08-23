@@ -38,4 +38,3 @@ class BindingResponseNetworkconnectivityV1alpha1 {
     );
   }
 }
-

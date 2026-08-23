@@ -30,4 +30,3 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpecResponse {
     );
   }
 }
-

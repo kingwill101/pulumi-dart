@@ -46,4 +46,3 @@ class GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse {
     );
   }
 }
-

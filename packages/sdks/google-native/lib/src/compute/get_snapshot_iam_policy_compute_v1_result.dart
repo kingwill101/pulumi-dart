@@ -52,4 +52,3 @@ class GetSnapshotIamPolicyComputeV1Result {
     );
   }
 }
-

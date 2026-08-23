@@ -37,4 +37,3 @@ class ClientSecretCredentialsVmmigrationV1alpha1 {
     );
   }
 }
-

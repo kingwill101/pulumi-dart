@@ -14,4 +14,3 @@ enum GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem {
     throw ArgumentError('Unknown GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItem value: $value');
   }
 }
-

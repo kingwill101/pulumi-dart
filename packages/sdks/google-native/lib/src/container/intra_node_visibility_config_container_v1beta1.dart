@@ -25,4 +25,3 @@ class IntraNodeVisibilityConfigContainerV1beta1 {
     );
   }
 }
-

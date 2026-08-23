@@ -19,4 +19,3 @@ enum CisBenchmarkSeverityContaineranalysisV1alpha1 {
     throw ArgumentError('Unknown CisBenchmarkSeverityContaineranalysisV1alpha1 value: $value');
   }
 }
-

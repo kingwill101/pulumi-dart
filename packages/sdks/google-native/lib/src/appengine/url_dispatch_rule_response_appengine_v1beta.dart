@@ -37,4 +37,3 @@ class UrlDispatchRuleResponseAppengineV1beta {
     );
   }
 }
-

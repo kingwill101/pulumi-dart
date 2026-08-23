@@ -52,4 +52,3 @@ class TriggerIamBindingEventarcV1beta1Args {
     );
   }
 }
-

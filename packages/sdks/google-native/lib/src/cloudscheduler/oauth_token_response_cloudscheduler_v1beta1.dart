@@ -31,4 +31,3 @@ class OAuthTokenResponseCloudschedulerV1beta1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum MultiClusterIngressFeatureSpecBilling {
     throw ArgumentError('Unknown MultiClusterIngressFeatureSpecBilling value: $value');
   }
 }
-

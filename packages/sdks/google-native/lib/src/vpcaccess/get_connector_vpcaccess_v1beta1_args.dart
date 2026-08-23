@@ -37,4 +37,3 @@ class GetConnectorVpcaccessV1beta1Args {
     );
   }
 }
-

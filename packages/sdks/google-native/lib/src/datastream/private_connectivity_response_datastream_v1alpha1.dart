@@ -24,4 +24,3 @@ class PrivateConnectivityResponseDatastreamV1alpha1 {
     );
   }
 }
-

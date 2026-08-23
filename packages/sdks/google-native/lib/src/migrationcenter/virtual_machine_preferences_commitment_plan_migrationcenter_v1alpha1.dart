@@ -17,4 +17,3 @@ enum VirtualMachinePreferencesCommitmentPlanMigrationcenterV1alpha1 {
     throw ArgumentError('Unknown VirtualMachinePreferencesCommitmentPlanMigrationcenterV1alpha1 value: $value');
   }
 }
-

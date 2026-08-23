@@ -62,4 +62,3 @@ class PreferenceSetMigrationcenterV1alpha1Args {
     );
   }
 }
-

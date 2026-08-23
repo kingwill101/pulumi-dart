@@ -43,4 +43,3 @@ class ExprResponsePubsubV1beta2 {
     );
   }
 }
-

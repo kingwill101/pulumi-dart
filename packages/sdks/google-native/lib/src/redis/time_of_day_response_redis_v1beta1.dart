@@ -43,4 +43,3 @@ class TimeOfDayResponseRedisV1beta1 {
     );
   }
 }
-

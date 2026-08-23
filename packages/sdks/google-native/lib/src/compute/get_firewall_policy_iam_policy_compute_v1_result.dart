@@ -52,4 +52,3 @@ class GetFirewallPolicyIamPolicyComputeV1Result {
     );
   }
 }
-

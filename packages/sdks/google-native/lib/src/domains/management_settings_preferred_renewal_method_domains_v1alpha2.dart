@@ -17,4 +17,3 @@ enum ManagementSettingsPreferredRenewalMethodDomainsV1alpha2 {
     throw ArgumentError('Unknown ManagementSettingsPreferredRenewalMethodDomainsV1alpha2 value: $value');
   }
 }
-

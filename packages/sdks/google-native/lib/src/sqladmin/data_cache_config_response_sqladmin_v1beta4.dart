@@ -25,4 +25,3 @@ class DataCacheConfigResponseSqladminV1beta4 {
     );
   }
 }
-

@@ -48,4 +48,3 @@ class GetPolicyTagDatacatalogV1beta1Result {
     );
   }
 }
-

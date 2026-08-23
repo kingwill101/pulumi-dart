@@ -31,4 +31,3 @@ class SubjectResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

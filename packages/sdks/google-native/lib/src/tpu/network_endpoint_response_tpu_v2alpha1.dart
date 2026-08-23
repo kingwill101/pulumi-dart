@@ -38,4 +38,3 @@ class NetworkEndpointResponseTpuV2alpha1 {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum MaintenanceExclusionOptionsScopeContainerV1beta1 {
     throw ArgumentError('Unknown MaintenanceExclusionOptionsScopeContainerV1beta1 value: $value');
   }
 }
-

@@ -76,4 +76,3 @@ class ImportJobMigrationcenterV1alpha1Args {
     );
   }
 }
-

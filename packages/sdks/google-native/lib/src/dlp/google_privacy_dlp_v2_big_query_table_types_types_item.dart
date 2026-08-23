@@ -15,4 +15,3 @@ enum GooglePrivacyDlpV2BigQueryTableTypesTypesItem {
     throw ArgumentError('Unknown GooglePrivacyDlpV2BigQueryTableTypesTypesItem value: $value');
   }
 }
-

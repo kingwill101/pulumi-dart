@@ -43,4 +43,3 @@ class ExprWorkstationsV1beta {
     );
   }
 }
-

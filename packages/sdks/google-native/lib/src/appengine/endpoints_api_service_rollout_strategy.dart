@@ -16,4 +16,3 @@ enum EndpointsApiServiceRolloutStrategy {
     throw ArgumentError('Unknown EndpointsApiServiceRolloutStrategy value: $value');
   }
 }
-

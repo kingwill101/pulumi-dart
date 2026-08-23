@@ -27,4 +27,3 @@ class GetGroupCloudidentityV1beta1Args {
     );
   }
 }
-

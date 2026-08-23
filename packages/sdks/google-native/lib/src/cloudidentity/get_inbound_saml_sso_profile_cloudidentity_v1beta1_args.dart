@@ -27,4 +27,3 @@ class GetInboundSamlSsoProfileCloudidentityV1beta1Args {
     );
   }
 }
-

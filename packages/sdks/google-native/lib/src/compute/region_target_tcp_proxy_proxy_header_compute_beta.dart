@@ -15,4 +15,3 @@ enum RegionTargetTcpProxyProxyHeaderComputeBeta {
     throw ArgumentError('Unknown RegionTargetTcpProxyProxyHeaderComputeBeta value: $value');
   }
 }
-

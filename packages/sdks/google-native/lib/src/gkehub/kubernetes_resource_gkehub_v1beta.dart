@@ -32,4 +32,3 @@ class KubernetesResourceGkehubV1beta {
     );
   }
 }
-

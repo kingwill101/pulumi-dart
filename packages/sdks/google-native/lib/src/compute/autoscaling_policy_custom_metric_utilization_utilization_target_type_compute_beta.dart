@@ -16,4 +16,3 @@ enum AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeComputeBeta {
     throw ArgumentError('Unknown AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeComputeBeta value: $value');
   }
 }
-

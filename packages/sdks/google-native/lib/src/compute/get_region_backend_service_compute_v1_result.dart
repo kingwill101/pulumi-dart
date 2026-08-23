@@ -270,4 +270,3 @@ class GetRegionBackendServiceComputeV1Result {
     );
   }
 }
-

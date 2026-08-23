@@ -67,4 +67,3 @@ class GetScopeGkehubV1betaResult {
     );
   }
 }
-

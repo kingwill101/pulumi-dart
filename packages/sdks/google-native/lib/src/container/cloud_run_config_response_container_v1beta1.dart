@@ -31,4 +31,3 @@ class CloudRunConfigResponseContainerV1beta1 {
     );
   }
 }
-

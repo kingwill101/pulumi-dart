@@ -129,4 +129,3 @@ class ManagedZoneDnsV1beta2Args {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class GlueRecordDomainsV1beta1 {
     );
   }
 }
-

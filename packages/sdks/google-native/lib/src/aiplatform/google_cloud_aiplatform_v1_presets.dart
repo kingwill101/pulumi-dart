@@ -33,4 +33,3 @@ class GoogleCloudAiplatformV1Presets {
     );
   }
 }
-

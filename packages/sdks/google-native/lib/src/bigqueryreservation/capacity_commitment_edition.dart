@@ -17,4 +17,3 @@ enum CapacityCommitmentEdition {
     throw ArgumentError('Unknown CapacityCommitmentEdition value: $value');
   }
 }
-

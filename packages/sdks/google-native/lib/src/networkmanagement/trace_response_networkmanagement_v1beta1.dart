@@ -33,4 +33,3 @@ class TraceResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

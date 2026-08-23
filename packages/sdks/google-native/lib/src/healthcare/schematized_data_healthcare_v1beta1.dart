@@ -31,4 +31,3 @@ class SchematizedDataHealthcareV1beta1 {
     );
   }
 }
-

@@ -37,4 +37,3 @@ class MigrationSourceResponseAlloydbV1beta {
     );
   }
 }
-

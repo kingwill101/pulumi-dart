@@ -45,4 +45,3 @@ class GetOrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaResult {
     );
   }
 }
-

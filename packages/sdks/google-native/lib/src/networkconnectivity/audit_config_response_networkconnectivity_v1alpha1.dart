@@ -32,4 +32,3 @@ class AuditConfigResponseNetworkconnectivityV1alpha1 {
     );
   }
 }
-

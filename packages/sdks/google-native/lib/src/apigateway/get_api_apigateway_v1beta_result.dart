@@ -60,4 +60,3 @@ class GetApiApigatewayV1betaResult {
     );
   }
 }
-

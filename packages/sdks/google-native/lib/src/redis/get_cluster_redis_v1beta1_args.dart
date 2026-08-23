@@ -37,4 +37,3 @@ class GetClusterRedisV1beta1Args {
     );
   }
 }
-

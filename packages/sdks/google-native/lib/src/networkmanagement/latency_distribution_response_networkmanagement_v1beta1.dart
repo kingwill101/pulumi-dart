@@ -26,4 +26,3 @@ class LatencyDistributionResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

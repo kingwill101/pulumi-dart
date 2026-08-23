@@ -110,4 +110,3 @@ class NotebookRuntimeTemplateAiplatformV1beta1Args {
     );
   }
 }
-

@@ -39,4 +39,3 @@ class SecurityPolicyRuleMatcherResponseComputeV1 {
     );
   }
 }
-

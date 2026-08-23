@@ -17,4 +17,3 @@ enum UserDualPasswordType {
     throw ArgumentError('Unknown UserDualPasswordType value: $value');
   }
 }
-

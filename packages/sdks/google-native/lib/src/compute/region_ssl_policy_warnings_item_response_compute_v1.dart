@@ -37,4 +37,3 @@ class RegionSslPolicyWarningsItemResponseComputeV1 {
     );
   }
 }
-

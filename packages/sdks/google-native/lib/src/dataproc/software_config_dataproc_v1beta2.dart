@@ -38,4 +38,3 @@ class SoftwareConfigDataprocV1beta2 {
     );
   }
 }
-

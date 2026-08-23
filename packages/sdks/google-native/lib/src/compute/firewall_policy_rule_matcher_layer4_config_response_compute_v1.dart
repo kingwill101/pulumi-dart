@@ -30,4 +30,3 @@ class FirewallPolicyRuleMatcherLayer4ConfigResponseComputeV1 {
     );
   }
 }
-

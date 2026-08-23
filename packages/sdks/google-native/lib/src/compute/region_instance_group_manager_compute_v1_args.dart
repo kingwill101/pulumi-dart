@@ -130,4 +130,3 @@ class RegionInstanceGroupManagerComputeV1Args {
     );
   }
 }
-

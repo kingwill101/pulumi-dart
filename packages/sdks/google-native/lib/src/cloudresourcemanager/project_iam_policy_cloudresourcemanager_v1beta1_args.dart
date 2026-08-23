@@ -59,4 +59,3 @@ class ProjectIamPolicyCloudresourcemanagerV1beta1Args {
     );
   }
 }
-

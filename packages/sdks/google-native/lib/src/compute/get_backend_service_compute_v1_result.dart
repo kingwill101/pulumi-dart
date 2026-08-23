@@ -270,4 +270,3 @@ class GetBackendServiceComputeV1Result {
     );
   }
 }
-

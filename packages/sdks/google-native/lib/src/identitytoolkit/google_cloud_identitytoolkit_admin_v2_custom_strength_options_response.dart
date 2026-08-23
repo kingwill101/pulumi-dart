@@ -55,4 +55,3 @@ class GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse {
     );
   }
 }
-

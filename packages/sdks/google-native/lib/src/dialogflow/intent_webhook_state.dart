@@ -16,4 +16,3 @@ enum IntentWebhookState {
     throw ArgumentError('Unknown IntentWebhookState value: $value');
   }
 }
-

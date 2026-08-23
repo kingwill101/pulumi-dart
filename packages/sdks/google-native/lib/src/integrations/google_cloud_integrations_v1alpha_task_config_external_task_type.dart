@@ -16,4 +16,3 @@ enum GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType {
     throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType value: $value');
   }
 }
-

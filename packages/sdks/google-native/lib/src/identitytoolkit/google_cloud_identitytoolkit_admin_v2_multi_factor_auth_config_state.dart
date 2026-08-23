@@ -17,4 +17,3 @@ enum GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState {
     throw ArgumentError('Unknown GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState value: $value');
   }
 }
-

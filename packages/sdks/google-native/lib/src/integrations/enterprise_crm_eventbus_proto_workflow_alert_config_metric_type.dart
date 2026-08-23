@@ -23,4 +23,3 @@ enum EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType {
     throw ArgumentError('Unknown EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType value: $value');
   }
 }
-

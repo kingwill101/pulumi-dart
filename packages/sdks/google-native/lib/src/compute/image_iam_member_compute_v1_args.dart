@@ -52,4 +52,3 @@ class ImageIamMemberComputeV1Args {
     );
   }
 }
-

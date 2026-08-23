@@ -17,4 +17,3 @@ enum SchemaConfigSchemaTypeHealthcareV1beta1 {
     throw ArgumentError('Unknown SchemaConfigSchemaTypeHealthcareV1beta1 value: $value');
   }
 }
-

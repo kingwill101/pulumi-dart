@@ -31,4 +31,3 @@ class SqlActiveDirectoryConfigResponseSqladminV1beta4 {
     );
   }
 }
-

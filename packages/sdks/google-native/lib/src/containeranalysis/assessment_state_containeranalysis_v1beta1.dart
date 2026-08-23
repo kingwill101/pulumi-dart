@@ -18,4 +18,3 @@ enum AssessmentStateContaineranalysisV1beta1 {
     throw ArgumentError('Unknown AssessmentStateContaineranalysisV1beta1 value: $value');
   }
 }
-

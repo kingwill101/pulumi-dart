@@ -32,4 +32,3 @@ class CustomDnsResponseDomainsV1beta1 {
     );
   }
 }
-

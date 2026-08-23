@@ -62,4 +62,3 @@ class MeshNetworkservicesV1beta1Args {
     );
   }
 }
-

@@ -68,4 +68,3 @@ class GoogleCloudChannelV1CloudIdentityInfoResponse {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class ServiceAccountDeploymentmanagerV2beta {
     );
   }
 }
-

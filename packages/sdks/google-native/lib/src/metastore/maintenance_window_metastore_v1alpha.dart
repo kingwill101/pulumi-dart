@@ -32,4 +32,3 @@ class MaintenanceWindowMetastoreV1alpha {
     );
   }
 }
-

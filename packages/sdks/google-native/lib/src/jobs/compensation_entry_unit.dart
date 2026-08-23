@@ -21,4 +21,3 @@ enum CompensationEntryUnit {
     throw ArgumentError('Unknown CompensationEntryUnit value: $value');
   }
 }
-

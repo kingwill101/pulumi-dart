@@ -16,4 +16,3 @@ enum GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType {
     throw ArgumentError('Unknown GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType value: $value');
   }
 }
-

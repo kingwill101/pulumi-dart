@@ -57,4 +57,3 @@ class GoogleCloudDatacatalogV1RoutineSpecResponse {
     );
   }
 }
-

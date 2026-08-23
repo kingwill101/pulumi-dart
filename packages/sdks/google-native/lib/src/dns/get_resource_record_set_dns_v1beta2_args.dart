@@ -47,4 +47,3 @@ class GetResourceRecordSetDnsV1beta2Args {
     );
   }
 }
-

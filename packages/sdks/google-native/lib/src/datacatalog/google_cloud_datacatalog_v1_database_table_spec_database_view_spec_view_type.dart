@@ -16,4 +16,3 @@ enum GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType {
     throw ArgumentError('Unknown GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType value: $value');
   }
 }
-

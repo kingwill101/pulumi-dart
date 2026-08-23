@@ -73,4 +73,3 @@ class SslCertSqladminV1beta4 {
     );
   }
 }
-

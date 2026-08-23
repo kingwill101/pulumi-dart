@@ -37,4 +37,3 @@ class WorkerConfigResponseCloudbuildV1beta1 {
     );
   }
 }
-

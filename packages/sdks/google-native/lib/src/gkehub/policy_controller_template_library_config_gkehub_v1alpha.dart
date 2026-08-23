@@ -26,4 +26,3 @@ class PolicyControllerTemplateLibraryConfigGkehubV1alpha {
     );
   }
 }
-

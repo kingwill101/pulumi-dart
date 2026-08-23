@@ -19,4 +19,3 @@ enum CVSSConfidentialityImpactContaineranalysisV1alpha1 {
     throw ArgumentError('Unknown CVSSConfidentialityImpactContaineranalysisV1alpha1 value: $value');
   }
 }
-

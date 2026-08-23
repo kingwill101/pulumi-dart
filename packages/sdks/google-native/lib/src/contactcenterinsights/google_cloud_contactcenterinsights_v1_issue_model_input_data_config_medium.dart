@@ -16,4 +16,3 @@ enum GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium {
     throw ArgumentError('Unknown GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium value: $value');
   }
 }
-

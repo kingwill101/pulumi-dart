@@ -37,4 +37,3 @@ class NodeTaintResponseContainerV1beta1 {
     );
   }
 }
-

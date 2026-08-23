@@ -56,4 +56,3 @@ class InstanceIamPolicyNotebooksV2Args {
     );
   }
 }
-

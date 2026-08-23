@@ -81,4 +81,3 @@ class DeidentifyConfigResponseHealthcareV1beta1 {
     );
   }
 }
-

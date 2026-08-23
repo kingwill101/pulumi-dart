@@ -42,4 +42,3 @@ class GetGameServerDeploymentIamPolicyGameservicesV1betaArgs {
     );
   }
 }
-

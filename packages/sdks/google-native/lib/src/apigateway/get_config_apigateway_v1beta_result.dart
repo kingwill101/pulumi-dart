@@ -95,4 +95,3 @@ class GetConfigApigatewayV1betaResult {
     );
   }
 }
-

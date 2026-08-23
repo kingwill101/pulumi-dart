@@ -16,4 +16,3 @@ enum ComputeEnginePreferencesLicenseTypeMigrationcenterV1alpha1 {
     throw ArgumentError('Unknown ComputeEnginePreferencesLicenseTypeMigrationcenterV1alpha1 value: $value');
   }
 }
-

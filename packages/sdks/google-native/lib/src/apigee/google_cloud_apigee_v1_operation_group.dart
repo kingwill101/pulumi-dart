@@ -32,4 +32,3 @@ class GoogleCloudApigeeV1OperationGroup {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1 {
     throw ArgumentError('Unknown ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1 value: $value');
   }
 }
-

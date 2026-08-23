@@ -44,4 +44,3 @@ class EndpointsApiServiceAppengineV1beta {
     );
   }
 }
-

@@ -25,4 +25,3 @@ enum BasicPerfSampleSeriesSampleSeriesLabel {
     throw ArgumentError('Unknown BasicPerfSampleSeriesSampleSeriesLabel value: $value');
   }
 }
-

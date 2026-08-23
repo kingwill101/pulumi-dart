@@ -25,4 +25,3 @@ class AdvancedMachineFeaturesContainerV1beta1 {
     );
   }
 }
-

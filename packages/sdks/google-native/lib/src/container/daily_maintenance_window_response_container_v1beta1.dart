@@ -31,4 +31,3 @@ class DailyMaintenanceWindowResponseContainerV1beta1 {
     );
   }
 }
-

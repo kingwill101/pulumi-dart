@@ -86,4 +86,3 @@ class NodeConfigResponseComposerV1beta1 {
     );
   }
 }
-

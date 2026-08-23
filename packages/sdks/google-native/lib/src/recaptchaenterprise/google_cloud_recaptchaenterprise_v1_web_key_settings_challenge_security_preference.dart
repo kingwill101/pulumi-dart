@@ -17,4 +17,3 @@ enum GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference {
     throw ArgumentError('Unknown GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference value: $value');
   }
 }
-

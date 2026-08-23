@@ -31,4 +31,3 @@ class DigestContaineranalysisV1alpha1 {
     );
   }
 }
-

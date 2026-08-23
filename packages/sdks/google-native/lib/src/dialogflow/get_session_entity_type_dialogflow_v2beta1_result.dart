@@ -38,4 +38,3 @@ class GetSessionEntityTypeDialogflowV2beta1Result {
     );
   }
 }
-

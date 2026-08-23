@@ -43,4 +43,3 @@ class AuthorityResponseGkehubV1beta1 {
     );
   }
 }
-

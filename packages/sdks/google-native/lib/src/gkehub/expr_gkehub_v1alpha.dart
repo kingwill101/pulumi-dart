@@ -43,4 +43,3 @@ class ExprGkehubV1alpha {
     );
   }
 }
-

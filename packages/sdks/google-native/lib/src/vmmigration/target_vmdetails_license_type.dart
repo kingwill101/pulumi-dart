@@ -16,4 +16,3 @@ enum TargetVMDetailsLicenseType {
     throw ArgumentError('Unknown TargetVMDetailsLicenseType value: $value');
   }
 }
-

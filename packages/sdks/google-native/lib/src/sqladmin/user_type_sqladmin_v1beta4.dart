@@ -19,4 +19,3 @@ enum UserTypeSqladminV1beta4 {
     throw ArgumentError('Unknown UserTypeSqladminV1beta4 value: $value');
   }
 }
-

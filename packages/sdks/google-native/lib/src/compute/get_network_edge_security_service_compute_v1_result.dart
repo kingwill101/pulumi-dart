@@ -72,4 +72,3 @@ class GetNetworkEdgeSecurityServiceComputeV1Result {
     );
   }
 }
-

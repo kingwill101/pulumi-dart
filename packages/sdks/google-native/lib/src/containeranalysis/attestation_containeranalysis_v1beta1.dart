@@ -32,4 +32,3 @@ class AttestationContaineranalysisV1beta1 {
     );
   }
 }
-

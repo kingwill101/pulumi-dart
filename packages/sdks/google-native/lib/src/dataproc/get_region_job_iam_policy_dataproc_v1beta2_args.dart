@@ -42,4 +42,3 @@ class GetRegionJobIamPolicyDataprocV1beta2Args {
     );
   }
 }
-

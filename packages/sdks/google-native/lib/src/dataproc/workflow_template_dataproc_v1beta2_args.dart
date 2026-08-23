@@ -77,4 +77,3 @@ class WorkflowTemplateDataprocV1beta2Args {
     );
   }
 }
-

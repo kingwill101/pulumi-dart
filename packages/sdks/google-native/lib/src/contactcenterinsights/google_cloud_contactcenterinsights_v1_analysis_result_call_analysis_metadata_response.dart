@@ -58,4 +58,3 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespon
     );
   }
 }
-

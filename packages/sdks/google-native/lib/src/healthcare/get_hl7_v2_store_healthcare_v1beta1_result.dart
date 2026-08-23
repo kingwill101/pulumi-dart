@@ -58,4 +58,3 @@ class GetHl7V2StoreHealthcareV1beta1Result {
     );
   }
 }
-

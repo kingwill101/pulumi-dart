@@ -18,4 +18,3 @@ enum DsRecordDigestTypeDomainsV1beta1 {
     throw ArgumentError('Unknown DsRecordDigestTypeDomainsV1beta1 value: $value');
   }
 }
-

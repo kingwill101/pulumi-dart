@@ -105,4 +105,3 @@ class GetDatacenterConnectorVmmigrationV1alpha1Result {
     );
   }
 }
-

@@ -49,4 +49,3 @@ class OSPolicyResourceRepositoryResourceAptRepositoryResponseOsconfigV1alpha {
     );
   }
 }
-

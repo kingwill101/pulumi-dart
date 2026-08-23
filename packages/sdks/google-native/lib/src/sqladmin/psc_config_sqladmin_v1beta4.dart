@@ -31,4 +31,3 @@ class PscConfigSqladminV1beta4 {
     );
   }
 }
-

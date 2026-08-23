@@ -43,4 +43,3 @@ class ExprCloudfunctionsV2beta {
     );
   }
 }
-

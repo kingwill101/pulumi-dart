@@ -31,4 +31,3 @@ class BestEffortProvisioningContainerV1beta1 {
     );
   }
 }
-

@@ -38,4 +38,3 @@ class BindingNetworkservicesV1beta1 {
     );
   }
 }
-

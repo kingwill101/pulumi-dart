@@ -15,4 +15,3 @@ enum NetworkRoutingConfigBgpInterRegionCost {
     throw ArgumentError('Unknown NetworkRoutingConfigBgpInterRegionCost value: $value');
   }
 }
-

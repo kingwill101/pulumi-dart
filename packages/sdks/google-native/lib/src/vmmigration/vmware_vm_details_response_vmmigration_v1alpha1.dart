@@ -97,4 +97,3 @@ class VmwareVmDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

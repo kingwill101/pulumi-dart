@@ -31,4 +31,3 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse {
     );
   }
 }
-

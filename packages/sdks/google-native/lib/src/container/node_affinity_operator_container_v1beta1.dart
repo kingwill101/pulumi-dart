@@ -16,4 +16,3 @@ enum NodeAffinityOperatorContainerV1beta1 {
     throw ArgumentError('Unknown NodeAffinityOperatorContainerV1beta1 value: $value');
   }
 }
-

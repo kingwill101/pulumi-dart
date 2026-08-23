@@ -16,4 +16,3 @@ enum InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure {
     throw ArgumentError('Unknown InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure value: $value');
   }
 }
-

@@ -227,4 +227,3 @@ class GetBucketObjectResult {
     );
   }
 }
-

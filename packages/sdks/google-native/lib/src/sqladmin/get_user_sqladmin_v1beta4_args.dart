@@ -42,4 +42,3 @@ class GetUserSqladminV1beta4Args {
     );
   }
 }
-

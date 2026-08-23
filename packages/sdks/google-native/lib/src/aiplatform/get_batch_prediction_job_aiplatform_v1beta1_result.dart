@@ -213,4 +213,3 @@ class GetBatchPredictionJobAiplatformV1beta1Result {
     );
   }
 }
-

@@ -98,4 +98,3 @@ class GetSslCertificateComputeV1Result {
     );
   }
 }
-

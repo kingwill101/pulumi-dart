@@ -17,4 +17,3 @@ enum GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleType {
     throw ArgumentError('Unknown GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleType value: $value');
   }
 }
-

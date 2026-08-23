@@ -42,4 +42,3 @@ class GetParticipantDialogflowV2beta1Result {
     );
   }
 }
-

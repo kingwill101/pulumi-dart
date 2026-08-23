@@ -38,4 +38,3 @@ class LocationResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

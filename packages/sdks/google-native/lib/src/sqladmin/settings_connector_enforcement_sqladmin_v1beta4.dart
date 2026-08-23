@@ -16,4 +16,3 @@ enum SettingsConnectorEnforcementSqladminV1beta4 {
     throw ArgumentError('Unknown SettingsConnectorEnforcementSqladminV1beta4 value: $value');
   }
 }
-

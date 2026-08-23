@@ -17,4 +17,3 @@ enum DeploymentOccurrencePlatform {
     throw ArgumentError('Unknown DeploymentOccurrencePlatform value: $value');
   }
 }
-

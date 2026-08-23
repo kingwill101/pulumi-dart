@@ -69,4 +69,3 @@ class UtilizationReportVmmigrationV1alpha1Args {
     );
   }
 }
-

@@ -25,4 +25,3 @@ class VpcPeeringConnectivityResponseDatamigrationV1beta1 {
     );
   }
 }
-

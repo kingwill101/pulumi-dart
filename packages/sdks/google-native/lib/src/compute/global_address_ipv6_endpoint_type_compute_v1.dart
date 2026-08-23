@@ -15,4 +15,3 @@ enum GlobalAddressIpv6EndpointTypeComputeV1 {
     throw ArgumentError('Unknown GlobalAddressIpv6EndpointTypeComputeV1 value: $value');
   }
 }
-

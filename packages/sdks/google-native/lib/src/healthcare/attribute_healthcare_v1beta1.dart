@@ -31,4 +31,3 @@ class AttributeHealthcareV1beta1 {
     );
   }
 }
-

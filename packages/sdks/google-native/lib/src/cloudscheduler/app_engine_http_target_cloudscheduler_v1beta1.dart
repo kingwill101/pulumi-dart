@@ -51,4 +51,3 @@ class AppEngineHttpTargetCloudschedulerV1beta1 {
     );
   }
 }
-

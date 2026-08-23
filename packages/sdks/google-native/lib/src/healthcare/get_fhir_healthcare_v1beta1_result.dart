@@ -36,4 +36,3 @@ class GetFhirHealthcareV1beta1Result {
     );
   }
 }
-

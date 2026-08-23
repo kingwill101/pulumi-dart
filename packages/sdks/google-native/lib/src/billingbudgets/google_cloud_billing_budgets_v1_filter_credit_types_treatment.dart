@@ -17,4 +17,3 @@ enum GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment {
     throw ArgumentError('Unknown GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment value: $value');
   }
 }
-

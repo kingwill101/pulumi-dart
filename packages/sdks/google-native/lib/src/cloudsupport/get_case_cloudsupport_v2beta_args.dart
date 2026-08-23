@@ -37,4 +37,3 @@ class GetCaseCloudsupportV2betaArgs {
     );
   }
 }
-

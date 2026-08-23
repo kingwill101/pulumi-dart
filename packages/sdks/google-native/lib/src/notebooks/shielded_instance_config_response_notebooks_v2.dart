@@ -37,4 +37,3 @@ class ShieldedInstanceConfigResponseNotebooksV2 {
     );
   }
 }
-

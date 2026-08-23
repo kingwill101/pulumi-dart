@@ -52,4 +52,3 @@ class MigrationJobIamMemberDatamigrationV1beta1Args {
     );
   }
 }
-

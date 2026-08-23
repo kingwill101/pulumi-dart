@@ -45,4 +45,3 @@ class GetDataExchangeListingIamPolicyAnalyticshubV1beta1Result {
     );
   }
 }
-

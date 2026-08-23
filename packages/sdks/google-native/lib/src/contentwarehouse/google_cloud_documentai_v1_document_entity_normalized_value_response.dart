@@ -71,4 +71,3 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValueResponse {
     );
   }
 }
-

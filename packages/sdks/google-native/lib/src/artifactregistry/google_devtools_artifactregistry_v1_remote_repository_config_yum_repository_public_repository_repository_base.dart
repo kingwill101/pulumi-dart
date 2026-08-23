@@ -20,4 +20,3 @@ enum GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRe
     throw ArgumentError('Unknown GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBase value: $value');
   }
 }
-

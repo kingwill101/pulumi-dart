@@ -37,4 +37,3 @@ class GetEntryGroupIamPolicyDatacatalogV1beta1Args {
     );
   }
 }
-

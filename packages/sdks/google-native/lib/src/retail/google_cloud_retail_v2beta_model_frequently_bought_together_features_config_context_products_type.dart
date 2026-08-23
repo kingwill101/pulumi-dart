@@ -16,4 +16,3 @@ enum GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextPr
     throw ArgumentError('Unknown GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType value: $value');
   }
 }
-

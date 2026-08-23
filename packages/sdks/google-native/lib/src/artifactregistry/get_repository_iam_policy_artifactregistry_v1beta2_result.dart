@@ -38,4 +38,3 @@ class GetRepositoryIamPolicyArtifactregistryV1beta2Result {
     );
   }
 }
-

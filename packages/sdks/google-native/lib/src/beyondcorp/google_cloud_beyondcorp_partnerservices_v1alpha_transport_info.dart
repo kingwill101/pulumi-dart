@@ -31,4 +31,3 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo {
     );
   }
 }
-

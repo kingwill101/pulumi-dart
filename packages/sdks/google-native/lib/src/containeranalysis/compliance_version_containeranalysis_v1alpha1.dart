@@ -37,4 +37,3 @@ class ComplianceVersionContaineranalysisV1alpha1 {
     );
   }
 }
-

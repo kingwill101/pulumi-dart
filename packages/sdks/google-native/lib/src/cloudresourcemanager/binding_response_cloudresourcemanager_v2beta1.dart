@@ -38,4 +38,3 @@ class BindingResponseCloudresourcemanagerV2beta1 {
     );
   }
 }
-

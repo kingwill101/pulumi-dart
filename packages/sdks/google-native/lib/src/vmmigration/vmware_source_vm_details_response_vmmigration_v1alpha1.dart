@@ -45,4 +45,3 @@ class VmwareSourceVmDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

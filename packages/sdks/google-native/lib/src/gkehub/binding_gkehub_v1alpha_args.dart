@@ -61,4 +61,3 @@ class BindingGkehubV1alphaArgs {
     );
   }
 }
-

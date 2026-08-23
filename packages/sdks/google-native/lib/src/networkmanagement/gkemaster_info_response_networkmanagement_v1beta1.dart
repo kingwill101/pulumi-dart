@@ -43,4 +43,3 @@ class GKEMasterInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

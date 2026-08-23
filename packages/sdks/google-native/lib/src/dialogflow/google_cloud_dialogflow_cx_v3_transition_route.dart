@@ -56,4 +56,3 @@ class GoogleCloudDialogflowCxV3TransitionRoute {
     );
   }
 }
-

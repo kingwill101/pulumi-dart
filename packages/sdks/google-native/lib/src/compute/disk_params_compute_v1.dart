@@ -25,4 +25,3 @@ class DiskParamsComputeV1 {
     );
   }
 }
-

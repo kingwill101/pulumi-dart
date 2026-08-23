@@ -26,4 +26,3 @@ class AppDevExperienceFeatureStateResponseGkehubV1beta {
     );
   }
 }
-

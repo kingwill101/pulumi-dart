@@ -87,4 +87,3 @@ class GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponse {
     );
   }
 }
-

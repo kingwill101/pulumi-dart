@@ -32,4 +32,3 @@ class SandboxConfigContainerV1beta1 {
     );
   }
 }
-

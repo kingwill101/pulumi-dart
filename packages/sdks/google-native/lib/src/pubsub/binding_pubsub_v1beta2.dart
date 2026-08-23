@@ -38,4 +38,3 @@ class BindingPubsubV1beta2 {
     );
   }
 }
-

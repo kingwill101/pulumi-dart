@@ -17,4 +17,3 @@ enum GooglePrivacyDlpV2ExclusionRuleMatchingType {
     throw ArgumentError('Unknown GooglePrivacyDlpV2ExclusionRuleMatchingType value: $value');
   }
 }
-

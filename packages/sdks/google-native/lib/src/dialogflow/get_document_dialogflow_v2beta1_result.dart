@@ -85,4 +85,3 @@ class GetDocumentDialogflowV2beta1Result {
     );
   }
 }
-

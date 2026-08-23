@@ -62,4 +62,3 @@ class GroupMigrationcenterV1alpha1Args {
     );
   }
 }
-

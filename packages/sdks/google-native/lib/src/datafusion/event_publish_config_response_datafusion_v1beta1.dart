@@ -31,4 +31,3 @@ class EventPublishConfigResponseDatafusionV1beta1 {
     );
   }
 }
-

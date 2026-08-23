@@ -58,4 +58,3 @@ class PersistentDiskDefaultsVmmigrationV1alpha1 {
     );
   }
 }
-

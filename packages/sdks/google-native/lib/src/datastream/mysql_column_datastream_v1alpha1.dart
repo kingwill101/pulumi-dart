@@ -61,4 +61,3 @@ class MysqlColumnDatastreamV1alpha1 {
     );
   }
 }
-

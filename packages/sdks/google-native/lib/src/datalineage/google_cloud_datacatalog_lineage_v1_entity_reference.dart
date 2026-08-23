@@ -25,4 +25,3 @@ class GoogleCloudDatacatalogLineageV1EntityReference {
     );
   }
 }
-

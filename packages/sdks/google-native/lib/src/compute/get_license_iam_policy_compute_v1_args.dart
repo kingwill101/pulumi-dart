@@ -37,4 +37,3 @@ class GetLicenseIamPolicyComputeV1Args {
     );
   }
 }
-

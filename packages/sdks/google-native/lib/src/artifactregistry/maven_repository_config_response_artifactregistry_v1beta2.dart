@@ -31,4 +31,3 @@ class MavenRepositoryConfigResponseArtifactregistryV1beta2 {
     );
   }
 }
-
