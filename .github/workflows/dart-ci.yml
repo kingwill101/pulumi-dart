@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -55,10 +57,50 @@ jobs:
           go install .
           echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
 
+      - name: Determine provider SDK regeneration scope
+        id: provider-scope
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [[ "${{ github.event_name }}" != "pull_request" ]]; then
+            echo "arguments=" >> "$GITHUB_OUTPUT"
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Generator changes must remain reproducible across the whole catalog.
+          if git diff --quiet "$BASE_SHA" HEAD -- \
+            pulumi-language-dart/pkg/codegen/dart \
+            repodoc/lib/src/commands/packages; then
+            arguments=()
+            while IFS= read -r schema; do
+              [[ -f "$schema" ]] || continue
+              provider="${schema##*/}"
+              provider="${provider%.schema.json}"
+              arguments+=(--provider "$provider")
+            done < <(
+              git diff --name-only "$BASE_SHA" HEAD -- \
+                'packages/sdks/schemas/*.schema.json'
+            )
+
+            if (( ${#arguments[@]} == 0 )); then
+              echo "run=false" >> "$GITHUB_OUTPUT"
+            else
+              printf -v quoted_arguments '%q ' "${arguments[@]}"
+              echo "arguments=$quoted_arguments" >> "$GITHUB_OUTPUT"
+              echo "run=true" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            echo "arguments=" >> "$GITHUB_OUTPUT"
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Regenerate provider SDK packages
-        run: dart run repodoc packages:generate
+        if: steps.provider-scope.outputs.run == 'true'
+        run: dart run repodoc packages:generate ${{ steps.provider-scope.outputs.arguments }}
 
       - name: Verify provider packages are up to date
+        if: steps.provider-scope.outputs.run == 'true'
         # Older checked-in SDKs contain an extra blank line at EOF. Ignore
         # blank-only changes while still rejecting generated API/content drift.
         run: git diff --exit-code --ignore-blank-lines -- packages
