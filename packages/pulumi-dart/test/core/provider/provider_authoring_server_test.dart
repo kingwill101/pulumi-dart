@@ -15,6 +15,7 @@ import 'package:pulumi/src/pulumirpc/pulumi/resource.pb.dart' as resourcepb;
 import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'
     as resourcegrpc;
 import 'package:pulumi/src/resource/component_resource.dart';
+import 'package:pulumi/src/resource/custom_resource.dart';
 import 'package:pulumi/src/resource/dependency_resource.dart';
 import 'package:pulumi/src/resource/provider_resource.dart';
 import 'package:pulumi/src/struct_converter.dart';
@@ -652,10 +653,10 @@ void main() {
         );
 
         final outputData = await inputs['ref']!.toOutput().getData();
-        expect(outputData.value, isA<DependencyResource>());
+        expect(outputData.value, isA<CustomResource>());
         expect(outputData.resources, isEmpty);
         expect(
-          await (outputData.value as DependencyResource).urn.getValue(),
+          await (outputData.value as CustomResource).urn.getValue(),
           equals(urn),
         );
       },
@@ -679,7 +680,7 @@ void main() {
         );
 
         final outputData = await inputs['ref']!.toOutput().getData();
-        expect(outputData.value, isA<DependencyResource>());
+        expect(outputData.value, isA<CustomResource>());
         expect(outputData.resources, hasLength(1));
         expect(
           await outputData.resources.single.urn.getValue(),

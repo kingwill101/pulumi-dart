@@ -89,5 +89,19 @@ void main() {
         ),
       );
     });
+
+    test('preserves custom resource references with ids', () async {
+      const urn = 'urn:pulumi:dev::project::pkg:index:Thing::thing';
+      final reference = _specialValue(Constants.specialResourceSig, {
+        Constants.resourceUrnName: Value()..stringValue = urn,
+        Constants.resourceIdName: Value()..stringValue = 'thing-id',
+      });
+
+      final data = Deserializer.deserialize<CustomResource>(reference);
+
+      expect(data.value, isA<CustomResource>());
+      expect(await data.value!.urn.getValue(), urn);
+      expect(await data.value!.id.getValue(), 'thing-id');
+    });
   });
 }

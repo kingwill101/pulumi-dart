@@ -2,6 +2,8 @@ import 'package:pulumi/pulumi.dart';
 import 'package:pulumi/src/constants.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 
+import 'resource/dependency_custom_resource.dart';
+
 /// {@template pulumi.deserializer.summary}
 /// Deserializes Pulumi RPC values into Dart runtime values.
 ///
@@ -193,6 +195,9 @@ class Deserializer {
       return (true, typed);
     }
 
+    if (id != null) {
+      return (true, DependencyCustomResource(urn, id));
+    }
     return (true, DependencyResource(urn));
   }
 

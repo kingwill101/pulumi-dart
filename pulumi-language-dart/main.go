@@ -1127,6 +1127,16 @@ func (host *dartLanguageHost) GetRequiredPackages(
 		}
 
 		providerName := aliasName
+		dependencySpec := ""
+		if len(pkg) > 1 {
+			dependencySpec = pkg[1]
+		}
+		if pluginName, pluginVersion := localPathDependencyPlugin(pubspecPath, dependencySpec); pluginName != "" {
+			providerName = pluginName
+			if pluginVersion != "" {
+				version = pluginVersion
+			}
+		}
 		server := ""
 		var parameterization *pulumirpc.PackageParameterization
 		if spec, ok := projectPackages[aliasName]; ok {

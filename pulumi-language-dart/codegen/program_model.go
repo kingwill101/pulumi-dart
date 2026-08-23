@@ -9,6 +9,7 @@ type dartProgram struct {
 	Outputs                  []dartProgramOutput
 	NeedsAsyncInitialization bool
 	ResourceReferences       []dartProgramResourceReference
+	RequiresPulumiProvider   bool
 }
 
 type dartProgramResourceReference struct {

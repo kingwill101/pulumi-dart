@@ -53,6 +53,7 @@ func providerEnumName(defaultPackage string, enum *schema.EnumType) (string, str
 	module := rootProgramModule(tokenModulePath(enum.Token))
 	className := sanitizeTypeName(toDartClassName(parts[2]))
 	if enum.PackageReference != nil {
+		pkg = dartPackageNameForReference(pkg, enum.PackageReference)
 		definition, err := enum.PackageReference.Definition()
 		if err != nil || definition == nil {
 			return pkg, module, className
@@ -61,6 +62,9 @@ func providerEnumName(defaultPackage string, enum *schema.EnumType) (string, str
 		if resolved, ok := named[enum.Token]; ok {
 			className = resolved.Name
 		}
+	}
+	if !strings.HasPrefix(pkg, "pulumi_") && pkg != "pulumi" {
+		pkg = toDartPackageName("", pkg)
 	}
 	return pkg, module, className
 }

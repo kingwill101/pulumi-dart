@@ -16,7 +16,7 @@ class ResList extends pulumi.CustomResource {
           'names:index:ResList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.0.0').merge(options),
         ) {
     value = registerOutput<bool>('value');
   }

@@ -1,7 +1,6 @@
 package codegen
 
 import (
-	"sort"
 	"strings"
 
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
@@ -16,31 +15,20 @@ func programProviderResourceName(resource *schema.Resource) (string, string, str
 		return module, className, argsClass
 	}
 
-	tokens := make([]string, 0, len(pkg.Resources))
-	for _, candidate := range pkg.Resources {
-		if candidate != nil && candidate.Token != "" {
-			tokens = append(tokens, candidate.Token)
-		}
-	}
-	sort.Strings(tokens)
 	usedByModule := map[string]map[string]int{}
-	classes := map[string]string{}
-	for _, token := range tokens {
-		root := rootProgramModule(tokenModulePath(token))
-		used := moduleScopedTypeNameSet(usedByModule, root)
-		classes[token] = resourceClassNameFromToken(token, used)
+	named, _, _ := reserveBoundNamedTypes(pkg, usedByModule)
+	reserveBoundResourceTypes(pkg, usedByModule, named)
+	if resolved, ok := named[resourceNamedTypeKey(resource.Token)]; ok {
+		className = resolved.Name
 	}
-	argsClasses := map[string]string{}
-	for _, token := range tokens {
-		modulePath := tokenModulePath(token)
-		baseName := resourceTypeBaseNameFromToken(token)
-		used := moduleScopedTypeNameSet(usedByModule, modulePath)
-		argsClasses[token] = uniqueQualifiedClassName(baseName, modulePath, used, "Args", "ResourceArgs")
+	if spec, ok := packageSchemaFromPackage(pkg).Resources[resource.Token]; ok {
+		argsClass = spec.ArgsClass
 	}
-	return module, classes[resource.Token], argsClasses[resource.Token]
+	return module, className, argsClass
 }
 
 func rootProgramModule(module string) string {
+	module = normalizedModulePath(module)
 	if root, _, nested := strings.Cut(module, "/"); nested {
 		return root
 	}

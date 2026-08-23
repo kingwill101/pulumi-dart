@@ -80,6 +80,7 @@ func lowerDartProgram(program *pcl.Program) (dartProgram, error) {
 	result.Imports = lowerer.sortedImports()
 	result.NeedsAsyncInitialization = *lowerer.needsAsyncInitialization
 	result.ResourceReferences = lowerer.sortedResourceReferences()
+	_, result.RequiresPulumiProvider = lowerer.specialProviders["pulumi"]
 	return result, nil
 }
 
@@ -93,6 +94,7 @@ type programLowerer struct {
 	resourceTypes            map[string]*schema.Resource
 	resourceReferences       map[string]dartProgramResourceReference
 	needsAsyncInitialization *bool
+	specialProviders         map[string]struct{}
 }
 
 func newProgramLowerer(program *pcl.Program) programLowerer {
@@ -104,5 +106,6 @@ func newProgramLowerer(program *pcl.Program) programLowerer {
 		resourceTypes:            programResourceTypes(program.Packages()),
 		resourceReferences:       map[string]dartProgramResourceReference{},
 		needsAsyncInitialization: new(bool),
+		specialProviders:         map[string]struct{}{},
 	}
 }

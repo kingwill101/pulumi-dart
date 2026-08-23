@@ -1050,8 +1050,8 @@ void main() {
 
       var result = Deserializer.deserialize(value).value;
 
-      expect(result, isA<DependencyResource>());
-      var resource = result as DependencyResource;
+      expect(result, isA<CustomResource>());
+      var resource = result as CustomResource;
       expect(resource.getResourceType(), equals('aws:s3/bucket:Bucket'));
       expect(
         resource.urn.getData(),
@@ -2027,8 +2027,8 @@ void main() {
         expect(resultData.resources, isEmpty);
 
         final result = resultData.value!;
-        expect(result['foo'], isA<DependencyResource>());
-        final foo = result['foo'] as DependencyResource;
+        expect(result['foo'], isA<CustomResource>());
+        final foo = result['foo'] as CustomResource;
         expect(await foo.urn.getValue(), equals(resourceUrn));
 
         expect(result['bar'], isA<Output>());

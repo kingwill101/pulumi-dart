@@ -16,7 +16,7 @@ class ResMod extends pulumi.CustomResource {
           'names:mod:Res',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.0.0').merge(options),
         ) {
     value = registerOutput<bool>('value');
   }

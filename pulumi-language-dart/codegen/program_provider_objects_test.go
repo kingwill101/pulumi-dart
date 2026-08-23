@@ -14,7 +14,7 @@ func TestProviderObjectTypeNameUsesGeneratedPlainShapeName(t *testing.T) {
 	input := &schema.ObjectType{Token: "secret:index:DataArgs", PlainShape: plain}
 	pkg, module, className := providerObjectTypeName("fallback", input)
 
-	require.Equal(t, "secret", pkg)
+	require.Equal(t, "pulumi_secret", pkg)
 	require.Equal(t, "index", module)
 	require.Equal(t, "Data", className)
 }

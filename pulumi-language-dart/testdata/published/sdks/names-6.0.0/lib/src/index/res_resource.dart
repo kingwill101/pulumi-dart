@@ -16,7 +16,7 @@ class ResResource extends pulumi.CustomResource {
           'names:index:ResResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.0.0').merge(options),
         ) {
     value = registerOutput<bool>('value');
   }

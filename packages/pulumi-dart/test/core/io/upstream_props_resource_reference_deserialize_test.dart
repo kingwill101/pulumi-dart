@@ -1,6 +1,7 @@
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
 import 'package:pulumi/src/constants.dart';
 import 'package:pulumi/src/deserializer.dart';
+import 'package:pulumi/src/resource/custom_resource.dart';
 import 'package:pulumi/src/resource/dependency_resource.dart';
 import 'package:pulumi/src/resource/provider_resource.dart';
 import 'package:test/test.dart';
@@ -43,18 +44,18 @@ void main() {
         final result = data.value!;
 
         expect(result['component'], isA<DependencyResource>());
-        expect(result['custom'], isA<DependencyResource>());
-        expect(result['unregistered'], isA<DependencyResource>());
+        expect(result['custom'], isA<CustomResource>());
+        expect(result['unregistered'], isA<CustomResource>());
         expect(
           await (result['component'] as DependencyResource).urn.getValue(),
           equals(componentUrn),
         );
         expect(
-          await (result['custom'] as DependencyResource).urn.getValue(),
+          await (result['custom'] as CustomResource).urn.getValue(),
           equals(customUrn),
         );
         expect(
-          await (result['unregistered'] as DependencyResource).urn.getValue(),
+          await (result['unregistered'] as CustomResource).urn.getValue(),
           equals(unregisteredUrn),
         );
       },

@@ -18,6 +18,9 @@ func (lowerer programLowerer) providerInputExpression(
 		propertyType = property.Type
 	}
 	if propertyType != nil {
+		if providerTypeContainsResource(propertyType) {
+			lowerer.specialProviders["pulumi"] = struct{}{}
+		}
 		value, err := lowerer.typedProviderExpression(defaultPackage, expression, propertyType)
 		if err != nil {
 			return "", err
@@ -62,7 +65,6 @@ func (lowerer programLowerer) typedProviderExpression(
 		return value, nil
 	}
 }
-
 func (lowerer programLowerer) numberTupleExpression(expression model.Expression) (string, error) {
 	tuple, ok := expression.(*model.TupleConsExpression)
 	if !ok {
@@ -78,7 +80,6 @@ func (lowerer programLowerer) numberTupleExpression(expression model.Expression)
 	}
 	return "[" + strings.Join(items, ", ") + "]", nil
 }
-
 func modelNumberArrayInput(resource *pcl.Resource, name string) bool {
 	object, ok := model.ResolveOutputs(resource.InputType).(*model.ObjectType)
 	if !ok {

@@ -53,6 +53,7 @@ func providerObjectTypeName(defaultPackage string, objectType *schema.ObjectType
 	module := rootProgramModule(tokenModulePath(objectType.Token))
 	className := sanitizeTypeName(toDartClassName(parts[2]))
 	if objectType.PackageReference != nil {
+		pkg = dartPackageNameForReference(pkg, objectType.PackageReference)
 		definition, err := objectType.PackageReference.Definition()
 		if err != nil || definition == nil {
 			return pkg, module, className
@@ -61,6 +62,9 @@ func providerObjectTypeName(defaultPackage string, objectType *schema.ObjectType
 		if resolved, ok := named[objectType.Token]; ok {
 			className = resolved.Name
 		}
+	}
+	if !strings.HasPrefix(pkg, "pulumi_") && pkg != "pulumi" {
+		pkg = toDartPackageName("", pkg)
 	}
 	return pkg, module, className
 }

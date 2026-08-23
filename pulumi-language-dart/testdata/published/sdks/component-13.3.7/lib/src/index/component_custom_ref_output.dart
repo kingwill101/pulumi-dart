@@ -1,10 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'component_custom_ref_output_args.dart';
-import 'custom.dart';
 
 /// A component resource that accepts an input that is used to create a child custom resource. A reference to this child custom resource is returned.
 class ComponentCustomRefOutput extends pulumi.ComponentResource {
-  late final pulumi.Output<Custom?> ref;
+  late final pulumi.Output<pulumi.CustomResource?> ref;
   late final pulumi.Output<String?> value;
 
   /// Creates a new [ComponentCustomRefOutput].
@@ -22,7 +21,7 @@ class ComponentCustomRefOutput extends pulumi.ComponentResource {
           pulumi.ComponentResourceOptions(version: '13.3.7').merge(options),
           remote: true,
         ) {
-    ref = registerOutput<Custom?>('ref');
+    ref = registerOutput<pulumi.CustomResource?>('ref');
     value = registerOutput<String?>('value');
   }
 }

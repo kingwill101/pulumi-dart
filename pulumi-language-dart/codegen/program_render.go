@@ -27,9 +27,8 @@ func renderDartProgram(program dartProgram) []byte {
 	sort.Strings(importKeys)
 	for _, key := range importKeys {
 		resource := imports[key]
-		packageName := "pulumi_" + strings.ReplaceAll(resource.Package, "-", "_")
 		fmt.Fprintf(&body, "import 'package:%s/%s.dart' as %s;\n",
-			packageName, resource.Module, programModuleAlias(resource.Package, resource.Module))
+			resource.Package, resource.Module, programModuleAlias(resource.Package, resource.Module))
 	}
 	if len(importKeys) > 0 {
 		body.WriteString("\n")
@@ -41,6 +40,9 @@ func renderDartProgram(program dartProgram) []byte {
 		body.WriteString("  Future<void> initialize() async {\n")
 	} else {
 		body.WriteString("  GeneratedStack() {\n")
+	}
+	if program.RequiresPulumiProvider {
+		body.WriteString("    pulumi.ProviderResource('pulumi', 'default', null, null);\n")
 	}
 	if len(program.Configs) > 0 {
 		body.WriteString("    final config = pulumi.Config();\n")

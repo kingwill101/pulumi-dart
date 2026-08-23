@@ -33,13 +33,20 @@ func programFunctions(packages []*schema.Package) map[string]programFunction {
 			name := functionNameFromToken(token, moduleScopedIdentifierSet(used, module))
 			schemaFunction, _ := pkg.GetFunction(token)
 			planned := programFunction{
-				Package: pkg.Name, Module: rootProgramModule(module), Name: name,
+				Package: toDartPackageName(pkg.Namespace, pkg.Name), Module: rootProgramModule(module), Name: name,
 				ArgsClass: function.ArgsClass, ResultClass: function.ResultClass,
 				ResultType: function.ReturnType.DartType,
 				Function:   function,
 				Schema:     schemaFunction,
 			}
 			result[token] = planned
+			result[pkg.CanonicalizeToken(token)] = planned
+			canonicalModule := pkg.TokenToModule(token)
+			member := tokenElementName(token)
+			result[pkg.Name+":"+canonicalModule+":"+member] = planned
+			if canonicalModule == "index" {
+				result[pkg.Name+":"+member] = planned
+			}
 			if module == "index" {
 				result[pkg.Name+"::"+tokenElementName(token)] = planned
 			}

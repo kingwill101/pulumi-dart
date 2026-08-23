@@ -65,7 +65,7 @@ func (lowerer programLowerer) relativeTraversalExpression(
 		return lowerDartTraversal(source, expression.Traversal, true)
 	}
 	if model.ContainsOutputs(expression.Source.Type()) {
-		typed := invokeExpression(expression.Source) != nil || callExpression(expression.Source) != nil
+		typed := typedResultExpression(expression.Source)
 		traversed, err := lowerDartTraversal("value", expression.Traversal, typed)
 		if err != nil {
 			return "", err
@@ -77,4 +77,9 @@ func (lowerer programLowerer) relativeTraversalExpression(
 		return "pulumi.output(" + source + ")" + apply + "((value) => " + traversed + ")", nil
 	}
 	return lowerDartTraversal(source, expression.Traversal, false)
+}
+
+func typedResultExpression(expression model.Expression) bool {
+	call, ok := expression.(*model.FunctionCallExpression)
+	return ok && (call.Name == pcl.Invoke || call.Name == pcl.Call)
 }

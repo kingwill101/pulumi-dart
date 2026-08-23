@@ -62,6 +62,12 @@ func reserveBoundResourceTypes(pkg *schema.Package, usedNames map[string]map[str
 	sort.Strings(tokens)
 	for _, token := range tokens {
 		modulePath := tokenModulePath(token)
-		named[token] = packageNamedTypeRef{Kind: "resource", Name: resourceClassNameFromToken(token, moduleScopedTypeNameSet(usedNames, modulePath)), CanonicalName: canonicalTypeName(tokenElementName(token)), UnderlyingType: "dynamic", UseReferenceType: true}
+		resource := packageNamedTypeRef{Kind: "resource", Name: resourceClassNameFromToken(token, moduleScopedTypeNameSet(usedNames, modulePath)), CanonicalName: canonicalTypeName(tokenElementName(token)), UnderlyingType: "dynamic", UseReferenceType: true}
+		named[resourceNamedTypeKey(token)] = resource
+		if _, occupied := named[token]; !occupied {
+			named[token] = resource
+		}
 	}
 }
+
+func resourceNamedTypeKey(token string) string { return "resource\x00" + token }

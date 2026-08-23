@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'component_callable.dart';
 
 /// {@template pulumi_index_identity_args_doc}
 /// Arguments for identity.
 /// {@endtemplate}
 /// {@macro pulumi_index_identity_args_doc}
 class IdentityArgs {
-  final pulumi.Input<ComponentCallable> self;
+  final pulumi.Input<pulumi.CustomResource> self;
 
   /// Creates a new [IdentityArgs].
   /// [self] Required.
@@ -24,7 +23,7 @@ class IdentityArgs {
 
   factory IdentityArgs.fromMap(Map<String, dynamic> map) {
     return IdentityArgs(
-      self: pulumi.Input.fromValue(map['__self__'] as ComponentCallable),
+      self: pulumi.Input.fromValue(map['__self__'] as pulumi.CustomResource),
     );
   }
 }

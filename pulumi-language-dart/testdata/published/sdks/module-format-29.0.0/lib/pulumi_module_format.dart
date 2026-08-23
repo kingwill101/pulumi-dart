@@ -1,0 +1,79 @@
+// ignore_for_file: non_constant_identifier_names
+
+import 'package:pulumi_module_format/index_concat_world.dart' as module_index_concat_world;
+import 'package:pulumi_module_format/index_resource.dart' as module_index_resource;
+import 'package:pulumi_module_format/mod.dart' as module_mod;
+import 'package:pulumi_module_format/mod_concat_world.dart' as module_mod_concat_world;
+import 'package:pulumi_module_format/mod_resource.dart' as module_mod_resource;
+import 'package:pulumi_module_format/providers.dart' as module_providers;
+
+final index_concat_world = const _IndexConcatWorldModuleNamespace();
+final index_resource = const _IndexResourceModuleNamespace();
+final mod = const _ModModuleNamespace();
+final mod_concat_world = const _ModConcatWorldModuleNamespace();
+final mod_resource = const _ModResourceModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
+
+class _IndexConcatWorldModuleNamespace {
+  const _IndexConcatWorldModuleNamespace();
+  final ConcatWorldArgs = module_index_concat_world.ConcatWorldArgs.new;
+  final ConcatWorldResult = module_index_concat_world.ConcatWorldResult.new;
+  final ConcatWorldResultArgs = module_index_concat_world.ConcatWorldResult.new;
+  final concatWorld = module_index_concat_world.concatWorld;
+}
+
+class _IndexResourceModuleNamespace {
+  const _IndexResourceModuleNamespace();
+  final CallArgs = module_index_resource.CallArgs.new;
+  final CallResult = module_index_resource.CallResult.new;
+  final CallResultArgs = module_index_resource.CallResult.new;
+  final ResourceArgs = module_index_resource.ResourceArgs.new;
+  final ResourceCallArgs = module_index_resource.ResourceCallArgs.new;
+  final ResourceCallResult = module_index_resource.ResourceCallResult.new;
+  final ResourceCallResultArgs = module_index_resource.ResourceCallResult.new;
+  final ResourceType = module_index_resource.ResourceType.new;
+  final call = module_index_resource.call;
+}
+
+class _ModModuleNamespace {
+  const _ModModuleNamespace();
+  final CallArgs = module_mod.CallArgs.new;
+  final CallResult = module_mod.CallResult.new;
+  final CallResultArgs = module_mod.CallResult.new;
+  final ConcatWorldArgs = module_mod.ConcatWorldArgs.new;
+  final ConcatWorldResult = module_mod.ConcatWorldResult.new;
+  final ConcatWorldResultArgs = module_mod.ConcatWorldResult.new;
+  final ResourceArgs = module_mod.ResourceArgs.new;
+  final ResourceCallArgs = module_mod.ResourceCallArgs.new;
+  final ResourceCallResult = module_mod.ResourceCallResult.new;
+  final ResourceCallResultArgs = module_mod.ResourceCallResult.new;
+  final ResourceType = module_mod.ResourceType.new;
+  final call = module_mod.call;
+  final concatWorld = module_mod.concatWorld;
+}
+
+class _ModConcatWorldModuleNamespace {
+  const _ModConcatWorldModuleNamespace();
+  final ConcatWorldArgs = module_mod_concat_world.ConcatWorldArgs.new;
+  final ConcatWorldResult = module_mod_concat_world.ConcatWorldResult.new;
+  final ConcatWorldResultArgs = module_mod_concat_world.ConcatWorldResult.new;
+  final concatWorld = module_mod_concat_world.concatWorld;
+}
+
+class _ModResourceModuleNamespace {
+  const _ModResourceModuleNamespace();
+  final CallArgs = module_mod_resource.CallArgs.new;
+  final CallResult = module_mod_resource.CallResult.new;
+  final CallResultArgs = module_mod_resource.CallResult.new;
+  final ResourceArgs = module_mod_resource.ResourceArgs.new;
+  final ResourceCallArgs = module_mod_resource.ResourceCallArgs.new;
+  final ResourceCallResult = module_mod_resource.ResourceCallResult.new;
+  final ResourceCallResultArgs = module_mod_resource.ResourceCallResult.new;
+  final ResourceType = module_mod_resource.ResourceType.new;
+  final call = module_mod_resource.call;
+}
+
+class _ProvidersModuleNamespace {
+  const _ProvidersModuleNamespace();
+  final ModuleFormat = module_providers.ProviderProvider.new;
+}
