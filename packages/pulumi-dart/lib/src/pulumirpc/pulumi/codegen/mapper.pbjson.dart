@@ -29,6 +29,7 @@ const GetMappingRequest$json = {
       '6': '.codegen.MapperParameterizationHint',
       '10': 'parameterizationHint'
     },
+    {'1': 'ecosystem', '3': 4, '4': 1, '5': 9, '10': 'ecosystem'},
   ],
 };
 
@@ -37,7 +38,7 @@ final $typed_data.Uint8List getMappingRequestDescriptor = $convert.base64Decode(
     'ChFHZXRNYXBwaW5nUmVxdWVzdBIaCghwcm92aWRlchgBIAEoCVIIcHJvdmlkZXISJwoPcHVsdW'
     '1pX3Byb3ZpZGVyGAIgASgJUg5wdWx1bWlQcm92aWRlchJYChVwYXJhbWV0ZXJpemF0aW9uX2hp'
     'bnQYAyABKAsyIy5jb2RlZ2VuLk1hcHBlclBhcmFtZXRlcml6YXRpb25IaW50UhRwYXJhbWV0ZX'
-    'JpemF0aW9uSGludA==');
+    'JpemF0aW9uSGludBIcCgllY29zeXN0ZW0YBCABKAlSCWVjb3N5c3RlbQ==');
 
 @$core.Deprecated('Use mapperParameterizationHintDescriptor instead')
 const MapperParameterizationHint$json = {

@@ -17,6 +17,7 @@ import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'
         RegisterResourceResponse,
         ResourceCallRequest,
         ResourceInvokeRequest,
+        ResourceInvokeResponse,
         ResourceMonitorClient;
 import 'package:test/test.dart';
 
@@ -49,7 +50,7 @@ class _FakeMonitor implements monitorpkg.Monitor {
   }
 
   @override
-  Future<InvokeResponse> invoke(ResourceInvokeRequest request) async {
+  Future<ResourceInvokeResponse> invoke(ResourceInvokeRequest request) async {
     throw GrpcError.unimplemented('invoke not used in this test');
   }
 
@@ -362,6 +363,7 @@ void main() {
               create: '1m',
               update: '2m',
               delete: '3m',
+              read: '4m',
             ),
             deleteBeforeReplace: true,
             retainOnDelete: true,
@@ -405,6 +407,7 @@ void main() {
         expect(request.customTimeouts.create_1, '1m');
         expect(request.customTimeouts.update, '2m');
         expect(request.customTimeouts.delete, '3m');
+        expect(request.customTimeouts.read, '4m');
         expect(request.retainOnDelete, isTrue);
         expect(request.deletedWith, await deletedWith.urn.getValue());
         expect(request.additionalSecretOutputs, ['secretA', 'secretB']);

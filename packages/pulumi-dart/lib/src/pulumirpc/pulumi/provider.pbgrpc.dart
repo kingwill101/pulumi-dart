@@ -240,6 +240,16 @@ class ResourceProviderClient extends $grpc.Client {
     return $createUnaryCall(_$read, request, options: options);
   }
 
+  /// `List` lists resources of a given token in pages. A `List` stream emits zero or more resource results, and may
+  /// emit a continuation token indicating another page is available.
+  $grpc.ResponseStream<$0.ListResponse> list(
+    $0.ListRequest request, {
+    $grpc.CallOptions? options,
+  }) {
+    return $createStreamingCall(_$list, $async.Stream.fromIterable([request]),
+        options: options);
+  }
+
   /// `Update` updates an existing resource according to a new set of inputs, returning a new set of output properties.
   $grpc.ResponseFuture<$0.UpdateResponse> update(
     $0.UpdateRequest request, {
@@ -405,6 +415,10 @@ class ResourceProviderClient extends $grpc.Client {
       '/pulumirpc.ResourceProvider/Read',
       ($0.ReadRequest value) => value.writeToBuffer(),
       $0.ReadResponse.fromBuffer);
+  static final _$list = $grpc.ClientMethod<$0.ListRequest, $0.ListResponse>(
+      '/pulumirpc.ResourceProvider/List',
+      ($0.ListRequest value) => value.writeToBuffer(),
+      $0.ListResponse.fromBuffer);
   static final _$update =
       $grpc.ClientMethod<$0.UpdateRequest, $0.UpdateResponse>(
           '/pulumirpc.ResourceProvider/Update',
@@ -536,6 +550,13 @@ abstract class ResourceProviderServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.ReadRequest.fromBuffer(value),
         ($0.ReadResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.ListRequest, $0.ListResponse>(
+        'List',
+        list_Pre,
+        false,
+        true,
+        ($core.List<$core.int> value) => $0.ListRequest.fromBuffer(value),
+        ($0.ListResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.UpdateRequest, $0.UpdateResponse>(
         'Update',
         update_Pre,
@@ -693,6 +714,14 @@ abstract class ResourceProviderServiceBase extends $grpc.Service {
 
   $async.Future<$0.ReadResponse> read(
       $grpc.ServiceCall call, $0.ReadRequest request);
+
+  $async.Stream<$0.ListResponse> list_Pre(
+      $grpc.ServiceCall $call, $async.Future<$0.ListRequest> $request) async* {
+    yield* list($call, await $request);
+  }
+
+  $async.Stream<$0.ListResponse> list(
+      $grpc.ServiceCall call, $0.ListRequest request);
 
   $async.Future<$0.UpdateResponse> update_Pre(
       $grpc.ServiceCall $call, $async.Future<$0.UpdateRequest> $request) async {

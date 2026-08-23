@@ -72,6 +72,7 @@ in
     dartPackage
     pulumiPackage
     pkgs.git
+    pkgs.protobuf
     pkgs.nodejs_22
     pkgs.pnpm
     pkgs.uv

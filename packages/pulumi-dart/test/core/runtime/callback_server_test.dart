@@ -41,6 +41,12 @@ class _CapturingResourceMonitorService extends ResourceMonitorServiceBase {
   bool failStackInvokeTransformRegistration = false;
 
   @override
+  Future<pulumirpc.DeploymentInfo> getDeploymentInfo(
+    ServiceCall call,
+    Empty request,
+  ) async => pulumirpc.DeploymentInfo();
+
+  @override
   Future<pulumirpc.SupportsFeatureResponse> supportsFeature(
     ServiceCall call,
     pulumirpc.SupportsFeatureRequest request,
@@ -49,7 +55,7 @@ class _CapturingResourceMonitorService extends ResourceMonitorServiceBase {
   }
 
   @override
-  Future<providerpb.InvokeResponse> invoke(
+  Future<pulumirpc.ResourceInvokeResponse> invoke(
     ServiceCall call,
     pulumirpc.ResourceInvokeRequest request,
   ) async {
@@ -424,6 +430,7 @@ void main() {
                 create: '1m',
                 update: '2m',
                 delete: '3m',
+                read: '4m',
               ),
               deleteBeforeReplace: true,
               retainOnDelete: true,
@@ -462,7 +469,8 @@ void main() {
           ..customTimeouts = (RegisterResourceRequest_CustomTimeouts()
             ..create_1 = '4m'
             ..update = '5m'
-            ..delete = '6m')
+            ..delete = '6m'
+            ..read = '7m')
           ..deleteBeforeReplace = true
           ..retainOnDelete = true
           ..deletedWith = requestDeletedWithUrn
@@ -540,6 +548,7 @@ void main() {
         expect(capturedOptions.customTimeouts!.create, equals('4m'));
         expect(capturedOptions.customTimeouts!.update, equals('5m'));
         expect(capturedOptions.customTimeouts!.delete, equals('6m'));
+        expect(capturedOptions.customTimeouts!.read, equals('7m'));
         expect(capturedOptions.deleteBeforeReplace, isTrue);
         expect(capturedOptions.retainOnDelete, isTrue);
         expect(
@@ -575,6 +584,7 @@ void main() {
         expect(response.options.customTimeouts.create_1, equals('1m'));
         expect(response.options.customTimeouts.update, equals('2m'));
         expect(response.options.customTimeouts.delete, equals('3m'));
+        expect(response.options.customTimeouts.read, equals('4m'));
         expect(response.options.deleteBeforeReplace, isTrue);
         expect(response.options.retainOnDelete, isTrue);
         expect(

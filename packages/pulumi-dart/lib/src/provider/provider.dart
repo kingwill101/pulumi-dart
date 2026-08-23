@@ -85,6 +85,48 @@ class ReadResult {
   final Map<String, dynamic>? inputs;
 }
 
+/// Request passed to [Provider.list].
+class ListResourcesRequest {
+  const ListResourcesRequest({
+    required this.token,
+    required this.query,
+    this.limit,
+    this.pageSize,
+    this.continuationToken,
+  });
+
+  final String token;
+  final Map<String, dynamic> query;
+  final int? limit;
+  final int? pageSize;
+  final String? continuationToken;
+}
+
+/// A streamed item returned from [Provider.list].
+sealed class ListResourcesResponse {
+  const ListResourcesResponse();
+}
+
+/// Indicates that a list query contains values that are not yet known.
+class ListResourcesComputed extends ListResourcesResponse {
+  const ListResourcesComputed();
+}
+
+/// Identifies one resource returned by a list operation.
+class ListResourcesResult extends ListResourcesResponse {
+  const ListResourcesResult({required this.id, this.name});
+
+  final String id;
+  final String? name;
+}
+
+/// Supplies the opaque token for the next page of a list operation.
+class ListResourcesContinuation extends ListResourcesResponse {
+  const ListResourcesContinuation(this.token);
+
+  final String token;
+}
+
 /// Result returned from [Provider.update].
 class UpdateResult {
   const UpdateResult({this.outs});
@@ -182,6 +224,14 @@ abstract class Provider {
     Map<String, dynamic>? props,
   ) async {
     return ReadResult(id: id, props: props);
+  }
+
+  /// Lists resources known to this provider.
+  Stream<ListResourcesResponse> list(ListResourcesRequest request) async* {
+    throw const UnsupportedProviderOperationError(
+      operation: 'list',
+      reason: 'provider does not implement resource listing',
+    );
   }
 
   /// Updates an existing custom resource.

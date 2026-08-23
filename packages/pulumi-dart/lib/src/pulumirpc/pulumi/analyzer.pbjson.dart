@@ -357,6 +357,7 @@ const AnalyzerResourceOptions_CustomTimeouts$json = {
     {'1': 'create', '3': 1, '4': 1, '5': 1, '10': 'create'},
     {'1': 'update', '3': 2, '4': 1, '5': 1, '10': 'update'},
     {'1': 'delete', '3': 3, '4': 1, '5': 1, '10': 'delete'},
+    {'1': 'read', '3': 4, '4': 1, '5': 1, '10': 'read'},
   ],
 };
 
@@ -369,8 +370,9 @@ final $typed_data.Uint8List analyzerResourceOptionsDescriptor = $convert.base64D
     'dE91dHB1dHMYBSADKAlSF2FkZGl0aW9uYWxTZWNyZXRPdXRwdXRzEhgKB2FsaWFzZXMYBiADKA'
     'lSB2FsaWFzZXMSWQoOY3VzdG9tVGltZW91dHMYByABKAsyMS5wdWx1bWlycGMuQW5hbHl6ZXJS'
     'ZXNvdXJjZU9wdGlvbnMuQ3VzdG9tVGltZW91dHNSDmN1c3RvbVRpbWVvdXRzEhYKBnBhcmVudB'
-    'gIIAEoCVIGcGFyZW50GlgKDkN1c3RvbVRpbWVvdXRzEhYKBmNyZWF0ZRgBIAEoAVIGY3JlYXRl'
-    'EhYKBnVwZGF0ZRgCIAEoAVIGdXBkYXRlEhYKBmRlbGV0ZRgDIAEoAVIGZGVsZXRl');
+    'gIIAEoCVIGcGFyZW50GmwKDkN1c3RvbVRpbWVvdXRzEhYKBmNyZWF0ZRgBIAEoAVIGY3JlYXRl'
+    'EhYKBnVwZGF0ZRgCIAEoAVIGdXBkYXRlEhYKBmRlbGV0ZRgDIAEoAVIGZGVsZXRlEhIKBHJlYW'
+    'QYBCABKAFSBHJlYWQ=');
 
 @$core.Deprecated('Use analyzerProviderResourceDescriptor instead')
 const AnalyzerProviderResource$json = {

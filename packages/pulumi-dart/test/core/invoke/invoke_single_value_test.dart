@@ -14,6 +14,7 @@ import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'
         RegisterResourceResponse,
         ResourceCallRequest,
         ResourceInvokeRequest,
+        ResourceInvokeResponse,
         ResourceMonitorClient;
 import 'package:pulumi/src/resource/resource.dart';
 import 'package:pulumi/src/struct_converter.dart';
@@ -34,8 +35,8 @@ class _FakeMonitor implements monitorpkg.Monitor {
   }
 
   @override
-  Future<InvokeResponse> invoke(ResourceInvokeRequest request) async {
-    return InvokeResponse()
+  Future<ResourceInvokeResponse> invoke(ResourceInvokeRequest request) async {
+    return ResourceInvokeResponse()
       ..return_1 = await StructConverter.toStruct(invokePayload);
   }
 

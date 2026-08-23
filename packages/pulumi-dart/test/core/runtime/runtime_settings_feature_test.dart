@@ -23,6 +23,12 @@ class _FeatureMonitorService extends ResourceMonitorServiceBase {
   _FeatureMonitorService({required this.supports});
 
   @override
+  Future<pulumirpc.DeploymentInfo> getDeploymentInfo(
+    ServiceCall call,
+    Empty request,
+  ) async => pulumirpc.DeploymentInfo();
+
+  @override
   Future<pulumirpc.SupportsFeatureResponse> supportsFeature(
     ServiceCall call,
     pulumirpc.SupportsFeatureRequest request,
@@ -36,7 +42,7 @@ class _FeatureMonitorService extends ResourceMonitorServiceBase {
   }
 
   @override
-  Future<providerpb.InvokeResponse> invoke(
+  Future<pulumirpc.ResourceInvokeResponse> invoke(
     ServiceCall call,
     pulumirpc.ResourceInvokeRequest request,
   ) async {

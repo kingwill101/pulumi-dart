@@ -24,7 +24,7 @@ class MockMonitor implements mon.Monitor {
       throw StateError('MockMonitor.client is not used by this harness');
 
   @override
-  Future<InvokeResponse> invoke(ResourceInvokeRequest request) async {
+  Future<ResourceInvokeResponse> invoke(ResourceInvokeRequest request) async {
     final args = _toDartMap(request.args);
 
     if (request.tok == "pulumi:pulumi:getResource") {
@@ -33,7 +33,7 @@ class MockMonitor implements mon.Monitor {
       if (registeredResource == null) {
         throw Exception("Unknown resource $urn");
       }
-      return InvokeResponse(
+      return ResourceInvokeResponse(
         return_1: await _serializeAsync(registeredResource),
       );
     }
@@ -41,7 +41,7 @@ class MockMonitor implements mon.Monitor {
     final result = await _mocks.call(
       MockCallArgs(token: request.tok, args: args, provider: request.provider),
     );
-    return InvokeResponse(return_1: await _serializeAsync(result));
+    return ResourceInvokeResponse(return_1: await _serializeAsync(result));
   }
 
   @override

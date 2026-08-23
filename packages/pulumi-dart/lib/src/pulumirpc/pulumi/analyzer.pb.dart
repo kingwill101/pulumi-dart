@@ -610,11 +610,13 @@ class AnalyzerResourceOptions_CustomTimeouts extends $pb.GeneratedMessage {
     $core.double? create_1,
     $core.double? update,
     $core.double? delete,
+    $core.double? read,
   }) {
     final result = create();
     if (create_1 != null) result.create_1 = create_1;
     if (update != null) result.update = update;
     if (delete != null) result.delete = delete;
+    if (read != null) result.read = read;
     return result;
   }
 
@@ -635,6 +637,7 @@ class AnalyzerResourceOptions_CustomTimeouts extends $pb.GeneratedMessage {
     ..aD(1, _omitFieldNames ? '' : 'create')
     ..aD(2, _omitFieldNames ? '' : 'update')
     ..aD(3, _omitFieldNames ? '' : 'delete')
+    ..aD(4, _omitFieldNames ? '' : 'read')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -686,6 +689,15 @@ class AnalyzerResourceOptions_CustomTimeouts extends $pb.GeneratedMessage {
   $core.bool hasDelete() => $_has(2);
   @$pb.TagNumber(3)
   void clearDelete() => $_clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.double get read => $_getN(3);
+  @$pb.TagNumber(4)
+  set read($core.double value) => $_setDouble(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasRead() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearRead() => $_clearField(4);
 }
 
 /// AnalyzerResourceOptions defines the options associated with a resource.

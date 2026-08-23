@@ -53,6 +53,7 @@ class _RecordingProvider extends Provider {
   String? readReturnId;
   Map<String, dynamic>? readReturnProps;
   Map<String, dynamic>? readReturnInputs;
+  ListResourcesRequest? listRequest;
 
   String? updateId;
   String? updateUrn;
@@ -98,6 +99,14 @@ class _RecordingProvider extends Provider {
   Future<ParameterizeResult> parameterizeArgs(List<String> args) async {
     parameterizedArgs = args;
     return const ParameterizeResult(name: 'args-subpkg', version: '1.0.0');
+  }
+
+  @override
+  Stream<ListResourcesResponse> list(ListResourcesRequest request) async* {
+    listRequest = request;
+    yield const ListResourcesResult(id: 'id-1', name: 'first');
+    yield const ListResourcesResult(id: 'id-2');
+    yield const ListResourcesContinuation('next-page');
   }
 
   @override
@@ -349,6 +358,12 @@ Input<dynamic> _inputWithDependency(dynamic value, String depUrn) {
 
 class _TestMonitor extends resourcegrpc.ResourceMonitorServiceBase {
   @override
+  Future<resourcepb.DeploymentInfo> getDeploymentInfo(
+    ServiceCall call,
+    Empty request,
+  ) async => resourcepb.DeploymentInfo();
+
+  @override
   Future<resourcepb.SupportsFeatureResponse> supportsFeature(
     ServiceCall call,
     resourcepb.SupportsFeatureRequest request,
@@ -357,7 +372,7 @@ class _TestMonitor extends resourcegrpc.ResourceMonitorServiceBase {
   }
 
   @override
-  Future<providerpb.InvokeResponse> invoke(
+  Future<resourcepb.ResourceInvokeResponse> invoke(
     ServiceCall call,
     resourcepb.ResourceInvokeRequest request,
   ) {
@@ -509,6 +524,7 @@ Future<providerpb.ConstructRequest> _newConstructRequest(
       create_1: '60s',
       update: '120s',
       delete: '180s',
+      read: '240s',
     ),
     ignoreChanges: <String>['ignored'],
     replaceOnChanges: <String>['force'],
@@ -1054,6 +1070,33 @@ void main() {
       },
     );
 
+    test('list streams provider results and continuation metadata', () async {
+      final provider = _RecordingProvider();
+      final server = ProviderServer(provider);
+
+      final responses = await server
+          .list(
+            call,
+            providerpb.ListRequest(
+              token: 'pkg:index:Thing',
+              query: await StructConverter.toStruct(<String, dynamic>{
+                'region': 'west',
+              }),
+              continuationToken: 'current-page',
+            ),
+          )
+          .toList();
+
+      expect(provider.listRequest?.token, equals('pkg:index:Thing'));
+      expect(provider.listRequest?.query['region'], equals('west'));
+      expect(provider.listRequest?.continuationToken, equals('current-page'));
+      expect(responses, hasLength(3));
+      expect(responses[0].result.id, equals('id-1'));
+      expect(responses[0].result.name, equals('first'));
+      expect(responses[1].result.id, equals('id-2'));
+      expect(responses[2].continuation.continuationToken, equals('next-page'));
+    });
+
     test('getSchema enforces version 0 and returns provider schema', () async {
       final server = ProviderServer(
         _RecordingProvider(schema: '{"name":"pkg"}'),
@@ -1346,6 +1389,7 @@ void main() {
         expect(options.retainOnDelete, isTrue);
         expect(options.deleteBeforeReplace, isTrue);
         expect(options.customTimeouts?.create, equals('60s'));
+        expect(options.customTimeouts?.read, equals('240s'));
         expect(options.providers.single.package, equals('aws'));
         expect(options.parent, isA<DependencyResource>());
         expect(options.deletedWith, isA<DependencyResource>());

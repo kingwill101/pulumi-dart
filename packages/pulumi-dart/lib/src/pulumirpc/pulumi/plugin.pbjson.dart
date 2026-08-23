@@ -117,6 +117,14 @@ const PackageDependency$json = {
       '6': '.pulumirpc.PackageParameterization',
       '10': 'parameterization'
     },
+    {
+      '1': 'extension',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.pulumirpc.PackageParameterization',
+      '10': 'extension'
+    },
   ],
   '3': [PackageDependency_ChecksumsEntry$json],
 };
@@ -137,5 +145,45 @@ final $typed_data.Uint8List packageDependencyDescriptor = $convert.base64Decode(
     'tpbmQSGAoHdmVyc2lvbhgDIAEoCVIHdmVyc2lvbhIWCgZzZXJ2ZXIYBCABKAlSBnNlcnZlchJJ'
     'CgljaGVja3N1bXMYBSADKAsyKy5wdWx1bWlycGMuUGFja2FnZURlcGVuZGVuY3kuQ2hlY2tzdW'
     '1zRW50cnlSCWNoZWNrc3VtcxJOChBwYXJhbWV0ZXJpemF0aW9uGAYgASgLMiIucHVsdW1pcnBj'
-    'LlBhY2thZ2VQYXJhbWV0ZXJpemF0aW9uUhBwYXJhbWV0ZXJpemF0aW9uGjwKDkNoZWNrc3Vtc0'
-    'VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgMUgV2YWx1ZToCOAE=');
+    'LlBhY2thZ2VQYXJhbWV0ZXJpemF0aW9uUhBwYXJhbWV0ZXJpemF0aW9uEkAKCWV4dGVuc2lvbh'
+    'gHIAEoCzIiLnB1bHVtaXJwYy5QYWNrYWdlUGFyYW1ldGVyaXphdGlvblIJZXh0ZW5zaW9uGjwK'
+    'DkNoZWNrc3Vtc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgMUgV2YWx1ZT'
+    'oCOAE=');
+
+@$core.Deprecated('Use packageSpecDescriptor instead')
+const PackageSpec$json = {
+  '1': 'PackageSpec',
+  '2': [
+    {'1': 'source', '3': 1, '4': 1, '5': 9, '10': 'source'},
+    {'1': 'version', '3': 2, '4': 1, '5': 9, '10': 'version'},
+    {'1': 'parameters', '3': 3, '4': 3, '5': 9, '10': 'parameters'},
+    {
+      '1': 'checksums',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.pulumirpc.PackageSpec.ChecksumsEntry',
+      '10': 'checksums'
+    },
+    {'1': 'server', '3': 5, '4': 1, '5': 9, '10': 'server'},
+  ],
+  '3': [PackageSpec_ChecksumsEntry$json],
+};
+
+@$core.Deprecated('Use packageSpecDescriptor instead')
+const PackageSpec_ChecksumsEntry$json = {
+  '1': 'ChecksumsEntry',
+  '2': [
+    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    {'1': 'value', '3': 2, '4': 1, '5': 12, '10': 'value'},
+  ],
+  '7': {'7': true},
+};
+
+/// Descriptor for `PackageSpec`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List packageSpecDescriptor = $convert.base64Decode(
+    'CgtQYWNrYWdlU3BlYxIWCgZzb3VyY2UYASABKAlSBnNvdXJjZRIYCgd2ZXJzaW9uGAIgASgJUg'
+    'd2ZXJzaW9uEh4KCnBhcmFtZXRlcnMYAyADKAlSCnBhcmFtZXRlcnMSQwoJY2hlY2tzdW1zGAQg'
+    'AygLMiUucHVsdW1pcnBjLlBhY2thZ2VTcGVjLkNoZWNrc3Vtc0VudHJ5UgljaGVja3N1bXMSFg'
+    'oGc2VydmVyGAUgASgJUgZzZXJ2ZXIaPAoOQ2hlY2tzdW1zRW50cnkSEAoDa2V5GAEgASgJUgNr'
+    'ZXkSFAoFdmFsdWUYAiABKAxSBXZhbHVlOgI4AQ==');

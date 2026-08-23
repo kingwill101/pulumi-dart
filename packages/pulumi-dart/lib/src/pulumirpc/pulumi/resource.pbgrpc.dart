@@ -15,11 +15,11 @@ import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
-import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart' as $2;
+import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart' as $0;
 
 import 'callback.pb.dart' as $3;
-import 'provider.pb.dart' as $1;
-import 'resource.pb.dart' as $0;
+import 'provider.pb.dart' as $2;
+import 'resource.pb.dart' as $1;
 
 export 'resource.pb.dart';
 
@@ -36,43 +36,59 @@ class ResourceMonitorClient extends $grpc.Client {
 
   ResourceMonitorClient(super.channel, {super.options, super.interceptors});
 
-  $grpc.ResponseFuture<$0.SupportsFeatureResponse> supportsFeature(
-    $0.SupportsFeatureRequest request, {
+  /// GetDeploymentInfo returns the execution context associated with this monitor instance.
+  ///
+  /// This is an additive API intended to reduce duplicated state passed through
+  /// environment variables and per-request protobuf fields. New clients should
+  /// prefer this over piecemeal feature probing via SupportsFeature.
+  ///
+  /// Backward compatibility:
+  /// - Older monitors may not implement this RPC and will return UNIMPLEMENTED.
+  /// - Clients should fall back to existing request fields/env vars/SupportsFeature.
+  $grpc.ResponseFuture<$1.DeploymentInfo> getDeploymentInfo(
+    $0.Empty request, {
+    $grpc.CallOptions? options,
+  }) {
+    return $createUnaryCall(_$getDeploymentInfo, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.SupportsFeatureResponse> supportsFeature(
+    $1.SupportsFeatureRequest request, {
     $grpc.CallOptions? options,
   }) {
     return $createUnaryCall(_$supportsFeature, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.InvokeResponse> invoke(
-    $0.ResourceInvokeRequest request, {
+  $grpc.ResponseFuture<$1.ResourceInvokeResponse> invoke(
+    $1.ResourceInvokeRequest request, {
     $grpc.CallOptions? options,
   }) {
     return $createUnaryCall(_$invoke, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.CallResponse> call(
-    $0.ResourceCallRequest request, {
+  $grpc.ResponseFuture<$2.CallResponse> call(
+    $1.ResourceCallRequest request, {
     $grpc.CallOptions? options,
   }) {
     return $createUnaryCall(_$call, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.ReadResourceResponse> readResource(
-    $0.ReadResourceRequest request, {
+  $grpc.ResponseFuture<$1.ReadResourceResponse> readResource(
+    $1.ReadResourceRequest request, {
     $grpc.CallOptions? options,
   }) {
     return $createUnaryCall(_$readResource, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.RegisterResourceResponse> registerResource(
-    $0.RegisterResourceRequest request, {
+  $grpc.ResponseFuture<$1.RegisterResourceResponse> registerResource(
+    $1.RegisterResourceRequest request, {
     $grpc.CallOptions? options,
   }) {
     return $createUnaryCall(_$registerResource, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.Empty> registerResourceOutputs(
-    $0.RegisterResourceOutputsRequest request, {
+  $grpc.ResponseFuture<$0.Empty> registerResourceOutputs(
+    $1.RegisterResourceOutputsRequest request, {
     $grpc.CallOptions? options,
   }) {
     return $createUnaryCall(_$registerResourceOutputs, request,
@@ -80,7 +96,7 @@ class ResourceMonitorClient extends $grpc.Client {
   }
 
   /// Register a resource transform for the stack
-  $grpc.ResponseFuture<$2.Empty> registerStackTransform(
+  $grpc.ResponseFuture<$0.Empty> registerStackTransform(
     $3.Callback request, {
     $grpc.CallOptions? options,
   }) {
@@ -89,7 +105,7 @@ class ResourceMonitorClient extends $grpc.Client {
   }
 
   /// Register an invoke transform for the stack
-  $grpc.ResponseFuture<$2.Empty> registerStackInvokeTransform(
+  $grpc.ResponseFuture<$0.Empty> registerStackInvokeTransform(
     $3.Callback request, {
     $grpc.CallOptions? options,
   }) {
@@ -99,8 +115,8 @@ class ResourceMonitorClient extends $grpc.Client {
 
   /// Register a resource hook that can be called by the engine during certain
   /// steps of a resource's lifecycle.
-  $grpc.ResponseFuture<$2.Empty> registerResourceHook(
-    $0.RegisterResourceHookRequest request, {
+  $grpc.ResponseFuture<$0.Empty> registerResourceHook(
+    $1.RegisterResourceHookRequest request, {
     $grpc.CallOptions? options,
   }) {
     return $createUnaryCall(_$registerResourceHook, request, options: options);
@@ -109,8 +125,8 @@ class ResourceMonitorClient extends $grpc.Client {
   /// Register an error hook that can be called by the engine when an operation fails and is retryable.
   ///
   /// Error hooks are a separate type of hook to other life cycle hooks as they have different inputs and outputs.
-  $grpc.ResponseFuture<$2.Empty> registerErrorHook(
-    $0.RegisterErrorHookRequest request, {
+  $grpc.ResponseFuture<$0.Empty> registerErrorHook(
+    $1.RegisterErrorHookRequest request, {
     $grpc.CallOptions? options,
   }) {
     return $createUnaryCall(_$registerErrorHook, request, options: options);
@@ -118,8 +134,8 @@ class ResourceMonitorClient extends $grpc.Client {
 
   /// Registers a package and allocates a packageRef. The same package can be registered multiple times in Pulumi.
   /// Multiple requests are idempotent and guaranteed to return the same result.
-  $grpc.ResponseFuture<$0.RegisterPackageResponse> registerPackage(
-    $0.RegisterPackageRequest request, {
+  $grpc.ResponseFuture<$1.RegisterPackageResponse> registerPackage(
+    $1.RegisterPackageRequest request, {
     $grpc.CallOptions? options,
   }) {
     return $createUnaryCall(_$registerPackage, request, options: options);
@@ -131,8 +147,8 @@ class ResourceMonitorClient extends $grpc.Client {
   /// the language runtime to stay running and handle callback requests, even
   /// after the user program has completed. Runtime SDKs should call this after
   /// executing the user's program. This can only be called once.
-  $grpc.ResponseFuture<$2.Empty> signalAndWaitForShutdown(
-    $2.Empty request, {
+  $grpc.ResponseFuture<$0.Empty> signalAndWaitForShutdown(
+    $0.Empty request, {
     $grpc.CallOptions? options,
   }) {
     return $createUnaryCall(_$signalAndWaitForShutdown, request,
@@ -141,66 +157,71 @@ class ResourceMonitorClient extends $grpc.Client {
 
   // method descriptors
 
+  static final _$getDeploymentInfo =
+      $grpc.ClientMethod<$0.Empty, $1.DeploymentInfo>(
+          '/pulumirpc.ResourceMonitor/GetDeploymentInfo',
+          ($0.Empty value) => value.writeToBuffer(),
+          $1.DeploymentInfo.fromBuffer);
   static final _$supportsFeature =
-      $grpc.ClientMethod<$0.SupportsFeatureRequest, $0.SupportsFeatureResponse>(
+      $grpc.ClientMethod<$1.SupportsFeatureRequest, $1.SupportsFeatureResponse>(
           '/pulumirpc.ResourceMonitor/SupportsFeature',
-          ($0.SupportsFeatureRequest value) => value.writeToBuffer(),
-          $0.SupportsFeatureResponse.fromBuffer);
+          ($1.SupportsFeatureRequest value) => value.writeToBuffer(),
+          $1.SupportsFeatureResponse.fromBuffer);
   static final _$invoke =
-      $grpc.ClientMethod<$0.ResourceInvokeRequest, $1.InvokeResponse>(
+      $grpc.ClientMethod<$1.ResourceInvokeRequest, $1.ResourceInvokeResponse>(
           '/pulumirpc.ResourceMonitor/Invoke',
-          ($0.ResourceInvokeRequest value) => value.writeToBuffer(),
-          $1.InvokeResponse.fromBuffer);
+          ($1.ResourceInvokeRequest value) => value.writeToBuffer(),
+          $1.ResourceInvokeResponse.fromBuffer);
   static final _$call =
-      $grpc.ClientMethod<$0.ResourceCallRequest, $1.CallResponse>(
+      $grpc.ClientMethod<$1.ResourceCallRequest, $2.CallResponse>(
           '/pulumirpc.ResourceMonitor/Call',
-          ($0.ResourceCallRequest value) => value.writeToBuffer(),
-          $1.CallResponse.fromBuffer);
+          ($1.ResourceCallRequest value) => value.writeToBuffer(),
+          $2.CallResponse.fromBuffer);
   static final _$readResource =
-      $grpc.ClientMethod<$0.ReadResourceRequest, $0.ReadResourceResponse>(
+      $grpc.ClientMethod<$1.ReadResourceRequest, $1.ReadResourceResponse>(
           '/pulumirpc.ResourceMonitor/ReadResource',
-          ($0.ReadResourceRequest value) => value.writeToBuffer(),
-          $0.ReadResourceResponse.fromBuffer);
+          ($1.ReadResourceRequest value) => value.writeToBuffer(),
+          $1.ReadResourceResponse.fromBuffer);
   static final _$registerResource = $grpc.ClientMethod<
-          $0.RegisterResourceRequest, $0.RegisterResourceResponse>(
+          $1.RegisterResourceRequest, $1.RegisterResourceResponse>(
       '/pulumirpc.ResourceMonitor/RegisterResource',
-      ($0.RegisterResourceRequest value) => value.writeToBuffer(),
-      $0.RegisterResourceResponse.fromBuffer);
+      ($1.RegisterResourceRequest value) => value.writeToBuffer(),
+      $1.RegisterResourceResponse.fromBuffer);
   static final _$registerResourceOutputs =
-      $grpc.ClientMethod<$0.RegisterResourceOutputsRequest, $2.Empty>(
+      $grpc.ClientMethod<$1.RegisterResourceOutputsRequest, $0.Empty>(
           '/pulumirpc.ResourceMonitor/RegisterResourceOutputs',
-          ($0.RegisterResourceOutputsRequest value) => value.writeToBuffer(),
-          $2.Empty.fromBuffer);
+          ($1.RegisterResourceOutputsRequest value) => value.writeToBuffer(),
+          $0.Empty.fromBuffer);
   static final _$registerStackTransform =
-      $grpc.ClientMethod<$3.Callback, $2.Empty>(
+      $grpc.ClientMethod<$3.Callback, $0.Empty>(
           '/pulumirpc.ResourceMonitor/RegisterStackTransform',
           ($3.Callback value) => value.writeToBuffer(),
-          $2.Empty.fromBuffer);
+          $0.Empty.fromBuffer);
   static final _$registerStackInvokeTransform =
-      $grpc.ClientMethod<$3.Callback, $2.Empty>(
+      $grpc.ClientMethod<$3.Callback, $0.Empty>(
           '/pulumirpc.ResourceMonitor/RegisterStackInvokeTransform',
           ($3.Callback value) => value.writeToBuffer(),
-          $2.Empty.fromBuffer);
+          $0.Empty.fromBuffer);
   static final _$registerResourceHook =
-      $grpc.ClientMethod<$0.RegisterResourceHookRequest, $2.Empty>(
+      $grpc.ClientMethod<$1.RegisterResourceHookRequest, $0.Empty>(
           '/pulumirpc.ResourceMonitor/RegisterResourceHook',
-          ($0.RegisterResourceHookRequest value) => value.writeToBuffer(),
-          $2.Empty.fromBuffer);
+          ($1.RegisterResourceHookRequest value) => value.writeToBuffer(),
+          $0.Empty.fromBuffer);
   static final _$registerErrorHook =
-      $grpc.ClientMethod<$0.RegisterErrorHookRequest, $2.Empty>(
+      $grpc.ClientMethod<$1.RegisterErrorHookRequest, $0.Empty>(
           '/pulumirpc.ResourceMonitor/RegisterErrorHook',
-          ($0.RegisterErrorHookRequest value) => value.writeToBuffer(),
-          $2.Empty.fromBuffer);
+          ($1.RegisterErrorHookRequest value) => value.writeToBuffer(),
+          $0.Empty.fromBuffer);
   static final _$registerPackage =
-      $grpc.ClientMethod<$0.RegisterPackageRequest, $0.RegisterPackageResponse>(
+      $grpc.ClientMethod<$1.RegisterPackageRequest, $1.RegisterPackageResponse>(
           '/pulumirpc.ResourceMonitor/RegisterPackage',
-          ($0.RegisterPackageRequest value) => value.writeToBuffer(),
-          $0.RegisterPackageResponse.fromBuffer);
+          ($1.RegisterPackageRequest value) => value.writeToBuffer(),
+          $1.RegisterPackageResponse.fromBuffer);
   static final _$signalAndWaitForShutdown =
-      $grpc.ClientMethod<$2.Empty, $2.Empty>(
+      $grpc.ClientMethod<$0.Empty, $0.Empty>(
           '/pulumirpc.ResourceMonitor/SignalAndWaitForShutdown',
-          ($2.Empty value) => value.writeToBuffer(),
-          $2.Empty.fromBuffer);
+          ($0.Empty value) => value.writeToBuffer(),
+          $0.Empty.fromBuffer);
 }
 
 @$pb.GrpcServiceName('pulumirpc.ResourceMonitor')
@@ -208,202 +229,218 @@ abstract class ResourceMonitorServiceBase extends $grpc.Service {
   $core.String get $name => 'pulumirpc.ResourceMonitor';
 
   ResourceMonitorServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.SupportsFeatureRequest,
-            $0.SupportsFeatureResponse>(
+    $addMethod($grpc.ServiceMethod<$0.Empty, $1.DeploymentInfo>(
+        'GetDeploymentInfo',
+        getDeploymentInfo_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($1.DeploymentInfo value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.SupportsFeatureRequest,
+            $1.SupportsFeatureResponse>(
         'SupportsFeature',
         supportsFeature_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $0.SupportsFeatureRequest.fromBuffer(value),
-        ($0.SupportsFeatureResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.ResourceInvokeRequest, $1.InvokeResponse>(
+            $1.SupportsFeatureRequest.fromBuffer(value),
+        ($1.SupportsFeatureResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.ResourceInvokeRequest,
+            $1.ResourceInvokeResponse>(
         'Invoke',
         invoke_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $0.ResourceInvokeRequest.fromBuffer(value),
-        ($1.InvokeResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.ResourceCallRequest, $1.CallResponse>(
+            $1.ResourceInvokeRequest.fromBuffer(value),
+        ($1.ResourceInvokeResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.ResourceCallRequest, $2.CallResponse>(
         'Call',
         call_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $0.ResourceCallRequest.fromBuffer(value),
-        ($1.CallResponse value) => value.writeToBuffer()));
+            $1.ResourceCallRequest.fromBuffer(value),
+        ($2.CallResponse value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$0.ReadResourceRequest, $0.ReadResourceResponse>(
+        $grpc.ServiceMethod<$1.ReadResourceRequest, $1.ReadResourceResponse>(
             'ReadResource',
             readResource_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $0.ReadResourceRequest.fromBuffer(value),
-            ($0.ReadResourceResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.RegisterResourceRequest,
-            $0.RegisterResourceResponse>(
+                $1.ReadResourceRequest.fromBuffer(value),
+            ($1.ReadResourceResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.RegisterResourceRequest,
+            $1.RegisterResourceResponse>(
         'RegisterResource',
         registerResource_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $0.RegisterResourceRequest.fromBuffer(value),
-        ($0.RegisterResourceResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.RegisterResourceOutputsRequest, $2.Empty>(
+            $1.RegisterResourceRequest.fromBuffer(value),
+        ($1.RegisterResourceResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.RegisterResourceOutputsRequest, $0.Empty>(
         'RegisterResourceOutputs',
         registerResourceOutputs_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $0.RegisterResourceOutputsRequest.fromBuffer(value),
-        ($2.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.Callback, $2.Empty>(
+            $1.RegisterResourceOutputsRequest.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.Callback, $0.Empty>(
         'RegisterStackTransform',
         registerStackTransform_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $3.Callback.fromBuffer(value),
-        ($2.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.Callback, $2.Empty>(
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.Callback, $0.Empty>(
         'RegisterStackInvokeTransform',
         registerStackInvokeTransform_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $3.Callback.fromBuffer(value),
-        ($2.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.RegisterResourceHookRequest, $2.Empty>(
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.RegisterResourceHookRequest, $0.Empty>(
         'RegisterResourceHook',
         registerResourceHook_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $0.RegisterResourceHookRequest.fromBuffer(value),
-        ($2.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.RegisterErrorHookRequest, $2.Empty>(
+            $1.RegisterResourceHookRequest.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.RegisterErrorHookRequest, $0.Empty>(
         'RegisterErrorHook',
         registerErrorHook_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $0.RegisterErrorHookRequest.fromBuffer(value),
-        ($2.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.RegisterPackageRequest,
-            $0.RegisterPackageResponse>(
+            $1.RegisterErrorHookRequest.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.RegisterPackageRequest,
+            $1.RegisterPackageResponse>(
         'RegisterPackage',
         registerPackage_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $0.RegisterPackageRequest.fromBuffer(value),
-        ($0.RegisterPackageResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.Empty, $2.Empty>(
+            $1.RegisterPackageRequest.fromBuffer(value),
+        ($1.RegisterPackageResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Empty, $0.Empty>(
         'SignalAndWaitForShutdown',
         signalAndWaitForShutdown_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $2.Empty.fromBuffer(value),
-        ($2.Empty value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.SupportsFeatureResponse> supportsFeature_Pre(
+  $async.Future<$1.DeploymentInfo> getDeploymentInfo_Pre(
+      $grpc.ServiceCall $call, $async.Future<$0.Empty> $request) async {
+    return getDeploymentInfo($call, await $request);
+  }
+
+  $async.Future<$1.DeploymentInfo> getDeploymentInfo(
+      $grpc.ServiceCall call, $0.Empty request);
+
+  $async.Future<$1.SupportsFeatureResponse> supportsFeature_Pre(
       $grpc.ServiceCall $call,
-      $async.Future<$0.SupportsFeatureRequest> $request) async {
+      $async.Future<$1.SupportsFeatureRequest> $request) async {
     return supportsFeature($call, await $request);
   }
 
-  $async.Future<$0.SupportsFeatureResponse> supportsFeature(
-      $grpc.ServiceCall call, $0.SupportsFeatureRequest request);
+  $async.Future<$1.SupportsFeatureResponse> supportsFeature(
+      $grpc.ServiceCall call, $1.SupportsFeatureRequest request);
 
-  $async.Future<$1.InvokeResponse> invoke_Pre($grpc.ServiceCall $call,
-      $async.Future<$0.ResourceInvokeRequest> $request) async {
+  $async.Future<$1.ResourceInvokeResponse> invoke_Pre($grpc.ServiceCall $call,
+      $async.Future<$1.ResourceInvokeRequest> $request) async {
     return invoke($call, await $request);
   }
 
-  $async.Future<$1.InvokeResponse> invoke(
-      $grpc.ServiceCall call, $0.ResourceInvokeRequest request);
+  $async.Future<$1.ResourceInvokeResponse> invoke(
+      $grpc.ServiceCall call, $1.ResourceInvokeRequest request);
 
-  $async.Future<$1.CallResponse> call_Pre($grpc.ServiceCall $call,
-      $async.Future<$0.ResourceCallRequest> $request) async {
+  $async.Future<$2.CallResponse> call_Pre($grpc.ServiceCall $call,
+      $async.Future<$1.ResourceCallRequest> $request) async {
     return call($call, await $request);
   }
 
-  $async.Future<$1.CallResponse> call(
-      $grpc.ServiceCall call, $0.ResourceCallRequest request);
+  $async.Future<$2.CallResponse> call(
+      $grpc.ServiceCall call, $1.ResourceCallRequest request);
 
-  $async.Future<$0.ReadResourceResponse> readResource_Pre(
+  $async.Future<$1.ReadResourceResponse> readResource_Pre(
       $grpc.ServiceCall $call,
-      $async.Future<$0.ReadResourceRequest> $request) async {
+      $async.Future<$1.ReadResourceRequest> $request) async {
     return readResource($call, await $request);
   }
 
-  $async.Future<$0.ReadResourceResponse> readResource(
-      $grpc.ServiceCall call, $0.ReadResourceRequest request);
+  $async.Future<$1.ReadResourceResponse> readResource(
+      $grpc.ServiceCall call, $1.ReadResourceRequest request);
 
-  $async.Future<$0.RegisterResourceResponse> registerResource_Pre(
+  $async.Future<$1.RegisterResourceResponse> registerResource_Pre(
       $grpc.ServiceCall $call,
-      $async.Future<$0.RegisterResourceRequest> $request) async {
+      $async.Future<$1.RegisterResourceRequest> $request) async {
     return registerResource($call, await $request);
   }
 
-  $async.Future<$0.RegisterResourceResponse> registerResource(
-      $grpc.ServiceCall call, $0.RegisterResourceRequest request);
+  $async.Future<$1.RegisterResourceResponse> registerResource(
+      $grpc.ServiceCall call, $1.RegisterResourceRequest request);
 
-  $async.Future<$2.Empty> registerResourceOutputs_Pre($grpc.ServiceCall $call,
-      $async.Future<$0.RegisterResourceOutputsRequest> $request) async {
+  $async.Future<$0.Empty> registerResourceOutputs_Pre($grpc.ServiceCall $call,
+      $async.Future<$1.RegisterResourceOutputsRequest> $request) async {
     return registerResourceOutputs($call, await $request);
   }
 
-  $async.Future<$2.Empty> registerResourceOutputs(
-      $grpc.ServiceCall call, $0.RegisterResourceOutputsRequest request);
+  $async.Future<$0.Empty> registerResourceOutputs(
+      $grpc.ServiceCall call, $1.RegisterResourceOutputsRequest request);
 
-  $async.Future<$2.Empty> registerStackTransform_Pre(
+  $async.Future<$0.Empty> registerStackTransform_Pre(
       $grpc.ServiceCall $call, $async.Future<$3.Callback> $request) async {
     return registerStackTransform($call, await $request);
   }
 
-  $async.Future<$2.Empty> registerStackTransform(
+  $async.Future<$0.Empty> registerStackTransform(
       $grpc.ServiceCall call, $3.Callback request);
 
-  $async.Future<$2.Empty> registerStackInvokeTransform_Pre(
+  $async.Future<$0.Empty> registerStackInvokeTransform_Pre(
       $grpc.ServiceCall $call, $async.Future<$3.Callback> $request) async {
     return registerStackInvokeTransform($call, await $request);
   }
 
-  $async.Future<$2.Empty> registerStackInvokeTransform(
+  $async.Future<$0.Empty> registerStackInvokeTransform(
       $grpc.ServiceCall call, $3.Callback request);
 
-  $async.Future<$2.Empty> registerResourceHook_Pre($grpc.ServiceCall $call,
-      $async.Future<$0.RegisterResourceHookRequest> $request) async {
+  $async.Future<$0.Empty> registerResourceHook_Pre($grpc.ServiceCall $call,
+      $async.Future<$1.RegisterResourceHookRequest> $request) async {
     return registerResourceHook($call, await $request);
   }
 
-  $async.Future<$2.Empty> registerResourceHook(
-      $grpc.ServiceCall call, $0.RegisterResourceHookRequest request);
+  $async.Future<$0.Empty> registerResourceHook(
+      $grpc.ServiceCall call, $1.RegisterResourceHookRequest request);
 
-  $async.Future<$2.Empty> registerErrorHook_Pre($grpc.ServiceCall $call,
-      $async.Future<$0.RegisterErrorHookRequest> $request) async {
+  $async.Future<$0.Empty> registerErrorHook_Pre($grpc.ServiceCall $call,
+      $async.Future<$1.RegisterErrorHookRequest> $request) async {
     return registerErrorHook($call, await $request);
   }
 
-  $async.Future<$2.Empty> registerErrorHook(
-      $grpc.ServiceCall call, $0.RegisterErrorHookRequest request);
+  $async.Future<$0.Empty> registerErrorHook(
+      $grpc.ServiceCall call, $1.RegisterErrorHookRequest request);
 
-  $async.Future<$0.RegisterPackageResponse> registerPackage_Pre(
+  $async.Future<$1.RegisterPackageResponse> registerPackage_Pre(
       $grpc.ServiceCall $call,
-      $async.Future<$0.RegisterPackageRequest> $request) async {
+      $async.Future<$1.RegisterPackageRequest> $request) async {
     return registerPackage($call, await $request);
   }
 
-  $async.Future<$0.RegisterPackageResponse> registerPackage(
-      $grpc.ServiceCall call, $0.RegisterPackageRequest request);
+  $async.Future<$1.RegisterPackageResponse> registerPackage(
+      $grpc.ServiceCall call, $1.RegisterPackageRequest request);
 
-  $async.Future<$2.Empty> signalAndWaitForShutdown_Pre(
-      $grpc.ServiceCall $call, $async.Future<$2.Empty> $request) async {
+  $async.Future<$0.Empty> signalAndWaitForShutdown_Pre(
+      $grpc.ServiceCall $call, $async.Future<$0.Empty> $request) async {
     return signalAndWaitForShutdown($call, await $request);
   }
 
-  $async.Future<$2.Empty> signalAndWaitForShutdown(
-      $grpc.ServiceCall call, $2.Empty request);
+  $async.Future<$0.Empty> signalAndWaitForShutdown(
+      $grpc.ServiceCall call, $0.Empty request);
 }

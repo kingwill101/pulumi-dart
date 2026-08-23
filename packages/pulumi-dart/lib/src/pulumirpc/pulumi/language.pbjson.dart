@@ -288,6 +288,14 @@ const GetRequiredPackagesResponse$json = {
       '6': '.pulumirpc.PackageDependency',
       '10': 'packages'
     },
+    {
+      '1': 'specs',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.pulumirpc.PackageSpec',
+      '10': 'specs'
+    },
   ],
 };
 
@@ -295,7 +303,8 @@ const GetRequiredPackagesResponse$json = {
 final $typed_data.Uint8List getRequiredPackagesResponseDescriptor =
     $convert.base64Decode(
         'ChtHZXRSZXF1aXJlZFBhY2thZ2VzUmVzcG9uc2USOAoIcGFja2FnZXMYASADKAsyHC5wdWx1bW'
-        'lycGMuUGFja2FnZURlcGVuZGVuY3lSCHBhY2thZ2Vz');
+        'lycGMuUGFja2FnZURlcGVuZGVuY3lSCHBhY2thZ2VzEiwKBXNwZWNzGAIgAygLMhYucHVsdW1p'
+        'cnBjLlBhY2thZ2VTcGVjUgVzcGVjcw==');
 
 @$core.Deprecated('Use runRequestDescriptor instead')
 const RunRequest$json = {
@@ -359,6 +368,7 @@ const RunRequest$json = {
     },
     {'1': 'loader_target', '3': 15, '4': 1, '5': 9, '10': 'loaderTarget'},
     {'1': 'attach_debugger', '3': 16, '4': 1, '5': 8, '10': 'attachDebugger'},
+    {'1': 'mapper_target', '3': 17, '4': 1, '5': 9, '10': 'mapperTarget'},
   ],
   '3': [RunRequest_ConfigEntry$json],
 };
@@ -385,8 +395,9 @@ final $typed_data.Uint8List runRequestDescriptor = $convert.base64Decode(
     'phdGlvbhJJChFjb25maWdQcm9wZXJ0eU1hcBgNIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1'
     'Y3RCAhgBUhFjb25maWdQcm9wZXJ0eU1hcBIqCgRpbmZvGA4gASgLMhYucHVsdW1pcnBjLlByb2'
     'dyYW1JbmZvUgRpbmZvEiMKDWxvYWRlcl90YXJnZXQYDyABKAlSDGxvYWRlclRhcmdldBInCg9h'
-    'dHRhY2hfZGVidWdnZXIYECABKAhSDmF0dGFjaERlYnVnZ2VyGjkKC0NvbmZpZ0VudHJ5EhAKA2'
-    'tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgJUgV2YWx1ZToCOAE=');
+    'dHRhY2hfZGVidWdnZXIYECABKAhSDmF0dGFjaERlYnVnZ2VyEiMKDW1hcHBlcl90YXJnZXQYES'
+    'ABKAlSDG1hcHBlclRhcmdldBo5CgtDb25maWdFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2'
+    'YWx1ZRgCIAEoCVIFdmFsdWU6AjgB');
 
 @$core.Deprecated('Use runResponseDescriptor instead')
 const RunResponse$json = {

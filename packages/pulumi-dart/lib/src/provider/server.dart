@@ -145,6 +145,46 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
   }
 
   @override
+  Stream<providerpb.ListResponse> list(
+    ServiceCall call,
+    providerpb.ListRequest request,
+  ) async* {
+    final query = request.hasQuery()
+        ? StructConverter.fromStruct(request.query)
+        : <String, dynamic>{};
+    final providerRequest = ListResourcesRequest(
+      token: request.token,
+      query: query,
+      limit: request.hasLimit() ? request.limit.toInt() : null,
+      pageSize: request.hasPageSize() ? request.pageSize.toInt() : null,
+      continuationToken: request.hasContinuationToken()
+          ? request.continuationToken
+          : null,
+    );
+
+    try {
+      await for (final response in provider.list(providerRequest)) {
+        yield switch (response) {
+          ListResourcesComputed() => providerpb.ListResponse(
+            computed: providerpb.ListResponse_Computed(),
+          ),
+          ListResourcesResult(:final id, :final name) =>
+            providerpb.ListResponse(
+              result: providerpb.ListResponse_Result(id: id, name: name),
+            ),
+          ListResourcesContinuation(:final token) => providerpb.ListResponse(
+            continuation: providerpb.ListResponse_Continuation(
+              continuationToken: token,
+            ),
+          ),
+        };
+      }
+    } on UnsupportedProviderOperationError catch (error) {
+      throw GrpcError.unimplemented(error.toString());
+    }
+  }
+
+  @override
   Future<providerpb.ProviderHandshakeResponse> handshake(
     ServiceCall call,
     providerpb.ProviderHandshakeRequest request,
@@ -654,6 +694,9 @@ class ProviderServer extends providergrpc.ResourceProviderServiceBase {
             delete: request.customTimeouts.delete.isEmpty
                 ? null
                 : request.customTimeouts.delete,
+            read: request.customTimeouts.read.isEmpty
+                ? null
+                : request.customTimeouts.read,
           )
         : null;
 

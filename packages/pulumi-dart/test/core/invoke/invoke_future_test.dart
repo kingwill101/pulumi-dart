@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart';
 import 'package:pulumi/src/monitor.dart' as monitorpkg;
-import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart';
 import 'package:pulumi/src/struct_converter.dart';
 import 'package:test/test.dart';
@@ -20,10 +19,10 @@ class _InvokeFutureMonitor extends BaseMonitor {
   }
 
   @override
-  Future<InvokeResponse> invoke(ResourceInvokeRequest request) async {
+  Future<ResourceInvokeResponse> invoke(ResourceInvokeRequest request) async {
     invokeCount++;
     lastInvokeRequest = request;
-    return InvokeResponse(
+    return ResourceInvokeResponse(
       return_1: await StructConverter.toStruct(const {'value': 42}),
     );
   }

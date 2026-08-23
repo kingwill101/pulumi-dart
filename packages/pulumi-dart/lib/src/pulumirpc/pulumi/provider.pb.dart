@@ -12,6 +12,7 @@
 
 import 'dart:core' as $core;
 
+import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart' as $3;
 
@@ -32,6 +33,10 @@ class ProviderHandshakeRequest extends $pb.GeneratedMessage {
     $core.bool? supportsViews,
     $core.bool? supportsRefreshBeforeUpdate,
     $core.bool? invokeWithPreview,
+    $core.String? mapperTarget,
+    $core.String? loaderTarget,
+    $core.String? resolverTarget,
+    $core.bool? acceptsByteString,
   }) {
     final result = create();
     if (engineAddress != null) result.engineAddress = engineAddress;
@@ -42,6 +47,10 @@ class ProviderHandshakeRequest extends $pb.GeneratedMessage {
     if (supportsRefreshBeforeUpdate != null)
       result.supportsRefreshBeforeUpdate = supportsRefreshBeforeUpdate;
     if (invokeWithPreview != null) result.invokeWithPreview = invokeWithPreview;
+    if (mapperTarget != null) result.mapperTarget = mapperTarget;
+    if (loaderTarget != null) result.loaderTarget = loaderTarget;
+    if (resolverTarget != null) result.resolverTarget = resolverTarget;
+    if (acceptsByteString != null) result.acceptsByteString = acceptsByteString;
     return result;
   }
 
@@ -65,6 +74,10 @@ class ProviderHandshakeRequest extends $pb.GeneratedMessage {
     ..aOB(5, _omitFieldNames ? '' : 'supportsViews')
     ..aOB(6, _omitFieldNames ? '' : 'supportsRefreshBeforeUpdate')
     ..aOB(7, _omitFieldNames ? '' : 'invokeWithPreview')
+    ..aOS(8, _omitFieldNames ? '' : 'mapperTarget')
+    ..aOS(9, _omitFieldNames ? '' : 'loaderTarget')
+    ..aOS(10, _omitFieldNames ? '' : 'resolverTarget')
+    ..aOB(11, _omitFieldNames ? '' : 'acceptsByteString')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -163,6 +176,51 @@ class ProviderHandshakeRequest extends $pb.GeneratedMessage {
   $core.bool hasInvokeWithPreview() => $_has(6);
   @$pb.TagNumber(7)
   void clearInvokeWithPreview() => $_clearField(7);
+
+  /// The target of a [](codegen.Mapper) service the provider can use to retrieve mappings from other ecosystems to
+  /// Pulumi. May be empty on older engines.
+  @$pb.TagNumber(8)
+  $core.String get mapperTarget => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set mapperTarget($core.String value) => $_setString(7, value);
+  @$pb.TagNumber(8)
+  $core.bool hasMapperTarget() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearMapperTarget() => $_clearField(8);
+
+  /// The target of a [](codegen.Loader) service the provider can use to load the schemas of other Pulumi packages.
+  /// May be empty on older engines.
+  @$pb.TagNumber(9)
+  $core.String get loaderTarget => $_getSZ(8);
+  @$pb.TagNumber(9)
+  set loaderTarget($core.String value) => $_setString(8, value);
+  @$pb.TagNumber(9)
+  $core.bool hasLoaderTarget() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearLoaderTarget() => $_clearField(9);
+
+  /// The target of a [](pulumirpc.PackageResolver) service the provider can use to resolve package specifications to
+  /// concrete package dependencies. May be empty on older engines.
+  @$pb.TagNumber(10)
+  $core.String get resolverTarget => $_getSZ(9);
+  @$pb.TagNumber(10)
+  set resolverTarget($core.String value) => $_setString(9, value);
+  @$pb.TagNumber(10)
+  $core.bool hasResolverTarget() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearResolverTarget() => $_clearField(10);
+
+  /// True if and only if the engine supports strings containing bytes that are not valid UTF-8, marshaled as objects
+  /// carrying the byte string signature and a base64 encoding of the string's bytes. If true, the provider may
+  /// return such values to the engine.
+  @$pb.TagNumber(11)
+  $core.bool get acceptsByteString => $_getBF(10);
+  @$pb.TagNumber(11)
+  set acceptsByteString($core.bool value) => $_setBool(10, value);
+  @$pb.TagNumber(11)
+  $core.bool hasAcceptsByteString() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearAcceptsByteString() => $_clearField(11);
 }
 
 /// `ProviderHandshakeResponse` is the type of responses sent by a [](pulumirpc.ResourceProvider.Handshake) call.
@@ -172,6 +230,7 @@ class ProviderHandshakeResponse extends $pb.GeneratedMessage {
     $core.bool? acceptResources,
     $core.bool? acceptOutputs,
     $core.bool? supportsAutonamingConfiguration,
+    $core.bool? acceptsByteString,
   }) {
     final result = create();
     if (acceptSecrets != null) result.acceptSecrets = acceptSecrets;
@@ -179,6 +238,7 @@ class ProviderHandshakeResponse extends $pb.GeneratedMessage {
     if (acceptOutputs != null) result.acceptOutputs = acceptOutputs;
     if (supportsAutonamingConfiguration != null)
       result.supportsAutonamingConfiguration = supportsAutonamingConfiguration;
+    if (acceptsByteString != null) result.acceptsByteString = acceptsByteString;
     return result;
   }
 
@@ -199,6 +259,7 @@ class ProviderHandshakeResponse extends $pb.GeneratedMessage {
     ..aOB(2, _omitFieldNames ? '' : 'acceptResources')
     ..aOB(3, _omitFieldNames ? '' : 'acceptOutputs')
     ..aOB(4, _omitFieldNames ? '' : 'supportsAutonamingConfiguration')
+    ..aOB(6, _omitFieldNames ? '' : 'acceptsByteString')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -266,6 +327,18 @@ class ProviderHandshakeResponse extends $pb.GeneratedMessage {
   $core.bool hasSupportsAutonamingConfiguration() => $_has(3);
   @$pb.TagNumber(4)
   void clearSupportsAutonamingConfiguration() => $_clearField(4);
+
+  /// True if and only if the provider supports strings containing bytes that are not valid UTF-8, marshaled as
+  /// objects carrying the byte string signature and a base64 encoding of the string's bytes. If true, the
+  /// caller may pass such values to the provider.
+  @$pb.TagNumber(6)
+  $core.bool get acceptsByteString => $_getBF(4);
+  @$pb.TagNumber(6)
+  set acceptsByteString($core.bool value) => $_setBool(4, value);
+  @$pb.TagNumber(6)
+  $core.bool hasAcceptsByteString() => $_has(4);
+  @$pb.TagNumber(6)
+  void clearAcceptsByteString() => $_clearField(6);
 }
 
 /// A parameter value, represented as an array of strings, as might be provided by a command-line invocation, such as
@@ -727,6 +800,7 @@ class GetSchemaResponse extends $pb.GeneratedMessage {
 /// (`acceptSecrets`, `acceptResources`, and so on).
 class ConfigureRequest extends $pb.GeneratedMessage {
   factory ConfigureRequest({
+    @$core.Deprecated('This field is deprecated.')
     $core.Iterable<$core.MapEntry<$core.String, $core.String>>? variables,
     $3.Struct? args,
     $core.bool? acceptSecrets,
@@ -828,6 +902,7 @@ class ConfigureRequest extends $pb.GeneratedMessage {
   ///   "b": "{\"c\":\"hello\",\"d\":true}"
   /// }
   /// ```
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(1)
   $pb.PbMap<$core.String, $core.String> get variables => $_getMap(0);
 
@@ -2770,6 +2845,7 @@ class ReadRequest extends $pb.GeneratedMessage {
     $core.String? resourceStatusAddress,
     $core.String? resourceStatusToken,
     $core.Iterable<View>? oldViews,
+    $core.double? timeout,
   }) {
     final result = create();
     if (id != null) result.id = id;
@@ -2783,6 +2859,7 @@ class ReadRequest extends $pb.GeneratedMessage {
     if (resourceStatusToken != null)
       result.resourceStatusToken = resourceStatusToken;
     if (oldViews != null) result.oldViews.addAll(oldViews);
+    if (timeout != null) result.timeout = timeout;
     return result;
   }
 
@@ -2810,6 +2887,7 @@ class ReadRequest extends $pb.GeneratedMessage {
     ..aOS(7, _omitFieldNames ? '' : 'resourceStatusAddress')
     ..aOS(8, _omitFieldNames ? '' : 'resourceStatusToken')
     ..pPM<View>(9, _omitFieldNames ? '' : 'oldViews', subBuilder: View.create)
+    ..aD(10, _omitFieldNames ? '' : 'timeout')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -2922,6 +3000,16 @@ class ReadRequest extends $pb.GeneratedMessage {
   /// [](pulumirpc.ResourceProvider.Read) call is being made as part of a refresh operation.
   @$pb.TagNumber(9)
   $pb.PbList<View> get oldViews => $_getList(8);
+
+  /// A timeout in seconds that the caller is prepared to wait for the operation to complete.
+  @$pb.TagNumber(10)
+  $core.double get timeout => $_getN(9);
+  @$pb.TagNumber(10)
+  set timeout($core.double value) => $_setDouble(9, value);
+  @$pb.TagNumber(10)
+  $core.bool hasTimeout() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearTimeout() => $_clearField(10);
 }
 
 /// `ReadResponse` is the type of responses sent by a [](pulumirpc.ResourceProvider.Read) call. A `ReadResponse` contains
@@ -3026,6 +3114,400 @@ class ReadResponse extends $pb.GeneratedMessage {
   $core.bool hasRefreshBeforeUpdate() => $_has(3);
   @$pb.TagNumber(4)
   void clearRefreshBeforeUpdate() => $_clearField(4);
+}
+
+/// `ListRequest` is the type of requests sent as part of a [](pulumirpc.ResourceProvider.List) call.
+class ListRequest extends $pb.GeneratedMessage {
+  factory ListRequest({
+    $core.String? token,
+    $3.Struct? query,
+    $fixnum.Int64? limit,
+    $fixnum.Int64? pageSize,
+    $core.String? continuationToken,
+  }) {
+    final result = create();
+    if (token != null) result.token = token;
+    if (query != null) result.query = query;
+    if (limit != null) result.limit = limit;
+    if (pageSize != null) result.pageSize = pageSize;
+    if (continuationToken != null) result.continuationToken = continuationToken;
+    return result;
+  }
+
+  ListRequest._();
+
+  factory ListRequest.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ListRequest.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListRequest',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pulumirpc'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'token')
+    ..aOM<$3.Struct>(2, _omitFieldNames ? '' : 'query',
+        subBuilder: $3.Struct.create)
+    ..aInt64(3, _omitFieldNames ? '' : 'limit')
+    ..aInt64(4, _omitFieldNames ? '' : 'pageSize')
+    ..aOS(5, _omitFieldNames ? '' : 'continuationToken')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ListRequest clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ListRequest copyWith(void Function(ListRequest) updates) =>
+      super.copyWith((message) => updates(message as ListRequest))
+          as ListRequest;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ListRequest create() => ListRequest._();
+  @$core.override
+  ListRequest createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static ListRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ListRequest>(create);
+  static ListRequest? _defaultInstance;
+
+  /// The resource token (type) to list.
+  @$pb.TagNumber(1)
+  $core.String get token => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set token($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasToken() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearToken() => $_clearField(1);
+
+  /// An optional provider-defined filter over resource state. This is a property map and could contain
+  /// unknown/computed values.
+  @$pb.TagNumber(2)
+  $3.Struct get query => $_getN(1);
+  @$pb.TagNumber(2)
+  set query($3.Struct value) => $_setField(2, value);
+  @$pb.TagNumber(2)
+  $core.bool hasQuery() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearQuery() => $_clearField(2);
+  @$pb.TagNumber(2)
+  $3.Struct ensureQuery() => $_ensure(1);
+
+  /// The maximum number of resources to return. If less than 1 then no limit is applied.
+  @$pb.TagNumber(3)
+  $fixnum.Int64 get limit => $_getI64(2);
+  @$pb.TagNumber(3)
+  set limit($fixnum.Int64 value) => $_setInt64(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasLimit() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearLimit() => $_clearField(3);
+
+  /// The requested page size for this streaming call. The provider is free to return less, but should not return more.
+  @$pb.TagNumber(4)
+  $fixnum.Int64 get pageSize => $_getI64(3);
+  @$pb.TagNumber(4)
+  set pageSize($fixnum.Int64 value) => $_setInt64(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasPageSize() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearPageSize() => $_clearField(4);
+
+  /// An opaque token indicating which page to fetch. Empty for the first page. If set `token`, `query`, and `limit`
+  /// should be the values used to fetch the first page.
+  @$pb.TagNumber(5)
+  $core.String get continuationToken => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set continuationToken($core.String value) => $_setString(4, value);
+  @$pb.TagNumber(5)
+  $core.bool hasContinuationToken() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearContinuationToken() => $_clearField(5);
+}
+
+/// `Computed` is returned if [](pulumirpc.ResourceProvider.List) can't compute the result due to unknown values in the query.
+class ListResponse_Computed extends $pb.GeneratedMessage {
+  factory ListResponse_Computed() => create();
+
+  ListResponse_Computed._();
+
+  factory ListResponse_Computed.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ListResponse_Computed.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListResponse.Computed',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pulumirpc'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ListResponse_Computed clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ListResponse_Computed copyWith(
+          void Function(ListResponse_Computed) updates) =>
+      super.copyWith((message) => updates(message as ListResponse_Computed))
+          as ListResponse_Computed;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ListResponse_Computed create() => ListResponse_Computed._();
+  @$core.override
+  ListResponse_Computed createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static ListResponse_Computed getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ListResponse_Computed>(create);
+  static ListResponse_Computed? _defaultInstance;
+}
+
+/// `Result` is a resource returned by a [](pulumirpc.ResourceProvider.List) call.
+class ListResponse_Result extends $pb.GeneratedMessage {
+  factory ListResponse_Result({
+    $core.String? id,
+    $core.String? name,
+  }) {
+    final result = create();
+    if (id != null) result.id = id;
+    if (name != null) result.name = name;
+    return result;
+  }
+
+  ListResponse_Result._();
+
+  factory ListResponse_Result.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ListResponse_Result.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListResponse.Result',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pulumirpc'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'name')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ListResponse_Result clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ListResponse_Result copyWith(void Function(ListResponse_Result) updates) =>
+      super.copyWith((message) => updates(message as ListResponse_Result))
+          as ListResponse_Result;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ListResponse_Result create() => ListResponse_Result._();
+  @$core.override
+  ListResponse_Result createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static ListResponse_Result getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ListResponse_Result>(create);
+  static ListResponse_Result? _defaultInstance;
+
+  /// The ID of the resource. This should be an importable ID that can be passed to a
+  /// [](pulumirpc.ResourceProvider.Read) call to read the resource.
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => $_clearField(1);
+
+  /// The resource name, if the provider can supply one. If empty no name was given.
+  @$pb.TagNumber(2)
+  $core.String get name => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set name($core.String value) => $_setString(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearName() => $_clearField(2);
+}
+
+/// `Continuation` indicates whether a [](pulumirpc.ResourceProvider.List) call has another page to fetch.
+class ListResponse_Continuation extends $pb.GeneratedMessage {
+  factory ListResponse_Continuation({
+    $core.String? continuationToken,
+  }) {
+    final result = create();
+    if (continuationToken != null) result.continuationToken = continuationToken;
+    return result;
+  }
+
+  ListResponse_Continuation._();
+
+  factory ListResponse_Continuation.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ListResponse_Continuation.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListResponse.Continuation',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pulumirpc'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'continuationToken')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ListResponse_Continuation clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ListResponse_Continuation copyWith(
+          void Function(ListResponse_Continuation) updates) =>
+      super.copyWith((message) => updates(message as ListResponse_Continuation))
+          as ListResponse_Continuation;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ListResponse_Continuation create() => ListResponse_Continuation._();
+  @$core.override
+  ListResponse_Continuation createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static ListResponse_Continuation getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ListResponse_Continuation>(create);
+  static ListResponse_Continuation? _defaultInstance;
+
+  /// An opaque token that can be supplied to a subsequent `List` call to fetch the next page. If empty there are
+  /// no more results.
+  @$pb.TagNumber(1)
+  $core.String get continuationToken => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set continuationToken($core.String value) => $_setString(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasContinuationToken() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearContinuationToken() => $_clearField(1);
+}
+
+enum ListResponse_Response { computed, result, continuation, notSet }
+
+/// `ListResponse` is the streamed response type returned by [](pulumirpc.ResourceProvider.List). It must follow one of
+/// the following orders. Either it returns a single [](pulumirpc.ListResponse.Computed) or it should return one or more
+/// [](pulumirpc.ListResponse.Result) items followed optionally by a [](pulumirpc.ListResponse.Continuation).
+class ListResponse extends $pb.GeneratedMessage {
+  factory ListResponse({
+    ListResponse_Computed? computed,
+    ListResponse_Result? result,
+    ListResponse_Continuation? continuation,
+  }) {
+    final result$ = create();
+    if (computed != null) result$.computed = computed;
+    if (result != null) result$.result = result;
+    if (continuation != null) result$.continuation = continuation;
+    return result$;
+  }
+
+  ListResponse._();
+
+  factory ListResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory ListResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static const $core.Map<$core.int, ListResponse_Response>
+      _ListResponse_ResponseByTag = {
+    1: ListResponse_Response.computed,
+    2: ListResponse_Response.result,
+    3: ListResponse_Response.continuation,
+    0: ListResponse_Response.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'ListResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'pulumirpc'),
+      createEmptyInstance: create)
+    ..oo(0, [1, 2, 3])
+    ..aOM<ListResponse_Computed>(1, _omitFieldNames ? '' : 'computed',
+        subBuilder: ListResponse_Computed.create)
+    ..aOM<ListResponse_Result>(2, _omitFieldNames ? '' : 'result',
+        subBuilder: ListResponse_Result.create)
+    ..aOM<ListResponse_Continuation>(3, _omitFieldNames ? '' : 'continuation',
+        subBuilder: ListResponse_Continuation.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ListResponse clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  ListResponse copyWith(void Function(ListResponse) updates) =>
+      super.copyWith((message) => updates(message as ListResponse))
+          as ListResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ListResponse create() => ListResponse._();
+  @$core.override
+  ListResponse createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static ListResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<ListResponse>(create);
+  static ListResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  @$pb.TagNumber(2)
+  @$pb.TagNumber(3)
+  ListResponse_Response whichResponse() =>
+      _ListResponse_ResponseByTag[$_whichOneof(0)]!;
+  @$pb.TagNumber(1)
+  @$pb.TagNumber(2)
+  @$pb.TagNumber(3)
+  void clearResponse() => $_clearField($_whichOneof(0));
+
+  /// A computed marker.
+  @$pb.TagNumber(1)
+  ListResponse_Computed get computed => $_getN(0);
+  @$pb.TagNumber(1)
+  set computed(ListResponse_Computed value) => $_setField(1, value);
+  @$pb.TagNumber(1)
+  $core.bool hasComputed() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearComputed() => $_clearField(1);
+  @$pb.TagNumber(1)
+  ListResponse_Computed ensureComputed() => $_ensure(0);
+
+  /// A resource entry.
+  @$pb.TagNumber(2)
+  ListResponse_Result get result => $_getN(1);
+  @$pb.TagNumber(2)
+  set result(ListResponse_Result value) => $_setField(2, value);
+  @$pb.TagNumber(2)
+  $core.bool hasResult() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearResult() => $_clearField(2);
+  @$pb.TagNumber(2)
+  ListResponse_Result ensureResult() => $_ensure(1);
+
+  /// A continuation marker.
+  @$pb.TagNumber(3)
+  ListResponse_Continuation get continuation => $_getN(2);
+  @$pb.TagNumber(3)
+  set continuation(ListResponse_Continuation value) => $_setField(3, value);
+  @$pb.TagNumber(3)
+  $core.bool hasContinuation() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearContinuation() => $_clearField(3);
+  @$pb.TagNumber(3)
+  ListResponse_Continuation ensureContinuation() => $_ensure(2);
 }
 
 /// `UpdateRequest` is the type of requests sent as part of a [](pulumirpc.ResourceProvider.Update) call.
@@ -3565,11 +4047,13 @@ class ConstructRequest_CustomTimeouts extends $pb.GeneratedMessage {
     $core.String? create_1,
     $core.String? update,
     $core.String? delete,
+    $core.String? read,
   }) {
     final result = create();
     if (create_1 != null) result.create_1 = create_1;
     if (update != null) result.update = update;
     if (delete != null) result.delete = delete;
+    if (read != null) result.read = read;
     return result;
   }
 
@@ -3589,6 +4073,7 @@ class ConstructRequest_CustomTimeouts extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'create')
     ..aOS(2, _omitFieldNames ? '' : 'update')
     ..aOS(3, _omitFieldNames ? '' : 'delete')
+    ..aOS(4, _omitFieldNames ? '' : 'read')
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -3646,6 +4131,17 @@ class ConstructRequest_CustomTimeouts extends $pb.GeneratedMessage {
   $core.bool hasDelete() => $_has(2);
   @$pb.TagNumber(3)
   void clearDelete() => $_clearField(3);
+
+  /// How long a caller is prepared to wait for a nested resource's [](pulumirpc.ResourceProvider.Read) operation
+  /// to complete.
+  @$pb.TagNumber(4)
+  $core.String get read => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set read($core.String value) => $_setString(3, value);
+  @$pb.TagNumber(4)
+  $core.bool hasRead() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearRead() => $_clearField(4);
 }
 
 class ConstructRequest_ResourceHooksBinding extends $pb.GeneratedMessage {

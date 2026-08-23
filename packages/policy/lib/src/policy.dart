@@ -297,6 +297,7 @@ class PolicyCustomTimeouts {
     required this.createSeconds,
     required this.updateSeconds,
     required this.deleteSeconds,
+    required this.readSeconds,
   });
 
   /// Create timeout in seconds.
@@ -307,6 +308,9 @@ class PolicyCustomTimeouts {
 
   /// Delete timeout in seconds.
   final double deleteSeconds;
+
+  /// Read timeout in seconds.
+  final double readSeconds;
 }
 
 /// Provider metadata available in policy callbacks.
@@ -1529,6 +1533,9 @@ PolicyResourceOptions _toPolicyResourceOptions(
           : 0,
       deleteSeconds: options.hasCustomTimeouts()
           ? options.customTimeouts.delete
+          : 0,
+      readSeconds: options.hasCustomTimeouts()
+          ? options.customTimeouts.read
           : 0,
     ),
     additionalSecretOutputs: options.additionalSecretOutputs,

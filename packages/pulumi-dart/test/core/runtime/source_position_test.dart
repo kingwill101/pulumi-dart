@@ -45,9 +45,9 @@ class _SourcePositionMonitor extends BaseMonitor {
   }
 
   @override
-  Future<InvokeResponse> invoke(ResourceInvokeRequest request) async {
+  Future<ResourceInvokeResponse> invoke(ResourceInvokeRequest request) async {
     invokeRequest = request;
-    return InvokeResponse(
+    return ResourceInvokeResponse(
       return_1: await StructConverter.toStruct(const {'result': 'ok'}),
     );
   }
