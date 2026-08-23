@@ -1,15 +1,11 @@
 package codegen
 
-import (
-	"os"
-	"strings"
-)
+import "strings"
 
 // shouldRewriteTemplatePulumiDependency decides whether a template dependency
 // should be replaced by the generator's configured default source.
-func shouldRewriteTemplatePulumiDependency(dep interface{}) bool {
-	rewriteSetting := strings.TrimSpace(strings.ToLower(os.Getenv("PULUMI_DART_TEMPLATE_REWRITE_PULUMI")))
-	if rewriteSetting == "false" || rewriteSetting == "0" || rewriteSetting == "no" {
+func shouldRewriteTemplatePulumiDependency(dep interface{}, rewrite bool) bool {
+	if !rewrite {
 		return false
 	}
 	switch value := dep.(type) {

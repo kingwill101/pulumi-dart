@@ -10,6 +10,7 @@ func buildGeneratedPubspec(
 	packageName string,
 	localDependencies map[string]string,
 	schemaDependencies map[string]interface{},
+	pulumiDependency interface{},
 ) PubSpec {
 	pubspec := PubSpec{
 		Name:        packageName,
@@ -56,7 +57,7 @@ func buildGeneratedPubspec(
 	}
 
 	if _, hasPulumiDependency := pubspec.Dependencies["pulumi"]; !hasPulumiDependency {
-		pubspec.Dependencies["pulumi"] = defaultPulumiPubspecDependency()
+		pubspec.Dependencies["pulumi"] = pulumiDependency
 	}
 
 	return pubspec

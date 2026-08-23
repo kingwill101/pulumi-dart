@@ -136,7 +136,7 @@ func (host *dartLanguageHost) GeneratePackage(
 	}
 
 	requiredDependencies := requiredDartDependencies(packageSpec, normalizedSchema, spec.Name, req.GetDirectory())
-	pubspec := codegen.BuildGeneratedPubspec(packageName, localDependencies, requiredDependencies)
+	pubspec := codegen.BuildGeneratedPubspec(packageName, localDependencies, requiredDependencies, configuredPulumiDependency())
 	if shouldUseWorkspaceResolution(req.GetDirectory()) {
 		pubspec.Resolution = "workspace"
 		applyWorkspacePulumiDependencyVersion(&pubspec, req.GetDirectory())
@@ -146,7 +146,11 @@ func (host *dartLanguageHost) GeneratePackage(
 	if strings.TrimSpace(pubspec.Description) == "" {
 		pubspec.Description = fmt.Sprintf("A Pulumi SDK package for %s.", spec.Name)
 	}
-	pubspec.Version = codegen.GeneratedSDKPackageVersion(spec.Version)
+	pubspec.Version = codegen.GeneratedSDKPackageVersion(
+		spec.Version,
+		os.Getenv("PULUMI_DART_SDK_VERSION"),
+		os.Getenv("PULUMI_DART_SDK_VERSION_SUFFIX"),
+	)
 	if err := validateGeneratedPubspecDependencies(pubspec, req.GetDirectory()); err != nil {
 		return nil, err
 	}

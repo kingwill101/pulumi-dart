@@ -1,20 +1,13 @@
 package codegen
 
-const (
-	DefaultPulumiGitURL  = defaultPulumiGitURL
-	DefaultPulumiGitPath = defaultPulumiGitPath
-	DefaultPulumiPubDev  = defaultPulumiPubDev
-)
-
 func DependencyPackageName(rootDirectory, dependencyPath, fallbackName string) string {
 	return dependencyPackageName(rootDirectory, dependencyPath, fallbackName)
 }
 func InferLocalPulumiDependencyFromProject(startDir string) string {
 	return inferLocalPulumiDependencyFromProject(startDir)
 }
-func DefaultPulumiPubspecDependency() interface{} { return defaultPulumiPubspecDependency() }
-func ShouldRewriteTemplatePulumiDependency(dep interface{}) bool {
-	return shouldRewriteTemplatePulumiDependency(dep)
+func ShouldRewriteTemplatePulumiDependency(dep interface{}, rewrite bool) bool {
+	return shouldRewriteTemplatePulumiDependency(dep, rewrite)
 }
 func IsSourceDependencySpec(spec interface{}) bool { return isSourceDependencySpec(spec) }
 func DependencyPackageDirFromDartPackageName(depName string) string {

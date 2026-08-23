@@ -2158,9 +2158,11 @@ func (host *dartLanguageHost) Template(
 	}
 
 	currentPulumiDep, hasPulumiDependency := pubspec.Dependencies["pulumi"]
-	if hasPulumiDependency && !codegen.ShouldRewriteTemplatePulumiDependency(currentPulumiDep) {
+	rewritePulumi := environmentFlag("PULUMI_DART_TEMPLATE_REWRITE_PULUMI", true)
+	forcePulumiOverride := environmentFlag("PULUMI_DART_FORCE_PULUMI_DEPENDENCY_OVERRIDE", false)
+	if hasPulumiDependency && !codegen.ShouldRewriteTemplatePulumiDependency(currentPulumiDep, rewritePulumi) {
 		if codegen.IsSourceDependencySpec(currentPulumiDep) {
-			if codegen.ShouldApplyPulumiDependencyOverride(pubspec) {
+			if codegen.ShouldApplyPulumiDependencyOverride(pubspec, forcePulumiOverride) {
 				if pubspec.DependencyOverrides == nil {
 					pubspec.DependencyOverrides = map[string]interface{}{}
 				}
@@ -2177,10 +2179,10 @@ func (host *dartLanguageHost) Template(
 		return &pulumirpc.TemplateResponse{}, nil
 	}
 
-	pulumiSpec := codegen.DefaultPulumiPubspecDependency()
+	pulumiSpec := configuredPulumiDependency()
 	pubspec.Dependencies["pulumi"] = pulumiSpec
 	if codegen.IsSourceDependencySpec(pulumiSpec) {
-		if codegen.ShouldApplyPulumiDependencyOverride(pubspec) {
+		if codegen.ShouldApplyPulumiDependencyOverride(pubspec, forcePulumiOverride) {
 			if pubspec.DependencyOverrides == nil {
 				pubspec.DependencyOverrides = map[string]interface{}{}
 			}

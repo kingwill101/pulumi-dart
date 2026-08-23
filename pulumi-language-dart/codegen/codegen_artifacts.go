@@ -2,7 +2,6 @@ package codegen
 
 import (
 	"fmt"
-	"os"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -26,8 +25,8 @@ func normalizeGeneratedVersion(version string) string {
 // - normalized upstream version
 // - fallback "0.0.1"
 // Then appends PULUMI_DART_SDK_VERSION_SUFFIX when configured.
-func generatedSDKPackageVersion(upstreamVersion string) string {
-	if override := normalizeGeneratedVersion(os.Getenv("PULUMI_DART_SDK_VERSION")); override != "" {
+func generatedSDKPackageVersion(upstreamVersion, override, suffix string) string {
+	if override = normalizeGeneratedVersion(override); override != "" {
 		return override
 	}
 
@@ -36,7 +35,7 @@ func generatedSDKPackageVersion(upstreamVersion string) string {
 		baseVersion = "0.0.1"
 	}
 
-	if suffix := strings.TrimSpace(os.Getenv("PULUMI_DART_SDK_VERSION_SUFFIX")); suffix != "" {
+	if suffix = strings.TrimSpace(suffix); suffix != "" {
 		if strings.HasPrefix(suffix, "-") || strings.HasPrefix(suffix, "+") {
 			return baseVersion + suffix
 		}

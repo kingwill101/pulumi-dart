@@ -2,7 +2,6 @@ package codegen
 
 import (
 	"fmt"
-	"os"
 	"strings"
 )
 
@@ -25,12 +24,12 @@ Future<void> main() async {
 `, packageName, packageName, packageName))
 }
 
-func generatedPackageReadme(packageName, packagePath string) []byte {
-	gitURL := strings.TrimSpace(os.Getenv("PULUMI_DART_SDK_GIT_URL"))
+func generatedPackageReadme(packageName, packagePath, gitURL, gitRef string) []byte {
+	gitURL = strings.TrimSpace(gitURL)
 	if gitURL == "" {
-		gitURL = defaultPulumiGitURL
+		gitURL = "https://github.com/kingwill101/pulumi-dart.git"
 	}
-	gitRef := strings.TrimSpace(os.Getenv("PULUMI_DART_SDK_GIT_REF"))
+	gitRef = strings.TrimSpace(gitRef)
 	if gitRef == "" {
 		gitRef = "main"
 	}

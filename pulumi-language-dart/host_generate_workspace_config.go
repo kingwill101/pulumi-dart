@@ -126,7 +126,12 @@ func inferWorkspacePulumiPackageVersion(outputDir string) string {
 // generated provider package.
 func defaultGeneratedExtraFiles(packageName, packagePath, packageVersion string) map[string][]byte {
 	return map[string][]byte{
-		"README.md":             codegen.GeneratedPackageReadme(packageName, packagePath),
+		"README.md": codegen.GeneratedPackageReadme(
+			packageName,
+			packagePath,
+			os.Getenv("PULUMI_DART_SDK_GIT_URL"),
+			os.Getenv("PULUMI_DART_SDK_GIT_REF"),
+		),
 		"CHANGELOG.md":          codegen.GeneratedPackageChangelog(packageVersion),
 		"analysis_options.yaml": codegen.GeneratedPackageAnalysisOptions(),
 		"example/main.dart":     codegen.GeneratedPackageExampleMain(packageName),

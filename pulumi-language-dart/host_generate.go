@@ -80,7 +80,7 @@ func (host *dartLanguageHost) GenerateProject(
 		return nil, fmt.Errorf("failed to write Pulumi.yaml: %w", err)
 	}
 
-	pubspec := codegen.BuildGeneratedPubspec(projectName, req.GetLocalDependencies(), nil)
+	pubspec := codegen.BuildGeneratedPubspec(projectName, req.GetLocalDependencies(), nil, configuredPulumiDependency())
 	pubspecBytes, err := yaml.Marshal(pubspec)
 	if err != nil {
 		return nil, fmt.Errorf("failed to marshal generated pubspec.yaml: %w", err)

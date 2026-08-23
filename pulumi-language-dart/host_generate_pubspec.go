@@ -50,7 +50,10 @@ func applyGeneratedPulumiDependency(existing *codegen.PubSpec, generated *codege
 	}
 	existing.Dependencies["pulumi"] = pulumiDependency
 
-	if codegen.ShouldApplyPulumiDependencyOverride(existing) {
+	if codegen.ShouldApplyPulumiDependencyOverride(
+		existing,
+		environmentFlag("PULUMI_DART_FORCE_PULUMI_DEPENDENCY_OVERRIDE", false),
+	) {
 		if existing.DependencyOverrides == nil {
 			existing.DependencyOverrides = map[string]interface{}{}
 		}
