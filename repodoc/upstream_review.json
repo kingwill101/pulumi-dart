@@ -1,0 +1,31 @@
+{
+  "review_window_start": "2026-02-23",
+  "core": [
+    {"name": "pulumi", "repository": "pulumi/pulumi", "reviewed_version": "3.223.0"},
+    {"name": "pulumi-dotnet", "repository": "pulumi/pulumi-dotnet", "reviewed_version": "3.101.0"},
+    {"name": "pulumi-java", "repository": "pulumi/pulumi-java", "reviewed_version": "1.21.0"}
+  ],
+  "providers": {
+    "aws": {"repository": "pulumi/pulumi-aws", "reviewed_version": "7.20.0"},
+    "aws-apigateway": {"repository": "pulumi/pulumi-aws-apigateway", "reviewed_version": "3.0.0"},
+    "awsx": {"repository": "pulumi/pulumi-awsx", "reviewed_version": "3.2.1"},
+    "azure": {"repository": "pulumi/pulumi-azure", "reviewed_version": "6.33.0"},
+    "azure-native": {"repository": "pulumi/pulumi-azure-native", "reviewed_version": "3.14.0"},
+    "azuread": {"repository": "pulumi/pulumi-azuread", "reviewed_version": "6.8.1"},
+    "command": {"repository": "pulumi/pulumi-command", "reviewed_version": "1.2.0"},
+    "digitalocean": {"repository": "pulumi/pulumi-digitalocean", "reviewed_version": "4.60.0"},
+    "docker": {"repository": "pulumi/pulumi-docker", "reviewed_version": "4.11.0"},
+    "docker-build": {"repository": "pulumi/pulumi-docker-build", "reviewed_version": "0.0.14"},
+    "eks": {"repository": "pulumi/pulumi-eks", "reviewed_version": "4.2.0"},
+    "gcp": {"repository": "pulumi/pulumi-gcp", "reviewed_version": "9.11.0"},
+    "google-native": {"repository": "pulumi/pulumi-google-native", "reviewed_version": "0.32.0"},
+    "hcloud": {"repository": "pulumi/pulumi-hcloud", "reviewed_version": "1.32.1"},
+    "kubernetes": {"repository": "pulumi/pulumi-kubernetes", "reviewed_version": "4.26.0"},
+    "mysql": {"repository": "pulumi/pulumi-mysql", "reviewed_version": "3.2.14"},
+    "postgresql": {"repository": "pulumi/pulumi-postgresql", "reviewed_version": "3.16.2"},
+    "pulumiservice": {"repository": "pulumi/pulumi-pulumiservice", "reviewed_version": "0.34.0"},
+    "random": {"repository": "pulumi/pulumi-random", "reviewed_version": "4.19.1"},
+    "terraform": {"repository": "pulumi/pulumi-terraform", "reviewed_version": "6.0.1"},
+    "tls": {"repository": "pulumi/pulumi-tls", "reviewed_version": "5.3.0"}
+  }
+}

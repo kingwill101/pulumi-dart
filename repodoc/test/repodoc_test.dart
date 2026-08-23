@@ -27,6 +27,7 @@ void main() {
         'integration:run',
         'integration:prewarm',
         'tools:check',
+        'upstream:check',
       ]),
     );
   });
