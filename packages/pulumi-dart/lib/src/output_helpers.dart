@@ -80,10 +80,14 @@ String fileBase64Sha256(String path) =>
     base64Encode(crypto.sha256.convert(File(path).readAsBytesSync()).bytes);
 
 /// Converts a map into PCL `{key, value}` entry objects.
-List<Map<String, dynamic>> mapEntries(Map<dynamic, dynamic> value) => value
-    .entries
-    .map((entry) => <String, dynamic>{'key': entry.key, 'value': entry.value})
-    .toList(growable: false);
+List<Map<String, dynamic>> mapEntries(Map<dynamic, dynamic> value) =>
+    (value.entries.toList(growable: false)..sort(
+          (left, right) => left.key.toString().compareTo(right.key.toString()),
+        ))
+        .map(
+          (entry) => <String, dynamic>{'key': entry.key, 'value': entry.value},
+        )
+        .toList(growable: false);
 
 /// Looks up [key], returning [fallback] only when the key is absent.
 dynamic mapLookup(Map<dynamic, dynamic> value, dynamic key, dynamic fallback) =>

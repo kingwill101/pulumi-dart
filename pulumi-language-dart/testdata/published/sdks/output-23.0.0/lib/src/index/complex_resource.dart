@@ -22,8 +22,8 @@ class ComplexResource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           pulumi.CustomResourceOptions(version: '23.0.0').merge(options),
         ) {
-    outputArray = registerOutput<List<String>>('outputArray');
-    outputMap = registerOutput<Map<String, String>>('outputMap');
+    outputArray = registerOutput<List<String>>('outputArray', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    outputMap = registerOutput<Map<String, String>>('outputMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     outputObject = registerOutput<Data>('outputObject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Data.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     value = registerOutput<double>('value');
   }

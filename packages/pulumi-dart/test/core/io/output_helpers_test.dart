@@ -38,13 +38,13 @@ void main() {
       expect(fileBase64Sha256(path), hasLength(44));
     });
 
-    test('map builtins preserve entries, nulls, and fallbacks', () {
+    test('map builtins sort entries and preserve nulls and fallbacks', () {
       final value = <String, dynamic>{'present': null, 'other': 42};
       expect(
         mapEntries(value),
         equals([
-          {'key': 'present', 'value': null},
           {'key': 'other', 'value': 42},
+          {'key': 'present', 'value': null},
         ]),
       );
       expect(mapLookup(value, 'present', 'fallback'), isNull);

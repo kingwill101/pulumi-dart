@@ -123,6 +123,7 @@ var passingConformanceTests = []string{
 	"l2-map-keys",
 	"l2-map-keys-adversarial",
 	"l2-id-type",
+	"l2-builtin-object",
 	"l2-invoke-simple",
 	"l2-invoke-variants",
 	"l2-invoke-output-only",

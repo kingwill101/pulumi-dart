@@ -2,16 +2,21 @@ package codegen
 
 import (
 	"fmt"
-	"strings"
+
+	"github.com/pulumi/pulumi/pkg/v3/codegen/hcl2/model"
 )
 
-func lowerControlBuiltin(name string, arguments []string) (string, error, bool) {
+func lowerControlBuiltin(
+	expression *model.FunctionCallExpression, arguments []string,
+) (string, error, bool) {
+	name := expression.Name
 	switch name {
 	case "lookup":
 		if len(arguments) != 3 {
 			return "", fmt.Errorf("lookup expects three arguments"), true
 		}
-		return "pulumi.mapLookup(" + strings.Join(arguments, ", ") + ")", nil, true
+		value, err := lowerMapBuiltin(expression, arguments, "pulumi.mapLookup")
+		return value, err, true
 	case "can":
 		if len(arguments) != 1 {
 			return "", fmt.Errorf("can expects one argument"), true

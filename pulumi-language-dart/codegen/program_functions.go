@@ -22,7 +22,7 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 	if value, err, handled := lowerAssetBuiltin(expression.Name, arguments); handled {
 		return value, err
 	}
-	if value, err, handled := lowerControlBuiltin(expression.Name, arguments); handled {
+	if value, err, handled := lowerControlBuiltin(expression, arguments); handled {
 		return value, err
 	}
 	switch expression.Name {
@@ -92,7 +92,7 @@ func (lowerer programLowerer) functionCallExpression(expression *model.FunctionC
 	case "filebase64sha256":
 		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.fileBase64Sha256")
 	case "entries":
-		return oneArgumentBuiltin(expression.Name, arguments, "pulumi.mapEntries")
+		return lowerMapBuiltin(expression, arguments, "pulumi.mapEntries")
 	case "notImplemented":
 		return lowerNotImplementedBuiltin(arguments)
 	case "getOutput":
