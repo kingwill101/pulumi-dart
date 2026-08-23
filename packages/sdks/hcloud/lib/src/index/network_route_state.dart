@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering NetworkRoute resources.
 class NetworkRouteState {
-  /// Destination network or host of this route. Must be a subnet of the ip_range of the Network. Must not overlap with an existing ip_range in any subnets or with any destinations in other routes or with the first ip of the networks ip_range or with 172.31.1.1.
+  /// Destination network or host of this route. Must be a subnet of the ipRange of the Network. Must not overlap with an existing ipRange in any subnets or with any destinations in other routes or with the first ip of the networks ipRange or with 172.31.1.1.
   final pulumi.Input<String>? destination;
-  /// Gateway for the route. Cannot be the first ip of the networks ip_range and also cannot be 172.31.1.1 as this IP is being used as a gateway for the public network interface of servers.
+  /// Gateway for the route. Cannot be the first ip of the networks ipRange and also cannot be 172.31.1.1 as this IP is being used as a gateway for the public network interface of servers.
   final pulumi.Input<String>? gateway;
   /// ID of the Network the route should be added to.
   final pulumi.Input<int>? networkId;
 
   /// Creates a new [NetworkRouteState].
-  /// [destination] Destination network or host of this route. Must be a subnet of the ip_range of the Network. Must not overlap with an existing ip_range in any subnets or with any destinations in other routes or with the first ip of the networks ip_range or with 172.31.1.1.
-  /// [gateway] Gateway for the route. Cannot be the first ip of the networks ip_range and also cannot be 172.31.1.1 as this IP is being used as a gateway for the public network interface of servers.
+  /// [destination] Destination network or host of this route. Must be a subnet of the ipRange of the Network. Must not overlap with an existing ipRange in any subnets or with any destinations in other routes or with the first ip of the networks ipRange or with 172.31.1.1.
+  /// [gateway] Gateway for the route. Cannot be the first ip of the networks ipRange and also cannot be 172.31.1.1 as this IP is being used as a gateway for the public network interface of servers.
   /// [networkId] ID of the Network the route should be added to.
   const NetworkRouteState({
     this.destination,
@@ -37,4 +37,3 @@ class NetworkRouteState {
     );
   }
 }
-

@@ -59,4 +59,3 @@ class HcloudConfig {
 }
 
 const config = HcloudConfig();
-

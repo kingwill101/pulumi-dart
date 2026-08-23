@@ -18,7 +18,7 @@ import 'storage_box_subaccount_state.dart';
 /// const teamBadgerPassword = config.require("teamBadgerPassword");
 /// const main = new hcloud.StorageBox("main", {});
 /// const teamBadger = new hcloud.StorageBoxSubaccount("team_badger", {
-///     storageBoxId: main.id,
+///     storageBoxId: main.id.apply(x =>Number(x)),
 ///     name: "badger",
 ///     homeDirectory: "teams/badger/",
 ///     password: teamBadgerPassword,
@@ -41,7 +41,7 @@ import 'storage_box_subaccount_state.dart';
 /// team_badger_password = config.require("teamBadgerPassword")
 /// main = hcloud.StorageBox("main")
 /// team_badger = hcloud.StorageBoxSubaccount("team_badger",
-///     storage_box_id=main.id,
+///     storage_box_id=main.id.apply(lambda x: int(x)),
 ///     name="badger",
 ///     home_directory="teams/badger/",
 ///     password=team_badger_password,
@@ -127,6 +127,37 @@ import 'storage_box_subaccount_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_storagebox" "main" {
+/// }
+/// resource "hcloud_storageboxsubaccount" "team_badger" {
+///   storage_box_id = hcloud_storagebox.main.id
+///   name           = "badger"
+///   home_directory = "teams/badger/"
+///   password       = var.teamBadgerPassword
+///   access_settings = {
+///     reachable_externally = true
+///     samba_enabled        = true
+///   }
+///   # The team attaches the storage as network drives
+///   description = "Primary account for the Badger team to upload files."
+///   labels = {
+///     "env"  = "production"
+///     "team" = "badger"
+///   }
+/// }
+/// variable "teamBadgerPassword" {
+///   type = string
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -137,8 +168,8 @@ import 'storage_box_subaccount_state.dart';
 /// import com.pulumi.hcloud.StorageBoxSubaccount;
 /// import com.pulumi.hcloud.StorageBoxSubaccountArgs;
 /// import com.pulumi.hcloud.inputs.StorageBoxSubaccountAccessSettingsArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -151,7 +182,7 @@ import 'storage_box_subaccount_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var teamBadgerPassword = config.get("teamBadgerPassword");
+///         final var teamBadgerPassword = config.require("teamBadgerPassword");
 ///         var main = new StorageBox("main");
 ///
 ///         var teamBadger = new StorageBoxSubaccount("teamBadger", StorageBoxSubaccountArgs.builder()

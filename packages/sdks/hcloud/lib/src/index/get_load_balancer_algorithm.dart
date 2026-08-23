@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetLoadBalancerAlgorithm {
-  /// (string) Type of the target. `server` or `label_selector`
+  /// (string) Type of the target. `server` or `labelSelector`
   final pulumi.Input<String> type;
 
   /// Creates a new [GetLoadBalancerAlgorithm].
-  /// [type] (string) Type of the target. `server` or `label_selector`
+  /// [type] (string) Type of the target. `server` or `labelSelector`
   const GetLoadBalancerAlgorithm({
     required this.type,
   });
@@ -24,4 +24,3 @@ class GetLoadBalancerAlgorithm {
     );
   }
 }
-

@@ -13,6 +13,8 @@ class LoadBalancerServiceHttp {
   final pulumi.Input<bool>? redirectHttp;
   /// Enable sticky sessions
   final pulumi.Input<bool>? stickySessions;
+  /// Idle timeout for HTTP connections in seconds. Must be between `30` and `300`.
+  final pulumi.Input<int>? timeoutIdle;
 
   /// Creates a new [LoadBalancerServiceHttp].
   /// [certificates] List of IDs from certificates which the Load Balancer has.
@@ -20,12 +22,14 @@ class LoadBalancerServiceHttp {
   /// [cookieName] Name of the cookie for sticky session. Default: `HCLBSTICKY`
   /// [redirectHttp] Redirect HTTP to HTTPS traffic. Only supported for services with `protocol` `https` using the default HTTP port `80`.
   /// [stickySessions] Enable sticky sessions
+  /// [timeoutIdle] Idle timeout for HTTP connections in seconds. Must be between `30` and `300`.
   const LoadBalancerServiceHttp({
     this.certificates,
     this.cookieLifetime,
     this.cookieName,
     this.redirectHttp,
     this.stickySessions,
+    this.timeoutIdle,
   });
 
   Map<String, dynamic> toMap() {
@@ -35,6 +39,7 @@ class LoadBalancerServiceHttp {
       'cookieName': ?cookieName,
       'redirectHttp': ?redirectHttp,
       'stickySessions': ?stickySessions,
+      'timeoutIdle': ?timeoutIdle,
     };
   }
 
@@ -45,7 +50,7 @@ class LoadBalancerServiceHttp {
       cookieName: (() { final guardedValue = map['cookieName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       redirectHttp: (() { final guardedValue = map['redirectHttp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       stickySessions: (() { final guardedValue = map['stickySessions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      timeoutIdle: (() { final guardedValue = map['timeoutIdle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
     );
   }
 }
-

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerAlgorithm {
-  /// Type of the Load Balancer Algorithm. `round_robin` or `least_connections`
+  /// Type of the Load Balancer Algorithm. `roundRobin` or `leastConnections`
   final pulumi.Input<String>? type;
 
   /// Creates a new [LoadBalancerAlgorithm].
-  /// [type] Type of the Load Balancer Algorithm. `round_robin` or `least_connections`
+  /// [type] Type of the Load Balancer Algorithm. `roundRobin` or `leastConnections`
   const LoadBalancerAlgorithm({
     this.type,
   });
@@ -24,4 +24,3 @@ class LoadBalancerAlgorithm {
     );
   }
 }
-

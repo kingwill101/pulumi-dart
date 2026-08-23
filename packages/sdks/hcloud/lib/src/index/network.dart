@@ -61,6 +61,20 @@ import 'network_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_network" "privNet" {
+///   name     = "my-net"
+///   ip_range = "10.0.1.0/24"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -69,8 +83,8 @@ import 'network_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.hcloud.Network;
 /// import com.pulumi.hcloud.NetworkArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

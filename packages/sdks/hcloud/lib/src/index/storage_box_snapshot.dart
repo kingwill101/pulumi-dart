@@ -15,7 +15,7 @@ import 'storage_box_snapshot_state.dart';
 ///
 /// const main = new hcloud.StorageBox("main", {});
 /// const backup = new hcloud.StorageBoxSnapshot("backup", {
-///     storageBoxId: main.id,
+///     storageBoxId: main.id.apply(x =>Number(x)),
 ///     description: "Before Tool XYZ Migration",
 ///     labels: {
 ///         env: "production",
@@ -28,7 +28,7 @@ import 'storage_box_snapshot_state.dart';
 ///
 /// main = hcloud.StorageBox("main")
 /// backup = hcloud.StorageBoxSnapshot("backup",
-///     storage_box_id=main.id,
+///     storage_box_id=main.id.apply(lambda x: int(x)),
 ///     description="Before Tool XYZ Migration",
 ///     labels={
 ///         "env": "production",
@@ -84,6 +84,25 @@ import 'storage_box_snapshot_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_storagebox" "main" {
+/// }
+/// resource "hcloud_storageboxsnapshot" "backup" {
+///   storage_box_id = hcloud_storagebox.main.id
+///   description    = "Before Tool XYZ Migration"
+///   labels = {
+///     "env" = "production"
+///   }
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -93,8 +112,8 @@ import 'storage_box_snapshot_state.dart';
 /// import com.pulumi.hcloud.StorageBox;
 /// import com.pulumi.hcloud.StorageBoxSnapshot;
 /// import com.pulumi.hcloud.StorageBoxSnapshotArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

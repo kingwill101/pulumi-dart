@@ -8,6 +8,7 @@ class GetLoadBalancersLoadBalancerServiceHttp {
   final pulumi.Input<String> cookieName;
   final pulumi.Input<bool> redirectHttp;
   final pulumi.Input<bool> stickySessions;
+  final pulumi.Input<int> timeoutIdle;
 
   /// Creates a new [GetLoadBalancersLoadBalancerServiceHttp].
   /// [certificates] Required.
@@ -15,12 +16,14 @@ class GetLoadBalancersLoadBalancerServiceHttp {
   /// [cookieName] Required.
   /// [redirectHttp] Required.
   /// [stickySessions] Required.
+  /// [timeoutIdle] Required.
   const GetLoadBalancersLoadBalancerServiceHttp({
     required this.certificates,
     required this.cookieLifetime,
     required this.cookieName,
     required this.redirectHttp,
     required this.stickySessions,
+    required this.timeoutIdle,
   });
 
   Map<String, dynamic> toMap() {
@@ -30,6 +33,7 @@ class GetLoadBalancersLoadBalancerServiceHttp {
       'cookieName': cookieName,
       'redirectHttp': redirectHttp,
       'stickySessions': stickySessions,
+      'timeoutIdle': timeoutIdle,
     };
   }
 
@@ -40,7 +44,7 @@ class GetLoadBalancersLoadBalancerServiceHttp {
       cookieName: pulumi.Input.fromValue(map['cookieName'] as String),
       redirectHttp: pulumi.Input.fromValue(map['redirectHttp'] as bool),
       stickySessions: pulumi.Input.fromValue(map['stickySessions'] as bool),
+      timeoutIdle: pulumi.Input.fromValue(map['timeoutIdle'] as int),
     );
   }
 }
-

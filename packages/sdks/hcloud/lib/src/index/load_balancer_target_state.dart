@@ -8,7 +8,7 @@ class LoadBalancerTargetState {
   /// `type` is `ip`.
   final pulumi.Input<String>? ip;
   /// Label Selector selecting targets
-  /// for this Load Balancer. Required if `type` is `label_selector`.
+  /// for this Load Balancer. Required if `type` is `labelSelector`.
   final pulumi.Input<String>? labelSelector;
   /// ID of the Load Balancer to which
   /// the target gets attached.
@@ -17,11 +17,11 @@ class LoadBalancerTargetState {
   /// target for this Load Balancer. Required if `type` is `server`
   final pulumi.Input<int>? serverId;
   /// Type of the target. Possible values
-  /// `server`, `label_selector`, `ip`.
+  /// `server`, `labelSelector`, `ip`.
   final pulumi.Input<String>? type;
   /// use the private IP to connect to
   /// Load Balancer targets. Only allowed if type is `server` or
-  /// `label_selector`.
+  /// `labelSelector`.
   final pulumi.Input<bool>? usePrivateIp;
 
   /// Creates a new [LoadBalancerTargetState].
@@ -62,4 +62,3 @@ class LoadBalancerTargetState {
     );
   }
 }
-

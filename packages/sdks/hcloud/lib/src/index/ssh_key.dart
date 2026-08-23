@@ -76,6 +76,23 @@ import 'ssh_key_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_sshkey" "main" {
+///   name       = "my-ssh-key"
+///   public_key = file("~/.ssh/id_ed25519.pub")
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -86,8 +103,8 @@ import 'ssh_key_state.dart';
 /// import com.pulumi.hcloud.SshKeyArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

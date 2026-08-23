@@ -16,7 +16,7 @@ import 'network_subnet_state.dart';
 ///     ipRange: "10.0.0.0/8",
 /// });
 /// const foonet = new hcloud.NetworkSubnet("foonet", {
-///     networkId: mynet.id,
+///     networkId: mynet.id.apply(x =>Number(x)),
 ///     type: "cloud",
 ///     networkZone: "eu-central",
 ///     ipRange: "10.0.1.0/24",
@@ -30,7 +30,7 @@ import 'network_subnet_state.dart';
 ///     name="my-net",
 ///     ip_range="10.0.0.0/8")
 /// foonet = hcloud.NetworkSubnet("foonet",
-///     network_id=mynet.id,
+///     network_id=mynet.id.apply(lambda x: int(x)),
 ///     type="cloud",
 ///     network_zone="eu-central",
 ///     ip_range="10.0.1.0/24")
@@ -89,6 +89,26 @@ import 'network_subnet_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_network" "mynet" {
+///   name     = "my-net"
+///   ip_range = "10.0.0.0/8"
+/// }
+/// resource "hcloud_networksubnet" "foonet" {
+///   network_id   = hcloud_network.mynet.id
+///   type         = "cloud"
+///   network_zone = "eu-central"
+///   ip_range     = "10.0.1.0/24"
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -99,8 +119,8 @@ import 'network_subnet_state.dart';
 /// import com.pulumi.hcloud.NetworkArgs;
 /// import com.pulumi.hcloud.NetworkSubnet;
 /// import com.pulumi.hcloud.NetworkSubnetArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;
@@ -154,7 +174,7 @@ import 'network_subnet_state.dart';
 /// ```
 class NetworkSubnet extends pulumi.CustomResource {
   late final pulumi.Output<String> gateway;
-  /// Range to allocate IPs from. Must be a subnet of the ip_range of the Network and must not overlap with any other subnets or with any destinations in routes.
+  /// Range to allocate IPs from. Must be a subnet of the ipRange of the Network and must not overlap with any other subnets or with any destinations in routes.
   late final pulumi.Output<String> ipRange;
   /// ID of the Network the subnet should be added to.
   late final pulumi.Output<int> networkId;

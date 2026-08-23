@@ -6,7 +6,7 @@ import 'server_public_net.dart';
 
 /// Input properties used for looking up and filtering Server resources.
 class ServerState {
-  /// Enable the use of deprecated images (default: false). **Note** Deprecated images will be removed after three months. Using them is then no longer possible.
+  /// Unused attribute, consider removing it from your configuration.
   final pulumi.Input<bool>? allowDeprecatedImages;
   /// (string) The backup window of the server, if enabled.
   final pulumi.Input<String>? backupWindow;
@@ -14,12 +14,12 @@ class ServerState {
   final pulumi.Input<bool>? backups;
   /// The datacenter name to create the server in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
   final pulumi.Input<String>? datacenter;
-  /// Enable or disable delete protection (Needs to be the same as `rebuild_protection`). See "Delete Protection" in the Provider Docs for details.
+  /// Enable or disable delete protection (Needs to be the same as `rebuildProtection`). See "Delete Protection" in the Provider Docs for details.
   final pulumi.Input<bool>? deleteProtection;
   /// Firewall IDs the server should be attached to on creation.
   final pulumi.Input<List<int>>? firewallIds;
   /// Ignores any updates
-  /// to the `firewall_ids` argument which were received from the server.
+  /// to the `firewallIds` argument which were received from the server.
   /// This should not be used in normal cases. See the documentation of the
   /// `hcloud.FirewallAttachment` resource for a reason to use this
   /// argument.
@@ -51,7 +51,7 @@ class ServerState {
   /// In this block you can either enable / disable ipv4 and ipv6 or link existing primary IPs (checkout the examples).
   /// If this block is not defined, two primary (ipv4 & ipv6) ips getting auto generated.
   final pulumi.Input<List<ServerPublicNet>>? publicNets;
-  /// Enable or disable rebuild protection (Needs to be the same as `delete_protection`).
+  /// Enable or disable rebuild protection (Needs to be the same as `deleteProtection`).
   final pulumi.Input<bool>? rebuildProtection;
   /// Enable and boot in to the specified rescue system. This enables simple installation of custom operating systems. `linux64` or `linux32`
   final pulumi.Input<String>? rescue;
@@ -59,19 +59,19 @@ class ServerState {
   final pulumi.Input<String>? serverType;
   /// Whether to try shutting the server down gracefully before deleting it.
   final pulumi.Input<bool>? shutdownBeforeDeletion;
-  /// SSH key IDs or names which should be injected into the server at creation time. Once the server is created, you can not update the list of SSH Keys. If you do change this, you will be prompted to destroy and recreate the server. You can avoid this by setting lifecycle.ignore_changes to `[ ssh_keys ]`.
+  /// SSH key IDs or names which should be injected into the server at creation time. Once the server is created, you can not update the list of SSH Keys. If you do change this, you will be prompted to destroy and recreate the server. You can avoid this by setting lifecycle.ignore_changes to `[ sshKeys ]`.
   final pulumi.Input<List<String>>? sshKeys;
   /// (string) The status of the server.
   final pulumi.Input<String>? status;
-  /// Cloud-Init user data to use during server creation
+  /// Cloud-Init user data to use during server creation. This field is limited to 32KiB.
   final pulumi.Input<String>? userData;
 
   /// Creates a new [ServerState].
-  /// [allowDeprecatedImages] Enable the use of deprecated images (default: false). **Note** Deprecated images will be removed after three months. Using them is then no longer possible.
+  /// [allowDeprecatedImages] Unused attribute, consider removing it from your configuration.
   /// [backupWindow] (string) The backup window of the server, if enabled.
   /// [backups] Enable or disable backups.
   /// [datacenter] The datacenter name to create the server in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-datacenters-are-there) for more details about datacenters.
-  /// [deleteProtection] Enable or disable delete protection (Needs to be the same as `rebuild_protection`). See "Delete Protection" in the Provider Docs for details.
+  /// [deleteProtection] Enable or disable delete protection (Needs to be the same as `rebuildProtection`). See "Delete Protection" in the Provider Docs for details.
   /// [firewallIds] Firewall IDs the server should be attached to on creation.
   /// [ignoreRemoteFirewallIds] Ignores any updates
   /// [image] Name or ID of the image the server is created from. **Note** the `image` property is only required when using the resource to create servers. As the Hetzner Cloud API may return servers without an image ID set it is not marked as required in the Terraform Provider itself. Thus, users will get an error from the underlying client library if they forget to set the property and try to create a server.
@@ -87,13 +87,13 @@ class ServerState {
   /// [placementGroupId] Placement Group ID the server added to on creation.
   /// [primaryDiskSize] (int) The size of the primary disk in GB.
   /// [publicNets] In this block you can either enable / disable ipv4 and ipv6 or link existing primary IPs (checkout the examples).
-  /// [rebuildProtection] Enable or disable rebuild protection (Needs to be the same as `delete_protection`).
+  /// [rebuildProtection] Enable or disable rebuild protection (Needs to be the same as `deleteProtection`).
   /// [rescue] Enable and boot in to the specified rescue system. This enables simple installation of custom operating systems. `linux64` or `linux32`
   /// [serverType] Name of the server type this server should be created with.
   /// [shutdownBeforeDeletion] Whether to try shutting the server down gracefully before deleting it.
-  /// [sshKeys] SSH key IDs or names which should be injected into the server at creation time. Once the server is created, you can not update the list of SSH Keys. If you do change this, you will be prompted to destroy and recreate the server. You can avoid this by setting lifecycle.ignore_changes to `[ ssh_keys ]`.
+  /// [sshKeys] SSH key IDs or names which should be injected into the server at creation time. Once the server is created, you can not update the list of SSH Keys. If you do change this, you will be prompted to destroy and recreate the server. You can avoid this by setting lifecycle.ignore_changes to `[ sshKeys ]`.
   /// [status] (string) The status of the server.
-  /// [userData] Cloud-Init user data to use during server creation
+  /// [userData] Cloud-Init user data to use during server creation. This field is limited to 32KiB.
   const ServerState({
     this.allowDeprecatedImages,
     this.backupWindow,
@@ -188,4 +188,3 @@ class ServerState {
     );
   }
 }
-

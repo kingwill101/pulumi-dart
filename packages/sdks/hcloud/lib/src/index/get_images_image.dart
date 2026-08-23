@@ -3,32 +3,41 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetImagesImage {
+  /// CPU architecture compatible with the Image.
   final pulumi.Input<String> architecture;
+  /// Point in time when the Image was created (in RFC3339 format).
   final pulumi.Input<String> created;
+  /// Point in time when the Image was marked as deprecated (in RFC3339 format).
   final pulumi.Input<String> deprecated;
+  /// Description of the Image.
   final pulumi.Input<String> description;
+  /// ID of the Image.
   final pulumi.Input<int> id;
+  /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   final pulumi.Input<Map<String, String>> labels;
+  /// Name of the Image, only present when the type is `system`.
   final pulumi.Input<String> name;
+  /// Flavor of the operating system contained in the Image.
   final pulumi.Input<String> osFlavor;
+  /// Version of the operating system contained in the Image.
   final pulumi.Input<String> osVersion;
+  /// Whether the Image is optimized for a rapid deployment.
   final pulumi.Input<bool> rapidDeploy;
-  final pulumi.Input<String>? selector;
+  /// Type of the Image, for example `system`, `backup` or `snapshot`.
   final pulumi.Input<String> type;
 
   /// Creates a new [GetImagesImage].
-  /// [architecture] Required.
-  /// [created] Required.
-  /// [deprecated] Required.
-  /// [description] Required.
-  /// [id] Required.
-  /// [labels] Required.
-  /// [name] Required.
-  /// [osFlavor] Required.
-  /// [osVersion] Required.
-  /// [rapidDeploy] Required.
-  /// [selector] Optional.
-  /// [type] Required.
+  /// [architecture] CPU architecture compatible with the Image.
+  /// [created] Point in time when the Image was created (in RFC3339 format).
+  /// [deprecated] Point in time when the Image was marked as deprecated (in RFC3339 format).
+  /// [description] Description of the Image.
+  /// [id] ID of the Image.
+  /// [labels] User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
+  /// [name] Name of the Image, only present when the type is `system`.
+  /// [osFlavor] Flavor of the operating system contained in the Image.
+  /// [osVersion] Version of the operating system contained in the Image.
+  /// [rapidDeploy] Whether the Image is optimized for a rapid deployment.
+  /// [type] Type of the Image, for example `system`, `backup` or `snapshot`.
   const GetImagesImage({
     required this.architecture,
     required this.created,
@@ -40,7 +49,6 @@ class GetImagesImage {
     required this.osFlavor,
     required this.osVersion,
     required this.rapidDeploy,
-    this.selector,
     required this.type,
   });
 
@@ -56,7 +64,6 @@ class GetImagesImage {
       'osFlavor': osFlavor,
       'osVersion': osVersion,
       'rapidDeploy': rapidDeploy,
-      'selector': ?selector,
       'type': type,
     };
   }
@@ -73,9 +80,7 @@ class GetImagesImage {
       osFlavor: pulumi.Input.fromValue(map['osFlavor'] as String),
       osVersion: pulumi.Input.fromValue(map['osVersion'] as String),
       rapidDeploy: pulumi.Input.fromValue(map['rapidDeploy'] as bool),
-      selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }
-

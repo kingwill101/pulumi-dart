@@ -204,6 +204,49 @@ import 'storage_box_state.dart';
 /// 	})
 /// }
 /// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// resource "hcloud_storagebox" "backups" {
+///   name             = "backups"
+///   storage_box_type = "bx21"
+///   location         = "hel1"
+///   password         = storageBoxPassword
+///   labels = {
+///     "foo" = "bar"
+///   }
+///   access_settings = {
+///     reachable_externally = true
+///     samba_enabled        = true
+///     ssh_enabled          = true
+///     webdav_enabled       = true
+///     zfs_enabled          = true
+///   }
+///   snapshot_plan = {
+///     max_snapshots = 10
+///     minute        = 16
+///     hour          = 18
+///     day_of_week   = 3
+///   }
+///   delete_protection = true
+/// }
+/// resource "hcloud_storagebox" "ssh_key" {
+///   name             = "backups"
+///   storage_box_type = "bx21"
+///   location         = "hel1"
+///   password         = storageBoxPassword
+///   ssh_keys         = [myKey.publicKey, file("~/.ssh/id_ed25519.pub")]
+/// }
+/// ```
 /// ```java
 /// package generated_program;
 ///
@@ -216,8 +259,8 @@ import 'storage_box_state.dart';
 /// import com.pulumi.hcloud.inputs.StorageBoxSnapshotPlanArgs;
 /// import com.pulumi.std.StdFunctions;
 /// import com.pulumi.std.inputs.FileArgs;
-/// import java.util.List;
 /// import java.util.ArrayList;
+/// import java.util.Arrays;
 /// import java.util.Map;
 /// import java.io.File;
 /// import java.nio.file.Files;

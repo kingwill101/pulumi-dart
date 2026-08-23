@@ -13,6 +13,7 @@ class GetLoadBalancerServiceHttp {
   final pulumi.Input<bool> redirectHttp;
   /// (string) Determine if sticky sessions are enabled or not.
   final pulumi.Input<bool> stickySessions;
+  final pulumi.Input<int> timeoutIdle;
 
   /// Creates a new [GetLoadBalancerServiceHttp].
   /// [certificates] (list[int]) List of IDs from certificates which the Load Balancer has.
@@ -20,12 +21,14 @@ class GetLoadBalancerServiceHttp {
   /// [cookieName] (string) Name of the cookie for sticky session.
   /// [redirectHttp] (string) Determine if all requests from port 80 should be redirected to port 443.
   /// [stickySessions] (string) Determine if sticky sessions are enabled or not.
+  /// [timeoutIdle] Required.
   const GetLoadBalancerServiceHttp({
     required this.certificates,
     required this.cookieLifetime,
     required this.cookieName,
     required this.redirectHttp,
     required this.stickySessions,
+    required this.timeoutIdle,
   });
 
   Map<String, dynamic> toMap() {
@@ -35,6 +38,7 @@ class GetLoadBalancerServiceHttp {
       'cookieName': cookieName,
       'redirectHttp': redirectHttp,
       'stickySessions': stickySessions,
+      'timeoutIdle': timeoutIdle,
     };
   }
 
@@ -45,7 +49,7 @@ class GetLoadBalancerServiceHttp {
       cookieName: pulumi.Input.fromValue(map['cookieName'] as String),
       redirectHttp: pulumi.Input.fromValue(map['redirectHttp'] as bool),
       stickySessions: pulumi.Input.fromValue(map['stickySessions'] as bool),
+      timeoutIdle: pulumi.Input.fromValue(map['timeoutIdle'] as int),
     );
   }
 }
-
