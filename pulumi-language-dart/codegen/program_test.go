@@ -50,3 +50,18 @@ func TestLowerDartProgramInterpolatedTemplate(t *testing.T) {
 	require.NoError(t, err)
 	assert.Equal(t, "'answer: ' + (42).toString()", result)
 }
+
+func TestLowerDartProgramLengthCall(t *testing.T) {
+	t.Parallel()
+
+	expression := &model.FunctionCallExpression{
+		Name: "length",
+		Args: []model.Expression{&model.TupleConsExpression{Expressions: []model.Expression{
+			&model.LiteralValueExpression{Value: cty.StringVal("one")},
+			&model.LiteralValueExpression{Value: cty.StringVal("two")},
+		}}},
+	}
+	result, err := lowerDartProgramExpression(expression)
+	require.NoError(t, err)
+	assert.Equal(t, "(['one', 'two']).length", result)
+}

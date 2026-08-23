@@ -34,16 +34,23 @@ func dartConfigGetter(typ model.Type, required bool) (string, error) {
 	if required {
 		prefix = "require"
 	}
-	switch typ {
-	case model.StringType:
+	if typ == model.StringType {
 		if required {
 			return "require", nil
 		}
 		return "get", nil
-	case model.BoolType:
+	}
+	if typ == model.BoolType {
 		return prefix + "Boolean", nil
-	case model.IntType, model.NumberType:
+	}
+	if typ == model.IntType || typ == model.NumberType {
 		return prefix + "Number", nil
+	}
+	switch typ.(type) {
+	case *model.ListType, *model.TupleType, *model.SetType:
+		return prefix + "Object<List<Object?>>", nil
+	case *model.MapType, *model.ObjectType:
+		return prefix + "Object<Map<String, Object?>>", nil
 	default:
 		return "", fmt.Errorf("unsupported config type %v", typ)
 	}

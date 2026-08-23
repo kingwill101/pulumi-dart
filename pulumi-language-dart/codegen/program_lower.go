@@ -87,6 +87,8 @@ func (lowerer programLowerer) expression(expression model.Expression) (string, e
 		return lowerer.unaryExpression(expression)
 	case *model.BinaryOpExpression:
 		return lowerer.binaryExpression(expression)
+	case *model.FunctionCallExpression:
+		return lowerer.functionCallExpression(expression)
 	case *model.ScopeTraversalExpression:
 		if len(expression.Traversal) != 1 {
 			return "", fmt.Errorf("unsupported traversal %v", expression.Traversal)
