@@ -3,6 +3,8 @@ package codegen
 import (
 	"fmt"
 	"strings"
+
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/darttext"
 )
 
 func escapeDartDocInline(text string) string {
@@ -12,7 +14,7 @@ func escapeDartDocInline(text string) string {
 }
 
 func firstDartDocLine(comment string) string {
-	comment = sanitizeDartDocComment(comment)
+	comment = darttext.SanitizeDocComment(comment)
 	if comment == "" {
 		return ""
 	}

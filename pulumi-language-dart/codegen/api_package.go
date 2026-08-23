@@ -3,7 +3,6 @@ package codegen
 func GeneratedSDKPackageVersion(upstreamVersion, override, suffix string) string {
 	return generatedSDKPackageVersion(upstreamVersion, override, suffix)
 }
-func NormalizeGeneratedVersion(version string) string { return normalizeGeneratedVersion(version) }
 func BuildGeneratedPubspec(packageName string, localDependencies map[string]string, schemaDependencies map[string]interface{}, pulumiDependency interface{}) PubSpec {
 	return buildGeneratedPubspec(packageName, localDependencies, schemaDependencies, pulumiDependency)
 }
